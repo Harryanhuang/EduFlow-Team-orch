@@ -30,12 +30,18 @@ igcse-{subject}-{code}/
 
 ### Step 1: Auto-Discovery
 
-```python
-import re
-SUBJECT_RE = re.compile(r'^igcse-[a-z]+(?:-[a-z]+)*-\d{4}$')
-# Scan content/ for matching directories
-# Extract subject code (digits) and human-readable name
+Run from the `content/` directory (or any parent of `content/igcse-*-NNNN/`):
+
+```bash
+python3 scripts/qbank_verify.py <subject-dir>
+# e.g.
+python3 scripts/qbank_verify.py content/igcse-mathematics-0580
 ```
+
+The script:
+1. Matches directories against `SUBJECT_RE = ^igcse-[a-z]+(?:-[a-z]+)*-\d{4}$`
+2. Extracts subject code (digits) and human-readable name
+3. Walks each of the 3 layers per subject
 
 ### Step 2: Per-Layer Parse
 
