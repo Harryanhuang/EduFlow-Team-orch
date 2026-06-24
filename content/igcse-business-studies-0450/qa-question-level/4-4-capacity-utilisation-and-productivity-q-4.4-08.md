@@ -1,0 +1,6 @@
+### Question Q-4.4-08
+**Difficulty**: Challenge
+**Question**: A car factory operates at 60% capacity utilisation. The management is considering either (a) closing one production line to reduce capacity, or (b) launching an aggressive marketing campaign to increase demand. Recommend and justify which option is better.
+**Answer**: Option (a) — closing one line — immediately raises utilisation by reducing capacity, lowering the fixed cost burden. However, it means permanently giving up potential output if demand recovers. Option (b) — increasing demand — is more ambitious but risks failure if the market does not respond, and marketing costs may not be recovered. A phased approach is best: first close the underused line to stabilise costs, then invest in targeted marketing for specific models or markets where the business has a competitive advantage. Justification: reducing capacity is a lower-risk first step; demand growth should be pursued selectively where the business can win.
+**Explanation**: Both options change the utilisation percentage through different levers. A common error is treating this as an either-or decision — a phased combination often works best.
+**Tags**: capacity-utilisation, evaluation, decision-making, application

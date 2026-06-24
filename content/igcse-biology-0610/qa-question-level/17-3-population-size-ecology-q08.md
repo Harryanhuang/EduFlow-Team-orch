@@ -1,0 +1,6 @@
+# Question: Question Q-17.3-08
+**Difficulty**: Challenge
+**Question**: Explain how population size is regulated by density-dependent and density-independent factors. Give examples of each.
+**Answer**: Density-dependent factors regulate population size based on population density: competition for resources (food, space) intensifies as density increases; disease spreads faster in dense populations; predation increases (more prey = more predators = more prey eaten). These factors limit population growth more effectively at high densities. Density-independent factors regulate population regardless of density: extreme temperatures (cold snaps, heatwaves) can kill regardless of population size; natural disasters (floods, fires) affect populations equally at high or low density; pollution can decimate populations without regard to their size. Both types of factors interact — for example, a drought (density-independent) weakens individuals, making them more susceptible to disease (density-dependent).
+**Explanation**: Density-dependent = competition, disease, predation; Density-independent = weather, disasters. A common error is saying all population controls depend on density.
+**Tags**: population-regulation, density-dependent, density-independent, competition

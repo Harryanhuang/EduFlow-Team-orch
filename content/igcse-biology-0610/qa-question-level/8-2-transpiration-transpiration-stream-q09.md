@@ -1,0 +1,6 @@
+# Question: Question Q-8.2-09
+**Difficulty**: Challenge
+**Question**: Design an experiment to investigate the effect of one environmental factor on the rate of transpiration, using a potometer. State your hypothesis, variables, method, expected results, and sources of error.
+**Answer**: Hypothesis: Increasing wind speed (using a fan) will increase the rate of transpiration. Independent variable: wind speed (no fan / low / high). Dependent variable: rate of water uptake (mm/min). Controlled variables: same plant species/size, same temperature, same light intensity, same humidity. Method: set up potometer with leafy shoot; introduce air bubble; measure distance moved in 5 minutes with no fan; reset bubble and repeat with low fan speed; repeat with high fan speed; three trials each. Expected results: highest rate at high fan speed (steepest concentration gradient). Sources of error: (1) air leaks in apparatus, (2) temperature rise from fan motor, (3) cutting stem may introduce air embolism, (4) bubble may stick to tube wall. Calculate mean rate and plot bar chart.
+**Explanation**: Full experimental design with hypothesis, variables, controls, error analysis. A common error is forgetting to list controlled variables or sources of error.
+**Tags**: experiment-design, potometer, transpiration, wind-speed, variables

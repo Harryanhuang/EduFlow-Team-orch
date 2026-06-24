@@ -1,0 +1,177 @@
+# EduFlow Team 12-agent example
+#
+# This file is a tracked example blueprint, not the live local config.
+# Copy the parts you need into your real `eduflow.toml`.
+
+chat_id = ""
+lark_profile = ""
+default_model = "opus"
+
+[team]
+session = "EduFlowTeam"
+default_model = "opus"
+
+[runtime_guard.notify]
+default = "manager"
+
+[runtime_guard.manager_policy]
+default = "continue"
+worker_course_caie = "pause"
+worker_course_ib = "pause"
+review_course_caie = "pause"
+review_course_ib = "pause"
+worker_admissions_case = "pause"
+worker_school_research = "pause"
+
+[runtime_guard.cooldown]
+max_switches = 3
+window_s = 600
+cooldown_s = 900
+
+[runtime_registry.content_primary]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_primary"
+fallback_to = "content_backup_codex"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable"]
+
+[runtime_registry.content_backup_codex]
+cli = "codex-cli"
+model = "gpt-5.5"
+provider = "openai"
+env_profile = "codex_primary"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable"]
+
+[runtime_registry.review_primary]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_primary"
+fallback_to = "review_backup_codex"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable"]
+
+[runtime_registry.review_backup_codex]
+cli = "codex-cli"
+model = "gpt-5.5"
+provider = "openai"
+env_profile = "codex_primary"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable"]
+
+[runtime_registry.research_primary]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_primary"
+fallback_to = "research_backup_codex"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable"]
+
+[runtime_registry.research_backup_codex]
+cli = "codex-cli"
+model = "gpt-5.5"
+provider = "openai"
+env_profile = "codex_primary"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable"]
+
+[runtime_registry.schema_primary]
+cli = "codex-cli"
+model = "gpt-5.5"
+provider = "openai"
+env_profile = "codex_primary"
+fallback_to = "schema_backup_claude"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable"]
+
+[runtime_registry.schema_backup_claude]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_primary"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable"]
+
+[runtime_registry.system_primary]
+cli = "codex-cli"
+model = "gpt-5.5"
+provider = "openai"
+env_profile = "codex_primary"
+fallback_to = "system_backup_claude"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable"]
+
+[runtime_registry.system_backup_claude]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_primary"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable"]
+
+[team.agents.manager]
+cli = "claude-code"
+model = "opus"
+role = "唯一业务入口、唯一正式派工口、唯一正式对外汇总口。"
+card_color = "blue"
+lazy = false
+
+[team.agents.worker_course_caie]
+runtime = "content_primary"
+role = "CAIE / IGCSE / A-Level 教研生产 owner。"
+card_color = "green"
+lazy = false
+
+[team.agents.worker_course_ib]
+runtime = "content_primary"
+role = "IB / AP 国际课程教研生产 owner。"
+card_color = "green"
+lazy = false
+
+[team.agents.review_course_caie]
+runtime = "review_primary"
+role = "CAIE 线正式复核 owner。"
+card_color = "green"
+lazy = false
+
+[team.agents.review_course_ib]
+runtime = "review_primary"
+role = "IB / AP 线正式复核 owner。"
+card_color = "green"
+lazy = false
+
+[team.agents.worker_admissions_case]
+runtime = "research_primary"
+role = "申请策略、文案、流程编排 owner。"
+card_color = "yellow"
+lazy = true
+
+[team.agents.worker_school_research]
+runtime = "research_primary"
+role = "学校研究、要求比对、项目检索 owner。"
+card_color = "yellow"
+lazy = true
+
+[team.agents.worker_qbank_schema]
+runtime = "schema_primary"
+role = "题库 schema、manifest、导入导出 owner。"
+card_color = "purple"
+lazy = true
+
+[team.agents.worker_qbank_content]
+runtime = "content_primary"
+role = "题库内容清洗、规范化、可消费化 owner。"
+card_color = "purple"
+lazy = true
+
+[team.agents.worker_knowledge_ops]
+runtime = "schema_primary"
+role = "知识库结构、命名、归档与同步 owner。"
+card_color = "orange"
+lazy = true
+
+[team.agents.worker_builder_system]
+runtime = "system_primary"
+role = "工作流建设、自动化实现、系统能力扩展 owner。"
+card_color = "orange"
+lazy = true
+
+[team.agents.worker_builder_runtime]
+runtime = "system_primary"
+role = "运行态修复、watchdog、fallback、容灾治理 owner。"
+card_color = "red"
+lazy = true

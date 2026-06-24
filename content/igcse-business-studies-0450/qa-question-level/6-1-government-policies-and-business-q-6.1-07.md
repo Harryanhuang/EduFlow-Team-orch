@@ -1,0 +1,6 @@
+### Question Q-6.1-07
+**Difficulty**: Challenge
+**Question**: Evaluate the impact on a manufacturing business of a government decision to raise the minimum wage by 15%.
+**Answer**: A 15% minimum wage increase raises labour costs directly for workers on or near the minimum wage, and indirectly through wage differentials (workers above the minimum may demand proportionate increases). This increases production costs, potentially reducing profit margins or requiring price increases. If prices rise, demand may fall, especially for price-sensitive products. The business may respond by: 1) Automating tasks to reduce labour needs. 2) Reducing hours or headcount. 3) Absorbing the cost through efficiency improvements. However, higher wages can also benefit the business through improved worker motivation, lower staff turnover, and reduced recruitment and training costs. For a labour-intensive manufacturer, the negative impact is greater than for a capital-intensive one.
+**Explanation**: The impact varies by business type and labour intensity. A common error is only presenting the cost increase without considering productivity and retention benefits.
+**Tags**: minimum-wage, manufacturing, evaluation, impact

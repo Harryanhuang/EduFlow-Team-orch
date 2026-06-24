@@ -1,0 +1,6 @@
+### Question Q-4.3-03
+**Difficulty**: Foundation
+**Question**: How do you calculate the profit or loss on disposal of a non-current asset? Equipment costing $25,000 has accumulated depreciation of $18,000. It is sold for $5,500. Calculate the profit or loss on disposal.
+**Answer**: Profit or loss on disposal = Sale proceeds minus Carrying amount at the date of disposal. Carrying amount = Cost minus Accumulated depreciation. For the equipment: Carrying amount = $25,000 - $18,000 = $7,000. Sale proceeds = $5,500. Loss on disposal = $7,000 - $5,500 = $1,500 loss. The loss appears in the statement of profit or loss as an expense (or deducted from other income). A profit would appear as income (or a negative expense). If the asset was scrapped with zero proceeds, the loss would be the full carrying amount ($7,000).
+**Explanation**: A common error is comparing proceeds with the original cost ($5,500 - $25,000 = -$19,500) — this is wrong because $18,000 of depreciation has already been charged to profit or loss in previous years. The loss on disposal only reflects the difference between what the asset was "worth" on the books ($7,000) and what was actually received ($5,500).
+**Tags**: disposal, profit-or-loss-calculation, carrying-amount

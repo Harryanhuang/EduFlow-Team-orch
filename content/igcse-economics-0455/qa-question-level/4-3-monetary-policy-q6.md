@@ -1,0 +1,6 @@
+### Question Q-4.3-06
+**Difficulty**: Standard
+**Question**: Compare fiscal policy and monetary policy as tools for managing the economy.
+**Answer**: Fiscal policy uses government spending and taxation to influence aggregate demand directly. It can target specific sectors or regions and has a strong multiplier effect, but is slow to implement due to political processes and may increase government debt. Monetary policy uses interest rates and money supply, controlled by the independent central bank. It can be implemented quickly (monthly meetings) and affects the whole economy indirectly through borrowing costs. However, it is less effective in a liquidity trap (when rates are near zero) and works with time lags (12–18 months for full effect). Fiscal policy is better for deep recessions and targeted interventions, while monetary policy is better for fine-tuning and controlling inflation.
+**Explanation**: Fiscal: direct impact, slow implementation, targeted. Monetary: indirect impact, fast implementation, economy-wide. A common error is saying monetary policy has a direct impact on aggregate demand or ignoring the time lags of both tools.
+**Tags**: fiscal-policy, monetary-policy, comparison, policy-tools

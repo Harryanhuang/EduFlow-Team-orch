@@ -1,0 +1,6 @@
+# Question: Question Q-10.2-08
+**Difficulty**: Challenge
+**Question**: Explain the immunological basis of why a person who has recovered from measles is unlikely to get measles again, but can still catch influenza.
+**Answer**: Measles immunity: after infection, B-lymphocytes produce specific anti-measles antibodies. Memory B-lymphocytes and memory T-lymphocytes specific to measles virus remain in the body for life. On re-exposure, memory cells recognise the measles virus antigens and mount a rapid, strong response before the virus can establish infection. The person is immune for life. Influenza: the influenza virus mutates rapidly (antigenic drift — point mutations in haemagglutinin and neuraminidase surface proteins). The variant strain has slightly different antigens that the existing memory lymphocytes do not recognise. The person can be re-infected with the new strain. Additionally, antigenic shift (segment re-assortment) can create entirely new strains (e.g., H1N1 → H5N1) against which no one has pre-existing immunity. This is why influenza vaccines must be updated annually.
+**Explanation**: Memory cell specificity + viral mutation rate explains lifelong vs transient immunity. A common error is saying "the immune system forgets."
+**Tags**: measles, influenza, memory-cells, antigenic-drift, mutation, immunity

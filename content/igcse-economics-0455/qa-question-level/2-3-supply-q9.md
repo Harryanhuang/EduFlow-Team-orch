@@ -1,0 +1,6 @@
+### Question Q-2.3-09
+**Difficulty**: Challenge
+**Question**: Evaluate whether government subsidies to producers always benefit consumers.
+**Answer**: Arguments that subsidies benefit consumers: lower production costs shift supply right, reducing market price and increasing quantity available; subsidies can make essential goods more affordable (e.g. food, energy); they can support industries that create positive externalities (e.g. renewable energy). Arguments against: subsidies are funded by taxpayers, so consumers pay indirectly through taxation; firms may become dependent on subsidies and less efficient (moral hazard); subsidies may be passed to producers as higher profits rather than lower prices; government spending on subsidies has an opportunity cost (e.g. less spending on healthcare). Evaluation: the benefit to consumers depends on how much of the subsidy is passed through as lower prices, the efficiency of the subsidised industry, and whether the tax burden on consumers outweighs the price reduction.
+**Explanation**: Requires evaluating both sides with economic reasoning. A common error is assuming all subsidies are fully passed to consumers as lower prices.
+**Tags**: supply, subsidy, evaluation, consumer-benefit, government-intervention

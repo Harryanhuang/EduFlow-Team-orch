@@ -1,0 +1,190 @@
+subject_slug,topic_id,topic_name,qa_file,question_number,difficulty,batch_id,depends_on_batches,status,review_state,owner,notes
+igcse-addmath-0606,1.1,Simultaneous Equations and Elimination,items/topic_1.1.md,1,F,060001,,imported,pending,worker_course,Q-ID Q-1.1-1
+igcse-addmath-0606,1.1,Simultaneous Equations and Elimination,items/topic_1.1.md,2,F,060001,,imported,pending,worker_course,Q-ID Q-1.1-2
+igcse-addmath-0606,1.1,Simultaneous Equations and Elimination,items/topic_1.1.md,3,S,060001,,imported,pending,worker_course,Q-ID Q-1.1-3
+igcse-addmath-0606,1.1,Simultaneous Equations and Elimination,items/topic_1.1.md,4,S,060001,,imported,pending,worker_course,Q-ID Q-1.1-4
+igcse-addmath-0606,1.1,Simultaneous Equations and Elimination,items/topic_1.1.md,5,S,060001,,imported,pending,worker_course,Q-ID Q-1.1-5
+igcse-addmath-0606,1.1,Simultaneous Equations and Elimination,items/topic_1.1.md,6,S,060001,,imported,pending,worker_course,Q-ID Q-1.1-6
+igcse-addmath-0606,1.1,Simultaneous Equations and Elimination,items/topic_1.1.md,7,C,060001,,imported,pending,worker_course,Q-ID Q-1.1-7
+igcse-addmath-0606,1.1,Simultaneous Equations and Elimination,items/topic_1.1.md,8,C,060001,,imported,pending,worker_course,Q-ID Q-1.1-8
+igcse-addmath-0606,1.1,Simultaneous Equations and Elimination,items/topic_1.1.md,9,C,060001,,imported,pending,worker_course,Q-ID Q-1.1-9
+igcse-addmath-0606,1.2,Algebraic Manipulation,items/topic_1.2.md,1,F,060002,,imported,pending,worker_course,Q-ID Q-1.2-1
+igcse-addmath-0606,1.2,Algebraic Manipulation,items/topic_1.2.md,2,F,060002,,imported,pending,worker_course,Q-ID Q-1.2-2
+igcse-addmath-0606,1.2,Algebraic Manipulation,items/topic_1.2.md,3,S,060002,,imported,pending,worker_course,Q-ID Q-1.2-3
+igcse-addmath-0606,1.2,Algebraic Manipulation,items/topic_1.2.md,4,S,060002,,imported,pending,worker_course,Q-ID Q-1.2-4
+igcse-addmath-0606,1.2,Algebraic Manipulation,items/topic_1.2.md,5,S,060002,,imported,pending,worker_course,Q-ID Q-1.2-5
+igcse-addmath-0606,1.2,Algebraic Manipulation,items/topic_1.2.md,6,S,060002,,imported,pending,worker_course,Q-ID Q-1.2-6
+igcse-addmath-0606,1.2,Algebraic Manipulation,items/topic_1.2.md,7,C,060002,,imported,pending,worker_course,Q-ID Q-1.2-7
+igcse-addmath-0606,1.2,Algebraic Manipulation,items/topic_1.2.md,8,C,060002,,imported,pending,worker_course,Q-ID Q-1.2-8
+igcse-addmath-0606,1.2,Algebraic Manipulation,items/topic_1.2.md,9,C,060002,,imported,pending,worker_course,Q-ID Q-1.2-9
+igcse-addmath-0606,1.3,"Functions: Domain, Range, Inverse, Composite",items/topic_1.3.md,1,F,060003,,imported,pending,worker_course,Q-ID Q-1.3-1
+igcse-addmath-0606,1.3,"Functions: Domain, Range, Inverse, Composite",items/topic_1.3.md,2,F,060003,,imported,pending,worker_course,Q-ID Q-1.3-2
+igcse-addmath-0606,1.3,"Functions: Domain, Range, Inverse, Composite",items/topic_1.3.md,3,S,060003,,imported,pending,worker_course,Q-ID Q-1.3-3
+igcse-addmath-0606,1.3,"Functions: Domain, Range, Inverse, Composite",items/topic_1.3.md,4,S,060003,,imported,pending,worker_course,Q-ID Q-1.3-4
+igcse-addmath-0606,1.3,"Functions: Domain, Range, Inverse, Composite",items/topic_1.3.md,5,S,060003,,imported,pending,worker_course,Q-ID Q-1.3-5
+igcse-addmath-0606,1.3,"Functions: Domain, Range, Inverse, Composite",items/topic_1.3.md,6,S,060003,,imported,pending,worker_course,Q-ID Q-1.3-6
+igcse-addmath-0606,1.3,"Functions: Domain, Range, Inverse, Composite",items/topic_1.3.md,7,C,060003,,imported,pending,worker_course,Q-ID Q-1.3-7
+igcse-addmath-0606,1.3,"Functions: Domain, Range, Inverse, Composite",items/topic_1.3.md,8,C,060003,,imported,pending,worker_course,Q-ID Q-1.3-8
+igcse-addmath-0606,1.3,"Functions: Domain, Range, Inverse, Composite",items/topic_1.3.md,9,C,060003,,imported,pending,worker_course,Q-ID Q-1.3-9
+igcse-addmath-0606,10.1,"Vector Notation, Magnitude, Direction, Addition, Scalar Product",items/topic_10.1.md,1,F,060004,,imported,pending,worker_course,Q-ID Q-10.1-1
+igcse-addmath-0606,10.1,"Vector Notation, Magnitude, Direction, Addition, Scalar Product",items/topic_10.1.md,2,F,060004,,imported,pending,worker_course,Q-ID Q-10.1-2
+igcse-addmath-0606,10.1,"Vector Notation, Magnitude, Direction, Addition, Scalar Product",items/topic_10.1.md,3,S,060004,,imported,pending,worker_course,Q-ID Q-10.1-3
+igcse-addmath-0606,10.1,"Vector Notation, Magnitude, Direction, Addition, Scalar Product",items/topic_10.1.md,4,S,060004,,imported,pending,worker_course,Q-ID Q-10.1-4
+igcse-addmath-0606,10.1,"Vector Notation, Magnitude, Direction, Addition, Scalar Product",items/topic_10.1.md,5,S,060004,,imported,pending,worker_course,Q-ID Q-10.1-5
+igcse-addmath-0606,10.1,"Vector Notation, Magnitude, Direction, Addition, Scalar Product",items/topic_10.1.md,6,S,060004,,imported,pending,worker_course,Q-ID Q-10.1-6
+igcse-addmath-0606,10.1,"Vector Notation, Magnitude, Direction, Addition, Scalar Product",items/topic_10.1.md,7,C,060004,,imported,pending,worker_course,Q-ID Q-10.1-7
+igcse-addmath-0606,10.1,"Vector Notation, Magnitude, Direction, Addition, Scalar Product",items/topic_10.1.md,8,C,060004,,imported,pending,worker_course,Q-ID Q-10.1-8
+igcse-addmath-0606,10.1,"Vector Notation, Magnitude, Direction, Addition, Scalar Product",items/topic_10.1.md,9,C,060004,,imported,pending,worker_course,Q-ID Q-10.1-9
+igcse-addmath-0606,2.1,Laws of Logarithms and Exponentials,items/topic_2.1.md,1,F,060005,,imported,pending,worker_course,Q-ID Q-2.1-1
+igcse-addmath-0606,2.1,Laws of Logarithms and Exponentials,items/topic_2.1.md,2,F,060005,,imported,pending,worker_course,Q-ID Q-2.1-2
+igcse-addmath-0606,2.1,Laws of Logarithms and Exponentials,items/topic_2.1.md,3,S,060005,,imported,pending,worker_course,Q-ID Q-2.1-3
+igcse-addmath-0606,2.1,Laws of Logarithms and Exponentials,items/topic_2.1.md,4,S,060005,,imported,pending,worker_course,Q-ID Q-2.1-4
+igcse-addmath-0606,2.1,Laws of Logarithms and Exponentials,items/topic_2.1.md,5,S,060005,,imported,pending,worker_course,Q-ID Q-2.1-5
+igcse-addmath-0606,2.1,Laws of Logarithms and Exponentials,items/topic_2.1.md,6,S,060005,,imported,pending,worker_course,Q-ID Q-2.1-6
+igcse-addmath-0606,2.1,Laws of Logarithms and Exponentials,items/topic_2.1.md,7,C,060005,,imported,pending,worker_course,Q-ID Q-2.1-7
+igcse-addmath-0606,2.1,Laws of Logarithms and Exponentials,items/topic_2.1.md,8,C,060005,,imported,pending,worker_course,Q-ID Q-2.1-8
+igcse-addmath-0606,2.1,Laws of Logarithms and Exponentials,items/topic_2.1.md,9,C,060005,,imported,pending,worker_course,Q-ID Q-2.1-9
+igcse-addmath-0606,2.2,Exponential and Logarithmic Equations,items/topic_2.2.md,1,F,060006,,imported,pending,worker_course,Q-ID Q-2.2-1
+igcse-addmath-0606,2.2,Exponential and Logarithmic Equations,items/topic_2.2.md,2,F,060006,,imported,pending,worker_course,Q-ID Q-2.2-2
+igcse-addmath-0606,2.2,Exponential and Logarithmic Equations,items/topic_2.2.md,3,S,060006,,imported,pending,worker_course,Q-ID Q-2.2-3
+igcse-addmath-0606,2.2,Exponential and Logarithmic Equations,items/topic_2.2.md,4,S,060006,,imported,pending,worker_course,Q-ID Q-2.2-4
+igcse-addmath-0606,2.2,Exponential and Logarithmic Equations,items/topic_2.2.md,5,S,060006,,imported,pending,worker_course,Q-ID Q-2.2-5
+igcse-addmath-0606,2.2,Exponential and Logarithmic Equations,items/topic_2.2.md,6,S,060006,,imported,pending,worker_course,Q-ID Q-2.2-6
+igcse-addmath-0606,2.2,Exponential and Logarithmic Equations,items/topic_2.2.md,7,C,060006,,imported,pending,worker_course,Q-ID Q-2.2-7
+igcse-addmath-0606,2.2,Exponential and Logarithmic Equations,items/topic_2.2.md,8,C,060006,,imported,pending,worker_course,Q-ID Q-2.2-8
+igcse-addmath-0606,2.2,Exponential and Logarithmic Equations,items/topic_2.2.md,9,C,060006,,imported,pending,worker_course,Q-ID Q-2.2-9
+igcse-addmath-0606,3.1,Quadratic Equations,items/topic_3.1.md,1,F,060007,,imported,pending,worker_course,Q-ID Q-3.1-1
+igcse-addmath-0606,3.1,Quadratic Equations,items/topic_3.1.md,2,F,060007,,imported,pending,worker_course,Q-ID Q-3.1-2
+igcse-addmath-0606,3.1,Quadratic Equations,items/topic_3.1.md,3,S,060007,,imported,pending,worker_course,Q-ID Q-3.1-3
+igcse-addmath-0606,3.1,Quadratic Equations,items/topic_3.1.md,4,S,060007,,imported,pending,worker_course,Q-ID Q-3.1-4
+igcse-addmath-0606,3.1,Quadratic Equations,items/topic_3.1.md,5,S,060007,,imported,pending,worker_course,Q-ID Q-3.1-5
+igcse-addmath-0606,3.1,Quadratic Equations,items/topic_3.1.md,6,S,060007,,imported,pending,worker_course,Q-ID Q-3.1-6
+igcse-addmath-0606,3.1,Quadratic Equations,items/topic_3.1.md,7,C,060007,,imported,pending,worker_course,Q-ID Q-3.1-7
+igcse-addmath-0606,3.1,Quadratic Equations,items/topic_3.1.md,8,C,060007,,imported,pending,worker_course,Q-ID Q-3.1-8
+igcse-addmath-0606,3.1,Quadratic Equations,items/topic_3.1.md,9,C,060007,,imported,pending,worker_course,Q-ID Q-3.1-9
+igcse-addmath-0606,3.2,Polynomial Operations and the Remainder/Factor Theorem,items/topic_3.2.md,1,F,060008,,imported,pending,worker_course,Q-ID Q-3.2-1
+igcse-addmath-0606,3.2,Polynomial Operations and the Remainder/Factor Theorem,items/topic_3.2.md,2,F,060008,,imported,pending,worker_course,Q-ID Q-3.2-2
+igcse-addmath-0606,3.2,Polynomial Operations and the Remainder/Factor Theorem,items/topic_3.2.md,3,S,060008,,imported,pending,worker_course,Q-ID Q-3.2-3
+igcse-addmath-0606,3.2,Polynomial Operations and the Remainder/Factor Theorem,items/topic_3.2.md,4,S,060008,,imported,pending,worker_course,Q-ID Q-3.2-4
+igcse-addmath-0606,3.2,Polynomial Operations and the Remainder/Factor Theorem,items/topic_3.2.md,5,S,060008,,imported,pending,worker_course,Q-ID Q-3.2-5
+igcse-addmath-0606,3.2,Polynomial Operations and the Remainder/Factor Theorem,items/topic_3.2.md,6,S,060008,,imported,pending,worker_course,Q-ID Q-3.2-6
+igcse-addmath-0606,3.2,Polynomial Operations and the Remainder/Factor Theorem,items/topic_3.2.md,7,C,060008,,imported,pending,worker_course,Q-ID Q-3.2-7
+igcse-addmath-0606,3.2,Polynomial Operations and the Remainder/Factor Theorem,items/topic_3.2.md,8,C,060008,,imported,pending,worker_course,Q-ID Q-3.2-8
+igcse-addmath-0606,3.2,Polynomial Operations and the Remainder/Factor Theorem,items/topic_3.2.md,9,C,060008,,imported,pending,worker_course,Q-ID Q-3.2-9
+igcse-addmath-0606,4.1,Linear and Quadratic Inequalities,items/topic_4.1.md,1,F,060009,,imported,pending,worker_course,Q-ID Q-4.1-1
+igcse-addmath-0606,4.1,Linear and Quadratic Inequalities,items/topic_4.1.md,2,F,060009,,imported,pending,worker_course,Q-ID Q-4.1-2
+igcse-addmath-0606,4.1,Linear and Quadratic Inequalities,items/topic_4.1.md,3,S,060009,,imported,pending,worker_course,Q-ID Q-4.1-3
+igcse-addmath-0606,4.1,Linear and Quadratic Inequalities,items/topic_4.1.md,4,S,060009,,imported,pending,worker_course,Q-ID Q-4.1-4
+igcse-addmath-0606,4.1,Linear and Quadratic Inequalities,items/topic_4.1.md,5,S,060009,,imported,pending,worker_course,Q-ID Q-4.1-5
+igcse-addmath-0606,4.1,Linear and Quadratic Inequalities,items/topic_4.1.md,6,S,060009,,imported,pending,worker_course,Q-ID Q-4.1-6
+igcse-addmath-0606,4.1,Linear and Quadratic Inequalities,items/topic_4.1.md,7,C,060009,,imported,pending,worker_course,Q-ID Q-4.1-7
+igcse-addmath-0606,4.1,Linear and Quadratic Inequalities,items/topic_4.1.md,8,C,060009,,imported,pending,worker_course,Q-ID Q-4.1-8
+igcse-addmath-0606,4.1,Linear and Quadratic Inequalities,items/topic_4.1.md,9,C,060009,,imported,pending,worker_course,Q-ID Q-4.1-9
+igcse-addmath-0606,4.2,Absolute Value Equations and Inequalities,items/topic_4.2.md,1,F,060010,,imported,pending,worker_course,Q-ID Q-4.2-1
+igcse-addmath-0606,4.2,Absolute Value Equations and Inequalities,items/topic_4.2.md,2,F,060010,,imported,pending,worker_course,Q-ID Q-4.2-2
+igcse-addmath-0606,4.2,Absolute Value Equations and Inequalities,items/topic_4.2.md,3,S,060010,,imported,pending,worker_course,Q-ID Q-4.2-3
+igcse-addmath-0606,4.2,Absolute Value Equations and Inequalities,items/topic_4.2.md,4,S,060010,,imported,pending,worker_course,Q-ID Q-4.2-4
+igcse-addmath-0606,4.2,Absolute Value Equations and Inequalities,items/topic_4.2.md,5,S,060010,,imported,pending,worker_course,Q-ID Q-4.2-5
+igcse-addmath-0606,4.2,Absolute Value Equations and Inequalities,items/topic_4.2.md,6,S,060010,,imported,pending,worker_course,Q-ID Q-4.2-6
+igcse-addmath-0606,4.2,Absolute Value Equations and Inequalities,items/topic_4.2.md,7,C,060010,,imported,pending,worker_course,Q-ID Q-4.2-7
+igcse-addmath-0606,4.2,Absolute Value Equations and Inequalities,items/topic_4.2.md,8,C,060010,,imported,pending,worker_course,Q-ID Q-4.2-8
+igcse-addmath-0606,4.2,Absolute Value Equations and Inequalities,items/topic_4.2.md,9,C,060010,,imported,pending,worker_course,Q-ID Q-4.2-9
+igcse-addmath-0606,5.1,Arithmetic and Geometric Sequences and Series,items/topic_5.1.md,1,F,060011,,imported,pending,worker_course,Q-ID Q-5.1-1
+igcse-addmath-0606,5.1,Arithmetic and Geometric Sequences and Series,items/topic_5.1.md,2,F,060011,,imported,pending,worker_course,Q-ID Q-5.1-2
+igcse-addmath-0606,5.1,Arithmetic and Geometric Sequences and Series,items/topic_5.1.md,3,S,060011,,imported,pending,worker_course,Q-ID Q-5.1-3
+igcse-addmath-0606,5.1,Arithmetic and Geometric Sequences and Series,items/topic_5.1.md,4,S,060011,,imported,pending,worker_course,Q-ID Q-5.1-4
+igcse-addmath-0606,5.1,Arithmetic and Geometric Sequences and Series,items/topic_5.1.md,5,S,060011,,imported,pending,worker_course,Q-ID Q-5.1-5
+igcse-addmath-0606,5.1,Arithmetic and Geometric Sequences and Series,items/topic_5.1.md,6,S,060011,,imported,pending,worker_course,Q-ID Q-5.1-6
+igcse-addmath-0606,5.1,Arithmetic and Geometric Sequences and Series,items/topic_5.1.md,7,C,060011,,imported,pending,worker_course,Q-ID Q-5.1-7
+igcse-addmath-0606,5.1,Arithmetic and Geometric Sequences and Series,items/topic_5.1.md,8,C,060011,,imported,pending,worker_course,Q-ID Q-5.1-8
+igcse-addmath-0606,5.1,Arithmetic and Geometric Sequences and Series,items/topic_5.1.md,9,C,060011,,imported,pending,worker_course,Q-ID Q-5.1-9
+igcse-addmath-0606,5.2,Sum to Infinity and Convergence,items/topic_5.2.md,1,F,060012,,imported,pending,worker_course,Q-ID Q-5.2-1
+igcse-addmath-0606,5.2,Sum to Infinity and Convergence,items/topic_5.2.md,2,F,060012,,imported,pending,worker_course,Q-ID Q-5.2-2
+igcse-addmath-0606,5.2,Sum to Infinity and Convergence,items/topic_5.2.md,3,S,060012,,imported,pending,worker_course,Q-ID Q-5.2-3
+igcse-addmath-0606,5.2,Sum to Infinity and Convergence,items/topic_5.2.md,4,S,060012,,imported,pending,worker_course,Q-ID Q-5.2-4
+igcse-addmath-0606,5.2,Sum to Infinity and Convergence,items/topic_5.2.md,5,S,060012,,imported,pending,worker_course,Q-ID Q-5.2-5
+igcse-addmath-0606,5.2,Sum to Infinity and Convergence,items/topic_5.2.md,6,S,060012,,imported,pending,worker_course,Q-ID Q-5.2-6
+igcse-addmath-0606,5.2,Sum to Infinity and Convergence,items/topic_5.2.md,7,C,060012,,imported,pending,worker_course,Q-ID Q-5.2-7
+igcse-addmath-0606,5.2,Sum to Infinity and Convergence,items/topic_5.2.md,8,C,060012,,imported,pending,worker_course,Q-ID Q-5.2-8
+igcse-addmath-0606,5.2,Sum to Infinity and Convergence,items/topic_5.2.md,9,C,060012,,imported,pending,worker_course,Q-ID Q-5.2-9
+igcse-addmath-0606,6.1,The Binomial Expansion,items/topic_6.1.md,1,F,060013,,imported,pending,worker_course,Q-ID Q-6.1-1
+igcse-addmath-0606,6.1,The Binomial Expansion,items/topic_6.1.md,2,F,060013,,imported,pending,worker_course,Q-ID Q-6.1-2
+igcse-addmath-0606,6.1,The Binomial Expansion,items/topic_6.1.md,3,S,060013,,imported,pending,worker_course,Q-ID Q-6.1-3
+igcse-addmath-0606,6.1,The Binomial Expansion,items/topic_6.1.md,4,S,060013,,imported,pending,worker_course,Q-ID Q-6.1-4
+igcse-addmath-0606,6.1,The Binomial Expansion,items/topic_6.1.md,5,S,060013,,imported,pending,worker_course,Q-ID Q-6.1-5
+igcse-addmath-0606,6.1,The Binomial Expansion,items/topic_6.1.md,6,S,060013,,imported,pending,worker_course,Q-ID Q-6.1-6
+igcse-addmath-0606,6.1,The Binomial Expansion,items/topic_6.1.md,7,C,060013,,imported,pending,worker_course,Q-ID Q-6.1-7
+igcse-addmath-0606,6.1,The Binomial Expansion,items/topic_6.1.md,8,C,060013,,imported,pending,worker_course,Q-ID Q-6.1-8
+igcse-addmath-0606,6.1,The Binomial Expansion,items/topic_6.1.md,9,C,060013,,imported,pending,worker_course,Q-ID Q-6.1-9
+igcse-addmath-0606,7.1,Trigonometric Functions and Identities,items/topic_7.1.md,1,F,060014,,imported,pending,worker_course,Q-ID Q-7.1-1
+igcse-addmath-0606,7.1,Trigonometric Functions and Identities,items/topic_7.1.md,2,F,060014,,imported,pending,worker_course,Q-ID Q-7.1-2
+igcse-addmath-0606,7.1,Trigonometric Functions and Identities,items/topic_7.1.md,3,S,060014,,imported,pending,worker_course,Q-ID Q-7.1-3
+igcse-addmath-0606,7.1,Trigonometric Functions and Identities,items/topic_7.1.md,4,S,060014,,imported,pending,worker_course,Q-ID Q-7.1-4
+igcse-addmath-0606,7.1,Trigonometric Functions and Identities,items/topic_7.1.md,5,S,060014,,imported,pending,worker_course,Q-ID Q-7.1-5
+igcse-addmath-0606,7.1,Trigonometric Functions and Identities,items/topic_7.1.md,6,S,060014,,imported,pending,worker_course,Q-ID Q-7.1-6
+igcse-addmath-0606,7.1,Trigonometric Functions and Identities,items/topic_7.1.md,7,C,060014,,imported,pending,worker_course,Q-ID Q-7.1-7
+igcse-addmath-0606,7.1,Trigonometric Functions and Identities,items/topic_7.1.md,8,C,060014,,imported,pending,worker_course,Q-ID Q-7.1-8
+igcse-addmath-0606,7.1,Trigonometric Functions and Identities,items/topic_7.1.md,9,C,060014,,imported,pending,worker_course,Q-ID Q-7.1-9
+igcse-addmath-0606,7.2,Trigonometric Equations and Double-Angle Formulas,items/topic_7.2.md,1,F,060015,,imported,pending,worker_course,Q-ID Q-7.2-1
+igcse-addmath-0606,7.2,Trigonometric Equations and Double-Angle Formulas,items/topic_7.2.md,2,F,060015,,imported,pending,worker_course,Q-ID Q-7.2-2
+igcse-addmath-0606,7.2,Trigonometric Equations and Double-Angle Formulas,items/topic_7.2.md,3,S,060015,,imported,pending,worker_course,Q-ID Q-7.2-3
+igcse-addmath-0606,7.2,Trigonometric Equations and Double-Angle Formulas,items/topic_7.2.md,4,S,060015,,imported,pending,worker_course,Q-ID Q-7.2-4
+igcse-addmath-0606,7.2,Trigonometric Equations and Double-Angle Formulas,items/topic_7.2.md,5,S,060015,,imported,pending,worker_course,Q-ID Q-7.2-5
+igcse-addmath-0606,7.2,Trigonometric Equations and Double-Angle Formulas,items/topic_7.2.md,6,S,060015,,imported,pending,worker_course,Q-ID Q-7.2-6
+igcse-addmath-0606,7.2,Trigonometric Equations and Double-Angle Formulas,items/topic_7.2.md,7,C,060015,,imported,pending,worker_course,Q-ID Q-7.2-7
+igcse-addmath-0606,7.2,Trigonometric Equations and Double-Angle Formulas,items/topic_7.2.md,8,C,060015,,imported,pending,worker_course,Q-ID Q-7.2-8
+igcse-addmath-0606,7.2,Trigonometric Equations and Double-Angle Formulas,items/topic_7.2.md,9,C,060015,,imported,pending,worker_course,Q-ID Q-7.2-9
+igcse-addmath-0606,7.3,Solving Trigonometric Equations in Real Numbers,items/topic_7.3.md,1,F,060016,,imported,pending,worker_course,Q-ID Q-7.3-1
+igcse-addmath-0606,7.3,Solving Trigonometric Equations in Real Numbers,items/topic_7.3.md,2,F,060016,,imported,pending,worker_course,Q-ID Q-7.3-2
+igcse-addmath-0606,7.3,Solving Trigonometric Equations in Real Numbers,items/topic_7.3.md,3,S,060016,,imported,pending,worker_course,Q-ID Q-7.3-3
+igcse-addmath-0606,7.3,Solving Trigonometric Equations in Real Numbers,items/topic_7.3.md,4,S,060016,,imported,pending,worker_course,Q-ID Q-7.3-4
+igcse-addmath-0606,7.3,Solving Trigonometric Equations in Real Numbers,items/topic_7.3.md,5,S,060016,,imported,pending,worker_course,Q-ID Q-7.3-5
+igcse-addmath-0606,7.3,Solving Trigonometric Equations in Real Numbers,items/topic_7.3.md,6,S,060016,,imported,pending,worker_course,Q-ID Q-7.3-6
+igcse-addmath-0606,7.3,Solving Trigonometric Equations in Real Numbers,items/topic_7.3.md,7,C,060016,,imported,pending,worker_course,Q-ID Q-7.3-7
+igcse-addmath-0606,7.3,Solving Trigonometric Equations in Real Numbers,items/topic_7.3.md,8,C,060016,,imported,pending,worker_course,Q-ID Q-7.3-8
+igcse-addmath-0606,7.3,Solving Trigonometric Equations in Real Numbers,items/topic_7.3.md,9,C,060016,,imported,pending,worker_course,Q-ID Q-7.3-9
+igcse-addmath-0606,8.1,Differentiation: First Principles and Polynomial Derivatives,items/topic_8.1.md,1,F,060017,,imported,pending,worker_course,Q-ID Q-8.1-1
+igcse-addmath-0606,8.1,Differentiation: First Principles and Polynomial Derivatives,items/topic_8.1.md,2,F,060017,,imported,pending,worker_course,Q-ID Q-8.1-2
+igcse-addmath-0606,8.1,Differentiation: First Principles and Polynomial Derivatives,items/topic_8.1.md,3,S,060017,,imported,pending,worker_course,Q-ID Q-8.1-3
+igcse-addmath-0606,8.1,Differentiation: First Principles and Polynomial Derivatives,items/topic_8.1.md,4,S,060017,,imported,pending,worker_course,Q-ID Q-8.1-4
+igcse-addmath-0606,8.1,Differentiation: First Principles and Polynomial Derivatives,items/topic_8.1.md,5,S,060017,,imported,pending,worker_course,Q-ID Q-8.1-5
+igcse-addmath-0606,8.1,Differentiation: First Principles and Polynomial Derivatives,items/topic_8.1.md,6,S,060017,,imported,pending,worker_course,Q-ID Q-8.1-6
+igcse-addmath-0606,8.1,Differentiation: First Principles and Polynomial Derivatives,items/topic_8.1.md,7,C,060017,,imported,pending,worker_course,Q-ID Q-8.1-7
+igcse-addmath-0606,8.1,Differentiation: First Principles and Polynomial Derivatives,items/topic_8.1.md,8,C,060017,,imported,pending,worker_course,Q-ID Q-8.1-8
+igcse-addmath-0606,8.1,Differentiation: First Principles and Polynomial Derivatives,items/topic_8.1.md,9,C,060017,,imported,pending,worker_course,Q-ID Q-8.1-9
+igcse-addmath-0606,8.2,Applications of Differentiation,items/topic_8.2.md,1,F,060018,,imported,pending,worker_course,Q-ID Q-8.2-1
+igcse-addmath-0606,8.2,Applications of Differentiation,items/topic_8.2.md,2,F,060018,,imported,pending,worker_course,Q-ID Q-8.2-2
+igcse-addmath-0606,8.2,Applications of Differentiation,items/topic_8.2.md,3,S,060018,,imported,pending,worker_course,Q-ID Q-8.2-3
+igcse-addmath-0606,8.2,Applications of Differentiation,items/topic_8.2.md,4,S,060018,,imported,pending,worker_course,Q-ID Q-8.2-4
+igcse-addmath-0606,8.2,Applications of Differentiation,items/topic_8.2.md,5,S,060018,,imported,pending,worker_course,Q-ID Q-8.2-5
+igcse-addmath-0606,8.2,Applications of Differentiation,items/topic_8.2.md,6,S,060018,,imported,pending,worker_course,Q-ID Q-8.2-6
+igcse-addmath-0606,8.2,Applications of Differentiation,items/topic_8.2.md,7,C,060018,,imported,pending,worker_course,Q-ID Q-8.2-7
+igcse-addmath-0606,8.2,Applications of Differentiation,items/topic_8.2.md,8,C,060018,,imported,pending,worker_course,Q-ID Q-8.2-8
+igcse-addmath-0606,8.2,Applications of Differentiation,items/topic_8.2.md,9,C,060018,,imported,pending,worker_course,Q-ID Q-8.2-9
+igcse-addmath-0606,8.3,Integration,items/topic_8.3.md,1,F,060019,,imported,pending,worker_course,Q-ID Q-8.3-1
+igcse-addmath-0606,8.3,Integration,items/topic_8.3.md,2,F,060019,,imported,pending,worker_course,Q-ID Q-8.3-2
+igcse-addmath-0606,8.3,Integration,items/topic_8.3.md,3,S,060019,,imported,pending,worker_course,Q-ID Q-8.3-3
+igcse-addmath-0606,8.3,Integration,items/topic_8.3.md,4,S,060019,,imported,pending,worker_course,Q-ID Q-8.3-4
+igcse-addmath-0606,8.3,Integration,items/topic_8.3.md,5,S,060019,,imported,pending,worker_course,Q-ID Q-8.3-5
+igcse-addmath-0606,8.3,Integration,items/topic_8.3.md,6,S,060019,,imported,pending,worker_course,Q-ID Q-8.3-6
+igcse-addmath-0606,8.3,Integration,items/topic_8.3.md,7,C,060019,,imported,pending,worker_course,Q-ID Q-8.3-7
+igcse-addmath-0606,8.3,Integration,items/topic_8.3.md,8,C,060019,,imported,pending,worker_course,Q-ID Q-8.3-8
+igcse-addmath-0606,8.3,Integration,items/topic_8.3.md,9,C,060019,,imported,pending,worker_course,Q-ID Q-8.3-9
+igcse-addmath-0606,9.1,Equation of a Straight Line and Circle,items/topic_9.1.md,1,F,060020,,imported,pending,worker_course,Q-ID Q-9.1-1
+igcse-addmath-0606,9.1,Equation of a Straight Line and Circle,items/topic_9.1.md,2,F,060020,,imported,pending,worker_course,Q-ID Q-9.1-2
+igcse-addmath-0606,9.1,Equation of a Straight Line and Circle,items/topic_9.1.md,3,S,060020,,imported,pending,worker_course,Q-ID Q-9.1-3
+igcse-addmath-0606,9.1,Equation of a Straight Line and Circle,items/topic_9.1.md,4,S,060020,,imported,pending,worker_course,Q-ID Q-9.1-4
+igcse-addmath-0606,9.1,Equation of a Straight Line and Circle,items/topic_9.1.md,5,S,060020,,imported,pending,worker_course,Q-ID Q-9.1-5
+igcse-addmath-0606,9.1,Equation of a Straight Line and Circle,items/topic_9.1.md,6,S,060020,,imported,pending,worker_course,Q-ID Q-9.1-6
+igcse-addmath-0606,9.1,Equation of a Straight Line and Circle,items/topic_9.1.md,7,C,060020,,imported,pending,worker_course,Q-ID Q-9.1-7
+igcse-addmath-0606,9.1,Equation of a Straight Line and Circle,items/topic_9.1.md,8,C,060020,,imported,pending,worker_course,Q-ID Q-9.1-8
+igcse-addmath-0606,9.1,Equation of a Straight Line and Circle,items/topic_9.1.md,9,C,060020,,imported,pending,worker_course,Q-ID Q-9.1-9
+igcse-addmath-0606,9.2,Parametric Equations and Loci,items/topic_9.2.md,1,F,060021,,imported,pending,worker_course,Q-ID Q-9.2-1
+igcse-addmath-0606,9.2,Parametric Equations and Loci,items/topic_9.2.md,2,F,060021,,imported,pending,worker_course,Q-ID Q-9.2-2
+igcse-addmath-0606,9.2,Parametric Equations and Loci,items/topic_9.2.md,3,S,060021,,imported,pending,worker_course,Q-ID Q-9.2-3
+igcse-addmath-0606,9.2,Parametric Equations and Loci,items/topic_9.2.md,4,S,060021,,imported,pending,worker_course,Q-ID Q-9.2-4
+igcse-addmath-0606,9.2,Parametric Equations and Loci,items/topic_9.2.md,5,S,060021,,imported,pending,worker_course,Q-ID Q-9.2-5
+igcse-addmath-0606,9.2,Parametric Equations and Loci,items/topic_9.2.md,6,S,060021,,imported,pending,worker_course,Q-ID Q-9.2-6
+igcse-addmath-0606,9.2,Parametric Equations and Loci,items/topic_9.2.md,7,C,060021,,imported,pending,worker_course,Q-ID Q-9.2-7
+igcse-addmath-0606,9.2,Parametric Equations and Loci,items/topic_9.2.md,8,C,060021,,imported,pending,worker_course,Q-ID Q-9.2-8
+igcse-addmath-0606,9.2,Parametric Equations and Loci,items/topic_9.2.md,9,C,060021,,imported,pending,worker_course,Q-ID Q-9.2-9

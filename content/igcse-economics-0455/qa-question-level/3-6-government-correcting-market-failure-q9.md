@@ -1,0 +1,6 @@
+### Question Q-3.6-09
+**Difficulty**: Challenge
+**Question**: Evaluate the effectiveness of using regulation compared to market-based solutions (taxes and subsidies) to correct market failure caused by negative externalities.
+**Answer**: Regulation (such as emission standards or bans) provides clear rules and certainty about behaviour, making it effective for urgent or highly harmful externalities. It is relatively straightforward to understand and enforce. However, regulation lacks flexibility, does not generate revenue, and may impose uniform standards that are inefficient for firms with different abatement costs. Market-based solutions (taxes and subsidies) are more flexible, allowing firms to find the cheapest way to reduce externalities. Taxes generate revenue and subsidies encourage beneficial behaviour. However, they require accurate information about external costs to set correctly and may be less effective if demand or supply is very inelastic. A combination approach using regulation for minimum standards and market-based tools for further reduction may be most effective.
+**Explanation**: Regulation gives certainty but lacks flexibility. Market-based tools are flexible but harder to calibrate. A common error is claiming one approach is always superior.
+**Tags**: regulation, market-based-solutions, negative-externality, evaluation, comparison

@@ -1,0 +1,29 @@
+topic_id,topic_title,domain,question_count,difficulty_mix,status
+1.1,Number Systems and Binary Representation,Information Representation,18,F:6|S:6|C:6,submitted_for_review
+1.2,Text, Sound and Images in Binary,Information Representation,18,F:6|S:6|C:6,submitted_for_review
+2.1,Binary and Hexadecimal,Data Representation,18,F:6|S:6|C:6,submitted_for_review
+2.2,Two's Complement,Data Representation,18,F:6|S:6|C:6,submitted_for_review
+2.3,Floating-point Numbers,Data Representation,18,F:6|S:6|C:6,submitted_for_review
+2.4,Hexadecimal Representation,Data Representation,18,F:6|S:6|C:6,submitted_for_review
+3.1,Logic Gates and Boolean Algebra,Hardware and Software,18,F:6|S:6|C:6,submitted_for_review
+3.2,Boolean Algebra,Hardware and Software,18,F:6|S:6|C:6,submitted_for_review
+4.1,Algorithm Design and Pseudocode,Algorithms and Programming,18,F:6|S:6|C:6,submitted_for_review
+4.2,Searching and Sorting Algorithms,Algorithms and Programming,18,F:6|S:6|C:6,submitted_for_review
+4.3,Linear and Binary Search; Bubble Sort and Insertion Sort,Algorithms and Programming,18,F:6|S:6|C:6,submitted_for_review
+4.4,Bubble Sort and Insertion Sort,Algorithms and Programming,18,F:6|S:6|C:6,submitted_for_review
+5.1,Variables and Data Types,Algorithms and Programming,18,F:6|S:6|C:6,submitted_for_review
+5.2,Sequence, Selection and Iteration,Algorithms and Programming,18,F:6|S:6|C:6,submitted_for_review
+5.3,Procedures and Functions,Algorithms and Programming,18,F:6|S:6|C:6,submitted_for_review
+5.4,File Handling,Algorithms and Programming,18,F:6|S:6|C:6,submitted_for_review
+5.5,File Handling (Extended),Algorithms and Programming,18,F:6|S:6|C:6,submitted_for_review
+6.1,Database Concepts,Databases,18,F:6|S:6|C:6,submitted_for_review
+6.2,SQL Queries,Databases,18,F:6|S:6|C:6,submitted_for_review
+6.3,Data Validation and Verification,Databases,18,F:6|S:6|C:6,submitted_for_review
+7.1,Network Types and Protocols,Computer Networks,18,F:6|S:6|C:6,submitted_for_review
+7.2,Network Protocols,Computer Networks,18,F:6|S:6|C:6,submitted_for_review
+7.3,Network Security,Computer Networks,18,F:6|S:6|C:6,submitted_for_review
+7.4,Cloud Computing,Computer Networks,18,F:6|S:6|C:6,submitted_for_review
+8.1,Cyber Security Threats,Security and Ethics,18,F:6|S:6|C:6,submitted_for_review
+8.2,Data Protection,Security and Ethics,18,F:6|S:6|C:6,submitted_for_review
+8.3,Ethical Issues in Computing,Security and Ethics,18,F:6|S:6|C:6,submitted_for_review
+8.4,Environmental Impact of Computing,Security and Ethics,18,F:6|S:6|C:6,submitted_for_review

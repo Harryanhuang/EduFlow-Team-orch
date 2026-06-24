@@ -1,0 +1,6 @@
+# Question: Question Q-10.1-08
+**Difficulty**: Challenge
+**Question**: Explain how the human body's physical and chemical barriers (skin, mucus, stomach acid) prevent pathogen entry, and why a break in any barrier increases infection risk.
+**Answer**: Physical barriers: (1) Skin — tough, keratinised outer layer (epidermis) is impermeable to pathogens. Sebaceous glands secrete sebum (slightly acidic, pH ~5.5) which inhibits bacterial growth. (2) Mucus — sticky secretion in airways traps pathogens and dust; cilia sweep mucus upward to throat where it is swallowed. Chemical barriers: (3) Stomach acid — HCl at pH 1-2 kills most ingested pathogens. (4) Lysozyme in tears and saliva — enzyme that breaks down bacterial cell walls. A break in any barrier increases infection risk because: broken skin → direct entry portal for pathogens into blood; reduced mucus (e.g., from smoking) → pathogens reach lung tissue; reduced stomach acid (e.g., from antacids) → ingested pathogens survive to reach intestines; dry eyes → reduced lysozyme washing.
+**Explanation**: Multi-layered physical + chemical barriers, barrier breaks → infection portals. A common error is listing barriers without explaining the infection-risk consequence of each breach.
+**Tags**: barriers, skin, mucus, stomach-acid, lysozyme, infection

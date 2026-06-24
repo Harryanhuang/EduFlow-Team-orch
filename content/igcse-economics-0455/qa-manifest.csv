@@ -1,0 +1,235 @@
+subject_slug,topic_id,topic_name,qa_file,question_count,difficulty_mix,batch_id,depends_on_batches,status,review_state,owner,notes
+igcse-economics-0455,1.1,"| 5.2 | Indicators of development: HDI, GNI",qa-question-level/1-1-the-economic-problem-q1.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-1.1-01
+igcse-economics-0455,1.1,"| 5.2 | Indicators of development: HDI, GNI",qa-question-level/1-1-the-economic-problem-q2.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-1.1-02
+igcse-economics-0455,1.1,"| 5.2 | Indicators of development: HDI, GNI",qa-question-level/1-1-the-economic-problem-q3.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-1.1-03
+igcse-economics-0455,1.1,"| 5.2 | Indicators of development: HDI, GNI",qa-question-level/1-1-the-economic-problem-q4.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-1.1-04
+igcse-economics-0455,1.1,"| 5.2 | Indicators of development: HDI, GNI",qa-question-level/1-1-the-economic-problem-q5.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-1.1-05
+igcse-economics-0455,1.1,"| 5.2 | Indicators of development: HDI, GNI",qa-question-level/1-1-the-economic-problem-q6.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-1.1-06
+igcse-economics-0455,1.1,"| 5.2 | Indicators of development: HDI, GNI",qa-question-level/1-1-the-economic-problem-q7.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-1.1-07
+igcse-economics-0455,1.1,"| 5.2 | Indicators of development: HDI, GNI",qa-question-level/1-1-the-economic-problem-q8.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-1.1-08
+igcse-economics-0455,1.1,"| 5.2 | Indicators of development: HDI, GNI",qa-question-level/1-1-the-economic-problem-q9.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-1.1-09
+igcse-economics-0455,1.2,"| 6.2 | Trade protection: tariffs, quotas, subsidies",qa-question-level/1-2-factors-of-production-q1.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-1.2-01
+igcse-economics-0455,1.2,"| 6.2 | Trade protection: tariffs, quotas, subsidies",qa-question-level/1-2-factors-of-production-q2.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-1.2-02
+igcse-economics-0455,1.2,"| 6.2 | Trade protection: tariffs, quotas, subsidies",qa-question-level/1-2-factors-of-production-q3.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-1.2-03
+igcse-economics-0455,1.2,"| 6.2 | Trade protection: tariffs, quotas, subsidies",qa-question-level/1-2-factors-of-production-q4.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-1.2-04
+igcse-economics-0455,1.2,"| 6.2 | Trade protection: tariffs, quotas, subsidies",qa-question-level/1-2-factors-of-production-q5.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-1.2-05
+igcse-economics-0455,1.2,"| 6.2 | Trade protection: tariffs, quotas, subsidies",qa-question-level/1-2-factors-of-production-q6.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-1.2-06
+igcse-economics-0455,1.2,"| 6.2 | Trade protection: tariffs, quotas, subsidies",qa-question-level/1-2-factors-of-production-q7.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-1.2-07
+igcse-economics-0455,1.2,"| 6.2 | Trade protection: tariffs, quotas, subsidies",qa-question-level/1-2-factors-of-production-q8.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-1.2-08
+igcse-economics-0455,1.2,"| 6.2 | Trade protection: tariffs, quotas, subsidies",qa-question-level/1-2-factors-of-production-q9.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-1.2-09
+igcse-economics-0455,1.3,,qa-question-level/1-3-opportunity-cost-q1.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-1.3-01
+igcse-economics-0455,1.3,,qa-question-level/1-3-opportunity-cost-q2.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-1.3-02
+igcse-economics-0455,1.3,,qa-question-level/1-3-opportunity-cost-q3.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-1.3-03
+igcse-economics-0455,1.3,,qa-question-level/1-3-opportunity-cost-q4.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-1.3-04
+igcse-economics-0455,1.3,,qa-question-level/1-3-opportunity-cost-q5.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-1.3-05
+igcse-economics-0455,1.3,,qa-question-level/1-3-opportunity-cost-q6.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-1.3-06
+igcse-economics-0455,1.3,,qa-question-level/1-3-opportunity-cost-q7.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-1.3-07
+igcse-economics-0455,1.3,,qa-question-level/1-3-opportunity-cost-q8.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-1.3-08
+igcse-economics-0455,1.3,,qa-question-level/1-3-opportunity-cost-q9.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-1.3-09
+igcse-economics-0455,1.4,,qa-question-level/1-4-production-possibility-frontier-q1.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-1.4-01
+igcse-economics-0455,1.4,,qa-question-level/1-4-production-possibility-frontier-q2.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-1.4-02
+igcse-economics-0455,1.4,,qa-question-level/1-4-production-possibility-frontier-q3.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-1.4-03
+igcse-economics-0455,1.4,,qa-question-level/1-4-production-possibility-frontier-q4.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-1.4-04
+igcse-economics-0455,1.4,,qa-question-level/1-4-production-possibility-frontier-q5.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-1.4-05
+igcse-economics-0455,1.4,,qa-question-level/1-4-production-possibility-frontier-q6.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-1.4-06
+igcse-economics-0455,1.4,,qa-question-level/1-4-production-possibility-frontier-q7.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-1.4-07
+igcse-economics-0455,1.4,,qa-question-level/1-4-production-possibility-frontier-q8.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-1.4-08
+igcse-economics-0455,1.4,,qa-question-level/1-4-production-possibility-frontier-q9.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-1.4-09
+igcse-economics-0455,2.1,"Market, command, and mixed economies",qa-question-level/2-1-market-command-and-mixed-economies-q1.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-2.1-01
+igcse-economics-0455,2.1,"Market, command, and mixed economies",qa-question-level/2-1-market-command-and-mixed-economies-q2.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-2.1-02
+igcse-economics-0455,2.1,"Market, command, and mixed economies",qa-question-level/2-1-market-command-and-mixed-economies-q3.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-2.1-03
+igcse-economics-0455,2.1,"Market, command, and mixed economies",qa-question-level/2-1-market-command-and-mixed-economies-q4.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-2.1-04
+igcse-economics-0455,2.1,"Market, command, and mixed economies",qa-question-level/2-1-market-command-and-mixed-economies-q5.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-2.1-05
+igcse-economics-0455,2.1,"Market, command, and mixed economies",qa-question-level/2-1-market-command-and-mixed-economies-q6.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-2.1-06
+igcse-economics-0455,2.1,"Market, command, and mixed economies",qa-question-level/2-1-market-command-and-mixed-economies-q7.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-2.1-07
+igcse-economics-0455,2.1,"Market, command, and mixed economies",qa-question-level/2-1-market-command-and-mixed-economies-q8.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-2.1-08
+igcse-economics-0455,2.1,"Market, command, and mixed economies",qa-question-level/2-1-market-command-and-mixed-economies-q9.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-2.1-09
+igcse-economics-0455,2.2,| 3.2 | Elasticity of supply,qa-question-level/2-2-demand-q1.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-2.2-01
+igcse-economics-0455,2.2,| 3.2 | Elasticity of supply,qa-question-level/2-2-demand-q2.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-2.2-02
+igcse-economics-0455,2.2,| 3.2 | Elasticity of supply,qa-question-level/2-2-demand-q3.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-2.2-03
+igcse-economics-0455,2.2,| 3.2 | Elasticity of supply,qa-question-level/2-2-demand-q4.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-2.2-04
+igcse-economics-0455,2.2,| 3.2 | Elasticity of supply,qa-question-level/2-2-demand-q5.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-2.2-05
+igcse-economics-0455,2.2,| 3.2 | Elasticity of supply,qa-question-level/2-2-demand-q6.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-2.2-06
+igcse-economics-0455,2.2,| 3.2 | Elasticity of supply,qa-question-level/2-2-demand-q7.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-2.2-07
+igcse-economics-0455,2.2,| 3.2 | Elasticity of supply,qa-question-level/2-2-demand-q8.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-2.2-08
+igcse-economics-0455,2.2,| 3.2 | Elasticity of supply,qa-question-level/2-2-demand-q9.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-2.2-09
+igcse-economics-0455,2.3,"| 3.3 | Costs, revenue, and profit",qa-question-level/2-3-supply-q1.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-2.3-01
+igcse-economics-0455,2.3,"| 3.3 | Costs, revenue, and profit",qa-question-level/2-3-supply-q2.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-2.3-02
+igcse-economics-0455,2.3,"| 3.3 | Costs, revenue, and profit",qa-question-level/2-3-supply-q3.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-2.3-03
+igcse-economics-0455,2.3,"| 3.3 | Costs, revenue, and profit",qa-question-level/2-3-supply-q4.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-2.3-04
+igcse-economics-0455,2.3,"| 3.3 | Costs, revenue, and profit",qa-question-level/2-3-supply-q5.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-2.3-05
+igcse-economics-0455,2.3,"| 3.3 | Costs, revenue, and profit",qa-question-level/2-3-supply-q6.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-2.3-06
+igcse-economics-0455,2.3,"| 3.3 | Costs, revenue, and profit",qa-question-level/2-3-supply-q7.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-2.3-07
+igcse-economics-0455,2.3,"| 3.3 | Costs, revenue, and profit",qa-question-level/2-3-supply-q8.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-2.3-08
+igcse-economics-0455,2.3,"| 3.3 | Costs, revenue, and profit",qa-question-level/2-3-supply-q9.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-2.3-09
+igcse-economics-0455,2.4,| 3.6 | Role of government in correcting market failure,qa-question-level/2-4-market-equilibrium-q1.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-2.4-01
+igcse-economics-0455,2.4,| 3.6 | Role of government in correcting market failure,qa-question-level/2-4-market-equilibrium-q2.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-2.4-02
+igcse-economics-0455,2.4,| 3.6 | Role of government in correcting market failure,qa-question-level/2-4-market-equilibrium-q3.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-2.4-03
+igcse-economics-0455,2.4,| 3.6 | Role of government in correcting market failure,qa-question-level/2-4-market-equilibrium-q4.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-2.4-04
+igcse-economics-0455,2.4,| 3.6 | Role of government in correcting market failure,qa-question-level/2-4-market-equilibrium-q5.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-2.4-05
+igcse-economics-0455,2.4,| 3.6 | Role of government in correcting market failure,qa-question-level/2-4-market-equilibrium-q6.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-2.4-06
+igcse-economics-0455,2.4,| 3.6 | Role of government in correcting market failure,qa-question-level/2-4-market-equilibrium-q7.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-2.4-07
+igcse-economics-0455,2.4,| 3.6 | Role of government in correcting market failure,qa-question-level/2-4-market-equilibrium-q8.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-2.4-08
+igcse-economics-0455,2.4,| 3.6 | Role of government in correcting market failure,qa-question-level/2-4-market-equilibrium-q9.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-2.4-09
+igcse-economics-0455,3.1,"Elasticity of demand (price, income, cross)",qa-question-level/3-1-elasticity-of-demand-q1.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-3.1-01
+igcse-economics-0455,3.1,"Elasticity of demand (price, income, cross)",qa-question-level/3-1-elasticity-of-demand-q2.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-3.1-02
+igcse-economics-0455,3.1,"Elasticity of demand (price, income, cross)",qa-question-level/3-1-elasticity-of-demand-q3.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-3.1-03
+igcse-economics-0455,3.1,"Elasticity of demand (price, income, cross)",qa-question-level/3-1-elasticity-of-demand-q4.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-3.1-04
+igcse-economics-0455,3.1,"Elasticity of demand (price, income, cross)",qa-question-level/3-1-elasticity-of-demand-q5.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-3.1-05
+igcse-economics-0455,3.1,"Elasticity of demand (price, income, cross)",qa-question-level/3-1-elasticity-of-demand-q6.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-3.1-06
+igcse-economics-0455,3.1,"Elasticity of demand (price, income, cross)",qa-question-level/3-1-elasticity-of-demand-q7.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-3.1-07
+igcse-economics-0455,3.1,"Elasticity of demand (price, income, cross)",qa-question-level/3-1-elasticity-of-demand-q8.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-3.1-08
+igcse-economics-0455,3.1,"Elasticity of demand (price, income, cross)",qa-question-level/3-1-elasticity-of-demand-q9.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-3.1-09
+igcse-economics-0455,3.2,,qa-question-level/3-2-elasticity-of-supply-q1.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-3.2-01
+igcse-economics-0455,3.2,,qa-question-level/3-2-elasticity-of-supply-q2.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-3.2-02
+igcse-economics-0455,3.2,,qa-question-level/3-2-elasticity-of-supply-q3.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-3.2-03
+igcse-economics-0455,3.2,,qa-question-level/3-2-elasticity-of-supply-q4.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-3.2-04
+igcse-economics-0455,3.2,,qa-question-level/3-2-elasticity-of-supply-q5.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-3.2-05
+igcse-economics-0455,3.2,,qa-question-level/3-2-elasticity-of-supply-q6.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-3.2-06
+igcse-economics-0455,3.2,,qa-question-level/3-2-elasticity-of-supply-q7.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-3.2-07
+igcse-economics-0455,3.2,,qa-question-level/3-2-elasticity-of-supply-q8.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-3.2-08
+igcse-economics-0455,3.2,,qa-question-level/3-2-elasticity-of-supply-q9.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-3.2-09
+igcse-economics-0455,3.3,,qa-question-level/3-3-costs-revenue-and-profit-q1.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-3.3-01
+igcse-economics-0455,3.3,,qa-question-level/3-3-costs-revenue-and-profit-q2.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-3.3-02
+igcse-economics-0455,3.3,,qa-question-level/3-3-costs-revenue-and-profit-q3.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-3.3-03
+igcse-economics-0455,3.3,,qa-question-level/3-3-costs-revenue-and-profit-q4.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-3.3-04
+igcse-economics-0455,3.3,,qa-question-level/3-3-costs-revenue-and-profit-q5.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-3.3-05
+igcse-economics-0455,3.3,,qa-question-level/3-3-costs-revenue-and-profit-q6.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-3.3-06
+igcse-economics-0455,3.3,,qa-question-level/3-3-costs-revenue-and-profit-q7.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-3.3-07
+igcse-economics-0455,3.3,,qa-question-level/3-3-costs-revenue-and-profit-q8.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-3.3-08
+igcse-economics-0455,3.3,,qa-question-level/3-3-costs-revenue-and-profit-q9.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-3.3-09
+igcse-economics-0455,3.4,,qa-question-level/3-4-market-structure-q1.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-3.4-01
+igcse-economics-0455,3.4,,qa-question-level/3-4-market-structure-q2.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-3.4-02
+igcse-economics-0455,3.4,,qa-question-level/3-4-market-structure-q3.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-3.4-03
+igcse-economics-0455,3.4,,qa-question-level/3-4-market-structure-q4.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-3.4-04
+igcse-economics-0455,3.4,,qa-question-level/3-4-market-structure-q5.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-3.4-05
+igcse-economics-0455,3.4,,qa-question-level/3-4-market-structure-q6.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-3.4-06
+igcse-economics-0455,3.4,,qa-question-level/3-4-market-structure-q7.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-3.4-07
+igcse-economics-0455,3.4,,qa-question-level/3-4-market-structure-q8.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-3.4-08
+igcse-economics-0455,3.4,,qa-question-level/3-4-market-structure-q9.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-3.4-09
+igcse-economics-0455,3.5,,qa-question-level/3-5-market-failure-q1.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-3.5-01
+igcse-economics-0455,3.5,,qa-question-level/3-5-market-failure-q2.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-3.5-02
+igcse-economics-0455,3.5,,qa-question-level/3-5-market-failure-q3.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-3.5-03
+igcse-economics-0455,3.5,,qa-question-level/3-5-market-failure-q4.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-3.5-04
+igcse-economics-0455,3.5,,qa-question-level/3-5-market-failure-q5.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-3.5-05
+igcse-economics-0455,3.5,,qa-question-level/3-5-market-failure-q6.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-3.5-06
+igcse-economics-0455,3.5,,qa-question-level/3-5-market-failure-q7.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-3.5-07
+igcse-economics-0455,3.5,,qa-question-level/3-5-market-failure-q8.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-3.5-08
+igcse-economics-0455,3.5,,qa-question-level/3-5-market-failure-q9.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-3.5-09
+igcse-economics-0455,3.6,,qa-question-level/3-6-government-correcting-market-failure-q1.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-3.6-01
+igcse-economics-0455,3.6,,qa-question-level/3-6-government-correcting-market-failure-q2.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-3.6-02
+igcse-economics-0455,3.6,,qa-question-level/3-6-government-correcting-market-failure-q3.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-3.6-03
+igcse-economics-0455,3.6,,qa-question-level/3-6-government-correcting-market-failure-q4.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-3.6-04
+igcse-economics-0455,3.6,,qa-question-level/3-6-government-correcting-market-failure-q5.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-3.6-05
+igcse-economics-0455,3.6,,qa-question-level/3-6-government-correcting-market-failure-q6.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-3.6-06
+igcse-economics-0455,3.6,,qa-question-level/3-6-government-correcting-market-failure-q7.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-3.6-07
+igcse-economics-0455,3.6,,qa-question-level/3-6-government-correcting-market-failure-q8.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-3.6-08
+igcse-economics-0455,3.6,,qa-question-level/3-6-government-correcting-market-failure-q9.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-3.6-09
+igcse-economics-0455,4.1,"| 4.4 | Inflation: causes, effects, and measurement",qa-question-level/4-1-money-banking-and-financial-system-q1.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-4.1-01
+igcse-economics-0455,4.1,"| 4.4 | Inflation: causes, effects, and measurement",qa-question-level/4-1-money-banking-and-financial-system-q2.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-4.1-02
+igcse-economics-0455,4.1,"| 4.4 | Inflation: causes, effects, and measurement",qa-question-level/4-1-money-banking-and-financial-system-q3.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-4.1-03
+igcse-economics-0455,4.1,"| 4.4 | Inflation: causes, effects, and measurement",qa-question-level/4-1-money-banking-and-financial-system-q4.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-4.1-04
+igcse-economics-0455,4.1,"| 4.4 | Inflation: causes, effects, and measurement",qa-question-level/4-1-money-banking-and-financial-system-q5.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-4.1-05
+igcse-economics-0455,4.1,"| 4.4 | Inflation: causes, effects, and measurement",qa-question-level/4-1-money-banking-and-financial-system-q6.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-4.1-06
+igcse-economics-0455,4.1,"| 4.4 | Inflation: causes, effects, and measurement",qa-question-level/4-1-money-banking-and-financial-system-q7.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-4.1-07
+igcse-economics-0455,4.1,"| 4.4 | Inflation: causes, effects, and measurement",qa-question-level/4-1-money-banking-and-financial-system-q8.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-4.1-08
+igcse-economics-0455,4.1,"| 4.4 | Inflation: causes, effects, and measurement",qa-question-level/4-1-money-banking-and-financial-system-q9.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-4.1-09
+igcse-economics-0455,4.2,"| 4.5 | Unemployment: types, causes, and policies",qa-question-level/4-2-fiscal-policy-q1.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-4.2-01
+igcse-economics-0455,4.2,"| 4.5 | Unemployment: types, causes, and policies",qa-question-level/4-2-fiscal-policy-q2.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-4.2-02
+igcse-economics-0455,4.2,"| 4.5 | Unemployment: types, causes, and policies",qa-question-level/4-2-fiscal-policy-q3.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-4.2-03
+igcse-economics-0455,4.2,"| 4.5 | Unemployment: types, causes, and policies",qa-question-level/4-2-fiscal-policy-q4.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-4.2-04
+igcse-economics-0455,4.2,"| 4.5 | Unemployment: types, causes, and policies",qa-question-level/4-2-fiscal-policy-q5.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-4.2-05
+igcse-economics-0455,4.2,"| 4.5 | Unemployment: types, causes, and policies",qa-question-level/4-2-fiscal-policy-q6.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-4.2-06
+igcse-economics-0455,4.2,"| 4.5 | Unemployment: types, causes, and policies",qa-question-level/4-2-fiscal-policy-q7.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-4.2-07
+igcse-economics-0455,4.2,"| 4.5 | Unemployment: types, causes, and policies",qa-question-level/4-2-fiscal-policy-q8.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-4.2-08
+igcse-economics-0455,4.2,"| 4.5 | Unemployment: types, causes, and policies",qa-question-level/4-2-fiscal-policy-q9.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-4.2-09
+igcse-economics-0455,4.3,,qa-question-level/4-3-monetary-policy-q1.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-4.3-01
+igcse-economics-0455,4.3,,qa-question-level/4-3-monetary-policy-q2.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-4.3-02
+igcse-economics-0455,4.3,,qa-question-level/4-3-monetary-policy-q3.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-4.3-03
+igcse-economics-0455,4.3,,qa-question-level/4-3-monetary-policy-q4.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-4.3-04
+igcse-economics-0455,4.3,,qa-question-level/4-3-monetary-policy-q5.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-4.3-05
+igcse-economics-0455,4.3,,qa-question-level/4-3-monetary-policy-q6.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-4.3-06
+igcse-economics-0455,4.3,,qa-question-level/4-3-monetary-policy-q7.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-4.3-07
+igcse-economics-0455,4.3,,qa-question-level/4-3-monetary-policy-q8.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-4.3-08
+igcse-economics-0455,4.3,,qa-question-level/4-3-monetary-policy-q9.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-4.3-09
+igcse-economics-0455,4.4,,qa-question-level/4-4-inflation-q1.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-4.4-01
+igcse-economics-0455,4.4,,qa-question-level/4-4-inflation-q2.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-4.4-02
+igcse-economics-0455,4.4,,qa-question-level/4-4-inflation-q3.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-4.4-03
+igcse-economics-0455,4.4,,qa-question-level/4-4-inflation-q4.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-4.4-04
+igcse-economics-0455,4.4,,qa-question-level/4-4-inflation-q5.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-4.4-05
+igcse-economics-0455,4.4,,qa-question-level/4-4-inflation-q6.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-4.4-06
+igcse-economics-0455,4.4,,qa-question-level/4-4-inflation-q7.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-4.4-07
+igcse-economics-0455,4.4,,qa-question-level/4-4-inflation-q8.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-4.4-08
+igcse-economics-0455,4.4,,qa-question-level/4-4-inflation-q9.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-4.4-09
+igcse-economics-0455,4.5,,qa-question-level/4-5-unemployment-q1.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-4.5-01
+igcse-economics-0455,4.5,,qa-question-level/4-5-unemployment-q2.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-4.5-02
+igcse-economics-0455,4.5,,qa-question-level/4-5-unemployment-q3.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-4.5-03
+igcse-economics-0455,4.5,,qa-question-level/4-5-unemployment-q4.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-4.5-04
+igcse-economics-0455,4.5,,qa-question-level/4-5-unemployment-q5.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-4.5-05
+igcse-economics-0455,4.5,,qa-question-level/4-5-unemployment-q6.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-4.5-06
+igcse-economics-0455,4.5,,qa-question-level/4-5-unemployment-q7.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-4.5-07
+igcse-economics-0455,4.5,,qa-question-level/4-5-unemployment-q8.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-4.5-08
+igcse-economics-0455,4.5,,qa-question-level/4-5-unemployment-q9.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-4.5-09
+igcse-economics-0455,5.1,| 5.3 | Strategies for development,qa-question-level/5-1-economic-growth-vs-development-q1.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-5.1-01
+igcse-economics-0455,5.1,| 5.3 | Strategies for development,qa-question-level/5-1-economic-growth-vs-development-q2.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-5.1-02
+igcse-economics-0455,5.1,| 5.3 | Strategies for development,qa-question-level/5-1-economic-growth-vs-development-q3.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-5.1-03
+igcse-economics-0455,5.1,| 5.3 | Strategies for development,qa-question-level/5-1-economic-growth-vs-development-q4.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-5.1-04
+igcse-economics-0455,5.1,| 5.3 | Strategies for development,qa-question-level/5-1-economic-growth-vs-development-q5.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-5.1-05
+igcse-economics-0455,5.1,| 5.3 | Strategies for development,qa-question-level/5-1-economic-growth-vs-development-q6.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-5.1-06
+igcse-economics-0455,5.1,| 5.3 | Strategies for development,qa-question-level/5-1-economic-growth-vs-development-q7.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-5.1-07
+igcse-economics-0455,5.1,| 5.3 | Strategies for development,qa-question-level/5-1-economic-growth-vs-development-q8.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-5.1-08
+igcse-economics-0455,5.1,| 5.3 | Strategies for development,qa-question-level/5-1-economic-growth-vs-development-q9.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-5.1-09
+igcse-economics-0455,5.2,,qa-question-level/5-2-indicators-of-development-q1.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-5.2-01
+igcse-economics-0455,5.2,,qa-question-level/5-2-indicators-of-development-q2.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-5.2-02
+igcse-economics-0455,5.2,,qa-question-level/5-2-indicators-of-development-q3.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-5.2-03
+igcse-economics-0455,5.2,,qa-question-level/5-2-indicators-of-development-q4.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-5.2-04
+igcse-economics-0455,5.2,,qa-question-level/5-2-indicators-of-development-q5.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-5.2-05
+igcse-economics-0455,5.2,,qa-question-level/5-2-indicators-of-development-q6.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-5.2-06
+igcse-economics-0455,5.2,,qa-question-level/5-2-indicators-of-development-q7.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-5.2-07
+igcse-economics-0455,5.2,,qa-question-level/5-2-indicators-of-development-q8.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-5.2-08
+igcse-economics-0455,5.2,,qa-question-level/5-2-indicators-of-development-q9.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-5.2-09
+igcse-economics-0455,5.3,,qa-question-level/5-3-strategies-for-development-q1.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-5.3-01
+igcse-economics-0455,5.3,,qa-question-level/5-3-strategies-for-development-q2.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-5.3-02
+igcse-economics-0455,5.3,,qa-question-level/5-3-strategies-for-development-q3.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-5.3-03
+igcse-economics-0455,5.3,,qa-question-level/5-3-strategies-for-development-q4.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-5.3-04
+igcse-economics-0455,5.3,,qa-question-level/5-3-strategies-for-development-q5.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-5.3-05
+igcse-economics-0455,5.3,,qa-question-level/5-3-strategies-for-development-q6.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-5.3-06
+igcse-economics-0455,5.3,,qa-question-level/5-3-strategies-for-development-q7.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-5.3-07
+igcse-economics-0455,5.3,,qa-question-level/5-3-strategies-for-development-q8.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-5.3-08
+igcse-economics-0455,5.3,,qa-question-level/5-3-strategies-for-development-q9.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-5.3-09
+igcse-economics-0455,6.1,"| 6.4 | Globalisation: causes, effects, and organisations",qa-question-level/6-1-specialisation-and-comparative-advantage-q1.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-6.1-01
+igcse-economics-0455,6.1,"| 6.4 | Globalisation: causes, effects, and organisations",qa-question-level/6-1-specialisation-and-comparative-advantage-q2.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-6.1-02
+igcse-economics-0455,6.1,"| 6.4 | Globalisation: causes, effects, and organisations",qa-question-level/6-1-specialisation-and-comparative-advantage-q3.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-6.1-03
+igcse-economics-0455,6.1,"| 6.4 | Globalisation: causes, effects, and organisations",qa-question-level/6-1-specialisation-and-comparative-advantage-q4.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-6.1-04
+igcse-economics-0455,6.1,"| 6.4 | Globalisation: causes, effects, and organisations",qa-question-level/6-1-specialisation-and-comparative-advantage-q5.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-6.1-05
+igcse-economics-0455,6.1,"| 6.4 | Globalisation: causes, effects, and organisations",qa-question-level/6-1-specialisation-and-comparative-advantage-q6.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-6.1-06
+igcse-economics-0455,6.1,"| 6.4 | Globalisation: causes, effects, and organisations",qa-question-level/6-1-specialisation-and-comparative-advantage-q7.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-6.1-07
+igcse-economics-0455,6.1,"| 6.4 | Globalisation: causes, effects, and organisations",qa-question-level/6-1-specialisation-and-comparative-advantage-q8.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-6.1-08
+igcse-economics-0455,6.1,"| 6.4 | Globalisation: causes, effects, and organisations",qa-question-level/6-1-specialisation-and-comparative-advantage-q9.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-6.1-09
+igcse-economics-0455,6.2,,qa-question-level/6-2-trade-protection-q1.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-6.2-01
+igcse-economics-0455,6.2,,qa-question-level/6-2-trade-protection-q2.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-6.2-02
+igcse-economics-0455,6.2,,qa-question-level/6-2-trade-protection-q3.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-6.2-03
+igcse-economics-0455,6.2,,qa-question-level/6-2-trade-protection-q4.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-6.2-04
+igcse-economics-0455,6.2,,qa-question-level/6-2-trade-protection-q5.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-6.2-05
+igcse-economics-0455,6.2,,qa-question-level/6-2-trade-protection-q6.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-6.2-06
+igcse-economics-0455,6.2,,qa-question-level/6-2-trade-protection-q7.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-6.2-07
+igcse-economics-0455,6.2,,qa-question-level/6-2-trade-protection-q8.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-6.2-08
+igcse-economics-0455,6.2,,qa-question-level/6-2-trade-protection-q9.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-6.2-09
+igcse-economics-0455,6.3,,qa-question-level/6-3-exchange-rates-q1.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-6.3-01
+igcse-economics-0455,6.3,,qa-question-level/6-3-exchange-rates-q2.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-6.3-02
+igcse-economics-0455,6.3,,qa-question-level/6-3-exchange-rates-q3.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-6.3-03
+igcse-economics-0455,6.3,,qa-question-level/6-3-exchange-rates-q4.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-6.3-04
+igcse-economics-0455,6.3,,qa-question-level/6-3-exchange-rates-q5.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-6.3-05
+igcse-economics-0455,6.3,,qa-question-level/6-3-exchange-rates-q6.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-6.3-06
+igcse-economics-0455,6.3,,qa-question-level/6-3-exchange-rates-q7.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-6.3-07
+igcse-economics-0455,6.3,,qa-question-level/6-3-exchange-rates-q8.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-6.3-08
+igcse-economics-0455,6.3,,qa-question-level/6-3-exchange-rates-q9.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-6.3-09
+igcse-economics-0455,6.4,,qa-question-level/6-4-globalisation-q1.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-6.4-01
+igcse-economics-0455,6.4,,qa-question-level/6-4-globalisation-q2.md,1,Foundation,0455,,imported,passed,worker_course,Q-ID Q-6.4-02
+igcse-economics-0455,6.4,,qa-question-level/6-4-globalisation-q3.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-6.4-03
+igcse-economics-0455,6.4,,qa-question-level/6-4-globalisation-q4.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-6.4-04
+igcse-economics-0455,6.4,,qa-question-level/6-4-globalisation-q5.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-6.4-05
+igcse-economics-0455,6.4,,qa-question-level/6-4-globalisation-q6.md,1,Standard,0455,,imported,passed,worker_course,Q-ID Q-6.4-06
+igcse-economics-0455,6.4,,qa-question-level/6-4-globalisation-q7.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-6.4-07
+igcse-economics-0455,6.4,,qa-question-level/6-4-globalisation-q8.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-6.4-08
+igcse-economics-0455,6.4,,qa-question-level/6-4-globalisation-q9.md,1,Challenge,0455,,imported,passed,worker_course,Q-ID Q-6.4-09

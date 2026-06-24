@@ -1,0 +1,6 @@
+# Question: Question Q-9.1-07
+**Difficulty**: Challenge
+**Question**: Explain how the structure of each blood vessel type relates to its function, including how pressure changes along the circulatory pathway.
+**Answer**: Arteries — thick muscular wall + elastic fibres: stretch during ventricular systole (high pressure ~120 mmHg) and recoil during diastole, smoothing pulsatile flow and maintaining pressure between heartbeats. Narrow lumen maintains pressure. Arterioles — smaller branches with proportionally more smooth muscle: regulate blood flow to capillary beds by vasoconstriction/dilation. Capillaries — one-cell-thick endothelial wall: short diffusion distance for efficient exchange. Total cross-sectional area of capillary beds is enormous, so blood velocity drops to near zero — allowing time for exchange. Pressure drops from ~35 mmHg at arteriole end to ~15 mmHg at venule end. Veins — thin walls, wide lumen, low pressure (~5-10 mmHg): low resistance to flow. Valves + skeletal muscle pump compensate for low pressure to return blood to the heart against gravity.
+**Explanation**: Full pressure gradient along vessel types. A common error is treating all vessel types as "pipes" without the pressure-diameter adaptation cascade.
+**Tags**: structure-function, pressure-gradient, arteries, capillaries, veins

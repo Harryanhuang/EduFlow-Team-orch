@@ -1,0 +1,6 @@
+### Question Q-3.6-07
+**Difficulty**: Challenge
+**Question**: Evaluate whether a carbon tax or tradable permits are a better way to reduce industrial pollution.
+**Answer**: A carbon tax sets a price on emissions, providing certainty about the cost to firms but uncertainty about the total amount of pollution reduced. It also generates government revenue. Tradable permits set a fixed cap on total emissions, providing certainty about the quantity of pollution but uncertainty about the permit price. Permits create a market that rewards the most efficient polluters. However, taxes are simpler to administer, while permits require accurate monitoring and initial allocation decisions that can be politically contentious. The better tool depends on policy priorities: if the goal is emission certainty, permits are preferable; if the goal is price stability and revenue, a carbon tax is better. Many economists favour a hybrid approach.
+**Explanation**: Tax = price certainty, quantity uncertain. Permits = quantity certainty, price uncertain. A common error is saying one is always better without considering the policy context.
+**Tags**: carbon-tax, tradable-permits, evaluation, pollution-reduction

@@ -1,0 +1,6 @@
+### Question Q-6.1-08
+**Difficulty**: Challenge
+**Question**: A government wants to reduce carbon emissions and is considering either a carbon tax or a cap-and-trade system. Compare the two approaches from a business perspective.
+**Answer**: Carbon tax: sets a fixed price per tonne of emissions, giving businesses cost certainty but not guaranteeing a specific emissions reduction. Businesses can plan for the known cost and may pass it to customers. Simple to administer. Cap-and-trade: sets a total emissions limit (cap) and allows businesses to trade permits. This guarantees the emissions target but price volatility makes costs uncertain. Efficient firms can sell excess permits for profit; inefficient firms must buy more. Cap-and-trade rewards early action and innovation more directly, but is more complex. From a business perspective, a carbon tax is easier to budget for; cap-and-trade offers greater opportunity for firms that reduce emissions quickly.
+**Explanation**: Both put a price on carbon but through different mechanisms. A common error is treating them as equivalent — the certainty versus flexibility trade-off matters for business planning.
+**Tags**: carbon-tax, cap-and-trade, environmental-policy, evaluation

@@ -1,0 +1,6 @@
+### Question Q-6.1-08
+**Difficulty**: Challenge
+**Question**: Evaluate the view that comparative advantage is the only determinant of international trade patterns.
+**Answer**: Comparative advantage explains why countries specialise based on opportunity cost differences, and it predicts that countries will export goods where they have a lower opportunity cost. However, trade patterns are also shaped by other factors: government trade policies such as tariffs and quotas distort trade flows; transport costs may make it uneconomical to trade goods where a country has a comparative advantage; economies of scale allow countries to dominate industries regardless of initial opportunity costs; historical ties and trade agreements create preferential trading relationships; and differences in product quality and branding affect consumer choices. While comparative advantage provides the theoretical foundation for trade, real-world trade patterns reflect a combination of comparative advantage, government intervention, geography, and institutional factors.
+**Explanation**: Comparative advantage is important but not the sole factor. A common error is ignoring non-economic influences on trade patterns such as politics, transport costs, and historical relationships.
+**Tags**: comparative-advantage, trade-patterns, evaluation, determinants

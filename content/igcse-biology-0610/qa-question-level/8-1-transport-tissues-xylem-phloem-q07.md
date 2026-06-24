@@ -1,0 +1,6 @@
+# Question: Question Q-8.1-07
+**Difficulty**: Challenge
+**Question**: Compare the structures of xylem and phloem and explain how each tissue's structure relates to its function.
+**Answer**: Xylem: dead hollow cells arranged end-to-end forming continuous tubes. Lignin deposited in walls in spiral, ring, or reticulate patterns — provides mechanical strength for support and prevents vessel collapse under tension during transpiration. No end walls — allows unimpeded water column. Narrow bore — maintains cohesion and tension. Phloem: living sieve tube elements with perforated sieve plates — allows sugar solution to flow through. Companion cells attached to each sieve tube element — contain many mitochondria to produce ATP for active loading of sucrose into sieve tubes. Plasmodesmata connect companion cells to sieve elements for communication. The structural differences reflect the physical demands: xylem withstands tension (passive), phloem actively loads and transports (requires energy).
+**Explanation**: Structure-function pairing for both tissues. A common error is describing the structures without linking each to its specific functional purpose.
+**Tags**: xylem, phloem, structure-function, comparison

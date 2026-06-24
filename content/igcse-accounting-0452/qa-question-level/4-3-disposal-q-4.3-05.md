@@ -1,0 +1,7 @@
+### Question Q-4.3-05
+**Difficulty**: Standard
+**Question**: A machine costs $50,000 on 1 January 20X1. It is depreciated at 30% per annum using the reducing balance method. On 30 June 20X3 the machine is sold for $15,000. Calculate the profit or loss on disposal. Show the entries that appear in the statement of profit or loss for the year ended 31 December 20X3.
+**Answer**: Year 1 (20X1): Depreciation = $50,000 × 30% = $15,000. Carrying amount = $50,000 - $15,000 = $35,000. Year 2 (20X2): Depreciation = $35,000 × 30% = $10,500. Carrying amount = $35,000 - $10,500 = $24,500. Year 3 (to 30 June = 6 months): Full year on $24,500 × 30% = $7,350. Time-apportioned 6/12 = $3,675. Carrying amount at disposal = $24,500 - $3,675 = $20,825. Accumulated depreciation at disposal = $15,000 + $10,500 + $3,675 = $29,175. Sale proceeds = $15,000. Loss on disposal = $20,825 - $15,000 = $5,825 loss.
+Statement of profit or loss for year ended 31 Dec 20X3: Depreciation expense $3,675 (6 months) + Loss on disposal $5,825 = total charge $9,500.
+**Explanation**: A common error is charging a full year's reducing balance depreciation in the year of disposal — depreciation must be time-apportioned to the date of disposal (6 months here). Another error is using the carrying amount at the start of the year without charging the partial year depreciation first — the carrying amount at disposal must include depreciation up to the disposal date.
+**Tags**: disposal, reducing-balance, time-apportionment

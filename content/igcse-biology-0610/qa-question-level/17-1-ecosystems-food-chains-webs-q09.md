@@ -1,0 +1,6 @@
+# Question: Question Q-17.1-09
+**Difficulty**: Challenge
+**Question**: Describe how a stable ecosystem maintains itself. Why is biodiversity important for ecosystem stability?
+**Answer**: A stable ecosystem maintains itself through negative feedback loops, nutrient cycling, and species interactions. Decomposers recycle nutrients (carbon, nitrogen). Predator-prey relationships regulate population sizes. Plants photosynthesise, producing oxygen and food for consumers. These processes balance each other. Biodiversity contributes to stability in several ways: species richness creates multiple food pathways (if one species fails, others can fill its role — the "insurance effect"). Different species perform similar roles (functional redundancy). Greater genetic diversity within species allows adaptation to environmental changes. High biodiversity also increases productivity (more species = more energy captured). monocultures (low biodiversity) are vulnerable to disease or environmental change.
+**Explanation**: Feedback loops, nutrient cycling, biodiversity = stability. A common error is saying "more species means more competition and less stability."
+**Tags**: ecosystem-stability, biodiversity, feedback-loops, nutrient-cycle

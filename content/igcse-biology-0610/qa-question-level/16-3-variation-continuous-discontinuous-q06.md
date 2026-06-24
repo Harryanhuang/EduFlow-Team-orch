@@ -1,0 +1,6 @@
+# Question: Question Q-16.3-06
+**Difficulty**: Challenge
+**Question**: A population of beetles contains individuals with three colour phenotypes: green, yellow, and olive. All three colours appear in roughly equal numbers. Explain how this variation could arise and how natural selection might act on these colours over time.
+**Answer**: The variation in colour arises from genetic differences (mutation producing different alleles for colour genes) and may be influenced by the environment (epigenetics). If birds preferentially prey on certain colours (e.g., yellow is more visible against green leaves), natural selection will act: beetles with less visible colours survive longer and reproduce more, passing on their alleles. If the environment changes (e.g., soil becomes more yellow), the selective pressure shifts. Over generations, the frequency of advantageous alleles changes in the population — this is evolution. The equal proportions initially suggest no strong selective pressure, or multiple niches exist.
+**Explanation**: Genetic variation → natural selection → allele frequency change. A common error is saying beetles "choose" their colour.
+**Tags**: natural-selection, variation, evolution, allele-frequency

@@ -1,0 +1,6 @@
+### Question Q-4.2-05
+**Difficulty**: Standard
+**Question**: A computer costs $12,000. The business uses reducing balance depreciation at 40% per annum. How many full years of depreciation must be charged before the carrying amount falls below $2,000?
+**Answer**: Work year by year: Year 1: Carrying amount = $12,000 × (1 - 0.40) = $12,000 × 0.60 = $7,200. Year 2: Carrying amount = $7,200 × 0.60 = $4,320. Year 3: Carrying amount = $4,320 × 0.60 = $2,592. Year 4: Carrying amount = $2,592 × 0.60 = $1,555. The carrying amount falls below $2,000 at the end of year 4 ($1,555). So 4 full years of depreciation must be charged. Alternative formula approach: Carrying amount after n years = Cost × (1 - rate)^n. We need $12,000 × 0.60^n < $2,000, so 0.60^n < 2,000/12,000 = 0.1667. Testing: 0.60^3 = 0.216 (too high), 0.60^4 = 0.1296 (below 0.1667). Therefore n = 4 years.
+**Explanation**: A common error is trying to use a straight-line approach (dividing the depreciable amount by annual charge) for a reducing balance problem. Reducing balance requires either year-by-year iteration or the formula Cost × (1 - rate)^n. The exponential decay formula is faster for "how many years" questions.
+**Tags**: reducing-balance, reverse-calculation, exponential-decay

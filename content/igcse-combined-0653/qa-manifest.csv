@@ -1,0 +1,19 @@
+topic_id,topic_title,domain,question_count,difficulty_mix,status,review_state
+B2,Cell Structure and Organisation,Biology,9,F:2|S:4|C:3,submitted_for_review,passed
+C1,States of Matter,Chemistry,18,F:4|S:8|C:6,submitted_for_review,pending
+P1,Motion and Forces,Physics,18,F:4|S:8|C:6,submitted_for_review,pending
+B3,Movement in and out of Cells,Biology,18,F:4|S:8|C:6,submitted_for_review,pending
+B4,Biological Molecules,Biology,18,F:4|S:8|C:6,submitted_for_review,pending
+B5,Nutrition,Biology,18,F:4|S:8|C:6,submitted_for_review,pending
+B6,Gas Exchange and Respiration,Biology,18,F:4|S:8|C:6,submitted_for_review,pending
+B7,Transport,Biology,18,F:4|S:8|C:6,submitted_for_review,pending
+B8,Excretion,Biology,18,F:4|S:8|C:6,submitted_for_review,pending
+B9,Coordination and Response,Biology,18,F:4|S:8|C:6,submitted_for_review,pending
+B10,Reproduction,Biology,18,F:4|S:8|C:6,submitted_for_review,pending
+B11,Inheritance,Biology,18,F:4|S:8|C:6,submitted_for_review,pending
+B12,Variation and Selection,Biology,18,F:4|S:8|C:6,submitted_for_review,pending
+C2,Atomic Structure and the Periodic Table,Chemistry,18,F:4|S:8|C:6,submitted_for_review,pending
+C3,Bonding and Structure,Chemistry,18,F:4|S:8|C:6,submitted_for_review,pending
+C4,Chemical Formulae and Equations,Chemistry,18,F:4|S:8|C:6,submitted_for_review,pending
+C5,Chemical Reactions,Chemistry,18,F:4|S:8|C:6,submitted_for_review,pending
+P2,Work Energy and Power,Physics,18,F:4|S:8|C:6,submitted_for_review,pending

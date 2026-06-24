@@ -1,0 +1,6 @@
+### Question Q-2.3-08
+**Difficulty**: Challenge
+**Question**: Evaluate the costs and benefits of recruitment for a small business expanding from 10 to 25 employees.
+**Answer**: Costs include advertising, agency fees, management time for interviews, onboarding and training new staff. For a small business, these costs are proportionally higher due to limited HR resources and the owner-manager's time being diverted from operations. Benefits include filling skill gaps needed for expansion, increasing capacity to serve more customers, bringing in fresh ideas, and reducing workload on existing staff. The key risk is poor recruitment leading to early leavers and wasted investment. To minimise costs, the business should use cost-effective methods (social media, word-of-mouth), write clear job descriptions and person specifications, and invest in thorough induction training. On balance, the benefits of well-planned recruitment outweigh the costs, as failure to recruit would limit growth.
+**Explanation**: Cost-benefit analysis depends on business size and urgency. A common error is listing only costs without linking to benefits.
+**Tags**: recruitment, costs, benefits, evaluation, small-business

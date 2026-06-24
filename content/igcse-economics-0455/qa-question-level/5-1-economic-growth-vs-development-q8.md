@@ -1,0 +1,6 @@
+### Question Q-5.1-08
+**Difficulty**: Challenge
+**Question**: To what extent can GDP per capita be used as a reliable measure of economic development? Justify your answer.
+**Answer**: GDP per capita is useful as a quick indicator of average economic output and allows international comparisons. However, it has significant limitations as a measure of development. It ignores income inequality — a high average can coexist with mass poverty. It excludes non-market activities such as unpaid domestic work and subsistence farming, which are significant in developing countries. It does not account for environmental costs, leisure time, health outcomes, or education levels. For example, a country with high GDP per capita from oil extraction may have poor health and education indicators. Therefore, GDP per capita should be used alongside broader measures such as the HDI, which incorporate health and education dimensions, to give a more reliable picture of development.
+**Explanation**: GDP per capita captures income but misses the multi-dimensional nature of development. A common error is treating GDP per capita as a complete proxy for development without acknowledging its blind spots.
+**Tags**: gdp-per-capita, development, evaluation, limitations

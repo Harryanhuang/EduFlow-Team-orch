@@ -1,0 +1,564 @@
+"""`eduflow watchdog`
+
+Long-running supervisor that keeps the router (and any future daemons)
+alive. Runs `runtime.watchdog.supervise` every
+`watchdog.check_interval_s` seconds (eduflow.toml; default 30) until
+SIGTERM / Ctrl-C.
+
+Self-locks via state_dir/watchdog.pid so two watchdogs can't fight.
+
+Cooldown alerts:
+- When a supervised daemon enters cooldown (max_retries respawns
+  failed), the watchdog posts to Feishu chat so the boss sees the
+  death without tailing the watchdog log.
+- The alert is a red Feishu card with a 3-step recovery checklist
+  (`eduflow health` / read daemon log / `eduflow down && up`
+  after fix). Falls back to plain `send_text` on card schema
+  rejection so the alert still lands.
+- alert_fn is None when chat_id is unset — alerts are pointless
+  without a delivery target; boot banner says "no chat alerts" so
+  the operator knows.
+
+Claude OAuth keep-alive:
+- Bind-mounted claude .credentials.json expires during idle and
+  the in-pane claude only refreshes on API call (not idle), which
+  killed boss-message routing after long silences. Watchdog now
+  proactively reads `expiresAt` every
+  `watchdog.cred_check_interval_s` seconds (default 300); if
+  the token's < `watchdog.cred_refresh_ahead_s` (default 1800) from
+  expiry, run `claude -p "Return only OK"` once. That triggers
+  claude to refresh the token in-place (file is bind-mounted RW so
+  the new token persists back to host). All agent panes share the
+  same file via per-agent symlink, so one refresh covers the whole
+  team.
+
+All alert paths are best-effort: chat send / card send failures are
+swallowed at the alert_fn level (and runtime/watchdog's supervise
+also try/excepts alert_fn). A broken alert path mustn't kill the
+supervisor.
+"""
+from __future__ import annotations
+
+import json
+import signal
+import subprocess
+import sys
+import time
+from pathlib import Path
+
+from eduflow.feishu import chat as _chat
+from eduflow.feishu.cards import simple_card
+from eduflow.runtime import config, paths, pidlock, tmux, tunables, watchdog, lifecycle, wake
+from eduflow.agents import get_adapter
+from eduflow.util import maybe_print_help, read_json, write_json
+
+
+_CRED_PATH = Path.home() / ".claude" / ".credentials.json"
+# Resolves to /root/.claude/.credentials.json in Docker (HOME=/root) — same
+# path the host-keychain bind-mount lands on — and to ~/.claude/... on host.
+# Hardcoding /root broke host non-root deploys: Path("/root/...").exists()
+# raised PermissionError (Linux /root is 700) instead of returning False
+# under Python 3.10–3.12, killing `eduflow up`. Caught 2026-05-08.
+
+
+def _make_alert_fn():
+    """Build the alert callable handed to `supervise`. Captures chat_id +
+    profile at construction time (cheap reads of runtime_config.json)
+    so each cooldown event sends without re-reading config.
+
+    Returns None when chat_id is unset — alerts are pointless without a
+    delivery target, and a None alert_fn is the supervise default.
+
+    Sends as a red Feishu card so the cooldown event is visually
+    distinct from normal /team / /health cards. Falls back to plain
+    text if send_card raises (schema mismatch on older lark builds).
+    """
+    chat_id = config.chat_id()
+    if not chat_id:
+        return None
+    profile = config.lark_profile()
+
+    def alert(name: str, failed_at: int, cooldown_secs: int) -> None:
+        title = f"🚨 watchdog: {name} entered cooldown"
+        body = (
+            f"daemon **{name}** entered **{cooldown_secs}s cooldown** "
+            f"after **{failed_at}** failed respawns.\n\n"
+            f"- `eduflow health` for current state\n"
+            f"- check daemon log for root cause\n"
+            f"- after fix: `eduflow down && eduflow up`"
+        )
+        from eduflow.runtime import tunables
+        alarm_color = str(tunables.tunable("router.alarm_card_color", "red"))
+        card = simple_card(title, body, color=alarm_color)
+        try:
+            _chat.send_card(chat_id, card, profile=profile, as_user=False)
+        except Exception as e:
+            # Card delivery shouldn't kill the watchdog. Fall back to
+            # plain text so the alert still lands somehow; if THAT also
+            # fails the supervise outer try/except logs it.
+            print(f"  ⚠️ watchdog: card alert send failed ({e}); falling back to text")
+            _chat.send_text(chat_id,
+                            f"🚨 watchdog: {name} entered {cooldown_secs}s cooldown "
+                            f"after {failed_at} failed respawns",
+                            profile=profile, as_user=False)
+
+    return alert
+
+
+def main(argv: list[str]) -> int:
+    if maybe_print_help(argv, "usage: eduflow watchdog"):
+        return 0
+    pid_file = paths.watchdog_pid_file()
+    if not pidlock.acquire(pid_file, name="watchdog"):
+        return 1
+    signal.signal(signal.SIGTERM, lambda *_: sys.exit(0))
+
+    specs = watchdog.default_specs()
+    states: dict = {}
+    alert_fn = _make_alert_fn()
+    alert_msg = "with chat alerts" if alert_fn else "no chat alerts (chat_id unset)"
+    check_interval_s = int(tunables.tunable("watchdog.check_interval_s", 30))
+    cred_check_interval_s = int(tunables.tunable("watchdog.cred_check_interval_s", 300))
+    runtime_guard_interval_s = int(tunables.tunable("watchdog.runtime_guard_interval_s", 30))
+    print(f"🐕 watchdog supervising {[s.name for s in specs]} every {check_interval_s}s ({alert_msg})")
+
+    last_cred_check = 0.0
+    last_runtime_guard = 0.0
+    last_pid_repair = 0.0
+    pid_repair_interval_s = 300.0  # every 5 min — catch unlinked pid files
+    try:
+        while True:
+            watchdog.supervise(specs, states, alert_fn=alert_fn)
+            now = time.time()
+            if now - last_cred_check >= cred_check_interval_s:
+                _maybe_refresh_claude_oauth(now)
+                last_cred_check = now
+            if now - last_runtime_guard >= runtime_guard_interval_s:
+                _guard_agent_runtimes()
+                _maybe_emit_auto_ops_presence(now)
+                last_runtime_guard = now
+            if now - last_pid_repair >= pid_repair_interval_s:
+                pidlock.repair_pid_file(pid_file, name="watchdog")
+                last_pid_repair = now
+            time.sleep(check_interval_s)
+    except KeyboardInterrupt:
+        print("watchdog stopped")
+        return 0
+    finally:
+        pidlock.release(pid_file)
+
+
+_AUTH_FAILURE_MARKERS = (
+    "Invalid auth credentials",
+    "auth required",
+    "Unauthorized",
+    "401",
+    "/login",
+    # Quota / billing / subscription expired — access denied even though
+    # credentials are valid. Treat as auth_failure so the runtime guard
+    # can switch to a fallback.
+    "FORBIDDEN",
+    "quota exceeded",
+    "billing required",
+    "subscription expired",
+    "code\":\"112",
+)
+
+
+_PROVIDER_UNAVAILABLE_MARKERS = (
+    "provider unavailable",
+    "service unavailable",
+    "temporarily unavailable",
+    "502",
+    "503",
+    "504",
+    "gateway timeout",
+    "connection refused",
+    # 403 with rate-limit connotation — distinct from auth/quota.
+    "403",
+)
+
+
+_CONVERSATION_HISTORY_CORRUPT_MARKERS = (
+    "Repetitive tool calls detected",
+    "InternalError.Algo.InvalidParameter",
+)
+
+
+def _guard_state() -> dict:
+    path = paths.runtime_guard_state_file()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    return read_json(path, {"agents": {}})
+
+
+def _write_guard_state(data: dict) -> None:
+    path = paths.runtime_guard_state_file()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    write_json(path, data)
+
+
+def _update_guard_agent(agent: str, **fields) -> dict:
+    """Patch one agent row in runtime guard state and persist it."""
+    data = _guard_state()
+    row = data.setdefault("agents", {}).setdefault(agent, {})
+    row.update(fields)
+    _write_guard_state(data)
+    return data
+
+
+def _auto_ops_presence_state_file() -> Path:
+    return paths.state_file("auto-ops-presence.json")
+
+
+def _auto_ops_presence_state() -> dict:
+    return read_json(_auto_ops_presence_state_file(), {})
+
+
+def _write_auto_ops_presence_state(data: dict) -> None:
+    path = _auto_ops_presence_state_file()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    write_json(path, data)
+
+
+def _latest_auto_ops_surface_s() -> float:
+    """Return the latest user-visible auto_ops signal timestamp in seconds."""
+    last = float(_auto_ops_presence_state().get("last_sent_at", 0) or 0)
+    try:
+        from eduflow.store import local_facts
+        for row in local_facts.list_logs("auto_ops", limit=50):
+            if str(row.get("type") or "") in {"say", "auto_ops_presence"}:
+                last = max(last, int(row.get("created_at") or 0) / 1000)
+    except Exception:
+        pass
+    return last
+
+
+def _presence_agent_summary(agent: str, row: dict | None) -> str:
+    if not row:
+        return f"{agent} 无状态"
+    status = str(row.get("status") or "未知").strip() or "未知"
+    task = " ".join(str(row.get("task") or "").split())
+    if task.startswith("外显陈旧："):
+        return f"{agent} 外显陈旧"
+    if status in {"阻塞", "异常"}:
+        return f"{agent} {status}"
+    if task:
+        if len(task) > 24:
+            task = task[:24] + "..."
+        return f"{agent} {status}（{task}）"
+    return f"{agent} {status}"
+
+
+def _build_auto_ops_presence_message() -> str:
+    agents = ["manager", "worker_course", "review_course", "worker_builder", "worker_qbank"]
+    try:
+        from eduflow.store import local_facts
+        rows = {str(r.get("agent") or ""): r for r in local_facts.list_all_statuses()}
+    except Exception:
+        rows = {}
+    parts = [_presence_agent_summary(agent, rows.get(agent)) for agent in agents]
+    return "运行态简报：auto_ops 盯盘中；" + "；".join(parts) + "。"
+
+
+def _maybe_emit_auto_ops_presence(now_s: float | None = None) -> bool:
+    """Post a low-noise auto_ops presence card roughly every 30 minutes.
+
+    Hermes supervisor is an external alarm lane. This is a softer main-chat
+    presence lane so the boss can see the team is still staffed even when no
+    business milestone has landed recently.
+    """
+    enabled = bool(tunables.tunable("auto_ops.presence_enabled", True))
+    if not enabled:
+        return False
+    interval_s = int(tunables.tunable("auto_ops.presence_interval_s", 1800))
+    if interval_s <= 0:
+        return False
+    now_s = time.time() if now_s is None else float(now_s)
+    if now_s - _latest_auto_ops_surface_s() < interval_s:
+        return False
+    chat_id = config.chat_id()
+    if not chat_id:
+        return False
+    message = _build_auto_ops_presence_message()
+    card = simple_card("auto_ops · 运行态值守", message, color="red")
+    try:
+        _chat.send_card(
+            chat_id,
+            card,
+            profile=config.lark_profile(),
+            as_user=False,
+        )
+    except Exception as e:
+        print(f"  ⚠️ auto_ops presence send failed: {e}")
+        return False
+    try:
+        from eduflow.store import local_facts
+        local_facts.touch_heartbeat("auto_ops")
+        local_facts.upsert_status("auto_ops", "进行中", message)
+        local_facts.append_log("auto_ops", "auto_ops_presence", message)
+    except Exception as e:
+        print(f"  ⚠️ auto_ops presence local record failed: {e}")
+    _write_auto_ops_presence_state({"last_sent_at": now_s, "message": message})
+    return True
+
+
+def _notify_runtime_switch(agent: str, from_runtime: str, to_runtime: str, reason: str) -> None:
+    mode = str(tunables.tunable(f"runtime_guard.notify.{agent}", "")).strip() or str(
+        tunables.tunable("runtime_guard.notify.default", "manager")
+    ).strip()
+    if mode in {"", "silent", "none"}:
+        return
+    chat_id = config.chat_id()
+    if not chat_id:
+        return
+    text = (
+        f"[runtime-guard] {agent} 已自动切换 runtime："
+        f"{from_runtime} -> {to_runtime}，原因：{reason}"
+    )
+    try:
+        _chat.send_text(
+            chat_id,
+            text,
+            profile=config.lark_profile(),
+            as_user=False,
+        )
+    except Exception as e:
+        print(f"  ⚠️ runtime-guard notify failed for {agent}: {e}")
+
+
+def _manager_policy(agent: str) -> str:
+    return str(
+        tunables.tunable(f"runtime_guard.manager_policy.{agent}", "")
+    ).strip() or str(
+        tunables.tunable("runtime_guard.manager_policy.default", "continue")
+    ).strip()
+
+
+def _apply_manager_policy(agent: str) -> None:
+    """Apply post-switch / post-cooldown manager policy to local status.
+
+    `continue`: keep current workload posture
+    `pause`: mark agent paused for manager review
+    """
+    policy = _manager_policy(agent)
+    if policy != "pause":
+        return
+    try:
+        from eduflow.store import local_facts
+        local_facts.upsert_status(
+            agent,
+            "阻塞",
+            "runtime guard paused intake",
+            blocker="needs_manager_action",
+        )
+    except Exception as e:
+        print(f"  ⚠️ runtime-guard policy apply failed for {agent}: {e}")
+
+
+def _runtime_guard_limits() -> tuple[int, int]:
+    max_switches = int(tunables.tunable("runtime_guard.cooldown.max_switches", 3))
+    window_s = int(tunables.tunable("runtime_guard.cooldown.window_s", 600))
+    return max_switches, window_s
+
+
+def _cooldown_secs() -> int:
+    return int(tunables.tunable("runtime_guard.cooldown.cooldown_s", 900))
+
+
+def _record_switch_and_check_cooldown(agent: str, now_s: float) -> tuple[bool, dict]:
+    data = _guard_state()
+    agents = data.setdefault("agents", {})
+    row = agents.setdefault(agent, {})
+    history = [float(x) for x in row.get("switch_times", [])]
+    max_switches, window_s = _runtime_guard_limits()
+    history = [ts for ts in history if now_s - ts <= window_s]
+    history.append(now_s)
+    row["switch_times"] = history
+    row["last_switch_at"] = now_s
+    if len(history) >= max_switches:
+        row["cooldown_until"] = now_s + _cooldown_secs()
+        row["needs_manager_action"] = True
+        row["manager_policy"] = _manager_policy(agent)
+        row["escalation_needed"] = True
+        row["escalation_reason"] = "repeated_switches_entered_cooldown"
+        row["last_alert_level"] = "escalation_repair_in_progress"
+        _write_guard_state(data)
+        return True, data
+    _write_guard_state(data)
+    return False, data
+
+
+def _agent_in_cooldown(agent: str, now_s: float) -> bool:
+    data = _guard_state()
+    row = data.get("agents", {}).get(agent, {})
+    return float(row.get("cooldown_until", 0) or 0) > now_s
+
+
+def _detect_runtime_failure_reason(target: tmux.Target, adapter) -> str:
+    text = tmux.capture_pane(target, lines=120)
+    ready_markers = list(adapter.ready_markers())
+    ready_at = max((text.rfind(m) for m in ready_markers), default=-1)
+    current_text = text[ready_at:] if ready_at >= 0 else text
+    if wake.is_rate_limited(target, adapter, capture=lambda *_a, **_kw: current_text):
+        return "rate_limit"
+    auth_at = max((current_text.rfind(m) for m in _AUTH_FAILURE_MARKERS), default=-1)
+    if auth_at >= 0:
+        return "auth_failure"
+    low = current_text.lower()
+    corrupt_at = max((low.rfind(m.lower()) for m in _CONVERSATION_HISTORY_CORRUPT_MARKERS), default=-1)
+    if corrupt_at >= 0:
+        return "conversation_history_corrupt"
+    provider_at = max((low.rfind(m.lower()) for m in _PROVIDER_UNAVAILABLE_MARKERS), default=-1)
+    if provider_at >= 0:
+        return "provider_unavailable"
+    return ""
+
+
+def _guard_agent_runtimes() -> None:
+    """Best-effort runtime guard for agent panes.
+
+    This sits above daemon supervision: the process can be alive while the
+    current provider/runtime is effectively dead. In that case we run
+    `runtime.failover.execute_fallback_loop` which:
+      1. picks the next cross-pool fallback (when possible),
+      2. hard-switches the pane via lifecycle.restart_with_runtime with
+         prove_ready=True (live env + API smoke + pane-text checks),
+      3. records one switch event per attempt to runtime-switch-events.jsonl,
+      4. retries up to 3 times before marking the agent escalated.
+    """
+    from eduflow.runtime import failover
+    team = config.load_team()
+    session = team.get("session", "EduFlow")
+    if not tmux.has_session(session):
+        return
+    for agent in sorted(team.get("agents", {})):
+        now_s = time.time()
+        if _agent_in_cooldown(agent, now_s):
+            continue
+        target = tmux.Target(session, agent)
+        if not tmux.has_window(target):
+            continue
+        resolved = config.resolved_agent_config(agent)
+        cli = resolved.get("cli", "claude-code")
+        try:
+            adapter = get_adapter(cli)
+        except KeyError:
+            continue
+        reason = _detect_runtime_failure_reason(target, adapter)
+        if not reason:
+            continue
+        current = lifecycle.current_runtime_status(agent).get("runtime") or resolved.get("selected_runtime", "inline")
+        _update_guard_agent(
+            agent,
+            last_failure_reason=reason,
+            last_runtime=current,
+            last_checked_at=now_s,
+        )
+        result = failover.execute_fallback_loop(
+            agent,
+            target,
+            str(current),
+            reason,
+            trigger="watchdog",
+        )
+        outcome = result["outcome"]
+        to_runtime = result["to_runtime"]
+        attempts = len(result["attempts"])
+        best = result["best_outcome"]
+        pool_switched = result["pool_switched"]
+        exhausted = result["exhausted"]
+        _update_guard_agent(
+            agent,
+            from_runtime=str(current),
+            to_runtime=str(to_runtime),
+            last_switch_reason=reason,
+            last_switch_outcome=outcome,
+            last_best_outcome=best,
+            last_attempts=attempts,
+            last_pool_switched=pool_switched,
+        )
+        if outcome == lifecycle.READY:
+            hit_cooldown, _ = _record_switch_and_check_cooldown(agent, now_s)
+            _notify_runtime_switch(agent, str(current), str(to_runtime),
+                                   f"{reason} (best={best}, attempts={attempts}, cross_pool={pool_switched})")
+            _update_guard_agent(
+                agent,
+                escalation_needed=False,
+                escalation_reason="",
+                last_alert_level="auto_switched_recovered",
+            )
+            print(f"  🔀 agent-runtime-guard: {agent} switched {current} -> {to_runtime} "
+                  f"({reason}, attempts={attempts}, cross_pool={pool_switched})")
+            if hit_cooldown:
+                _apply_manager_policy(agent)
+                print(f"  ⛔ agent-runtime-guard: {agent} entered cooldown after repeated runtime switches")
+        elif exhausted:
+            _update_guard_agent(
+                agent,
+                needs_manager_action=True,
+                escalation_needed=True,
+                escalation_reason="fallback_chain_exhausted",
+                last_alert_level="escalation_repair_in_progress",
+            )
+            print(f"  ⏸ agent-runtime-guard: {agent} hit {reason} but all fallback runtimes failed "
+                  f"(best={best}, attempts={attempts})")
+        else:
+            # Non-READY but not exhausted — one of the intermediate
+            # outcomes (env_drift, smoke_failed, ready_unproven). Still
+            # counts as a switch for cooldown purposes.
+            hit_cooldown, _ = _record_switch_and_check_cooldown(agent, now_s)
+            _update_guard_agent(
+                agent,
+                needs_manager_action=True,
+                escalation_needed=True,
+                escalation_reason=f"switch_unverified:{outcome}",
+                last_alert_level="escalation_repair_in_progress",
+            )
+            print(f"  ⚠️ agent-runtime-guard: {agent} switched {current} -> {to_runtime} "
+                  f"but outcome={outcome} (best={best}); needs repair")
+            if hit_cooldown:
+                _apply_manager_policy(agent)
+
+
+def _maybe_refresh_claude_oauth(now: float) -> None:
+    """If the bind-mounted claude .credentials.json expires within
+    `watchdog.cred_refresh_ahead_s` (eduflow.toml; default 1800),
+    force-refresh by spawning a brief `claude -p "Return only OK"`.
+    That subprocess hits the Anthropic API which makes claude rotate
+    the access token in-place. File is bind-mounted RW so the new
+    token persists to host.
+
+    Best-effort: any failure (file missing, parse error, claude crashes,
+    network down) logs a warning but doesn't kill the watchdog. Worst
+    case the boss still sees expired-token errors next cycle and runs
+    `make creds` manually.
+    """
+    if not _CRED_PATH.exists():
+        # Host deploy (macOS): no /root mount, claude OAuth lives in
+        # keychain not file. Silent skip — printing every 5min spams
+        # watchdog.log with hundreds of false alarms.
+        return
+    try:
+        oauth = json.loads(_CRED_PATH.read_text())["claudeAiOauth"]
+        expires_ms = int(oauth.get("expiresAt", 0))
+    except (OSError, ValueError, KeyError) as e:
+        print(f"  ⚠️ cred-refresh: read {_CRED_PATH} failed: {e}")
+        return
+    remaining = expires_ms / 1000 - now
+    cred_refresh_ahead_s = int(tunables.tunable("watchdog.cred_refresh_ahead_s", 1800))
+    if remaining > cred_refresh_ahead_s:
+        return  # plenty of time; skip
+    print(f"  🔑 claude token expires in {int(remaining)}s — forcing refresh")
+    try:
+        r = subprocess.run(
+            ["claude", "-p", "Return only OK"],
+            capture_output=True, text=True, timeout=60,
+        )
+    except (subprocess.TimeoutExpired, OSError) as e:
+        print(f"  ⚠️ cred-refresh: `claude -p` failed: {e}")
+        return
+    if r.returncode != 0:
+        snippet = (r.stderr or r.stdout or "").strip()[:120]
+        print(f"  ⚠️ cred-refresh: claude rc={r.returncode}: {snippet}")
+        return
+    print("  ✅ claude token refreshed")

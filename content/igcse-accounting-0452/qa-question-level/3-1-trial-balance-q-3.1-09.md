@@ -1,0 +1,6 @@
+### Question Q-3.1-09
+**Difficulty**: Challenge
+**Question**: "If a trial balance agrees, the accounts must be correct." Do you agree? Justify your answer with reference to the limitations of a trial balance.
+**Answer**: Disagree. An agreeing trial balance only proves that total debits equal total credits. It does NOT prove: 1) All transactions have been recorded (error of omission — a missing transaction affects neither side). 2) Transactions are in the correct accounts (error of commission — wrong account, correct side). 3) The correct account types have been used (error of principle — capital vs revenue). 4) The original amounts were correct (error of original entry — wrong amount on both sides). 5) Errors have not cancelled out (compensating errors). 6) Complete reversals of entry (debit recorded as credit and vice versa for the same amount). Financial statements prepared from an agreeing but erroneous trial balance will still contain errors.
+**Explanation**: This is a fundamental limitation of the trial balance. A common error is agreeing with the statement — the entire topic of "errors not revealed by trial balance" exists because an agreeing trial balance does not guarantee correctness.
+**Tags**: evaluation, trial-balance, limitations

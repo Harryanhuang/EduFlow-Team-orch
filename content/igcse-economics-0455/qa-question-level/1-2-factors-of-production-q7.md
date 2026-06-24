@@ -1,0 +1,6 @@
+### Question Q-1.2-07
+**Difficulty**: Challenge
+**Question**: Evaluate whether investment in human capital or physical capital is more important for a developing country's economic growth.
+**Answer**: Physical capital (machinery, infrastructure) provides immediate productive capacity and is essential for industrialisation. However, without skilled workers (human capital), machines may be underutilised or poorly maintained. Human capital generates innovation, adapts technology, and has spillover effects — educated workers train others and drive entrepreneurship. Physical capital depreciates and requires replacement, while human capital accumulates over time. For a developing country, a balanced approach is needed, but human capital may be more critical long-term because skilled workers can attract foreign investment and create technology, whereas machines without skilled operators have limited value.
+**Explanation**: Both types of capital are important and complementary. A common error is arguing one is universally superior without considering how they interact, or ignoring depreciation and maintenance needs.
+**Tags**: human-capital, physical-capital, developing-countries, evaluation, economic-growth

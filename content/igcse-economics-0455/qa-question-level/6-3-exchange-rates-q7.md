@@ -1,0 +1,6 @@
+### Question Q-6.3-07
+**Difficulty**: Challenge
+**Question**: Evaluate whether a strong (appreciated) currency is always beneficial for a country.
+**Answer**: Benefits of a strong currency: imports become cheaper, benefiting consumers and firms that rely on imported raw materials; inflation is reduced as import prices fall; the cost of servicing foreign currency debt decreases; and consumers travelling abroad benefit. Drawbacks: exports become more expensive and less competitive in world markets, potentially reducing export volumes and causing job losses in export industries; the current account may worsen if the Marshall-Lerner condition is met; and domestic firms competing with cheap imports may be forced to cut output. Whether a strong currency is beneficial depends on the structure of the economy: countries that are net importers or rely on imported inputs may benefit more, while export-dependent economies may suffer. The time period also matters, as short-term effects may differ from long-term adjustments.
+**Explanation**: Trade-off between cheaper imports and less competitive exports. A common error is assuming a strong currency is always advantageous.
+**Tags**: exchange-rate, strong-currency, evaluation

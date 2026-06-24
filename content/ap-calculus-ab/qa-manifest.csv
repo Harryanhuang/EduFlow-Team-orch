@@ -1,0 +1,89 @@
+topic_id,topic_name,unit,items_count,question_count,difficulty_mix,calculator_marked,status,notes
+T01,Limit concepts & notation,U1,18,9,F:5|S:7|C:6,yes,submitted_for_review,Items 1-18 from T01
+T02,Algebraic limits,U1,18,9,F:5|S:7|C:6,yes,submitted_for_review,Items 1-18 from T02
+T03,Continuity at a point,U1,18,9,F:5|S:7|C:6,yes,submitted_for_review,Items 1-18 from T03
+T04,IVT & asymptotes,U1,18,9,F:5|S:7|C:6,yes,submitted_for_review,Items 1-18 from T04
+T05,Defining the derivative,U2,18,9,F:5|S:7|C:6,yes,submitted_for_review,Items 1-18 from T05
+T06,Power & basic rules,U2,18,9,F:5|S:7|C:6,yes,submitted_for_review,Items 1-18 from T06
+T07,Product,quotient,trig rules,U2,18,9,F:5|S:7|C:6,yes,submitted_for_review,Items 1-18 from T07
+T08,Chain rule & inverse trig,U2,18,9,F:5|S:7|C:6,yes,submitted_for_review,Items 1-18 from T08
+T09,Chain rule advanced,U3,18,9,F:5|S:7|C:6,yes,submitted_for_review,Items 1-18 from T09
+T10,Implicit differentiation,U3,18,9,F:5|S:7|C:6,yes,submitted_for_review,Items 1-18 from T10
+T11,Inverse & higher-order derivatives,U3,18,9,F:5|S:7|C:6,yes,submitted_for_review,Items 1-18 from T11
+T12,Meaning of derivative & motion,U4,18,9,F:5|S:7|C:6,yes,submitted_for_review,Items 1-18 from T12
+T13,Related rates,U4,18,9,F:5|S:7|C:6,yes,submitted_for_review,Items 1-18 from T13
+T14,Linearization & L'Hôpital,U4,18,9,F:5|S:7|C:6,yes,submitted_for_review,Items 1-18 from T14
+T15,MVT & extreme value theorem,U5,18,9,F:5|S:7|C:6,yes,submitted_for_review,Items 1-18 from T15
+T16,Increasing/decreasing & 1st deriv test,U5,18,9,F:5|S:7|C:6,yes,submitted_for_review,Items 1-18 from T16
+T17,Concavity & 2nd derivative test,U5,18,9,F:5|S:7|C:6,yes,submitted_for_review,Items 1-18 from T17
+T18,Optimization,U5,18,9,F:5|S:7|C:6,yes,submitted_for_review,Items 1-18 from T18
+T19,Riemann sums & definite integrals,U6,18,9,F:5|S:7|C:6,yes,submitted_for_review,Items 1-18 from T19
+T20,Accumulation & FTC,U6,18,9,F:5|S:7|C:6,yes,submitted_for_review,Items 1-18 from T20
+T21,Integration techniques,U6,18,9,F:5|S:7|C:6,yes,submitted_for_review,Items 1-18 from T21
+T22,Differential equations basics,U7,18,9,F:5|S:7|C:6,yes,submitted_for_review,Items 1-18 from T22
+T23,Growth,decay & applications,U7,18,9,F:5|S:7|C:6,yes,submitted_for_review,Items 1-18 from T23
+T24,Applications of integration,U8,18,9,F:5|S:7|C:6,yes,submitted_for_review,Items 1-18 from T24
+U1.1.1,极限的直观定义与符号,U1,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 1 subtopic items
+U1.1.2,左右极限与极限存在条件,U1,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 1 subtopic items
+U1.1.3,极限运算法则,U1,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 1 subtopic items
+U1.1.4,极限不存在的三种情形,U1,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 1 subtopic items
+U1.2.1,直接代入与因式分解消零,U1,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 1 subtopic items
+U1.2.2,共轭法与复合分式化简,U1,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 1 subtopic items
+U1.2.3,分段函数与参数化极限,U1,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 1 subtopic items
+U1.3.1,连续性的三条件定义,U1,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 1 subtopic items
+U1.3.2,间断点类型判别,U1,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 1 subtopic items
+U1.3.3,连续函数的运算与性质,U1,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 1 subtopic items
+U1.4.1,IVT 条件与结论,U1,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 1 subtopic items
+U1.4.2,IVT 的局限与常见变式,U1,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 1 subtopic items
+U2.1.1,导数的极限定义,U2,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 2 subtopic items
+U2.1.2,切线方程与瞬时变化率,U2,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 2 subtopic items
+U2.1.3,不可导的四种情形,U2,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 2 subtopic items
+U2.2.1,幂函数、常数与常数倍法则,U2,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 2 subtopic items
+U2.2.2,和差法则与线性组合,U2,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 2 subtopic items
+U2.2.3,先改写再求导,U2,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 2 subtopic items
+U2.3.1,三角函数导数,U2,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 2 subtopic items
+U2.3.2,指数与对数函数导数,U2,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 2 subtopic items
+U2.3.3,乘积法则与商法则,U2,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 2 subtopic items
+U2.4.1,可导与连续的关系,U2,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 2 subtopic items
+U2.4.2,分段函数可导性判定,U2,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 2 subtopic items
+U3.1.1,链式法则基本形式,U3,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 3 subtopic items
+U3.1.2,常见复合函数求导,U3,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 3 subtopic items
+U3.1.3,表格数据与链式法则,U3,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 3 subtopic items
+U3.2.1,隐函数求导步骤,U3,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 3 subtopic items
+U3.2.2,隐函数的二阶导数与特殊点,U3,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 3 subtopic items
+U3.3.1,反函数导数公式,U3,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 3 subtopic items
+U3.3.2,反三角函数导数,U3,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 3 subtopic items
+U4.1.1,线性近似公式,U4,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 4 subtopic items
+U4.1.2,高估与低估判断,U4,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 4 subtopic items
+U4.1.3,微分与误差估计,U4,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 4 subtopic items
+U4.2.1,相关变化率基本方法,U4,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 4 subtopic items
+U4.2.2,相似三角形与复杂几何,U4,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 4 subtopic items
+U4.3.1,最优化问题四步法,U4,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 4 subtopic items
+U4.3.2,复杂优化与二阶检验,U4,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 4 subtopic items
+U5.1.1,Mean Value Theorem,U5,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 5 subtopic items
+U5.1.2,Extreme Value Theorem,U5,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 5 subtopic items
+U5.2.1,Monotonicity & Critical Points,U5,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 5 subtopic items
+U5.2.2,First Derivative Test,U5,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 5 subtopic items
+U5.3.1,Concavity & Inflection Points,U5,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 5 subtopic items
+U5.3.2,Second Derivative Test,U5,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 5 subtopic items
+U5.4.1,Optimization Setup,U5,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 5 subtopic items
+U5.4.2,Optimization with Constraints,U5,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 5 subtopic items
+U6.1.1,Riemann Sums,U6,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 6 subtopic items
+U6.1.2,Definite Integral Properties,U6,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 6 subtopic items
+U6.2.1,Accumulation & FTC Part 1,U6,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 6 subtopic items
+U6.2.2,FTC Part 2 & Evaluation,U6,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 6 subtopic items
+U6.3.1,Antiderivatives & Power Rule,U6,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 6 subtopic items
+U6.3.2,u-Substitution,U6,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 6 subtopic items
+U6.3.3,Exponential & Basic Forms,U6,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 6 subtopic items
+U6.3.4,Definite Integration with Substitution,U6,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 6 subtopic items
+U7.1.1,Slope Fields,U7,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 7 subtopic items
+U7.1.2,Separation of Variables,U7,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 7 subtopic items
+U7.1.3,Initial Value Problems,U7,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 7 subtopic items
+U7.2.1,Exponential Growth & Decay,U7,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 7 subtopic items
+U7.2.2,dP/dt = kP Solutions,U7,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 7 subtopic items
+U7.2.3,Differential Equation Analysis,U7,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 7 subtopic items
+U8.1.1,Average Value of Function,U8,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 8 subtopic items
+U8.1.2,Area Between Curves,U8,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 8 subtopic items
+U8.1.3,Area wrt y-axis,U8,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 8 subtopic items
+U8.2.1,Particle Motion & Accumulation,U8,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 8 subtopic items
+U8.2.2,Net vs Total Distance,U8,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 8 subtopic items

@@ -1,0 +1,6 @@
+### Question Q-4.5-06
+**Difficulty**: Standard
+**Question**: Analyse the economic and social costs of unemployment.
+**Answer**: Economic costs include: lost output and GDP (unemployed workers are not producing goods and services), wasted resources (human capital is underutilised), lower tax revenue for the government (fewer people paying income tax), higher government spending on unemployment benefits and welfare, and a potential loss of skills as workers become deskilled during long-term unemployment (hysteresis). Social costs include: increased poverty and financial hardship for unemployed workers and their families, deteriorating physical and mental health, increased crime rates and social unrest, loss of self-esteem and social status, and intergenerational effects (children of unemployed parents may have poorer educational outcomes). The costs are greater for long-term and structural unemployment than for short-term frictional unemployment.
+**Explanation**: Consider both economic (output, fiscal) and social (health, crime, poverty) costs. A common error is only listing personal costs to the individual or only economic costs to the government.
+**Tags**: unemployment, costs, economic-social, lost-output

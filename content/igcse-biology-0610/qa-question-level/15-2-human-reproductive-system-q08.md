@@ -1,0 +1,6 @@
+# Question: Question Q-15.2-08
+**Difficulty**: Challenge
+**Question**: Compare internal fertilisation with external fertilisation in animals. Include advantages and disadvantages of each.
+**Answer**: Internal fertilisation: sperm deposited inside the female's body; fertilisation occurs inside the female reproductive tract. Advantages: fewer gametes needed because sperm are protected and directed towards the egg; embryos are protected inside the female; development can be controlled. Disadvantages: requires complex reproductive behaviour/copulation; only one parent carries the young. External fertilisation: eggs and sperm released into the water outside the body; fertilisation occurs in the environment. Advantages: large numbers of eggs can be produced; no need for physical contact between parents. Disadvantages: huge numbers of gametes needed because many eggs/sperm are lost; embryos are unprotected from predators and environmental change. Humans use internal fertilisation; most fish and amphibians use external fertilisation.
+**Explanation**: Internal = protected, fewer gametes, parental care; External = many gametes, unprotected. A common error is saying external fertilisation occurs inside the body.
+**Tags**: internal-fertilisation, external-fertilisation, comparison, advantages, animals

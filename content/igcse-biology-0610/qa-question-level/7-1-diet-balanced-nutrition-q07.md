@@ -1,0 +1,6 @@
+# Question: Question Q-7.1-07
+**Difficulty**: Challenge
+**Question**: A person switches to a vegan diet and stops eating all animal products. Explain which nutrients they may become deficient in and what foods they could eat to prevent each deficiency.
+**Answer**: Potential deficiencies: (1) Iron — plant iron (non-haem) is less easily absorbed than animal iron (haem). Solution: eat dark leafy greens (spinach), legumes (lentils), and fortified cereals with vitamin C (enhances iron absorption). (2) Vitamin B₁₂ — only found naturally in animal products. Solution: eat fortified foods (B₁₂-fortified plant milk, cereal, nutritional yeast) or take supplements. (3) Calcium — dairy is the main source for many people. Solution: eat fortified plant milk, tofu set with calcium, leafy greens. (4) Protein — plant proteins may be incomplete (lacking certain essential amino acids). Solution: combine complementary proteins (rice + beans, hummus + pitta). With careful planning, a vegan diet can meet all nutritional needs.
+**Explanation**: Iron/B₁₂/Calcium/Protein strategies — manageable with knowledge. A common error is saying "all vegans will be deficient."
+**Tags**: vegan, deficiency, iron, vitamin-B12, calcium, protein

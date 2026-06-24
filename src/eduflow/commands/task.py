@@ -1,0 +1,2075 @@
+"""`eduflow task <subcommand>`
+
+  task create <assignee> <title> [--by <agent>] [--desc <text>]
+  task flow-create <assignee> <title> --stage S --owner O [--by <agent>] [--desc <text>] [--workflow W]
+  task dispatch <assignee> <title> --stage S --owner O [--by manager] [--desc text] [--workflow W]
+  task flow-transition <id> --to S --actor A
+  task submit-review <id> --actor A
+  task assign-reviewer <id> --reviewer R [--by manager]
+  task review <id> --actor reviewer (--approve | --reject | --manager-action)
+  task review-queue [--stage S] [--reviewer R]
+  task workflow-status <id>
+  task subject-inventory
+  task batch-closeout <id> --actor manager
+  task manager-closeout <id> --actor manager
+  task manager-overview
+  task scan-anomalies
+  task manager-actions
+  task manager-action-apply <action_code> --subject-id <id> [--confirm] [--skip-verifier]
+  task manager-panel
+  task evidence-account [--task-id T] [--workflow W] [--json]
+  task supervisor-check [--advance] [--send] [--json]
+  # downstream helpers (Phase 2/3 skeletons; not Phase 1 core)
+  task publish-check <id> --sender A [--to T]
+  task publish-scan [--to T] [--include-silent] [--advance]
+  task publish-run [--to T] [--send] [--advance]
+  task update <id>       [--status S] [--assignee A] [--title T] [--desc D]
+  task list              [--status S] [--assignee A]
+  task get <id>
+  task done <id>          (alias for `update <id> --status 已完成`)
+"""
+from __future__ import annotations
+
+import json
+import sys
+
+from eduflow.commands import say as say_cmd
+from eduflow.commands import workflow as workflow_cmd
+from eduflow.runtime import config, paths, tunables
+from eduflow.store import (
+    task_event_scanner, task_publish_gate, task_publish_render, tasks,
+    subject_verifier,
+)
+from eduflow.util import (
+    error_exit, fmt_time_ms, maybe_print_help, pop_flag, usage_error,
+    pop_bool_flag, print_json,
+)
+
+_AUTO_STAGE_REASSURANCE_REASONS = frozenset({
+    "worker_accepted",
+    "worker_started",
+    "worker_completed_handed_to_manager",
+})
+
+
+def _verifier_bypass_allowed() -> bool:
+    """Gate for the verifier skip escape hatch.
+
+    Package 2 (Codex Q2): production CLI must never silently bypass the
+    artifact verifier. The env var `EDUFLOW_VERIFIER_BYPASS_ALLOWED=1`
+    is reserved for test fixtures that exercise closeout behaviour without
+    a real content directory. Production runners leave the var unset and
+    the skip flag is rejected.
+    """
+    import os as _os
+    return _os.environ.get("EDUFLOW_VERIFIER_BYPASS_ALLOWED", "").strip() == "1"
+
+
+USAGE = (
+    "usage:\n"
+    "  eduflow task create <assignee> <title> [--by <agent>] [--desc <text>]\n"
+    "  eduflow task flow-create <assignee> <title> --stage S --owner O [--by <agent>] [--desc <text>] [--workflow W]\n"
+    "  eduflow task dispatch <assignee> <title> --stage S --owner O [--by manager] [--desc <text>] [--workflow W]\n"
+    "  eduflow task flow-transition <id> --to S --actor A\n"
+    "  eduflow task submit-review <id> --actor A\n"
+    "  eduflow task assign-reviewer <id> --reviewer R [--by manager]\n"
+    "  eduflow task review <id> --actor reviewer (--approve | --reject | --manager-action)\n"
+    "  eduflow task review-queue [--stage S] [--reviewer R]\n"
+    "  eduflow task workflow-status <id>\n"
+    "  eduflow task subject-inventory\n"
+    "  eduflow task batch-closeout <id> --actor manager\n"
+    "  eduflow task manager-closeout <id> --actor manager\n"
+    "  eduflow task manager-overview\n"
+    "  eduflow task scan-anomalies\n"
+    "  eduflow task manager-actions\n"
+    "  eduflow task manager-action-apply <action_code> --subject-id <id> [--confirm] [--skip-verifier]\n"
+    "  eduflow task manager-panel\n"
+    "  eduflow task evidence-account [--task-id T] [--workflow W] [--json]\n"
+    "  eduflow task supervisor-check [--advance] [--send] [--json]\n"
+    "  # downstream helpers (Phase 2/3 skeletons; not Phase 1 core)\n"
+    "  eduflow task publish-check <id> --sender A [--to T]\n"
+    "  eduflow task publish-scan [--to T] [--include-silent] [--advance]\n"
+    "  eduflow task publish-run [--to T] [--send] [--advance]\n"
+    "  eduflow task update <id>  [--status S] [--assignee A] [--title T] [--desc D]\n"
+    "  eduflow task list  [--status S] [--assignee A]\n"
+    "  eduflow task get <id>\n"
+    "  eduflow task done <id>"
+)
+
+
+def _fmt_task(t: dict) -> list[str]:
+    ts = fmt_time_ms(t["created_at"])
+    head = f"{t['id']}  [{t['status']}]  {t['title']}"
+    body = [f"  assignee: {t.get('assignee') or '-'}"]
+    if t.get("stage"):
+        body.append(f"  stage: {t['stage']}")
+    if t.get("workflow_id"):
+        body.append(f"  workflow_id: {t['workflow_id']}")
+        gate = tasks.workflow_gate_status(t)
+        body.append(f"  workflow_gate: {gate['gate']}")
+        body.append(f"  workflow_gate_status: {gate['gate_status']}")
+        body.append(f"  workflow_next_action: {gate['next_action']}")
+    if t.get("owner"):
+        body.append(f"  owner: {t['owner']}")
+    if t.get("reviewer"):
+        body.append(f"  reviewer: {t['reviewer']}")
+    if t.get("verdict"):
+        body.append(f"  verdict: {t['verdict']}")
+    if t.get("manager_action_type"):
+        body.append(f"  manager_action_type: {t['manager_action_type']}")
+    if t.get("review_reason"):
+        body.append(f"  review_reason: {t['review_reason']}")
+    if t.get("latest_turn_summary"):
+        body.append(f"  latest_turn_summary: {t['latest_turn_summary']}")
+    if t.get("scope_topic"):
+        body.append(f"  scope_topic: {t['scope_topic']}")
+    if t.get("scope_files"):
+        body.append("  scope_files: " + ", ".join(str(item) for item in t["scope_files"]))
+    if t.get("verdict_target"):
+        body.append(f"  verdict_target: {t['verdict_target']}")
+    if t.get("evidence_packet"):
+        packet = t["evidence_packet"]
+        bits = []
+        for key in tasks.REVIEW_EVIDENCE_FIELDS:
+            value = packet.get(key)
+            if isinstance(value, list):
+                shown = ",".join(str(item) for item in value)
+            else:
+                shown = str(value)
+            bits.append(f"{key}={shown}")
+        body.append("  evidence_packet: " + " ".join(bits))
+    if t.get("schema_version") == 2:
+        live_summary = tasks.flow_live_summary(t)
+        if live_summary:
+            body.append(f"  current_summary: {live_summary}")
+        actions = tasks.subject_followup_actions(t)
+        if actions:
+            body.append("  subject_followups: " + ", ".join(actions))
+    if t.get("creator"):
+        body.append(f"  by: {t['creator']}")
+    if t.get("description"):
+        if t.get("schema_version") == 2:
+            body.append(f"  initial_brief: {t['description']}")
+        else:
+            body.append(f"  desc: {t['description']}")
+    body.append(f"  created: {ts}")
+    return [head] + body
+
+
+def _cmd_create(rest: list[str]) -> int:
+    by = pop_flag(rest, "--by") or ""
+    desc = pop_flag(rest, "--desc") or ""
+    if len(rest) < 2:
+        return usage_error(USAGE)
+    assignee = rest[0]
+    title = " ".join(rest[1:])
+    try:
+        tid = tasks.create(assignee, title, description=desc, creator=by)
+    except ValueError as e:
+        return error_exit(f"❌ {e}")
+    print(f"✅ created {tid}: {title} → {assignee}")
+    return 0
+
+
+def _cmd_flow_create(rest: list[str]) -> int:
+    by = pop_flag(rest, "--by") or ""
+    desc = pop_flag(rest, "--desc") or ""
+    stage = pop_flag(rest, "--stage")
+    owner = pop_flag(rest, "--owner")
+    workflow_id = pop_flag(rest, "--workflow") or ""
+    if len(rest) < 2 or not stage or not owner:
+        return usage_error(USAGE)
+    if workflow_id and not workflow_cmd.is_active_workflow(workflow_id):
+        return error_exit(f"❌ unknown workflow: {workflow_id}")
+    assignee = rest[0]
+    title = " ".join(rest[1:])
+    try:
+        effective_workflow_id = tasks.normalize_required_workflow_id(
+            title=title,
+            stage=stage,
+            workflow_id=workflow_id,
+        )
+    except ValueError as e:
+        return error_exit(f"❌ {e}")
+    if effective_workflow_id and not workflow_cmd.is_active_workflow(effective_workflow_id):
+        return error_exit(f"❌ unknown workflow: {effective_workflow_id}")
+    try:
+        tid = tasks.create_flow(
+            assignee,
+            title,
+            stage=stage,
+            owner=owner,
+            creator=by,
+            description=desc,
+            workflow_id=effective_workflow_id,
+        )
+    except ValueError as e:
+        return error_exit(f"❌ {e}")
+    workflow_text = f" workflow={effective_workflow_id}" if effective_workflow_id else ""
+    if effective_workflow_id and effective_workflow_id != workflow_id:
+        workflow_text += " auto_mounted=true"
+    print(f"✅ created flow task {tid}: {title} → {assignee} [{stage}] owner={owner}{workflow_text}")
+    _auto_publish_stage_tick(tid)
+    return 0
+
+
+def _cmd_dispatch(rest: list[str]) -> int:
+    by = pop_flag(rest, "--by") or "manager"
+    desc = pop_flag(rest, "--desc") or ""
+    stage = pop_flag(rest, "--stage")
+    owner = pop_flag(rest, "--owner")
+    workflow_id = pop_flag(rest, "--workflow") or ""
+    if len(rest) < 2 or not stage or not owner:
+        return usage_error(USAGE)
+    if by != "manager":
+        return error_exit("❌ dispatch currently only supports --by manager")
+    if workflow_id and not workflow_cmd.is_active_workflow(workflow_id):
+        return error_exit(f"❌ unknown workflow: {workflow_id}")
+    assignee = rest[0]
+    title = " ".join(rest[1:])
+    try:
+        effective_workflow_id = tasks.normalize_required_workflow_id(
+            title=title,
+            stage=stage,
+            workflow_id=workflow_id,
+        )
+    except ValueError as e:
+        return error_exit(f"❌ {e}")
+    if effective_workflow_id and not workflow_cmd.is_active_workflow(effective_workflow_id):
+        return error_exit(f"❌ unknown workflow: {effective_workflow_id}")
+    try:
+        tid = tasks.create_flow(
+            assignee,
+            title,
+            stage=stage,
+            owner=owner,
+            creator=by,
+            description=desc,
+            workflow_id=effective_workflow_id,
+        )
+        tasks.transition_flow(tid, to_status="assigned", actor="manager")
+    except ValueError as e:
+        return error_exit(f"❌ {e}")
+    print(
+        f"✅ dispatched {tid}: {title} → {assignee} "
+        f"[{stage}] owner={owner} status=assigned"
+        f"{(' workflow=' + effective_workflow_id) if effective_workflow_id else ''}"
+        f"{' auto_mounted=true' if effective_workflow_id and effective_workflow_id != workflow_id else ''}"
+    )
+    _auto_publish_stage_tick(tid)
+    return 0
+
+
+def _cmd_update(rest: list[str]) -> int:
+    status = pop_flag(rest, "--status")
+    assignee = pop_flag(rest, "--assignee")
+    title = pop_flag(rest, "--title")
+    desc = pop_flag(rest, "--desc")
+    if len(rest) < 1:
+        return usage_error(USAGE)
+    tid = rest[0]
+    try:
+        ok = tasks.update(tid, status=status, assignee=assignee,
+                          title=title, description=desc)
+    except ValueError as e:
+        return error_exit(f"❌ {e}")
+    if not ok:
+        return error_exit(f"❌ no such task: {tid}")
+    print(f"✅ updated {tid}")
+    return 0
+
+
+def _cmd_flow_transition(rest: list[str]) -> int:
+    to_status = pop_flag(rest, "--to")
+    actor = pop_flag(rest, "--actor")
+    if len(rest) < 1 or not to_status or not actor:
+        return usage_error(USAGE)
+    tid = rest[0]
+    try:
+        ok = tasks.transition_flow(tid, to_status=to_status, actor=actor)
+    except ValueError as e:
+        return error_exit(f"❌ {e}")
+    if not ok:
+        return error_exit(f"❌ no such task: {tid}")
+    print(f"✅ transitioned {tid} -> {to_status} ({actor})")
+    _auto_publish_stage_tick(tid)
+    return 0
+
+
+def _cmd_review(rest: list[str]) -> int:
+    actor = pop_flag(rest, "--actor")
+    review_reason = pop_flag(rest, "--reason") or ""
+    latest_turn_summary = pop_flag(rest, "--summary") or ""
+    manager_action_type = pop_flag(rest, "--manager-action-type") or ""
+    scope_topic = pop_flag(rest, "--scope-topic") or ""
+    verdict_target = pop_flag(rest, "--verdict-target") or ""
+    evidence_json = pop_flag(rest, "--evidence-json") or ""
+    scope_files = []
+    while True:
+        value = pop_flag(rest, "--scope-file")
+        if value is None:
+            break
+        scope_files.append(value)
+    approve = pop_bool_flag(rest, "--approve")
+    reject = pop_bool_flag(rest, "--reject")
+    manager_action = pop_bool_flag(rest, "--manager-action")
+    flags = [
+        ("approve", approve),
+        ("reject", reject),
+        ("manager_action", manager_action),
+    ]
+    chosen = [name for name, enabled in flags if enabled]
+    if len(rest) < 1 or not actor:
+        return usage_error(USAGE)
+    if len(chosen) != 1:
+        return error_exit("❌ review requires exactly one outcome flag")
+    tid = rest[0]
+    outcome = chosen[0]
+    evidence_packet = {}
+    if evidence_json:
+        try:
+            evidence_packet = json.loads(evidence_json)
+        except json.JSONDecodeError as e:
+            return error_exit(f"❌ invalid evidence json: {e}")
+    try:
+        ok = tasks.review_flow(
+            tid,
+            outcome=outcome,
+            actor=actor,
+            review_reason=review_reason,
+            latest_turn_summary=latest_turn_summary,
+            manager_action_type=manager_action_type,
+            scope_topic=scope_topic,
+            scope_files=scope_files,
+            verdict_target=verdict_target,
+            evidence_packet=evidence_packet,
+        )
+    except ValueError as e:
+        return error_exit(f"❌ {e}")
+    if not ok:
+        return error_exit(f"❌ no such task: {tid}")
+    task = tasks.get(tid) or {}
+    print(
+        f"✅ reviewed {tid} outcome={outcome} "
+        f"status={task.get('status', '-')} verdict={task.get('verdict', '-')}"
+    )
+    _auto_publish_stage_tick(tid)
+    return 0
+
+
+def _cmd_submit_review(rest: list[str]) -> int:
+    actor = pop_flag(rest, "--actor")
+    if len(rest) < 1 or not actor:
+        return usage_error(USAGE)
+    tid = rest[0]
+    try:
+        ok = tasks.submit_for_review(tid, actor=actor)
+    except ValueError as e:
+        return error_exit(f"❌ {e}")
+    if not ok:
+        return error_exit(f"❌ no such task: {tid}")
+    task = tasks.get(tid) or {}
+    print(
+        f"✅ submitted {tid} for review "
+        f"status={task.get('status', '-')} verdict={task.get('verdict', '-')}"
+    )
+    _auto_publish_stage_tick(tid)
+    return 0
+
+
+def _cmd_assign_reviewer(rest: list[str]) -> int:
+    reviewer = pop_flag(rest, "--reviewer")
+    by = pop_flag(rest, "--by") or "manager"
+    if len(rest) < 1 or not reviewer:
+        return usage_error(USAGE)
+    tid = rest[0]
+    try:
+        ok = tasks.assign_reviewer(tid, reviewer=reviewer, actor=by)
+    except ValueError as e:
+        return error_exit(f"❌ {e}")
+    if not ok:
+        return error_exit(f"❌ no such task: {tid}")
+    print(f"✅ assigned reviewer {reviewer} to {tid}")
+    _auto_publish_stage_tick(tid)
+    return 0
+
+
+def _auto_publish_stage_tick(task_id: str) -> None:
+    """Best-effort one-task worker/reviewer reassurance after a state change.
+
+    The long-running `task-publish` loop remains the normal batch publisher.
+    This tick is a small UX safety net for live supervision: it only sends
+    worker reassurance reasons, advances the same explanation/cursor state,
+    and never blocks the task command on delivery failure.
+    """
+    if not bool(tunables.tunable("task.auto_publish_tick", True)):
+        return
+    if not config.chat_id():
+        return
+    try:
+        rows = task_event_scanner.scan_publish_decisions(
+            to_target="user",
+            include_silent=True,
+            advance=False,
+        )
+        selected = [
+            row for row in rows
+            if (
+                str(row.get("task_id") or "") == task_id
+                and bool(row.get("publish"))
+                and str(row.get("reason") or "") in _AUTO_STAGE_REASSURANCE_REASONS
+            )
+        ]
+        if not selected:
+            return
+        selected.sort(key=lambda row: int(row.get("created_at") or 0))
+        for row in selected:
+            task = tasks.get(str(row.get("task_id") or "")) or {}
+            message = task_publish_render.render_publish_message(task, row)
+            if not message:
+                continue
+            sender = str(task.get("assignee") or row.get("sender") or "manager")
+            rc = say_cmd.main([sender, message, "--to", str(row.get("to_target") or "user")])
+            if rc != 0:
+                print(f"  ⚠️ auto publish tick failed for {task_id}")
+                return
+        explanation_state = task_event_scanner.read_explanation_state()
+        sent = explanation_state.setdefault("sent", {})
+        for row in selected:
+            sent[f"{row.get('task_id') or ''}::{row.get('reason') or ''}"] = str(row.get("event_id") or "")
+        task_event_scanner.write_explanation_state(explanation_state)
+        print(f"  📣 auto stage reassurance published for {task_id}")
+    except Exception as e:
+        print(f"  ⚠️ auto publish tick skipped for {task_id}: {e}")
+
+
+def _cmd_review_queue(rest: list[str]) -> int:
+    stage = pop_flag(rest, "--stage")
+    reviewer = pop_flag(rest, "--reviewer")
+    if rest:
+        return usage_error(USAGE)
+    rows = tasks.list_review_queue(stage=stage, reviewer=reviewer)
+    if not rows:
+        print("📭 no tasks awaiting review")
+        return 0
+    head = "📥 awaiting review"
+    if stage:
+        head += f" [{stage}]"
+    if reviewer:
+        head += f" reviewer={reviewer}"
+    print(head)
+    for t in rows:
+        print(
+            f"{t['id']}  [{t.get('stage') or '-'}]  {t['title']}  "
+            f"owner={t.get('owner') or '-'} assignee={t.get('assignee') or '-'} "
+            f"reviewer={t.get('reviewer') or '-'}"
+        )
+    return 0
+
+
+_WORKFLOW_HINTS = {
+    "igcse-subject-launch": {
+        "gate": "review_handoff_gate",
+        "next_check": "workflow closeout igcse-subject-launch",
+    },
+    "igcse-item-level-prototype": {
+        "gate": "file_evidence_gate",
+        "next_check": "workflow gates igcse-item-level-prototype",
+    },
+    "realrun-to-workflow": {
+        "gate": "artifact_standard_gate",
+        "next_check": "workflow maintainer realrun-to-workflow",
+    },
+    "ap-knowledge-base-optimization": {
+        "gate": "review_handoff_gate",
+        "next_check": "task tier-status <id>",
+    },
+}
+
+
+def _workflow_hint(row: dict) -> dict:
+    workflow_id = str(row.get("workflow_id") or "").strip()
+    if not workflow_id:
+        return {}
+    hint = _WORKFLOW_HINTS.get(workflow_id)
+    if hint is None:
+        return {
+            "gate": "unknown_workflow",
+            "next_check": f"workflow validate / workflow list ({workflow_id})",
+        }
+    return hint
+
+
+def _cmd_manager_overview(rest: list[str]) -> int:
+    if rest:
+        return usage_error(USAGE)
+    overview = tasks.manager_overview()
+    print("📊 manager overview")
+    for key in ("in_progress", "awaiting_review", "blocked", "manager_action", "subject_closeout"):
+        rows = overview[key]
+        print(f"{key}: {len(rows)}")
+        for row in rows[:5]:
+            print(
+                f"  - {row['id']} [{row.get('stage') or '-'}] {row['title']} "
+                f"owner={row.get('owner') or '-'} reviewer={row.get('reviewer') or '-'}"
+                f"{(' workflow=' + row['workflow_id']) if row.get('workflow_id') else ''}"
+            )
+            live_summary = tasks.flow_live_summary(row)
+            if live_summary:
+                print(f"    manager_summary={live_summary}")
+            workflow_hint = _workflow_hint(row)
+            if workflow_hint:
+                print(f"    workflow_gate_hint={workflow_hint['gate']}")
+                print(f"    workflow_next_check={workflow_hint['next_check']}")
+            if row.get("manager_action_type") or row.get("review_reason"):
+                print(
+                    "    "
+                    f"manager_action_type={row.get('manager_action_type') or '-'} "
+                    f"review_reason={row.get('review_reason') or '-'}"
+                )
+            if row.get("latest_turn_summary"):
+                print(f"    latest_turn_summary={row['latest_turn_summary']}")
+    return 0
+
+
+def _cmd_scan_anomalies(rest: list[str]) -> int:
+    if rest:
+        return usage_error(USAGE)
+    rows = task_event_scanner.scan_manager_anomalies()
+    if not rows:
+        print("📭 no manager-facing task anomalies")
+        return 0
+    print("🚨 manager-facing task anomalies")
+    for row in rows:
+        print(
+            f"{row['category']}  task={row['task_id']}  "
+            f"stage={row.get('stage') or '-'}  status={row.get('status') or '-'}"
+        )
+        if row.get("surface_state"):
+            print(
+                f"  surface_state: "
+                f"{task_publish_render.describe_surface_state(str(row.get('surface_state') or ''))}"
+            )
+        print(f"  why: {row['why']}")
+        print(f"  evidence: {row['evidence_summary']}")
+        if row.get("recommended_action"):
+            print(f"  recommended_action: {row['recommended_action']}")
+        if row.get("action_packet"):
+            _print_action_packet(row["action_packet"], indent="  ")
+    return 0
+
+
+def _task_brief(row: dict) -> str:
+    brief = (
+        f"{row['id']} [{row.get('stage') or '-'}] {row['title']} "
+        f"owner={row.get('owner') or '-'} reviewer={row.get('reviewer') or '-'}"
+    )
+    if row.get("workflow_id"):
+        brief += f" workflow={row['workflow_id']}"
+        workflow_hint = _workflow_hint(row)
+        if workflow_hint:
+            brief += (
+                f" workflow_gate_hint={workflow_hint['gate']}"
+                f" workflow_next_check={workflow_hint['next_check']}"
+            )
+    live_summary = tasks.flow_live_summary(row)
+    if live_summary:
+        brief += f" :: {live_summary}"
+    elif row.get("manager_action_type") or row.get("review_reason"):
+        if row.get("manager_action_type"):
+            brief += f" manager_action_type={row['manager_action_type']}"
+        if row.get("review_reason"):
+            brief += f" review_reason={row['review_reason']}"
+    return brief
+
+
+def _is_workflow_drive_task(row: dict) -> bool:
+    """Tasks that should be surfaced in the manager-panel workflow drive lane.
+
+    Includes all IGCSE subject production tasks (regardless of whether the
+    workflow_id is mounted yet) and any task that already carries a workflow_id.
+    """
+    if not isinstance(row, dict) or not row.get("id"):
+        return False
+    if row.get("schema_version") != 2:
+        return False
+    if str(row.get("status") or "") in {"delivered", "cancelled", "已完成", "已取消"}:
+        return False
+    if str(row.get("workflow_id") or "").strip():
+        return True
+    return tasks.is_igcse_course_task(
+        title=str(row.get("title") or ""),
+        stage=str(row.get("stage") or ""),
+    )
+
+
+def _collect_workflow_drive_rows() -> list[dict]:
+    """Return active tasks that should appear in the workflow drive lane."""
+    rows = tasks.list_tasks()
+    return [row for row in rows if _is_workflow_drive_task(row)]
+
+
+def _collect_revision_priority_blockers() -> list[dict]:
+    """Return active flow tasks whose revision_priority is still set.
+
+    Package 7 (Revision-First Gate): these tasks take priority over any
+    continuation logic. The manager-panel and manager-action surfaces
+    must surface them before continue_next_batch / select_next_subject
+    recommendations.
+    """
+    rows = tasks.list_tasks()
+    blockers: list[dict] = []
+    for row in rows:
+        if row.get("schema_version") != 2:
+            continue
+        if str(row.get("status") or "") in {"delivered", "cancelled", "已完成", "已取消"}:
+            continue
+        revision_priority = str(row.get("revision_priority") or "").strip()
+        if not revision_priority:
+            continue
+        gate = tasks.workflow_gate_status(row)
+        blockers.append({
+            "task_id": str(row.get("id") or ""),
+            "title": str(row.get("title") or ""),
+            "workflow_id": str(row.get("workflow_id") or "").strip(),
+            "revision_priority": revision_priority,
+            "scope_topic": str(row.get("scope_topic") or "").strip(),
+            "owner": str(row.get("owner") or row.get("assignee") or "").strip(),
+            "next_action": str(gate.get("next_action") or ""),
+            "recommended_action": "clear_revision_priority_or_stay_in_scope",
+        })
+    return blockers
+
+
+def _packet_apply_allowed_for_subject(subject_id: str, packets: list[dict]) -> bool:
+    return any(
+        str(p.get("subject_id") or "") == subject_id
+        and bool(p.get("apply_allowed"))
+        for p in packets
+    )
+
+
+def _packet_blocking_reasons_for_subject(subject_id: str, packets: list[dict]) -> list[str]:
+    """Surface blocking reasons from the action packet layer.
+
+    This keeps the manager-action / manager-panel views honest about WHY a
+    packet is not yet apply_allowed, while staying quiet when the gate is
+    green. Each packet reports only its own critical blockers, not the
+    downstream follow-ups (qbank readiness is a follow-up, not a blocker
+    for manager_formal_closeout).
+    """
+    reasons: list[str] = []
+    for p in packets:
+        if str(p.get("subject_id") or "") != subject_id:
+            continue
+        action_code = str(p.get("action_code") or "")
+        gate = p.get("closeout_gate") or {}
+        if action_code == "manager_formal_closeout":
+            if gate.get("review_approved") is False:
+                _append_unique(reasons, "review_not_approved")
+            if gate.get("evidence_present") is False:
+                _append_unique(reasons, "evidence_missing")
+            if gate.get("qa_standard_met") is False:
+                _append_unique(reasons, "qa_standard_not_met")
+            # qbank_ready is a downstream follow-up, not a blocker for
+            # manager_formal_closeout itself.
+            continue
+        # Generic case: report every gate field that is False.
+        for key, label in (
+            ("review_approved", "review_not_approved"),
+            ("evidence_present", "evidence_missing"),
+            ("qa_standard_met", "qa_standard_not_met"),
+            ("qbank_ready", "qbank_not_ready"),
+        ):
+            if gate.get(key) is False:
+                _append_unique(reasons, label)
+    return reasons
+
+
+def _append_unique(items: list[str], value: str) -> None:
+    if value not in items:
+        items.append(value)
+
+
+def _workflow_drive_line(row: dict, *, packets: list[dict] | None = None) -> str:
+    """Single-line summary of a task's workflow drive state for manager-panel.
+
+    Keeps the field order stable for grep-based operators/tests:
+    workflow_id | workflow_gate | workflow_gate_status | next_action |
+    apply_allowed | blocking_reasons
+    """
+    task_id = str(row.get("id") or "")
+    title = str(row.get("title") or "-")
+    gate = tasks.workflow_gate_status(row)
+    workflow_id = str(gate.get("workflow_id") or "").strip()
+    if not workflow_id:
+        # IGCSE task but workflow was never mounted: surface it explicitly.
+        is_igcse = tasks.is_igcse_course_task(
+            title=str(row.get("title") or ""),
+            stage=str(row.get("stage") or ""),
+        )
+        if is_igcse:
+            return (
+                f"{task_id} [{row.get('stage') or '-'}] {title} "
+                f"workflow_missing=true "
+                f"workflow_id=- "
+                f"workflow_gate=- "
+                f"workflow_gate_status=- "
+                f"next_action=mount_igcse_subject_launch_workflow "
+                f"apply_allowed=false "
+                f"blocking_reasons=workflow_not_mounted"
+            )
+        return ""
+    next_action = str(gate.get("next_action") or "-")
+    apply_allowed = _packet_apply_allowed_for_subject(task_id, packets or [])
+    reasons = _packet_blocking_reasons_for_subject(task_id, packets or [])
+    if not apply_allowed and not reasons:
+        # Even when no subject-closeout packet exists, the closeout_status
+        # itself encodes gate reasons. Only inject when we actually have data
+        # to keep the output minimal.
+        pass
+    return (
+        f"{task_id} [{row.get('stage') or '-'}] {title} "
+        f"workflow_id={workflow_id} "
+        f"workflow_gate={str(gate.get('gate') or '-')} "
+        f"workflow_gate_status={str(gate.get('gate_status') or '-')} "
+        f"next_action={next_action} "
+        f"apply_allowed={str(apply_allowed).lower()} "
+        f"blocking_reasons={','.join(reasons) if reasons else '-'}"
+    )
+
+
+def _subject_inventory_brief(row: dict) -> str:
+    return (
+        f"{row.get('subject_id') or '-'} :: {row.get('subject_name') or '-'} "
+        f"slug={row.get('subject_slug') or '-'} "
+        f"code={row.get('subject_code') or '-'} "
+        f"qa_count={row.get('qa_count') or 0} "
+        f"item_count={row.get('item_count') or 0} "
+        f"outline_topic_count={row.get('outline_topic_count') or 0} "
+        f"manifest_covered_count={row.get('manifest_covered_count') or 0} "
+        f"qa_standard={row.get('qa_standard') or '-'} "
+        f"qa_range={row.get('qa_min') or 0}-{row.get('qa_max') or 0} "
+        f"qbank_readiness={row.get('qbank_readiness') or '-'} "
+        f"recommended_qbank_action={row.get('recommended_qbank_action') or '-'} "
+        f"review_status={row.get('review_status') or '-'} "
+        f"closeout_status={row.get('closeout_status') or '-'} "
+        f"next_candidate_rank={row.get('next_candidate_rank') or 0} "
+        f"next_action={row.get('next_action') or row.get('recommended_action') or '-'} "
+        f"recommended_action={row.get('recommended_action') or '-'}"
+    )
+
+
+def _cmd_subject_inventory(rest: list[str]) -> int:
+    content_dir = pop_flag(rest, "--content-dir") or "content"
+    if rest:
+        return usage_error(USAGE)
+    rows = tasks.subject_inventory_extended()
+    print("📚 subject inventory (extended)")
+    if not rows:
+        print("none")
+        return 0
+    # Package 6: show verifier compact summary for each subject
+    for row in rows:
+        print(f"  - {_subject_inventory_brief(row)}")
+        slug = row.get("subject_slug", "")
+        if slug:
+            try:
+                vresult = subject_verifier.verify_subject(content_dir, slug)
+                compact = subject_verifier.compact_summary(vresult)
+                print(f"    verifier: status={compact['status']} "
+                      f"topics={compact['topic_count']} "
+                      f"questions={compact['total_questions']} "
+                      f"qa={compact['qa_count']} qql={compact['qql_count']} items={compact['items_count']} "
+                      f"manifest={compact['has_manifest']} "
+                      f"legacy={compact['legacy_fragment_present']} "
+                      f"orphans={compact['orphan_candidate_count']}")
+                if compact["blocking_reasons"]:
+                    print(f"    verifier_blocking: {'; '.join(compact['blocking_reasons'])}")
+            except Exception:
+                pass  # best-effort for inventory display
+    return 0
+
+
+def _cmd_manager_closeout(rest: list[str]) -> int:
+    actor = pop_flag(rest, "--actor")
+    content_dir = pop_flag(rest, "--content-dir") or "content"
+    skip_verifier = pop_bool_flag(rest, "--skip-verifier")
+    if len(rest) != 1 or not actor:
+        return usage_error(USAGE)
+    # Package 2 (Codex Q2): production CLI must not silently bypass the
+    # verifier. `--skip-verifier` is only allowed when the operator has
+    # explicitly enabled it via an env var that is meant for test fixtures
+    # where no real content directory exists. In production the right
+    # action is to dispatch the worker to repair the drift and re-verify.
+    if skip_verifier and not _verifier_bypass_allowed():
+        return error_exit(
+            "❌ --skip-verifier is disabled in production; "
+            "set EDUFLOW_VERIFIER_BYPASS_ALLOWED=1 only for test fixtures, "
+            "otherwise repair the verifier blockers and re-run"
+        )
+    tid = rest[0]
+    task = tasks.get(tid)
+    if task is None:
+        return error_exit(f"❌ no such task: {tid}")
+    # Package 6: run verifier before allowing closeout (skippable for tests)
+    title = str(task.get("title") or "")
+    slug = tasks.extract_subject_slug(title)
+    vresult = None
+    if slug and not skip_verifier:
+        vresult = subject_verifier.verify_subject(content_dir, slug)
+        compact = subject_verifier.compact_summary(vresult)
+        print(f"🔍 subject verifier: {compact['status']} topics={compact['topic_count']} "
+              f"questions={compact['total_questions']} legacy={compact['legacy_fragment_present']}")
+        if compact["blocking_reasons"]:
+            print(f"   blocking_reasons: {'; '.join(compact['blocking_reasons'])}")
+    try:
+        ok = tasks.manager_closeout_subject(
+            tid, actor=actor, verifier_result=vresult, content_dir=content_dir,
+            skip_subject_verifier=skip_verifier,
+        )
+    except ValueError as e:
+        return error_exit(f"❌ {e}")
+    if not ok:
+        return error_exit(f"❌ no such task: {tid}")
+    gate = tasks.subject_closeout_status(tasks.get(tid))
+    print(
+        f"✅ manager closeout {tid} "
+        f"closeout_status={gate.get('closeout_status') or '-'} "
+        f"recommended_action={gate.get('recommended_action') or '-'}"
+    )
+    return 0
+
+
+def _cmd_batch_closeout(rest: list[str]) -> int:
+    actor = pop_flag(rest, "--actor")
+    if len(rest) != 1 or not actor:
+        return usage_error(USAGE)
+    tid = rest[0]
+    try:
+        ok = tasks.batch_closeout(tid, actor=actor)
+    except ValueError as e:
+        return error_exit(f"❌ {e}")
+    if not ok:
+        return error_exit(f"❌ no such task: {tid}")
+    task = tasks.get(tid) or {}
+    gate = tasks.workflow_gate_status(task)
+    print(
+        f"✅ batch closeout {tid} "
+        f"closeout_status={task.get('closeout_status') or '-'} "
+        f"workflow_gate={gate.get('gate') or '-'}"
+    )
+    return 0
+
+
+def _cmd_workflow_status(rest: list[str]) -> int:
+    if len(rest) != 1:
+        return usage_error(USAGE)
+    tid = rest[0]
+    task = tasks.get(tid)
+    if task is None:
+        return error_exit(f"❌ no such task: {tid}")
+    gate = tasks.workflow_gate_status(task)
+    print(f"workflow_id={gate.get('workflow_id') or '-'}")
+    print(f"gate={gate.get('gate') or '-'}")
+    print(f"gate_status={gate.get('gate_status') or '-'}")
+    print(f"status={gate.get('status') or '-'}")
+    print(f"verdict={gate.get('verdict') or '-'}")
+    print(f"reviewer={gate.get('reviewer') or '-'}")
+    print(f"default_reviewer={gate.get('default_reviewer') or '-'}")
+    print(f"evidence_keys={','.join(gate.get('evidence_keys') or []) or '-'}")
+    print(f"closeout_status={gate.get('closeout_status') or '-'}")
+    print(f"next_action={gate.get('next_action') or '-'}")
+    return 0
+
+
+def _action_packet_line(packet: dict) -> str:
+    return (
+        f"action_code={packet.get('action_code') or '-'} "
+        f"apply_allowed={str(bool(packet.get('apply_allowed'))).lower()} "
+        f"assignee={packet.get('assignee') or '-'} "
+        f"task_stage={packet.get('task_stage') or '-'} "
+        f"subject_id={packet.get('subject_id') or '-'} "
+        f"subject_name={packet.get('subject_name') or '-'}"
+    )
+
+
+def _print_closeout_gate(gate: dict, *, indent: str = "") -> None:
+    if not isinstance(gate, dict) or not gate:
+        return
+    # Accept both prefixed (from subject_closeout_status) and unprefixed
+    # (from _closeout_gate_summary) keys so the function is safe for any caller.
+    review_approved = bool(gate.get("closeout_gate_review_approved") or gate.get("review_approved"))
+    evidence_present = bool(gate.get("closeout_gate_evidence_present") or gate.get("evidence_present"))
+    qa_standard_met = bool(gate.get("closeout_gate_qa_standard_met") or gate.get("qa_standard_met"))
+    qbank_ready = bool(gate.get("closeout_gate_qbank_ready") or gate.get("qbank_ready"))
+    print(
+        f"{indent}closeout_gate: "
+        f"review_approved={str(review_approved).lower()} "
+        f"evidence_present={str(evidence_present).lower()} "
+        f"qa_standard_met={str(qa_standard_met).lower()} "
+        f"qbank_ready={str(qbank_ready).lower()}"
+    )
+
+
+def _print_action_packet(packet: dict, *, indent: str = "") -> None:
+    print(f"{indent}action_packet: {_action_packet_line(packet)}")
+    if packet.get("reason"):
+        print(f"{indent}  reason={packet['reason']}")
+    if packet.get("suggested_brief"):
+        print(f"{indent}  suggested_brief={packet['suggested_brief']}")
+    _print_closeout_gate(packet.get("closeout_gate") or {}, indent=indent + "  ")
+    plan = packet.get("execution_plan") or {}
+    if isinstance(plan, dict) and plan:
+        _print_execution_plan(plan, indent=indent + "  ")
+    status = task_event_scanner.manager_action_apply_status(
+        str(packet.get("action_code") or ""),
+        str(packet.get("subject_id") or ""),
+    )
+    if not status:
+        status = task_event_scanner.action_packet_preview_status(packet)
+    _print_apply_result(status, indent=indent + "  ", label="apply_status")
+
+
+def _print_execution_plan(plan: dict, *, indent: str = "") -> None:
+    print(
+        f"{indent}execution_plan: "
+        f"plan_type={plan.get('plan_type') or '-'} "
+        f"dry_run={str(bool(plan.get('dry_run'))).lower()} "
+        f"execution_policy={plan.get('execution_policy') or '-'}"
+    )
+    preconditions = plan.get("preconditions") or []
+    if preconditions:
+        print(f"{indent}  preconditions=" + ", ".join(str(item) for item in preconditions))
+    if plan.get("proposed_command"):
+        print(f"{indent}  proposed_command={plan['proposed_command']}")
+    if plan.get("proposed_brief"):
+        print(f"{indent}  proposed_brief={plan['proposed_brief']}")
+
+
+def _print_apply_result(result: dict, *, indent: str = "", label: str = "apply_result") -> None:
+    apply_mode = result.get("apply_mode") or "-"
+    apply_reason = result.get("apply_reason") or "-"
+    apply_state = "confirmed_state" if apply_mode == "confirmed" else "dry_run_preview"
+    print(
+        f"{indent}{label}: "
+        f"applied={str(bool(result.get('applied'))).lower()} "
+        f"action_code={result.get('action_code') or '-'} "
+        f"subject_id={result.get('subject_id') or '-'} "
+        f"apply_mode={apply_mode} "
+        f"apply_reason={apply_reason} "
+        f"apply_state={apply_state}"
+    )
+    print(f"{indent}  created_task_id={result.get('created_task_id') or '-'}")
+    print(f"{indent}  updated_subject_id={result.get('updated_subject_id') or '-'}")
+    print(f"{indent}  existing_task_id={result.get('existing_task_id') or '-'}")
+    print(f"{indent}  apply_summary={result.get('apply_summary') or '-'}")
+
+
+def _print_context_guard_fields(row: dict, *, indent: str = "  ") -> None:
+    affected = row.get("affected_agent") or row.get("agent")
+    if affected:
+        print(f"{indent}affected_agent={affected}")
+    if row.get("message_id"):
+        print(f"{indent}message_id={row['message_id']}")
+    if "allow_continue_original_task" in row:
+        print(
+            f"{indent}allow_continue_original_task="
+            f"{str(bool(row.get('allow_continue_original_task'))).lower()}"
+        )
+    if "inbox_recovery_needed" in row:
+        print(
+            f"{indent}inbox_recovery_needed="
+            f"{str(bool(row.get('inbox_recovery_needed'))).lower()}"
+        )
+
+
+def _manager_action_packets() -> list[dict]:
+    rows = task_event_scanner.scan_manager_anomalies()
+    packets: list[dict] = []
+    seen: set[tuple[str, str, str]] = set()
+    for row in rows:
+        packet = row.get("action_packet")
+        if not isinstance(packet, dict) or not packet.get("action_code"):
+            continue
+        key = (
+            str(packet.get("action_code") or ""),
+            str(packet.get("subject_id") or row.get("task_id") or ""),
+            str(packet.get("assignee") or ""),
+        )
+        if key in seen:
+            continue
+        seen.add(key)
+        packets.append(packet)
+    return packets
+
+
+_CONTEXT_GUARD_CATEGORIES = frozenset({
+    "worker_context_exhausted",
+    "worker_high_priority_unacked_while_producing",
+    "status_pane_truth_conflict",
+    "unsafe_long_context_execution",
+})
+
+
+def _cmd_manager_actions(rest: list[str]) -> int:
+    if rest:
+        return usage_error(USAGE)
+    packets = _manager_action_packets()
+    print("🧭 suggested manager actions")
+    context_blockers = [
+        row for row in task_event_scanner.scan_manager_anomalies()
+        if str(row.get("category") or "") in _CONTEXT_GUARD_CATEGORIES
+    ]
+    if context_blockers:
+        print("context_guard_blockers:")
+        for row in context_blockers[:8]:
+            print(
+                f"- blocker={row['category']} "
+                f"affected_agent={row.get('affected_agent') or row.get('agent') or '-'} "
+                f"recommended_action={row.get('recommended_action') or '-'} "
+                f"allow_continue_original_task="
+                f"{str(bool(row.get('allow_continue_original_task'))).lower()}"
+            )
+            if row.get("message_id"):
+                print(f"  message_id={row['message_id']}")
+            print(f"  latest_evidence={row.get('evidence_summary') or '-'}")
+    if not packets:
+        if not context_blockers:
+            print("none")
+        return 0
+    # Package 7 (Revision-First Gate): if any active flow task has
+    # revision_priority set, suppress action codes that would pivot
+    # production away from the open revision. Other action codes
+    # (rework, closeout, evidence, qbank) remain visible because they
+    # are valid under the revision gate. `dispatch_next_subject_worker_course`
+    # and `request_worker_course_expand_qa` are the real production-pivot
+    # paths; they must NOT be recommended actions while the gate is active.
+    revision_first_active = tasks.has_active_revision_priority("")
+    # Package 7 (Revision-First Gate) round 7 fix: use the full
+    # REVISION_FIRST_BLOCKED_RECOMMENDATIONS set (includes
+    # continue_next_batch / select_next_subject which are
+    # recommendations, not apply action_codes, but the recommendation
+    # layer must still filter them).
+    blocked_codes = task_event_scanner.REVISION_FIRST_BLOCKED_RECOMMENDATIONS
+    suppressed_codes = (
+        blocked_codes
+        if revision_first_active
+        else set()
+    )
+    if suppressed_codes:
+        packets = [
+            packet for packet in packets
+            if str(packet.get("action_code") or "") not in suppressed_codes
+        ]
+        if not packets:
+            print("none (revision_first_gate_holds_continuation)")
+            return 0
+        print(
+            "revision_first_active :: suppressed_codes="
+            f"{','.join(sorted(suppressed_codes))} :: "
+            "owner_must_clear_revision_priority_or_stay_in_scope"
+        )
+    for packet in packets:
+        print(f"- {_action_packet_line(packet)}")
+        # workflow-first summary line — gives manager the next move at a glance.
+        subject_id = str(packet.get("subject_id") or "")
+        next_action = str(packet.get("action_code") or "-")
+        apply_allowed = bool(packet.get("apply_allowed"))
+        blocking_reasons = _packet_blocking_reasons_for_subject(
+            subject_id, [packet],
+        )
+        print(
+            f"  workflow_next_action={next_action} "
+            f"apply_allowed={str(apply_allowed).lower()} "
+            f"blocking_reasons={','.join(blocking_reasons) if blocking_reasons else '-'}"
+        )
+        if packet.get("suggested_brief"):
+            print(f"  suggested_brief={packet['suggested_brief']}")
+        gate = packet.get("closeout_gate") or {}
+        if gate:
+            _print_closeout_gate(gate, indent="  ")
+        plan = packet.get("execution_plan") or {}
+        if isinstance(plan, dict) and plan:
+            _print_execution_plan(plan, indent="  ")
+        status = task_event_scanner.manager_action_apply_status(
+            str(packet.get("action_code") or ""),
+            str(packet.get("subject_id") or ""),
+        )
+        if not status:
+            status = task_event_scanner.action_packet_preview_status(packet)
+        _print_apply_result(status, indent="  ", label="apply_status")
+    return 0
+
+
+def _cmd_manager_action_apply(rest: list[str]) -> int:
+    subject_id = pop_flag(rest, "--subject-id")
+    confirm = pop_bool_flag(rest, "--confirm")
+    skip_verifier = pop_bool_flag(rest, "--skip-verifier")
+    if len(rest) != 1 or not subject_id:
+        return usage_error(USAGE)
+    # Package 2 (Codex Q2): `manager-action-apply manager_formal_closeout`
+    # routes through the same verifier bypass. Gate it identically to
+    # `manager-closeout` so a test-only escape hatch cannot be used in prod.
+    if skip_verifier and not _verifier_bypass_allowed():
+        return error_exit(
+            "❌ --skip-verifier is disabled in production; "
+            "set EDUFLOW_VERIFIER_BYPASS_ALLOWED=1 only for test fixtures, "
+            "otherwise repair the verifier blockers and re-run"
+        )
+    action_code = rest[0]
+    result = task_event_scanner.manager_action_apply(
+        action_code,
+        subject_id,
+        confirm=confirm,
+        skip_subject_verifier=skip_verifier,
+    )
+    _print_apply_result(result)
+    plan = result.get("execution_plan") or {}
+    if isinstance(plan, dict) and plan:
+        _print_execution_plan(plan, indent="  ")
+    return 0
+
+
+def _publishable_rows(limit: int = 5) -> list[dict]:
+    rows = task_event_scanner.scan_publish_decisions(
+        to_target="user",
+        include_silent=False,
+        advance=False,
+    )
+    lane_priority = {
+        "manager_result": 0,
+        "manager_problem": 1,
+        "worker_reassurance": 2,
+        "internal_only": 3,
+    }
+    rows = sorted(
+        rows,
+        key=lambda row: (
+            lane_priority.get(str(row.get("delivery_lane") or ""), 9),
+            -int(row.get("created_at") or 0),
+        ),
+    )
+    rendered_rows = []
+    seen_task_ids: set[str] = set()
+    for row in rows:
+        task = tasks.get(row["task_id"]) or {}
+        if not row["publish"]:
+            continue
+        if row["task_id"] in seen_task_ids:
+            continue
+        seen_task_ids.add(row["task_id"])
+        rendered_rows.append({
+            "row": row,
+            "task": task,
+            "stage": task.get("stage") or "",
+            "manager_response_type": task_publish_render.compose_manager_response(task, row)["type"],
+            "message": task_publish_render.render_publish_message(task, row),
+        })
+        if len(rendered_rows) >= limit:
+            break
+    return rendered_rows
+
+
+def _render_candidate_message(task: dict, decision: dict) -> str:
+    message = task_publish_render.render_publish_message(task, decision)
+    if not message:
+        return ""
+    if str(decision.get("manager_response_type") or "") == "internal_only":
+        return ""
+    return message
+
+
+def _suppressed_renderable_rows(limit: int = 5) -> list[dict]:
+    rows = task_event_scanner.scan_publish_decisions(
+        to_target="user",
+        include_silent=True,
+        advance=False,
+    )
+    selected = []
+    seen_task_ids: set[str] = set()
+    for row in rows:
+        if row.get("publish"):
+            continue
+        task = tasks.get(row["task_id"]) or {}
+        message = _render_candidate_message(task, row)
+        if not message:
+            continue
+        if row["task_id"] in seen_task_ids:
+            continue
+        seen_task_ids.add(row["task_id"])
+        selected.append({
+            "row": row,
+            "task": task,
+            "message": message,
+            "stage": task.get("stage") or "",
+            "manager_response_type": task_publish_render.compose_manager_response(task, row)["type"],
+        })
+        if len(selected) >= limit:
+            break
+    return selected
+
+
+def _load_qbank_verification() -> dict | None:
+    """Best-effort load of the latest QBank verification JSON summary.
+
+    Tries to run `python3 scripts/qbank_verify.py --content-dir content --json`
+    and parse the output. Returns None if the script is unavailable.
+
+    Parses stdout even when the verifier returns non-zero (FAIL) because
+    verification failures still produce valid JSON that the manager needs.
+    """
+    try:
+        import subprocess as _sp
+        result = _sp.run(
+            [sys.executable, "scripts/qbank_verify.py", "--content-dir", "content", "--json"],
+            capture_output=True, text=True, timeout=30,
+        )
+        if result.stdout.strip():
+            parsed = json.loads(result.stdout)
+            # Tag source for manager-panel consumers
+            if result.returncode != 0:
+                parsed["verification_command_failed"] = True
+            return parsed
+        # No stdout at all — genuine infrastructure failure
+        if result.returncode != 0:
+            return {
+                "overall_status": "INFRA_ERROR",
+                "error_detail": "qbank_verify script failed with no stdout",
+                "returncode": result.returncode,
+                "stderr": result.stderr[:500] if result.stderr else "",
+            }
+    except json.JSONDecodeError:
+        return {
+            "overall_status": "PARSE_ERROR",
+            "error_detail": "qbank_verify stdout was not valid JSON",
+        }
+    except FileNotFoundError:
+        return None
+    except Exception:
+        return None
+
+
+def _cmd_manager_panel(rest: list[str]) -> int:
+    if rest:
+        return usage_error(USAGE)
+    overview = tasks.manager_overview()
+    anomalies = task_event_scanner.scan_manager_anomalies()
+    publishable = _publishable_rows()
+    suppressed = _suppressed_renderable_rows()
+    manager_packets = _manager_action_packets()
+
+    print("🧭 manager panel")
+
+    print("\n== Workflow Drive ==")
+    drive_rows = _collect_workflow_drive_rows()
+    if not drive_rows:
+        print("none")
+    else:
+        for row in drive_rows:
+            line = _workflow_drive_line(row, packets=manager_packets)
+            if line:
+                print(line)
+
+    print("\n== Task Buckets ==")
+    for key, label in (
+        ("in_progress", "in progress"),
+        ("awaiting_review", "awaiting review"),
+        ("blocked", "blocked"),
+        ("manager_action", "needs manager action"),
+        ("subject_closeout", "subject closeout pending"),
+    ):
+        rows = overview[key]
+        print(f"{label}: {len(rows)}")
+        for row in rows[:5]:
+            print(f"  - {_task_brief(row)}")
+            if row.get("latest_turn_summary"):
+                print(f"    latest_turn_summary={row['latest_turn_summary']}")
+
+    print("\n== Subject Closeout ==")
+    inventory = tasks.subject_inventory()
+    if not inventory:
+        print("none")
+    else:
+        for row in inventory[:8]:
+            print(f"- {_subject_inventory_brief(row)}")
+            if row.get("closeout_status") not in {"not_subject", "closeout_completed"}:
+                print("  legacy_category=subject_closeout_pending")
+                print("  recommended_action: close_subject_and_dispatch_followups")
+                _print_closeout_gate({
+                    "review_approved": row.get("closeout_gate_review_approved"),
+                    "evidence_present": row.get("closeout_gate_evidence_present"),
+                    "qa_standard_met": row.get("closeout_gate_qa_standard_met"),
+                    "qbank_ready": row.get("closeout_gate_qbank_ready"),
+                }, indent="  ")
+        completed = [
+            row for row in inventory
+            if row.get("closeout_status") == "closeout_completed"
+        ]
+        next_candidates = [
+            row for row in inventory
+            if int(row.get("next_candidate_rank") or 0) == 1
+        ]
+        if completed and next_candidates:
+            next_row = next_candidates[0]
+            # Package 7 (Revision-First Gate): do NOT recommend
+            # `dispatch_next_subject_worker_course` here. The actual
+            # Revision-First Blockers section below carries the
+            # authoritative block signal; emitting a rollover line
+            # above it would visually contradict the gate.
+            if not tasks.has_active_revision_priority(""):
+                print("next_subject_rollover_ready")
+                print(
+                    "recommended_action: dispatch_next_subject_worker_course"
+                    f" :: {next_row.get('subject_name') or next_row.get('subject_id') or '-'}"
+                )
+            else:
+                print(
+                    "next_subject_rollover_ready_suppressed=revision_first_active "
+                    f":: candidate={next_row.get('subject_name') or next_row.get('subject_id') or '-'}"
+                )
+
+    print("\n== Revision-First Blockers ==")
+    revision_blockers = _collect_revision_priority_blockers()
+    if not revision_blockers:
+        print("none")
+    else:
+        for blocker in revision_blockers:
+            print(
+                f"revision_first :: task_id={blocker['task_id']} "
+                f"workflow_id={blocker['workflow_id'] or '-'} "
+                f"revision_priority={blocker['revision_priority']} "
+                f"scope_topic={blocker['scope_topic'] or '-'} "
+                f"owner={blocker['owner'] or '-'} "
+                f"next_action={blocker['next_action']} "
+                f"recommended_action={blocker['recommended_action']}"
+            )
+        print(
+            "revision_first_priority: blockers_above_continuation :: "
+            "next_subject_rollover_and_continue_next_batch_are_suppressed_until_clear"
+        )
+
+    print("\n== Evidence Accounts ==")
+    account_rows = [
+        row for row in tasks.subject_inventory()
+        if row.get("evidence_account")
+        and row.get("closeout_status") not in {"not_subject", "closeout_completed"}
+    ]
+    if not account_rows:
+        print("none")
+    else:
+        for row in account_rows[:8]:
+            account = row.get("evidence_account") or {}
+            print(
+                f"evidence_account :: task_id={account.get('task_id') or row.get('subject_id') or '-'} "
+                f"workflow_id={account.get('workflow_id') or '-'} "
+                f"closeout_ready={str(bool(account.get('closeout_ready'))).lower()} "
+                f"items_count={account.get('items_count')} "
+                f"qql_count={account.get('qql_count')} "
+                f"manifest_rows={account.get('manifest_rows')} "
+                f"recommended_action={account.get('recommended_action') or '-'}"
+            )
+            if account.get("missing_evidence"):
+                print("  missing_evidence=" + ",".join(account["missing_evidence"]))
+            if account.get("conflicting_evidence"):
+                print("  conflicting_evidence=" + ",".join(account["conflicting_evidence"]))
+
+    print("\n== Context Guard Blockers ==")
+    context_blockers = [
+        row for row in anomalies
+        if str(row.get("category") or "") in _CONTEXT_GUARD_CATEGORIES
+    ]
+    if not context_blockers:
+        print("none")
+    else:
+        for row in context_blockers[:8]:
+            print(
+                f"blocker={row['category']} "
+                f"affected_agent={row.get('affected_agent') or row.get('agent') or '-'} "
+                f"recommended_action={row.get('recommended_action') or '-'} "
+                f"allow_continue_original_task="
+                f"{str(bool(row.get('allow_continue_original_task'))).lower()}"
+            )
+            if row.get("message_id"):
+                print(f"  message_id={row['message_id']}")
+            if "inbox_recovery_needed" in row:
+                print(
+                    "  inbox_recovery_needed="
+                    f"{str(bool(row.get('inbox_recovery_needed'))).lower()}"
+                )
+            print(f"  latest_evidence={row.get('evidence_summary') or '-'}")
+
+    print("\n== Subject Continuation ==")
+    next_subject = tasks.select_next_subject()
+    if next_subject is None:
+        # No candidates: show safe default workflow
+        print("no_next_subject_candidate")
+        print("default_workflow: refresh_subject_inventory | scan_manifests | await_reviewer")
+    else:
+        print(
+            f"next_subject_recommendation: {next_subject['subject_id']} :: "
+            f"{next_subject['subject_name']} "
+            f"closeout_status={next_subject['closeout_status']} "
+            f"rank={next_subject['next_candidate_rank']} "
+            f"reason={next_subject['reason']}"
+        )
+        print(f"  recommended_action={next_subject['recommended_action']}")
+        # Show batch continuation check for current active subject
+        active_subjects = [
+            row for row in inventory
+            if row.get("closeout_status") not in {"closeout_completed", "not_subject"}
+        ]
+        for subj_row in active_subjects[:2]:
+            gate = tasks.next_batch_continuation_gate(subj_row["subject_id"])
+            if gate.get("should_continue"):
+                print(
+                    f"  batch_continuation: subject={gate['subject_id']} "
+                    f"should_continue=true reason={gate['reason']} "
+                    f"recommended_action={gate['recommended_action']}"
+                )
+                coverage = gate.get("coverage", {})
+                if coverage:
+                    print(
+                        f"    coverage: qa_count={coverage.get('qa_count', 0)} "
+                        f"item_count={coverage.get('item_count', 0)} "
+                        f"outline_topic_count={coverage.get('outline_topic_count', 0)} "
+                        f"manifest_covered_count={coverage.get('manifest_covered_count', 0)}"
+                    )
+            else:
+                print(
+                    f"  batch_continuation: subject={gate['subject_id']} "
+                    f"should_continue=false reason={gate['reason']}"
+                )
+        # Show extended inventory summary line
+        extended_inventory = tasks.subject_inventory_extended()
+        visible_subjects = [
+            r for r in extended_inventory
+            if r.get("closeout_status") == "no_closeout_signal"
+        ]
+        if visible_subjects:
+            print(
+                f"  visible_without_closeout_signal: "
+                f"{len(visible_subjects)} IGCSE subject(s) without completion markers "
+                f"— refresh_inventory_and_check_progress"
+            )
+
+    print("\n== QBank Lifecycle ==")
+    qbank_data = _load_qbank_verification()
+    if qbank_data is None:
+        print("no verification data — run: python3 scripts/qbank_verify.py --content-dir content --json")
+    else:
+        qbank_panel = tasks.qbank_manager_panel_summary(qbank_data)
+        print(f"overall_status={qbank_panel.get('overall_status') or 'UNKNOWN'}")
+        print(f"total_subjects={qbank_panel.get('total_subjects') or 0} "
+              f"total_errors={qbank_panel.get('total_errors') or 0} "
+              f"total_warnings={qbank_panel.get('total_warnings') or 0}")
+        print(f"lifecycle_breakdown={qbank_panel.get('lifecycle_breakdown') or {}}")
+        print(f"most_urgent_action={qbank_panel.get('most_urgent_action') or '-'}")
+        for subj in qbank_panel.get("subjects") or []:
+            lifecycle_state = subj.get("lifecycle_state") or "scan"
+            next_action = tasks.QBANK_LIFECYCLE_NEXT_ACTIONS.get(lifecycle_state, "review_status")
+            print(
+                f"  - {subj.get('subject') or '-'} :: "
+                f"lifecycle_state={lifecycle_state} "
+                f"questions={subj.get('total_questions') or 0} "
+                f"errors={subj.get('error_count') or 0} "
+                f"warnings={subj.get('warning_count') or 0} "
+                f"next_action={next_action}"
+            )
+        # Dedup/import gate summary
+
+    # Package 8: visible sources audit — trace every manager-panel claim
+    # back to its structured origin.
+    print("\n== Visible Sources ==")
+    for key, rows_slice in (
+        ("in_progress", overview.get("in_progress", [])[:3]),
+        ("awaiting_review", overview.get("awaiting_review", [])[:3]),
+        ("blocked", overview.get("blocked", [])[:3]),
+        ("manager_action", overview.get("manager_action", [])[:3]),
+        ("subject_closeout", overview.get("subject_closeout", [])[:3]),
+    ):
+        for task_row in rows_slice:
+            tid = task_row.get("id", "")
+            if not tid:
+                continue
+            sources = task_publish_render.compose_visible_sources(task_row)
+            missing = sources.get("sources_missing") or []
+            present = sources.get("sources_present") or []
+            missing_str = ", ".join(missing) if missing else "none"
+            present_str = ", ".join(present) if present else "none"
+            print(
+                f"  [{key}] {tid}: "
+                f"present=[{present_str}] missing=[{missing_str}]"
+            )
+            for src_key in ("subject_inventory_source", "qbank_report_path",
+                            "verifier_report_path"):
+                val = sources.get(src_key)
+                if val:
+                    print(f"    {src_key}: {val}")
+        gate = tasks.dedup_import_gate(
+            review_course_pass=(qbank_data.get("overall_status") == "PASS"),
+            user_authorized=False,
+            manager_authorized=False,
+            dry_run=True,
+        )
+        print(f"dedup_import_gate_mode={gate['mode']}")
+        print(f"dedup_import_apply_allowed={str(gate['apply_allowed']).lower()}")
+        if gate.get("blocking_reasons"):
+            print(f"dedup_import_blocking_reasons={','.join(gate['blocking_reasons'])}")
+        print(f"dedup_import_next_action={gate['next_action']}")
+
+    print("\n== Next Executable Actions ==")
+    actionable = [row for row in anomalies if row.get("action_packet")]
+    # Package 7 (Revision-First Gate) round 6 fix: use the canonical
+    # REVISION_FIRST_BLOCKED_RECOMMENDATIONS set from task_event_scanner
+    # so apply / manager-actions / manager-panel cannot drift.
+    if tasks.has_active_revision_priority(""):
+        actionable = [
+            row for row in actionable
+            if (row.get("action_packet") or {}).get("action_code")
+            not in task_event_scanner.REVISION_FIRST_BLOCKED_RECOMMENDATIONS
+        ]
+        if not actionable:
+            print("none (revision_first_gate_holds_executable_actions)")
+        else:
+            print("revision_first_active :: suppressed_continuation_actions_in_panel")
+    if actionable:
+        priority_order = ["safe_task_review_approve", "manager_formal_closeout"]
+        def _action_priority(row):
+            code = (row.get("action_packet") or {}).get("action_code", "")
+            try:
+                return priority_order.index(code)
+            except ValueError:
+                return len(priority_order)
+        actionable.sort(key=_action_priority)
+        for row in actionable[:10]:
+            packet = row["action_packet"]
+            print(f"⚡ {packet['action_code']} :: {row['task_id']} :: {row['why']}")
+            if packet.get("evidence_summary"):
+                print(f"   evidence: {packet['evidence_summary']}")
+            if packet.get("suggested_brief"):
+                print(f"   suggested: {packet['suggested_brief']}")
+            plan = packet.get("execution_plan") or {}
+            if isinstance(plan, dict) and plan.get("proposed_command") and plan["proposed_command"] != "no-op":
+                print(f"   run: {plan['proposed_command']}")
+            if packet.get("apply_allowed"):
+                print(f"   ✅ apply: eduflow task manager-action-apply {packet['action_code']} --subject-id {packet.get('subject_id', '')} --confirm")
+            else:
+                print(f"   ⚠️  dry-run only — manual review required")
+
+    print("\n== Anomalies (non-actionable) ==")
+    non_actionable = [row for row in anomalies if not row.get("action_packet")]
+    if not non_actionable:
+        print("none")
+    else:
+        for row in non_actionable[:8]:
+            print(f"- {row['category']} :: {row['task_id']} :: {row['why']}")
+            if row.get("surface_state"):
+                print(
+                    "  surface_state: "
+                    f"{task_publish_render.describe_surface_state(str(row.get('surface_state') or ''))}"
+                )
+            print(f"  evidence: {row['evidence_summary']}")
+            _print_context_guard_fields(row, indent="  ")
+            if row.get("recommended_action"):
+                print(f"  recommended_action: {row['recommended_action']}")
+            if row.get("action_packet"):
+                _print_action_packet(row["action_packet"], indent="  ")
+            task = tasks.get(row["task_id"]) or {}
+            if task.get("latest_turn_summary"):
+                print(f"  latest_turn_summary: {task['latest_turn_summary']}")
+
+    print("\n== Suggested Manager Actions ==")
+    packets = _manager_action_packets()
+    # Package 7 (Revision-First Gate) round 6 fix: use the canonical
+    # blocked-actions set from task_event_scanner.
+    if tasks.has_active_revision_priority(""):
+        packets = [
+            packet for packet in packets
+            if str(packet.get("action_code") or "") not in task_event_scanner.REVISION_FIRST_BLOCKED_RECOMMENDATIONS
+        ]
+        if not packets:
+            print("none (revision_first_gate_holds_suggested_actions)")
+        else:
+            print("revision_first_active :: suppressed_continuation_actions_in_panel")
+    if not packets:
+        print("none")
+    else:
+        for packet in packets[:8]:
+            print(f"- {_action_packet_line(packet)}")
+            if packet.get("suggested_brief"):
+                print(f"  suggested_brief={packet['suggested_brief']}")
+            gate = packet.get("closeout_gate") or {}
+            if gate:
+                _print_closeout_gate(gate, indent="  ")
+            plan = packet.get("execution_plan") or {}
+            if isinstance(plan, dict) and plan:
+                _print_execution_plan(plan, indent="  ")
+            status = task_event_scanner.manager_action_apply_status(
+                str(packet.get("action_code") or ""),
+                str(packet.get("subject_id") or ""),
+            )
+            if not status:
+                status = task_event_scanner.action_packet_preview_status(packet)
+            _print_apply_result(status, indent="  ", label="apply_status")
+
+    print("\n== User-Ready Updates ==")
+    if not publishable:
+        print("none")
+    else:
+        aggregate = task_publish_render.compose_publish_aggregate(publishable)
+        print(aggregate["headline"])
+        if aggregate["results"]:
+            print("results:")
+            for item in aggregate["results"]:
+                row = item["row"]
+                print(
+                    f"  - {row['task_id']} :: {item.get('manager_response_type') or row['reason']} :: {item['message']}"
+                )
+        if aggregate["problems"]:
+            print("problems:")
+            for item in aggregate["problems"]:
+                row = item["row"]
+                print(
+                    f"  - {row['task_id']} :: {item.get('manager_response_type') or row['reason']} :: {item['message']}"
+                )
+        if aggregate["reassurances"]:
+            print("reassurances:")
+            for item in aggregate["reassurances"]:
+                row = item["row"]
+                print(
+                    f"  - {row['task_id']} :: {item.get('manager_response_type') or row['reason']} :: {item['message']}"
+                )
+        if not (aggregate["results"] or aggregate["problems"] or aggregate["reassurances"]):
+            row = item["row"]
+            print(
+                f"fallback :: {aggregate['fallback']}"
+            )
+
+    print("\n== Suppressed User-Ready Candidates ==")
+    if not suppressed:
+        print("none")
+    else:
+        for item in suppressed:
+            row = item["row"]
+            print(
+                f"- {row['task_id']} :: {item.get('manager_response_type') or row['reason']} "
+                f":: publish=false reason={row['reason']} cadence_action={row.get('cadence_action') or '-'}"
+            )
+            print(f"  candidate_rendered :: {item['message']}")
+    return 0
+
+
+def _cmd_supervisor_check(rest: list[str]) -> int:
+    advance = pop_bool_flag(rest, "--advance")
+    do_send = pop_bool_flag(rest, "--send")
+    as_json = pop_bool_flag(rest, "--json")
+    if rest:
+        return usage_error(USAGE)
+    result = task_event_scanner.evaluate_manager_supervision()
+    if advance:
+        result = task_event_scanner.advance_manager_supervision(result)
+    if do_send:
+        body = result.get("user_message") or (
+            "Supervisor 巡检完成："
+            f" {result.get('health_status') or '-'} / "
+            f"{result.get('primary_reason') or '-'}"
+        )
+        rc = say_cmd.main([
+            "manager",
+            body,
+            "--channel", "supervisor",
+            "--to", "user",
+        ])
+        if rc != 0:
+            return error_exit("❌ supervisor-check send failed")
+        result = dict(result)
+        result["sent_to_supervisor_channel"] = True
+    else:
+        result = dict(result)
+        result["sent_to_supervisor_channel"] = False
+    if advance:
+        result["advanced_supervisor_state_file"] = str(paths.task_supervisor_state_file())
+    if as_json:
+        print_json(result)
+        return 0
+
+    print("🛡️ supervisor check")
+    print(f"health_status={result.get('health_status') or '-'}")
+    print(f"primary_reason={result.get('primary_reason') or '-'}")
+    print(f"recommended_action={result.get('recommended_action') or '-'}")
+    print(f"user_alert_action={result.get('user_alert_action') or '-'}")
+    print(f"repair_channel={result.get('repair_channel') or '-'}")
+    print(f"heartbeat_interval_ms={result.get('heartbeat_interval_ms') or 0}")
+    print(f"consecutive_issue_count={result.get('consecutive_issue_count') or 0}")
+    print(f"state_stale={str(bool(result.get('state_stale'))).lower()}")
+    print(f"state_age_ms={result.get('state_age_ms') or 0}")
+
+    reasons = result.get("auto_summary_reasons") or []
+    print("auto_summary_reasons:")
+    for reason in reasons:
+        print(f"  - {reason}")
+
+    if result.get("user_message"):
+        print(f"user_message :: {result['user_message']}")
+    else:
+        print("user_message :: silent")
+
+    anomalies = result.get("anomalies") or []
+    print("anomalies:")
+    if not anomalies:
+        print("  - none")
+    else:
+        for row in anomalies[:8]:
+            print(
+                f"  - {row['category']} :: {row['task_id']} :: "
+                f"{row.get('recommended_action') or '-'} :: {row['why']}"
+            )
+            # Package 7 (Revision-First Gate): surface the structured
+            # scope-mismatch fields so supervisors can read them without
+            # the full JSON payload.
+            for scope_key in (
+                "expected_revision_scope",
+                "observed_new_scope",
+                "workflow_id",
+                "affected_agent",
+                "message_id",
+                "closeout_ready",
+            ):
+                value = row.get(scope_key)
+                if value not in (None, ""):
+                    print(f"    {scope_key}: {value}")
+            if row.get("missing_evidence"):
+                print("    missing_evidence: " + ",".join(row["missing_evidence"]))
+            if row.get("conflicting_evidence"):
+                print("    conflicting_evidence: " + ",".join(row["conflicting_evidence"]))
+            if "allow_continue_original_task" in row:
+                print(
+                    "    allow_continue_original_task: "
+                    f"{str(bool(row.get('allow_continue_original_task'))).lower()}"
+                )
+            if "inbox_recovery_needed" in row:
+                print(
+                    "    inbox_recovery_needed: "
+                    f"{str(bool(row.get('inbox_recovery_needed'))).lower()}"
+                )
+    runtime_guard_agents = result.get("runtime_guard_agents") or {}
+    print("runtime_guard:")
+    if not runtime_guard_agents:
+        print("  - none")
+    else:
+        for agent, row in sorted(runtime_guard_agents.items()):
+            bits = []
+            if row.get("last_failure_reason"):
+                bits.append(f"failure={row['last_failure_reason']}")
+            if row.get("last_switch_outcome"):
+                bits.append(f"outcome={row['last_switch_outcome']}")
+            if row.get("escalation_reason"):
+                bits.append(f"escalation={row['escalation_reason']}")
+            if row.get("from_runtime") or row.get("to_runtime"):
+                bits.append(f"route={row.get('from_runtime') or '-'}->{row.get('to_runtime') or '-'}")
+            if row.get("escalation_needed"):
+                bits.append("escalation_needed=true")
+            print(f"  - {agent} :: {' '.join(bits) if bits else 'state_present'}")
+    supervisor_processes = result.get("supervisor_processes") or []
+    print("supervisor_processes:")
+    if not supervisor_processes:
+        print("  - none")
+    else:
+        for row in supervisor_processes:
+            state = "alive" if row.get("alive") else ("pid_only" if row.get("pid_present") else "missing")
+            print(f"  - {row.get('name') or '-'} :: {state}")
+    if result.get("sent_to_supervisor_channel"):
+        print("✅ supervisor-check sent to supervisor channel")
+    if advance:
+        print(f"✅ advanced supervisor state: {paths.task_supervisor_state_file()}")
+    return 0
+
+
+def _cmd_evidence_account(rest: list[str]) -> int:
+    task_id = pop_flag(rest, "--task-id") or ""
+    workflow_id = pop_flag(rest, "--workflow") or ""
+    as_json = pop_bool_flag(rest, "--json")
+    if rest:
+        return usage_error(USAGE)
+    rows = []
+    for task in tasks.list_tasks():
+        if task.get("schema_version") != 2:
+            continue
+        if task_id and str(task.get("id") or "") != task_id:
+            continue
+        if workflow_id and str(task.get("workflow_id") or "") != workflow_id:
+            continue
+        gate = tasks.subject_closeout_status(task)
+        account = gate.get("evidence_account")
+        if account:
+            rows.append(account)
+    if as_json:
+        print_json({"evidence_accounts": rows})
+        return 0
+    if not rows:
+        print("no evidence accounts")
+        return 0
+    for account in rows:
+        print(
+            f"evidence_account :: task_id={account.get('task_id') or '-'} "
+            f"workflow_id={account.get('workflow_id') or '-'} "
+            f"stage={account.get('stage') or '-'} "
+            f"status={account.get('status') or '-'} "
+            f"verdict={account.get('verdict') or '-'} "
+            f"closeout_ready={str(bool(account.get('closeout_ready'))).lower()} "
+            f"recommended_action={account.get('recommended_action') or '-'}"
+        )
+        print(
+            f"  scope={account.get('scope') or '-'} "
+            f"items_count={account.get('items_count')} "
+            f"qql_count={account.get('qql_count')} "
+            f"manifest_rows={account.get('manifest_rows')}"
+        )
+        print(
+            "  latest_authoritative_review_verdict_source="
+            f"{account.get('latest_authoritative_review_verdict_source') or '-'}"
+        )
+        print(
+            f"  subject_verifier_status={account.get('subject_verifier_status') or '-'} "
+            f"source={account.get('subject_verifier_source') or '-'}"
+        )
+        if account.get("missing_evidence"):
+            print("  missing_evidence=" + ",".join(account["missing_evidence"]))
+        if account.get("conflicting_evidence"):
+            print("  conflicting_evidence=" + ",".join(account["conflicting_evidence"]))
+    return 0
+
+
+def _cmd_publish_check(rest: list[str]) -> int:
+    sender = pop_flag(rest, "--sender")
+    to_target = pop_flag(rest, "--to") or "user"
+    if len(rest) < 1 or not sender:
+        return usage_error(USAGE)
+    tid = rest[0]
+    task = tasks.get(tid)
+    if task is None:
+        return error_exit(f"❌ no such task: {tid}")
+    events = tasks.list_task_events(task_id=tid, limit=1)
+    if not events:
+        return error_exit(f"❌ no task events for {tid}")
+    decision = task_publish_gate.decide_task_event_publish(
+        events[-1],
+        sender=sender,
+        to_target=to_target,
+    )
+    rendered = _render_candidate_message(task, decision)
+    print(
+        f"publish={str(decision['publish']).lower()} "
+        f"reason={decision['reason']} "
+        f"task_id={decision['task_id']} "
+        f"status={decision['status'] or '-'} "
+        f"to={decision['to_target']}"
+    )
+    print(f"audience_policy={decision.get('audience_policy') or '-'}")
+    print(f"delivery_lane={decision.get('delivery_lane') or '-'}")
+    print(f"cadence_action={decision.get('cadence_action') or '-'}")
+    print(f"cadence_reason={decision.get('cadence_reason') or '-'}")
+    print(f"manager_response_type={decision.get('manager_response_type') or '-'}")
+    print(f"close_loop_state={decision.get('close_loop_state') or '-'}")
+    print(f"close_loop_reason={decision.get('close_loop_reason') or '-'}")
+    if decision["publish"] and rendered:
+        print(f"rendered :: {rendered}")
+    return 0
+
+
+def _cmd_publish_scan(rest: list[str]) -> int:
+    to_target = pop_flag(rest, "--to") or "user"
+    include_silent = pop_bool_flag(rest, "--include-silent")
+    advance = pop_bool_flag(rest, "--advance")
+    if rest:
+        return usage_error(USAGE)
+    rows = task_event_scanner.scan_publish_decisions(
+        to_target=to_target,
+        include_silent=include_silent,
+        advance=advance,
+    )
+    if not rows:
+        print("📭 no matching unpublished task events")
+        return 0
+    for row in rows:
+        task = tasks.get(row["task_id"]) or {}
+        print(
+            f"{row['event_id']}  publish={str(row['publish']).lower()}  "
+            f"task={row['task_id']}  status={row['status'] or '-'}  "
+            f"sender={row['sender']}  to={row['to_target']}  reason={row['reason']}"
+        )
+        print(f"  audience_policy={row.get('audience_policy') or '-'}")
+        print(f"  delivery_lane={row.get('delivery_lane') or '-'}")
+        print(f"  cadence_action={row.get('cadence_action') or '-'}")
+        print(f"  cadence_reason={row.get('cadence_reason') or '-'}")
+        print(f"  manager_response_type={row.get('manager_response_type') or '-'}")
+        print(f"  close_loop_state={row.get('close_loop_state') or '-'}")
+        print(f"  close_loop_reason={row.get('close_loop_reason') or '-'}")
+        rendered = _render_candidate_message(task, row)
+        if row["publish"] and rendered:
+            print(
+                "  rendered :: "
+                f"{rendered}"
+            )
+        elif rendered:
+            print(
+                "  suppressed_rendered :: "
+                f"{rendered}"
+            )
+    if advance:
+        print("✅ advanced task publish cursor")
+    return 0
+
+
+def _cmd_publish_run(rest: list[str]) -> int:
+    to_target = pop_flag(rest, "--to") or "user"
+    do_send = pop_bool_flag(rest, "--send")
+    advance = pop_bool_flag(rest, "--advance")
+    if rest:
+        return usage_error(USAGE)
+    if advance and not do_send:
+        return error_exit("❌ --advance requires --send")
+
+    rows = task_event_scanner.scan_publish_decisions(
+        to_target=to_target,
+        include_silent=True,
+        advance=False,
+    )
+    if not rows:
+        print("📭 no unpublished task events")
+        return 0
+
+    publishable = [row for row in rows if row["publish"]]
+    if not publishable:
+        print("📭 no publishable task events")
+        return 0
+    publishable = sorted(
+        publishable,
+        key=lambda row: int(row.get("created_at") or 0),
+        reverse=True,
+    )[:3]
+    rendered = []
+    for row in publishable:
+        task = tasks.get(row["task_id"]) or {}
+        rendered.append({
+            "row": row,
+            "task": task,
+            "message": task_publish_render.render_publish_message(task, row),
+            "stage": task.get("stage") or "",
+            "manager_response_type": task_publish_render.compose_manager_response(task, row)["type"],
+        })
+    aggregate = task_publish_render.compose_publish_aggregate(rendered)
+    summary = aggregate["headline"]
+
+    if not do_send:
+        print(f"preview summary :: {summary}")
+        for label, key in (("result", "results"), ("problem", "problems"), ("reassurance", "reassurances")):
+            for item in aggregate[key]:
+                row = item["row"]
+                print(
+                    f"preview {label} sender={row['sender']} to={row['to_target']} "
+                    f"task={row['task_id']} reason={row['reason']} :: {item['message']}"
+                )
+    else:
+        summary_sender = rendered[0]["row"]["sender"]
+        rc = say_cmd.main([summary_sender, summary, "--to", to_target])
+        if rc != 0:
+            return error_exit(
+                f"❌ publish-run failed for summary "
+                f"(sender={summary_sender}, to={to_target})"
+            )
+        for key in ("results", "problems", "reassurances"):
+            for item in aggregate[key]:
+                row = item["row"]
+                rc = say_cmd.main([row["sender"], item["message"], "--to", row["to_target"]])
+                if rc != 0:
+                    return error_exit(
+                        f"❌ publish-run failed for {row['task_id']} "
+                        f"(sender={row['sender']}, to={row['to_target']})"
+                    )
+    if advance:
+        last = rows[-1]
+        task_event_scanner.write_cursor(last["event_id"], last["created_at"])
+        print(f"✅ advanced task publish cursor: {paths.task_publish_cursor_file()}")
+    elif do_send:
+        print("✅ publish-run sent without advancing cursor")
+    else:
+        print("ℹ️ dry-run only; add --send to publish")
+    return 0
+
+
+def _cmd_done(rest: list[str]) -> int:
+    if len(rest) < 1:
+        return usage_error(USAGE)
+    return _cmd_update([rest[0], "--status", "已完成"])
+
+
+def _cmd_list(rest: list[str]) -> int:
+    status = pop_flag(rest, "--status")
+    assignee = pop_flag(rest, "--assignee")
+    rows = tasks.list_tasks(status=status, assignee=assignee)
+    if not rows:
+        print("📋 no matching tasks")
+        return 0
+    print(f"📋 {len(rows)} tasks")
+    for t in rows:
+        for line in _fmt_task(t):
+            print(line)
+        print()
+    return 0
+
+
+def _cmd_get(rest: list[str]) -> int:
+    if len(rest) < 1:
+        return usage_error(USAGE)
+    t = tasks.get(rest[0])
+    if t is None:
+        return error_exit(f"❌ no such task: {rest[0]}")
+    for line in _fmt_task(t):
+        print(line)
+    return 0
+
+
+SUBCOMMANDS = {
+    "create": _cmd_create,
+    "flow-create": _cmd_flow_create,
+    "dispatch": _cmd_dispatch,
+    "flow-transition": _cmd_flow_transition,
+    "submit-review": _cmd_submit_review,
+    "assign-reviewer": _cmd_assign_reviewer,
+    "review": _cmd_review,
+    "review-queue": _cmd_review_queue,
+    "workflow-status": _cmd_workflow_status,
+    "manager-overview": _cmd_manager_overview,
+    "scan-anomalies": _cmd_scan_anomalies,
+    "manager-actions": _cmd_manager_actions,
+    "manager-action-apply": _cmd_manager_action_apply,
+    "manager-panel": _cmd_manager_panel,
+    "evidence-account": _cmd_evidence_account,
+    "subject-inventory": _cmd_subject_inventory,
+    "batch-closeout": _cmd_batch_closeout,
+    "manager-closeout": _cmd_manager_closeout,
+    "supervisor-check": _cmd_supervisor_check,
+    "publish-check": _cmd_publish_check,
+    "publish-scan": _cmd_publish_scan,
+    "publish-run": _cmd_publish_run,
+    "update": _cmd_update,
+    "done":   _cmd_done,
+    "list":   _cmd_list,
+    "get":    _cmd_get,
+}
+
+
+def main(argv: list[str]) -> int:
+    if maybe_print_help(argv, USAGE):
+        return 0
+    if not argv:
+        # No subcommand: print usage to stdout (it IS the requested output)
+        # but return 1 so scripts know the call was incomplete.
+        print(USAGE)
+        return 1
+    sub = argv[0]
+    if sub not in SUBCOMMANDS:
+        return error_exit(f"unknown task subcommand: {sub}\n{USAGE}")
+    return SUBCOMMANDS[sub](list(argv[1:]))

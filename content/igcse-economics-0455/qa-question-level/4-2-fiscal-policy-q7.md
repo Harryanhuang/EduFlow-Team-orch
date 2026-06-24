@@ -1,0 +1,6 @@
+### Question Q-4.2-07
+**Difficulty**: Challenge
+**Question**: Evaluate whether a government should always aim to balance its budget.
+**Answer**: A balanced budget avoids accumulating debt and maintains investor confidence in government finances. It prevents future generations from bearing the burden of debt repayment and avoids crowding out private investment through high interest rates. However, insisting on a balanced budget at all times is inappropriate. During recessions, tax revenues fall and welfare spending rises automatically, creating a deficit. Forcing spending cuts or tax rises during a downturn would worsen the recession and increase unemployment (pro-cyclical policy). Keynesian economists argue that deficit spending during recessions is essential to stimulate recovery. During economic booms, surpluses should be run to repay debt. Therefore, a cyclical approach — deficits in downturns, surpluses in booms — is more effective than always balancing the budget.
+**Explanation**: Balance vs stimulus trade-off across the economic cycle. A common error is arguing that the budget should always be balanced without considering the stage of the economic cycle.
+**Tags**: budget-balance, evaluation, economic-cycle, fiscal-policy

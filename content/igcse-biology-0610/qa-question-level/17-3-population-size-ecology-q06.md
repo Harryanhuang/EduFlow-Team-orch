@@ -1,0 +1,6 @@
+# Question: Question Q-17.3-06
+**Difficulty**: Challenge
+**Question**: Explain why the lag phase occurs at the beginning of a population growth curve. What factors determine the maximum carrying capacity of an environment?
+**Answer**: The lag phase occurs because organisms need time to: adjust to the new environment, produce enzymes for available resources, begin reproducing (especially species with long generation times). Initially, births are few while individuals are still acclimatising. The exponential phase begins once individuals are successfully using resources and reproducing. Carrying capacity (K) is the maximum population an environment can sustain. It is determined by: (1) Availability of resources — food, water, nutrients. (2) Space — territory for shelter and nesting. (3) Abiotic factors — temperature, light, pH. (4) Biotic factors — predation pressure, disease prevalence, competition intensity. When population approaches K, resources become limiting, birth rates decrease and death rates increase, stabilising the population at carrying capacity.
+**Explanation**: Lag phase = adjustment time; Carrying capacity = resource limits. A common error is saying populations "want" to grow but can't.
+**Tags**: lag-phase, carrying-capacity, population-growth, resources

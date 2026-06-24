@@ -1,0 +1,6 @@
+# Question: Question Q-15.2-07
+**Difficulty**: Challenge
+**Question**: Explain how hormones control the menstrual cycle using the principle of negative feedback.
+**Answer**: At the start of the cycle, low oestrogen and progesterone allow the pituitary to release FSH. FSH stimulates follicle growth in the ovary; the follicle secretes oestrogen. Rising oestrogen initially inhibits FSH (negative feedback) to prevent more follicles developing, then at high levels triggers a surge in LH (positive feedback). The LH surge causes ovulation. After ovulation, the corpus luteum secretes progesterone and oestrogen. These hormones thicken the uterus lining and inhibit FSH and LH (negative feedback), preventing further ovulation. If no fertilisation occurs, the corpus luteum degenerates, hormone levels fall, the lining breaks down (menstruation), and the fall in hormones removes the inhibition on FSH so the next cycle begins.
+**Explanation**: Negative feedback controls FSH/LH; high progesterone/oestrogen inhibit FSH and LH; fall in hormones restarts cycle. A common error is thinking all feedback is positive.
+**Tags**: menstrual-cycle, negative-feedback, FSH, LH, oestrogen, progesterone, hormones

@@ -1,0 +1,6 @@
+# Question: Question Q-8.2-08
+**Difficulty**: Challenge
+**Question**: Explain the trade-off between photosynthesis and transpiration in terms of stomatal behaviour, and how a plant balances conflicting demands in hot, dry conditions.
+**Answer**: Stomata must open for CO₂ entry (photosynthesis) but opening also allows water vapour to escape (transpiration). In hot, dry conditions, the plant faces a conflict: open stomata → photosynthesis proceeds but risk of lethal dehydration; close stomata → conserve water but no CO₂ for photosynthesis. Balance strategies: (1) open stomata only during cooler parts of day (early morning). (2) Close stomata during midday heat. (3) Use stored CO₂ from night respiration for morning photosynthesis. (4) Deciduous plants drop leaves in dry season to eliminate transpiration entirely. The plant prioritises survival over growth — it can survive brief periods without photosynthesis, but cannot survive lethal dehydration.
+**Explanation**: CO₂ entry vs water loss trade-off, survival prioritisation. A common error is explaining the trade-off without describing the plant's balancing mechanism.
+**Tags**: photosynthesis, transpiration, trade-off, stomatal-behaviour, xerophyte

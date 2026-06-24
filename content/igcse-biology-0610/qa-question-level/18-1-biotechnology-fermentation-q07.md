@@ -1,0 +1,6 @@
+# Question: Question Q-18.1-07
+**Difficulty**: Challenge
+**Question**: Compare the processes of anaerobic and aerobic respiration in yeast, explaining how each affects bread quality and the conditions that favour one over the other.
+**Answer**: Yeast can respire aerobically (with oxygen) or anaerobically (fermentation). Aerobic respiration: glucose + oxygen → CO₂ + water + large amount of ATP. Anaerobic respiration (fermentation): glucose → ethanol + CO₂ + small amount of ATP. In bread making: anaerobic fermentation is preferred because it produces CO₂ (for rising) and ethanol (evaporates during baking). Aerobic respiration produces too little CO₂ for effective rising and produces water (making dough soggy). Conditions that favour anaerobic fermentation: absence of oxygen (dough is sealed), warm temperature (25-35°C), sugar availability. If oxygen is present at high levels, yeast switches to aerobic respiration, producing less CO₂ and more biomass — useful for growing yeast for commercial use, but not ideal for bread texture.
+**Explanation**: Aerobic = more ATP, water; Anaerobic = less ATP, CO₂ + ethanol. A common error is saying yeast "prefers" anaerobic respiration (it actually prefers aerobic but survives anaerobically).
+**Tags**: yeast, aerobic-respiration, fermentation, anaerobic, bread

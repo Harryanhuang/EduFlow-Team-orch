@@ -1,0 +1,397 @@
+subject_slug,topic_id,topic_name,qa_file,question_count,difficulty_mix,batch_id,depends_on_batches,status,review_state,owner,notes
+igcse-biology-0610,1.1,Characteristics of living organisms,qa-question-level/1-1-characteristics-of-living-organisms-q01.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-1.1-01
+igcse-biology-0610,1.1,Characteristics of living organisms,qa-question-level/1-1-characteristics-of-living-organisms-q02.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-1.1-02
+igcse-biology-0610,1.1,Characteristics of living organisms,qa-question-level/1-1-characteristics-of-living-organisms-q03.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-1.1-03
+igcse-biology-0610,1.1,Characteristics of living organisms,qa-question-level/1-1-characteristics-of-living-organisms-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-1.1-04
+igcse-biology-0610,1.1,Characteristics of living organisms,qa-question-level/1-1-characteristics-of-living-organisms-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-1.1-05
+igcse-biology-0610,1.1,Characteristics of living organisms,qa-question-level/1-1-characteristics-of-living-organisms-q06.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-1.1-06
+igcse-biology-0610,1.1,Characteristics of living organisms,qa-question-level/1-1-characteristics-of-living-organisms-q07.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-1.1-07
+igcse-biology-0610,1.1,Characteristics of living organisms,qa-question-level/1-1-characteristics-of-living-organisms-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-1.1-08
+igcse-biology-0610,1.1,Characteristics of living organisms,qa-question-level/1-1-characteristics-of-living-organisms-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-1.1-09
+igcse-biology-0610,1.2,"Classification: kingdoms, binomial system",qa-question-level/1-2-classification-kingdoms-binomial-q01.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-1.2-01
+igcse-biology-0610,1.2,"Classification: kingdoms, binomial system",qa-question-level/1-2-classification-kingdoms-binomial-q02.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-1.2-02
+igcse-biology-0610,1.2,"Classification: kingdoms, binomial system",qa-question-level/1-2-classification-kingdoms-binomial-q03.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-1.2-03
+igcse-biology-0610,1.2,"Classification: kingdoms, binomial system",qa-question-level/1-2-classification-kingdoms-binomial-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-1.2-04
+igcse-biology-0610,1.2,"Classification: kingdoms, binomial system",qa-question-level/1-2-classification-kingdoms-binomial-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-1.2-05
+igcse-biology-0610,1.2,"Classification: kingdoms, binomial system",qa-question-level/1-2-classification-kingdoms-binomial-q06.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-1.2-06
+igcse-biology-0610,1.2,"Classification: kingdoms, binomial system",qa-question-level/1-2-classification-kingdoms-binomial-q07.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-1.2-07
+igcse-biology-0610,1.2,"Classification: kingdoms, binomial system",qa-question-level/1-2-classification-kingdoms-binomial-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-1.2-08
+igcse-biology-0610,1.2,"Classification: kingdoms, binomial system",qa-question-level/1-2-classification-kingdoms-binomial-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-1.2-09
+igcse-biology-0610,10.1,Pathogens and disease transmission,qa-question-level/10-1-pathogens-disease-transmission-q01.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-10.1-01
+igcse-biology-0610,10.1,Pathogens and disease transmission,qa-question-level/10-1-pathogens-disease-transmission-q02.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-10.1-02
+igcse-biology-0610,10.1,Pathogens and disease transmission,qa-question-level/10-1-pathogens-disease-transmission-q03.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-10.1-03
+igcse-biology-0610,10.1,Pathogens and disease transmission,qa-question-level/10-1-pathogens-disease-transmission-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-10.1-04
+igcse-biology-0610,10.1,Pathogens and disease transmission,qa-question-level/10-1-pathogens-disease-transmission-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-10.1-05
+igcse-biology-0610,10.1,Pathogens and disease transmission,qa-question-level/10-1-pathogens-disease-transmission-q06.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-10.1-06
+igcse-biology-0610,10.1,Pathogens and disease transmission,qa-question-level/10-1-pathogens-disease-transmission-q07.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-10.1-07
+igcse-biology-0610,10.1,Pathogens and disease transmission,qa-question-level/10-1-pathogens-disease-transmission-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-10.1-08
+igcse-biology-0610,10.1,Pathogens and disease transmission,qa-question-level/10-1-pathogens-disease-transmission-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-10.1-09
+igcse-biology-0610,10.2,Defence mechanisms and immunity,qa-question-level/10-2-defence-mechanisms-immunity-q01.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-10.2-01
+igcse-biology-0610,10.2,Defence mechanisms and immunity,qa-question-level/10-2-defence-mechanisms-immunity-q02.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-10.2-02
+igcse-biology-0610,10.2,Defence mechanisms and immunity,qa-question-level/10-2-defence-mechanisms-immunity-q03.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-10.2-03
+igcse-biology-0610,10.2,Defence mechanisms and immunity,qa-question-level/10-2-defence-mechanisms-immunity-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-10.2-04
+igcse-biology-0610,10.2,Defence mechanisms and immunity,qa-question-level/10-2-defence-mechanisms-immunity-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-10.2-05
+igcse-biology-0610,10.2,Defence mechanisms and immunity,qa-question-level/10-2-defence-mechanisms-immunity-q06.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-10.2-06
+igcse-biology-0610,10.2,Defence mechanisms and immunity,qa-question-level/10-2-defence-mechanisms-immunity-q07.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-10.2-07
+igcse-biology-0610,10.2,Defence mechanisms and immunity,qa-question-level/10-2-defence-mechanisms-immunity-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-10.2-08
+igcse-biology-0610,10.2,Defence mechanisms and immunity,qa-question-level/10-2-defence-mechanisms-immunity-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-10.2-09
+igcse-biology-0610,11.1,| 12.2 | Anaerobic respiration in humans and yeast,qa-question-level/11-1-gas-exchange-lungs-alveoli-q01.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-11.1-01
+igcse-biology-0610,11.1,| 12.2 | Anaerobic respiration in humans and yeast,qa-question-level/11-1-gas-exchange-lungs-alveoli-q02.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-11.1-02
+igcse-biology-0610,11.1,| 12.2 | Anaerobic respiration in humans and yeast,qa-question-level/11-1-gas-exchange-lungs-alveoli-q03.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-11.1-03
+igcse-biology-0610,11.1,| 12.2 | Anaerobic respiration in humans and yeast,qa-question-level/11-1-gas-exchange-lungs-alveoli-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-11.1-04
+igcse-biology-0610,11.1,| 12.2 | Anaerobic respiration in humans and yeast,qa-question-level/11-1-gas-exchange-lungs-alveoli-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-11.1-05
+igcse-biology-0610,11.1,| 12.2 | Anaerobic respiration in humans and yeast,qa-question-level/11-1-gas-exchange-lungs-alveoli-q06.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-11.1-06
+igcse-biology-0610,11.1,| 12.2 | Anaerobic respiration in humans and yeast,qa-question-level/11-1-gas-exchange-lungs-alveoli-q07.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-11.1-07
+igcse-biology-0610,11.1,| 12.2 | Anaerobic respiration in humans and yeast,qa-question-level/11-1-gas-exchange-lungs-alveoli-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-11.1-08
+igcse-biology-0610,11.1,| 12.2 | Anaerobic respiration in humans and yeast,qa-question-level/11-1-gas-exchange-lungs-alveoli-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-11.1-09
+igcse-biology-0610,11.2,Breathing mechanism and effects of exercise,qa-question-level/11-2-breathing-mechanism-exercise-q01.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-11.2-01
+igcse-biology-0610,11.2,Breathing mechanism and effects of exercise,qa-question-level/11-2-breathing-mechanism-exercise-q02.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-11.2-02
+igcse-biology-0610,11.2,Breathing mechanism and effects of exercise,qa-question-level/11-2-breathing-mechanism-exercise-q03.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-11.2-03
+igcse-biology-0610,11.2,Breathing mechanism and effects of exercise,qa-question-level/11-2-breathing-mechanism-exercise-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-11.2-04
+igcse-biology-0610,11.2,Breathing mechanism and effects of exercise,qa-question-level/11-2-breathing-mechanism-exercise-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-11.2-05
+igcse-biology-0610,11.2,Breathing mechanism and effects of exercise,qa-question-level/11-2-breathing-mechanism-exercise-q06.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-11.2-06
+igcse-biology-0610,11.2,Breathing mechanism and effects of exercise,qa-question-level/11-2-breathing-mechanism-exercise-q07.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-11.2-07
+igcse-biology-0610,11.2,Breathing mechanism and effects of exercise,qa-question-level/11-2-breathing-mechanism-exercise-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-11.2-08
+igcse-biology-0610,11.2,Breathing mechanism and effects of exercise,qa-question-level/11-2-breathing-mechanism-exercise-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-11.2-09
+igcse-biology-0610,12.1,Aerobic respiration: equation and energy,qa-question-level/12-1-aerobic-respiration-equation-q01.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-12.1-01
+igcse-biology-0610,12.1,Aerobic respiration: equation and energy,qa-question-level/12-1-aerobic-respiration-equation-q02.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-12.1-02
+igcse-biology-0610,12.1,Aerobic respiration: equation and energy,qa-question-level/12-1-aerobic-respiration-equation-q03.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-12.1-03
+igcse-biology-0610,12.1,Aerobic respiration: equation and energy,qa-question-level/12-1-aerobic-respiration-equation-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-12.1-04
+igcse-biology-0610,12.1,Aerobic respiration: equation and energy,qa-question-level/12-1-aerobic-respiration-equation-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-12.1-05
+igcse-biology-0610,12.1,Aerobic respiration: equation and energy,qa-question-level/12-1-aerobic-respiration-equation-q06.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-12.1-06
+igcse-biology-0610,12.1,Aerobic respiration: equation and energy,qa-question-level/12-1-aerobic-respiration-equation-q07.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-12.1-07
+igcse-biology-0610,12.1,Aerobic respiration: equation and energy,qa-question-level/12-1-aerobic-respiration-equation-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-12.1-08
+igcse-biology-0610,12.1,Aerobic respiration: equation and energy,qa-question-level/12-1-aerobic-respiration-equation-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-12.1-09
+igcse-biology-0610,12.2,,qa-question-level/12-2-anaerobic-respiration-humans-yeast-q01.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-12.2-01
+igcse-biology-0610,12.2,,qa-question-level/12-2-anaerobic-respiration-humans-yeast-q02.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-12.2-02
+igcse-biology-0610,12.2,,qa-question-level/12-2-anaerobic-respiration-humans-yeast-q03.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-12.2-03
+igcse-biology-0610,12.2,,qa-question-level/12-2-anaerobic-respiration-humans-yeast-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-12.2-04
+igcse-biology-0610,12.2,,qa-question-level/12-2-anaerobic-respiration-humans-yeast-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-12.2-05
+igcse-biology-0610,12.2,,qa-question-level/12-2-anaerobic-respiration-humans-yeast-q06.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-12.2-06
+igcse-biology-0610,12.2,,qa-question-level/12-2-anaerobic-respiration-humans-yeast-q07.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-12.2-07
+igcse-biology-0610,12.2,,qa-question-level/12-2-anaerobic-respiration-humans-yeast-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-12.2-08
+igcse-biology-0610,12.2,,qa-question-level/12-2-anaerobic-respiration-humans-yeast-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-12.2-09
+igcse-biology-0610,13.1,Excretion: definition and organs,qa-question-level/13-1-excretion-definition-organs-q01.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-13.1-01
+igcse-biology-0610,13.1,Excretion: definition and organs,qa-question-level/13-1-excretion-definition-organs-q02.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-13.1-02
+igcse-biology-0610,13.1,Excretion: definition and organs,qa-question-level/13-1-excretion-definition-organs-q03.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-13.1-03
+igcse-biology-0610,13.1,Excretion: definition and organs,qa-question-level/13-1-excretion-definition-organs-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-13.1-04
+igcse-biology-0610,13.1,Excretion: definition and organs,qa-question-level/13-1-excretion-definition-organs-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-13.1-05
+igcse-biology-0610,13.1,Excretion: definition and organs,qa-question-level/13-1-excretion-definition-organs-q06.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-13.1-06
+igcse-biology-0610,13.1,Excretion: definition and organs,qa-question-level/13-1-excretion-definition-organs-q07.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-13.1-07
+igcse-biology-0610,13.1,Excretion: definition and organs,qa-question-level/13-1-excretion-definition-organs-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-13.1-08
+igcse-biology-0610,13.1,Excretion: definition and organs,qa-question-level/13-1-excretion-definition-organs-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-13.1-09
+igcse-biology-0610,13.2,"Kidney structure and function, dialysis",qa-question-level/13-2-kidney-structure-function-dialysis-q01.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-13.2-01
+igcse-biology-0610,13.2,"Kidney structure and function, dialysis",qa-question-level/13-2-kidney-structure-function-dialysis-q02.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-13.2-02
+igcse-biology-0610,13.2,"Kidney structure and function, dialysis",qa-question-level/13-2-kidney-structure-function-dialysis-q03.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-13.2-03
+igcse-biology-0610,13.2,"Kidney structure and function, dialysis",qa-question-level/13-2-kidney-structure-function-dialysis-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-13.2-04
+igcse-biology-0610,13.2,"Kidney structure and function, dialysis",qa-question-level/13-2-kidney-structure-function-dialysis-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-13.2-05
+igcse-biology-0610,13.2,"Kidney structure and function, dialysis",qa-question-level/13-2-kidney-structure-function-dialysis-q06.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-13.2-06
+igcse-biology-0610,13.2,"Kidney structure and function, dialysis",qa-question-level/13-2-kidney-structure-function-dialysis-q07.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-13.2-07
+igcse-biology-0610,13.2,"Kidney structure and function, dialysis",qa-question-level/13-2-kidney-structure-function-dialysis-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-13.2-08
+igcse-biology-0610,13.2,"Kidney structure and function, dialysis",qa-question-level/13-2-kidney-structure-function-dialysis-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-13.2-09
+igcse-biology-0610,14.1,| 14.3 | Plant tropisms: phototropism and geotropism,qa-question-level/14-1-nervous-system-neurones-reflex-q01.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-14.1-01
+igcse-biology-0610,14.1,| 14.3 | Plant tropisms: phototropism and geotropism,qa-question-level/14-1-nervous-system-neurones-reflex-q02.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-14.1-02
+igcse-biology-0610,14.1,| 14.3 | Plant tropisms: phototropism and geotropism,qa-question-level/14-1-nervous-system-neurones-reflex-q03.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-14.1-03
+igcse-biology-0610,14.1,| 14.3 | Plant tropisms: phototropism and geotropism,qa-question-level/14-1-nervous-system-neurones-reflex-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-14.1-04
+igcse-biology-0610,14.1,| 14.3 | Plant tropisms: phototropism and geotropism,qa-question-level/14-1-nervous-system-neurones-reflex-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-14.1-05
+igcse-biology-0610,14.1,| 14.3 | Plant tropisms: phototropism and geotropism,qa-question-level/14-1-nervous-system-neurones-reflex-q06.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-14.1-06
+igcse-biology-0610,14.1,| 14.3 | Plant tropisms: phototropism and geotropism,qa-question-level/14-1-nervous-system-neurones-reflex-q07.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-14.1-07
+igcse-biology-0610,14.1,| 14.3 | Plant tropisms: phototropism and geotropism,qa-question-level/14-1-nervous-system-neurones-reflex-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-14.1-08
+igcse-biology-0610,14.1,| 14.3 | Plant tropisms: phototropism and geotropism,qa-question-level/14-1-nervous-system-neurones-reflex-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-14.1-09
+igcse-biology-0610,14.2,Hormones and endocrine system,qa-question-level/14-2-hormones-endocrine-system-q01.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-14.2-01
+igcse-biology-0610,14.2,Hormones and endocrine system,qa-question-level/14-2-hormones-endocrine-system-q02.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-14.2-02
+igcse-biology-0610,14.2,Hormones and endocrine system,qa-question-level/14-2-hormones-endocrine-system-q03.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-14.2-03
+igcse-biology-0610,14.2,Hormones and endocrine system,qa-question-level/14-2-hormones-endocrine-system-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-14.2-04
+igcse-biology-0610,14.2,Hormones and endocrine system,qa-question-level/14-2-hormones-endocrine-system-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-14.2-05
+igcse-biology-0610,14.2,Hormones and endocrine system,qa-question-level/14-2-hormones-endocrine-system-q06.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-14.2-06
+igcse-biology-0610,14.2,Hormones and endocrine system,qa-question-level/14-2-hormones-endocrine-system-q07.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-14.2-07
+igcse-biology-0610,14.2,Hormones and endocrine system,qa-question-level/14-2-hormones-endocrine-system-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-14.2-08
+igcse-biology-0610,14.2,Hormones and endocrine system,qa-question-level/14-2-hormones-endocrine-system-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-14.2-09
+igcse-biology-0610,14.3,,qa-question-level/14-3-plant-tropisms-q01.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-14.3-01
+igcse-biology-0610,14.3,,qa-question-level/14-3-plant-tropisms-q02.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-14.3-02
+igcse-biology-0610,14.3,,qa-question-level/14-3-plant-tropisms-q03.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-14.3-03
+igcse-biology-0610,14.3,,qa-question-level/14-3-plant-tropisms-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-14.3-04
+igcse-biology-0610,14.3,,qa-question-level/14-3-plant-tropisms-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-14.3-05
+igcse-biology-0610,14.3,,qa-question-level/14-3-plant-tropisms-q06.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-14.3-06
+igcse-biology-0610,14.3,,qa-question-level/14-3-plant-tropisms-q07.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-14.3-07
+igcse-biology-0610,14.3,,qa-question-level/14-3-plant-tropisms-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-14.3-08
+igcse-biology-0610,14.3,,qa-question-level/14-3-plant-tropisms-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-14.3-09
+igcse-biology-0610,15.1,| 15.3 | Plant reproduction: flowers and pollination,qa-question-level/15-1-asexual-sexual-reproduction-q01.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-15.1-01
+igcse-biology-0610,15.1,| 15.3 | Plant reproduction: flowers and pollination,qa-question-level/15-1-asexual-sexual-reproduction-q02.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-15.1-02
+igcse-biology-0610,15.1,| 15.3 | Plant reproduction: flowers and pollination,qa-question-level/15-1-asexual-sexual-reproduction-q03.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-15.1-03
+igcse-biology-0610,15.1,| 15.3 | Plant reproduction: flowers and pollination,qa-question-level/15-1-asexual-sexual-reproduction-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-15.1-04
+igcse-biology-0610,15.1,| 15.3 | Plant reproduction: flowers and pollination,qa-question-level/15-1-asexual-sexual-reproduction-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-15.1-05
+igcse-biology-0610,15.1,| 15.3 | Plant reproduction: flowers and pollination,qa-question-level/15-1-asexual-sexual-reproduction-q06.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-15.1-06
+igcse-biology-0610,15.1,| 15.3 | Plant reproduction: flowers and pollination,qa-question-level/15-1-asexual-sexual-reproduction-q07.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-15.1-07
+igcse-biology-0610,15.1,| 15.3 | Plant reproduction: flowers and pollination,qa-question-level/15-1-asexual-sexual-reproduction-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-15.1-08
+igcse-biology-0610,15.1,| 15.3 | Plant reproduction: flowers and pollination,qa-question-level/15-1-asexual-sexual-reproduction-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-15.1-09
+igcse-biology-0610,15.2,Human reproductive system and development,qa-question-level/15-2-human-reproductive-system-q01.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-15.2-01
+igcse-biology-0610,15.2,Human reproductive system and development,qa-question-level/15-2-human-reproductive-system-q02.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-15.2-02
+igcse-biology-0610,15.2,Human reproductive system and development,qa-question-level/15-2-human-reproductive-system-q03.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-15.2-03
+igcse-biology-0610,15.2,Human reproductive system and development,qa-question-level/15-2-human-reproductive-system-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-15.2-04
+igcse-biology-0610,15.2,Human reproductive system and development,qa-question-level/15-2-human-reproductive-system-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-15.2-05
+igcse-biology-0610,15.2,Human reproductive system and development,qa-question-level/15-2-human-reproductive-system-q06.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-15.2-06
+igcse-biology-0610,15.2,Human reproductive system and development,qa-question-level/15-2-human-reproductive-system-q07.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-15.2-07
+igcse-biology-0610,15.2,Human reproductive system and development,qa-question-level/15-2-human-reproductive-system-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-15.2-08
+igcse-biology-0610,15.2,Human reproductive system and development,qa-question-level/15-2-human-reproductive-system-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-15.2-09
+igcse-biology-0610,15.3,,qa-question-level/15-3-human-reproduction-q01.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-15.3-01
+igcse-biology-0610,15.3,,qa-question-level/15-3-human-reproduction-q02.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-15.3-02
+igcse-biology-0610,15.3,,qa-question-level/15-3-human-reproduction-q03.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-15.3-03
+igcse-biology-0610,15.3,,qa-question-level/15-3-human-reproduction-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-15.3-04
+igcse-biology-0610,15.3,,qa-question-level/15-3-human-reproduction-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-15.3-05
+igcse-biology-0610,15.3,,qa-question-level/15-3-human-reproduction-q06.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-15.3-06
+igcse-biology-0610,15.3,,qa-question-level/15-3-human-reproduction-q07.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-15.3-07
+igcse-biology-0610,15.3,,qa-question-level/15-3-human-reproduction-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-15.3-08
+igcse-biology-0610,15.3,,qa-question-level/15-3-human-reproduction-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-15.3-09
+igcse-biology-0610,16.1,| 16.3 | Variation: continuous and discontinuous,qa-question-level/16-1-chromosomes-genes-dna-q01.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-16.1-01
+igcse-biology-0610,16.1,| 16.3 | Variation: continuous and discontinuous,qa-question-level/16-1-chromosomes-genes-dna-q02.md,1,Foundation,0610,,imported,passed,worker_course,Q-ID Q-16.1-02
+igcse-biology-0610,16.1,| 16.3 | Variation: continuous and discontinuous,qa-question-level/16-1-chromosomes-genes-dna-q03.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-16.1-03
+igcse-biology-0610,16.1,| 16.3 | Variation: continuous and discontinuous,qa-question-level/16-1-chromosomes-genes-dna-q04.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-16.1-04
+igcse-biology-0610,16.1,| 16.3 | Variation: continuous and discontinuous,qa-question-level/16-1-chromosomes-genes-dna-q05.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-16.1-05
+igcse-biology-0610,16.1,| 16.3 | Variation: continuous and discontinuous,qa-question-level/16-1-chromosomes-genes-dna-q06.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-16.1-06
+igcse-biology-0610,16.1,| 16.3 | Variation: continuous and discontinuous,qa-question-level/16-1-chromosomes-genes-dna-q07.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-16.1-07
+igcse-biology-0610,16.2,,qa-question-level/16-2-monohybrid-inheritance-punnett-q01.md,1,Challenge,0610,,imported,passed,worker_course,Q-ID Q-16.2-01
+igcse-biology-0610,16.2,,qa-question-level/16-2-monohybrid-inheritance-punnett-q02.md,1,Foundation,0610,,imported,passed,worker_course,Q-ID Q-16.2-02
+igcse-biology-0610,16.2,,qa-question-level/16-2-monohybrid-inheritance-punnett-q03.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-16.2-03
+igcse-biology-0610,16.2,,qa-question-level/16-2-monohybrid-inheritance-punnett-q04.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-16.2-04
+igcse-biology-0610,16.2,,qa-question-level/16-2-monohybrid-inheritance-punnett-q05.md,1,Challenge,0610,,imported,passed,worker_course,Q-ID Q-16.2-05
+igcse-biology-0610,16.2,,qa-question-level/16-2-monohybrid-inheritance-punnett-q06.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-16.2-06
+igcse-biology-0610,16.3,,qa-question-level/16-3-variation-continuous-discontinuous-q01.md,1,Foundation,0610,,imported,passed,worker_course,Q-ID Q-16.3-01
+igcse-biology-0610,16.3,,qa-question-level/16-3-variation-continuous-discontinuous-q02.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-16.3-02
+igcse-biology-0610,16.3,,qa-question-level/16-3-variation-continuous-discontinuous-q03.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-16.3-03
+igcse-biology-0610,16.3,,qa-question-level/16-3-variation-continuous-discontinuous-q04.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-16.3-04
+igcse-biology-0610,16.3,,qa-question-level/16-3-variation-continuous-discontinuous-q05.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-16.3-05
+igcse-biology-0610,17.1,| 17.3 | Population size and ecology,qa-question-level/17-1-ecosystems-food-chains-webs-q01.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-17.1-01
+igcse-biology-0610,17.1,| 17.3 | Population size and ecology,qa-question-level/17-1-ecosystems-food-chains-webs-q02.md,1,Foundation,0610,,imported,passed,worker_course,Q-ID Q-17.1-02
+igcse-biology-0610,17.1,| 17.3 | Population size and ecology,qa-question-level/17-1-ecosystems-food-chains-webs-q03.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-17.1-03
+igcse-biology-0610,17.1,| 17.3 | Population size and ecology,qa-question-level/17-1-ecosystems-food-chains-webs-q04.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-17.1-04
+igcse-biology-0610,17.1,| 17.3 | Population size and ecology,qa-question-level/17-1-ecosystems-food-chains-webs-q05.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-17.1-05
+igcse-biology-0610,17.1,| 17.3 | Population size and ecology,qa-question-level/17-1-ecosystems-food-chains-webs-q06.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-17.1-06
+igcse-biology-0610,17.2,Energy flow and nutrient cycles,qa-question-level/17-2-energy-flow-nutrient-cycles-q01.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-17.2-01
+igcse-biology-0610,17.2,Energy flow and nutrient cycles,qa-question-level/17-2-energy-flow-nutrient-cycles-q02.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-17.2-02
+igcse-biology-0610,17.2,Energy flow and nutrient cycles,qa-question-level/17-2-energy-flow-nutrient-cycles-q03.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-17.2-03
+igcse-biology-0610,17.2,Energy flow and nutrient cycles,qa-question-level/17-2-energy-flow-nutrient-cycles-q04.md,1,Challenge,0610,,imported,passed,worker_course,Q-ID Q-17.2-04
+igcse-biology-0610,17.2,Energy flow and nutrient cycles,qa-question-level/17-2-energy-flow-nutrient-cycles-q05.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-17.2-05
+igcse-biology-0610,17.2,Energy flow and nutrient cycles,qa-question-level/17-2-energy-flow-nutrient-cycles-q06.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-17.2-06
+igcse-biology-0610,17.3,,qa-question-level/17-3-population-size-ecology-q01.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-17.3-01
+igcse-biology-0610,17.3,,qa-question-level/17-3-population-size-ecology-q02.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-17.3-02
+igcse-biology-0610,17.3,,qa-question-level/17-3-population-size-ecology-q03.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-17.3-03
+igcse-biology-0610,17.3,,qa-question-level/17-3-population-size-ecology-q04.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-17.3-04
+igcse-biology-0610,17.3,,qa-question-level/17-3-population-size-ecology-q05.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-17.3-05
+igcse-biology-0610,18.1,Biotechnology: fermentation and uses,qa-question-level/18-1-biotechnology-fermentation-q01.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-18.1-01
+igcse-biology-0610,18.1,Biotechnology: fermentation and uses,qa-question-level/18-1-biotechnology-fermentation-q02.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-18.1-02
+igcse-biology-0610,18.1,Biotechnology: fermentation and uses,qa-question-level/18-1-biotechnology-fermentation-q03.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-18.1-03
+igcse-biology-0610,18.1,Biotechnology: fermentation and uses,qa-question-level/18-1-biotechnology-fermentation-q04.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-18.1-04
+igcse-biology-0610,18.1,Biotechnology: fermentation and uses,qa-question-level/18-1-biotechnology-fermentation-q05.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-18.1-05
+igcse-biology-0610,18.1,Biotechnology: fermentation and uses,qa-question-level/18-1-biotechnology-fermentation-q06.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-18.1-06
+igcse-biology-0610,18.2,Genetic engineering and applications,qa-question-level/18-2-genetic-engineering-applications-q01.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-18.2-01
+igcse-biology-0610,18.2,Genetic engineering and applications,qa-question-level/18-2-genetic-engineering-applications-q02.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-18.2-02
+igcse-biology-0610,18.2,Genetic engineering and applications,qa-question-level/18-2-genetic-engineering-applications-q03.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-18.2-03
+igcse-biology-0610,18.2,Genetic engineering and applications,qa-question-level/18-2-genetic-engineering-applications-q04.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-18.2-04
+igcse-biology-0610,18.2,Genetic engineering and applications,qa-question-level/18-2-genetic-engineering-applications-q05.md,1,Challenge,0610,,imported,passed,worker_course,Q-ID Q-18.2-05
+igcse-biology-0610,18.2,Genetic engineering and applications,qa-question-level/18-2-genetic-engineering-applications-q06.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-18.2-06
+igcse-biology-0610,19.1,"Habitat destruction, deforestation, climate change",qa-question-level/19-1-habitat-destruction-deforestation-q01.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-19.1-01
+igcse-biology-0610,19.1,"Habitat destruction, deforestation, climate change",qa-question-level/19-1-habitat-destruction-deforestation-q02.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-19.1-02
+igcse-biology-0610,19.1,"Habitat destruction, deforestation, climate change",qa-question-level/19-1-habitat-destruction-deforestation-q03.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-19.1-03
+igcse-biology-0610,19.1,"Habitat destruction, deforestation, climate change",qa-question-level/19-1-habitat-destruction-deforestation-q04.md,1,Foundation,0610,,imported,passed,worker_course,Q-ID Q-19.1-04
+igcse-biology-0610,19.1,"Habitat destruction, deforestation, climate change",qa-question-level/19-1-habitat-destruction-deforestation-q05.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-19.1-05
+igcse-biology-0610,19.1,"Habitat destruction, deforestation, climate change",qa-question-level/19-1-habitat-destruction-deforestation-q06.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-19.1-06
+igcse-biology-0610,19.1,"Habitat destruction, deforestation, climate change",qa-question-level/19-1-habitat-destruction-deforestation-q07.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-19.1-07
+igcse-biology-0610,19.2,Conservation and sustainable development,qa-question-level/19-2-conservation-sustainable-development-q01.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-19.2-01
+igcse-biology-0610,19.2,Conservation and sustainable development,qa-question-level/19-2-conservation-sustainable-development-q02.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-19.2-02
+igcse-biology-0610,19.2,Conservation and sustainable development,qa-question-level/19-2-conservation-sustainable-development-q03.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-19.2-03
+igcse-biology-0610,19.2,Conservation and sustainable development,qa-question-level/19-2-conservation-sustainable-development-q04.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-19.2-04
+igcse-biology-0610,19.2,Conservation and sustainable development,qa-question-level/19-2-conservation-sustainable-development-q05.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-19.2-05
+igcse-biology-0610,19.2,Conservation and sustainable development,qa-question-level/19-2-conservation-sustainable-development-q06.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-19.2-06
+igcse-biology-0610,19.2,Conservation and sustainable development,qa-question-level/19-2-conservation-sustainable-development-q07.md,1,Standard,0610,,imported,passed,worker_course,Q-ID Q-19.2-07
+igcse-biology-0610,2.1,"| 16.2 | Monohybrid inheritance: dominant, recessive, Punnett squares",qa-question-level/2-1-cell-structure-plant-animal-q01.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-2.1-01
+igcse-biology-0610,2.1,"| 16.2 | Monohybrid inheritance: dominant, recessive, Punnett squares",qa-question-level/2-1-cell-structure-plant-animal-q02.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-2.1-02
+igcse-biology-0610,2.1,"| 16.2 | Monohybrid inheritance: dominant, recessive, Punnett squares",qa-question-level/2-1-cell-structure-plant-animal-q03.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-2.1-03
+igcse-biology-0610,2.1,"| 16.2 | Monohybrid inheritance: dominant, recessive, Punnett squares",qa-question-level/2-1-cell-structure-plant-animal-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-2.1-04
+igcse-biology-0610,2.1,"| 16.2 | Monohybrid inheritance: dominant, recessive, Punnett squares",qa-question-level/2-1-cell-structure-plant-animal-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-2.1-05
+igcse-biology-0610,2.1,"| 16.2 | Monohybrid inheritance: dominant, recessive, Punnett squares",qa-question-level/2-1-cell-structure-plant-animal-q06.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-2.1-06
+igcse-biology-0610,2.1,"| 16.2 | Monohybrid inheritance: dominant, recessive, Punnett squares",qa-question-level/2-1-cell-structure-plant-animal-q07.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-2.1-07
+igcse-biology-0610,2.1,"| 16.2 | Monohybrid inheritance: dominant, recessive, Punnett squares",qa-question-level/2-1-cell-structure-plant-animal-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-2.1-08
+igcse-biology-0610,2.1,"| 16.2 | Monohybrid inheritance: dominant, recessive, Punnett squares",qa-question-level/2-1-cell-structure-plant-animal-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-2.1-09
+igcse-biology-0610,2.2,Specialised cells and their functions,qa-question-level/2-2-specialised-cells-functions-q01.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-2.2-01
+igcse-biology-0610,2.2,Specialised cells and their functions,qa-question-level/2-2-specialised-cells-functions-q02.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-2.2-02
+igcse-biology-0610,2.2,Specialised cells and their functions,qa-question-level/2-2-specialised-cells-functions-q03.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-2.2-03
+igcse-biology-0610,2.2,Specialised cells and their functions,qa-question-level/2-2-specialised-cells-functions-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-2.2-04
+igcse-biology-0610,2.2,Specialised cells and their functions,qa-question-level/2-2-specialised-cells-functions-q05.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-2.2-05
+igcse-biology-0610,2.2,Specialised cells and their functions,qa-question-level/2-2-specialised-cells-functions-q06.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-2.2-06
+igcse-biology-0610,2.2,Specialised cells and their functions,qa-question-level/2-2-specialised-cells-functions-q07.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-2.2-07
+igcse-biology-0610,2.2,Specialised cells and their functions,qa-question-level/2-2-specialised-cells-functions-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-2.2-08
+igcse-biology-0610,2.2,Specialised cells and their functions,qa-question-level/2-2-specialised-cells-functions-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-2.2-09
+igcse-biology-0610,2.3,,qa-question-level/2-3-levels-of-organisation-q01.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-2.3-01
+igcse-biology-0610,2.3,,qa-question-level/2-3-levels-of-organisation-q02.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-2.3-02
+igcse-biology-0610,2.3,,qa-question-level/2-3-levels-of-organisation-q03.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-2.3-03
+igcse-biology-0610,2.3,,qa-question-level/2-3-levels-of-organisation-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-2.3-04
+igcse-biology-0610,2.3,,qa-question-level/2-3-levels-of-organisation-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-2.3-05
+igcse-biology-0610,2.3,,qa-question-level/2-3-levels-of-organisation-q06.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-2.3-06
+igcse-biology-0610,2.3,,qa-question-level/2-3-levels-of-organisation-q07.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-2.3-07
+igcse-biology-0610,2.3,,qa-question-level/2-3-levels-of-organisation-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-2.3-08
+igcse-biology-0610,2.3,,qa-question-level/2-3-levels-of-organisation-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-2.3-09
+igcse-biology-0610,3.1,| 3.3 | Active transport,qa-question-level/3-1-diffusion-q01.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-3.1-01
+igcse-biology-0610,3.1,| 3.3 | Active transport,qa-question-level/3-1-diffusion-q02.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-3.1-02
+igcse-biology-0610,3.1,| 3.3 | Active transport,qa-question-level/3-1-diffusion-q03.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-3.1-03
+igcse-biology-0610,3.1,| 3.3 | Active transport,qa-question-level/3-1-diffusion-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-3.1-04
+igcse-biology-0610,3.1,| 3.3 | Active transport,qa-question-level/3-1-diffusion-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-3.1-05
+igcse-biology-0610,3.1,| 3.3 | Active transport,qa-question-level/3-1-diffusion-q06.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-3.1-06
+igcse-biology-0610,3.1,| 3.3 | Active transport,qa-question-level/3-1-diffusion-q07.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-3.1-07
+igcse-biology-0610,3.1,| 3.3 | Active transport,qa-question-level/3-1-diffusion-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-3.1-08
+igcse-biology-0610,3.1,| 3.3 | Active transport,qa-question-level/3-1-diffusion-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-3.1-09
+igcse-biology-0610,3.2,Osmosis,qa-question-level/3-2-osmosis-q01.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-3.2-01
+igcse-biology-0610,3.2,Osmosis,qa-question-level/3-2-osmosis-q02.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-3.2-02
+igcse-biology-0610,3.2,Osmosis,qa-question-level/3-2-osmosis-q03.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-3.2-03
+igcse-biology-0610,3.2,Osmosis,qa-question-level/3-2-osmosis-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-3.2-04
+igcse-biology-0610,3.2,Osmosis,qa-question-level/3-2-osmosis-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-3.2-05
+igcse-biology-0610,3.2,Osmosis,qa-question-level/3-2-osmosis-q06.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-3.2-06
+igcse-biology-0610,3.2,Osmosis,qa-question-level/3-2-osmosis-q07.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-3.2-07
+igcse-biology-0610,3.2,Osmosis,qa-question-level/3-2-osmosis-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-3.2-08
+igcse-biology-0610,3.2,Osmosis,qa-question-level/3-2-osmosis-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-3.2-09
+igcse-biology-0610,3.3,,qa-question-level/3-3-active-transport-q01.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-3.3-01
+igcse-biology-0610,3.3,,qa-question-level/3-3-active-transport-q02.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-3.3-02
+igcse-biology-0610,3.3,,qa-question-level/3-3-active-transport-q03.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-3.3-03
+igcse-biology-0610,3.3,,qa-question-level/3-3-active-transport-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-3.3-04
+igcse-biology-0610,3.3,,qa-question-level/3-3-active-transport-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-3.3-05
+igcse-biology-0610,3.3,,qa-question-level/3-3-active-transport-q06.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-3.3-06
+igcse-biology-0610,3.3,,qa-question-level/3-3-active-transport-q07.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-3.3-07
+igcse-biology-0610,3.3,,qa-question-level/3-3-active-transport-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-3.3-08
+igcse-biology-0610,3.3,,qa-question-level/3-3-active-transport-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-3.3-09
+igcse-biology-0610,4.1,| 5.2 | Factors affecting enzyme activity,qa-question-level/4-1-carbohydrates-proteins-lipids-q01.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-4.1-01
+igcse-biology-0610,4.1,| 5.2 | Factors affecting enzyme activity,qa-question-level/4-1-carbohydrates-proteins-lipids-q02.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-4.1-02
+igcse-biology-0610,4.1,| 5.2 | Factors affecting enzyme activity,qa-question-level/4-1-carbohydrates-proteins-lipids-q03.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-4.1-03
+igcse-biology-0610,4.1,| 5.2 | Factors affecting enzyme activity,qa-question-level/4-1-carbohydrates-proteins-lipids-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-4.1-04
+igcse-biology-0610,4.1,| 5.2 | Factors affecting enzyme activity,qa-question-level/4-1-carbohydrates-proteins-lipids-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-4.1-05
+igcse-biology-0610,4.1,| 5.2 | Factors affecting enzyme activity,qa-question-level/4-1-carbohydrates-proteins-lipids-q06.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-4.1-06
+igcse-biology-0610,4.1,| 5.2 | Factors affecting enzyme activity,qa-question-level/4-1-carbohydrates-proteins-lipids-q07.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-4.1-07
+igcse-biology-0610,4.1,| 5.2 | Factors affecting enzyme activity,qa-question-level/4-1-carbohydrates-proteins-lipids-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-4.1-08
+igcse-biology-0610,4.1,| 5.2 | Factors affecting enzyme activity,qa-question-level/4-1-carbohydrates-proteins-lipids-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-4.1-09
+igcse-biology-0610,4.2,Food tests and DNA structure,qa-question-level/4-2-food-tests-dna-structure-q01.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-4.2-01
+igcse-biology-0610,4.2,Food tests and DNA structure,qa-question-level/4-2-food-tests-dna-structure-q02.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-4.2-02
+igcse-biology-0610,4.2,Food tests and DNA structure,qa-question-level/4-2-food-tests-dna-structure-q03.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-4.2-03
+igcse-biology-0610,4.2,Food tests and DNA structure,qa-question-level/4-2-food-tests-dna-structure-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-4.2-04
+igcse-biology-0610,4.2,Food tests and DNA structure,qa-question-level/4-2-food-tests-dna-structure-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-4.2-05
+igcse-biology-0610,4.2,Food tests and DNA structure,qa-question-level/4-2-food-tests-dna-structure-q06.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-4.2-06
+igcse-biology-0610,4.2,Food tests and DNA structure,qa-question-level/4-2-food-tests-dna-structure-q07.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-4.2-07
+igcse-biology-0610,4.2,Food tests and DNA structure,qa-question-level/4-2-food-tests-dna-structure-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-4.2-08
+igcse-biology-0610,4.2,Food tests and DNA structure,qa-question-level/4-2-food-tests-dna-structure-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-4.2-09
+igcse-biology-0610,5.1,Enzyme action and specificity,qa-question-level/5-1-enzyme-action-specificity-q01.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-5.1-01
+igcse-biology-0610,5.1,Enzyme action and specificity,qa-question-level/5-1-enzyme-action-specificity-q02.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-5.1-02
+igcse-biology-0610,5.1,Enzyme action and specificity,qa-question-level/5-1-enzyme-action-specificity-q03.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-5.1-03
+igcse-biology-0610,5.1,Enzyme action and specificity,qa-question-level/5-1-enzyme-action-specificity-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-5.1-04
+igcse-biology-0610,5.1,Enzyme action and specificity,qa-question-level/5-1-enzyme-action-specificity-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-5.1-05
+igcse-biology-0610,5.1,Enzyme action and specificity,qa-question-level/5-1-enzyme-action-specificity-q06.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-5.1-06
+igcse-biology-0610,5.1,Enzyme action and specificity,qa-question-level/5-1-enzyme-action-specificity-q07.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-5.1-07
+igcse-biology-0610,5.1,Enzyme action and specificity,qa-question-level/5-1-enzyme-action-specificity-q08.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-5.1-08
+igcse-biology-0610,5.1,Enzyme action and specificity,qa-question-level/5-1-enzyme-action-specificity-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-5.1-09
+igcse-biology-0610,5.2,,qa-question-level/5-2-factors-affecting-enzyme-activity-q01.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-5.2-01
+igcse-biology-0610,5.2,,qa-question-level/5-2-factors-affecting-enzyme-activity-q02.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-5.2-02
+igcse-biology-0610,5.2,,qa-question-level/5-2-factors-affecting-enzyme-activity-q03.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-5.2-03
+igcse-biology-0610,5.2,,qa-question-level/5-2-factors-affecting-enzyme-activity-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-5.2-04
+igcse-biology-0610,5.2,,qa-question-level/5-2-factors-affecting-enzyme-activity-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-5.2-05
+igcse-biology-0610,5.2,,qa-question-level/5-2-factors-affecting-enzyme-activity-q06.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-5.2-06
+igcse-biology-0610,5.2,,qa-question-level/5-2-factors-affecting-enzyme-activity-q07.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-5.2-07
+igcse-biology-0610,5.2,,qa-question-level/5-2-factors-affecting-enzyme-activity-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-5.2-08
+igcse-biology-0610,5.2,,qa-question-level/5-2-factors-affecting-enzyme-activity-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-5.2-09
+igcse-biology-0610,6.1,Photosynthesis: process and equation,qa-question-level/6-1-photosynthesis-process-equation-q01.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-6.1-01
+igcse-biology-0610,6.1,Photosynthesis: process and equation,qa-question-level/6-1-photosynthesis-process-equation-q02.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-6.1-02
+igcse-biology-0610,6.1,Photosynthesis: process and equation,qa-question-level/6-1-photosynthesis-process-equation-q03.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-6.1-03
+igcse-biology-0610,6.1,Photosynthesis: process and equation,qa-question-level/6-1-photosynthesis-process-equation-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-6.1-04
+igcse-biology-0610,6.1,Photosynthesis: process and equation,qa-question-level/6-1-photosynthesis-process-equation-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-6.1-05
+igcse-biology-0610,6.1,Photosynthesis: process and equation,qa-question-level/6-1-photosynthesis-process-equation-q06.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-6.1-06
+igcse-biology-0610,6.1,Photosynthesis: process and equation,qa-question-level/6-1-photosynthesis-process-equation-q07.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-6.1-07
+igcse-biology-0610,6.1,Photosynthesis: process and equation,qa-question-level/6-1-photosynthesis-process-equation-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-6.1-08
+igcse-biology-0610,6.1,Photosynthesis: process and equation,qa-question-level/6-1-photosynthesis-process-equation-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-6.1-09
+igcse-biology-0610,6.2,"Factors affecting photosynthesis, limiting factors",qa-question-level/6-2-factors-affecting-photosynthesis-q01.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-6.2-01
+igcse-biology-0610,6.2,"Factors affecting photosynthesis, limiting factors",qa-question-level/6-2-factors-affecting-photosynthesis-q02.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-6.2-02
+igcse-biology-0610,6.2,"Factors affecting photosynthesis, limiting factors",qa-question-level/6-2-factors-affecting-photosynthesis-q03.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-6.2-03
+igcse-biology-0610,6.2,"Factors affecting photosynthesis, limiting factors",qa-question-level/6-2-factors-affecting-photosynthesis-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-6.2-04
+igcse-biology-0610,6.2,"Factors affecting photosynthesis, limiting factors",qa-question-level/6-2-factors-affecting-photosynthesis-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-6.2-05
+igcse-biology-0610,6.2,"Factors affecting photosynthesis, limiting factors",qa-question-level/6-2-factors-affecting-photosynthesis-q06.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-6.2-06
+igcse-biology-0610,6.2,"Factors affecting photosynthesis, limiting factors",qa-question-level/6-2-factors-affecting-photosynthesis-q07.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-6.2-07
+igcse-biology-0610,6.2,"Factors affecting photosynthesis, limiting factors",qa-question-level/6-2-factors-affecting-photosynthesis-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-6.2-08
+igcse-biology-0610,6.2,"Factors affecting photosynthesis, limiting factors",qa-question-level/6-2-factors-affecting-photosynthesis-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-6.2-09
+igcse-biology-0610,7.1,Diet and balanced nutrition,qa-question-level/7-1-diet-balanced-nutrition-q01.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-7.1-01
+igcse-biology-0610,7.1,Diet and balanced nutrition,qa-question-level/7-1-diet-balanced-nutrition-q02.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-7.1-02
+igcse-biology-0610,7.1,Diet and balanced nutrition,qa-question-level/7-1-diet-balanced-nutrition-q03.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-7.1-03
+igcse-biology-0610,7.1,Diet and balanced nutrition,qa-question-level/7-1-diet-balanced-nutrition-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-7.1-04
+igcse-biology-0610,7.1,Diet and balanced nutrition,qa-question-level/7-1-diet-balanced-nutrition-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-7.1-05
+igcse-biology-0610,7.1,Diet and balanced nutrition,qa-question-level/7-1-diet-balanced-nutrition-q06.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-7.1-06
+igcse-biology-0610,7.1,Diet and balanced nutrition,qa-question-level/7-1-diet-balanced-nutrition-q07.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-7.1-07
+igcse-biology-0610,7.1,Diet and balanced nutrition,qa-question-level/7-1-diet-balanced-nutrition-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-7.1-08
+igcse-biology-0610,7.1,Diet and balanced nutrition,qa-question-level/7-1-diet-balanced-nutrition-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-7.1-09
+igcse-biology-0610,7.2,"Digestion: mechanical and chemical, alimentary canal",qa-question-level/7-2-digestion-alimentary-canal-q01.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-7.2-01
+igcse-biology-0610,7.2,"Digestion: mechanical and chemical, alimentary canal",qa-question-level/7-2-digestion-alimentary-canal-q02.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-7.2-02
+igcse-biology-0610,7.2,"Digestion: mechanical and chemical, alimentary canal",qa-question-level/7-2-digestion-alimentary-canal-q03.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-7.2-03
+igcse-biology-0610,7.2,"Digestion: mechanical and chemical, alimentary canal",qa-question-level/7-2-digestion-alimentary-canal-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-7.2-04
+igcse-biology-0610,7.2,"Digestion: mechanical and chemical, alimentary canal",qa-question-level/7-2-digestion-alimentary-canal-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-7.2-05
+igcse-biology-0610,7.2,"Digestion: mechanical and chemical, alimentary canal",qa-question-level/7-2-digestion-alimentary-canal-q06.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-7.2-06
+igcse-biology-0610,7.2,"Digestion: mechanical and chemical, alimentary canal",qa-question-level/7-2-digestion-alimentary-canal-q07.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-7.2-07
+igcse-biology-0610,7.2,"Digestion: mechanical and chemical, alimentary canal",qa-question-level/7-2-digestion-alimentary-canal-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-7.2-08
+igcse-biology-0610,7.2,"Digestion: mechanical and chemical, alimentary canal",qa-question-level/7-2-digestion-alimentary-canal-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-7.2-09
+igcse-biology-0610,8.1,Transport tissues: xylem and phloem,qa-question-level/8-1-transport-tissues-xylem-phloem-q01.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-8.1-01
+igcse-biology-0610,8.1,Transport tissues: xylem and phloem,qa-question-level/8-1-transport-tissues-xylem-phloem-q02.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-8.1-02
+igcse-biology-0610,8.1,Transport tissues: xylem and phloem,qa-question-level/8-1-transport-tissues-xylem-phloem-q03.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-8.1-03
+igcse-biology-0610,8.1,Transport tissues: xylem and phloem,qa-question-level/8-1-transport-tissues-xylem-phloem-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-8.1-04
+igcse-biology-0610,8.1,Transport tissues: xylem and phloem,qa-question-level/8-1-transport-tissues-xylem-phloem-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-8.1-05
+igcse-biology-0610,8.1,Transport tissues: xylem and phloem,qa-question-level/8-1-transport-tissues-xylem-phloem-q06.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-8.1-06
+igcse-biology-0610,8.1,Transport tissues: xylem and phloem,qa-question-level/8-1-transport-tissues-xylem-phloem-q07.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-8.1-07
+igcse-biology-0610,8.1,Transport tissues: xylem and phloem,qa-question-level/8-1-transport-tissues-xylem-phloem-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-8.1-08
+igcse-biology-0610,8.1,Transport tissues: xylem and phloem,qa-question-level/8-1-transport-tissues-xylem-phloem-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-8.1-09
+igcse-biology-0610,8.2,Transpiration and transpiration stream,qa-question-level/8-2-transpiration-transpiration-stream-q01.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-8.2-01
+igcse-biology-0610,8.2,Transpiration and transpiration stream,qa-question-level/8-2-transpiration-transpiration-stream-q02.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-8.2-02
+igcse-biology-0610,8.2,Transpiration and transpiration stream,qa-question-level/8-2-transpiration-transpiration-stream-q03.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-8.2-03
+igcse-biology-0610,8.2,Transpiration and transpiration stream,qa-question-level/8-2-transpiration-transpiration-stream-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-8.2-04
+igcse-biology-0610,8.2,Transpiration and transpiration stream,qa-question-level/8-2-transpiration-transpiration-stream-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-8.2-05
+igcse-biology-0610,8.2,Transpiration and transpiration stream,qa-question-level/8-2-transpiration-transpiration-stream-q06.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-8.2-06
+igcse-biology-0610,8.2,Transpiration and transpiration stream,qa-question-level/8-2-transpiration-transpiration-stream-q07.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-8.2-07
+igcse-biology-0610,8.2,Transpiration and transpiration stream,qa-question-level/8-2-transpiration-transpiration-stream-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-8.2-08
+igcse-biology-0610,8.2,Transpiration and transpiration stream,qa-question-level/8-2-transpiration-transpiration-stream-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-8.2-09
+igcse-biology-0610,9.1,"Circulatory system: heart, blood vessels",qa-question-level/9-1-circulatory-system-heart-vessels-q01.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-9.1-01
+igcse-biology-0610,9.1,"Circulatory system: heart, blood vessels",qa-question-level/9-1-circulatory-system-heart-vessels-q02.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-9.1-02
+igcse-biology-0610,9.1,"Circulatory system: heart, blood vessels",qa-question-level/9-1-circulatory-system-heart-vessels-q03.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-9.1-03
+igcse-biology-0610,9.1,"Circulatory system: heart, blood vessels",qa-question-level/9-1-circulatory-system-heart-vessels-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-9.1-04
+igcse-biology-0610,9.1,"Circulatory system: heart, blood vessels",qa-question-level/9-1-circulatory-system-heart-vessels-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-9.1-05
+igcse-biology-0610,9.1,"Circulatory system: heart, blood vessels",qa-question-level/9-1-circulatory-system-heart-vessels-q06.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-9.1-06
+igcse-biology-0610,9.1,"Circulatory system: heart, blood vessels",qa-question-level/9-1-circulatory-system-heart-vessels-q07.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-9.1-07
+igcse-biology-0610,9.1,"Circulatory system: heart, blood vessels",qa-question-level/9-1-circulatory-system-heart-vessels-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-9.1-08
+igcse-biology-0610,9.1,"Circulatory system: heart, blood vessels",qa-question-level/9-1-circulatory-system-heart-vessels-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-9.1-09
+igcse-biology-0610,9.2,Blood: components and functions,qa-question-level/9-2-blood-components-functions-q01.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-9.2-01
+igcse-biology-0610,9.2,Blood: components and functions,qa-question-level/9-2-blood-components-functions-q02.md,1,Foundation,0610,,imported,pending,worker_course,Q-ID Q-9.2-02
+igcse-biology-0610,9.2,Blood: components and functions,qa-question-level/9-2-blood-components-functions-q03.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-9.2-03
+igcse-biology-0610,9.2,Blood: components and functions,qa-question-level/9-2-blood-components-functions-q04.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-9.2-04
+igcse-biology-0610,9.2,Blood: components and functions,qa-question-level/9-2-blood-components-functions-q05.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-9.2-05
+igcse-biology-0610,9.2,Blood: components and functions,qa-question-level/9-2-blood-components-functions-q06.md,1,Standard,0610,,imported,pending,worker_course,Q-ID Q-9.2-06
+igcse-biology-0610,9.2,Blood: components and functions,qa-question-level/9-2-blood-components-functions-q07.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-9.2-07
+igcse-biology-0610,9.2,Blood: components and functions,qa-question-level/9-2-blood-components-functions-q08.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-9.2-08
+igcse-biology-0610,9.2,Blood: components and functions,qa-question-level/9-2-blood-components-functions-q09.md,1,Challenge,0610,,imported,pending,worker_course,Q-ID Q-9.2-09
+igcse-biology-0610,16.1,,qa-question-level/16-1-chromosomes-genes-dna-q08.md,1,Challenge,T16-T19-0622,,imported,passed,worker_course,Q-ID Q-16.1-08 | added-20260622
+igcse-biology-0610,16.1,,qa-question-level/16-1-chromosomes-genes-dna-q09.md,1,Challenge,T16-T19-0622,,imported,passed,worker_course,Q-ID Q-16.1-09 | added-20260622
+igcse-biology-0610,16.2,,qa-question-level/16-2-monohybrid-inheritance-punnett-q07.md,1,Challenge,T16-T19-0622,,imported,passed,worker_course,Q-ID Q-16.2-07 | added-20260622
+igcse-biology-0610,16.2,,qa-question-level/16-2-monohybrid-inheritance-punnett-q08.md,1,Challenge,T16-T19-0622,,imported,passed,worker_course,Q-ID Q-16.2-08 | added-20260622
+igcse-biology-0610,16.2,,qa-question-level/16-2-monohybrid-inheritance-punnett-q09.md,1,Challenge,T16-T19-0622,,imported,passed,worker_course,Q-ID Q-16.2-09 | added-20260622
+igcse-biology-0610,16.3,,qa-question-level/16-3-variation-continuous-discontinuous-q06.md,1,Challenge,T16-T19-0622,,imported,passed,worker_course,Q-ID Q-16.3-06 | added-20260622
+igcse-biology-0610,16.3,,qa-question-level/16-3-variation-continuous-discontinuous-q07.md,1,Foundation,T16-T19-0622,,imported,passed,worker_course,Q-ID Q-16.3-07 | added-20260622
+igcse-biology-0610,16.3,,qa-question-level/16-3-variation-continuous-discontinuous-q08.md,1,Challenge,T16-T19-0622,,imported,passed,worker_course,Q-ID Q-16.3-08 | added-20260622
+igcse-biology-0610,16.3,,qa-question-level/16-3-variation-continuous-discontinuous-q09.md,1,Challenge,T16-T19-0622,,imported,passed,worker_course,Q-ID Q-16.3-09 | added-20260622
+igcse-biology-0610,17.1,,qa-question-level/17-1-ecosystems-food-chains-webs-q07.md,1,Foundation,T16-T19-0622,,imported,passed,worker_course,Q-ID Q-17.1-07 | added-20260622
+igcse-biology-0610,17.1,,qa-question-level/17-1-ecosystems-food-chains-webs-q08.md,1,Challenge,T16-T19-0622,,imported,passed,worker_course,Q-ID Q-17.1-08 | added-20260622
+igcse-biology-0610,17.1,,qa-question-level/17-1-ecosystems-food-chains-webs-q09.md,1,Challenge,T16-T19-0622,,imported,passed,worker_course,Q-ID Q-17.1-09 | added-20260622
+igcse-biology-0610,17.2,,qa-question-level/17-2-energy-flow-nutrient-cycles-q07.md,1,Foundation,T16-T19-0622,,imported,passed,worker_course,Q-ID Q-17.2-07 | added-20260622
+igcse-biology-0610,17.2,,qa-question-level/17-2-energy-flow-nutrient-cycles-q08.md,1,Challenge,T16-T19-0622,,imported,passed,worker_course,Q-ID Q-17.2-08 | added-20260622
+igcse-biology-0610,17.2,,qa-question-level/17-2-energy-flow-nutrient-cycles-q09.md,1,Standard,T16-T19-0622,,imported,passed,worker_course,Q-ID Q-17.2-09 | added-20260622
+igcse-biology-0610,17.3,,qa-question-level/17-3-population-size-ecology-q06.md,1,Challenge,T16-T19-0622,,imported,passed,worker_course,Q-ID Q-17.3-06 | added-20260622
+igcse-biology-0610,17.3,,qa-question-level/17-3-population-size-ecology-q07.md,1,Foundation,T16-T19-0622,,imported,passed,worker_course,Q-ID Q-17.3-07 | added-20260622
+igcse-biology-0610,17.3,,qa-question-level/17-3-population-size-ecology-q08.md,1,Challenge,T16-T19-0622,,imported,passed,worker_course,Q-ID Q-17.3-08 | added-20260622
+igcse-biology-0610,17.3,,qa-question-level/17-3-population-size-ecology-q09.md,1,Standard,T16-T19-0622,,imported,passed,worker_course,Q-ID Q-17.3-09 | added-20260622
+igcse-biology-0610,18.1,,qa-question-level/18-1-biotechnology-fermentation-q07.md,1,Challenge,T16-T19-0622,,imported,passed,worker_course,Q-ID Q-18.1-07 | added-20260622
+igcse-biology-0610,18.1,,qa-question-level/18-1-biotechnology-fermentation-q08.md,1,Challenge,T16-T19-0622,,imported,passed,worker_course,Q-ID Q-18.1-08 | added-20260622
+igcse-biology-0610,18.1,,qa-question-level/18-1-biotechnology-fermentation-q09.md,1,Challenge,T16-T19-0622,,imported,passed,worker_course,Q-ID Q-18.1-09 | added-20260622
+igcse-biology-0610,18.2,,qa-question-level/18-2-genetic-engineering-applications-q07.md,1,Foundation,T16-T19-0622,,imported,passed,worker_course,Q-ID Q-18.2-07 | added-20260622
+igcse-biology-0610,18.2,,qa-question-level/18-2-genetic-engineering-applications-q08.md,1,Challenge,T16-T19-0622,,imported,passed,worker_course,Q-ID Q-18.2-08 | added-20260622
+igcse-biology-0610,18.2,,qa-question-level/18-2-genetic-engineering-applications-q09.md,1,Challenge,T16-T19-0622,,imported,passed,worker_course,Q-ID Q-18.2-09 | added-20260622
+igcse-biology-0610,19.1,,qa-question-level/19-1-habitat-destruction-deforestation-q08.md,1,Challenge,T16-T19-0622,,imported,passed,worker_course,Q-ID Q-19.1-08 | added-20260622
+igcse-biology-0610,19.1,,qa-question-level/19-1-habitat-destruction-deforestation-q09.md,1,Standard,T16-T19-0622,,imported,passed,worker_course,Q-ID Q-19.1-09 | added-20260622
+igcse-biology-0610,19.2,,qa-question-level/19-2-conservation-sustainable-development-q08.md,1,Standard,T16-T19-0622,,imported,passed,worker_course,Q-ID Q-19.2-08 | added-20260622
+igcse-biology-0610,19.2,,qa-question-level/19-2-conservation-sustainable-development-q09.md,1,Challenge,T16-T19-0622,,imported,passed,worker_course,Q-ID Q-19.2-09 | added-20260622

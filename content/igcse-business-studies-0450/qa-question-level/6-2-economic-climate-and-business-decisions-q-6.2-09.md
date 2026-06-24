@@ -1,0 +1,6 @@
+### Question Q-6.2-09
+**Difficulty**: Challenge
+**Question**: Compare the impact of a sudden sharp increase in oil prices on an airline, a logistics company, and a software company. What does this illustrate about economic shocks?
+**Answer**: Airline: fuel is one of the largest operating costs (typically 25-35% of total costs). A sharp oil price increase directly and significantly raises costs, squeezing margins or forcing fare increases that reduce demand. Logistics company: fuel costs are significant but a smaller proportion than for airlines. The company can partially offset through route optimisation, fuel-efficient vehicles, and fuel surcharges passed to customers. Software company: minimal direct impact from oil prices. Indirect effects include potential reduction in corporate IT spending if the broader economy slows, and higher commuting costs affecting employee wage demands. This illustrates that economic shocks affect industries unevenly — the same event creates existential risk for one business and negligible impact for another.
+**Explanation**: Industry structure determines shock vulnerability. A common error is assessing economic impact at the economy level without considering industry-specific exposure.
+**Tags**: oil-prices, economic-shock, industry-comparison, evaluation

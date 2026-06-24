@@ -1,0 +1,6 @@
+### Question Q-2.2-09
+**Difficulty**: Challenge
+**Question**: A small software company has high staff turnover despite paying above-average salaries. Analyse the likely causes and recommend two motivation strategies, justifying your choices.
+**Answer**: Likely causes: software developers often seek more than money — they value autonomy, creative freedom, learning opportunities and meaningful work. High pay alone does not address Herzberg's motivators (achievement, recognition, responsibility). Recommended strategies: 1) Job enrichment and empowerment — give developers ownership of projects, allow choice of technologies and involvement in product decisions. This addresses higher-level needs and intrinsic motivation. 2) Professional development — fund training, conference attendance and career progression paths. This addresses self-actualisation needs and signals long-term investment in employees. Justification: tech workers are skilled professionals who respond more to intrinsic motivators; financial rewards are hygiene factors that prevent dissatisfaction but do not create lasting motivation.
+**Explanation**: Recommendations must be justified against the workforce type. A common error is recommending only one type of reward without considering the context.
+**Tags**: empowerment, motivation, evaluation, application, herzberg

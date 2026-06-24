@@ -1,0 +1,6 @@
+# Question: Question Q-16.3-09
+**Difficulty**: Challenge
+**Question**: A species of moth has light and dark colouration. In unpolluted forests, light moths are more common. In industrial areas with blackened tree bark, dark moths are more common. Explain this pattern using evolutionary concepts.
+**Answer**: This is a classic example of natural selection and adaptation. Initially, both colour forms existed due to genetic variation (mutation). In unpolluted areas, light moths are camouflaged against lichen-covered trees; dark moths are easily spotted by predators and are eaten. In polluted areas, industrial melanism occurs: tree bark becomes blackened by soot, making dark moths camouflaged and light moths vulnerable. Birds preferentially eat the more visible moths in each area. Over generations, the proportion of each colour morph shifts: in polluted areas, dark alleles increase (directional selection); in clean areas, light alleles are favoured. The environment acts as the selective agent.
+**Explanation**: Camouflage, predation, natural selection, allele frequency change. A common error is saying moths "change colour" in response to pollution (they don't — individuals with beneficial alleles survive).
+**Tags**: natural-selection, camouflage, adaptation, peppered-moth, industrial-melanism

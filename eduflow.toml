@@ -1,0 +1,574 @@
+# EduFlow Team 配置（单文件替代 team.json + runtime_config.json）
+# 每个字段都可被同名 env var 覆盖：
+#   EDUFLOW_<PATH>_<KEY>  例 router.stale_event_threshold_s
+#                         → EDUFLOW_ROUTER_STALE_EVENT_THRESHOLD_S
+# 优先级: env > 本文件 > 代码硬编码默认
+
+# ── 部署常量（必填）─────────────────────────────────────────
+chat_id      = "oc_31f0f00378bea36dd5e8f69256cc7a5e" # EduFlow Team 8-Agent Validation
+lark_profile = "eduflow-team"             # 独立 EduFlow Team bot profile
+default_model = "opus"                    # team.json agent 没指定 model 时回退到这里
+
+# ── [runtime_registry]  cli + model + provider 容灾注册表 ───────
+# agent 可以不用直接写 cli/model，而是绑定一个 runtime。
+# 第一版先支持：
+#   - 启动时解析 runtime -> cli/model/provider/env_profile
+#   - spawn 失败 / ready 超时时按 fallback_to 尝试切换
+# 后续再补更细的 provider health / rate limit / auth failure 切换。
+#
+# 当前容灾链（主）：claude_proxy_primary (Qwen3.7 Plus)
+#                → claude_proxy_glm_5_2_backup (GLM 5.2)
+#                → claude_proxy_minimax_backup (MiniMax M3)
+#                → claude_proxy_kimi_primary (Kimi K2.7 Code)
+# 注：deepseek-v4-pro 容灾链已于 2026-06-22 移除（provider 持续 503）。
+# 注：runtime 名中的 "_qwen_plus" / "_claude" 等是历史命名，
+#     实际 provider 以 env_profile 为准（见上方容灾链）。
+[runtime_registry.course_primary]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_primary"
+fallback_to = "course_backup_glm_5_2"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.course_backup_codex]
+cli = "codex-cli"
+model = "gpt-5.5"
+provider = "openai"
+env_profile = "codex_primary"
+fallback_to = "course_backup_glm_5_2"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.course_backup_glm_5_2]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_glm_5_2_backup"
+fallback_to = "course_backup_minimax"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.course_backup_minimax]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_minimax_backup"
+fallback_to = "course_backup_kimi"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.course_backup_kimi]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_kimi_primary"
+fallback_to = "course_backup_glm_5_2"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.manager_primary]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_primary"
+fallback_to = "manager_backup_glm_5_2"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.manager_backup_codex]
+cli = "codex-cli"
+model = "gpt-5.5"
+provider = "openai"
+env_profile = "codex_primary"
+fallback_to = "manager_backup_glm_5_2"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.manager_backup_glm_5_2]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_glm_5_2_backup"
+fallback_to = "manager_backup_minimax"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.manager_backup_minimax]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_minimax_backup"
+fallback_to = "manager_backup_kimi"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.manager_backup_kimi]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_kimi_primary"
+fallback_to = "manager_backup_glm_5_2"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.review_primary]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_primary"
+fallback_to = "review_backup_glm_5_2"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.review_backup_codex]
+cli = "codex-cli"
+model = "gpt-5.5"
+provider = "openai"
+env_profile = "codex_primary"
+fallback_to = "review_backup_glm_5_2"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.review_backup_glm_5_2]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_glm_5_2_backup"
+fallback_to = "review_backup_minimax"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.review_backup_minimax]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_minimax_backup"
+fallback_to = "review_backup_kimi"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.review_backup_kimi]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_kimi_primary"
+fallback_to = "review_backup_glm_5_2"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.builder_primary]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_primary"
+fallback_to = "builder_backup_glm_5_2"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.builder_backup_claude]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_kimi_primary"
+fallback_to = "builder_backup_glm_5_2"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.builder_backup_glm_5_2]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_glm_5_2_backup"
+fallback_to = "builder_backup_minimax"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.builder_backup_minimax]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_minimax_backup"
+fallback_to = "builder_backup_kimi"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.builder_backup_kimi]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_kimi_primary"
+fallback_to = "builder_backup_glm_5_2"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.qbank_primary]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_primary"
+fallback_to = "qbank_backup_glm_5_2"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.qbank_backup_claude]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_kimi_primary"
+fallback_to = "qbank_backup_glm_5_2"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.qbank_backup_glm_5_2]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_glm_5_2_backup"
+fallback_to = "qbank_backup_minimax"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.qbank_backup_minimax]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_minimax_backup"
+fallback_to = "qbank_backup_kimi"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.qbank_backup_kimi]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_kimi_primary"
+fallback_to = "qbank_backup_glm_5_2"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.ops_primary]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_primary"
+fallback_to = "ops_backup_glm_5_2"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.ops_backup_codex]
+cli = "codex-cli"
+model = "gpt-5.5"
+provider = "openai"
+env_profile = "codex_primary"
+fallback_to = "ops_backup_qoder_qwen_max"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.ops_backup_qoder_qwen_max]
+cli = "qoderclicn"
+model = "Qwen3.7-Max"
+provider = "qoder"
+env_profile = ""
+fallback_to = "ops_backup_glm_5_2"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.ops_backup_glm_5_2]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_glm_5_2_backup"
+fallback_to = "ops_backup_minimax"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.ops_backup_qwen_plus]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_glm_5_2_backup"
+fallback_to = "ops_backup_minimax"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.ops_backup_minimax]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_minimax_backup"
+fallback_to = "ops_backup_kimi"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.ops_backup_kimi]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_kimi_primary"
+fallback_to = "ops_backup_glm_5_2"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.luke_recorder_minimax]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_minimax_backup"
+fallback_to = "ops_backup_glm_5_2"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.hermes_primary]
+cli = "hermes-agent"
+model = "minimax-m3"
+provider = "minimax"
+env_profile = "hermes_minimax_m3_primary"
+fallback_to = "hermes_backup_glm_5_2"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.hermes_backup_glm_5_2]
+cli = "hermes-agent"
+model = "glm-5.2"
+provider = "glm"
+env_profile = "hermes_glm_5_2_backup"
+fallback_to = "hermes_backup_model"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.hermes_backup_model]
+cli = "hermes-agent"
+model = "hermes-compatible-backup-model"
+provider = "hermes-agent"
+env_profile = "hermes_backup_model"
+fallback_to = ""
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+# ── [env_profiles]  provider 环境画像 ───────────────────────────
+# 这里只放"会影响 provider / gateway 选择"的环境变量。
+# 真正的敏感值（ANTHROPIC_AUTH_TOKEN 等）走 .env 或 shell export 注入；
+# 多 provider 场景下，使用 ${VAR} 语法引用 .env 中独立命名的 key，例如
+#   ANTHROPIC_AUTH_TOKEN = "${KIMI_AUTH_TOKEN}"
+# config 层会展开 ${VAR}；若引用未设置且该敏感 key 仍为空，则继续回退到
+# 全局 ANTHROPIC_AUTH_TOKEN / ANTHROPIC_API_KEY，保持旧配置兼容。
+# ⚠️  历史明文 token 已轮换 — 旧值 sk-sp-3e0d1bbb… / sk-hhemrEo… /
+#     sk-ed25ba30… 视为泄露，不要再回写。
+[env_profiles.claude_proxy_primary]
+ANTHROPIC_BASE_URL = "https://coding.dashscope.aliyuncs.com/apps/anthropic"
+ANTHROPIC_AUTH_TOKEN = "${QWEN_AUTH_TOKEN}"
+ANTHROPIC_MODEL = "qwen3.7-plus"
+ANTHROPIC_REASONING_MODEL = "qwen3.7-plus"
+ANTHROPIC_DEFAULT_OPUS_MODEL = "qwen3.7-plus"
+ANTHROPIC_DEFAULT_SONNET_MODEL = "qwen3.7-plus"
+ANTHROPIC_DEFAULT_HAIKU_MODEL = "qwen3.7-plus"
+pool_id = "dashscope_coding"
+provider_family = "dashscope_qwen"
+
+[env_profiles.claude_proxy_glm_5_2_backup]
+ANTHROPIC_BASE_URL = "https://api.supxh.xin"
+ANTHROPIC_AUTH_TOKEN = "${GLM_AUTH_TOKEN}"
+ANTHROPIC_MODEL = "glm-5.2"
+ANTHROPIC_REASONING_MODEL = "glm-5.2"
+ANTHROPIC_DEFAULT_OPUS_MODEL = "glm-5.2"
+ANTHROPIC_DEFAULT_SONNET_MODEL = "glm-5.2"
+ANTHROPIC_DEFAULT_HAIKU_MODEL = "glm-5.2"
+pool_id = "supxh_glm_5_2"
+provider_family = "glm"
+
+[env_profiles.claude_proxy_kimi_primary]
+ANTHROPIC_BASE_URL = "https://api.kimi.com/coding/"
+ANTHROPIC_AUTH_TOKEN = "${KIMI_AUTH_TOKEN}"
+ANTHROPIC_MODEL = "kimi-k2.7-code"
+ANTHROPIC_REASONING_MODEL = "kimi-k2.7-code"
+ANTHROPIC_DEFAULT_OPUS_MODEL = "kimi-k2.7-code"
+ANTHROPIC_DEFAULT_SONNET_MODEL = "kimi-k2.7-code"
+ANTHROPIC_DEFAULT_HAIKU_MODEL = "kimi-k2.7-code"
+pool_id = "kimi_official"
+provider_family = "kimi"
+
+[env_profiles.claude_proxy_manager_primary]
+ANTHROPIC_BASE_URL = "https://fast.sbbbbbbbbb.xyz"
+ANTHROPIC_MODEL = "claude-opus-4-6"
+ANTHROPIC_REASONING_MODEL = "claude-opus-4-6"
+ANTHROPIC_DEFAULT_OPUS_MODEL = "claude-opus-4-6"
+ANTHROPIC_DEFAULT_SONNET_MODEL = "claude-opus-4-6"
+ANTHROPIC_DEFAULT_HAIKU_MODEL = "claude-opus-4-6"
+pool_id = "fast_sbbbbbbbbb"
+provider_family = "anthropic_proxy"
+
+[env_profiles.claude_proxy_minimax_backup]
+ANTHROPIC_BASE_URL = "https://api.minimaxi.com/anthropic"
+ANTHROPIC_AUTH_TOKEN = "${MINIMAX_AUTH_TOKEN}"
+ANTHROPIC_MODEL = "MiniMax-M3"
+ANTHROPIC_REASONING_MODEL = "MiniMax-M3"
+ANTHROPIC_DEFAULT_OPUS_MODEL = "MiniMax-M3"
+ANTHROPIC_DEFAULT_SONNET_MODEL = "MiniMax-M3"
+ANTHROPIC_DEFAULT_HAIKU_MODEL = "MiniMax-M3"
+pool_id = "minimax_official"
+provider_family = "minimax"
+
+[env_profiles.codex_primary]
+# OPENAI_BASE_URL = ""
+pool_id = "codex_openai"
+provider_family = "openai_codex"
+
+[env_profiles.hermes_minimax_m3_primary]
+pool_id = "hermes_minimax_m3"
+provider_family = "minimax"
+
+[env_profiles.hermes_glm_5_2_backup]
+HERMES_PROVIDER = "glm"
+HERMES_BASE_URL = "https://api.supxh.xin"
+HERMES_AUTH_TOKEN = "${GLM_AUTH_TOKEN}"
+HERMES_MODEL = "glm-5.2"
+pool_id = "hermes_glm_5_2"
+provider_family = "glm"
+
+[env_profiles.hermes_backup_model]
+pool_id = "hermes_backup_model"
+provider_family = "hermes_agent"
+
+# ── [team]  团队成员 ──────────────────────────────────────
+[team]
+session = "EduFlowTeam"
+default_model = "opus"
+
+# 每个 agent 一个 [team.agents.<name>]
+#   cli         必填  claude-code | codex-cli | gemini-cli | kimi-code | qwen-code
+#   role        必填  渲染进 identity.md
+#   model       可选  缺省走 default_model
+#   specialty   可选  list of strings, manager 派单时参考
+#   tone        可选  字符串, 渲染进 identity 影响 LLM 输出风格
+#   notes       可选  字符串, 任意 prompt 加料
+#   card_color  可选  飞书 v2 色: blue/green/red/yellow/purple/orange/grey/pink
+#   lazy        可选  true=首消息触发起 CLI; 默认 false
+[team.agents.manager]
+runtime = "manager_primary"
+role  = "唯一业务入口、唯一正式派工口、唯一业务正式对外口。负责接单、判断归属、拆单、派工、阶段切换、升级处理与正式业务汇总，不承担内容生产、系统维修、长期盯盘或正式复核。"
+specialty = ["任务拆解", "派工分发", "组织调度", "升级处理", "学科切换"]
+tone = "直接、克制、判断优先、像技术合伙人"
+notes = "你是 EduFlow Team 的 manager。只要 user 发来新消息，就优先处理 user 的这条消息。对外只输出三类内容：已收到、已派给谁、正式业务结论/正式同步/需user决策。其他角色的状态消息默认只做内部判断，不向 user 重复转述。"
+card_color = "blue"
+lazy = false
+
+[team.agents.worker_course]
+runtime = "course_backup_minimax"
+role  = "国际课程专家。覆盖 A-Level、IGCSE、IB、AP、OSSD、HKDSE、托福、雅思、SAT、ATC、GRE 等国际课程与国际升学考试体系，负责课程教研资料生产与 QA 基础内容生产。"
+specialty = ["国际课程体系", "A-Level", "IGCSE", "IB", "AP", "topic优化", "syllabus对齐", "知识点结构化", "QA基础内容", "教研资料生产"]
+tone = "细致、体系化、先盘点再生产"
+notes = "你只接 manager 的正式派单，或 review_course 的返修单。你的目标是产出最准确的国际课程教研资料，并为后续题库智能体提供最准确、最可用的基础数据。若任务本质不是国际课程教研生产，而是择校、申请或系统问题，立刻回 manager 重判。硬约束：每次接到任何课程/教研/QA生产或返修任务后，正式执行前必须先调用/套用 brainstorming 做任务拆解；即使任务很清楚，也至少做轻量版，明确生产目标、范围、考纲/课程边界、产物格式、验收点和有顺序的小任务，然后再决定 Claude Code 执行方式：优先发挥 Claude Code 的 agent team / subagents / workflow / Todo 等特长，把可并行的资料查验、内容生产、QA自检、tone清理、review准备拆出去；小任务才用主线程+checklist。每次拆解时都要生成 repeat_work_key（格式：domain/exam-board-or-course/output-type/workflow-shape），并用 eduflow log worker_course repeat_work_observed \"<repeat_work_key> | <task-id-or-source> | <summary>\" 记录一次；若有可复用经验，再用 eduflow remember worker_course learning \"repeat_work::<repeat_work_key>::<lesson>\" 记录。判断是否重复 5 次以上时，必须根据 workspace/recall/log 中同 key 的可数记录，不许只凭感觉。达到 5 次后，继续当前任务的同时，自动给 manager 追加 Skill distillation candidate，沉淀触发条件、核心流程、输入、产物格式、验收点、坑点和建议 skill 名，等待 manager/review owner 复核后再固化，不要私自改 standing skill。不要裸跑，不要跳过拆解，也不要默认单线程硬做。外显规则：接单后必须用 eduflow say worker_course \"任务已接单：<一句话任务>\" --to user；真正开始生产后用 \"任务已开始处理：<第一步>\" 或 \"阶段进度：<已做/正在做/下一步>\" 做短 ACK；交给 review 时用 \"已交接：<产物>，等待 review_course\"。细节和长报告只 send 给 manager。"
+card_color = "purple"
+lazy = false
+
+[team.agents.review_course]
+runtime = "review_primary"
+role  = "国际课程教研质检与正式回收 owner。负责严格复核 worker_course 产出的资料与基础数据是否最准确，并给出通过、退回、需补充的明确 verdict。"
+specialty = ["国际课程复核", "考纲一致性", "topic结构审校", "QA质量把关", "正式回收"]
+tone = "严谨、结构化、先给 verdict 再给问题项"
+notes = "你只做复核、退回、通过、正式回收，不承担长期生产。你回给 manager 的正式结果必须结构化，不能只说差不多可以。外显规则：接到复核后必须用 eduflow say review_course \"review 已接单：<对象>\" --to user；开始复核时用 \"review 已开始：<当前检查项>\"；卡住用 \"review 当前卡在：<缺口>，已回报 manager\"；通过或退回后用 \"已交接：<verdict>，等待 manager 收口\"。细节和问题清单只 send 给 manager。"
+card_color = "green"
+lazy = false
+
+[team.agents.auto_ops]
+runtime = "ops_primary"
+role  = "唯一内部盯盘 owner、唯一自动化日常运行值守 owner。负责内部状态跟踪、链路停滞识别、异常分诊、催办、阶段回收、状态台账维护，并向 manager 回流正式状态包。"
+specialty = ["内部盯盘", "自动化值守", "异常分诊", "催办", "阶段回收", "状态台账", "内部状态包"]
+tone = "冷静、持续、先判断异常级别再回流"
+notes = "你只盯内部，不直接对 user 做正式业务判断，不替 manager 汇总业务结论。普通 worker 卡住、review 超时、artifact 异常、链路停滞，都先由你识别并上报 manager。外显规则：Hermes agent 暂不承担主群监控时，你必须大约每 30 分钟在主群说一次场内运行态，格式用 eduflow say auto_ops \"运行态简报：<manager/worker/review/qbank/builder 一句话状态>\" --to user；无异常时也要说 \"盯盘中：<当前链路/对象>，暂无新异常\" 或 \"巡检正常：<对象>\"；发现异常用 \"发现异常：<一句话异常>，已回报 manager\"。外显只做在岗/异常信号，完整状态包 send 给 manager。"
+card_color = "red"
+lazy = false
+
+[team.agents.worker_builder]
+runtime = "builder_primary"
+role  = "唯一 agent 系统建设 / 工程维修执行位。只负责 agent 工作流建设、运行体系建设、自动化编排能力建设与运行态故障修复。"
+specialty = ["agent工作流", "路由能力", "自动化脚本", "运行体系", "监控告警", "运行态维修"]
+tone = "务实、先恢复可用、再补完整交付"
+notes = "你默认只接 manager 正式派发的建设或维修任务，不负责课程、学校、申请业务内容建设。若任务边界变化，先回 manager 重判。外显规则：接单用 eduflow say worker_builder \"builder 已接单：<一句话任务>\" --to user；开始排查/修复用 \"builder 已开始处理：<当前第一步>\"；长修复每约 10 分钟用 \"阶段进度：<已做/正在做/下一步>\"；卡住用 \"builder 当前卡在：<阻塞点>，已回报 manager\"；修完回交用 \"builder 产物已回交：<修复点>\"。细节、命令输出和风险只 send 给 manager。"
+card_color = "orange"
+lazy = false
+
+[team.agents.worker_qbank]
+runtime = "qbank_primary"
+role  = "题库系统专项工程师，负责 QA schema、题库导入导出、manifest 对齐、索引检索、去重校验、QA Bot 接入与题库运行链维修。"
+specialty = ["QA schema", "题库导入导出", "manifest对齐", "索引检索", "去重校验", "QA Bot接入"]
+tone = "结构清楚、数据导向、可消费优先"
+notes = "你只处理题库系统问题，不处理课程教研内容生产本身。若问题本质是课程资料本身不完整、不准确，需要回 manager 重判到课程线。外显规则：接单用 eduflow say worker_qbank \"qbank 校验已接单：<对象>\" --to user；开始校验/导入/修复用 \"qbank 校验已开始：<当前检查项>\"；阶段性结果用 \"阶段进度：<verdict/readiness/下一步>\"；卡住用 \"qbank 当前卡在：<缺口>，已回报 manager\"；首个可消费结论用 \"qbank 首个 verdict 已就绪：<一句话结论>\"。完整证据和清单只 send 给 manager。"
+card_color = "purple"
+lazy = false
+
+[team.agents.Luke_recorder]
+runtime = "luke_recorder_minimax"
+role  = "团队记录员。专门记录老板与 manager 的对话、工作要求、决策、纠偏和 manager 暴露的问题，沉淀为可复用教训、周/月总结与后续 skill。"
+specialty = ["boss-manager交互记录", "工作要求沉淀", "manager纠偏记录", "教训总结", "skill生成"]
+tone = "冷静、结构化、以教训为导向"
+notes = "你是 Luke_recorder，运行时指定 Claude Code + MiniMax-M3。只负责记录和沉淀，不做派工、不拍板、不替 manager 做业务判断。重点记录老板和 manager 讲过的话、明确要求、重要决策、反复纠偏、manager 暴露的问题，并定期整理成 durable memory、summary 和可复用 skill。每次记录对话或同事工作习惯时，必须调用/套用 dot-skill（同事.skill）的 colleague 蒸馏模型：把原始对话转成 Trigger / Move / Evidence / Failure mode / Instruction，而不是流水账。外显规则：老板或 manager 每次出现新的关键发言、要求、纠偏、决策或暴露问题后，你必须先完成记录，再用 eduflow say Luke_recorder \"已记录：<一句话摘要>\" --to user 发一条极短 ACK 到群里；ACK 只确认记录和摘要，不抢 manager 的派工/判断/汇总。更长的沉淀、阶段总结、候选 skill 仍通过 eduflow send manager Luke_recorder 交给 manager，除非 manager 明确要求公开。优先使用项目 skill: boss-manager-recorder；生成同事风格/工作习惯 skill 时使用 skills/dot-skill；需要输出阶段/周期报告时参考 boss-report。"
+card_color = "grey"
+lazy = false
+
+[team.agents.Hermes]
+runtime = "hermes_primary"
+role  = "公司知识库维护员、长期记忆官、Wiki 主编。负责 Obsidian 知识库维护、Recall Packet、Distillation Packet、Wiki Update Proposal、Conflict Report 和 memory candidate backlog。"
+specialty = ["知识库维护", "长期记忆", "Recall", "Distill", "Wiki", "Memory candidate", "Conflict Report"]
+tone = "稳、克制、证据优先、只在知识维护范围内行动"
+notes = "你是 Hermes / Knowledge Steward。你的执行底座固定为 Hermes Agent CLI，默认模型 MiniMax M3；容灾只能切 Hermes CLI 内部模型，不能切到 Claude Code / Kimi Code / Codex CLI。你不是外部监控者，不替 auto_ops 做全队盯盘、状态跟踪或异常分诊。你只接 manager 的知识库维护、Recall、Distill、Wiki Update Proposal、Conflict Report、Memory candidate 相关任务。V1 只能直接写入 Obsidian 白名单目录：知识库维护日志/、_候选更新/、_待复核冲突/、_memory-candidate-backlog/、Knowledge Deviation Log/。已有总稿、workflow 文档、角色权限文档、课程事实文档、题库 schema 文档默认只写 Proposal，不直接改正文。外显规则：你和普通 worker 一样必须在主群留下短外显，不允许接单后静默。接单用 eduflow say Hermes \"知识库任务已接单：<一句话任务>\" --to user；开始检索/维护用 \"知识库维护已开始：<当前第一步>\"；长任务每约 10 分钟或完成一段用 \"阶段进度：<已读/已写候选/下一步>\"；发现冲突用 \"发现知识冲突：<一句话冲突>，已写入待复核\"；卡住用 \"知识库维护当前卡在：<阻塞点>，已回报 manager\"；产出 Proposal/Conflict Report/Recall Packet 后必须双发：先用 eduflow say Hermes \"已交接：<产物/对象>，等待 manager 审核/收口\" --to user 在当前飞书群留下短可见同步，再用 eduflow send manager Hermes \"<结构化结果/建议全文>\" 高 把正式可拆分内容交给 manager。不要发 Telegram，不要发 home 默认出口，不要把长正文直接丢群里。外显只放一句话过程信号；证据、路径、候选正文、冲突细节一律 send 给 manager 或写入白名单目录。"
+card_color = "grey"
+lazy = false
+
+[team.agents.Hermes.publish_overrides]
+worker_to_user = true
+worker_to_manager = true
+
+[team.agents.Luke_recorder.publish_overrides]
+user_to_user = true
+user_to_manager = true
+
+# ── [chat.publish]  群里能看到什么消息 ─────────────────────
+# sender→receiver 维度过滤; 角色: user (老板) / manager / worker
+# 值: true=进群发卡  false=只走 send/inbox 不进群  "always"=不可关
+# 默认全 true / "always" — 测试 / 早期阶段尽量多看到事实, 减少静默漏消息
+# 的认知盲区。生产化后再针对噪声大的通道 (worker_to_manager 等) 调 false。
+[chat.publish]
+user_to_manager   = "always"
+manager_to_user   = "always"
+manager_to_worker = true
+worker_to_manager = true
+worker_to_user    = false
+worker_to_worker  = false
+
+# ── [limits]  消息长度上限 ────────────────────────────────
+[limits]
+max_card_body_chars         = 4000
+auto_split_long_messages    = true
+tmux_capture_default_lines  = 10
+tmux_capture_max_lines      = 2000
+inbox_unread_warn_threshold = 50
+
+# ── [wake]  Pane 唤醒时序 ──────────────────────────────────
+[wake]
+lazy_wake_timeout_s    = 30
+ready_marker_timeout_s = 60
+
+# ── [router]  路由器守护进程 ───────────────────────────────
+[router]
+# stale_event_threshold_s — 多久没事件就 self-SIGTERM 让 watchdog 重生.
+# 注释掉则用平台默认 (Darwin 120 / Linux 600). 显式设了就用你的值.
+# 为什么 macOS 默认更紧: lark-cli 1.0.23 macOS WebSocket subscribe 会
+# silent-drop 不重连; 紧阈值让 self-restart + catchup 在 ~2 min 内补回
+# 漏的事件而不是 ~10 min. Linux WebSocket 稳定, 600s 避免空闲群被反复
+# 重启 (180s 太紧, 1200s 太松, 都踩过坑).
+stale_event_threshold_s     = 1800
+lark_call_timeout_s            = 90     # 单次 lark-cli 调用超时
+alarm_card_color               = "red"  # 守护进入 cooldown 时报警卡片颜色
+seen_max_lines                 = 5000   # router.seen 去重表 trim 阈值
+subscribe_watchdog_period_s    = 20.0   # 内部订阅子进程健康检查周期
+
+# ── [watchdog]  daemon 守护循环 ────────────────────────────
+[watchdog]
+check_interval_s        = 30    # 守护 tick 周期 (查 router 是否还活)
+cred_check_interval_s   = 300   # 多久查一次 Claude OAuth 是否快过期
+cred_refresh_ahead_s    = 1800  # 剩余 < 此值时强制 refresh OAuth
+runtime_guard_interval_s = 30   # 多久巡检一次 agent pane runtime 健康并尝试 fallback
+
+# ── [auto_ops] 主群运行态简报 ──────────────────────────────
+[auto_ops]
+presence_enabled = true
+presence_interval_s = 1800     # Hermes 不在主群监控时，auto_ops 半小时外显一次场内状态
+
+# ── [runtime_guard]  runtime 切换通知与熔断 ────────────────────
+[runtime_guard.notify]
+default = "manager"            # silent | manager
+
+[runtime_guard.manager_policy]
+default = "continue"           # continue | pause
+manager = "pause"
+worker_course = "pause"
+review_course = "pause"
+worker_qbank = "pause"
+auto_ops = "pause"
+
+[runtime_guard.cooldown]
+max_switches = 3
+window_s = 600
+cooldown_s = 900
+
+# ── [feishu]  飞书桥接 ─────────────────────────────────────
+[feishu]
+send_as          = "bot"
+no_proxy         = true
+cli_bin          = ""
+broadcast_tokens = ["@team", "@all", "@everyone"]
+
+[feishu.supervisor]
+chat_id          = "oc_1208a12d8c26f786c10c9094273137a2"  # Hermes / supervisor 独立问题反馈群
+lark_profile     = "hermes-supervisor"
+sender_name      = "Hermes Supervisor"
+sender_role      = "外部监督通道"
+sender_emoji     = "🛡️"
+sender_color     = "red"

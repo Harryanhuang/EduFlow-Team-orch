@@ -1,0 +1,6 @@
+# Question: Question Q-17.2-07
+**Difficulty**: Foundation
+**Question**: Describe the role of microorganisms in the nitrogen cycle, explaining how nitrogen is made available to plants and how it is returned to the atmosphere.
+**Answer**: Microorganisms are essential at multiple stages of the nitrogen cycle: (1) Nitrogen fixation — Rhizobium bacteria in root nodules of leguminous plants convert atmospheric N₂ into nitrates (usable by plants). Free-living Azotobacter bacteria also fix nitrogen. (2) Ammonification — decomposers (bacteria and fungi) break down dead organic matter and animal waste, releasing ammonia (NH₃) into the soil. (3) Nitrification — nitrifying bacteria (Nitrosomonas) convert ammonia to nitrites, then other bacteria (Nitrobacter) convert nitrites to nitrates. (4) Denitrification — denitrifying bacteria (e.g., Pseudomonas) convert nitrates back to N₂ gas, releasing it to the atmosphere. This completes the cycle. Without these bacteria, nitrogen would remain locked in organic matter or as inert N₂.
+**Explanation**: Fixation, ammonification, nitrification, denitrification — all by bacteria. A common error is saying plants can use atmospheric N₂ directly.
+**Tags**: nitrogen-cycle, microorganisms, Rhizobium, denitrification, nitrates

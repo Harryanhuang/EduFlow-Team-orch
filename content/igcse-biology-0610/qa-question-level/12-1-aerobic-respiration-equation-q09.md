@@ -1,0 +1,6 @@
+# Question: Question Q-12.1-09
+**Difficulty**: Challenge
+**Question**: A student claims germinating peas respire faster than adult pea plants. Design an experiment to test this claim with hypothesis, variables, method, and calculation.
+**Answer**: Hypothesis: germinating peas have higher respiration rate per gram than adult plants. IV: developmental stage (germinating vs adult). DV: O₂ consumption rate (mm³/min/g). CVs: temperature (25°C water bath), mass (5 g each), variety, equilibration time. Method: place 5 g germinating peas in a respirometer (sealed flask + graduated capillary with coloured liquid drop + KOH to absorb CO₂). Identical respirometer for 5 g adult pea leaf discs. Equilibrate 5 min in water bath. Record liquid drop position at 1-min intervals for 10 min. Rate = volume O₂ consumed/min/g (capillary cross-sectional area × distance moved / min / g). Expected: germinating peas faster — rapid growth, high cell division rate. Adult tissue has structural non-respiring fibres. Plot O₂ consumed vs time; gradient = respiration rate. Sources of error: temperature fluctuation, leaks, tissue damage from cutting.
+**Explanation**: Full respirometer design. A common error is not measuring per gram tissue.
+**Tags**: experiment-design, respirometer, germinating-peas, respiration-rate, O2-consumption

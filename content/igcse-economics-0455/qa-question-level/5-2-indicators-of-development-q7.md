@@ -1,0 +1,6 @@
+### Question Q-5.2-07
+**Difficulty**: Challenge
+**Question**: Evaluate the usefulness of composite development indices such as the HDI compared to single indicators such as literacy rate or infant mortality rate.
+**Answer**: Composite indices like the HDI provide a broader, multi-dimensional picture of development by combining health, education, and income into a single figure, making cross-country comparisons straightforward. However, they may mask important details — a moderate HDI could result from good health but poor education, which a single indicator would reveal more clearly. Single indicators such as literacy rate or infant mortality rate are specific and highlight particular problems, but alone they give an incomplete picture. In practice, the best approach is to use composite indices for an overall ranking alongside single indicators to identify specific areas of concern, such as gender gaps or regional disparities.
+**Explanation**: Composite indices offer breadth; single indicators offer depth. A common error is arguing one approach is definitively superior without recognising their complementary strengths.
+**Tags**: development-indicators, composite, evaluation, comparison

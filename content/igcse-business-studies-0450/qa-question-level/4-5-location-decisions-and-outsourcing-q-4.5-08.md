@@ -1,0 +1,6 @@
+### Question Q-4.5-08
+**Difficulty**: Challenge
+**Question**: Evaluate the make-or-buy decision for a smartphone manufacturer considering whether to produce its own batteries or purchase them from a specialist supplier.
+**Answer**: Make (in-house): gives full control over battery quality, design, and supply timing — important if battery life is a key selling point. However, it requires significant capital investment in production facilities and specialist expertise. Buy (outsource): benefits from the supplier's economies of scale, specialist knowledge, and existing R&D in battery technology. The manufacturer avoids capital expenditure and can switch suppliers if better technology emerges. Recommendation: buy from a specialist supplier, as battery technology evolves rapidly and a single manufacturer is unlikely to match a dedicated battery firm's expertise and scale. Exception: if the manufacturer is very large (like Apple), vertical integration may be justified for differentiation.
+**Explanation**: The decision hinges on strategic importance versus specialist advantage. A common error is assuming vertical integration is always better for quality control.
+**Tags**: make-or-buy, outsourcing, evaluation, application, technology

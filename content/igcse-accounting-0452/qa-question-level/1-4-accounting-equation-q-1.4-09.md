@@ -1,0 +1,6 @@
+### Question Q-1.4-09
+**Difficulty**: Challenge
+**Question**: A business starts with assets $50,000, liabilities $20,000. During the year: (1) owner adds $10,000 capital, (2) goods bought on credit $8,000, (3) goods sold on credit for $12,000 that cost $7,000, (4) owner takes drawings of $3,000 cash. Calculate the closing capital using the accounting equation.
+**Answer**: Opening capital = A - L = $50,000 - $20,000 = $30,000. Effect of each transaction: (1) Capital +$10,000. (2) No effect on capital — assets (inventory) +$8,000 and liabilities (payables) +$8,000. (3) Revenue $12,000 less cost $7,000 = profit $5,000, which increases capital by $5,000. (4) Drawings reduce capital by $3,000. Closing capital = $30,000 + $10,000 + $5,000 - $3,000 = $42,000.
+**Explanation**: Each transaction must be analysed for its effect on capital. Key points: transaction (2) is an asset/liability swap with no capital effect; transaction (3) generates profit which increases capital; drawings are not expenses but reduce capital directly. A common error is treating transaction (2) as increasing capital, or forgetting that profit increases capital.
+**Tags**: multi-transaction, calculation, application, profit

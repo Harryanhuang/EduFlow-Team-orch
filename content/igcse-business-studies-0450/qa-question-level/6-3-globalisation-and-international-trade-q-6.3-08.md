@@ -1,0 +1,6 @@
+### Question Q-6.3-08
+**Difficulty**: Challenge
+**Question**: A small country is debating whether to join a free trade agreement. Evaluate the arguments for and against from the perspective of domestic businesses.
+**Answer**: Arguments for: 1) Access to a much larger market without tariffs — export opportunities expand significantly. 2) Cheaper imported raw materials and components reduce production costs. 3) Foreign investment may increase as the country becomes part of a larger trading zone. 4) Exposure to international competition drives domestic firms to become more efficient. Arguments against: 1) Domestic firms that cannot compete with cheaper or higher-quality imports may fail, leading to job losses. 2) Infant industries may never develop because they cannot compete with established foreign rivals. 3) The country loses some sovereignty over trade policy. 4) Economic dependency on larger partners. The outcome depends on whether domestic firms are competitive enough to benefit from expanded market access or vulnerable to import competition.
+**Explanation**: Free trade creates winners and losers within each country. A common error is assessing only aggregate national benefits without considering distributional effects on different industries.
+**Tags**: free-trade-agreement, evaluation, domestic-business

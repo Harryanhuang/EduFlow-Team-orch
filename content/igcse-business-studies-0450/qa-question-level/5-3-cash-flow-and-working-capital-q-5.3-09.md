@@ -1,0 +1,6 @@
+### Question Q-5.3-09
+**Difficulty**: Challenge
+**Question**: Evaluate whether a seasonal business (such as a garden centre with peak sales in spring and summer) should rely on an overdraft or a bank loan to manage its annual cash flow cycle.
+**Answer**: An overdraft is the more appropriate choice for a seasonal cash flow cycle. The business can draw on the overdraft during off-peak months when outflows exceed inflows and repay it during peak months. Interest is only charged on the amount used and for the period it is needed, making it cost-effective for predictable, short-term fluctuations. A bank loan would provide a fixed lump sum regardless of when the cash is needed, and interest would be charged on the full amount for the entire term — less efficient for seasonal needs. However, if the business needs capital for expansion (new greenhouse, equipment), a loan would be appropriate for that specific investment, separate from the working capital cycle.
+**Explanation**: The finance type should match the need — flexible for cyclical, fixed for investment. A common error is using a long-term loan to fund short-term seasonal gaps.
+**Tags**: overdraft, bank-loan, seasonal-business, evaluation, application

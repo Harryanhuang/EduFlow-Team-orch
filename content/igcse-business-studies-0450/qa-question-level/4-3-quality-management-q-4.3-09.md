@@ -1,0 +1,6 @@
+### Question Q-4.3-09
+**Difficulty**: Challenge
+**Question**: A food processing company has been experiencing high rates of product recall due to contamination. Recommend a quality management approach to address this problem. Justify your recommendation.
+**Answer**: The company needs a layered quality management approach. Immediate action: strengthen quality control with more frequent testing and inspection at critical control points (HACCP system). Medium-term: implement quality assurance by standardising hygiene procedures, installing automated monitoring equipment, and achieving food safety certification (e.g., ISO 22000). Long-term: adopt TQM principles — train all employees in hygiene protocols, create a culture where any worker can halt the line if they spot a contamination risk, and establish continuous improvement cycles. Justification: food recalls carry legal and reputational risks that require both immediate inspection (QC) and systemic prevention (QA + TQM).
+**Explanation**: Food safety demands both detection and prevention. A common error is recommending only one approach — in high-risk industries, a single layer is insufficient.
+**Tags**: quality-management, food-safety, evaluation, application, HACCP

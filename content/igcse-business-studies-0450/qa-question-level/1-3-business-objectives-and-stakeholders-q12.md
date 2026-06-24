@@ -1,0 +1,6 @@
+### Question Q-1.3-12
+**Difficulty**: Challenge
+**Question**: Evaluate the importance of business objectives and stakeholders for a business operating in a competitive market.
+**Answer**: Business Objectives And Stakeholders is important because it enables businesses to make informed decisions, respond to market changes, and maintain competitive advantage. In a competitive market, businesses that effectively manage business objectives and stakeholders are better positioned to increase market share and profitability. However, its importance depends on other factors such as the business's financial resources, the quality of management, and external economic conditions. Some businesses may succeed despite weaknesses in this area if they excel in other aspects such as marketing or innovation. Therefore, while business objectives and stakeholders is significant, it should be considered alongside other business functions rather than in isolation.
+**Explanation**: This tests evaluation skills requiring balanced argument. A common error is giving a one-sided answer without considering limitations or alternative viewpoints.
+**Tags**: business-objectives-and-stakeholders, evaluation, challenge

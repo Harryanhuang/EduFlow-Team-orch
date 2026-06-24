@@ -1,0 +1,1010 @@
+{
+  "true_duplicates": [
+    {
+      "qid": "Q-6.1-01",
+      "layer": "items",
+      "files": [
+        "5-1-s2-items.md",
+        "6-1-items.md"
+      ],
+      "hash": "82d6919f08ebc1a1",
+      "preview": "Explain how a catalyst increases the rate of reaction.",
+      "subject": "igcse-chemistry-0620"
+    },
+    {
+      "qid": "Q-6.1-02",
+      "layer": "items",
+      "files": [
+        "5-1-s2-items.md",
+        "6-1-items.md"
+      ],
+      "hash": "d3a4a45c4f0b0204",
+      "preview": "Sketch and label a reaction profile showing the effect of a ...",
+      "subject": "igcse-chemistry-0620"
+    },
+    {
+      "qid": "Q-6.1-03",
+      "layer": "items",
+      "files": [
+        "5-1-s2-items.md",
+        "6-1-items.md"
+      ],
+      "hash": "fd441d369dfd7c9c",
+      "preview": "A student investigates the effect of concentration on the ra...",
+      "subject": "igcse-chemistry-0620"
+    },
+    {
+      "qid": "Q-6.1-04",
+      "layer": "items",
+      "files": [
+        "5-1-s2-items.md",
+        "6-1-items.md"
+      ],
+      "hash": "cd7db5ab16c207ab",
+      "preview": "Explain why powdered calcium carbonate reacts faster with ac...",
+      "subject": "igcse-chemistry-0620"
+    },
+    {
+      "qid": "Q-5.5-01",
+      "layer": "qa",
+      "files": [
+        "5-5-partnership-accounts-appropriation.md",
+        "5-5-partnership-accounts.md"
+      ],
+      "hash": "0d30a42162ab18e5",
+      "preview": "...",
+      "subject": "igcse-accounting-0452"
+    },
+    {
+      "qid": "Q-5.6-01",
+      "layer": "qa",
+      "files": [
+        "5-6-limited-companies-financial-statements.md",
+        "5-6-limited-companies.md"
+      ],
+      "hash": "0d30a42162ab18e5",
+      "preview": "...",
+      "subject": "igcse-accounting-0452"
+    },
+    {
+      "qid": "Q-6.3-01",
+      "subject": "igcse-chemistry-0620",
+      "layer": "items",
+      "files": [
+        "5-2-s2-items.md",
+        "6-3-items.md"
+      ],
+      "hash": "near_dup_q_only",
+      "preview": "Define oxidation and reduction in terms of oxygen transfer.",
+      "classification": "near_duplicate",
+      "resolution": "true_duplicate — same question text, different answer variants. Keep canonical (6-3-items.md, richer chemical example), remove s2 variant (5-2-s2-items.md, OIL RIG mention only).",
+      "keep_file": "6-3-items.md",
+      "delete_file": "5-2-s2-items.md"
+    }
+  ],
+  "id_collisions": [
+    {
+      "qid": "Q-1.1-01",
+      "layer": "items",
+      "files": [
+        "1-1-items.md",
+        "1-round2-items.md"
+      ],
+      "needs_human_review": false,
+      "entries": [
+        {
+          "file": "1-1-items.md",
+          "layer": "items",
+          "hash": "99ff3ad7aedb86fd",
+          "preview": "A student uses a metre rule to measure the length of a noteb...",
+          "action": "keep"
+        },
+        {
+          "file": "1-round2-items.md",
+          "layer": "items",
+          "hash": "34799eb128b795e4",
+          "preview": "Convert 2.5 km to metres, and 3.2 hours to seconds.",
+          "action": "renumber → Q-1.1-10"
+        }
+      ],
+      "subject": "igcse-physics-0625"
+    },
+    {
+      "qid": "Q-1.1-02",
+      "layer": "items",
+      "files": [
+        "1-1-items.md",
+        "1-round2-items.md"
+      ],
+      "needs_human_review": false,
+      "entries": [
+        {
+          "file": "1-1-items.md",
+          "layer": "items",
+          "hash": "60ae5781cb17cc67",
+          "preview": "Convert 3.2 km into metres and then into centimetres.",
+          "action": "keep"
+        },
+        {
+          "file": "1-round2-items.md",
+          "layer": "items",
+          "hash": "8c30616581988ad9",
+          "preview": "A student measures the length of a pencil five times: 15.2 c...",
+          "action": "renumber → Q-1.1-11"
+        }
+      ],
+      "subject": "igcse-physics-0625"
+    },
+    {
+      "qid": "Q-1.2-01",
+      "layer": "items",
+      "files": [
+        "1-2-items.md",
+        "1-round2-items.md"
+      ],
+      "needs_human_review": false,
+      "entries": [
+        {
+          "file": "1-2-items.md",
+          "layer": "items",
+          "hash": "1dd80b553a8597f1",
+          "preview": "A car increases its speed from 10 m/s to 25 m/s in 5.0 s. Ca...",
+          "action": "keep"
+        },
+        {
+          "file": "1-round2-items.md",
+          "layer": "items",
+          "hash": "4f859530eb557caa",
+          "preview": "A car accelerates uniformly from 10 m/s to 30 m/s in 8 secon...",
+          "action": "renumber → Q-1.2-10"
+        }
+      ],
+      "subject": "igcse-physics-0625"
+    },
+    {
+      "qid": "Q-1.3-01",
+      "layer": "items",
+      "files": [
+        "1-3-items.md",
+        "1-round2-items.md"
+      ],
+      "needs_human_review": false,
+      "entries": [
+        {
+          "file": "1-3-items.md",
+          "layer": "items",
+          "hash": "e73b61e738ddc96a",
+          "preview": "An object is dropped from rest and falls for 3 seconds. Calc...",
+          "action": "keep"
+        },
+        {
+          "file": "1-round2-items.md",
+          "layer": "items",
+          "hash": "230a12aa254336a7",
+          "preview": "What is the difference between mass and weight?",
+          "action": "renumber → Q-1.3-10"
+        }
+      ],
+      "subject": "igcse-physics-0625"
+    },
+    {
+      "qid": "Q-1.3-02",
+      "layer": "items",
+      "files": [
+        "1-3-items.md",
+        "1-round2-items.md"
+      ],
+      "needs_human_review": false,
+      "entries": [
+        {
+          "file": "1-3-items.md",
+          "layer": "items",
+          "hash": "c9c15f648063b1a5",
+          "preview": "A stone is dropped from a cliff and takes 4 seconds to reach...",
+          "action": "keep"
+        },
+        {
+          "file": "1-round2-items.md",
+          "layer": "items",
+          "hash": "bb002b0be57e22a9",
+          "preview": "A spring has a spring constant of 40 N/m. Calculate the exte...",
+          "action": "renumber → Q-1.3-11"
+        }
+      ],
+      "subject": "igcse-physics-0625"
+    },
+    {
+      "qid": "Q-1.4-01",
+      "layer": "items",
+      "files": [
+        "1-4-items.md",
+        "1-round2-items.md"
+      ],
+      "needs_human_review": false,
+      "entries": [
+        {
+          "file": "1-4-items.md",
+          "layer": "items",
+          "hash": "28292a5a95bbbeae",
+          "preview": "An object has a mass of 5 kg. Calculate its weight on Earth....",
+          "action": "keep"
+        },
+        {
+          "file": "1-round2-items.md",
+          "layer": "items",
+          "hash": "04c4637a0e7d00db",
+          "preview": "A 500 kg car travelling at 20 m/s brakes to a stop in 4 seco...",
+          "action": "renumber → Q-1.4-10"
+        }
+      ],
+      "subject": "igcse-physics-0625"
+    },
+    {
+      "qid": "Q-1.5-01",
+      "layer": "items",
+      "files": [
+        "1-5-items.md",
+        "1-round2-items.md"
+      ],
+      "needs_human_review": false,
+      "entries": [
+        {
+          "file": "1-5-items.md",
+          "layer": "items",
+          "hash": "d3148e76ee3796d4",
+          "preview": "A block has a mass of 240 g and dimensions 4 cm × 5 cm × 3 c...",
+          "action": "keep"
+        },
+        {
+          "file": "1-round2-items.md",
+          "layer": "items",
+          "hash": "eb8e6b490bf257c3",
+          "preview": "A motor does 6000 J of work in 30 seconds. Calculate its pow...",
+          "action": "renumber → Q-1.5-10"
+        }
+      ],
+      "subject": "igcse-physics-0625"
+    },
+    {
+      "qid": "Q-1.5-02",
+      "layer": "items",
+      "files": [
+        "1-5-items.md",
+        "1-round2-items.md"
+      ],
+      "needs_human_review": false,
+      "entries": [
+        {
+          "file": "1-5-items.md",
+          "layer": "items",
+          "hash": "e5012647d558a267",
+          "preview": "Convert a density of 2.7 g/cm³ into kg/m³.",
+          "action": "keep"
+        },
+        {
+          "file": "1-round2-items.md",
+          "layer": "items",
+          "hash": "87fcdc907a6d6227",
+          "preview": "A 2 kg ball is dropped from a height of 5 m. Calculate its s...",
+          "action": "renumber → Q-1.5-11"
+        }
+      ],
+      "subject": "igcse-physics-0625"
+    },
+    {
+      "qid": "Q-3.1-01",
+      "layer": "items",
+      "files": [
+        "2-round2-items.md",
+        "3-1-items.md"
+      ],
+      "needs_human_review": false,
+      "entries": [
+        {
+          "file": "2-round2-items.md",
+          "layer": "items",
+          "hash": "5cac373ca4381c62",
+          "preview": "Explain why a metal bar expands when heated, in terms of par...",
+          "action": "renumber → Q-3.1-07"
+        },
+        {
+          "file": "3-1-items.md",
+          "layer": "items",
+          "hash": "be3cd537556967c8",
+          "preview": "Describe the arrangement and motion of particles in a solid.",
+          "action": "keep"
+        }
+      ],
+      "subject": "igcse-physics-0625"
+    },
+    {
+      "qid": "Q-3.2-01",
+      "layer": "items",
+      "files": [
+        "2-round2-items.md",
+        "3-2-items.md"
+      ],
+      "needs_human_review": false,
+      "entries": [
+        {
+          "file": "2-round2-items.md",
+          "layer": "items",
+          "hash": "15f74d8b191a177c",
+          "preview": "A gas in a sealed container is heated from 27°C to 327°C. Wh...",
+          "action": "renumber → Q-3.2-07"
+        },
+        {
+          "file": "3-2-items.md",
+          "layer": "items",
+          "hash": "a6b487deddff6698",
+          "preview": "Convert the following temperatures to Kelvin: (a) 0°C, (b) 2...",
+          "action": "keep"
+        }
+      ],
+      "subject": "igcse-physics-0625"
+    },
+    {
+      "qid": "Q-3.3-01",
+      "layer": "items",
+      "files": [
+        "2-round2-items.md",
+        "3-3-items.md"
+      ],
+      "needs_human_review": false,
+      "entries": [
+        {
+          "file": "2-round2-items.md",
+          "layer": "items",
+          "hash": "c037d9297102b252",
+          "preview": "Name the three methods of thermal energy transfer and give o...",
+          "action": "renumber → Q-3.3-06"
+        },
+        {
+          "file": "3-3-items.md",
+          "layer": "items",
+          "hash": "e231f7548f4582b2",
+          "preview": "Use the kinetic particle model to explain why a metal rod ex...",
+          "action": "keep"
+        }
+      ],
+      "subject": "igcse-physics-0625"
+    },
+    {
+      "qid": "Q-3.4-01",
+      "layer": "items",
+      "files": [
+        "2-round2-items.md",
+        "3-4-items.md"
+      ],
+      "needs_human_review": false,
+      "entries": [
+        {
+          "file": "2-round2-items.md",
+          "layer": "items",
+          "hash": "b019cbd7a79610b5",
+          "preview": "Calculate the energy required to heat 500 g of water from 20...",
+          "action": "renumber → Q-3.4-07"
+        },
+        {
+          "file": "3-4-items.md",
+          "layer": "items",
+          "hash": "47ab3594c2ffaa2e",
+          "preview": "Explain why metals are good conductors of heat.",
+          "action": "keep"
+        }
+      ],
+      "subject": "igcse-physics-0625"
+    },
+    {
+      "qid": "Q-3.5-01",
+      "layer": "items",
+      "files": [
+        "2-round2-items.md",
+        "3-5-items.md"
+      ],
+      "needs_human_review": false,
+      "entries": [
+        {
+          "file": "2-round2-items.md",
+          "layer": "items",
+          "hash": "ba56948cdee5aeef",
+          "preview": "Why does evaporation cause cooling?",
+          "action": "renumber → Q-3.5-06"
+        },
+        {
+          "file": "3-5-items.md",
+          "layer": "items",
+          "hash": "a3c17de529fef289",
+          "preview": "Calculate the energy needed to raise the temperature of 2 kg...",
+          "action": "keep"
+        }
+      ],
+      "subject": "igcse-physics-0625"
+    },
+    {
+      "qid": "Q-3.6-01",
+      "layer": "items",
+      "files": [
+        "2-round2-items.md",
+        "3-6-items.md"
+      ],
+      "needs_human_review": false,
+      "entries": [
+        {
+          "file": "2-round2-items.md",
+          "layer": "items",
+          "hash": "c1fcdd3e3adebb97",
+          "preview": "A substance is heated at a constant rate. Its temperature ri...",
+          "action": "renumber → Q-3.6-07"
+        },
+        {
+          "file": "3-6-items.md",
+          "layer": "items",
+          "hash": "0cff3b1347a09087",
+          "preview": "What is the difference between evaporation and boiling?",
+          "action": "keep"
+        }
+      ],
+      "subject": "igcse-physics-0625"
+    },
+    {
+      "qid": "Q-4.1-01",
+      "layer": "items",
+      "files": [
+        "3-round2-items.md",
+        "4-1-items.md"
+      ],
+      "needs_human_review": false,
+      "entries": [
+        {
+          "file": "3-round2-items.md",
+          "layer": "items",
+          "hash": "cf0d4fe60b92ed23",
+          "preview": "A wave has a frequency of 50 Hz and a wavelength of 4 m. Cal...",
+          "action": "renumber → Q-4.1-07"
+        },
+        {
+          "file": "4-1-items.md",
+          "layer": "items",
+          "hash": "7093ab4ae75efe46",
+          "preview": "A wave has a frequency of 50 Hz and a wavelength of 4 m. Cal...",
+          "action": "keep"
+        }
+      ],
+      "subject": "igcse-physics-0625"
+    },
+    {
+      "qid": "Q-4.2-01",
+      "layer": "items",
+      "files": [
+        "3-round2-items.md",
+        "4-2-items.md"
+      ],
+      "needs_human_review": false,
+      "entries": [
+        {
+          "file": "3-round2-items.md",
+          "layer": "items",
+          "hash": "e39632696a48dade",
+          "preview": "State the law of reflection and draw a labelled diagram show...",
+          "action": "renumber → Q-4.2-06"
+        },
+        {
+          "file": "4-2-items.md",
+          "layer": "items",
+          "hash": "7e0e72a7c3d7941e",
+          "preview": "State whether each of the following is a transverse or longi...",
+          "action": "keep"
+        }
+      ],
+      "subject": "igcse-physics-0625"
+    },
+    {
+      "qid": "Q-4.3-01",
+      "layer": "items",
+      "files": [
+        "3-round2-items.md",
+        "4-3-items.md"
+      ],
+      "needs_human_review": false,
+      "entries": [
+        {
+          "file": "3-round2-items.md",
+          "layer": "items",
+          "hash": "684d017babe3eb8b",
+          "preview": "Light enters glass (n = 1.5) from air at an angle of inciden...",
+          "action": "renumber → Q-4.3-06"
+        },
+        {
+          "file": "4-3-items.md",
+          "layer": "items",
+          "hash": "4a698ed2798d56be",
+          "preview": "State the law of reflection.",
+          "action": "keep"
+        }
+      ],
+      "subject": "igcse-physics-0625"
+    },
+    {
+      "qid": "Q-4.4-01",
+      "layer": "items",
+      "files": [
+        "3-round2-items.md",
+        "4-4-items.md"
+      ],
+      "needs_human_review": false,
+      "entries": [
+        {
+          "file": "3-round2-items.md",
+          "layer": "items",
+          "hash": "f27e7bd43b826093",
+          "preview": "What is the critical angle for glass with refractive index 1...",
+          "action": "renumber → Q-4.4-06"
+        },
+        {
+          "file": "4-4-items.md",
+          "layer": "items",
+          "hash": "24e1a8c43d23375a",
+          "preview": "State three characteristics of the image formed by a plane m...",
+          "action": "keep"
+        }
+      ],
+      "subject": "igcse-physics-0625"
+    },
+    {
+      "qid": "Q-4.5-01",
+      "layer": "items",
+      "files": [
+        "3-round2-items.md",
+        "4-5-items.md"
+      ],
+      "needs_human_review": false,
+      "entries": [
+        {
+          "file": "3-round2-items.md",
+          "layer": "items",
+          "hash": "e873e1f3a2e3e32d",
+          "preview": "Give two differences between real and virtual images.",
+          "action": "renumber → Q-4.5-07"
+        },
+        {
+          "file": "4-5-items.md",
+          "layer": "items",
+          "hash": "eae4fa603f00196b",
+          "preview": "Light enters glass (n = 1.5) from air at an angle of inciden...",
+          "action": "keep"
+        }
+      ],
+      "subject": "igcse-physics-0625"
+    },
+    {
+      "qid": "Q-4.6-01",
+      "layer": "items",
+      "files": [
+        "3-round2-items.md",
+        "4-6-items.md"
+      ],
+      "needs_human_review": false,
+      "entries": [
+        {
+          "file": "3-round2-items.md",
+          "layer": "items",
+          "hash": "a7d0af696385d103",
+          "preview": "A converging lens of focal length 10 cm is used to form an i...",
+          "action": "renumber → Q-4.6-06"
+        },
+        {
+          "file": "4-6-items.md",
+          "layer": "items",
+          "hash": "f5e3f9f742b457ab",
+          "preview": "What is the principal focus of a converging lens?",
+          "action": "keep"
+        }
+      ],
+      "subject": "igcse-physics-0625"
+    },
+    {
+      "qid": "Q-5.1-01",
+      "layer": "items",
+      "files": [
+        "4-round2-items.md",
+        "5-1-items.md",
+        "5-round2-items.md"
+      ],
+      "needs_human_review": false,
+      "entries": [
+        {
+          "file": "4-round2-items.md",
+          "layer": "items",
+          "hash": "3c7e40df187229df",
+          "preview": "A current of 0.5 A flows through a resistor for 2 minutes. C...",
+          "action": "renumber → Q-5.1-06"
+        },
+        {
+          "file": "5-1-items.md",
+          "layer": "items",
+          "hash": "b9f01adaf471ac07",
+          "preview": "State the law of magnetic poles.",
+          "action": "keep"
+        },
+        {
+          "file": "5-round2-items.md",
+          "layer": "items",
+          "hash": "d9069682633785d8",
+          "preview": "What is the function of a relay? Give one practical use.",
+          "action": "renumber → Q-5.1-07"
+        }
+      ],
+      "subject": "igcse-physics-0625"
+    },
+    {
+      "qid": "Q-5.2-01",
+      "layer": "items",
+      "files": [
+        "4-round2-items.md",
+        "5-2-items.md"
+      ],
+      "needs_human_review": false,
+      "entries": [
+        {
+          "file": "4-round2-items.md",
+          "layer": "items",
+          "hash": "afe631f07623121d",
+          "preview": "A 12 V battery is connected to a 4 Ω resistor. Calculate the...",
+          "action": "renumber → Q-5.2-07"
+        },
+        {
+          "file": "5-2-items.md",
+          "layer": "items",
+          "hash": "10caf93365baa44b",
+          "preview": "A current of 2 A flows through a lamp for 30 seconds. Calcul...",
+          "action": "keep"
+        }
+      ],
+      "subject": "igcse-physics-0625"
+    },
+    {
+      "qid": "Q-5.3-01",
+      "layer": "items",
+      "files": [
+        "4-round2-items.md",
+        "5-3-items.md",
+        "5-round2-items.md"
+      ],
+      "needs_human_review": false,
+      "entries": [
+        {
+          "file": "4-round2-items.md",
+          "layer": "items",
+          "hash": "a950297bce11e11f",
+          "preview": "Two resistors, 6 Ω and 3 Ω, are connected in parallel. Calcu...",
+          "action": "renumber → Q-5.3-07"
+        },
+        {
+          "file": "5-3-items.md",
+          "layer": "items",
+          "hash": "20246bf851b91d49",
+          "preview": "Two resistors of 4 Ω and 6 Ω are connected in series. Calcul...",
+          "action": "keep"
+        },
+        {
+          "file": "5-round2-items.md",
+          "layer": "items",
+          "hash": "176d5fcf4405922b",
+          "preview": "A coil is connected to a sensitive ammeter. A bar magnet is ...",
+          "action": "renumber → Q-5.3-08"
+        }
+      ],
+      "subject": "igcse-physics-0625"
+    },
+    {
+      "qid": "Q-5.4-01",
+      "layer": "items",
+      "files": [
+        "4-round2-items.md",
+        "5-4-items.md",
+        "5-round2-items.md"
+      ],
+      "needs_human_review": false,
+      "entries": [
+        {
+          "file": "4-round2-items.md",
+          "layer": "items",
+          "hash": "70eb8658cd276b46",
+          "preview": "Why are lamps in a house wired in parallel and not in series...",
+          "action": "renumber → Q-5.4-07"
+        },
+        {
+          "file": "5-4-items.md",
+          "layer": "items",
+          "hash": "c34ae094c9c73654",
+          "preview": "A resistor has a p.d. of 6 V across it and a current of 0.5 ...",
+          "action": "keep"
+        },
+        {
+          "file": "5-round2-items.md",
+          "layer": "items",
+          "hash": "102dd5cd30434729",
+          "preview": "State the three factors that affect the size of the induced ...",
+          "action": "renumber → Q-5.4-08"
+        }
+      ],
+      "subject": "igcse-physics-0625"
+    },
+    {
+      "qid": "Q-5.5-01",
+      "layer": "items",
+      "files": [
+        "4-round2-items.md",
+        "5-5-items.md",
+        "5-round2-items.md"
+      ],
+      "needs_human_review": false,
+      "entries": [
+        {
+          "file": "4-round2-items.md",
+          "layer": "items",
+          "hash": "360defd295cc1079",
+          "preview": "What is the function of a fuse in a circuit?",
+          "action": "renumber → Q-5.5-06"
+        },
+        {
+          "file": "5-5-items.md",
+          "layer": "items",
+          "hash": "8c9a637969724c0a",
+          "preview": "A potential divider consists of a 4 kΩ resistor and a 6 kΩ r...",
+          "action": "keep"
+        },
+        {
+          "file": "5-round2-items.md",
+          "layer": "items",
+          "hash": "20d6a8b5c713cc25",
+          "preview": "What is the difference between a.c. and d.c.?",
+          "action": "renumber → Q-5.5-07"
+        }
+      ],
+      "subject": "igcse-physics-0625"
+    },
+    {
+      "qid": "Q-5.6-01",
+      "layer": "items",
+      "files": [
+        "4-round2-items.md",
+        "5-6-items.md"
+      ],
+      "needs_human_review": false,
+      "entries": [
+        {
+          "file": "4-round2-items.md",
+          "layer": "items",
+          "hash": "0809da9d02ed90d2",
+          "preview": "Describe the pattern of magnetic field lines around a straig...",
+          "action": "renumber → Q-5.6-05"
+        },
+        {
+          "file": "5-6-items.md",
+          "layer": "items",
+          "hash": "48cbeb5ece3a2160",
+          "preview": "A capacitor stores 0.02 C of charge when connected to a 12 V...",
+          "action": "keep"
+        }
+      ],
+      "subject": "igcse-physics-0625"
+    },
+    {
+      "qid": "Q-5.7-01",
+      "layer": "items",
+      "files": [
+        "4-round2-items.md",
+        "5-7-items.md",
+        "5-round2-items.md"
+      ],
+      "needs_human_review": false,
+      "entries": [
+        {
+          "file": "4-round2-items.md",
+          "layer": "items",
+          "hash": "52eeb1e9efc72496",
+          "preview": "A transformer has 200 turns on the primary coil and 800 turn...",
+          "action": "renumber → Q-5.7-06"
+        },
+        {
+          "file": "5-7-items.md",
+          "layer": "items",
+          "hash": "2bee0c70771e320a",
+          "preview": "A 240 V mains supply powers a heater drawing a current of 8 ...",
+          "action": "keep"
+        },
+        {
+          "file": "5-round2-items.md",
+          "layer": "items",
+          "hash": "179dd97b4f934a30",
+          "preview": "Why is electrical power transmitted at high voltage and low ...",
+          "action": "renumber → Q-5.7-07"
+        }
+      ],
+      "subject": "igcse-physics-0625"
+    },
+    {
+      "qid": "Q-6.3-02",
+      "layer": "items",
+      "files": [
+        "5-2-s2-items.md",
+        "6-3-items.md"
+      ],
+      "needs_human_review": false,
+      "entries": [
+        {
+          "file": "5-2-s2-items.md",
+          "layer": "items",
+          "hash": "db3b15785a7c07dc",
+          "preview": "In the reaction Fe₂O₃ + 3CO → 2Fe + 3CO₂, identify the subst...",
+          "action": "renumber → Q-6.3-06"
+        },
+        {
+          "file": "6-3-items.md",
+          "layer": "items",
+          "hash": "645e7d4b4600e808",
+          "preview": "Define oxidation and reduction in terms of electron transfer...",
+          "action": "keep"
+        }
+      ],
+      "subject": "igcse-chemistry-0620"
+    },
+    {
+      "qid": "Q-6.3-03",
+      "layer": "items",
+      "files": [
+        "5-2-s2-items.md",
+        "6-3-items.md"
+      ],
+      "needs_human_review": false,
+      "entries": [
+        {
+          "file": "5-2-s2-items.md",
+          "layer": "items",
+          "hash": "a9bd76c529e21b49",
+          "preview": "In the reaction Zn + Cu²⁺ → Zn²⁺ + Cu, identify the oxidisin...",
+          "action": "renumber → Q-6.3-07"
+        },
+        {
+          "file": "6-3-items.md",
+          "layer": "items",
+          "hash": "e01d5a7e7eacbc35",
+          "preview": "In the reaction Fe₂O₃ + 3CO → 2Fe + 3CO₂, identify the subst...",
+          "action": "keep"
+        }
+      ],
+      "subject": "igcse-chemistry-0620"
+    },
+    {
+      "qid": "Q-6.3-04",
+      "layer": "items",
+      "files": [
+        "5-2-s2-items.md",
+        "6-3-items.md"
+      ],
+      "needs_human_review": false,
+      "entries": [
+        {
+          "file": "5-2-s2-items.md",
+          "layer": "items",
+          "hash": "009c2aacaf3273b2",
+          "preview": "What does OIL RIG stand for?",
+          "action": "renumber → Q-6.3-08"
+        },
+        {
+          "file": "6-3-items.md",
+          "layer": "items",
+          "hash": "ad86ca32eccd7045",
+          "preview": "What is an oxidising agent? What is a reducing agent?",
+          "action": "keep"
+        }
+      ],
+      "subject": "igcse-chemistry-0620"
+    },
+    {
+      "qid": "Q-6.3-05",
+      "layer": "items",
+      "files": [
+        "5-2-s2-items.md",
+        "6-3-items.md"
+      ],
+      "needs_human_review": false,
+      "entries": [
+        {
+          "file": "5-2-s2-items.md",
+          "layer": "items",
+          "hash": "b184e5485484e2ca",
+          "preview": "Write the ionic half-equation for the reduction of copper(II...",
+          "action": "renumber → Q-6.3-09"
+        },
+        {
+          "file": "6-3-items.md",
+          "layer": "items",
+          "hash": "d1af20f91ad858cb",
+          "preview": "Write the half-equations for the reaction: Zn + CuSO₄ → ZnSO...",
+          "action": "keep"
+        }
+      ],
+      "subject": "igcse-chemistry-0620"
+    },
+    {
+      "qid": "Q-4.1-08",
+      "layer": "items",
+      "files": [
+        "4-round2-items.md",
+        "final-push-items.md"
+      ],
+      "needs_human_review": false,
+      "entries": [
+        {
+          "file": "4-round2-items.md",
+          "layer": "items",
+          "hash": "e8e4c25d74aba430",
+          "preview": "Why is water described as the \"universal solvent\" in biology...",
+          "action": "keep"
+        },
+        {
+          "file": "final-push-items.md",
+          "layer": "items",
+          "hash": "cedbf9841c4f0d04",
+          "preview": "What is the role of magnesium ions in plant nutrition?",
+          "action": "renumber → Q-4.1-10"
+        }
+      ],
+      "subject": "igcse-biology-0610"
+    }
+  ],
+  "no_conflict_summary": [
+    {
+      "subject": "igcse-mathematics-0580",
+      "clean_within_layer_qids": 600,
+      "true_duplicates": 0,
+      "id_collisions": 0,
+      "human_review_needed": 0
+    },
+    {
+      "subject": "igcse-physics-0625",
+      "clean_within_layer_qids": 263,
+      "true_duplicates": 0,
+      "id_collisions": 27,
+      "human_review_needed": 0
+    },
+    {
+      "subject": "igcse-chemistry-0620",
+      "clean_within_layer_qids": 287,
+      "true_duplicates": 5,
+      "id_collisions": 4,
+      "human_review_needed": 0
+    },
+    {
+      "subject": "igcse-biology-0610",
+      "clean_within_layer_qids": 298,
+      "true_duplicates": 0,
+      "id_collisions": 1,
+      "human_review_needed": 0
+    },
+    {
+      "subject": "igcse-accounting-0452",
+      "clean_within_layer_qids": 555,
+      "true_duplicates": 2,
+      "id_collisions": 0,
+      "human_review_needed": 0
+    },
+    {
+      "subject": "igcse-economics-0455",
+      "clean_within_layer_qids": 468,
+      "true_duplicates": 0,
+      "id_collisions": 0,
+      "human_review_needed": 0
+    },
+    {
+      "subject": "igcse-business-studies-0450",
+      "clean_within_layer_qids": 600,
+      "true_duplicates": 0,
+      "id_collisions": 0,
+      "human_review_needed": 0
+    }
+  ]
+}

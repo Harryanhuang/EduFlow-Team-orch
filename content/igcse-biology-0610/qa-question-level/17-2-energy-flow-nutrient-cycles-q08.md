@@ -1,0 +1,6 @@
+# Question: Question Q-17.2-08
+**Difficulty**: Challenge
+**Question**: Explain how human activities have disrupted the carbon cycle and assess the consequences for global climate.
+**Answer**: Human activities have disrupted the carbon cycle in several ways: (1) Burning fossil fuels — releases large amounts of CO₂ that has been locked away for millions of years. (2) Deforestation — removes trees that would otherwise absorb CO₂ through photosynthesis. (3) Agriculture — increases respiration from soil microbes and livestock, releases methane from rice paddies and cattle. Consequences: increased atmospheric CO₂ enhances the greenhouse effect, trapping more heat. Global temperatures rise (global warming), causing: melting ice caps and rising sea levels, more extreme weather events, changes in precipitation patterns, ocean acidification (CO₂ dissolves in seawater forming carbonic acid), and threats to biodiversity. These changes affect agriculture, human health, and ecosystems worldwide.
+**Explanation**: More CO₂ released, less absorbed, enhanced greenhouse effect. A common error is saying CO₂ is "bad" (it's essential for photosynthesis; the problem is excess).
+**Tags**: carbon-cycle, fossil-fuels, deforestation, greenhouse-effect, global-warming

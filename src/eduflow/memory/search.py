@@ -1,0 +1,131 @@
+"""FTS5 full-text search for memory items.
+
+Lazily creates the FTS5 virtual table when available, falls back to LIKE
+on memory_items.content/summary when FTS5 is not compiled in.
+"""
+from __future__ import annotations
+
+import sqlite3
+
+from eduflow.memory.db import get_conn, init_schema
+
+_FTS_AVAILABLE: bool | None = None
+
+
+def _check_fts5() -> bool:
+    """Test if FTS5 is compiled into this SQLite build."""
+    try:
+        conn = sqlite3.connect(":memory:")
+        conn.execute("CREATE VIRTUAL TABLE _test_fts USING fts5(content)")
+        conn.execute("DROP TABLE _test_fts")
+        conn.close()
+        return True
+    except Exception:
+        return False
+
+
+def _fts_available() -> bool:
+    global _FTS_AVAILABLE
+    if _FTS_AVAILABLE is None:
+        _FTS_AVAILABLE = _check_fts5()
+    return _FTS_AVAILABLE
+
+
+def ensure_fts() -> None:
+    """Create FTS5 virtual table if available. No-op if unavailable."""
+    if not _fts_available():
+        return
+    conn = get_conn()
+    try:
+        conn.execute(
+            """CREATE VIRTUAL TABLE IF NOT EXISTS memory_items_fts
+               USING fts5(content, summary, id UNINDEXED,
+                          tokenize='trigram')"""
+        )
+        conn.commit()
+    except Exception:
+        pass  # table may already exist or FTS5 unavailable at runtime
+
+
+def sync_fts(memory_id: str, content: str, summary: str) -> None:
+    """Insert/update FTS index for a memory item."""
+    if not _fts_available():
+        return
+    ensure_fts()
+    conn = get_conn()
+    # Remove existing entry first (idempotent upsert)
+    conn.execute(
+        "DELETE FROM memory_items_fts WHERE id = ?", (memory_id,)
+    )
+    conn.execute(
+        "INSERT INTO memory_items_fts (id, content, summary) VALUES (?, ?, ?)",
+        (memory_id, content, summary),
+    )
+    conn.commit()
+
+
+def remove_fts(memory_id: str) -> None:
+    """Remove FTS index for a memory item."""
+    if not _fts_available():
+        return
+    conn = get_conn()
+    try:
+        conn.execute(
+            "DELETE FROM memory_items_fts WHERE id = ?", (memory_id,)
+        )
+        conn.commit()
+    except Exception:
+        pass  # table may not exist
+
+
+def search_memories(
+    query: str,
+    *,
+    scope: str | None = None,
+    kind: str | None = None,
+    status: str = "confirmed",
+    limit: int = 20,
+) -> list[dict]:
+    """Full-text search with LIKE fallback.
+
+    Returns memory_items rows matching the query, ordered by rank.
+    """
+    if not query or not query.strip():
+        return []
+
+    init_schema()
+    conn = get_conn()
+    q = query.strip()
+    use_fts = _fts_available()
+
+    if use_fts:
+        ensure_fts()
+        base = (
+            "SELECT m.* FROM memory_items m"
+            " JOIN memory_items_fts f ON m.id = f.id"
+            " WHERE memory_items_fts MATCH ?"
+        )
+        params: list = [f'"{q}"']
+    else:
+        base = (
+            "SELECT * FROM memory_items"
+            " WHERE (content LIKE ? OR summary LIKE ?)"
+        )
+        like_pat = f"%{q}%"
+        params = [like_pat, like_pat]
+
+    if status:
+        base += " AND status = ?" if not use_fts else " AND m.status = ?"
+        params.append(status)
+    if scope:
+        base += " AND scope = ?" if not use_fts else " AND m.scope = ?"
+        params.append(scope)
+    if kind:
+        base += " AND kind = ?" if not use_fts else " AND m.kind = ?"
+        params.append(kind)
+
+    base += " LIMIT ?"
+    params.append(limit)
+
+    rows = conn.execute(base, params).fetchall()
+    return [dict(r) for r in rows]

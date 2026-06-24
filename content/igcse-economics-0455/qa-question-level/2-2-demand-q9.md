@@ -1,0 +1,6 @@
+### Question Q-2.2-09
+**Difficulty**: Challenge
+**Question**: To what extent are non-price determinants of demand more important than price in influencing consumer purchasing decisions?
+**Answer**: Price is fundamental: the law of demand states that lower prices increase quantity demanded, and price changes cause movements along the demand curve. However, non-price determinants can be equally or more influential: income changes shift demand significantly (e.g. rising incomes drive demand for electronics); changes in tastes and fashion can dramatically increase or destroy demand regardless of price (e.g. smartphone adoption); prices of related goods matter (e.g. petrol price affects car demand); population changes alter market size; consumer expectations about future prices can trigger panic buying or deferred purchases. Evaluation: for everyday goods, price tends to dominate short-term decisions. For durable goods and luxury items, non-price factors such as income, trends, and expectations often have a greater impact. Both sets of determinants interact in practice.
+**Explanation**: Requires comparing price and non-price factors with examples and reaching a reasoned judgment. A common error is listing factors without evaluating their relative importance.
+**Tags**: demand, determinants, price, non-price-factors, evaluation

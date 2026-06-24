@@ -1,0 +1,6 @@
+### Question Q-2.1-09
+**Difficulty**: Challenge
+**Question**: Evaluate the view that the profit motive always leads to better resource allocation than government planning.
+**Answer**: Arguments for profit motive: drives efficiency as firms minimise costs, encourages innovation and new products, responds to consumer demand through the price mechanism, rewards productive use of resources. Arguments against: profit motive can lead to overproduction of demerit goods (e.g. tobacco), underprovision of public goods (e.g. street lighting), environmental damage from ignoring externalities, and growing inequality as resources flow to profitable markets rather than needed ones. Government planning can direct resources to socially desirable outcomes such as healthcare and infrastructure. Evaluation: the profit motive is effective for private goods but fails for public goods and merit goods — most economies need a combination of both mechanisms.
+**Explanation**: Requires weighing the strengths and limitations of both allocation methods with examples. A common error is assuming the profit motive is always efficient or always wasteful.
+**Tags**: profit-motive, government-planning, resource-allocation, evaluation

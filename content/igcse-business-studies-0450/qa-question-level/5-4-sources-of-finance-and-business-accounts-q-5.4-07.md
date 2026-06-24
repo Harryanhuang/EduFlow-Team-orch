@@ -1,0 +1,6 @@
+### Question Q-5.4-07
+**Difficulty**: Challenge
+**Question**: A sole trader wants to expand and needs $200,000. Evaluate whether they should seek a bank loan, bring in a partner, or use crowdfunding.
+**Answer**: Bank loan: retains full ownership and control, but requires collateral and regular interest repayments — risky if the expansion does not generate revenue quickly. Bring in a partner: provides capital and shared expertise without debt, but ownership and decision-making must be shared — potential for conflict. Crowdfunding: raises money from many small investors, provides marketing exposure, but may not reach the full amount required and involves public disclosure of the business idea. Recommendation depends on the sole trader's risk tolerance and willingness to share control. A bank loan is suitable if the business has collateral and predictable cash flows; a partner is better if expertise and risk-sharing are valued; crowdfunding suits consumer-facing businesses with an engaging story.
+**Explanation**: The choice involves trade-offs between control, risk, and cost. A common error is recommending one source without considering the business's specific circumstances.
+**Tags**: sources-of-finance, evaluation, sole-trader, expansion

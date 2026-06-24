@@ -1,0 +1,6 @@
+# Question: Question Q-17.1-07
+**Difficulty**: Foundation
+**Question**: Draw and label a pyramid of biomass for a grassland food chain: grass → grasshopper → mouse → snake → hawk. Explain why pyramids of biomass are more informative than pyramids of numbers for understanding energy transfer.
+**Answer**: A pyramid of biomass shows the dry mass of living organisms at each trophic level. Grass (producers) have the largest biomass, followed by grasshoppers (primary consumers), then mice (secondary consumers), then snakes (tertiary consumers), with hawks (quaternary consumers) having the smallest biomass. The pyramid is always upright because energy is lost at each level. Pyramids of numbers can be misleading — a single large tree (producer) can support many insects (primary consumers), creating an inverted pyramid of numbers. Pyramids of biomass more accurately represent the energy available at each level because biomass correlates with the energy content of organisms, not just their count.
+**Explanation**: Biomass decreases up the chain, more accurate than numbers. A common error is drawing a pyramid of numbers and assuming it is always upright.
+**Tags**: pyramid-of-biomass, pyramid-of-numbers, food-chain, trophic-level

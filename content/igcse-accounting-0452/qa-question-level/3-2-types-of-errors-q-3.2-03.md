@@ -1,0 +1,6 @@
+### Question Q-3.2-03
+**Difficulty**: Foundation
+**Question**: Match each error type to its description: (a) Error of original entry, (b) Error of reversal, (c) Compensating error. Descriptions: (1) Two or more errors cancel each other out so the trial balance still agrees. (2) The wrong amount is used in both the debit and credit entries. (3) The debit and credit entries are completely swapped.
+**Answer**: (a) → (2): Error of original entry — the wrong amount is recorded on both sides, e.g., a $650 purchase is recorded as $560 in both debit and credit. (b) → (3): Error of reversal — debit is recorded as credit and credit as debit, e.g., a cash sale of $200 is recorded as Debit Sales $200, Credit Cash $200 instead of Debit Cash $200, Credit Sales $200. (c) → (1): Compensating error — e.g., Purchases overstated by $100 and Sales understated by $100, the errors happen to cancel.
+**Explanation**: Each error type has a unique characteristic. A common error is mixing up original entry (wrong amount on both sides) with reversal (sides swapped). Original entry still has the right accounts; reversal has the right amounts but wrong sides.
+**Tags**: error-of-original-entry, error-of-reversal, compensating-error, matching

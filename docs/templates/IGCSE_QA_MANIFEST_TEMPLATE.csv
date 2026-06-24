@@ -1,0 +1,4 @@
+subject_slug,topic_id,topic_name,qa_file,question_count,difficulty_mix,batch_id,depends_on_batches,status,review_state,owner,notes
+igcse-accounting-0452,1.1,The purpose of accounting,qa/1-1-purpose-of-accounting.md,12,F:4|S:6|C:2,batch-01,,draft,pending,worker_subject,
+igcse-accounting-0452,1.2,Users of accounting information,qa/1-2-users-of-accounting-information.md,10,F:3|S:5|C:2,batch-01,,draft,pending,worker_subject,
+igcse-accounting-0452,2.1,Double entry principles,qa/2-1-double-entry-principles.md,16,F:4|S:8|C:4,batch-02,batch-01,draft,pending,worker_subject,

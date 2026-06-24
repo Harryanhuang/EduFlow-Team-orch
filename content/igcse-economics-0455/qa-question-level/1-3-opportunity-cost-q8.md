@@ -1,0 +1,6 @@
+### Question Q-1.3-08
+**Difficulty**: Challenge
+**Question**: Evaluate the usefulness of opportunity cost analysis when a government must decide between spending on healthcare and defence.
+**Answer**: Opportunity cost analysis forces the government to explicitly identify what is sacrificed with each choice — spending on defence means fewer hospitals and doctors, while spending on healthcare means weaker military capability. This helps justify decisions to the public and promotes transparent resource allocation. However, opportunity cost analysis has limitations: some benefits are hard to measure (national security vs. lives saved), the time horizons differ (defence provides immediate security, healthcare has long-term benefits), and political considerations may override economic logic. Additionally, governments may be able to borrow to fund both, temporarily reducing the apparent opportunity cost. Despite these limitations, the concept remains valuable for structured decision-making.
+**Explanation**: Opportunity cost clarifies trade-offs but has measurement and political limitations. A common error is ignoring implicit costs like environmental damage, or assuming opportunity cost analysis always leads to the correct decision.
+**Tags**: opportunity-cost, government, policy, evaluation, trade-off

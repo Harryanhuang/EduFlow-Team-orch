@@ -1,0 +1,6 @@
+# Question: Question Q-10.1-07
+**Difficulty**: Challenge
+**Question**: Compare the transmission, causative pathogen type, and prevention of cholera and malaria. Why are different prevention strategies needed?
+**Answer**: Cholera — pathogen: bacterium (Vibrio cholerae). Transmission: faecal-oral route via contaminated water and food. Toxin causes severe diarrhoea and dehydration. Prevention: clean water supply, proper sewage disposal, hand washing, oral rehydration therapy. Malaria — pathogen: protoctist (Plasmodium). Transmission: female Anopheles mosquito vector injecting Plasmodium into blood. Prevention: bed nets, insecticide, mosquito repellent, eliminating standing water, antimalarial drugs. Different strategies are needed because: cholera is waterborne (direct faecal-oral) — sanitation and clean water are primary; malaria is vector-borne (mosquito intermediary) — eliminating the vector and blocking bites are primary. Antibiotics help for cholera (bacterial) but not for malaria (protoctist — needs specific antimalarial drugs).
+**Explanation**: Waterborne (cholera) vs vector-borne (malaria), different pathogen types → different strategies. A common error is suggesting same prevention for both.
+**Tags**: cholera, malaria, comparison, transmission, prevention, pathogen-type

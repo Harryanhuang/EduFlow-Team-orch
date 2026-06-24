@@ -1,0 +1,6 @@
+### Question Q-2.3-09
+**Difficulty**: Challenge
+**Question**: A retail company has high staff turnover in its stores. Analyse the possible causes and recommend how to improve recruitment and retention, justifying your choices.
+**Answer**: Possible causes: unrealistic job expectations, poor induction, lack of training and career progression, low pay relative to competitors, or poor management. Recommendations: 1) Use realistic job previews in recruitment advertising to set accurate expectations and reduce early leavers — this addresses job-fit issues before they arise. 2) Improve induction training so new staff feel supported from day one — research shows most leavers occur in the first 90 days. 3) Invest in ongoing on-the-job training and clear career progression paths to increase motivation — employees who see a future stay longer. 4) Consider internal recruitment for management roles to motivate existing staff. Justification: high turnover often stems from poor job-fit expectations and lack of development, not just pay. Addressing the full employee lifecycle is more effective than focusing on recruitment alone.
+**Explanation**: Recommendations should address both recruitment and retention stages. A common error is recommending only recruitment fixes without addressing why people leave.
+**Tags**: recruitment, retention, evaluation, application

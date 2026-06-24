@@ -1,0 +1,6 @@
+### Question Q-2.4-09
+**Difficulty**: Challenge
+**Question**: Evaluate whether the price mechanism always leads to an efficient allocation of resources.
+**Answer**: Arguments for efficiency: the price mechanism responds to consumer preferences (consumer sovereignty), encourages producers to minimise costs through competition, and adjusts quickly to changes in supply and demand without government intervention. Prices act as signals, incentives, and rationing devices. Arguments against: the price mechanism fails in cases of market failure — it underprovides public goods (free-rider problem), overproduces goods with negative externalities (pollution), underproduces merit goods (education), and can create significant inequality as resources flow to those with highest ability to pay rather than greatest need. Monopoly power can also distort price signals. Evaluation: the price mechanism is efficient for private goods in competitive markets but requires government intervention to address market failures, provide public goods, and ensure equitable distribution.
+**Explanation**: Requires balanced evaluation of the price mechanism's strengths and limitations with reference to market failure. A common error is assuming free markets are always efficient or always inefficient.
+**Tags**: price-mechanism, efficiency, market-failure, evaluation

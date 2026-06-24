@@ -1,0 +1,45 @@
+topic,topic_name,core_supplement,depends_on,question_count,difficulty_mix
+1.1,Characteristics of living organisms,Core,none,9,F:2|S:4|C:3
+1.2,"Classification: kingdoms, binomial system",Core+Sup,1.1,9,F:2|S:4|C:3
+2.1,Cell structure: plant and animal cells,Core,none,9,F:2|S:4|C:3
+2.2,Specialised cells and their functions,Core+Sup,2.1,9,F:2|S:4|C:3
+2.3,"Levels of organisation: cells, tissues, organs, systems",Core,2.2,9,F:2|S:4|C:3
+3.1,Diffusion,Core,none,9,F:2|S:4|C:3
+3.2,Osmosis,Core+Sup,3.1,9,F:2|S:4|C:3
+3.3,Active transport,Core+Sup,3.1,9,F:2|S:4|C:3
+4.1,"Carbohydrates, proteins, lipids",Core,none,9,F:2|S:4|C:3
+4.2,Food tests and DNA structure,Core+Sup,4.1,9,F:2|S:4|C:3
+5.1,Enzyme action and specificity,Core,4.1,9,F:2|S:4|C:3
+5.2,Factors affecting enzyme activity,Core+Sup,5.1,9,F:2|S:4|C:3
+6.1,Photosynthesis,Core,none,9,F:2|S:4|C:3
+6.2,Factors affecting photosynthesis,Core+Sup,6.1,9,F:2|S:4|C:3
+7.1,Diet and balanced nutrition,Core,none,9,F:2|S:4|C:3
+7.2,"Digestion: mechanical and chemical, alimentary canal",Core+Sup,7.1,9,F:2|S:4|C:3
+8.1,"Transport tissues: xylem and phloem",Core,none,9,F:2|S:4|C:3
+8.2,Transpiration and transpiration stream,Core+Sup,8.1,9,F:2|S:4|C:3
+9.1,"Circulatory system: heart, blood vessels",Core,none,9,F:2|S:4|C:3
+9.2,"Blood: components and functions",Core+Sup,9.1,9,F:2|S:4|C:3
+10.1,"Pathogens and disease transmission",Core,none,9,F:2|S:4|C:3
+10.2,"Defence mechanisms and immunity",Core+Sup,10.1,9,F:2|S:4|C:3
+11.1,"Gas exchange: lungs and alveoli",Core,none,9,F:2|S:4|C:3
+11.2,"Breathing mechanism and effects of exercise",Core+Sup,11.1,9,F:2|S:4|C:3
+12.1,"Aerobic respiration: equation and energy",Core,none,9,F:2|S:4|C:3
+12.2,"Anaerobic respiration in humans and yeast",Core+Sup,12.1,9,F:2|S:4|C:3
+13.1,"Excretion: definition, organs, and urea formation",Core,none,9,F:2|S:4|C:3
+13.2,"Kidney structure and function, dialysis",Core+Sup,13.1,9,F:2|S:4|C:3
+14.1,"Nervous system: neurones and reflex arcs",Core,none,9,F:2|S:4|C:3
+14.2,"Hormones and endocrine system",Core+Sup,14.1,9,F:2|S:4|C:3
+14.3,Plant tropisms: phototropism and geotropism,Core,6.1,9,F:2|S:4|C:3
+15.1,Asexual and sexual reproduction,Core,none,9,F:2|S:4|C:3
+15.2,Human reproductive system and development,Core+Sup,15.1,9,F:2|S:4|C:3
+15.3,Human reproduction: gametes and fertilisation,Core+Sup,15.1,9,F:2|S:4|C:3
+16.1,"Inheritance: DNA, genes, chromosomes",9,F:1|S:6|C:2,7,F:1|S:6|C:0
+16.2,Monohybrid inheritance and Punnett squares,Core+Sup,16.1,9,F:0|S:7|C:2
+16.3,"Variation, mutation, natural selection",9,F:1|S:7|C:1,5,F:1|S:4|C:0
+17.1,Energy flow and food chains,Core,none,9,F:0|S:6|C:3
+17.2,Nutrient cycles: carbon and nitrogen,Core+Sup,17.1,9,F:0|S:9|C:0
+17.3,Population size and factors affecting it,Core+Sup,17.1,9,F:0|S:9|C:0
+18.1,Biotechnology and genetic engineering,Core+Sup,none,9,F:0|S:6|C:3
+18.2,Fermentation and industrial uses,Core+Sup,18.1,9,F:0|S:7|C:2
+19.1,Human influences on ecosystems: pollution,Core,none,9,F:0|S:8|C:1
+19.2,Conservation and sustainable development,Core+Sup,19.1,9,F:0|S:7|C:2

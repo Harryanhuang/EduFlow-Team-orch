@@ -1,0 +1,6 @@
+# Question: Question Q-17.2-09
+**Difficulty**: Standard
+**Question**: Compare the processes of eutrophication and biological magnification. How do they both demonstrate the interconnectedness of ecosystems?
+**Answer**: Eutrophication begins with excess nutrients (nitrates, phosphates) from fertilisers or sewage entering waterways. Algae bloom, blocking light. Plants die. Decomposers multiply, consuming oxygen. Aquatic life dies from oxygen depletion. Biological magnification (biomagnification) involves fat-soluble, non-degradable toxins (e.g., DDT, mercury) accumulating in organisms. As organisms consume each other up the food chain, toxin concentration increases — top predators accumulate the highest levels (e.g., birds that eat fish accumulate DDT, causing eggshell thinning). Both processes demonstrate interconnectedness: (1) Both start with human pollution entering ecosystems. (2) Effects cascade through food chains/webs. (3) Impacts extend to organisms far from the pollution source. (4) Both show that actions in one part of an ecosystem can affect distant trophic levels.
+**Explanation**: Eutrophication = oxygen depletion; Biomagnification = toxin concentration. A common error is saying they are the same process.
+**Tags**: eutrophication, biomagnification, food-chain, pollution, ecosystem

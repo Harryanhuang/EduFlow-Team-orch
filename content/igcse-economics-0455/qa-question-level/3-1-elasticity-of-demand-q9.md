@@ -1,0 +1,6 @@
+### Question Q-3.1-09
+**Difficulty**: Challenge
+**Question**: Evaluate whether income elasticity of demand (YED) is more useful than cross elasticity of demand (XED) for a retailer deciding on its product range.
+**Answer**: YED helps a retailer predict how demand for products will change as consumer incomes rise or fall. Normal goods (positive YED) will see higher demand during economic growth, while inferior goods (negative YED) will see lower demand. XED helps the retailer understand relationships between products, identifying substitutes and complements to optimise pricing and promotions. For a retailer, XED is particularly useful for short-term pricing strategies and shelf placement, while YED is more useful for long-term product planning. Both are valuable, but YED may be more important for strategic decisions about which product categories to expand or reduce, especially during economic cycles.
+**Explanation**: Both measures have distinct uses. YED is better for long-term planning linked to economic conditions; XED is better for pricing and promotion strategies. A common error is stating one is always more useful without contextual justification.
+**Tags**: yed, xed, retail-strategy, evaluation, comparison

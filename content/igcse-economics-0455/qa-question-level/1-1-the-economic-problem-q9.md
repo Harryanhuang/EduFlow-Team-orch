@@ -1,0 +1,6 @@
+### Question Q-1.1-09
+**Difficulty**: Challenge
+**Question**: Discuss whether a planned economy is more effective than a free-market economy in solving the basic economic problems of what to produce, how to produce, and for whom to produce.
+**Answer**: In a planned economy, the government decides resource allocation, which can prioritise merit goods (healthcare, education) and reduce inequality. However, central planners lack the price signals that communicate consumer preferences, often leading to shortages or surpluses. A free-market economy uses price mechanisms to allocate resources efficiently — high prices signal scarcity and incentivise production. However, markets may under-provide public goods and create significant inequality. Most real-world economies are mixed, combining market efficiency with government intervention to address market failures. The effectiveness depends on the quality of institutions, information, and governance rather than the system alone.
+**Explanation**: Both systems have strengths and weaknesses in addressing the three basic economic questions. A common error is arguing one system is universally better without considering context, institutional quality, and the role of mixed economies.
+**Tags**: planned-economy, free-market, resource-allocation, evaluation, economic-systems

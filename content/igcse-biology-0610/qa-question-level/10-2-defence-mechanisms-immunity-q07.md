@@ -1,0 +1,6 @@
+# Question: Question Q-10.2-07
+**Difficulty**: Challenge
+**Question**: Compare the body's second and third lines of defence against pathogens, explaining how phagocytes and lymphocytes work together.
+**Answer**: Second line (non-specific): phagocytes (neutrophils, macrophages) — engulf any foreign particle by phagocytosis. They are attracted to infection sites by chemical signals (chemotaxis). No memory — same response to every pathogen. Third line (specific): lymphocytes — B-lymphocytes produce specific antibodies that match only one antigen; T-lymphocytes destroy infected host cells directly. Memory lymphocytes persist for years/decades. How they work together: (1) Phagocytes first arrive at infection site, engulf some pathogens. (2) Phagocytes present pathogen antigens on their surface (antigen presentation) to activate T-lymphocytes. (3) Activated T-lymphocytes stimulate B-lymphocytes to produce specific antibodies. (4) Antibodies bind to pathogens, marking them for phagocytosis (opsonisation). The non-specific and specific systems are a coordinated defence cascade.
+**Explanation**: Second line (non-specific phagocytes) + third line (specific lymphocytes) = coordinated cascade. A common error is treating them as independent systems.
+**Tags**: phagocytes, lymphocytes, specific, non-specific, coordination, antigen-presentation

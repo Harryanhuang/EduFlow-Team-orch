@@ -1,0 +1,6 @@
+# Question: Question Q-11.1-09
+**Difficulty**: Challenge
+**Question**: Explain how Fick's Law relates the structure of the alveoli to the rate of gas exchange, and predict what happens to gas exchange efficiency if a person develops emphysema.
+**Answer**: Fick's Law: Rate of diffusion ∝ (surface area × concentration gradient) / diffusion distance. Alveolar structure optimises each variable: (1) Surface area — millions of alveoli provide ~70 m². (2) Concentration gradient — rich capillary network + continuous ventilation maintain steep gradients. (3) Diffusion distance — one-cell-thick alveolar + capillary walls (combined ~0.5-1 μm). In emphysema: alveolar walls are progressively destroyed by tar/protease imbalance → alveoli merge into fewer, larger sacs → surface area decreases drastically (can drop to <30 m²). Concentration gradient also decreases because fewer capillaries remain. Both changes reduce the rate of gas exchange. The person becomes breathless even at rest (hypoxia) and cannot meet O₂ demand during exercise. The damage is irreversible — only supplemental O₂ and bronchodilators manage symptoms.
+**Explanation**: Fick's Law applied — emphysema reduces surface area + gradient → rate drops. A common error is describing emphysema without linking to Fick's Law variables.
+**Tags**: Fick's-law, emphysema, surface-area, gas-exchange, alveoli, diffusion

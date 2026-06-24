@@ -1,0 +1,6 @@
+# Question: Question Q-18.1-08
+**Difficulty**: Challenge
+**Question**: Explain how microorganisms are used in wastewater treatment. What role do different groups of bacteria play at each stage of treatment?
+**Answer**: Wastewater treatment uses microorganisms (primarily bacteria) in a staged process: (1) Screening — removes large debris (not biological). (2) Primary sedimentation — solid organic matter settles. (3) Activated sludge (biological treatment) — bacteria digest dissolved organic matter. Aerobic bacteria oxidise organic compounds to CO₂ and water using oxygen (supplied by aerators). Nitrifying bacteria convert ammonia to nitrates (nitrification). (4) Secondary sedimentation — bacterial sludge settles. (5) Anaerobic digestion — methanogenic bacteria break down sludge in the absence of oxygen, producing methane (biogas) and stabilised sludge. This reduces BOD (biological oxygen demand), removes pathogens, and converts waste to biogas — a renewable energy source. Different bacteria function at each stage: aerobic for oxidation, nitrifying for nitrogen removal, methanogenic for biogas production.
+**Explanation**: Aerobic oxidation, nitrification, anaerobic digestion. A common error is saying there is only one type of bacterium involved.
+**Tags**: wastewater, sewage, bacteria, aerobic, anaerobic, biogas

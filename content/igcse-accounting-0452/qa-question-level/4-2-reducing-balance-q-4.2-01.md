@@ -1,0 +1,6 @@
+### Question Q-4.2-01
+**Difficulty**: Foundation
+**Question**: What is the reducing balance method of depreciation? How does it differ from the straight-line method?
+**Answer**: The reducing balance method (also called the diminishing balance method) calculates depreciation by applying a fixed percentage rate to the carrying amount (net book value) of the asset at the beginning of each period. Each year's depreciation = Carrying amount × Depreciation rate. The key difference from straight-line is that reducing balance charges MORE depreciation in the early years of an asset's life and LESS in later years, because the carrying amount reduces each year after depreciation is deducted. Straight-line charges the SAME amount every year. Under reducing balance, the carrying amount never reaches the residual value exactly — it approaches it asymptotically.
+**Explanation**: A common error is thinking the reducing balance rate is applied to the original cost each year — it is applied to the carrying amount (cost minus accumulated depreciation) at the START of each period. The cost is only used in year 1; in subsequent years, the reduced balance is the base.
+**Tags**: reducing-balance, definition, comparison

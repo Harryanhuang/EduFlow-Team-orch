@@ -1,0 +1,6 @@
+### Question Q-3.5-07
+**Difficulty**: Challenge
+**Question**: Analyse how pollution from a factory creates market failure and evaluate whether a tax on the factory is the best solution.
+**Answer**: Pollution is a negative externality where the social cost of production exceeds the private cost, leading to overproduction and a deadweight welfare loss. A tax on the factory (Pigouvian tax) can internalise the externality by raising the firm's private costs to equal social costs, reducing output to the socially optimal level. However, a tax has limitations: it is difficult to set at the correct level (requires knowing the exact external cost), it may not reduce pollution if demand is very inelastic, and it may make the firm uncompetitive internationally. Alternatives include regulation (setting emission limits), tradable permits (capping total pollution), or Coase-style bargaining. The best solution depends on the accuracy of information available and the administrative capacity of the government.
+**Explanation**: External cost leads to overproduction. Tax internalises the externality but is hard to set correctly. A common error is assuming a tax completely eliminates the externality.
+**Tags**: pollution, externality, tax, evaluation, market-failure

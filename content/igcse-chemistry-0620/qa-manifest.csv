@@ -1,0 +1,344 @@
+subject_slug,topic_id,topic_name,qa_file,question_count,difficulty_mix,batch_id,depends_on_batches,status,review_state,owner,notes
+igcse-chemistry-0620,1.1,"Kinetic particle theory, states of matter",qa-question-level/1-1-kinetic-particle-states-q01.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-1.1-01
+igcse-chemistry-0620,1.1,"Kinetic particle theory, states of matter",qa-question-level/1-1-kinetic-particle-states-q02.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-1.1-02
+igcse-chemistry-0620,1.1,"Kinetic particle theory, states of matter",qa-question-level/1-1-kinetic-particle-states-q03.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-1.1-03
+igcse-chemistry-0620,1.1,"Kinetic particle theory, states of matter",qa-question-level/1-1-kinetic-particle-states-q04.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-1.1-04
+igcse-chemistry-0620,1.1,"Kinetic particle theory, states of matter",qa-question-level/1-1-kinetic-particle-states-q05.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-1.1-05
+igcse-chemistry-0620,1.1,"Kinetic particle theory, states of matter",qa-question-level/1-1-kinetic-particle-states-q06.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-1.1-06
+igcse-chemistry-0620,1.1,"Kinetic particle theory, states of matter",qa-question-level/1-1-kinetic-particle-states-q07.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-1.1-07
+igcse-chemistry-0620,1.1,"Kinetic particle theory, states of matter",qa-question-level/1-1-kinetic-particle-states-q08.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-1.1-08
+igcse-chemistry-0620,1.1,"Kinetic particle theory, states of matter",qa-question-level/1-1-kinetic-particle-states-q09-s1.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-1.1-09
+igcse-chemistry-0620,1.2,"Diffusion, dissolving, chromatography",qa-question-level/1-2-diffusion-dissolving-chromatography-q01.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-1.2-01 | difficulty_verified_20260622
+igcse-chemistry-0620,1.2,"Diffusion, dissolving, chromatography",qa-question-level/1-2-diffusion-dissolving-chromatography-q02.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-1.2-02 | difficulty_verified_20260622
+igcse-chemistry-0620,1.2,"Diffusion, dissolving, chromatography",qa-question-level/1-2-diffusion-dissolving-chromatography-q03.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-1.2-03 | difficulty_verified_20260622
+igcse-chemistry-0620,1.2,"Diffusion, dissolving, chromatography",qa-question-level/1-2-diffusion-dissolving-chromatography-q04.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-1.2-04 | difficulty_verified_20260622
+igcse-chemistry-0620,1.2,"Diffusion, dissolving, chromatography",qa-question-level/1-2-diffusion-dissolving-chromatography-q05.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-1.2-05 | difficulty_verified_20260622
+igcse-chemistry-0620,1.2,"Diffusion, dissolving, chromatography",qa-question-level/1-2-diffusion-dissolving-chromatography-q06.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-1.2-06 | difficulty_verified_20260622
+igcse-chemistry-0620,1.2,"Diffusion, dissolving, chromatography",qa-question-level/1-2-diffusion-dissolving-chromatography-q07-s2.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-1.2-07 | difficulty_verified_20260622
+igcse-chemistry-0620,1.2,"Diffusion, dissolving, chromatography",qa-question-level/1-2-diffusion-dissolving-chromatography-q08-s3.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-1.2-08 | difficulty_verified_20260622
+igcse-chemistry-0620,1.2,"Diffusion, dissolving, chromatography",qa-question-level/1-2-diffusion-dissolving-chromatography-q09-s4.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-1.2-09 | difficulty_verified_20260622
+igcse-chemistry-0620,1.2,"Diffusion, dissolving, chromatography",qa-question-level/1-2-diffusion-dissolving-chromatography-q10-s5.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-1.2-10 | difficulty_verified_20260622
+igcse-chemistry-0620,1.2,"Diffusion, dissolving, chromatography",qa-question-level/1-2-diffusion-dissolving-chromatography-q11-s6.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-1.2-11 | difficulty_verified_20260622
+igcse-chemistry-0620,1.2,"Diffusion, dissolving, chromatography",qa-question-level/1-2-diffusion-dissolving-chromatography-q12-s7.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-1.2-12 | difficulty_verified_20260622
+igcse-chemistry-0620,1.2,"Diffusion, dissolving, chromatography",qa-question-level/1-2-diffusion-dissolving-chromatography-q13-s8.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-1.2-13 | difficulty_verified_20260622
+igcse-chemistry-0620,1.2,"Diffusion, dissolving, chromatography",qa-question-level/1-2-diffusion-dissolving-chromatography-q14-s9.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-1.2-14 | difficulty_verified_20260622
+igcse-chemistry-0620,10.1,"Air, water, composition and separation",qa-question-level/10-1-air-water-q01.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-10.1-01
+igcse-chemistry-0620,10.1,"Air, water, composition and separation",qa-question-level/10-1-air-water-q02.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-10.1-02
+igcse-chemistry-0620,10.1,"Air, water, composition and separation",qa-question-level/10-1-air-water-q03.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-10.1-03
+igcse-chemistry-0620,10.1,"Air, water, composition and separation",qa-question-level/10-1-air-water-q04.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-10.1-04
+igcse-chemistry-0620,10.1,"Air, water, composition and separation",qa-question-level/10-1-air-water-q08-s4.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-10.1-08
+igcse-chemistry-0620,10.1,"Air, water, composition and separation",qa-question-level/10-1-air-water-q09-s5.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-10.1-09
+igcse-chemistry-0620,10.1,"Air, water, composition and separation",qa-question-level/10-1-air-water-q10.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-10.1-10
+igcse-chemistry-0620,10.1,"Air, water, composition and separation",qa-question-level/10-1-air-water-q11.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-10.1-11
+igcse-chemistry-0620,10.1,"Air, water, composition and separation",qa-question-level/10-1-air-water-q12.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-10.1-12
+igcse-chemistry-0620,10.2,"Pollution, greenhouse gases, acid rain",qa-question-level/10-2-pollution-greenhouse-acid-rain-q01.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-10.2-01
+igcse-chemistry-0620,10.2,"Pollution, greenhouse gases, acid rain",qa-question-level/10-2-pollution-greenhouse-acid-rain-q02.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-10.2-02
+igcse-chemistry-0620,10.2,"Pollution, greenhouse gases, acid rain",qa-question-level/10-2-pollution-greenhouse-acid-rain-q03.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-10.2-03
+igcse-chemistry-0620,10.2,"Pollution, greenhouse gases, acid rain",qa-question-level/10-2-pollution-greenhouse-acid-rain-q04.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-10.2-04
+igcse-chemistry-0620,10.2,"Pollution, greenhouse gases, acid rain",qa-question-level/10-2-pollution-greenhouse-acid-rain-q05.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-10.2-05
+igcse-chemistry-0620,10.2,"Pollution, greenhouse gases, acid rain",qa-question-level/10-2-pollution-greenhouse-acid-rain-q06-s2.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-10.2-06
+igcse-chemistry-0620,10.2,"Pollution, greenhouse gases, acid rain",qa-question-level/10-2-pollution-greenhouse-acid-rain-q07-s3.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-10.2-07
+igcse-chemistry-0620,10.2,"Pollution, greenhouse gases, acid rain",qa-question-level/10-2-pollution-greenhouse-acid-rain-q08-s4.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-10.2-08
+igcse-chemistry-0620,10.2,"Pollution, greenhouse gases, acid rain",qa-question-level/10-2-pollution-greenhouse-acid-rain-q09-s5.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-10.2-09
+igcse-chemistry-0620,11.1,"| 11.4 | Macromolecules: polymers, proteins, carbohydrates",qa-question-level/11-1-fuels-crude-oil-alkanes-q01.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-11.1-01
+igcse-chemistry-0620,11.1,"| 11.4 | Macromolecules: polymers, proteins, carbohydrates",qa-question-level/11-1-fuels-crude-oil-alkanes-q02.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-11.1-02
+igcse-chemistry-0620,11.1,"| 11.4 | Macromolecules: polymers, proteins, carbohydrates",qa-question-level/11-1-fuels-crude-oil-alkanes-q03.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-11.1-03
+igcse-chemistry-0620,11.1,"| 11.4 | Macromolecules: polymers, proteins, carbohydrates",qa-question-level/11-1-fuels-crude-oil-alkanes-q04.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-11.1-04
+igcse-chemistry-0620,11.1,"| 11.4 | Macromolecules: polymers, proteins, carbohydrates",qa-question-level/11-1-fuels-crude-oil-alkanes-q05.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-11.1-05
+igcse-chemistry-0620,11.1,"| 11.4 | Macromolecules: polymers, proteins, carbohydrates",qa-question-level/11-1-fuels-crude-oil-alkanes-q06.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-11.1-06
+igcse-chemistry-0620,11.1,"| 11.4 | Macromolecules: polymers, proteins, carbohydrates",qa-question-level/11-1-fuels-crude-oil-alkanes-q07-s1.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-11.1-07
+igcse-chemistry-0620,11.1,"| 11.4 | Macromolecules: polymers, proteins, carbohydrates",qa-question-level/11-1-fuels-crude-oil-alkanes-q08-s2.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-11.1-08
+igcse-chemistry-0620,11.1,"| 11.4 | Macromolecules: polymers, proteins, carbohydrates",qa-question-level/11-1-fuels-crude-oil-alkanes-q09-s3.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-11.1-09
+igcse-chemistry-0620,11.2,,qa-question-level/11-2-alkenes-polymers-q01.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-11.2-01
+igcse-chemistry-0620,11.2,,qa-question-level/11-2-alkenes-polymers-q02.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-11.2-02
+igcse-chemistry-0620,11.2,,qa-question-level/11-2-alkenes-polymers-q03.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-11.2-03
+igcse-chemistry-0620,11.2,,qa-question-level/11-2-alkenes-polymers-q04.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-11.2-04
+igcse-chemistry-0620,11.2,,qa-question-level/11-2-alkenes-polymers-q05.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-11.2-05
+igcse-chemistry-0620,11.2,,qa-question-level/11-2-alkenes-polymers-q06-s2.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-11.2-06
+igcse-chemistry-0620,11.2,,qa-question-level/11-2-alkenes-polymers-q07-s3.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-11.2-07
+igcse-chemistry-0620,11.2,,qa-question-level/11-2-alkenes-polymers-q08-s4.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-11.2-08
+igcse-chemistry-0620,11.2,,qa-question-level/11-2-alkenes-polymers-q09-s5.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-11.2-09
+igcse-chemistry-0620,11.3,,qa-question-level/11-3-alcohols-acids-esters-q01.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-11.3-01
+igcse-chemistry-0620,11.3,,qa-question-level/11-3-alcohols-acids-esters-q02.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-11.3-02
+igcse-chemistry-0620,11.3,,qa-question-level/11-3-alcohols-acids-esters-q03.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-11.3-03
+igcse-chemistry-0620,11.3,,qa-question-level/11-3-alcohols-acids-esters-q04.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-11.3-04
+igcse-chemistry-0620,11.3,,qa-question-level/11-3-alcohols-acids-esters-q05.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-11.3-05
+igcse-chemistry-0620,11.3,,qa-question-level/11-3-alcohols-acids-esters-q06.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-11.3-06
+igcse-chemistry-0620,11.3,,qa-question-level/11-3-alcohols-acids-esters-q07-s2.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-11.3-07
+igcse-chemistry-0620,11.3,,qa-question-level/11-3-alcohols-acids-esters-q08-s3.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-11.3-08
+igcse-chemistry-0620,11.3,,qa-question-level/11-3-alcohols-acids-esters-q09-s4.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-11.3-09
+igcse-chemistry-0620,11.3,,qa-question-level/11-3-alcohols-acids-esters-q10-s5.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-11.3-10
+igcse-chemistry-0620,11.4,,qa-question-level/11-4-macromolecules-q01.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-11.4-01
+igcse-chemistry-0620,11.4,,qa-question-level/11-4-macromolecules-q02.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-11.4-02
+igcse-chemistry-0620,11.4,,qa-question-level/11-4-macromolecules-q03.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-11.4-03
+igcse-chemistry-0620,11.4,,qa-question-level/11-4-macromolecules-q04.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-11.4-04
+igcse-chemistry-0620,11.4,,qa-question-level/11-4-macromolecules-q05-ss2.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-11.4-05
+igcse-chemistry-0620,11.4,,qa-question-level/11-4-macromolecules-q06-ss2.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-11.4-06
+igcse-chemistry-0620,11.4,,qa-question-level/11-4-macromolecules-q07-ss2.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-11.4-07
+igcse-chemistry-0620,11.4,,qa-question-level/11-4-macromolecules-q08-ss2.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-11.4-08
+igcse-chemistry-0620,11.4,,qa-question-level/11-4-macromolecules-q09-ss2.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-11.4-09
+igcse-chemistry-0620,12.1,"Measurement, purity, separation techniques",qa-question-level/12-1-measurement-purity-separation-q01.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-12.1-01 | difficulty_verified_20260622
+igcse-chemistry-0620,12.1,"Measurement, purity, separation techniques",qa-question-level/12-1-measurement-purity-separation-q02.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-12.1-02 | difficulty_verified_20260622
+igcse-chemistry-0620,12.1,"Measurement, purity, separation techniques",qa-question-level/12-1-measurement-purity-separation-q03.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-12.1-03 | difficulty_verified_20260622
+igcse-chemistry-0620,12.1,"Measurement, purity, separation techniques",qa-question-level/12-1-measurement-purity-separation-q04.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-12.1-04 | difficulty_verified_20260622
+igcse-chemistry-0620,12.1,"Measurement, purity, separation techniques",qa-question-level/12-1-measurement-purity-separation-q05-s2.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-12.1-05 | difficulty_verified_20260622
+igcse-chemistry-0620,12.1,"Measurement, purity, separation techniques",qa-question-level/12-1-measurement-purity-separation-q06-s3.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-12.1-06 | difficulty_verified_20260622
+igcse-chemistry-0620,12.1,"Measurement, purity, separation techniques",qa-question-level/12-1-measurement-purity-separation-q07-s4.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-12.1-07 | difficulty_verified_20260622
+igcse-chemistry-0620,12.1,"Measurement, purity, separation techniques",qa-question-level/12-1-measurement-purity-separation-q08-s5.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-12.1-08 | difficulty_verified_20260622
+igcse-chemistry-0620,12.1,"Measurement, purity, separation techniques",qa-question-level/12-1-measurement-purity-separation-q09-s6.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-12.1-09 | difficulty_verified_20260622
+igcse-chemistry-0620,12.1,"Measurement, purity, separation techniques",qa-question-level/12-1-measurement-purity-separation-q10-s7.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-12.1-10 | difficulty_verified_20260622
+igcse-chemistry-0620,12.1,"Measurement, purity, separation techniques",qa-question-level/12-1-measurement-purity-separation-q11-s8.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-12.1-11 | difficulty_verified_20260622
+igcse-chemistry-0620,12.1,"Measurement, purity, separation techniques",qa-question-level/12-1-measurement-purity-separation-q12-s9.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-12.1-12 | difficulty_verified_20260622
+igcse-chemistry-0620,12.1,"Measurement, purity, separation techniques",qa-question-level/12-1-measurement-purity-separation-q13-s10.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-12.1-13 | difficulty_verified_20260622
+igcse-chemistry-0620,12.1,"Measurement, purity, separation techniques",qa-question-level/12-1-measurement-purity-separation-q14-s11.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-12.1-14 | difficulty_verified_20260622
+igcse-chemistry-0620,12.1,"Measurement, purity, separation techniques",qa-question-level/12-1-measurement-purity-separation-q15-s12.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-12.1-15 | difficulty_verified_20260622
+igcse-chemistry-0620,12.1,"Measurement, purity, separation techniques",qa-question-level/12-1-measurement-purity-separation-q16-s13.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-12.1-16 | difficulty_verified_20260622
+igcse-chemistry-0620,12.1,"Measurement, purity, separation techniques",qa-question-level/12-1-measurement-purity-separation-q17-s14.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-12.1-17 | difficulty_verified_20260622
+igcse-chemistry-0620,12.2,"Gas collection, rate experiments",qa-question-level/12-2-gas-collection-rate-experiments-q01.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-12.2-01 | difficulty_verified_20260622
+igcse-chemistry-0620,12.2,"Gas collection, rate experiments",qa-question-level/12-2-gas-collection-rate-experiments-q02.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-12.2-02 | difficulty_verified_20260622
+igcse-chemistry-0620,12.2,"Gas collection, rate experiments",qa-question-level/12-2-gas-collection-rate-experiments-q03.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-12.2-03 | difficulty_verified_20260622
+igcse-chemistry-0620,12.2,"Gas collection, rate experiments",qa-question-level/12-2-gas-collection-rate-experiments-q04.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-12.2-04 | difficulty_verified_20260622
+igcse-chemistry-0620,12.2,"Gas collection, rate experiments",qa-question-level/12-2-gas-collection-rate-experiments-q05.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-12.2-05 | difficulty_verified_20260622
+igcse-chemistry-0620,12.2,"Gas collection, rate experiments",qa-question-level/12-2-gas-collection-rate-experiments-q06.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-12.2-06 | difficulty_verified_20260622
+igcse-chemistry-0620,12.2,"Gas collection, rate experiments",qa-question-level/12-2-gas-collection-rate-experiments-q07-s2.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-12.2-07 | difficulty_verified_20260622
+igcse-chemistry-0620,12.2,"Gas collection, rate experiments",qa-question-level/12-2-gas-collection-rate-experiments-q08-s3.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-12.2-08 | difficulty_verified_20260622
+igcse-chemistry-0620,12.2,"Gas collection, rate experiments",qa-question-level/12-2-gas-collection-rate-experiments-q09-s4.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-12.2-09 | difficulty_verified_20260622
+igcse-chemistry-0620,12.2,"Gas collection, rate experiments",qa-question-level/12-2-gas-collection-rate-experiments-q10-s5.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-12.2-10 | difficulty_verified_20260622
+igcse-chemistry-0620,12.2,"Gas collection, rate experiments",qa-question-level/12-2-gas-collection-rate-experiments-q11-s6.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-12.2-11 | difficulty_verified_20260622
+igcse-chemistry-0620,2.1,"| 3.2 | Mole calculations, reacting masses, % yield, purity",qa-question-level/2-1-atomic-structure-isotopes-q01.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-2.1-01
+igcse-chemistry-0620,2.1,"| 3.2 | Mole calculations, reacting masses, % yield, purity",qa-question-level/2-1-atomic-structure-isotopes-q02.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-2.1-02
+igcse-chemistry-0620,2.1,"| 3.2 | Mole calculations, reacting masses, % yield, purity",qa-question-level/2-1-atomic-structure-isotopes-q03.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-2.1-03
+igcse-chemistry-0620,2.1,"| 3.2 | Mole calculations, reacting masses, % yield, purity",qa-question-level/2-1-atomic-structure-isotopes-q04.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-2.1-04
+igcse-chemistry-0620,2.1,"| 3.2 | Mole calculations, reacting masses, % yield, purity",qa-question-level/2-1-atomic-structure-isotopes-q05-s2.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-2.1-05
+igcse-chemistry-0620,2.1,"| 3.2 | Mole calculations, reacting masses, % yield, purity",qa-question-level/2-1-atomic-structure-isotopes-q06-s3.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-2.1-06
+igcse-chemistry-0620,2.1,"| 3.2 | Mole calculations, reacting masses, % yield, purity",qa-question-level/2-1-atomic-structure-isotopes-q07-s4.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-2.1-07
+igcse-chemistry-0620,2.1,"| 3.2 | Mole calculations, reacting masses, % yield, purity",qa-question-level/2-1-atomic-structure-isotopes-q08-s5.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-2.1-08
+igcse-chemistry-0620,2.1,"| 3.2 | Mole calculations, reacting masses, % yield, purity",qa-question-level/2-1-atomic-structure-isotopes-q09-s6.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-2.1-09
+igcse-chemistry-0620,2.1,"| 3.2 | Mole calculations, reacting masses, % yield, purity",qa-question-level/2-1-atomic-structure-isotopes-q10-s7.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-2.1-10
+igcse-chemistry-0620,2.1,"| 3.2 | Mole calculations, reacting masses, % yield, purity",qa-question-level/2-1-atomic-structure-isotopes-q11-s8.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-2.1-11
+igcse-chemistry-0620,2.2,"| 8.2 | Group I, Group VII, transition elements",qa-question-level/2-2-periodic-table-configuration-q01.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-2.2-01
+igcse-chemistry-0620,2.2,"| 8.2 | Group I, Group VII, transition elements",qa-question-level/2-2-periodic-table-configuration-q02.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-2.2-02
+igcse-chemistry-0620,2.2,"| 8.2 | Group I, Group VII, transition elements",qa-question-level/2-2-periodic-table-configuration-q03.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-2.2-03
+igcse-chemistry-0620,2.2,"| 8.2 | Group I, Group VII, transition elements",qa-question-level/2-2-periodic-table-configuration-q04.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-2.2-04
+igcse-chemistry-0620,2.2,"| 8.2 | Group I, Group VII, transition elements",qa-question-level/2-2-periodic-table-configuration-q05.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-2.2-05
+igcse-chemistry-0620,2.2,"| 8.2 | Group I, Group VII, transition elements",qa-question-level/2-2-periodic-table-configuration-q06.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-2.2-06
+igcse-chemistry-0620,2.2,"| 8.2 | Group I, Group VII, transition elements",qa-question-level/2-2-periodic-table-configuration-q07-s1.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-2.2-07
+igcse-chemistry-0620,2.2,"| 8.2 | Group I, Group VII, transition elements",qa-question-level/2-2-periodic-table-configuration-q08-s2.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-2.2-08
+igcse-chemistry-0620,2.2,"| 8.2 | Group I, Group VII, transition elements",qa-question-level/2-2-periodic-table-configuration-q09-s3.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-2.2-09
+igcse-chemistry-0620,2.3,"| 11.2 | Alkenes, polymers from alkenes",qa-question-level/2-3-bonding-ionic-covalent-metallic-q01.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-2.3-01 | difficulty_verified_20260622
+igcse-chemistry-0620,2.3,"| 11.2 | Alkenes, polymers from alkenes",qa-question-level/2-3-bonding-ionic-covalent-metallic-q02.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-2.3-02 | difficulty_verified_20260622
+igcse-chemistry-0620,2.3,"| 11.2 | Alkenes, polymers from alkenes",qa-question-level/2-3-bonding-ionic-covalent-metallic-q03.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-2.3-03 | difficulty_verified_20260622
+igcse-chemistry-0620,2.3,"| 11.2 | Alkenes, polymers from alkenes",qa-question-level/2-3-bonding-ionic-covalent-metallic-q04.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-2.3-04 | difficulty_verified_20260622
+igcse-chemistry-0620,2.3,"| 11.2 | Alkenes, polymers from alkenes",qa-question-level/2-3-bonding-ionic-covalent-metallic-q05.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-2.3-05 | difficulty_verified_20260622
+igcse-chemistry-0620,2.3,"| 11.2 | Alkenes, polymers from alkenes",qa-question-level/2-3-bonding-ionic-covalent-metallic-q06.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-2.3-06 | difficulty_verified_20260622
+igcse-chemistry-0620,2.3,"| 11.2 | Alkenes, polymers from alkenes",qa-question-level/2-3-bonding-ionic-covalent-metallic-q07.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-2.3-07 | difficulty_verified_20260622
+igcse-chemistry-0620,2.3,"| 11.2 | Alkenes, polymers from alkenes",qa-question-level/2-3-bonding-ionic-covalent-metallic-q08-s2.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-2.3-08 | difficulty_verified_20260622
+igcse-chemistry-0620,2.3,"| 11.2 | Alkenes, polymers from alkenes",qa-question-level/2-3-bonding-ionic-covalent-metallic-q09-s3.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-2.3-09 | difficulty_verified_20260622
+igcse-chemistry-0620,2.3,"| 11.2 | Alkenes, polymers from alkenes",qa-question-level/2-3-bonding-ionic-covalent-metallic-q10-s4.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-2.3-10 | difficulty_verified_20260622
+igcse-chemistry-0620,2.4,Structures and properties,qa-question-level/2-4-structures-properties-q01.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-2.4-01 | difficulty_verified_20260622
+igcse-chemistry-0620,2.4,Structures and properties,qa-question-level/2-4-structures-properties-q02.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-2.4-02 | difficulty_verified_20260622
+igcse-chemistry-0620,2.4,Structures and properties,qa-question-level/2-4-structures-properties-q03.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-2.4-03 | difficulty_verified_20260622
+igcse-chemistry-0620,2.4,Structures and properties,qa-question-level/2-4-structures-properties-q04.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-2.4-04 | difficulty_verified_20260622
+igcse-chemistry-0620,2.4,Structures and properties,qa-question-level/2-4-structures-properties-q05.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-2.4-05 | difficulty_verified_20260622
+igcse-chemistry-0620,2.4,Structures and properties,qa-question-level/2-4-structures-properties-q06.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-2.4-06 | difficulty_verified_20260622
+igcse-chemistry-0620,2.4,Structures and properties,qa-question-level/2-4-structures-properties-q07-s2.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-2.4-07 | difficulty_verified_20260622
+igcse-chemistry-0620,2.4,Structures and properties,qa-question-level/2-4-structures-properties-q08-s3.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-2.4-08 | difficulty_verified_20260622
+igcse-chemistry-0620,2.4,Structures and properties,qa-question-level/2-4-structures-properties-q09-s4.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-2.4-09 | difficulty_verified_20260622
+igcse-chemistry-0620,2.4,Structures and properties,qa-question-level/2-4-structures-properties-q10-s5.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-2.4-10 | difficulty_verified_20260622
+igcse-chemistry-0620,3.1,| 6.4 | Catalysts and enzyme action,qa-question-level/3-1-formulae-equations-mole-q01.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-3.1-01
+igcse-chemistry-0620,3.1,| 6.4 | Catalysts and enzyme action,qa-question-level/3-1-formulae-equations-mole-q02.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-3.1-02
+igcse-chemistry-0620,3.1,| 6.4 | Catalysts and enzyme action,qa-question-level/3-1-formulae-equations-mole-q03.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-3.1-03
+igcse-chemistry-0620,3.1,| 6.4 | Catalysts and enzyme action,qa-question-level/3-1-formulae-equations-mole-q04.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-3.1-04
+igcse-chemistry-0620,3.1,| 6.4 | Catalysts and enzyme action,qa-question-level/3-1-formulae-equations-mole-q05.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-3.1-05
+igcse-chemistry-0620,3.1,| 6.4 | Catalysts and enzyme action,qa-question-level/3-1-formulae-equations-mole-q06.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-3.1-06
+igcse-chemistry-0620,3.1,| 6.4 | Catalysts and enzyme action,qa-question-level/3-1-formulae-equations-mole-q07.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-3.1-07
+igcse-chemistry-0620,3.1,| 6.4 | Catalysts and enzyme action,qa-question-level/3-1-formulae-equations-mole-q08-s1.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-3.1-08
+igcse-chemistry-0620,3.1,| 6.4 | Catalysts and enzyme action,qa-question-level/3-1-formulae-equations-mole-q09-s2.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-3.1-09
+igcse-chemistry-0620,3.2,,qa-question-level/3-2-mole-calculations-yield-purity-q01.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-3.2-01
+igcse-chemistry-0620,3.2,,qa-question-level/3-2-mole-calculations-yield-purity-q02.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-3.2-02
+igcse-chemistry-0620,3.2,,qa-question-level/3-2-mole-calculations-yield-purity-q03.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-3.2-03
+igcse-chemistry-0620,3.2,,qa-question-level/3-2-mole-calculations-yield-purity-q04.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-3.2-04
+igcse-chemistry-0620,3.2,,qa-question-level/3-2-mole-calculations-yield-purity-q05.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-3.2-05
+igcse-chemistry-0620,3.2,,qa-question-level/3-2-mole-calculations-yield-purity-q06.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-3.2-06
+igcse-chemistry-0620,3.2,,qa-question-level/3-2-mole-calculations-yield-purity-q07-s2.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-3.2-07
+igcse-chemistry-0620,3.2,,qa-question-level/3-2-mole-calculations-yield-purity-q08-s3.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-3.2-08
+igcse-chemistry-0620,3.2,,qa-question-level/3-2-mole-calculations-yield-purity-q09-s4.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-3.2-09
+igcse-chemistry-0620,3.2,,qa-question-level/3-2-mole-calculations-yield-purity-q10-s5.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-3.2-10
+igcse-chemistry-0620,3.2,,qa-question-level/3-2-mole-calculations-yield-purity-q11-s6.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-3.2-11
+igcse-chemistry-0620,3.2,,qa-question-level/3-2-mole-calculations-yield-purity-q12-s7.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-3.2-12
+igcse-chemistry-0620,3.2,,qa-question-level/3-2-mole-calculations-yield-purity-q13-s8.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-3.2-13
+igcse-chemistry-0620,3.2,,qa-question-level/3-2-mole-calculations-yield-purity-q14-s9.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-3.2-14
+igcse-chemistry-0620,3.2,,qa-question-level/3-2-mole-calculations-yield-purity-q15-s10.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-3.2-15
+igcse-chemistry-0620,3.2,,qa-question-level/3-2-mole-calculations-yield-purity-q16-s11.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-3.2-16
+igcse-chemistry-0620,3.2,,qa-question-level/3-2-mole-calculations-yield-purity-q17-s12.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-3.2-17
+igcse-chemistry-0620,3.2,,qa-question-level/3-2-mole-calculations-yield-purity-q18-s13.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-3.2-18
+igcse-chemistry-0620,3.2,,qa-question-level/3-2-mole-calculations-yield-purity-q19-s14.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-3.2-19
+igcse-chemistry-0620,3.3,,qa-question-level/3-3-empirical-molecular-formulae-q01.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-3.3-01
+igcse-chemistry-0620,3.3,,qa-question-level/3-3-empirical-molecular-formulae-q02.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-3.3-02
+igcse-chemistry-0620,3.3,,qa-question-level/3-3-empirical-molecular-formulae-q03.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-3.3-03
+igcse-chemistry-0620,3.3,,qa-question-level/3-3-empirical-molecular-formulae-q04.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-3.3-04
+igcse-chemistry-0620,3.3,,qa-question-level/3-3-empirical-molecular-formulae-q05-s1.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-3.3-05
+igcse-chemistry-0620,3.3,,qa-question-level/3-3-empirical-molecular-formulae-q06-s2.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-3.3-06
+igcse-chemistry-0620,3.3,,qa-question-level/3-3-empirical-molecular-formulae-q07-s3.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-3.3-07
+igcse-chemistry-0620,3.3,,qa-question-level/3-3-empirical-molecular-formulae-q08-s4.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-3.3-08
+igcse-chemistry-0620,3.3,,qa-question-level/3-3-empirical-molecular-formulae-q09-s5.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-3.3-09
+igcse-chemistry-0620,4.1,Electrolysis: principles and predictions,qa-question-level/4-1-electrolysis-principles-q01-s1.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-4.1-01
+igcse-chemistry-0620,4.1,Electrolysis: principles and predictions,qa-question-level/4-1-electrolysis-principles-q02-s2.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-4.1-02
+igcse-chemistry-0620,4.1,Electrolysis: principles and predictions,qa-question-level/4-1-electrolysis-principles-q03-s3.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-4.1-03
+igcse-chemistry-0620,4.1,Electrolysis: principles and predictions,qa-question-level/4-1-electrolysis-principles-q04-s4.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-4.1-04
+igcse-chemistry-0620,4.1,Electrolysis: principles and predictions,qa-question-level/4-1-electrolysis-principles-q05-s5.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-4.1-05
+igcse-chemistry-0620,4.1,Electrolysis: principles and predictions,qa-question-level/4-1-electrolysis-principles-q06-s6.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-4.1-06
+igcse-chemistry-0620,4.1,Electrolysis: principles and predictions,qa-question-level/4-1-electrolysis-principles-q07-s7.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-4.1-07
+igcse-chemistry-0620,4.1,Electrolysis: principles and predictions,qa-question-level/4-1-electrolysis-principles-q08-s8.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-4.1-08
+igcse-chemistry-0620,4.1,Electrolysis: principles and predictions,qa-question-level/4-1-electrolysis-principles-q09-s9.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-4.1-09
+igcse-chemistry-0620,4.2,,qa-question-level/4-2-cells-electroplating-q01.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-4.2-01
+igcse-chemistry-0620,4.2,,qa-question-level/4-2-cells-electroplating-q02.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-4.2-02
+igcse-chemistry-0620,4.2,,qa-question-level/4-2-cells-electroplating-q03.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-4.2-03
+igcse-chemistry-0620,4.2,,qa-question-level/4-2-cells-electroplating-q04.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-4.2-04
+igcse-chemistry-0620,4.2,,qa-question-level/4-2-cells-electroplating-q05.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-4.2-05
+igcse-chemistry-0620,4.2,,qa-question-level/4-2-cells-electroplating-q06-s2.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-4.2-06
+igcse-chemistry-0620,4.2,,qa-question-level/4-2-cells-electroplating-q07-s3.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-4.2-07
+igcse-chemistry-0620,4.2,,qa-question-level/4-2-cells-electroplating-q08-s4.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-4.2-08
+igcse-chemistry-0620,4.2,,qa-question-level/4-2-cells-electroplating-q09-s5.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-4.2-09
+igcse-chemistry-0620,4.2,,qa-question-level/4-2-cells-electroplating-q10-s6.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-4.2-10
+igcse-chemistry-0620,4.2,,qa-question-level/4-2-cells-electroplating-q11-s7.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-4.2-11
+igcse-chemistry-0620,5.1,Exothermic and endothermic reactions,qa-question-level/5-1-exothermic-endothermic-q01-s1.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-5.1-01
+igcse-chemistry-0620,5.1,Exothermic and endothermic reactions,qa-question-level/5-1-exothermic-endothermic-q02-s2.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-5.1-02
+igcse-chemistry-0620,5.1,Exothermic and endothermic reactions,qa-question-level/5-1-exothermic-endothermic-q03-s3.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-5.1-03
+igcse-chemistry-0620,5.1,Exothermic and endothermic reactions,qa-question-level/5-1-exothermic-endothermic-q04-s4.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-5.1-04
+igcse-chemistry-0620,5.1,Exothermic and endothermic reactions,qa-question-level/5-1-exothermic-endothermic-q05-s5.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-5.1-05
+igcse-chemistry-0620,5.1,Exothermic and endothermic reactions,qa-question-level/5-1-exothermic-endothermic-q06-s6.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-5.1-06
+igcse-chemistry-0620,5.1,Exothermic and endothermic reactions,qa-question-level/5-1-exothermic-endothermic-q07-s7.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-5.1-07
+igcse-chemistry-0620,5.1,Exothermic and endothermic reactions,qa-question-level/5-1-exothermic-endothermic-q08-s8.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-5.1-08
+igcse-chemistry-0620,5.1,Exothermic and endothermic reactions,qa-question-level/5-1-exothermic-endothermic-q09-s9.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-5.1-09
+igcse-chemistry-0620,6.3,"| 9.3 | Corrosion, rusting, sacrificial protection",qa-question-level/5-2-bond-energy-diagrams-q01-s2.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-6.3-01
+igcse-chemistry-0620,5.2,"Bond energy calculations, energy diagrams",qa-question-level/5-2-bond-energy-diagrams-q01.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-5.2-01
+igcse-chemistry-0620,6.3,"| 9.3 | Corrosion, rusting, sacrificial protection",qa-question-level/5-2-bond-energy-diagrams-q02-s3.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-6.3-02
+igcse-chemistry-0620,5.2,"Bond energy calculations, energy diagrams",qa-question-level/5-2-bond-energy-diagrams-q02.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-5.2-02
+igcse-chemistry-0620,6.3,"| 9.3 | Corrosion, rusting, sacrificial protection",qa-question-level/5-2-bond-energy-diagrams-q03-s4.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-6.3-03
+igcse-chemistry-0620,5.2,"Bond energy calculations, energy diagrams",qa-question-level/5-2-bond-energy-diagrams-q03.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-5.2-03
+igcse-chemistry-0620,6.3,"| 9.3 | Corrosion, rusting, sacrificial protection",qa-question-level/5-2-bond-energy-diagrams-q04-s5.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-6.3-04
+igcse-chemistry-0620,5.2,"Bond energy calculations, energy diagrams",qa-question-level/5-2-bond-energy-diagrams-q04.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-5.2-04
+igcse-chemistry-0620,6.3,"| 9.3 | Corrosion, rusting, sacrificial protection",qa-question-level/5-2-bond-energy-diagrams-q05-s6.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-6.3-05
+igcse-chemistry-0620,5.2,"Bond energy calculations, energy diagrams",qa-question-level/5-2-bond-energy-diagrams-q05.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-5.2-05
+igcse-chemistry-0620,5.2,"Bond energy calculations, energy diagrams",qa-question-level/5-2-bond-energy-diagrams-q06.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-5.2-06
+igcse-chemistry-0620,5.2,"Bond energy calculations, energy diagrams",qa-question-level/5-2-bond-energy-diagrams-q10-s7.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-5.2-10
+igcse-chemistry-0620,5.2,"Bond energy calculations, energy diagrams",qa-question-level/5-2-bond-energy-diagrams-q11-s8.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-5.2-11
+igcse-chemistry-0620,5.2,"Bond energy calculations, energy diagrams",qa-question-level/5-2-bond-energy-diagrams-q12-s9.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-5.2-12
+igcse-chemistry-0620,6.1,"| 6.3 | Redox: oxidation, reduction, oxidising/reducing agents",qa-question-level/6-1-rate-collision-theory-q01.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-6.1-01
+igcse-chemistry-0620,6.1,"| 6.3 | Redox: oxidation, reduction, oxidising/reducing agents",qa-question-level/6-1-rate-collision-theory-q02.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-6.1-02
+igcse-chemistry-0620,6.1,"| 6.3 | Redox: oxidation, reduction, oxidising/reducing agents",qa-question-level/6-1-rate-collision-theory-q03.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-6.1-03
+igcse-chemistry-0620,6.1,"| 6.3 | Redox: oxidation, reduction, oxidising/reducing agents",qa-question-level/6-1-rate-collision-theory-q04.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-6.1-04
+igcse-chemistry-0620,6.1,"| 6.3 | Redox: oxidation, reduction, oxidising/reducing agents",qa-question-level/6-1-rate-collision-theory-q05.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-6.1-05
+igcse-chemistry-0620,6.1,"| 6.3 | Redox: oxidation, reduction, oxidising/reducing agents",qa-question-level/6-1-rate-collision-theory-q06.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-6.1-06
+igcse-chemistry-0620,6.1,"| 6.3 | Redox: oxidation, reduction, oxidising/reducing agents",qa-question-level/6-1-rate-collision-theory-q07.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-6.1-07
+igcse-chemistry-0620,6.1,"| 6.3 | Redox: oxidation, reduction, oxidising/reducing agents",qa-question-level/6-1-rate-collision-theory-q08-s1.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-6.1-08
+igcse-chemistry-0620,6.1,"| 6.3 | Redox: oxidation, reduction, oxidising/reducing agents",qa-question-level/6-1-rate-collision-theory-q09-s2.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-6.1-09
+igcse-chemistry-0620,6.2,"Reversible reactions, equilibrium",qa-question-level/6-2-reversible-equilibrium-q01-s1.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-6.2-01
+igcse-chemistry-0620,6.2,"Reversible reactions, equilibrium",qa-question-level/6-2-reversible-equilibrium-q02-s2.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-6.2-02
+igcse-chemistry-0620,6.2,"Reversible reactions, equilibrium",qa-question-level/6-2-reversible-equilibrium-q03-s3.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-6.2-03
+igcse-chemistry-0620,6.2,"Reversible reactions, equilibrium",qa-question-level/6-2-reversible-equilibrium-q04-s4.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-6.2-04
+igcse-chemistry-0620,6.2,"Reversible reactions, equilibrium",qa-question-level/6-2-reversible-equilibrium-q05-s5.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-6.2-05
+igcse-chemistry-0620,6.2,"Reversible reactions, equilibrium",qa-question-level/6-2-reversible-equilibrium-q06-s6.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-6.2-06
+igcse-chemistry-0620,6.2,"Reversible reactions, equilibrium",qa-question-level/6-2-reversible-equilibrium-q07-s7.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-6.2-07
+igcse-chemistry-0620,6.2,"Reversible reactions, equilibrium",qa-question-level/6-2-reversible-equilibrium-q08-s8.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-6.2-08
+igcse-chemistry-0620,6.2,"Reversible reactions, equilibrium",qa-question-level/6-2-reversible-equilibrium-q09-s9.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-6.2-09
+igcse-chemistry-0620,6.3,"| 9.3 | Corrosion, rusting, sacrificial protection",qa-question-level/6-3-redox-q01.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-6.3-01
+igcse-chemistry-0620,6.3,"| 9.3 | Corrosion, rusting, sacrificial protection",qa-question-level/6-3-redox-q02.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-6.3-02
+igcse-chemistry-0620,6.3,"| 9.3 | Corrosion, rusting, sacrificial protection",qa-question-level/6-3-redox-q03.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-6.3-03
+igcse-chemistry-0620,6.3,"| 9.3 | Corrosion, rusting, sacrificial protection",qa-question-level/6-3-redox-q04.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-6.3-04
+igcse-chemistry-0620,6.3,"| 9.3 | Corrosion, rusting, sacrificial protection",qa-question-level/6-3-redox-q05.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-6.3-05
+igcse-chemistry-0620,6.3,"| 9.3 | Corrosion, rusting, sacrificial protection",qa-question-level/6-3-redox-q06-s1.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-6.3-06
+igcse-chemistry-0620,6.3,"| 9.3 | Corrosion, rusting, sacrificial protection",qa-question-level/6-3-redox-q07-s2.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-6.3-07
+igcse-chemistry-0620,6.3,"| 9.3 | Corrosion, rusting, sacrificial protection",qa-question-level/6-3-redox-q08-s3.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-6.3-08
+igcse-chemistry-0620,6.3,"| 9.3 | Corrosion, rusting, sacrificial protection",qa-question-level/6-3-redox-q09-s4.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-6.3-09
+igcse-chemistry-0620,6.4,,qa-question-level/6-4-catalysts-enzymes-q01.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-6.4-01
+igcse-chemistry-0620,6.4,,qa-question-level/6-4-catalysts-enzymes-q02.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-6.4-02
+igcse-chemistry-0620,6.4,,qa-question-level/6-4-catalysts-enzymes-q03.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-6.4-03
+igcse-chemistry-0620,6.4,,qa-question-level/6-4-catalysts-enzymes-q04.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-6.4-04
+igcse-chemistry-0620,6.4,,qa-question-level/6-4-catalysts-enzymes-q05.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-6.4-05
+igcse-chemistry-0620,6.4,,qa-question-level/6-4-catalysts-enzymes-q06-s1.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-6.4-06
+igcse-chemistry-0620,6.4,,qa-question-level/6-4-catalysts-enzymes-q07-s2.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-6.4-07
+igcse-chemistry-0620,6.4,,qa-question-level/6-4-catalysts-enzymes-q08-s3.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-6.4-08
+igcse-chemistry-0620,6.4,,qa-question-level/6-4-catalysts-enzymes-q09-s4.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-6.4-09
+igcse-chemistry-0620,7.1,| 7.3 | Identification of ions and gases,qa-question-level/7-1-acids-bases-pH-q01-s1.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-7.1-01
+igcse-chemistry-0620,7.1,| 7.3 | Identification of ions and gases,qa-question-level/7-1-acids-bases-pH-q02-s2.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-7.1-02
+igcse-chemistry-0620,7.1,| 7.3 | Identification of ions and gases,qa-question-level/7-1-acids-bases-pH-q03-s3.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-7.1-03
+igcse-chemistry-0620,7.1,| 7.3 | Identification of ions and gases,qa-question-level/7-1-acids-bases-pH-q04-s4.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-7.1-04
+igcse-chemistry-0620,7.1,| 7.3 | Identification of ions and gases,qa-question-level/7-1-acids-bases-pH-q05-s5.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-7.1-05
+igcse-chemistry-0620,7.1,| 7.3 | Identification of ions and gases,qa-question-level/7-1-acids-bases-pH-q06-s6.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-7.1-06
+igcse-chemistry-0620,7.1,| 7.3 | Identification of ions and gases,qa-question-level/7-1-acids-bases-pH-q07-s7.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-7.1-07
+igcse-chemistry-0620,7.1,| 7.3 | Identification of ions and gases,qa-question-level/7-1-acids-bases-pH-q08-s8.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-7.1-08
+igcse-chemistry-0620,7.1,| 7.3 | Identification of ions and gases,qa-question-level/7-1-acids-bases-pH-q09-s9.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-7.1-09
+igcse-chemistry-0620,7.2,"Salt preparation, characteristic properties",qa-question-level/7-2-salt-preparation-q01.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-7.2-01
+igcse-chemistry-0620,7.2,"Salt preparation, characteristic properties",qa-question-level/7-2-salt-preparation-q02.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-7.2-02
+igcse-chemistry-0620,7.2,"Salt preparation, characteristic properties",qa-question-level/7-2-salt-preparation-q03.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-7.2-03
+igcse-chemistry-0620,7.2,"Salt preparation, characteristic properties",qa-question-level/7-2-salt-preparation-q04.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-7.2-04
+igcse-chemistry-0620,7.2,"Salt preparation, characteristic properties",qa-question-level/7-2-salt-preparation-q05.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-7.2-05
+igcse-chemistry-0620,7.2,"Salt preparation, characteristic properties",qa-question-level/7-2-salt-preparation-q06-ss2.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-7.2-06
+igcse-chemistry-0620,7.2,"Salt preparation, characteristic properties",qa-question-level/7-2-salt-preparation-q07-ss2.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-7.2-07
+igcse-chemistry-0620,7.2,"Salt preparation, characteristic properties",qa-question-level/7-2-salt-preparation-q08-ss2.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-7.2-08
+igcse-chemistry-0620,7.2,"Salt preparation, characteristic properties",qa-question-level/7-2-salt-preparation-q09-ss2.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-7.2-09
+igcse-chemistry-0620,7.3,,qa-question-level/7-3-ion-gas-identification-q01.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-7.3-01
+igcse-chemistry-0620,7.3,,qa-question-level/7-3-ion-gas-identification-q02.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-7.3-02
+igcse-chemistry-0620,7.3,,qa-question-level/7-3-ion-gas-identification-q03.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-7.3-03
+igcse-chemistry-0620,7.3,,qa-question-level/7-3-ion-gas-identification-q04.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-7.3-04
+igcse-chemistry-0620,7.3,,qa-question-level/7-3-ion-gas-identification-q05.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-7.3-05
+igcse-chemistry-0620,7.3,,qa-question-level/7-3-ion-gas-identification-q06-ss2.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-7.3-06
+igcse-chemistry-0620,7.3,,qa-question-level/7-3-ion-gas-identification-q07-ss2.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-7.3-07
+igcse-chemistry-0620,7.3,,qa-question-level/7-3-ion-gas-identification-q08-ss2.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-7.3-08
+igcse-chemistry-0620,7.3,,qa-question-level/7-3-ion-gas-identification-q09-ss2.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-7.3-09
+igcse-chemistry-0620,8.1,| 8.3 | Noble gases and uses,qa-question-level/8-1-periodic-trends-q01.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-8.1-01
+igcse-chemistry-0620,8.1,| 8.3 | Noble gases and uses,qa-question-level/8-1-periodic-trends-q02.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-8.1-02
+igcse-chemistry-0620,8.1,| 8.3 | Noble gases and uses,qa-question-level/8-1-periodic-trends-q03.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-8.1-03
+igcse-chemistry-0620,8.1,| 8.3 | Noble gases and uses,qa-question-level/8-1-periodic-trends-q04.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-8.1-04
+igcse-chemistry-0620,8.1,| 8.3 | Noble gases and uses,qa-question-level/8-1-periodic-trends-q05-s2.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-8.1-05
+igcse-chemistry-0620,8.1,| 8.3 | Noble gases and uses,qa-question-level/8-1-periodic-trends-q06-s3.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-8.1-06
+igcse-chemistry-0620,8.1,| 8.3 | Noble gases and uses,qa-question-level/8-1-periodic-trends-q07-s4.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-8.1-07
+igcse-chemistry-0620,8.1,| 8.3 | Noble gases and uses,qa-question-level/8-1-periodic-trends-q08-s5.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-8.1-08
+igcse-chemistry-0620,8.1,| 8.3 | Noble gases and uses,qa-question-level/8-1-periodic-trends-q09-s6.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-8.1-09
+igcse-chemistry-0620,8.2,,qa-question-level/8-2-group1-group7-transition-q01.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-8.2-01
+igcse-chemistry-0620,8.2,,qa-question-level/8-2-group1-group7-transition-q02.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-8.2-02
+igcse-chemistry-0620,8.2,,qa-question-level/8-2-group1-group7-transition-q03.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-8.2-03
+igcse-chemistry-0620,8.2,,qa-question-level/8-2-group1-group7-transition-q04.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-8.2-04
+igcse-chemistry-0620,8.2,,qa-question-level/8-2-group1-group7-transition-q05-ss2.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-8.2-05
+igcse-chemistry-0620,8.2,,qa-question-level/8-2-group1-group7-transition-q06-ss2.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-8.2-06
+igcse-chemistry-0620,8.2,,qa-question-level/8-2-group1-group7-transition-q07-ss2.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-8.2-07
+igcse-chemistry-0620,8.2,,qa-question-level/8-2-group1-group7-transition-q08-ss2.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-8.2-08
+igcse-chemistry-0620,8.2,,qa-question-level/8-2-group1-group7-transition-q09-ss2.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-8.2-09
+igcse-chemistry-0620,8.3,,qa-question-level/8-3-noble-gases-q01.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-8.3-01
+igcse-chemistry-0620,8.3,,qa-question-level/8-3-noble-gases-q02.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-8.3-02
+igcse-chemistry-0620,8.3,,qa-question-level/8-3-noble-gases-q03.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-8.3-03
+igcse-chemistry-0620,8.3,,qa-question-level/8-3-noble-gases-q04.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-8.3-04
+igcse-chemistry-0620,8.3,,qa-question-level/8-3-noble-gases-q05-ss2.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-8.3-05
+igcse-chemistry-0620,8.3,,qa-question-level/8-3-noble-gases-q06-ss2.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-8.3-06
+igcse-chemistry-0620,8.3,,qa-question-level/8-3-noble-gases-q07-ss2.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-8.3-07
+igcse-chemistry-0620,8.3,,qa-question-level/8-3-noble-gases-q08-ss2.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-8.3-08
+igcse-chemistry-0620,8.3,,qa-question-level/8-3-noble-gases-q09-ss2.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-8.3-09
+igcse-chemistry-0620,9.1,Properties and uses of metals,qa-question-level/9-1-properties-uses-metals-q01.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-9.1-01
+igcse-chemistry-0620,9.1,Properties and uses of metals,qa-question-level/9-1-properties-uses-metals-q02.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-9.1-02
+igcse-chemistry-0620,9.1,Properties and uses of metals,qa-question-level/9-1-properties-uses-metals-q03.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-9.1-03
+igcse-chemistry-0620,9.1,Properties and uses of metals,qa-question-level/9-1-properties-uses-metals-q04.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-9.1-04
+igcse-chemistry-0620,9.1,Properties and uses of metals,qa-question-level/9-1-properties-uses-metals-q05.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-9.1-05
+igcse-chemistry-0620,9.1,Properties and uses of metals,qa-question-level/9-1-properties-uses-metals-q06.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-9.1-06
+igcse-chemistry-0620,9.1,Properties and uses of metals,qa-question-level/9-1-properties-uses-metals-q07.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-9.1-07
+igcse-chemistry-0620,9.1,Properties and uses of metals,qa-question-level/9-1-properties-uses-metals-q08-s1.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-9.1-08
+igcse-chemistry-0620,9.1,Properties and uses of metals,qa-question-level/9-1-properties-uses-metals-q09-s2.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-9.1-09
+igcse-chemistry-0620,9.2,"Reactivity series, extraction of metals",qa-question-level/9-2-reactivity-series-extraction-q08-s4.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-9.2-08
+igcse-chemistry-0620,9.2,"Reactivity series, extraction of metals",qa-question-level/9-2-reactivity-series-extraction-q09-s5.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-9.2-09
+igcse-chemistry-0620,9.2,"Reactivity series, extraction of metals",qa-question-level/9-2-reactivity-series-extraction-q10-s6.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-9.2-10
+igcse-chemistry-0620,9.2,"Reactivity series, extraction of metals",qa-question-level/9-2-reactivity-series-extraction-q11-s7.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-9.2-11
+igcse-chemistry-0620,9.2,"Reactivity series, extraction of metals",qa-question-level/9-2-reactivity-series-extraction-q12-s8.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-9.2-12
+igcse-chemistry-0620,9.2,"Reactivity series, extraction of metals",qa-question-level/9-2-reactivity-series-extraction-q13.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-9.2-13
+igcse-chemistry-0620,9.2,"Reactivity series, extraction of metals",qa-question-level/9-2-reactivity-series-extraction-q14.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-9.2-14
+igcse-chemistry-0620,9.2,"Reactivity series, extraction of metals",qa-question-level/9-2-reactivity-series-extraction-q15.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-9.2-15
+igcse-chemistry-0620,9.2,"Reactivity series, extraction of metals",qa-question-level/9-2-reactivity-series-extraction-q16.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-9.2-16
+igcse-chemistry-0620,9.3,,qa-question-level/9-3-corrosion-rusting-q01.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-9.3-01
+igcse-chemistry-0620,9.3,,qa-question-level/9-3-corrosion-rusting-q02.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-9.3-02
+igcse-chemistry-0620,9.3,,qa-question-level/9-3-corrosion-rusting-q03.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-9.3-03
+igcse-chemistry-0620,9.3,,qa-question-level/9-3-corrosion-rusting-q04.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-9.3-04
+igcse-chemistry-0620,9.3,,qa-question-level/9-3-corrosion-rusting-q05.md,1,Foundation,0620,,imported,passed,worker_course,Q-ID Q-9.3-05
+igcse-chemistry-0620,9.3,,qa-question-level/9-3-corrosion-rusting-q06-s1.md,1,Standard,0620,,imported,passed,worker_course,Q-ID Q-9.3-06
+igcse-chemistry-0620,9.3,,qa-question-level/9-3-corrosion-rusting-q07-s2.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-9.3-07
+igcse-chemistry-0620,9.3,,qa-question-level/9-3-corrosion-rusting-q08-s3.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-9.3-08
+igcse-chemistry-0620,9.3,,qa-question-level/9-3-corrosion-rusting-q09-s4.md,1,Challenge,0620,,imported,passed,worker_course,Q-ID Q-9.3-09

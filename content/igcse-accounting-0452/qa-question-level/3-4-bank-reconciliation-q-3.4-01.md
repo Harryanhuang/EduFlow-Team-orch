@@ -1,0 +1,6 @@
+### Question Q-3.4-01
+**Difficulty**: Foundation
+**Question**: Why might the balance on the bank statement differ from the balance on the cash book (bank column)? List the three main categories of difference.
+**Answer**: The bank statement balance and the cash book balance often differ at any given date. The three main categories of difference are: (1) Timing differences — transactions recorded in one book but not yet appearing on the other, such as unpresented cheques (issued by the business but not yet presented to the bank) and uncredited deposits (lodged by the business but not yet cleared by the bank). (2) Items on the bank statement not yet recorded in the cash book — standing orders, direct debits, bank charges, interest, and dishonoured cheques that the business only learns about when the statement arrives. (3) Errors — mistakes made either by the business (in the cash book) or by the bank (on the statement).
+**Explanation**: A common error is thinking one balance must be wrong if they differ — they are simply records from two different points in time with different information. The bank reconciliation process identifies and explains every difference.
+**Tags**: bank-reconciliation, differences, categories

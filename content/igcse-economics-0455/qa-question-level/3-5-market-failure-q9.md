@@ -1,0 +1,6 @@
+### Question Q-3.5-09
+**Difficulty**: Challenge
+**Question**: To what extent is the free market able to solve the problem of negative externalities without government intervention?
+**Answer**: The free market can partially address negative externalities through the Coase theorem, where affected parties negotiate compensation if property rights are clearly defined and transaction costs are low. Firms may also self-regulate to protect their reputation or avoid future regulation. Consumer pressure and ethical behaviour can encourage firms to reduce externalities voluntarily. However, the free market is generally unable to fully solve the problem because property rights are often unclear (e.g. air and water), transaction costs are high when many parties are affected, and firms prioritise profit over social welfare. Free riding undermines voluntary agreements. In most cases, some form of government intervention (taxes, regulation, or permits) is necessary to achieve the socially optimal outcome.
+**Explanation**: Market solutions have limited effectiveness for negative externalities. A common error is claiming the market can fully solve externality problems through negotiation alone.
+**Tags**: negative-externality, free-market, coase-theorem, government-intervention, evaluation

@@ -1,0 +1,6 @@
+# Question: Question Q-9.1-08
+**Difficulty**: Challenge
+**Question**: What are coronary arteries, why are they essential, and what happens when they become blocked?
+**Answer**: Coronary arteries are blood vessels that branch off the aorta just after it leaves the heart. They supply the heart muscle (myocardium) itself with oxygenated blood and nutrients (glucose) for aerobic respiration. The heart cannot use the oxygen from blood flowing through its chambers — it needs its own blood supply. If a coronary artery becomes blocked (by a blood clot/thrombus or fatty deposit/atherosclerotic plaque), the heart muscle downstream is deprived of oxygen → cells switch to anaerobic respiration → lactic acid builds up → cells begin to die (necrosis) → heart attack (myocardial infarction). Risk factors: high-fat diet, smoking, lack of exercise, high blood pressure, stress, genetic predisposition. Treatment: angioplasty (balloon to open artery + stent), coronary bypass surgery (grafted vessel from leg/chest), clot-dissolving drugs.
+**Explanation**: Coronary arteries → myocardium oxygen supply; blockage → heart attack. A common error is thinking the heart gets oxygen from blood flowing through its chambers.
+**Tags**: coronary-arteries, heart-attack, myocardial-infarction, blockage, atherosclerosis

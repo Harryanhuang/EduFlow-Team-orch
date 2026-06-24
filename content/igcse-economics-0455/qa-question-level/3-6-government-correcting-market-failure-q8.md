@@ -1,0 +1,6 @@
+### Question Q-3.6-08
+**Difficulty**: Challenge
+**Question**: Discuss whether nationalising a private monopoly is a better solution than regulating it.
+**Answer**: Nationalisation allows the government to own and operate the monopoly, prioritising social welfare over profit and potentially setting lower prices and higher output. However, state-owned firms may lack incentives to be efficient, face political interference in operations, and impose costs on taxpayers if they make losses. Regulation keeps private ownership but controls prices, quality standards, and service levels through an independent regulator. This can maintain efficiency incentives while protecting consumers. However, regulation requires good information, can be subject to regulatory capture, and may be costly to enforce. The better approach depends on the industry: natural monopolies with clear public interest (e.g. water supply) may suit nationalisation, while industries where innovation matters (e.g. telecommunications) may be better regulated.
+**Explanation**: Both approaches have trade-offs in terms of efficiency, accountability, and consumer protection. A common error is assuming one approach is clearly superior without industry-specific analysis.
+**Tags**: nationalisation, regulation, monopoly, evaluation, government-intervention

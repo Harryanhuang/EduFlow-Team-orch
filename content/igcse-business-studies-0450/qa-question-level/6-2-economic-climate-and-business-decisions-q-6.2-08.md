@@ -1,0 +1,6 @@
+### Question Q-6.2-08
+**Difficulty**: Challenge
+**Question**: A business operates in an economy experiencing stagflation (high inflation combined with high unemployment and stagnant demand). Analyse the challenges this creates and recommend how the business should respond.
+**Answer**: Stagflation is particularly difficult because the usual remedies conflict: raising prices to cover inflation further reduces already-weak demand, while cutting prices to stimulate sales erodes margins that are already squeezed by rising costs. Challenges: 1) Costs rise through inflation but revenue cannot grow due to stagnant demand. 2) Unemployment reduces consumer spending power. 3) Uncertainty makes investment planning nearly impossible. Recommendations: 1) Focus on operational efficiency to reduce controllable costs. 2) Maintain prices on essential products while trimming non-essential expenses. 3) Preserve cash and avoid long-term commitments. 4) Consider exporting if the domestic currency is overvalued. 5) Diversify into products with inelastic demand (necessities).
+**Explanation**: Stagflation defies normal business logic. A common error is applying standard recession strategies without accounting for the cost inflation component.
+**Tags**: stagflation, inflation, unemployment, evaluation, application

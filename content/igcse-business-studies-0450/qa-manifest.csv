@@ -1,0 +1,301 @@
+subject_slug,topic_id,topic_name,qa_file,question_count,difficulty_mix,batch_id,depends_on_batches,status,review_state,owner,notes
+igcse-business-studies-0450,1.1,| 1.4 | Starting a new business: enterprise and entrepreneurs,qa-question-level/1-1-business-activity-and-adding-value-q01.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-1.1-01
+igcse-business-studies-0450,1.1,| 1.4 | Starting a new business: enterprise and entrepreneurs,qa-question-level/1-1-business-activity-and-adding-value-q02.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-1.1-02
+igcse-business-studies-0450,1.1,| 1.4 | Starting a new business: enterprise and entrepreneurs,qa-question-level/1-1-business-activity-and-adding-value-q03.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-1.1-03
+igcse-business-studies-0450,1.1,| 1.4 | Starting a new business: enterprise and entrepreneurs,qa-question-level/1-1-business-activity-and-adding-value-q04.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-1.1-04
+igcse-business-studies-0450,1.1,| 1.4 | Starting a new business: enterprise and entrepreneurs,qa-question-level/1-1-business-activity-and-adding-value-q05.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-1.1-05
+igcse-business-studies-0450,1.1,| 1.4 | Starting a new business: enterprise and entrepreneurs,qa-question-level/1-1-business-activity-and-adding-value-q06.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-1.1-06
+igcse-business-studies-0450,1.1,| 1.4 | Starting a new business: enterprise and entrepreneurs,qa-question-level/1-1-business-activity-and-adding-value-q07.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-1.1-07
+igcse-business-studies-0450,1.1,| 1.4 | Starting a new business: enterprise and entrepreneurs,qa-question-level/1-1-business-activity-and-adding-value-q08.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-1.1-08
+igcse-business-studies-0450,1.1,| 1.4 | Starting a new business: enterprise and entrepreneurs,qa-question-level/1-1-business-activity-and-adding-value-q09.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-1.1-09
+igcse-business-studies-0450,1.1,| 1.4 | Starting a new business: enterprise and entrepreneurs,qa-question-level/1-1-business-activity-and-adding-value-q10.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-1.1-10
+igcse-business-studies-0450,1.1,| 1.4 | Starting a new business: enterprise and entrepreneurs,qa-question-level/1-1-business-activity-and-adding-value-q11.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-1.1-11
+igcse-business-studies-0450,1.1,| 1.4 | Starting a new business: enterprise and entrepreneurs,qa-question-level/1-1-business-activity-and-adding-value-q12.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-1.1-12
+igcse-business-studies-0450,1.2,"Types of business: sole traders, partnerships, companies",qa-question-level/1-2-types-of-business-q01.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-1.2-01
+igcse-business-studies-0450,1.2,"Types of business: sole traders, partnerships, companies",qa-question-level/1-2-types-of-business-q02.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-1.2-02
+igcse-business-studies-0450,1.2,"Types of business: sole traders, partnerships, companies",qa-question-level/1-2-types-of-business-q03.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-1.2-03
+igcse-business-studies-0450,1.2,"Types of business: sole traders, partnerships, companies",qa-question-level/1-2-types-of-business-q04.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-1.2-04
+igcse-business-studies-0450,1.2,"Types of business: sole traders, partnerships, companies",qa-question-level/1-2-types-of-business-q05.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-1.2-05
+igcse-business-studies-0450,1.2,"Types of business: sole traders, partnerships, companies",qa-question-level/1-2-types-of-business-q06.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-1.2-06
+igcse-business-studies-0450,1.2,"Types of business: sole traders, partnerships, companies",qa-question-level/1-2-types-of-business-q07.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-1.2-07
+igcse-business-studies-0450,1.2,"Types of business: sole traders, partnerships, companies",qa-question-level/1-2-types-of-business-q08.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-1.2-08
+igcse-business-studies-0450,1.2,"Types of business: sole traders, partnerships, companies",qa-question-level/1-2-types-of-business-q09.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-1.2-09
+igcse-business-studies-0450,1.2,"Types of business: sole traders, partnerships, companies",qa-question-level/1-2-types-of-business-q10.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-1.2-10
+igcse-business-studies-0450,1.2,"Types of business: sole traders, partnerships, companies",qa-question-level/1-2-types-of-business-q11.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-1.2-11
+igcse-business-studies-0450,1.2,"Types of business: sole traders, partnerships, companies",qa-question-level/1-2-types-of-business-q12.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-1.2-12
+igcse-business-studies-0450,1.3,,qa-question-level/1-3-business-objectives-and-stakeholders-q01.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-1.3-01
+igcse-business-studies-0450,1.3,,qa-question-level/1-3-business-objectives-and-stakeholders-q02.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-1.3-02
+igcse-business-studies-0450,1.3,,qa-question-level/1-3-business-objectives-and-stakeholders-q03.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-1.3-03
+igcse-business-studies-0450,1.3,,qa-question-level/1-3-business-objectives-and-stakeholders-q04.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-1.3-04
+igcse-business-studies-0450,1.3,,qa-question-level/1-3-business-objectives-and-stakeholders-q05.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-1.3-05
+igcse-business-studies-0450,1.3,,qa-question-level/1-3-business-objectives-and-stakeholders-q06.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-1.3-06
+igcse-business-studies-0450,1.3,,qa-question-level/1-3-business-objectives-and-stakeholders-q07.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-1.3-07
+igcse-business-studies-0450,1.3,,qa-question-level/1-3-business-objectives-and-stakeholders-q08.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-1.3-08
+igcse-business-studies-0450,1.3,,qa-question-level/1-3-business-objectives-and-stakeholders-q09.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-1.3-09
+igcse-business-studies-0450,1.3,,qa-question-level/1-3-business-objectives-and-stakeholders-q10.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-1.3-10
+igcse-business-studies-0450,1.3,,qa-question-level/1-3-business-objectives-and-stakeholders-q11.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-1.3-11
+igcse-business-studies-0450,1.3,,qa-question-level/1-3-business-objectives-and-stakeholders-q12.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-1.3-12
+igcse-business-studies-0450,1.4,,qa-question-level/1-4-enterprise-and-entrepreneurs-q01.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-1.4-01
+igcse-business-studies-0450,1.4,,qa-question-level/1-4-enterprise-and-entrepreneurs-q02.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-1.4-02
+igcse-business-studies-0450,1.4,,qa-question-level/1-4-enterprise-and-entrepreneurs-q03.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-1.4-03
+igcse-business-studies-0450,1.4,,qa-question-level/1-4-enterprise-and-entrepreneurs-q04.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-1.4-04
+igcse-business-studies-0450,1.4,,qa-question-level/1-4-enterprise-and-entrepreneurs-q05.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-1.4-05
+igcse-business-studies-0450,1.4,,qa-question-level/1-4-enterprise-and-entrepreneurs-q06.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-1.4-06
+igcse-business-studies-0450,1.4,,qa-question-level/1-4-enterprise-and-entrepreneurs-q07.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-1.4-07
+igcse-business-studies-0450,1.4,,qa-question-level/1-4-enterprise-and-entrepreneurs-q08.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-1.4-08
+igcse-business-studies-0450,1.4,,qa-question-level/1-4-enterprise-and-entrepreneurs-q09.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-1.4-09
+igcse-business-studies-0450,1.4,,qa-question-level/1-4-enterprise-and-entrepreneurs-q10.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-1.4-10
+igcse-business-studies-0450,1.4,,qa-question-level/1-4-enterprise-and-entrepreneurs-q11.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-1.4-11
+igcse-business-studies-0450,1.4,,qa-question-level/1-4-enterprise-and-entrepreneurs-q12.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-1.4-12
+igcse-business-studies-0450,2.1,"| 2.4 | Dismissal, redundancy, and trade unions",qa-question-level/2-1-organisation-and-management-q-2.1-01.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-2.1-01
+igcse-business-studies-0450,2.1,"| 2.4 | Dismissal, redundancy, and trade unions",qa-question-level/2-1-organisation-and-management-q-2.1-02.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-2.1-02
+igcse-business-studies-0450,2.1,"| 2.4 | Dismissal, redundancy, and trade unions",qa-question-level/2-1-organisation-and-management-q-2.1-03.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-2.1-03
+igcse-business-studies-0450,2.1,"| 2.4 | Dismissal, redundancy, and trade unions",qa-question-level/2-1-organisation-and-management-q-2.1-04.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-2.1-04
+igcse-business-studies-0450,2.1,"| 2.4 | Dismissal, redundancy, and trade unions",qa-question-level/2-1-organisation-and-management-q-2.1-05.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-2.1-05
+igcse-business-studies-0450,2.1,"| 2.4 | Dismissal, redundancy, and trade unions",qa-question-level/2-1-organisation-and-management-q-2.1-06.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-2.1-06
+igcse-business-studies-0450,2.1,"| 2.4 | Dismissal, redundancy, and trade unions",qa-question-level/2-1-organisation-and-management-q-2.1-07.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-2.1-07
+igcse-business-studies-0450,2.1,"| 2.4 | Dismissal, redundancy, and trade unions",qa-question-level/2-1-organisation-and-management-q-2.1-08.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-2.1-08
+igcse-business-studies-0450,2.1,"| 2.4 | Dismissal, redundancy, and trade unions",qa-question-level/2-1-organisation-and-management-q-2.1-09.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-2.1-09
+igcse-business-studies-0450,2.1,"| 2.4 | Dismissal, redundancy, and trade unions",qa-question-level/2-1-organisation-and-management-q-2.1-10.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-2.1-10
+igcse-business-studies-0450,2.1,"| 2.4 | Dismissal, redundancy, and trade unions",qa-question-level/2-1-organisation-and-management-q-2.1-11.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-2.1-11
+igcse-business-studies-0450,2.1,"| 2.4 | Dismissal, redundancy, and trade unions",qa-question-level/2-1-organisation-and-management-q-2.1-12.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-2.1-12
+igcse-business-studies-0450,2.2,Motivation and management,qa-question-level/2-2-motivating-employees-q-2.2-01.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-2.2-01
+igcse-business-studies-0450,2.2,Motivation and management,qa-question-level/2-2-motivating-employees-q-2.2-02.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-2.2-02
+igcse-business-studies-0450,2.2,Motivation and management,qa-question-level/2-2-motivating-employees-q-2.2-03.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-2.2-03
+igcse-business-studies-0450,2.2,Motivation and management,qa-question-level/2-2-motivating-employees-q-2.2-04.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-2.2-04
+igcse-business-studies-0450,2.2,Motivation and management,qa-question-level/2-2-motivating-employees-q-2.2-05.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-2.2-05
+igcse-business-studies-0450,2.2,Motivation and management,qa-question-level/2-2-motivating-employees-q-2.2-06.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-2.2-06
+igcse-business-studies-0450,2.2,Motivation and management,qa-question-level/2-2-motivating-employees-q-2.2-07.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-2.2-07
+igcse-business-studies-0450,2.2,Motivation and management,qa-question-level/2-2-motivating-employees-q-2.2-08.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-2.2-08
+igcse-business-studies-0450,2.2,Motivation and management,qa-question-level/2-2-motivating-employees-q-2.2-09.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-2.2-09
+igcse-business-studies-0450,2.2,Motivation and management,qa-question-level/2-2-motivating-employees-q-2.2-10.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-2.2-10
+igcse-business-studies-0450,2.2,Motivation and management,qa-question-level/2-2-motivating-employees-q-2.2-11.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-2.2-11
+igcse-business-studies-0450,2.2,Motivation and management,qa-question-level/2-2-motivating-employees-q-2.2-12.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-2.2-12
+igcse-business-studies-0450,2.3,,qa-question-level/2-3-recruitment-selection-training-q-2.3-01.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-2.3-01
+igcse-business-studies-0450,2.3,,qa-question-level/2-3-recruitment-selection-training-q-2.3-02.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-2.3-02
+igcse-business-studies-0450,2.3,,qa-question-level/2-3-recruitment-selection-training-q-2.3-03.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-2.3-03
+igcse-business-studies-0450,2.3,,qa-question-level/2-3-recruitment-selection-training-q-2.3-04.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-2.3-04
+igcse-business-studies-0450,2.3,,qa-question-level/2-3-recruitment-selection-training-q-2.3-05.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-2.3-05
+igcse-business-studies-0450,2.3,,qa-question-level/2-3-recruitment-selection-training-q-2.3-06.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-2.3-06
+igcse-business-studies-0450,2.3,,qa-question-level/2-3-recruitment-selection-training-q-2.3-07.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-2.3-07
+igcse-business-studies-0450,2.3,,qa-question-level/2-3-recruitment-selection-training-q-2.3-08.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-2.3-08
+igcse-business-studies-0450,2.3,,qa-question-level/2-3-recruitment-selection-training-q-2.3-09.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-2.3-09
+igcse-business-studies-0450,2.3,,qa-question-level/2-3-recruitment-selection-training-q-2.3-10.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-2.3-10
+igcse-business-studies-0450,2.3,,qa-question-level/2-3-recruitment-selection-training-q-2.3-11.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-2.3-11
+igcse-business-studies-0450,2.3,,qa-question-level/2-3-recruitment-selection-training-q-2.3-12.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-2.3-12
+igcse-business-studies-0450,2.4,,qa-question-level/2-4-dismissal-redundancy-trade-unions-q-2.4-01.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-2.4-01
+igcse-business-studies-0450,2.4,,qa-question-level/2-4-dismissal-redundancy-trade-unions-q-2.4-02.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-2.4-02
+igcse-business-studies-0450,2.4,,qa-question-level/2-4-dismissal-redundancy-trade-unions-q-2.4-03.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-2.4-03
+igcse-business-studies-0450,2.4,,qa-question-level/2-4-dismissal-redundancy-trade-unions-q-2.4-04.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-2.4-04
+igcse-business-studies-0450,2.4,,qa-question-level/2-4-dismissal-redundancy-trade-unions-q-2.4-05.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-2.4-05
+igcse-business-studies-0450,2.4,,qa-question-level/2-4-dismissal-redundancy-trade-unions-q-2.4-06.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-2.4-06
+igcse-business-studies-0450,2.4,,qa-question-level/2-4-dismissal-redundancy-trade-unions-q-2.4-07.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-2.4-07
+igcse-business-studies-0450,2.4,,qa-question-level/2-4-dismissal-redundancy-trade-unions-q-2.4-08.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-2.4-08
+igcse-business-studies-0450,2.4,,qa-question-level/2-4-dismissal-redundancy-trade-unions-q-2.4-09.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-2.4-09
+igcse-business-studies-0450,2.4,,qa-question-level/2-4-dismissal-redundancy-trade-unions-q-2.4-10.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-2.4-10
+igcse-business-studies-0450,2.4,,qa-question-level/2-4-dismissal-redundancy-trade-unions-q-2.4-11.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-2.4-11
+igcse-business-studies-0450,2.4,,qa-question-level/2-4-dismissal-redundancy-trade-unions-q-2.4-12.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-2.4-12
+igcse-business-studies-0450,3.1,| 3.4 | Marketing strategy and the marketing mix,qa-question-level/3-1-market-research-q-3.1-01.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-3.1-01
+igcse-business-studies-0450,3.1,| 3.4 | Marketing strategy and the marketing mix,qa-question-level/3-1-market-research-q-3.1-02.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-3.1-02
+igcse-business-studies-0450,3.1,| 3.4 | Marketing strategy and the marketing mix,qa-question-level/3-1-market-research-q-3.1-03.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-3.1-03
+igcse-business-studies-0450,3.1,| 3.4 | Marketing strategy and the marketing mix,qa-question-level/3-1-market-research-q-3.1-04.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-3.1-04
+igcse-business-studies-0450,3.1,| 3.4 | Marketing strategy and the marketing mix,qa-question-level/3-1-market-research-q-3.1-05.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-3.1-05
+igcse-business-studies-0450,3.1,| 3.4 | Marketing strategy and the marketing mix,qa-question-level/3-1-market-research-q-3.1-06.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-3.1-06
+igcse-business-studies-0450,3.1,| 3.4 | Marketing strategy and the marketing mix,qa-question-level/3-1-market-research-q-3.1-07.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-3.1-07
+igcse-business-studies-0450,3.1,| 3.4 | Marketing strategy and the marketing mix,qa-question-level/3-1-market-research-q-3.1-08.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-3.1-08
+igcse-business-studies-0450,3.1,| 3.4 | Marketing strategy and the marketing mix,qa-question-level/3-1-market-research-q-3.1-09.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-3.1-09
+igcse-business-studies-0450,3.1,| 3.4 | Marketing strategy and the marketing mix,qa-question-level/3-1-market-research-q-3.1-10.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-3.1-10
+igcse-business-studies-0450,3.1,| 3.4 | Marketing strategy and the marketing mix,qa-question-level/3-1-market-research-q-3.1-11.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-3.1-11
+igcse-business-studies-0450,3.1,| 3.4 | Marketing strategy and the marketing mix,qa-question-level/3-1-market-research-q-3.1-12.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-3.1-12
+igcse-business-studies-0450,3.2,The marketing mix: product and price,qa-question-level/3-2-marketing-mix-product-price-q-3.2-01.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-3.2-01
+igcse-business-studies-0450,3.2,The marketing mix: product and price,qa-question-level/3-2-marketing-mix-product-price-q-3.2-02.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-3.2-02
+igcse-business-studies-0450,3.2,The marketing mix: product and price,qa-question-level/3-2-marketing-mix-product-price-q-3.2-03.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-3.2-03
+igcse-business-studies-0450,3.2,The marketing mix: product and price,qa-question-level/3-2-marketing-mix-product-price-q-3.2-04.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-3.2-04
+igcse-business-studies-0450,3.2,The marketing mix: product and price,qa-question-level/3-2-marketing-mix-product-price-q-3.2-05.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-3.2-05
+igcse-business-studies-0450,3.2,The marketing mix: product and price,qa-question-level/3-2-marketing-mix-product-price-q-3.2-06.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-3.2-06
+igcse-business-studies-0450,3.2,The marketing mix: product and price,qa-question-level/3-2-marketing-mix-product-price-q-3.2-07.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-3.2-07
+igcse-business-studies-0450,3.2,The marketing mix: product and price,qa-question-level/3-2-marketing-mix-product-price-q-3.2-08.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-3.2-08
+igcse-business-studies-0450,3.2,The marketing mix: product and price,qa-question-level/3-2-marketing-mix-product-price-q-3.2-09.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-3.2-09
+igcse-business-studies-0450,3.2,The marketing mix: product and price,qa-question-level/3-2-marketing-mix-product-price-q-3.2-10.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-3.2-10
+igcse-business-studies-0450,3.2,The marketing mix: product and price,qa-question-level/3-2-marketing-mix-product-price-q-3.2-11.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-3.2-11
+igcse-business-studies-0450,3.2,The marketing mix: product and price,qa-question-level/3-2-marketing-mix-product-price-q-3.2-12.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-3.2-12
+igcse-business-studies-0450,3.3,,qa-question-level/3-3-marketing-mix-promotion-place-q-3.3-01.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-3.3-01
+igcse-business-studies-0450,3.3,,qa-question-level/3-3-marketing-mix-promotion-place-q-3.3-02.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-3.3-02
+igcse-business-studies-0450,3.3,,qa-question-level/3-3-marketing-mix-promotion-place-q-3.3-03.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-3.3-03
+igcse-business-studies-0450,3.3,,qa-question-level/3-3-marketing-mix-promotion-place-q-3.3-04.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-3.3-04
+igcse-business-studies-0450,3.3,,qa-question-level/3-3-marketing-mix-promotion-place-q-3.3-05.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-3.3-05
+igcse-business-studies-0450,3.3,,qa-question-level/3-3-marketing-mix-promotion-place-q-3.3-06.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-3.3-06
+igcse-business-studies-0450,3.3,,qa-question-level/3-3-marketing-mix-promotion-place-q-3.3-07.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-3.3-07
+igcse-business-studies-0450,3.3,,qa-question-level/3-3-marketing-mix-promotion-place-q-3.3-08.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-3.3-08
+igcse-business-studies-0450,3.3,,qa-question-level/3-3-marketing-mix-promotion-place-q-3.3-09.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-3.3-09
+igcse-business-studies-0450,3.3,,qa-question-level/3-3-marketing-mix-promotion-place-q-3.3-10.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-3.3-10
+igcse-business-studies-0450,3.3,,qa-question-level/3-3-marketing-mix-promotion-place-q-3.3-11.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-3.3-11
+igcse-business-studies-0450,3.3,,qa-question-level/3-3-marketing-mix-promotion-place-q-3.3-12.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-3.3-12
+igcse-business-studies-0450,3.4,,qa-question-level/3-4-marketing-strategy-and-marketing-mix-q-3.4-01.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-3.4-01
+igcse-business-studies-0450,3.4,,qa-question-level/3-4-marketing-strategy-and-marketing-mix-q-3.4-02.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-3.4-02
+igcse-business-studies-0450,3.4,,qa-question-level/3-4-marketing-strategy-and-marketing-mix-q-3.4-03.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-3.4-03
+igcse-business-studies-0450,3.4,,qa-question-level/3-4-marketing-strategy-and-marketing-mix-q-3.4-04.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-3.4-04
+igcse-business-studies-0450,3.4,,qa-question-level/3-4-marketing-strategy-and-marketing-mix-q-3.4-05.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-3.4-05
+igcse-business-studies-0450,3.4,,qa-question-level/3-4-marketing-strategy-and-marketing-mix-q-3.4-06.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-3.4-06
+igcse-business-studies-0450,3.4,,qa-question-level/3-4-marketing-strategy-and-marketing-mix-q-3.4-07.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-3.4-07
+igcse-business-studies-0450,3.4,,qa-question-level/3-4-marketing-strategy-and-marketing-mix-q-3.4-08.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-3.4-08
+igcse-business-studies-0450,3.4,,qa-question-level/3-4-marketing-strategy-and-marketing-mix-q-3.4-09.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-3.4-09
+igcse-business-studies-0450,3.4,,qa-question-level/3-4-marketing-strategy-and-marketing-mix-q-3.4-10.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-3.4-10
+igcse-business-studies-0450,3.4,,qa-question-level/3-4-marketing-strategy-and-marketing-mix-q-3.4-11.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-3.4-11
+igcse-business-studies-0450,3.4,,qa-question-level/3-4-marketing-strategy-and-marketing-mix-q-3.4-12.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-3.4-12
+igcse-business-studies-0450,3.5,Pricing methods and sales forecasting,qa-question-level/3-5-pricing-methods-and-sales-forecasting-q-3.5-01.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-3.5-01
+igcse-business-studies-0450,3.5,Pricing methods and sales forecasting,qa-question-level/3-5-pricing-methods-and-sales-forecasting-q-3.5-02.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-3.5-02
+igcse-business-studies-0450,3.5,Pricing methods and sales forecasting,qa-question-level/3-5-pricing-methods-and-sales-forecasting-q-3.5-03.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-3.5-03
+igcse-business-studies-0450,3.5,Pricing methods and sales forecasting,qa-question-level/3-5-pricing-methods-and-sales-forecasting-q-3.5-04.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-3.5-04
+igcse-business-studies-0450,3.5,Pricing methods and sales forecasting,qa-question-level/3-5-pricing-methods-and-sales-forecasting-q-3.5-05.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-3.5-05
+igcse-business-studies-0450,3.5,Pricing methods and sales forecasting,qa-question-level/3-5-pricing-methods-and-sales-forecasting-q-3.5-06.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-3.5-06
+igcse-business-studies-0450,3.5,Pricing methods and sales forecasting,qa-question-level/3-5-pricing-methods-and-sales-forecasting-q-3.5-07.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-3.5-07
+igcse-business-studies-0450,3.5,Pricing methods and sales forecasting,qa-question-level/3-5-pricing-methods-and-sales-forecasting-q-3.5-08.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-3.5-08
+igcse-business-studies-0450,3.5,Pricing methods and sales forecasting,qa-question-level/3-5-pricing-methods-and-sales-forecasting-q-3.5-09.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-3.5-09
+igcse-business-studies-0450,3.5,Pricing methods and sales forecasting,qa-question-level/3-5-pricing-methods-and-sales-forecasting-q-3.5-10.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-3.5-10
+igcse-business-studies-0450,3.5,Pricing methods and sales forecasting,qa-question-level/3-5-pricing-methods-and-sales-forecasting-q-3.5-11.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-3.5-11
+igcse-business-studies-0450,3.5,Pricing methods and sales forecasting,qa-question-level/3-5-pricing-methods-and-sales-forecasting-q-3.5-12.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-3.5-12
+igcse-business-studies-0450,4.1,| 4.5 | Location decisions and outsourcing,qa-question-level/4-1-production-planning-and-methods-q-4.1-01.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-4.1-01
+igcse-business-studies-0450,4.1,| 4.5 | Location decisions and outsourcing,qa-question-level/4-1-production-planning-and-methods-q-4.1-02.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-4.1-02
+igcse-business-studies-0450,4.1,| 4.5 | Location decisions and outsourcing,qa-question-level/4-1-production-planning-and-methods-q-4.1-03.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-4.1-03
+igcse-business-studies-0450,4.1,| 4.5 | Location decisions and outsourcing,qa-question-level/4-1-production-planning-and-methods-q-4.1-04.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-4.1-04
+igcse-business-studies-0450,4.1,| 4.5 | Location decisions and outsourcing,qa-question-level/4-1-production-planning-and-methods-q-4.1-05.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-4.1-05
+igcse-business-studies-0450,4.1,| 4.5 | Location decisions and outsourcing,qa-question-level/4-1-production-planning-and-methods-q-4.1-06.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-4.1-06
+igcse-business-studies-0450,4.1,| 4.5 | Location decisions and outsourcing,qa-question-level/4-1-production-planning-and-methods-q-4.1-07.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-4.1-07
+igcse-business-studies-0450,4.1,| 4.5 | Location decisions and outsourcing,qa-question-level/4-1-production-planning-and-methods-q-4.1-08.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-4.1-08
+igcse-business-studies-0450,4.1,| 4.5 | Location decisions and outsourcing,qa-question-level/4-1-production-planning-and-methods-q-4.1-09.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-4.1-09
+igcse-business-studies-0450,4.1,| 4.5 | Location decisions and outsourcing,qa-question-level/4-1-production-planning-and-methods-q-4.1-10.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-4.1-10
+igcse-business-studies-0450,4.1,| 4.5 | Location decisions and outsourcing,qa-question-level/4-1-production-planning-and-methods-q-4.1-11.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-4.1-11
+igcse-business-studies-0450,4.1,| 4.5 | Location decisions and outsourcing,qa-question-level/4-1-production-planning-and-methods-q-4.1-12.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-4.1-12
+igcse-business-studies-0450,4.2,Inventory management and supply chain,qa-question-level/4-2-inventory-management-and-supply-chain-q-4.2-01.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-4.2-01
+igcse-business-studies-0450,4.2,Inventory management and supply chain,qa-question-level/4-2-inventory-management-and-supply-chain-q-4.2-02.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-4.2-02
+igcse-business-studies-0450,4.2,Inventory management and supply chain,qa-question-level/4-2-inventory-management-and-supply-chain-q-4.2-03.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-4.2-03
+igcse-business-studies-0450,4.2,Inventory management and supply chain,qa-question-level/4-2-inventory-management-and-supply-chain-q-4.2-04.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-4.2-04
+igcse-business-studies-0450,4.2,Inventory management and supply chain,qa-question-level/4-2-inventory-management-and-supply-chain-q-4.2-05.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-4.2-05
+igcse-business-studies-0450,4.2,Inventory management and supply chain,qa-question-level/4-2-inventory-management-and-supply-chain-q-4.2-06.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-4.2-06
+igcse-business-studies-0450,4.2,Inventory management and supply chain,qa-question-level/4-2-inventory-management-and-supply-chain-q-4.2-07.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-4.2-07
+igcse-business-studies-0450,4.2,Inventory management and supply chain,qa-question-level/4-2-inventory-management-and-supply-chain-q-4.2-08.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-4.2-08
+igcse-business-studies-0450,4.2,Inventory management and supply chain,qa-question-level/4-2-inventory-management-and-supply-chain-q-4.2-09.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-4.2-09
+igcse-business-studies-0450,4.2,Inventory management and supply chain,qa-question-level/4-2-inventory-management-and-supply-chain-q-4.2-10.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-4.2-10
+igcse-business-studies-0450,4.2,Inventory management and supply chain,qa-question-level/4-2-inventory-management-and-supply-chain-q-4.2-11.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-4.2-11
+igcse-business-studies-0450,4.2,Inventory management and supply chain,qa-question-level/4-2-inventory-management-and-supply-chain-q-4.2-12.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-4.2-12
+igcse-business-studies-0450,4.3,,qa-question-level/4-3-quality-management-q-4.3-01.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-4.3-01
+igcse-business-studies-0450,4.3,,qa-question-level/4-3-quality-management-q-4.3-02.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-4.3-02
+igcse-business-studies-0450,4.3,,qa-question-level/4-3-quality-management-q-4.3-03.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-4.3-03
+igcse-business-studies-0450,4.3,,qa-question-level/4-3-quality-management-q-4.3-04.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-4.3-04
+igcse-business-studies-0450,4.3,,qa-question-level/4-3-quality-management-q-4.3-05.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-4.3-05
+igcse-business-studies-0450,4.3,,qa-question-level/4-3-quality-management-q-4.3-06.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-4.3-06
+igcse-business-studies-0450,4.3,,qa-question-level/4-3-quality-management-q-4.3-07.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-4.3-07
+igcse-business-studies-0450,4.3,,qa-question-level/4-3-quality-management-q-4.3-08.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-4.3-08
+igcse-business-studies-0450,4.3,,qa-question-level/4-3-quality-management-q-4.3-09.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-4.3-09
+igcse-business-studies-0450,4.3,,qa-question-level/4-3-quality-management-q-4.3-10.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-4.3-10
+igcse-business-studies-0450,4.3,,qa-question-level/4-3-quality-management-q-4.3-11.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-4.3-11
+igcse-business-studies-0450,4.3,,qa-question-level/4-3-quality-management-q-4.3-12.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-4.3-12
+igcse-business-studies-0450,4.4,,qa-question-level/4-4-capacity-utilisation-and-productivity-q-4.4-01.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-4.4-01
+igcse-business-studies-0450,4.4,,qa-question-level/4-4-capacity-utilisation-and-productivity-q-4.4-02.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-4.4-02
+igcse-business-studies-0450,4.4,,qa-question-level/4-4-capacity-utilisation-and-productivity-q-4.4-03.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-4.4-03
+igcse-business-studies-0450,4.4,,qa-question-level/4-4-capacity-utilisation-and-productivity-q-4.4-04.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-4.4-04
+igcse-business-studies-0450,4.4,,qa-question-level/4-4-capacity-utilisation-and-productivity-q-4.4-05.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-4.4-05
+igcse-business-studies-0450,4.4,,qa-question-level/4-4-capacity-utilisation-and-productivity-q-4.4-06.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-4.4-06
+igcse-business-studies-0450,4.4,,qa-question-level/4-4-capacity-utilisation-and-productivity-q-4.4-07.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-4.4-07
+igcse-business-studies-0450,4.4,,qa-question-level/4-4-capacity-utilisation-and-productivity-q-4.4-08.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-4.4-08
+igcse-business-studies-0450,4.4,,qa-question-level/4-4-capacity-utilisation-and-productivity-q-4.4-09.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-4.4-09
+igcse-business-studies-0450,4.4,,qa-question-level/4-4-capacity-utilisation-and-productivity-q-4.4-10.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-4.4-10
+igcse-business-studies-0450,4.4,,qa-question-level/4-4-capacity-utilisation-and-productivity-q-4.4-11.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-4.4-11
+igcse-business-studies-0450,4.4,,qa-question-level/4-4-capacity-utilisation-and-productivity-q-4.4-12.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-4.4-12
+igcse-business-studies-0450,4.5,,qa-question-level/4-5-location-decisions-and-outsourcing-q-4.5-01.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-4.5-01
+igcse-business-studies-0450,4.5,,qa-question-level/4-5-location-decisions-and-outsourcing-q-4.5-02.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-4.5-02
+igcse-business-studies-0450,4.5,,qa-question-level/4-5-location-decisions-and-outsourcing-q-4.5-03.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-4.5-03
+igcse-business-studies-0450,4.5,,qa-question-level/4-5-location-decisions-and-outsourcing-q-4.5-04.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-4.5-04
+igcse-business-studies-0450,4.5,,qa-question-level/4-5-location-decisions-and-outsourcing-q-4.5-05.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-4.5-05
+igcse-business-studies-0450,4.5,,qa-question-level/4-5-location-decisions-and-outsourcing-q-4.5-06.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-4.5-06
+igcse-business-studies-0450,4.5,,qa-question-level/4-5-location-decisions-and-outsourcing-q-4.5-07.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-4.5-07
+igcse-business-studies-0450,4.5,,qa-question-level/4-5-location-decisions-and-outsourcing-q-4.5-08.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-4.5-08
+igcse-business-studies-0450,4.5,,qa-question-level/4-5-location-decisions-and-outsourcing-q-4.5-09.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-4.5-09
+igcse-business-studies-0450,4.5,,qa-question-level/4-5-location-decisions-and-outsourcing-q-4.5-10.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-4.5-10
+igcse-business-studies-0450,4.5,,qa-question-level/4-5-location-decisions-and-outsourcing-q-4.5-11.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-4.5-11
+igcse-business-studies-0450,4.5,,qa-question-level/4-5-location-decisions-and-outsourcing-q-4.5-12.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-4.5-12
+igcse-business-studies-0450,5.1,| 5.4 | Sources of finance and business accounts,qa-question-level/5-1-costs-revenue-and-profit-q-5.1-01.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-5.1-01
+igcse-business-studies-0450,5.1,| 5.4 | Sources of finance and business accounts,qa-question-level/5-1-costs-revenue-and-profit-q-5.1-02.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-5.1-02
+igcse-business-studies-0450,5.1,| 5.4 | Sources of finance and business accounts,qa-question-level/5-1-costs-revenue-and-profit-q-5.1-03.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-5.1-03
+igcse-business-studies-0450,5.1,| 5.4 | Sources of finance and business accounts,qa-question-level/5-1-costs-revenue-and-profit-q-5.1-04.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-5.1-04
+igcse-business-studies-0450,5.1,| 5.4 | Sources of finance and business accounts,qa-question-level/5-1-costs-revenue-and-profit-q-5.1-05.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-5.1-05
+igcse-business-studies-0450,5.1,| 5.4 | Sources of finance and business accounts,qa-question-level/5-1-costs-revenue-and-profit-q-5.1-06.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-5.1-06
+igcse-business-studies-0450,5.1,| 5.4 | Sources of finance and business accounts,qa-question-level/5-1-costs-revenue-and-profit-q-5.1-07.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-5.1-07
+igcse-business-studies-0450,5.1,| 5.4 | Sources of finance and business accounts,qa-question-level/5-1-costs-revenue-and-profit-q-5.1-08.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-5.1-08
+igcse-business-studies-0450,5.1,| 5.4 | Sources of finance and business accounts,qa-question-level/5-1-costs-revenue-and-profit-q-5.1-09.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-5.1-09
+igcse-business-studies-0450,5.1,| 5.4 | Sources of finance and business accounts,qa-question-level/5-1-costs-revenue-and-profit-q-5.1-10.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-5.1-10
+igcse-business-studies-0450,5.1,| 5.4 | Sources of finance and business accounts,qa-question-level/5-1-costs-revenue-and-profit-q-5.1-11.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-5.1-11
+igcse-business-studies-0450,5.1,| 5.4 | Sources of finance and business accounts,qa-question-level/5-1-costs-revenue-and-profit-q-5.1-12.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-5.1-12
+igcse-business-studies-0450,5.2,Break-even analysis,qa-question-level/5-2-break-even-analysis-q-5.2-01.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-5.2-01
+igcse-business-studies-0450,5.2,Break-even analysis,qa-question-level/5-2-break-even-analysis-q-5.2-02.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-5.2-02
+igcse-business-studies-0450,5.2,Break-even analysis,qa-question-level/5-2-break-even-analysis-q-5.2-03.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-5.2-03
+igcse-business-studies-0450,5.2,Break-even analysis,qa-question-level/5-2-break-even-analysis-q-5.2-04.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-5.2-04
+igcse-business-studies-0450,5.2,Break-even analysis,qa-question-level/5-2-break-even-analysis-q-5.2-05.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-5.2-05
+igcse-business-studies-0450,5.2,Break-even analysis,qa-question-level/5-2-break-even-analysis-q-5.2-06.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-5.2-06
+igcse-business-studies-0450,5.2,Break-even analysis,qa-question-level/5-2-break-even-analysis-q-5.2-07.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-5.2-07
+igcse-business-studies-0450,5.2,Break-even analysis,qa-question-level/5-2-break-even-analysis-q-5.2-08.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-5.2-08
+igcse-business-studies-0450,5.2,Break-even analysis,qa-question-level/5-2-break-even-analysis-q-5.2-09.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-5.2-09
+igcse-business-studies-0450,5.2,Break-even analysis,qa-question-level/5-2-break-even-analysis-q-5.2-10.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-5.2-10
+igcse-business-studies-0450,5.2,Break-even analysis,qa-question-level/5-2-break-even-analysis-q-5.2-11.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-5.2-11
+igcse-business-studies-0450,5.2,Break-even analysis,qa-question-level/5-2-break-even-analysis-q-5.2-12.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-5.2-12
+igcse-business-studies-0450,5.3,,qa-question-level/5-3-cash-flow-and-working-capital-q-5.3-01.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-5.3-01
+igcse-business-studies-0450,5.3,,qa-question-level/5-3-cash-flow-and-working-capital-q-5.3-02.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-5.3-02
+igcse-business-studies-0450,5.3,,qa-question-level/5-3-cash-flow-and-working-capital-q-5.3-03.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-5.3-03
+igcse-business-studies-0450,5.3,,qa-question-level/5-3-cash-flow-and-working-capital-q-5.3-04.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-5.3-04
+igcse-business-studies-0450,5.3,,qa-question-level/5-3-cash-flow-and-working-capital-q-5.3-05.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-5.3-05
+igcse-business-studies-0450,5.3,,qa-question-level/5-3-cash-flow-and-working-capital-q-5.3-06.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-5.3-06
+igcse-business-studies-0450,5.3,,qa-question-level/5-3-cash-flow-and-working-capital-q-5.3-07.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-5.3-07
+igcse-business-studies-0450,5.3,,qa-question-level/5-3-cash-flow-and-working-capital-q-5.3-08.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-5.3-08
+igcse-business-studies-0450,5.3,,qa-question-level/5-3-cash-flow-and-working-capital-q-5.3-09.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-5.3-09
+igcse-business-studies-0450,5.3,,qa-question-level/5-3-cash-flow-and-working-capital-q-5.3-10.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-5.3-10
+igcse-business-studies-0450,5.3,,qa-question-level/5-3-cash-flow-and-working-capital-q-5.3-11.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-5.3-11
+igcse-business-studies-0450,5.3,,qa-question-level/5-3-cash-flow-and-working-capital-q-5.3-12.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-5.3-12
+igcse-business-studies-0450,5.4,,qa-question-level/5-4-sources-of-finance-and-business-accounts-q-5.4-01.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-5.4-01
+igcse-business-studies-0450,5.4,,qa-question-level/5-4-sources-of-finance-and-business-accounts-q-5.4-02.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-5.4-02
+igcse-business-studies-0450,5.4,,qa-question-level/5-4-sources-of-finance-and-business-accounts-q-5.4-03.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-5.4-03
+igcse-business-studies-0450,5.4,,qa-question-level/5-4-sources-of-finance-and-business-accounts-q-5.4-04.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-5.4-04
+igcse-business-studies-0450,5.4,,qa-question-level/5-4-sources-of-finance-and-business-accounts-q-5.4-05.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-5.4-05
+igcse-business-studies-0450,5.4,,qa-question-level/5-4-sources-of-finance-and-business-accounts-q-5.4-06.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-5.4-06
+igcse-business-studies-0450,5.4,,qa-question-level/5-4-sources-of-finance-and-business-accounts-q-5.4-07.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-5.4-07
+igcse-business-studies-0450,5.4,,qa-question-level/5-4-sources-of-finance-and-business-accounts-q-5.4-08.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-5.4-08
+igcse-business-studies-0450,5.4,,qa-question-level/5-4-sources-of-finance-and-business-accounts-q-5.4-09.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-5.4-09
+igcse-business-studies-0450,5.4,,qa-question-level/5-4-sources-of-finance-and-business-accounts-q-5.4-10.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-5.4-10
+igcse-business-studies-0450,5.4,,qa-question-level/5-4-sources-of-finance-and-business-accounts-q-5.4-11.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-5.4-11
+igcse-business-studies-0450,5.4,,qa-question-level/5-4-sources-of-finance-and-business-accounts-q-5.4-12.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-5.4-12
+igcse-business-studies-0450,6.1,Government policies and business,qa-question-level/6-1-government-policies-and-business-q-6.1-01.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-6.1-01
+igcse-business-studies-0450,6.1,Government policies and business,qa-question-level/6-1-government-policies-and-business-q-6.1-02.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-6.1-02
+igcse-business-studies-0450,6.1,Government policies and business,qa-question-level/6-1-government-policies-and-business-q-6.1-03.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-6.1-03
+igcse-business-studies-0450,6.1,Government policies and business,qa-question-level/6-1-government-policies-and-business-q-6.1-04.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-6.1-04
+igcse-business-studies-0450,6.1,Government policies and business,qa-question-level/6-1-government-policies-and-business-q-6.1-05.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-6.1-05
+igcse-business-studies-0450,6.1,Government policies and business,qa-question-level/6-1-government-policies-and-business-q-6.1-06.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-6.1-06
+igcse-business-studies-0450,6.1,Government policies and business,qa-question-level/6-1-government-policies-and-business-q-6.1-07.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-6.1-07
+igcse-business-studies-0450,6.1,Government policies and business,qa-question-level/6-1-government-policies-and-business-q-6.1-08.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-6.1-08
+igcse-business-studies-0450,6.1,Government policies and business,qa-question-level/6-1-government-policies-and-business-q-6.1-09.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-6.1-09
+igcse-business-studies-0450,6.1,Government policies and business,qa-question-level/6-1-government-policies-and-business-q-6.1-10.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-6.1-10
+igcse-business-studies-0450,6.1,Government policies and business,qa-question-level/6-1-government-policies-and-business-q-6.1-11.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-6.1-11
+igcse-business-studies-0450,6.1,Government policies and business,qa-question-level/6-1-government-policies-and-business-q-6.1-12.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-6.1-12
+igcse-business-studies-0450,6.2,Economic climate and business decisions,qa-question-level/6-2-economic-climate-and-business-decisions-q-6.2-01.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-6.2-01
+igcse-business-studies-0450,6.2,Economic climate and business decisions,qa-question-level/6-2-economic-climate-and-business-decisions-q-6.2-02.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-6.2-02
+igcse-business-studies-0450,6.2,Economic climate and business decisions,qa-question-level/6-2-economic-climate-and-business-decisions-q-6.2-03.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-6.2-03
+igcse-business-studies-0450,6.2,Economic climate and business decisions,qa-question-level/6-2-economic-climate-and-business-decisions-q-6.2-04.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-6.2-04
+igcse-business-studies-0450,6.2,Economic climate and business decisions,qa-question-level/6-2-economic-climate-and-business-decisions-q-6.2-05.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-6.2-05
+igcse-business-studies-0450,6.2,Economic climate and business decisions,qa-question-level/6-2-economic-climate-and-business-decisions-q-6.2-06.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-6.2-06
+igcse-business-studies-0450,6.2,Economic climate and business decisions,qa-question-level/6-2-economic-climate-and-business-decisions-q-6.2-07.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-6.2-07
+igcse-business-studies-0450,6.2,Economic climate and business decisions,qa-question-level/6-2-economic-climate-and-business-decisions-q-6.2-08.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-6.2-08
+igcse-business-studies-0450,6.2,Economic climate and business decisions,qa-question-level/6-2-economic-climate-and-business-decisions-q-6.2-09.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-6.2-09
+igcse-business-studies-0450,6.2,Economic climate and business decisions,qa-question-level/6-2-economic-climate-and-business-decisions-q-6.2-10.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-6.2-10
+igcse-business-studies-0450,6.2,Economic climate and business decisions,qa-question-level/6-2-economic-climate-and-business-decisions-q-6.2-11.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-6.2-11
+igcse-business-studies-0450,6.2,Economic climate and business decisions,qa-question-level/6-2-economic-climate-and-business-decisions-q-6.2-12.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-6.2-12
+igcse-business-studies-0450,6.3,Globalisation and international trade,qa-question-level/6-3-globalisation-and-international-trade-q-6.3-01.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-6.3-01
+igcse-business-studies-0450,6.3,Globalisation and international trade,qa-question-level/6-3-globalisation-and-international-trade-q-6.3-02.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-6.3-02
+igcse-business-studies-0450,6.3,Globalisation and international trade,qa-question-level/6-3-globalisation-and-international-trade-q-6.3-03.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-6.3-03
+igcse-business-studies-0450,6.3,Globalisation and international trade,qa-question-level/6-3-globalisation-and-international-trade-q-6.3-04.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-6.3-04
+igcse-business-studies-0450,6.3,Globalisation and international trade,qa-question-level/6-3-globalisation-and-international-trade-q-6.3-05.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-6.3-05
+igcse-business-studies-0450,6.3,Globalisation and international trade,qa-question-level/6-3-globalisation-and-international-trade-q-6.3-06.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-6.3-06
+igcse-business-studies-0450,6.3,Globalisation and international trade,qa-question-level/6-3-globalisation-and-international-trade-q-6.3-07.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-6.3-07
+igcse-business-studies-0450,6.3,Globalisation and international trade,qa-question-level/6-3-globalisation-and-international-trade-q-6.3-08.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-6.3-08
+igcse-business-studies-0450,6.3,Globalisation and international trade,qa-question-level/6-3-globalisation-and-international-trade-q-6.3-09.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-6.3-09
+igcse-business-studies-0450,6.3,Globalisation and international trade,qa-question-level/6-3-globalisation-and-international-trade-q-6.3-10.md,1,Foundation,0450,,imported,pending,worker_course,Q-ID Q-6.3-10
+igcse-business-studies-0450,6.3,Globalisation and international trade,qa-question-level/6-3-globalisation-and-international-trade-q-6.3-11.md,1,Standard,0450,,imported,pending,worker_course,Q-ID Q-6.3-11
+igcse-business-studies-0450,6.3,Globalisation and international trade,qa-question-level/6-3-globalisation-and-international-trade-q-6.3-12.md,1,Challenge,0450,,imported,pending,worker_course,Q-ID Q-6.3-12

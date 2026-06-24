@@ -1,0 +1,6 @@
+# Question: Question Q-5.2-09
+**Difficulty**: Challenge
+**Question**: A student says, "At 60°C, the amylase reaction stops because all the substrate has been used up." The student is wrong — the reaction stopped because the enzyme denatured. Design an experiment to test which explanation is correct, using only the original materials.
+**Answer**: Test the student's claim: after the reaction stopped at 60°C, cool the test tube to 40°C (optimum). Then add fresh amylase. If the original amylase was denatured (not "substrate used up"), adding fresh enzyme will restart the reaction (iodine → orange). If the student was right (substrate used up), adding enzyme would have no effect — but adding fresh starch would restart it. A second test: add fresh starch instead. If the reaction does NOT restart, the original enzyme was denatured and all the starch is still present (iodine test would be blue-black). The combination confirms denaturation — starch still present but enzyme inactive.
+**Explanation**: Cool + add enzyme → restarts = enzyme was denatured. Cool + add starch → no reaction = confirms. A common error in method design is only testing one possibility.
+**Tags**: enzyme, denaturation, experiment-design, hypothesis-testing

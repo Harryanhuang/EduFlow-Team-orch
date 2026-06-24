@@ -1,0 +1,62 @@
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+
+# Python venv — per-developer; `pip install -e .` populates this
+.venv/
+
+# macOS noise
+.DS_Store
+
+# runtime state — anchor to repo root so src/claudeteam/agents/ isn't swallowed
+/workspace/
+/agents/
+/projects/
+/state/
+/.eduflow-team-state/
+/.omc/
+/.omx/
+/.claudeteam-cadence/
+
+# scripts/feishu_bot_creator/ is checked in (Playwright bot creator);
+# its own .gitignore handles node_modules + cookies. Allow this dir.
+# Watch git status when adding under scripts/ so legacy state files
+# from old main checkouts don't sneak in (caught round-79).
+.claude/scheduled_tasks.lock
+# `claudeteam install-hooks` output — regenerated per deploy
+/.claude/commands/
+team.json
+runtime_config.json
+
+# docker compose env (contains secrets)
+.env
+/team-data/
+/docker-compose.override.yml
+
+# unrelated tool caches that drift into the repo root
+/.playwright-mcp/
+# claudeteam unified config — per-deploy file, like runtime_config.json
+/claudeteam.toml
+/claudeteam.toml.bak
+AGENTS.md
+
+# Personal dev convenience — operator-specific Makefile + creds helper.
+# Hardcodes a private chat_id / lark profile, so kept out of the open
+# source repo. Use the documented `claudeteam` commands instead.
+/Makefile
+/bin/
+/generated/
+
+# Session / tool state files
+claudeteam
+submitted_for_review
+--dry-run/
+claudeteam.toml.bak-*
+Edu/
+Team/
+多智能体项目/
+skills/dot-skill/

@@ -1,0 +1,6 @@
+### Question Q-5.4-09
+**Difficulty**: Challenge
+**Question**: A public limited company (PLC) wants to raise $10 million for a major expansion. Compare issuing new shares versus issuing debentures as methods of raising this finance.
+**Answer**: Issuing new shares (rights issue or public offering): provides permanent capital with no obligation to pay dividends if profits are weak. No interest burden and no repayment date. However, it dilutes existing shareholders' ownership and control, and the cost of equity is typically higher than debt (investors expect higher returns). Issuing debentures: does not dilute ownership, interest payments are tax-deductible, and debenture holders have no voting rights. However, interest must be paid regardless of profitability, and the company's assets are pledged as security — if the company defaults, assets can be seized. Recommendation: if the expansion is high-risk or the company already has significant debt, shares are safer. If the company has stable cash flows and wants to preserve ownership, debentures are more cost-effective.
+**Explanation**: The equity-versus-debt decision is fundamental to corporate finance. A common error is not considering the company's existing debt level and risk profile.
+**Tags**: shares, debentures, PLC, evaluation, corporate-finance

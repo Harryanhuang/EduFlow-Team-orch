@@ -1,0 +1,6 @@
+# Question: Question Q-16.3-08
+**Difficulty**: Challenge
+**Question**: Describe how environmental factors can modify the expression of genes without changing the DNA sequence. Why is this important for understanding variation?
+**Answer**: Epigenetics is the modification of gene expression without changing the DNA sequence itself. Mechanisms include: DNA methylation — methyl groups attach to DNA, blocking transcription. Histone modification — acetyl or methyl groups on histone proteins alter how tightly DNA is wound, affecting gene accessibility. These changes can be influenced by environment: diet, stress, toxins, and temperature can all cause epigenetic modifications. Importantly, epigenetic changes can sometimes be inherited. This is important because it explains why identical twins (same DNA) can develop different diseases or traits — their epigenetic marks differ due to environmental exposures. It shows that variation is not determined by genes alone.
+**Explanation**: DNA methylation, histone modification, environment influences gene expression. A common error is saying epigenetics changes the DNA sequence itself.
+**Tags**: epigenetics, gene-expression, DNA-methylation, environment

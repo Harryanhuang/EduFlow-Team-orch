@@ -1,0 +1,6 @@
+### Question Q-6.2-09
+**Difficulty**: Challenge
+**Question**: To what extent is trade protection more harmful than beneficial for an economy?
+**Answer**: Arguments that protection is harmful: it raises prices for consumers, reduces choice and competition, encourages inefficiency in protected industries, invites retaliation from trading partners, and reduces overall economic welfare by distorting the allocation of resources. Protection also harms export industries that face higher input costs and retaliatory barriers. Arguments that protection can be beneficial: it can protect strategic industries essential for national security, shield infant industries while they develop, prevent dumping by foreign firms selling below cost, and protect employment during periods of structural adjustment. On balance, most economists argue that the costs of protection exceed the benefits because the efficiency losses and higher prices outweigh the short-term gains to specific industries. However, the extent of harm depends on the type of protection, its duration, and the economic context in which it is applied.
+**Explanation**: Weighing broad economic costs against targeted benefits. A common error is taking a one-sided view without acknowledging legitimate arguments on both sides.
+**Tags**: trade-protection, evaluation, welfare, costs-and-benefits

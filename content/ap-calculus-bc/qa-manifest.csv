@@ -1,0 +1,32 @@
+topic_id,topic_name,unit,items_count,question_count,difficulty_mix,calculator_marked,status,notes
+U1.1.1,极限的直观定义与符号,U1,3,3,F:1|S:1|C:1,no,submitted_for_review,Batch 1 CED 1.1
+U1.1.2,左右极限与极限存在条件,U1,3,3,F:1|S:1|C:1,no,submitted_for_review,Batch 1 CED 1.1
+U1.1.3,极限运算法则,U1,3,3,F:1|S:1|C:1,no,submitted_for_review,Batch 1 CED 1.1
+U1.1.4,极限不存在的三种情形,U1,3,3,F:1|S:1|C:1,no,submitted_for_review,Batch 1 CED 1.1
+U1.2.1,直接代入与因式分解消零,U1,3,3,F:1|S:1|C:1,no,submitted_for_review,Batch 1 CED 1.2
+U1.2.2,有理化与特殊极限 (sin x/x),U1,3,3,F:1|S:1|C:1,no,submitted_for_review,Batch 1 CED 1.2
+U1.2.3,无穷远处的极限与水平渐近线,U1,3,3,F:1|S:1|C:1,no,submitted_for_review,Batch 1 CED 1.2
+U1.3.1,连续的定义与三类不连续,U1,3,3,F:1|S:1|C:1,no,submitted_for_review,Batch 1 CED 1.3
+U1.3.2,中间值定理 (IVT),U1,3,3,F:1|S:1|C:1,no,submitted_for_review,Batch 1 CED 1.3
+U2.1.1,导数的定义（极限形式）,U2,3,3,F:1|S:1|C:1,no,submitted_for_review,Batch 2 CED 2.1
+U2.1.2,导数的几何意义（切线斜率）,U2,3,3,F:1|S:1|C:1,no,submitted_for_review,Batch 2 CED 2.1
+U2.2.1,幂函数求导法则,U2,3,3,F:1|S:1|C:1,no,submitted_for_review,Batch 2 CED 2.2
+U2.2.2,基本初等函数导数（三角/指数/对数）,U2,3,3,F:1|S:1|C:1,no,submitted_for_review,Batch 2 CED 2.2
+U2.3.1,乘法法则与除法法则,U2,3,3,F:1|S:1|C:1,no,submitted_for_review,Batch 2 CED 2.3
+U2.3.2,高阶导数,U2,3,3,F:1|S:1|C:1,no,submitted_for_review,Batch 2 CED 2.3
+U2.4.1,可导性与连续性的关系,U2,3,3,F:1|S:1|C:1,no,submitted_for_review,Batch 2 CED 2.4
+U2.4.2,从图形/表格读导数信息,U2,3,3,F:1|S:1|C:1,no,submitted_for_review,Batch 2 CED 2.4
+U3.1.1,链式法则,U3,3,3,F:1|S:1|C:1,no,submitted_for_review,Batch 3 CED 3.1
+U3.1.2,三角函数链式法则,U3,3,3,F:1|S:1|C:1,no,submitted_for_review,Batch 3 CED 3.1
+U3.2.1,隐函数求导,U3,3,3,F:1|S:1|C:1,no,submitted_for_review,Batch 3 CED 3.2
+U3.2.2,隐函数二阶导数,U3,3,3,F:1|S:1|C:1,no,submitted_for_review,Batch 3 CED 3.2
+U3.3.1,反函数导数定理,U3,3,3,F:1|S:1|C:1,no,submitted_for_review,Batch 3 CED 3.3
+U3.3.2,反三角函数导数,U3,3,3,F:1|S:1|C:1,no,submitted_for_review,Batch 3 CED 3.3
+U3.4.1,对数微分法,U3,3,3,F:1|S:1|C:1,no,submitted_for_review,Batch 3 CED 3.4
+U3.4.2,参数方程的导数 (BC),U3,3,3,F:1|S:1|C:1,no,submitted_for_review,Batch 3 CED 3.4
+U4.1.1,变化率的意义（瞬时/平均）,U4,3,3,F:1|S:1|C:1,no,submitted_for_review,Batch 4 CED 4.1
+U4.1.2,直线运动（位置/速度/加速度）,U4,3,3,F:1|S:1|C:1,yes,submitted_for_review,Batch 4 CED 4.1
+U4.2.1,相关变化率基础,U4,3,3,F:1|S:1|C:1,no,submitted_for_review,Batch 4 CED 4.2
+U4.2.2,相关变化率应用,U4,3,3,F:1|S:1|C:1,yes,submitted_for_review,Batch 4 CED 4.2
+U4.3.1,局部线性化与微分,U4,3,3,F:1|S:1|C:1,no,submitted_for_review,Batch 4 CED 4.3
+U4.3.2,洛必达法则,U4,3,3,F:1|S:1|C:1,no,submitted_for_review,Batch 4 CED 4.3

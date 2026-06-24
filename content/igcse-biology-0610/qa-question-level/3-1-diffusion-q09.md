@@ -1,0 +1,6 @@
+# Question: Question Q-3.1-09
+**Difficulty**: Challenge
+**Question**: A student places a cube of agar jelly containing universal indicator (pink at neutral pH) into hydrochloric acid. After 10 minutes, the outer layer of the cube is colourless but the centre remains pink. Use your knowledge of diffusion to explain these observations and predict what would happen if the cube were cut into smaller pieces.
+**Answer**: The acid diffuses into the agar from the outside. The outer layer changes colour as the acid neutralises the indicator (pink → colourless). The centre remains pink because the acid has NOT yet diffused all the way in — diffusion over a longer distance takes more time. If the cube were cut into smaller pieces, the diffusion distance would be shorter and the surface area to volume ratio would be larger, so all pieces would turn colourless much faster. This demonstrates why living organisms need large surface area to volume ratios for efficient exchange by diffusion.
+**Explanation**: Diffusion distance + SA:V ratio. A common error is saying the centre "doesn't let acid in" — it does, just hasn't reached yet.
+**Tags**: diffusion, agar, surface-area-to-volume, experiment, prediction

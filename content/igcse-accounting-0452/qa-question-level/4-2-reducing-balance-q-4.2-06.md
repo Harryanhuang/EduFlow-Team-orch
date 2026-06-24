@@ -1,0 +1,6 @@
+### Question Q-4.2-06
+**Difficulty**: Standard
+**Question**: Equipment costs $18,000 on 1 April 20X3. It is depreciated at 20% per annum using the reducing balance method. The financial year ends 31 December. Calculate the depreciation charge for the year ended 31 December 20X3 and for the year ended 31 December 20X4.
+**Answer**: The equipment was owned for 9 months in 20X3 (April to December). Full year 20X3 depreciation = $18,000 × 20% = $3,600. Time-apportioned for 9 months: $3,600 × 9/12 = $2,700. Carrying amount at 31 December 20X3 = $18,000 - $2,700 = $15,300. For the year ended 31 December 20X4, the full year depreciation is calculated on the carrying amount at the start of the year. Carrying amount at 1 January 20X4 = $15,300. Full year 20X4 depreciation = $15,300 × 20% = $3,060. Carrying amount at 31 December 20X4 = $15,300 - $3,060 = $12,240.
+**Explanation**: A common error is calculating the first year at the full rate and not time-apportioning. The reducing balance method still requires time apportionment for partial years, just like straight-line. The carrying amount at the end of the first partial year becomes the base for the NEXT full year's depreciation — do not recalculate from cost.
+**Tags**: reducing-balance, time-apportionment, partial-year

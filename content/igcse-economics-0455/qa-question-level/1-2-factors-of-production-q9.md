@@ -1,0 +1,6 @@
+### Question Q-1.2-09
+**Difficulty**: Challenge
+**Question**: To what extent can technological advancement replace the need for enterprise as a factor of production? Justify your answer.
+**Answer**: Technology can automate routine decision-making (AI-driven supply chains, automated quality control) and reduce the need for human judgement in some production processes. However, enterprise involves more than operational management — it includes identifying market opportunities, taking risks on new ventures, and innovating new products. Technology itself is created and deployed through entrepreneurial decisions. The initial vision to use technology, the risk of investing in unproven systems, and the strategic direction of a business all require enterprise. While technology can supplement enterprise in routine functions, it cannot replace the creative, risk-bearing, and strategic roles of the entrepreneur.
+**Explanation**: Technology automates tasks but enterprise provides vision, risk-taking, and strategic direction. A common error is assuming that because technology handles many decisions, enterprise is no longer needed.
+**Tags**: technology, enterprise, automation, evaluation, innovation

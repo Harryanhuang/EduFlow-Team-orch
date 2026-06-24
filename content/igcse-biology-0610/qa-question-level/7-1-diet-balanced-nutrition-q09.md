@@ -1,0 +1,6 @@
+# Question: Question Q-7.1-09
+**Difficulty**: Challenge
+**Question**: Compare the energy requirements and dietary needs of a sedentary office worker and a professional cyclist during the Tour de France, explaining the biological reasons for the differences.
+**Answer**: Cyclist needs: much higher total energy intake (8,000-10,000 kcal/day vs ~2,500 for office worker) because cycling 200 km/day burns enormous energy. Carbohydrates: very high — to maintain glycogen stores for prolonged aerobic respiration in muscles. Protein: higher — for muscle repair after daily micro-damage from intense exercise. Water: vastly higher — to replace water lost through sweating (can be >10 L/day) and prevent dehydration which impairs performance. Electrolytes (Na⁺, K⁺): higher — lost in sweat and needed for nerve impulses and muscle contraction. Office worker: lower energy needs, balanced diet sufficient. The difference reflects metabolic rate, muscle activity, and thermoregulatory demands.
+**Explanation**: Energy/CHO/protein/water/electrolytes all dramatically higher for elite athlete. A common error is only mentioning "more food" without specifying nutrients.
+**Tags**: energy-requirements, athlete, comparison, nutrition

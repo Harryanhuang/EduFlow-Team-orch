@@ -1,0 +1,6 @@
+### Question Q-6.4-07
+**Difficulty**: Challenge
+**Question**: Evaluate whether globalisation has reduced or increased global inequality.
+**Answer**: Between countries: globalisation has reduced inequality, as developing countries (particularly China, India, and Vietnam) have grown faster than developed countries by integrating into the global economy, narrowing the income gap. Within countries: globalisation may have increased inequality, as skilled workers and capital owners benefit disproportionately from expanded trade and investment, while unskilled workers in developed countries face job losses from import competition and in developing countries may face low wages and poor conditions. The overall effect is mixed: global inequality measured across all individuals has likely declined due to rapid growth in large developing countries, but inequality within many individual nations has risen. The extent of inequality also depends on government policies such as education, taxation, and social safety nets that can redistribute the gains from globalisation.
+**Explanation**: Between-country inequality has fallen but within-country inequality may have risen. A common error is taking a one-sided view without distinguishing between different measures of inequality.
+**Tags**: globalisation, inequality, evaluation

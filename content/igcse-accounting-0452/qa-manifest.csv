@@ -1,0 +1,316 @@
+subject_slug,topic_id,topic_name,qa_file,question_count,difficulty_mix,batch_id,depends_on_batches,status,review_state,owner,notes
+igcse-accounting-0452,1.1,| 7.5 | Comprehensive scenario,qa-question-level/1-1-purpose-of-accounting-q-1.1-01.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-1.1-01
+igcse-accounting-0452,1.1,| 7.5 | Comprehensive scenario,qa-question-level/1-1-purpose-of-accounting-q-1.1-02.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-1.1-02
+igcse-accounting-0452,1.1,| 7.5 | Comprehensive scenario,qa-question-level/1-1-purpose-of-accounting-q-1.1-03.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-1.1-03
+igcse-accounting-0452,1.1,| 7.5 | Comprehensive scenario,qa-question-level/1-1-purpose-of-accounting-q-1.1-04.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-1.1-04
+igcse-accounting-0452,1.1,| 7.5 | Comprehensive scenario,qa-question-level/1-1-purpose-of-accounting-q-1.1-05.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-1.1-05
+igcse-accounting-0452,1.1,| 7.5 | Comprehensive scenario,qa-question-level/1-1-purpose-of-accounting-q-1.1-06.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-1.1-06
+igcse-accounting-0452,1.1,| 7.5 | Comprehensive scenario,qa-question-level/1-1-purpose-of-accounting-q-1.1-07.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-1.1-07
+igcse-accounting-0452,1.1,| 7.5 | Comprehensive scenario,qa-question-level/1-1-purpose-of-accounting-q-1.1-08.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-1.1-08
+igcse-accounting-0452,1.1,| 7.5 | Comprehensive scenario,qa-question-level/1-1-purpose-of-accounting-q-1.1-09.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-1.1-09
+igcse-accounting-0452,1.2,Users of accounting information,qa-question-level/1-2-users-of-accounting-q-1.2-01.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-1.2-01
+igcse-accounting-0452,1.2,Users of accounting information,qa-question-level/1-2-users-of-accounting-q-1.2-02.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-1.2-02
+igcse-accounting-0452,1.2,Users of accounting information,qa-question-level/1-2-users-of-accounting-q-1.2-03.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-1.2-03
+igcse-accounting-0452,1.2,Users of accounting information,qa-question-level/1-2-users-of-accounting-q-1.2-04.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-1.2-04
+igcse-accounting-0452,1.2,Users of accounting information,qa-question-level/1-2-users-of-accounting-q-1.2-05.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-1.2-05
+igcse-accounting-0452,1.2,Users of accounting information,qa-question-level/1-2-users-of-accounting-q-1.2-06.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-1.2-06
+igcse-accounting-0452,1.2,Users of accounting information,qa-question-level/1-2-users-of-accounting-q-1.2-07.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-1.2-07
+igcse-accounting-0452,1.2,Users of accounting information,qa-question-level/1-2-users-of-accounting-q-1.2-08.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-1.2-08
+igcse-accounting-0452,1.2,Users of accounting information,qa-question-level/1-2-users-of-accounting-q-1.2-09.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-1.2-09
+igcse-accounting-0452,1.3,| 4.2 | Depreciation: reducing balance method,qa-question-level/1-3-assets-liabilities-capital-q-1.3-01.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-1.3-01
+igcse-accounting-0452,1.3,| 4.2 | Depreciation: reducing balance method,qa-question-level/1-3-assets-liabilities-capital-q-1.3-02.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-1.3-02
+igcse-accounting-0452,1.3,| 4.2 | Depreciation: reducing balance method,qa-question-level/1-3-assets-liabilities-capital-q-1.3-03.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-1.3-03
+igcse-accounting-0452,1.3,| 4.2 | Depreciation: reducing balance method,qa-question-level/1-3-assets-liabilities-capital-q-1.3-04.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-1.3-04
+igcse-accounting-0452,1.3,| 4.2 | Depreciation: reducing balance method,qa-question-level/1-3-assets-liabilities-capital-q-1.3-05.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-1.3-05
+igcse-accounting-0452,1.3,| 4.2 | Depreciation: reducing balance method,qa-question-level/1-3-assets-liabilities-capital-q-1.3-06.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-1.3-06
+igcse-accounting-0452,1.3,| 4.2 | Depreciation: reducing balance method,qa-question-level/1-3-assets-liabilities-capital-q-1.3-07.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-1.3-07
+igcse-accounting-0452,1.3,| 4.2 | Depreciation: reducing balance method,qa-question-level/1-3-assets-liabilities-capital-q-1.3-08.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-1.3-08
+igcse-accounting-0452,1.3,| 4.2 | Depreciation: reducing balance method,qa-question-level/1-3-assets-liabilities-capital-q-1.3-09.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-1.3-09
+igcse-accounting-0452,1.4,The accounting equation,qa-question-level/1-4-accounting-equation-q-1.4-01.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-1.4-01
+igcse-accounting-0452,1.4,The accounting equation,qa-question-level/1-4-accounting-equation-q-1.4-02.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-1.4-02
+igcse-accounting-0452,1.4,The accounting equation,qa-question-level/1-4-accounting-equation-q-1.4-03.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-1.4-03
+igcse-accounting-0452,1.4,The accounting equation,qa-question-level/1-4-accounting-equation-q-1.4-04.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-1.4-04
+igcse-accounting-0452,1.4,The accounting equation,qa-question-level/1-4-accounting-equation-q-1.4-05.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-1.4-05
+igcse-accounting-0452,1.4,The accounting equation,qa-question-level/1-4-accounting-equation-q-1.4-06.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-1.4-06
+igcse-accounting-0452,1.4,The accounting equation,qa-question-level/1-4-accounting-equation-q-1.4-07.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-1.4-07
+igcse-accounting-0452,1.4,The accounting equation,qa-question-level/1-4-accounting-equation-q-1.4-08.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-1.4-08
+igcse-accounting-0452,1.4,The accounting equation,qa-question-level/1-4-accounting-equation-q-1.4-09.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-1.4-09
+igcse-accounting-0452,1.5,| 7.3 | Accounting policy changes,qa-question-level/1-5-capital-and-revenue-q-1.5-01.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-1.5-01
+igcse-accounting-0452,1.5,| 7.3 | Accounting policy changes,qa-question-level/1-5-capital-and-revenue-q-1.5-02.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-1.5-02
+igcse-accounting-0452,1.5,| 7.3 | Accounting policy changes,qa-question-level/1-5-capital-and-revenue-q-1.5-03.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-1.5-03
+igcse-accounting-0452,1.5,| 7.3 | Accounting policy changes,qa-question-level/1-5-capital-and-revenue-q-1.5-04.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-1.5-04
+igcse-accounting-0452,1.5,| 7.3 | Accounting policy changes,qa-question-level/1-5-capital-and-revenue-q-1.5-05.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-1.5-05
+igcse-accounting-0452,1.5,| 7.3 | Accounting policy changes,qa-question-level/1-5-capital-and-revenue-q-1.5-06.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-1.5-06
+igcse-accounting-0452,1.5,| 7.3 | Accounting policy changes,qa-question-level/1-5-capital-and-revenue-q-1.5-07.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-1.5-07
+igcse-accounting-0452,1.5,| 7.3 | Accounting policy changes,qa-question-level/1-5-capital-and-revenue-q-1.5-08.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-1.5-08
+igcse-accounting-0452,1.5,| 7.3 | Accounting policy changes,qa-question-level/1-5-capital-and-revenue-q-1.5-09.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-1.5-09
+igcse-accounting-0452,2.1,Source documents,qa-question-level/2-1-source-documents-q-2.1-01.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-2.1-01
+igcse-accounting-0452,2.1,Source documents,qa-question-level/2-1-source-documents-q-2.1-02.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-2.1-02
+igcse-accounting-0452,2.1,Source documents,qa-question-level/2-1-source-documents-q-2.1-03.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-2.1-03
+igcse-accounting-0452,2.1,Source documents,qa-question-level/2-1-source-documents-q-2.1-04.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-2.1-04
+igcse-accounting-0452,2.1,Source documents,qa-question-level/2-1-source-documents-q-2.1-05.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-2.1-05
+igcse-accounting-0452,2.1,Source documents,qa-question-level/2-1-source-documents-q-2.1-06.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-2.1-06
+igcse-accounting-0452,2.1,Source documents,qa-question-level/2-1-source-documents-q-2.1-07.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-2.1-07
+igcse-accounting-0452,2.1,Source documents,qa-question-level/2-1-source-documents-q-2.1-08.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-2.1-08
+igcse-accounting-0452,2.1,Source documents,qa-question-level/2-1-source-documents-q-2.1-09.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-2.1-09
+igcse-accounting-0452,2.2,| 5.2 | Income statement with adjustments,qa-question-level/2-2-double-entry-rules-q-2.2-01.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-2.2-01
+igcse-accounting-0452,2.2,| 5.2 | Income statement with adjustments,qa-question-level/2-2-double-entry-rules-q-2.2-02.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-2.2-02
+igcse-accounting-0452,2.2,| 5.2 | Income statement with adjustments,qa-question-level/2-2-double-entry-rules-q-2.2-03.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-2.2-03
+igcse-accounting-0452,2.2,| 5.2 | Income statement with adjustments,qa-question-level/2-2-double-entry-rules-q-2.2-04.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-2.2-04
+igcse-accounting-0452,2.2,| 5.2 | Income statement with adjustments,qa-question-level/2-2-double-entry-rules-q-2.2-05.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-2.2-05
+igcse-accounting-0452,2.2,| 5.2 | Income statement with adjustments,qa-question-level/2-2-double-entry-rules-q-2.2-06.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-2.2-06
+igcse-accounting-0452,2.2,| 5.2 | Income statement with adjustments,qa-question-level/2-2-double-entry-rules-q-2.2-07.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-2.2-07
+igcse-accounting-0452,2.2,| 5.2 | Income statement with adjustments,qa-question-level/2-2-double-entry-rules-q-2.2-08.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-2.2-08
+igcse-accounting-0452,2.2,| 5.2 | Income statement with adjustments,qa-question-level/2-2-double-entry-rules-q-2.2-09.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-2.2-09
+igcse-accounting-0452,2.3,Books of original entry,qa-question-level/2-3-books-of-original-entry-q-2.3-01.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-2.3-01
+igcse-accounting-0452,2.3,Books of original entry,qa-question-level/2-3-books-of-original-entry-q-2.3-02.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-2.3-02
+igcse-accounting-0452,2.3,Books of original entry,qa-question-level/2-3-books-of-original-entry-q-2.3-03.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-2.3-03
+igcse-accounting-0452,2.3,Books of original entry,qa-question-level/2-3-books-of-original-entry-q-2.3-04.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-2.3-04
+igcse-accounting-0452,2.3,Books of original entry,qa-question-level/2-3-books-of-original-entry-q-2.3-05.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-2.3-05
+igcse-accounting-0452,2.3,Books of original entry,qa-question-level/2-3-books-of-original-entry-q-2.3-06.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-2.3-06
+igcse-accounting-0452,2.3,Books of original entry,qa-question-level/2-3-books-of-original-entry-q-2.3-07.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-2.3-07
+igcse-accounting-0452,2.3,Books of original entry,qa-question-level/2-3-books-of-original-entry-q-2.3-08.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-2.3-08
+igcse-accounting-0452,2.3,Books of original entry,qa-question-level/2-3-books-of-original-entry-q-2.3-09.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-2.3-09
+igcse-accounting-0452,2.4,"| 4.5 | Accruals, prepayments and inventory valuation",qa-question-level/2-4-the-ledger-q-2.4-01.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-2.4-01
+igcse-accounting-0452,2.4,"| 4.5 | Accruals, prepayments and inventory valuation",qa-question-level/2-4-the-ledger-q-2.4-02.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-2.4-02
+igcse-accounting-0452,2.4,"| 4.5 | Accruals, prepayments and inventory valuation",qa-question-level/2-4-the-ledger-q-2.4-03.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-2.4-03
+igcse-accounting-0452,2.4,"| 4.5 | Accruals, prepayments and inventory valuation",qa-question-level/2-4-the-ledger-q-2.4-04.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-2.4-04
+igcse-accounting-0452,2.4,"| 4.5 | Accruals, prepayments and inventory valuation",qa-question-level/2-4-the-ledger-q-2.4-05.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-2.4-05
+igcse-accounting-0452,2.4,"| 4.5 | Accruals, prepayments and inventory valuation",qa-question-level/2-4-the-ledger-q-2.4-06.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-2.4-06
+igcse-accounting-0452,2.4,"| 4.5 | Accruals, prepayments and inventory valuation",qa-question-level/2-4-the-ledger-q-2.4-07.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-2.4-07
+igcse-accounting-0452,2.4,"| 4.5 | Accruals, prepayments and inventory valuation",qa-question-level/2-4-the-ledger-q-2.4-08.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-2.4-08
+igcse-accounting-0452,2.4,"| 4.5 | Accruals, prepayments and inventory valuation",qa-question-level/2-4-the-ledger-q-2.4-09.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-2.4-09
+igcse-accounting-0452,2.5,,qa-question-level/2-5-the-cash-book-q-2.5-01.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-2.5-01
+igcse-accounting-0452,2.5,,qa-question-level/2-5-the-cash-book-q-2.5-02.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-2.5-02
+igcse-accounting-0452,2.5,,qa-question-level/2-5-the-cash-book-q-2.5-03.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-2.5-03
+igcse-accounting-0452,2.5,,qa-question-level/2-5-the-cash-book-q-2.5-04.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-2.5-04
+igcse-accounting-0452,2.5,,qa-question-level/2-5-the-cash-book-q-2.5-05.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-2.5-05
+igcse-accounting-0452,2.5,,qa-question-level/2-5-the-cash-book-q-2.5-06.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-2.5-06
+igcse-accounting-0452,2.5,,qa-question-level/2-5-the-cash-book-q-2.5-07.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-2.5-07
+igcse-accounting-0452,2.5,,qa-question-level/2-5-the-cash-book-q-2.5-08.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-2.5-08
+igcse-accounting-0452,2.5,,qa-question-level/2-5-the-cash-book-q-2.5-09.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-2.5-09
+igcse-accounting-0452,2.6,,qa-question-level/2-6-petty-cash-book-q-2.6-01.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-2.6-01
+igcse-accounting-0452,2.6,,qa-question-level/2-6-petty-cash-book-q-2.6-02.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-2.6-02
+igcse-accounting-0452,2.6,,qa-question-level/2-6-petty-cash-book-q-2.6-03.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-2.6-03
+igcse-accounting-0452,2.6,,qa-question-level/2-6-petty-cash-book-q-2.6-04.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-2.6-04
+igcse-accounting-0452,2.6,,qa-question-level/2-6-petty-cash-book-q-2.6-05.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-2.6-05
+igcse-accounting-0452,2.6,,qa-question-level/2-6-petty-cash-book-q-2.6-06.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-2.6-06
+igcse-accounting-0452,2.6,,qa-question-level/2-6-petty-cash-book-q-2.6-07.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-2.6-07
+igcse-accounting-0452,2.6,,qa-question-level/2-6-petty-cash-book-q-2.6-08.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-2.6-08
+igcse-accounting-0452,2.6,,qa-question-level/2-6-petty-cash-book-q-2.6-09.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-2.6-09
+igcse-accounting-0452,3.1,| 3.3 | Correction of errors,qa-question-level/3-1-trial-balance-q-3.1-01.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-3.1-01
+igcse-accounting-0452,3.1,| 3.3 | Correction of errors,qa-question-level/3-1-trial-balance-q-3.1-02.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-3.1-02
+igcse-accounting-0452,3.1,| 3.3 | Correction of errors,qa-question-level/3-1-trial-balance-q-3.1-03.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-3.1-03
+igcse-accounting-0452,3.1,| 3.3 | Correction of errors,qa-question-level/3-1-trial-balance-q-3.1-04.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-3.1-04
+igcse-accounting-0452,3.1,| 3.3 | Correction of errors,qa-question-level/3-1-trial-balance-q-3.1-05.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-3.1-05
+igcse-accounting-0452,3.1,| 3.3 | Correction of errors,qa-question-level/3-1-trial-balance-q-3.1-06.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-3.1-06
+igcse-accounting-0452,3.1,| 3.3 | Correction of errors,qa-question-level/3-1-trial-balance-q-3.1-07.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-3.1-07
+igcse-accounting-0452,3.1,| 3.3 | Correction of errors,qa-question-level/3-1-trial-balance-q-3.1-08.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-3.1-08
+igcse-accounting-0452,3.1,| 3.3 | Correction of errors,qa-question-level/3-1-trial-balance-q-3.1-09.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-3.1-09
+igcse-accounting-0452,3.2,| 3.4 | Bank reconciliation,qa-question-level/3-2-types-of-errors-q-3.2-01.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-3.2-01
+igcse-accounting-0452,3.2,| 3.4 | Bank reconciliation,qa-question-level/3-2-types-of-errors-q-3.2-02.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-3.2-02
+igcse-accounting-0452,3.2,| 3.4 | Bank reconciliation,qa-question-level/3-2-types-of-errors-q-3.2-03.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-3.2-03
+igcse-accounting-0452,3.2,| 3.4 | Bank reconciliation,qa-question-level/3-2-types-of-errors-q-3.2-04.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-3.2-04
+igcse-accounting-0452,3.2,| 3.4 | Bank reconciliation,qa-question-level/3-2-types-of-errors-q-3.2-05.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-3.2-05
+igcse-accounting-0452,3.2,| 3.4 | Bank reconciliation,qa-question-level/3-2-types-of-errors-q-3.2-06.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-3.2-06
+igcse-accounting-0452,3.2,| 3.4 | Bank reconciliation,qa-question-level/3-2-types-of-errors-q-3.2-07.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-3.2-07
+igcse-accounting-0452,3.2,| 3.4 | Bank reconciliation,qa-question-level/3-2-types-of-errors-q-3.2-08.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-3.2-08
+igcse-accounting-0452,3.2,| 3.4 | Bank reconciliation,qa-question-level/3-2-types-of-errors-q-3.2-09.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-3.2-09
+igcse-accounting-0452,3.3,,qa-question-level/3-3-correction-of-errors-q-3.3-01.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-3.3-01
+igcse-accounting-0452,3.3,,qa-question-level/3-3-correction-of-errors-q-3.3-02.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-3.3-02
+igcse-accounting-0452,3.3,,qa-question-level/3-3-correction-of-errors-q-3.3-03.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-3.3-03
+igcse-accounting-0452,3.3,,qa-question-level/3-3-correction-of-errors-q-3.3-04.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-3.3-04
+igcse-accounting-0452,3.3,,qa-question-level/3-3-correction-of-errors-q-3.3-05.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-3.3-05
+igcse-accounting-0452,3.3,,qa-question-level/3-3-correction-of-errors-q-3.3-06.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-3.3-06
+igcse-accounting-0452,3.3,,qa-question-level/3-3-correction-of-errors-q-3.3-07.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-3.3-07
+igcse-accounting-0452,3.3,,qa-question-level/3-3-correction-of-errors-q-3.3-08.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-3.3-08
+igcse-accounting-0452,3.3,,qa-question-level/3-3-correction-of-errors-q-3.3-09.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-3.3-09
+igcse-accounting-0452,3.4,,qa-question-level/3-4-bank-reconciliation-q-3.4-01.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-3.4-01
+igcse-accounting-0452,3.4,,qa-question-level/3-4-bank-reconciliation-q-3.4-02.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-3.4-02
+igcse-accounting-0452,3.4,,qa-question-level/3-4-bank-reconciliation-q-3.4-03.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-3.4-03
+igcse-accounting-0452,3.4,,qa-question-level/3-4-bank-reconciliation-q-3.4-04.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-3.4-04
+igcse-accounting-0452,3.4,,qa-question-level/3-4-bank-reconciliation-q-3.4-05.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-3.4-05
+igcse-accounting-0452,3.4,,qa-question-level/3-4-bank-reconciliation-q-3.4-06.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-3.4-06
+igcse-accounting-0452,3.4,,qa-question-level/3-4-bank-reconciliation-q-3.4-07.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-3.4-07
+igcse-accounting-0452,3.4,,qa-question-level/3-4-bank-reconciliation-q-3.4-08.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-3.4-08
+igcse-accounting-0452,3.4,,qa-question-level/3-4-bank-reconciliation-q-3.4-09.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-3.4-09
+igcse-accounting-0452,4.1,| 4.3 | Disposal of non-current assets,qa-question-level/4-1-depreciation-straight-line-q-4.1-01.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-4.1-01
+igcse-accounting-0452,4.1,| 4.3 | Disposal of non-current assets,qa-question-level/4-1-depreciation-straight-line-q-4.1-02.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-4.1-02
+igcse-accounting-0452,4.1,| 4.3 | Disposal of non-current assets,qa-question-level/4-1-depreciation-straight-line-q-4.1-03.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-4.1-03
+igcse-accounting-0452,4.1,| 4.3 | Disposal of non-current assets,qa-question-level/4-1-depreciation-straight-line-q-4.1-04.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-4.1-04
+igcse-accounting-0452,4.1,| 4.3 | Disposal of non-current assets,qa-question-level/4-1-depreciation-straight-line-q-4.1-05.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-4.1-05
+igcse-accounting-0452,4.1,| 4.3 | Disposal of non-current assets,qa-question-level/4-1-depreciation-straight-line-q-4.1-06.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-4.1-06
+igcse-accounting-0452,4.1,| 4.3 | Disposal of non-current assets,qa-question-level/4-1-depreciation-straight-line-q-4.1-07.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-4.1-07
+igcse-accounting-0452,4.1,| 4.3 | Disposal of non-current assets,qa-question-level/4-1-depreciation-straight-line-q-4.1-08.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-4.1-08
+igcse-accounting-0452,4.1,| 4.3 | Disposal of non-current assets,qa-question-level/4-1-depreciation-straight-line-q-4.1-09.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-4.1-09
+igcse-accounting-0452,4.2,,qa-question-level/4-2-reducing-balance-q-4.2-01.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-4.2-01
+igcse-accounting-0452,4.2,,qa-question-level/4-2-reducing-balance-q-4.2-02.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-4.2-02
+igcse-accounting-0452,4.2,,qa-question-level/4-2-reducing-balance-q-4.2-03.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-4.2-03
+igcse-accounting-0452,4.2,,qa-question-level/4-2-reducing-balance-q-4.2-04.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-4.2-04
+igcse-accounting-0452,4.2,,qa-question-level/4-2-reducing-balance-q-4.2-05.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-4.2-05
+igcse-accounting-0452,4.2,,qa-question-level/4-2-reducing-balance-q-4.2-06.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-4.2-06
+igcse-accounting-0452,4.2,,qa-question-level/4-2-reducing-balance-q-4.2-07.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-4.2-07
+igcse-accounting-0452,4.2,,qa-question-level/4-2-reducing-balance-q-4.2-08.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-4.2-08
+igcse-accounting-0452,4.2,,qa-question-level/4-2-reducing-balance-q-4.2-09.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-4.2-09
+igcse-accounting-0452,4.3,,qa-question-level/4-3-disposal-q-4.3-01.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-4.3-01
+igcse-accounting-0452,4.3,,qa-question-level/4-3-disposal-q-4.3-02.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-4.3-02
+igcse-accounting-0452,4.3,,qa-question-level/4-3-disposal-q-4.3-03.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-4.3-03
+igcse-accounting-0452,4.3,,qa-question-level/4-3-disposal-q-4.3-04.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-4.3-04
+igcse-accounting-0452,4.3,,qa-question-level/4-3-disposal-q-4.3-05.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-4.3-05
+igcse-accounting-0452,4.3,,qa-question-level/4-3-disposal-q-4.3-06.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-4.3-06
+igcse-accounting-0452,4.3,,qa-question-level/4-3-disposal-q-4.3-07.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-4.3-07
+igcse-accounting-0452,4.3,,qa-question-level/4-3-disposal-q-4.3-08.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-4.3-08
+igcse-accounting-0452,4.3,,qa-question-level/4-3-disposal-q-4.3-09.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-4.3-09
+igcse-accounting-0452,4.4,Irrecoverable debts and allowances for receivables,qa-question-level/4-4-irrecoverable-debts-q-4.4-01.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-4.4-01
+igcse-accounting-0452,4.4,Irrecoverable debts and allowances for receivables,qa-question-level/4-4-irrecoverable-debts-q-4.4-02.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-4.4-02
+igcse-accounting-0452,4.4,Irrecoverable debts and allowances for receivables,qa-question-level/4-4-irrecoverable-debts-q-4.4-03.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-4.4-03
+igcse-accounting-0452,4.4,Irrecoverable debts and allowances for receivables,qa-question-level/4-4-irrecoverable-debts-q-4.4-04.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-4.4-04
+igcse-accounting-0452,4.4,Irrecoverable debts and allowances for receivables,qa-question-level/4-4-irrecoverable-debts-q-4.4-05.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-4.4-05
+igcse-accounting-0452,4.4,Irrecoverable debts and allowances for receivables,qa-question-level/4-4-irrecoverable-debts-q-4.4-06.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-4.4-06
+igcse-accounting-0452,4.4,Irrecoverable debts and allowances for receivables,qa-question-level/4-4-irrecoverable-debts-q-4.4-07.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-4.4-07
+igcse-accounting-0452,4.4,Irrecoverable debts and allowances for receivables,qa-question-level/4-4-irrecoverable-debts-q-4.4-08.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-4.4-08
+igcse-accounting-0452,4.4,Irrecoverable debts and allowances for receivables,qa-question-level/4-4-irrecoverable-debts-q-4.4-09.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-4.4-09
+igcse-accounting-0452,4.5,,qa-question-level/4-5-accruals-prepayments-q-4.5-01.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-4.5-01
+igcse-accounting-0452,4.5,,qa-question-level/4-5-accruals-prepayments-q-4.5-02.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-4.5-02
+igcse-accounting-0452,4.5,,qa-question-level/4-5-accruals-prepayments-q-4.5-03.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-4.5-03
+igcse-accounting-0452,4.5,,qa-question-level/4-5-accruals-prepayments-q-4.5-04.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-4.5-04
+igcse-accounting-0452,4.5,,qa-question-level/4-5-accruals-prepayments-q-4.5-05.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-4.5-05
+igcse-accounting-0452,4.5,,qa-question-level/4-5-accruals-prepayments-q-4.5-06.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-4.5-06
+igcse-accounting-0452,4.5,,qa-question-level/4-5-accruals-prepayments-q-4.5-07.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-4.5-07
+igcse-accounting-0452,4.5,,qa-question-level/4-5-accruals-prepayments-q-4.5-08.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-4.5-08
+igcse-accounting-0452,4.5,,qa-question-level/4-5-accruals-prepayments-q-4.5-09.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-4.5-09
+igcse-accounting-0452,5.1,Income statement: trading section,qa-question-level/5-1-income-statement-q-5.1-01.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-5.1-01
+igcse-accounting-0452,5.1,Income statement: trading section,qa-question-level/5-1-income-statement-q-5.1-02.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-5.1-02
+igcse-accounting-0452,5.1,Income statement: trading section,qa-question-level/5-1-income-statement-q-5.1-03.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-5.1-03
+igcse-accounting-0452,5.1,Income statement: trading section,qa-question-level/5-1-income-statement-q-5.1-04.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-5.1-04
+igcse-accounting-0452,5.1,Income statement: trading section,qa-question-level/5-1-income-statement-q-5.1-05.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-5.1-05
+igcse-accounting-0452,5.1,Income statement: trading section,qa-question-level/5-1-income-statement-q-5.1-06.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-5.1-06
+igcse-accounting-0452,5.1,Income statement: trading section,qa-question-level/5-1-income-statement-q-5.1-07.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-5.1-07
+igcse-accounting-0452,5.1,Income statement: trading section,qa-question-level/5-1-income-statement-q-5.1-08.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-5.1-08
+igcse-accounting-0452,5.1,Income statement: trading section,qa-question-level/5-1-income-statement-q-5.1-09.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-5.1-09
+igcse-accounting-0452,5.2,| 5.4 | Capital adjustments,qa-question-level/5-2-income-statement-adjustments-q-5.2-01.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-5.2-01
+igcse-accounting-0452,5.2,| 5.4 | Capital adjustments,qa-question-level/5-2-income-statement-adjustments-q-5.2-02.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-5.2-02
+igcse-accounting-0452,5.2,| 5.4 | Capital adjustments,qa-question-level/5-2-income-statement-adjustments-q-5.2-03.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-5.2-03
+igcse-accounting-0452,5.2,| 5.4 | Capital adjustments,qa-question-level/5-2-income-statement-adjustments-q-5.2-04.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-5.2-04
+igcse-accounting-0452,5.2,| 5.4 | Capital adjustments,qa-question-level/5-2-income-statement-adjustments-q-5.2-05.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-5.2-05
+igcse-accounting-0452,5.2,| 5.4 | Capital adjustments,qa-question-level/5-2-income-statement-adjustments-q-5.2-06.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-5.2-06
+igcse-accounting-0452,5.2,| 5.4 | Capital adjustments,qa-question-level/5-2-income-statement-adjustments-q-5.2-07.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-5.2-07
+igcse-accounting-0452,5.2,| 5.4 | Capital adjustments,qa-question-level/5-2-income-statement-adjustments-q-5.2-08.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-5.2-08
+igcse-accounting-0452,5.2,| 5.4 | Capital adjustments,qa-question-level/5-2-income-statement-adjustments-q-5.2-09.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-5.2-09
+igcse-accounting-0452,5.3,| 6.4 | Ratio interpretation and limitations,qa-question-level/5-3-sofp-q-5.3-01.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-5.3-01
+igcse-accounting-0452,5.3,| 6.4 | Ratio interpretation and limitations,qa-question-level/5-3-sofp-q-5.3-02.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-5.3-02
+igcse-accounting-0452,5.3,| 6.4 | Ratio interpretation and limitations,qa-question-level/5-3-sofp-q-5.3-03.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-5.3-03
+igcse-accounting-0452,5.3,| 6.4 | Ratio interpretation and limitations,qa-question-level/5-3-sofp-q-5.3-04.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-5.3-04
+igcse-accounting-0452,5.3,| 6.4 | Ratio interpretation and limitations,qa-question-level/5-3-sofp-q-5.3-05.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-5.3-05
+igcse-accounting-0452,5.3,| 6.4 | Ratio interpretation and limitations,qa-question-level/5-3-sofp-q-5.3-06.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-5.3-06
+igcse-accounting-0452,5.3,| 6.4 | Ratio interpretation and limitations,qa-question-level/5-3-sofp-q-5.3-07.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-5.3-07
+igcse-accounting-0452,5.3,| 6.4 | Ratio interpretation and limitations,qa-question-level/5-3-sofp-q-5.3-08.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-5.3-08
+igcse-accounting-0452,5.3,| 6.4 | Ratio interpretation and limitations,qa-question-level/5-3-sofp-q-5.3-09.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-5.3-09
+igcse-accounting-0452,5.4,| 5.6 | Limited companies financial statements,qa-question-level/5-4-capital-adjustments-q-5.4-01.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-5.4-01
+igcse-accounting-0452,5.4,| 5.6 | Limited companies financial statements,qa-question-level/5-4-capital-adjustments-q-5.4-02.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-5.4-02
+igcse-accounting-0452,5.4,| 5.6 | Limited companies financial statements,qa-question-level/5-4-capital-adjustments-q-5.4-03.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-5.4-03
+igcse-accounting-0452,5.4,| 5.6 | Limited companies financial statements,qa-question-level/5-4-capital-adjustments-q-5.4-04.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-5.4-04
+igcse-accounting-0452,5.4,| 5.6 | Limited companies financial statements,qa-question-level/5-4-capital-adjustments-q-5.4-05.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-5.4-05
+igcse-accounting-0452,5.4,| 5.6 | Limited companies financial statements,qa-question-level/5-4-capital-adjustments-q-5.4-06.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-5.4-06
+igcse-accounting-0452,5.4,| 5.6 | Limited companies financial statements,qa-question-level/5-4-capital-adjustments-q-5.4-07.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-5.4-07
+igcse-accounting-0452,5.4,| 5.6 | Limited companies financial statements,qa-question-level/5-4-capital-adjustments-q-5.4-08.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-5.4-08
+igcse-accounting-0452,5.4,| 5.6 | Limited companies financial statements,qa-question-level/5-4-capital-adjustments-q-5.4-09.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-5.4-09
+igcse-accounting-0452,5.5,,qa-question-level/Q-5.5-01-partnership-agreement.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-5.5-01
+igcse-accounting-0452,5.5,,qa-question-level/Q-5.5-02-appropriation-account.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-5.5-02
+igcse-accounting-0452,5.5,,qa-question-level/Q-5.5-03-interest-on-capital.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-5.5-03
+igcse-accounting-0452,5.5,,qa-question-level/Q-5.5-04-interest-on-drawings.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-5.5-04
+igcse-accounting-0452,5.5,,qa-question-level/Q-5.5-05-partner-salaries.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-5.5-05
+igcse-accounting-0452,5.5,,qa-question-level/Q-5.5-06-current-vs-capital-account.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-5.5-06
+igcse-accounting-0452,5.5,,qa-question-level/Q-5.5-07-admission-retirement.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-5.5-07
+igcse-accounting-0452,5.5,,qa-question-level/Q-5.5-08-partnership-vs-sole-trader.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-5.5-08
+igcse-accounting-0452,5.5,,qa-question-level/Q-5.5-09-comprehensive-appropriation.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-5.5-09
+igcse-accounting-0452,5.6,,qa-question-level/Q-5.6-01-limited-company-vs-sole-trader.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-5.6-01
+igcse-accounting-0452,5.6,,qa-question-level/Q-5.6-02-ordinary-vs-preference-shares.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-5.6-02
+igcse-accounting-0452,5.6,,qa-question-level/Q-5.6-03-debentures-and-loan-interest.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-5.6-03
+igcse-accounting-0452,5.6,,qa-question-level/Q-5.6-04-directors-remuneration.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-5.6-04
+igcse-accounting-0452,5.6,,qa-question-level/Q-5.6-05-corporation-income-tax.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-5.6-05
+igcse-accounting-0452,5.6,,qa-question-level/Q-5.6-06-company-appropriation-account.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-5.6-06
+igcse-accounting-0452,5.6,,qa-question-level/Q-5.6-07-income-statement-and-appropriation.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-5.6-07
+igcse-accounting-0452,5.6,,qa-question-level/Q-5.6-08-published-financial-statements.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-5.6-08
+igcse-accounting-0452,5.6,,qa-question-level/Q-5.6-09-statement-of-changes-in-equity.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-5.6-09
+igcse-accounting-0452,6.1,Liquidity ratios,qa-question-level/Q-6.1-01-current-ratio.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-6.1-01
+igcse-accounting-0452,6.1,Liquidity ratios,qa-question-level/Q-6.1-02-acid-test-ratio.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-6.1-02
+igcse-accounting-0452,6.1,Liquidity ratios,qa-question-level/Q-6.1-03-ratio-calculation-and-comment.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-6.1-03
+igcse-accounting-0452,6.1,Liquidity ratios,qa-question-level/Q-6.1-04-working-capital-cycle.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-6.1-04
+igcse-accounting-0452,6.1,Liquidity ratios,qa-question-level/Q-6.1-05-overtrading-symptoms.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-6.1-05
+igcse-accounting-0452,6.1,Liquidity ratios,qa-question-level/Q-6.1-06-liquidity-improvement.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-6.1-06
+igcse-accounting-0452,6.1,Liquidity ratios,qa-question-level/Q-6.1-07-trend-analysis.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-6.1-07
+igcse-accounting-0452,6.1,Liquidity ratios,qa-question-level/Q-6.1-08-industry-comparison.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-6.1-08
+igcse-accounting-0452,6.1,Liquidity ratios,qa-question-level/Q-6.1-09-comprehensive-liquidity.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-6.1-09
+igcse-accounting-0452,6.2,,qa-question-level/Q-6.2-01-gross-profit-margin.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-6.2-01
+igcse-accounting-0452,6.2,,qa-question-level/Q-6.2-02-net-profit-margin.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-6.2-02
+igcse-accounting-0452,6.2,,qa-question-level/Q-6.2-03-ROCE.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-6.2-03
+igcse-accounting-0452,6.2,,qa-question-level/Q-6.2-04-markup-vs-margin.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-6.2-04
+igcse-accounting-0452,6.2,,qa-question-level/Q-6.2-05-ratio-calculation-and-comment.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-6.2-05
+igcse-accounting-0452,6.2,,qa-question-level/Q-6.2-06-profit-margin-decline.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-6.2-06
+igcse-accounting-0452,6.2,,qa-question-level/Q-6.2-07-business-comparison.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-6.2-07
+igcse-accounting-0452,6.2,,qa-question-level/Q-6.2-08-sensitivity-analysis.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-6.2-08
+igcse-accounting-0452,6.2,,qa-question-level/Q-6.2-09-comprehensive-trend.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-6.2-09
+igcse-accounting-0452,6.3,,qa-question-level/Q-6.3-01-inventory-turnover.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-6.3-01
+igcse-accounting-0452,6.3,,qa-question-level/Q-6.3-02-receivables-collection.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-6.3-02
+igcse-accounting-0452,6.3,,qa-question-level/Q-6.3-03-payables-payment-period.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-6.3-03
+igcse-accounting-0452,6.3,,qa-question-level/Q-6.3-04-asset-turnover.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-6.3-04
+igcse-accounting-0452,6.3,,qa-question-level/Q-6.3-05-ratio-calculation-and-comment.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-6.3-05
+igcse-accounting-0452,6.3,,qa-question-level/Q-6.3-06-receivables-management.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-6.3-06
+igcse-accounting-0452,6.3,,qa-question-level/Q-6.3-07-trend-analysis.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-6.3-07
+igcse-accounting-0452,6.3,,qa-question-level/Q-6.3-08-industry-comparison.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-6.3-08
+igcse-accounting-0452,6.3,,qa-question-level/Q-6.3-09-comprehensive-improvement.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-6.3-09
+igcse-accounting-0452,6.4,,qa-question-level/Q-6.4-01-ratio-analysis-purpose.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-6.4-01
+igcse-accounting-0452,6.4,,qa-question-level/Q-6.4-02-ratio-limitations.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-6.4-02
+igcse-accounting-0452,6.4,,qa-question-level/Q-6.4-03-window-dressing.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-6.4-03
+igcse-accounting-0452,6.4,,qa-question-level/Q-6.4-04-cross-industry-comparison.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-6.4-04
+igcse-accounting-0452,6.4,,qa-question-level/Q-6.4-05-profit-vs-liquidity.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-6.4-05
+igcse-accounting-0452,6.4,,qa-question-level/Q-6.4-06-non-financial-factors.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-6.4-06
+igcse-accounting-0452,6.4,,qa-question-level/Q-6.4-07-business-strategy-comparison.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-6.4-07
+igcse-accounting-0452,6.4,,qa-question-level/Q-6.4-08-lending-assessment.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-6.4-08
+igcse-accounting-0452,6.4,,qa-question-level/Q-6.4-09-comprehensive-assessment.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-6.4-09
+igcse-accounting-0452,7.1,| 7.4 | Information quality characteristics,qa-question-level/Q-7.1-01-going-concern.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-7.1-01
+igcse-accounting-0452,7.1,| 7.4 | Information quality characteristics,qa-question-level/Q-7.1-02-prudence.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-7.1-02
+igcse-accounting-0452,7.1,| 7.4 | Information quality characteristics,qa-question-level/Q-7.1-03-accruals-matching.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-7.1-03
+igcse-accounting-0452,7.1,| 7.4 | Information quality characteristics,qa-question-level/Q-7.1-04-consistency.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-7.1-04
+igcse-accounting-0452,7.1,| 7.4 | Information quality characteristics,qa-question-level/Q-7.1-05-materiality.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-7.1-05
+igcse-accounting-0452,7.1,| 7.4 | Information quality characteristics,qa-question-level/Q-7.1-06-substance-over-form.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-7.1-06
+igcse-accounting-0452,7.1,| 7.4 | Information quality characteristics,qa-question-level/Q-7.1-07-policy-change-evaluation.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-7.1-07
+igcse-accounting-0452,7.1,| 7.4 | Information quality characteristics,qa-question-level/Q-7.1-08-concept-interaction.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-7.1-08
+igcse-accounting-0452,7.1,| 7.4 | Information quality characteristics,qa-question-level/Q-7.1-09-concept-violations.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-7.1-09
+igcse-accounting-0452,7.2,,qa-question-level/Q-7.2-01-capital-vs-revenue.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-7.2-01
+igcse-accounting-0452,7.2,,qa-question-level/Q-7.2-02-capital-criteria.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-7.2-02
+igcse-accounting-0452,7.2,,qa-question-level/Q-7.2-03-revenue-types.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-7.2-03
+igcse-accounting-0452,7.2,,qa-question-level/Q-7.2-04-misclassification-effects.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-7.2-04
+igcse-accounting-0452,7.2,,qa-question-level/Q-7.2-05-classification-examples.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-7.2-05
+igcse-accounting-0452,7.2,,qa-question-level/Q-7.2-06-asset-cost-components.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-7.2-06
+igcse-accounting-0452,7.2,,qa-question-level/Q-7.2-07-misclassification-profit-impact.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-7.2-07
+igcse-accounting-0452,7.2,,qa-question-level/Q-7.2-08-property-development.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-7.2-08
+igcse-accounting-0452,7.2,,qa-question-level/Q-7.2-09-comprehensive-classification.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-7.2-09
+igcse-accounting-0452,7.3,,qa-question-level/Q-7.3-01-accounting-policy.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-7.3-01
+igcse-accounting-0452,7.3,,qa-question-level/Q-7.3-02-reasons-for-change.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-7.3-02
+igcse-accounting-0452,7.3,,qa-question-level/Q-7.3-03-FIFO-to-AVCO.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-7.3-03
+igcse-accounting-0452,7.3,,qa-question-level/Q-7.3-04-depreciation-change.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-7.3-04
+igcse-accounting-0452,7.3,,qa-question-level/Q-7.3-05-required-disclosures.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-7.3-05
+igcse-accounting-0452,7.3,,qa-question-level/Q-7.3-06-vehicle-depreciation-change.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-7.3-06
+igcse-accounting-0452,7.3,,qa-question-level/Q-7.3-07-depreciation-trend.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-7.3-07
+igcse-accounting-0452,7.3,,qa-question-level/Q-7.3-08-price-trend-impact.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-7.3-08
+igcse-accounting-0452,7.3,,qa-question-level/Q-7.3-09-multiple-changes.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-7.3-09
+igcse-accounting-0452,7.4,,qa-question-level/Q-7.4-01-fundamental-characteristics.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-7.4-01
+igcse-accounting-0452,7.4,,qa-question-level/Q-7.4-02-enhancing-characteristics.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-7.4-02
+igcse-accounting-0452,7.4,,qa-question-level/Q-7.4-03-delayed-reporting.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-7.4-03
+igcse-accounting-0452,7.4,,qa-question-level/Q-7.4-04-complex-instruments.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-7.4-04
+igcse-accounting-0452,7.4,,qa-question-level/Q-7.4-05-relevance-vs-faithful.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-7.4-05
+igcse-accounting-0452,7.4,,qa-question-level/Q-7.4-06-historical-cost-vs-fair-value.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-7.4-06
+igcse-accounting-0452,7.4,,qa-question-level/Q-7.4-07-lender-comparability.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-7.4-07
+igcse-accounting-0452,7.4,,qa-question-level/Q-7.4-08-management-bias.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-7.4-08
+igcse-accounting-0452,7.4,,qa-question-level/Q-7.4-09-relevance-vs-reliability.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-7.4-09
+igcse-accounting-0452,7.5,,qa-question-level/Q-7.5-01-scenario-overview.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-7.5-01
+igcse-accounting-0452,7.5,,qa-question-level/Q-7.5-02-trial-balance-adjustments.md,1,Foundation,0452,,imported,passed,worker_course,Q-ID Q-7.5-02
+igcse-accounting-0452,7.5,,qa-question-level/Q-7.5-03-partnership-admission.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-7.5-03
+igcse-accounting-0452,7.5,,qa-question-level/Q-7.5-04-manufacturing-account.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-7.5-04
+igcse-accounting-0452,7.5,,qa-question-level/Q-7.5-05-ratio-comparison.md,1,Standard,0452,,imported,passed,worker_course,Q-ID Q-7.5-05
+igcse-accounting-0452,7.5,,qa-question-level/Q-7.5-06-complete-cycle.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-7.5-06
+igcse-accounting-0452,7.5,,qa-question-level/Q-7.5-07-partnership-dissolution.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-7.5-07
+igcse-accounting-0452,7.5,,qa-question-level/Q-7.5-08-policy-change-comparison.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-7.5-08
+igcse-accounting-0452,7.5,,qa-question-level/Q-7.5-09-investment-appraisal.md,1,Challenge,0452,,imported,passed,worker_course,Q-ID Q-7.5-09

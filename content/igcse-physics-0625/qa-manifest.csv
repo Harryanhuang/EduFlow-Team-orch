@@ -1,0 +1,415 @@
+subject_slug,topic_id,topic_name,qa_file,question_count,difficulty_mix,batch_id,depends_on_batches,status,review_state,owner,notes
+igcse-physics-0625,1.1,"| 1.5 | Density, measuring density of solids and liquids",qa-question-level/Q-1.1-01-mm-to-metres.md,1,Foundation,0625,,imported,pending,worker_course,Q-ID Q-1.1-01
+igcse-physics-0625,1.1,"| 1.5 | Density, measuring density of solids and liquids",qa-question-level/Q-1.1-02-km-to-cm.md,1,Foundation,0625,,imported,pending,worker_course,Q-ID Q-1.1-02
+igcse-physics-0625,1.1,"| 1.5 | Density, measuring density of solids and liquids",qa-question-level/Q-1.1-03-vernier-zero-error.md,1,Standard,0625,,imported,pending,worker_course,Q-ID Q-1.1-03
+igcse-physics-0625,1.1,"| 1.5 | Density, measuring density of solids and liquids",qa-question-level/Q-1.1-04-micrometer-zero-error.md,1,Standard,0625,,imported,pending,worker_course,Q-ID Q-1.1-04
+igcse-physics-0625,1.1,"| 1.5 | Density, measuring density of solids and liquids",qa-question-level/Q-1.1-05-pendulum-period.md,1,Standard,0625,,imported,pending,worker_course,Q-ID Q-1.1-05
+igcse-physics-0625,1.1,"| 1.5 | Density, measuring density of solids and liquids",qa-question-level/Q-1.1-06-average-uncertainty.md,1,Standard,0625,,imported,pending,worker_course,Q-ID Q-1.1-06
+igcse-physics-0625,1.1,"| 1.5 | Density, measuring density of solids and liquids",qa-question-level/Q-1.1-07-order-lengths.md,1,Challenge,0625,,imported,pending,worker_course,Q-ID Q-1.1-07
+igcse-physics-0625,1.1,"| 1.5 | Density, measuring density of solids and liquids",qa-question-level/Q-1.1-08-instrument-selection.md,1,Challenge,0625,,imported,pending,worker_course,Q-ID Q-1.1-08
+igcse-physics-0625,1.1,"| 1.5 | Density, measuring density of solids and liquids",qa-question-level/Q-1.1-09-sphere-corrected-average.md,1,Challenge,0625,,imported,pending,worker_course,Q-ID Q-1.1-09
+igcse-physics-0625,1.2,"| 2.2 | Hooke's law, spring constant, force-extension graph",qa-question-level/Q-1.2-01-acceleration-calc.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-1.2-01
+igcse-physics-0625,1.2,"| 2.2 | Hooke's law, spring constant, force-extension graph",qa-question-level/Q-1.2-02-cyclist-distance.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-1.2-02
+igcse-physics-0625,1.2,"| 2.2 | Hooke's law, spring constant, force-extension graph",qa-question-level/Q-1.2-03-graph-calc.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-1.2-03
+igcse-physics-0625,1.2,"| 2.2 | Hooke's law, spring constant, force-extension graph",qa-question-level/Q-1.2-04-graph-interpretation.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-1.2-04
+igcse-physics-0625,1.2,"| 2.2 | Hooke's law, spring constant, force-extension graph",qa-question-level/Q-1.2-05-ball-upward.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-1.2-05
+igcse-physics-0625,1.2,"| 2.2 | Hooke's law, spring constant, force-extension graph",qa-question-level/Q-1.2-06-skydiver-motion.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-1.2-06
+igcse-physics-0625,1.2,"| 2.2 | Hooke's law, spring constant, force-extension graph",qa-question-level/Q-1.2-07-speed-vs-velocity.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-1.2-07
+igcse-physics-0625,1.2,"| 2.2 | Hooke's law, spring constant, force-extension graph",qa-question-level/Q-1.2-08-average-speed.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-1.2-08
+igcse-physics-0625,1.2,"| 2.2 | Hooke's law, spring constant, force-extension graph",qa-question-level/Q-1.2-09-multi-stage-journey.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-1.2-09
+igcse-physics-0625,1.3,,qa-question-level/Q-1.3-01-speed-after-3s.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-1.3-01
+igcse-physics-0625,1.3,,qa-question-level/Q-1.3-02-cliff-height.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-1.3-02
+igcse-physics-0625,1.3,,qa-question-level/Q-1.3-03-vacuum-drop.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-1.3-03
+igcse-physics-0625,1.3,,qa-question-level/Q-1.3-04-resultant-force.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-1.3-04
+igcse-physics-0625,1.3,,qa-question-level/Q-1.3-05-terminal-velocity-def.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-1.3-05
+igcse-physics-0625,1.3,,qa-question-level/Q-1.3-06-speed-time-sketch.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-1.3-06
+igcse-physics-0625,1.3,,qa-question-level/Q-1.3-07-parachute.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-1.3-07
+igcse-physics-0625,1.3,,qa-question-level/Q-1.3-08-ball-multi-calc.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-1.3-08
+igcse-physics-0625,1.3,,qa-question-level/Q-1.3-09-two-skydivers.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-1.3-09
+igcse-physics-0625,1.4,,qa-question-level/Q-1.4-01-weight-calc.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-1.4-01
+igcse-physics-0625,1.4,,qa-question-level/Q-1.4-02-astronaut-moon.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-1.4-02
+igcse-physics-0625,1.4,,qa-question-level/Q-1.4-03-plumb-line.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-1.4-03
+igcse-physics-0625,1.4,,qa-question-level/Q-1.4-04-racing-car-stability.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-1.4-04
+igcse-physics-0625,1.4,,qa-question-level/Q-1.4-05-other-planet.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-1.4-05
+igcse-physics-0625,1.4,,qa-question-level/Q-1.4-06-mass-vs-weight.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-1.4-06
+igcse-physics-0625,1.4,,qa-question-level/Q-1.4-07-balanced-rule.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-1.4-07
+igcse-physics-0625,1.4,,qa-question-level/Q-1.4-08-two-planets.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-1.4-08
+igcse-physics-0625,1.4,,qa-question-level/Q-1.4-09-seesaw.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-1.4-09
+igcse-physics-0625,1.5,"| 2.3 | Work = Fd, energy types, conservation, Ek=½mv², Ep=mgh",qa-question-level/Q-1.5-01-block-density.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-1.5-01
+igcse-physics-0625,1.5,"| 2.3 | Work = Fd, energy types, conservation, Ek=½mv², Ep=mgh",qa-question-level/Q-1.5-02-unit-conversion.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-1.5-02
+igcse-physics-0625,1.5,"| 2.3 | Work = Fd, energy types, conservation, Ek=½mv², Ep=mgh",qa-question-level/Q-1.5-03-displacement-method.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-1.5-03
+igcse-physics-0625,1.5,"| 2.3 | Work = Fd, energy types, conservation, Ek=½mv², Ep=mgh",qa-question-level/Q-1.5-04-float-or-sink.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-1.5-04
+igcse-physics-0625,1.5,"| 2.3 | Work = Fd, energy types, conservation, Ek=½mv², Ep=mgh",qa-question-level/Q-1.5-05-alloy-density.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-1.5-05
+igcse-physics-0625,1.5,"| 2.3 | Work = Fd, energy types, conservation, Ek=½mv², Ep=mgh",qa-question-level/Q-1.5-06-meniscus.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-1.5-06
+igcse-physics-0625,1.5,"| 2.3 | Work = Fd, energy types, conservation, Ek=½mv², Ep=mgh",qa-question-level/Q-1.5-07-floating-fraction.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-1.5-07
+igcse-physics-0625,1.5,"| 2.3 | Work = Fd, energy types, conservation, Ek=½mv², Ep=mgh",qa-question-level/Q-1.5-08-density-bottle.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-1.5-08
+igcse-physics-0625,1.5,"| 2.3 | Work = Fd, energy types, conservation, Ek=½mv², Ep=mgh",qa-question-level/Q-1.5-09-metal-cube-error.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-1.5-09
+igcse-physics-0625,2.1,"Force as push/pull, resultant force, F=ma",qa-question-level/Q-2.1-01-force-acceleration.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-2.1-01
+igcse-physics-0625,2.1,"Force as push/pull, resultant force, F=ma",qa-question-level/Q-2.1-02-car-force.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-2.1-02
+igcse-physics-0625,2.1,"Force as push/pull, resultant force, F=ma",qa-question-level/Q-2.1-03-resultant-box.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-2.1-03
+igcse-physics-0625,2.1,"Force as push/pull, resultant force, F=ma",qa-question-level/Q-2.1-04-two-forces.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-2.1-04
+igcse-physics-0625,2.1,"Force as push/pull, resultant force, F=ma",qa-question-level/Q-2.1-05-constant-velocity.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-2.1-05
+igcse-physics-0625,2.1,"Force as push/pull, resultant force, F=ma",qa-question-level/Q-2.1-06-trolley-time.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-2.1-06
+igcse-physics-0625,2.1,"Force as push/pull, resultant force, F=ma",qa-question-level/Q-2.1-07-newton-unit.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-2.1-07
+igcse-physics-0625,2.1,"Force as push/pull, resultant force, F=ma",qa-question-level/Q-2.1-08-car-acceleration.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-2.1-08
+igcse-physics-0625,2.1,"Force as push/pull, resultant force, F=ma",qa-question-level/Q-2.1-09-perpendicular-forces.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-2.1-09
+igcse-physics-0625,2.2,,qa-question-level/Q-2.2-01-spring-constant.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-2.2-01
+igcse-physics-0625,2.2,,qa-question-level/Q-2.2-02-force-needed.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-2.2-02
+igcse-physics-0625,2.2,,qa-question-level/Q-2.2-03-verify-hooke.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-2.2-03
+igcse-physics-0625,2.2,,qa-question-level/Q-2.2-04-limit-def.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-2.2-04
+igcse-physics-0625,2.2,,qa-question-level/Q-2.2-05-graph-curve.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-2.2-05
+igcse-physics-0625,2.2,,qa-question-level/Q-2.2-06-parallel-springs.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-2.2-06
+igcse-physics-0625,2.2,,qa-question-level/Q-2.2-07-spring-multi.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-2.2-07
+igcse-physics-0625,2.2,,qa-question-level/Q-2.2-08-series-springs.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-2.2-08
+igcse-physics-0625,2.2,,qa-question-level/Q-2.2-09-rubber-hysteresis.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-2.2-09
+igcse-physics-0625,2.3,"| 3.6 | Melting, boiling, latent heat, heating/cooling curves",qa-question-level/Q-2.3-01-work-done.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-2.3-01
+igcse-physics-0625,2.3,"| 3.6 | Melting, boiling, latent heat, heating/cooling curves",qa-question-level/Q-2.3-02-kinetic-car.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-2.3-02
+igcse-physics-0625,2.3,"| 3.6 | Melting, boiling, latent heat, heating/cooling curves",qa-question-level/Q-2.3-03-potential-lift.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-2.3-03
+igcse-physics-0625,2.3,"| 3.6 | Melting, boiling, latent heat, heating/cooling curves",qa-question-level/Q-2.3-04-ball-drop-energy.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-2.3-04
+igcse-physics-0625,2.3,"| 3.6 | Melting, boiling, latent heat, heating/cooling curves",qa-question-level/Q-2.3-05-conservation-def.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-2.3-05
+igcse-physics-0625,2.3,"| 3.6 | Melting, boiling, latent heat, heating/cooling curves",qa-question-level/Q-2.3-06-rollercoaster.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-2.3-06
+igcse-physics-0625,2.3,"| 3.6 | Melting, boiling, latent heat, heating/cooling curves",qa-question-level/Q-2.3-07-friction-heat.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-2.3-07
+igcse-physics-0625,2.3,"| 3.6 | Melting, boiling, latent heat, heating/cooling curves",qa-question-level/Q-2.3-08-pendulum-energy.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-2.3-08
+igcse-physics-0625,2.3,"| 3.6 | Melting, boiling, latent heat, heating/cooling curves",qa-question-level/Q-2.3-09-braking-distance.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-2.3-09
+igcse-physics-0625,2.4,"Power = W/t, P = Fv, efficiency",qa-question-level/Q-2.4-01-motor-power.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-2.4-01
+igcse-physics-0625,2.4,"Power = W/t, P = Fv, efficiency",qa-question-level/Q-2.4-02-crane-power.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-2.4-02
+igcse-physics-0625,2.4,"Power = W/t, P = Fv, efficiency",qa-question-level/Q-2.4-03-efficiency-pct.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-2.4-03
+igcse-physics-0625,2.4,"Power = W/t, P = Fv, efficiency",qa-question-level/Q-2.4-04-engine-efficiency.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-2.4-04
+igcse-physics-0625,2.4,"Power = W/t, P = Fv, efficiency",qa-question-level/Q-2.4-05-heater-100pct.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-2.4-05
+igcse-physics-0625,2.4,"Power = W/t, P = Fv, efficiency",qa-question-level/Q-2.4-06-lifting-speed.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-2.4-06
+igcse-physics-0625,2.4,"Power = W/t, P = Fv, efficiency",qa-question-level/Q-2.4-07-pump-efficiency.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-2.4-07
+igcse-physics-0625,2.4,"Power = W/t, P = Fv, efficiency",qa-question-level/Q-2.4-08-car-power.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-2.4-08
+igcse-physics-0625,2.4,"Power = W/t, P = Fv, efficiency",qa-question-level/Q-2.4-09-escalator.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-2.4-09
+igcse-physics-0625,2.5,,qa-question-level/Q-2.5-01-energy-classification.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-2.5-01
+igcse-physics-0625,2.5,,qa-question-level/Q-2.5-02-coal-power-station.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-2.5-02
+igcse-physics-0625,2.5,,qa-question-level/Q-2.5-03-wind-vs-nuclear.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-2.5-03
+igcse-physics-0625,2.5,,qa-question-level/Q-2.5-04-high-voltage-transmission.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-2.5-04
+igcse-physics-0625,2.5,,qa-question-level/Q-2.5-05-sun-energy-source.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-2.5-05
+igcse-physics-0625,2.5,,qa-question-level/Q-2.5-06-solar-panel-calculation.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-2.5-06
+igcse-physics-0625,2.5,,qa-question-level/Q-2.5-07-nuclear-fission-chain.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-2.5-07
+igcse-physics-0625,2.5,,qa-question-level/Q-2.5-08-hydroelectric-pumped-storage.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-2.5-08
+igcse-physics-0625,2.5,,qa-question-level/Q-2.5-09-energy-mix-analysis.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-2.5-09
+igcse-physics-0625,2.6,,qa-question-level/Q-2.6-01-pressure-calculation.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-2.6-01
+igcse-physics-0625,2.6,,qa-question-level/Q-2.6-02-depth-pressure.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-2.6-02
+igcse-physics-0625,2.6,,qa-question-level/Q-2.6-03-boyles-law.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-2.6-03
+igcse-physics-0625,2.6,,qa-question-level/Q-2.6-04-kinetic-model-temperature.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-2.6-04
+igcse-physics-0625,2.6,,qa-question-level/Q-2.6-05-manometer.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-2.6-05
+igcse-physics-0625,2.6,,qa-question-level/Q-2.6-06-diver-ears.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-2.6-06
+igcse-physics-0625,2.6,,qa-question-level/Q-2.6-07-tank-force.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-2.6-07
+igcse-physics-0625,2.6,,qa-question-level/Q-2.6-08-boyle-law-verification.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-2.6-08
+igcse-physics-0625,2.6,,qa-question-level/Q-2.6-09-balloon-expansion.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-2.6-09
+igcse-physics-0625,3.1,"| 3.5 | Specific heat capacity, Q=mcΔT",qa-question-level/Q-3.1-01-particle-states.md,1,Foundation,0625,,imported,pending,worker_course,Q-ID Q-3.1-01
+igcse-physics-0625,3.1,"| 3.5 | Specific heat capacity, Q=mcΔT",qa-question-level/Q-3.1-02-gas-pressure-explanation.md,1,Foundation,0625,,imported,pending,worker_course,Q-ID Q-3.1-02
+igcse-physics-0625,3.1,"| 3.5 | Specific heat capacity, Q=mcΔT",qa-question-level/Q-3.1-03-liquid-vs-solid-shape.md,1,Standard,0625,,imported,pending,worker_course,Q-ID Q-3.1-03
+igcse-physics-0625,3.1,"| 3.5 | Specific heat capacity, Q=mcΔT",qa-question-level/Q-3.1-04-brownian-motion.md,1,Standard,0625,,imported,pending,worker_course,Q-ID Q-3.1-04
+igcse-physics-0625,3.1,"| 3.5 | Specific heat capacity, Q=mcΔT",qa-question-level/Q-3.1-05-balloon-expansion.md,1,Standard,0625,,imported,pending,worker_course,Q-ID Q-3.1-05
+igcse-physics-0625,3.1,"| 3.5 | Specific heat capacity, Q=mcΔT",qa-question-level/Q-3.1-06-density-comparison.md,1,Standard,0625,,imported,pending,worker_course,Q-ID Q-3.1-06
+igcse-physics-0625,3.1,"| 3.5 | Specific heat capacity, Q=mcΔT",qa-question-level/Q-3.1-07-state-change-description.md,1,Challenge,0625,,imported,pending,worker_course,Q-ID Q-3.1-07
+igcse-physics-0625,3.1,"| 3.5 | Specific heat capacity, Q=mcΔT",qa-question-level/Q-3.1-08-diffusion-factors.md,1,Challenge,0625,,imported,pending,worker_course,Q-ID Q-3.1-08
+igcse-physics-0625,3.1,"| 3.5 | Specific heat capacity, Q=mcΔT",qa-question-level/Q-3.1-09-evaporation-cooling.md,1,Challenge,0625,,imported,pending,worker_course,Q-ID Q-3.1-09
+igcse-physics-0625,3.2,"Temperature scales, thermometers, thermal equilibrium",qa-question-level/Q-3.2-01-celsius-to-kelvin.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-3.2-01
+igcse-physics-0625,3.2,"Temperature scales, thermometers, thermal equilibrium",qa-question-level/Q-3.2-02-thermometer-calibration.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-3.2-02
+igcse-physics-0625,3.2,"Temperature scales, thermometers, thermal equilibrium",qa-question-level/Q-3.2-03-thermal-equilibrium.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-3.2-03
+igcse-physics-0625,3.2,"Temperature scales, thermometers, thermal equilibrium",qa-question-level/Q-3.2-04-clinical-thermometer-constriction.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-3.2-04
+igcse-physics-0625,3.2,"Temperature scales, thermometers, thermal equilibrium",qa-question-level/Q-3.2-05-thermocouple-advantages.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-3.2-05
+igcse-physics-0625,3.2,"Temperature scales, thermometers, thermal equilibrium",qa-question-level/Q-3.2-06-narrow-bore-sensitivity.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-3.2-06
+igcse-physics-0625,3.2,"Temperature scales, thermometers, thermal equilibrium",qa-question-level/Q-3.2-07-resistance-thermometer.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-3.2-07
+igcse-physics-0625,3.2,"Temperature scales, thermometers, thermal equilibrium",qa-question-level/Q-3.2-08-equilibrium-process.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-3.2-08
+igcse-physics-0625,3.2,"Temperature scales, thermometers, thermal equilibrium",qa-question-level/Q-3.2-09-bore-error-analysis.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-3.2-09
+igcse-physics-0625,3.3,"Thermal expansion of solids, liquids, gases",qa-question-level/Q-3.3-01-particle-explanation.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-3.3-01
+igcse-physics-0625,3.3,"Thermal expansion of solids, liquids, gases",qa-question-level/Q-3.3-02-bimetallic-strip.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-3.3-02
+igcse-physics-0625,3.3,"Thermal expansion of solids, liquids, gases",qa-question-level/Q-3.3-03-expansion-nuisance.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-3.3-03
+igcse-physics-0625,3.3,"Thermal expansion of solids, liquids, gases",qa-question-level/Q-3.3-04-expansion-order.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-3.3-04
+igcse-physics-0625,3.3,"Thermal expansion of solids, liquids, gases",qa-question-level/Q-3.3-05-glass-cracking.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-3.3-05
+igcse-physics-0625,3.3,"Thermal expansion of solids, liquids, gases",qa-question-level/Q-3.3-06-ball-and-hole.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-3.3-06
+igcse-physics-0625,3.3,"Thermal expansion of solids, liquids, gases",qa-question-level/Q-3.3-07-alcohol-vs-mercury.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-3.3-07
+igcse-physics-0625,3.3,"Thermal expansion of solids, liquids, gases",qa-question-level/Q-3.3-08-cable-slack.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-3.3-08
+igcse-physics-0625,3.3,"Thermal expansion of solids, liquids, gases",qa-question-level/Q-3.3-09-stuck-lid.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-3.3-09
+igcse-physics-0625,3.4,,qa-question-level/Q-3.4-01-metal-conduction.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-3.4-01
+igcse-physics-0625,3.4,,qa-question-level/Q-3.4-02-convection-current.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-3.4-02
+igcse-physics-0625,3.4,,qa-question-level/Q-3.4-03-solar-panel-black.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-3.4-03
+igcse-physics-0625,3.4,,qa-question-level/Q-3.4-04-vacuum-flask.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-3.4-04
+igcse-physics-0625,3.4,,qa-question-level/Q-3.4-05-carpet-vs-tile.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-3.4-05
+igcse-physics-0625,3.4,,qa-question-level/Q-3.4-06-convection-states.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-3.4-06
+igcse-physics-0625,3.4,,qa-question-level/Q-3.4-07-shiny-surfaces.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-3.4-07
+igcse-physics-0625,3.4,,qa-question-level/Q-3.4-08-black-vs-white-cooling.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-3.4-08
+igcse-physics-0625,3.4,,qa-question-level/Q-3.4-09-cavity-wall.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-3.4-09
+igcse-physics-0625,3.5,,qa-question-level/Q-3.5-01-water-heating.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-3.5-01
+igcse-physics-0625,3.5,,qa-question-level/Q-3.5-02-aluminium-heating.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-3.5-02
+igcse-physics-0625,3.5,,qa-question-level/Q-3.5-03-water-coolant.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-3.5-03
+igcse-physics-0625,3.5,,qa-question-level/Q-3.5-04-error-analysis.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-3.5-04
+igcse-physics-0625,3.5,,qa-question-level/Q-3.5-05-copper-vs-aluminium.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-3.5-05
+igcse-physics-0625,3.5,,qa-question-level/Q-3.5-06-oil-heating.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-3.5-06
+igcse-physics-0625,3.5,,qa-question-level/Q-3.5-07-experiment-method.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-3.5-07
+igcse-physics-0625,3.5,,qa-question-level/Q-3.5-08-heating-time-factors.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-3.5-08
+igcse-physics-0625,3.5,,qa-question-level/Q-3.5-09-kettle-boiling.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-3.5-09
+igcse-physics-0625,3.6,,qa-question-level/Q-3.6-01-evaporation-vs-boiling.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-3.6-01
+igcse-physics-0625,3.6,,qa-question-level/Q-3.6-02-ice-melting.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-3.6-02
+igcse-physics-0625,3.6,,qa-question-level/Q-3.6-03-heating-curve-plateau.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-3.6-03
+igcse-physics-0625,3.6,,qa-question-level/Q-3.6-04-steam-burns.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-3.6-04
+igcse-physics-0625,3.6,,qa-question-level/Q-3.6-05-latent-heat-calculation.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-3.6-05
+igcse-physics-0625,3.6,,qa-question-level/Q-3.6-06-cooling-curve.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-3.6-06
+igcse-physics-0625,3.6,,qa-question-level/Q-3.6-07-partial-melting.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-3.6-07
+igcse-physics-0625,3.6,,qa-question-level/Q-3.6-08-sweating-cooling.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-3.6-08
+igcse-physics-0625,3.6,,qa-question-level/Q-3.6-09-water-to-steam.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-3.6-09
+igcse-physics-0625,4.1,"| 4.4 | Light: reflection in plane mirrors, ray diagrams",qa-question-level/Q-4.1-01-wave-speed-calculation.md,1,Foundation,0625,,imported,pending,worker_course,Q-ID Q-4.1-01
+igcse-physics-0625,4.1,"| 4.4 | Light: reflection in plane mirrors, ray diagrams",qa-question-level/Q-4.1-02-frequency-from-period.md,1,Foundation,0625,,imported,pending,worker_course,Q-ID Q-4.1-02
+igcse-physics-0625,4.1,"| 4.4 | Light: reflection in plane mirrors, ray diagrams",qa-question-level/Q-4.1-03-wave-speed-from-diagram.md,1,Standard,0625,,imported,pending,worker_course,Q-ID Q-4.1-03
+igcse-physics-0625,4.1,"| 4.4 | Light: reflection in plane mirrors, ray diagrams",qa-question-level/Q-4.1-04-amplitude-definition.md,1,Standard,0625,,imported,pending,worker_course,Q-ID Q-4.1-04
+igcse-physics-0625,4.1,"| 4.4 | Light: reflection in plane mirrors, ray diagrams",qa-question-level/Q-4.1-05-sound-wavelength.md,1,Standard,0625,,imported,pending,worker_course,Q-ID Q-4.1-05
+igcse-physics-0625,4.1,"| 4.4 | Light: reflection in plane mirrors, ray diagrams",qa-question-level/Q-4.1-06-energy-transfer.md,1,Standard,0625,,imported,pending,worker_course,Q-ID Q-4.1-06
+igcse-physics-0625,4.1,"| 4.4 | Light: reflection in plane mirrors, ray diagrams",qa-question-level/Q-4.1-07-wave-equation-rearrangement.md,1,Challenge,0625,,imported,pending,worker_course,Q-ID Q-4.1-07
+igcse-physics-0625,4.1,"| 4.4 | Light: reflection in plane mirrors, ray diagrams",qa-question-level/Q-4.1-08-frequency-wavelength-relationship.md,1,Challenge,0625,,imported,pending,worker_course,Q-ID Q-4.1-08
+igcse-physics-0625,4.1,"| 4.4 | Light: reflection in plane mirrors, ray diagrams",qa-question-level/Q-4.1-09-wave-graph-interpretation.md,1,Challenge,0625,,imported,pending,worker_course,Q-ID Q-4.1-09
+igcse-physics-0625,4.2,| 4.9 | Ultrasound: principles and applications,qa-question-level/Q-4.2-01-wave-classification.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-4.2-01
+igcse-physics-0625,4.2,| 4.9 | Ultrasound: principles and applications,qa-question-level/Q-4.2-02-particle-vibration-direction.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-4.2-02
+igcse-physics-0625,4.2,| 4.9 | Ultrasound: principles and applications,qa-question-level/Q-4.2-03-compressions-rarefactions.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-4.2-03
+igcse-physics-0625,4.2,| 4.9 | Ultrasound: principles and applications,qa-question-level/Q-4.2-04-polarisation-explanation.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-4.2-04
+igcse-physics-0625,4.2,| 4.9 | Ultrasound: principles and applications,qa-question-level/Q-4.2-05-common-wave-properties.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-4.2-05
+igcse-physics-0625,4.2,| 4.9 | Ultrasound: principles and applications,qa-question-level/Q-4.2-06-slinky-demonstration.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-4.2-06
+igcse-physics-0625,4.2,| 4.9 | Ultrasound: principles and applications,qa-question-level/Q-4.2-07-medium-requirement.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-4.2-07
+igcse-physics-0625,4.2,| 4.9 | Ultrasound: principles and applications,qa-question-level/Q-4.2-08-energy-matter-transfer.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-4.2-08
+igcse-physics-0625,4.2,| 4.9 | Ultrasound: principles and applications,qa-question-level/Q-4.2-09-compare-contrast-waves.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-4.2-09
+igcse-physics-0625,4.3,"| 4.7 | Electromagnetic spectrum: regions, properties, uses",qa-question-level/Q-4.3-01-law-of-reflection.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-4.3-01
+igcse-physics-0625,4.3,"| 4.7 | Electromagnetic spectrum: regions, properties, uses",qa-question-level/Q-4.3-02-angle-of-reflection.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-4.3-02
+igcse-physics-0625,4.3,"| 4.7 | Electromagnetic spectrum: regions, properties, uses",qa-question-level/Q-4.3-03-stick-bent-in-water.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-4.3-03
+igcse-physics-0625,4.3,"| 4.7 | Electromagnetic spectrum: regions, properties, uses",qa-question-level/Q-4.3-04-deep-to-shallow-water.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-4.3-04
+igcse-physics-0625,4.3,"| 4.7 | Electromagnetic spectrum: regions, properties, uses",qa-question-level/Q-4.3-05-wavefront-definition.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-4.3-05
+igcse-physics-0625,4.3,"| 4.7 | Electromagnetic spectrum: regions, properties, uses",qa-question-level/Q-4.3-06-angle-between-rays.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-4.3-06
+igcse-physics-0625,4.3,"| 4.7 | Electromagnetic spectrum: regions, properties, uses",qa-question-level/Q-4.3-07-periscope-image-position.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-4.3-07
+igcse-physics-0625,4.3,"| 4.7 | Electromagnetic spectrum: regions, properties, uses",qa-question-level/Q-4.3-08-diffraction-through-gaps.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-4.3-08
+igcse-physics-0625,4.3,"| 4.7 | Electromagnetic spectrum: regions, properties, uses",qa-question-level/Q-4.3-09-refraction-wavefront-explanation.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-4.3-09
+igcse-physics-0625,4.4,,qa-question-level/Q-4.4-01-plane-mirror-characteristics.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-4.4-01
+igcse-physics-0625,4.4,,qa-question-level/Q-4.4-02-image-distance-calculation.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-4.4-02
+igcse-physics-0625,4.4,,qa-question-level/Q-4.4-03-ray-diagram-drawing.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-4.4-03
+igcse-physics-0625,4.4,,qa-question-level/Q-4.4-04-periscope-operation.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-4.4-04
+igcse-physics-0625,4.4,,qa-question-level/Q-4.4-05-real-vs-virtual-image.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-4.4-05
+igcse-physics-0625,4.4,,qa-question-level/Q-4.4-06-mirror-height.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-4.4-06
+igcse-physics-0625,4.4,,qa-question-level/Q-4.4-07-clock-mirror.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-4.4-07
+igcse-physics-0625,4.4,,qa-question-level/Q-4.4-08-perpendicular-mirrors.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-4.4-08
+igcse-physics-0625,4.4,,qa-question-level/Q-4.4-09-no-parallax-method.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-4.4-09
+igcse-physics-0625,4.5,,qa-question-level/Q-4.5-01-angle-of-refraction.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-4.5-01
+igcse-physics-0625,4.5,,qa-question-level/Q-4.5-02-critical-angle-glass.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-4.5-02
+igcse-physics-0625,4.5,,qa-question-level/Q-4.5-03-tir-conditions.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-4.5-03
+igcse-physics-0625,4.5,,qa-question-level/Q-4.5-04-tir-condition-check.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-4.5-04
+igcse-physics-0625,4.5,,qa-question-level/Q-4.5-05-optical-fibre.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-4.5-05
+igcse-physics-0625,4.5,,qa-question-level/Q-4.5-06-bending-direction.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-4.5-06
+igcse-physics-0625,4.5,,qa-question-level/Q-4.5-07-speed-in-diamond.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-4.5-07
+igcse-physics-0625,4.5,,qa-question-level/Q-4.5-08-snells-law-two-media.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-4.5-08
+igcse-physics-0625,4.5,,qa-question-level/Q-4.5-09-apparent-depth-fish.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-4.5-09
+igcse-physics-0625,4.6,"Thin converging lens: focal length, ray diagrams, magnification",qa-question-level/Q-4.6-01-principal-focus.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-4.6-01
+igcse-physics-0625,4.6,"Thin converging lens: focal length, ray diagrams, magnification",qa-question-level/Q-4.6-02-ray-diagram-image.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-4.6-02
+igcse-physics-0625,4.6,"Thin converging lens: focal length, ray diagrams, magnification",qa-question-level/Q-4.6-03-magnifying-glass-position.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-4.6-03
+igcse-physics-0625,4.6,"Thin converging lens: focal length, ray diagrams, magnification",qa-question-level/Q-4.6-04-magnification-calculation.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-4.6-04
+igcse-physics-0625,4.6,"Thin converging lens: focal length, ray diagrams, magnification",qa-question-level/Q-4.6-05-measure-focal-length.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-4.6-05
+igcse-physics-0625,4.6,"Thin converging lens: focal length, ray diagrams, magnification",qa-question-level/Q-4.6-06-lens-formula.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-4.6-06
+igcse-physics-0625,4.6,"Thin converging lens: focal length, ray diagrams, magnification",qa-question-level/Q-4.6-07-virtual-image-calculation.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-4.6-07
+igcse-physics-0625,4.6,"Thin converging lens: focal length, ray diagrams, magnification",qa-question-level/Q-4.6-08-image-comparison.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-4.6-08
+igcse-physics-0625,4.6,"Thin converging lens: focal length, ray diagrams, magnification",qa-question-level/Q-4.6-09-camera-focusing.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-4.6-09
+igcse-physics-0625,4.7,,qa-question-level/Q-4.7-01-em-spectrum-order.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-4.7-01
+igcse-physics-0625,4.7,,qa-question-level/Q-4.7-02-common-properties.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-4.7-02
+igcse-physics-0625,4.7,,qa-question-level/Q-4.7-03-applications.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-4.7-03
+igcse-physics-0625,4.7,,qa-question-level/Q-4.7-04-wavelength-calculation.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-4.7-04
+igcse-physics-0625,4.7,,qa-question-level/Q-4.7-05-gamma-rays.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-4.7-05
+igcse-physics-0625,4.7,,qa-question-level/Q-4.7-06-microwave-frequency.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-4.7-06
+igcse-physics-0625,4.7,,qa-question-level/Q-4.7-07-uv-danger.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-4.7-07
+igcse-physics-0625,4.7,,qa-question-level/Q-4.7-08-fm-am-diffraction.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-4.7-08
+igcse-physics-0625,4.7,,qa-question-level/Q-4.7-09-infrared-vacuum-experiment.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-4.7-09
+igcse-physics-0625,4.8,,qa-question-level/Q-4.8-01-echo-distance.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-4.8-01
+igcse-physics-0625,4.8,,qa-question-level/Q-4.8-02-pitch-loudness.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-4.8-02
+igcse-physics-0625,4.8,,qa-question-level/Q-4.8-03-measure-speed-experiment.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-4.8-03
+igcse-physics-0625,4.8,,qa-question-level/Q-4.8-04-bell-jar-vacuum.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-4.8-04
+igcse-physics-0625,4.8,,qa-question-level/Q-4.8-05-oscilloscope-trace.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-4.8-05
+igcse-physics-0625,4.8,,qa-question-level/Q-4.8-06-drum-harder.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-4.8-06
+igcse-physics-0625,4.8,,qa-question-level/Q-4.8-07-moon-communication.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-4.8-07
+igcse-physics-0625,4.8,,qa-question-level/Q-4.8-08-student-echo-speed.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-4.8-08
+igcse-physics-0625,4.8,,qa-question-level/Q-4.8-09-sound-in-different-media.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-4.8-09
+igcse-physics-0625,4.9,,qa-question-level/Q-4.9-01-ultrasound-definition.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-4.9-01
+igcse-physics-0625,4.9,,qa-question-level/Q-4.9-02-ultrasound-depth.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-4.9-02
+igcse-physics-0625,4.9,,qa-question-level/Q-4.9-03-ultrasound-vs-xray.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-4.9-03
+igcse-physics-0625,4.9,,qa-question-level/Q-4.9-04-industrial-uses.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-4.9-04
+igcse-physics-0625,4.9,,qa-question-level/Q-4.9-05-bat-echolocation.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-4.9-05
+igcse-physics-0625,4.9,,qa-question-level/Q-4.9-06-ultrasound-wavelength.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-4.9-06
+igcse-physics-0625,4.9,,qa-question-level/Q-4.9-07-prenatal-imaging-process.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-4.9-07
+igcse-physics-0625,4.9,,qa-question-level/Q-4.9-08-sonar-depth.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-4.9-08
+igcse-physics-0625,4.9,,qa-question-level/Q-4.9-09-quality-control.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-4.9-09
+igcse-physics-0625,5.1,"Simple magnetic phenomena, magnetic fields",qa-question-level/Q-5.1-01-magnetic-poles-law.md,1,Foundation,0625,,imported,pending,worker_course,Q-ID Q-5.1-01
+igcse-physics-0625,5.1,"Simple magnetic phenomena, magnetic fields",qa-question-level/Q-5.1-02-magnetic-materials.md,1,Foundation,0625,,imported,pending,worker_course,Q-ID Q-5.1-02
+igcse-physics-0625,5.1,"Simple magnetic phenomena, magnetic fields",qa-question-level/Q-5.1-03-bar-magnet-field-pattern.md,1,Standard,0625,,imported,pending,worker_course,Q-ID Q-5.1-03
+igcse-physics-0625,5.1,"Simple magnetic phenomena, magnetic fields",qa-question-level/Q-5.1-04-stroking-method-pole.md,1,Standard,0625,,imported,pending,worker_course,Q-ID Q-5.1-04
+igcse-physics-0625,5.1,"Simple magnetic phenomena, magnetic fields",qa-question-level/Q-5.1-05-plotting-compass-field.md,1,Standard,0625,,imported,pending,worker_course,Q-ID Q-5.1-05
+igcse-physics-0625,5.1,"Simple magnetic phenomena, magnetic fields",qa-question-level/Q-5.1-06-demagnetisation-methods.md,1,Standard,0625,,imported,pending,worker_course,Q-ID Q-5.1-06
+igcse-physics-0625,5.1,"Simple magnetic phenomena, magnetic fields",qa-question-level/Q-5.1-07-cut-magnet-poles.md,1,Challenge,0625,,imported,pending,worker_course,Q-ID Q-5.1-07
+igcse-physics-0625,5.1,"Simple magnetic phenomena, magnetic fields",qa-question-level/Q-5.1-08-soft-iron-steel.md,1,Challenge,0625,,imported,pending,worker_course,Q-ID Q-5.1-08
+igcse-physics-0625,5.1,"Simple magnetic phenomena, magnetic fields",qa-question-level/Q-5.1-09-earth-field-compass.md,1,Challenge,0625,,imported,pending,worker_course,Q-ID Q-5.1-09
+igcse-physics-0625,5.10,"Force on a current-carrying conductor, d.c. motor, Fleming's left-hand rule",qa-question-level/Q-5.10-01-current-wire-force.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-5.10-01
+igcse-physics-0625,5.10,"Force on a current-carrying conductor, d.c. motor, Fleming's left-hand rule",qa-question-level/Q-5.10-02-fleming-left-rule.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-5.10-02
+igcse-physics-0625,5.10,"Force on a current-carrying conductor, d.c. motor, Fleming's left-hand rule",qa-question-level/Q-5.10-03-increase-motor-force.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.10-03
+igcse-physics-0625,5.10,"Force on a current-carrying conductor, d.c. motor, Fleming's left-hand rule",qa-question-level/Q-5.10-04-force-bil-calc.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.10-04
+igcse-physics-0625,5.10,"Force on a current-carrying conductor, d.c. motor, Fleming's left-hand rule",qa-question-level/Q-5.10-05-coil-turning-effect.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.10-05
+igcse-physics-0625,5.10,"Force on a current-carrying conductor, d.c. motor, Fleming's left-hand rule",qa-question-level/Q-5.10-06-commutator-function.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.10-06
+igcse-physics-0625,5.10,"Force on a current-carrying conductor, d.c. motor, Fleming's left-hand rule",qa-question-level/Q-5.10-07-reverse-motor-current.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-5.10-07
+igcse-physics-0625,5.10,"Force on a current-carrying conductor, d.c. motor, Fleming's left-hand rule",qa-question-level/Q-5.10-08-motor-more-turns.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-5.10-08
+igcse-physics-0625,5.10,"Force on a current-carrying conductor, d.c. motor, Fleming's left-hand rule",qa-question-level/Q-5.10-09-motor-effect-vs-induction.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-5.10-09
+igcse-physics-0625,5.11,"Electromagnets, relay, loudspeaker, magnetic relay",qa-question-level/Q-5.11-01-electromagnet-definition.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-5.11-01
+igcse-physics-0625,5.11,"Electromagnets, relay, loudspeaker, magnetic relay",qa-question-level/Q-5.11-02-stronger-electromagnet.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-5.11-02
+igcse-physics-0625,5.11,"Electromagnets, relay, loudspeaker, magnetic relay",qa-question-level/Q-5.11-03-soft-iron-core.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.11-03
+igcse-physics-0625,5.11,"Electromagnets, relay, loudspeaker, magnetic relay",qa-question-level/Q-5.11-04-relay-operation.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.11-04
+igcse-physics-0625,5.11,"Electromagnets, relay, loudspeaker, magnetic relay",qa-question-level/Q-5.11-05-relay-advantage.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.11-05
+igcse-physics-0625,5.11,"Electromagnets, relay, loudspeaker, magnetic relay",qa-question-level/Q-5.11-06-loudspeaker-energy.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.11-06
+igcse-physics-0625,5.11,"Electromagnets, relay, loudspeaker, magnetic relay",qa-question-level/Q-5.11-07-loudspeaker-ac-signal.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-5.11-07
+igcse-physics-0625,5.11,"Electromagnets, relay, loudspeaker, magnetic relay",qa-question-level/Q-5.11-08-relay-temperature-fan.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-5.11-08
+igcse-physics-0625,5.11,"Electromagnets, relay, loudspeaker, magnetic relay",qa-question-level/Q-5.11-09-scrap-yard-crane.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-5.11-09
+igcse-physics-0625,5.2,"| 5.4 | Ohm's law, V=IR, resistance of wires",qa-question-level/Q-5.2-01-charge-current-time.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-5.2-01
+igcse-physics-0625,5.2,"| 5.4 | Ohm's law, V=IR, resistance of wires",qa-question-level/Q-5.2-02-current-from-charge-time.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-5.2-02
+igcse-physics-0625,5.2,"| 5.4 | Ohm's law, V=IR, resistance of wires",qa-question-level/Q-5.2-03-emf-vs-pd.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.2-03
+igcse-physics-0625,5.2,"| 5.4 | Ohm's law, V=IR, resistance of wires",qa-question-level/Q-5.2-04-conventional-current-electron-flow.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.2-04
+igcse-physics-0625,5.2,"| 5.4 | Ohm's law, V=IR, resistance of wires",qa-question-level/Q-5.2-05-emf-energy-charge.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.2-05
+igcse-physics-0625,5.2,"| 5.4 | Ohm's law, V=IR, resistance of wires",qa-question-level/Q-5.2-06-ammeter-voltmeter-connections.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.2-06
+igcse-physics-0625,5.2,"| 5.4 | Ohm's law, V=IR, resistance of wires",qa-question-level/Q-5.2-07-pd-and-time-multistep.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-5.2-07
+igcse-physics-0625,5.2,"| 5.4 | Ohm's law, V=IR, resistance of wires",qa-question-level/Q-5.2-08-current-not-used-up.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-5.2-08
+igcse-physics-0625,5.2,"| 5.4 | Ohm's law, V=IR, resistance of wires",qa-question-level/Q-5.2-09-series-pd-energy.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-5.2-09
+igcse-physics-0625,5.3,"| 5.7 | Power = IV = I²R, energy = IVt, cost of electricity",qa-question-level/Q-5.3-01-series-total-resistance.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-5.3-01
+igcse-physics-0625,5.3,"| 5.7 | Power = IV = I²R, energy = IVt, cost of electricity",qa-question-level/Q-5.3-02-series-lamp-blows.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-5.3-02
+igcse-physics-0625,5.3,"| 5.7 | Power = IV = I²R, energy = IVt, cost of electricity",qa-question-level/Q-5.3-03-parallel-total-resistance.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.3-03
+igcse-physics-0625,5.3,"| 5.7 | Power = IV = I²R, energy = IVt, cost of electricity",qa-question-level/Q-5.3-04-parallel-lamp-blows.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.3-04
+igcse-physics-0625,5.3,"| 5.7 | Power = IV = I²R, energy = IVt, cost of electricity",qa-question-level/Q-5.3-05-series-current-pd.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.3-05
+igcse-physics-0625,5.3,"| 5.7 | Power = IV = I²R, energy = IVt, cost of electricity",qa-question-level/Q-5.3-06-parallel-total-current.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.3-06
+igcse-physics-0625,5.3,"| 5.7 | Power = IV = I²R, energy = IVt, cost of electricity",qa-question-level/Q-5.3-07-mixed-circuit-total.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-5.3-07
+igcse-physics-0625,5.3,"| 5.7 | Power = IV = I²R, energy = IVt, cost of electricity",qa-question-level/Q-5.3-08-parallel-current-misconception.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-5.3-08
+igcse-physics-0625,5.3,"| 5.7 | Power = IV = I²R, energy = IVt, cost of electricity",qa-question-level/Q-5.3-09-independent-lamp-switches.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-5.3-09
+igcse-physics-0625,5.4,"| 5.8 | Household wiring: live, neutral, earth, plugs, fuses, circuit breakers",qa-question-level/Q-5.4-01-resistance-from-vi.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-5.4-01
+igcse-physics-0625,5.4,"| 5.8 | Household wiring: live, neutral, earth, plugs, fuses, circuit breakers",qa-question-level/Q-5.4-02-ohmic-conductor-definition.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-5.4-02
+igcse-physics-0625,5.4,"| 5.8 | Household wiring: live, neutral, earth, plugs, fuses, circuit breakers",qa-question-level/Q-5.4-03-wire-length-resistance.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.4-03
+igcse-physics-0625,5.4,"| 5.8 | Household wiring: live, neutral, earth, plugs, fuses, circuit breakers",qa-question-level/Q-5.4-04-wire-area-resistance.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.4-04
+igcse-physics-0625,5.4,"| 5.8 | Household wiring: live, neutral, earth, plugs, fuses, circuit breakers",qa-question-level/Q-5.4-05-metal-temperature-resistance.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.4-05
+igcse-physics-0625,5.4,"| 5.8 | Household wiring: live, neutral, earth, plugs, fuses, circuit breakers",qa-question-level/Q-5.4-06-filament-iv-curve.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.4-06
+igcse-physics-0625,5.4,"| 5.8 | Household wiring: live, neutral, earth, plugs, fuses, circuit breakers",qa-question-level/Q-5.4-07-area-change-current.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-5.4-07
+igcse-physics-0625,5.4,"| 5.8 | Household wiring: live, neutral, earth, plugs, fuses, circuit breakers",qa-question-level/Q-5.4-08-wire-length-experiment.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-5.4-08
+igcse-physics-0625,5.4,"| 5.8 | Household wiring: live, neutral, earth, plugs, fuses, circuit breakers",qa-question-level/Q-5.4-09-iv-graph-changing-resistance.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-5.4-09
+igcse-physics-0625,5.5,"Potential divider, thermistor, LDR",qa-question-level/Q-5.5-01-ldr-light-resistance.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-5.5-01
+igcse-physics-0625,5.5,"Potential divider, thermistor, LDR",qa-question-level/Q-5.5-02-sensor-applications.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-5.5-02
+igcse-physics-0625,5.5,"Potential divider, thermistor, LDR",qa-question-level/Q-5.5-03-potential-divider-output.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.5-03
+igcse-physics-0625,5.5,"Potential divider, thermistor, LDR",qa-question-level/Q-5.5-04-thermistor-fixed-resistor-voltage.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.5-04
+igcse-physics-0625,5.5,"Potential divider, thermistor, LDR",qa-question-level/Q-5.5-05-divider-design-3v.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.5-05
+igcse-physics-0625,5.5,"Potential divider, thermistor, LDR",qa-question-level/Q-5.5-06-ldr-output-across-ldr.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.5-06
+igcse-physics-0625,5.5,"Potential divider, thermistor, LDR",qa-question-level/Q-5.5-07-unknown-resistor-divider.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-5.5-07
+igcse-physics-0625,5.5,"Potential divider, thermistor, LDR",qa-question-level/Q-5.5-08-dark-activated-output.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-5.5-08
+igcse-physics-0625,5.5,"Potential divider, thermistor, LDR",qa-question-level/Q-5.5-09-ldr-thermistor-comparison.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-5.5-09
+igcse-physics-0625,5.6,,qa-question-level/Q-5.6-01-capacitor-stores-charge.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-5.6-01
+igcse-physics-0625,5.6,,qa-question-level/Q-5.6-02-capacitance-from-qv.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-5.6-02
+igcse-physics-0625,5.6,,qa-question-level/Q-5.6-03-smoothing-function.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.6-03
+igcse-physics-0625,5.6,,qa-question-level/Q-5.6-04-time-delay-capacitor.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.6-04
+igcse-physics-0625,5.6,,qa-question-level/Q-5.6-05-charging-curve-description.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.6-05
+igcse-physics-0625,5.6,,qa-question-level/Q-5.6-06-charge-from-capacitance.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.6-06
+igcse-physics-0625,5.6,,qa-question-level/Q-5.6-07-capacitor-discharge-lamp.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-5.6-07
+igcse-physics-0625,5.6,,qa-question-level/Q-5.6-08-increase-time-delay.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-5.6-08
+igcse-physics-0625,5.6,,qa-question-level/Q-5.6-09-rectifier-smoothing-comparison.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-5.6-09
+igcse-physics-0625,5.7,"| 5.9 | Electromagnetic induction, a.c. generator, transformers",qa-question-level/Q-5.7-01-heater-power.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-5.7-01
+igcse-physics-0625,5.7,"| 5.9 | Electromagnetic induction, a.c. generator, transformers",qa-question-level/Q-5.7-02-lamp-energy-kwh.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-5.7-02
+igcse-physics-0625,5.7,"| 5.9 | Electromagnetic induction, a.c. generator, transformers",qa-question-level/Q-5.7-03-monthly-electricity-bill.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.7-03
+igcse-physics-0625,5.7,"| 5.9 | Electromagnetic induction, a.c. generator, transformers",qa-question-level/Q-5.7-04-heater-vs-lamp-cost.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.7-04
+igcse-physics-0625,5.7,"| 5.9 | Electromagnetic induction, a.c. generator, transformers",qa-question-level/Q-5.7-05-current-from-power-resistance.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.7-05
+igcse-physics-0625,5.7,"| 5.9 | Electromagnetic induction, a.c. generator, transformers",qa-question-level/Q-5.7-06-kwh-to-joules.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.7-06
+igcse-physics-0625,5.7,"| 5.9 | Electromagnetic induction, a.c. generator, transformers",qa-question-level/Q-5.7-07-led-monthly-saving.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-5.7-07
+igcse-physics-0625,5.7,"| 5.9 | Electromagnetic induction, a.c. generator, transformers",qa-question-level/Q-5.7-08-kettle-energy-units.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-5.7-08
+igcse-physics-0625,5.7,"| 5.9 | Electromagnetic induction, a.c. generator, transformers",qa-question-level/Q-5.7-09-power-rating-misconception.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-5.7-09
+igcse-physics-0625,5.8,,qa-question-level/Q-5.8-01-live-wire-colour-function.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-5.8-01
+igcse-physics-0625,5.8,,qa-question-level/Q-5.8-02-earth-wire-colour-function.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-5.8-02
+igcse-physics-0625,5.8,,qa-question-level/Q-5.8-03-fuse-protection.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.8-03
+igcse-physics-0625,5.8,,qa-question-level/Q-5.8-04-fuse-rating-calc.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.8-04
+igcse-physics-0625,5.8,,qa-question-level/Q-5.8-05-live-switch-fuse.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.8-05
+igcse-physics-0625,5.8,,qa-question-level/Q-5.8-06-double-insulation.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.8-06
+igcse-physics-0625,5.8,,qa-question-level/Q-5.8-07-earth-fuse-fault.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-5.8-07
+igcse-physics-0625,5.8,,qa-question-level/Q-5.8-08-oversized-fuse-danger.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-5.8-08
+igcse-physics-0625,5.8,,qa-question-level/Q-5.8-09-fuse-circuit-breaker-comparison.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-5.8-09
+igcse-physics-0625,5.9,,qa-question-level/Q-5.9-01-induction-definition.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-5.9-01
+igcse-physics-0625,5.9,,qa-question-level/Q-5.9-02-increase-induced-emf.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-5.9-02
+igcse-physics-0625,5.9,,qa-question-level/Q-5.9-03-magnet-into-coil.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.9-03
+igcse-physics-0625,5.9,,qa-question-level/Q-5.9-04-reverse-current-coil.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.9-04
+igcse-physics-0625,5.9,,qa-question-level/Q-5.9-05-ac-generator.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.9-05
+igcse-physics-0625,5.9,,qa-question-level/Q-5.9-06-transformer-step-up-calc.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-5.9-06
+igcse-physics-0625,5.9,,qa-question-level/Q-5.9-07-transformer-ac-not-dc.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-5.9-07
+igcse-physics-0625,5.9,,qa-question-level/Q-5.9-08-high-voltage-transmission.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-5.9-08
+igcse-physics-0625,5.9,,qa-question-level/Q-5.9-09-transformer-efficiency-current.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-5.9-09
+igcse-physics-0625,6.1,"| 6.5 | Safety, background radiation, uses of radioisotopes",qa-question-level/Q-6.1-01-nuclide-protons-neutrons.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-6.1-01
+igcse-physics-0625,6.1,"| 6.5 | Safety, background radiation, uses of radioisotopes",qa-question-level/Q-6.1-02-carbon-14-particles.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-6.1-02
+igcse-physics-0625,6.1,"| 6.5 | Safety, background radiation, uses of radioisotopes",qa-question-level/Q-6.1-03-isotope-definition.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-6.1-03
+igcse-physics-0625,6.1,"| 6.5 | Safety, background radiation, uses of radioisotopes",qa-question-level/Q-6.1-04-magnesium-ion-electrons.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-6.1-04
+igcse-physics-0625,6.1,"| 6.5 | Safety, background radiation, uses of radioisotopes",qa-question-level/Q-6.1-05-isotope-chemical-properties.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-6.1-05
+igcse-physics-0625,6.1,"| 6.5 | Safety, background radiation, uses of radioisotopes",qa-question-level/Q-6.1-06-subatomic-particle-charges.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-6.1-06
+igcse-physics-0625,6.1,"| 6.5 | Safety, background radiation, uses of radioisotopes",qa-question-level/Q-6.1-07-nuclide-notation-writing.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-6.1-07
+igcse-physics-0625,6.1,"| 6.5 | Safety, background radiation, uses of radioisotopes",qa-question-level/Q-6.1-08-neutral-atom-condition.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-6.1-08
+igcse-physics-0625,6.1,"| 6.5 | Safety, background radiation, uses of radioisotopes",qa-question-level/Q-6.1-09-isotopes-same-element.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-6.1-09
+igcse-physics-0625,6.2,| 6.4 | Nuclear fission and fusion,qa-question-level/Q-6.2-01-alpha-beta-gamma-properties.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-6.2-01
+igcse-physics-0625,6.2,| 6.4 | Nuclear fission and fusion,qa-question-level/Q-6.2-02-radiation-identification.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-6.2-02
+igcse-physics-0625,6.2,| 6.4 | Nuclear fission and fusion,qa-question-level/Q-6.2-03-alpha-decay-equation.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-6.2-03
+igcse-physics-0625,6.2,| 6.4 | Nuclear fission and fusion,qa-question-level/Q-6.2-04-beta-decay-equation.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-6.2-04
+igcse-physics-0625,6.2,| 6.4 | Nuclear fission and fusion,qa-question-level/Q-6.2-05-electric-field-deflection.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-6.2-05
+igcse-physics-0625,6.2,| 6.4 | Nuclear fission and fusion,qa-question-level/Q-6.2-06-penetrating-power-comparison.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-6.2-06
+igcse-physics-0625,6.2,| 6.4 | Nuclear fission and fusion,qa-question-level/Q-6.2-07-ionisation-power.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-6.2-07
+igcse-physics-0625,6.2,| 6.4 | Nuclear fission and fusion,qa-question-level/Q-6.2-08-magnetic-field-deflection.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-6.2-08
+igcse-physics-0625,6.2,| 6.4 | Nuclear fission and fusion,qa-question-level/Q-6.2-09-nuclear-equation-completion.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-6.2-09
+igcse-physics-0625,6.3,,qa-question-level/Q-6.3-01-fraction-remaining.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-6.3-01
+igcse-physics-0625,6.3,,qa-question-level/Q-6.3-02-half-life-from-activity.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-6.3-02
+igcse-physics-0625,6.3,,qa-question-level/Q-6.3-03-background-correction.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-6.3-03
+igcse-physics-0625,6.3,,qa-question-level/Q-6.3-04-decay-curve-half-life.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-6.3-04
+igcse-physics-0625,6.3,,qa-question-level/Q-6.3-05-background-sources.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-6.3-05
+igcse-physics-0625,6.3,,qa-question-level/Q-6.3-06-counts-to-mass.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-6.3-06
+igcse-physics-0625,6.3,,qa-question-level/Q-6.3-07-percentage-decayed.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-6.3-07
+igcse-physics-0625,6.3,,qa-question-level/Q-6.3-08-age-determination.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-6.3-08
+igcse-physics-0625,6.3,,qa-question-level/Q-6.3-09-graph-interpretation.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-6.3-09
+igcse-physics-0625,6.4,,qa-question-level/Q-6.4-01-nuclear-fission-definition.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-6.4-01
+igcse-physics-0625,6.4,,qa-question-level/Q-6.4-02-chain-reaction.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-6.4-02
+igcse-physics-0625,6.4,,qa-question-level/Q-6.4-03-control-rods.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-6.4-03
+igcse-physics-0625,6.4,,qa-question-level/Q-6.4-04-nuclear-fusion-definition.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-6.4-04
+igcse-physics-0625,6.4,,qa-question-level/Q-6.4-05-fusion-challenges.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-6.4-05
+igcse-physics-0625,6.4,,qa-question-level/Q-6.4-06-moderator-role.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-6.4-06
+igcse-physics-0625,6.4,,qa-question-level/Q-6.4-07-fission-vs-fusion.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-6.4-07
+igcse-physics-0625,6.4,,qa-question-level/Q-6.4-08-energy-calculation.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-6.4-08
+igcse-physics-0625,6.4,,qa-question-level/Q-6.4-09-critical-mass.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-6.4-09
+igcse-physics-0625,6.5,,qa-question-level/Q-6.5-01-safety-precautions.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-6.5-01
+igcse-physics-0625,6.5,,qa-question-level/Q-6.5-02-leak-detection-tracer.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-6.5-02
+igcse-physics-0625,6.5,,qa-question-level/Q-6.5-03-medical-half-life.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-6.5-03
+igcse-physics-0625,6.5,,qa-question-level/Q-6.5-04-sterilisation-gamma.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-6.5-04
+igcse-physics-0625,6.5,,qa-question-level/Q-6.5-05-thickness-monitoring.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-6.5-05
+igcse-physics-0625,6.5,,qa-question-level/Q-6.5-06-carbon-dating.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-6.5-06
+igcse-physics-0625,6.5,,qa-question-level/Q-6.5-07-smoke-detector.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-6.5-07
+igcse-physics-0625,6.5,,qa-question-level/Q-6.5-08-long-term-storage.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-6.5-08
+igcse-physics-0625,6.5,,qa-question-level/Q-6.5-09-food-irradiation.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-6.5-09
+igcse-physics-0625,7.1,"Earth and Solar System, orbits",qa-question-level/Q-7.1-01-planets-order.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-7.1-01
+igcse-physics-0625,7.1,"Earth and Solar System, orbits",qa-question-level/Q-7.1-02-gravitational-orbit.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-7.1-02
+igcse-physics-0625,7.1,"Earth and Solar System, orbits",qa-question-level/Q-7.1-03-planet-vs-moon.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-7.1-03
+igcse-physics-0625,7.1,"Earth and Solar System, orbits",qa-question-level/Q-7.1-04-comet-features.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-7.1-04
+igcse-physics-0625,7.1,"Earth and Solar System, orbits",qa-question-level/Q-7.1-05-milky-way-location.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-7.1-05
+igcse-physics-0625,7.1,"Earth and Solar System, orbits",qa-question-level/Q-7.1-06-orbital-speed.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-7.1-06
+igcse-physics-0625,7.1,"Earth and Solar System, orbits",qa-question-level/Q-7.1-07-artificial-satellite.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-7.1-07
+igcse-physics-0625,7.1,"Earth and Solar System, orbits",qa-question-level/Q-7.1-08-dwarf-planet.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-7.1-08
+igcse-physics-0625,7.1,"Earth and Solar System, orbits",qa-question-level/Q-7.1-09-asteroid-vs-comet.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-7.1-09
+igcse-physics-0625,7.2,"Stars: life cycle, Sun as a main-sequence star",qa-question-level/Q-7.2-01-sun-life-cycle.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-7.2-01
+igcse-physics-0625,7.2,"Stars: life cycle, Sun as a main-sequence star",qa-question-level/Q-7.2-02-main-sequence-equilibrium.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-7.2-02
+igcse-physics-0625,7.2,"Stars: life cycle, Sun as a main-sequence star",qa-question-level/Q-7.2-03-stellar-mass-endpoint.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-7.2-03
+igcse-physics-0625,7.2,"Stars: life cycle, Sun as a main-sequence star",qa-question-level/Q-7.2-04-light-year-calculation.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-7.2-04
+igcse-physics-0625,7.2,"Stars: life cycle, Sun as a main-sequence star",qa-question-level/Q-7.2-05-red-giant-colour.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-7.2-05
+igcse-physics-0625,7.2,"Stars: life cycle, Sun as a main-sequence star",qa-question-level/Q-7.2-06-nebula-definition.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-7.2-06
+igcse-physics-0625,7.2,"Stars: life cycle, Sun as a main-sequence star",qa-question-level/Q-7.2-07-supernova-process.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-7.2-07
+igcse-physics-0625,7.2,"Stars: life cycle, Sun as a main-sequence star",qa-question-level/Q-7.2-08-absolute-brightness.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-7.2-08
+igcse-physics-0625,7.2,"Stars: life cycle, Sun as a main-sequence star",qa-question-level/Q-7.2-09-hertzsprung-russell.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-7.2-09
+igcse-physics-0625,7.3,"Galaxies, universe expansion, Big Bang evidence",qa-question-level/Q-7.3-01-galaxy-definition.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-7.3-01
+igcse-physics-0625,7.3,"Galaxies, universe expansion, Big Bang evidence",qa-question-level/Q-7.3-02-redshift-explanation.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-7.3-02
+igcse-physics-0625,7.3,"Galaxies, universe expansion, Big Bang evidence",qa-question-level/Q-7.3-03-big-bang-evidence.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-7.3-03
+igcse-physics-0625,7.3,"Galaxies, universe expansion, Big Bang evidence",qa-question-level/Q-7.3-04-cmb-description.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-7.3-04
+igcse-physics-0625,7.3,"Galaxies, universe expansion, Big Bang evidence",qa-question-level/Q-7.3-05-hubbles-law-comparison.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-7.3-05
+igcse-physics-0625,7.3,"Galaxies, universe expansion, Big Bang evidence",qa-question-level/Q-7.3-06-steady-state-vs-big-bang.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-7.3-06
+igcse-physics-0625,7.3,"Galaxies, universe expansion, Big Bang evidence",qa-question-level/Q-7.3-07-future-of-universe.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-7.3-07
+igcse-physics-0625,7.3,"Galaxies, universe expansion, Big Bang evidence",qa-question-level/Q-7.3-08-dark-matter-evidence.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-7.3-08
+igcse-physics-0625,7.3,"Galaxies, universe expansion, Big Bang evidence",qa-question-level/Q-7.3-09-age-of-universe.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-7.3-09
+igcse-physics-0625,7.4,"Gravitational field strength, weight on other planets",qa-question-level/Q-7.4-01-weight-calculation.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-7.4-01
+igcse-physics-0625,7.4,"Gravitational field strength, weight on other planets",qa-question-level/Q-7.4-02-mass-from-weight.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-7.4-02
+igcse-physics-0625,7.4,"Gravitational field strength, weight on other planets",qa-question-level/Q-7.4-03-gravity-formula.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-7.4-03
+igcse-physics-0625,7.4,"Gravitational field strength, weight on other planets",qa-question-level/Q-7.4-04-weightlessness-explanation.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-7.4-04
+igcse-physics-0625,7.4,"Gravitational field strength, weight on other planets",qa-question-level/Q-7.4-05-jupiter-gravity.md,1,Foundation,0625,,imported,passed,worker_course,Q-ID Q-7.4-05
+igcse-physics-0625,7.4,"Gravitational field strength, weight on other planets",qa-question-level/Q-7.4-06-gravity-with-depth.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-7.4-06
+igcse-physics-0625,7.4,"Gravitational field strength, weight on other planets",qa-question-level/Q-7.4-07-orbital-velocity.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-7.4-07
+igcse-physics-0625,7.4,"Gravitational field strength, weight on other planets",qa-question-level/Q-7.4-08-g-on-other-planets.md,1,Standard,0625,,imported,passed,worker_course,Q-ID Q-7.4-08
+igcse-physics-0625,7.4,"Gravitational field strength, weight on other planets",qa-question-level/Q-7.4-09-gravitational-potential.md,1,Challenge,0625,,imported,passed,worker_course,Q-ID Q-7.4-09

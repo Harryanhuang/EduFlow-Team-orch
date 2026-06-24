@@ -1,0 +1,6 @@
+### Question Q-4.1-07
+**Difficulty**: Challenge
+**Question**: Evaluate the impact of digital banking on the financial system.
+**Answer**: Digital banking has significantly increased access to financial services, especially in developing countries where mobile banking reaches unbanked populations. It reduces operating costs for banks (fewer branches needed), speeds up transactions, and provides consumers with 24/7 convenience. However, it creates cybersecurity risks such as hacking and fraud, may exclude elderly or low-income groups who lack internet access or digital literacy, and reduces personal relationships between banks and customers, potentially weakening trust. Additionally, digital banking enables faster bank runs as deposits can be withdrawn instantly online. On balance, digital banking has improved efficiency and inclusion, but regulators must ensure adequate consumer protection and cybersecurity standards.
+**Explanation**: Weigh benefits (access, cost, speed, inclusion) against risks (cyber threats, digital exclusion, faster bank runs, reduced trust). A common error is focusing only on convenience while ignoring systemic risks or excluding evaluation of who loses out.
+**Tags**: digital-banking, financial-system, evaluation, cybersecurity

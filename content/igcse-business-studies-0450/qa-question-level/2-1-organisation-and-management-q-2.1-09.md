@@ -1,0 +1,6 @@
+### Question Q-2.1-09
+**Difficulty**: Challenge
+**Question**: A growing tech startup of 200 employees still uses the same flat structure it had with 20 staff. Problems include managers being overloaded and decisions taking too long. Evaluate whether the business should adopt a taller structure or maintain its flat approach, and justify your recommendation.
+**Answer**: Adopting a taller structure would introduce additional hierarchy levels with a clear chain of command, delegate operational decisions to department heads, and widen span of control at the top. This reduces manager overload, speeds decisions at the right level, and creates clear reporting lines. However, it may slow some communication and reduce the informal culture that attracted early employees. On balance, the benefits outweigh the drawbacks: at 200 staff, the original flat structure with everyone reporting to founders is unsustainable. The business should introduce middle managers while preserving open communication channels (e.g., regular all-hands meetings) to retain some flat-structure culture.
+**Explanation**: Structural changes must match organisational size and complexity. A common error is recommending delayering when the problem is too few levels.
+**Tags**: organisation-structure, delegation, evaluation, application
