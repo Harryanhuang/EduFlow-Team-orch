@@ -17,10 +17,9 @@ if [ -f "$ROOT/.env" ]; then
 fi
 
 # Import-drift guard: make sure Python eats THIS project's src/ before any
-# globally installed eduflow package. Without this, `eduflow` /
-# `eduflowteam` binaries that resolve to /opt/homebrew/bin fall back to a
-# stale install under /Volumes/Halobster/Codex相关/EduFlow/ and never see
-# the failover code in this checkout.
+# globally installed eduflow package. Without this, `eduflow` binaries that
+# resolve to /opt/homebrew/bin fall back to an old install and never see the
+# latest code in this checkout.
 export PYTHONPATH="$ROOT/src${PYTHONPATH:+:$PYTHONPATH}"
 
 # Local venv guard: if .venv exists and has a bin/, prepend it to PATH so

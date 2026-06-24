@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-ROOT="/Volumes/Halobster/Codex相关/EduFlow-Team-orch"
+ROOT="${ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 
 # shellcheck source=/dev/null
 . "$ROOT/scripts/eduflow-team-env.sh"
