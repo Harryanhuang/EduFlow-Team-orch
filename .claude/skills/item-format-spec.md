@@ -138,7 +138,7 @@ Example: `U4.2.1-S.md` = Unit 4, Topic 2, Subtopic 1, Standard difficulty.
 # IGCSE: check all items have required fields
 for f in items/topic_*.md; do
   for field in "Question:" "Answer:" "Difficulty:" "Topic:" "Explanation:" "Tags:"; do
-    grep -qL "$field" "$f" && echo "MISSING $field in $f"
+    grep -q "$field" "$f" || echo "MISSING $field in $f"
   done
 done
 

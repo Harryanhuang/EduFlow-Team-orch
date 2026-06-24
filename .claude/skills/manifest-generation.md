@@ -60,7 +60,10 @@ for line in outline.read_text().splitlines():
 
 rows = []
 for items_file in sorted(items_dir.glob('topic_*.md')):
-    topic_id = items_file.stem.replace('topic_', '').replace('_', '.')
+    # Filename convention: topic_N_M.md → topic_id "N.M".
+    # (e.g. topic_1_2.md → "1.2"; topic_1_2_3.md → "1.2.3")
+    parts = items_file.stem.replace('topic_', '').split('_')
+    topic_id = '.'.join(parts)
     items_count = len(re.findall(r'\*\*Item \d+', items_file.read_text()))
     qql_files = list(qql_dir.glob(f'Q-{topic_id.replace(".", "-")}-*.md'))
     rows.append({
@@ -102,7 +105,7 @@ with open('qa-manifest.csv') as f:
     rows = list(csv.DictReader(f))
 
 total_items = sum(int(r['items_count']) for r in rows)
-actual_files = len(list(items_dir.glob('*.md'))) + len(list(items_dir.rglob('*.md')))
+actual_files = len(list(items_dir.glob('topic_*.md')))
 
 assert total_items == actual_files, f"MISMATCH: manifest={total_items}, files={actual_files}"
 print(f"VALID: {total_items} items, {len(rows)} topics")
