@@ -836,8 +836,8 @@ def _cmd_subject_inventory(rest: list[str]) -> int:
                       f"orphans={compact['orphan_candidate_count']}")
                 if compact["blocking_reasons"]:
                     print(f"    verifier_blocking: {'; '.join(compact['blocking_reasons'])}")
-            except Exception:
-                pass  # best-effort for inventory display
+            except Exception as e:
+                print(f"    verifier: error ({e})", file=sys.stderr)
     return 0
 
 
@@ -1694,7 +1694,6 @@ def _cmd_manager_panel(rest: list[str]) -> int:
                     f"  - {row['task_id']} :: {item.get('manager_response_type') or row['reason']} :: {item['message']}"
                 )
         if not (aggregate["results"] or aggregate["problems"] or aggregate["reassurances"]):
-            row = item["row"]
             print(
                 f"fallback :: {aggregate['fallback']}"
             )
