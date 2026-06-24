@@ -3,7 +3,7 @@
 ## Manager -> worker_course
 
 ```text
-调用 candidate workflow: ap-knowledge-base-optimization
+调用 workflow: ap-knowledge-base-optimization
 对象: <AP Subject>
 范围: <Unit / Topic / full subject sample>
 边界:

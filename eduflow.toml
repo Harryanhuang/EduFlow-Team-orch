@@ -16,9 +16,8 @@ default_model = "opus"                    # team.json agent 没指定 model 时�
 #   - spawn 失败 / ready 超时时按 fallback_to 尝试切换
 # 后续再补更细的 provider health / rate limit / auth failure 切换。
 #
-# 当前容灾链（主）：claude_proxy_primary (Qwen3.7 Plus)
-#                → claude_proxy_glm_5_2_backup (GLM 5.2)
-#                → claude_proxy_minimax_backup (MiniMax M3)
+# 当前容灾链（主）：claude_proxy_minimax_backup (MiniMax M3)
+#                → claude_proxy_mimo_backup (mimo-v2.5-pro)
 #                → claude_proxy_kimi_primary (Kimi K2.7 Code)
 # 注：deepseek-v4-pro 容灾链已于 2026-06-22 移除（provider 持续 503）。
 # 注：runtime 名中的 "_qwen_plus" / "_claude" 等是历史命名，
@@ -28,7 +27,7 @@ cli = "claude-code"
 model = "sonnet"
 provider = "anthropic-proxy"
 env_profile = "claude_proxy_primary"
-fallback_to = "course_backup_glm_5_2"
+fallback_to = "course_backup_minimax"
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
 
 [runtime_registry.course_backup_codex]
@@ -36,7 +35,7 @@ cli = "codex-cli"
 model = "gpt-5.5"
 provider = "openai"
 env_profile = "codex_primary"
-fallback_to = "course_backup_glm_5_2"
+fallback_to = "course_backup_minimax"
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
 
 [runtime_registry.course_backup_glm_5_2]
@@ -52,6 +51,14 @@ cli = "claude-code"
 model = "sonnet"
 provider = "anthropic-proxy"
 env_profile = "claude_proxy_minimax_backup"
+fallback_to = "course_backup_mimo"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.course_backup_mimo]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_mimo_backup"
 fallback_to = "course_backup_kimi"
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
 
@@ -60,7 +67,7 @@ cli = "claude-code"
 model = "sonnet"
 provider = "anthropic-proxy"
 env_profile = "claude_proxy_kimi_primary"
-fallback_to = "course_backup_glm_5_2"
+fallback_to = ""
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
 
 [runtime_registry.manager_primary]
@@ -68,7 +75,7 @@ cli = "claude-code"
 model = "sonnet"
 provider = "anthropic-proxy"
 env_profile = "claude_proxy_primary"
-fallback_to = "manager_backup_glm_5_2"
+fallback_to = "manager_backup_minimax"
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
 
 [runtime_registry.manager_backup_codex]
@@ -76,7 +83,7 @@ cli = "codex-cli"
 model = "gpt-5.5"
 provider = "openai"
 env_profile = "codex_primary"
-fallback_to = "manager_backup_glm_5_2"
+fallback_to = "manager_backup_minimax"
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
 
 [runtime_registry.manager_backup_glm_5_2]
@@ -92,6 +99,14 @@ cli = "claude-code"
 model = "sonnet"
 provider = "anthropic-proxy"
 env_profile = "claude_proxy_minimax_backup"
+fallback_to = "manager_backup_mimo"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.manager_backup_mimo]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_mimo_backup"
 fallback_to = "manager_backup_kimi"
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
 
@@ -100,7 +115,7 @@ cli = "claude-code"
 model = "sonnet"
 provider = "anthropic-proxy"
 env_profile = "claude_proxy_kimi_primary"
-fallback_to = "manager_backup_glm_5_2"
+fallback_to = ""
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
 
 [runtime_registry.review_primary]
@@ -108,7 +123,7 @@ cli = "claude-code"
 model = "sonnet"
 provider = "anthropic-proxy"
 env_profile = "claude_proxy_primary"
-fallback_to = "review_backup_glm_5_2"
+fallback_to = "review_backup_minimax"
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
 
 [runtime_registry.review_backup_codex]
@@ -116,7 +131,7 @@ cli = "codex-cli"
 model = "gpt-5.5"
 provider = "openai"
 env_profile = "codex_primary"
-fallback_to = "review_backup_glm_5_2"
+fallback_to = "review_backup_minimax"
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
 
 [runtime_registry.review_backup_glm_5_2]
@@ -132,6 +147,14 @@ cli = "claude-code"
 model = "sonnet"
 provider = "anthropic-proxy"
 env_profile = "claude_proxy_minimax_backup"
+fallback_to = "review_backup_mimo"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.review_backup_mimo]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_mimo_backup"
 fallback_to = "review_backup_kimi"
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
 
@@ -140,7 +163,7 @@ cli = "claude-code"
 model = "sonnet"
 provider = "anthropic-proxy"
 env_profile = "claude_proxy_kimi_primary"
-fallback_to = "review_backup_glm_5_2"
+fallback_to = ""
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
 
 [runtime_registry.builder_primary]
@@ -148,7 +171,7 @@ cli = "claude-code"
 model = "sonnet"
 provider = "anthropic-proxy"
 env_profile = "claude_proxy_primary"
-fallback_to = "builder_backup_glm_5_2"
+fallback_to = "builder_backup_minimax"
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
 
 [runtime_registry.builder_backup_claude]
@@ -156,7 +179,7 @@ cli = "claude-code"
 model = "sonnet"
 provider = "anthropic-proxy"
 env_profile = "claude_proxy_kimi_primary"
-fallback_to = "builder_backup_glm_5_2"
+fallback_to = "builder_backup_minimax"
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
 
 [runtime_registry.builder_backup_glm_5_2]
@@ -172,6 +195,14 @@ cli = "claude-code"
 model = "sonnet"
 provider = "anthropic-proxy"
 env_profile = "claude_proxy_minimax_backup"
+fallback_to = "builder_backup_mimo"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.builder_backup_mimo]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_mimo_backup"
 fallback_to = "builder_backup_kimi"
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
 
@@ -180,7 +211,7 @@ cli = "claude-code"
 model = "sonnet"
 provider = "anthropic-proxy"
 env_profile = "claude_proxy_kimi_primary"
-fallback_to = "builder_backup_glm_5_2"
+fallback_to = ""
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
 
 [runtime_registry.qbank_primary]
@@ -188,7 +219,7 @@ cli = "claude-code"
 model = "sonnet"
 provider = "anthropic-proxy"
 env_profile = "claude_proxy_primary"
-fallback_to = "qbank_backup_glm_5_2"
+fallback_to = "qbank_backup_minimax"
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
 
 [runtime_registry.qbank_backup_claude]
@@ -196,7 +227,7 @@ cli = "claude-code"
 model = "sonnet"
 provider = "anthropic-proxy"
 env_profile = "claude_proxy_kimi_primary"
-fallback_to = "qbank_backup_glm_5_2"
+fallback_to = "qbank_backup_minimax"
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
 
 [runtime_registry.qbank_backup_glm_5_2]
@@ -212,6 +243,14 @@ cli = "claude-code"
 model = "sonnet"
 provider = "anthropic-proxy"
 env_profile = "claude_proxy_minimax_backup"
+fallback_to = "qbank_backup_mimo"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.qbank_backup_mimo]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_mimo_backup"
 fallback_to = "qbank_backup_kimi"
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
 
@@ -220,7 +259,7 @@ cli = "claude-code"
 model = "sonnet"
 provider = "anthropic-proxy"
 env_profile = "claude_proxy_kimi_primary"
-fallback_to = "qbank_backup_glm_5_2"
+fallback_to = ""
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
 
 [runtime_registry.ops_primary]
@@ -228,7 +267,7 @@ cli = "claude-code"
 model = "sonnet"
 provider = "anthropic-proxy"
 env_profile = "claude_proxy_primary"
-fallback_to = "ops_backup_glm_5_2"
+fallback_to = "ops_backup_minimax"
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
 
 [runtime_registry.ops_backup_codex]
@@ -236,26 +275,10 @@ cli = "codex-cli"
 model = "gpt-5.5"
 provider = "openai"
 env_profile = "codex_primary"
-fallback_to = "ops_backup_qoder_qwen_max"
-switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
-
-[runtime_registry.ops_backup_qoder_qwen_max]
-cli = "qoderclicn"
-model = "Qwen3.7-Max"
-provider = "qoder"
-env_profile = ""
-fallback_to = "ops_backup_glm_5_2"
-switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
-
-[runtime_registry.ops_backup_glm_5_2]
-cli = "claude-code"
-model = "sonnet"
-provider = "anthropic-proxy"
-env_profile = "claude_proxy_glm_5_2_backup"
 fallback_to = "ops_backup_minimax"
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
 
-[runtime_registry.ops_backup_qwen_plus]
+[runtime_registry.ops_backup_glm_5_2]
 cli = "claude-code"
 model = "sonnet"
 provider = "anthropic-proxy"
@@ -268,6 +291,14 @@ cli = "claude-code"
 model = "sonnet"
 provider = "anthropic-proxy"
 env_profile = "claude_proxy_minimax_backup"
+fallback_to = "ops_backup_mimo"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.ops_backup_mimo]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_mimo_backup"
 fallback_to = "ops_backup_kimi"
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
 
@@ -276,7 +307,7 @@ cli = "claude-code"
 model = "sonnet"
 provider = "anthropic-proxy"
 env_profile = "claude_proxy_kimi_primary"
-fallback_to = "ops_backup_glm_5_2"
+fallback_to = ""
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
 
 [runtime_registry.luke_recorder_minimax]
@@ -284,7 +315,23 @@ cli = "claude-code"
 model = "sonnet"
 provider = "anthropic-proxy"
 env_profile = "claude_proxy_minimax_backup"
-fallback_to = "ops_backup_glm_5_2"
+fallback_to = "luke_recorder_mimo"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.luke_recorder_mimo]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_mimo_backup"
+fallback_to = "luke_recorder_kimi"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.luke_recorder_kimi]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_kimi_primary"
+fallback_to = ""
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
 
 [runtime_registry.hermes_primary]
@@ -292,7 +339,23 @@ cli = "hermes-agent"
 model = "minimax-m3"
 provider = "minimax"
 env_profile = "hermes_minimax_m3_primary"
-fallback_to = "hermes_backup_glm_5_2"
+fallback_to = "hermes_backup_mimo"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.hermes_backup_mimo]
+cli = "hermes-agent"
+model = "mimo-v2.5-pro"
+provider = "mimo"
+env_profile = "hermes_mimo_backup"
+fallback_to = "hermes_backup_kimi"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.hermes_backup_kimi]
+cli = "hermes-agent"
+model = "kimi-k2.7-code"
+provider = "kimi"
+env_profile = "hermes_kimi_backup"
+fallback_to = ""
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
 
 [runtime_registry.hermes_backup_glm_5_2]
@@ -300,7 +363,7 @@ cli = "hermes-agent"
 model = "glm-5.2"
 provider = "glm"
 env_profile = "hermes_glm_5_2_backup"
-fallback_to = "hermes_backup_model"
+fallback_to = "hermes_backup_mimo"
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
 
 [runtime_registry.hermes_backup_model]
@@ -374,14 +437,45 @@ ANTHROPIC_DEFAULT_HAIKU_MODEL = "MiniMax-M3"
 pool_id = "minimax_official"
 provider_family = "minimax"
 
+[env_profiles.claude_proxy_mimo_backup]
+ANTHROPIC_BASE_URL = "https://token-plan-cn.xiaomimimo.com/anthropic"
+ANTHROPIC_AUTH_TOKEN = "${MIMO_AUTH_TOKEN}"
+ANTHROPIC_MODEL = "mimo-v2.5-pro"
+ANTHROPIC_REASONING_MODEL = "mimo-v2.5-pro"
+ANTHROPIC_DEFAULT_OPUS_MODEL = "mimo-v2.5-pro"
+ANTHROPIC_DEFAULT_SONNET_MODEL = "mimo-v2.5-pro"
+ANTHROPIC_DEFAULT_HAIKU_MODEL = "mimo-v2.5-pro"
+pool_id = "xiaomi_mimo"
+provider_family = "mimo"
+
 [env_profiles.codex_primary]
 # OPENAI_BASE_URL = ""
 pool_id = "codex_openai"
 provider_family = "openai_codex"
 
 [env_profiles.hermes_minimax_m3_primary]
+HERMES_MODEL = "MiniMax-M3"
+HERMES_PROVIDER = "minimax"
+HERMES_BASE_URL = "https://api.minimaxi.com/anthropic"
+HERMES_AUTH_TOKEN = "${MINIMAX_AUTH_TOKEN}"
 pool_id = "hermes_minimax_m3"
 provider_family = "minimax"
+
+[env_profiles.hermes_mimo_backup]
+HERMES_MODEL = "mimo-v2.5-pro"
+HERMES_PROVIDER = "mimo"
+HERMES_BASE_URL = "https://token-plan-cn.xiaomimimo.com/anthropic"
+HERMES_AUTH_TOKEN = "${MIMO_AUTH_TOKEN}"
+pool_id = "hermes_xiaomi_mimo"
+provider_family = "mimo"
+
+[env_profiles.hermes_kimi_backup]
+HERMES_MODEL = "kimi-k2.7-code"
+HERMES_PROVIDER = "kimi"
+HERMES_BASE_URL = "https://api.kimi.com/coding/"
+HERMES_AUTH_TOKEN = "${KIMI_AUTH_TOKEN}"
+pool_id = "hermes_kimi_official"
+provider_family = "kimi"
 
 [env_profiles.hermes_glm_5_2_backup]
 HERMES_PROVIDER = "glm"
@@ -410,7 +504,7 @@ default_model = "opus"
 #   card_color  可选  飞书 v2 色: blue/green/red/yellow/purple/orange/grey/pink
 #   lazy        可选  true=首消息触发起 CLI; 默认 false
 [team.agents.manager]
-runtime = "manager_primary"
+runtime = "manager_backup_minimax"
 role  = "唯一业务入口、唯一正式派工口、唯一业务正式对外口。负责接单、判断归属、拆单、派工、阶段切换、升级处理与正式业务汇总，不承担内容生产、系统维修、长期盯盘或正式复核。"
 specialty = ["任务拆解", "派工分发", "组织调度", "升级处理", "学科切换"]
 tone = "直接、克制、判断优先、像技术合伙人"
@@ -428,7 +522,7 @@ card_color = "purple"
 lazy = false
 
 [team.agents.review_course]
-runtime = "review_primary"
+runtime = "review_backup_minimax"
 role  = "国际课程教研质检与正式回收 owner。负责严格复核 worker_course 产出的资料与基础数据是否最准确，并给出通过、退回、需补充的明确 verdict。"
 specialty = ["国际课程复核", "考纲一致性", "topic结构审校", "QA质量把关", "正式回收"]
 tone = "严谨、结构化、先给 verdict 再给问题项"
@@ -437,7 +531,7 @@ card_color = "green"
 lazy = false
 
 [team.agents.auto_ops]
-runtime = "ops_primary"
+runtime = "ops_backup_minimax"
 role  = "唯一内部盯盘 owner、唯一自动化日常运行值守 owner。负责内部状态跟踪、链路停滞识别、异常分诊、催办、阶段回收、状态台账维护，并向 manager 回流正式状态包。"
 specialty = ["内部盯盘", "自动化值守", "异常分诊", "催办", "阶段回收", "状态台账", "内部状态包"]
 tone = "冷静、持续、先判断异常级别再回流"
@@ -446,7 +540,7 @@ card_color = "red"
 lazy = false
 
 [team.agents.worker_builder]
-runtime = "builder_primary"
+runtime = "builder_backup_minimax"
 role  = "唯一 agent 系统建设 / 工程维修执行位。只负责 agent 工作流建设、运行体系建设、自动化编排能力建设与运行态故障修复。"
 specialty = ["agent工作流", "路由能力", "自动化脚本", "运行体系", "监控告警", "运行态维修"]
 tone = "务实、先恢复可用、再补完整交付"
@@ -455,7 +549,7 @@ card_color = "orange"
 lazy = false
 
 [team.agents.worker_qbank]
-runtime = "qbank_primary"
+runtime = "qbank_backup_minimax"
 role  = "题库系统专项工程师，负责 QA schema、题库导入导出、manifest 对齐、索引检索、去重校验、QA Bot 接入与题库运行链维修。"
 specialty = ["QA schema", "题库导入导出", "manifest对齐", "索引检索", "去重校验", "QA Bot接入"]
 tone = "结构清楚、数据导向、可消费优先"
@@ -484,6 +578,8 @@ lazy = false
 [team.agents.Hermes.publish_overrides]
 worker_to_user = true
 worker_to_manager = true
+# Hermes V1 完整职责与不做事项，参见 docs/HERMES_V1_KNOWLEDGE_STEWARD.md
+# （含 Memory Candidate 状态机、Obsidian 白名单、PII guardrail 边界）
 
 [team.agents.Luke_recorder.publish_overrides]
 user_to_user = true
@@ -564,11 +660,3 @@ send_as          = "bot"
 no_proxy         = true
 cli_bin          = ""
 broadcast_tokens = ["@team", "@all", "@everyone"]
-
-[feishu.supervisor]
-chat_id          = "oc_1208a12d8c26f786c10c9094273137a2"  # Hermes / supervisor 独立问题反馈群
-lark_profile     = "hermes-supervisor"
-sender_name      = "Hermes Supervisor"
-sender_role      = "外部监督通道"
-sender_emoji     = "🛡️"
-sender_color     = "red"
