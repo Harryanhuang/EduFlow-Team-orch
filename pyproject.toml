@@ -34,7 +34,6 @@ Issues = "https://github.com/zylMozart/EduFlow/issues"
 
 [project.scripts]
 eduflow = "eduflow.cli:main"
-eduflowteam = "eduflow.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO="/Volumes/Halobster/Codex相关/EduFlow-Team-orch"
+# Resolve repo root from this script's location so the wrapper follows the
+# checkout instead of a hardcoded path. Honor $REPO override for tests that
+# need to redirect to a scratch copy.
+REPO="${REPO:-$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)}"
+if [ ! -d "$REPO/src/eduflow" ] && [ ! -d "$REPO/.eduflow-team-state" ]; then
+  echo "[eduflowteam] ERROR: resolved REPO=$REPO does not look like EduFlow-Team-orch (no src/eduflow and no .eduflow-team-state)" >&2
+  exit 1
+fi
 . "$REPO/scripts/eduflow-team-env.sh"
 exec python3 -c 'from eduflow import cli; raise SystemExit(cli.main())' "$@"

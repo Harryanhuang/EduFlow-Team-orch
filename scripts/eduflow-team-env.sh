@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 
-ROOT="/Volumes/Halobster/Codex相关/EduFlow-Team-orch"
+# Resolve repo root from this script's location. Honor $ROOT override so a
+# caller (test harness, redirect harness) can still point at a different
+# checkout without editing this file.
+ROOT="${ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 
 export EDUFLOW_ROOT="$ROOT"
-export EDUFLOW_CONFIG_FILE="$ROOT/eduflow.toml"
+export EDUFLOW_CONFIG_FILE="${EDUFLOW_CONFIG_FILE:-$ROOT/eduflow.toml}"
 export EDUFLOW_STATE_DIR="${EDUFLOW_STATE_DIR:-$ROOT/.eduflow-team-state}"
+export EDUFLOW_WORKFLOW_DIR="${EDUFLOW_WORKFLOW_DIR:-$ROOT/docs/workflows}"
 
 if [ -f "$ROOT/.env" ]; then
   set -a
@@ -14,9 +18,9 @@ fi
 
 # Import-drift guard: make sure Python eats THIS project's src/ before any
 # globally installed eduflow package. Without this, `eduflow` /
-# `eduflowteam` binaries that resolve to /opt/homebrew/bin fall back to the
-# old /Volumes/Halobster/Codex相关/EduFlow/src install and never see the
-# new failover code.
+# `eduflowteam` binaries that resolve to /opt/homebrew/bin fall back to a
+# stale install under /Volumes/Halobster/Codex相关/EduFlow/ and never see
+# the failover code in this checkout.
 export PYTHONPATH="$ROOT/src${PYTHONPATH:+:$PYTHONPATH}"
 
 # Local venv guard: if .venv exists and has a bin/, prepend it to PATH so
