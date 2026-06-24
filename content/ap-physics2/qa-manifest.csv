@@ -1,0 +1,93 @@
+topic_id,topic_name,unit,items_count,question_count,difficulty_mix,calculator_marked,status,notes
+U9.1.1,Pascal's Law,U9,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 9 subtopic items
+U9.1.2,Pressure in a Fluid at Rest,U9,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 9 subtopic items
+U9.2.1,Buoyancy and Archimedes' Principle,U9,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 9 subtopic items
+U9.2.2,Buoyancy at Fluid Interfaces,U9,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 9 subtopic items
+U9.3.1,Continuity Equation and Bernoulli,U9,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 9 subtopic items
+U9.3.2,Applications of Bernoulli's Equation,U9,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 9 subtopic items
+U10.1.1,Thermodynamic Systems and Surroundings,U10,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 10 subtopic items
+U10.1.2,Internal Energy and Temperature,U10,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 10 subtopic items
+U10.2.1,Ideal Gas Law,U10,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 10 subtopic items
+U10.2.2,Thermal Equilibrium and Temperature,U10,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 10 subtopic items
+U10.3.1,Thermodynamic Processes,U10,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 10 subtopic items
+U10.4.1,Heat Transfer Mechanisms,U10,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 10 subtopic items
+U10.4.2,First Law of Thermodynamics,U10,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 10 subtopic items
+U10.4.3,Adiabatic Processes,U10,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 10 subtopic items
+U10.5.1,Entropy and the Second Law,U10,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 10 subtopic items
+U11.1.1,Coulomb's Law,U11,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 11 subtopic items
+U11.1.2,Conductors and Insulators,U11,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 11 subtopic items
+U11.1.3,Polarization,U11,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 11 subtopic items
+U11.1.4,Electric Charge Properties,U11,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 11 subtopic items
+U11.2.1,Conservation of Electric Charge,U11,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 11 subtopic items
+U11.3.1,Electric Field Definition,U11,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 11 subtopic items
+U11.3.2,Electric Field Lines,U11,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 11 subtopic items
+U11.3.3,Force on a Point Charge,U11,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 11 subtopic items
+U11.4.1,Electric Field of a Point Charge,U11,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 11 subtopic items
+U11.4.2,Electric Field Uniform,U11,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 11 subtopic items
+U11.4.3,Conductors in Equilibrium,U11,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 11 subtopic items
+U11.4.4,Field Maps,U11,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 11 subtopic items
+U11.5.1,Electric Potential Energy,U11,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 11 subtopic items
+U11.5.2,Motion in Potential,U11,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 11 subtopic items
+U11.6.1,Electric Potential of a Point Charge,U11,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 11 subtopic items
+U11.6.2,Equipotential Surfaces,U11,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 11 subtopic items
+U11.6.3,Parallel-Plate Capacitor Potential,U11,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 11 subtopic items
+U12.1.1,Electric Current,U12,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 12 subtopic items
+U12.1.2,Ohm's Law,U12,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 12 subtopic items
+U12.1.3,Electric Power,U12,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 12 subtopic items
+U12.2.1,Resistivity,U12,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 12 subtopic items
+U12.2.2,Resistors in Series,U12,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 12 subtopic items
+U12.2.3,Resistors in Parallel,U12,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 12 subtopic items
+U12.3.1,Capacitors in Circuits,U12,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 12 subtopic items
+U12.3.2,Energy Stored in a Capacitor,U12,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 12 subtopic items
+U12.3.3,RC Circuits,U12,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 12 subtopic items
+U12.4.1,Kirchhoff's Loop Rule,U12,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 12 subtopic items
+U12.4.2,Kirchhoff's Loop Rule Applications,U12,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 12 subtopic items
+U12.5.1,Kirchhoff's Junction Rule,U12,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 12 subtopic items
+U12.5.2,Energy Conservation in Circuits,U12,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 12 subtopic items
+U13.1.1,Magnetic Fields from Wires,U13,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 13 subtopic items
+U13.1.2,Force on a Moving Charge,U13,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 13 subtopic items
+U13.1.3,Force on a Current-Carrying Wire,U13,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 13 subtopic items
+U13.2.1,Magnetic Dipole Moment,U13,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 13 subtopic items
+U13.2.2,Paramagnetism and Diamagnetism,U13,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 13 subtopic items
+U13.3.1,Scalar and Vector Fields,U13,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 13 subtopic items
+U13.3.2,Field Superposition,U13,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 13 subtopic items
+U13.4.1,Magnetic Field Patterns,U13,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 13 subtopic items
+U13.5.1,Faraday's Law of Induction,U13,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 13 subtopic items
+U13.5.2,Applications of EM Induction,U13,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 13 subtopic items
+U13.5.3,Inductance and Self-Induction,U13,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 13 subtopic items
+U14.1.1,Waves and EM Radiation,U14,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 14 subtopic items
+U14.1.2,Wave Properties,U14,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 14 subtopic items
+U14.1.3,Sound Waves,U14,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 14 subtopic items
+U14.2.1,Wavelength and Frequency,U14,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 14 subtopic items
+U14.2.2,Transverse and Longitudinal Waves,U14,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 14 subtopic items
+U14.2.3,Wave Amplitude and Energy,U14,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 14 subtopic items
+U14.2.4,Standing Waves,U14,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 14 subtopic items
+U14.3.1,Superposition Principle,U14,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 14 subtopic items
+U14.3.2,Young's Double-Slit Experiment,U14,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 14 subtopic items
+U14.3.3,Single-Slit Diffraction,U14,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 14 subtopic items
+U14.3.4,Thin-Film Interference,U14,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 14 subtopic items
+U14.3.5,Diffraction Grating,U14,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 14 subtopic items
+U14.3.6,Diffraction Circular Aperture,U14,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 14 subtopic items
+U14.3.7,Huygens' Principle,U14,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 14 subtopic items
+U14.4.1,Law of Reflection,U14,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 14 subtopic items
+U14.4.2,Snell's Law,U14,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 14 subtopic items
+U14.4.3,Total Internal Reflection,U14,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 14 subtopic items
+U14.5.1,Plane Mirror Image Properties,U14,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 14 subtopic items
+U14.5.2,Concave and Convex Mirrors,U14,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 14 subtopic items
+U14.6.1,Convex Lens Basic Properties,U14,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 14 subtopic items
+U14.6.2,Concave Lens Diverging,U14,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 14 subtopic items
+U14.6.3,Magnification,U14,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 14 subtopic items
+U15.1.1,Fundamental Forces,U15,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 15 subtopic items
+U15.1.2,Nuclear Notation,U15,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 15 subtopic items
+U15.2.1,Alpha Decay,U15,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 15 subtopic items
+U15.2.2,Beta Decay,U15,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 15 subtopic items
+U15.2.3,Half-Life,U15,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 15 subtopic items
+U15.2.4,Gamma Decay,U15,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 15 subtopic items
+U15.3.1,Photons and Quantum Energy,U15,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 15 subtopic items
+U15.3.2,Photoelectric Effect,U15,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 15 subtopic items
+U15.3.3,Compton Scattering,U15,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 15 subtopic items
+U15.4.1,de Broglie Wavelength,U15,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 15 subtopic items
+U15.4.2,Wave-Particle Duality,U15,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 15 subtopic items
+U15.5.1,Bohr Model,U15,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 15 subtopic items
+U15.5.2,Atomic Emission Spectra,U15,3,3,F:1|S:1|C:1,no,submitted_for_review,Unit 15 subtopic items
+U15.5.3,Quantized Energy Levels,U15,3,3,F:1|S:1|C:1,yes,submitted_for_review,Unit 15 subtopic items
