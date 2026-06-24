@@ -40,7 +40,7 @@
 
 ## 路径
 
-1. 代码库路径: `/Volumes/Halobster/Codex相关/EduFlow-Team-orch/content/ap-calculus-ab/subtopics/unit2/`
+1. 代码库路径: `/Volumes/Halobster/Obsidian Edu/留学公司知识库/11-Eduflow Team 多智能体项目/EduFlow-Team-orch/content/ap-calculus-ab/subtopics/unit2/`
 2. Obsidian 路径: `/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/03-AP知识库/03-学科知识/AP Calculus AB/02-题库/items/Unit 2/`
 3. Manifest 路径: 上述两目录的父目录中的 `qa-manifest.csv`
 

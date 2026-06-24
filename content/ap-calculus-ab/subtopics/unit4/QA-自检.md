@@ -47,7 +47,7 @@
 
 ### 文件清单
 
-**Repo 路径** (`/Volumes/Halobster/Codex相关/EduFlow-Team-orch/content/ap-calculus-ab/subtopics/unit4/`):
+**Repo 路径** (`/Volumes/Halobster/Obsidian Edu/留学公司知识库/11-Eduflow Team 多智能体项目/EduFlow-Team-orch/content/ap-calculus-ab/subtopics/unit4/`):
 - U4.1.1-F.md, U4.1.1-S.md, U4.1.1-C.md
 - U4.1.2-F.md, U4.1.2-S.md, U4.1.2-C.md
 - U4.1.3-F.md, U4.1.3-S.md, U4.1.3-C.md

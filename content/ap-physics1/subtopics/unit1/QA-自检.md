@@ -33,7 +33,7 @@
 - [x] 已复制到 Obsidian 目标路径
 
 ### 5. 产物交付
-- [x] 45 个 item 文件已写入：/Volumes/Halobster/Codex相关/EduFlow-Team-orch/content/ap-physics1/subtopics/unit1/
+- [x] 45 个 item 文件已写入：/Volumes/Halobster/Obsidian Edu/留学公司知识库/11-Eduflow Team 多智能体项目/EduFlow-Team-orch/content/ap-physics1/subtopics/unit1/
 - [x] 45 个 item 文件已复制到：/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/03-AP知识库/03-学科知识/AP Physics 1/02-题库/items/Unit 1/
 
 ### 6. 难度分布
