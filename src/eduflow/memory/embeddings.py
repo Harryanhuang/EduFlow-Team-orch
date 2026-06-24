@@ -181,11 +181,10 @@ class SiliconFlowEmbeddingProvider(EmbeddingProvider):
             emb = item.get("embedding", [])
             if emb:
                 if len(emb) != self._dimension:
-                    _log.warning(
-                        "Embedding dimension mismatch: expected %d, got %d; using actual",
-                        self._dimension, len(emb),
+                    actual = len(emb)
+                    raise ValueError(
+                        f"Embedding dimension mismatch: configured={self._dimension}, got={actual}"
                     )
-                    self._dimension = len(emb)
                 embeddings.append(emb)
             else:
                 embeddings.append([0.0] * self._dimension)

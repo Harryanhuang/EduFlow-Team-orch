@@ -100,7 +100,7 @@ def enforce_budget(table: str) -> dict:
     # Build a CASE expression for ORDER BY
     when_clauses = " ".join(
         f"WHEN {status_col} = ? THEN {pri}" for status, pri in sorted(priority_cases.items(), key=lambda x: x[1])
-    )
+    ) + " ELSE 99"
     order_sql = f"(CASE {when_clauses} END) ASC, {order_col} ASC"
     params = [s for s, _ in sorted(priority_cases.items(), key=lambda x: x[1])]
 

@@ -29,10 +29,11 @@ def _now_iso() -> str:
 
 def _next_id(now: str) -> str:
     date_part = now[:10].replace("-", "")
+    prefix = f"MI-{date_part}-"
     conn = get_conn()
     row = conn.execute(
-        "SELECT COUNT(*) FROM memory_items WHERE id LIKE ?",
-        (f"MI-{date_part}-%",),
+        "SELECT MAX(CAST(SUBSTR(id, ?) AS INTEGER)) FROM memory_items WHERE id LIKE ?",
+        (len(prefix) + 1, f"{prefix}%"),
     ).fetchone()
     seq = (row[0] or 0) + 1
     return f"MI-{date_part}-{seq:03d}"

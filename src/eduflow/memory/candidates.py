@@ -32,10 +32,11 @@ def _now_iso() -> str:
 
 def _next_candidate_id(now: str) -> str:
     date_part = now[:10].replace("-", "")
+    prefix = f"CAND-{date_part}-"
     conn = get_conn()
     row = conn.execute(
-        "SELECT COUNT(*) FROM memory_candidates WHERE candidate_id LIKE ?",
-        (f"CAND-{date_part}-%",),
+        "SELECT MAX(CAST(SUBSTR(candidate_id, ?) AS INTEGER)) FROM memory_candidates WHERE candidate_id LIKE ?",
+        (len(prefix) + 1, f"{prefix}%"),
     ).fetchone()
     seq = (row[0] or 0) + 1
     return f"CAND-{date_part}-{seq:03d}"

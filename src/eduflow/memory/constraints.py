@@ -27,10 +27,11 @@ def _now_iso() -> str:
 
 def _next_id(now: str) -> str:
     date_part = now[:10].replace("-", "")
+    prefix = f"AC-{date_part}-"
     conn = get_conn()
     row = conn.execute(
-        "SELECT COUNT(*) FROM active_constraints WHERE id LIKE ?",
-        (f"AC-{date_part}-%",),
+        "SELECT MAX(CAST(SUBSTR(id, ?) AS INTEGER)) FROM active_constraints WHERE id LIKE ?",
+        (len(prefix) + 1, f"{prefix}%"),
     ).fetchone()
     seq = (row[0] or 0) + 1
     return f"AC-{date_part}-{seq:03d}"

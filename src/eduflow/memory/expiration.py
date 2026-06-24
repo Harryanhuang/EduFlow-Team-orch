@@ -16,7 +16,7 @@ from eduflow.memory import candidates as _candidates
 
 
 def _now_iso() -> str:
-    return datetime.now(timezone.utc).isoformat()
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S")
 
 
 def expire_constraints() -> int:
@@ -32,7 +32,7 @@ def expire_constraints() -> int:
         cursor = conn.execute(
             "UPDATE active_constraints "
             "SET status = 'inactive', updated_at = ? "
-            "WHERE status = 'active' AND valid_until != '' AND valid_until <= ?",
+            "WHERE status = 'active' AND valid_until != '' AND SUBSTR(valid_until, 1, 19) <= ?",
             (now, now),
         )
         conn.commit()
@@ -54,7 +54,7 @@ def expire_memories() -> int:
         cursor = conn.execute(
             "UPDATE memory_items "
             "SET status = 'deprecated', updated_at = ? "
-            "WHERE status = 'confirmed' AND valid_until != '' AND valid_until <= ?",
+            "WHERE status = 'confirmed' AND valid_until != '' AND SUBSTR(valid_until, 1, 19) <= ?",
             (now, now),
         )
         conn.commit()
