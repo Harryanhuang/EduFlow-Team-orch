@@ -36,6 +36,13 @@
 - [ ] auto_ops 越过 watcher 角色主导流程。
 - [ ] Unit/package 级 approved 被用来冒充 subject_sample_ready 或 qbank_agent_ready。
 - [ ] Workflow 需要被拆分或标记 stale 才能激活。
+- [ ] `subject_sample_first_gate` 未通过：第一个学科 sample 未完成就启动下一科。
+- [ ] `ap_qbank_schema_gate` 未通过：item YAML frontmatter 缺字段或正文缺 Options/Answer/Explanation。
+- [ ] `content_quality_gate` 未通过：review_course 未单独给出 content_quality_pass，或 schema PASS 被当作内容质量 PASS。
+- [ ] `role_boundary_gate` 未通过：worker_builder 参与 actual MCQ 内容生产，或 review/operator fallback 冒充 manager closeout。
+- [ ] `review_verdict_authority_gate` 未通过：manager 未基于 review verdict 正式拍板。
+- [ ] `retro_before_next_subject_gate` 未通过：第一学科完成后未做 retro 就进入下一学科。
+- [ ] `manager_closeout_gate` 未通过：closeout 缺 manifest/QA 自检/文件证据/review verdict 中任一项。
 
 ## Promotion Checklist
 

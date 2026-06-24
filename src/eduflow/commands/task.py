@@ -586,7 +586,7 @@ def _task_brief(row: dict) -> str:
 def _is_workflow_drive_task(row: dict) -> bool:
     """Tasks that should be surfaced in the manager-panel workflow drive lane.
 
-    Includes all IGCSE subject production tasks (regardless of whether the
+    Includes all IGCSE/AP subject production tasks (regardless of whether the
     workflow_id is mounted yet) and any task that already carries a workflow_id.
     """
     if not isinstance(row, dict) or not row.get("id"):
@@ -597,10 +597,17 @@ def _is_workflow_drive_task(row: dict) -> bool:
         return False
     if str(row.get("workflow_id") or "").strip():
         return True
-    return tasks.is_igcse_course_task(
+    if tasks.is_igcse_course_task(
         title=str(row.get("title") or ""),
         stage=str(row.get("stage") or ""),
-    )
+    ):
+        return True
+    if tasks.is_ap_knowledge_task(
+        title=str(row.get("title") or ""),
+        stage=str(row.get("stage") or ""),
+    ):
+        return True
+    return False
 
 
 def _collect_workflow_drive_rows() -> list[dict]:
@@ -703,8 +710,12 @@ def _workflow_drive_line(row: dict, *, packets: list[dict] | None = None) -> str
     gate = tasks.workflow_gate_status(row)
     workflow_id = str(gate.get("workflow_id") or "").strip()
     if not workflow_id:
-        # IGCSE task but workflow was never mounted: surface it explicitly.
+        # Subject task but workflow was never mounted: surface it explicitly.
         is_igcse = tasks.is_igcse_course_task(
+            title=str(row.get("title") or ""),
+            stage=str(row.get("stage") or ""),
+        )
+        is_ap = tasks.is_ap_knowledge_task(
             title=str(row.get("title") or ""),
             stage=str(row.get("stage") or ""),
         )
@@ -716,6 +727,17 @@ def _workflow_drive_line(row: dict, *, packets: list[dict] | None = None) -> str
                 f"workflow_gate=- "
                 f"workflow_gate_status=- "
                 f"next_action=mount_igcse_subject_launch_workflow "
+                f"apply_allowed=false "
+                f"blocking_reasons=workflow_not_mounted"
+            )
+        if is_ap:
+            return (
+                f"{task_id} [{row.get('stage') or '-'}] {title} "
+                f"workflow_missing=true "
+                f"workflow_id=- "
+                f"workflow_gate=- "
+                f"workflow_gate_status=- "
+                f"next_action=mount_ap_knowledge_base_optimization_workflow "
                 f"apply_allowed=false "
                 f"blocking_reasons=workflow_not_mounted"
             )

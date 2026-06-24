@@ -25,6 +25,9 @@ The dated Chinese documents in this folder are the design and evidence layer. Th
 | `igcse-subject-launch` | A new IGCSE subject moves from candidate to formal launch. | `manager -> worker_course -> review_course -> manager` |
 | `igcse-item-level-prototype` | Topic-level QA exists but qbank must verify item-level readiness. | `manager -> worker_qbank -> review_course -> worker_builder -> manager` |
 | `realrun-to-workflow` | A real run should be turned into reusable workflow assets. | `manager -> worker_builder -> manager` |
+| `ap-knowledge-base-optimization` | AP subject knowledge-base qbank item production or optimization. | `manager -> worker_course -> review_course -> manager` |
+| `igcse-9subject-sprint` | Multi-subject IGCSE sprint requiring cross-subject coordination. | `manager -> worker_course -> review_course -> manager` |
+| `runtime-failover-hardening` | Runtime failure requires cross-pool switch, env verify, and smoke proof. | `manager -> worker_builder -> auto_ops -> review_course -> manager` |
 
 ## Backlog Workflows
 

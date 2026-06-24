@@ -2,6 +2,32 @@
 
 Runtime 容灾机制升级：把"写 runtime-status + respawn ready"升级为 detect failure → select cross-pool backup → hard-switch → live env verify → API smoke → inbox recovery verify → mark proved_ready 的完整闭环。
 
+- workflow_id: `runtime-failover-hardening`
+- status: `active`
+- owner: `worker_builder`
+
+## Primary Chain
+
+```text
+manager -> worker_builder -> auto_ops -> review_course -> manager
+```
+
+manager 是 workflow caller 与正式决策 owner；worker_builder 实施改造；auto_ops 跑端到端 smoke；review_course 复核字段口径与边界。
+
+## Core Gates
+
+- `runtime_reality`
+- `repair_acceptance_contract`
+- `file_evidence_gate`
+- `stale_state_reconciliation`
+
+## Acceptance Gates
+
+- `runtime_reality`: runtime verify 必须真实反映 live tmux env，不能只读 stale runtime-status。
+- `repair_acceptance_contract`: 切换后必须由 env verify + API smoke + inbox recovery 三项共同证明 proved_ready，不能只看 ready marker。
+- `file_evidence_gate`: 17 条 gap case 映射到代码路径必须留下文件级证据（含 `scripts/`、`runtime/`、`commands/health.py` 等修改点）。
+- `stale_state_reconciliation`: 健康检查显示 `import path matches EDUFLOW_ROOT`，避免 `/opt/homebrew/bin/eduflow` 命中旧包导致本项目修改不生效。
+
 ## 触发条件
 
 昨晚（2026-06-20 夜到 2026-06-21 早）生产暴露 5 个容灾断点 + 1 个阻塞性前提问题：
@@ -45,3 +71,19 @@ Runtime 容灾机制升级：把"写 runtime-status + respawn ready"升级为 de
 - T-20: runtime failover hardening — 复核行为文案与状态口径 → review_course
 - T-21: runtime failover hardening — 端到端 smoke 验证 → auto_ops
 - T-22: runtime failover hardening — 验收与复盘 → manager
+
+## Forbidden Moves
+
+- 不允许只回写 `runtime-status.json` 的 `ready=true` 而不跑 env verify / API smoke / inbox recovery。
+- 不允许把"同额度池 fallback"误标为跨池切换（必须 cross_pool=true 才算 proved_ready）。
+- 不允许在 429 / Qoder code=112 出现后继续轮询同一个 pool。
+- 不允许用全局 `/opt/homebrew/bin/eduflow` 跑本项目代码，必须走本项目 `scripts/eduflowteam` 或 `eduflow-team-env.sh`。
+- 不允许 review_course 用"差不多可以"作为 verifier 字段口径。
+- 不允许 auto_ops 越过 watcher 角色主导流程收口。
+
+## Reassurance Boundary
+
+- worker_builder 只报告实施进度与单元测试结果，不抢 manager 正式验收结论。
+- review_course 只复核字段口径与边界是否成立，不直接宣告"全部修复完成"。
+- auto_ops 只汇报 smoke 步骤证据，不替代 manager 做最终 closeout。
+- manager 是 workflow caller 和正式决策 owner，closeout 时必须显式声明 proved_ready 与剩余 follow-up。

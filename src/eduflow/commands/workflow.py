@@ -75,6 +75,16 @@ _KNOWN_GATES = [
     "runtime_reality",
     "repair_acceptance_contract",
     "stale_state_reconciliation",
+    "ap_item_schema_gate",
+    "manifest_qa_script_gate",
+    "tier_promotion_gate",
+    "subject_sample_first_gate",
+    "ap_qbank_schema_gate",
+    "content_quality_gate",
+    "role_boundary_gate",
+    "review_verdict_authority_gate",
+    "retro_before_next_subject_gate",
+    "manager_closeout_gate",
 ]
 
 _RECOMMEND_KEYWORDS = {
@@ -92,8 +102,9 @@ _RECOMMEND_KEYWORDS = {
         "maintenance", "maintainer", "case note", "沉淀", "复盘", "流程资产",
     ],
     "ap-knowledge-base-optimization": [
-        "ap", "calculus", "computer science", "physics", "psychology", "statistics",
-        "knowledge base", "qbank", "题库", "知识库", "单元", "unit", "subject",
+        "ap", "calculus", "computer science", "csa", "physics", "psychology", "statistics",
+        "biology", "chemistry", "knowledge base", "qbank", "题库", "知识库",
+        "unit", "subject", "subject sample", "advanced placement", "ap exam",
     ],
 }
 
@@ -106,6 +117,13 @@ _GATE_KEYWORDS = {
     "runtime_reality": ["runtime", "429", "fallback", "model", "inbox", "运行", "模型"],
     "repair_acceptance_contract": ["repair", "minor", "revision", "返工", "修复"],
     "stale_state_reconciliation": ["stale", "old", "unread", "lag", "滞后", "旧状态"],
+    "subject_sample_first_gate": ["subject sample", "学科样板", "first subject", "golden path"],
+    "ap_qbank_schema_gate": ["ap qbank schema", "frontmatter", "qbank-agent", "item schema", "schema check"],
+    "content_quality_gate": ["content quality", "内容质量", "content pass", "quality pass"],
+    "role_boundary_gate": ["role boundary", "角色边界", "worker_builder", "boundary"],
+    "review_verdict_authority_gate": ["review verdict", "verdict authority", "正式 verdict", "manager verdict"],
+    "retro_before_next_subject_gate": ["retro", "复盘", "lesson learned", "next subject"],
+    "manager_closeout_gate": ["manager closeout", "正式收口", "closeout", "closeout_completed"],
 }
 
 _MAINTENANCE_ACTIONS = [

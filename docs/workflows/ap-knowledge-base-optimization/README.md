@@ -18,7 +18,7 @@
 ## Trigger Examples
 
 ```text
-调用 candidate workflow: ap-knowledge-base-optimization
+调用 workflow: ap-knowledge-base-optimization
 对象: AP Computer Science A
 范围: Unit 1 题库 items 生产
 边界: 只做 Unit 1；每 subtopic 输出 F/S/C 三道 MCQ；产物必须进入 Obsidian /AP Computer Science A/02-题库/items/Unit 1/
@@ -106,34 +106,39 @@ manager 应交：
 
 ## Core Gates
 
-- `dispatch_acceptance_gate`
-- `review_handoff_gate`
-- `ap_item_schema_gate`
-- `file_evidence_gate`
-- `manifest_qa_script_gate`
-- `tier_promotion_gate`
-- `stale_state_reconciliation`
+- `subject_sample_first_gate`
+- `ap_qbank_schema_gate`
+- `content_quality_gate`
+- `role_boundary_gate`
+- `review_verdict_authority_gate`
+- `retro_before_next_subject_gate`
+- `manager_closeout_gate`
 
 ## Acceptance Gates
 
-- `dispatch_acceptance_gate`: 派工后必须看到接单信号、read 状态或首个有效 artifact delta。派工不等于接单。
-- `review_handoff_gate`: worker_course 交 review 后，必须看到 review_course 开始复核或给出绑定范围的 verdict。交 review 不等于 review 开始。
-- `ap_item_schema_gate`: 每道 item 文件必须包含 YAML frontmatter 要求的全部 qbank-agent 字段，且正文包含 ## Options / ## Answer / ## Explanation。
-- `file_evidence_gate`: 高质量阶段的 PASS 必须包含文件级证据，不能只有摘要级复述。
-- `manifest_qa_script_gate`: `qa-manifest.csv` 与 `QA-自检.md` 必须由脚本统计校验，不能依赖人工声明。
-- `tier_promotion_gate`: 只有在前一 tier 证据完整时，才允许 manager 宣布进入下一 tier；禁止 Unit/package PASS 冒充 subject closeout。
-- `stale_state_reconciliation`: verdict 或 artifact 已推进时，旧 unread / 旧 task 不能继续作为主阻塞源。
+- `subject_sample_first_gate`: 必须先完成完整学科样板（subject sample），才能进入下一学科 full production。Unit package PASS 不等于 subject sample PASS。
+- `ap_qbank_schema_gate`: 每道 item 文件必须包含 YAML frontmatter 要求的全部 qbank-agent 字段（unit/topic/subtopic + knowledge_point/core_concept/exam_pattern/question_type/common_mistake/explanation_context），且正文包含 ## Options / ## Answer / ## Explanation。schema PASS 不等于内容质量 PASS。
+- `content_quality_gate`: review_course 必须单独给出 `content_quality_pass` verdict，与 schema_pass 独立；不能把 schema 通过冒充内容质量通过。
+- `role_boundary_gate`: worker_builder 只维护 tool/template/schema/validator/runtime，不得接单或生产 actual MCQ / 课程内容 / item generation。review/operator fallback 不能冒充 manager closeout。
+- `review_verdict_authority_gate`: 只有 manager 能拍板正式 tier 和 closeout；review_course verdict 是 manager 决策依据，不是最终结果；worker/review/qbank 不得抢 manager 正式结论文言。
+- `retro_before_next_subject_gate`: 第一学科完成后，必须先完成 retro（复盘、lesson learned、forbidden moves 更新），才能进入下一学科。
+- `manager_closeout_gate`: closeout 必须同时有 manifest/QA 自检/文件证据/review verdict，不允许没有证据就 closeout。
 
 ## Forbidden Moves
 
 - `worker_course -> manager` 直接收口。
 - `worker_builder` 接单或生产 actual MCQ / 课程内容 / item generation。
 - manager 在 `minor_required` 未复核前宣布进入下一阶段或下一学科。
-- 把“预产出待审”说成“正式通过”。
+- 把”预产出待审”说成”正式通过”。
 - review_course 只复述 worker 状态摘要，却给 file-level PASS。
 - active quality gate 未消费时继续 rollover。
 - manager 把单 Unit 指令扩成 batch，除非 `batch_mode_allowed=true`。
 - 用 `package` 或 `unit` 级 approved 冒充 `subject_sample_ready` 或 `qbank_agent_ready`。
+- 把 Unit package 冒充 full subject sample；Unit 1 的 approved 不等于整个学科的 subject_sample_ready。
+- 未完成第一个 subject sample 就启动下一科 full production。
+- review/operator fallback 冒充 manager closeout；manager_closeout 只能由 manager 触发。
+- schema PASS 冒充内容质量 PASS；schema_pass 与 content_quality_pass 必须分别声明。
+- 没有 manifest/QA 自检/文件证据就 closeout；closeout 必须附 evidence packet。
 
 ## Reassurance Policy
 
