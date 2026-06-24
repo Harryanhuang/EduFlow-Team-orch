@@ -124,6 +124,8 @@ _GATE_KEYWORDS = {
     "review_verdict_authority_gate": ["review verdict", "verdict authority", "正式 verdict", "manager verdict"],
     "retro_before_next_subject_gate": ["retro", "复盘", "lesson learned", "next subject"],
     "manager_closeout_gate": ["manager closeout", "正式收口", "closeout", "closeout_completed"],
+    "ap_item_schema_gate": ["ap item schema", "schema gate", "item validation", "frontmatter check"],
+    "tier_promotion_gate": ["tier promotion", "promotion gate", "tier advance", "晋级", "升级"],
 }
 
 _MAINTENANCE_ACTIONS = [

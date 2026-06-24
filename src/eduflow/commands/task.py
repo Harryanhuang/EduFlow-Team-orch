@@ -621,7 +621,7 @@ def _is_workflow_drive_task(row: dict) -> bool:
         return False
     if row.get("schema_version") != 2:
         return False
-    if str(row.get("status") or "") in {"delivered", "cancelled", "已完成", "已取消"}:
+    if str(row.get("status") or "") in {"delivered", "cancelled", "failed", "已完成", "已取消"}:
         return False
     if str(row.get("workflow_id") or "").strip():
         return True
@@ -1557,17 +1557,19 @@ def _cmd_manager_panel(rest: list[str]) -> int:
                 val = sources.get(src_key)
                 if val:
                     print(f"    {src_key}: {val}")
-        gate = tasks.dedup_import_gate(
-            review_course_pass=(qbank_data.get("overall_status") == "PASS"),
-            user_authorized=False,
-            manager_authorized=False,
-            dry_run=True,
-        )
-        print(f"dedup_import_gate_mode={gate['mode']}")
-        print(f"dedup_import_apply_allowed={str(gate['apply_allowed']).lower()}")
-        if gate.get("blocking_reasons"):
-            print(f"dedup_import_blocking_reasons={','.join(gate['blocking_reasons'])}")
-        print(f"dedup_import_next_action={gate['next_action']}")
+
+    # Dedup/import gate summary — runs once after Visible Sources
+    gate = tasks.dedup_import_gate(
+        review_course_pass=(qbank_data.get("overall_status") == "PASS" if qbank_data else False),
+        user_authorized=False,
+        manager_authorized=False,
+        dry_run=True,
+    )
+    print(f"dedup_import_gate_mode={gate['mode']}")
+    print(f"dedup_import_apply_allowed={str(gate['apply_allowed']).lower()}")
+    if gate.get("blocking_reasons"):
+        print(f"dedup_import_blocking_reasons={','.join(gate['blocking_reasons'])}")
+    print(f"dedup_import_next_action={gate['next_action']}")
 
     print("\n== Next Executable Actions ==")
     actionable = [row for row in anomalies if row.get("action_packet")]
