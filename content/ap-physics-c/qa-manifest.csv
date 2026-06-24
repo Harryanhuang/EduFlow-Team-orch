@@ -1,0 +1,73 @@
+topic_id,topic_name,unit,items_count,question_count,difficulty_mix,calculator_marked,status,notes
+U1.1.1-F,Position Velocity Acceleration 1D (F),U1,1,1,F,yes,submitted_for_review,Unit 1 subtopic items
+U1.1.1-S,Position Velocity Acceleration 1D (S),U1,1,1,S,yes,submitted_for_review,Unit 1 subtopic items
+U1.1.1-C,Position Velocity Acceleration 1D (C),U1,1,1,C,yes,submitted_for_review,Unit 1 subtopic items
+U1.1.2-F,Calculus Interpretation of Motion Graphs (F),U1,1,1,F,yes,submitted_for_review,Unit 1 subtopic items
+U1.1.2-S,Calculus Interpretation of Motion Graphs (S),U1,1,1,S,yes,submitted_for_review,Unit 1 subtopic items
+U1.1.2-C,Calculus Interpretation of Motion Graphs (C),U1,1,1,C,yes,submitted_for_review,Unit 1 subtopic items
+U1.2.1-F,Projectile Motion Calculus (F),U1,1,1,F,yes,submitted_for_review,Unit 1 subtopic items
+U1.2.1-S,Projectile Motion Calculus (S),U1,1,1,S,yes,submitted_for_review,Unit 1 subtopic items
+U1.2.1-C,Projectile Motion Calculus (C),U1,1,1,C,yes,submitted_for_review,Unit 1 subtopic items
+U1.2.2-F,Relative Motion Calculus (F),U1,1,1,F,yes,submitted_for_review,Unit 1 subtopic items
+U1.2.2-S,Relative Motion Calculus (S),U1,1,1,S,yes,submitted_for_review,Unit 1 subtopic items
+U1.2.2-C,Relative Motion Calculus (C),U1,1,1,C,yes,submitted_for_review,Unit 1 subtopic items
+U2.1.1-F,Newton's Second Law Calculus Form (F),U2,1,1,F,yes,submitted_for_review,Unit 2 subtopic items
+U2.1.1-S,Newton's Second Law Calculus Form (S),U2,1,1,S,yes,submitted_for_review,Unit 2 subtopic items
+U2.1.1-C,Newton's Second Law Calculus Form (C),U2,1,1,C,yes,submitted_for_review,Unit 2 subtopic items
+U2.1.2-F,Tension and Connected Systems (F),U2,1,1,F,yes,submitted_for_review,Unit 2 subtopic items
+U2.1.2-S,Tension and Connected Systems (S),U2,1,1,S,yes,submitted_for_review,Unit 2 subtopic items
+U2.1.2-C,Tension and Connected Systems (C),U2,1,1,C,yes,submitted_for_review,Unit 2 subtopic items
+U2.2.1-F,Friction and Resistive Drag Forces (F),U2,1,1,F,yes,submitted_for_review,Unit 2 subtopic items
+U2.2.1-S,Friction and Resistive Drag Forces (S),U2,1,1,S,yes,submitted_for_review,Unit 2 subtopic items
+U2.2.1-C,Friction and Resistive Drag Forces (C),U2,1,1,C,yes,submitted_for_review,Unit 2 subtopic items
+U3.1.1-F,Work by Variable Force (F),U3,1,1,F,yes,submitted_for_review,Unit 3 subtopic items
+U3.1.1-S,Work by Variable Force (S),U3,1,1,S,yes,submitted_for_review,Unit 3 subtopic items
+U3.1.1-C,Work by Variable Force (C),U3,1,1,C,yes,submitted_for_review,Unit 3 subtopic items
+U3.1.2-F,Work-Energy Theorem Calculus (F),U3,1,1,F,yes,submitted_for_review,Unit 3 subtopic items
+U3.1.2-S,Work-Energy Theorem Calculus (S),U3,1,1,S,yes,submitted_for_review,Unit 3 subtopic items
+U3.1.2-C,Work-Energy Theorem Calculus (C),U3,1,1,C,yes,submitted_for_review,Unit 3 subtopic items
+U3.2.1-F,Potential Energy and Conservation (F),U3,1,1,F,yes,submitted_for_review,Unit 3 subtopic items
+U3.2.1-S,Potential Energy and Conservation (S),U3,1,1,S,yes,submitted_for_review,Unit 3 subtopic items
+U3.2.1-C,Potential Energy and Conservation (C),U3,1,1,C,yes,submitted_for_review,Unit 3 subtopic items
+U3.2.2-F,Power Instantaneous and Average (F),U3,1,1,F,yes,submitted_for_review,Unit 3 subtopic items
+U3.2.2-S,Power Instantaneous and Average (S),U3,1,1,S,yes,submitted_for_review,Unit 3 subtopic items
+U3.2.2-C,Power Instantaneous and Average (C),U3,1,1,C,yes,submitted_for_review,Unit 3 subtopic items
+U4.1.1-F,Center of Mass Continuous (F),U4,1,1,F,yes,submitted_for_review,Unit 4 subtopic items
+U4.1.1-S,Center of Mass Continuous (S),U4,1,1,S,yes,submitted_for_review,Unit 4 subtopic items
+U4.1.1-C,Center of Mass Continuous (C),U4,1,1,C,yes,submitted_for_review,Unit 4 subtopic items
+U4.2.1-F,Impulse-Momentum Theorem Integral (F),U4,1,1,F,yes,submitted_for_review,Unit 4 subtopic items
+U4.2.1-S,Impulse-Momentum Theorem Integral (S),U4,1,1,S,yes,submitted_for_review,Unit 4 subtopic items
+U4.2.1-C,Impulse-Momentum Theorem Integral (C),U4,1,1,C,yes,submitted_for_review,Unit 4 subtopic items
+U4.2.2-F,Collisions Calculus Analysis (F),U4,1,1,F,yes,submitted_for_review,Unit 4 subtopic items
+U4.2.2-S,Collisions Calculus Analysis (S),U4,1,1,S,yes,submitted_for_review,Unit 4 subtopic items
+U4.2.2-C,Collisions Calculus Analysis (C),U4,1,1,C,yes,submitted_for_review,Unit 4 subtopic items
+U5.1.1-F,Torque Variable Force (F),U5,1,1,F,yes,submitted_for_review,Unit 5 subtopic items
+U5.1.1-S,Torque Variable Force (S),U5,1,1,S,yes,submitted_for_review,Unit 5 subtopic items
+U5.1.1-C,Torque Variable Force (C),U5,1,1,C,yes,submitted_for_review,Unit 5 subtopic items
+U5.1.2-F,Rotational Dynamics Rolling (F),U5,1,1,F,yes,submitted_for_review,Unit 5 subtopic items
+U5.1.2-S,Rotational Dynamics Rolling (S),U5,1,1,S,yes,submitted_for_review,Unit 5 subtopic items
+U5.1.2-C,Rotational Dynamics Rolling (C),U5,1,1,C,yes,submitted_for_review,Unit 5 subtopic items
+U5.2.1-F,Moment of Inertia Integral (F),U5,1,1,F,yes,submitted_for_review,Unit 5 subtopic items
+U5.2.1-S,Moment of Inertia Integral (S),U5,1,1,S,yes,submitted_for_review,Unit 5 subtopic items
+U5.2.1-C,Moment of Inertia Integral (C),U5,1,1,C,yes,submitted_for_review,Unit 5 subtopic items
+U5.2.2-F,Angular Momentum Conservation (F),U5,1,1,F,yes,submitted_for_review,Unit 5 subtopic items
+U5.2.2-S,Angular Momentum Conservation (S),U5,1,1,S,yes,submitted_for_review,Unit 5 subtopic items
+U5.2.2-C,Angular Momentum Conservation (C),U5,1,1,C,yes,submitted_for_review,Unit 5 subtopic items
+U6.1.1-F,Simple Harmonic Motion ODE (F),U6,1,1,F,yes,submitted_for_review,Unit 6 subtopic items
+U6.1.1-S,Simple Harmonic Motion ODE (S),U6,1,1,S,yes,submitted_for_review,Unit 6 subtopic items
+U6.1.1-C,Simple Harmonic Motion ODE (C),U6,1,1,C,yes,submitted_for_review,Unit 6 subtopic items
+U6.1.2-F,SHM Initial Conditions (F),U6,1,1,F,yes,submitted_for_review,Unit 6 subtopic items
+U6.1.2-S,SHM Initial Conditions (S),U6,1,1,S,yes,submitted_for_review,Unit 6 subtopic items
+U6.1.2-C,SHM Initial Conditions (C),U6,1,1,C,yes,submitted_for_review,Unit 6 subtopic items
+U6.2.1-F,SHM Energy and Dynamics (F),U6,1,1,F,yes,submitted_for_review,Unit 6 subtopic items
+U6.2.1-S,SHM Energy and Dynamics (S),U6,1,1,S,yes,submitted_for_review,Unit 6 subtopic items
+U6.2.1-C,SHM Energy and Dynamics (C),U6,1,1,C,yes,submitted_for_review,Unit 6 subtopic items
+U7.1.1-F,Gravitational Force and Field (F),U7,1,1,F,yes,submitted_for_review,Unit 7 subtopic items
+U7.1.1-S,Gravitational Force and Field (S),U7,1,1,S,yes,submitted_for_review,Unit 7 subtopic items
+U7.1.1-C,Gravitational Force and Field (C),U7,1,1,C,yes,submitted_for_review,Unit 7 subtopic items
+U7.2.1-F,Orbital Mechanics Kepler (F),U7,1,1,F,yes,submitted_for_review,Unit 7 subtopic items
+U7.2.1-S,Orbital Mechanics Kepler (S),U7,1,1,S,yes,submitted_for_review,Unit 7 subtopic items
+U7.2.1-C,Orbital Mechanics Kepler (C),U7,1,1,C,yes,submitted_for_review,Unit 7 subtopic items
+U7.2.2-F,Gravitational Potential Energy (F),U7,1,1,F,yes,submitted_for_review,Unit 7 subtopic items
+U7.2.2-S,Gravitational Potential Energy (S),U7,1,1,S,yes,submitted_for_review,Unit 7 subtopic items
+U7.2.2-C,Gravitational Potential Energy (C),U7,1,1,C,yes,submitted_for_review,Unit 7 subtopic items
