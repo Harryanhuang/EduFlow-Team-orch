@@ -18,11 +18,15 @@ metadata:
 
 ## 判定结果
 
+> **Canonical verdict vocabulary** — aligned with `review-verdict.md` and the
+> `eduflow task review --approve|--reject|--manager-action` CLI:
+
 | verdict | 含义 | 下一步 |
 |---------|------|--------|
-| approved | 通过 | deliver → user |
-| quality_not_met | 需返修 | return → worker_course |
-| blocked | 阻塞 | report → manager |
+| `pass` / `approved` | 通过 | deliver → user / manager-closeout |
+| `minor_required` | 需返修 | return → worker_course |
+| `reject` | 阻塞 | report → manager |
+| `conditional_pass` | 条件通过 | 修条件后 → manager-closeout |
 
 ## 常见返修原因
 
