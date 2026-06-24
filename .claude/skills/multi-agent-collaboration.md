@@ -53,7 +53,7 @@ deliver → user
 ### 4. 并行限制
 - 同一 subject 禁止并行 worker_course（文件冲突）
 - worker_qbank 可与 review_course 并行（只读）
-- manager 调度时检查 subject 锁
+- manager 调度时检查任务分配：`eduflow task list --assignee worker_course` shows what's currently active per agent; if any active task already targets the same subject, do NOT dispatch a new one for that subject
 
 ## 常见协同问题
 
