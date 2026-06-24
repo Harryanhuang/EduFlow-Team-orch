@@ -12,7 +12,7 @@ dist/
 # macOS noise
 .DS_Store
 
-# runtime state — anchor to repo root so src/claudeteam/agents/ isn't swallowed
+# runtime state — anchor to repo root so src/eduflow/agents/ isn't swallowed
 /workspace/
 /agents/
 /projects/
@@ -20,14 +20,13 @@ dist/
 /.eduflow-team-state/
 /.omc/
 /.omx/
-/.claudeteam-cadence/
 
 # scripts/feishu_bot_creator/ is checked in (Playwright bot creator);
 # its own .gitignore handles node_modules + cookies. Allow this dir.
 # Watch git status when adding under scripts/ so legacy state files
 # from old main checkouts don't sneak in (caught round-79).
 .claude/scheduled_tasks.lock
-# `claudeteam install-hooks` output — regenerated per deploy
+# `eduflow install-hooks` output — regenerated per deploy
 /.claude/commands/
 team.json
 runtime_config.json
@@ -39,23 +38,22 @@ runtime_config.json
 
 # unrelated tool caches that drift into the repo root
 /.playwright-mcp/
-# claudeteam unified config — per-deploy file, like runtime_config.json
-/claudeteam.toml
-/claudeteam.toml.bak
+# eduflow unified config — per-deploy file, like runtime_config.json
+/eduflow.toml
+/eduflow.toml.bak
 AGENTS.md
 
 # Personal dev convenience — operator-specific Makefile + creds helper.
 # Hardcodes a private chat_id / lark profile, so kept out of the open
-# source repo. Use the documented `claudeteam` commands instead.
+# source repo. Use the documented `eduflow` commands instead.
 /Makefile
 /bin/
 /generated/
 
 # Session / tool state files
-claudeteam
 submitted_for_review
 --dry-run/
-claudeteam.toml.bak-*
+eduflow.toml.bak-*
 Edu/
 Team/
 多智能体项目/

@@ -43,7 +43,7 @@ Compare with Step 1 PIDs. Mismatch = stale pidfile (process restarted without cl
 ### 3. Stale Stall Detection
 
 ```bash
-claudeteam health | grep -A5 "router stall"
+eduflow health | grep -A5 "router stall"
 ```
 
 Key fields:
@@ -53,7 +53,7 @@ Key fields:
 ### 4. Respawn Rate
 
 ```bash
-claudeteam health | grep "respawn"
+eduflow health | grep "respawn"
 ```
 
 Healthy baseline: 0-1 respawns/day. Escalating pattern:
@@ -75,7 +75,7 @@ Look for:
 ### 6. Cross-Agent Health
 
 ```bash
-claudeteam team
+eduflow team
 ```
 
 All agents should show:
@@ -105,6 +105,6 @@ agents: [N/N healthy] | 异常: [list or 无]"
 
 ## Anti-Patterns
 
-- **Don't** check daemon health via `ps aux` only — always cross-reference with pidfile and `claudeteam health`
+- **Don't** check daemon health via `ps aux` only — always cross-reference with pidfile and `eduflow health`
 - **Don't** report "daemon dead" without checking if it was intentionally stopped
 - **Don't** reset watchdog respawn counter without logging why

@@ -655,7 +655,7 @@ def _usage_run(json_payload: str):
         "returncode": 0, "stdout": json_payload, "stderr": ""})()
 
 
-def test_usage_no_view_shells_claudeteam_usage_json():
+def test_usage_no_view_shells_eduflow_usage_json():
     """R167: handler shells out with `--json` so the card builder gets
     structured data, not raw text."""
     captured = {}

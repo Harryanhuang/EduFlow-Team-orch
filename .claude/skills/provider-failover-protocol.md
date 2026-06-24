@@ -13,7 +13,7 @@ metadata:
 ## Use When
 
 - Agent pane shows: `provider_unavailable`, `fallback_chain_exhausted`, `API error`, `auth_failure`
-- `claudeteam health` shows: `runtime_status_env_drift` with `live_env_unavailable`
+- `eduflow health` shows: `runtime_status_env_drift` with `live_env_unavailable`
 - Agent reports "当前卡在：provider 问题"
 - After CC Switch proxy (127.0.0.1:15721) restart or upstream change
 
@@ -23,7 +23,7 @@ metadata:
 
 ```bash
 # Check agent's current runtime config
-claudeteam team <agent> | grep -i "provider\|model\|route"
+eduflow team <agent> | grep -i "provider\|model\|route"
 
 # Check agent pane for error details
 tmux capture-pane -t EduFlowTeam:<agent> -p | tail -20

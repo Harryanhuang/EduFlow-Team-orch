@@ -515,7 +515,7 @@ def _decision(text, *, sender=""):
                      sender=sender, text=text, msg_id="om_x", create_time="0")
 
 
-def test_compose_inject_text_user_message_says_use_claudeteam_say():
+def test_compose_inject_text_user_message_says_use_eduflow_say():
     """Boss / unknown sender → wrapper points at `eduflow say` (chat
     callback channel). The original text body is preserved verbatim
     after the hint."""

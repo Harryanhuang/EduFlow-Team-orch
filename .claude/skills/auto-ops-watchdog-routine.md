@@ -32,7 +32,7 @@ eduflow inbox auto_ops
 ### Step 2: Daemon Health
 
 ```bash
-claudeteam health
+eduflow health
 ```
 
 Check:
@@ -52,16 +52,16 @@ tmux list-windows -t EduFlowTeam
 For each active agent pane:
 - Capture bottom 30 lines: `tmux capture-pane -t EduFlowTeam:<agent> -p | tail -30`
 - Look for: API errors, crash loops, stuck prompts ("> 5 min no output on active task), provider_unavailable
-- Check `claudeteam team` for status lag between runtime guard and actual pane state
+- Check `eduflow team` for status lag between runtime guard and actual pane state
 
 ### Step 4: Per-Agent Status
 
 ```bash
-claudeteam team
+eduflow team
 ```
 
 For each agent compare:
-- `claudeteam team` status label vs actual pane state
+- `eduflow team` status label vs actual pane state
 - If mismatch > 10 min: flag as "status lag" and recommend runtime guard reset
 
 ### Step 5: Issue Ledger Check

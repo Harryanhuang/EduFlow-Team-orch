@@ -141,7 +141,7 @@ def test_host_disk_picks_worst_mount_by_pct():
 # ── _docker_stats ────────────────────────────────────────────
 
 
-def test_docker_stats_filters_to_claudeteam_prefix():
+def test_docker_stats_filters_to_eduflow_prefix():
     """Names matching `eduflow-*` are kept; others (system services
     sharing the host) are dropped. `short` strips both the leading
     `eduflow-` and the compose-default `-team-1` suffix when both

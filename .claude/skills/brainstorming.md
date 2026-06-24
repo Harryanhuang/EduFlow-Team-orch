@@ -23,7 +23,7 @@ Instead, do this preflight quickly before producing:
 3. Pick the smallest useful production route.
 4. Split into ordered subtasks with acceptance checks.
 5. Choose the best Claude Code execution mode.
-6. Start the first safe subtask and report progress through `claudeteam`.
+6. Start the first safe subtask and report progress through `eduflow`.
 
 The output can be brief, but must be visible in the worker's reasoning/report:
 goal, constraints, subtasks, and acceptance checks.
@@ -75,17 +75,17 @@ qbank/igcse/manifest-repair/items-to-unified-manifest
 Record it with:
 
 ```bash
-claudeteam log worker_course repeat_work_observed "<repeat_work_key> | <task-id-or-source> | <one-line task summary>"
+eduflow log worker_course repeat_work_observed "<repeat_work_key> | <task-id-or-source> | <one-line task summary>"
 ```
 
 If there is a reusable lesson:
 
 ```bash
-claudeteam remember worker_course learning "repeat_work::<repeat_work_key>::<short reusable lesson>"
+eduflow remember worker_course learning "repeat_work::<repeat_work_key>::<short reusable lesson>"
 ```
 
-To detect the count, check `claudeteam workspace worker_course`,
-`claudeteam recall worker_course`, or local facts logs for matching
+To detect the count, check `eduflow workspace worker_course`,
+`eduflow recall worker_course`, or local facts logs for matching
 `repeat_work_observed` entries.
 
 Use buckets:

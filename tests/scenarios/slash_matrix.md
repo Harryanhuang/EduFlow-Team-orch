@@ -110,7 +110,7 @@ DROP `bot_self`，避免回声循环。
 - `FEISHU_APP_SECRET`（或 `LARKSUITE_CLI_APP_SECRET`）
 
 R161 的 `feishu/lark.subprocess_env` 会用 app-id/secret 在第一次调用时
-拉一份 tenant_access_token 缓存到 `/tmp/claudeteam_tenant_token.json`
+拉一份 tenant_access_token 缓存到 `/tmp/eduflow_tenant_token.json`
 （约 77 分钟，到期前 60 秒自动续）。容器里不需要手动 `lark-cli auth login`。
 
 如果两个变量都没有，且 keychain 也不可达（Linux 容器无 env），
