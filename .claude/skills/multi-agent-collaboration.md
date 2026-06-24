@@ -77,7 +77,7 @@ deliver → user
 
 ```bash
 # 查看当前 subject 锁
-eduflow task list --stage curriculum | grep -v done
+eduflow task review-queue --stage curriculum | grep -v done
 
 # 串行调度（按 subject）
 # manager 按顺序 dispatch，避免并行

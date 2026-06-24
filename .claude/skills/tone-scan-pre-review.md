@@ -106,7 +106,18 @@ if __name__ == '__main__':
 ## Run Before Submit
 
 ```bash
-python3 .claude/skills/_scripts/tone_scan.py content/igcse-{subject}-{code}/items/
+python3 -c "
+import re, glob, sys
+PATTERNS = r'Wait|Hmm|Actually|Let me (redo|recalculate|recompute|be more careful)|I need to|Let us reconsider'
+hits = []
+for f in glob.glob('content/igcse-{subject}-{code}/items/**/*.md', recursive=True):
+    text = open(f).read()
+    found = re.findall(PATTERNS, text, re.IGNORECASE)
+    if found:
+        hits.append((f, found))
+        print(f, found)
+sys.exit(1 if hits else 0)
+"
 # Exit code 0 = clean, 1 = issues found
 ```
 

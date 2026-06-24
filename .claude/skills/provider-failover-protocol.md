@@ -143,5 +143,5 @@ If > 5 min without resolution: escalate to manager.
 - **Don't** spend > 5 min diagnosing without escalating — the protocol exists to save time
 - **Don't** let runtime guard stale label persist after fix — reset it:
   ```bash
-  claudeteam set-runtime <agent> <working_route>
+  eduflow runtime switch <agent> <runtime> --reason "<why>" [--no-smoke] [--json]  # proper command with smoke-test gate
   ```
