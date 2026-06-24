@@ -26,6 +26,7 @@ dist/
 # Watch git status when adding under scripts/ so legacy state files
 # from old main checkouts don't sneak in (caught round-79).
 .claude/scheduled_tasks.lock
+.claude/settings.local.json
 # `eduflow install-hooks` output — regenerated per deploy
 /.claude/commands/
 team.json

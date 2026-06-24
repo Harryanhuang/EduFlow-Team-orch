@@ -1,0 +1,17 @@
+{
+  "_comment": "Repo-wide Claude Code settings. Operators with custom local setups should override hook commands via .claude/settings.local.json (gitignored).",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.command' | { read -r cmd; if [[ \"$cmd\" == git\\ commit* ]]; then echo \"[eduflow hook] control-plane-smoke.sh skipped on shared checkout — set up local hook in .claude/settings.local.json to enforce\" >&2; fi; } 2>/dev/null || exit 0",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}
