@@ -34,15 +34,19 @@ Look for:
 ### 2. Run artifact consistency verifier
 
 ```bash
-eduflow task verify-subject <subject-code>
+eduflow task supervisor-check [--json]
 ```
 
-Must return `status == "pass"`. Check:
+`supervisor-check` runs the subject verifier internally; parse the output
+for `subject_verifier` blocks. Each must return `status == "pass"`. Check:
 - `qql_count == manifest_claimed_total`
 - `items_count <= qql_count`
 - No format errors
 - Difficulty values are F/S/C only
 - Manifest is not a substitute for empty content
+
+(There is no standalone `task verify-subject` subcommand; verification is
+embedded in `supervisor-check` and `manager-closeout`.)
 
 ### 3. Check revision-first blockers
 
@@ -90,7 +94,7 @@ An `items_only` PASS does NOT authorize subject closeout.
 ### 7. Announce closeout (only if all gates pass)
 
 ```bash
-eduflow task manager-closeout <task-id>
+eduflow task manager-closeout <task-id> --actor manager
 eduflow say manager "学科 <subject> 已正式 closeout：<verdict summary>" --to user
 ```
 

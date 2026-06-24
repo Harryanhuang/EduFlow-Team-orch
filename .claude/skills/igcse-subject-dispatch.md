@@ -35,13 +35,15 @@ Verify no active task belongs to the same subject. If one exists, close it out f
 ### 2. Mount the workflow
 
 ```bash
-eduflow task dispatch <worker_course> \
-  --workflow igcse-subject-launch \
+eduflow task dispatch worker_course "<subject name> (<syllabus code>) launch" \
   --stage curriculum \
-  --subject "<subject name>" \
-  --code <syllabus code> \
-  --scope "candidate -> outline -> QA seed -> manifest"
+  --owner worker_course \
+  --by manager \
+  --workflow igcse-subject-launch \
+  --desc "subject=<subject name> code=<syllabus code> scope=candidate -> outline -> QA seed -> manifest"
 ```
+
+(`--subject` and `--code` are NOT separate flags; pass them via `--desc`.)
 
 ### 3. Send the formal handoff message to worker_course
 

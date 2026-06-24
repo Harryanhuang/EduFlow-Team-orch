@@ -1,6 +1,6 @@
 ---
 name: worker-ack-task
-description: "Worker skill: complete the 4-step intake sequence when picking up a new task from inbox. Covers ACK, user notify, manager notify, and status update — the repetitive boilerplate every worker runs on every task."
+description: "Worker skill: complete the 5-step intake sequence when picking up a new task from inbox. Covers ACK, user notify, manager notify, and status update — the repetitive boilerplate every worker runs on every task."
 metadata:
   type: workflow
   generated_by: worker_builder
