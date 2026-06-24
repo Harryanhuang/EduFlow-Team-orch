@@ -66,7 +66,7 @@ content/ap-{subject}/subtopics/unit{N}/QA-自检.md
 ...
 
 ## 状态
-**submitted_for_review**
+本 Unit 状态：**完成**
 ```
 
 ## Usage Rules
@@ -74,7 +74,7 @@ content/ap-{subject}/subtopics/unit{N}/QA-自检.md
 1. **One QA file per Unit** — not per subtopic
 2. **All checkboxes start as [x]** — only change to [ ] if a real issue is found
 3. **File list must be complete** — every item file must appear in the table
-4. **Status line is mandatory** — always end with `**submitted_for_review**`
+4. **Status line is mandatory** — always end with `本 Unit 状态：**完成**` (this is the exact string `ap_subject_verifier._QA_STATUS_COMPLETE_RE` matches against; `**submitted_for_review**` will FAIL the verifier)
 5. **Generate AFTER items, BEFORE manifest update** — the QA file validates items exist
 
 ## Verification Commands
