@@ -88,7 +88,7 @@ Count actual F/S/C across all items:
 | Gate | Pass | Fail |
 |------|------|------|
 | Manifest parity | data_rows × 3 = file_count | REVISION REQUIRED |
-| Schema (15 items) | All 12 YAML fields + 4 body sections present | REVISION REQUIRED |
+| Schema (15 items) | All 15 YAML frontmatter keys + 4 body sections present | REVISION REQUIRED |
 | Content/math | All re-derived answers match | REVISION REQUIRED (list errors) |
 | Tone scan | 0 artifacts across all files | REVISION REQUIRED (list files) |
 | Difficulty distribution | F=S=C = subtopic_count | REVISION REQUIRED |
