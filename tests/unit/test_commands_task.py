@@ -54,6 +54,41 @@ def _workflow_env(tmp, workflow_id="igcse-subject-launch"):
         yield root
 
 
+def _multi_workflow_env(tmp, workflow_ids=("igcse-subject-launch", "ap-knowledge-base-optimization")):
+    """Helper that writes multiple workflow dirs under one root and patches env."""
+    root = tmp / "workflows_multi"
+    root.mkdir(parents=True, exist_ok=True)
+    for wid in workflow_ids:
+        d = root / wid
+        d.mkdir(parents=True, exist_ok=True)
+        (d / "README.md").write_text(
+            f"# workflow: {wid}\n\n"
+            "## Primary Chain\n\nmanager -> worker_course -> review_course -> manager\n\n"
+            "## Core Gates\n\n- dispatch_acceptance_gate\n\n"
+            "## Forbidden Moves\n\n- worker must not bypass manager closeout.\n\n"
+            "worker_builder maintains this workflow; reassurance must not抢 manager 正式结论.\n",
+            encoding="utf-8",
+        )
+        (d / "trigger.md").write_text(
+            f"# trigger: {wid}\n\n调用 workflow: {wid}\n",
+            encoding="utf-8",
+        )
+        (d / "roles.md").write_text(
+            f"# roles: {wid}\n\n## manager\n\n- Calls the workflow.\n\n## worker_builder\n\n- Maintains assets.\n",
+            encoding="utf-8",
+        )
+        (d / "checklist.md").write_text(
+            f"# checklist: {wid}\n\n- [ ] manager closeout checked\n",
+            encoding="utf-8",
+        )
+        (d / "handoff-template.md").write_text(
+            f"# handoff: {wid}\n\n## Manager -> worker\n\nhandoff\n",
+            encoding="utf-8",
+        )
+    with env_patch(EDUFLOW_WORKFLOW_DIR=root):
+        yield root
+
+
 # ── create ────────────────────────────────────────────────────────
 
 
@@ -3611,3 +3646,106 @@ def test_task_manager_action_apply_rejects_skip_verifier_without_env():
             assert rc != 0, ("expected rejection without env", out, err)
             combined = out + err
             assert "--skip-verifier is disabled in production" in combined
+
+
+# ── AP workflow mount rules ──────────────────────────────────────
+
+
+def test_task_dispatch_ap_title_auto_mounts_ap_workflow_not_igcse():
+    """An AP-titled curriculum task must auto-mount to
+    ap-knowledge-base-optimization, not fall back to igcse-subject-launch.
+    """
+    with isolated_env() as tmp:
+        with _workflow_env(tmp, "igcse-subject-launch"):
+            with _workflow_env(tmp, "ap-knowledge-base-optimization"):
+                rc, out, err = run_cli([
+                    "task", "dispatch",
+                    "worker_course", "AP Physics 2 full subject qbank sample",
+                    "--stage", "curriculum",
+                    "--owner", "worker_course",
+                    "--by", "manager",
+                ])
+        assert rc == 0, err
+        assert "workflow=ap-knowledge-base-optimization" in out
+        assert "igcse-subject-launch" not in out
+        t = tasks.get("T-1")
+        assert t["workflow_id"] == "ap-knowledge-base-optimization"
+
+
+def test_task_flow_create_ap_title_mounts_ap_workflow():
+    """task flow-create with an AP title must mount ap-knowledge-base-optimization."""
+    with isolated_env() as tmp:
+        with _workflow_env(tmp, "ap-knowledge-base-optimization"):
+            rc, out, err = run_cli([
+                "task", "flow-create",
+                "worker_course", "AP Computer Science A Unit 1",
+                "--stage", "curriculum",
+                "--owner", "worker_course",
+                "--by", "manager",
+                "--workflow", "ap-knowledge-base-optimization",
+            ])
+        assert rc == 0, err
+        assert "workflow=ap-knowledge-base-optimization" in out
+        t = tasks.get("T-1")
+        assert t["workflow_id"] == "ap-knowledge-base-optimization"
+
+
+def test_task_dispatch_rejects_igcse_workflow_for_ap_title():
+    """AP tasks cannot be mounted with igcse-subject-launch — they require
+    ap-knowledge-base-optimization. The CLI must surface this as an error
+    rather than silently accepting the wrong workflow.
+    """
+    with isolated_env() as tmp:
+        with _workflow_env(tmp, "igcse-subject-launch"):
+            with _workflow_env(tmp, "ap-knowledge-base-optimization"):
+                rc, _, err = run_cli([
+                    "task", "dispatch",
+                    "worker_course", "AP Calculus AB qbank items",
+                    "--stage", "curriculum",
+                    "--owner", "worker_course",
+                    "--by", "manager",
+                    "--workflow", "igcse-subject-launch",
+                ])
+    assert rc == 1
+    assert "ap-knowledge-base-optimization" in err
+
+
+def test_task_dispatch_rejects_unknown_workflow():
+    """An unknown workflow id must produce a clear error, not silently
+    fall back to igcse-subject-launch or ap-knowledge-base-optimization.
+    """
+    with isolated_env() as tmp:
+        with _workflow_env(tmp, "igcse-subject-launch"):
+            with _workflow_env(tmp, "ap-knowledge-base-optimization"):
+                rc, _, err = run_cli([
+                    "task", "dispatch",
+                    "worker_course", "AP Calculus AB qbank items",
+                    "--stage", "curriculum",
+                    "--owner", "worker_course",
+                    "--by", "manager",
+                    "--workflow", "fake-ap-workflow",
+                ])
+    assert rc == 1
+    assert "fake-ap-workflow" in err
+    assert "unknown workflow" in err.lower()
+
+
+def test_task_dispatch_ap_title_without_workflow_flag_auto_routes():
+    """Dispatching an AP task without --workflow flag must auto-route to
+    ap-knowledge-base-optimization based on the title alone.
+    """
+    with isolated_env() as tmp:
+        with _workflow_env(tmp, "igcse-subject-launch"):
+            with _workflow_env(tmp, "ap-knowledge-base-optimization"):
+                rc, out, err = run_cli([
+                    "task", "dispatch",
+                    "worker_course", "AP Statistics qbank",
+                    "--stage", "curriculum",
+                    "--owner", "worker_course",
+                    "--by", "manager",
+                ])
+        assert rc == 0, err
+        assert "workflow=ap-knowledge-base-optimization" in out
+        assert "auto_mounted=true" in out
+        t = tasks.get("T-1")
+        assert t["workflow_id"] == "ap-knowledge-base-optimization"

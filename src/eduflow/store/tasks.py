@@ -46,8 +46,21 @@ FLOW_STATUSES = frozenset({
     "submitted_for_review",
     "delivered",
     "cancelled",
+    # `failed` is a worker/reviewer self-reported terminal state. Unlike
+    # `cancelled` (manager-only termination) and `delivered` (formal
+    # completion with a review verdict), `failed` means "the worker
+    # itself hit an unrecoverable error and is asking for help". It
+    # always carries a `failure_reason` and always fires the memory
+    # event_bridge so the failure becomes a candidate.
+    # Allowed transitions OUT of `failed`:
+    #   - failed -> cancelled (manager gives up on it)
+    #   - failed -> in_progress (manager retries after worker recovery)
+    # Allowed transitions INTO `failed`:
+    #   - from assigned / in_progress / blocked / submitted_for_review
+    #     by the worker or reviewer (any actor responsible for execution)
+    "failed",
 })
-FLOW_TERMINAL_STATUSES = frozenset({"delivered", "cancelled"})
+FLOW_TERMINAL_STATUSES = frozenset({"delivered", "cancelled", "failed"})
 FLOW_VERDICTS = frozenset({"pending", "approved", "rejected", "manager_action"})
 CLOSEOUT_TIER_STATUSES = frozenset({
     "unit_seed_ready",
@@ -57,16 +70,16 @@ CLOSEOUT_TIER_STATUSES = frozenset({
     "closeout_completed",
 })
 FLOW_ALLOWED_STAGE_STATUSES = {
-    "curriculum": frozenset({"queued", "assigned", "in_progress", "blocked", "submitted_for_review", "delivered", "cancelled"}),
-    "review": frozenset({"queued", "assigned", "in_progress", "blocked", "delivered", "cancelled"}),
+    "curriculum": frozenset({"queued", "assigned", "in_progress", "blocked", "submitted_for_review", "delivered", "cancelled", "failed"}),
+    "review": frozenset({"queued", "assigned", "in_progress", "blocked", "delivered", "cancelled", "failed"}),
     # QBank stage intentionally omits submitted_for_review — QBank verification is
     # external (scripts/qbank_verify.py), not internally flow-reviewed. The dedup
     # gate uses review_course_pass (a boolean derived from verification output),
     # not a flow reviewer verdict. See dedup_import_gate() and qbank_lifecycle_status().
-    "qbank": frozenset({"queued", "assigned", "in_progress", "blocked", "delivered", "cancelled"}),
-    "builder": frozenset({"queued", "assigned", "in_progress", "blocked", "delivered", "cancelled"}),
-    "admissions": frozenset({"queued", "assigned", "in_progress", "blocked", "submitted_for_review", "delivered", "cancelled"}),
-    "school": frozenset({"queued", "assigned", "in_progress", "blocked", "submitted_for_review", "delivered", "cancelled"}),
+    "qbank": frozenset({"queued", "assigned", "in_progress", "blocked", "delivered", "cancelled", "failed"}),
+    "builder": frozenset({"queued", "assigned", "in_progress", "blocked", "delivered", "cancelled", "failed"}),
+    "admissions": frozenset({"queued", "assigned", "in_progress", "blocked", "submitted_for_review", "delivered", "cancelled", "failed"}),
+    "school": frozenset({"queued", "assigned", "in_progress", "blocked", "submitted_for_review", "delivered", "cancelled", "failed"}),
 }
 FLOW_TRANSITIONS = {
     "queued": {
@@ -77,26 +90,42 @@ FLOW_TRANSITIONS = {
         "in_progress": frozenset({"worker"}),
         "blocked": frozenset({"worker"}),
         "cancelled": frozenset({"manager"}),
+        # worker self-reports an unrecoverable error before starting work
+        "failed": frozenset({"worker"}),
     },
     "in_progress": {
         "blocked": frozenset({"worker"}),
         "submitted_for_review": frozenset({"worker"}),
         "delivered": frozenset({"worker", "manager"}),
         "cancelled": frozenset({"manager"}),
+        # worker self-reports an unrecoverable error mid-execution
+        "failed": frozenset({"worker", "reviewer"}),
     },
     "blocked": {
         "assigned": frozenset({"manager"}),
         "in_progress": frozenset({"manager", "worker"}),
         "cancelled": frozenset({"manager"}),
+        # the block turned out to be unrecoverable; worker or reviewer
+        # escalates to "failed" so the memory system records a witness
+        "failed": frozenset({"worker", "reviewer"}),
     },
     "submitted_for_review": {
         "in_progress": frozenset({"reviewer"}),
         "delivered": frozenset({"reviewer"}),
         "blocked": frozenset({"reviewer"}),
         "cancelled": frozenset({"manager"}),
+        # reviewer cannot complete the review (e.g. the artifacts are
+        # unreadable) and self-reports
+        "failed": frozenset({"reviewer"}),
     },
     "delivered": {},
     "cancelled": {},
+    "failed": {
+        # manager decides what to do with a failed task: cancel it
+        # outright, or retry by sending it back to in_progress
+        "cancelled": frozenset({"manager"}),
+        "in_progress": frozenset({"manager"}),
+    },
 }
 FLOW_REVIEW_OUTCOMES = frozenset({"approve", "reject", "manager_action"})
 FLOW_REVIEW_TRANSITIONS = {
@@ -2406,12 +2435,35 @@ def _apply_flow_transition(task: dict, *, to_status: str, actor: str) -> None:
     elif to_status != "blocked":
         task["blocking_reason"] = ""
         task["manager_action_type"] = ""
+    # Retry from `failed` → `in_progress` (manager retry): clear
+    # failure_reason so subsequent reviewers don't conflate the
+    # stale failure with the new attempt. Also append a marker to
+    # the default turn summary explaining that this is a retry.
+    # Set this BEFORE the default-summary line below so the retry
+    # marker survives the assignment.
+    if current == "failed" and to_status == "in_progress":
+        old_failure_reason = str(task.get("failure_reason") or "").strip()
+        task["failure_reason"] = ""
+        # Stash a retry note in a temporary field; the default
+        # summary line below will read it and append.
+        if old_failure_reason:
+            task["_retry_failure_note"] = (
+                f"Manager retried from failed state. Previous "
+                f"failure_reason: {old_failure_reason[:100]}"
+            )
+        else:
+            task["_retry_failure_note"] = "Manager retried from failed state."
     task["needs_manager_action"] = _flow_needs_manager_action(
         to_status,
         str(task.get("verdict") or ""),
     )
     task["completed_at"] = _flow_completed_at(to_status)
-    task["latest_turn_summary"] = _default_turn_summary(status=to_status, actor=actor)
+    base_summary = _default_turn_summary(status=to_status, actor=actor)
+    retry_note = task.pop("_retry_failure_note", None)
+    if retry_note:
+        task["latest_turn_summary"] = f"{base_summary} [{retry_note}]"
+    else:
+        task["latest_turn_summary"] = base_summary
     task["updated_at"] = now_ms()
     task["last_meaningful_update_at"] = task["updated_at"]
 
@@ -2690,7 +2742,174 @@ def transition_flow(task_id: str, *, to_status: str, actor: str) -> bool:
             after=_task_snapshot(task),
         )
         _save(data)
+    # Memory bridge: surface a witness candidate for transitions that
+    # indicate a real failure rather than transient progress.
+    #
+    # Triggered on:
+    #   - cancelled       — explicit cancellation by manager
+    #   - blocked         — worker/reviewer stuck; recurring blocked state
+    #                       is a workflow-level concern
+    #   - delivered with verdict=rejected — review concluded the task
+    #                       failed its gate, even though the worker
+    #                       formally "completed"
+    #
+    # Not triggered on:
+    #   - assigned / in_progress / submitted_for_review / delivered+approved
+    #     — normal progress, no failure signal
+    #
+    # Fail-open: bridge failures never break the state transition.
+    if _is_failure_transition(task, to_status=to_status):
+        _try_bridge_task_failure(task_id, actor=actor, to_status=to_status)
+    return True
+
+
+def _is_failure_transition(task: dict, *, to_status: str) -> bool:
+    """Decide whether a state transition signals a real failure.
+
+    Returns True for transitions we want to surface as memory witnesses:
+      - cancelled       (any actor — explicit termination)
+      - blocked         (worker or reviewer stuck — recurring signal)
+      - delivered       only when verdict=rejected (gate failed)
+      - failed          (worker/reviewer self-reported unrecoverable error)
+
+    Returns False for normal progress transitions.
+    """
+    if to_status == "cancelled":
         return True
+    if to_status == "blocked":
+        return True
+    if to_status == "failed":
+        return True
+    if to_status == "delivered":
+        # delivered+rejected is rare but possible: a review concludes
+        # the gate failed even though the worker formally "completed"
+        # (e.g. package-level verdict rejection without a rework round).
+        return str(task.get("verdict") or "").strip() == "rejected"
+    return False
+
+
+def _try_bridge_task_failure(task_id: str, *, actor: str, to_status: str) -> None:
+    """Best-effort call to bridge_task_lifecycle for a failure-shaped transition.
+
+    Fail-open wrapper. Swallows all exceptions. The function does not
+    decide whether the cancellation/blocking is a "real" failure — it
+    simply records a witness candidate (idempotent by task_id). The
+    pattern detector in event_bridge decides whether ≥2 failures
+    warrant a workflow-level pattern candidate.
+
+    to_status is one of "cancelled" / "blocked" / "delivered+rejected"
+    and is used to compose the failure_reason text shown to reviewers.
+    """
+    try:
+        from eduflow.memory.event_bridge import bridge_task_lifecycle
+    except Exception:
+        return
+    try:
+        data = _load()
+        task = _find_task(data, task_id) or {}
+    except Exception:
+        return
+    workflow_id = str(task.get("workflow_id") or "")
+    if not workflow_id:
+        return
+    verdict = str(task.get("verdict") or "").strip()
+    if to_status == "delivered" and verdict == "rejected":
+        reason_text = f"delivered with verdict=rejected (actor={actor})"
+    elif to_status == "failed":
+        # Prefer the explicit failure_reason the worker/reviewer
+        # supplied via task report-failure; fall back to generic.
+        reported = str(task.get("failure_reason") or "").strip()
+        if reported:
+            reason_text = f"failed (actor={actor}): {reported}"
+        else:
+            reason_text = f"failed (actor={actor})"
+    else:
+        reason_text = f"{to_status} by {actor}"
+    try:
+        bridge_task_lifecycle(
+            task_id, "fail",
+            context={
+                "workflow_id": workflow_id,
+                "failure_reason": reason_text,
+            },
+        )
+    except Exception:
+        pass
+
+
+def report_flow_failure(task_id: str, *, actor: str, reason: str = "") -> bool:
+    """Worker/reviewer self-reports an unrecoverable failure.
+
+    Transitions the task to the `failed` status (idempotent for
+    already-failed tasks: returns True without re-firing the bridge).
+    Persists the supplied `reason` on the task so the memory witness
+    candidate carries it forward to reviewers.
+
+    Allowed actors per state machine:
+      - from `assigned`: worker only
+      - from `in_progress` / `blocked` / `submitted_for_review`:
+        worker OR reviewer (depending on state — see FLOW_TRANSITIONS)
+
+    Always triggers `bridge_task_lifecycle("fail", ...)`, which in
+    turn fires the witness + pattern candidate pipeline.
+
+    Returns True on success, False if the task doesn't exist.
+    Raises ValueError on illegal transition (e.g. from `delivered`).
+    """
+    # Adapter-level helper: worker/reviewer code paths can call this
+    # directly via tasks.report_flow_failure() instead of shelling
+    # out to the CLI. The CLI command _cmd_report_failure in
+    # commands/task.py wraps this function.
+    with _locked():
+        data = _load()
+        task = _find_task(data, task_id)
+        if task is None:
+            return False
+        if task.get("schema_version") != 2:
+            raise ValueError(f"task {task_id} is not a flow task")
+        # Idempotent: if already failed, just update the reason (if
+        # the caller supplied one) and re-fire the bridge so the new
+        # reason makes it into the candidate's content.
+        before = _task_snapshot(task)
+        if task.get("status") == "failed":
+            if reason:
+                task["failure_reason"] = reason
+                task["latest_turn_summary"] = (
+                    f"Worker/reviewer re-reported failure: {reason}"
+                )
+                task["updated_at"] = now_ms()
+            _append_task_event(
+                task_id=task_id,
+                kind="transition",
+                actor=actor,
+                before=before,
+                after=_task_snapshot(task),
+            )
+            _save(data)
+            if reason:
+                _try_bridge_task_failure(task_id, actor=actor, to_status="failed")
+            return True
+        # Persist reason BEFORE the transition so the bridge helper
+        # sees it on the task snapshot.
+        if reason:
+            task["failure_reason"] = reason
+        _apply_flow_transition(task, to_status="failed", actor=actor)
+        if reason:
+            task["failure_reason"] = reason
+            task["latest_turn_summary"] = (
+                f"Worker/reviewer self-reported failure: {reason}"
+            )
+        _append_task_event(
+            task_id=task_id,
+            kind="transition",
+            actor=actor,
+            before=before,
+            after=_task_snapshot(task),
+        )
+        _save(data)
+    # Memory bridge: failed is always a failure transition.
+    _try_bridge_task_failure(task_id, actor=actor, to_status="failed")
+    return True
 
 
 def submit_for_review(task_id: str, *, actor: str) -> bool:
@@ -2937,6 +3156,140 @@ def manager_closeout_subject(task_id: str, *, actor: str,
         return True
 
 
+def update_post_delivery_verdict(
+    task_id: str,
+    *,
+    actor: str,
+    verdict: str,
+    reason: str = "",
+) -> bool:
+    """Update a task's verdict AFTER the task has been delivered.
+
+    Why this exists: the state machine currently resets verdict to
+    "approved" on `to_status="delivered"`. If a downstream review
+    (e.g. closeout gate, a second-pass review) later concludes the
+    task's gate actually failed, the operator needs a way to flip
+    verdict to "rejected" without going through a full state-machine
+    transition cycle. This function writes the verdict directly,
+    bypassing the state-machine verdict reset.
+
+    Constraints:
+      - Task must already be in `status="delivered"`.
+      - Actor must be the assigned reviewer (or "reviewer" if none
+        assigned) or the manager.
+      - Verdict must be one of FLOW_VERDICTS.
+
+    Side effects:
+      - Sets `task["verdict"]` to the new value.
+      - Updates `latest_turn_summary` so the next human viewer sees
+        why the verdict changed.
+      - When verdict transitions to "rejected", fires the
+        `_try_bridge_task_failure` helper so a memory candidate
+        is created (the "delivered+rejected" witness path).
+      - When verdict changes at all, invalidates any previously
+        computed closeout state (closeout_status, tier_status,
+        manager_closed_out_at, latest_authoritative_verdict) so
+        downstream closeout gate re-evaluates from scratch.
+      - Appends a `verdict_update` event to the task event log.
+
+    Returns True on success, False if the task doesn't exist.
+    Raises ValueError on constraint violations (wrong status, wrong
+    actor, invalid verdict value).
+    """
+    if verdict not in FLOW_VERDICTS:
+        raise ValueError(
+            f"invalid verdict: {verdict!r} (valid: {sorted(FLOW_VERDICTS)})"
+        )
+    with _locked():
+        data = _load()
+        task = _find_task(data, task_id)
+        if task is None:
+            return False
+        if task.get("schema_version") != 2:
+            raise ValueError(f"task {task_id} is not a flow task")
+        current_status = str(task.get("status") or "")
+        if current_status != "delivered":
+            raise ValueError(
+                f"update_post_delivery_verdict requires status=delivered "
+                f"(got: {current_status!r})"
+            )
+        # Actor check: only the assigned reviewer (or 'reviewer'
+        # generically) or the manager can update a verdict post-delivery.
+        actor_norm = str(actor or "").strip()
+        if actor_norm not in ("manager", "reviewer"):
+            raise ValueError(
+                f"actor {actor_norm!r} cannot update verdict; "
+                "allowed: manager, reviewer"
+            )
+        assigned_reviewer = str(task.get("reviewer") or "").strip()
+        if actor_norm == "reviewer" and assigned_reviewer and actor != assigned_reviewer:
+            raise ValueError(
+                f"actor {actor!r} is not the assigned reviewer "
+                f"(assigned reviewer: {assigned_reviewer!r})"
+            )
+        before = _task_snapshot(task)
+        old_verdict = str(task.get("verdict") or "").strip()
+        task["verdict"] = verdict
+        # Compose a turn summary that explains the verdict change.
+        if reason:
+            task["latest_turn_summary"] = (
+                f"Post-delivery verdict update: {old_verdict} → {verdict}. "
+                f"Reason: {reason}"
+            )
+        else:
+            task["latest_turn_summary"] = (
+                f"Post-delivery verdict update: {old_verdict} → {verdict}"
+            )
+        # Invalidate any closeout state computed under the old verdict.
+        # The closeout gate derives its closeout_status / tier_status
+        # from the static verdict field; if we just flipped the
+        # verdict, the previous computation is stale. Forcing the
+        # gate to re-evaluate from scratch prevents stale
+        # "closeout_completed" status from outliving the verdict
+        # change.
+        #
+        # This applies on ANY actual verdict change (not only
+        # rejected→) so that e.g. approved → manager_action also
+        # invalidates. If the verdict is unchanged (no-op update),
+        # the closeout state stays valid and we don't churn it.
+        if old_verdict != verdict:
+            invalidated_closeout_fields = []
+            for field in ("closeout_status", "tier_status", "manager_closed_out_at"):
+                if task.get(field) not in (None, "", 0):
+                    task[field] = "" if field != "manager_closed_out_at" else None
+                    invalidated_closeout_fields.append(field)
+            # The latest_authoritative_verdict snapshot also becomes
+            # stale — clear it so the closeout gate reconstructs it from
+            # the (now-updated) latest events.
+            if task.get("latest_authoritative_verdict"):
+                task["latest_authoritative_verdict"] = {}
+                invalidated_closeout_fields.append("latest_authoritative_verdict")
+            if invalidated_closeout_fields:
+                # Append to the turn summary so reviewers see why closeout
+                # gate will re-evaluate.
+                task["latest_turn_summary"] += (
+                    f" [closeout gate invalidated: "
+                    f"{','.join(invalidated_closeout_fields)}]"
+                )
+        task["updated_at"] = now_ms()
+        task["last_meaningful_update_at"] = task["updated_at"]
+        _append_task_event(
+            task_id=task_id,
+            kind="verdict_update",
+            actor=actor,
+            before=before,
+            after=_task_snapshot(task),
+        )
+        _save(data)
+    # Bridge: if we just flipped verdict to "rejected" on a delivered
+    # task, fire the witness candidate. This is the rare
+    # "delivered+rejected" path that the state machine can't
+    # produce on its own.
+    if verdict == "rejected" and old_verdict != "rejected":
+        _try_bridge_task_failure(task_id, actor=actor, to_status="delivered")
+    return True
+
+
 def batch_closeout(task_id: str, *, actor: str, emit_event: bool = True) -> bool:
     """Mark a reviewed package/batch as closed without triggering subject rollover."""
     if actor != "manager":
@@ -3060,3 +3413,22 @@ def manager_overview() -> dict:
             }
         ],
     }
+
+
+def has_hermes_can_promote_marker(task_id: str) -> bool:
+    """Check if a task's description contains the hermes_can_promote marker.
+
+    This is a convenience helper for Hermes adapter code to determine
+    whether the manager authorized Hermes to promote non-high-impact
+    candidates for this task.
+
+    The marker format is: [hermes-can-promote: true]
+
+    Returns True if the marker is present in the task description,
+    False otherwise.
+    """
+    task = get(task_id)
+    if task is None:
+        return False
+    desc = str(task.get("description") or "")
+    return "[hermes-can-promote: true]" in desc

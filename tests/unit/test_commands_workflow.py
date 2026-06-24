@@ -1213,3 +1213,130 @@ def test_workflow_help_uses_eduflowteam_name():
     assert "eduflowteam workflow closeout" in out
     assert "eduflowteam workflow gap-map" in out
     assert "legacy alias: eduflow workflow" in out
+
+
+def test_workflow_validate_accepts_runtime_failover_hardening(tmp_path):
+    root = tmp_path / "workflows"
+    _write_three_workflows(root)
+    rf_dir = root / "runtime-failover-hardening"
+    rf_dir.mkdir(parents=True)
+    (rf_dir / "README.md").write_text(
+        "# workflow: runtime-failover-hardening\n\n"
+        "## Primary Chain\n\nmanager -> worker_builder -> auto_ops -> manager\n\n"
+        "## Core Gates\n\n- runtime_reality\n- repair_acceptance_contract\n\n"
+        "## Forbidden Moves\n\n- worker must not bypass manager closeout.\n\n"
+        "worker_builder maintains this workflow; reassurance must not抢 manager 正式结论.\n",
+        encoding="utf-8",
+    )
+    (rf_dir / "trigger.md").write_text(
+        "# trigger: runtime-failover-hardening\n\n调用 workflow: runtime-failover-hardening\n",
+        encoding="utf-8",
+    )
+    (rf_dir / "roles.md").write_text(
+        "# roles: runtime-failover-hardening\n\n## manager\n\n- Calls the workflow.\n\n"
+        "## worker_builder\n\n- Maintains workflow assets.\n",
+        encoding="utf-8",
+    )
+    (rf_dir / "checklist.md").write_text(
+        "# checklist: runtime-failover-hardening\n\n- [ ] smoke verified\n",
+        encoding="utf-8",
+    )
+    (rf_dir / "handoff-template.md").write_text(
+        "# handoff: runtime-failover-hardening\n\n## Manager -> worker_builder\n\nhandoff\n",
+        encoding="utf-8",
+    )
+    with env_patch(EDUFLOW_WORKFLOW_DIR=root):
+        rc, out, err = run_cli(["workflow", "validate"])
+    assert rc == 0, f"validate failed: {out}"
+    assert err == ""
+    assert "runtime-failover-hardening" in out
+    assert "workflow registry valid" in out
+
+
+def test_workflow_recommend_ap_qbank_recommends_ap_knowledge_base(tmp_path):
+    root = tmp_path / "workflows"
+    _write_workflow(root, "ap-knowledge-base-optimization")
+    (root / "ap-knowledge-base-optimization" / "README.md").write_text(
+        "# workflow: ap-knowledge-base-optimization\n\n"
+        "AP qbank optimization for AP Physics 2, AP Calculus, AP CSA.\n\n"
+        "## Primary Chain\n\nmanager -> worker_course -> review_course -> manager\n\n"
+        "## Core Gates\n\n- subject_sample_first_gate\n- ap_qbank_schema_gate\n"
+        "- content_quality_gate\n- role_boundary_gate\n\n"
+        "## Forbidden Moves\n\n- worker_builder must not produce actual MCQ content.\n\n"
+        "worker_builder maintains this workflow; reassurance must not抢 manager 正式结论.\n",
+        encoding="utf-8",
+    )
+    with env_patch(EDUFLOW_WORKFLOW_DIR=root):
+        rc, out, err = run_cli([
+            "workflow", "recommend",
+            "AP Physics 2 full subject qbank sample",
+        ])
+    assert rc == 0
+    assert err == ""
+    assert "workflow recommendations" in out
+    assert "ap-knowledge-base-optimization" in out
+
+
+def test_workflow_gates_ap_knowledge_base_outputs_ap_gates(tmp_path):
+    root = tmp_path / "workflows"
+    _write_workflow(root, "ap-knowledge-base-optimization")
+    (root / "ap-knowledge-base-optimization" / "README.md").write_text(
+        "# workflow: ap-knowledge-base-optimization\n\n"
+        "## Primary Chain\n\nmanager -> worker_course -> review_course -> manager\n\n"
+        "## Core Gates\n\n"
+        "- subject_sample_first_gate\n"
+        "- ap_qbank_schema_gate\n"
+        "- content_quality_gate\n"
+        "- role_boundary_gate\n"
+        "- review_verdict_authority_gate\n"
+        "- retro_before_next_subject_gate\n"
+        "- manager_closeout_gate\n\n"
+        "## Forbidden Moves\n\n- worker_builder must not produce actual MCQ content.\n\n"
+        "worker_builder maintains this workflow; reassurance must not抢 manager 正式结论.\n",
+        encoding="utf-8",
+    )
+    with env_patch(EDUFLOW_WORKFLOW_DIR=root):
+        rc, out, err = run_cli(["workflow", "gates", "ap-knowledge-base-optimization"])
+    assert rc == 0, f"gates failed: {err}"
+    assert err == ""
+    assert "Core Gates" in out
+    assert "subject_sample_first_gate" in out
+    assert "ap_qbank_schema_gate" in out
+    assert "content_quality_gate" in out
+    assert "role_boundary_gate" in out
+    assert "review_verdict_authority_gate" in out
+    assert "retro_before_next_subject_gate" in out
+    assert "manager_closeout_gate" in out
+    assert "Forbidden Moves" in out
+    assert "worker_builder" in out.lower() or "MCQ" in out
+
+
+def test_workflow_validate_accepts_ap_gates_as_known_gates(tmp_path):
+    root = tmp_path / "workflows"
+    _write_workflow(root, "ap-knowledge-base-optimization")
+    (root / "ap-knowledge-base-optimization" / "README.md").write_text(
+        "# workflow: ap-knowledge-base-optimization\n\n"
+        "## Primary Chain\n\nmanager -> worker_course -> review_course -> manager\n\n"
+        "## Core Gates\n\n- subject_sample_first_gate\n- ap_qbank_schema_gate\n"
+        "- content_quality_gate\n\n"
+        "## Forbidden Moves\n\n- worker_builder must not produce actual MCQ content.\n\n"
+        "worker_builder maintains this workflow; reassurance must not抢 manager 正式结论.\n",
+        encoding="utf-8",
+    )
+    with env_patch(EDUFLOW_WORKFLOW_DIR=root):
+        rc, out, err = run_cli(["workflow", "validate"])
+    assert rc == 0, f"validate failed: {out}"
+    assert "ap-knowledge-base-optimization" in out
+
+
+def test_workflow_ap_readme_forbidden_worker_builder_mcq_content():
+    """AP workflow README must explicitly forbid worker_builder from producing actual MCQ content."""
+    from eduflow.commands.workflow import _workflow_root, _read_required
+    root = _workflow_root()
+    readme = _read_required(root / "ap-knowledge-base-optimization", "README.md")
+    if not readme:
+        import pytest
+        pytest.skip("ap-knowledge-base-optimization workflow not in registry")
+    assert "worker_builder" in readme
+    assert "MCQ" in readme or "actual" in readme.lower()
+    assert "forbidden" in readme.lower() or "Forbidden Moves" in readme

@@ -26,6 +26,7 @@ Usage:
     eduflow memory expire
     eduflow memory audit [scope|retention [--days <N>]]
     eduflow memory cleanup
+    eduflow memory daily [--limit <N>] [--scope <scope>] [--json]
 """
 from __future__ import annotations
 
@@ -81,6 +82,7 @@ USAGE = (
     "  audit scope               (scope coverage report for confirmed memories)\n"
     "  audit retention [--days N] (lifecycle stats in time window)\n"
     "  cleanup                   (expire + budget enforce combined)\n"
+    "  daily [--limit N] [--scope S] [--json]  (daily manager/Hermes review summary; read-only; --json for programmatic output)\n"
     "\n"
     "Debug (injection preview):\n"
     "  packet --agent <agent> [--task <task_id>]\n"
@@ -654,10 +656,14 @@ def _cmd_candidates(argv: list[str]) -> int:
 def _cmd_promote(argv: list[str]) -> int:
     rest = list(argv)
     if not rest:
-        return usage_error("usage: eduflow memory promote <candidate_id> [--reviewer <name>] [--yes]")
+        return usage_error(
+            "usage: eduflow memory promote <candidate_id> "
+            "[--reviewer <name>] [--hermes-can-promote] [--yes]"
+        )
     cid = rest.pop(0)
     reviewer = pop_flag(rest, "--reviewer") or ""
     auto_yes = pop_bool_flag(rest, "--yes")
+    hermes_can_promote = pop_bool_flag(rest, "--hermes-can-promote")
 
     from eduflow.memory.candidates import get_candidate, promote_candidate
     candidate = get_candidate(cid)
@@ -673,6 +679,8 @@ def _cmd_promote(argv: list[str]) -> int:
     print(f"Promote candidate {cid}:")
     print(f"  scope={scope}  kind={kind}  layer={layer}")
     print(f"  content: {content}")
+    if hermes_can_promote:
+        print(f"  hermes_can_promote: True (manager explicitly authorized)")
 
     if not auto_yes:
         try:
@@ -685,9 +693,14 @@ def _cmd_promote(argv: list[str]) -> int:
             return 0
 
     try:
-        mid = promote_candidate(cid, reviewer=reviewer)
+        mid = promote_candidate(
+            cid, reviewer=reviewer, hermes_can_promote=hermes_can_promote,
+        )
         print(f"Promoted candidate {cid} → memory item {mid}")
-        _audit_log("promote", {"candidate_id": cid, "memory_id": mid, "reviewer": reviewer})
+        _audit_log("promote", {
+            "candidate_id": cid, "memory_id": mid,
+            "reviewer": reviewer, "hermes_can_promote": hermes_can_promote,
+        })
     except ValueError as e:
         print(f"Error: {e}", file=sys.stderr)
         return 1
@@ -991,6 +1004,177 @@ def _cmd_cleanup(argv: list[str]) -> int:
     return 0
 
 
+def _cmd_daily(argv: list[str]) -> int:
+    """Daily memory review summary for manager + Hermes handoff.
+
+    Read-only. Outputs:
+      - proposed candidate backlog (by source_type)
+      - stale candidates count
+      - high-priority manager corrections
+      - workflow-level failure patterns
+      - suggested review order
+      - Hermes handoff section
+
+    Usage:
+      eduflow memory daily [--limit N] [--scope S] [--json]
+
+    --json  emit a single JSON object on stdout for programmatic
+            consumption (Hermes handoff pipelines, monitoring, etc.).
+            Default is human-readable text.
+    """
+    import datetime as _dt
+    rest = list(argv)
+    limit = int(pop_flag(rest, "--limit") or "50")
+    scope_filter = pop_flag(rest, "--scope") or ""
+    json_mode = pop_bool_flag(rest, "--json")
+
+    from eduflow.memory.candidates import list_candidates
+    proposed = list_candidates(status="proposed", limit=limit)
+    if scope_filter:
+        proposed = [c for c in proposed if c.get("proposed_scope") == scope_filter]
+
+    today = _dt.date.today().isoformat()
+
+    # Compute derived sections first (so --json and human-readable share logic).
+    by_source: dict[str, int] = {}
+    for c in proposed:
+        src = c.get("source_type") or "unknown"
+        by_source[src] = by_source.get(src, 0) + 1
+    total = sum(by_source.values())
+
+    now = _dt.datetime.now(_dt.timezone.utc).isoformat()
+    soon = (_dt.datetime.now(_dt.timezone.utc) + _dt.timedelta(days=7)).isoformat()
+    stale = [c for c in proposed if c.get("expires_at", "") < soon]
+
+    high_mgr = [
+        c for c in proposed
+        if c.get("source_type") == "manager_correction"
+        and (
+            "high" in (c.get("risk_flags") or [])
+            or c.get("proposed_kind") == "role_rule"
+        )
+    ]
+
+    wf_patterns = [
+        c for c in proposed
+        if c.get("source_type") in ("task_failure_pattern", "closeout_anomaly")
+    ]
+
+    high_impact_kinds = {"workflow_rule", "role_rule", "runtime_rule", "decision", "preference", "handoff"}
+    def _priority(c: dict) -> tuple:
+        is_high_impact = c.get("proposed_kind") in high_impact_kinds
+        is_high_severity = "high" in (c.get("risk_flags") or [])
+        is_pattern = c.get("source_type") in ("task_failure_pattern", "closeout_anomaly", "manager_correction")
+        return (0 if is_pattern else 1, 0 if is_high_severity else 1, 0 if is_high_impact else 1)
+    sorted_cands = sorted(proposed, key=_priority)
+
+    obsidian_ready = [
+        c for c in proposed
+        if c.get("source_type") in ("manager_correction", "task_failure_pattern")
+    ]
+    conflict_candidates = [
+        c for c in proposed
+        if "conflict" in (c.get("content", "") or "").lower()
+        or c.get("source_type") == "closeout_anomaly"
+    ]
+
+    # ── JSON output mode ────────────────────────────────────────
+    if json_mode:
+        def _candidate_summary(c: dict) -> dict:
+            return {
+                "candidate_id": c.get("candidate_id", ""),
+                "source_type": c.get("source_type", ""),
+                "proposed_scope": c.get("proposed_scope", ""),
+                "proposed_kind": c.get("proposed_kind", ""),
+                "proposed_layer": c.get("proposed_layer", ""),
+                "content_preview": (c.get("content", "") or "")[:120],
+                "expires_at": c.get("expires_at", ""),
+                "risk_flags": c.get("risk_flags") or [],
+            }
+        payload = {
+            "date": today,
+            "generated_at": now,
+            "scope_filter": scope_filter or None,
+            "limits": {"candidate_limit": limit},
+            "totals": {
+                "proposed": total,
+                "by_source_type": by_source,
+                "stale_within_7d": len(stale),
+                "high_priority_manager_corrections": len(high_mgr),
+                "workflow_patterns": len(wf_patterns),
+            },
+            "stale": [_candidate_summary(c) for c in stale],
+            "high_priority_manager_corrections": [_candidate_summary(c) for c in high_mgr],
+            "workflow_patterns": [_candidate_summary(c) for c in wf_patterns],
+            "suggested_review_order": [_candidate_summary(c) for c in sorted_cands[:10]],
+            "hermes_handoff": {
+                "obsidian_backlog_candidates": len(obsidian_ready),
+                "conflict_or_anomaly_candidates": len(conflict_candidates),
+                "next_actions": [
+                    "eduflow memory export",
+                    'eduflow task dispatch Hermes "<knowledge task>"',
+                ],
+            },
+        }
+        print(json.dumps(payload, ensure_ascii=False, indent=2))
+        return 0
+
+    # ── Human-readable output mode (default) ─────────────────────
+    print(f"📅 Daily Memory Review ({today})")
+    print()
+
+    print(f"📊 Proposed candidate backlog: {total}")
+    for src, cnt in sorted(by_source.items(), key=lambda x: -x[1]):
+        print(f"   - {src}: {cnt}")
+    print()
+
+    if stale:
+        print(f"⏰ Stale/expiring (≤7d): {len(stale)}")
+        for c in stale[:5]:
+            cid = c.get("candidate_id", "")
+            exp = c.get("expires_at", "")[:10]
+            content = (c.get("content", "") or "")[:60]
+            print(f"   - {cid}  expires={exp}  {content}")
+        print()
+
+    if high_mgr:
+        print(f"🔥 High-priority manager corrections: {len(high_mgr)}")
+        for c in high_mgr[:5]:
+            cid = c.get("candidate_id", "")
+            scope_v = c.get("proposed_scope", "")
+            content = (c.get("content", "") or "")[:60]
+            print(f"   - {cid}  scope={scope_v}  {content}")
+        print()
+
+    if wf_patterns:
+        print(f"🔁 Workflow-level patterns/anomalies: {len(wf_patterns)}")
+        for c in wf_patterns[:5]:
+            cid = c.get("candidate_id", "")
+            scope_v = c.get("proposed_scope", "")
+            src = c.get("source_type", "")
+            content = (c.get("content", "") or "")[:60]
+            print(f"   - {cid}  scope={scope_v}  source={src}  {content}")
+        print()
+
+    print("📋 Suggested review order (top 5):")
+    for i, c in enumerate(sorted_cands[:5], 1):
+        cid = c.get("candidate_id", "")
+        src = c.get("source_type", "")
+        kind = c.get("proposed_kind", "")
+        content = (c.get("content", "") or "")[:60]
+        print(f"   {i}. {cid}  {src}  kind={kind}")
+        print(f"      {content}")
+    print()
+
+    print("🤝 Hermes handoff section:")
+    print(f"   - {len(obsidian_ready)} candidate(s) ready for Obsidian _memory-candidate-backlog/ export")
+    print(f"   - {len(conflict_candidates)} conflict/anomaly candidate(s) for _待复核冲突/")
+    print("   - Hermes action: run `eduflow memory export` after review,")
+    print("     then dispatch Hermes with `eduflow task dispatch Hermes \"<task>\"`")
+    print("     using the export root as the brief attachment.")
+    return 0
+
+
 _SUBCOMMANDS = {
     "constraints": _cmd_constraints,
     "capsule": _cmd_capsule,
@@ -1013,6 +1197,7 @@ _SUBCOMMANDS = {
     "expire": _cmd_expire,
     "audit": _cmd_audit,
     "cleanup": _cmd_cleanup,
+    "daily": _cmd_daily,
 }
 
 

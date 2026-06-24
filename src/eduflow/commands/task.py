@@ -3,6 +3,7 @@
   task create <assignee> <title> [--by <agent>] [--desc <text>]
   task flow-create <assignee> <title> --stage S --owner O [--by <agent>] [--desc <text>] [--workflow W]
   task dispatch <assignee> <title> --stage S --owner O [--by manager] [--desc text] [--workflow W]
+  task correct <agent> "<correction_content>" [--severity high|medium|critical] [--context "<ctx>"] [--force | --no-sensitive-check]
   task flow-transition <id> --to S --actor A
   task submit-review <id> --actor A
   task assign-reviewer <id> --reviewer R [--by manager]
@@ -49,6 +50,10 @@ _AUTO_STAGE_REASSURANCE_REASONS = frozenset({
     "worker_accepted",
     "worker_started",
     "worker_completed_handed_to_manager",
+    # worker/reviewer self-reported failure: surfaces immediately so
+    # the team sees the failed state in chat (otherwise it would
+    # only show up in memory_candidates via the bridge).
+    "worker_reported_failure",
 })
 
 
@@ -69,7 +74,8 @@ USAGE = (
     "usage:\n"
     "  eduflow task create <assignee> <title> [--by <agent>] [--desc <text>]\n"
     "  eduflow task flow-create <assignee> <title> --stage S --owner O [--by <agent>] [--desc <text>] [--workflow W]\n"
-    "  eduflow task dispatch <assignee> <title> --stage S --owner O [--by manager] [--desc <text>] [--workflow W]\n"
+    "  eduflow task dispatch <assignee> <title> --stage S --owner O [--by manager] [--desc <text>] [--workflow W] [--hermes-can-promote]\n"
+    "  eduflow task correct <agent> \"<correction_content>\" [--severity high|medium|critical] [--context \"<ctx>\"]\n"
     "  eduflow task flow-transition <id> --to S --actor A\n"
     "  eduflow task submit-review <id> --actor A\n"
     "  eduflow task assign-reviewer <id> --reviewer R [--by manager]\n"
@@ -93,7 +99,9 @@ USAGE = (
     "  eduflow task update <id>  [--status S] [--assignee A] [--title T] [--desc D]\n"
     "  eduflow task list  [--status S] [--assignee A]\n"
     "  eduflow task get <id>\n"
-    "  eduflow task done <id>"
+    "  eduflow task done <id>\n"
+    "  eduflow task report-failure <id> --actor <worker|reviewer> [--reason <text>]\n"
+    "  eduflow task update-verdict <id> --actor <reviewer|manager> --verdict <approved|rejected|manager_action|pending> [--reason <text>]"
 )
 
 
@@ -115,6 +123,10 @@ def _fmt_task(t: dict) -> list[str]:
         body.append(f"  reviewer: {t['reviewer']}")
     if t.get("verdict"):
         body.append(f"  verdict: {t['verdict']}")
+    if t.get("failure_reason"):
+        # Show the worker's reported failure reason so reviewers see
+        # why this task is in `failed` status.
+        body.append(f"  failure_reason: {t['failure_reason']}")
     if t.get("manager_action_type"):
         body.append(f"  manager_action_type: {t['manager_action_type']}")
     if t.get("review_reason"):
@@ -209,6 +221,7 @@ def _cmd_flow_create(rest: list[str]) -> int:
     if effective_workflow_id and effective_workflow_id != workflow_id:
         workflow_text += " auto_mounted=true"
     print(f"✅ created flow task {tid}: {title} → {assignee} [{stage}] owner={owner}{workflow_text}")
+    _print_dispatch_packet(assignee, tid)
     _auto_publish_stage_tick(tid)
     return 0
 
@@ -219,6 +232,7 @@ def _cmd_dispatch(rest: list[str]) -> int:
     stage = pop_flag(rest, "--stage")
     owner = pop_flag(rest, "--owner")
     workflow_id = pop_flag(rest, "--workflow") or ""
+    hermes_can_promote = pop_bool_flag(rest, "--hermes-can-promote")
     if len(rest) < 2 or not stage or not owner:
         return usage_error(USAGE)
     if by != "manager":
@@ -237,6 +251,15 @@ def _cmd_dispatch(rest: list[str]) -> int:
         return error_exit(f"❌ {e}")
     if effective_workflow_id and not workflow_cmd.is_active_workflow(effective_workflow_id):
         return error_exit(f"❌ unknown workflow: {effective_workflow_id}")
+    # If --hermes-can-promote was passed, record the marker in the
+    # task description so the Hermes adapter (or any later
+    # `memory promote` invocation) can see the manager's
+    # authorization. This is purely advisory text — the actual
+    # gate is in `candidates.promote_candidate`.
+    if hermes_can_promote:
+        marker = "\n[hermes-can-promote: true]"
+        if marker.strip() not in desc:
+            desc = (desc or "") + marker
     try:
         tid = tasks.create_flow(
             assignee,
@@ -256,6 +279,9 @@ def _cmd_dispatch(rest: list[str]) -> int:
         f"{(' workflow=' + effective_workflow_id) if effective_workflow_id else ''}"
         f"{' auto_mounted=true' if effective_workflow_id and effective_workflow_id != workflow_id else ''}"
     )
+    if hermes_can_promote:
+        print("  ↳ hermes_can_promote: manager authorized non-high-impact promotions")
+    _print_dispatch_packet(assignee, tid)
     _auto_publish_stage_tick(tid)
     return 0
 
@@ -353,6 +379,8 @@ def _cmd_review(rest: list[str]) -> int:
         f"✅ reviewed {tid} outcome={outcome} "
         f"status={task.get('status', '-')} verdict={task.get('verdict', '-')}"
     )
+    if outcome == "reject":
+        _bridge_review_reject(task, review_reason)
     _auto_publish_stage_tick(tid)
     return 0
 
@@ -860,6 +888,7 @@ def _cmd_manager_closeout(rest: list[str]) -> int:
         f"closeout_status={gate.get('closeout_status') or '-'} "
         f"recommended_action={gate.get('recommended_action') or '-'}"
     )
+    _bridge_closeout_anomaly(tasks.get(tid) or {})
     return 0
 
 
@@ -2053,10 +2082,443 @@ def _cmd_get(rest: list[str]) -> int:
     return 0
 
 
+# ── Memory Bridge Helpers (Package: Memory + Hermes Manager Loop) ──
+#
+# These helpers wire task lifecycle events into the memory system.
+# Design contract: every helper is fail-open. A memory-system error
+# (ImportError, SQLite lock, exception in hook) MUST NEVER block the
+# task command. The dispatch / review / closeout / correct paths
+# remain the source of truth; memory is a downstream observer.
+#
+# All candidates generated here are "proposed" — promotion to confirmed
+# memory requires an explicit `eduflow memory promote` by the manager.
+# The bridge layer never auto-promotes.
+
+
+def _print_dispatch_packet(assignee: str, task_id: str) -> None:
+    """Print a pre-dispatch memory packet for the assignee.
+
+    Fail-open: empty packet → note line; exception → warning.
+    Never raises. Never blocks the caller (dispatch/flow_create).
+    """
+    try:
+        from eduflow.memory.packet import assemble_memory_packet
+    except Exception as e:
+        print(f"⚠ memory packet: packet module unavailable ({e})")
+        return
+    try:
+        packet = assemble_memory_packet(assignee, task_id=task_id)
+    except Exception as e:
+        print(f"⚠ memory packet failed for {assignee} task={task_id}: {e}")
+        return
+    if packet:
+        print("--- Memory Packet (pre-dispatch) ---")
+        print(packet)
+        print("--- End Memory Packet ---")
+    else:
+        print(f"(no memory packet for {assignee} task={task_id})")
+
+
+def _bridge_review_reject(task: dict, review_reason: str) -> None:
+    """If review rejected a task, generate a proposed memory candidate.
+
+    Fail-open. Never raises. Never blocks the caller (review command).
+    Returns the candidate_id string for printing, or None.
+    """
+    try:
+        from eduflow.memory.event_bridge import bridge_review_event
+    except Exception as e:
+        print(f"⚠ memory bridge: event_bridge unavailable ({e})")
+        return None
+    tid = task.get("id", "")
+    if not tid:
+        return None
+    review_result = {
+        "task_id": tid,
+        "worker": task.get("assignee") or "",
+        "verdict": "REJECTED",
+        "reason": review_reason or "",
+        "workflow_id": task.get("workflow_id") or "",
+    }
+    try:
+        candidate_id = bridge_review_event(review_result)
+    except Exception as e:
+        print(f"⚠ memory bridge: review reject bridge failed ({e})")
+        return None
+    if candidate_id:
+        print(f"📝 memory candidate: {candidate_id}")
+    return candidate_id
+
+
+def _resolve_evidence_field(evidence: dict, *candidates: str) -> int:
+    """Resolve an evidence_packet field by trying multiple candidate keys.
+
+    Tries each candidate in order, returning the first one that
+    resolves to a positive integer. Returns 0 if none match.
+
+    Why multiple candidates: legacy task evidence_packets use
+    inconsistent field names depending on the workflow vintage
+    (`items_count` vs `item_count`, `qql_count` vs `qa_count`,
+    `manifest_rows` vs `manifest_covered_count` vs `items_mapping_count`).
+    Falling back across candidates lets the bridge recognize more
+    real tasks without changing their on-disk format.
+
+    Skips None / empty string / non-positive values so that "missing
+    field" and "field explicitly set to 0" both produce 0.
+    """
+    for key in candidates:
+        val = evidence.get(key)
+        if val is None:
+            continue
+        try:
+            n = int(val)
+            if n > 0:
+                return n
+        except (TypeError, ValueError):
+            continue
+    return 0
+
+
+def _bridge_closeout_anomaly(task: dict) -> None:
+    """After closeout, run consistency check and surface anomaly candidate.
+
+    Fail-open. Never raises. Never blocks the caller (closeout command).
+
+    Recognized evidence_packet field names (tried in order until a
+    positive integer is found):
+
+      items_count  ← items_count, item_count, itemcount
+      qql_count    ← qql_count, qa_count, qa_count, qa_qql, qql
+      manifest_count ← manifest_rows, manifest_covered_count,
+                       items_mapping_count, manifest_count, mapping_count
+
+    If all three resolve to 0 (legacy task with empty evidence_packet,
+    or counts genuinely zero), the helper logs a no-op rather than
+    firing a false-positive anomaly candidate.
+    """
+    try:
+        from eduflow.memory.event_bridge import bridge_closeout_check
+    except Exception as e:
+        print(f"⚠ memory bridge: event_bridge unavailable ({e})")
+        return
+    tid = task.get("id", "")
+    if not tid:
+        return
+    evidence = task.get("evidence_packet") or {}
+    items_count = _resolve_evidence_field(
+        evidence, "items_count", "item_count", "itemcount",
+    )
+    qql_count = _resolve_evidence_field(
+        evidence, "qql_count", "qa_count", "qa_qql", "qql",
+    )
+    manifest_count = _resolve_evidence_field(
+        evidence,
+        "manifest_rows", "manifest_covered_count", "items_mapping_count",
+        "manifest_count", "mapping_count",
+    )
+    workflow_id = task.get("workflow_id") or ""
+
+    # No-op if all counts are 0: the evidence_packet is genuinely
+    # missing or counts are zero, neither of which should trigger a
+    # candidate (we'd be flooding the queue with false positives).
+    if items_count == 0 and qql_count == 0 and manifest_count == 0:
+        print(f"(closeout: no evidence counts for {tid}; bridge skipped)")
+        return
+
+    try:
+        result = bridge_closeout_check(
+            tid, items_count, qql_count, manifest_count,
+            agent="manager", workflow_id=workflow_id,
+        )
+    except Exception as e:
+        print(f"⚠ memory bridge: closeout check failed ({e})")
+        return
+    if result.get("consistent"):
+        print(f"(closeout counts consistent: items={items_count} qql={qql_count} manifest={manifest_count})")
+    else:
+        cid = result.get("candidate_id")
+        if cid:
+            print(f"📝 closeout anomaly candidate: {cid} (items={items_count} qql={qql_count} manifest={manifest_count})")
+        else:
+            print(f"⚠ closeout counts inconsistent (items={items_count} qql={qql_count} manifest={manifest_count}) but no candidate created")
+    blocking = result.get("blocking_constraints") or []
+    if blocking:
+        print(f"   blocking constraints ({len(blocking)}):")
+        for b in blocking[:3]:
+            bid = b.get("id", "")
+            print(f"   - [{bid}] {b.get('content', '')}")
+
+
+def _cmd_correct(rest: list[str]) -> int:
+    """Manager explicit correction → memory candidate.
+
+    Usage:
+      eduflow task correct <agent> "<correction_content>" [--severity high|medium|critical] [--context "<ctx>"] [--force | --no-sensitive-check]
+
+    The correction is recorded as a proposed candidate. It never
+    auto-promotes to confirmed memory; the manager must review via
+    `eduflow memory candidates` / `promote` / `reject`.
+
+    Fail-open: if the memory bridge is unavailable, the command still
+    returns 0 with a warning. Corrections are deliberate knowledge
+    transfers; we don't want to silently drop them.
+
+    Sensitive-content guardrail (PII / secrets):
+      Detects likely API keys, tokens, passwords, emails, and SSN-like
+      strings in the content or context. When detected, prints a clear
+      warning to stderr but does NOT block the command — managers are
+      the ultimate authority on what they paste.
+
+      Flag semantics:
+        --force              generic "I know what I'm doing" flag.
+                              Used to override ANY future safety
+                              check (PII, profanity, length, etc.).
+        --no-sensitive-check semantic alias — overrides ONLY the
+                              PII scanner. Same effect today as
+                              --force, but tracked separately in
+                              the bridge context so future
+                              additional checks (profanity,
+                              length, etc.) can be left enabled
+                              while still skipping just the
+                              sensitive-content scanner.
+
+      If both are passed, --force wins on the "I meant to override"
+      semantic. The bridge context records which flag(s) the caller
+      used, so downstream reviewers can audit.
+    """
+    if len(rest) < 2:
+        return usage_error(USAGE)
+    agent = rest.pop(0)
+    content = rest.pop(0)
+    severity = (pop_flag(rest, "--severity") or "medium").lower()
+    if severity not in ("low", "medium", "high", "critical"):
+        return usage_error(f"❌ invalid --severity: {severity} (use low|medium|high|critical)")
+    ctx = pop_flag(rest, "--context") or ""
+    # --force is the original generic override: skip ALL safety checks.
+    force = pop_bool_flag(rest, "--force")
+    # --no-sensitive-check: skip ONLY the PII/sensitive-content
+    # scanner. Unlike --force, this does NOT suppress future checks
+    # (profanity, length limits, etc.). The distinction matters when
+    # the scanner grows additional checks — --no-sensitive-check lets
+    # those run while still skipping just the sensitive scan.
+    no_sensitive_check = pop_bool_flag(rest, "--no-sensitive-check")
+    # Track each flag separately for the audit log / bridge context.
+    # If both flags are passed, both are recorded; --force wins
+    # semantically (it's the broader override).
+    suppress_sensitive = force or no_sensitive_check
+    if not agent or not content:
+        return usage_error("usage: eduflow task correct <agent> \"<correction_content>\" [--severity ...] [--context ...] [--force | --no-sensitive-check]")
+
+    # ── Pre-checks ──────────────────────────────────────────────
+    # --force skips ALL pre-checks (--no-sensitive-check skips only
+    # the sensitive-content scanner; future checks still run).
+    if not force:
+        # Sensitive-content check (warn-only; suppressed by either
+        # flag). Fail-open: if the scanner itself raises, log a
+        # warning and continue. The bridge to memory is the source
+        # of truth; a broken scanner must not block corrections.
+        try:
+            matches = _scan_sensitive_content(content, ctx)
+        except Exception as e:
+            print(f"⚠ sensitive-content scanner failed ({e}); proceeding without warning", file=sys.stderr)
+            matches = []
+        if matches and not suppress_sensitive:
+            print(
+                "⚠ sensitive-pattern warning: detected in content/context:",
+                file=sys.stderr,
+            )
+            for kind in matches[:5]:
+                print(f"   - {kind}", file=sys.stderr)
+            print(
+                "   This content will be written to memory_candidates DB "
+                "and exported to Obsidian. Re-run with --force to skip "
+                "all checks, or --no-sensitive-check to skip only this "
+                "scanner.",
+                file=sys.stderr,
+            )
+
+    try:
+        from eduflow.memory.event_bridge import bridge_manager_correction
+    except Exception as e:
+        print(f"⚠ memory bridge: event_bridge unavailable ({e})")
+        return 0
+    try:
+        candidate_id = bridge_manager_correction(
+            agent, content, severity=severity, context=ctx,
+        )
+    except Exception as e:
+        print(f"⚠ memory bridge: manager correction bridge failed ({e})")
+        return 0
+    if candidate_id:
+        flags_used = []
+        if force:
+            flags_used.append("force")
+        if no_sensitive_check:
+            flags_used.append("no_sensitive_check")
+        flag_str = f" flags={','.join(flags_used)}" if flags_used else ""
+        print(f"📝 correction candidate: {candidate_id} agent={agent} severity={severity}{flag_str}")
+    else:
+        print(f"⚠ memory bridge returned no candidate_id (agent={agent})")
+    return 0
+
+
+def _cmd_report_failure(rest: list[str]) -> int:
+    """Worker/reviewer self-reports an unrecoverable failure on a task.
+
+    Usage:
+      eduflow task report-failure <id> --actor <worker|reviewer> [--reason "<text>"]
+
+    Transitions the task to status=failed. The state machine allows
+    worker/reviewer from assigned / in_progress / blocked /
+    submitted_for_review; manager is not allowed (manager should use
+    `task flow-transition ... --to cancelled` for explicit cancellation).
+
+    Always fires `bridge_task_lifecycle("fail", ...)` so the failure
+    becomes a candidate in memory_candidates (idempotent by task_id).
+
+    Fail-open: bridge failures don't block the state transition. The
+    reason text is preserved on the task itself so subsequent review
+    of the failure has context.
+    """
+    if len(rest) < 1:
+        return usage_error(USAGE)
+    actor = pop_flag(rest, "--actor")
+    reason = pop_flag(rest, "--reason") or ""
+    if not actor:
+        return usage_error(
+            "usage: eduflow task report-failure <id> --actor <worker|reviewer> [--reason \"<text>\"]"
+        )
+    tid = rest[0]
+    try:
+        ok = tasks.report_flow_failure(tid, actor=actor, reason=reason)
+    except ValueError as e:
+        return error_exit(f"❌ {e}")
+    if not ok:
+        return error_exit(f"❌ no such task: {tid}")
+    task = tasks.get(tid) or {}
+    print(
+        f"✅ reported failure on {tid} actor={actor} "
+        f"status={task.get('status', '-')}"
+        f"{' reason=' + reason if reason else ''}"
+    )
+    # Bridge fires inside report_flow_failure; if a candidate was
+    # created we can't tell here without re-querying, but the standard
+    # transition announcement is enough for the operator.
+    _auto_publish_stage_tick(tid)
+    return 0
+
+
+def _cmd_update_verdict(rest: list[str]) -> int:
+    """Update a task's verdict after it has been delivered.
+
+    Usage:
+      eduflow task update-verdict <id> --actor <reviewer|manager> --verdict <value> [--reason "<text>"]
+
+    Verdict values: approved / rejected / manager_action / pending.
+
+    Use this when a downstream review concludes the task's gate failed
+    even though the worker formally "completed". The state machine
+    normally resets verdict to "approved" on `to_status="delivered"`,
+    so a post-delivery verdict update requires going around the state
+    machine. When verdict transitions to "rejected", the memory
+    bridge fires a witness candidate (the delivered+rejected path).
+    """
+    if len(rest) < 1:
+        return usage_error(USAGE)
+    actor = pop_flag(rest, "--actor")
+    verdict = pop_flag(rest, "--verdict")
+    reason = pop_flag(rest, "--reason") or ""
+    if not actor or not verdict:
+        return usage_error(
+            "usage: eduflow task update-verdict <id> --actor <reviewer|manager> "
+            "--verdict <approved|rejected|manager_action|pending> [--reason \"<text>\"]"
+        )
+    tid = rest[0]
+    try:
+        ok = tasks.update_post_delivery_verdict(
+            tid, actor=actor, verdict=verdict, reason=reason,
+        )
+    except ValueError as e:
+        return error_exit(f"❌ {e}")
+    if not ok:
+        return error_exit(f"❌ no such task: {tid}")
+    task = tasks.get(tid) or {}
+    print(
+        f"✅ verdict updated {tid} "
+        f"verdict={task.get('verdict', '-')}"
+        f"{' reason=' + reason if reason else ''}"
+    )
+    _auto_publish_stage_tick(tid)
+    return 0
+
+
+# Patterns that should trigger a sensitive-content warning. The check is
+# intentionally conservative — false positives are cheaper than a leaked
+# secret. The list is plain string substrings; case-insensitive matching
+# keeps the implementation stdlib-only.
+_SENSITIVE_PATTERNS: tuple[tuple[str, str], ...] = (
+    # Generic API key / secret indicators
+    ("api_key=", "API key assignment"),
+    ("apikey=", "API key assignment"),
+    ("api-token", "API token reference"),
+    ("bearer ", "Bearer token prefix"),
+    ("secret_key", "secret key reference"),
+    ("password=", "password assignment"),
+    ("passwd=", "password assignment"),
+    ("-----BEGIN", "PEM private key block"),
+    ("aws_access_key", "AWS access key reference"),
+    ("aws_secret", "AWS secret reference"),
+    ("private_key", "private key reference"),
+    # Token-shaped strings (long hex/base64)
+    # We look for explicit prefixes rather than try to detect random tokens,
+    # which would have too many false positives.
+    ("sk_live_", "Stripe live secret key"),
+    ("sk_test_", "Stripe test secret key"),
+    ("ghp_", "GitHub personal access token"),
+    ("xoxb-", "Slack bot token"),
+    ("xoxp-", "Slack user token"),
+    # PII patterns (string-substring, conservative)
+    ("@gmail.com", "email address (gmail)"),
+    ("@yahoo.com", "email address (yahoo)"),
+    ("@qq.com", "email address (qq)"),
+    ("@163.com", "email address (163)"),
+    ("ssn:", "SSN label"),
+    ("social security", "SSN label"),
+    ("身份证", "Chinese national ID label"),
+    ("手机号:", "phone label"),
+)
+
+
+def _scan_sensitive_content(content: str, context: str = "") -> list[str]:
+    """Return list of sensitive-pattern labels found in content/context.
+
+    Returns an empty list when nothing detected. Always case-insensitive.
+    Stdlib-only; no regex compilation needed.
+    """
+    haystack = (content or "") + "\n" + (context or "")
+    if not haystack:
+        return []
+    lowered = haystack.lower()
+    found: list[str] = []
+    seen: set[str] = set()
+    for needle, label in _SENSITIVE_PATTERNS:
+        # Lower the needle too — patterns are written in mixed case for
+        # human readability, but the haystack is already lowered, so
+        # raw needles like "-----BEGIN" never match. Lowering here is
+        # cheaper than re-lowering the pattern list at module load.
+        if needle.lower() in lowered and label not in seen:
+            found.append(label)
+            seen.add(label)
+    return found
+
+
 SUBCOMMANDS = {
     "create": _cmd_create,
     "flow-create": _cmd_flow_create,
     "dispatch": _cmd_dispatch,
+    "correct": _cmd_correct,
+    "report-failure": _cmd_report_failure,
+    "update-verdict": _cmd_update_verdict,
     "flow-transition": _cmd_flow_transition,
     "submit-review": _cmd_submit_review,
     "assign-reviewer": _cmd_assign_reviewer,

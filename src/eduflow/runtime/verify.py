@@ -173,6 +173,17 @@ def verify_live_env_matches_profile(
     expected = {k: str(profile[k]) for k in PROFILE_ENV_KEYS if profile.get(k)}
     if not expected:
         return True, []
+    # Provider-aware skip: profiles that route through a non-Anthropic
+    # provider_family (minimax, glm, kimi, dashscope_qwen, hermes_agent,
+    # openai_codex, …) auto-fill ANTHROPIC_AUTH_TOKEN from the shell env
+    # via config.env_profile_config's sensitive-key backfill, but the
+    # pane itself never sets the token because it talks to a different
+    # gateway. Treating that as drift would be a false positive — only
+    # anthropic-family runtimes actually need the token in the pane env.
+    # Profiles with no provider_family (older configs / test fixtures)
+    # fall through to the existing check.
+    provider_family = str(profile.get("provider_family") or "")
+    skip_anthropic_token = bool(provider_family) and "anthropic" not in provider_family.lower()
     live = pane_live_env(target, run=run, read_environ=read_environ, tmux_display=tmux_display)
     if not live:
         return False, [f"env_profile={env_profile_name} live_env_unavailable"]
@@ -184,6 +195,11 @@ def verify_live_env_matches_profile(
         # sentinel instead of the literal profile token, so it is not drift —
         # mirror the smoke-skip exemption in api_smoke_runtime().
         if key == "ANTHROPIC_AUTH_TOKEN" and live_value == "PROXY_MANAGED":
+            continue
+        # Provider-aware exemption: non-Anthropic provider_family profiles
+        # never set ANTHROPIC_AUTH_TOKEN in the pane env, so missing live
+        # is expected. See the skip_anthropic_token note above.
+        if skip_anthropic_token and key == "ANTHROPIC_AUTH_TOKEN":
             continue
         if live_value != value:
             shown = live_value if live_value else "<missing>"

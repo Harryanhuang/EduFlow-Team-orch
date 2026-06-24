@@ -102,6 +102,41 @@ def test_verify_live_env_matches_profile_proxy_managed_token_is_ok(monkeypatch):
         assert mismatches == []
 
 
+def test_verify_live_env_skips_anthropic_token_for_non_anthropic_provider(monkeypatch):
+    # Hermes-style profile: provider_family is "minimax" (not anthropic), so
+    # auto-fill populates ANTHROPIC_AUTH_TOKEN from the shell env into the
+    # expected dict, but the Hermes pane never sets it. Without the skip,
+    # this reports a spurious drift warning. With the provider-aware skip,
+    # it should be ok. The pane env is non-empty (truthy) but lacks the
+    # ANTHROPIC key — that's the exact shape we see in real Hermes panes.
+    with isolated_env():
+        monkeypatch.setattr(verify.config, "env_profile_config",
+                            lambda name: ({"provider_family": "minimax",
+                                           "HERMES_BASE_URL": "https://h.local",
+                                           "ANTHROPIC_AUTH_TOKEN": "PROXY_MANAGED"}
+                                          if name == "p" else {}))
+        monkeypatch.setattr(verify, "pane_live_env",
+                            lambda *a, **kw: {"HERMES_BASE_URL": "https://h.local"})
+        ok, mismatches = verify.verify_live_env_matches_profile("X:0", "p")
+        assert ok is True
+        assert mismatches == []
+
+
+def test_verify_live_env_still_flags_anthropic_token_for_anthropic_provider(monkeypatch):
+    # Anthropic-family provider with a missing live token must still report
+    # drift — the provider-aware skip only fires for non-Anthropic families.
+    with isolated_env():
+        monkeypatch.setattr(verify.config, "env_profile_config",
+                            lambda name: ({"provider_family": "anthropic_proxy",
+                                           "ANTHROPIC_AUTH_TOKEN": "PROXY_MANAGED"}
+                                          if name == "p" else {}))
+        monkeypatch.setattr(verify, "pane_live_env",
+                            lambda *a, **kw: {"ANTHROPIC_BASE_URL": "https://x"})
+        ok, mismatches = verify.verify_live_env_matches_profile("X:0", "p")
+        assert ok is False
+        assert any("ANTHROPIC_AUTH_TOKEN" in m for m in mismatches)
+
+
 def test_api_smoke_runtime_skipped_for_codex():
     assert verify.api_smoke_runtime({"cli": "codex-cli", "provider": "openai"})[0] == "skipped"
 

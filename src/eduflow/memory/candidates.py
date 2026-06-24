@@ -153,12 +153,32 @@ def list_candidates(
     return [dict(r) for r in rows]
 
 
-def promote_candidate(candidate_id: str, *, reviewer: str = "") -> str:
+def promote_candidate(
+    candidate_id: str,
+    *,
+    reviewer: str = "",
+    hermes_can_promote: bool = False,
+) -> str:
     """Promote a candidate to a confirmed memory_item.
 
     Returns the new memory_item ID.
     Raises ValueError if high-impact kind without authorized reviewer.
     Raises ValueError if candidate not found or not in 'proposed' status.
+
+    hermes_can_promote: when True, allows reviewer="hermes" to promote
+    non-high-impact kinds (note, domain_fact, etc.). High-impact kinds
+    (workflow_rule, role_rule, runtime_rule, decision, preference,
+    handoff) ALWAYS require reviewer in {manager, hermes} AND
+    hermes_can_promote must be False — Hermes can never auto-promote
+    high-impact rules even with the flag, because the manager must
+    sign off on rule changes.
+
+    The flag exists so a manager-dispatched Hermes task can
+    explicitly authorize Hermes to do routine note-style promotions
+    without round-tripping to the manager for every candidate. The
+    marker travels in the task description: the manager writes
+    `--hermes-can-promote` when dispatching the Hermes task, the
+    Hermes adapter sees the marker and passes the flag here.
     """
     init_schema()
     cand = get_candidate(candidate_id)
@@ -166,13 +186,54 @@ def promote_candidate(candidate_id: str, *, reviewer: str = "") -> str:
         raise ValueError(f"candidate not found: {candidate_id}")
     if cand["review_status"] != "proposed":
         raise ValueError(f"candidate {candidate_id} is not in 'proposed' status (current: {cand['review_status']})")
-    # High-impact guard
-    if cand["proposed_kind"] in _HIGH_IMPACT_KINDS:
-        if not reviewer or reviewer not in _DESIGNATED_REVIEWERS:
+    is_high_impact = cand["proposed_kind"] in _HIGH_IMPACT_KINDS
+    reviewer_norm = str(reviewer or "").strip()
+    # Hermes-specific guard: Hermes can promote non-high-impact kinds
+    # ONLY when the dispatch carried the hermes_can_promote flag.
+    if reviewer_norm == "hermes" and is_high_impact:
+        raise ValueError(
+            f"Hermes cannot promote high-impact kind "
+            f"'{cand['proposed_kind']}' even with the "
+            f"hermes_can_promote flag — manager must sign off on rule "
+            f"changes. Pass reviewer=manager to promote."
+        )
+    if reviewer_norm == "hermes" and not hermes_can_promote:
+        raise ValueError(
+            f"reviewer 'hermes' requires the hermes_can_promote flag "
+            f"(set on the dispatch task description as "
+            f"'--hermes-can-promote'). Without the flag, only "
+            f"manager can promote."
+        )
+    # Defense-in-depth: even with the flag, only candidates whose scope
+    # or source_type indicates a Hermes-owned context are eligible.
+    # This prevents Hermes (or anyone with the flag) from promoting
+    # candidates that came from other agents' contexts by accident.
+    # Acceptable scopes: 'agent:Hermes', 'hermes:*', 'team' (Hermes
+    # covers team-level housekeeping), or scope containing 'hermes'.
+    # Acceptable source_types: 'hermes_*' (Hermes-originated manual).
+    if reviewer_norm == "hermes" and hermes_can_promote:
+        scope_v = str(cand.get("proposed_scope") or "").strip().lower()
+        src_v = str(cand.get("source_type") or "").strip().lower()
+        hermes_scope_ok = (
+            scope_v in ("agent:hermes", "team")
+            or scope_v.startswith("hermes:")
+            or "hermes" in scope_v
+        )
+        hermes_source_ok = src_v.startswith("hermes_")
+        if not (hermes_scope_ok or hermes_source_ok):
             raise ValueError(
-                f"high-impact kind '{cand['proposed_kind']}' requires designated reviewer "
-                f"({', '.join(sorted(_DESIGNATED_REVIEWERS))}), got '{reviewer}'"
+                f"hermes_can_promote requires the candidate's scope or "
+                f"source_type to indicate Hermes context. Got scope="
+                f"{scope_v!r} source_type={src_v!r}. Candidates outside "
+                f"Hermes's scope (e.g. agent:worker_qbank) must be "
+                f"promoted by manager with --reviewer manager."
             )
+    # High-impact guard (for non-Hermes reviewers)
+    if is_high_impact and reviewer_norm not in _DESIGNATED_REVIEWERS:
+        raise ValueError(
+            f"high-impact kind '{cand['proposed_kind']}' requires designated reviewer "
+            f"({', '.join(sorted(_DESIGNATED_REVIEWERS))}), got '{reviewer}'"
+        )
     now = _now_iso()
     conn = get_conn()
     # Create the memory item as confirmed
