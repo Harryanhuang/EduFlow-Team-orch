@@ -26,7 +26,7 @@
 ```
 
 ```text
-调用 candidate workflow: ap-knowledge-base-optimization
+调用 workflow: ap-knowledge-base-optimization
 对象: AP Calculus AB
 范围: Subject 1 golden path（先完成完整学科样板，再进入下一学科）
 边界: 当前学科未 subject_sample_ready 前，不启动下一学科 full production

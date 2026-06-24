@@ -58,3 +58,8 @@ Edu/
 Team/
 多智能体项目/
 skills/dot-skill/
+
+# Legacy claudeteam artifacts — keep out of the open repo (round-80 cleanup)
+.claudeteam-cadence/
+claudeteam
+claudeteam.toml.bak-*
