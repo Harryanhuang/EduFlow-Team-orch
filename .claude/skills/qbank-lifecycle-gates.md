@@ -54,7 +54,7 @@ metadata:
 def qbank_lifecycle_status(verification_summary):
     """Derive lifecycle state from verification output."""
     total = verification_summary.get('total_questions', 0)
-    scanned = verification_summary.get('scanned_files', 0)
+    scanned = verification_summary.get('subjects_scanned', 0)
     status = verification_summary.get('status', 'FAIL')
     errors = verification_summary.get('errors', 0)
     warnings = verification_summary.get('warnings', 0)
