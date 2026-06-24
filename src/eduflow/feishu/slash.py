@@ -478,7 +478,6 @@ def _kimi_section(km: dict) -> list:
         no_metrics_note=None,
         format_metric=fmt,
     )
-    return rows
 
 
 def _handle_usage(args: str, ctx: SlashContext) -> dict:

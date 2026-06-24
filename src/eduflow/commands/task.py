@@ -657,7 +657,7 @@ def _collect_revision_priority_blockers() -> list[dict]:
     for row in rows:
         if row.get("schema_version") != 2:
             continue
-        if str(row.get("status") or "") in {"delivered", "cancelled", "已完成", "已取消"}:
+        if str(row.get("status") or "") in {"delivered", "cancelled", "failed", "已完成", "已取消"}:
             continue
         revision_priority = str(row.get("revision_priority") or "").strip()
         if not revision_priority:
