@@ -368,6 +368,29 @@ def supervise(specs: list[ProcessSpec],
             st.last_action = "alive"
             continue
 
+        # Flap-guard: if the process has been restarting rapidly, apply
+        # an escalating cooldown before the next respawn attempt.
+        # Without this, a router that dies instantly after every respawn
+        # (e.g. lark-cli subscribe lock race after stale-event restart)
+        # loops indefinitely at watchdog sweep frequency.
+        # Backoff formula: min(2^(excess+1) * 15s, 300s), where
+        # excess = recent_count - FLAP_THRESHOLD_PER_WINDOW.
+        cutoff = t - FLAP_WINDOW_SECS
+        recent = [rt for rt in st.restart_timestamps if rt >= cutoff]
+        if len(recent) >= FLAP_THRESHOLD_PER_WINDOW:
+            excess = len(recent) - FLAP_THRESHOLD_PER_WINDOW
+            backoff = min(2 ** (excess + 1) * 15, 300)
+            st.cooldown_until = t + backoff
+            st.last_action = "cooldown"
+            log(f"⏳ {spec.name} flapping ({len(recent)} restarts in "
+                f"{FLAP_WINDOW_SECS:.0f}s); backing off {backoff}s")
+            if alert_fn is not None:
+                try:
+                    alert_fn(spec.name, len(recent), backoff)
+                except Exception as e:
+                    log(f"  ⚠️ alert_fn raised on {spec.name} flap-backoff: {e}")
+            continue
+
         # dead: respawn
         if respawn_fn(spec):
             log(f"🔁 {spec.name} respawned (fail_count was {st.fail_count})")

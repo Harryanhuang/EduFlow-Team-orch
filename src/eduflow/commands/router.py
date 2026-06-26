@@ -440,9 +440,57 @@ def main(argv: list[str]) -> int:
             print(f"📥 catching up {len(pending)} missed message(s)")
             process_lines(iter(pending), **loop_kwargs)
 
+        _subscribe_start = time.monotonic()
         stats = process_lines(proc.stdout, **loop_kwargs)
+        rc = proc.wait()
+
+        # Subscribe-child quick-death retry: if lark-cli exited within
+        # 15s of spawn with zero handled events, it's likely a transient
+        # lock race from a stale-event restart.  Sleep briefly for the
+        # lock file to auto-release, then spawn ONE retry child.
+        # The watchdog flap-guard (watchdog.py) is the outer safety net;
+        # this retry is the fast-path that avoids a full respawn cycle.
+        _subscribe_alive_secs = time.monotonic() - _subscribe_start
+        if (rc != 0
+                and stats.handled == 0
+                and _subscribe_alive_secs < 15):
+            print(f"  ⚠️ subscribe child exited rc={rc} in "
+                  f"{_subscribe_alive_secs:.1f}s with 0 handled; "
+                  f"retrying once after 5s settle")
+            _terminate_subscribe_group(proc)
+            time.sleep(5)
+            try:
+                proc = subprocess.Popen(
+                    cmd,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.STDOUT,
+                    text=True,
+                    bufsize=1,
+                    env=lark.subprocess_env(),
+                    start_new_session=True,
+                )
+            except FileNotFoundError:
+                return error_exit("❌ npx / lark-cli not found on retry")
+            # Re-install SIGTERM handler for new proc
+            def _on_sigterm_retry(*_):
+                _terminate_subscribe_group(proc)
+                sys.exit(0)
+            signal.signal(signal.SIGTERM, _on_sigterm_retry)
+            # Re-start watchdog thread for new proc
+            stop_watchdog.set()
+            stop_watchdog = threading.Event()
+            last_event_at[0] = time.monotonic()
+            threading.Thread(
+                target=_watch_subscribe_health,
+                args=(proc, stop_watchdog, last_event_at),
+                daemon=True,
+            ).start()
+            if proc.stdout is not None:
+                stats = process_lines(proc.stdout, **loop_kwargs)
+            rc = proc.wait()
+
         print(f"router exited: handled={stats.handled} dropped={stats.dropped}")
-        return 0 if proc.wait() == 0 else 1
+        return 0 if rc == 0 else 1
     except KeyboardInterrupt:
         print("router stopped (Ctrl-C)")
         return 0
