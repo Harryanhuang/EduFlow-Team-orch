@@ -2024,6 +2024,23 @@ def _cmd_publish_run(rest: list[str]) -> int:
                     f"task={row['task_id']} reason={row['reason']} :: {item['message']}"
                 )
     else:
+        # Phase 4 (2026-07-01, P4-B 调后): stamp ONLY handoff-class
+        # publish reasons with `touch_handoff`; everything else is
+        # left untouched so we don't flood agent_residency.json
+        # with every reassurance ping.  `worker_completed_handed_to
+        # _manager` and `delivered_to_user` are the two reasons
+        # that start the handoff buffer (plan §设计二).
+        try:
+            from eduflow.store import agent_residency
+            _handoff_reasons = {
+                "worker_completed_handed_to_manager",
+                "delivered_to_user",
+            }
+            for r in rows:
+                if r.get("publish") and r.get("reason") in _handoff_reasons:
+                    agent_residency.touch_handoff(str(r.get("to_target") or ""))
+        except Exception:
+            pass
         summary_sender = rendered[0]["row"]["sender"]
         rc = say_cmd.main([summary_sender, summary, "--to", to_target])
         if rc != 0:
