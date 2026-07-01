@@ -7,6 +7,11 @@ can be set via `EDUFLOW_LARK_SEND_AS=user|bot` for the whole shell.
 The message is also mirrored to the local inbox (so the audit log keeps
 a copy) — pass `--no-local` to skip that.
 
+Phase-1 (2026-07-01): optional `--card <TYPE>` flag routes the body
+through the structured card protocol v2 (see `feishu.cards_v2`).
+Without `--card`, the legacy `simple_card` path is unchanged so
+existing operators / docs / agents keep working.
+
 Exits non-zero if `chat_id` is unset (run setup or set runtime_config.json).
 """
 from __future__ import annotations
@@ -24,7 +29,8 @@ from eduflow.util import env_str, error_exit, pop_bool_flag, pop_flag, usage_err
 USAGE = (
     "usage: eduflow say <agent> <message> "
     "[--body <message>] [--reply <message_id>] [--as user|bot] [--no-local] "
-    "[--to user|manager|worker_<name>] [--channel main|supervisor]"
+    "[--to user|manager|worker_<name>] [--channel main|supervisor] "
+    "[--card ACK|START|PROGRESS|HANDOFF|BLOCKED|REVIEW|CLOSEOUT|ALERT|RECORDED]"
 )
 
 
@@ -267,17 +273,35 @@ class _Args:
                        # that don't pass --to (manager → user is the
                        # typical case)
     channel: str = "main"
+    card_type: str = ""  # structured-card v2 type; empty = legacy path
 
 
 def _parse(argv: list[str]) -> _Args | None:
     if len(argv) < 2:
         return None
     rest = list(argv)
-    # `--card` / `--no-card` are accepted but ignored — every
-    # `eduflow say` posts a v2 card. The flags are consumed for
-    # backwards-compat with operators / docs that still pass them.
-    pop_bool_flag(rest, "--card")
+    # `--no-card` is the legacy way to opt out of card rendering. It is
+    # still accepted (and ignored — every `eduflow say` posts a v2 card)
+    # for backwards-compat with operators / docs that still pass it.
     pop_bool_flag(rest, "--no-card")
+    # `--card` is dual-purpose:
+    #   - `--card TYPE` (new): structured v2 card protocol.  TYPE may
+    #     be one of the nine known types OR a typo (BOGUS / CLOSEOUTT) —
+    #     unknown types fall through to the validator which returns
+    #     exit 1 with a clear error.  We do NOT silently treat unknown
+    #     values as legacy no-op, because that would hide typos.
+    #   - `--card` alone (legacy): boolean no-op (every say already
+    #     sent a card; R99 left the flag as a stable no-op sentinel
+    #     so older operators / docs / agents keep working)
+    card_type = ""
+    if "--card" in rest:
+        i = rest.index("--card")
+        if i + 1 < len(rest):
+            card_type = rest[i + 1].strip().upper()
+            del rest[i:i + 2]
+        else:
+            # Legacy `--card` boolean — consume silently.
+            rest.remove("--card")
     no_local = pop_bool_flag(rest, "--no-local")
     body_explicit = pop_flag(rest, "--body")
     reply_to = pop_flag(rest, "--reply") or ""
@@ -316,6 +340,7 @@ def _parse(argv: list[str]) -> _Args | None:
         local=not no_local,
         to=to_explicit,
         channel=channel,
+        card_type=card_type.strip().upper(),
     )
 
 
@@ -372,7 +397,55 @@ def main(argv: list[str]) -> int:
         print(f"  ⚠️ --reply ignored (Feishu cards don't thread)",
               file=sys.stderr)
     title, card_color = _channel_card_identity(args.agent, agent_cfg, channel_name)
-    card = simple_card(title, args.message, color=card_color)
+
+    # Phase-1 structured-card path: validate role + required fields
+    # before render.  Role violations block (exit 1) — the agent
+    # attempted something outside its scope.  Field/value violations
+    # degrade to internal (exit 0) — the audit log already captured
+    # the intent (line 355), the chat stays clean, and the operator
+    # sees a warning explaining what was missing.  Plan 2026-07-01
+    # §设计一.
+    if args.card_type:
+        from eduflow.feishu import cards_v2
+        from eduflow.feishu.cards_v2_schema import CardType as _CT
+        if args.card_type not in _CT.ALL:
+            print(
+                f"❌ {args.agent} --card {args.card_type}: unknown card type "
+                f"(allowed: {', '.join(_CT.ALL)})",
+                file=sys.stderr,
+            )
+            return 1
+        try:
+            known_agents = config.agent_names()
+        except Exception:
+            known_agents = []
+        card_obj = cards_v2.build_card(
+            args.card_type, args.agent, args.message, color=card_color,
+        )
+        validation = cards_v2.validate_card(card_obj, known_agents=known_agents)
+        if not validation:
+            if validation.is_role_violation:
+                print(
+                    f"❌ {args.agent} --card {args.card_type}: "
+                    + "; ".join(validation.errors),
+                    file=sys.stderr,
+                )
+                return 1
+            print(
+                f"📝 {args.agent} --card {args.card_type} validation failed, "
+                f"degraded to internal: {'; '.join(validation.errors)}",
+                file=sys.stderr,
+            )
+            return 0
+        # Render the validated card with `[TYPE]` prepended to the
+        # existing identity title so the chat header carries both the
+        # type tag and the agent identity.
+        typed_title = f"[{args.card_type}] {title}"
+        card = cards_v2.render_to_card_dict(
+            card_obj, header_title=typed_title,
+        )
+    else:
+        card = simple_card(title, args.message, color=card_color)
 
     # Step 3: chat.publish filter — operator can silence specific
     # sender→receiver channels via toml (default all true = preserve
