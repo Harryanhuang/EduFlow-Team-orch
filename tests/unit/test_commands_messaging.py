@@ -684,7 +684,12 @@ worker_to_user = false
     assert len(calls) == 1
 
 
-def test_say_allows_auto_ops_half_hour_brief_when_worker_to_user_disabled():
+def test_say_silences_auto_ops_periodic_brief_after_phase5_convergence():
+    """Phase 5 (2026-07-01) 主群体验收敛: the old 30-min "运行态简报"
+    presence signal is NO LONGER whitelisted through worker_to_user=
+    false.  auto_ops presence is now stage-driven ([auto_ops].
+    stage_driven) — periodic no-news briefs stay out of the main chat.
+    """
     from helpers import attr_patch
     calls = []
 
@@ -713,6 +718,45 @@ worker_to_user = false
             rc, out, _ = run_cli([
                 "say", "auto_ops",
                 "运行态简报：manager 在线；worker_course 进行中；review_course 待命。",
+                "--to", "user",
+            ])
+    assert rc == 0
+    # Phase 5: this periodic brief is now silenced (logged only).
+    assert "silenced" in out
+    assert calls == []
+
+
+def test_say_still_allows_auto_ops_anomaly_after_phase5_convergence():
+    """Phase 5: real anomalies still reach the main chat — only
+    the no-news presence briefs were trimmed."""
+    from helpers import attr_patch
+    calls = []
+
+    def fake_send_card(chat_id, card, **kwargs):
+        calls.append({"chat_id": chat_id, "card": card, "kwargs": kwargs})
+        return {"message_id": "om_1"}
+
+    team_toml = """
+chat_id = "oc_demo"
+lark_profile = "eduflow-team"
+
+[team]
+session = "EduFlowTeam"
+
+[team.agents.auto_ops]
+cli = "claude-code"
+role = "ops worker"
+
+[chat.publish]
+worker_to_user = false
+"""
+    with isolated_env() as tmp:
+        (tmp / "eduflow.toml").write_text(team_toml, encoding="utf-8")
+        from eduflow.feishu import chat as feishu_chat
+        with attr_patch(feishu_chat, send_card=fake_send_card):
+            rc, out, _ = run_cli([
+                "say", "auto_ops",
+                "发现异常：worker_course 外显陈旧，已回报 manager。",
                 "--to", "user",
             ])
     assert rc == 0

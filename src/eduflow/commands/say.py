@@ -134,10 +134,17 @@ def _worker_reason_override(sender: str, to_target: str, message: str) -> bool:
     """Allow a small, explicit subset of worker reassurance through even when
     `chat.publish.worker_to_user=false`.
 
-    Phase 5A target:
-      - allow one lightweight "accepted" reassurance
-      - allow one lightweight "started" reassurance
-      - keep all other worker-to-user traffic on the existing global rail
+    Phase 5 (2026-07-01) 主群体验收敛: the whitelist was trimmed. Low-
+    value "still-alive / no-news" reassurances are now DROPPED from the
+    main chat (they go to `/team` panel + internal log only), keeping
+    only genuine stage-change signals.  Removed markers:
+      - "暂无新结果"  (no news → not a stage change)
+      - "处理中但卡在" (superseded by BLOCKED card)
+      - "盯盘中" / "盯盘正常" / "巡检正常" / "运行态简报"
+        (auto_ops periodic presence — Phase 5 turned this off; now
+        stage-driven only, see [auto_ops].stage_driven)
+    Kept markers are all real transitions (接单 / 开工 / 交接 /
+    卡点 / verdict) that a boss scanning the group in 30s needs.
     """
     if _role_of(sender) != "worker" or _role_of(to_target) != "user":
         return False
@@ -149,9 +156,7 @@ def _worker_reason_override(sender: str, to_target: str, message: str) -> bool:
         "在岗确认",
         "开始处理",
         "阶段进度",
-        "暂无新结果",
         "当前卡在",
-        "处理中但卡在",
         "已交接",
         "已回交 manager",
         "开始生产",
@@ -184,10 +189,6 @@ def _worker_reason_override(sender: str, to_target: str, message: str) -> bool:
         "验证工具",
         "统一 manifest",
         "验证报告",
-        "运行态简报",
-        "盯盘中",
-        "盯盘正常",
-        "巡检正常",
         "发现异常",
         "已收到当前高优监督任务",
     )

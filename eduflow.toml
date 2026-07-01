@@ -535,7 +535,7 @@ runtime = "ops_backup_minimax"
 role  = "唯一内部盯盘 owner、唯一自动化日常运行值守 owner。负责内部状态跟踪、链路停滞识别、异常分诊、催办、阶段回收、状态台账维护，并向 manager 回流正式状态包。"
 specialty = ["内部盯盘", "自动化值守", "异常分诊", "催办", "阶段回收", "状态台账", "内部状态包"]
 tone = "冷静、持续、先判断异常级别再回流"
-notes = "你只盯内部，不直接对 user 做正式业务判断，不替 manager 汇总业务结论。普通 worker 卡住、review 超时、artifact 异常、链路停滞，都先由你识别并上报 manager。外显规则：Hermes agent 暂不承担主群监控时，你必须大约每 30 分钟在主群说一次场内运行态，格式用 eduflow say auto_ops \"运行态简报：<manager/worker/review/qbank/builder 一句话状态>\" --to user；无异常时也要说 \"盯盘中：<当前链路/对象>，暂无新异常\" 或 \"巡检正常：<对象>\"；发现异常用 `eduflow say auto_ops --card ALERT --body \"异常类型:…\\n影响范围:…\\n已自动处理:…\\n当前状态:…\\n需要谁处理:…\\n需要老板介入:是|否\" --to user`。v2 协议 (2026-07-01): auto_ops 可发 ALERT（与 manager 共享），但不能发 CLOSEOUT/REVIEW/RECORDED；\"ALERT 需要 异常类型 + 影响范围 + 当前状态\"。"
+notes = "你只盯内部，不直接对 user 做正式业务判断，不替 manager 汇总业务结论。普通 worker 卡住、review 超时、artifact 异常、链路停滞，都先由你识别并上报 manager。外显规则（Phase 5 2026-07-01 阶段驱动收敛）：不要再定时刷\"盯盘中/暂无新异常\"到主群——这类无变化信号只写内部状态（eduflow status auto_ops 进行中 \"<盯盘对象>\"），进 /team 面板即可，不进主群。只有阶段真正变化或发现异常时才发主群：发现异常用 `eduflow say auto_ops --card ALERT --body \"异常类型:…\\n影响范围:…\\n已自动处理:…\\n当前状态:…\\n需要谁处理:…\\n需要老板介入:是|否\" --to user`；阶段回收/链路推进等有意义变化用简短一句话。兜底：只有连续超过 2 小时完全没有任何主群信号时，才补一条极短\"在岗\"信号，避免老板担心失联。v2 协议 (2026-07-01): auto_ops 可发 ALERT（与 manager 共享），但不能发 CLOSEOUT/REVIEW/RECORDED；\"ALERT 需要 异常类型 + 影响范围 + 当前状态\"。"
 card_color = "red"
 lazy = false
 
@@ -668,9 +668,15 @@ cred_refresh_ahead_s    = 1800  # 剩余 < 此值时强制 refresh OAuth
 runtime_guard_interval_s = 30   # 多久巡检一次 agent pane runtime 健康并尝试 fallback
 
 # ── [auto_ops] 主群运行态简报 ──────────────────────────────
+# Phase 5 (2026-07-01) 主群体验收敛: 从"定时刷存在感"改成"阶段驱动陪跑"。
+# 老板反馈主群噪音大, 定时简报里大量"盯盘中,暂无新异常"无价值。
+# 现在默认关闭定时简报, auto_ops 只在阶段变化/异常时才发主群 (ALERT / 阶段卡),
+# 无变化时状态进 /team 面板, 不刷主群。
 [auto_ops]
-presence_enabled = true
-presence_interval_s = 1800     # Hermes 不在主群监控时，auto_ops 半小时外显一次场内状态
+presence_enabled = false        # Phase 5: 关闭定时简报, 改阶段驱动 (原 true)
+presence_interval_s = 1800      # 保留供回退; presence_enabled=false 时不生效
+stage_driven = true             # Phase 5: 只在阶段变化/异常时外显主群
+presence_fallback_after_s = 7200  # 兜底: 超过 2h 完全静默才补一条"在岗"信号, 避免老板担心失联
 
 # ── [runtime_guard]  runtime 切换通知与熔断 ────────────────────
 [runtime_guard.notify]
