@@ -501,3 +501,149 @@ def supervisor_sender_config() -> dict[str, str]:
         if text:
             out[key] = text
     return out
+
+
+# ── residency policy ─────────────────────────────────────────
+#
+# Per plan 2026-07-01 §设计二:
+#   [team.residency]
+#   default_mode = "warm"
+#   resident_agents = ["manager", "auto_ops", "Luke_recorder"]
+#   warm_idle_timeout_s = 600
+#   handoff_buffer_s = 300
+#   wake_timeout_s = 60
+#
+#   [team.agents.<name>.residency]
+#   mode = "warm"        # resident | warm | cold
+#   idle_timeout_s = 300
+#   handoff_buffer_s = 300
+#
+# Phase 2 implements the config side only; Phase 3 wires the runtime
+# sleep / wake machinery on top of this.
+
+
+def _load_residency_default() -> "ResidencyPolicy":
+    """Read the [team.residency] block from eduflow.toml and return
+    a `ResidencyPolicy` populated from its keys (with sensible
+    fallbacks when the block is missing or partial)."""
+    from eduflow.runtime import residency as _res
+    from eduflow.runtime import tunables
+    team_cfg = tunables.load().get("team")
+    if not isinstance(team_cfg, dict):
+        team_cfg = {}
+    block = team_cfg.get("residency")
+    if not isinstance(block, dict):
+        block = {}
+    return _res.ResidencyPolicy(
+        mode=_res._coerce_mode(block.get("default_mode"), _res.DEFAULT_MODE),
+        idle_timeout_s=_res._coerce_int(
+            block.get("warm_idle_timeout_s"), _res.DEFAULT_IDLE_TIMEOUT_S,
+        ),
+        handoff_buffer_s=_res._coerce_int(
+            block.get("handoff_buffer_s"), _res.DEFAULT_HANDOFF_BUFFER_S,
+        ),
+        wake_timeout_s=_res._coerce_int(
+            block.get("wake_timeout_s"), _res.DEFAULT_WAKE_TIMEOUT_S,
+            min_value=1,
+        ),
+        source="default",
+    )
+
+
+def _load_agent_residency_override(agent: str) -> dict | None:
+    """Read [team.agents.<name>.residency] from eduflow.toml, or
+    None when no per-agent block exists.  Returning the raw dict
+    (not a `ResidencyPolicy`) lets `merge_with_default` apply the
+    field-by-field merge semantics so missing keys fall through
+    cleanly."""
+    from eduflow.runtime import tunables
+    team_cfg = tunables.load().get("team")
+    if not isinstance(team_cfg, dict):
+        return None
+    agents = team_cfg.get("agents")
+    if not isinstance(agents, dict):
+        return None
+    agent_block = agents.get(agent)
+    if not isinstance(agent_block, dict):
+        return None
+    override = agent_block.get("residency")
+    if not isinstance(override, dict) or not override:
+        return None
+    return dict(override)
+
+
+def _resolve_resident_agents() -> tuple[str, ...]:
+    """Return the configured list of always-on agents.
+
+    Reads `[team.residency].resident_agents` if present; otherwise
+    falls back to `residency.DEFAULT_RESIDENT_AGENTS`.  Unknown
+    agent names (not in team) are filtered out so a stale
+    `resident_agents = ["manager", "ghost"]` doesn't cause a later
+    `KeyError` on a runtime path that asks for `cfg.cli`.
+    """
+    from eduflow.runtime import residency as _res
+    from eduflow.runtime import tunables
+    team_cfg = tunables.load().get("team")
+    block = team_cfg.get("residency") if isinstance(team_cfg, dict) else None
+    if not isinstance(block, dict):
+        return _res.DEFAULT_RESIDENT_AGENTS
+    raw = block.get("resident_agents")
+    if raw is None:
+        return _res.DEFAULT_RESIDENT_AGENTS
+    fallback = _res.DEFAULT_RESIDENT_AGENTS
+    return _res._coerce_resident_list(raw, fallback)
+
+
+def load_residency_policy(agent: str) -> "ResidencyPolicy":
+    """Return the effective `ResidencyPolicy` for `agent`.
+
+    Mode-resolution order (highest priority last):
+      1. team-wide `default_mode` (warm)
+      2. `resident_agents` list membership → resident
+      3. `[team.agents.<name>.residency].mode` per-agent override
+         (wins over the list — lets a boss mark an agent `cold`
+         even if it was previously in `resident_agents`)
+
+    Timeout fields follow the same precedence: per-agent override
+    wins field-by-field, with team defaults for missing keys.
+
+    `agent` does NOT need to be a known team member — an unknown
+    agent still gets a sensible warm default rather than a
+    KeyError, because the lazy-wake path calls this for agents
+    that may not have been configured when `eduflow up` was last
+    run.
+    """
+    from eduflow.runtime import residency as _res
+    default = _load_residency_default()
+    override = _load_agent_residency_override(agent) or {}
+
+    # 1) start with list-membership-or-default mode
+    resident_set = set(load_resident_agents())
+    if agent in resident_set:
+        base_mode = ResidencyMode.RESIDENT if "ResidencyMode" in dir() else "resident"  # noqa
+        # Avoid forward-ref import cycle: do it the clean way.
+        base_mode = _res.ResidencyMode.RESIDENT
+    else:
+        base_mode = default.mode
+
+    # 2) apply per-agent override (mode + timeouts)
+    if "mode" in override:
+        base_mode = _res._coerce_mode(override.get("mode"), base_mode)
+    merged_default = _res.ResidencyPolicy(
+        mode=base_mode,
+        idle_timeout_s=default.idle_timeout_s,
+        handoff_buffer_s=default.handoff_buffer_s,
+        wake_timeout_s=default.wake_timeout_s,
+        source=default.source,
+    )
+    return _res.merge_with_default(
+        default_policy=merged_default, override=override,
+    )
+
+
+def load_resident_agents() -> tuple[str, ...]:
+    """Return the always-on agent list, with unknown names dropped
+    against the current `team.agents` set."""
+    resident_list = _resolve_resident_agents()
+    known = set(agent_names())
+    return tuple(name for name in resident_list if name in known)
