@@ -1037,8 +1037,8 @@ def _print_context_guard_fields(row: dict, *, indent: str = "  ") -> None:
         )
 
 
-def _manager_action_packets() -> list[dict]:
-    rows = task_event_scanner.scan_manager_anomalies()
+def _extract_action_packets(rows: list[dict]) -> list[dict]:
+    """Deduplicate action packets from anomaly rows."""
     packets: list[dict] = []
     seen: set[tuple[str, str, str]] = set()
     for row in rows:
@@ -1055,6 +1055,15 @@ def _manager_action_packets() -> list[dict]:
         seen.add(key)
         packets.append(packet)
     return packets
+
+
+def _manager_action_packets() -> list[dict]:
+    """Return deduplicated manager action packets, degrading to [] on failure."""
+    rows, _ = _safe_aggregate(
+        "task_event_scanner.scan_manager_anomalies",
+        task_event_scanner.scan_manager_anomalies,
+    )
+    return _extract_action_packets(rows)
 
 
 _CONTEXT_GUARD_CATEGORIES = frozenset({
@@ -1761,6 +1770,30 @@ def _ops_dashboard_summary(employees: list[dict]) -> dict:
     return summary
 
 
+def _ops_dashboard_residency(employees: list[dict]) -> dict:
+    """Count residency modes and related signals from employee snapshots."""
+    counts = {
+        "resident": 0,
+        "warm": 0,
+        "cold": 0,
+        "wake_failed": 0,
+        "sleep_candidates": 0,
+    }
+    for emp in employees:
+        mode = str(emp.get("residency_mode") or "")
+        if mode == "resident":
+            counts["resident"] += 1
+        elif mode == "warm":
+            counts["warm"] += 1
+        elif mode == "cold":
+            counts["cold"] += 1
+        if str(emp.get("wake_status") or "") == "wake_failed":
+            counts["wake_failed"] += 1
+        if str(emp.get("sleep_decision") or "") == "sleep_ok":
+            counts["sleep_candidates"] += 1
+    return counts
+
+
 def _ops_dashboard_top_actions(
     employees: list[dict],
     manager_packets: list[dict],
@@ -1923,6 +1956,13 @@ def _build_ops_dashboard() -> dict:
 
     summary = _ops_dashboard_summary(employees)
 
+    residency, note = _safe_aggregate(
+        "residency",
+        lambda: _ops_dashboard_residency(employees),
+    )
+    if note:
+        degraded.append(note)
+
     review_queue_rows, note = _safe_aggregate(
         "tasks.list_review_queue",
         tasks.list_review_queue,
@@ -1930,11 +1970,13 @@ def _build_ops_dashboard() -> dict:
     if note:
         degraded.append(note)
 
-    manager_packets: list[dict] = []
-    try:
-        manager_packets = _manager_action_packets()
-    except Exception as exc:  # noqa: BLE001
-        degraded.append(_degraded_note("task_event_scanner.scan_manager_anomalies", exc))
+    manager_rows, note = _safe_aggregate(
+        "task_event_scanner.scan_manager_anomalies",
+        task_event_scanner.scan_manager_anomalies,
+    )
+    if note:
+        degraded.append(note)
+    manager_packets = _extract_action_packets(manager_rows)
 
     top_actions = _ops_dashboard_top_actions(employees, manager_packets, review_queue_rows)
 
@@ -1963,6 +2005,7 @@ def _build_ops_dashboard() -> dict:
     return {
         "generated_at_ms": generated_at_ms,
         "summary": summary,
+        "residency": residency,
         "top_actions": top_actions,
         "employees": employees,
         "review_queue": review_queue,
@@ -1974,6 +2017,7 @@ def _build_ops_dashboard() -> dict:
 
 def _emit_ops_dashboard_text(dashboard: dict) -> None:
     summary = dashboard["summary"]
+    residency = dashboard["residency"]
     print("ops dashboard")
     print(
         f"summary: agents={summary['agents_total']} "
@@ -1984,6 +2028,13 @@ def _emit_ops_dashboard_text(dashboard: dict) -> None:
         f"warm_idle={summary['warm_idle']} "
         f"idle={summary['idle']} "
         f"unknown={summary['unknown']}"
+    )
+    print(
+        f"residency: resident={residency['resident']} "
+        f"warm={residency['warm']} "
+        f"cold={residency['cold']} "
+        f"wake_failed={residency['wake_failed']} "
+        f"sleep_candidates={residency['sleep_candidates']}"
     )
 
     print("top_actions:")

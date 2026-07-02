@@ -3761,6 +3761,7 @@ def test_task_ops_dashboard_json_outputs_valid_json():
         data = json.loads(out)
         assert "generated_at_ms" in data
         assert "summary" in data
+        assert "residency" in data
         assert "top_actions" in data
         assert "employees" in data
         assert "review_queue" in data
@@ -3849,6 +3850,53 @@ def test_task_ops_dashboard_text_contains_summary_top_actions_employees():
         assert "summary:" in out
         assert "top_actions:" in out
         assert "employees:" in out
+
+
+def test_task_ops_dashboard_residency_shape_and_counts():
+    team_toml = """
+chat_id = "oc_demo"
+lark_profile = "eduflow-team"
+
+[team]
+session = "EduFlow"
+
+[team.residency]
+default_mode = "warm"
+resident_agents = ["manager"]
+warm_idle_timeout_s = 600
+handoff_buffer_s = 300
+wake_timeout_s = 60
+
+[team.agents.manager]
+cli = "claude-code"
+role = "manager"
+
+[team.agents.worker_course]
+cli = "claude-code"
+role = "course"
+"""
+    with isolated_env() as tmp:
+        (tmp / "eduflow.toml").write_text(team_toml, encoding="utf-8")
+        tunables.reset_cache()
+
+        local_facts.upsert_status("worker_course", "待命", "ready")
+        local_facts.touch_heartbeat("worker_course")
+        local_facts.upsert_status("manager", "进行中", "managing")
+        local_facts.touch_heartbeat("manager")
+
+        rc, out, err = run_cli(["task", "ops-dashboard", "--json"])
+        assert rc == 0, err
+        data = json.loads(out)
+        residency = data["residency"]
+        assert residency == {
+            "resident": 1,
+            "warm": 1,
+            "cold": 0,
+            "wake_failed": 0,
+            "sleep_candidates": 0,
+        }
+        for value in residency.values():
+            assert isinstance(value, int) and value >= 0
 
 
 def test_task_ops_dashboard_warm_idle_in_summary():
