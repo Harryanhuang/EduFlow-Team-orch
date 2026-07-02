@@ -1,6 +1,6 @@
 ---
 name: eduflow-harness-surface-audit
-description: Read-only audit of EduFlow harness surface. Use to find duplicate rules, drift between identity/skill/workflow/runtime/Feishu, context overhead, and primitive-only gaps. Intended for worker_builder, Hermes, and Luke_recorder. Not for content workers.
+description: Read-only audit of EduFlow harness surface. Use to find duplicate rules, drift between identity/skill/workflow/runtime/Feishu/memory, context overhead, and primitive-only gaps. Intended for worker_builder, Hermes, Luke_recorder, and manager. Not for content workers.
 ---
 
 # EduFlow Harness Surface Audit
@@ -112,6 +112,14 @@ Audit the following surfaces. If a file does not exist in the current worktree, 
 
 - `.eduflow-team-state/facts/runtime-status.json` — current runtime / env_profile / verified_at.
 - `.eduflow-team-state/facts/runtime-switch-events.jsonl` — runtime switch audit trail.
+
+### Memory
+
+- `.eduflow-team-state/facts/` — any durable facts beyond runtime-status (e.g., inbox cursors, agent status, heartbeat logs).
+- `src/eduflow/memory/` — candidate generation, packet assembly, search, vector store, Obsidian export, constraints, audit.
+- `src/eduflow/store/memory.py` — per-agent memory store surface.
+- `src/eduflow/commands/memory_cli.py`, `remember.py`, `recall.py`, `forget.py` — memory CLI surface.
+- Hermes/Obsidian memory candidates referenced by `memory_cli.py` or skills.
 
 ### Visual narrative
 
