@@ -1,6 +1,8 @@
 """Tests for feishu/slash.py — router-level slash command dispatch."""
 from __future__ import annotations
 
+import json
+
 from helpers import attr_patch, tmux_patch
 from eduflow.feishu import slash
 from eduflow.runtime import tmux
@@ -1055,6 +1057,151 @@ def test_unknown_slash_returns_help_hint():
     reply = slash.dispatch("/unknownfoo", _ctx())
     assert "未知斜杠命令" in reply
     assert "/help" in reply
+
+
+# ── M3: /employees /employee /ops ─────────────────────────────────
+
+
+def _ops_run(json_payload: str):
+    """Stub `ctx.run` to return JSON of `eduflow task ops-dashboard --json`."""
+    return lambda argv, **kw: type("R", (), {
+        "returncode": 0, "stdout": json_payload, "stderr": ""})()
+
+
+def test_employees_slash_returns_team_snapshot_card():
+    """M3: /employees shells out to ops-dashboard --json and renders a
+    team snapshot card without touching tmux or sending Feishu."""
+    payload = json.dumps({
+        "summary": {
+            "agents_total": 2,
+            "active": 0,
+            "stale_display": 0,
+            "waiting_inbox": 0,
+            "blocked": 1,
+            "warm_idle": 0,
+            "idle": 1,
+            "unknown": 0,
+        },
+        "residency": {
+            "resident": 1,
+            "warm": 0,
+            "cold": 0,
+            "wake_failed": 0,
+            "sleep_candidates": 0,
+        },
+        "top_actions": [
+            {
+                "priority": 2,
+                "agent": "worker_cc",
+                "reason": "API key missing",
+                "recommended_next_action": "Resolve blocker.",
+            },
+        ],
+        "employees": [
+            {"agent": "manager", "display_verdict": "idle"},
+            {
+                "agent": "worker_cc",
+                "display_verdict": "blocked",
+                "current_task_title": "Repair router",
+            },
+        ],
+        "degraded": [],
+    })
+    reply = slash.dispatch("/employees", _ctx(run=_ops_run(payload)))
+    assert isinstance(reply, dict), f"/employees should return card dict, got {type(reply)}"
+    assert reply["schema"] == "2.0"
+    body = _all_markdown(reply)
+    assert "2 agents" in body
+    assert "worker_cc" in body
+    assert "API key missing" in body
+    assert "常驻 1" in body
+
+
+def test_ops_slash_returns_ops_dashboard_card():
+    """M3: /ops (and /ops-dashboard alias) renders the ops dashboard card."""
+    payload = json.dumps({
+        "summary": {
+            "agents_total": 1,
+            "active": 1,
+            "stale_display": 0,
+            "waiting_inbox": 0,
+            "blocked": 0,
+            "warm_idle": 0,
+            "idle": 0,
+            "unknown": 0,
+        },
+        "residency": {
+            "resident": 1,
+            "warm": 0,
+            "cold": 0,
+            "wake_failed": 0,
+            "sleep_candidates": 0,
+        },
+        "top_actions": [
+            {
+                "priority": 2,
+                "agent": "worker_course",
+                "reason": "API key missing",
+                "recommended_next_action": "Resolve blocker.",
+            },
+        ],
+        "employees": [{"agent": "worker_course", "display_verdict": "active"}],
+        "degraded": [],
+    })
+    for cmd in ("/ops", "/ops-dashboard"):
+        reply = slash.dispatch(cmd, _ctx(run=_ops_run(payload)))
+        assert isinstance(reply, dict), f"{cmd} should return card dict"
+        assert reply["schema"] == "2.0"
+        body = _all_markdown(reply)
+        assert "worker_course" in body
+        assert "API key missing" in body
+        assert "Resolve blocker." in body
+
+
+def test_employee_slash_returns_single_employee_card():
+    """M3: /employee <agent> returns a single employee snapshot card."""
+    from helpers import isolated_env
+    from eduflow.store import local_facts
+
+    team = {
+        "session": "EduFlow",
+        "agents": {
+            "manager": {"cli": "claude-code"},
+            "worker_course": {"cli": "claude-code"},
+        },
+    }
+    with isolated_env(team=team):
+        local_facts.upsert_status("worker_course", "进行中", "Draft Unit 1")
+        local_facts.touch_heartbeat("worker_course")
+        reply = slash.dispatch(
+            "/employee worker_course",
+            _ctx(agents=("manager", "worker_course")),
+        )
+    assert isinstance(reply, dict), f"/employee should return card dict, got {type(reply)}"
+    assert reply["schema"] == "2.0"
+    assert "worker_course" in reply["header"]["title"]["content"]
+    body = _all_markdown(reply)
+    assert "进行中" in body
+    assert "Draft Unit 1" in body
+
+
+def test_employee_slash_unknown_agent_returns_warning():
+    """M3: /employee unknown_agent reuses _bad_agent for a clear warning."""
+    reply = slash.dispatch("/employee unknown_agent", _ctx())
+    assert "未知 agent" in reply
+    assert "unknown_agent" in reply
+
+
+def test_employees_slash_degrades_on_bad_json():
+    """M3: if ops-dashboard returns non-JSON, /employees still returns a
+    card with a degraded source entry instead of crashing."""
+    bad_run = lambda argv, **kw: type("R", (), {
+        "returncode": 0, "stdout": "not json {[", "stderr": ""})()
+    reply = slash.dispatch("/employees", _ctx(run=bad_run))
+    assert isinstance(reply, dict)
+    body = _all_markdown(reply)
+    assert "降级来源" in body
+    assert "ops-dashboard" in body
 
 
 
