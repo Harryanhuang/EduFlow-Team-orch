@@ -15,7 +15,7 @@ from eduflow.commands import (
     start, hire, fire, up, down, reset, compact, reidentify, switch,
     say, router, watchdog, task, remember, recall, forget, peek,
     health, usage, install_hooks, version, task_publish, runtime_guard,
-    workflow, runtime, memory_cli,
+    workflow, runtime, memory_cli, sleep_idle, residency_wake,
 )
 from eduflow.util import error_exit
 
@@ -52,6 +52,8 @@ _COMMAND_GROUPS: list[tuple[str, list[tuple[str, CommandHandler]]]] = [
         ("compact", compact.main),
         ("reidentify", reidentify.main),
         ("switch", switch.main),
+        ("residency-sleep", sleep_idle.main),
+        ("residency-wake", residency_wake.main),
     ]),
     ("feishu transport", [
         ("say", say.main),

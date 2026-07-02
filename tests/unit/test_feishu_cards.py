@@ -199,3 +199,193 @@ def test_unknown_color_still_falls_back_to_blue():
     from eduflow.feishu.cards import _normalised_color
     assert _normalised_color("chartreuse") == "blue"
     assert _normalised_color("") == "blue"
+
+
+# ── M3: employee / team snapshot cards ────────────────────────────
+
+
+def test_employee_snapshot_card_emits_v2_schema_and_fields():
+    """M3: employee card must use card v2 schema and surface agent,
+    display_verdict, residency, current task, workflow gate/next_action,
+    staleness_reason, and recommended_next_action."""
+    from eduflow.feishu.cards import employee_snapshot_card
+    snapshot = {
+        "agent": "worker_course",
+        "display_verdict": "active",
+        "residency_label": "常驻",
+        "residency_mode": "resident",
+        "declared_status": "进行中",
+        "declared_task": "Draft Unit 1",
+        "current_task_title": "IGCSE Physics 0625",
+        "workflow_id": "igcse-subject-launch",
+        "workflow_gate": "review_handoff_gate",
+        "workflow_gate_status": "waiting_worker_acceptance",
+        "workflow_next_action": "worker submits for review",
+        "staleness_reason": "",
+        "recommended_next_action": "Continue current task.",
+    }
+    card = employee_snapshot_card(snapshot)
+    assert card["schema"] == "2.0"
+    assert "worker\\_course" in card["header"]["title"]["content"]
+    assert card["header"]["template"] == "green"
+    body = card["body"]["elements"][0]["content"]
+    assert "active" in body
+    assert "常驻" in body
+    assert "resident" in body
+    assert "IGCSE Physics 0625" in body
+    assert "igcse-subject-launch" in body
+    assert "review\\_handoff\\_gate" in body
+    assert "worker submits for review" in body
+    assert "Continue current task." in body
+
+
+def test_employee_snapshot_card_escapes_markdown_metacharacters():
+    """Dynamic values containing markdown metacharacters must be escaped so
+    they render literally rather than accidentally starting bold / italic /
+    code / link / HTML spans."""
+    from eduflow.feishu.cards import employee_snapshot_card
+    card = employee_snapshot_card({
+        "agent": "agent_*bold`_test",
+        "display_verdict": "blocked",
+        "declared_status": "status _italic_",
+        "current_task_title": "task [link](x) <html>",
+        "recommended_next_action": "retry `cmd` now",
+    })
+    body = card["body"]["elements"][0]["content"]
+    assert "agent\\_\\*bold\\`\\_test" in card["header"]["title"]["content"]
+    assert "task \\[link\\](x) \\<html\\>" in body
+    assert "status \\_italic\\_" in body
+    assert "retry \\`cmd\\` now" in body
+
+
+def test_employee_snapshot_card_red_for_blocked():
+    from eduflow.feishu.cards import employee_snapshot_card
+    card = employee_snapshot_card({
+        "agent": "worker_cc",
+        "display_verdict": "blocked",
+        "residency_label": "温备",
+        "residency_mode": "warm",
+        "declared_status": "受阻",
+        "blocker": "API key missing",
+        "recommended_next_action": "Resolve blocker: API key missing",
+    })
+    assert card["header"]["template"] == "red"
+    body = card["body"]["elements"][0]["content"]
+    assert "受阻" in body
+    assert "API key missing" in body
+
+
+def test_team_snapshot_card_emits_v2_schema_and_sections():
+    """M3: team card must use v2 schema and show summary counts,
+    residency counts, top actions, flagged agents, and degrade gracefully
+    when degraded sources are empty."""
+    from eduflow.feishu.cards import team_snapshot_card
+    dashboard = {
+        "summary": {
+            "agents_total": 3,
+            "active": 1,
+            "stale_display": 1,
+            "waiting_inbox": 0,
+            "blocked": 1,
+            "warm_idle": 0,
+            "idle": 1,
+            "unknown": 0,
+        },
+        "residency": {
+            "resident": 1,
+            "warm": 1,
+            "cold": 0,
+            "wake_failed": 0,
+            "sleep_candidates": 0,
+        },
+        "top_actions": [
+            {
+                "priority": 2,
+                "agent": "worker_cc",
+                "reason": "API key missing",
+                "recommended_next_action": "Resolve blocker: API key missing",
+            },
+            {
+                "priority": 3,
+                "agent": "worker_course",
+                "reason": "status stale",
+                "recommended_next_action": "Refresh status surface.",
+            },
+        ],
+        "employees": [
+            {
+                "agent": "worker_cc",
+                "display_verdict": "blocked",
+                "current_task_title": "Repair router",
+            },
+            {
+                "agent": "worker_course",
+                "display_verdict": "stale_display",
+                "current_task_title": "Draft Unit 1",
+            },
+            {
+                "agent": "manager",
+                "display_verdict": "idle",
+                "current_task_title": "",
+            },
+        ],
+        "degraded": [],
+    }
+    card = team_snapshot_card(dashboard)
+    assert card["schema"] == "2.0"
+    body = "\n".join(
+        e.get("content", "")
+        for e in card["body"]["elements"]
+        if e.get("tag") == "markdown"
+    )
+    assert "3 agents" in body
+    assert "常驻 1" in body
+    assert "温备 1" in body
+    assert "API key missing" in body
+    assert "worker\\_cc" in body
+    assert "worker\\_course" in body
+    assert "blocked" in body
+    assert "stale\\_display" in body
+
+
+def test_team_snapshot_card_renders_degraded_sources():
+    """M3: team card must render non-empty degraded sources."""
+    from eduflow.feishu.cards import team_snapshot_card
+    dashboard = {
+        "summary": {"agents_total": 0},
+        "residency": {},
+        "top_actions": [],
+        "employees": [],
+        "degraded": [{
+            "source": "employee_read_model.build_team_snapshot",
+            "error_type": "RuntimeError",
+            "message": "status store unreachable",
+        }],
+    }
+    card = team_snapshot_card(dashboard)
+    body = "\n".join(
+        e.get("content", "")
+        for e in card["body"]["elements"]
+        if e.get("tag") == "markdown"
+    )
+    assert "降级来源" in body
+    assert "employee\\_read\\_model.build\\_team\\_snapshot" in body
+    assert "status store unreachable" in body
+
+
+def test_team_snapshot_card_yellow_when_stale_or_degraded():
+    from eduflow.feishu.cards import team_snapshot_card
+    card = team_snapshot_card({
+        "summary": {"agents_total": 1, "stale_display": 1},
+        "employees": [{"agent": "x", "display_verdict": "stale_display"}],
+    })
+    assert card["header"]["template"] == "yellow"
+
+
+def test_team_snapshot_card_red_when_blocked_or_waiting_inbox():
+    from eduflow.feishu.cards import team_snapshot_card
+    card = team_snapshot_card({
+        "summary": {"agents_total": 1, "blocked": 1},
+        "employees": [{"agent": "x", "display_verdict": "blocked"}],
+    })
+    assert card["header"]["template"] == "red"

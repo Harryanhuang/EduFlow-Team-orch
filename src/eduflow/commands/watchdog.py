@@ -270,20 +270,44 @@ def _build_auto_ops_presence_message() -> str:
 
 
 def _maybe_emit_auto_ops_presence(now_s: float | None = None) -> bool:
-    """Post a low-noise auto_ops presence card roughly every 30 minutes.
+    """Post a low-noise auto_ops presence signal to the main chat.
 
-    Hermes supervisor is an external alarm lane. This is a softer main-chat
-    presence lane so the boss can see the team is still staffed even when no
-    business milestone has landed recently.
+    Phase 5 (2026-07-01) 主群体验收敛: the default cadence changed
+    from "every 30 min regardless" to "stage-driven + long fallback".
+
+    Behaviour now:
+      - `presence_enabled=false` (Phase 5 default) → the fixed-cadence
+        card is OFF; auto_ops only surfaces on real stage changes /
+        ALERTs (that traffic goes through `say --card`, not here).
+      - BUT a long silence is still bad — the boss worries the team
+        went dark.  So when `stage_driven=true`, we keep a MUCH longer
+        fallback (`presence_fallback_after_s`, default 2h): if nothing
+        from auto_ops has hit the main chat for that long, emit one
+        short "在岗" heartbeat card.
+      - `presence_enabled=true` (legacy) → old 30-min cadence.
     """
     enabled = bool(tunables.tunable("auto_ops.presence_enabled", True))
-    if not enabled:
+    stage_driven = bool(tunables.tunable("auto_ops.stage_driven", False))
+    if not enabled and not stage_driven:
         return False
-    interval_s = int(tunables.tunable("auto_ops.presence_interval_s", 1800))
+    if enabled:
+        interval_s = int(tunables.tunable("auto_ops.presence_interval_s", 1800))
+    else:
+        # Phase 5 stage-driven mode: only the long fallback heartbeat.
+        interval_s = int(tunables.tunable("auto_ops.presence_fallback_after_s", 7200))
     if interval_s <= 0:
         return False
     now_s = time.time() if now_s is None else float(now_s)
-    if now_s - _latest_auto_ops_surface_s() < interval_s:
+    last_surface = _latest_auto_ops_surface_s()
+    if not enabled and stage_driven and last_surface <= 0:
+        # Phase 5 stage-driven mode only: no auto_ops surface has ever
+        # been recorded. Don't fire the long fallback immediately on a
+        # fresh boot — establish `now` as the baseline so the silence
+        # clock starts from here. (Legacy presence_enabled=true keeps
+        # its original "fire on first tick" behavior.)
+        _write_auto_ops_presence_state({"last_sent_at": now_s, "message": "baseline"})
+        return False
+    if now_s - last_surface < interval_s:
         return False
     chat_id = config.chat_id()
     if not chat_id:

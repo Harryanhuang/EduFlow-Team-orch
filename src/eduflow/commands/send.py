@@ -32,6 +32,16 @@ USAGE = (
 )
 
 
+def _touch_wake_safely(agent: str) -> None:
+    """Phase 4 helper: stamp wake + active for `agent`.  Best-effort;
+    never raises — `send` must remain non-blocking."""
+    try:
+        from eduflow.store import agent_residency
+        agent_residency.touch_wake(agent)
+    except Exception:
+        pass
+
+
 def _resolved_for_current_or_configured_runtime(agent: str) -> dict:
     """Resolve runtime for a lazy wake, preferring an explicit switch state.
 
@@ -88,6 +98,17 @@ def main(argv: list[str]) -> int:
         priority=priority,
         delivery_state=delivery_state,
     )
+    # Phase 4 (2026-07-01, P4-B 调后): stamp last_active_at ONLY for
+    # warm recipients.  Resident agents never sleep so writing their
+    # last_active_at is no-op + clutter; cold agents have no pane to
+    # retire.  Best-effort — never block `send` on the stamp call.
+    try:
+        from eduflow.runtime import config as _cfg
+        from eduflow.store import agent_residency
+        if _cfg.load_residency_policy(to).mode == "warm":
+            agent_residency.touch_active(to)
+    except Exception:
+        pass
     is_high_priority = local_facts.is_high_priority(priority)
     if to == "auto_ops" and is_high_priority:
         local_facts.mark_all_read(to, keep_last_unread=1)
@@ -150,14 +171,39 @@ def main(argv: list[str]) -> int:
             adapter = get_adapter(runtime_cli)
             spawn_prefix = lifecycle.pane_spawn_prefix_for_runtime(resolved)
             spawn_cmd = f"{spawn_prefix} {adapter.spawn_cmd(to, runtime_model)}"
-            wake.wake_if_dormant(
+            wake_timeout = float(tunables.tunable("wake.lazy_wake_timeout_s", 30.0))
+            woke = wake.wake_if_dormant(
                 target, adapter,
                 spawn_cmd=spawn_cmd,
                 init_msg=_identity.init_prompt(to),
-                timeout_s=float(tunables.tunable("wake.lazy_wake_timeout_s", 30.0)),
-                on_woken=lambda: local_facts.upsert_status(
-                    to, "进行中", "responding to first message"),
+                timeout_s=wake_timeout,
+                on_woken=lambda: (
+                    local_facts.upsert_status(
+                        to, "进行中", "responding to first message"),
+                    # Phase 4 (2026-07-01): wake success also resets
+                    # the residency clock so the warm-agent sweep
+                    # treats a freshly-spawned worker as active.
+                    _touch_wake_safely(to),
+                ),
             )
+            if not woke:
+                # Phase 4 (2026-07-01): warm-agent wake failed within
+                # the configured timeout.  Fire the ALERT so the
+                # auto_ops on-watch operator (and the boss) see it
+                # rather than silently piling the message into the
+                # agent's unconsumed inbox.
+                try:
+                    from eduflow.commands import wake_alert
+                    wake_alert.fire_wake_failure_alert(
+                        target_agent=to,
+                        failure_kind=wake_alert._FAIL_KIND_READY_TIMEOUT,
+                        wake_timeout_s=wake_timeout,
+                    )
+                except Exception as e:
+                    print(
+                        f"  ⚠️ wake-failure alert dispatch failed for {to}: {e}",
+                        file=sys.stderr,
+                    )
         nudge = (f"📥 {frm} → {to}（{local_id}）。"
                  f"`eduflow inbox {to}` → 处理 → "
                  f"`eduflow read {local_id} --ack accepted_task` "

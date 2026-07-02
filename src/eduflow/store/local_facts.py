@@ -638,6 +638,18 @@ def record_message_ack(local_id: str, kind: str, **details) -> bool:
     if visibility_msg is None:
         return False
     _sync_explicit_ack_visibility(visibility_msg, normalized, visibility_msg.get("ack_at") or now_ms())
+    # Phase 4 (2026-07-01, P4-B 调后): bump `last_active_at` for ALL
+    # explicit ACK kinds, not only `accepted_*` / `started_*`.  A
+    # `completed` / `reconciled` ACK is also an activity signal —
+    # the agent is still touching the inbox.  This is the load-
+    # bearing signal for the warm-agent idle sweep: a worker who
+    # is actively processing tasks is "active" by definition.
+    # Best-effort — never block the ACK record on stamp failure.
+    try:
+        from eduflow.store import agent_residency
+        agent_residency.touch_active(str(visibility_msg.get("to") or ""))
+    except Exception:
+        pass
     return True
 
 
@@ -1544,7 +1556,15 @@ def all_heartbeats() -> dict[str, int]:
 # ── log ───────────────────────────────────────────────────────────────
 
 
-def append_log(agent: str, kind: str, content: str, *, ref: str = "") -> str:
+def append_log(agent: str, kind: str, content: str, *, ref: str = "",
+               created_at_ms: int | None = None) -> str:
+    """Append an audit-log row.
+
+    `created_at_ms` lets a caller pin the row's timestamp instead of
+    the wall clock — used by wake-failure ALERT dedup so the audit
+    row and the dedup decision share one clock (Phase 4).  Defaults
+    to `now_ms()` for every existing caller.
+    """
     local_id = _new_id("log")
     row = {
         "local_id": local_id,
@@ -1552,7 +1572,7 @@ def append_log(agent: str, kind: str, content: str, *, ref: str = "") -> str:
         "type": kind,
         "content": str(content or ""),
         "ref": ref,
-        "created_at": now_ms(),
+        "created_at": int(created_at_ms) if created_at_ms is not None else now_ms(),
     }
     with _locked():
         path = _log_file()

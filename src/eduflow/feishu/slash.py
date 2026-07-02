@@ -11,6 +11,9 @@ Supported commands (matches main's 9-command surface):
     /help                              card listing every command
     /team                              card with each agent's pane state
                                        (health-color: green / yellow)
+    /employees                         team snapshot card (ops dashboard data)
+    /employee <agent>                  single employee snapshot card
+    /ops  or  /ops-dashboard           ops dashboard card
     /health                            card with `eduflow health` output
                                        (yellow on ❌ / ⚠️)
     /usage [view]                      card wrapping `eduflow usage`
@@ -43,15 +46,17 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Callable
 
+import json
+
 from eduflow.agents import identity
 from eduflow.feishu import pane_state
 from eduflow.feishu.cards import (
-    beijing_stamp, column_set_2, column_set_3, fenced_block, load_color,
-    remaining_color, rich_card, simple_card,
+    beijing_stamp, column_set_2, column_set_3, employee_snapshot_card,
+    fenced_block, load_color, remaining_color, rich_card, simple_card,
+    team_snapshot_card,
 )
-from eduflow.store import tasks
 from eduflow.runtime import tmux
-from eduflow.store import local_facts
+from eduflow.store import employee_read_model, local_facts, tasks
 from eduflow.util import fmt_bytes
 
 
@@ -170,6 +175,9 @@ _HELP_TEXT = """🆘 EduFlow 自定义斜杠命令（零 LLM，router/hook 直�
 
 /help                    → 本帮助
 /team                    → 所有员工实时 tmux 状态（卡片）
+/employees               → 团队状态快照卡片（ops dashboard 数据）
+/employee <agent>        → 单个员工状态快照卡片
+/ops 或 /ops-dashboard    → 运营仪表盘卡片
 /usage                   → claude-code 用量（ccusage 包装，卡片）
 /health                  → 主机 + 员工资源占用（卡片）
 /tmux [agent] [lines]    → capture-pane 窗口（默认 manager/10 行）
@@ -730,6 +738,72 @@ def _handle_manager_overview(args: str, ctx: SlashContext) -> dict:
     return simple_card(title, "\n".join(lines), color="blue")
 
 
+# ── M3: employee / team / ops snapshot slash handlers ─────────────
+
+
+def _load_ops_dashboard(ctx: SlashContext) -> dict:
+    """Shell out to `eduflow task ops-dashboard --json` and parse it.
+
+    On any failure (non-zero rc, non-JSON stdout), returns a degraded
+    dashboard dict so the card renderer can still produce a warning card
+    instead of crashing the router.
+    """
+    raw = _shell(ctx, ["eduflow", "task", "ops-dashboard", "--json"], timeout=60)
+    try:
+        return json.loads(raw)
+    except (ValueError, TypeError):
+        return {
+            "summary": {},
+            "residency": {
+                "resident": 0, "warm": 0, "cold": 0,
+                "wake_failed": 0, "sleep_candidates": 0,
+            },
+            "top_actions": [],
+            "employees": [],
+            "review_queue": [],
+            "manager_actions": [],
+            "degraded": [{
+                "source": "ops-dashboard",
+                "error_type": "JSONDecodeError",
+                "message": raw[:200],
+            }],
+            "notes": [],
+        }
+
+
+def _handle_employees(args: str, ctx: SlashContext) -> dict:
+    """/employees → team snapshot card built from the ops dashboard."""
+    dashboard = _load_ops_dashboard(ctx)
+    return team_snapshot_card(
+        dashboard,
+        title_suffix=f"[{ctx.session}] {beijing_stamp(ctx.now)}",
+    )
+
+
+def _handle_employee(args: str, ctx: SlashContext) -> str | dict:
+    """/employee <agent> → single employee snapshot card."""
+    agent = args.strip().split()[0] if args.strip() else _default_agent(ctx)
+    if (warn := _bad_agent(agent, ctx)):
+        return warn
+    try:
+        snapshot = employee_read_model.build_employee_snapshot(agent)
+    except Exception as e:
+        return f"⚠️ /employee 失败: {e}"
+    return employee_snapshot_card(
+        snapshot,
+        title_suffix=f"[{ctx.session}] {beijing_stamp(ctx.now)}",
+    )
+
+
+def _handle_ops(args: str, ctx: SlashContext) -> dict:
+    """/ops or /ops-dashboard → ops dashboard card."""
+    dashboard = _load_ops_dashboard(ctx)
+    return team_snapshot_card(
+        dashboard,
+        title_suffix=f"ops [{ctx.session}] {beijing_stamp(ctx.now)}",
+    )
+
+
 _COMPACT_REJECT_MARKER = "can't be triggered from inside a response"
 
 
@@ -808,6 +882,10 @@ def _handle_clear(args: str, ctx: SlashContext) -> str:
 _HANDLERS: dict[str, Callable[[str, SlashContext], str]] = {
     "/help": _handle_help,
     "/team": _handle_team,
+    "/employees": _handle_employees,
+    "/employee": _handle_employee,
+    "/ops": _handle_ops,
+    "/ops-dashboard": _handle_ops,
     "/health": _handle_health,
     "/usage": _handle_usage,
     "/tmux": _handle_tmux,
@@ -821,7 +899,7 @@ _HANDLERS: dict[str, Callable[[str, SlashContext], str]] = {
     "/stop": _handle_stop,
     "/clear": _handle_clear,
 }
-# 14 chat slash commands: /help /team /health /usage /tmux /send
+# 17 chat slash commands: /help /team /employees /employee /ops /ops-dashboard /health /usage /tmux /send
 # /dispatch /submit /assign-reviewer /review-queue /manager-overview /compact /stop /clear. Memory commands (`eduflow recall` /
 # `forget` / `remember`) live only as agent-pane CLIs, not chat slash.
 
