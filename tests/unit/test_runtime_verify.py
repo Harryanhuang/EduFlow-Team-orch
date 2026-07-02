@@ -188,14 +188,22 @@ def test_record_and_read_switch_events_roundtrip():
         path = verify._switch_events_path()
         if path.exists():
             path.unlink()
-        verify.record_switch_event({"agent": "a", "from_runtime": "x", "to_runtime": "y",
-                                    "reason": "rate_limit", "outcome": "ready"})
-        verify.record_switch_event({"agent": "b", "from_runtime": "p", "to_runtime": "q",
-                                    "reason": "auth_failure", "outcome": "env_drift"})
+        verify.record_switch_event(agent="a", from_runtime="x", to_runtime="y",
+                                   reason="rate_limit", outcome="ready",
+                                   switch_id="id1")
+        verify.record_switch_event(agent="b", from_runtime="p", to_runtime="q",
+                                   reason="auth_failure", outcome="env_drift",
+                                   switch_id="id2")
         events = verify.read_switch_events(last_n=10)
         assert len(events) == 2
         assert events[-1]["agent"] == "b"
         assert "ts" in events[-1]
+        assert events[0]["switch_id"] == "id1"
+        assert events[1]["switch_id"] == "id2"
+        assert "best_outcome" in events[0]
+        assert "attempts" in events[0]
+        assert "pool_switched" in events[0]
+        assert "cross_pool" in events[0]
 
 
 def test_read_switch_events_empty_when_no_file():
@@ -203,4 +211,19 @@ def test_read_switch_events_empty_when_no_file():
         path = verify._switch_events_path()
         if path.exists():
             path.unlink()
+
+
+def test_record_switch_event_auto_generates_switch_id():
+    with isolated_env():
+        path = verify._switch_events_path()
+        # Fresh file
+        if path.exists():
+            path.unlink()
         assert verify.read_switch_events() == []
+        verify.record_switch_event(agent="z", from_runtime="a", to_runtime="b",
+                                   reason="test", outcome="ready")
+        events = verify.read_switch_events(last_n=1)
+        assert len(events) == 1
+        sid = events[0]["switch_id"]
+        assert isinstance(sid, str)
+        assert len(sid) == 8  # uuid4()[:8]

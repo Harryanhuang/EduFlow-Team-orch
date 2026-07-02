@@ -378,6 +378,33 @@ def test_down_with_named_daemon_only_kills_that_daemon():
         assert "watchdog:" not in out
 
 
+def test_down_with_named_daemon_leaves_tmux_session_running():
+    """`down watchdog` is a daemon restart primitive; it must not stop agents."""
+    team = {"session": "S", "agents": {"manager": {}}}
+    with isolated_env(team=team) as tmp, _fake_tmux(session_alive=True) as tmux_state:
+        paths.ensure_state_dir()
+        my_pid = os.getpid()
+        paths.watchdog_pid_file().write_text(str(my_pid), encoding="utf-8")
+
+        kill_calls = []
+
+        def fake_kill(pid, sig):
+            if sig == 0:
+                raise ProcessLookupError()
+            kill_calls.append((pid, sig))
+            return None
+
+        from eduflow.runtime import watchdog as _wd
+        with attr_patch(os, kill=fake_kill), \
+             attr_patch(_wd, _read_cmdline=lambda pid: "eduflow.cli watchdog"):
+            rc, out, _ = run_cli(["down", "--force", "watchdog"])
+
+    assert rc == 0
+    assert kill_calls
+    assert tmux_state["session_killed"] is False
+    assert "tmux session left running" in out
+
+
 def test_down_with_unknown_daemon_name_warns():
     """`down foobar` should warn about unknown daemon."""
     team = {"session": "S", "agents": {"manager": {}}}

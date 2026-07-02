@@ -111,6 +111,44 @@ def test_runtime_verify_json_verdict(monkeypatch):
         assert data["declared_pool_id"] == "deepseek"
 
 
+def test_runtime_verify_proved_ready_clears_stale_guard(monkeypatch):
+    with isolated_env(team={"agents": {"worker_a": {"cli": "claude-code"}}}):
+        from eduflow.commands import runtime_verify as rv
+        from eduflow.runtime import paths
+
+        paths.runtime_guard_state_file().parent.mkdir(parents=True, exist_ok=True)
+        paths.runtime_guard_state_file().write_text(json.dumps({
+            "agents": {
+                "worker_a": {
+                    "needs_manager_action": True,
+                    "escalation_needed": True,
+                    "escalation_reason": "fallback_chain_exhausted",
+                },
+                "worker_b": {"needs_manager_action": True},
+            }
+        }), encoding="utf-8")
+        monkeypatch.setattr(rv, "compute_verdict",
+                            lambda agent, **kw: {"verdict": "proved_ready",
+                                           "declared_runtime": "primary",
+                                           "declared_env": "ds",
+                                           "declared_pool_id": "deepseek",
+                                           "env_ok": True,
+                                           "smoke_ok": True,
+                                           "smoke_verdict": "ok",
+                                           "pane_clean": True,
+                                           "inbox_state": "no_pending",
+                                           "mismatches": [],
+                                           "found_markers": [],
+                                           "cached": False})
+
+        rc, _, _ = run_cli(["runtime", "verify", "worker_a", "--json"])
+        data = json.loads(paths.runtime_guard_state_file().read_text(encoding="utf-8"))
+
+    assert rc == 0
+    assert "worker_a" not in data["agents"]
+    assert "worker_b" in data["agents"]
+
+
 def test_runtime_verify_unknown_agent_returns_unknown():
     with isolated_env():
         rc, out, _ = run_cli(["runtime", "verify", "no_agent", "--json"])

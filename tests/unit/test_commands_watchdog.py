@@ -174,6 +174,67 @@ def test_detect_runtime_failure_flags_repetitive_tool_calls_after_ready_prompt()
     assert reason == "conversation_history_corrupt"
 
 
+def test_context_guard_starts_real_compact_at_ninety_percent():
+    calls = []
+    updates = []
+    target = tmux.Target("S", "worker_course")
+
+    class _FakePopen:
+        def __init__(self, argv, **kw):
+            calls.append((argv, kw))
+
+    with isolated_env(team={"session": "S", "agents": {"worker_course": {}}}), \
+            attr_patch(cmd_watchdog.tmux, capture_pane=lambda t, lines=120: "context: 92%"), \
+            attr_patch(cmd_watchdog.subprocess, Popen=_FakePopen), \
+            attr_patch(cmd_watchdog.lifecycle,
+                       current_runtime_status=lambda agent: {"runtime": "course_backup_mimo"}), \
+            attr_patch(cmd_watchdog, _update_guard_agent=
+                       lambda agent, **fields: updates.append((agent, fields)) or {}):
+        acted = cmd_watchdog._maybe_recover_context_pressure(
+            "worker_course", target, object(),
+            {"selected_runtime": "course_backup_mimo"}, 1000.0,
+        )
+
+    assert acted is True
+    assert calls
+    argv, kwargs = calls[0]
+    assert argv[-3:] == ["eduflow.cli", "compact", "worker_course"]
+    assert "src" in kwargs["env"]["PYTHONPATH"]
+    assert updates[-1][0] == "worker_course"
+    assert updates[-1][1]["last_context_action"] == "compact"
+    assert updates[-1][1]["last_context_outcome"] == "compact_started"
+
+
+def test_context_guard_restarts_when_context_is_exhausted():
+    restarts = []
+    updates = []
+    target = tmux.Target("S", "manager")
+
+    def fake_restart(agent, target, runtime, **kw):
+        restarts.append((agent, str(target), runtime, kw))
+        return "ready"
+
+    with isolated_env(team={"session": "S", "agents": {"manager": {}}}), \
+            attr_patch(cmd_watchdog.tmux, capture_pane=lambda t, lines=120: "100% context used"), \
+            attr_patch(cmd_watchdog.lifecycle,
+                       current_runtime_status=lambda agent: {"runtime": "manager_backup_mimo"},
+                       restart_with_runtime=fake_restart), \
+            attr_patch(cmd_watchdog, _update_guard_agent=
+                       lambda agent, **fields: updates.append((agent, fields)) or {}):
+        acted = cmd_watchdog._maybe_recover_context_pressure(
+            "manager", target, object(),
+            {"selected_runtime": "manager_backup_mimo"}, 1000.0,
+        )
+
+    assert acted is True
+    assert restarts == [
+        ("manager", "S:manager", "manager_backup_mimo",
+         {"reason": "context_exhausted:100% context used", "prove_ready": True})
+    ]
+    assert updates[-1][1]["last_context_action"] == "restart"
+    assert updates[-1][1]["last_context_outcome"] == "ready"
+
+
 def test_guard_agent_runtimes_switches_fallback_when_marker_detected():
     team = {"session": "S", "agents": {"worker_a": {"runtime": "primary"}}}
     switches = []
@@ -482,3 +543,338 @@ switch_on = ["auth_failure"]
         assert row["from_runtime"] == "primary"
         assert row["to_runtime"] == "backup"
         assert row["escalation_needed"] is False
+
+
+# ── failback tests ────────────────────────────────────────────────
+
+
+def _make_team_toml():
+    return """
+[team]
+session = "S"
+
+[team.agents.worker_a]
+runtime = "primary"
+role = "worker"
+
+[runtime_registry.primary]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "claude_proxy_primary"
+fallback_to = "backup"
+switch_on = ["auth_failure"]
+
+[runtime_registry.backup]
+cli = "codex-cli"
+model = "gpt-5.5"
+switch_on = ["auth_failure"]
+"""
+
+
+def _seed_fallback_state(agent="worker_a", in_fallback_since=900.0):
+    """Pre-populate runtime_guard_state so the agent looks like it is
+    currently running on a fallback runtime."""
+    from eduflow.util import write_json, file_lock
+    path = paths.runtime_guard_state_file()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with file_lock(path):
+        data = {"agents": {agent: {
+            "failback": {
+                "primary_runtime": "primary",
+                "primary_healthy_streak": 0,
+                "last_primary_smoke_at": 0.0,
+                "in_fallback_since": in_fallback_since,
+            },
+        }}}
+        write_json(path, data)
+
+
+def test_failback_switches_after_streak_and_interval():
+    """Agent on fallback; primary passes smoke 3 times over 300s →
+    canary failback fires."""
+    from eduflow.runtime import verify as verify_mod
+    restarts = []
+
+    def fake_restart(agent, target, runtime, **kw):
+        restarts.append((agent, runtime, kw))
+        return "ready"
+
+    class _Adapter:
+        def ready_markers(self):
+            return ["ready"]
+        def rate_limit_markers(self):
+            return []
+
+    with isolated_env(team={"session": "S", "agents": {"worker_a": {"runtime": "primary"}}}) as tmp:
+        (tmp / "eduflow.toml").write_text(_make_team_toml(), encoding="utf-8")
+        _seed_fallback_state(in_fallback_since=500.0)
+        with attr_patch(cmd_watchdog.tmux,
+                        has_session=lambda s: True,
+                        has_window=lambda t: True,
+                        capture_pane=lambda t, lines=120: ""), \
+                attr_patch(cmd_watchdog, get_adapter=lambda cli: _Adapter()), \
+                attr_patch(cmd_watchdog.lifecycle,
+                           current_runtime_status=lambda agent: {"runtime": "backup"},
+                           restart_with_runtime=fake_restart), \
+                attr_patch(cmd_watchdog.wake, is_rate_limited=lambda *a, **kw: False), \
+                    attr_patch(verify_mod, api_smoke_runtime=lambda *a, **kw: ("ok", "http 200"),
+                               record_switch_event=lambda **kw: None):
+            # Tick 1: streak becomes 1 (probe at t=1000)
+            with attr_patch(cmd_watchdog.time, time=lambda: 1000.0):
+                cmd_watchdog._guard_agent_runtimes()
+            # Tick 2: streak becomes 2 (probe at t=1040)
+            with attr_patch(cmd_watchdog.time, time=lambda: 1040.0):
+                cmd_watchdog._guard_agent_runtimes()
+            # Tick 3: streak becomes 3, in_fallback_since=500, now=1080,
+            # elapsed=580 > 300 → failback fires.
+            with attr_patch(cmd_watchdog.time, time=lambda: 1080.0):
+                cmd_watchdog._guard_agent_runtimes()
+
+        assert len(restarts) == 1
+        assert restarts[0][0] == "worker_a"
+        assert restarts[0][1] == "primary"
+        assert restarts[0][2]["reason"] == "failback"
+        assert restarts[0][2]["prove_ready"] is True
+
+        # Failback state should be cleared after success.
+        data = json.loads(paths.runtime_guard_state_file().read_text(encoding="utf-8"))
+        assert data["agents"]["worker_a"].get("failback") == {}
+
+
+def test_failback_skipped_when_min_fallback_not_reached():
+    """Agent entered fallback only 100s ago (< 300s default) → no switch
+    even if primary streak is sufficient."""
+    from eduflow.runtime import verify as verify_mod
+    restarts = []
+
+    def fake_restart(agent, target, runtime, **kw):
+        restarts.append((agent, runtime))
+        return "ready"
+
+    class _Adapter:
+        def ready_markers(self):
+            return ["ready"]
+        def rate_limit_markers(self):
+            return []
+
+    with isolated_env(team={"session": "S", "agents": {"worker_a": {"runtime": "primary"}}}) as tmp:
+        (tmp / "eduflow.toml").write_text(_make_team_toml(), encoding="utf-8")
+        _seed_fallback_state(in_fallback_since=950.0)  # only 50s ago at t=1000
+        with attr_patch(cmd_watchdog.tmux,
+                        has_session=lambda s: True,
+                        has_window=lambda t: True,
+                        capture_pane=lambda t, lines=120: ""), \
+                attr_patch(cmd_watchdog, get_adapter=lambda cli: _Adapter()), \
+                attr_patch(cmd_watchdog.lifecycle,
+                           current_runtime_status=lambda agent: {"runtime": "backup"},
+                           restart_with_runtime=fake_restart), \
+                attr_patch(cmd_watchdog.wake, is_rate_limited=lambda *a, **kw: False), \
+                attr_patch(verify_mod, api_smoke_runtime=lambda *a, **kw: ("ok", "http 200"),
+                           record_switch_event=lambda e: None):
+            # 3 ticks at 30s intervals to build streak to 3
+            for t in (1000.0, 1035.0, 1070.0):
+                with attr_patch(cmd_watchdog.time, time=lambda t=t: t):
+                    cmd_watchdog._guard_agent_runtimes()
+
+    assert len(restarts) == 0
+
+
+def test_failback_resets_streak_on_probe_failure():
+    """Primary probe fails → streak resets; need 3 more consecutive passes."""
+    from eduflow.runtime import verify as verify_mod
+    restarts = []
+
+    def fake_restart(agent, target, runtime, **kw):
+        restarts.append(agent)
+        return "ready"
+
+    class _Adapter:
+        def ready_markers(self):
+            return ["ready"]
+        def rate_limit_markers(self):
+            return []
+
+    probe_results = [("ok", "http 200"), ("ok", "http 200"), ("failed", "http 500"),
+                     ("ok", "http 200"), ("ok", "http 200"), ("ok", "http 200")]
+    probe_idx = {"i": 0}
+
+    def fake_smoke(*a, **kw):
+        i = probe_idx["i"]
+        probe_idx["i"] += 1
+        return probe_results[i]
+
+    with isolated_env(team={"session": "S", "agents": {"worker_a": {"runtime": "primary"}}}) as tmp:
+        (tmp / "eduflow.toml").write_text(_make_team_toml(), encoding="utf-8")
+        _seed_fallback_state(in_fallback_since=500.0)
+        with attr_patch(cmd_watchdog.tmux,
+                        has_session=lambda s: True,
+                        has_window=lambda t: True,
+                        capture_pane=lambda t, lines=120: ""), \
+                attr_patch(cmd_watchdog, get_adapter=lambda cli: _Adapter()), \
+                attr_patch(cmd_watchdog.lifecycle,
+                           current_runtime_status=lambda agent: {"runtime": "backup"},
+                           restart_with_runtime=fake_restart), \
+                attr_patch(cmd_watchdog.wake, is_rate_limited=lambda *a, **kw: False), \
+                    attr_patch(verify_mod, api_smoke_runtime=fake_smoke,
+                               record_switch_event=lambda **kw: None):
+            # Ticks 1-2: streak=1,2; tick 3: fails → streak=0;
+            # ticks 4-6: streak=1,2,3 → failback fires at tick 6.
+            for t in (1000.0, 1035.0, 1070.0, 1105.0, 1140.0, 1175.0):
+                with attr_patch(cmd_watchdog.time, time=lambda t=t: t):
+                    cmd_watchdog._guard_agent_runtimes()
+
+    assert len(restarts) == 1
+    assert restarts[0] == "worker_a"
+
+
+def test_failback_probe_respects_interval():
+    """Probes should not fire more often than probe_interval_s (30s)."""
+    from eduflow.runtime import verify as verify_mod
+    smoke_calls = []
+
+    def fake_smoke(*a, **kw):
+        smoke_calls.append(True)
+        return ("ok", "http 200")
+
+    class _Adapter:
+        def ready_markers(self):
+            return ["ready"]
+        def rate_limit_markers(self):
+            return []
+
+    with isolated_env(team={"session": "S", "agents": {"worker_a": {"runtime": "primary"}}}) as tmp:
+        (tmp / "eduflow.toml").write_text(_make_team_toml(), encoding="utf-8")
+        _seed_fallback_state(in_fallback_since=500.0)
+        tick_times = iter([1000.0, 1010.0])
+        with attr_patch(cmd_watchdog.tmux,
+                        has_session=lambda s: True,
+                        has_window=lambda t: True,
+                        capture_pane=lambda t, lines=120: ""), \
+                attr_patch(cmd_watchdog, get_adapter=lambda cli: _Adapter()), \
+                attr_patch(cmd_watchdog.lifecycle,
+                           current_runtime_status=lambda agent: {"runtime": "backup"},
+                           restart_with_runtime=lambda *a, **kw: "ready"), \
+                attr_patch(cmd_watchdog.wake, is_rate_limited=lambda *a, **kw: False), \
+                attr_patch(verify_mod, api_smoke_runtime=fake_smoke,
+                           record_switch_event=lambda e: None), \
+                attr_patch(cmd_watchdog.time, time=lambda: next(tick_times)):
+            # Two ticks 10s apart (< 30s interval) — second probe skipped.
+            cmd_watchdog._guard_agent_runtimes()
+            cmd_watchdog._guard_agent_runtimes()
+
+    assert len(smoke_calls) == 1
+
+
+def test_failback_canary_failure_resets_streak():
+    """Canary restart returns smoke_failed → streak resets, no retry."""
+    from eduflow.runtime import verify as verify_mod
+    restarts = []
+
+    def fake_restart(agent, target, runtime, **kw):
+        restarts.append(agent)
+        return "smoke_failed"
+
+    class _Adapter:
+        def ready_markers(self):
+            return ["ready"]
+        def rate_limit_markers(self):
+            return []
+
+    with isolated_env(team={"session": "S", "agents": {"worker_a": {"runtime": "primary"}}}) as tmp:
+        (tmp / "eduflow.toml").write_text(_make_team_toml(), encoding="utf-8")
+        _seed_fallback_state(in_fallback_since=500.0)
+        with attr_patch(cmd_watchdog.tmux,
+                        has_session=lambda s: True,
+                        has_window=lambda t: True,
+                        capture_pane=lambda t, lines=120: ""), \
+                attr_patch(cmd_watchdog, get_adapter=lambda cli: _Adapter()), \
+                attr_patch(cmd_watchdog.lifecycle,
+                           current_runtime_status=lambda agent: {"runtime": "backup"},
+                           restart_with_runtime=fake_restart), \
+                attr_patch(cmd_watchdog.wake, is_rate_limited=lambda *a, **kw: False), \
+                    attr_patch(verify_mod, api_smoke_runtime=lambda *a, **kw: ("ok", "http 200"),
+                               record_switch_event=lambda **kw: None):
+            # 3 ticks → streak hits 3 → canary fires but fails
+            for t in (1000.0, 1035.0, 1070.0):
+                with attr_patch(cmd_watchdog.time, time=lambda t=t: t):
+                    cmd_watchdog._guard_agent_runtimes()
+
+        assert len(restarts) == 1
+        # Streak should be reset to 0 after canary failure.
+        data = json.loads(paths.runtime_guard_state_file().read_text(encoding="utf-8"))
+        assert data["agents"]["worker_a"]["failback"]["primary_healthy_streak"] == 0
+
+
+def test_guard_sets_in_fallback_since_on_failover():
+    """When failover succeeds, the guard loop writes in_fallback_since
+    so the failback probe knows how long the agent has been away."""
+    class _Adapter:
+        def ready_markers(self):
+            return ["ready"]
+        def rate_limit_markers(self):
+            return []
+
+    def fake_execute(agent, target, current_runtime, reason, **kw):
+        return {
+            "outcome": "ready",
+            "to_runtime": "backup",
+            "best_outcome": "ready",
+            "attempts": [{"to_runtime": "backup", "outcome": "ready",
+                          "env_ok": True, "smoke_ok": True, "pool_id": "", "ts": 100.0}],
+            "events": [],
+            "exhausted": False,
+            "pool_switched": True,
+        }
+
+    team = {"session": "S", "agents": {"worker_a": {"runtime": "primary"}}}
+    with isolated_env(team=team) as tmp:
+        (tmp / "eduflow.toml").write_text(_make_team_toml(), encoding="utf-8")
+        from eduflow.runtime import failover as failover_mod
+        with attr_patch(cmd_watchdog.tmux,
+                        has_session=lambda s: True,
+                        has_window=lambda t: True,
+                        capture_pane=lambda t, lines=120: "Invalid auth credentials\n"), \
+                attr_patch(cmd_watchdog, get_adapter=lambda cli: _Adapter()), \
+                attr_patch(cmd_watchdog.lifecycle,
+                           current_runtime_status=lambda agent: {"runtime": "primary"}), \
+                attr_patch(failover_mod, execute_fallback_loop=fake_execute), \
+                attr_patch(cmd_watchdog.wake, is_rate_limited=lambda *a, **kw: False), \
+                attr_patch(cmd_watchdog.time, time=lambda: 1000.0):
+            cmd_watchdog._guard_agent_runtimes()
+
+        data = json.loads(paths.runtime_guard_state_file().read_text(encoding="utf-8"))
+        fb = data["agents"]["worker_a"].get("failback", {})
+        assert fb.get("in_fallback_since") == 1000.0
+        assert fb.get("primary_runtime") == "primary"
+
+
+def test_failback_skipped_when_already_on_primary():
+    """Agent on primary runtime → _maybe_failback is never called."""
+    from eduflow.runtime import verify as verify_mod
+    smoke_calls = []
+
+    def fake_smoke(*a, **kw):
+        smoke_calls.append(True)
+        return ("ok", "http 200")
+
+    class _Adapter:
+        def ready_markers(self):
+            return ["ready"]
+        def rate_limit_markers(self):
+            return []
+
+    with isolated_env(team={"session": "S", "agents": {"worker_a": {"runtime": "primary"}}}) as tmp:
+        (tmp / "eduflow.toml").write_text(_make_team_toml(), encoding="utf-8")
+        with attr_patch(cmd_watchdog.tmux,
+                        has_session=lambda s: True,
+                        has_window=lambda t: True,
+                        capture_pane=lambda t, lines=120: ""), \
+                attr_patch(cmd_watchdog, get_adapter=lambda cli: _Adapter()), \
+                attr_patch(cmd_watchdog.lifecycle,
+                           current_runtime_status=lambda agent: {"runtime": "primary"}), \
+                attr_patch(cmd_watchdog.wake, is_rate_limited=lambda *a, **kw: False), \
+                attr_patch(verify_mod, api_smoke_runtime=fake_smoke):
+            cmd_watchdog._guard_agent_runtimes()
+
+    assert len(smoke_calls) == 0

@@ -64,8 +64,10 @@ def test_execute_fallback_loop_first_attempt_ready(monkeypatch):
     result = failover.execute_fallback_loop(
         "a", "target", "primary", "rate_limit",
         restart_fn=fake_restart,
-        record_fn=lambda e: recorded.append(e),
+        record_fn=lambda **kw: recorded.append(kw),
         now_fn=lambda: 100.0,
+        can_switch_fn=lambda pool_id: True,
+        record_switch_fn=lambda pool_id, agent: None,
         trigger="test",
     )
     assert result["outcome"] == "ready"
@@ -95,8 +97,10 @@ def test_execute_fallback_loop_avoids_initial_pool(monkeypatch):
     result = failover.execute_fallback_loop(
         "a", "target", "deepseek", "rate_limit",
         restart_fn=fake_restart,
-        record_fn=lambda e: None,
+        record_fn=lambda **kw: None,
         now_fn=lambda: 100.0,
+        can_switch_fn=lambda pool_id: True,
+        record_switch_fn=lambda pool_id, agent: None,
     )
     # First call should be qwen_plus (cross-pool relative to deepseek).
     assert calls[0] == "qwen_plus"
@@ -116,8 +120,10 @@ def test_execute_fallback_loop_falls_through_on_env_drift(monkeypatch):
     result = failover.execute_fallback_loop(
         "a", "target", "primary", "rate_limit",
         restart_fn=fake_restart,
-        record_fn=lambda e: None,
+        record_fn=lambda **kw: None,
         now_fn=lambda: 100.0,
+        can_switch_fn=lambda pool_id: True,
+        record_switch_fn=lambda pool_id, agent: None,
     )
     assert calls == ["deepseek", "qwen_plus"]
     assert result["outcome"] == "ready"
@@ -134,8 +140,10 @@ def test_execute_fallback_loop_exhausted_when_all_fail(monkeypatch):
     result = failover.execute_fallback_loop(
         "a", "target", "primary", "rate_limit",
         restart_fn=fake_restart,
-        record_fn=lambda e: None,
+        record_fn=lambda **kw: None,
         now_fn=lambda: 100.0,
+        can_switch_fn=lambda pool_id: True,
+        record_switch_fn=lambda pool_id, agent: None,
         max_attempts=2,
     )
     assert result["exhausted"] is True
@@ -155,8 +163,10 @@ def test_execute_fallback_loop_no_fallback_at_all(monkeypatch):
     result = failover.execute_fallback_loop(
         "a", "target", "inline", "rate_limit",
         restart_fn=lambda *a, **kw: (calls.append(1), "ready")[1],
-        record_fn=lambda e: None,
+        record_fn=lambda **kw: None,
         now_fn=lambda: 100.0,
+        can_switch_fn=lambda pool_id: True,
+        record_switch_fn=lambda pool_id, agent: None,
     )
     assert result["outcome"] == failover.EXHAUSTED
     assert result["exhausted"] is True
@@ -196,8 +206,10 @@ def test_execute_fallback_loop_prefers_cross_pool_then_allows_same_pool(monkeypa
     result = failover.execute_fallback_loop(
         "a", "target", "A", "rate_limit",
         restart_fn=fake_restart,
-        record_fn=lambda e: None,
+        record_fn=lambda **kw: None,
         now_fn=lambda: 100.0,
+        can_switch_fn=lambda pool_id: True,
+        record_switch_fn=lambda pool_id, agent: None,
     )
     # First pick should be C (cross-pool), NOT B (same pool as A).
     assert calls[0] == "C", f"expected cross-pool first, got {calls}"
@@ -239,8 +251,10 @@ def test_execute_fallback_loop_empty_initial_pool_prefers_nonempty_pool(monkeypa
     result = failover.execute_fallback_loop(
         "a", "target", "A", "rate_limit",
         restart_fn=fake_restart,
-        record_fn=lambda e: None,
+        record_fn=lambda **kw: None,
         now_fn=lambda: 100.0,
+        can_switch_fn=lambda pool_id: True,
+        record_switch_fn=lambda pool_id, agent: None,
     )
     # C has a pool; B doesn't. Cross-pool priority should pick C first.
     assert calls[0] == "C", f"expected nonempty-pool first, got {calls}"
@@ -273,8 +287,10 @@ def test_execute_fallback_loop_falls_back_when_no_nonempty_pool_candidate(monkey
     result = failover.execute_fallback_loop(
         "a", "target", "A", "rate_limit",
         restart_fn=fake_restart,
-        record_fn=lambda e: None,
+        record_fn=lambda **kw: None,
         now_fn=lambda: 100.0,
+        can_switch_fn=lambda pool_id: True,
+        record_switch_fn=lambda pool_id, agent: None,
     )
     # Both A and B have no pool. No cross-pool candidate exists, so
     # Pass 2 picks B (the only option).
