@@ -74,12 +74,34 @@ def test_blocker_present_is_blocked():
 
 
 def test_ready_with_no_unread_is_idle():
-    with isolated_env():
-        local_facts.upsert_status("worker_course", "待命", "ready")
-        local_facts.touch_heartbeat("worker_course")
+    team_toml = """
+chat_id = "oc_demo"
+lark_profile = "eduflow-team"
 
-        snap = employee_read_model.build_employee_snapshot("worker_course")
+[team]
+session = "EduFlow"
 
+[team.residency]
+default_mode = "warm"
+resident_agents = ["manager"]
+warm_idle_timeout_s = 600
+handoff_buffer_s = 300
+wake_timeout_s = 60
+
+[team.agents.manager]
+cli = "claude-code"
+role = "manager"
+"""
+    with isolated_env() as tmp:
+        (tmp / "eduflow.toml").write_text(team_toml, encoding="utf-8")
+        tunables.reset_cache()
+
+        local_facts.upsert_status("manager", "待命", "ready")
+        local_facts.touch_heartbeat("manager")
+
+        snap = employee_read_model.build_employee_snapshot("manager")
+
+        assert snap["residency_label"] == "常驻"
         assert snap["display_verdict"] == "idle"
         assert snap["unread_high_priority_count"] == 0
         assert "Awaiting" in snap["recommended_next_action"]
@@ -143,9 +165,8 @@ role = "course"
         snap = employee_read_model.build_employee_snapshot("worker_course")
 
         assert snap["residency_label"] == "温备"
-        assert snap["policy_mode"] == "warm"
-        assert snap["display_verdict"] != "stopped"
-        assert snap["display_verdict"] == "idle"
+        assert snap["residency_mode"] == "warm"
+        assert snap["display_verdict"] == "warm_idle"
 
 
 def test_resident_agent_has_resident_policy():
@@ -177,7 +198,7 @@ role = "manager"
         snap = employee_read_model.build_employee_snapshot("manager")
 
         assert snap["residency_label"] == "常驻"
-        assert snap["policy_mode"] == "resident"
+        assert snap["residency_mode"] == "resident"
         assert snap["sleep_decision"] == "keep_resident"
 
 
