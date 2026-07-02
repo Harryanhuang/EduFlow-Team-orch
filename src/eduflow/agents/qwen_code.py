@@ -11,7 +11,7 @@ from __future__ import annotations
 
 import shlex
 
-from .base import CliAdapter, MULTILINE_SUBMIT_KEYS, SPINNER_CHARS
+from .base import AuthSlot, CliAdapter, MULTILINE_SUBMIT_KEYS, SPINNER_CHARS
 
 
 class QwenCodeAdapter(CliAdapter):
@@ -53,3 +53,10 @@ class QwenCodeAdapter(CliAdapter):
             "请求过于频繁",  # Chinese-localised throttle message
             "429",
         ]
+
+    def auth_slots(self) -> AuthSlot | None:
+        return AuthSlot(
+            token_env=None,
+            api_key_envs=("DASHSCOPE_API_KEY", "OPENAI_API_KEY"),
+            login_credfile=".qwen/oauth_creds.json",
+        )

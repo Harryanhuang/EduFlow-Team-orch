@@ -9,7 +9,7 @@ from __future__ import annotations
 import shlex
 from pathlib import Path
 
-from .base import CliAdapter, MULTILINE_SUBMIT_KEYS, SPINNER_CHARS
+from .base import AuthSlot, CliAdapter, MULTILINE_SUBMIT_KEYS, SPINNER_CHARS
 
 
 def ensure_workdir_trusted(workdir: Path,
@@ -60,3 +60,10 @@ class CodexCliAdapter(CliAdapter):
 
     def rate_limit_markers(self) -> list[str]:
         return ["rate limit", "429", "RateLimitError", "you exceeded your"]
+
+    def auth_slots(self) -> AuthSlot | None:
+        return AuthSlot(
+            token_env="CODEX_ACCESS_TOKEN",
+            api_key_envs=("OPENAI_API_KEY",),
+            login_credfile=".codex/auth.json",
+        )

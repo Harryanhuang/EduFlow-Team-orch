@@ -4,7 +4,7 @@ from __future__ import annotations
 import shlex
 import shutil
 
-from .base import CliAdapter, MULTILINE_SUBMIT_KEYS, SPINNER_CHARS
+from .base import CliAdapter, MULTILINE_SUBMIT_KEYS, OPENAI_COMPAT_AUTH, SPINNER_CHARS
 
 
 class QoderCliCnAdapter(CliAdapter):
@@ -49,3 +49,6 @@ class QoderCliCnAdapter(CliAdapter):
             "请求过于频繁",
             "429",
         ]
+
+    def auth_slots(self):
+        return OPENAI_COMPAT_AUTH

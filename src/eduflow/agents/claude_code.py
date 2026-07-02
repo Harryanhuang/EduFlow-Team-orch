@@ -9,7 +9,7 @@ from pathlib import Path
 
 from eduflow.runtime import paths
 
-from .base import CliAdapter, SPINNER_CHARS
+from .base import AuthSlot, CliAdapter, SPINNER_CHARS
 
 
 def _read_oauth_token(agent: str) -> str | None:
@@ -93,7 +93,7 @@ class ClaudeCodeAdapter(CliAdapter):
                         if oauth_token else "")
         claude_bin = shutil.which("claude") or "claude"
         return (
-            f"HOME={agent_home(agent)} "
+            f"HOME={shlex.quote(agent_home(agent))} "
             f"{token_prefix}"
             f"CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY=1 DISABLE_AUTOUPDATER=1 "
             f"IS_SANDBOX=1 {shlex.quote(claude_bin)} --dangerously-skip-permissions "
@@ -126,3 +126,11 @@ class ClaudeCodeAdapter(CliAdapter):
             "quota exceeded",
             "429",
         ]
+
+    def auth_slots(self) -> AuthSlot | None:
+        return AuthSlot(
+            token_env="ANTHROPIC_AUTH_TOKEN",
+            api_key_envs=("ANTHROPIC_API_KEY",),
+            login_credfile=".claude/.credentials.json",
+            login_token_env="CLAUDE_CODE_OAUTH_TOKEN",
+        )
