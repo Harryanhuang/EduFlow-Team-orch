@@ -143,7 +143,10 @@ def _patch_platform(name: str):
 def test_stale_threshold_default_linux_is_600s():
     """Linux WebSocket is stable; default stays 600s. Calibrated value:
     1200 too lax / 180 too tight (see commit history)."""
-    with isolated_env(), env_patch(EDUFLOW_ROUTER_STALE_S=None), _patch_platform("Linux"):
+    with isolated_env(), env_patch(
+        EDUFLOW_ROUTER_STALE_S=None,
+        EDUFLOW_ROUTER_STALE_EVENT_THRESHOLD_JITTER_PCT="0",
+    ), _patch_platform("Linux"):
         assert _stale_event_threshold_s() == 600.0
 
 
@@ -151,28 +154,82 @@ def test_stale_threshold_default_darwin_is_120s():
     """macOS lark-cli 1.0.23 WebSocket silently drops without reconnect
     (verified 2026-05-09 host smoke). Tighter default lets self-restart
     + catchup recover in ~2 min instead of ~10."""
-    with isolated_env(), env_patch(EDUFLOW_ROUTER_STALE_S=None), _patch_platform("Darwin"):
+    with isolated_env(), env_patch(
+        EDUFLOW_ROUTER_STALE_S=None,
+        EDUFLOW_ROUTER_STALE_EVENT_THRESHOLD_JITTER_PCT="0",
+    ), _patch_platform("Darwin"):
         assert _stale_event_threshold_s() == 120.0
 
 
 def test_stale_threshold_picks_up_env_override():
     """Env override beats platform default — operators can tune."""
-    with isolated_env(), env_patch(EDUFLOW_ROUTER_STALE_S="60"), _patch_platform("Darwin"):
+    with isolated_env(), env_patch(
+        EDUFLOW_ROUTER_STALE_S="60",
+        EDUFLOW_ROUTER_STALE_EVENT_THRESHOLD_JITTER_PCT="0",
+    ), _patch_platform("Darwin"):
         assert _stale_event_threshold_s() == 60.0
 
 
 def test_stale_threshold_falls_back_to_default_on_garbage():
     """Misconfigured env (`EDUFLOW_ROUTER_STALE_S=potato`) should fall
     back to platform default rather than raise."""
-    with isolated_env(), env_patch(EDUFLOW_ROUTER_STALE_S="potato"), _patch_platform("Linux"):
+    with isolated_env(), env_patch(
+        EDUFLOW_ROUTER_STALE_S="potato",
+        EDUFLOW_ROUTER_STALE_EVENT_THRESHOLD_JITTER_PCT="0",
+    ), _patch_platform("Linux"):
         assert _stale_event_threshold_s() == 600.0
 
 
 def test_stale_threshold_ignores_zero_or_negative():
-    with isolated_env(), env_patch(EDUFLOW_ROUTER_STALE_S="0"), _patch_platform("Linux"):
+    with isolated_env(), env_patch(
+        EDUFLOW_ROUTER_STALE_S="0",
+        EDUFLOW_ROUTER_STALE_EVENT_THRESHOLD_JITTER_PCT="0",
+    ), _patch_platform("Linux"):
         assert _stale_event_threshold_s() == 600.0
-    with isolated_env(), env_patch(EDUFLOW_ROUTER_STALE_S="-5"), _patch_platform("Darwin"):
+    with isolated_env(), env_patch(
+        EDUFLOW_ROUTER_STALE_S="-5",
+        EDUFLOW_ROUTER_STALE_EVENT_THRESHOLD_JITTER_PCT="0",
+    ), _patch_platform("Darwin"):
         assert _stale_event_threshold_s() == 120.0
+
+
+def test_stale_threshold_applies_jitter():
+    """2026-07-02 R-fix-B: ±10% jitter prevents multiple router instances
+    from all expiring on the same wall-clock tick (thundering-herd
+    respawn storms). Verify the threshold lands within ±10% of base
+    on a fresh process and that the value is cached (stable across
+    multiple calls)."""
+    with isolated_env(), env_patch(
+        EDUFLOW_ROUTER_STALE_S="1000",
+        EDUFLOW_ROUTER_STALE_EVENT_THRESHOLD_JITTER_PCT="0.10",
+    ), _patch_platform("Linux"):
+        from eduflow.commands import router as _r
+        # Roll many times with a fresh cache each time to confirm the
+        # jitter is actually applied (single roll could land exactly
+        # on 1.0 by chance). We don't seed random — we just verify the
+        # range, which is the contract the production code relies on.
+        for _ in range(20):
+            _r._JITTER_CACHE.clear()
+            v = _stale_event_threshold_s()
+            assert 900.0 <= v <= 1100.0, f"expected [900, 1100], got {v}"
+        # Cached — same value on subsequent calls
+        _r._JITTER_CACHE.clear()
+        v1 = _stale_event_threshold_s()
+        v2 = _stale_event_threshold_s()
+        assert v2 == v1
+
+
+def test_stale_threshold_jitter_disabled_when_pct_zero():
+    """Operators can disable jitter via
+    `EDUFLOW_ROUTER_STALE_EVENT_THRESHOLD_JITTER_PCT=0` for deterministic
+    tests / debugging. Value must equal the configured base exactly."""
+    with isolated_env(), env_patch(
+        EDUFLOW_ROUTER_STALE_S="500",
+        EDUFLOW_ROUTER_STALE_EVENT_THRESHOLD_JITTER_PCT="0",
+    ), _patch_platform("Linux"):
+        from eduflow.commands import router as _r
+        _r._JITTER_CACHE.clear()
+        assert _stale_event_threshold_s() == 500.0
 
 
 def test_make_on_progress_refreshes_timestamp_on_each_event():

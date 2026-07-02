@@ -23,7 +23,10 @@ from dataclasses import dataclass, field
 
 from eduflow.agents import get_adapter
 from eduflow.feishu import catchup
-from eduflow.runtime import config, paths, pidlock, tmux, tunables, verify as _verify_mod, wake, watchdog
+from eduflow.runtime import (
+    config, context_monitor, paths, pidlock, tmux, tunables,
+    verify as _verify_mod, wake, watchdog,
+)
 from eduflow.store import local_facts
 from eduflow.util import (
     ago_ms, env_str, maybe_print_help, pop_bool_flag, print_json, reject_extra_args,
@@ -43,14 +46,6 @@ _CODEX_IDLE_STATUS_RE = re.compile(
     r"\b(?:gpt-\d\S*|o1\S*|o3\S*|o4\S*|codex\S*)\s+"
     r"(?:default|low|medium|high)\s+·\s+"
 )
-_CONTEXT_EXHAUSTION_MARKERS = (
-    "context window exceeds limit",
-    "100% context used",
-    "context used 100%",
-    "interrupted prompt",
-)
-
-
 @dataclass
 class HealthReport:
     """Accumulator handed to every `_check_*`. Emission and counting
@@ -221,9 +216,8 @@ def _is_live_codex_idle(target: tmux.Target, text: str) -> bool:
     return False
 
 
-def _pane_context_exhausted(text: str) -> bool:
-    lowered = str(text or "").lower()
-    return any(marker in lowered for marker in _CONTEXT_EXHAUSTION_MARKERS)
+def _pane_context_signal(text: str) -> context_monitor.ContextUsageSignal | None:
+    return context_monitor.detect_context_usage(text)
 
 
 def _agent_inbox_recovery_needed(agent: str) -> bool:
@@ -293,10 +287,21 @@ def _check_agents(rep: HealthReport, session: str, agents: list[str],
                 rep.yellow(f"  {agent}: stale lazy pane — respawn on next wake or rehire now{hb_suffix}{runtime_suffix}")
             else:
                 rep.yellow(f"  {agent}: pane up but CLI not ready yet — wait a few seconds or check the pane{hb_suffix}{runtime_suffix}")
-            if _pane_context_exhausted(text):
+            context_signal = _pane_context_signal(text)
+            if context_signal and context_signal.exhausted:
                 rep.fail(
                     f"  {agent}: context_exhausted — pane contains context limit markers; "
                     "do not continue original long task until worker reads inbox / runtime is restarted"
+                )
+            elif context_signal and context_signal.compact_recommended:
+                rep.yellow(
+                    f"  {agent}: context_compact_recommended — "
+                    f"{context_signal.marker}; run /compact + reidentify before long work"
+                )
+            elif context_signal and context_signal.warning:
+                rep.yellow(
+                    f"  {agent}: context_usage_warning — "
+                    f"{context_signal.marker}; avoid growing the current pane unchecked"
                 )
             _check_runtime_env_drift(rep, agent, target, cfg, rt)
         except Exception as e:

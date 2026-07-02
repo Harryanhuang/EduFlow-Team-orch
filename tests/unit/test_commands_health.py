@@ -359,6 +359,31 @@ def test_health_distinguishes_pane_ready_from_context_guard_risk():
     assert "inbox_recovery_needed=true" in out
 
 
+def test_health_warns_before_context_exhaustion_thresholds():
+    team = {
+        "session": "S",
+        "agents": {
+            "worker_course": {"cli": "claude-code", "lazy": False},
+            "review_course": {"cli": "claude-code", "lazy": False},
+        },
+    }
+    with isolated_env(team=team, runtime_config={"chat_id": "oc_x"}), _stub_tmux(
+            session_alive=True,
+            panes_with_cli=["worker_course", "review_course"],
+            pane_text={
+                "worker_course": "bypass permissions on\ncontext: 85.0% (222k/262k)\n>",
+                "review_course": "bypass permissions on\ncontext: 92.5% (242k/262k)\n>",
+            }):
+        rc, out, _ = run_cli(["health"])
+
+    assert rc == 0
+    assert "worker_course: context_usage_warning" in out
+    assert "context_usage=85%" in out
+    assert "review_course: context_compact_recommended" in out
+    assert "context_usage=92.5%" in out
+    assert "context_exhausted" not in out
+
+
 def test_health_does_not_trust_stale_codex_footer_without_live_codex_process():
     team = {"session": "S", "agents": {"worker_qbank": {"cli": "codex-cli", "lazy": False}}}
     stale_footer = "old Codex scrollback\n  gpt-5.5 medium · /repo\n$ "
