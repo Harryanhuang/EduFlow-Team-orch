@@ -2,16 +2,33 @@
 
 Show the latest status for every agent that has reported one. Default:
 human-readable single-line per agent:
-  `name  status  task  [⛔ blocker]  (Nm ago)  ♥ Nm ago`.
+  `name  [residency]  status  task  [⛔ blocker]  (Nm ago)  ♥ Nm ago`.
 
-With `--json`, dump a list of status records (each with name, status,
-task, blocker, updated_at_ms, heartbeat_ms) so CI / smoke conductors
-/ peer agents can parse machine-readable state.
+With `--json`, dump a list of status records (each with name,
+residency, status, task, blocker, updated_at_ms, heartbeat_ms) so CI
+/ smoke conductors / peer agents can parse machine-readable state.
+
+Phase 2 (2026-07-01) added the `residency` column so the boss can
+see at a glance which agents are 常驻 (always-on) vs 温备 (may sleep
+when idle). The label comes from `config.load_residency_policy`.
 """
 from __future__ import annotations
 
+from eduflow.runtime import config, residency
 from eduflow.store import local_facts
 from eduflow.util import ago_ms, pop_bool_flag, print_json
+
+
+def _residency_label(agent: str) -> str:
+    """Return the display label ('常驻' / '温备' / …) for an agent's
+    configured residency mode. Best-effort: any config error degrades
+    to '未配置' so `/team` never crashes on a malformed residency
+    block."""
+    try:
+        policy = config.load_residency_policy(agent)
+        return residency.display_label(policy.mode)
+    except Exception:
+        return "未配置"
 
 
 def _status_task_with_latest_fact(row: dict) -> str:
@@ -41,9 +58,12 @@ def _emit_text(rows: list[dict], heartbeats: dict[str, int]) -> None:
         print("👥 no agents have reported status yet")
         return
     name_w = max(len(r["agent"]) for r in rows)
+    labels = {r["agent"]: _residency_label(r["agent"]) for r in rows}
+    res_w = max((len(v) for v in labels.values()), default=2)
     for r in rows:
         line = (
             f"{r['agent'].ljust(name_w)}  "
+            f"{labels[r['agent']].ljust(res_w)}  "
             f"{r['status']}  {_status_task_with_latest_fact(r)}"
         )
         if r.get("blocker"):
@@ -58,10 +78,14 @@ def _emit_text(rows: list[dict], heartbeats: dict[str, int]) -> None:
 def _emit_json(rows: list[dict], heartbeats: dict[str, int]) -> None:
     """Machine-readable shape: a flat list of status records, one per
     agent that has ever upserted. Heartbeat is folded in alongside so
-    consumers don't have to cross-reference two structures."""
+    consumers don't have to cross-reference two structures.
+
+    Phase 2: `residency` (常驻/温备/…) is folded in too. Consumers on
+    the old schema keep working — they just ignore the new key."""
     out = [
         {
             "agent": r["agent"],
+            "residency": _residency_label(r["agent"]),
             "status": r["status"],
             "task": _status_task_with_latest_fact(r),
             "blocker": r.get("blocker", ""),
