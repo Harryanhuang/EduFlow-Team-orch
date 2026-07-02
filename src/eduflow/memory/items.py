@@ -126,7 +126,66 @@ def get_memory(memory_id: str) -> dict | None:
     row = conn.execute(
         "SELECT * FROM memory_items WHERE id = ?", (memory_id,)
     ).fetchone()
-    return dict(row) if row else None
+    if row is None:
+        return None
+    d = dict(row)
+    # Legacy rows may not have pinned column; default to 0
+    d.setdefault("pinned", 0)
+    return d
+
+
+def list_pinned_memories(scope: str | list[str] | None = None, limit: int = 50) -> list[dict]:
+    """List pinned memory items. Pinned items are protected from budget eviction."""
+    init_schema()
+    conn = get_conn()
+    query = (
+        "SELECT * FROM memory_items WHERE status='confirmed' "
+        "AND COALESCE(pinned, 0) = 1"
+    )
+    params: list = []
+    if scope is not None:
+        if isinstance(scope, str):
+            query += " AND scope = ?"
+            params.append(scope)
+        elif isinstance(scope, list) and scope:
+            placeholders = ", ".join("?" for _ in scope)
+            query += f" AND scope IN ({placeholders})"
+            params.extend(scope)
+    query += " ORDER BY importance DESC, updated_at DESC LIMIT ?"
+    params.append(limit)
+    rows = conn.execute(query, params).fetchall()
+    results = [dict(r) for r in rows]
+    for r in results:
+        r.setdefault("pinned", 1)
+    return results
+
+
+def pin_memory(memory_id: str) -> bool:
+    """Mark a memory as pinned. Returns True if state changed."""
+    init_schema()
+    conn = get_conn()
+    now = datetime.now(timezone.utc).isoformat()
+    cur = conn.execute(
+        "UPDATE memory_items SET pinned = 1, updated_at = ? WHERE id = ? "
+        "AND COALESCE(pinned, 0) = 0",
+        (now, memory_id),
+    )
+    conn.commit()
+    return cur.rowcount > 0
+
+
+def unpin_memory(memory_id: str) -> bool:
+    """Remove pin from a memory. Returns True if state changed."""
+    init_schema()
+    conn = get_conn()
+    now = datetime.now(timezone.utc).isoformat()
+    cur = conn.execute(
+        "UPDATE memory_items SET pinned = 0, updated_at = ? WHERE id = ? "
+        "AND COALESCE(pinned, 0) = 1",
+        (now, memory_id),
+    )
+    conn.commit()
+    return cur.rowcount > 0
 
 
 def list_memories(

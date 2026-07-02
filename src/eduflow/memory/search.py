@@ -129,3 +129,84 @@ def search_memories(
 
     rows = conn.execute(base, params).fetchall()
     return [dict(r) for r in rows]
+
+
+def hybrid_search(
+    query: str,
+    *,
+    scope: str | list[str] | None = None,
+    kind: str | None = None,
+    status: str = "confirmed",
+    limit: int = 20,
+    fts_top_k: int | None = None,
+    vector_top_k: int | None = None,
+    rrf_k: int = 60,
+) -> list[dict]:
+    """Hybrid search: FTS5 + Vector fusion via Reciprocal Rank Fusion (RRF).
+
+    Algorithm:
+      1. Query FTS5 -> ranked list A
+      2. Query vector_store -> ranked list B
+      3. RRF score = sum(1 / (rrf_k + rank_i)) for each source i
+      4. Merge by memory_id, sort by RRF score desc
+      5. Hydrate from SQLite and return with _sources annotation
+
+    Returns list of memory dicts with extra "_sources" field: {"fts", "vec", "fts+vec"}.
+    Falls back to FTS-only when vector store unavailable or returns empty.
+    """
+    if not query or not query.strip():
+        return []
+
+    fts_top_k = fts_top_k or (limit * 2)
+    vector_top_k = vector_top_k or (limit * 2)
+
+    # FTS pass
+    fts_results = search_memories(
+        query, scope=scope, kind=kind, status=status, limit=fts_top_k
+    )
+
+    # Vector pass (best-effort)
+    vec_results = []
+    try:
+        from eduflow.memory.vector_store import search_similar
+        vec_results = search_similar(query, top_k=vector_top_k)
+    except Exception:
+        vec_results = []
+
+    # RRF fusion
+    rrf_scores: dict[str, float] = {}
+    sources: dict[str, set[str]] = {}
+
+    for rank, m in enumerate(fts_results, start=1):
+        mid = m.get("id", "")
+        if not mid:
+            continue
+        rrf_scores[mid] = rrf_scores.get(mid, 0.0) + 1.0 / (rrf_k + rank)
+        sources.setdefault(mid, set()).add("fts")
+
+    for rank, m in enumerate(vec_results, start=1):
+        mid = m.get("memory_id", "")
+        if not mid:
+            continue
+        rrf_scores[mid] = rrf_scores.get(mid, 0.0) + 1.0 / (rrf_k + rank)
+        sources.setdefault(mid, set()).add("vec")
+
+    sorted_ids = sorted(rrf_scores.keys(), key=lambda x: rrf_scores[x], reverse=True)
+
+    from eduflow.memory.items import get_memory as _get_memory
+    hydrated: list[dict] = []
+    for mid in sorted_ids[:limit]:
+        row = _get_memory(mid)
+        if row is None:
+            continue
+        srcs = sources.get(mid, set())
+        if "fts" in srcs and "vec" in srcs:
+            row["_sources"] = "fts+vec"
+        elif "fts" in srcs:
+            row["_sources"] = "fts"
+        else:
+            row["_sources"] = "vec"
+        row["_rrf_score"] = rrf_scores[mid]
+        hydrated.append(row)
+
+    return hydrated
