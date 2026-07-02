@@ -1,0 +1,55 @@
+topic_id,topic_name,unit,items_count,question_count,difficulty_mix,calculator_marked,status,notes
+U1.1.1,Converting between moles and particles using Avogadro's number,U1,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U1.1.1
+U1.3.1,Calculate percent composition from molecular formula,U1,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U1.3.1
+U1.4.1,Calculate mass of an element in a mixture component,U1,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U1.4.1
+U1.5.1,Write ground-state electron configuration for neutral atoms,U1,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U1.5.1
+U1.6.1,Relate PES peak position to binding energy and peak height to number of electrons,U1,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U1.6.1
+U1.7.1,Predict relative atomic radius based on periodic position,U1,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U1.7.1
+U2.1.1,Identifying Bond Type by Electronegativity Difference,U2,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U2.1.1
+U2.2.1,Reading a Potential Energy vs. Internuclear Distance Graph,U2,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U2.2.1
+U2.3.1,Coordination Number in NaCl Ionic Crystal,U2,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U2.3.1
+U2.5.1,Counting Bonding and Lone Pairs in a Simple Lewis Structure,U2,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U2.5.1
+U2.6.1,Calculating Formal Charge,U2,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U2.6.1
+U2.7.1,Predicting Molecular Geometry with VSEPR,U2,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U2.7.1
+U3.1.1,Identifying Intermolecular Forces,U3,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U3.1.1
+U3.2.1,Classifying Solid Types,U3,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U3.2.1
+U3.4.1,"Energy, Frequency, and Wavelength Relationships",U3,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U3.4.1
+U3.5.1,Beer-Lambert Law Variables,U3,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U3.5.1
+U3.7.1,Applying PV = nRT,U3,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U3.7.1
+U3.8.1,Postulates of Kinetic Molecular Theory,U3,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U3.8.1
+U4.2.1,Identifying spectator ions and writing the net ionic equation for a precipitation reaction,U4,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U4.2.1
+U4.3.1,Interpreting particulate (molecular-level) diagrams to identify a balanced chemical equation,U4,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U4.3.1
+U4.5.1,Using the coefficients of a balanced equation as a mole ratio to relate amounts of reactants and products,U4,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U4.5.1
+U4.6.1,Understanding the equivalence point as the stoichiometric point where moles of titrant equal moles required to react completely,U4,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U4.6.1
+U4.8.1,Writing the net ionic equation for the neutralization of a strong acid by a strong base,U4,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U4.8.1
+U4.9.1,Assigning oxidation numbers to atoms in a compound or polyatomic ion using standard rules,U4,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U4.9.1
+U5.1.1,Expressing reaction rate as the change in concentration of a species per unit time,U5,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U5.1.1
+U5.2.1,Identifying the order with respect to each reactant and the overall order from a given rate law,U5,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U5.2.1
+U5.3.1,Recognizing that the half-life of a first-order reaction is constant and independent of initial concentration,U5,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U5.3.1
+U5.6.1,Identifying activation energy and the enthalpy change on a potential-energy versus reaction-coordinate diagram,U5,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U5.6.1
+U5.7.1,Distinguishing intermediates from catalysts and overall reactants/products in a multi-step mechanism,U5,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U5.7.1
+U5.11.1,Understanding that a catalyst increases rate by lowering the activation energy without being consumed or changing ΔH,U5,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U5.11.1
+U6.1.1,Endothermic and Exothermic Processes,U6,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U6.1.1
+U6.3.1,Heat Transfer and Thermal Equilibrium,U6,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U6.3.1
+U6.4.1,Heat Capacity and Calorimetry,U6,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U6.4.1
+U6.5.1,Energy of Phase Changes,U6,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U6.5.1
+U6.7.1,Bond Enthalpies,U6,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U6.7.1
+U6.8.1,Enthalpy of Formation (Hess's Law),U6,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U6.8.1
+U7.1.1,Recognizing that chemical equilibrium is a dynamic state where forward and reverse rates are equal,U7,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U7.1.1
+U7.3.1,"Writing the K_c expression for a gas-phase reaction, omitting pure solids and liquids",U7,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U7.3.1
+U7.5.1,Correctly filling in the Change row of an ICE table using reaction stoichiometry,U7,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U7.5.1
+U7.7.1,Predicting the direction of equilibrium shift when a reactant or product concentration is changed,U7,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U7.7.1
+U7.8.1,Writing the solubility-product expression for a slightly soluble ionic solid,U7,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U7.8.1
+U7.9.1,Predicting how the presence of a common ion affects the solubility of a slightly soluble salt,U7,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U7.9.1
+U8.1.1,Introduction to Acids and Bases,U8,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U8.1.1
+U8.2.1,pH and pOH of Strong Acids and Bases,U8,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U8.2.1
+U8.3.1,Weak Acid and Base Equilibria,U8,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U8.3.1
+U8.5.1,Acid-Base Titrations,U8,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U8.5.1
+U8.8.1,Properties of Buffers,U8,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U8.8.1
+U8.9.1,Henderson-Hasselbalch Equation,U8,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U8.9.1
+U9.1.1,Predicting the sign of ΔS based on changes in molecular disorder,U9,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U9.1.1
+U9.2.1,Ranking substances by absolute molar entropy based on phase and complexity,U9,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U9.2.1
+U9.3.1,Relating the sign of ΔG to thermodynamic favorability (spontaneity),U9,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U9.3.1
+U9.5.1,Qualitatively relating ΔG° and the equilibrium constant K,U9,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U9.5.1
+U9.7.1,Identifying electrode roles and the type of reaction occurring at each,U9,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U9.7.1
+U9.8.1,Connecting the sign of E°_cell to the sign of ΔG° and spontaneity,U9,3,3,F:1|S:1|C:1,no,submitted_for_review,Subtopic U9.8.1
