@@ -84,6 +84,36 @@ def test_scan_manager_anomalies_flags_context_exhausted_worker():
         assert "context window exceeds limit" in flagged[0]["evidence_summary"]
 
 
+def test_scan_manager_anomalies_warns_before_context_exhaustion():
+    with isolated_env():
+        local_facts.upsert_status("worker_course", "进行中", "IGCSE Physics 0625 Batch 8 production")
+        local_facts.append_log(
+            "worker_course",
+            "say",
+            "continuing production; context: 86.5% (227k/262k)",
+        )
+        local_facts.append_log(
+            "review_course",
+            "say",
+            "review standby; context: 91% (238k/262k)",
+        )
+
+        findings = task_event_scanner.scan_manager_anomalies()
+        by_category = {row.get("category"): row for row in findings}
+
+        usage_warning = by_category["worker_context_usage_warning"]
+        assert usage_warning["agent"] == "worker_course"
+        assert usage_warning["allow_continue_original_task"] is True
+        assert usage_warning["recommended_action"] == "monitor_context_and_split_next_packet"
+        assert "context_usage=86.5%" in usage_warning["evidence_summary"]
+
+        compact = by_category["worker_context_compact_recommended"]
+        assert compact["agent"] == "review_course"
+        assert compact["allow_continue_original_task"] is False
+        assert compact["recommended_action"] == "run_eduflow_compact_before_long_work"
+        assert "context_usage=91%" in compact["evidence_summary"]
+
+
 def test_scan_manager_anomalies_flags_high_priority_unacked_worker_producing():
     with isolated_env():
         msg_id = local_facts.append_message(

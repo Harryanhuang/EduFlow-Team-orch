@@ -114,6 +114,41 @@ def pop_bool_flag(rest: list[str], flag: str) -> bool:
 
 
 @contextlib.contextmanager
+def file_lock(path: Path, *, timeout: float = 5.0):
+    """fcntl.flock exclusive lock, protecting read-modify-write sequences.
+
+    Derives a `.lock` sibling from *path* (e.g. ``foo.json.lock``).
+    Creates the lock file (and parent dirs) on demand.
+
+    When *timeout* > 0 (the default), spins with ``LOCK_NB`` for up to
+    *timeout* seconds before raising ``TimeoutError``.  When *timeout*
+    <= 0, blocks indefinitely on ``LOCK_EX``.
+    """
+    lock_path = path.with_suffix(path.suffix + ".lock")
+    lock_path.parent.mkdir(parents=True, exist_ok=True)
+    fd = open(lock_path, "w")
+    try:
+        if timeout <= 0:
+            fcntl.flock(fd, fcntl.LOCK_EX)
+        else:
+            deadline = time.monotonic() + timeout
+            while True:
+                try:
+                    fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                    break
+                except BlockingIOError:
+                    if time.monotonic() >= deadline:
+                        raise TimeoutError(
+                            f"file_lock: timed out after {timeout}s waiting for {lock_path}"
+                        )
+                    time.sleep(0.05)
+        yield
+    finally:
+        fcntl.flock(fd, fcntl.LOCK_UN)
+        fd.close()
+
+
+@contextlib.contextmanager
 def flock(lock_path: Path):
     """Hold an exclusive fcntl lock on `lock_path` for the body's lifetime.
 

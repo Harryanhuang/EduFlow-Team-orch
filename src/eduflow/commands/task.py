@@ -15,6 +15,8 @@
   task manager-closeout <id> --actor manager
   task manager-overview
   task scan-anomalies
+  task auto-ops-context [--send-manager]
+  task auto-ops-production [--send-manager]
   task manager-actions
   task manager-action-apply <action_code> --subject-id <id> [--confirm] [--skip-verifier]
   task manager-panel
@@ -35,15 +37,17 @@ import json
 import sys
 
 from eduflow.commands import say as say_cmd
+from eduflow.commands import send as send_cmd
 from eduflow.commands import workflow as workflow_cmd
-from eduflow.runtime import config, paths, tunables
+from eduflow.runtime import config, context_monitor, paths, tmux, tunables
 from eduflow.store import (
+    local_facts,
     task_event_scanner, task_publish_gate, task_publish_render, tasks,
     subject_verifier,
 )
 from eduflow.util import (
     error_exit, fmt_time_ms, maybe_print_help, pop_flag, usage_error,
-    pop_bool_flag, print_json,
+    pop_bool_flag, print_json, now_ms,
 )
 
 _AUTO_STAGE_REASSURANCE_REASONS = frozenset({
@@ -87,6 +91,8 @@ USAGE = (
     "  eduflow task manager-closeout <id> --actor manager\n"
     "  eduflow task manager-overview\n"
     "  eduflow task scan-anomalies\n"
+    "  eduflow task auto-ops-context [--send-manager]\n"
+    "  eduflow task auto-ops-production [--send-manager]\n"
     "  eduflow task manager-actions\n"
     "  eduflow task manager-action-apply <action_code> --subject-id <id> [--confirm] [--skip-verifier]\n"
     "  eduflow task manager-panel\n"
@@ -587,6 +593,295 @@ def _cmd_scan_anomalies(rest: list[str]) -> int:
     return 0
 
 
+def _auto_ops_context_row(agent: str, session: str, *, session_alive: bool) -> dict:
+    row = {
+        "agent": agent,
+        "level": "unknown",
+        "percent": None,
+        "marker": "-",
+        "recommended_action": "no_action",
+        "allow_continue_original_task": True,
+    }
+    if not session_alive:
+        row.update({
+            "level": "no_session",
+            "marker": f"tmux_session_missing:{session}",
+            "recommended_action": "restore_team_runtime",
+            "allow_continue_original_task": False,
+        })
+        return row
+
+    target = tmux.Target(session, agent)
+    if not tmux.has_window(target):
+        row.update({
+            "level": "no_window",
+            "marker": "tmux_window_missing",
+            "recommended_action": "hire_or_recover_agent",
+            "allow_continue_original_task": False,
+        })
+        return row
+
+    text = tmux.capture_pane(target, lines=80)
+    signal = context_monitor.detect_context_usage(text)
+    if signal is None:
+        row.update({"level": "ok", "marker": "no_context_pressure_signal"})
+        return row
+
+    row.update({
+        "level": signal.level,
+        "percent": signal.percent,
+        "marker": signal.marker,
+    })
+    if signal.exhausted:
+        row.update({
+            "recommended_action": "run_eduflow_compact_then_restart_or_reidentify_agent",
+            "allow_continue_original_task": False,
+        })
+    elif signal.compact_recommended:
+        row.update({
+            "recommended_action": "run_eduflow_compact_agent_before_long_work",
+            "allow_continue_original_task": False,
+        })
+    else:
+        row.update({
+            "recommended_action": "monitor_and_split_next_packet",
+            "allow_continue_original_task": True,
+        })
+    return row
+
+
+def _auto_ops_context_report(rows: list[dict]) -> str:
+    risk_rows = [row for row in rows if row.get("level") not in {"ok"}]
+    lines = [
+        "auto_ops context snapshot",
+        f"agents={len(rows)} risks={len(risk_rows)}",
+    ]
+    for row in rows:
+        percent = row.get("percent")
+        pct = "-" if percent is None else f"{percent:g}%"
+        lines.append(
+            f"- {row['agent']}: level={row['level']} pct={pct} "
+            f"marker={row['marker']} "
+            f"allow_continue_original_task="
+            f"{str(bool(row.get('allow_continue_original_task'))).lower()} "
+            f"recommended_action={row['recommended_action']}"
+        )
+    return "\n".join(lines)
+
+
+def _cmd_auto_ops_context(rest: list[str]) -> int:
+    send_manager = pop_bool_flag(rest, "--send-manager")
+    if rest:
+        return usage_error("usage: eduflow task auto-ops-context [--send-manager]")
+
+    try:
+        agents = sorted(config.agent_names())
+    except Exception as e:
+        return error_exit(f"❌ failed to load team agents: {e}")
+    session = config.session_name()
+    session_alive = tmux.has_session(session)
+    rows = [
+        _auto_ops_context_row(agent, session, session_alive=session_alive)
+        for agent in agents
+    ]
+    report = _auto_ops_context_report(rows)
+    print(report)
+
+    if send_manager:
+        message = (
+            "auto_ops 全员 context 巡检：\n"
+            f"{report}\n\n"
+            "请 manager 只处理 recommended_action != no_action 的风险项；"
+            "90% 以上必须运行 `eduflow compact <agent>` 或飞书 `/compact <agent>`，"
+            "禁止只发文字提醒；100%/limit 再考虑 restart/reidentify。"
+        )
+        rc = send_cmd.main(["manager", "auto_ops", message, "高"])
+        if rc == 0:
+            print("sent_to_manager=true")
+        return rc
+    return 0
+
+
+_PRODUCTION_ACTIVE_STATUSES = frozenset({"进行中", "已接单", "in_progress"})
+_PRODUCTION_IDLE_STATUSES = frozenset({"待命", "空闲", "ready", "idle", "已交付"})
+_PRODUCTION_STALE_AFTER_MS = 30 * 60 * 1000
+
+
+def _task_short(value: str, *, limit: int = 90) -> str:
+    text = " ".join(str(value or "").split())
+    if len(text) <= limit:
+        return text or "-"
+    return text[:limit - 1] + "…"
+
+
+def _overview_work_for_agent(agent: str, overview: dict) -> dict:
+    in_progress = [
+        row for row in overview.get("in_progress", [])
+        if str(row.get("assignee") or "") == agent
+    ]
+    awaiting_review = [
+        row for row in overview.get("awaiting_review", [])
+        if str(row.get("reviewer") or "") == agent
+    ]
+    blocked = [
+        row for row in overview.get("blocked", []) + overview.get("manager_action", [])
+        if str(row.get("assignee") or row.get("owner") or "") == agent
+    ]
+    return {
+        "in_progress": in_progress,
+        "awaiting_review": awaiting_review,
+        "blocked": blocked,
+    }
+
+
+def _auto_ops_production_row(agent: str, overview: dict, now: int) -> dict:
+    status_row = local_facts.get_status(agent) or {}
+    status = str(status_row.get("status") or "")
+    task_text = str(status_row.get("task") or "")
+    updated_at = int(status_row.get("updated_at") or 0)
+    heartbeat_at = int(local_facts.get_heartbeat(agent) or 0)
+    last_signal_at = max(updated_at, heartbeat_at)
+    age_min = None if last_signal_at <= 0 else max(now - last_signal_at, 0) // 60000
+    high_unread = [
+        msg for msg in local_facts.list_messages(agent, unread_only=True)
+        if local_facts.is_high_priority(str(msg.get("priority") or ""))
+    ]
+    work = _overview_work_for_agent(agent, overview)
+    guard = local_facts.runtime_guard_block_evidence(agent)
+    state = "idle"
+    next_action = "no_action"
+    evidence = "no_active_work"
+
+    if guard is not None:
+        state = "blocked"
+        next_action = f"recover_runtime:{agent}"
+        evidence = "runtime_guard_escalation"
+    elif high_unread:
+        state = "waiting_manager" if agent == "manager" else "waiting_worker"
+        next_action = (
+            "manager_read_high_priority_inbox"
+            if agent == "manager"
+            else f"nudge_or_recover:{agent}"
+        )
+        evidence = f"high_priority_unread={len(high_unread)}"
+    elif work["blocked"]:
+        state = "blocked"
+        next_action = f"manager_decide_blocked_task:{work['blocked'][0].get('id')}"
+        evidence = f"blocked_task={work['blocked'][0].get('id')}"
+    elif work["awaiting_review"]:
+        state = "waiting_review"
+        next_action = f"review_queue:{agent}"
+        evidence = f"awaiting_review={work['awaiting_review'][0].get('id')}"
+    elif work["in_progress"]:
+        state = "active"
+        evidence = f"in_progress_task={work['in_progress'][0].get('id')}"
+    elif status in _PRODUCTION_ACTIVE_STATUSES:
+        state = "active"
+        evidence = f"status={status}"
+    elif status in _PRODUCTION_IDLE_STATUSES:
+        state = "idle"
+        evidence = f"status={status}"
+    elif not status and last_signal_at <= 0:
+        state = "idle"
+        evidence = "no_status_or_heartbeat"
+    elif status:
+        evidence = f"status={status}"
+
+    if (
+        state == "active"
+        and last_signal_at > 0
+        and now - last_signal_at >= _PRODUCTION_STALE_AFTER_MS
+    ):
+        state = "stale"
+        next_action = f"peek_agent_pane:{agent}"
+        evidence = f"active_signal_stale_min={age_min}"
+
+    return {
+        "agent": agent,
+        "state": state,
+        "status": status or "-",
+        "task": _task_short(task_text),
+        "high_unread": len(high_unread),
+        "age_min": age_min,
+        "evidence": evidence,
+        "next_action": next_action,
+    }
+
+
+def _auto_ops_production_manager_next(rows: list[dict]) -> str:
+    priority = {
+        "waiting_manager": 0,
+        "blocked": 1,
+        "waiting_worker": 2,
+        "waiting_review": 3,
+        "stale": 4,
+    }
+    actionable = [
+        row for row in rows
+        if row.get("next_action") and row.get("next_action") != "no_action"
+    ]
+    if not actionable:
+        return "no_action"
+    actionable.sort(key=lambda row: (priority.get(str(row.get("state") or ""), 99), str(row.get("agent") or "")))
+    return str(actionable[0]["next_action"])
+
+
+def _auto_ops_production_report(rows: list[dict]) -> str:
+    counts = {
+        "active": 0,
+        "blocked": 0,
+        "waiting_manager": 0,
+        "waiting_review": 0,
+        "stale": 0,
+    }
+    for row in rows:
+        if row.get("state") in counts:
+            counts[str(row["state"])] += 1
+    lines = [
+        "auto_ops production snapshot",
+        (
+            f"active={counts['active']} blocked={counts['blocked']} "
+            f"waiting_manager={counts['waiting_manager']} "
+            f"waiting_review={counts['waiting_review']} stale={counts['stale']}"
+        ),
+    ]
+    for row in rows:
+        age = "-" if row.get("age_min") is None else f"{row['age_min']}m"
+        lines.append(
+            f"- {row['agent']}: state={row['state']} status={row['status']} "
+            f"high_unread={row['high_unread']} age={age} "
+            f"evidence={row['evidence']} next={row['next_action']} "
+            f"task={row['task']}"
+        )
+    lines.append(f"manager_next_action={_auto_ops_production_manager_next(rows)}")
+    return "\n".join(lines)
+
+
+def _cmd_auto_ops_production(rest: list[str]) -> int:
+    send_manager = pop_bool_flag(rest, "--send-manager")
+    if rest:
+        return usage_error("usage: eduflow task auto-ops-production [--send-manager]")
+    try:
+        agents = sorted(config.agent_names())
+        overview = tasks.manager_overview()
+    except Exception as e:
+        return error_exit(f"❌ failed to load team production state: {e}")
+    rows = [_auto_ops_production_row(agent, overview, now_ms()) for agent in agents]
+    report = _auto_ops_production_report(rows)
+    print(report)
+    if send_manager:
+        message = (
+            "auto_ops 全员生产状态巡检：\n"
+            f"{report}\n\n"
+            "请 manager 优先处理 manager_next_action；若为 no_action，保持现有派发节奏。"
+        )
+        rc = send_cmd.main(["manager", "auto_ops", message, "高"])
+        if rc == 0:
+            print("sent_to_manager=true")
+        return rc
+    return 0
+
+
 def _task_brief(row: dict) -> str:
     brief = (
         f"{row['id']} [{row.get('stage') or '-'}] {row['title']} "
@@ -1057,6 +1352,8 @@ def _manager_action_packets() -> list[dict]:
 
 _CONTEXT_GUARD_CATEGORIES = frozenset({
     "worker_context_exhausted",
+    "worker_context_compact_recommended",
+    "worker_context_usage_warning",
     "worker_high_priority_unacked_while_producing",
     "status_pane_truth_conflict",
     "unsafe_long_context_execution",
@@ -2528,6 +2825,8 @@ SUBCOMMANDS = {
     "workflow-status": _cmd_workflow_status,
     "manager-overview": _cmd_manager_overview,
     "scan-anomalies": _cmd_scan_anomalies,
+    "auto-ops-context": _cmd_auto_ops_context,
+    "auto-ops-production": _cmd_auto_ops_production,
     "manager-actions": _cmd_manager_actions,
     "manager-action-apply": _cmd_manager_action_apply,
     "manager-panel": _cmd_manager_panel,
