@@ -1057,12 +1057,20 @@ def _extract_action_packets(rows: list[dict]) -> list[dict]:
     return packets
 
 
-def _manager_action_packets() -> list[dict]:
-    """Return deduplicated manager action packets, degrading to [] on failure."""
-    rows, _ = _safe_aggregate(
-        "task_event_scanner.scan_manager_anomalies",
-        task_event_scanner.scan_manager_anomalies,
-    )
+def _manager_action_packets(degrade: bool = False) -> list[dict]:
+    """Return deduplicated manager action packets.
+
+    Default is fail-fast so existing ``manager-panel`` / ``manager-actions``
+    callers still surface scan errors.  Set ``degrade=True`` to degrade to
+    ``[]`` for ``ops-dashboard``.
+    """
+    if degrade:
+        rows, _ = _safe_aggregate(
+            "task_event_scanner.scan_manager_anomalies",
+            task_event_scanner.scan_manager_anomalies,
+        )
+    else:
+        rows = task_event_scanner.scan_manager_anomalies()
     return _extract_action_packets(rows)
 
 
@@ -1750,12 +1758,17 @@ def _degraded_note(source: str, exc: Exception) -> dict:
     }
 
 
-def _safe_aggregate(label: str, fn):
-    """Call ``fn`` and return (result, degraded_note)."""
+def _safe_aggregate(label: str, fn, default=None):
+    """Call ``fn`` and return (result, degraded_note).
+
+    On exception, returns ``default`` (defaulting to ``[]``) plus a degraded
+    note so callers can degrade gracefully without crashing.
+    """
     try:
         return fn(), None
     except Exception as exc:  # noqa: BLE001
-        return [], _degraded_note(label, exc)
+        fallback = default if default is not None else []
+        return fallback, _degraded_note(label, exc)
 
 
 def _ops_dashboard_summary(employees: list[dict]) -> dict:
@@ -1959,6 +1972,13 @@ def _build_ops_dashboard() -> dict:
     residency, note = _safe_aggregate(
         "residency",
         lambda: _ops_dashboard_residency(employees),
+        default={
+            "resident": 0,
+            "warm": 0,
+            "cold": 0,
+            "wake_failed": 0,
+            "sleep_candidates": 0,
+        },
     )
     if note:
         degraded.append(note)
@@ -1970,13 +1990,7 @@ def _build_ops_dashboard() -> dict:
     if note:
         degraded.append(note)
 
-    manager_rows, note = _safe_aggregate(
-        "task_event_scanner.scan_manager_anomalies",
-        task_event_scanner.scan_manager_anomalies,
-    )
-    if note:
-        degraded.append(note)
-    manager_packets = _extract_action_packets(manager_rows)
+    manager_packets = _manager_action_packets(degrade=True)
 
     top_actions = _ops_dashboard_top_actions(employees, manager_packets, review_queue_rows)
 
