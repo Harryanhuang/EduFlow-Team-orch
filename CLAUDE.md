@@ -20,11 +20,86 @@ src/eduflow/store/              ← file-backed local state (no DB)
 src/eduflow/runtime/            ← config / paths / tmux / watchdog
 src/eduflow/feishu/             ← lark-cli wrapper + router pipeline
 src/eduflow/agents/             ← CliAdapter base + per-CLI adapters
+src/eduflow/memory/             ← thin shim re-exporting from flow_memory
 ```
 
 Tests are in `tests/unit/test_*.py` (per-module),
 `tests/integration/test_*.py` (end-to-end in-process; auto gate),
 and `tests/scenarios/*.md` (operator-run regression playbooks).
+
+## Flow Memory plugin (memory subsystem)
+
+The memory subsystem (`eduflow.memory.*`) is now a thin compatibility shim
+over the standalone **[Flow Memory](https://github.com/Harryanhuang/flow-memory)**
+plugin (v0.1.0).  Flow Memory was extracted from EduFlow in 2026-07 and is
+a separately-installable Python package.
+
+### What this means in practice
+
+- **New code should import from `flow_memory.*`**, not `eduflow.memory.*`
+- **`eduflow.memory.*` still works** via the shim — 514 existing tests pass
+  without modification
+- **CLI commands (`eduflow memory ...`) still work** — same surface
+- **MCP server (`memory_*` tools) still works** — same 23 tools
+
+### When to use flow_memory.* vs eduflow.memory.*
+
+| Use `flow_memory.*` | Use `eduflow.memory.*` |
+|----------------------|-------------------------|
+| New code | Old code that already uses it |
+| External scripts | EduFlow internals |
+| Standalone distribution | Inside EduFlow CLI/MCP |
+
+### Flow Memory locations
+
+- **Repo**: https://github.com/Harryanhuang/flow-memory
+- **Local source**: `../flow-memory/src/flow_memory/` (sibling directory)
+- **Installed**: editable `pip install -e ../flow-memory`
+
+### Flow Memory abstractions (for code review)
+
+When extending memory behavior, **use the abstractions**, not raw SQL:
+
+- `StorageBackend` — pluggable storage (SqliteBackend / PostgresBackend / MarkdownBackend)
+- `VectorBackend` — pluggable vector store (LanceDBBackend)
+- `PathProvider` — pluggable path resolution
+- `MemoryTaxonomy` — configurable layers/kinds/statuses
+- `PromotionPolicy` — configurable reviewer authorization
+- `i18n.templates` — replace hardcoded English/Chinese strings
+
+### Host-specific extensions (EduFlow glue)
+
+Files that **stay in EduFlow** because they contain EduFlow-specific policy:
+
+- `src/eduflow/memory/__init__.py` — re-export shim
+- `src/eduflow/extensions/` — EduFlow-specific extensions (planned)
+- Memory content like subject hierarchies (AP/IGCSE/A-Level curriculum data)
+
+If you're adding a feature that's specific to EduFlow agents/policies, put
+it under `src/eduflow/extensions/`, not in `flow_memory`.
+
+### Common operations
+
+```bash
+# Use the EduFlow memory CLI
+eduflow memory items list
+eduflow memory search "closeout" --hybrid
+eduflow memory profile list
+
+# Or via the flow-memory entry-point (after pip install -e ../flow-memory)
+flow-memory items list
+flow-memory search "closeout" --hybrid
+
+# Run tests
+pytest tests/unit/test_memory*.py   # 514 tests, all pass via shim
+cd ../flow-memory && pytest tests/  # 19 flow_memory self-tests
+```
+
+If you change the memory subsystem:
+1. **First** modify code in `../flow-memory/src/flow_memory/`
+2. **Then** add a thin wrapper in `src/eduflow/memory/` if EduFlow needs
+   backward-compat
+3. **Always** run `pytest tests/unit/test_memory*.py` to verify the shim still works
 
 ## Building rules (READ BEFORE WRITING CODE)
 

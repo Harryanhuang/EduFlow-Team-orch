@@ -13,6 +13,11 @@ metadata:
 
 After receiving artifacts from worker_course or worker_qbank, issue a structured verdict with evidence.
 
+For article-like content, marketing copy, WeChat/Xiaohongshu drafts, school/course
+introductions, or prose-heavy artifacts, run `content-review-orchestration` before
+issuing the final verdict. The content verdict must include gates for source/claim
+audit, structure/logic, voice/AI residue, and platform fit.
+
 ## Verdict Types
 
 | Verdict | Meaning | Manager Action |
@@ -119,4 +124,5 @@ eduflow say review_course "复核完成：<subject> verdict=<verdict>" --to user
 ## Related Skills
 
 - `submit-to-review` — what workers run before sending to you
+- `content-review-orchestration` — content/article review routing and evidence packet
 - `check-closeout` — what manager runs after your verdict is PASS

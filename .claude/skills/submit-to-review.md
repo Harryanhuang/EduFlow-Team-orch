@@ -13,6 +13,10 @@ metadata:
 
 After producing or repairing course/QA artifacts, hand them to `review_course` for formal review. Never send directly to manager — review_course is the mandatory intermediary.
 
+For prose-heavy artifacts such as articles, school/course introductions,
+marketing copy, Xiaohongshu notes, or WeChat drafts, explicitly request
+`content-review-orchestration` and include the target channel.
+
 ## worker_course -> review_course (Subject Launch)
 
 Use this template (from `docs/workflows/igcse-subject-launch/handoff-template.md`):
@@ -65,6 +69,41 @@ eduflow send review_course worker_qbank "请按 igcse-item-level-prototype 复�
 请给 bounded verdict，不做完整题库结论。"
 ```
 
+## content worker -> review_course (Article / Platform Copy)
+
+Use this template when the review target is article-like content rather than a
+question-bank bundle:
+
+```
+请按 content-review-orchestration 复核 <artifact/channel>。
+范围:
+- <file paths / draft sections>
+目标渠道: <WeChat / Xiaohongshu / website / social / internal doc>
+需要 verdict:
+- pass / minor_required / reject / conditional_pass
+请覆盖:
+- source/claim audit
+- structure/logic
+- voice/AI residue
+- platform fit
+如为 minor_required，请列出 issue id、文件/段落、必须修复项。
+```
+
+```bash
+eduflow send review_course worker_course "请按 content-review-orchestration 复核 <artifact/channel>。
+范围:
+- <file paths / draft sections>
+目标渠道: <WeChat / Xiaohongshu / website / social / internal doc>
+需要 verdict:
+- pass / minor_required / reject / conditional_pass
+请覆盖:
+- source/claim audit
+- structure/logic
+- voice/AI residue
+- platform fit
+如为 minor_required，请列出 issue id、文件/段落、必须修复项。"
+```
+
 ## After Sending
 
 1. Update your status to reflect the handoff:
@@ -91,4 +130,5 @@ eduflow send review_course worker_qbank "请按 igcse-item-level-prototype 复�
 ## Related Skills
 
 - `review-verdict` — what review_course runs when issuing a verdict
+- `content-review-orchestration` — article/content review routing
 - `check-closeout` — what manager runs after verdict is PASS
