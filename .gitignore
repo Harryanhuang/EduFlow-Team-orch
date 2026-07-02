@@ -64,3 +64,10 @@ skills/dot-skill/
 .claudeteam-cadence/
 claudeteam
 claudeteam.toml.bak-*
+
+# Generated artifacts — PPTX inspection, verification screenshots, pilot outputs
+/tmp/
+/output/
+/pilot-output/
+strict-review-report.md
+strict-review-summary.json
