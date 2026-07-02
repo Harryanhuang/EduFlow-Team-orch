@@ -24,8 +24,9 @@ same-pool fallback — better to retry a degraded pool than give up.
 from __future__ import annotations
 
 import time
+import uuid
 
-from eduflow.runtime import config, lifecycle, verify
+from eduflow.runtime import config, coordinator, lifecycle, verify
 
 
 # Sentinel for "no fallback matched" — distinct from any lifecycle outcome.
@@ -88,6 +89,8 @@ def execute_fallback_loop(
     restart_fn=None,
     record_fn=None,
     now_fn=None,
+    can_switch_fn=None,
+    record_switch_fn=None,
     trigger: str = "auto",
 ) -> dict:
     """Run the failover loop for one agent and return a structured report.
@@ -106,16 +109,21 @@ def execute_fallback_loop(
       restart_fn(agent, target, runtime_name, reason, prove_ready) → str
       record_fn(event_dict) → None
       now_fn() → float
+      can_switch_fn(pool_id) → bool
+      record_switch_fn(pool_id, agent) → None
     """
     restart_fn = restart_fn or lifecycle.restart_with_runtime
     record_fn = record_fn or verify.record_switch_event
     now_fn = now_fn or time.time
+    can_switch_fn = can_switch_fn or coordinator.can_switch_to_pool
+    record_switch_fn = record_switch_fn or coordinator.record_pool_switch
 
     initial_pool = runtime_pool_id(current_runtime)
     outcomes: list[str] = []
     attempts: list[dict] = []
     events: list[dict] = []
     pool_switched = False
+    switch_id = str(uuid.uuid4())[:8]
 
     last_runtime = current_runtime
     # First pass: prefer cross-pool fallbacks. If the starting runtime has
@@ -170,6 +178,23 @@ def execute_fallback_loop(
            (not initial_pool and fallback_pool):
             pool_switched = True
 
+        # Pool-level rate limit: prevent multiple agents from flooding the
+        # same fallback pool when they all fail at once.
+        if not can_switch_fn(fallback_pool):
+            outcomes.append("pool_rate_limited")
+            attempts.append({
+                "to_runtime": fallback_name,
+                "outcome": "pool_rate_limited",
+                "env_ok": False,
+                "smoke_ok": False,
+                "pool_id": fallback_pool,
+                "ts": now_fn(),
+            })
+            last_runtime = fallback_name
+            avoid_pool = ""
+            prefer_nonempty = False
+            continue
+
         now = now_fn()
         outcome = restart_fn(
             agent,
@@ -194,22 +219,27 @@ def execute_fallback_loop(
 
         event = {
             "ts": now,
+            "switch_id": switch_id,
             "agent": agent,
             "from_runtime": last_runtime,
             "to_runtime": fallback_name,
             "reason": reason,
-            "outcome": outcome,
-            "env_ok": env_ok,
-            "smoke_ok": smoke_ok,
             "trigger": trigger,
-            "pool_id": fallback_pool,
+            "outcome": outcome,
+            "best_outcome": _first_successful_outcome(outcomes),
+            "attempts": [dict(a) for a in attempts],
+            "pool_switched": pool_switched,
             "cross_pool": bool((initial_pool and fallback_pool and fallback_pool != initial_pool)
                                or (not initial_pool and fallback_pool)),
+            "env_ok": env_ok,
+            "smoke_ok": smoke_ok,
+            "pool_id": fallback_pool,
         }
-        record_fn(event)
+        record_fn(**event)
         events.append(event)
 
         if outcome in {"ready", "ready_no_init"}:
+            record_switch_fn(fallback_pool, agent)
             return {
                 "outcome": outcome,
                 "to_runtime": fallback_name,

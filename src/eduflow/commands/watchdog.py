@@ -40,6 +40,7 @@ supervisor.
 from __future__ import annotations
 
 import json
+import os
 import signal
 import subprocess
 import sys
@@ -48,7 +49,10 @@ from pathlib import Path
 
 from eduflow.feishu import chat as _chat
 from eduflow.feishu.cards import simple_card
-from eduflow.runtime import config, paths, pidlock, tmux, tunables, watchdog, lifecycle, wake
+from eduflow.runtime import (
+    config, context_monitor, lifecycle, paths, pidlock, tmux, tunables,
+    watchdog, wake,
+)
 from eduflow.agents import get_adapter
 from eduflow.util import maybe_print_help, read_json, write_json
 
@@ -184,6 +188,8 @@ _CONVERSATION_HISTORY_CORRUPT_MARKERS = (
     "InternalError.Algo.InvalidParameter",
 )
 
+_CONTEXT_ACTION_COOLDOWN_S = 600.0
+
 
 def _guard_state() -> dict:
     path = paths.runtime_guard_state_file()
@@ -199,10 +205,13 @@ def _write_guard_state(data: dict) -> None:
 
 def _update_guard_agent(agent: str, **fields) -> dict:
     """Patch one agent row in runtime guard state and persist it."""
-    data = _guard_state()
-    row = data.setdefault("agents", {}).setdefault(agent, {})
-    row.update(fields)
-    _write_guard_state(data)
+    from eduflow.util import file_lock
+    path = paths.runtime_guard_state_file()
+    with file_lock(path):
+        data = _guard_state()
+        row = data.setdefault("agents", {}).setdefault(agent, {})
+        row.update(fields)
+        _write_guard_state(data)
     return data
 
 
@@ -366,25 +375,28 @@ def _cooldown_secs() -> int:
 
 
 def _record_switch_and_check_cooldown(agent: str, now_s: float) -> tuple[bool, dict]:
-    data = _guard_state()
-    agents = data.setdefault("agents", {})
-    row = agents.setdefault(agent, {})
-    history = [float(x) for x in row.get("switch_times", [])]
-    max_switches, window_s = _runtime_guard_limits()
-    history = [ts for ts in history if now_s - ts <= window_s]
-    history.append(now_s)
-    row["switch_times"] = history
-    row["last_switch_at"] = now_s
-    if len(history) >= max_switches:
-        row["cooldown_until"] = now_s + _cooldown_secs()
-        row["needs_manager_action"] = True
-        row["manager_policy"] = _manager_policy(agent)
-        row["escalation_needed"] = True
-        row["escalation_reason"] = "repeated_switches_entered_cooldown"
-        row["last_alert_level"] = "escalation_repair_in_progress"
+    from eduflow.util import file_lock
+    path = paths.runtime_guard_state_file()
+    with file_lock(path):
+        data = _guard_state()
+        agents = data.setdefault("agents", {})
+        row = agents.setdefault(agent, {})
+        history = [float(x) for x in row.get("switch_times", [])]
+        max_switches, window_s = _runtime_guard_limits()
+        history = [ts for ts in history if now_s - ts <= window_s]
+        history.append(now_s)
+        row["switch_times"] = history
+        row["last_switch_at"] = now_s
+        if len(history) >= max_switches:
+            row["cooldown_until"] = now_s + _cooldown_secs()
+            row["needs_manager_action"] = True
+            row["manager_policy"] = _manager_policy(agent)
+            row["escalation_needed"] = True
+            row["escalation_reason"] = "repeated_switches_entered_cooldown"
+            row["last_alert_level"] = "escalation_repair_in_progress"
+            _write_guard_state(data)
+            return True, data
         _write_guard_state(data)
-        return True, data
-    _write_guard_state(data)
     return False, data
 
 
@@ -412,6 +424,225 @@ def _detect_runtime_failure_reason(target: tmux.Target, adapter) -> str:
     if provider_at >= 0:
         return "provider_unavailable"
     return ""
+
+
+def _maybe_recover_context_pressure(agent: str, target: tmux.Target,
+                                    adapter, resolved: dict,
+                                    now_s: float) -> bool:
+    """Act on pane context pressure before normal runtime failover.
+
+    At 90-99% the CLI is still usually healthy enough to accept a real
+    `/compact`, so run the existing command in a background child and let that
+    command handle post-compact reidentify. At 100% / hard limit markers,
+    compact is often rejected or too late; respawn the same runtime instead.
+
+    Returns True when this guard already took an action for this tick.
+    """
+    text = tmux.capture_pane(target, lines=120)
+    signal = context_monitor.detect_context_usage(text)
+    if not signal:
+        return False
+
+    row = _guard_state().get("agents", {}).get(agent, {})
+    last_action_at = float(row.get("last_context_action_at", 0) or 0)
+    if now_s - last_action_at < _CONTEXT_ACTION_COOLDOWN_S:
+        return True
+
+    current = (
+        lifecycle.current_runtime_status(agent).get("runtime")
+        or resolved.get("selected_runtime")
+        or "inline"
+    )
+    if signal.exhausted:
+        outcome = lifecycle.restart_with_runtime(
+            agent, target, str(current),
+            reason=f"context_exhausted:{signal.marker}",
+            prove_ready=True,
+        )
+        _update_guard_agent(
+            agent,
+            last_context_action="restart",
+            last_context_action_at=now_s,
+            last_context_signal=signal.marker,
+            last_context_outcome=outcome,
+        )
+        print(f"  🔄 context-guard: {agent} restarted at {signal.marker} "
+              f"(outcome={outcome})")
+        return True
+
+    if signal.compact_recommended:
+        env = dict(os.environ)
+        src_path = str(Path.cwd() / "src")
+        old_pythonpath = env.get("PYTHONPATH", "")
+        env["PYTHONPATH"] = (
+            f"{src_path}:{old_pythonpath}" if old_pythonpath else src_path
+        )
+        try:
+            subprocess.Popen(
+                [sys.executable, "-m", "eduflow.cli", "compact", agent],
+                cwd=str(Path.cwd()),
+                env=env,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                start_new_session=True,
+            )
+            outcome = "compact_started"
+        except OSError as e:
+            outcome = f"compact_spawn_failed:{e}"
+        _update_guard_agent(
+            agent,
+            last_context_action="compact",
+            last_context_action_at=now_s,
+            last_context_signal=signal.marker,
+            last_context_outcome=outcome,
+        )
+        print(f"  🧹 context-guard: {agent} {outcome} at {signal.marker}")
+        return True
+
+    if signal.warning:
+        _update_guard_agent(
+            agent,
+            last_context_warning_at=now_s,
+            last_context_signal=signal.marker,
+        )
+    return False
+
+
+def _failback_tunables() -> dict:
+    return {
+        "min_fallback_s": float(tunables.tunable("runtime_guard.failback.min_fallback_s", 300)),
+        "min_healthy_streak": int(tunables.tunable("runtime_guard.failback.min_healthy_streak", 3)),
+        "probe_interval_s": float(tunables.tunable("runtime_guard.failback.probe_interval_s", 30)),
+    }
+
+
+def _maybe_failback(agent: str, target, current: str, primary: str,
+                    now_s: float) -> None:
+    """Probe whether the primary runtime has recovered and, if so, canary-
+    switch the agent back.
+
+    Uses a streak counter: the primary must pass `api_smoke_runtime` at
+    least `min_healthy_streak` times (default 3, interval `probe_interval_s`
+    default 30s) AND the agent must have been on fallback for at least
+    `min_fallback_s` (default 300s) before the canary switch is attempted.
+
+    The canary switch uses `lifecycle.restart_with_runtime` with
+    `prove_ready=True` (same safety as failover).  On success the failback
+    state is cleared; on failure the streak resets and we wait for the next
+    guard tick.  Other agents are NOT switched immediately — the next guard
+    tick handles them (natural staggering).
+    """
+    from eduflow.runtime import verify
+    t = _failback_tunables()
+    min_fallback_s = t["min_fallback_s"]
+    min_healthy_streak = t["min_healthy_streak"]
+    probe_interval_s = t["probe_interval_s"]
+
+    data = _guard_state()
+    fb = data.get("agents", {}).get(agent, {}).get("failback", {})
+    last_probe = float(fb.get("last_primary_smoke_at", 0) or 0)
+    if now_s - last_probe < probe_interval_s:
+        return  # too soon to probe again
+
+    resolved = config.resolved_agent_config(agent)
+    chain = resolved.get("runtime_chain", [])
+    if not chain:
+        return
+    primary_name = str(chain[0].get("name", "inline"))
+    if current == primary_name:
+        return  # already on primary; nothing to do
+
+    # Build a resolved-like dict for the primary runtime's smoke test.
+    primary_rt = chain[0]
+    primary_resolved = dict(resolved)
+    primary_resolved.update({
+        "selected_runtime": primary_name,
+        "cli": primary_rt.get("cli", resolved.get("cli", "claude-code")),
+        "model": primary_rt.get("model", resolved.get("model", "opus")),
+        "provider": primary_rt.get("provider", ""),
+        "env_profile": primary_rt.get("env_profile", ""),
+    })
+
+    verdict, _detail = verify.api_smoke_runtime(primary_resolved)
+    healthy = verdict in {"ok", "skipped"}
+
+    streak = int(fb.get("primary_healthy_streak", 0) or 0)
+    in_fallback_since = float(fb.get("in_fallback_since", 0) or 0)
+    if healthy:
+        streak += 1
+    else:
+        streak = 0
+
+    _update_guard_agent(
+        agent,
+        failback={
+            "primary_runtime": primary_name,
+            "primary_healthy_streak": streak,
+            "last_primary_smoke_at": now_s,
+            "in_fallback_since": in_fallback_since,
+        },
+    )
+
+    if not healthy:
+        return
+
+    if streak < min_healthy_streak:
+        return
+    if in_fallback_since and (now_s - in_fallback_since) < min_fallback_s:
+        return
+
+    # ── Canary failback: switch agent back to primary ──────────────
+    outcome = lifecycle.restart_with_runtime(
+        agent, target, primary_name,
+        reason="failback", prove_ready=True,
+    )
+    if outcome in {lifecycle.READY, lifecycle.READY_NO_INIT}:
+        _update_guard_agent(
+            agent,
+            failback={},  # clear failback state
+            from_runtime=str(current),
+            to_runtime=primary_name,
+            last_switch_reason="failback",
+            last_switch_outcome=outcome,
+            last_switch_at=now_s,
+        )
+        verify.record_switch_event(**{
+            "ts": now_s,
+            "agent": agent,
+            "from_runtime": str(current),
+            "to_runtime": primary_name,
+            "reason": "failback",
+            "outcome": outcome,
+            "trigger": "watchdog",
+        })
+        _notify_runtime_switch(
+            agent, str(current), primary_name,
+            f"failback (primary recovered, streak={streak})",
+        )
+        print(f"  🔀 agent-runtime-guard failback: {agent} switched "
+              f"{current} -> {primary_name} (streak={streak})")
+    else:
+        # Canary failed — reset streak, wait for next tick.
+        _update_guard_agent(
+            agent,
+            failback={
+                "primary_runtime": primary_name,
+                "primary_healthy_streak": 0,
+                "last_primary_smoke_at": now_s,
+                "in_fallback_since": in_fallback_since,
+            },
+        )
+        verify.record_switch_event(**{
+            "ts": now_s,
+            "agent": agent,
+            "from_runtime": str(current),
+            "to_runtime": primary_name,
+            "reason": "failback",
+            "outcome": outcome,
+            "trigger": "watchdog",
+        })
+        print(f"  ⚠️ agent-runtime-guard failback: {agent} canary "
+              f"{current} -> {primary_name} failed (outcome={outcome})")
 
 
 def _guard_agent_runtimes() -> None:
@@ -444,8 +675,17 @@ def _guard_agent_runtimes() -> None:
             adapter = get_adapter(cli)
         except KeyError:
             continue
+        if _maybe_recover_context_pressure(agent, target, adapter, resolved, now_s):
+            continue
         reason = _detect_runtime_failure_reason(target, adapter)
         if not reason:
+            # No failure on current runtime — check if agent is on
+            # fallback and primary might have recovered.
+            chain = resolved.get("runtime_chain", [])
+            primary_name = str(chain[0].get("name", "inline")) if chain else "inline"
+            current = lifecycle.current_runtime_status(agent).get("runtime") or resolved.get("selected_runtime", "inline")
+            if str(current) != primary_name:
+                _maybe_failback(agent, target, str(current), primary_name, now_s)
             continue
         current = lifecycle.current_runtime_status(agent).get("runtime") or resolved.get("selected_runtime", "inline")
         _update_guard_agent(
@@ -481,11 +721,21 @@ def _guard_agent_runtimes() -> None:
             hit_cooldown, _ = _record_switch_and_check_cooldown(agent, now_s)
             _notify_runtime_switch(agent, str(current), str(to_runtime),
                                    f"{reason} (best={best}, attempts={attempts}, cross_pool={pool_switched})")
+            # Record failback state so the guard can probe the original
+            # primary for recovery.  Preserve existing in_fallback_since
+            # if the agent was already on a fallback chain.
+            existing_fb = _guard_state().get("agents", {}).get(agent, {}).get("failback", {})
             _update_guard_agent(
                 agent,
                 escalation_needed=False,
                 escalation_reason="",
                 last_alert_level="auto_switched_recovered",
+                failback={
+                    "primary_runtime": str(current),
+                    "primary_healthy_streak": 0,
+                    "last_primary_smoke_at": 0.0,
+                    "in_fallback_since": existing_fb.get("in_fallback_since") or now_s,
+                },
             )
             print(f"  🔀 agent-runtime-guard: {agent} switched {current} -> {to_runtime} "
                   f"({reason}, attempts={attempts}, cross_pool={pool_switched})")

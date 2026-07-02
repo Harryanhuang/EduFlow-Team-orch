@@ -29,18 +29,25 @@ def _emit_text(events: list[dict]) -> None:
         return
     for e in events:
         ts = _fmt_time(float(e.get("ts") or 0))
+        sid = e.get("switch_id", "-")
         agent = e.get("agent", "?")
         from_rt = e.get("from_runtime") or "-"
         to_rt = e.get("to_runtime") or "-"
         reason = e.get("reason") or "-"
         outcome = e.get("outcome") or "-"
+        best = e.get("best_outcome") or ""
         trigger = e.get("trigger") or "-"
+        n_attempts = len(e.get("attempts") or [])
+        pool_sw = "pool_sw" if e.get("pool_switched") else ""
         cross_pool = "cross_pool" if e.get("cross_pool") else ""
         env_ok = "env_ok" if e.get("env_ok") else ("env_bad" if e.get("env_ok") is False else "")
         smoke_ok = "smoke_ok" if e.get("smoke_ok") else ("smoke_bad" if e.get("smoke_ok") is False else "")
-        tags = " ".join(filter(None, [cross_pool, env_ok, smoke_ok]))
-        print(f"  {ts}  {agent:<16}  {from_rt} -> {to_rt:<30}  "
-              f"reason={reason:<20}  outcome={outcome:<18}  trigger={trigger:<10} {tags}")
+        tags = " ".join(filter(None, [cross_pool, pool_sw, env_ok, smoke_ok]))
+        best_part = f"  best={best}" if best and best != outcome else ""
+        attempts_part = f"  attempts={n_attempts}" if n_attempts > 1 else ""
+        print(f"  {ts}  [{sid}]  {agent:<16}  {from_rt} -> {to_rt:<30}  "
+              f"reason={reason:<20}  outcome={outcome:<18}  trigger={trigger:<10}"
+              f"{best_part}{attempts_part} {tags}")
 
 
 def main(argv: list[str]) -> int:

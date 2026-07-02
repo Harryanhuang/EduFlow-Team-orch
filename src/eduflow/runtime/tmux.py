@@ -103,6 +103,21 @@ def list_panes(target: Target, *, run: Callable = _default_run) -> list[PaneInfo
     return panes
 
 
+def get_pane_pid(target: Target, *, run: Callable = _default_run) -> int | None:
+    """Return the foreground PID of *target*'s pane, or ``None`` on failure.
+
+    Uses tmux's ``#{pane_pid}`` format variable which reports the PID of the
+    pane's current foreground process.
+    """
+    r = run(["tmux", "display-message", "-t", str(target), "-p", "-F", "#{pane_pid}"])
+    if r.returncode != 0:
+        return None
+    try:
+        return int(r.stdout.strip())
+    except (ValueError, TypeError):
+        return None
+
+
 def preferred_pane_target(target: Target, *, run: Callable = _default_run) -> Target:
     """Pick the pane that is most likely to be the agent's actual work surface.
 

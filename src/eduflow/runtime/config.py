@@ -188,11 +188,14 @@ def env_profile_config(name: str) -> dict:
     if name not in profiles:
         raise KeyError(f"env profile {name!r} not in env_profiles")
     out = {k: _resolve_env_reference(v) for k, v in profiles[name].items()}
+    # Sensitive keys: prefer secrets file over os.environ backfill.
+    from eduflow.runtime import agent_auth
+    secrets = agent_auth.load_secrets()
     for key in _SENSITIVE_PROFILE_KEYS:
         if not out.get(key):
-            env_val = env_str(key)
-            if env_val:
-                out[key] = env_val
+            secret_val = secrets.get(key) or env_str(key)
+            if secret_val:
+                out[key] = secret_val
     return out
 
 

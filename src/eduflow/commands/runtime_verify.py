@@ -25,7 +25,8 @@ import time
 from eduflow.runtime import config, lifecycle, paths, tmux, verify
 from eduflow.store import local_facts
 from eduflow.util import (
-    maybe_print_help, pop_bool_flag, print_json, reject_extra_args,
+    file_lock, maybe_print_help, pop_bool_flag, print_json, read_json,
+    reject_extra_args, write_json,
 )
 from eduflow.agents import get_adapter
 
@@ -234,6 +235,20 @@ def _emit_text(v: dict) -> None:
     print(f"  inbox_state:      {v['inbox_state']}")
 
 
+def _clear_stale_runtime_guard(agent: str, verdict: str) -> None:
+    """Drop stale guard escalation after a fresh proved-ready verdict."""
+    if verdict != "proved_ready":
+        return
+    path = paths.runtime_guard_state_file()
+    with file_lock(path):
+        data = read_json(path, {"agents": {}})
+        agents = data.setdefault("agents", {})
+        if agent not in agents:
+            return
+        del agents[agent]
+        write_json(path, data)
+
+
 def main(argv: list[str]) -> int:
     rest = list(argv)
     if maybe_print_help(rest, USAGE):
@@ -249,6 +264,7 @@ def main(argv: list[str]) -> int:
         print(f"❌ unexpected args: {extra}\n{USAGE}")
         return 1
     v = compute_verdict(agent, live_smoke=live_smoke)
+    _clear_stale_runtime_guard(agent, str(v.get("verdict") or ""))
     if as_json:
         print_json(v)
     else:

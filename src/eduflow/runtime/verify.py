@@ -27,6 +27,7 @@ import json
 import os
 import subprocess
 import time
+import uuid
 from pathlib import Path
 
 from eduflow.runtime import config, paths
@@ -293,15 +294,56 @@ def _switch_events_path() -> Path:
     return paths.state_file("facts/runtime-switch-events.jsonl")
 
 
-def record_switch_event(event: dict) -> None:
+def record_switch_event(
+    *,
+    agent: str,
+    from_runtime: str,
+    to_runtime: str,
+    reason: str,
+    outcome: str,
+    trigger: str = "",
+    env_ok: bool | None = None,
+    smoke_ok: bool | None = None,
+    inbox_ok: bool | None = None,
+    switch_id: str | None = None,
+    best_outcome: str = "",
+    attempts: list[dict] | None = None,
+    pool_switched: bool = False,
+    cross_pool: bool = False,
+    pool_id: str = "",
+    ts: float | None = None,
+    **_extra: object,
+) -> None:
     """Append one switch event to the JSONL log.
 
-    Required keys (caller must provide): `agent`, `from_runtime`,
-    `to_runtime`, `reason`, `outcome`. Optional: `env_ok`, `smoke_ok`,
-    `inbox_ok`, `trigger`. `ts` is added here if missing.
+    Required: `agent`, `from_runtime`, `to_runtime`, `reason`, `outcome`.
+    `switch_id` is auto-generated (8-char uuid4) if not provided.
+    `**_extra` absorbs unknown keys for forward-compat with callers that
+    pass richer dicts.
     """
-    row = dict(event)
-    row.setdefault("ts", time.time())
+    row: dict = {
+        "ts": ts or time.time(),
+        "switch_id": switch_id or str(uuid.uuid4())[:8],
+        "agent": agent,
+        "from_runtime": from_runtime,
+        "to_runtime": to_runtime,
+        "reason": reason,
+        "trigger": trigger,
+        "outcome": outcome,
+        "best_outcome": best_outcome,
+        "attempts": attempts or [],
+        "pool_switched": pool_switched,
+        "cross_pool": cross_pool,
+    }
+    # Carry optional booleans only when set (keeps event compact).
+    if env_ok is not None:
+        row["env_ok"] = env_ok
+    if smoke_ok is not None:
+        row["smoke_ok"] = smoke_ok
+    if inbox_ok is not None:
+        row["inbox_ok"] = inbox_ok
+    if pool_id:
+        row["pool_id"] = pool_id
     path = _switch_events_path()
     path.parent.mkdir(parents=True, exist_ok=True)
     try:
