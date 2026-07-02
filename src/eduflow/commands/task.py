@@ -1057,20 +1057,13 @@ def _extract_action_packets(rows: list[dict]) -> list[dict]:
     return packets
 
 
-def _manager_action_packets(degrade: bool = False) -> list[dict]:
-    """Return deduplicated manager action packets.
+def _manager_action_packets() -> list[dict]:
+    """Return deduplicated manager action packets (fail-fast).
 
-    Default is fail-fast so existing ``manager-panel`` / ``manager-actions``
-    callers still surface scan errors.  Set ``degrade=True`` to degrade to
-    ``[]`` for ``ops-dashboard``.
+    ``manager-panel`` / ``manager-actions`` callers surface scan errors
+    directly; the ops dashboard uses ``_safe_aggregate`` instead.
     """
-    if degrade:
-        rows, _ = _safe_aggregate(
-            "task_event_scanner.scan_manager_anomalies",
-            task_event_scanner.scan_manager_anomalies,
-        )
-    else:
-        rows = task_event_scanner.scan_manager_anomalies()
+    rows = task_event_scanner.scan_manager_anomalies()
     return _extract_action_packets(rows)
 
 
@@ -1990,7 +1983,13 @@ def _build_ops_dashboard() -> dict:
     if note:
         degraded.append(note)
 
-    manager_packets = _manager_action_packets(degrade=True)
+    manager_anomaly_rows, note = _safe_aggregate(
+        "task_event_scanner.scan_manager_anomalies",
+        task_event_scanner.scan_manager_anomalies,
+    )
+    if note:
+        degraded.append(note)
+    manager_packets = _extract_action_packets(manager_anomaly_rows)
 
     top_actions = _ops_dashboard_top_actions(employees, manager_packets, review_queue_rows)
 

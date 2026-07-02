@@ -3839,6 +3839,27 @@ def test_task_ops_dashboard_degraded_mode_keeps_rc_zero():
         assert data["summary"]["agents_total"] == 1
 
 
+def test_task_ops_dashboard_manager_anomaly_scanner_failure_is_degraded():
+    with isolated_env():
+        local_facts.upsert_status("worker_course", "待命", "ready")
+        local_facts.touch_heartbeat("worker_course")
+
+        def boom():
+            raise RuntimeError("manager anomaly scanner failed")
+
+        with attr_patch(task_event_scanner, scan_manager_anomalies=boom):
+            rc, out, err = run_cli(["task", "ops-dashboard", "--json"])
+        assert rc == 0, err
+        data = json.loads(out)
+        assert data["degraded"]
+        assert any(
+            d["source"] == "task_event_scanner.scan_manager_anomalies"
+            and d["error_type"] == "RuntimeError"
+            for d in data["degraded"]
+        )
+        assert data["manager_actions"] == []
+
+
 def test_task_ops_dashboard_text_contains_summary_top_actions_employees():
     with isolated_env():
         local_facts.upsert_status("worker_course", "待命", "ready")
