@@ -1,0 +1,65 @@
+{
+  "schema_version": "1",
+  "source_id": "primary_syllabus",
+  "page_ref_convention": "printed_page",
+  "physical_page_offset_note": "printed_page ≈ physical_page for CAIE IGCSE syllabi.",
+  "mappings": [
+    {
+      "target": "assessment_identity.system",
+      "page_refs": [
+        "title page (physical 1)"
+      ],
+      "evidence_note": "Cambridge IGCSE syllabus publication."
+    },
+    {
+      "target": "assessment_identity.valid_from",
+      "page_refs": [
+        "title page (physical 1)"
+      ],
+      "evidence_note": "Syllabus valid 2025 → 2026."
+    },
+    {
+      "target": "topics.aqa-ial-english-language-7702.scope",
+      "page_refs": [
+        "p.5-9"
+      ],
+      "evidence_note": "Aims, content overview, assessment overview."
+    },
+    {
+      "target": "topics.aqa-ial-english-language-7702-t003.scope",
+      "page_refs": [
+        "p.10-12"
+      ],
+      "evidence_note": "Topic 3: Language variation (International A-level only) (page 15)."
+    },
+    {
+      "target": "topics.aqa-ial-english-language-7702-t004.scope",
+      "page_refs": [
+        "p.12-14"
+      ],
+      "evidence_note": "Topic 4: Language exploration (International A-level only) (page 15)."
+    },
+    {
+      "target": "assessment.papers",
+      "page_refs": [
+        "p.45-49"
+      ],
+      "evidence_note": "Paper structure, durations, weighting."
+    },
+    {
+      "target": "assessment.assessment_objectives",
+      "page_refs": [
+        "p.8-9"
+      ],
+      "evidence_note": "AO definitions in Section 2."
+    },
+    {
+      "target": "assessment.question_styles",
+      "page_refs": [
+        "p.46-47"
+      ],
+      "evidence_note": "Question styles and command words."
+    }
+  ],
+  "draft_notes": []
+}

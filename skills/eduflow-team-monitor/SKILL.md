@@ -39,11 +39,73 @@ If the user provides a prior Codex thread/session id, first try to read that thr
 Run these checks first. Do not trust one surface alone.
 
 ```bash
-./scripts/eduflowteam task supervisor-check --json
+./scripts/eduflowteam team --json
+./scripts/eduflowteam task auto-ops-production --send-manager
+./scripts/eduflowteam task auto-ops-context --send-manager
 ./scripts/eduflowteam health
 sed -n '1,260p' .eduflow-team-state/facts/status.json
 tail -n 120 .eduflow-team-state/facts/logs.jsonl
 ```
+
+## Context Patrol
+
+Auto_ops must run a context patrol whenever monitoring a live team, before
+long-task dispatch, and at least once per regular patrol cadence:
+
+```bash
+./scripts/eduflowteam task auto-ops-context --send-manager
+```
+
+This command is the first data source for context pressure. It captures each
+agent pane, parses known context footer/limit markers, prints a team snapshot,
+and sends the same structured report to manager.
+
+Rules:
+
+- `80-89%` / `level=warning`: report to manager; recommend smaller next packet.
+- `90-99%` / `level=compact_recommended`: report to manager as blocking for long work; manager must run real `eduflow compact <agent>` or `/compact <agent>` before assigning more long work.
+- `100%`, `level=exhausted`, or context limit markers: report to manager as blocking; recommend restart/reidentify after compact is rejected or too late.
+- `level=ok` with `marker=no_context_pressure_signal` means no parseable context pressure was visible in recent pane output. It is not proof that the context is low.
+- Do not replace this with a text reminder such as “please compact context.” Use the command output or real compact/restart commands.
+
+Read `references/context-patrol.md` when changing patrol cadence, manager
+message format, or deciding what to do when CLI footer data is unavailable.
+
+## Production Patrol
+
+Auto_ops must pair every context patrol with a production patrol. Context tells
+whether an agent can safely continue; production patrol tells what each agent
+is doing, whether handoffs are stuck, and what manager should decide next.
+
+Lightweight patrol commands:
+
+```bash
+./scripts/eduflowteam team --json
+./scripts/eduflowteam task auto-ops-production --send-manager
+./scripts/eduflowteam inbox manager
+```
+
+Use heavier checks only when the lightweight patrol shows drift, stuck work, or
+unclear ownership:
+
+```bash
+./scripts/eduflowteam task supervisor-check --json
+./scripts/eduflowteam task review-queue --reviewer review_course
+tail -n 120 .eduflow-team-state/facts/logs.jsonl
+```
+
+Auto_ops production reports to manager must include:
+
+- active agents and their current production/review/repair role
+- `待接单` or unread high-priority inbox owners
+- in-progress production tasks and review tasks
+- blocked agents or runtime guard escalation
+- stale status or no heartbeat risks
+- one recommended manager action, or `no_action` if the team is healthy
+
+Read `references/production-patrol.md` when changing production report format,
+deciding whether to nudge manager, or classifying an agent as active, idle,
+blocked, stale, or waiting for review.
 
 When runtime/model truth matters, check live tmux, not just status files:
 

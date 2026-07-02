@@ -1,0 +1,302 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "caie-igcse-mathematics-0580",
+      "topic_name": "CAIE IGCSE Mathematics",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Mathematics (0580) syllabus scope.",
+        "Valid: 2023 → 2025."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-mathematics-0580-core",
+      "topic_name": "Core (grades C-G)",
+      "parent_id": "caie-igcse-mathematics-0580",
+      "scope": [
+        "Paper 1 (MCQ) and Paper 3 (structured) at Core tier; grades C-G."
+      ],
+      "out_of_scope": [],
+      "classification_hints": [
+        "Items written for grades C-G; standard mathematical techniques from Core syllabus."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-mathematics-0580-extended",
+      "topic_name": "Extended (grades A*-G)",
+      "parent_id": "caie-igcse-mathematics-0580",
+      "scope": [
+        "Paper 2 (MCQ) and Paper 4 (structured) at Extended tier; covers Core + Supplement; grades A*-G."
+      ],
+      "out_of_scope": [],
+      "classification_hints": [
+        "Items requiring Supplement-level techniques; more complex multi-step problems."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-mathematics-0580-t001",
+      "topic_name": "1. Why choose this syllabus?",
+      "parent_id": "caie-igcse-mathematics-0580",
+      "scope": [
+        "Why choose this syllabus?"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Why choose this syllabus?."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-mathematics-0580-t002",
+      "topic_name": "2. Syllabus overview",
+      "parent_id": "caie-igcse-mathematics-0580",
+      "scope": [
+        "Syllabus overview"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Syllabus overview."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-mathematics-0580-t003",
+      "topic_name": "3. Coordinate geometry",
+      "parent_id": "caie-igcse-mathematics-0580",
+      "scope": [
+        "Coordinate geometry"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Coordinate geometry."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-mathematics-0580-t004",
+      "topic_name": "4. Geometry",
+      "parent_id": "caie-igcse-mathematics-0580",
+      "scope": [
+        "Geometry"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Geometry."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-mathematics-0580-t005",
+      "topic_name": "5. Mensuration",
+      "parent_id": "caie-igcse-mathematics-0580",
+      "scope": [
+        "Mensuration"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Mensuration."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-mathematics-0580-t006",
+      "topic_name": "6. Trigonometry",
+      "parent_id": "caie-igcse-mathematics-0580",
+      "scope": [
+        "Trigonometry"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Trigonometry."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-mathematics-0580-t007",
+      "topic_name": "7. Transformations and vectors",
+      "parent_id": "caie-igcse-mathematics-0580",
+      "scope": [
+        "Transformations and vectors"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Transformations and vectors."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-mathematics-0580-t008",
+      "topic_name": "8. Probability",
+      "parent_id": "caie-igcse-mathematics-0580",
+      "scope": [
+        "Probability"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Probability."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-mathematics-0580-t009",
+      "topic_name": "9. Statistics",
+      "parent_id": "caie-igcse-mathematics-0580",
+      "scope": [
+        "Statistics"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Statistics."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    }
+  ]
+}

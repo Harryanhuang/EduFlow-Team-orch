@@ -1,0 +1,246 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "ap-macroeconomics",
+      "topic_name": "AP Macroeconomics",
+      "parent_id": "",
+      "scope": [
+        "AP Macroeconomics course framework (College Board).",
+        "Valid: 2025 → (ongoing).",
+        "Units 1–6 with cumulative exam weightings."
+      ],
+      "out_of_scope": [
+        "Pre-AP / general high-school level content unless explicitly cited in CED.",
+        "University-level content beyond AP expectations.",
+        "Other AP subjects."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific unit fits.",
+        "Prefer specific Unit N nodes for content questions."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-macroeconomics-unit01",
+      "topic_name": "Unit 1: Basic Economic Concepts",
+      "parent_id": "ap-macroeconomics",
+      "scope": [
+        "Unit 1 content as defined in AP Macroeconomics CED.",
+        "Exam weighting: 5–10%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Basic Economic Concepts."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_1.1",
+          "text": "Core content and concepts for Unit 1: Basic Economic Concepts."
+        },
+        {
+          "ek_id": "EK_1.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 1: Basic Economic Concepts."
+        },
+        {
+          "ek_id": "EK_1.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 1: Basic Economic Concepts."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-macroeconomics-unit02",
+      "topic_name": "Unit 2: Economic Indicators and the Business Cycle",
+      "parent_id": "ap-macroeconomics",
+      "scope": [
+        "Unit 2 content as defined in AP Macroeconomics CED.",
+        "Exam weighting: 12–17%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Economic Indicators and the Business Cycle."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_2.1",
+          "text": "Core content and concepts for Unit 2: Economic Indicators and the Business Cycle."
+        },
+        {
+          "ek_id": "EK_2.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 2: Economic Indicators and the Business Cycle."
+        },
+        {
+          "ek_id": "EK_2.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 2: Economic Indicators and the Business Cycle."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-macroeconomics-unit03",
+      "topic_name": "Unit 3: National Income and Price Determination",
+      "parent_id": "ap-macroeconomics",
+      "scope": [
+        "Unit 3 content as defined in AP Macroeconomics CED.",
+        "Exam weighting: 17–27%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: National Income and Price Determination."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_3.1",
+          "text": "Core content and concepts for Unit 3: National Income and Price Determination."
+        },
+        {
+          "ek_id": "EK_3.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 3: National Income and Price Determination."
+        },
+        {
+          "ek_id": "EK_3.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 3: National Income and Price Determination."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-macroeconomics-unit04",
+      "topic_name": "Unit 4: Financial Sector",
+      "parent_id": "ap-macroeconomics",
+      "scope": [
+        "Unit 4 content as defined in AP Macroeconomics CED.",
+        "Exam weighting: 18–23%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Financial Sector."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_4.1",
+          "text": "Core content and concepts for Unit 4: Financial Sector."
+        },
+        {
+          "ek_id": "EK_4.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 4: Financial Sector."
+        },
+        {
+          "ek_id": "EK_4.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 4: Financial Sector."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-macroeconomics-unit05",
+      "topic_name": "Unit 5: Long-Run Consequences of Stabilization Policies",
+      "parent_id": "ap-macroeconomics",
+      "scope": [
+        "Unit 5 content as defined in AP Macroeconomics CED.",
+        "Exam weighting: 20–30%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Long-Run Consequences of Stabilization Policies."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_5.1",
+          "text": "Core content and concepts for Unit 5: Long-Run Consequences of Stabilization Policies."
+        },
+        {
+          "ek_id": "EK_5.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 5: Long-Run Consequences of Stabilization Policies."
+        },
+        {
+          "ek_id": "EK_5.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 5: Long-Run Consequences of Stabilization Policies."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-macroeconomics-unit06",
+      "topic_name": "Unit 6: Open Economy—International Trade and Finance",
+      "parent_id": "ap-macroeconomics",
+      "scope": [
+        "Unit 6 content as defined in AP Macroeconomics CED.",
+        "Exam weighting: 10–13%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Open Economy—International Trade and Finance."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_6.1",
+          "text": "THIS PAGE IS INTENTIONALLY LEFT BLANK"
+        },
+        {
+          "ek_id": "EK_6.2",
+          "text": "Curriculum Development and Assessment Committee"
+        },
+        {
+          "ek_id": "EK_6.3",
+          "text": "SPECIAL THANKS Christopher Budano and John R"
+        },
+        {
+          "ek_id": "EK_6.4",
+          "text": "AP Macroeconomics Course and Exam Description                                                             ﻿ V"
+        },
+        {
+          "ek_id": "EK_6.5",
+          "text": "THIS PAGE IS INTENTIONALLY LEFT BLANK"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "schema_version": "1",
+  "papers": [
+    {
+      "paper_id": "paper1",
+      "name": "Paper 1 Reading",
+      "question_styles": [
+        "reading_comprehension",
+        "directed_writing"
+      ],
+      "duration_minutes": 90,
+      "total_marks": 50,
+      "weighting_percent": 33,
+      "coverage_notes": "Reading comprehension and directed writing.",
+      "calculator_allowed": false,
+      "formula_sheet_allowed": false
+    },
+    {
+      "paper_id": "paper2",
+      "name": "Paper 2 Directed Writing and Composition",
+      "question_styles": [
+        "directed_writing",
+        "composition"
+      ],
+      "duration_minutes": 120,
+      "total_marks": 50,
+      "weighting_percent": 33,
+      "coverage_notes": "Directed writing and composition (one piece).",
+      "calculator_allowed": false,
+      "formula_sheet_allowed": false
+    },
+    {
+      "paper_id": "paper3",
+      "name": "Paper 3 Speaking and Listening",
+      "question_styles": [
+        "speaking",
+        "listening"
+      ],
+      "duration_minutes": 25,
+      "total_marks": 50,
+      "weighting_percent": 33,
+      "coverage_notes": "Speaking and listening assessment at external exam centre.",
+      "calculator_allowed": false,
+      "formula_sheet_allowed": false
+    }
+  ],
+  "assessment_objectives": [
+    {
+      "ao_id": "AO1",
+      "name": "Reading and understanding",
+      "description": "Read and understand a range of texts; select and organise relevant information.",
+      "weighting_qualification_percent": 33,
+      "weighting_by_paper": {},
+      "classification_hints": [
+        "Items requiring comprehension, summarising, inference from Chinese texts."
+      ]
+    },
+    {
+      "ao_id": "AO2",
+      "name": "Writing",
+      "description": "Write accurately, effectively and creatively in Chinese for different purposes and audiences.",
+      "weighting_qualification_percent": 33,
+      "weighting_by_paper": {},
+      "classification_hints": [
+        "Items requiring composition, directed writing, adaptation of language and register."
+      ]
+    },
+    {
+      "ao_id": "AO3",
+      "name": "Speaking and listening",
+      "description": "Communicate clearly and effectively in spoken Chinese; listen and respond appropriately.",
+      "weighting_qualification_percent": 33,
+      "weighting_by_paper": {},
+      "classification_hints": [
+        "Items involving oral presentation, conversation, listening to and responding to spoken Chinese."
+      ]
+    }
+  ],
+  "question_styles": [
+    {
+      "style_id": "reading_comprehension",
+      "name": "Reading comprehension",
+      "description": "Comprehension of Chinese passages."
+    },
+    {
+      "style_id": "directed_writing",
+      "name": "Directed writing",
+      "description": "Writing based on a given stimulus, audience and purpose."
+    },
+    {
+      "style_id": "composition",
+      "name": "Composition",
+      "description": "Free composition in Chinese."
+    },
+    {
+      "style_id": "speaking",
+      "name": "Speaking",
+      "description": "Spoken response and presentation."
+    },
+    {
+      "style_id": "listening",
+      "name": "Listening",
+      "description": "Listening to spoken Chinese and responding."
+    }
+  ],
+  "difficulty_ladder": [
+    {
+      "level": "foundation",
+      "description": "Recall of facts, definitions or single-step application."
+    },
+    {
+      "level": "standard",
+      "description": "Multi-step application; interpret simple data."
+    },
+    {
+      "level": "challenge",
+      "description": "Cross-topic synthesis; unfamiliar contexts; evaluation."
+    }
+  ],
+  "difficulty_scale": "ordinal_3",
+  "confidence_thresholds": {
+    "route_minimum": 0.8,
+    "classification_minimum": 0.75,
+    "review_required_below": 0.75
+  },
+  "lesson_use": {
+    "supported": false,
+    "modes": [],
+    "teacher_use_contract_ref": "",
+    "student_use_contract_ref": "",
+    "parent_use_contract_ref": "",
+    "notes": "Set supported=true only when a teacher/student/parent mode is declared and validated."
+  },
+  "generation_constraints": {
+    "must_match_scope": true,
+    "mark_out_of_scope_as_extension": true
+  },
+  "marking_guidance": {
+    "command_words_ref": "CAIE IGCSE Chinese - First Language command words (summarise, evaluate, analyse, write, speak) are defined in Section 4 of the syllabus.",
+    "notes": "All papers required for IGCSE award. Speaking and listening (Paper 3) recorded and assessed by examiners."
+  },
+  "duration_hours": 2
+}

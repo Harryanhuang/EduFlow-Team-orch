@@ -1,0 +1,48 @@
+{
+  "schema_version": "1",
+  "id": "edexcel-ial-biology",
+  "assessment_type": "syllabus",
+  "system": "Edexcel International A-Level",
+  "board_or_owner": "Pearson Edexcel",
+  "subject": "Biology",
+  "level": "International A-Level (IAL)",
+  "assessment_code": "BIO (IAL)",
+  "valid_from": "2025",
+  "valid_to": "2026",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_syllabus",
+      "title": "Pearson Edexcel International A-Level Biology specification (2025-2026)",
+      "url": "https://qualifications.pearson.com/en/qualifications/edexcel-international-advanced-levels/biology.html",
+      "source_document_type": "syllabus",
+      "source_layout_profile": "caie_igcse_syllabus",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/02-A-Level知识库/03-考试局/Edexcel/Biology (IAL)/02-课本与考纲/考纲/Edexcel_Biology_ALevel_Specification_2025-2026.pdf",
+      "file_checksum_sha256": "9197bf761e06353b492fa04ee3ac4352a02e7e5baf56f277782f4ca0f53d2703",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "2025-2026 specification",
+      "retrieved_at": "2026-07-02",
+      "page_refs": [
+        "p.1-78"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "printed_page ≈ physical_page for CAIE IGCSE syllabi.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text.",
+      "notes": "Source bundle lives at pilot-output/source-bundles/edexcel-ial-biology-guide/."
+    }
+  ],
+  "aliases": [
+    "edexcel ial biology",
+    "pearson edexcel biology"
+  ],
+  "canonical_id": "edexcel-ial-biology",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "Pearson Edexcel International A-Level Biology. Three papers: P1, P2, P3."
+}

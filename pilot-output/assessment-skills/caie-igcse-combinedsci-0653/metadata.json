@@ -1,0 +1,49 @@
+{
+  "schema_version": "1",
+  "id": "caie-igcse-combinedsci-0653",
+  "assessment_type": "syllabus",
+  "system": "CAIE IGCSE",
+  "board_or_owner": "Cambridge Assessment International Education",
+  "subject": "Combined Science",
+  "level": "IGCSE (14-16 years)",
+  "assessment_code": "0653",
+  "valid_from": "2028",
+  "valid_to": "2029",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_syllabus",
+      "title": "Cambridge IGCSE Combined Science 0653 syllabus (2028-2029)",
+      "url": "https://www.cambridgeinternational.org/Images/0653-2028-2029-syllabus.pdf",
+      "source_document_type": "syllabus",
+      "source_layout_profile": "caie_igcse_syllabus",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/01-IGCSE知识库/03-学科知识/CAIE/Combined Science (0653)/02-课本与考纲/考纲/CAIE_ScienceCombined_0653_Syllabus_2028-2029.pdf",
+      "file_checksum_sha256": "4e8e32df84308227d8132f86bce95e8911638ef7fbc11cf03a6f327bee43f00d",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "2028-2029 syllabus",
+      "retrieved_at": "2026-06-30",
+      "page_refs": [
+        "p.1-87"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "printed_page ≈ physical_page for CAIE IGCSE syllabi.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text.",
+      "notes": "Source bundle lives at pilot-output/source-bundles/caie-igcse-combinedsci-0653-guide/."
+    }
+  ],
+  "aliases": [
+    "igcse combined science",
+    "cambridge combined science 0653",
+    "caie combined"
+  ],
+  "canonical_id": "caie-igcse-combinedsci-0653",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "Cambridge IGCSE Combined Science 0653. Two-tier (Core / Extended); counts as one IGCSE qualification covering Biology, Chemistry and Physics."
+}

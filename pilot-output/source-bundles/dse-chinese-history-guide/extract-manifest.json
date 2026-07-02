@@ -1,0 +1,43 @@
+{
+  "schema_version": "1",
+  "subject": "chinese-history",
+  "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/05-DSE知识库/03-学科知识/DSE Chinese History/02-課本與考綱/考綱/中國歷史 -2028.pdf",
+  "file_checksum_sha256": "00030f36e5244b24859886c0258a6425e9892f91492db58d55f81488e190a6be",
+  "pdfinfo": {
+    "Title": "2028年香港中學文憑考試中國歷史科評核大綱",
+    "Author": "HKEAA",
+    "Creator": "Microsoft® Word 2019",
+    "Producer": "Microsoft® Word 2019",
+    "CreationDate": "Fri Mar 14 14:23:25 2025 CST",
+    "ModDate": "Fri Mar 14 14:18:54 2025 CST",
+    "Custom Metadata": "no",
+    "Metadata Stream": "yes",
+    "Tagged": "yes",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "none",
+    "JavaScript": "no",
+    "Pages": "2",
+    "Encrypted": "no",
+    "Page size": "595.32 x 841.92 pts (A4)",
+    "Page rot": "0",
+    "File size": "158453 bytes",
+    "Optimized": "no",
+    "PDF version": "1.7"
+  },
+  "total_pages": 2,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": 1,
+      "chars": 532,
+      "first_200": "中國歷史 引言 本科的公開評核建基於課程發展議會及香港考試及評核局聯合編訂的中國歷史 科課程及評估指引（中四至中六）。考生宜參閱上述指引，仔細了解詳情。 本 科 公 開 評 核 主 要 考 查 學 生 在 高 中 的 三 年 時 間 內 學 習 本 科 的"
+    },
+    {
+      "physical_page": 2,
+      "printed_page": 2,
+      "chars": 532,
+      "first_200": "部分 內容 比重 時間 試卷一：歷代發展，分甲、乙部 70% 2 小 時 15 分 公開考試 試卷二：歷史專題，設 6 單元 30% 1 小 時 20 分 2028-HKDSE-CH HIST 1 公開考試 試卷一：歷代發展 設 必 答 題"
+    }
+  ]
+}

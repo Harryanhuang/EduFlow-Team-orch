@@ -1,0 +1,90 @@
+{
+  "schema_version": "1",
+  "source_id": "dse-physics-ca-guide",
+  "extracted_at": "2026-06-30",
+  "extracted_by": "worker_syllabus",
+  "extraction_profile": "dse_curriculum_assessment_guide",
+  "sections_extracted": [
+    {
+      "section": "Curriculum framework and learning objectives",
+      "page_refs": ["p.13-16"],
+      "extracted_content_summary": "Aims, knowledge/skills/values learning objectives, design principles, compulsory/elective structure.",
+      "target_asset": "topics.json / assessment.json"
+    },
+    {
+      "section": "Compulsory topics I-V",
+      "page_refs": ["p.17-43"],
+      "extracted_content_summary": "Topic overviews, student learning outcomes, suggested activities, STSE links. Chinese text heavily garbled; structure and hour counts readable.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Elective topics VI-IX (choose 2 of 4)",
+      "page_refs": ["p.44-70"],
+      "extracted_content_summary": "Astronomy and Space Science, Atomic World, Energy and Use of Energy, Medical Physics overviews and learning outcomes. Chinese text heavily garbled; structure and hour counts readable.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Assessment framework",
+      "page_refs": ["p.74-103"],
+      "extracted_content_summary": "Public exam design (Paper 1 60% 2h30m, Paper 2 20% 1h), SBA 20%, question styles, assessment objectives, grading principles. Numeric values reconstructed from structure plus domain knowledge.",
+      "target_asset": "assessment.json"
+    }
+  ],
+  "sections_not_extracted": [
+    {
+      "section": "Title page, copyright, committee lists",
+      "page_refs": ["p.i-ii", "p.130-142"],
+      "reason": "admin / copyright"
+    },
+    {
+      "section": "Chapter 1 overview and rationale",
+      "page_refs": ["p.6-12"],
+      "reason": "programme background"
+    },
+    {
+      "section": "Chapter 2 curriculum planning guidance",
+      "page_refs": ["p.71"],
+      "reason": "school implementation guidance"
+    },
+    {
+      "section": "Chapter 4 learning and teaching strategies",
+      "page_refs": ["p.104-120"],
+      "reason": "teaching guidance"
+    },
+    {
+      "section": "Chapter 5 assessment activities",
+      "page_refs": ["p.121-129"],
+      "reason": "sba implementation guidance"
+    },
+    {
+      "section": "Chapter 6 appendices and references",
+      "page_refs": ["p.130-142"],
+      "reason": "resource guidance / bibliography"
+    }
+  ],
+  "sections_pending_review": [
+    {
+      "section": "High-impact assessment design tables",
+      "page_refs": ["p.74-78"],
+      "reason": "needs_visual_review"
+    },
+    {
+      "section": "Topic overview pages",
+      "page_refs": ["p.17-70"],
+      "reason": "font_encoding_quality"
+    }
+  ],
+  "split_recommendations": {
+    "topics_json": "Compulsory topics I-V and electives VI-IX as topic nodes; curriculum planning and STSE links as references only.",
+    "assessment_json": "Paper structure, SBA, question styles, assessment objectives, confidence thresholds.",
+    "references": "Appendix references, glossary, curriculum planning notes, STSE links."
+  },
+  "known_risks": [
+    "Extractor and reviewer are the same agent; confidence capped at medium.",
+    "Native PDF text extraction degraded by custom font encoding; most Chinese text is unreadable in extracted files.",
+    "Rendered pages not produced; visual review pending.",
+    "Detailed topic scope and assessment numeric values are reconstructed from structural evidence and domain knowledge; independent verification recommended.",
+    "Detailed annual exam item counts and tier rules are outside this guide; rely on HKEAA exam regulations for verification."
+  ],
+  "notes": "No large passages of official text copied; only structured summaries and page references recorded."
+}

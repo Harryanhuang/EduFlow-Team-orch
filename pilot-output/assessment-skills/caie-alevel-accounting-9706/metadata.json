@@ -1,0 +1,49 @@
+{
+  "schema_version": "1",
+  "id": "caie-alevel-accounting-9706",
+  "assessment_type": "syllabus",
+  "system": "CAIE A-Level",
+  "board_or_owner": "Cambridge Assessment International Education",
+  "subject": "Accounting",
+  "level": "A-Level (16-19 years)",
+  "assessment_code": "9706",
+  "valid_from": "2025",
+  "valid_to": "2026",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_syllabus",
+      "title": "Cambridge A-Level Accounting 9706 syllabus (2025-2026)",
+      "url": "https://www.cambridgeinternational.org/Images/9706-2025-2026-syllabus.pdf",
+      "source_document_type": "syllabus",
+      "source_layout_profile": "caie_igcse_syllabus",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/02-A-Level知识库/03-考试局/CAIE/Accounting (9706)/02-课本与考纲/考纲/CAIE_Accounting_9706_Syllabus_2025-2026.pdf",
+      "file_checksum_sha256": "8c47e30de1055eaaf2bdf1277b49f1fed97886c996683fdb9ac8006abdd10b0d",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "2025-2026 syllabus",
+      "retrieved_at": "2026-07-02",
+      "page_refs": [
+        "p.1-40"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "printed_page ≈ physical_page for CAIE IGCSE syllabi.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text.",
+      "notes": "Source bundle lives at pilot-output/source-bundles/caie-alevel-accounting-9706-guide/."
+    }
+  ],
+  "aliases": [
+    "alevel accounting",
+    "cambridge a-level Accounting",
+    "caie a-level Accounting"
+  ],
+  "canonical_id": "caie-alevel-accounting-9706",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "Cambridge A-Level Accounting 9706. 4 papers."
+}

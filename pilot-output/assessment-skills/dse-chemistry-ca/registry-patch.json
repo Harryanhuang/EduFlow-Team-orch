@@ -1,0 +1,21 @@
+{
+  "schema_version": "1",
+  "registry_entries": [
+    {
+      "id": "dse-chemistry-ca",
+      "canonical_id": "dse-chemistry-ca",
+      "assessment_type": "syllabus",
+      "system": "DSE",
+      "subject": "Chemistry",
+      "level": "Senior Secondary (S4-S6)",
+      "assessment_code": "DSE-CHEM",
+      "package_version": "1.0.0",
+      "status": "validated",
+      "active": false,
+      "source_bundle_ref": "pilot-output/source-bundles/dse-chemistry-ca-guide",
+      "skill_package_ref": "pilot-output/assessment-skills/dse-chemistry-ca",
+      "notes": "Awaiting independent source review before promotion to reviewed/active."
+    }
+  ],
+  "patch_note": "Suggest status 'validated' only. Do not set active because source bundle dual_pass_checked=false and no independent reviewer has signed off."
+}

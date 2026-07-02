@@ -1,0 +1,735 @@
+[
+  {
+    "templateId": "cover",
+    "slots": {
+      "title": "A-Level\n课程体系",
+      "subtitle": "与升学｜首期教师专题研修",
+      "description": "统一体系语言 · 对齐 CAIE 规则 · 连接选课与升学 · 落到教学运行 · 建立可复用资料库",
+      "footer": "聚力启新程 研思向国际｜侨高国际部｜教师培训首期"
+    }
+  },
+  {
+    "templateId": "contents",
+    "slots": {
+      "title": "目录",
+      "intro": "从体系认知进入运行规则，再到学生画像、选课升学和教学动作。",
+      "chapter1": "01 A-Level 体系全貌：阶段、资格、学科菜单、国际评价逻辑",
+      "chapter2": "02 CAIE 运行规则：考试季、zone、entry option、paper、合分",
+      "chapter3": "03 IG 桥梁与学生画像：诊断、分层、学科功能、语言支架",
+      "chapter4": "04 选课与升学路径：英港新澳美、牛娃/普娃路径",
+      "chapter5": "05 教学运行与行动清单：背景提升、资料库、专题排期"
+    }
+  },
+  {
+    "templateId": "comparison",
+    "slots": {
+      "title": "信息差不补齐，教学会各说各话",
+      "subtitle": "今天不是所有问题的终点，而是把后续教研、升学沟通和课堂执行放到同一张地图上。",
+      "leftLabel": "本次建立框架",
+      "leftItem1": "统一 A-Level、IG、AS、A2、完整资格等基本概念",
+      "leftItem2": "讲清试卷命名、component、合分和 grade threshold",
+      "leftItem3": "建立选课与升学查询逻辑，避免凭经验拍脑袋",
+      "leftItem4": "明确教师在预估分、推荐信、材料证据中的角色",
+      "rightLabel": "下次进入工具",
+      "rightItem1": "各科 syllabus 深读：AO、content、paper structure",
+      "rightItem2": "近五年真题包：paper、mark scheme、examiner report",
+      "rightItem3": "年度进度表：topic map、课时、mock、补弱节点",
+      "rightItem4": "课型观摩：语言支架、实验、分层任务、反馈闭环"
+    }
+  },
+  {
+    "templateId": "data-highlight",
+    "slots": {
+      "title": "A-Level 是大学预备资格体系",
+      "subtitle": "它不是“英国高考”的简单替代，而是课程选择、考试设计、等级认证和大学录取共同运行。",
+      "data1Num": "55",
+      "data1Desc": "AS & A Level 学科总数；菜单大不等于学校都要开，先看师资、学生画像和升学方向。",
+      "data2Num": "70+",
+      "data2Desc": "IGCSE / O Level 学科规模；覆盖更广，适合作为语言、方法、实验和学科兴趣的桥梁。",
+      "data3Num": "3-4",
+      "data3Desc": "学生常见深入学习科目数；少而精，深度优先，选错科会直接影响可申请专业。",
+      "slogan": "老师从第一节课开始就要对齐 syllabus、paper 和升学要求，而不是只跟教材目录走。"
+    }
+  },
+  {
+    "templateId": "timeline",
+    "slots": {
+      "title": "IG、AS、A2 与完整 A-Level",
+      "subtitle": "桥梁、阶段、完整资格；老师要知道每个阶段解决什么问题、留下什么证据。",
+      "step1Number": "IG",
+      "step1Heading": "国际课程适应",
+      "step1Copy": "完成语言、评价方式、实验习惯和学习方式切换；建立术语表、错题本、阅读记录和基础诊断。",
+      "step2Number": "AS",
+      "step2Heading": "第一阶段成绩",
+      "step2Copy": "形成学科深度和阶段成绩；mock、topic test 与课堂表现会支撑预估分和申请材料。",
+      "step3Number": "A2",
+      "step3Heading": "完整资格收束",
+      "step3Copy": "进一步提升学科深度，与 AS 合并形成完整 A-Level 资格；重点转向真题、弱项补救和 offer 条件达成。"
+    }
+  },
+  {
+    "templateId": "comparison",
+    "slots": {
+      "title": "A-Level 不是高考英语版",
+      "subtitle": "国际版也不是本土版的翻版；真正的差异在选课逻辑、考试结构、评价口径和升学解释。",
+      "leftLabel": "A-Level / 国际版",
+      "leftItem1": "3-4 门深度学习，专业要求倒推选课和学习深度",
+      "leftItem2": "paper / component 分卷，训练要对齐卷面结构和 AO",
+      "leftItem3": "A* 到 U 等级制，等级边界看每一季 official threshold",
+      "leftItem4": "syllabus 是教学标准，教材只是资源之一",
+      "rightLabel": "高考 / 本土惯性",
+      "rightItem1": "多科综合，分数和志愿匹配更集中，路径更统一",
+      "rightItem2": "容易按校内进度组织课堂，忽略 paper 差异",
+      "rightItem3": "容易用百分比、排名或校内分数解释国际等级",
+      "rightItem4": "容易把教材目录、讲义顺序误认为考试局标准"
+    }
+  },
+  {
+    "templateId": "content-three-columns",
+    "slots": {
+      "title": "A-Level、AP 与 IB DP：差异与优势",
+      "subtitle": "不是“谁更高级”，而是学生画像、升学目的地和学校资源条件不同。",
+      "block1Image": "lucide:layers",
+      "block1Heading": "A-Level｜少而深",
+      "block1Copy": "3-4 门核心科目，专业匹配强；外部考试评价清晰，适合较早形成方向、英港新澳路径明确的学生。",
+      "block2Image": "lucide:badge-plus",
+      "block2Heading": "AP｜灵活补充",
+      "block2Copy": "更像大学先修考试；适合美国语境下补强学术挑战度，但通常要与 GPA、活动、文书共同解释。",
+      "block3Image": "lucide:network",
+      "block3Heading": "IB DP｜全人框架",
+      "block3Copy": "六大学科组 + TOK/EE/CAS，综合素养强；但师资协同、内部评估和学生负荷要求都更高。"
+    }
+  },
+  {
+    "templateId": "comparison",
+    "slots": {
+      "title": "三种国际课程怎么选：适配而非高低",
+      "subtitle": "选体系不要只问“哪个更好”，要问学生是否适配、目标国家是否匹配、学校能否稳定交付。",
+      "leftLabel": "学生与升学适配",
+      "leftItem1": "A-Level：适合较早形成专业方向、希望少而深推进的学生",
+      "leftItem2": "AP：适合作为美国申请语境下的学术挑战补充",
+      "leftItem3": "IB DP：适合能力均衡、时间管理强、愿意持续写作和反思的学生",
+      "leftItem4": "转轨学生常需要先收窄不确定性，再逐步拓展背景证据",
+      "rightLabel": "学校交付适配",
+      "rightItem1": "A-Level 可从优势学科切入，资源配置相对聚焦",
+      "rightItem2": "AP 需要和校内 GPA、英文写作、活动和申请叙事配合",
+      "rightItem3": "IB DP 是系统工程，需要 IA、EE、CAS、教师培训和质量保障",
+      "rightItem4": "开课决策要看师资、教务管理、学生基础和长期资料库能力"
+    }
+  },
+  {
+    "templateId": "content-three-columns",
+    "slots": {
+      "title": "三考试局怎么看",
+      "subtitle": "本校主线是 CAIE，其他考试局只作参照；资源、卷号、评分口径不能混用。",
+      "block1Image": "lucide:landmark",
+      "block1Heading": "CAIE",
+      "block1Copy": "本校课程、考务、教研主线；备课、报名、mock、成绩解释和资料库优先按 CAIE 口径运行。",
+      "block2Image": "lucide:blocks",
+      "block2Heading": "Edexcel IAL",
+      "block2Copy": "模块化路线参照；Unit 分阶段报考逻辑可用于理解差异，但题型、评分、合分不能直接套用。",
+      "block3Image": "lucide:badge-check",
+      "block3Heading": "OxfordAQA",
+      "block3Copy": "补充了解国际课程生态；是否适用必须核验授权、科目覆盖、syllabus、paper 和大学认可口径。"
+    }
+  },
+  {
+    "templateId": "content-four-columns",
+    "slots": {
+      "title": "CAIE 授权是一套运行承诺",
+      "subtitle": "授权不是品牌标签，而是学校、教师、学生和升学共同遵守的一套运行规则。",
+      "block1Image": "lucide:school",
+      "block1Heading": "学校",
+      "block1Copy": "课程设置、排课、报名、考试安全、成绩报告按 CAIE 流程管理；教务与学科组要协同。",
+      "block2Image": "lucide:book-open-check",
+      "block2Heading": "教师",
+      "block2Copy": "从 syllabus 而非教材目录备课；每节课要能对应 topic、AO、paper 和可观察的学习证据。",
+      "block3Image": "lucide:users",
+      "block3Heading": "学生与家长",
+      "block3Copy": "参加外部考试局统一评价；成绩具有国际认可度，但平时学习必须持续积累证据和反馈。",
+      "block4Image": "lucide:graduation-cap",
+      "block4Heading": "升学",
+      "block4Copy": "成绩可用于英国、香港、新加坡、澳洲、美国等路径；不同目的地解释逻辑不同，需提前规划。"
+    }
+  },
+  {
+    "templateId": "content-four-columns",
+    "slots": {
+      "title": "CAIE 文件系统地图",
+      "subtitle": "老师不必马上掌握所有细节，但要知道每类问题该查哪份官方文件。",
+      "block1Image": "lucide:file-text",
+      "block1Heading": "Syllabus",
+      "block1Copy": "确认教什么、考什么、AO 是什么、paper 怎么构成；每学期初必读，改版年份必须核验。",
+      "block2Image": "lucide:calendar-clock",
+      "block2Heading": "Timetable / Entry",
+      "block2Copy": "确认考试时间、administrative zone、component、entry option 与报名截止日期；影响倒排进度。",
+      "block3Image": "lucide:files",
+      "block3Heading": "Past Paper 三件套",
+      "block3Copy": "past paper 看题型，mark scheme 看得分点，examiner report 看常见误区；三件套一起使用。",
+      "block4Image": "lucide:gauge",
+      "block4Heading": "Threshold / Hub",
+      "block4Copy": "用 official threshold 解释等级边界；用 School Support Hub 建立资源入口和资料库版本管理。"
+    }
+  },
+  {
+    "templateId": "timeline",
+    "slots": {
+      "title": "考试季、Zone 与 Entry Option",
+      "subtitle": "教学进度从考试窗口倒推，报名从 entry option 开始；任何变更都要早于 deadline。",
+      "step1Number": "01",
+      "step1Heading": "考试季",
+      "step1Copy": "June 是主考试季，November 可作为补考或阶段窗口；年度 topic map、mock 和补弱都要倒排。",
+      "step2Number": "02",
+      "step2Heading": "Administrative Zone",
+      "step2Copy": "中国大陆使用本 zone 官方 timetable；zone 影响考试日期和报名安排，不改变 syllabus 内容。",
+      "step3Number": "03",
+      "step3Heading": "Entry Option",
+      "step3Copy": "教务、学科组、班主任和升学共同确认 component、deadline、重考策略和学生申请路径。"
+    }
+  },
+  {
+    "templateId": "content-two-columns",
+    "slots": {
+      "title": "试卷命名与 Paper / Component",
+      "subtitle": "先看课程代码，再看卷号，再看 component 组合；不要只凭文件名或题型猜。",
+      "block1Image": "lucide:scan-text",
+      "block1Heading": "读懂编号",
+      "block1Copy": "9709 是数学 syllabus code；12 / 32 是 paper variant；June 2026 指考试季和年份；variant 与 zone 有关。",
+      "block2Image": "lucide:route",
+      "block2Heading": "反推教学",
+      "block2Copy": "查 assessment structure、topic map、卷面时长、分值和 AO；再安排课堂顺序、作业结构和 mock 组合。"
+    }
+  },
+  {
+    "templateId": "timeline",
+    "slots": {
+      "title": "合分逻辑与 Grade Threshold",
+      "subtitle": "最终等级不是简单加总，A 不一定永远是 80%；老师要用官方口径解释成绩。",
+      "step1Number": "01",
+      "step1Heading": "Raw Mark",
+      "step1Copy": "先得到每个 component 的 raw mark，例如 Paper 1、Paper 3、Practical 或 Essay paper 的原始分。",
+      "step2Number": "02",
+      "step2Heading": "Weighted Total",
+      "step2Copy": "不同 component 可能按权重换算，形成 syllabus total；mock 设计要尽量模拟真实权重。",
+      "step3Number": "03",
+      "step3Heading": "Threshold → Grade",
+      "step3Copy": "对照具体 series 的 official threshold 得到 A* / A / B 等级；校内百分比只能辅助判断。"
+    }
+  },
+  {
+    "templateId": "content-two-columns",
+    "slots": {
+      "title": "IG 的桥梁功能与年度节奏",
+      "subtitle": "IG 不是“低配版 A-Level”，而是把学生从中文校内学习带到国际课程学习状态。",
+      "block1Image": "lucide:waypoints",
+      "block1Heading": "五个桥梁功能",
+      "block1Copy": "语言衔接、学术表达、考试方式、实验与数据、学习习惯共同决定学生能否进入 A-Level 状态。",
+      "block2Image": "lucide:calendar-range",
+      "block2Heading": "一年制节奏",
+      "block2Copy": "8-9 月诊断分层；10-2 月推进 topic 与补弱；3-6 月真题、mock 与国际考；暑期复盘选课和升学方向。"
+    }
+  },
+  {
+    "templateId": "content-three-columns",
+    "slots": {
+      "title": "入学诊断看五个维度",
+      "subtitle": "分层不是凭感觉，而是为了让教学起点、补弱重点和家校沟通更精准。",
+      "block1Image": "lucide:activity",
+      "block1Heading": "基础与英语",
+      "block1Copy": "看数学、科学、阅读基础，也看题干理解、术语掌握、课堂表达和英文书写速度。",
+      "block2Image": "lucide:clipboard-check",
+      "block2Heading": "习惯与实验",
+      "block2Copy": "通过学习日志、观察、错题复盘和简单实验任务，判断预习、改错、变量和数据处理起点。",
+      "block3Image": "lucide:compass",
+      "block3Heading": "目标方向",
+      "block3Copy": "用学生意向和家长访谈识别理工、商科、人文、艺术等路径；为选课、竞赛和活动做前置判断。"
+    }
+  },
+  {
+    "templateId": "content-three-columns",
+    "slots": {
+      "title": "IG 学科功能地图",
+      "subtitle": "每门学科都承担升学铺垫功能；老师要能说清本学科给未来路径提供什么证据。",
+      "block1Image": "lucide:calculator",
+      "block1Heading": "数学与英语",
+      "block1Copy": "数学是理工商科底层基础；英语是题干理解、课堂表达、essay 写作和申请材料的共同工具。",
+      "block2Image": "lucide:atom",
+      "block2Heading": "理科方向",
+      "block2Copy": "物理支撑工程与计算机，化学支撑医学药学，生物支撑生命科学与医学；实验和数据要提前训练。",
+      "block3Image": "lucide:landmark",
+      "block3Heading": "人文社科",
+      "block3Copy": "中文、经济、历史等支撑表达、文化理解、商科和社会科学方向；重点看阅读、论证和写作质量。"
+    }
+  },
+  {
+    "templateId": "comparison",
+    "slots": {
+      "title": "英语支架与实验能力要贯穿全年",
+      "subtitle": "学科英语不是多背单词，实验也不是考前做几次；两者都要进入日常课堂结构。",
+      "leftLabel": "英语分层支架",
+      "leftItem1": "A 档：原版题、英文追问、扩展表达、课堂 presentation",
+      "leftItem2": "B 档：双语术语表、关键词板书、答题句式和段落模板",
+      "leftItem3": "C 档：预习词表、短句输入、图示化讲解、跟读复述",
+      "leftItem4": "撤支架标志：能独立完成英文 structured question 并解释思路",
+      "rightLabel": "实验能力训练",
+      "rightItem1": "变量控制、数据记录、图像处理要在 topic 中反复出现",
+      "rightItem2": "误差分析、表达规范、安全意识要用 rubric 固化",
+      "rightItem3": "从 IG 阶段建立实验思维和数据素养，避免 A-Level 临时补",
+      "rightItem4": "训练频率回到各科 syllabus、paper 要求和校内实验条件"
+    }
+  },
+  {
+    "templateId": "content-three-columns",
+    "slots": {
+      "title": "学科菜单、启动策略与选课逻辑",
+      "subtitle": "55 门学科不等于都要开；学校开课要看师资、学生画像、升学方向和可持续教研。",
+      "block1Image": "lucide:layers",
+      "block1Heading": "启动刚需",
+      "block1Copy": "Mathematics、English、Physics / Chemistry / Biology 先保证核心方向能跑；排课和教师储备优先。",
+      "block2Image": "lucide:trending-up",
+      "block2Heading": "升学支撑",
+      "block2Copy": "Further Mathematics、Computer Science、Economics 结合师资、学生基础和升学方向评估启动时机。",
+      "block3Image": "lucide:sparkles",
+      "block3Heading": "特色拓展",
+      "block3Copy": "Chinese、Art & Design、Psychology、Business 可丰富学科菜单和差异化画像，但要配套作品/项目证据。"
+    }
+  },
+  {
+    "templateId": "content-three-columns",
+    "slots": {
+      "title": "常见选课组合地图",
+      "subtitle": "组合不是模板承诺，但能帮助老师快速识别硬门槛、强建议和潜在错配。",
+      "block1Image": "lucide:stethoscope",
+      "block1Heading": "医学 / 工程",
+      "block1Copy": "医学常见 Chemistry + Biology + Mathematics；工程重视 Mathematics、Physics 与 Further Mathematics。",
+      "block2Image": "lucide:briefcase-business",
+      "block2Heading": "商科 / 计算机",
+      "block2Copy": "商科金融看数学和数据意识；计算机看数学、项目经历、算法与逻辑，不能只靠“会用电脑”。",
+      "block3Image": "lucide:pen-tool",
+      "block3Heading": "人文 / 艺术",
+      "block3Copy": "人文看阅读写作、论证和批判性思维；艺术设计看作品集、过程表达、项目调研和迭代能力。"
+    }
+  },
+  {
+    "templateId": "content-three-columns",
+    "slots": {
+      "title": "五方向选课速查",
+      "subtitle": "给老师的课堂判断法：先看硬门槛，再看强建议，最后看学生证据是否足够。",
+      "block1Image": "lucide:heart-pulse",
+      "block1Heading": "医学 / 生命科学",
+      "block1Copy": "硬门槛：Chemistry 常为必选，Biology / Maths 高相关；证据：UCAT / 面试、志愿服务、实验与阅读记录。",
+      "block2Image": "lucide:cpu",
+      "block2Heading": "工程 / 计算机 / 商科",
+      "block2Copy": "底座：Maths 是共同语言，工程偏 Physics，CS 偏逻辑项目，金融商科重数据与建模，不是避开数学。",
+      "block3Image": "lucide:palette",
+      "block3Heading": "法律 / 人文 / 艺术",
+      "block3Copy": "重点：阅读写作、论证与作品过程；证据：essay、reading log、作品集 research、课堂展示和反馈迭代。"
+    }
+  },
+  {
+    "templateId": "comparison",
+    "slots": {
+      "title": "好组合不是照抄，而是匹配目标",
+      "subtitle": "选课会直接影响可申请专业；建议把每次选课沟通做成可追踪的“目标—要求—证据”记录。",
+      "leftLabel": "常见误区",
+      "leftItem1": "只按同伴或热门选择，漏掉 required subject",
+      "leftItem2": "只看学生喜欢，不核验专业先修与考试要求",
+      "leftItem3": "以为高分可以弥补科目错配或材料空白",
+      "leftItem4": "AS 后才想专业，导致补课、转轨和预估分被动",
+      "rightLabel": "查询路径",
+      "rightItem1": "先定国家/专业族：医、工、商、法、人文、艺术",
+      "rightItem2": "查 university + course 页面的 required / preferred subjects",
+      "rightItem3": "核验 tests、interview、portfolio、English 与 deadline",
+      "rightItem4": "形成冲稳保清单：目标分、证据缺口、下月动作"
+    }
+  },
+  {
+    "templateId": "quote",
+    "slots": {
+      "quote": "同一套 A-Level 成绩，\n在五个目的地里\n会被五种申请逻辑解释。",
+      "subtitle": "英国看专业匹配，香港看综合竞争，新加坡看高门槛，澳洲看资格换算，美国看整体画像。"
+    }
+  },
+  {
+    "templateId": "content-three-columns",
+    "slots": {
+      "title": "五大方向一页总览",
+      "subtitle": "同一份成绩在不同地区会被不同逻辑解释；老师要知道课堂证据最终会进入哪类申请材料。",
+      "block1Image": "lucide:map-pinned",
+      "block1Heading": "英国 / 香港",
+      "block1Copy": "英国：course-based，重 required subjects、predicted grades、PS 与 reference。香港：non-JUPAS，成绩、英语、活动、面试、轮次一起看。",
+      "block2Image": "lucide:shield-alert",
+      "block2Heading": "新加坡 / 澳洲",
+      "block2Copy": "新加坡：热门专业高等级竞争，prerequisites 很硬。澳洲：看换算、英语、先修和入学季，适合稳妥但不能随意选科。",
+      "block3Image": "lucide:scan-heart",
+      "block3Heading": "美国",
+      "block3Copy": "美国：holistic review 看课程挑战度、GPA/预估、活动主线、文书、推荐、school profile；老师要持续留下成长证据。"
+    }
+  },
+  {
+    "templateId": "content-four-columns",
+    "slots": {
+      "title": "牛娃成长路径：英港顶尖方向",
+      "subtitle": "目标牛剑、港前三：不是只拼高分，而是让成绩、专业动机、学术证据和表达能力同时成立。",
+      "block1Image": "lucide:book-open-check",
+      "block1Heading": "IG 阶段｜定底座",
+      "block1Copy": "目标：核心科目 A/A*，AS 数学建议在 IG 阶段提前完成；建立 reading log、课堂问答、高阶作业和实验档案。",
+      "block2Image": "lucide:chart-no-axes-column-increasing",
+      "block2Heading": "AS 阶段｜定专业",
+      "block2Copy": "目标：AS / mock A-A*。动作：锁定专业族，查牛剑/G5/港前三要求；留痕：PS 素材、推荐信证据、面试题库。",
+      "block3Image": "lucide:target",
+      "block3Heading": "AL 阶段｜冲顶尖",
+      "block3Copy": "目标：A*AA-A*A*A。动作：真题限时、supervision 面试、笔试训练；留痕：mock 曲线、错因表、预估分依据。",
+      "block4Image": "lucide:trophy",
+      "block4Heading": "升学结果｜强梯度",
+      "block4Copy": "冲刺：牛剑、港前三。主申：G5 强专业、港前五。保底：英国 Top 10-20；原则：高冲要配强稳，不做单点押注。"
+    }
+  },
+  {
+    "templateId": "content-four-columns",
+    "slots": {
+      "title": "普娃成长路径：英港稳健方向",
+      "subtitle": "目标 G5 可冲、港前五重点布局：关键是补短板、稳曲线、选对专业宽口径并保留转圜空间。",
+      "block1Image": "lucide:clipboard-check",
+      "block1Heading": "IG 阶段｜补漏洞",
+      "block1Copy": "目标：核心科目 B-A 且持续上升。动作：补概念、术语、计算/写作习惯；留痕：诊断表、错题本、单元测进步。",
+      "block2Image": "lucide:route",
+      "block2Heading": "AS 阶段｜建曲线",
+      "block2Copy": "目标：AAB-AAA。动作：保住 required subjects，选择容错更高专业族；留痕：topic test、mock 曲线、月度风险表。",
+      "block3Image": "lucide:badge-check",
+      "block3Heading": "AL 阶段｜稳结果",
+      "block3Copy": "目标：AAA/AAB 以上。动作：past paper 分类刷、mark scheme 对标、弱项小循环；留痕：真题分项、反馈记录、材料清单。",
+      "block4Image": "lucide:graduation-cap",
+      "block4Heading": "升学结果｜重梯度",
+      "block4Copy": "冲刺：G5 个别专业、港前五。主申：英国 Top 10-20、港校多专业。保底：Top 30 / 澳洲方案，避免临时降档。"
+    }
+  },
+  {
+    "templateId": "content-four-columns",
+    "slots": {
+      "title": "英国路径：UCAS 与时间线",
+      "subtitle": "拍照速记：英国申请看“专业要求 + 预估分 + 推荐证据 + 截止时间”，每一项都要提前在课堂中留痕。",
+      "block1Image": "lucide:landmark",
+      "block1Heading": "UCAS 机制",
+      "block1Copy": "最多 5 个 choices，按 course 申请；常见 conditional offer：A*AA / AAA / AAB；医学最多 4 个医学 choice。",
+      "block2Image": "lucide:list-checks",
+      "block2Heading": "专业要求",
+      "block2Copy": "逐页查 required / preferred subjects；医学 UCAT、法律 LNAT、牛剑 admissions test / interview 要提前倒排。",
+      "block3Image": "lucide:calendar-clock",
+      "block3Heading": "时间节点",
+      "block3Copy": "Y12 暑期定稿专业和素材；9-10 月早申请；1 月多数 UCAS 截止；5-6 月考试后跟进 offer 条件。",
+      "block4Image": "lucide:school",
+      "block4Heading": "学校支持",
+      "block4Copy": "学校要提供：预估分依据、reference 素材、mock 曲线、真题反馈、选课风险记录和家校沟通纪要。"
+    }
+  },
+  {
+    "templateId": "comparison",
+    "slots": {
+      "title": "港新路径：同为高竞争，重点不同",
+      "subtitle": "两地都不能只看最低要求；老师要关注“高等级成绩、英语、专业匹配、面试/材料证据”是否同步到位。",
+      "leftLabel": "香港",
+      "leftItem1": "路径：HKU / CUHK / HKUST 等走 international / non-JUPAS，专业独立审核",
+      "leftItem2": "硬核：A-Level、英语、PS、推荐、活动、面试共同评估，港前三竞争尤其强",
+      "leftItem3": "策略：早轮次 + 多专业 + 多梯度；最低要求只是门槛，不是安全线",
+      "leftItem4": "老师贡献：推荐信素材、课堂表现、面试表达、专业阅读与项目记录",
+      "rightLabel": "新加坡",
+      "rightItem1": "路径：NUS / NTU / SMU / SUTD 多为官网独立申请，热门专业筛选强",
+      "rightItem2": "硬核：高等级成绩 + prerequisites + 英语要求；理工医商不能科目错配",
+      "rightItem3": "策略：三门强成绩配专业先修，同时联动英国/香港/澳洲作为梯度",
+      "rightItem4": "老师贡献：高阶题训练、实验/项目证据、英文表达和校内成绩解释"
+    }
+  },
+  {
+    "templateId": "comparison",
+    "slots": {
+      "title": "澳美路径：两个最容易被误解的方向",
+      "subtitle": "澳洲不是“随便保底”，美国也不是“活动越多越好”；两者都需要早期证据积累。",
+      "leftLabel": "澳洲",
+      "leftItem1": "澳洲看 A-Level 换算为 selection rank / indicative score，不同大学专业口径不同",
+      "leftItem2": "医学、工程、商科仍要查 prerequisite subjects、英语和可能的面试/测试",
+      "leftItem3": "适合做稳妥路径：可设计多入学季、多校区、多专业梯度，但科目不能断底座",
+      "leftItem4": "老师留痕：换算表、先修清单、英语风险、成绩提升线和选课建议记录",
+      "rightLabel": "美国",
+      "rightItem1": "美国走 Common App 等平台；课程挑战度、成绩和 school profile 是基础解释框架",
+      "rightItem2": "活动要有主线：项目深度、角色贡献、影响证据，比数量堆叠更重要",
+      "rightItem3": "文书和推荐依赖长期材料：课堂讨论、研究写作、领导力、失败后的改进记录",
+      "rightItem4": "老师留痕：transcript 解释、推荐素材、项目反馈、阅读写作样本和成长案例"
+    }
+  },
+  {
+    "templateId": "content-four-columns",
+    "slots": {
+      "title": "课后背景提升模块一：学科竞赛",
+      "subtitle": "竞赛不是堆奖项，而是证明目标专业方向上的学术潜力和持续投入。",
+      "block1Image": "lucide:calculator",
+      "block1Heading": "数理计算机",
+      "block1Copy": "UKMT/BMO、AMC/AIME、Bebras、BIO、USACO 等；证明数学推理、算法思维和抗压解题。",
+      "block2Image": "lucide:atom",
+      "block2Heading": "物理化学生物",
+      "block2Copy": "BPhO、Physics Bowl、UKChO、BBO、Brain Bee 等；证明建模、实验理解、科学阅读和分析能力。",
+      "block3Image": "lucide:briefcase-business",
+      "block3Heading": "经济商科金融",
+      "block3Copy": "IEO、NEC、商业案例、投资分析模拟；重点看数据、案例分析和商业表达，避免空泛包装。",
+      "block4Image": "lucide:pen-line",
+      "block4Heading": "人文法律社科",
+      "block4Copy": "John Locke Essay、辩论、公共政策案例；文章质量、论证深度和思想表达比“参加过”更重要。"
+    }
+  },
+  {
+    "templateId": "content-four-columns",
+    "slots": {
+      "title": "学科竞赛方向速查：数理科学",
+      "subtitle": "竞赛选择先看专业方向，再看学生能力边界，最后看能否留下过程证据。",
+      "block1Image": "lucide:calculator",
+      "block1Heading": "数学 / 统计",
+      "block1Copy": "UKMT 系列、BMO、AMC / AIME、欧几里得；证明抽象推理、抗压解题，适合数学、经济、CS、工程。",
+      "block2Image": "lucide:cpu",
+      "block2Heading": "计算机 / 数据",
+      "block2Copy": "Bebras、British Informatics Olympiad、USACO、CCC；看算法思维、编程能力和问题拆解。",
+      "block3Image": "lucide:atom",
+      "block3Heading": "物理 / 工程",
+      "block3Copy": "British Physics Olympiad、Physics Bowl、IYPT、工程设计挑战；证明建模、实验理解和工程解决能力。",
+      "block4Image": "lucide:flask-conical",
+      "block4Heading": "化学 / 材料",
+      "block4Copy": "UK Chemistry Olympiad、加拿大化学竞赛、化学实验挑战；要和 A-Level Chemistry 主线衔接，避免超纲失控。"
+    }
+  },
+  {
+    "templateId": "content-three-columns",
+    "slots": {
+      "title": "学科竞赛方向速查：生命、商科与人文",
+      "subtitle": "奖项本身不是目的，能否支撑专业兴趣、阅读表达和推荐信证据更重要。",
+      "block1Image": "lucide:brain",
+      "block1Heading": "生物 / 医学",
+      "block1Copy": "British Biology Olympiad、Brain Bee、iGEM 相关训练；证明生命科学理解、阅读意识，也要结合伦理、沟通和面试素材。",
+      "block2Image": "lucide:briefcase-business",
+      "block2Heading": "经济 / 商科 / 金融",
+      "block2Copy": "IEO、NEC、商业案例挑战、投资分析模拟；看经济直觉、案例分析和商业表达，避免空泛商业包装。",
+      "block3Image": "lucide:scale",
+      "block3Heading": "人文 / 法律 / 社科",
+      "block3Copy": "John Locke Essay、Marshall Society Essay、辩论、公共政策案例；文章质量和思想深度比“参加过”更重要。"
+    }
+  },
+  {
+    "templateId": "content-three-columns",
+    "slots": {
+      "title": "竞赛定位与留痕：不同学生不同用法",
+      "subtitle": "不要让竞赛变成奖项焦虑；没有复盘、阅读和表达沉淀的奖项，对申请帮助有限。",
+      "block1Image": "lucide:trophy",
+      "block1Heading": "顶尖申请学生",
+      "block1Copy": "作用：证明学科天赋、超纲探索和高压表现。留痕：训练记录、错题复盘、获奖证书、解题思路。",
+      "block2Image": "lucide:route",
+      "block2Heading": "稳健申请学生",
+      "block2Copy": "作用：建立专业兴趣证据，支持 PS / 推荐信。留痕：参赛过程、阅读笔记、阶段性反馈。",
+      "block3Image": "lucide:compass",
+      "block3Heading": "方向未定学生",
+      "block3Copy": "作用：用低风险竞赛测试兴趣和能力边界。留痕：体验反思、适配判断、后续选课建议。"
+    }
+  },
+  {
+    "templateId": "content-four-columns",
+    "slots": {
+      "title": "课后背景提升模块二：牛剑笔试常识",
+      "subtitle": "顶尖申请不只看 A-Level 成绩，部分专业会用笔试进一步区分高分学生。",
+      "block1Image": "lucide:circle-help",
+      "block1Heading": "为什么有笔试",
+      "block1Copy": "用于区分高分学生，考迁移、推理、限时决策和陌生问题处理，可能影响面试或录取竞争力。",
+      "block2Image": "lucide:square-function",
+      "block2Heading": "数理工方向",
+      "block2Copy": "MAT、STEP、TMUA、ESAT 等常见于数学、计算机、工程；重点看高阶数学和问题解决。",
+      "block3Image": "lucide:scale",
+      "block3Heading": "医学法律社科",
+      "block3Copy": "UCAT、LNAT、TSA 等关注情境判断、阅读论证、数据材料分析和批判性思维。",
+      "block4Image": "lucide:calendar-check",
+      "block4Heading": "老师提醒",
+      "block4Copy": "AS 暑假到申请季前后核验目标专业要求；具体名称、报名和时间以大学官网当年要求为准。"
+    }
+  },
+  {
+    "templateId": "content-four-columns",
+    "slots": {
+      "title": "牛剑笔试方向速查",
+      "subtitle": "不同专业对应不同笔试，不能笼统说“准备牛剑考试”；名称和要求每年以官网为准。",
+      "block1Image": "lucide:calculator",
+      "block1Heading": "数理工 / 计算机",
+      "block1Copy": "MAT、STEP、TMUA、ESAT 等；主要考高阶数学、逻辑推理、限时决策和问题解决。",
+      "block2Image": "lucide:stethoscope",
+      "block2Heading": "医学 / 生物医学",
+      "block2Copy": "UCAT 等医学相关测试；关注情境判断、科学阅读、医学素养和沟通潜力。",
+      "block3Image": "lucide:scale",
+      "block3Heading": "法律 / 社科",
+      "block3Copy": "LNAT、TSA、经济数学相关测试；看阅读理解、论证分析、材料分析和批判性思维。",
+      "block4Image": "lucide:book-open",
+      "block4Heading": "英文 / 历史 / 人文",
+      "block4Copy": "ELAT、HAT、MLAT 等；重文本分析、语言能力、论证表达和陌生材料处理。"
+    }
+  },
+  {
+    "templateId": "content-three-columns",
+    "slots": {
+      "title": "课后背景提升模块三：科研、夏校与阅读",
+      "subtitle": "核心不是包装经历，而是形成真实兴趣、学术表达和可调用证据链。",
+      "block1Image": "lucide:flask-conical",
+      "block1Heading": "科研｜看过程",
+      "block1Copy": "把兴趣问题变成研究报告、展示海报、口头汇报和推荐信素材；避免只追求导师头衔或挂名。",
+      "block2Image": "lucide:landmark",
+      "block2Heading": "夏校｜看匹配",
+      "block2Copy": "体验大学课堂、专业内容和英文讨论；产出课程作业、课堂反馈、反思记录和选课判断。",
+      "block3Image": "lucide:book-open-text",
+      "block3Heading": "阅读｜看深度",
+      "block3Copy": "为 PS、面试、推荐信和课堂讨论提供素材；要有笔记、概念卡、问题清单、书评或分享。"
+    }
+  },
+  {
+    "templateId": "content-three-columns",
+    "slots": {
+      "title": "背景提升证据链：五个判断标准",
+      "subtitle": "最有价值的不是“做过什么”，而是能否讲清楚为什么做、怎么做、学到什么、下一步是什么。",
+      "block1Image": "lucide:fingerprint",
+      "block1Heading": "真实 / 相关",
+      "block1Copy": "真实：学生能讲清自己做了什么。相关：活动与目标专业、选课组合、申请叙事能连起来。",
+      "block2Image": "lucide:repeat",
+      "block2Heading": "持续 / 可表达",
+      "block2Copy": "持续：不是一次性打卡。可表达：能转化为 PS、面试、推荐信或课堂讨论素材。",
+      "block3Image": "lucide:folder-check",
+      "block3Heading": "可留痕",
+      "block3Copy": "有阅读笔记、项目报告、反馈记录、作品、展示材料或 seminar 分享，能进入学生成长档案。"
+    }
+  },
+  {
+    "templateId": "comparison",
+    "slots": {
+      "title": "背景提升常见误区：别把经历做空",
+      "subtitle": "科研、夏校和阅读都要服务主线：科目成绩、专业匹配、学术证据和申请表达。",
+      "leftLabel": "常见误区",
+      "leftItem1": "科研只追求导师头衔或挂名项目，没有真实过程",
+      "leftItem2": "把名校夏校等同于名校录取保障",
+      "leftItem3": "阅读只列书单，不做笔记、不形成观点",
+      "leftItem4": "活动碎片化堆叠，无法服务同一个专业方向问题",
+      "rightLabel": "有效做法",
+      "rightItem1": "科研产出研究报告、展示海报、口头汇报和推荐素材",
+      "rightItem2": "夏校沉淀课程作业、课堂反馈、反思记录和选课判断",
+      "rightItem3": "阅读形成概念卡片、问题清单、书评和 seminar 分享",
+      "rightItem4": "建立证据档案：竞赛、阅读、项目、夏校、课堂表现"
+    }
+  },
+  {
+    "templateId": "content-three-columns",
+    "slots": {
+      "title": "老师不是升学顾问，但课堂会影响申请",
+      "subtitle": "老师最有价值的贡献，是把学生真实能力变化变成可信证据。",
+      "block1Image": "lucide:clipboard-list",
+      "block1Heading": "选课与预估分",
+      "block1Copy": "mock、topic test、作业质量要能解释 predicted grade；发现专业错配，尽早同步班主任和升学老师。",
+      "block2Image": "lucide:folder-open",
+      "block2Heading": "档案与推荐信",
+      "block2Copy": "记录提问、阅读、实验、论文、项目、presentation、协作和改进轨迹；推荐信要有具体能力案例。",
+      "block3Image": "lucide:refresh-cw",
+      "block3Heading": "校内协同闭环",
+      "block3Copy": "月度同步成绩曲线、选课风险、材料证据、家校沟通和下月动作，形成可复用成长档案。"
+    }
+  },
+  {
+    "templateId": "timeline",
+    "slots": {
+      "title": "备课闭环",
+      "subtitle": "备课闭环要从“讲什么”升级为“学生产生什么证据”。",
+      "step1Number": "01",
+      "step1Heading": "Syllabus → Topic Map",
+      "step1Copy": "读 aims、content、AO 与 paper structure，转化为年度 topic map、课时安排和阶段性产出。",
+      "step2Number": "02",
+      "step2Heading": "Lesson → Practice",
+      "step2Copy": "设计课堂任务、语言支架、实验/数据任务和 topic-based paper 训练，不只讲完教材。",
+      "step3Number": "03",
+      "step3Heading": "Mock → Feedback",
+      "step3Copy": "用 mark scheme、examiner report 与 threshold 复盘，形成错因分类、补弱计划和下次备课调整。"
+    }
+  },
+  {
+    "templateId": "content-three-columns",
+    "slots": {
+      "title": "真题、评价与资料库是一体的",
+      "subtitle": "没有记录，评价不能变成改进；没有资料库，教研不能复用，也无法支撑预估分和推荐信。",
+      "block1Image": "lucide:archive",
+      "block1Heading": "真题三件套",
+      "block1Copy": "Past Paper 看题型与难度，Mark Scheme 看得分点，Examiner Report 看常见失分；三件套必须配套使用。",
+      "block2Image": "lucide:chart-no-axes-column",
+      "block2Heading": "评价体系",
+      "block2Copy": "课堂小测、单元测、实验任务、mock 与个体反馈要对应不同层级；评价后必须有补弱动作。",
+      "block3Image": "lucide:database",
+      "block3Heading": "资料库结构",
+      "block3Copy": "沉淀 syllabus、topic map、papers、mark schemes、thresholds、tracking、university requirements 和学生证据。"
+    }
+  },
+  {
+    "templateId": "content-three-columns",
+    "slots": {
+      "title": "教师问题回收与专题排期",
+      "subtitle": "培训不能停在 PPT，要转化为后续学科组行动。",
+      "block1Image": "lucide:package-check",
+      "block1Heading": "资源交付",
+      "block1Copy": "一周内收集各科 syllabus、paper、mark scheme；先完成每科“最小可用资料包”。",
+      "block2Image": "lucide:calendar-days",
+      "block2Heading": "教学交付",
+      "block2Copy": "两周内完成学科 topic map 初稿；一月内建立 mock 节点、评价表和反馈模板。",
+      "block3Image": "lucide:languages",
+      "block3Heading": "支架交付",
+      "block3Copy": "下阶段推进学科深讲、课型观摩、资料库共建、升学案例复盘和学生成长档案。"
+    }
+  },
+  {
+    "templateId": "content-three-columns",
+    "slots": {
+      "title": "教师拍照留存总表",
+      "subtitle": "一页记住老师在 A-Level 体系中的日常动作：查规则、看学生、做课堂、留证据、接升学。",
+      "block1Image": "lucide:search-check",
+      "block1Heading": "查规则 / 看学生",
+      "block1Copy": "查 syllabus、timetable、entry option、threshold、university course page；看基础、英语、习惯、实验、目标方向。",
+      "block2Image": "lucide:presentation",
+      "block2Heading": "做课堂 / 留证据",
+      "block2Copy": "做语言支架、topic 训练、实验数据、真题反馈、错因分类；留 mock 曲线、作业样例、阅读/实验记录。",
+      "block3Image": "lucide:graduation-cap",
+      "block3Heading": "接升学",
+      "block3Copy": "把选课风险、预估分依据、推荐信素材、专业匹配记录同步给班主任和升学老师。"
+    }
+  },
+  {
+    "templateId": "content-three-columns",
+    "slots": {
+      "title": "学生风险识别清单",
+      "subtitle": "老师拍照后可用于月度沟通：发现风险越早，调整成本越低。",
+      "block1Image": "lucide:circle-alert",
+      "block1Heading": "科目 / 数学风险",
+      "block1Copy": "科目错配：目标专业有 required subject 但学生未选。数学底座不足：商科、经济、工程、CS 却弱化数学。",
+      "block2Image": "lucide:languages",
+      "block2Heading": "英语 / 证据风险",
+      "block2Copy": "英语支架不足：能听懂课堂但不能独立完成英文题。证据不足：缺阅读、项目、实验、写作或面试素材。",
+      "block3Image": "lucide:clock",
+      "block3Heading": "时间线风险",
+      "block3Copy": "AS 后才定专业，导致补材料和调方向被动；申请季再补背景提升，通常太晚。"
+    }
+  },
+  {
+    "templateId": "content-three-columns",
+    "slots": {
+      "title": "学科组资料库目录",
+      "subtitle": "资料库不是文件堆积，而是支撑备课、评价、预估分、推荐信和家校沟通的工作系统。",
+      "block1Image": "lucide:folder-open",
+      "block1Heading": "教学文件",
+      "block1Copy": "01 syllabus 摘要与 AO 对照表；02 年度 topic map 与课时表；03 past paper 按 topic 分类。",
+      "block2Image": "lucide:clipboard-check",
+      "block2Heading": "评价文件",
+      "block2Copy": "04 mark scheme 得分点拆解；05 examiner report 常见失分；06 grade threshold 与 mock 解释。",
+      "block3Image": "lucide:link",
+      "block3Heading": "升学与证据",
+      "block3Copy": "07 学生 tracking 表；08 升学专业要求速查；09 推荐信素材与课堂证据样例。"
+    }
+  },
+  {
+    "templateId": "thank-you",
+    "slots": {
+      "description": "统一口径，再进入执行。后续路径：学科深讲 -> 真题包建设 -> 课型观摩 -> 资料库共建 -> 教研常态运行。"
+    }
+  }
+]

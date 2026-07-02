@@ -1,0 +1,51 @@
+{
+  "schema_version": "1",
+  "source_id": "primary_ced",
+  "page_ref_convention": "printed_page",
+  "physical_page_offset_note": "AP CED pages are typically labeled with printed_page numbers.",
+  "mappings": [
+    {
+      "target": "assessment_identity.system",
+      "page_refs": [
+        "title page"
+      ],
+      "evidence_note": "College Board AP CED."
+    },
+    {
+      "target": "topics.course_framework",
+      "page_refs": [
+        "Section 1"
+      ],
+      "evidence_note": "Course framework overview."
+    },
+    {
+      "target": "topics.ap-african-american-studies-unit01",
+      "page_refs": [
+        "Unit 1"
+      ],
+      "evidence_note": "Unit 1: Origins of the African Diaspora (20–25%)."
+    },
+    {
+      "target": "topics.ap-african-american-studies-unit02",
+      "page_refs": [
+        "Unit 2"
+      ],
+      "evidence_note": "Unit 2: Freedom, Enslavement, and Resistance (30–35%)."
+    },
+    {
+      "target": "topics.ap-african-american-studies-unit03",
+      "page_refs": [
+        "Unit 3"
+      ],
+      "evidence_note": "Unit 3: The Practice of Freedom (20–25%)."
+    },
+    {
+      "target": "topics.ap-african-american-studies-unit04",
+      "page_refs": [
+        "Unit 4"
+      ],
+      "evidence_note": "Unit 4: Movements and Debates (20–25%)."
+    }
+  ],
+  "draft_notes": []
+}

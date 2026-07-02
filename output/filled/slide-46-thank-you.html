@@ -1,0 +1,152 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Thank-You</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    .slide {
+      width: 1920px;
+      height: 1080px;
+      background-color: #2D9CC4;
+      font-family: 'PingFang SC', 'Microsoft YaHei', 'PingFang TC', 'Hiragino Sans GB', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+    .thank-you-title {
+      position: absolute;
+      left: 40px;
+      top: 20px;
+      width: 1840px;
+      font-weight: 700;
+      font-size: 210px;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: #D2A148;
+    }
+    .description-block {
+      position: absolute;
+      left: 40px;
+      bottom: 40px;
+      width: 711px;
+      max-height: 180px;
+      overflow: hidden;
+    }
+    .description-block [data-slot="description"] {
+      font-family: 'PingFang SC', 'Microsoft YaHei', 'PingFang TC', 'Hiragino Sans GB', sans-serif;
+      font-weight: 400;
+      font-size: 48px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: #E1EEE6;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+    }
+  </style>
+<style id="qoderwork-sea-blue-base">
+    .slide {
+      color: #20283A !important;
+      letter-spacing: 0 !important;
+    }
+    .title-block [data-slot="title"] {
+      color: #123A4A !important;
+      font-weight: 700 !important;
+      letter-spacing: 0 !important;
+    }
+    .title-block [data-slot="subtitle"] {
+      color: #17495C !important;
+      font-weight: 500 !important;
+    }
+    .content-card,
+    .comparison-col,
+    .timeline-step {
+      border: 1px solid rgba(45,156,196,0.18) !important;
+      box-shadow: none !important;
+    }
+    .content-card,
+    .col-right {
+      background-color: #F2FAFD !important;
+    }
+    .col-left {
+      background-color: #E6F5FA !important;
+    }
+    .card-image {
+      background-color: #FFFFFF !important;
+      border: 1px solid rgba(210,161,72,0.35) !important;
+    }
+    .card-image img {
+      color: #2D9CC4 !important;
+    }
+    [data-slot$="Heading"],
+    [data-slot$="Label"] {
+      color: #123A4A !important;
+      font-weight: 700 !important;
+    }
+    [data-slot$="Copy"],
+    [data-slot$="Item1"],
+    [data-slot$="Item2"],
+    [data-slot$="Item3"],
+    [data-slot$="Item4"] {
+      color: #20283A !important;
+    }
+    .col-items [data-slot$="Item1"]::before,
+    .col-items [data-slot$="Item2"]::before,
+    .col-items [data-slot$="Item3"]::before,
+    .col-items [data-slot$="Item4"]::before {
+      background-color: #D2A148 !important;
+    }
+  </style><style id="qoderwork-sea-blue-dark-page">
+      .slide {
+        background-color: #2D9CC4 !important;
+        color: #FFFFFF !important;
+      }
+      .title-block [data-slot="title"],
+      [data-slot="quote"],
+      .thank-you-title {
+        color: #D2A148 !important;
+        font-weight: 800 !important;
+      }
+      .title-block [data-slot="subtitle"],
+      [data-slot="subtitle"],
+      .data-block [data-slot$="Desc"],
+      .description-block [data-slot="description"] {
+        color: #EAF9FC !important;
+      }
+      .data-block [data-slot$="Num"] {
+        color: #FFE2A3 !important;
+      }
+      .slogan-block [data-slot="slogan"] {
+        color: #F4FCFE !important;
+      }
+    </style>
+<style id="eduflow-sea-theme">
+  .slide { color: #20283A !important; }
+  .title-block [data-slot="title"] { color: #123A4A !important; font-weight: 750 !important; letter-spacing: 0 !important; }
+  .title-block [data-slot="subtitle"] { color: #17495C !important; font-weight: 500 !important; }
+  .content-card, .comparison-col, .timeline-step { border: 1px solid rgba(45,156,196,0.18) !important; box-shadow: none !important; }
+  .card-image { background-color: #FFFFFF !important; border: 1px solid rgba(210,161,72,0.35) !important; }
+  .card-image img { color: #2D9CC4 !important; }
+  [data-slot$="Heading"], [data-slot$="Label"] { color: #123A4A !important; font-weight: 750 !important; }
+  [data-slot$="Copy"], [data-slot$="Item1"], [data-slot$="Item2"], [data-slot$="Item3"], [data-slot$="Item4"] { color: #20283A !important; }
+</style>
+
+<style id="sea-dark-page">
+  .slide { background-color: #2D9CC4 !important; color: #FFFFFF !important; }
+  .title-block [data-slot="title"], [data-slot="quote"], [data-slot="title"] { color: #FFFFFF !important; font-weight: 800 !important; }
+  .title-block [data-slot="subtitle"], [data-slot="subtitle"], .data-block [data-slot$="Desc"] { color: #EAF9FC !important; }
+  .data-block [data-slot$="Num"] { color: #FFE2A3 !important; }
+  .slogan-block [data-slot="slogan"] { color: #F4FCFE !important; font-size: 34px !important; line-height: 1.38 !important; width: 1500px !important; }
+  .data-block [data-slot$="Desc"] { font-size: 23px !important; line-height: 1.30 !important; }
+</style>
+</head>
+<body>
+  <div class="slide" data-template="thank-you">
+    <h1 class="thank-you-title">Thank you!</h1>
+    <div class="description-block">
+      <p data-slot="description">统一口径，再进入执行。后续路径：学科深讲 -&gt; 真题包建设 -&gt; 课型观摩 -&gt; 资料库共建 -&gt; 教研常态运行。</p>
+    </div>
+  </div>
+
+
+</body></html>

@@ -219,15 +219,21 @@ def generate_from_event(
     reason: str = "",
     evidence_refs: list[str] | None = None,
     risk_flags: list[str] | None = None,
+    apply_admission_gate: bool = True,
 ) -> str | None:
     """Infer scope/kind/layer from ``event_ctx`` and create a candidate.
 
     Returns the candidate_id on success, or ``None`` if the event
-    shouldn't produce a candidate (e.g. empty content, DB failure).
+    shouldn't produce a candidate (e.g. empty content, DB failure,
+    or admission gate rejection).
 
     This is the function event hooks call after they've assembled
     their event_ctx. It wraps ``add_candidate`` with inference so
     hooks stay declarative.
+
+    If ``apply_admission_gate`` is True (default), the candidate is
+    scored against five dimensions and rejected if score < threshold.
+    Set False to bypass (e.g. for high-priority manual candidates).
     """
     if not content or not content.strip():
         return None
@@ -239,6 +245,30 @@ def generate_from_event(
             source_type, event_ctx, exc_info=True,
         )
         return None
+
+    # V3 P2-1: admission gate scoring
+    if apply_admission_gate:
+        try:
+            from eduflow.memory.admission import score_candidate, ADMISSION_THRESHOLD
+            score_result = score_candidate(
+                content=content,
+                source_type=source_type,
+                source_ref=source_ref,
+                evidence_refs=evidence_refs or [],
+                proposed_scope=scope,
+                proposed_kind=kind,
+                risk_flags=risk_flags,
+            )
+            if not score_result["passed"]:
+                _log.info(
+                    "candidate rejected by admission gate (score=%.2f): %s",
+                    score_result["score"],
+                    content[:80],
+                )
+                return None
+        except Exception:
+            _log.warning("admission gate failed; allowing candidate", exc_info=True)
+
     try:
         return _add_candidate(
             scope=scope,

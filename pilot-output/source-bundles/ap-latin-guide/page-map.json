@@ -1,0 +1,65 @@
+{
+  "schema_version": "1",
+  "source_id": "primary_ced",
+  "page_ref_convention": "printed_page",
+  "physical_page_offset_note": "AP CED pages are typically labeled with printed_page numbers.",
+  "mappings": [
+    {
+      "target": "assessment_identity.system",
+      "page_refs": [
+        "title page"
+      ],
+      "evidence_note": "College Board AP CED."
+    },
+    {
+      "target": "topics.course_framework",
+      "page_refs": [
+        "Section 1"
+      ],
+      "evidence_note": "Course framework overview."
+    },
+    {
+      "target": "topics.ap-latin-unit01",
+      "page_refs": [
+        "Unit 1"
+      ],
+      "evidence_note": "Unit 1: Teacher’s Choice – Latin Prose (weighting n/a)."
+    },
+    {
+      "target": "topics.ap-latin-unit02",
+      "page_refs": [
+        "Unit 2"
+      ],
+      "evidence_note": "Unit 2: Pliny’s Letters: Eruption of Mt. Vesuvius (weighting n/a)."
+    },
+    {
+      "target": "topics.ap-latin-unit03",
+      "page_refs": [
+        "Unit 3"
+      ],
+      "evidence_note": "Unit 3: Pliny’s Letters: Ghosts and Apparitions, Letters to Trajan (weighting n/a)."
+    },
+    {
+      "target": "topics.ap-latin-unit04",
+      "page_refs": [
+        "Unit 4"
+      ],
+      "evidence_note": "Unit 4: Teacher’s Choice – Latin Poetry and Vergil’s Aeneid, (weighting n/a)."
+    },
+    {
+      "target": "topics.ap-latin-unit05",
+      "page_refs": [
+        "Unit 5"
+      ],
+      "evidence_note": "Unit 5: Vergil’s Aeneid, Excerpts from Books 4, 6, 7, 11, and 12 (weighting n/a)."
+    },
+    {
+      "target": "topics.ap-latin-unit06",
+      "page_refs": [
+        "Unit 6"
+      ],
+      "evidence_note": "Unit 6: Spring Project and Teacher’s Choice – (weighting n/a)."
+    }
+  ],
+  "draft_notes": []
+}

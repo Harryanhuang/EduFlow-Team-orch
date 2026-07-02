@@ -1,0 +1,103 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "dse-chemistry",
+      "topic_name": "CAIE IGCSE Chemistry",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Chemistry (DSE Chemistry) syllabus scope.",
+        "Valid: 2024 → (ongoing)."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "dse-chemistry-unit01",
+      "topic_name": "Unit 1",
+      "parent_id": "dse-chemistry",
+      "scope": [
+        "Unit 1 content as defined in HKDSE syllabus."
+      ],
+      "out_of_scope": [
+        "Content belonging to other units."
+      ],
+      "classification_hints": [
+        "Look for HKDSE dse-chemistry Unit 1 keywords."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "dse-chemistry-unit02",
+      "topic_name": "Unit 2",
+      "parent_id": "dse-chemistry",
+      "scope": [
+        "Unit 2 content as defined in HKDSE syllabus."
+      ],
+      "out_of_scope": [
+        "Content belonging to other units."
+      ],
+      "classification_hints": [
+        "Look for HKDSE dse-chemistry Unit 2 keywords."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "dse-chemistry-unit03",
+      "topic_name": "Unit 3",
+      "parent_id": "dse-chemistry",
+      "scope": [
+        "Unit 3 content as defined in HKDSE syllabus."
+      ],
+      "out_of_scope": [
+        "Content belonging to other units."
+      ],
+      "classification_hints": [
+        "Look for HKDSE dse-chemistry Unit 3 keywords."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "dse-chemistry-unit04",
+      "topic_name": "Unit 4",
+      "parent_id": "dse-chemistry",
+      "scope": [
+        "Unit 4 content as defined in HKDSE syllabus."
+      ],
+      "out_of_scope": [
+        "Content belonging to other units."
+      ],
+      "classification_hints": [
+        "Look for HKDSE dse-chemistry Unit 4 keywords."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    }
+  ]
+}

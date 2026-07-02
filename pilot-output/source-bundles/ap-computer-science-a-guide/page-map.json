@@ -1,0 +1,51 @@
+{
+  "schema_version": "1",
+  "source_id": "primary_ced",
+  "page_ref_convention": "printed_page",
+  "physical_page_offset_note": "AP CED pages are typically labeled with printed_page numbers.",
+  "mappings": [
+    {
+      "target": "assessment_identity.system",
+      "page_refs": [
+        "title page"
+      ],
+      "evidence_note": "College Board AP CED."
+    },
+    {
+      "target": "topics.course_framework",
+      "page_refs": [
+        "Section 1"
+      ],
+      "evidence_note": "Course framework overview."
+    },
+    {
+      "target": "topics.ap-computer-science-a-unit01",
+      "page_refs": [
+        "Unit 1"
+      ],
+      "evidence_note": "Unit 1: Using Objects and Methods (15–25%)."
+    },
+    {
+      "target": "topics.ap-computer-science-a-unit02",
+      "page_refs": [
+        "Unit 2"
+      ],
+      "evidence_note": "Unit 2: Selection and Iteration (25–35%)."
+    },
+    {
+      "target": "topics.ap-computer-science-a-unit03",
+      "page_refs": [
+        "Unit 3"
+      ],
+      "evidence_note": "Unit 3: Class Creation (10–18%)."
+    },
+    {
+      "target": "topics.ap-computer-science-a-unit04",
+      "page_refs": [
+        "Unit 4"
+      ],
+      "evidence_note": "Unit 4: Data Collections (30–40%)."
+    }
+  ],
+  "draft_notes": []
+}

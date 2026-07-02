@@ -1,0 +1,179 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "aqa-ial-further-mathematics-9665",
+      "topic_name": "CAIE IGCSE Further Mathematics",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Further Mathematics (9665) syllabus scope.",
+        "Valid: 2025 → 2026."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "aqa-ial-further-mathematics-9665-unit01",
+      "topic_name": "Topic 1: Complex numbers",
+      "parent_id": "aqa-ial-further-mathematics-9665",
+      "scope": [
+        "Topic 1 content as defined in AQA IAL aqa-ial-further-mathematics-9665."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Complex numbers."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "aqa-ial-further-mathematics-9665-unit02",
+      "topic_name": "Topic 2: Matrices",
+      "parent_id": "aqa-ial-further-mathematics-9665",
+      "scope": [
+        "Topic 2 content as defined in AQA IAL aqa-ial-further-mathematics-9665."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Matrices."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "aqa-ial-further-mathematics-9665-unit03",
+      "topic_name": "Topic 3: Further algebra and functions",
+      "parent_id": "aqa-ial-further-mathematics-9665",
+      "scope": [
+        "Topic 3 content as defined in AQA IAL aqa-ial-further-mathematics-9665."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Further algebra and functions."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "aqa-ial-further-mathematics-9665-unit04",
+      "topic_name": "Topic 4: Further calculus",
+      "parent_id": "aqa-ial-further-mathematics-9665",
+      "scope": [
+        "Topic 4 content as defined in AQA IAL aqa-ial-further-mathematics-9665."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Further calculus."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "aqa-ial-further-mathematics-9665-unit05",
+      "topic_name": "Topic 5: Further vectors",
+      "parent_id": "aqa-ial-further-mathematics-9665",
+      "scope": [
+        "Topic 5 content as defined in AQA IAL aqa-ial-further-mathematics-9665."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Further vectors."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "aqa-ial-further-mathematics-9665-unit06",
+      "topic_name": "Topic 6: Polar coordinates",
+      "parent_id": "aqa-ial-further-mathematics-9665",
+      "scope": [
+        "Topic 6 content as defined in AQA IAL aqa-ial-further-mathematics-9665."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Polar coordinates."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "aqa-ial-further-mathematics-9665-unit07",
+      "topic_name": "Topic 7: Mechanics (Further)",
+      "parent_id": "aqa-ial-further-mathematics-9665",
+      "scope": [
+        "Topic 7 content as defined in AQA IAL aqa-ial-further-mathematics-9665."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Mechanics (Further)."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "aqa-ial-further-mathematics-9665-unit08",
+      "topic_name": "Topic 8: Statistics (Further)",
+      "parent_id": "aqa-ial-further-mathematics-9665",
+      "scope": [
+        "Topic 8 content as defined in AQA IAL aqa-ial-further-mathematics-9665."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Statistics (Further)."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    }
+  ]
+}

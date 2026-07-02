@@ -1,0 +1,29 @@
+(56) Math Glossary, Math Terms
+http://www.cut-the-knot.com/glossary/atop.shtml
+(57) Mathematical Quotations Server
+http://math.furman.edu/~mwoodard/mquot.html
+(58) The Encyclopedia of Polyhedra
+http://www.georgehart.com/virtual-polyhedra/vp.html
+(59) The Internet Glossary of Statistical Terms
+http://www.animatedsoftware.com/statglos/statglos.htm
+(60) Visual Dictionary of Special Plane Curves
+http://www.xahlee.org/SpecialPlaneCurves_dir/specialPlaneCurves.html
+(61) Wikipedia - Mathematics
+http://www.wikipedia.org/wiki/Mathematics
+(62) Wolfram MathWorld
+http://mathworld.wolfram.com/
+戊.數學歷史
+(63) 中國古代數學
+http://www.chiculture.net/0803/html/index.html
+(64) Chronological List of Mathematicians
+http://aleph0.clarku.edu/~djoyce/mathhist/chronology.html
+(65) Mathematicians who were born or died today
+http://www-history.mcs.st-and.ac.uk/~history/Day_files/Now.html
+(66) The MacTutor History of Mathematics archive
+http://www-history.mcs.st-andrews.ac.uk
+己.軟件
+(67) Cabri Geometry
+http://www.cabri.com
+(68) Geometer's Sketchpad
+http://www.keycurriculum.com/products/sketchpad.html
+114

@@ -1,0 +1,105 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "caie-alevel-biology-9700",
+      "topic_name": "CAIE IGCSE Biology",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Biology (9700) syllabus scope.",
+        "Valid: 2025 → 2026."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-biology-9700-t001",
+      "topic_name": "1. Why choose this syllabus?",
+      "parent_id": "caie-alevel-biology-9700",
+      "scope": [
+        "Why choose this syllabus?",
+        "Solubility in water",
+        "Density and pressure",
+        "Particle theory and bonding",
+        "Solubility in water",
+        "Density and pressure",
+        "Defining the problem",
+        "Choosing appropriate techniques*"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Why choose this syllabus?."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-biology-9700-t002",
+      "topic_name": "2. Syllabus overview",
+      "parent_id": "caie-alevel-biology-9700",
+      "scope": [
+        "Syllabus overview",
+        "Weathering, erosion and sedimentation",
+        "Tides and ocean currents",
+        "Tectonic processes",
+        "Weathering, erosion and sedimentation",
+        "Tides and ocean currents",
+        "Recording data and observations in tables and other suitable forms",
+        "Presenting data in the form of graphs and charts"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Syllabus overview."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-biology-9700-t003",
+      "topic_name": "3. Interactions in marine ecosystems",
+      "parent_id": "caie-alevel-biology-9700",
+      "scope": [
+        "Interactions in marine ecosystems",
+        "Feeding relationships",
+        "Nutrient cycles",
+        "Interactions",
+        "Feeding relationships",
+        "Nutrient cycles",
+        "Identifying limitations and sources of error",
+        "Suggesting improvements"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Interactions in marine ecosystems."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    }
+  ]
+}

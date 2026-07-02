@@ -1,0 +1,79 @@
+{
+  "schema_version": "1",
+  "source_id": "primary_ced",
+  "page_ref_convention": "printed_page",
+  "physical_page_offset_note": "AP CED pages are typically labeled with printed_page numbers.",
+  "mappings": [
+    {
+      "target": "assessment_identity.system",
+      "page_refs": [
+        "title page"
+      ],
+      "evidence_note": "College Board AP CED."
+    },
+    {
+      "target": "topics.course_framework",
+      "page_refs": [
+        "Section 1"
+      ],
+      "evidence_note": "Course framework overview."
+    },
+    {
+      "target": "topics.ap-spanish-literature-and-culture-unit01",
+      "page_refs": [
+        "Unit 1"
+      ],
+      "evidence_note": "Unit 1: La época medieval (weighting n/a)."
+    },
+    {
+      "target": "topics.ap-spanish-literature-and-culture-unit02",
+      "page_refs": [
+        "Unit 2"
+      ],
+      "evidence_note": "Unit 2: El siglo XVI (weighting n/a)."
+    },
+    {
+      "target": "topics.ap-spanish-literature-and-culture-unit03",
+      "page_refs": [
+        "Unit 3"
+      ],
+      "evidence_note": "Unit 3: El siglo XVII (weighting n/a)."
+    },
+    {
+      "target": "topics.ap-spanish-literature-and-culture-unit04",
+      "page_refs": [
+        "Unit 4"
+      ],
+      "evidence_note": "Unit 4: La literatura romántica, realista y naturalista (weighting n/a)."
+    },
+    {
+      "target": "topics.ap-spanish-literature-and-culture-unit05",
+      "page_refs": [
+        "Unit 5"
+      ],
+      "evidence_note": "Unit 5: La Generación del 98 y el Modernismo (weighting n/a)."
+    },
+    {
+      "target": "topics.ap-spanish-literature-and-culture-unit06",
+      "page_refs": [
+        "Unit 6"
+      ],
+      "evidence_note": "Unit 6: Teatro y poesía del siglo XX (weighting n/a)."
+    },
+    {
+      "target": "topics.ap-spanish-literature-and-culture-unit07",
+      "page_refs": [
+        "Unit 7"
+      ],
+      "evidence_note": "Unit 7: El Boom latinoamericano (weighting n/a)."
+    },
+    {
+      "target": "topics.ap-spanish-literature-and-culture-unit08",
+      "page_refs": [
+        "Unit 8"
+      ],
+      "evidence_note": "Unit 8: Escritores contemporáneos de Estados Unidos y España (weighting n/a)."
+    }
+  ],
+  "draft_notes": []
+}

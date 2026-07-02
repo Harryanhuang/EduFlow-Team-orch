@@ -1,0 +1,93 @@
+{
+  "schema_version": "1",
+  "source_id": "primary_ced",
+  "page_ref_convention": "printed_page",
+  "physical_page_offset_note": "AP CED pages are typically labeled with printed_page numbers.",
+  "mappings": [
+    {
+      "target": "assessment_identity.system",
+      "page_refs": [
+        "title page"
+      ],
+      "evidence_note": "College Board AP CED."
+    },
+    {
+      "target": "topics.course_framework",
+      "page_refs": [
+        "Section 1"
+      ],
+      "evidence_note": "Course framework overview."
+    },
+    {
+      "target": "topics.ap-art-history-unit01",
+      "page_refs": [
+        "Unit 1"
+      ],
+      "evidence_note": "Unit 1: Global Prehistory, 30,000–500 bce                                                     ~4% (weighting n/a)."
+    },
+    {
+      "target": "topics.ap-art-history-unit02",
+      "page_refs": [
+        "Unit 2"
+      ],
+      "evidence_note": "Unit 2: Ancient Mediterranean, 3500 bce–300 ce                                               ~15% (weighting n/a)."
+    },
+    {
+      "target": "topics.ap-art-history-unit03",
+      "page_refs": [
+        "Unit 3"
+      ],
+      "evidence_note": "Unit 3: Early Europe and Colonial Americas, 200–1750 ce                                      ~21% (weighting n/a)."
+    },
+    {
+      "target": "topics.ap-art-history-unit04",
+      "page_refs": [
+        "Unit 4"
+      ],
+      "evidence_note": "Unit 4: Later Europe and Americas, 1750–1980 ce                                              ~21% (weighting n/a)."
+    },
+    {
+      "target": "topics.ap-art-history-unit05",
+      "page_refs": [
+        "Unit 5"
+      ],
+      "evidence_note": "Unit 5: Indigenous Americas, 1000 bce–1980 ce                                                 ~6% (weighting n/a)."
+    },
+    {
+      "target": "topics.ap-art-history-unit06",
+      "page_refs": [
+        "Unit 6"
+      ],
+      "evidence_note": "Unit 6: Africa, 1100–1980 ce                                                                  ~6% (weighting n/a)."
+    },
+    {
+      "target": "topics.ap-art-history-unit07",
+      "page_refs": [
+        "Unit 7"
+      ],
+      "evidence_note": "Unit 7: West and Central Asia, 500 bce–1980 ce                                                ~4% (weighting n/a)."
+    },
+    {
+      "target": "topics.ap-art-history-unit08",
+      "page_refs": [
+        "Unit 8"
+      ],
+      "evidence_note": "Unit 8: South, East, and Southeast Asia, 300 bce–1980 ce                                      ~8% (weighting n/a)."
+    },
+    {
+      "target": "topics.ap-art-history-unit09",
+      "page_refs": [
+        "Unit 9"
+      ],
+      "evidence_note": "Unit 9: The Pacific, 700–1980 ce                                                              ~4% (weighting n/a)."
+    },
+    {
+      "target": "topics.ap-art-history-unit10",
+      "page_refs": [
+        "Unit 10"
+      ],
+      "evidence_note": "Unit 10: Global Contemporary, 1980 ce to Present                                             ~11% (weighting n/a)."
+    }
+  ],
+  "draft_notes": []
+}

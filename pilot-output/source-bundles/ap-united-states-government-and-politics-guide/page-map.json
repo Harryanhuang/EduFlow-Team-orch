@@ -1,0 +1,58 @@
+{
+  "schema_version": "1",
+  "source_id": "primary_ced",
+  "page_ref_convention": "printed_page",
+  "physical_page_offset_note": "AP CED pages are typically labeled with printed_page numbers.",
+  "mappings": [
+    {
+      "target": "assessment_identity.system",
+      "page_refs": [
+        "title page"
+      ],
+      "evidence_note": "College Board AP CED."
+    },
+    {
+      "target": "topics.course_framework",
+      "page_refs": [
+        "Section 1"
+      ],
+      "evidence_note": "Course framework overview."
+    },
+    {
+      "target": "topics.ap-united-states-government-and-politics-unit01",
+      "page_refs": [
+        "Unit 1"
+      ],
+      "evidence_note": "Unit 1: Foundations of American Democracy (15–22%)."
+    },
+    {
+      "target": "topics.ap-united-states-government-and-politics-unit02",
+      "page_refs": [
+        "Unit 2"
+      ],
+      "evidence_note": "Unit 2: Interactions Among Branches of Government (25–36%)."
+    },
+    {
+      "target": "topics.ap-united-states-government-and-politics-unit03",
+      "page_refs": [
+        "Unit 3"
+      ],
+      "evidence_note": "Unit 3: Civil Liberties and Civil Rights (13–18%)."
+    },
+    {
+      "target": "topics.ap-united-states-government-and-politics-unit04",
+      "page_refs": [
+        "Unit 4"
+      ],
+      "evidence_note": "Unit 4: American Political Ideologies and Beliefs (10–15%)."
+    },
+    {
+      "target": "topics.ap-united-states-government-and-politics-unit05",
+      "page_refs": [
+        "Unit 5"
+      ],
+      "evidence_note": "Unit 5: Political Participation (20–27%)."
+    }
+  ],
+  "draft_notes": []
+}

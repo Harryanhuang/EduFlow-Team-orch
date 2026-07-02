@@ -1,0 +1,8 @@
+[
+  {
+    "axis": "lo",
+    "severity": "P1",
+    "issue": "PDF has 240 LO/EK mentions but topics.json has no essential_knowledge arrays",
+    "fix": "For each unit topic, populate essential_knowledge: [...] from PDF EK tables."
+  }
+]

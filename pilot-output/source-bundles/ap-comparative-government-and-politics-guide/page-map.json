@@ -1,0 +1,58 @@
+{
+  "schema_version": "1",
+  "source_id": "primary_ced",
+  "page_ref_convention": "printed_page",
+  "physical_page_offset_note": "AP CED pages are typically labeled with printed_page numbers.",
+  "mappings": [
+    {
+      "target": "assessment_identity.system",
+      "page_refs": [
+        "title page"
+      ],
+      "evidence_note": "College Board AP CED."
+    },
+    {
+      "target": "topics.course_framework",
+      "page_refs": [
+        "Section 1"
+      ],
+      "evidence_note": "Course framework overview."
+    },
+    {
+      "target": "topics.ap-comparative-government-and-politics-unit01",
+      "page_refs": [
+        "Unit 1"
+      ],
+      "evidence_note": "Unit 1: Political Systems, Regimes, and Governments (18–27%)."
+    },
+    {
+      "target": "topics.ap-comparative-government-and-politics-unit02",
+      "page_refs": [
+        "Unit 2"
+      ],
+      "evidence_note": "Unit 2: Political Institutions (22–33%)."
+    },
+    {
+      "target": "topics.ap-comparative-government-and-politics-unit03",
+      "page_refs": [
+        "Unit 3"
+      ],
+      "evidence_note": "Unit 3: Political Culture and Participation (11–18%)."
+    },
+    {
+      "target": "topics.ap-comparative-government-and-politics-unit04",
+      "page_refs": [
+        "Unit 4"
+      ],
+      "evidence_note": "Unit 4: Party and Electoral Systems and Citizen Organizations (13–18%)."
+    },
+    {
+      "target": "topics.ap-comparative-government-and-politics-unit05",
+      "page_refs": [
+        "Unit 5"
+      ],
+      "evidence_note": "Unit 5: Political and Economic Changes and Development (16–24%)."
+    }
+  ],
+  "draft_notes": []
+}

@@ -1,0 +1,176 @@
+{
+  "schema_version": "1",
+  "papers": [
+    {
+      "paper_id": "paper1",
+      "name": "Paper 1 Multiple Choice (Core)",
+      "question_styles": [
+        "multiple_choice"
+      ],
+      "duration_minutes": 45,
+      "total_marks": 40,
+      "weighting_percent": 30,
+      "coverage_notes": "Core syllabus. 40 four-option MCQs.",
+      "calculator_allowed": true,
+      "formula_sheet_allowed": false
+    },
+    {
+      "paper_id": "paper2",
+      "name": "Paper 2 Multiple Choice (Extended)",
+      "question_styles": [
+        "multiple_choice"
+      ],
+      "duration_minutes": 45,
+      "total_marks": 40,
+      "weighting_percent": 30,
+      "coverage_notes": "Extended syllabus (Core + Supplement). 40 four-option MCQs.",
+      "calculator_allowed": true,
+      "formula_sheet_allowed": false
+    },
+    {
+      "paper_id": "paper3",
+      "name": "Paper 3 Theory (Core)",
+      "question_styles": [
+        "short_answer",
+        "structured"
+      ],
+      "duration_minutes": 75,
+      "total_marks": 80,
+      "weighting_percent": 50,
+      "coverage_notes": "Core syllabus. Short-answer and structured questions.",
+      "calculator_allowed": true,
+      "formula_sheet_allowed": false
+    },
+    {
+      "paper_id": "paper4",
+      "name": "Paper 4 Theory (Extended)",
+      "question_styles": [
+        "short_answer",
+        "structured"
+      ],
+      "duration_minutes": 75,
+      "total_marks": 80,
+      "weighting_percent": 50,
+      "coverage_notes": "Extended syllabus (Core + Supplement). Short-answer and structured questions.",
+      "calculator_allowed": true,
+      "formula_sheet_allowed": false
+    },
+    {
+      "paper_id": "paper5",
+      "name": "Paper 5 Practical Test",
+      "question_styles": [
+        "practical"
+      ],
+      "duration_minutes": 75,
+      "total_marks": 40,
+      "weighting_percent": 20,
+      "coverage_notes": "Hands-on practical test at an external exam centre. Required for IGCSE award.",
+      "calculator_allowed": true,
+      "formula_sheet_allowed": false
+    },
+    {
+      "paper_id": "paper6",
+      "name": "Paper 6 Alternative to Practical",
+      "question_styles": [
+        "structured"
+      ],
+      "duration_minutes": 60,
+      "total_marks": 40,
+      "weighting_percent": 20,
+      "coverage_notes": "Written alternative for centres unable to run Paper 5.",
+      "calculator_allowed": true,
+      "formula_sheet_allowed": false
+    }
+  ],
+  "assessment_objectives": [
+    {
+      "ao_id": "AO1",
+      "name": "Knowledge with understanding",
+      "description": "Recall and demonstrate understanding of scientific facts, concepts, principles and theories.",
+      "weighting_qualification_percent": 50,
+      "weighting_by_paper": {},
+      "classification_hints": [
+        "Items asking for definitions, structures, processes, terminology, named facts."
+      ]
+    },
+    {
+      "ao_id": "AO2",
+      "name": "Handling information and problem-solving",
+      "description": "Apply biological knowledge to familiar and unfamiliar situations; interpret and analyse data.",
+      "weighting_qualification_percent": 30,
+      "weighting_by_paper": {},
+      "classification_hints": [
+        "Items involving graph/chart reading, calculation, interpretation of experimental data."
+      ]
+    },
+    {
+      "ao_id": "AO3",
+      "name": "Experimental skills and investigations",
+      "description": "Demonstrate experimental skills including planning, observation, recording, analysis and evaluation.",
+      "weighting_qualification_percent": 20,
+      "weighting_by_paper": {},
+      "classification_hints": [
+        "Items involving practical procedure, apparatus, variables, controls, safety, evaluation of methods."
+      ]
+    }
+  ],
+  "question_styles": [
+    {
+      "style_id": "multiple_choice",
+      "name": "Multiple choice",
+      "description": "Tests recall and basic application across the syllabus."
+    },
+    {
+      "style_id": "short_answer",
+      "name": "Short answer",
+      "description": "Concise factual or definitional responses."
+    },
+    {
+      "style_id": "structured",
+      "name": "Structured question",
+      "description": "Multi-part questions requiring analysis and application."
+    },
+    {
+      "style_id": "practical",
+      "name": "Practical / Alternative to practical",
+      "description": "Experimental design, data handling, evaluation of methods."
+    }
+  ],
+  "difficulty_ladder": [
+    {
+      "level": "foundation",
+      "description": "Recall of facts, definitions or single-step application."
+    },
+    {
+      "level": "standard",
+      "description": "Multi-step application; interpret simple data."
+    },
+    {
+      "level": "challenge",
+      "description": "Cross-topic synthesis; unfamiliar contexts; evaluation."
+    }
+  ],
+  "difficulty_scale": "ordinal_3",
+  "confidence_thresholds": {
+    "route_minimum": 0.8,
+    "classification_minimum": 0.75,
+    "review_required_below": 0.75
+  },
+  "lesson_use": {
+    "supported": false,
+    "modes": [],
+    "teacher_use_contract_ref": "",
+    "student_use_contract_ref": "",
+    "parent_use_contract_ref": "",
+    "notes": "Set supported=true only when a teacher/student/parent mode is declared and validated."
+  },
+  "generation_constraints": {
+    "must_match_scope": true,
+    "mark_out_of_scope_as_extension": true
+  },
+  "marking_guidance": {
+    "command_words_ref": "CAIE IGCSE Biology command words (state, describe, explain, discuss, calculate, plan, suggest) are defined in Section 4 of the syllabus.",
+    "notes": "Tier-aware marking: Core tier caps at grade C; Extended tier allows A*-G. Practical (Paper 5/6) is a separate paper graded independently."
+  },
+  "duration_hours": 1
+}

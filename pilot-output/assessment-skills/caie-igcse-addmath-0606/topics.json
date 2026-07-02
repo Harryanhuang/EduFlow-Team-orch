@@ -1,0 +1,383 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "caie-igcse-addmath-0606",
+      "topic_name": "CAIE IGCSE Additional Mathematics",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Additional Mathematics (0606) syllabus scope.",
+        "Valid: 2028 → 2030."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-addmath-0606-t001",
+      "topic_name": "1. Why choose this syllabus?",
+      "parent_id": "caie-igcse-addmath-0606",
+      "scope": [
+        "Why choose this syllabus?"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Why choose this syllabus?."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-addmath-0606-t002",
+      "topic_name": "2. Syllabus overview",
+      "parent_id": "caie-igcse-addmath-0606",
+      "scope": [
+        "Syllabus overview"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Syllabus overview."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-addmath-0606-t003",
+      "topic_name": "3. Factors of polynomials",
+      "parent_id": "caie-igcse-addmath-0606",
+      "scope": [
+        "Factors of polynomials"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Factors of polynomials."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-addmath-0606-t004",
+      "topic_name": "4. Equations, inequalities and graphs",
+      "parent_id": "caie-igcse-addmath-0606",
+      "scope": [
+        "Equations, inequalities and graphs"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Equations, inequalities and graphs."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-addmath-0606-t005",
+      "topic_name": "5. Simultaneous equations",
+      "parent_id": "caie-igcse-addmath-0606",
+      "scope": [
+        "Simultaneous equations"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Simultaneous equations."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-addmath-0606-t006",
+      "topic_name": "6. Logarithmic and exponential functions",
+      "parent_id": "caie-igcse-addmath-0606",
+      "scope": [
+        "Logarithmic and exponential functions"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Logarithmic and exponential functions."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-addmath-0606-t007",
+      "topic_name": "7. Straight-line graphs",
+      "parent_id": "caie-igcse-addmath-0606",
+      "scope": [
+        "Straight-line graphs"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Straight-line graphs."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-addmath-0606-t008",
+      "topic_name": "8. Coordinate geometry of the circle",
+      "parent_id": "caie-igcse-addmath-0606",
+      "scope": [
+        "Coordinate geometry of the circle"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Coordinate geometry of the circle."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-addmath-0606-t009",
+      "topic_name": "9. Circular measure",
+      "parent_id": "caie-igcse-addmath-0606",
+      "scope": [
+        "Circular measure"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Circular measure."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-addmath-0606-t010",
+      "topic_name": "10. Trigonometry",
+      "parent_id": "caie-igcse-addmath-0606",
+      "scope": [
+        "Trigonometry"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Trigonometry."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-addmath-0606-t011",
+      "topic_name": "11. Permutations and combinations",
+      "parent_id": "caie-igcse-addmath-0606",
+      "scope": [
+        "Permutations and combinations"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Permutations and combinations."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-addmath-0606-t012",
+      "topic_name": "12. Series",
+      "parent_id": "caie-igcse-addmath-0606",
+      "scope": [
+        "Series"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Series."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-addmath-0606-t013",
+      "topic_name": "13. Vectors in two dimensions",
+      "parent_id": "caie-igcse-addmath-0606",
+      "scope": [
+        "Vectors in two dimensions"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Vectors in two dimensions."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-addmath-0606-t014",
+      "topic_name": "14. Calculus",
+      "parent_id": "caie-igcse-addmath-0606",
+      "scope": [
+        "Calculus"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Calculus."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    }
+  ]
+}

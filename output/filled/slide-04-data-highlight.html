@@ -1,0 +1,199 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Data-Highlight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    .slide {
+      width: 1920px;
+      height: 1080px;
+      background-color: #2D9CC4;
+      font-family: 'PingFang SC', 'Microsoft YaHei', 'PingFang TC', 'Hiragino Sans GB', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+    .title-block {
+      position: absolute;
+      left: 80px;
+      top: 100px;
+      width: 1680px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .title-block [data-slot="title"] {
+      font-weight: 600;
+      font-size: 64px;
+      line-height: 1.25;
+      color: #FFFFFF;
+    }
+    .title-block [data-slot="subtitle"] {
+      font-weight: 400;
+      font-size: 40px;
+      line-height: 1.4;
+      color: #FFFFFF;
+      /* 等效灰色（避免 opacity 导出丢失） */
+      color: #8CCFE2; /* white @ 60% on black */
+    }
+    .data-block {
+      position: absolute;
+      top: 441px;
+      width: 453px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .data-block [data-slot$="Num"] {
+      font-weight: 700;
+      font-size: 140px;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: #D2A148;
+    }
+    .data-block [data-slot$="Desc"] {
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 1.43;
+      color: #FFFFFF;
+      /* 等效灰色（避免 opacity 导出丢失） */
+      color: #B3B3B3; /* white @ 70% on black */
+    }
+    .data-block-1 { left: 80px; }
+    .data-block-2 { left: 693px; }
+    .data-block-3 { left: 1306px; }
+    .slogan-block {
+      position: absolute;
+      left: 80px;
+      top: 882px;
+      width: 1197px;
+    }
+    .slogan-block [data-slot="slogan"] {
+      font-weight: 400;
+      font-size: 40px;
+      line-height: 1.5;
+      color: #FFFFFF;
+      /* 等效灰色（避免 opacity 导出丢失） */
+      color: #17495C; /* white @ 40% on black */
+    }
+  </style>
+<style id="qoderwork-sea-blue-base">
+    .slide {
+      color: #20283A !important;
+      letter-spacing: 0 !important;
+    }
+    .title-block [data-slot="title"] {
+      color: #123A4A !important;
+      font-weight: 700 !important;
+      letter-spacing: 0 !important;
+    }
+    .title-block [data-slot="subtitle"] {
+      color: #17495C !important;
+      font-weight: 500 !important;
+    }
+    .content-card,
+    .comparison-col,
+    .timeline-step {
+      border: 1px solid rgba(45,156,196,0.18) !important;
+      box-shadow: none !important;
+    }
+    .content-card,
+    .col-right {
+      background-color: #F2FAFD !important;
+    }
+    .col-left {
+      background-color: #E6F5FA !important;
+    }
+    .card-image {
+      background-color: #FFFFFF !important;
+      border: 1px solid rgba(210,161,72,0.35) !important;
+    }
+    .card-image img {
+      color: #2D9CC4 !important;
+    }
+    [data-slot$="Heading"],
+    [data-slot$="Label"] {
+      color: #123A4A !important;
+      font-weight: 700 !important;
+    }
+    [data-slot$="Copy"],
+    [data-slot$="Item1"],
+    [data-slot$="Item2"],
+    [data-slot$="Item3"],
+    [data-slot$="Item4"] {
+      color: #20283A !important;
+    }
+    .col-items [data-slot$="Item1"]::before,
+    .col-items [data-slot$="Item2"]::before,
+    .col-items [data-slot$="Item3"]::before,
+    .col-items [data-slot$="Item4"]::before {
+      background-color: #D2A148 !important;
+    }
+  </style><style id="qoderwork-sea-blue-dark-page">
+      .slide {
+        background-color: #2D9CC4 !important;
+        color: #FFFFFF !important;
+      }
+      .title-block [data-slot="title"],
+      [data-slot="quote"],
+      .thank-you-title {
+        color: #FFFFFF !important;
+        font-weight: 800 !important;
+      }
+      .title-block [data-slot="subtitle"],
+      [data-slot="subtitle"],
+      .data-block [data-slot$="Desc"],
+      .description-block [data-slot="description"] {
+        color: #EAF9FC !important;
+      }
+      .data-block [data-slot$="Num"] {
+        color: #FFE2A3 !important;
+      }
+      .slogan-block [data-slot="slogan"] {
+        color: #F4FCFE !important;
+      }
+    </style>
+<style id="eduflow-sea-theme">
+  .slide { color: #20283A !important; }
+  .title-block [data-slot="title"] { color: #123A4A !important; font-weight: 750 !important; letter-spacing: 0 !important; }
+  .title-block [data-slot="subtitle"] { color: #17495C !important; font-weight: 500 !important; }
+  .content-card, .comparison-col, .timeline-step { border: 1px solid rgba(45,156,196,0.18) !important; box-shadow: none !important; }
+  .card-image { background-color: #FFFFFF !important; border: 1px solid rgba(210,161,72,0.35) !important; }
+  .card-image img { color: #2D9CC4 !important; }
+  [data-slot$="Heading"], [data-slot$="Label"] { color: #123A4A !important; font-weight: 750 !important; }
+  [data-slot$="Copy"], [data-slot$="Item1"], [data-slot$="Item2"], [data-slot$="Item3"], [data-slot$="Item4"] { color: #20283A !important; }
+</style>
+
+<style id="sea-dark-page">
+  .slide { background-color: #2D9CC4 !important; color: #FFFFFF !important; }
+  .title-block [data-slot="title"], [data-slot="quote"], [data-slot="title"] { color: #FFFFFF !important; font-weight: 800 !important; }
+  .title-block [data-slot="subtitle"], [data-slot="subtitle"], .data-block [data-slot$="Desc"] { color: #EAF9FC !important; }
+  .data-block [data-slot$="Num"] { color: #FFE2A3 !important; }
+  .slogan-block [data-slot="slogan"] { color: #F4FCFE !important; font-size: 34px !important; line-height: 1.38 !important; width: 1500px !important; }
+  .data-block [data-slot$="Desc"] { font-size: 23px !important; line-height: 1.30 !important; }
+</style>
+</head>
+<body>
+  <div class="slide" data-template="data-highlight">
+    <div class="title-block">
+      <h1 data-slot="title">A-Level 是大学预备资格体系</h1>
+      <p data-slot="subtitle">它不是“英国高考”的简单替代，而是课程选择、考试设计、等级认证和大学录取共同运行。</p>
+    </div>
+    <div class="data-block data-block-1">
+      <span data-slot="data1Num">55</span>
+      <p data-slot="data1Desc">AS &amp; A Level 学科总数；菜单大不等于学校都要开，先看师资、学生画像和升学方向。</p>
+    </div>
+    <div class="data-block data-block-2">
+      <span data-slot="data2Num">70+</span>
+      <p data-slot="data2Desc">IGCSE / O Level 学科规模；覆盖更广，适合作为语言、方法、实验和学科兴趣的桥梁。</p>
+    </div>
+    <div class="data-block data-block-3">
+      <span data-slot="data3Num">3-4</span>
+      <p data-slot="data3Desc">学生常见深入学习科目数；少而精，深度优先，选错科会直接影响可申请专业。</p>
+    </div>
+    <div class="slogan-block">
+      <p data-slot="slogan">老师从第一节课开始就要对齐 syllabus、paper 和升学要求，而不是只跟教材目录走。</p>
+    </div>
+  </div>
+
+
+</body></html>

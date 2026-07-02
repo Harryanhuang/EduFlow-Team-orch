@@ -1,0 +1,49 @@
+{
+  "schema_version": "1",
+  "subject": "biology",
+  "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/05-DSE知识库/03-学科知识/DSE Biology/02-課本與考綱/考綱/生物 -2028.pdf",
+  "file_checksum_sha256": "9e34c932c015b00e44de9b1bc7aa0bca365b9fa20e0d6230b33be896ef59b1e9",
+  "pdfinfo": {
+    "Title": "2028年香港中學文憑考試生物科評核大綱",
+    "Author": "HKEAA",
+    "Creator": "Microsoft® Word 2019",
+    "Producer": "Microsoft® Word 2019",
+    "CreationDate": "Tue Mar  4 14:44:25 2025 CST",
+    "ModDate": "Thu May 15 13:38:47 2025 CST",
+    "Custom Metadata": "no",
+    "Metadata Stream": "yes",
+    "Tagged": "yes",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "none",
+    "JavaScript": "no",
+    "Pages": "3",
+    "Encrypted": "no",
+    "Page size": "595.32 x 841.92 pts (A4)",
+    "Page rot": "0",
+    "File size": "172470 bytes",
+    "Optimized": "no",
+    "PDF version": "1.7"
+  },
+  "total_pages": 3,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": 1,
+      "chars": 752,
+      "first_200": "生物 引言 本科的公開評核建基於課程發展議會及香港考試及評核局聯合編訂的高中生 物 科 課 程 及 評 估 指 引 （ 中 四 至 中 六 ）。 考 生 須 參 閱 上 述 指 引 內 的"
+    },
+    {
+      "physical_page": 2,
+      "printed_page": 2,
+      "chars": 752,
+      "first_200": "價與生物學有關的事件；及 11 . 於影響個人、社會和環境的問題上作出建議、選擇及判斷。 2028-HKDSE-BIO 評核模式 生物科的公開評核由公開考試和校本評核兩部分組成， 略見於下表： 組成部分 比重 時間 試卷一 涵蓋課程必修部分 60% 兩小時三十分鐘 公開考試 試卷二 涵蓋課程選修部分 20% 一小時 校本評核 20% 公開考試 試 卷 一 由 甲 、 乙"
+    },
+    {
+      "physical_page": 3,
+      "printed_page": 3,
+      "chars": 752,
+      "first_200": "和 野 外 考 察 等。中 五 和 中 六 期 間 ， 教 師 會 就 考 生 的 實 驗 技 巧 及 能 力 （ A） 和"
+    }
+  ]
+}

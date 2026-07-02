@@ -1,0 +1,2241 @@
+{
+  "schema_version": "1",
+  "subject": "art-history",
+  "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/03-AP知识库/03-学科知识/AP Art History/02-课本与考纲/考纲/ap-art-history-course-and-exam-description.pdf",
+  "file_checksum_sha256": "dbd0ad0d793f3249b34ed62605c111b92dacc0475e2e8f6495fd7429b2e46b1c",
+  "pdfinfo": {
+    "Title": "AP® Art History Course and Exam Description, Effective Fall 2020",
+    "Subject": "AP Art History; Advanced Placement",
+    "Keywords": "AP® Art History; Course and Exam Description; Effective Fall 2020; rev 09/2025; course content; course overview; course framework; course resources; exam information; exam resources; sample exam questions; scoring guidelines; scoring information; scoring resources; historical thinking skills; unit guides; AP resources and supports; instructional model; instructional resources; instructional materials; course materials; teacher materials; v3; ADA",
+    "Author": "College Board",
+    "Creator": "Adobe InDesign CC 14.0 (Macintosh)",
+    "Producer": "Adobe PDF Library 15.0",
+    "CreationDate": "Mon Jul 21 10:43:22 2025 CST",
+    "ModDate": "Sat Mar 14 03:25:28 2026 CST",
+    "Custom Metadata": "no",
+    "Metadata Stream": "yes",
+    "Tagged": "yes",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "AcroForm",
+    "JavaScript": "no",
+    "Pages": "368",
+    "Encrypted": "yes (print:yes copy:yes change:no addNotes:no algorithm:AES-256)",
+    "Page size": "612 x 792 pts (letter)",
+    "Page rot": "0",
+    "File size": "81122569 bytes",
+    "Optimized": "no",
+    "PDF version": "1.7"
+  },
+  "total_pages": 368,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": 1,
+      "chars": 2691,
+      "first_200": "INCLUDES \u0007 \u0007 \u0007 AP Art History ® COURSE AND EXAM DESCRIPTION Effective Fall 2020 AP Art History ® COURSE AND EXAM DESCRIPTION Effective Fall 2020 AP COURSE AND EXAM"
+    },
+    {
+      "physical_page": 2,
+      "printed_page": 2,
+      "chars": 2691,
+      "first_200": "erspectives\u0007different\u0007from\u0007their\u0007 own\u0007and\u0007to\u0007question\u0007the\u0007meaning,\u0007purpose,\u0007or\u0007effect\u0007of\u0007such\u0007content\u0007within\u0007the\u0007 literary work as a whole.” 5. \u0007AP\u0007courses\u0007foster\u0007an\u0007open-minded\u0007approach\u0007to\u0007the\u0007histor"
+    },
+    {
+      "physical_page": 3,
+      "printed_page": 3,
+      "chars": 2691,
+      "first_200": "Mediterranean, 3500 bce–300 ce 79 UNIT 3: Early Europe and Colonial Americas, 200–1750 ce 127 UNIT 4: Later Europe and Americas, 1750–1980 ce 157 UNIT 5: Indigenous Americas, 1000 bce–1980"
+    },
+    {
+      "physical_page": 4,
+      "printed_page": 4,
+      "chars": 2691,
+      "first_200": "Director, AP Curricular Publications Amy Smallwood-Ringenberg, Director, AP Instructional Design and PD Resource Development Kelly Stromberg, Senior Director, AP History, Curriculum, Instruction and A"
+    },
+    {
+      "physical_page": 5,
+      "printed_page": 5,
+      "chars": 2691,
+      "first_200": "by opening the nation’s leading colleges and universities, and AP access\u0007to\u0007Pre-AP\u0007course\u0007work.\u0007We\u0007commit\u0007to\u0007support\u0007 Exams are developed and scored by college faculty and educators\u0007and\u0007communities\u0007in"
+    },
+    {
+      "physical_page": 6,
+      "printed_page": 6,
+      "chars": 2691,
+      "first_200": "rovide teachers and administrators that represent a sequence found in widely adopted with clear guidelines on curricular and resource college textbooks and that many AP teachers have requirements for "
+    },
+    {
+      "physical_page": 7,
+      "printed_page": 7,
+      "chars": 2691,
+      "first_200": "e preparation and submission in leadership positions, maintains the accuracy of of materials for the AP Course Audit. the\u0007scoring\u0007standards.\u0007Scores\u0007on\u0007the\u0007free-response\u0007 questions and performance asse"
+    },
+    {
+      "physical_page": 8,
+      "printed_page": 8,
+      "chars": 2691,
+      "first_200": "mulated\u0007by\u0007 difficulty\u0007across\u0007the\u0007questions.\u0007 college faculty who review each AP Exam question. Committee members are selected to represent a variety of perspectives and institutions (public and priva"
+    },
+    {
+      "physical_page": 9,
+      "printed_page": 9,
+      "chars": 2691,
+      "first_200": "niversities award credit and/ the quality and depth of the responses from the or advanced placement for AP scores of 3 or higher. entire pool of AP Exam takers, and"
+    },
+    {
+      "physical_page": 10,
+      "printed_page": 10,
+      "chars": 2691,
+      "first_200": "s to a robust set of classroom resources. AP Classroom AP Classroom is a dedicated online platform designed to support teachers and students throughout their AP experience. The platform provides"
+    },
+    {
+      "physical_page": 11,
+      "printed_page": 11,
+      "chars": 2691,
+      "first_200": "istory Course and Exam Description ﻿ V.1 | 4 Return to Table of Contents © 2019 College Board Digital Activation In order to teach an AP class and make sure"
+    },
+    {
+      "physical_page": 12,
+      "printed_page": 12,
+      "chars": 2691,
+      "first_200": "ctivation,\u0007eliminating\u0007the\u0007need\u0007for\u0007pre-administration\u0007sessions\u0007and\u0007 reducing time spent bubbling on exam day. § Targeted Instructional Planning Reports: AP teachers will get Instructional Planning Re"
+    },
+    {
+      "physical_page": 13,
+      "printed_page": 13,
+      "chars": 2691,
+      "first_200": "room to assign students the online Personal Progress Checks,\u0007as\u0007homework\u0007or\u0007as\u0007an\u0007in-class\u0007task.\u0007 § Provide\u0007question-level\u0007feedback\u0007to\u0007students\u0007through\u0007answer\u0007rationales;\u0007provide\u0007unit-\u0007and\u0007 skill-leve"
+    },
+    {
+      "physical_page": 14,
+      "printed_page": 14,
+      "chars": 2691,
+      "first_200": "reward\u0007students’\u0007memorization\u0007of\u0007isolated\u0007facts\u0007 learning objectives that represent the art historical about works of art, artists, or cultures; rather, it invites skills valued by art historians and "
+    },
+    {
+      "physical_page": 15,
+      "printed_page": 15,
+      "chars": 2691,
+      "first_200": "now, be able to do, and understand to qualify for college credit or placement. The course framework includes two essential components: 1 \u0007 ART HISTORICAL THINKING SKILLS The art historical"
+    },
+    {
+      "physical_page": 16,
+      "printed_page": 16,
+      "chars": 2691,
+      "first_200": "Return to Table of Contents © 2019 College Board AP ART HISTORY Art Historical Thinking Skills Skill 1 Skill 2 Skill 3 Skill 4 Visual Contextual Comparison of Artistic Analysis"
+    },
+    {
+      "physical_page": 17,
+      "printed_page": 17,
+      "chars": 2691,
+      "first_200": "and/ or change within an artistic 2.B Explain\u0007how\u0007the\u0007possible\u0007 1.B Describe\u0007visual\u0007 tradition, style, or practice. elements of a work of art (or intent, purpose, and/or group of related works of art)"
+    },
+    {
+      "physical_page": 18,
+      "printed_page": 18,
+      "chars": 2691,
+      "first_200": "continued on next page AP Art History Course and Exam Description Course Framework V.1 | 14 Return to Table of Contents © 2019 College Board AP ART HISTORY Art Historical"
+    },
+    {
+      "physical_page": 19,
+      "printed_page": 19,
+      "chars": 2691,
+      "first_200": "of art) are derived from an 8.C Explain\u0007how\u0007the\u0007evidence\u0007 § content analysis of its form, style, justifies\u0007the\u0007claim. 5.B In\u0007analyzing\u0007a\u0007work\u0007of\u0007 materials, content, function, art beyond the image set"
+    },
+    {
+      "physical_page": 20,
+      "printed_page": 20,
+      "chars": 2691,
+      "first_200": "tive views or evidence AP Art History Course and Exam Description Course Framework V.1 | 15 Return to Table of Contents © 2019 College Board THIS PAGE IS INTENTIONALLY LEFT"
+    },
+    {
+      "physical_page": 21,
+      "printed_page": 21,
+      "chars": 2691,
+      "first_200": "(CUL) Cultural\u0007practices\u0007or\u0007belief\u0007systems\u0007often\u0007affect\u0007art\u0007and\u0007art\u0007making. BIG IDEA 2: INTERACTIONS WITH OTHER CULTURES (INT) Interactions\u0007with\u0007other\u0007cultures\u0007affect\u0007art\u0007and\u0007art\u0007making. BIG IDEA 3: T"
+    },
+    {
+      "physical_page": 22,
+      "printed_page": 22,
+      "chars": 2691,
+      "first_200": "“topics.” The topic pages (starting on page 38) teach the required course content and administer contain the required content for each topic. the Personal Progress Checks. The suggested class Units"
+    },
+    {
+      "physical_page": 23,
+      "printed_page": 23,
+      "chars": 2691,
+      "first_200": "Course Framework V.1 | 19 Return to Table of Contents © 2019 College Board Spiraling the Big Ideas (cont'd) Big Ideas Unit 6 Unit 7 Unit 8 Unit 9 Unit"
+    },
+    {
+      "physical_page": 24,
+      "printed_page": 24,
+      "chars": 2691,
+      "first_200": "Mediterranean Art 1.2 Materials, Processes, + a\u0007useful\u0007visual\u0007organization\u0007of\u0007 MPT the\u0007AP Art\u0007History\u0007curricular\u0007 1 and Techniques in INT 2.2 Interactions 5 Prehistoric Art Within and Across component"
+    },
+    {
+      "physical_page": 25,
+      "printed_page": 25,
+      "chars": 2691,
+      "first_200": "s topics and units. CUL Culture INT Interactions with Other Cultures THR Theories and Interpretations MPT \u0007Materials, Processes, and Techniques PAA \u0007Purpose and Audience Assess Assign the Personal Pro"
+    },
+    {
+      "physical_page": 26,
+      "printed_page": 26,
+      "chars": 2691,
+      "first_200": "er European and in Indigenous + American Art 2 American Art INT 3.2 Interactions Within 4 3 and Across Cultures PAA 4.2 Purpose and Audience in Early European and in"
+    },
+    {
+      "physical_page": 27,
+      "printed_page": 27,
+      "chars": 2691,
+      "first_200": "American Art 7 Interpretations of Early European and Colonial 8 American Art Personal Progress Check 3 Personal Progress Check 4 Personal Progress Check 5 Multiple-choice: ∼30 questions Multiple-choic"
+    },
+    {
+      "physical_page": 28,
+      "printed_page": 28,
+      "chars": 2691,
+      "first_200": "in West and Central PAA in South, East, and 2 in African Art Asian Art Southeast Asian Art 6 2 2 THR 6.3 Theories and INT 7.3 Interactions Within and"
+    },
+    {
+      "physical_page": 29,
+      "printed_page": 29,
+      "chars": 2691,
+      "first_200": "s in INT and Techniques in 5 Pacific Art Global Contemporary Art 1 CUL 9.2 Interactions Within INT and Across Cultures PAA 10.2 Purpose and in Pacific Art 2 Audience"
+    },
+    {
+      "physical_page": 30,
+      "printed_page": 30,
+      "chars": 2691,
+      "first_200": "of\u0007the\u0007work\u0007(location\u0007 included\u0007as\u0007present-day\u0007city\u0007and\u0007nation\u0007for\u0007architectural\u0007monuments) ◆ Artist/Culture—Artist(s)\u0007and/or\u0007culture\u0007of\u0007origin ◆ Date of creation—Time\u0007in\u0007which\u0007the\u0007work\u0007was\u0007created ◆ "
+    },
+    {
+      "physical_page": 31,
+      "printed_page": 31,
+      "chars": 2691,
+      "first_200": "n which Aesthetic refers to a type of human experience a work of art was created, as well as information that combines perception, feeling, meaning making, about when, where, and"
+    },
+    {
+      "physical_page": 32,
+      "printed_page": 32,
+      "chars": 2691,
+      "first_200": "zation\u0007of\u0007materials\u0007 media, sociological data, cultural studies, geographic and techniques, mode of display), through interactions data, artifacts, narrative and/or performance (e.g., oral, between wo"
+    },
+    {
+      "physical_page": 33,
+      "printed_page": 33,
+      "chars": 2691,
+      "first_200": "y includes subject Function includes the artist’s intended use(s) for matter: visible imagery that may be formal depictions the work and the actual use(s) of the work, which (e.g., minimalist"
+    },
+    {
+      "physical_page": 34,
+      "printed_page": 34,
+      "chars": 2691,
+      "first_200": "views. This includes, but is more sentences located in one place. not\u0007limited\u0007to,\u0007addressing\u0007valid\u0007scholarly\u0007counter- A work of art is created by the artist’s deliberate arguments to the claim and/or "
+    },
+    {
+      "physical_page": 35,
+      "printed_page": 35,
+      "chars": 2691,
+      "first_200": "of each unit to gauge progress toward success on the AP exam. However, experienced\u0007AP\u0007teachers\u0007who\u0007are\u0007satisfied\u0007with\u0007their\u0007current\u0007course\u0007 organization\u0007and\u0007exam\u0007results\u0007should\u0007feel\u0007no\u0007pressure\u0007to\u0007ado"
+    },
+    {
+      "physical_page": 36,
+      "printed_page": 36,
+      "chars": 2691,
+      "first_200": "essential questions\u0007are\u0007thought-provoking\u0007questions\u0007that\u0007 motivate students and inspire inquiry. Developing Understanding BIG IDEA 1 The discipline of art history examines art and the practices of art"
+    },
+    {
+      "physical_page": 37,
+      "printed_page": 37,
+      "chars": 2691,
+      "first_200": "Thinking Skills student\u0007misunderstandings\u0007identified\u0007from\u0007prior\u0007exam\u0007data.\u0007 The AP Art History Exam asks students to BIG IDEA 3 1.A 1.B 7.A identify and describe visual elements of Theories and works "
+    },
+    {
+      "physical_page": 38,
+      "printed_page": 38,
+      "chars": 2691,
+      "first_200": "ill of visual analysis, explaining how artistic the image set; a skill that is assessed both decisions about visual characteristics shape BIG IDEA 4 in the multiple-choice questions and in"
+    },
+    {
+      "physical_page": 39,
+      "printed_page": 39,
+      "chars": 2691,
+      "first_200": "of what constitutes visual and contextual of a work of art may be derived from an analysis can be found in the AP Art analysis of its characteristics, including form,"
+    },
+    {
+      "physical_page": 40,
+      "printed_page": 40,
+      "chars": 2691,
+      "first_200": "the\u0007content\u0007in\u0007that\u0007topic\u0007to\u0007a\u0007specific\u0007art\u0007historical\u0007thinking\u0007skill.\u0007 Topic Suggested Skills ~3–5 CLASS PERIODS 1.1 Cultural Influences on 1.A Identify a work of art (or group of related works The i"
+    },
+    {
+      "physical_page": 41,
+      "printed_page": 41,
+      "chars": 2691,
+      "first_200": "content with any of the skills. 5.B In analyzing a work of art beyond the image set, explain how artistic decisions about form, style, materials, technique, and/or content shape a"
+    },
+    {
+      "physical_page": 42,
+      "printed_page": 42,
+      "chars": 2691,
+      "first_200": "© 2019 College Board Using the Unit Guides The Sample Instructional Activities page includes optional UNIT activities that can help tie together the content and skills Global Prehistory, 30,000–500 bc"
+    },
+    {
+      "physical_page": 43,
+      "printed_page": 43,
+      "chars": 2691,
+      "first_200": "ion Use brainstorming and guided questioning as strategies during a guided discussion to help students understand art historical interpretations of Stonehenge (8). If possible, have students examine a"
+    },
+    {
+      "physical_page": 44,
+      "printed_page": 44,
+      "chars": 2691,
+      "first_200": "Describe contextual elements of a work of art (or group of related works related to the big ideas that leave a lasting impression Early European and on students. of art)."
+    },
+    {
+      "physical_page": 45,
+      "printed_page": 45,
+      "chars": 2691,
+      "first_200": "reception. ENDURING UNDERSTANDING CUL-1 AVAILABLE RESOURCE § Classroom Resources > A list of suggested works from the image set are provided for Cultural practices, belief systems, and physical settin"
+    },
+    {
+      "physical_page": 46,
+      "printed_page": 46,
+      "chars": 2691,
+      "first_200": "Essential knowledge statements describe the knowledge § 63. Arena (Scrovegni) LEARNING ESSENTIAL Chapel OBJECTIVE KNOWLEDGE § 64. Golden Haggadah required to demonstrate the learning objective. CUL-1."
+    },
+    {
+      "physical_page": 47,
+      "printed_page": 47,
+      "chars": 2691,
+      "first_200": "Christ do with content knowledge in order to progress toward an culture, and learning. Elite religious and court cultures § 79. Allegory of Law and throughout the Middle Ages prioritized"
+    },
+    {
+      "physical_page": 48,
+      "printed_page": 48,
+      "chars": 2691,
+      "first_200": ".1 | 85 00762-112-CED-Art-History_Unit 3.indd 85 3/15/19 3:00 PM AP Art History Course and Exam Description Course Framework V.1 | 31 Return to Table of Contents © 2019 College Board"
+    },
+    {
+      "physical_page": 49,
+      "printed_page": 49,
+      "chars": 2691,
+      "first_200": "the role these different variables may play in art and art making. NOTE: Labels are used to distinguish each unique element of the required course content and are used throughout"
+    },
+    {
+      "physical_page": 50,
+      "printed_page": 50,
+      "chars": 2691,
+      "first_200": "student with immediate feedback related to this unit's topics and skills. Personal Progress Check 1 Multiple-choice: ~20 questions AP Art History Course and Exam Description Course Framework V.1 | 34"
+    },
+    {
+      "physical_page": 51,
+      "printed_page": 51,
+      "chars": 2691,
+      "first_200": "starting point for students before they move to develop deep understanding of works Art THR on\u0007to\u0007the\u0007more\u0007complex\u0007task\u0007of\u0007analyzing\u0007the\u0007 of art from diverse cultures, including § In what ways does vi"
+    },
+    {
+      "physical_page": 52,
+      "printed_page": 52,
+      "chars": 2691,
+      "first_200": "f the and\u0007define\u0007those\u0007works? is\u0007interpreted.\u0007Students\u0007will\u0007read\u0007historical\u0007 free-response\u0007questions.\u0007Students\u0007will\u0007need\u0007 interpretations of works of art, understand a\u0007clear\u0007understanding\u0007of\u0007the\u0007diffe"
+    },
+    {
+      "physical_page": 53,
+      "printed_page": 53,
+      "chars": 2691,
+      "first_200": "B Describe\u0007visual\u0007elements\u0007of\u0007a\u0007work\u0007of\u0007art\u0007(or\u0007 and Techniques in group of related works of art). Prehistoric Art 1.C Explain\u0007how\u0007artistic\u0007decisions\u0007about\u0007form,\u0007 style, materials, technique, and/or c"
+    },
+    {
+      "physical_page": 54,
+      "printed_page": 54,
+      "chars": 2691,
+      "first_200": "1 SAMPLE INSTRUCTIONAL ACTIVITIES The sample activities on this page provide possible ways to integrate varied instructional approaches into the classroom. These activities are optional, and teachers "
+    },
+    {
+      "physical_page": 55,
+      "printed_page": 55,
+      "chars": 2691,
+      "first_200": "group of related works of art). SUGGESTED WORKS Required Course Content § 1.\u0007Apollo\u000711\u0007Stones § 9. The Ambum stone § 10.\u0007Tlatilco\u0007female\u0007figure ENDURING UNDERSTANDING CUL-1 Cultural practices, belief "
+    },
+    {
+      "physical_page": 56,
+      "printed_page": 56,
+      "chars": 2691,
+      "first_200": "and tectonic shifts in southeast Asia created land bridges\u0007between\u0007the\u0007continent\u0007and\u0007the\u0007now-islands\u0007 of\u0007the\u0007Pacific\u0007south\u0007of\u0007the\u0007equator.\u0007Human\u0007behavior\u0007 and\u0007expression\u0007were\u0007influenced\u0007by\u0007the\u0007changin"
+    },
+    {
+      "physical_page": 57,
+      "printed_page": 57,
+      "chars": 2691,
+      "first_200": "ot\u0007in\u0007direct\u0007 contact\u0007with\u0007one\u0007another—art\u0007shows\u0007humans’\u0007 awareness of fundamental, stable phenomena, from the macrocosmic (e.g., astronomical cycles, such as equinoxes and solstices) to the microcosm"
+    },
+    {
+      "physical_page": 58,
+      "printed_page": 58,
+      "chars": 2691,
+      "first_200": "techniques\u0007affect\u0007 influencing\u0007other\u0007areas\u0007as\u0007the\u0007human\u0007population\u0007spread.\u0007 § 5. Beaker with ibex art and art making. People\u0007established\u0007many\u0007artistic\u0007media,\u0007from\u0007the\u0007first\u0007 motifs fired\u0007ceramics\u0007to\u0007p"
+    },
+    {
+      "physical_page": 59,
+      "printed_page": 59,
+      "chars": 2691,
+      "first_200": "st,\u0007and\u0007East\u0007Asia\u0007between\u000770,000\u0007 processes, and and 40,000 bce.\u0007Paleolithic\u0007and\u0007Neolithic\u0007cave\u0007paintings\u0007 techniques affect featuring animal imagery are found across Asia, including art and art makin"
+    },
+    {
+      "physical_page": 60,
+      "printed_page": 60,
+      "chars": 2691,
+      "first_200": "\u0007tried\u0007to\u0007influence\u0007and\u0007integrate\u0007 with the natural cycles of the cosmos and promote both human and animal fertility. These works establish the dynamic interplay of naturalism and abstraction found th"
+    },
+    {
+      "physical_page": 61,
+      "printed_page": 61,
+      "chars": 2691,
+      "first_200": "and art making that change over time. These theories and interpretations may § 2. Great Hall of the Bulls (Lascaux) be generated both by visual analysis of works of art"
+    },
+    {
+      "physical_page": 62,
+      "printed_page": 62,
+      "chars": 2691,
+      "first_200": "theories of the function and meaning of prehistoric art. continued on next page AP Art History Course and Exam Description Course Framework V.1 | 42 Return to Table of Contents"
+    },
+    {
+      "physical_page": 63,
+      "printed_page": 63,
+      "chars": 2691,
+      "first_200": "techniques to identify patterns (such\u0007as\u0007a\u0007prevalence\u0007of\u0007transformational\u0007animal- human iconography), then ethnographic approaches can be used to propose hypotheses (e.g., that certain iconography\u0007is\u0007"
+    },
+    {
+      "physical_page": 64,
+      "printed_page": 64,
+      "chars": 2691,
+      "first_200": "© 2019 College Board UNIT Global Prehistory, 30,000–500 bce 1 5. Beaker with ibex motifs 6. Anthropomorphic stele Susa,\u0007Iran.\u00074200–3500\u0007bce. Painted terra cotta. Arabian Peninsula. Fourth millennium b"
+    },
+    {
+      "physical_page": 65,
+      "printed_page": 65,
+      "chars": 2691,
+      "first_200": "tesy of the Anthropology Photographic Archive, Department of Anthropology, The University of Auckland AP Art History Course and Exam Description Course Framework V.1 | 47 Return to Table of Contents"
+    },
+    {
+      "physical_page": 66,
+      "printed_page": 66,
+      "chars": 2691,
+      "first_200": "Course Framework V.1 | 50 Return to Table of Contents © 2019 College Board UNIT 2 ~15% AP EXAM WEIGHTING ~16–18 CLASS PERIODS Ancient Mediterranean, 3500 bce–300 ce Developing Understanding"
+    },
+    {
+      "physical_page": 67,
+      "printed_page": 67,
+      "chars": 2691,
+      "first_200": "of\u0007art.\u0007Students\u0007often\u0007find\u0007it\u0007challenging\u0007to\u0007 that can be traced in the collective works differentiate\u0007between\u0007visual\u0007and\u0007contextual\u0007 of\u0007cultures.\u0007Students\u0007will\u0007continue\u0007to\u0007 analysis.\u0007Help\u0007them\u0007to\u0007an"
+    },
+    {
+      "physical_page": 68,
+      "printed_page": 68,
+      "chars": 2691,
+      "first_200": "successful examples of analysis, are important to build their abilities. AP Art History Course and Exam Description Course Framework V.1 | 51 Return to Table of Contents © 2019 College"
+    },
+    {
+      "physical_page": 69,
+      "printed_page": 69,
+      "chars": 2691,
+      "first_200": "group of related works of art) beyond the image set. 5.B In\u0007analyzing\u0007a\u0007work\u0007of\u0007art\u0007beyond\u0007the\u0007image\u0007 set, explain how artistic decisions about form, style, materials, technique, and/or content shape "
+    },
+    {
+      "physical_page": 70,
+      "printed_page": 70,
+      "chars": 2691,
+      "first_200": "\u0007of\u0007art\u0007(or\u0007group\u0007of\u0007 related works of art) demonstrates continuity and/or change within an artistic tradition, style, or practice. 2.3 Purpose and Audience in 2.B Explain\u0007how\u0007the\u0007possible\u0007intent,\u0007pur"
+    },
+    {
+      "physical_page": 71,
+      "printed_page": 71,
+      "chars": 2691,
+      "first_200": "tivity 1 2.1 Think-Pair-Share Using\u0007the\u0007Seated\u0007Scribe (15),\u0007have\u0007students\u0007work\u0007through\u0007a\u0007Think-Pair-Share\u0007exercise\u0007 focusing\u0007on\u0007the\u0007contextual\u0007elements\u0007of\u0007this\u0007work.\u0007Set\u0007some\u0007focused\u0007questions,\u0007such\u0007 "
+    },
+    {
+      "physical_page": 72,
+      "printed_page": 72,
+      "chars": 2691,
+      "first_200": "UNIT Ancient Mediterranean, 3500 bce–300 ce 2 TOPIC 2.1 SUGGESTED SKILLS 1.A Cultural Contexts Identify a work of art (or group of related works of art). 1.B of Ancient Describe"
+    },
+    {
+      "physical_page": 73,
+      "printed_page": 73,
+      "chars": 2691,
+      "first_200": "2.C Cultural practices, belief systems, and physical setting constitute an important part of art and art making and are often communicated in various stylistic conventions Explain how and/or why and\u0007f"
+    },
+    {
+      "physical_page": 74,
+      "printed_page": 74,
+      "chars": 2691,
+      "first_200": "CUL-1.A.6 beyond the image set, explain how artistic decisions The\u0007art\u0007of\u0007dynastic\u0007Egypt\u0007(present-day\u0007Egypt\u0007and\u0007Sudan,\u0007 about form, style, materials, from 3000 to 30 bce) generally includes coverage o"
+    },
+    {
+      "physical_page": 75,
+      "printed_page": 75,
+      "chars": 2691,
+      "first_200": "type from the image set. AP Art History Course and Exam Description Course Framework V.1 | 55 Return to Table of Contents © 2019 College Board UNIT 2 Ancient Mediterranean,"
+    },
+    {
+      "physical_page": 76,
+      "printed_page": 76,
+      "chars": 2691,
+      "first_200": "mun-Re\u0007 Turkey, and southern Italy, from 600 bce to 100 ce and\u0007Hypostle-Hall Etruscan art (c. 700–100 bce, from the region of Etruria § 22.\u0007Akhenaton,\u0007Nefertiti,\u0007 \u0007 in central Italy) and ancient"
+    },
+    {
+      "physical_page": 77,
+      "printed_page": 77,
+      "chars": 2691,
+      "first_200": "ious and civic architecture and figural\u0007representation\u0007are\u0007characterized\u0007by\u0007idealized\u0007 proportions and spatial relationships, expressing societal values of harmony and order. AP Art History Course and"
+    },
+    {
+      "physical_page": 78,
+      "printed_page": 78,
+      "chars": 2691,
+      "first_200": "g\u0007with\u0007 absolute power, descended directly from the sun god. MPT-1.A.9 Art\u0007from\u0007the\u0007Etruscan\u0007and\u0007Roman\u0007periods\u0007is\u0007typified\u0007by\u0007 stylistic and iconographical eclecticism and portraiture. Roman\u0007architect"
+    },
+    {
+      "physical_page": 79,
+      "printed_page": 79,
+      "chars": 2691,
+      "first_200": "interactions with reception of artistic styles among the Mediterranean other\u0007cultures\u0007affect\u0007 cultures\u0007and\u0007the\u0007subsequent\u0007influence\u0007on\u0007the\u0007 art and art making. classical world. INT-1.A.2 The study of "
+    },
+    {
+      "physical_page": 80,
+      "printed_page": 80,
+      "chars": 2691,
+      "first_200": "SUGGESTED SKILLS 2.B Purpose and Audience in Explain how the possible intent, purpose, and/or function shape the creation Ancient Mediterranean Art or meaning of a work of art (or group"
+    },
+    {
+      "physical_page": 81,
+      "printed_page": 81,
+      "chars": 2691,
+      "first_200": "§ 21. Mortuary temple of intended audience, with functions sometimes changing over time, and therefore Hatshepsut affecting\u0007the\u0007role\u0007these\u0007different\u0007variables\u0007may\u0007play\u0007in\u0007art\u0007and\u0007art\u0007making. § 23. \u0007Tu"
+    },
+    {
+      "physical_page": 82,
+      "printed_page": 82,
+      "chars": 2691,
+      "first_200": "lican and imperial values, power, and preference for conspicuous display. Etruscan and Roman\u0007architecture\u0007are\u0007characterized\u0007by\u0007investment\u0007in\u0007 public structures. AP Art History Course and Exam Descript"
+    },
+    {
+      "physical_page": 83,
+      "printed_page": 83,
+      "chars": 2691,
+      "first_200": "ed, harnessed, manipulated, analysis as well as and\u0007adapted\u0007in\u0007order\u0007to\u0007make\u0007an\u0007art-historical\u0007argument\u0007 by other disciplines, about a work or a group of works of art. Contextual technology, or inform"
+    },
+    {
+      "physical_page": 84,
+      "printed_page": 84,
+      "chars": 2691,
+      "first_200": "THR-1.A.6 Ancient Greek and Roman art provides the Explain how theories foundation for the later development of European and interpretations and Mediterranean artistic traditions. From the 18th of wor"
+    },
+    {
+      "physical_page": 85,
+      "printed_page": 85,
+      "chars": 2691,
+      "first_200": "UNIT Ancient Mediterranean, 3500 bce–300 ce 2 14. Statues of votive figures, from the Square 15. Seated scribe Temple at Eshnunna (modern Tell Asmar, Iraq) Saqqara,\u0007Egypt.\u0007Old\u0007Kingdom,\u0007Fourth\u0007Dynasty."
+    },
+    {
+      "physical_page": 86,
+      "printed_page": 86,
+      "chars": 2691,
+      "first_200": "llege Board UNIT Ancient Mediterranean, 3500 bce–300 ce 2 20. Temple of Amun-Re and Hypostyle Hall Karnak,\u0007near\u0007Luxor,\u0007Egypt.\u0007New\u0007Kingdom,\u000718th\u0007and\u000719th\u0007Dynasties.\u0007Temple:\u0007c.\u00071550\u0007bce; hall: c. 1250 b"
+    },
+    {
+      "physical_page": 87,
+      "printed_page": 87,
+      "chars": 2691,
+      "first_200": "© 2019 College Board UNIT Ancient Mediterranean, 3500 bce–300 ce 2 24. Last judgment of Hunefer, from his tomb 25. Lamassu from the citadel of Sargon II, (page from the"
+    },
+    {
+      "physical_page": 88,
+      "printed_page": 88,
+      "chars": 2691,
+      "first_200": "Return to Table of Contents © 2019 College Board UNIT Ancient Mediterranean, 3500 bce–300 ce 2 31. Temple of Minerva (Veii, near Rome, Italy) and sculpture of Apollo Master sculptor"
+    },
+    {
+      "physical_page": 89,
+      "printed_page": 89,
+      "chars": 2691,
+      "first_200": "\u0007Nazionale,\u0007Naples,\u0007Italy/The\u0007Bridgeman\u0007Art\u0007Library 35. Acropolis Athens, Greece. Iktinos\u0007and\u0007Kallikrates.\u0007c.\u0007447–410\u0007bce. Marble. 6 images Acropolis plan Parthenon ©\u0007SGM/The\u0007Bridgeman\u0007Art\u0007Library AP "
+    },
+    {
+      "physical_page": 90,
+      "printed_page": 90,
+      "chars": 2691,
+      "first_200": "Great Altar of Zeus and Athena Athena ©\u0007bpk,\u0007Berlin/Antikensammlung,\u0007Staatliche\u0007Museen/Photo\u0007©\u0007Juergen\u0007Liepe/ ©\u0007Erich\u0007Lessing/Art\u0007Resource,\u0007NY Art\u0007Resource,\u0007NY AP Art History Course and Exam Descripti"
+    },
+    {
+      "physical_page": 91,
+      "printed_page": 91,
+      "chars": 2691,
+      "first_200": "43. Augustus of Prima Porta Republican Roman. c. 75–50 bce. Marble. Imperial\u0007Roman.\u0007Early\u0007first\u0007century\u0007ce. Marble. Head of a Roman patrician Augustus of Prima Porta ©\u0007Alinari/Art\u0007Resource,\u0007NY © Erin "
+    },
+    {
+      "physical_page": 92,
+      "printed_page": 92,
+      "chars": 2691,
+      "first_200": "e/Art\u0007Resource,\u0007NY 47. Ludovisi Battle Sarcophagus Late Imperial Roman. c. 250 ce. Marble. Ludovisi\u0007Battle\u0007Sarcophagus ©\u0007Gianni\u0007Dagli\u0007Orti/The\u0007Art\u0007Archive\u0007at\u0007Art\u0007Resource,\u0007NY AP Art History Course and"
+    },
+    {
+      "physical_page": 93,
+      "printed_page": 93,
+      "chars": 2691,
+      "first_200": "Long Essay: Comparison AP Art History Course and Exam Description Course Framework V.1 | 80 Return to Table of Contents © 2019 College Board UNIT 3 ~21% AP EXAM WEIGHTING"
+    },
+    {
+      "physical_page": 94,
+      "printed_page": 94,
+      "chars": 2691,
+      "first_200": "be challenging as it requires students to demonstrated in the familiar and therefore is a great opportunity move beyond initial art historical skills of works of art? to introduce more"
+    },
+    {
+      "physical_page": 95,
+      "printed_page": 95,
+      "chars": 2691,
+      "first_200": "an artistic tradition. The exam assesses this Use detailed, historically supported skill\u0007in\u0007both\u0007the\u0007multiple-choice\u0007and\u0007free- interpretations of the works from this unit response sections; as a resul"
+    },
+    {
+      "physical_page": 96,
+      "printed_page": 96,
+      "chars": 2691,
+      "first_200": "nuity and/or change within an artistic tradition, style, or practice. 4.B Explain\u0007why\u0007a\u0007specific\u0007work\u0007of\u0007art\u0007(or\u0007group\u0007of\u0007 related works of art) demonstrates continuity and/or INT-1 change within an a"
+    },
+    {
+      "physical_page": 97,
+      "printed_page": 97,
+      "chars": 2691,
+      "first_200": "UNIT Early Europe and Colonial Americas, 200–1750 ce 3 UNIT AT A GLANCE (cont'd) Enduring Class Periods Understanding Topic Suggested Skills ~21–25 CLASS PERIODS 3.4 Purpose and Audience 2.B Explain\u0007h"
+    },
+    {
+      "physical_page": 98,
+      "printed_page": 98,
+      "chars": 2691,
+      "first_200": "e\u0007evidence\u0007justifies\u0007the\u0007claim. \u0007Go to AP Classroom to assign the Personal Progress Check for Unit 3. Review the results in class to identify and address any student misunderstandings. AP Art History "
+    },
+    {
+      "physical_page": 99,
+      "printed_page": 99,
+      "chars": 2691,
+      "first_200": "Islamic artistic tradition. When their analysis is complete, have them write a short explanation of why the works demonstrate change and a short explanation of why the works demonstrate continuity."
+    },
+    {
+      "physical_page": 100,
+      "printed_page": 100,
+      "chars": 2691,
+      "first_200": "elements of a work of art (or group of related works Early European and of art). 2.D Explain how artistic Colonial American Art decisions about form, style, materials, content, function,"
+    },
+    {
+      "physical_page": 101,
+      "printed_page": 101,
+      "chars": 2691,
+      "first_200": "§ 63.\u0007Ar \u0007 ena\u0007(Scrovegni)\u0007 LEARNING ESSENTIAL Chapel OBJECTIVE KNOWLEDGE § 64. Golden Haggadah CUL-1.A CUL-1.A.12 § 65. Alhambra Explain how cultural Medieval artistic traditions include late antique"
+    },
+    {
+      "physical_page": 102,
+      "printed_page": 102,
+      "chars": 2691,
+      "first_200": "variety, avoidance of naturalism, primarily religious or courtly subject matter, and the incorporation of text. § 91. Las Meninas § 92. Woman Holding a Balance continued on next page §"
+    },
+    {
+      "physical_page": 103,
+      "printed_page": 103,
+      "chars": 2691,
+      "first_200": "The\u0007arts\u0007of\u000715th-century\u0007Europe\u0007reflected\u0007an\u0007interest\u0007 in classical models, enhanced naturalism, Christianity, pageantry,\u0007and\u0007increasingly\u0007formalized\u0007artistic\u0007training. CUL-1.A.17 The\u000716th-century\u0007Pro"
+    },
+    {
+      "physical_page": 104,
+      "printed_page": 104,
+      "chars": 2691,
+      "first_200": "escription Course Framework V.1 | 86 Return to Table of Contents © 2019 College Board UNIT Early Europe and Colonial Americas, 200–1750 ce 3 TOPIC 3.2 SUGGESTED SKILLS 3.B Interactions"
+    },
+    {
+      "physical_page": 105,
+      "printed_page": 105,
+      "chars": 2691,
+      "first_200": "continuity and/or change within an artistic tradition, ENDURING UNDERSTANDING style, or practice. INT-1 4.C A variety of factors leads to and motivates interaction between and among cultures, Explain "
+    },
+    {
+      "physical_page": 106,
+      "printed_page": 106,
+      "chars": 2691,
+      "first_200": "echniques\u0007 §§ 49.\u0007Santa\u0007Sabina brought by migratory tribes from eastern Europe, West Asia,\u0007and\u0007Scandinavia;\u0007high\u0007medieval\u0007art\u0007was\u0007influenced\u0007 §§ 50. Vienna Genesis by Roman, Islamic, and migratory art"
+    },
+    {
+      "physical_page": 107,
+      "printed_page": 107,
+      "chars": 2691,
+      "first_200": "Explain how The advent of the Age of Exploration in the late 15th interactions with century resulted in the emergence of global commercial other cultures affect and cultural networks via"
+    },
+    {
+      "physical_page": 108,
+      "printed_page": 108,
+      "chars": 2691,
+      "first_200": "© 2019 College Board UNIT Early Europe and Colonial Americas, 200–1750 ce 3 TOPIC 3.3 SUGGESTED SKILLS 1.C Materials, Processes, Explain how artistic decisions about form, style, materials, technique,"
+    },
+    {
+      "physical_page": 109,
+      "printed_page": 109,
+      "chars": 2691,
+      "first_200": "oth\u0007within\u0007and\u0007across\u0007cultures,\u0007and\u0007 the materials, processes, and techniques employed may also vary by location and culture\u0007with\u0007wide-ranging\u0007influence\u0007on\u0007the\u0007art\u0007that\u0007is\u0007generated.\u0007 SUGGESTED WORKS "
+    },
+    {
+      "physical_page": 110,
+      "printed_page": 110,
+      "chars": 2691,
+      "first_200": "© 2019 College Board UNIT 3 Early Europe and Colonial Americas, 200–1750 ce SUGGESTED SKILLS 2.B TOPIC 3.4 Purpose and Audience Explain how the possible intent, purpose, and/or function shape"
+    },
+    {
+      "physical_page": 111,
+      "printed_page": 111,
+      "chars": 2691,
+      "first_200": "and Indian devotional, ritual, recreational, and decorative). Produce a Mestizo PAA-1.A.6 § 98. The Tête à Tête, from Marriage à la Surviving\u0007architecture\u0007is\u0007primarily\u0007religious\u0007in\u0007function Mode (thou"
+    },
+    {
+      "physical_page": 112,
+      "printed_page": 112,
+      "chars": 2691,
+      "first_200": "ula\u0007in\u0007centralized\u0007 affect art and art educational institutions. making AP Art History Course and Exam Description Course Framework V.1 | 91 Return to Table of Contents © 2019 College Board UNIT"
+    },
+    {
+      "physical_page": 113,
+      "printed_page": 113,
+      "chars": 2691,
+      "first_200": "analysis as well as interpretations may be used, harnessed, manipulated, §§ 68.\u0007The\u0007Arnolfini\u0007Portrait by other disciplines, and\u0007adapted\u0007in\u0007order\u0007to\u0007make\u0007an\u0007art-historical\u0007argument\u0007 § 81. Frontispiece"
+    },
+    {
+      "physical_page": 114,
+      "printed_page": 114,
+      "chars": 2691,
+      "first_200": "© 2019 College Board UNIT Early Europe and Colonial Americas, 200–1750 ce 3 LEARNING ESSENTIAL OBJECTIVE KNOWLEDGE THR-1.A THR-1.A.10 Explain how theories Art from the early modern Atlantic world is"
+    },
+    {
+      "physical_page": 115,
+      "printed_page": 115,
+      "chars": 2691,
+      "first_200": "their influence\u0007is\u0007evident\u0007in\u0007the\u0007contents\u0007of\u0007curiosity\u0007cabinets;\u0007 advances in science and technology; consolidation of European political and economic power; and the development\u0007of\u0007modern\u0007conceptions"
+    },
+    {
+      "physical_page": 116,
+      "printed_page": 116,
+      "chars": 2691,
+      "first_200": "Genesis Early\u0007Byzantine\u0007Europe.\u0007Early\u0007sixth\u0007century\u0007ce. Illuminated manuscript (tempera, gold, and silver on purple vellum). 2 images Rebecca\u0007and\u0007Eliezer\u0007at\u0007the\u0007Well Jacob Wrestling the Angel ©\u0007Österr"
+    },
+    {
+      "physical_page": 117,
+      "printed_page": 117,
+      "chars": 2691,
+      "first_200": "e and Exam Description Course Framework V.1 | 98 Return to Table of Contents © 2019 College Board UNIT Early Europe and Colonial Americas, 200–1750 ce 3 53. Merovingian looped"
+    },
+    {
+      "physical_page": 118,
+      "printed_page": 118,
+      "chars": 2691,
+      "first_200": "© 2019 College Board UNIT Early Europe and Colonial Americas, 200–1750 ce 3 56. Great Mosque Córdoba,\u0007Spain.\u0007Umayyad.\u0007c.\u0007785–786\u0007ce.\u0007Stone\u0007masonry.\u00075\u0007images Great Mosque Great Mosque © Toni Castillo/G"
+    },
+    {
+      "physical_page": 119,
+      "printed_page": 119,
+      "chars": 2691,
+      "first_200": "urch\u0007of\u0007Sainte-Foy Reliquary\u0007of\u0007Sainte-Foy © The Bridgeman Art Library ©\u0007Gianni\u0007Dagli\u0007Orti/The\u0007Art\u0007Archive\u0007at\u0007Art\u0007Resource,\u0007NY AP Art History Course and Exam Description Course Framework V.1 | 103 Ret"
+    },
+    {
+      "physical_page": 120,
+      "printed_page": 120,
+      "chars": 2691,
+      "first_200": "© 2019 College Board UNIT 3 Early Europe and Colonial Americas, 200–1750 ce 60. (cont'd) Chartres Cathedral plan Notre\u0007Dame\u0007de\u0007la\u0007Belle\u0007Verriere\u0007window ©\u0007Anthony\u0007Scibilia/Art\u0007Resource,\u0007NY\u0007 AP Art Hist"
+    },
+    {
+      "physical_page": 121,
+      "printed_page": 121,
+      "chars": 2691,
+      "first_200": "Exam Description Course Framework V.1 | 108 Return to Table of Contents © 2019 College Board UNIT Early Europe and Colonial Americas, 200–1750 ce 3 64. Golden Haggadah (The Plagues"
+    },
+    {
+      "physical_page": 122,
+      "printed_page": 122,
+      "chars": 2691,
+      "first_200": "Early Europe and Colonial Americas, 200–1750 ce 3 66. Annunciation Triptych (Merode Altarpiece) Workshop of Robert Campin. 1427–1432 ce.\u0007Oil\u0007on\u0007wood. Annunciation Triptych Image\u0007©\u0007The\u0007Metropolitan\u0007Mus"
+    },
+    {
+      "physical_page": 123,
+      "printed_page": 123,
+      "chars": 2691,
+      "first_200": "73. Last Supper Sandro\u0007Botticelli.\u0007c.\u00071484–1486\u0007ce. Tempera on canvas. Leonardo da Vinci. c. 1494–1498 ce.\u0007Oil\u0007and\u0007tempera. Birth of Venus ©\u0007Erich\u0007Lessing/Art\u0007Resource,\u0007NY\u0007 Last Supper © The Bridgeman"
+    },
+    {
+      "physical_page": 124,
+      "printed_page": 124,
+      "chars": 2691,
+      "first_200": "Return to Table of Contents © 2019 College Board UNIT 3 Early Europe and Colonial Americas, 200–1750 ce 78. Entombment of Christ 79. Allegory of Law and Grace Jacopo da"
+    },
+    {
+      "physical_page": 125,
+      "printed_page": 125,
+      "chars": 2691,
+      "first_200": "Il Gesù ©\u0007Scala/Art\u0007Resource,\u0007NY 83. Hunters in the Snow Pieter Bruegel the Elder. 1565 ce.\u0007Oil\u0007on\u0007wood. Triumph of the Name of Jesus © The Bridgeman Art Library Hunters in the Snow ©\u0007The\u0007Art\u0007Archive\u0007"
+    },
+    {
+      "physical_page": 126,
+      "printed_page": 126,
+      "chars": 2691,
+      "first_200": "ching. Self-Portrait with Saskia ©\u0007The\u0007Pierpont\u0007Morgan\u0007Library/Art\u0007Resource,\u0007NY AP Art History Course and Exam Description Course Framework V.1 | 119 Return to Table of Contents © 2019 College Board U"
+    },
+    {
+      "physical_page": 127,
+      "printed_page": 127,
+      "chars": 2691,
+      "first_200": ").\u0007c.\u000717th\u0007century\u0007ce.\u0007Oil\u0007 Diego\u0007Velázquez.\u0007c.\u00071656\u0007ce.\u0007Oil\u0007on\u0007canvas. on canvas. Angel with Arquebus, Asiel Timor Dei Las Meninas © Paul Maeyaert/The Bridgeman Art Library ©\u0007Erich\u0007Lessing/Art\u0007Resour"
+    },
+    {
+      "physical_page": 128,
+      "printed_page": 128,
+      "chars": 2691,
+      "first_200": "Siege\u0007of\u0007Belgrade Hunting scene ©\u0007González\u0007Family.\u0007Folding\u0007Screen\u0007with\u0007the\u0007Siege\u0007of\u0007Belgrade\u0007(front)\u0007and\u0007 ©\u0007González\u0007Family.\u0007Folding\u0007Screen\u0007with\u0007the\u0007Siege\u0007of\u0007Belgrade\u0007(front)\u0007and\u0007 Hunting\u0007Scene\u0007(rever"
+    },
+    {
+      "physical_page": 129,
+      "printed_page": 129,
+      "chars": 2691,
+      "first_200": "k V.1 | 125 Return to Table of Contents © 2019 College Board THIS PAGE IS INTENTIONALLY LEFT BLANK. AP ART HISTORY UNIT 4 Later Europe and Americas, 1750–1980 ce"
+    },
+    {
+      "physical_page": 130,
+      "printed_page": 130,
+      "chars": 2691,
+      "first_200": "© 2019 College Board UNIT 4 ~21% AP EXAM WEIGHTING ~21–25 CLASS PERIODS Later Europe and Americas, 1750–1980 ce Developing Understanding BIG IDEA 2 From\u0007the\u0007mid-1700s\u0007to\u00071980\u0007ce, Europe and the Americ"
+    },
+    {
+      "physical_page": 131,
+      "printed_page": 131,
+      "chars": 2691,
+      "first_200": "to use visual and contextual analysis to availability of materials, that students can use these skills to connect analyze\u0007a\u0007work\u0007from\u0007outside\u0007of\u0007the\u0007required\u0007 and wider dissemination works from region"
+    },
+    {
+      "physical_page": 132,
+      "printed_page": 132,
+      "chars": 2691,
+      "first_200": "ed art over time, should practice these skills using a variety of claims\u0007should\u0007be\u0007specific:\u0007an increase in images and objects outside of the required industrialization affected the development of 250"
+    },
+    {
+      "physical_page": 133,
+      "printed_page": 133,
+      "chars": 2691,
+      "first_200": "rt\u0007 (or group of related works of art) on other artistic production within or across cultures. 4.D Explain\u0007the\u0007meaning\u0007or\u0007significance\u0007of\u0007 continuity and/or change between works of art (or groups of r"
+    },
+    {
+      "physical_page": 134,
+      "printed_page": 134,
+      "chars": 2691,
+      "first_200": "ted works of art). American Art 6.A Attribute\u0007a\u0007work\u0007of\u0007art\u0007to\u0007a\u0007specific\u0007artist,\u0007 MPT-1 culture, art historical style, or object type from the image set. 6.B Justify\u0007an\u0007attribution\u0007of\u0007a\u0007work\u0007of\u0007art\u0007b"
+    },
+    {
+      "physical_page": 135,
+      "printed_page": 135,
+      "chars": 2691,
+      "first_200": "assroom. These activities are optional, and teachers are free to alter or\u0007edit\u0007them.\u0007Note\u0007that\u0007for\u0007images\u0007included\u0007from\u0007the\u0007image\u0007set,\u0007the\u0007image\u0007number\u0007has\u0007been\u0007 provided in parentheses. Please refer "
+    },
+    {
+      "physical_page": 136,
+      "printed_page": 136,
+      "chars": 2691,
+      "first_200": "have those students visit your “gallery.” 4 4.3 Match Game Have\u0007students\u0007choose\u0007one\u0007work\u0007from\u0007this\u0007topic\u0007and\u0007research\u0007to\u0007find\u0007another\u0007work\u0007 by\u0007the\u0007same\u0007artist.\u0007Place\u0007all\u0007of\u0007the\u0007works\u0007NOT\u0007in\u0007the\u0007image\u0007"
+    },
+    {
+      "physical_page": 137,
+      "printed_page": 137,
+      "chars": 2691,
+      "first_200": "Explain how two or more works of art are similar and/ or different in how they Required Course Content convey meaning. 4.A Explain how a specific work of art (or"
+    },
+    {
+      "physical_page": 138,
+      "printed_page": 138,
+      "chars": 2691,
+      "first_200": "-1700s\u0007to\u00071980\u0007ce, Europe and the of art) on other artistic practices, belief Americas experienced rapid change and innovation. production within or across systems, and/or Art existed in the context o"
+    },
+    {
+      "physical_page": 139,
+      "printed_page": 139,
+      "chars": 2691,
+      "first_200": "CUL-1.A CUL-1.A.21 §§ Classroom Resources > Explain how cultural Artists\u0007assumed\u0007new\u0007roles\u0007in\u0007society.\u0007Styles\u0007of\u0007art\u0007 The Challenge of practices, belief proliferated and often gave rise to artistic mo"
+    },
+    {
+      "physical_page": 140,
+      "printed_page": 140,
+      "chars": 2691,
+      "first_200": "\u0007include\u0007forms\u0007of\u0007artistic\u0007influence\u0007such\u0007as\u0007spolia,\u0007 Mexico from the appropriation, and stylistic revivals, among other expressions of cultural exchange. Hillside of Santa Isabel §§ 120. The Starry N"
+    },
+    {
+      "physical_page": 141,
+      "printed_page": 141,
+      "chars": 2691,
+      "first_200": "tion shape the creation in Later European or meaning of a work of art (or group of related works of art). and American Art 2.D Explain how artistic decisions about"
+    },
+    {
+      "physical_page": 142,
+      "printed_page": 142,
+      "chars": 2691,
+      "first_200": "§ 106. Y no hai remedio (And There’s OBJECTIVE KNOWLEDGE Nothing to Be Done), PAA-1.A PAA-1.A.9 from Los Desastres Explain how Works of art took on new roles and functions"
+    },
+    {
+      "physical_page": 143,
+      "printed_page": 143,
+      "chars": 2691,
+      "first_200": "PAA-1.A.11 §§ 138. Object (Le Audiences ranged from private patrons to the public, Déjeuner en who were sometimes hostile toward art that broke fourrure) with tradition. §§ 141. The Migration"
+    },
+    {
+      "physical_page": 144,
+      "printed_page": 144,
+      "chars": 2691,
+      "first_200": "eceded in favor of radical individualism; some artists making. worked\u0007without\u0007patronage.\u0007Some\u0007joined\u0007together\u0007in\u0007self- defined\u0007groups,\u0007often\u0007on\u0007the\u0007margins\u0007of\u0007the\u0007mainstream\u0007 art world, and they often"
+    },
+    {
+      "physical_page": 145,
+      "printed_page": 145,
+      "chars": 2691,
+      "first_200": "Attribute a work of art to a specific artist, culture, art historical style, or object type from the image set. 6.B Required Course Content Justify an attribution of a work"
+    },
+    {
+      "physical_page": 146,
+      "printed_page": 146,
+      "chars": 2691,
+      "first_200": "nd Company techniques\u0007affect\u0007 construction.\u0007Skyscrapers\u0007proliferated\u0007and\u0007led\u0007to\u0007 Building art and art making. an international style of architecture that was later §§ 127. The Steerage challenged by p"
+    },
+    {
+      "physical_page": 147,
+      "printed_page": 147,
+      "chars": 2691,
+      "first_200": "rt\u0007 8.C and art making that change over time. These theories and interpretations may Explain how the evidence be generated both by visual analysis of works of art and by"
+    },
+    {
+      "physical_page": 148,
+      "printed_page": 148,
+      "chars": 2691,
+      "first_200": "ecture on the Orrery © The Bridgeman Art Library Portrait\u0007of\u0007Sor\u0007Juana\u0007Inés\u0007de\u0007la\u0007Cruz ©\u0007Jean-Pierre\u0007Courau/The\u0007Bridgeman\u0007Art\u0007Library\u0007 101. The Swing Jean-Honoré\u0007Fragonard.\u00071767\u0007ce.\u0007Oil\u0007on\u0007canvas. The"
+    },
+    {
+      "physical_page": 149,
+      "printed_page": 149,
+      "chars": 2691,
+      "first_200": "urin, and burnishing. Y no hai remedio Self-Portrait © Private Collection/Index/The Bridgeman Art Library ©\u0007Galleria\u0007degli\u0007Uffizi,\u0007Florence,\u0007Italy/The\u0007Bridgeman\u0007Art\u0007Library\u0007 107. La Grande Odalisque 1"
+    },
+    {
+      "physical_page": 150,
+      "printed_page": 150,
+      "chars": 2691,
+      "first_200": "r Europe and Americas, 1750–1980 ce 4 112. Palace of Westminster (Houses of Parliament) London,\u0007England.\u0007Charles\u0007Barry\u0007and\u0007Augustus\u0007W.\u0007N.\u0007Pugin\u0007(architects).\u00071840–1870\u0007ce. Limestone masonry and glass."
+    },
+    {
+      "physical_page": 151,
+      "printed_page": 151,
+      "chars": 2691,
+      "first_200": "7. The Horse in Motion 118. The Valley of Mexico from the Hillside of Santa Eadweard Muybridge. 1878 ce. Albumen print. Isabel (El Valle de México desde el Cerro de"
+    },
+    {
+      "physical_page": 152,
+      "printed_page": 152,
+      "chars": 2691,
+      "first_200": "llege Board UNIT Later Europe and Americas, 1750–1980 ce 4 124. Carson, Pirie, Scott and Company Building Chicago,\u0007Illinois,\u0007U.S.\u0007Louis\u0007Sullivan\u0007(architect).\u00071899–1903\u0007ce. Iron, steel, glass, and terr"
+    },
+    {
+      "physical_page": 153,
+      "printed_page": 153,
+      "chars": 2691,
+      "first_200": "© 2019 College Board UNIT Later Europe and Americas, 1750–1980 ce 4 129. The Kiss 130. The Portuguese Constantin\u0007Brancusi.\u0007Original\u00071907–1908\u0007ce.\u0007Stone. Georges Braque. 1911 ce.\u0007Oil\u0007on\u0007canvas. The Kis"
+    },
+    {
+      "physical_page": 154,
+      "printed_page": 154,
+      "chars": 2691,
+      "first_200": "),\u0007New\u0007York/ProLitteris,\u0007Zurich 135. Villa Savoye Poissy-sur-Seine,\u0007France.\u0007Le\u0007Corbusier\u0007(architect).\u00071929\u0007ce.\u0007Steel\u0007and\u0007reinforced\u0007concrete.\u00072\u0007images Villa\u0007Savoye Villa\u0007Savoye Digital\u0007Image\u0007©\u0007Bridgem"
+    },
+    {
+      "physical_page": 155,
+      "printed_page": 155,
+      "chars": 2691,
+      "first_200": "© 2019 College Board UNIT 4 Later Europe and Americas, 1750–1980 ce 139. Fallingwater Pennsylvania,\u0007U.S.\u0007Frank\u0007Lloyd\u0007Wright\u0007(architect).\u00071936–1939\u0007ce. Reinforced concrete, sandstone, steel, and glass."
+    },
+    {
+      "physical_page": 156,
+      "printed_page": 156,
+      "chars": 2691,
+      "first_200": "© 2019 College Board UNIT 4 Later Europe and Americas, 1750–1980 ce 143. Dream of a Sunday Afternoon in the Alameda Park Diego Rivera. 1947–1948 ce. Fresco. Dream of a"
+    },
+    {
+      "physical_page": 157,
+      "printed_page": 157,
+      "chars": 2691,
+      "first_200": "ate,\u0007London/Art\u0007Resource,\u0007NY\u0007©\u00072013\u0007The\u0007Andy\u0007Warhol\u0007Foundation\u0007for\u0007the\u0007 Visual\u0007Arts,\u0007Inc./Artists\u0007Rights\u0007Society\u0007(ARS),\u0007New\u0007York\u0007 Seagram\u0007Building © Angelo Hornak/Corbis 148. Narcissus Garden 149. The"
+    },
+    {
+      "physical_page": 158,
+      "printed_page": 158,
+      "chars": 2691,
+      "first_200": "t\u0007Brown\u0007Collection/The\u0007Architectural\u0007Archives,\u0007 Pennsylvania/Photo by Matt Wargo University of Pennsylvania/Photo by Matt Wargo AP Art History Course and Exam Description Course Framework V.1 | 156 Re"
+    },
+    {
+      "physical_page": 159,
+      "printed_page": 159,
+      "chars": 2691,
+      "first_200": "ramework V.1 | 158 Return to Table of Contents © 2019 College Board UNIT 5 ~6% AP EXAM WEIGHTING ~5–7 CLASS PERIODS Indigenous Americas, 1000 bce–1980 ce Developing Understanding BIG"
+    },
+    {
+      "physical_page": 160,
+      "printed_page": 160,
+      "chars": 2691,
+      "first_200": "l analysis skills as artist's\u0007decisions\u0007affected\u0007the\u0007work.\u0007For\u0007 Audience PAA they focus on describing the elements of example, how the artists' decision to echo a § What do the intended these varied w"
+    },
+    {
+      "physical_page": 161,
+      "printed_page": 161,
+      "chars": 2691,
+      "first_200": "estions in each of the exam sections that address this. AP Art History Course and Exam Description Course Framework V.1 | 159 Return to Table of Contents © 2019 College"
+    },
+    {
+      "physical_page": 162,
+      "printed_page": 162,
+      "chars": 2691,
+      "first_200": "roup\u0007of\u0007related\u0007works\u0007of\u0007art)\u0007beyond\u0007the\u0007 image set. 5.B In\u0007analyzing\u0007a\u0007work\u0007of\u0007art\u0007beyond\u0007the\u0007image\u0007 set, explain how artistic decisions about form, style, materials,\u0007technique,\u0007and/or\u0007content\u0007shape\u0007"
+    },
+    {
+      "physical_page": 163,
+      "printed_page": 163,
+      "chars": 2691,
+      "first_200": "ACTIVITIES The sample activities on this page provide possible ways to integrate varied instructional approaches into the classroom. These activities are optional, and teachers are free to alter or\u0007ed"
+    },
+    {
+      "physical_page": 164,
+      "printed_page": 164,
+      "chars": 2691,
+      "first_200": "d Course Content 4.A Explain how a specific work of art (or group of related works of art) demonstrates continuity and/or change ENDURING UNDERSTANDING CUL-1 within an artistic tradition, style,"
+    },
+    {
+      "physical_page": 165,
+      "printed_page": 165,
+      "chars": 2691,
+      "first_200": "\u0007 the category used for art created before 1550 ce, south of\u0007the\u0007current\u0007United\u0007States–Mexico\u0007border.\u0007This\u0007region\u0007 is\u0007traditionally\u0007divided\u0007into\u0007three\u0007main\u0007areas\u0007of\u0007culture— Mesoamerica,\u0007Central\u0007Ameri"
+    },
+    {
+      "physical_page": 166,
+      "printed_page": 166,
+      "chars": 2691,
+      "first_200": "ed mountains and celestial phenomena, and highly valued green materials,\u0007such\u0007as\u0007jadeite\u0007and\u0007quetzal\u0007feathers. CUL-1.A.26 Three major distinct cultures and styles of Ancient Mesoamerica\u0007(Middle\u0007Americ"
+    },
+    {
+      "physical_page": 167,
+      "printed_page": 167,
+      "chars": 2691,
+      "first_200": "shamanistic religion. continued on next page AP Art History Course and Exam Description Course Framework V.1 | 163 Return to Table of Contents © 2019 College Board UNIT 5 Indigenous"
+    },
+    {
+      "physical_page": 168,
+      "printed_page": 168,
+      "chars": 2691,
+      "first_200": "environments necessarily play a central role in art, influencing\u0007the\u0007materials\u0007(especially\u0007the\u0007prominence\u0007 of\u0007camelid\u0007fiber\u0007and\u0007cotton\u0007textiles),\u0007political\u0007systems\u0007 (coastal\u0007diversity,\u0007highland\u0007impuls"
+    },
+    {
+      "physical_page": 169,
+      "printed_page": 169,
+      "chars": 2691,
+      "first_200": "experience was a strong theme, especially featuring humans transforming into animal selves. continued on next page continued on next page AP Art History Course and Exam Description Course Framework V."
+    },
+    {
+      "physical_page": 170,
+      "printed_page": 170,
+      "chars": 2691,
+      "first_200": "rom ancient times to the present. They did not have a collective name for themselves, being many\u0007different\u0007tribes\u0007and\u0007nations. ENDURING UNDERSTANDING INT-1 A variety of factors leads to and motivates "
+    },
+    {
+      "physical_page": 171,
+      "printed_page": 171,
+      "chars": 2691,
+      "first_200": "Explain how When\u0007Mexico\u0007was\u0007first\u0007discovered\u0007by\u0007Europe,\u0007gifts\u0007 interactions with of Mexica art sent to Charles V alerted such artists other cultures affect as Albrecht Dürer to the unfamiliar but impr"
+    },
+    {
+      "physical_page": 172,
+      "printed_page": 172,
+      "chars": 2691,
+      "first_200": "ul\u0007Klee*,\u0007found\u0007inspiration\u0007in\u0007ancient\u0007 Peruvian textiles and ceramics. Modern Latin American artists,\u0007such\u0007as\u0007Joaquín\u0007Torres\u0007Garcia\u0007of\u0007Uruguay*,\u0007 blended Inka art and architecture with modernist theo"
+    },
+    {
+      "physical_page": 173,
+      "printed_page": 173,
+      "chars": 2691,
+      "first_200": "Puebloan pottery, to cutting political commentary on racism and injustice. INT-1.A.15 Centuries of interaction with colonial and migrant peoples means that some imported materials (e.g., glass\u0007beads,\u0007"
+    },
+    {
+      "physical_page": 174,
+      "printed_page": 174,
+      "chars": 2691,
+      "first_200": "SENTIAL OBJECTIVE KNOWLEDGE MPT-1.A MPT-1.A.13 SUGGESTED WORKS Explain how Artistic traditions of the Indigenous Americas exhibit § 158. Ruler’s feather materials, overarching\u0007traits—content\u0007that\u0007emph"
+    },
+    {
+      "physical_page": 175,
+      "printed_page": 175,
+      "chars": 2691,
+      "first_200": "OBJECTIVE KNOWLEDGE MPT-1.A MPT-1.A.14 Explain how The necessity to interact with three disparate materials, environments (mountains, desert coast, and rainforest) processes, and in order to survive i"
+    },
+    {
+      "physical_page": 176,
+      "printed_page": 176,
+      "chars": 2691,
+      "first_200": "figures\u0007(often\u0007mythic\u0007or\u0007shamanic),\u0007and\u0007animals\u0007 (e.g., snakes,\u0007birds,\u0007bison,\u0007and\u0007horses)\u0007are\u0007often\u0007seen. AP Art History Course and Exam Description Course Framework V.1 | 169 Return to Table of Conte"
+    },
+    {
+      "physical_page": 177,
+      "printed_page": 177,
+      "chars": 2691,
+      "first_200": "Art was produced primarily in workshops, but certain individual\u0007artists’\u0007styles\u0007have\u0007been\u0007identified\u0007(particularly\u0007 in the Maya), and some works of art were signed. Artists were typically elite specia"
+    },
+    {
+      "physical_page": 178,
+      "printed_page": 178,
+      "chars": 2691,
+      "first_200": "Intellectual pursuits apparent in artistic expressions include astronomical observation; poetry, song, and dance; and medicine (curing and divining). Artistic practices included\u0007workshops,\u0007apprentice-"
+    },
+    {
+      "physical_page": 179,
+      "printed_page": 179,
+      "chars": 2691,
+      "first_200": "THR-1.A THR-1.A.15 Explain how theories The\u0007study\u0007of\u0007art\u0007history\u0007is\u0007shaped\u0007by\u0007different\u0007theories\u0007 and interpretations and interpretations of art and art making that change of works of art are over tim"
+    },
+    {
+      "physical_page": 180,
+      "printed_page": 180,
+      "chars": 2691,
+      "first_200": "5 LEARNING ESSENTIAL OBJECTIVE KNOWLEDGE THR-1.A THR-1.A.16 Explain how theories Archaeological excavation of works of art, monuments, and interpretations and cities/sites predating European invasion "
+    },
+    {
+      "physical_page": 181,
+      "printed_page": 181,
+      "chars": 2691,
+      "first_200": "nial and modern\u0007mistreatment\u0007of\u0007Native\u0007North\u0007Americans\u0007 means that historical information sources may be highly contested. Divergent stories depend on whether native\u0007or\u0007non-native\u0007sources\u0007are\u0007used.\u0007So"
+    },
+    {
+      "physical_page": 182,
+      "printed_page": 182,
+      "chars": 2691,
+      "first_200": "© 2019 College Board UNIT 5 Indigenous Americas, 1000 bce–1980 ce 155. Yaxchilán Chiapas, Mexico. Maya. 725 ce. Limestone (architectural complex). 3 images Structure\u000740 Lintel\u000725,\u0007Structure\u000723 ©\u0007vario"
+    },
+    {
+      "physical_page": 183,
+      "printed_page": 183,
+      "chars": 2691,
+      "first_200": "Return to Table of Contents © 2019 College Board UNIT Indigenous Americas, 1000 bce–1980 ce 5 158. Ruler’s feather headdress (probably of Motecuhzoma II) Mexica\u0007(Aztec).\u00071428–1520\u0007ce.\u0007Feathers\u0007(quetza"
+    },
+    {
+      "physical_page": 184,
+      "printed_page": 184,
+      "chars": 2691,
+      "first_200": "UNIT Indigenous Americas, 1000 bce–1980 ce 5 161. City of Machu Picchu Central highlands, Peru. Inka. c. 1450–1540 ce. Granite (architectural complex). 3 images City of Machu Picchu Observatory ©\u0007Hugh"
+    },
+    {
+      "physical_page": 185,
+      "printed_page": 185,
+      "chars": 2691,
+      "first_200": "d elk hide Attributed\u0007to\u0007Cotsiogo\u0007(Cadzi\u0007Cody),\u0007Eastern\u0007Shoshone,\u0007Wind\u0007River\u0007Reservation,\u0007Wyoming.\u0007c.\u00071890–1900\u0007ce. Painted elk hide. Painted elk hide Courtesy\u0007of\u0007School\u0007for\u0007Advanced\u0007Research,\u0007Catalog"
+    },
+    {
+      "physical_page": 186,
+      "printed_page": 186,
+      "chars": 2691,
+      "first_200": "§§ Short\u0007Essay:\u0007Attribution AP Art History Course and Exam Description Course Framework V.1 | 186 Return to Table of Contents © 2019 College Board UNIT 6 ~6% AP EXAM WEIGHTING ~5–7"
+    },
+    {
+      "physical_page": 187,
+      "printed_page": 187,
+      "chars": 2691,
+      "first_200": "of art. This challenging task can often cause in other time periods of\u0007the\u0007different\u0007African\u0007cultures\u0007represented\u0007 students to confuse visual analysis with and locations? What by the individual works "
+    },
+    {
+      "physical_page": 188,
+      "printed_page": 188,
+      "chars": 2691,
+      "first_200": "to use visual analysis skills to justify response to or reception of the work. an attribution of an unknown work. By recognizing\u0007and\u0007describing\u0007patterns\u0007and\u0007 similarities between an unknown work and o"
+    },
+    {
+      "physical_page": 189,
+      "printed_page": 189,
+      "chars": 2691,
+      "first_200": "\u0007and/or\u0007differences\u0007in\u0007two\u0007 MPT-1, CUL-1, INT-1 or more works of art using appropriate and relevant points of comparison. 4.A Explain\u0007how\u0007a\u0007specific\u0007work\u0007of\u0007art\u0007(or\u0007group\u0007of\u0007 related works of art) dem"
+    },
+    {
+      "physical_page": 190,
+      "printed_page": 190,
+      "chars": 2691,
+      "first_200": "~5–7 CLASS\u0007PERIODS 6.2 Purpose and Audience in 2.B Explain\u0007how\u0007the\u0007possible\u0007intent,\u0007purpose,\u0007and/or\u0007 African Art function shape the creation or meaning of a work of art (or group of related works of a"
+    },
+    {
+      "physical_page": 191,
+      "printed_page": 191,
+      "chars": 2691,
+      "first_200": "d\u0007from\u0007the\u0007image\u0007set,\u0007the\u0007image\u0007number\u0007has\u0007been\u0007 provided in parentheses. Please refer to the Instructional Approaches section beginning on p. 295 for more examples of activities and strategies. Activ"
+    },
+    {
+      "physical_page": 192,
+      "printed_page": 192,
+      "chars": 2691,
+      "first_200": "technique, and/or content of African Art shape a work of art (or group of related works of art). 2.A Describe contextual elements of a work of art (or group of"
+    },
+    {
+      "physical_page": 193,
+      "printed_page": 193,
+      "chars": 2691,
+      "first_200": "Explain how a specific work OBJECTIVE KNOWLEDGE of art (or group of related works of art) demonstrates MPT-1.A MPT-1.A.17 continuity and/or change Explain how Art in Africa is a combination"
+    },
+    {
+      "physical_page": 194,
+      "printed_page": 194,
+      "chars": 2691,
+      "first_200": "technique, and/or content shape a work of art (or group of related works of art). AP Art History Course and Exam Description Course Framework V.1 | 191 Return to Table"
+    },
+    {
+      "physical_page": 195,
+      "printed_page": 195,
+      "chars": 2691,
+      "first_200": "Africa. Those works depict the animals that lived in each region, human pursuits (e.g., herding, combat, and perhaps\u0007dance\u0007or\u0007some\u0007sort\u0007of\u0007regularized\u0007behavior),\u0007 contact\u0007among\u0007different\u0007groups\u0007of\u0007peo"
+    },
+    {
+      "physical_page": 196,
+      "printed_page": 196,
+      "chars": 2691,
+      "first_200": "erformances. Artistic expression in Africa is an integral part of social life, connecting daily practices to beliefs, systems of power and authority, and social networks that link people to their"
+    },
+    {
+      "physical_page": 197,
+      "printed_page": 197,
+      "chars": 2691,
+      "first_200": "mong cultures, and\u0007this\u0007interaction\u0007may\u0007influence\u0007art\u0007and\u0007art\u0007making.\u0007Such\u0007cultural\u0007interaction\u0007 may result from factors including, but not limited to, travel, trade, war, conquest, and/or\u0007colonizatio"
+    },
+    {
+      "physical_page": 198,
+      "printed_page": 198,
+      "chars": 2691,
+      "first_200": "interactions with in populations around the world. Artistic practices other cultures affect were conveyed by and continue to be serviced by art and art making. African people and beliefs, from"
+    },
+    {
+      "physical_page": 199,
+      "printed_page": 199,
+      "chars": 2691,
+      "first_200": "shape the creation in African Art or meaning of a work of art (or group of related works of art). 2.D Explain how artistic decisions about form, style, materials, content,"
+    },
+    {
+      "physical_page": 200,
+      "printed_page": 200,
+      "chars": 2691,
+      "first_200": "specific artist, culture, art historical style, or object type from the image set. LEARNING ESSENTIAL OBJECTIVE KNOWLEDGE PAA-1.A PAA-1.A.18 Explain how Human beliefs and interactions in Africa are in"
+    },
+    {
+      "physical_page": 201,
+      "printed_page": 201,
+      "chars": 2691,
+      "first_200": "who commissioned it or a member of his or her family. Performances of objects are accompanied by costumes and\u0007music.\u0007None\u0007of\u0007these\u0007practices\u0007is\u0007simple\u0007or\u0007random.\u0007 Cultural\u0007protocols\u0007acknowledge\u0007and\u0007en"
+    },
+    {
+      "physical_page": 202,
+      "printed_page": 202,
+      "chars": 2691,
+      "first_200": "ng, danced, and presented in holistic experiences for designated\u0007audiences;\u0007it\u0007is\u0007created\u0007for\u0007specific\u0007reasons\u0007 and\u0007to\u0007produce\u0007expected results. AP Art History Course and Exam Description Course Frame"
+    },
+    {
+      "physical_page": 203,
+      "printed_page": 203,
+      "chars": 2691,
+      "first_200": "of art and by scholarship that may be\u0007affected\u0007by\u0007factors\u0007including,\u0007but\u0007not\u0007limited\u0007to,\u0007other\u0007disciplines,\u0007available\u0007 technology, and the availability of evidence. LEARNING ESSENTIAL OBJECTIVE KNOWLE"
+    },
+    {
+      "physical_page": 204,
+      "printed_page": 204,
+      "chars": 2691,
+      "first_200": ".\u00071000–1400\u0007ce. Coursed granite blocks. 2 images Conical tower Circular wall © Werner Forman Archive/The Bridgeman Art Library © Werner Forman Archive/The Bridgeman Art Library 168. Great Mosque of Dj"
+    },
+    {
+      "physical_page": 205,
+      "printed_page": 205,
+      "chars": 2691,
+      "first_200": "geman\u0007Art\u0007Library Kuba\u0007Nyim\u0007(ruler)\u0007Kot\u0007a\u0007Mbweeky\u0007III\u0007in\u0007state\u0007dress\u0007with\u0007royal\u0007drum\u0007in\u0007 Mushenge, Democratic Republic of the Congo. Photograph by Eliot Elisofon,1971. EEPA EECL 2139/Eliot Elisofon Ph"
+    },
+    {
+      "physical_page": 206,
+      "printed_page": 206,
+      "chars": 2691,
+      "first_200": "Bundu mask Contextual photograph: Bundu mask ©\u0007Schomburg\u0007Center,\u0007NYPL/Art\u0007Resource,\u0007NY ©\u0007William\u0007Siegmann\u0007Estate,\u0007Edward\u0007DeCarbo,\u0007Executor 176. Ikenga (shrine figure) Igbo\u0007peoples\u0007(Nigeria).\u0007c.\u000719th\u0007t"
+    },
+    {
+      "physical_page": 207,
+      "printed_page": 207,
+      "chars": 2691,
+      "first_200": "Course Framework V.1 | 204 Return to Table of Contents © 2019 College Board AP ART HISTORY UNIT 7 West and Central Asia, 500 bce–1980 ce ~4% AP\u0007EXAM\u0007WEIGHTING ~3–5 CLASS\u0007PERIODS"
+    },
+    {
+      "physical_page": 208,
+      "printed_page": 208,
+      "chars": 2691,
+      "first_200": "d Central Asia, 500 bce–1980 ce Developing Understanding BIG IDEA 2 The arts of West and Central Asia provide evidence of the cultural transfer of ideas and art Interaction with"
+    },
+    {
+      "physical_page": 209,
+      "printed_page": 209,
+      "chars": 2691,
+      "first_200": "isions,\u0007 art\u0007within\u0007an\u0007artistic\u0007tradition.\u0007Students\u0007may\u0007 recognizing\u0007that\u0007function,\u0007siting,\u0007or\u0007reception\u0007 be able to explain that there is continuity or may\u0007be\u0007key\u0007factors.\u0007Students\u0007will\u0007examine\u0007the\u0007 "
+    },
+    {
+      "physical_page": 210,
+      "printed_page": 210,
+      "chars": 2691,
+      "first_200": "Central Asian Art work of art (or group of related works of art). 7.2 Purpose and Audience in 2.B Explain\u0007how\u0007the\u0007possible\u0007intent,\u0007purpose,\u0007and/ West and Central Asian Art or function shape the creati"
+    },
+    {
+      "physical_page": 211,
+      "printed_page": 211,
+      "chars": 2691,
+      "first_200": "multiple\u0007 variables §§ Explain relevant and insightful connections §§ Explain how or why an art historical claim is or is not effective. §§ Qualify or modify a claim by considering"
+    },
+    {
+      "physical_page": 212,
+      "printed_page": 212,
+      "chars": 2691,
+      "first_200": "a Qur’an (187), Bahram Gur Fights the Karg (189), and The Court of the Gayumars (190). Divide students into two teams; one will argue that the three works represent continuity"
+    },
+    {
+      "physical_page": 213,
+      "printed_page": 213,
+      "chars": 2691,
+      "first_200": "ain how Artists of West and Central Asia excelled in the creation materials, of particular art forms exhibiting key characteristics processes, and unique to their regions and cultures. Important forms"
+    },
+    {
+      "physical_page": 214,
+      "printed_page": 214,
+      "chars": 2691,
+      "first_200": "UNIT West and Central Asia, 500 bce–1980 ce 7 LEARNING ESSENTIAL OBJECTIVE KNOWLEDGE MPT-1.A MPT-1.A.20 Explain how Metalwork\u0007and\u0007metallurgy\u0007flourished\u0007in\u0007West\u0007and\u0007Central\u0007 materials, Asia in the crea"
+    },
+    {
+      "physical_page": 215,
+      "printed_page": 215,
+      "chars": 2691,
+      "first_200": "vegetal\u0007designs,\u0007qualities\u0007that\u0007carry\u0007over\u0007into\u0007figural\u0007 works,\u0007where\u0007figures\u0007inhabit\u0007flat\u0007or\u0007shallow\u0007spaces\u0007with\u0007 tipped perspectives and patterned landscapes. AP Art History Course and Exam Descript"
+    },
+    {
+      "physical_page": 216,
+      "printed_page": 216,
+      "chars": 2691,
+      "first_200": "physical setting united through their shared beliefs and practices, affect\u0007art\u0007and\u0007 particularly the world religions of Buddhism, which §§ 184. Jowo Rinpoche art making. originated in the 6th century "
+    },
+    {
+      "physical_page": 217,
+      "printed_page": 217,
+      "chars": 2691,
+      "first_200": "UNIT West and Central Asia, 500 bce–1980 ce 7 ENDURING UNDERSTANDING PAA-1 A\u0007variety\u0007of\u0007purposes\u0007may\u0007affect\u0007art\u0007and\u0007art\u0007making,\u0007and\u0007those\u0007purposes\u0007may\u0007 include, but are not limited to, intended audien"
+    },
+    {
+      "physical_page": 218,
+      "printed_page": 218,
+      "chars": 2691,
+      "first_200": "constructive sculpture, and wall painting. In the Tibetan lands,\u0007Buddhist\u0007architecture\u0007flourishes\u0007in\u0007the\u0007form\u0007of\u0007 stupas and monastic architecture. AP Art History Course and Exam Description Course Fr"
+    },
+    {
+      "physical_page": 219,
+      "printed_page": 219,
+      "chars": 2691,
+      "first_200": "form to the vast cultural §§ Explain how or why an other\u0007cultures\u0007affect\u0007 interchanges that have occurred in these lands that link art historical claim is or art and art making."
+    },
+    {
+      "physical_page": 220,
+      "printed_page": 220,
+      "chars": 2691,
+      "first_200": "to Table of Contents © 2019 College Board UNIT West and Central Asia, 500 bce–1980 ce 7 LEARNING ESSENTIAL OBJECTIVE KNOWLEDGE INT-1.A INT-1.A.22 Explain how The arts of West and"
+    },
+    {
+      "physical_page": 221,
+      "printed_page": 221,
+      "chars": 2691,
+      "first_200": "KNOWLEDGE THR-1.A THR-1.A.21 Explain how theories The\u0007study\u0007of\u0007art\u0007history\u0007is\u0007shaped\u0007by\u0007different\u0007theories\u0007 and interpretations and interpretations of art and art making that change of works of art ar"
+    },
+    {
+      "physical_page": 222,
+      "printed_page": 222,
+      "chars": 2691,
+      "first_200": "as, or may be depicted in paintings. THR-1.A.23 Islamic art that is created for religious purposes does not\u0007contain\u0007figural\u0007imagery.\u0007Mosque\u0007architecture\u0007is\u0007 decorated\u0007with\u0007nonfigural\u0007imagery,\u0007includin"
+    },
+    {
+      "physical_page": 223,
+      "printed_page": 223,
+      "chars": 2691,
+      "first_200": "ork V.1 | 216 Return to Table of Contents © 2019 College Board UNIT West and Central Asia, 500 bce–1980 ce 7 181. Petra, Jordan: Treasury and Great Temple Nabataean\u0007Ptolemaic\u0007and\u0007Roman.\u0007c.\u0007400\u0007bce–100"
+    },
+    {
+      "physical_page": 224,
+      "printed_page": 224,
+      "chars": 2691,
+      "first_200": "AREKJI/Reuters/Corbis AP Art History Course and Exam Description Course Framework V.1 | 219 Return to Table of Contents © 2019 College Board UNIT 7 West and Central Asia, 500 bce–1980"
+    },
+    {
+      "physical_page": 225,
+      "printed_page": 225,
+      "chars": 2691,
+      "first_200": "Course Framework V.1 | 221 Return to Table of Contents © 2019 College Board UNIT 7 West and Central Asia, 500 bce–1980 ce 187. Folio from a Qur’an 188. Basin"
+    },
+    {
+      "physical_page": 226,
+      "printed_page": 226,
+      "chars": 2691,
+      "first_200": "AP ART HISTORY UNIT 8 South, East, and Southeast Asia, 300 bce–1980 ce ~8% AP\u0007EXAM\u0007WEIGHTING ~7–10 CLASS\u0007PERIODS AP Art History Course and Exam Description Course Framework V.1 | 225 Return"
+    },
+    {
+      "physical_page": 227,
+      "printed_page": 227,
+      "chars": 2691,
+      "first_200": "ce Developing Understanding BIG IDEA 1 Asian art was and is global, as the cultures of these regions were connected to each other and to Culture CUL West\u0007Asia\u0007and\u0007Europe,\u0007with\u0007clear\u0007reciprocal\u0007influen"
+    },
+    {
+      "physical_page": 228,
+      "printed_page": 228,
+      "chars": 2691,
+      "first_200": "is this demonstrated an explanation. to the Taj Mahal (209) in this region over time). through the artistic Students\u0007often\u0007explain\u0007how\u0007one\u0007work\u0007 traditions of Asian art? Practice argumentation by buil"
+    },
+    {
+      "physical_page": 229,
+      "printed_page": 229,
+      "chars": 2691,
+      "first_200": "East, and Southeast Asia, 300 bce–1980 ce UNIT AT A GLANCE Enduring Class Periods Understanding Topic Suggested Skills ~7–10 CLASS\u0007PERIODS 8.1 Materials, Processes, and 1.C Explain\u0007how\u0007artistic\u0007decisi"
+    },
+    {
+      "physical_page": 230,
+      "printed_page": 230,
+      "chars": 2691,
+      "first_200": "Description Course Framework V.1 | 228 Return to Table of Contents © 2019 College Board UNIT South, East, and Southeast Asia, 300 bce–1980 ce 8 UNIT AT A GLANCE (cont'd)"
+    },
+    {
+      "physical_page": 231,
+      "printed_page": 231,
+      "chars": 2691,
+      "first_200": "ant\u0007evidence,\u0007support\u0007 Asian Art a claim about one or more works of art (or group of related works of art). \u0007Go to AP Classroom to assign the Personal Progress Check for"
+    },
+    {
+      "physical_page": 232,
+      "printed_page": 232,
+      "chars": 2691,
+      "first_200": "the extent to which the rock garden at Ryoan-ji (207) reflects the influence of other cultures. Have groups trade claims and evidence and revise or modify the claims (if necessary),"
+    },
+    {
+      "physical_page": 233,
+      "printed_page": 233,
+      "chars": 2691,
+      "first_200": "more works of art using appropriate and relevant points of comparison. Required Course Content 3.B Explain how two or more works of art are similar and/ or different in how"
+    },
+    {
+      "physical_page": 234,
+      "printed_page": 234,
+      "chars": 2691,
+      "first_200": "making. been dated to 18,300 and 17,500 bce, followed by §§ 210. White and Red Jomon vessels from Japan with shards dating back to Plum Blossoms 10,500 bce.\u0007The\u0007arts\u0007of\u0007South,\u0007East,\u0007and\u0007Southeast\u0007Asia"
+    },
+    {
+      "physical_page": 235,
+      "printed_page": 235,
+      "chars": 2691,
+      "first_200": "reliquary processes, and stupas; the practice of monochromatic ink painting techniques affect on silk and paper, which developed in China; the art and art making. development of the pagoda, an"
+    },
+    {
+      "physical_page": 236,
+      "printed_page": 236,
+      "chars": 2691,
+      "first_200": "objects, and ceramic tiles, and in manuscripts written on paper, cloth, or vellum. MPT-1.A.29 Important\u0007textile\u0007forms\u0007from\u0007this\u0007region\u0007include\u0007silk-\u0007 and\u0007wool-tapestry\u0007weaving,\u0007cotton\u0007weaving,\u0007printin"
+    },
+    {
+      "physical_page": 237,
+      "printed_page": 237,
+      "chars": 2691,
+      "first_200": "2.C Explain how and/or why context influences artistic decisions about form, style, materials, content, and/or function in the creation or Required Course Content meaning of a work of art (or"
+    },
+    {
+      "physical_page": 238,
+      "printed_page": 238,
+      "chars": 2691,
+      "first_200": "Sanchi Explain how cultural Sophisticated\u0007Neolithic\u0007and\u0007Bronze\u0007Age\u0007civilizations\u0007 practices, belief §§ 193. Terra cotta warriors thrived\u0007across\u0007Asia,\u0007including\u0007the\u0007Indus\u0007Valley\u0007civilization\u0007 systems, "
+    },
+    {
+      "physical_page": 239,
+      "printed_page": 239,
+      "chars": 2691,
+      "first_200": "continued on next page AP Art History Course and Exam Description Course Framework V.1 | 233 Return to Table of Contents © 2019 College Board UNIT 8 South, East, and"
+    },
+    {
+      "physical_page": 240,
+      "printed_page": 240,
+      "chars": 2691,
+      "first_200": "waves of importation and Indian attempts at colonization. CUL-1.A.47 The practice of the indigenous Asian religions necessitated the development of novel art and architectural forms to support them. U"
+    },
+    {
+      "physical_page": 241,
+      "printed_page": 241,
+      "chars": 2691,
+      "first_200": "continued on next page AP Art History Course and Exam Description Course Framework V.1 | 234 Return to Table of Contents © 2019 College Board UNIT South, East, and Southeast"
+    },
+    {
+      "physical_page": 242,
+      "printed_page": 242,
+      "chars": 2691,
+      "first_200": "art\u0007making. LEARNING ESSENTIAL OBJECTIVE KNOWLEDGE PAA-1.A PAA-1.A.25 Explain how purpose, South,\u0007East,\u0007and\u0007Southeast\u0007Asia\u0007have\u0007rich\u0007traditions\u0007of\u0007 intended audience, courtly and secular art forms tha"
+    },
+    {
+      "physical_page": 243,
+      "printed_page": 243,
+      "chars": 2691,
+      "first_200": "etal forms. All mosques have a Qibla wall, which faces\u0007the\u0007direction\u0007of\u0007Mecca,\u0007home\u0007of\u0007the\u0007Kaaba.\u0007This\u0007 wall is ornamented with an empty mihrab, which serves as a niche for prayer. PAA-1.A.28 The term"
+    },
+    {
+      "physical_page": 244,
+      "printed_page": 244,
+      "chars": 2691,
+      "first_200": "style, or practice. East, and Southeast Asian Art 4.B Explain why a specific work of art (or group of related works of art) demonstrates continuity and/or change within an artistic"
+    },
+    {
+      "physical_page": 245,
+      "printed_page": 245,
+      "chars": 2691,
+      "first_200": "style, or practice. OBJECTIVE KNOWLEDGE INT-1.A INT-1.A.24 Explain how Asian\u0007art\u0007was\u0007and\u0007is\u0007global.\u0007The\u0007cultures\u0007of\u0007South,\u0007East,\u0007 interactions with and\u0007Southeast\u0007Asia\u0007were\u0007interconnected\u0007through\u0007trade"
+    },
+    {
+      "physical_page": 246,
+      "printed_page": 246,
+      "chars": 2691,
+      "first_200": "Return to Table of Contents © 2019 College Board UNIT 8 South, East, and Southeast Asia, 300 bce–1980 ce LEARNING ESSENTIAL OBJECTIVE KNOWLEDGE INT-1.A INT-1.A.27 Explain how South,\u0007East,\u0007and\u0007Southeas"
+    },
+    {
+      "physical_page": 247,
+      "printed_page": 247,
+      "chars": 2691,
+      "first_200": "ensible claim about one or more works of art (or group of of South, East, and related works of art). 8.B Southeast Asian Art Using specific and relevant evidence, support"
+    },
+    {
+      "physical_page": 248,
+      "printed_page": 248,
+      "chars": 2691,
+      "first_200": "are deeply rooted in Asian aesthetics and cultural practices. continued on next page AP Art History Course and Exam Description Course Framework V.1 | 239 Return to Table of Contents"
+    },
+    {
+      "physical_page": 249,
+      "printed_page": 249,
+      "chars": 2691,
+      "first_200": "yan). Early Buddha sculptures in north India, China, and Japan wear\u0007a\u0007two-shouldered\u0007robe\u0007based\u0007on\u0007the\u0007Roman\u0007toga.\u0007 South\u0007and\u0007Southeast\u0007Asia\u0007had\u0007early\u0007contact\u0007with\u0007Islam\u0007 through trade and in western "
+    },
+    {
+      "physical_page": 250,
+      "printed_page": 250,
+      "chars": 2691,
+      "first_200": "8 LEARNING ESSENTIAL OBJECTIVE KNOWLEDGE INT-1.A INT-1.A.29 Explain how Asian\u0007art\u0007forms\u0007had\u0007great\u0007influence\u0007on\u0007the\u0007arts\u0007of\u0007West\u0007 interactions with Asia and Europe. Art and ideas were exchanged through"
+    },
+    {
+      "physical_page": 251,
+      "printed_page": 251,
+      "chars": 2691,
+      "first_200": "upa at Sanchi Madhya\u0007Pradesh,\u0007India.\u0007Buddhist;\u0007Maurya,\u0007late\u0007Sunga\u0007Dynasty.\u0007c.\u0007300\u0007bce–100 ce.\u0007Stone\u0007masonry,\u0007sandstone\u0007on\u0007dome.\u00074\u0007images Great\u0007Stupa\u0007at\u0007Sanchi Detail © Atlantide Phototravel/Corbis © A"
+    },
+    {
+      "physical_page": 252,
+      "printed_page": 252,
+      "chars": 2691,
+      "first_200": "© 2019 College Board UNIT South, East, and Southeast Asia, 300 bce–1980 ce 8 196. Gold and jade crown Three\u0007Kingdoms\u0007period,\u0007Silla\u0007Kingdom,\u0007Korea.\u0007Fifth\u0007to\u0007sixth\u0007century\u0007ce. Metalwork. Gold and jade c"
+    },
+    {
+      "physical_page": 253,
+      "printed_page": 253,
+      "chars": 2691,
+      "first_200": "Course Framework V.1 | 247 Return to Table of Contents © 2019 College Board UNIT 8 South, East, and Southeast Asia, 300 bce–1980 ce 199. Angkor, the temple of Angkor"
+    },
+    {
+      "physical_page": 254,
+      "printed_page": 254,
+      "chars": 2691,
+      "first_200": "Lakshmana Temple plan © Michele Burgess/Alamy AP Art History Course and Exam Description Course Framework V.1 | 250 Return to Table of Contents © 2019 College Board UNIT South, East,"
+    },
+    {
+      "physical_page": 255,
+      "printed_page": 255,
+      "chars": 2691,
+      "first_200": "century ce\u0007and\u0007later.\u0007Stone\u0007masonry,\u0007marble,\u0007brick,\u0007wood,\u0007and\u0007ceramic\u0007tile.\u00075\u0007images Forbidden City Front Gate © Atlantide Phototravel/Corbis © John Lander Photography continued on next page AP Art Hi"
+    },
+    {
+      "physical_page": 256,
+      "printed_page": 256,
+      "chars": 2691,
+      "first_200": "8 208. Jahangir Preferring a Sufi Shaikh to Kings Bichitr. c. 1620 ce. Watercolor, gold, and ink on paper. Jahangir Preferring a Sufi Shaikh to Kings ©\u0007Freer\u0007Gallery\u0007of\u0007Art,\u0007Smithsonian\u0007Institution,\u0007W"
+    },
+    {
+      "physical_page": 257,
+      "printed_page": 257,
+      "chars": 2691,
+      "first_200": "AP Art History Course and Exam Description Course Framework V.1 | 257 Return to Table of Contents © 2019 College Board THIS PAGE IS INTENTIONALLY LEFT BLANK. AP ART HISTORY"
+    },
+    {
+      "physical_page": 258,
+      "printed_page": 258,
+      "chars": 2691,
+      "first_200": "ping Understanding BIG IDEA 4 Understanding\u0007the\u0007intended\u0007purpose\u0007and\u0007audience\u0007of\u0007the\u0007arts\u0007of\u0007the\u0007Pacific\u0007is\u0007an\u0007important\u0007 Materials, Processes, focus of study in this unit. Works of art from this regi"
+    },
+    {
+      "physical_page": 259,
+      "printed_page": 259,
+      "chars": 2691,
+      "first_200": "Hawaiian feather cape (215). to\u0007recognize\u0007that\u0007the\u0007interpretations\u0007of\u0007 others are not necessarily established fact The content in this unit is an excellent and\u0007should\u0007be\u0007considered\u0007and\u0007analyzed\u0007 oppor"
+    },
+    {
+      "physical_page": 260,
+      "printed_page": 260,
+      "chars": 2691,
+      "first_200": "9 The Pacific, 700–1980 ce UNIT AT A GLANCE Enduring Class Periods Understanding Topic Suggested Skills ~3–5 CLASS\u0007PERIODS 9.1 Materials, Processes, and 1.B Describe\u0007visual\u0007elements\u0007of\u0007a\u0007work\u0007of\u0007art\u0007("
+    },
+    {
+      "physical_page": 261,
+      "printed_page": 261,
+      "chars": 2691,
+      "first_200": "and 7.A Describe\u0007one\u0007or\u0007more\u0007art\u0007historically\u0007relevant\u0007 Interpretations of interpretations of a work of art (or group of related Pacific Art works of art), its reception, or its meaning. THR-1 7.B Exp"
+    },
+    {
+      "physical_page": 262,
+      "printed_page": 262,
+      "chars": 2691,
+      "first_200": "9.3 Peer Review/Peer Editing Have students write short essays describing at least two historically relevant interpretations of Moai on platform (214), including the art historians’ opinions regarding "
+    },
+    {
+      "physical_page": 263,
+      "printed_page": 263,
+      "chars": 2691,
+      "first_200": "LEARNING ESSENTIAL OBJECTIVE KNOWLEDGE MPT-1.A MPT-1.A.31 SUGGESTED WORKS Explain how Pacific\u0007arts\u0007are\u0007composed\u0007of\u0007objects,\u0007acts,\u0007and\u0007events\u0007 §§ 215. 'Ahu 'ula materials, that are forces in social lif"
+    },
+    {
+      "physical_page": 264,
+      "printed_page": 264,
+      "chars": 2691,
+      "first_200": "UNIT The Pacific, 700–1980 ce 9 TOPIC 9.2 SUGGESTED SKILLS 2.A Interactions Within Describe contextual elements of a work of art (or group of related works and Across Cultures of"
+    },
+    {
+      "physical_page": 265,
+      "printed_page": 265,
+      "chars": 2691,
+      "first_200": "meaning of a work of art CUL-1 (or group of related works Cultural practices, belief systems, and physical setting constitute an important part of art). of art and art making"
+    },
+    {
+      "physical_page": 266,
+      "printed_page": 266,
+      "chars": 2691,
+      "first_200": "opulations sailed from Vanuatu eastward, and carried plants, animals, and pottery that now demonstrate a pattern of migration and connection from what was the Lapita culture. continued on next page"
+    },
+    {
+      "physical_page": 267,
+      "printed_page": 267,
+      "chars": 2691,
+      "first_200": "ic. ENDURING UNDERSTANDING INT-1 A variety of factors leads to and motivates interaction between and among cultures, and this\u0007interaction\u0007may\u0007influence\u0007art\u0007and\u0007art\u0007making.\u0007Such\u0007cultural\u0007interaction\u0007ma"
+    },
+    {
+      "physical_page": 268,
+      "printed_page": 268,
+      "chars": 2691,
+      "first_200": "Return to Table of Contents © 2019 College Board UNIT The Pacific, 700–1980 ce 9 ENDURING UNDERSTANDING PAA-1 A\u0007variety\u0007of\u0007purposes\u0007may\u0007affect\u0007art\u0007and\u0007art\u0007making,\u0007and\u0007those\u0007purposes\u0007may\u0007 include, but "
+    },
+    {
+      "physical_page": 269,
+      "printed_page": 269,
+      "chars": 2691,
+      "first_200": "the use of costumes, cosmetics, and constructions assembled to enact epics of human history and experience is central to the creation\u0007of\u0007and\u0007participation\u0007in\u0007Pacific\u0007arts. PAA-1.A.31 Objects\u0007such\u0007as\u0007s"
+    },
+    {
+      "physical_page": 270,
+      "printed_page": 270,
+      "chars": 2691,
+      "first_200": "and life force. In Melanesia, individuals and clans earn status and power and sustain social balance in a set of relationships marked by the exchange of objects. Masks, and the"
+    },
+    {
+      "physical_page": 271,
+      "printed_page": 271,
+      "chars": 2691,
+      "first_200": "Course Framework V.1 | 268 Return to Table of Contents © 2019 College Board UNIT The Pacific, 700–1980 ce 9 TOPIC 9.3 SUGGESTED SKILLS 7.A Theories and Describe one or"
+    },
+    {
+      "physical_page": 272,
+      "printed_page": 272,
+      "chars": 2691,
+      "first_200": "and/or meaning. ENDURING UNDERSTANDING THR-1 The\u0007study\u0007of\u0007art\u0007history\u0007is\u0007shaped\u0007by\u0007different\u0007theories\u0007and\u0007interpretations\u0007of\u0007art\u0007 SUGGESTED WORKS and art making that change over time. These theories a"
+    },
+    {
+      "physical_page": 273,
+      "printed_page": 273,
+      "chars": 2691,
+      "first_200": "the presentation of primordial forms such as cultural heroes, founding ancestors, or totemic animals in order to\u0007reaffirm\u0007shared\u0007values\u0007and\u0007important\u0007truths.\u0007In\u0007some\u0007 instances the memory is created a"
+    },
+    {
+      "physical_page": 274,
+      "printed_page": 274,
+      "chars": 2691,
+      "first_200": "Detail © The Trustees of the British Museum 217. Female deity Nukuoro,\u0007Micronesia.\u0007c.\u000718th\u0007to\u000719th\u0007century\u0007ce. Wood. Contextual\u0007image:\u0007staff\u0007god © The Trustees of the British Museum Female deity © Wer"
+    },
+    {
+      "physical_page": 275,
+      "printed_page": 275,
+      "chars": 2691,
+      "first_200": "College Board UNIT The Pacific, 700–1980 ce 9 222. Malagan display and mask New\u0007Ireland\u0007Province,\u0007Papua\u0007New\u0007Guinea.\u0007c.\u000720th\u0007century\u0007ce.\u0007Wood,\u0007pigment,\u0007fiber,\u0007and\u0007shell.\u00072\u0007images Malagan mask Malagan d"
+    },
+    {
+      "physical_page": 276,
+      "printed_page": 276,
+      "chars": 2691,
+      "first_200": "Personal Progress Check for this unit. Whether assigned as homework or completed\u0007in\u0007class,\u0007the Personal Progress Check provides each student with immediate feedback related to this unit’s topics and s"
+    },
+    {
+      "physical_page": 277,
+      "printed_page": 277,
+      "chars": 2691,
+      "first_200": "r the AP Exam global culture? Thinking Skills The two long essay prompts ask students BIG IDEA 3 4.A 4.B 4.D 8.D to connect visual or contextual analysis Theories and"
+    },
+    {
+      "physical_page": 278,
+      "printed_page": 278,
+      "chars": 2691,
+      "first_200": "hniques MPT multiple perspectives or explaining complex Cindy Sherman’s Untitled #228 is a modern § How have art making connections between, for example, a work’s version of a Renaissance and"
+    },
+    {
+      "physical_page": 279,
+      "printed_page": 279,
+      "chars": 2691,
+      "first_200": "t 1.C Explain\u0007how\u0007artistic\u0007decisions\u0007about\u0007form,\u0007 style, materials, technique, and/or content shape a work of art (or group of related works of art). 10.2 Purpose and Audience in 2.B Explain\u0007how\u0007the\u0007p"
+    },
+    {
+      "physical_page": 280,
+      "printed_page": 280,
+      "chars": 2691,
+      "first_200": "y Course and Exam Description Course Framework V.1 | 278 Return to Table of Contents © 2019 College Board UNIT Global Contemporary, 1980 ce to Present 10 UNIT AT A"
+    },
+    {
+      "physical_page": 281,
+      "printed_page": 281,
+      "chars": 2691,
+      "first_200": "alternative views or evidence. \u0007Go to AP Classroom to assign the Personal Progress Check for Unit 10. Review the results in class to identify and address any student misunderstandings. AP"
+    },
+    {
+      "physical_page": 282,
+      "printed_page": 282,
+      "chars": 2691,
+      "first_200": "rpretations of The Gates (224) and the other research interpretations of The Crossing (239). Then, have the pairs discuss and critique the reasoning of the art historians\u0007and\u0007examine\u0007the\u0007differences\u0007b"
+    },
+    {
+      "physical_page": 283,
+      "printed_page": 283,
+      "chars": 2691,
+      "first_200": "ontent shape a work of art (or group of related works of art). Required Course Content SUGGESTED WORKS § 226. Horn Players ENDURING UNDERSTANDING § 228. Androgyne III § 232."
+    },
+    {
+      "physical_page": 284,
+      "printed_page": 284,
+      "chars": 2691,
+      "first_200": "MPT-1.A.36 Digital technology in particular provides increased access to imagery and contextual information about diverse artists and artworks throughout history and across the globe. AP Art History C"
+    },
+    {
+      "physical_page": 285,
+      "printed_page": 285,
+      "chars": 2691,
+      "first_200": "audience, or patron broad themes, which include existential investigations § 227. Summer Trees affect\u0007art\u0007and\u0007 and\u0007sociopolitical\u0007critiques,\u0007as\u0007well\u0007as\u0007reflections\u0007on\u0007 § 229. A Book from art making. t"
+    },
+    {
+      "physical_page": 286,
+      "printed_page": 286,
+      "chars": 2691,
+      "first_200": "© 2019 College Board UNIT Global Contemporary, 1980 ce to Present 10 TOPIC 10.3 SUGGESTED SKILLS 4.A Interactions Within Explain how a specific work of art (or group of related"
+    },
+    {
+      "physical_page": 287,
+      "printed_page": 287,
+      "chars": 2691,
+      "first_200": "works of art (or groups of INT-1 related works of art) within A variety of factors leads to and motivates interaction between and among cultures, a related artistic tradition, style,"
+    },
+    {
+      "physical_page": 288,
+      "printed_page": 288,
+      "chars": 2691,
+      "first_200": "nd American phenomenon, today, contemporary § 242. Lying with the Wolf art\u0007produced\u0007by\u0007artists\u0007of\u0007Africa,\u0007Asia,\u0007Oceania,\u0007 § 244. The Swing (after and\u0007the\u0007First\u0007Nations\u0007is\u0007receiving\u0007the\u0007same,\u0007if\u0007not\u0007 F"
+    },
+    {
+      "physical_page": 289,
+      "printed_page": 289,
+      "chars": 2691,
+      "first_200": "The art world has expanded and become more practices, belief inclusive since the 1960s, as artists of all nationalities, systems, and/or ethnicities, genders, and sexual orientations have physical set"
+    },
+    {
+      "physical_page": 290,
+      "printed_page": 290,
+      "chars": 2691,
+      "first_200": "7.B Explain how one or more art historically valid interpretations of a work of art (or group of related works of art) are derived Required Course Content from an analysis"
+    },
+    {
+      "physical_page": 291,
+      "printed_page": 291,
+      "chars": 2691,
+      "first_200": "ESSENTIAL § Explain how or why an OBJECTIVE KNOWLEDGE art historical claim is or is\u0007not\u0007effective. THR-1.A THR-1.A.28 § Qualify or modify a Explain how theories The study of art history"
+    },
+    {
+      "physical_page": 292,
+      "printed_page": 292,
+      "chars": 2691,
+      "first_200": "Return to Table of Contents © 2019 College Board UNIT Global Contemporary, 1980 ce to Present 10 226. Horn Players 227. Summer Trees Jean-Michel\u0007Basquiat.\u00071983\u0007ce. Acrylic and oil paintstick on Song\u0007S"
+    },
+    {
+      "physical_page": 293,
+      "printed_page": 293,
+      "chars": 2691,
+      "first_200": "233. Trade (Gifts for Trading Land with White People) French Collection, Part I; #1 Jaune\u0007Quick-to-See\u0007Smith.\u00071992\u0007ce.\u0007Oil\u0007and\u0007mixed\u0007media\u0007 Faith Ringgold. 1991 ce.\u0007Acrylic\u0007on\u0007canvas,\u0007tie-dyed,\u0007pieced"
+    },
+    {
+      "physical_page": 294,
+      "printed_page": 294,
+      "chars": 2691,
+      "first_200": "Pisupo Lua Afe Courtesy\u0007Ronald\u0007Feldman\u0007Fine\u0007Arts,\u0007New\u0007York/www.feldmangallery.com ©\u0007Michel\u0007Tuffery\u0007MNZM/Museum\u0007of\u0007New\u0007Zealand\u0007Te\u0007Papa\u0007Tongarewa\u0007 #FE010516 AP Art History Course and Exam Description Co"
+    },
+    {
+      "physical_page": 295,
+      "printed_page": 295,
+      "chars": 2691,
+      "first_200": "© 2019 College Board UNIT 10 Global Contemporary, 1980 ce to Present 241. Pure Land 242. Lying with the Wolf Mariko Mori. 1998 ce. Color photograph on glass. Kiki\u0007Smith.\u00072001\u0007ce. Ink"
+    },
+    {
+      "physical_page": 296,
+      "printed_page": 296,
+      "chars": 2691,
+      "first_200": "48. Shibboleth Wangechi Mutu. 2006 ce. Mixed media on Mylar. Doris\u0007Salcedo.\u00072007–2008\u0007ce. Installation. Preying Mantra Shibboleth ©\u0007Gladstone\u0007Gallery,\u0007New\u0007York\u0007and\u0007Brussels © Luke Macgregor/Reuters/Co"
+    },
+    {
+      "physical_page": 297,
+      "printed_page": 297,
+      "chars": 2691,
+      "first_200": "sources can personal engagement with works of art in their describe how a work was initially displayed or explain immediate surroundings, as well as with works artistic choices of media"
+    },
+    {
+      "physical_page": 298,
+      "printed_page": 298,
+      "chars": 2691,
+      "first_200": "tral Course Audit page for this course, their AP Art History scholarship. Whether examining you\u0007will\u0007find\u0007examples\u0007of\u0007college-level\u0007textbooks\u0007that\u0007 their own work, the work of a peer, or works of art "
+    },
+    {
+      "physical_page": 299,
+      "printed_page": 299,
+      "chars": 2691,
+      "first_200": "expertise\u0007in\u0007art\u0007history.\u0007Sources\u0007can\u0007be\u0007print,\u0007 interpretations of one work in the online, or expert interviews or documentaries. image set. Ask students to research § Because many students are using"
+    },
+    {
+      "physical_page": 300,
+      "printed_page": 300,
+      "chars": 2691,
+      "first_200": "reliable as one claims and provides insight and knowledge that made by an art historian. relates to the topic. This means that evidence is § An interpretation of a work"
+    },
+    {
+      "physical_page": 301,
+      "printed_page": 301,
+      "chars": 2691,
+      "first_200": "its meaning. Have copies of the works displayed in some way. Have each pair explain the artist’s intent or purpose, and (if possible) critical or popular reception of the work"
+    },
+    {
+      "physical_page": 302,
+      "printed_page": 302,
+      "chars": 2691,
+      "first_200": "students examine the interpretation to determine the evidence the historian uses regarding form, style, materials, content, function, reception, or meaning, to develop the interpretation. continued on"
+    },
+    {
+      "physical_page": 303,
+      "printed_page": 303,
+      "chars": 2691,
+      "first_200": "when experiencing a work to their partner who is not of art (within the image set looking at the image. Have and with works beyond the the student describing image"
+    },
+    {
+      "physical_page": 304,
+      "printed_page": 304,
+      "chars": 2691,
+      "first_200": "torical appropriate discussion in a formal discussion and interpretations of works techniques while an outer to experience the roles of from the image set. circle of students listens, both participant"
+    },
+    {
+      "physical_page": 305,
+      "printed_page": 305,
+      "chars": 2691,
+      "first_200": "necessary to progress toward more complex skills. Graphic Organizer Representing ideas and To provide a visual system Graphic\u0007organizers\u0007can\u0007be\u0007 information visually (e.g., for\u0007organizing\u0007multiple\u0007 he"
+    },
+    {
+      "physical_page": 306,
+      "printed_page": 306,
+      "chars": 2691,
+      "first_200": "artist shaped the lesson. work of art. For example, “Why did the artist create in this style? Why did the artist use this form? Materials? Techniques, etc.” If the answers"
+    },
+    {
+      "physical_page": 307,
+      "printed_page": 307,
+      "chars": 2691,
+      "first_200": "re\u0007 text (or multiple texts) or School of Athens (76), the information from that issue without having each and Diego Rivera’s fresco reading with students student read the text in"
+    },
+    {
+      "physical_page": 308,
+      "printed_page": 308,
+      "chars": 2691,
+      "first_200": "the\u0007Mosque\u0007of\u0007Selim\u0007 II (84), and The Great Mosque\u0007(Masjid-e\u0007Jameh)\u0007 (186). Then have students apply those patterns to the unknown work in order to build\u0007an\u0007evidence-based\u0007 explanation attributing the"
+    },
+    {
+      "physical_page": 309,
+      "printed_page": 309,
+      "chars": 2691,
+      "first_200": "brief explanation of how the works are related. continued on next page AP Art History Course and Exam Description Instructional Approaches V.1 | 302 Return to Table of Contents ©"
+    },
+    {
+      "physical_page": 310,
+      "printed_page": 310,
+      "chars": 2691,
+      "first_200": "and beyond the find\u0007another\u0007work\u0007by\u0007the\u0007 movements, or locations. image set. same artist. Place all of the works\u0007NOT\u0007in\u0007the\u0007image\u0007set\u0007 on cards (or on slides) and have students match the work with the"
+    },
+    {
+      "physical_page": 311,
+      "printed_page": 311,
+      "chars": 2691,
+      "first_200": "ting partner to examine a piece opportunity to edit a writing components of of writing for accuracy written text to ensure their arguments (claims, and clarity. correctness\u0007of\u0007identified\u0007 evidence,\u0007ju"
+    },
+    {
+      "physical_page": 312,
+      "printed_page": 312,
+      "chars": 2691,
+      "first_200": "the learning objectives initiate a conversation that § Probing perspective and and essential knowledge continues with a series of point of view statements. responses and additional § Questioning facts"
+    },
+    {
+      "physical_page": 313,
+      "printed_page": 313,
+      "chars": 2691,
+      "first_200": "© 2019 College Board Skill 1: Visual Analysis ANALYZE VISUAL ELEMENTS OF WORKS OF ART Students\u0007begin\u0007their\u0007study\u0007by\u0007carefully\u0007observing\u0007a\u0007work\u0007of\u0007art\u0007in\u0007order\u0007to\u0007 accurately describe what they see. Th"
+    },
+    {
+      "physical_page": 314,
+      "printed_page": 314,
+      "chars": 2691,
+      "first_200": "content so their partner § materials can either identify or § technique produce a sketch of the work accurately. § content 1.C. Explain how § What artistic decisions Have\u0007students\u0007analyze\u0007and\u0007 Discuss"
+    },
+    {
+      "physical_page": 315,
+      "printed_page": 315,
+      "chars": 2691,
+      "first_200": "vity Strategies 2.A. Describe § What is the purpose of In pairs, have one student Description contextual elements of this work? describe the visual a work of art (or group"
+    },
+    {
+      "physical_page": 316,
+      "printed_page": 316,
+      "chars": 2691,
+      "first_200": "continued on next page AP Art History Course and Exam Description Instructional Approaches V.1 | 307 Return to Table of Contents © 2019 College Board Sample Instructional Skill Key Questions"
+    },
+    {
+      "physical_page": 317,
+      "printed_page": 317,
+      "chars": 2691,
+      "first_200": "the work. 2.D. Explain how § How did what was Have students examine Jigsaw artistic decisions about happening in the a series of works of art artist’s world (and/or displayed"
+    },
+    {
+      "physical_page": 318,
+      "printed_page": 318,
+      "chars": 2691,
+      "first_200": "n\u0007Olmec-style\u0007mask\u0007 from\u0007Templo\u0007Mayor,\u0007for\u0007example—or\u0007to\u0007works\u0007related\u0007by\u0007chronology,\u0007location,\u0007 or visual appearance. This process deepens their understanding of one work as they\u0007compare\u0007it\u0007to\u0007counte"
+    },
+    {
+      "physical_page": 319,
+      "printed_page": 319,
+      "chars": 2691,
+      "first_200": "by Constantin Brancusi. § How are the works Use\u0007Think-Pair-Share\u0007to\u0007 different\u0007in\u0007the\u0007way\u0007they\u0007 have them determine convey meaning? the intended meaning of each work, and then some similarities\u0007and\u0007di"
+    },
+    {
+      "physical_page": 320,
+      "printed_page": 320,
+      "chars": 2691,
+      "first_200": "religious works, portraits of artistic tradition, style, § Does the work women, sculptural forms, or practice. represent continuity and functional ceremonial within the tradition, objects). Give stude"
+    },
+    {
+      "physical_page": 321,
+      "printed_page": 321,
+      "chars": 2691,
+      "first_200": "Sample Instructional Skill Key Questions Sample Activity Strategies 4.C. Explain the § Who and what Expand your Making Making Connections influence of a specific influenced\u0007the\u0007work? Connections activ"
+    },
+    {
+      "physical_page": 322,
+      "printed_page": 322,
+      "chars": 2691,
+      "first_200": "meaning\u0007or\u0007significance\u0007of\u0007 § What\u0007is\u0007the\u0007significance\u0007 practice. the continuities or changes of the work as an within these works of art. example of change within the tradition, style, or practice? A"
+    },
+    {
+      "physical_page": 323,
+      "printed_page": 323,
+      "chars": 2691,
+      "first_200": "ique § content 5.B. In analyzing a § What artistic decisions Have\u0007students\u0007analyze\u0007and\u0007 Guided Discussion work of art beyond did the creator make? explain how the decisions of the image set,"
+    },
+    {
+      "physical_page": 324,
+      "printed_page": 324,
+      "chars": 2691,
+      "first_200": "a work of art this is not Match Game style, or object type influenced\u0007it? in the image set. Have from the image set. students look for patterns established by the"
+    },
+    {
+      "physical_page": 325,
+      "printed_page": 325,
+      "chars": 2691,
+      "first_200": "more art historically think of this work? guided questioning as strategies during a guided Fishbowl relevant interpretations § What is the interpreted purpose? discussion to help students of a work"
+    },
+    {
+      "physical_page": 326,
+      "printed_page": 326,
+      "chars": 2691,
+      "first_200": "AP Art History Course and Exam Description Instructional Approaches V.1 | 314 Return to Table of Contents © 2019 College Board Skill 8: Argumentation DEVELOP AND SUPPORT ART HISTORICAL ARGUMENTS"
+    },
+    {
+      "physical_page": 327,
+      "printed_page": 327,
+      "chars": 2691,
+      "first_200": "claims. Then have them trade § Based on the prompt claims with a partner and and the evidence, what have each determine whether claim will you make? the statement is"
+    },
+    {
+      "physical_page": 328,
+      "printed_page": 328,
+      "chars": 2691,
+      "first_200": "Return to Table of Contents © 2019 College Board Sample Instructional Skill Key Questions Sample Activity Strategies 8.C. Explain how § How does the evidence Have students trade with a"
+    },
+    {
+      "physical_page": 329,
+      "printed_page": 329,
+      "chars": 2691,
+      "first_200": "positions help you have students pick a card argument. This modify or support your at random. Give students a argument might: initial claim? few minutes to gather and § What"
+    },
+    {
+      "physical_page": 330,
+      "printed_page": 330,
+      "chars": 2691,
+      "first_200": "through inquiry and research. or relate it to broader notions of artistic production, Students\u0007carefully\u0007observe\u0007a\u0007work\u0007of\u0007art,\u0007such\u0007as\u0007an\u0007 such as\u0007representations\u0007of\u0007power\u0007and\u0007identity\u0007from\u0007 ikenga ("
+    },
+    {
+      "physical_page": 331,
+      "printed_page": 331,
+      "chars": 2691,
+      "first_200": "80 50% 60 minutes II Free-response questions 6 50% 120 minutes (recommended timing below) Question 1: Long Essay—Comparison (8 pts) 35 minutes Question 2: Long Essay—Visual/Contextual 25 minutes Analy"
+    },
+    {
+      "physical_page": 332,
+      "printed_page": 332,
+      "chars": 2691,
+      "first_200": "~6% Unit 7: West and Central Asia, 500 bce – 1980 ce ~4% Unit 8: South, East, and Southeast Asia, 300 bce – 1980 ce ~8% Unit 9: The Pacific,"
+    },
+    {
+      "physical_page": 333,
+      "printed_page": 333,
+      "chars": 2691,
+      "first_200": "nd/or practice. Skill 5: Visual Approximately\u00076-8%\u0007of\u0007the\u0007multiple-choice\u0007questions\u0007 Free-response\u0007question\u00073\u0007primarily\u0007 Analysis of assess\u0007students’\u0007ability\u0007to\u0007analyze\u0007visual\u0007elements\u0007of\u0007a\u0007 assesses "
+    },
+    {
+      "physical_page": 334,
+      "printed_page": 334,
+      "chars": 2691,
+      "first_200": "irst\u0007is\u0007required,\u0007is\u0007part\u0007of\u0007the\u0007image\u0007 § Describe visual elements of a provided image of a set, and provided in exam image booklet; the second is work of art beyond the image set selected by"
+    },
+    {
+      "physical_page": 335,
+      "printed_page": 335,
+      "chars": 2691,
+      "first_200": "\u0007are\u0007given\u0007a\u0007list\u0007of\u0007 Free-response question 5: Attribution is a short essay possible images to select from the image set (images question that assesses students’ ability to attribute a not provided),"
+    },
+    {
+      "physical_page": 336,
+      "printed_page": 336,
+      "chars": 2691,
+      "first_200": "any of the following: title or designation of a work of students’ ability to do the following: art, name of the artist and/or culture of origin, date of § Describe"
+    },
+    {
+      "physical_page": 337,
+      "printed_page": 337,
+      "chars": 2691,
+      "first_200": "ale\u0007or\u0007justification\u0007for\u0007an\u0007attribution\u0007of\u0007an\u0007 unknown\u0007work\u0007of\u0007art\u0007using\u0007specific\u0007visual\u0007and/or\u0007contextual\u0007evidence. AP Art History Course and Exam Description Exam Information V.1 | 326 Return to Tab"
+    },
+    {
+      "physical_page": 338,
+      "printed_page": 338,
+      "chars": 2691,
+      "first_200": "owing? (A) Fresco, the application of pigment onto damp plaster (B) Mosaic, the application of colored tesserae to wet plaster (C) Glazing, the application of thin, transparent layers of paint"
+    },
+    {
+      "physical_page": 339,
+      "printed_page": 339,
+      "chars": 2691,
+      "first_200": "family deity used in the household shrine (B) represent a tribal deity cared for and presided over by elite elders (C) demonstrate the owner’s achievements and physical prowess (D) commemorate"
+    },
+    {
+      "physical_page": 340,
+      "printed_page": 340,
+      "chars": 2691,
+      "first_200": "lege Board 14. In ancient Hawaii, male nobles wore traditional feather garments such as the ‘ahu ‘ula (feather cape) in battle because the (A) red feathers indicated that the wearer"
+    },
+    {
+      "physical_page": 341,
+      "printed_page": 341,
+      "chars": 2691,
+      "first_200": "e or conflict that is depicted. Using specific visual evidence from both works, explain at least two similarities and/ or differences in how the imagery depicts the battle or conflict."
+    },
+    {
+      "physical_page": 342,
+      "printed_page": 342,
+      "chars": 2691,
+      "first_200": "you will not be penalized if any additional identifiers you provide are inaccurate. If you select a work from the list above, you must include at least two accurate identifiers"
+    },
+    {
+      "physical_page": 343,
+      "printed_page": 343,
+      "chars": 2691,
+      "first_200": "CUL-1.A 8 12 D 7.B THR1.A 8 13 D 3.A CUL-1.A 8 14 A 4.D PAA-1.A 9 15 D 3.B MPT-1.A 10 Free-Responses Learning Question Question Type Skill Objective Unit"
+    },
+    {
+      "physical_page": 344,
+      "printed_page": 344,
+      "chars": 2691,
+      "first_200": "Cut limestone. 1. Apollo 11 stones.\u0007Namibia.\u0007c.\u000725,500–25,300\u0007bce. 18. King Menkaura and queen.\u0007Old\u0007Kingdom,\u0007Fourth\u0007 Charcoal on stone. Dynasty. c. 2490–2472 bce. Greywacke. 2. Great Hall of the Bulls"
+    },
+    {
+      "physical_page": 345,
+      "printed_page": 345,
+      "chars": 2691,
+      "first_200": ").\u0007New\u0007Kingdom,\u000719th\u0007 Tlatilco. 1200–900 bce. Ceramic. Dynasty. c. 1275 bce. Painted papyrus scroll. 11. Terra cotta fragment.\u0007Lapita.\u0007Reef\u0007Islands,\u0007Solomon\u0007 25. Lamassu from the citadel of Sargon II,"
+    },
+    {
+      "physical_page": 346,
+      "printed_page": 346,
+      "chars": 2691,
+      "first_200": "Appendixes V.1 | 343 Return to Table of Contents © 2019 College Board 32. Tomb of the Triclinium. Tarquinia, Italy. Etruscan. 49. Santa Sabina. Rome, Italy. Late Antique Europe. c."
+    },
+    {
+      "physical_page": 347,
+      "printed_page": 347,
+      "chars": 2691,
+      "first_200": "els: St. Matthew, cross-carpet 39. House of the Vettii. Pompeii, Italy. Imperial Roman. page; St. Luke portrait page; St. Luke incipit page. c. second century bce; rebuilt c. 62–79 ce."
+    },
+    {
+      "physical_page": 348,
+      "printed_page": 348,
+      "chars": 2691,
+      "first_200": "he Apocalypse 250 ce. Marble. from Bibles moralisées. Gothic Europe. c. 1225– 1245 ce. Illuminated manuscript (ink, tempera, Unit 3: Early Europe and Colonial and\u0007gold leaf on vellum).\u0007(2\u0007images,\u0007each"
+    },
+    {
+      "physical_page": 349,
+      "printed_page": 349,
+      "chars": 2691,
+      "first_200": "s. wood. 86. Henri IV Receives the Portrait of Marie de’ Medici, 67. Pazzi Chapel.\u0007Basilica\u0007di\u0007Santa\u0007Croce.\u0007Florence,\u0007 from the Marie de’ Medici Cycle. Peter Paul Rubens. Italy. Filippo Brunelleschi ("
+    },
+    {
+      "physical_page": 350,
+      "printed_page": 350,
+      "chars": 2691,
+      "first_200": "1511 ce. Fresco. 1669 ce. Masonry, stone, wood, iron, and gold leaf (architecture);\u0007marble\u0007and\u0007bronze\u0007(sculpture);\u0007gardens.\u0007 77. Isenheim altarpiece. Matthias Grünewald. c. 1512–1516 ce.\u0007Oil\u0007on\u0007wood.\u0007"
+    },
+    {
+      "physical_page": 351,
+      "printed_page": 351,
+      "chars": 2691,
+      "first_200": "114. Nadar Raising Photography to the Height of Art. Honoré Daumier. 1862 ce. Lithograph. Unit 4: Later Europe and Americas, 115. Olympia. Édouard Manet. 1863 ce.\u0007Oil\u0007on\u0007canvas. 1750–1980 ce (54 works"
+    },
+    {
+      "physical_page": 352,
+      "printed_page": 352,
+      "chars": 2691,
+      "first_200": "123. Where Do We Come From? What Are We? Where from Los Desastres de la Guerra (The Disasters Are We Going? Paul Gauguin. 1897–1898 ce.\u0007Oil\u0007 of War), plate 15. Francisco"
+    },
+    {
+      "physical_page": 353,
+      "printed_page": 353,
+      "chars": 2691,
+      "first_200": "Caterpillar Tracks. Claes\u0007Oldenburg.\u00071969–1974\u0007ce.\u0007Cor-Ten\u0007steel,\u0007 132. Improvisation 28 (second version). Vassily steel, aluminum, and cast resin; painted with Kandinsky.\u00071912\u0007ce.\u0007Oil\u0007on\u0007canvas. poly"
+    },
+    {
+      "physical_page": 354,
+      "printed_page": 354,
+      "chars": 2691,
+      "first_200": ". The Migration of the Negro, Panel no. 49. 156. Great Serpent Mound. Adams County, southern Jacob Lawrence. 1940–1941 ce. Casein tempera Ohio.\u0007Mississippian\u0007(Eastern\u0007Woodlands).\u0007c.\u00071070\u0007ce. on hardbo"
+    },
+    {
+      "physical_page": 355,
+      "printed_page": 355,
+      "chars": 2691,
+      "first_200": "installation\u0007 1450–1540 ce. Granite (architectural complex). and performance 1966. Mirror balls. 162. All-T’oqapu tunic. Inka. 1450–1540 ce. Camelid fiber 149. The Bay. Helen Frankenthaler. 1963 ce. A"
+    },
+    {
+      "physical_page": 356,
+      "printed_page": 356,
+      "chars": 2691,
+      "first_200": ". 1200 ce; 183. The Kaaba.\u0007Mecca,\u0007Saudi\u0007Arabia.\u0007Islamic.\u0007Pre-Islamic\u0007 rebuilt 1906–1907 ce. Adobe. monument; rededicated by Muhammad in 631–632 ce; multiple renovations. Granite masonry, covered 169. "
+    },
+    {
+      "physical_page": 357,
+      "printed_page": 357,
+      "chars": 2691,
+      "first_200": "\u0007 Abbasid. c. eighth to ninth century ce. Ink, color, and African\u0007forests\u0007of\u0007Sierra\u0007Leone\u0007and\u0007Liberia).\u000719th\u0007to\u0007 gold on parchment. 20th century ce. Wood, cloth, and fiber. 188. Basin (Baptistère de S"
+    },
+    {
+      "physical_page": 358,
+      "printed_page": 358,
+      "chars": 2691,
+      "first_200": "18th century ce. Rock garden. Buddhist;\u0007Maurya,\u0007late\u0007Sunga\u0007Dynasty.\u0007c.\u0007300\u0007bce–100 208. Jahangir Preferring a Sufi Shaikh to Kings. Bichitr. c. ce.\u0007Stone\u0007masonry,\u0007sandstone\u0007on\u0007dome.\u0007 1620 ce. Watercol"
+    },
+    {
+      "physical_page": 359,
+      "printed_page": 359,
+      "chars": 2691,
+      "first_200": "dol.\u0007Pohnpei,\u0007Micronesia.\u0007Saudeleur\u0007Dynasty.\u0007c.\u0007 200. Lakshmana Temple.\u0007Khajuraho,\u0007India.\u0007Hindu,\u0007 700–1600 ce. Basalt boulders and prismatic columns. Chandella Dynasty. c. 930–950 ce.\u0007Sandstone.\u0007 214."
+    },
+    {
+      "physical_page": 360,
+      "printed_page": 360,
+      "chars": 2691,
+      "first_200": "installation. early 20th century ce. Wood and fiber. 237. Pisupo Lua Afe (Corned Beef 2000). Michel Tuffery. 222. Malagan display and mask.\u0007New\u0007Ireland\u0007Province,\u0007 1994 ce. Mixed media. Papua\u0007New\u0007Guine"
+    },
+    {
+      "physical_page": 361,
+      "printed_page": 361,
+      "chars": 2691,
+      "first_200": ".\u00071985\u0007ce. copper wire. Burlap, resin, wood, nails, and string. 246. Stadia II. Julie Mehretu. 2004 ce. Ink and acrylic 229. A Book from the Sky. Xu Bing. 1987–1991 ce. on"
+    },
+    {
+      "physical_page": 362,
+      "printed_page": 362,
+      "chars": 2691,
+      "first_200": "identifying\u0007number\u0007in\u0007this document. Acropolis: 35 City of Machu Picchu: 161 Adam and Eve: 74 The Code of Hammurabi: 19 ‘Ahu ‘ula (feather cape): 215 The\u0007Coiffure:\u0007121\u0007 Aka elephant mask: 178 Colosseu"
+    },
+    {
+      "physical_page": 363,
+      "printed_page": 363,
+      "chars": 2691,
+      "first_200": "):\u0007188\u0007 The Bay: 149 Fallingwater: 139 Bayeux Tapestry: 59 Female deity: 217 Beaker with ibex motifs: 5 Female (Pwo) mask: 173 Birth of Venus: 72 Folio from a Qur’an: 187"
+    },
+    {
+      "physical_page": 364,
+      "printed_page": 364,
+      "chars": 2691,
+      "first_200": "\u0007National\u0007Museum\u0007of\u0007XXI\u0007Century\u0007Arts:\u0007249\u0007 Great\u0007Serpent\u0007Mound:\u0007156\u0007 Memorial Sheet for Karl Liebknecht: 134 Great\u0007Stupa\u0007at\u0007Sanchi:\u0007192\u0007 Merovingian\u0007looped\u0007fibulae:\u000753\u0007 Guggenheim Museum Bilbao: 240 M"
+    },
+    {
+      "physical_page": 365,
+      "printed_page": 365,
+      "chars": 2691,
+      "first_200": "Palette\u0007of\u0007King\u0007Narmer:\u000713\u0007 Pantheon: 46 La Grande Odalisque: 107 Pazzi\u0007Chapel:\u000767\u0007 Lakshmana Temple: 200 Peplos\u0007Kore\u0007from\u0007the\u0007Acropolis:\u000728\u0007 Lamassu\u0007from\u0007the\u0007citadel\u0007of\u0007Sargon\u0007II,\u0007Dur\u0007Sharrukin\u0007(mode"
+    },
+    {
+      "physical_page": 366,
+      "printed_page": 366,
+      "chars": 2691,
+      "first_200": "Apollo: 31 Running horned woman: 4 Templo Mayor (Main Temple): 157 Ryoan-ji:\u0007207\u0007 Terra cotta fragment: 11 Terra\u0007cotta\u0007warriors\u0007from\u0007mausoleum\u0007of\u0007the\u0007first\u0007Qin\u0007emperor\u0007 The Saint-Lazare Station: 116 o"
+    },
+    {
+      "physical_page": 367,
+      "printed_page": 367,
+      "chars": 2691,
+      "first_200": "ge: 54 Muqayyar, Iraq): 16 The Virgin of Guadalupe (Virgen de Guadalupe): 95 The Starry Night: 120 Statues\u0007of\u0007votive\u0007figures,\u0007from\u0007the\u0007Square\u0007Temple\u0007at\u0007 Wall\u0007plaque,\u0007from\u0007Oba’s\u0007palace:\u0007169\u0007 Eshnunna ("
+    },
+    {
+      "physical_page": 368,
+      "printed_page": 368,
+      "chars": 2691,
+      "first_200": "n elements and principles to examine fundamental visual components and their relationship to the work in its entirety. To\u0007analyze\u0007function: Consider artist’s intended use(s) for the work and actual us"
+    }
+  ]
+}

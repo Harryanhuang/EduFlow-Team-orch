@@ -1,0 +1,65 @@
+{
+  "schema_version": "1",
+  "source_id": "primary_ced",
+  "page_ref_convention": "printed_page",
+  "physical_page_offset_note": "AP CED pages are typically labeled with printed_page numbers.",
+  "mappings": [
+    {
+      "target": "assessment_identity.system",
+      "page_refs": [
+        "title page"
+      ],
+      "evidence_note": "College Board AP CED."
+    },
+    {
+      "target": "topics.course_framework",
+      "page_refs": [
+        "Section 1"
+      ],
+      "evidence_note": "Course framework overview."
+    },
+    {
+      "target": "topics.ap-microeconomics-unit01",
+      "page_refs": [
+        "Unit 1"
+      ],
+      "evidence_note": "Unit 1: Basic Economic Concepts (12–15%)."
+    },
+    {
+      "target": "topics.ap-microeconomics-unit02",
+      "page_refs": [
+        "Unit 2"
+      ],
+      "evidence_note": "Unit 2: Supply and Demand (20–25%)."
+    },
+    {
+      "target": "topics.ap-microeconomics-unit03",
+      "page_refs": [
+        "Unit 3"
+      ],
+      "evidence_note": "Unit 3: Production, Cost, and the Perfect Competition Model (22–25%)."
+    },
+    {
+      "target": "topics.ap-microeconomics-unit04",
+      "page_refs": [
+        "Unit 4"
+      ],
+      "evidence_note": "Unit 4: Imperfect Competition (15–22%)."
+    },
+    {
+      "target": "topics.ap-microeconomics-unit05",
+      "page_refs": [
+        "Unit 5"
+      ],
+      "evidence_note": "Unit 5: Factor Markets (10–13%)."
+    },
+    {
+      "target": "topics.ap-microeconomics-unit06",
+      "page_refs": [
+        "Unit 6"
+      ],
+      "evidence_note": "Unit 6: Market Failure and the Role of Government (8–13%)."
+    }
+  ],
+  "draft_notes": []
+}

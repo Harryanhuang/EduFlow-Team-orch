@@ -1,0 +1,1629 @@
+{
+  "schema_version": "1",
+  "subject": "computer-science-principles",
+  "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/03-AP知识库/03-学科知识/AP Computer Science Principles/02-课本与考纲/考纲/ap-computer-science-principles-course-and-exam-description.pdf",
+  "file_checksum_sha256": "144e1af475c01ced6d068356d5494e09d8ed8136d397872ce03c448a4886b1f5",
+  "pdfinfo": {
+    "Title": "AP® Computer Science Principles Course and Exam Description, Effective Fall 2023",
+    "Subject": "AP; Advanced Placement; AP Computer Science Principles; AP CSP",
+    "Keywords": "AP; Advanced Placement; AP Computer Science Principles; AP CSP; Course and Exam Description; Effective Fall 2023; course information; course overview; AP resources and supports; instructional model; course framework; instructional approaches; instructional resources; course resources; teacher resources; exam resources; student resources; curriculum alignment; exam information; sample exam questions; student handouts; ADA",
+    "Author": "College Board",
+    "Creator": "Adobe InDesign 14.0 (Macintosh)",
+    "Producer": "Adobe PDF Library 15.0",
+    "CreationDate": "Tue Nov 28 12:44:01 2023 CST",
+    "ModDate": "Sat Dec  6 00:28:09 2025 CST",
+    "Custom Metadata": "no",
+    "Metadata Stream": "yes",
+    "Tagged": "yes",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "AcroForm",
+    "JavaScript": "no",
+    "Pages": "266",
+    "Encrypted": "yes (print:yes copy:yes change:no addNotes:no algorithm:AES-256)",
+    "Page size": "612 x 792 pts (letter)",
+    "Page rot": "0",
+    "File size": "7498387 bytes",
+    "Optimized": "no",
+    "PDF version": "1.7"
+  },
+  "total_pages": 266,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": 1,
+      "chars": 3168,
+      "first_200": "INCLUDES Course framework Instructional section \u0007 \u0007Create performance task guidelines AP Computer ® Science Principles COURSE AND EXAM DESCRIPTION Effective Fall 2023 AP Computer ® Science Principles "
+    },
+    {
+      "physical_page": 2,
+      "printed_page": 2,
+      "chars": 3168,
+      "first_200": "ities,\u0007cultures,\u0007religions,\u0007races,\u0007and\u0007 ethnicities is essential within a variety of academic disciplines. AP courses ground such studies in primary sources so that students can evaluate experiences a"
+    },
+    {
+      "physical_page": 3,
+      "printed_page": 3,
+      "chars": 3168,
+      "first_200": "ence Sheet 219 APPENDIX 2: AP CSP Conceptual Framework Acknowledgments In partnership with the National Science Foundation, the AP Program collaborated with secondary and postsecondary educators and m"
+    },
+    {
+      "physical_page": 4,
+      "printed_page": 4,
+      "chars": 3168,
+      "first_200": "Claire Lorenz, Senior Director, AP Classroom Instruction Products Daniel McDonough, Senior Director, AP Content and Assessment Publications Monica Roman, Senior Director, AP Program Management Natalya"
+    },
+    {
+      "physical_page": 5,
+      "printed_page": 5,
+      "chars": 3168,
+      "first_200": "courses widely available, advancing students in their Exams are developed and scored by college faculty and plans for college and careers. experienced\u0007AP\u0007teachers.\u0007Most\u0007four-year\u0007colleges\u0007and\u0007 univers"
+    },
+    {
+      "physical_page": 6,
+      "printed_page": 6,
+      "chars": 3168,
+      "first_200": "resource expectations preferences.\u0007By\u0007organizing\u0007the\u0007AP\u0007course\u0007content\u0007 that college and secondary school faculty have and skills into topics, the AP Program is able to established\u0007for\u0007college-level\u0007c"
+    },
+    {
+      "physical_page": 7,
+      "printed_page": 7,
+      "chars": 3168,
+      "first_200": "number of points students must earn on the AP Exam college course to articulate what students should to\u0007receive\u0007scores\u0007of\u00073,\u00074,\u0007or\u00075—the\u0007scores\u0007that\u0007research\u0007 know and be able to do upon the completio"
+    },
+    {
+      "physical_page": 8,
+      "printed_page": 8,
+      "chars": 3168,
+      "first_200": "ollege credit. 3 Qualified B−, C+, C How AP Exams Are Scored 2 Possibly\u0007qualified n/a The exam scoring process, like the course and exam development process, relies on the expertise"
+    },
+    {
+      "physical_page": 9,
+      "printed_page": 9,
+      "chars": 3168,
+      "first_200": "ow that the vast majority of returning Visit the Become an AP Reader site for eligibility requirements and to start the application process. AP Computer Science Principles Course and Exam"
+    },
+    {
+      "physical_page": 10,
+      "printed_page": 10,
+      "chars": 3168,
+      "first_200": "and Exam Description \u0007 V.1 | 4 Return to Table of Contents © 2023 College Board Digital Activation In order to teach an AP class and make sure students are"
+    },
+    {
+      "physical_page": 11,
+      "printed_page": 11,
+      "chars": 3168,
+      "first_200": "ent to the AP Digital Portfolio. This automatic integration replaces any process teachers have used previously. The AP Digital Portfolio is where students will upload\u0007performance\u0007tasks\u0007and\u0007submit\u0007them"
+    },
+    {
+      "physical_page": 12,
+      "printed_page": 12,
+      "chars": 3168,
+      "first_200": "ough AP Classroom. AP Computer Science Principles Course and Exam Description \u0007 V.1 | 6 Return to Table of Contents © 2023 College Board About the AP Computer Science Principles"
+    },
+    {
+      "physical_page": 13,
+      "printed_page": 13,
+      "chars": 3168,
+      "first_200": "traditionally been underrepresented in computer science—such as female students, students of color, students with disabilities, and rural students—by allowing them to discover the power of computer sc"
+    },
+    {
+      "physical_page": 14,
+      "printed_page": 14,
+      "chars": 3168,
+      "first_200": "s course vertically Resource Requirements aligns with the core concepts in the Computer Students should have access to a computer system(s) Science Teachers Association (CSTA) K–12 that contains appro"
+    },
+    {
+      "physical_page": 15,
+      "printed_page": 15,
+      "chars": 3168,
+      "first_200": "rse. 2 COURSE CONTENT The\u0007course\u0007content\u0007is\u0007organized\u0007into\u0007big\u0007ideas,\u0007which\u0007are\u0007cross-cutting\u0007 concepts that build conceptual understanding and spiral throughout the course. The content and conceptual"
+    },
+    {
+      "physical_page": 16,
+      "printed_page": 16,
+      "chars": 3168,
+      "first_200": "lop programs that algorithms and programs. innovations. inclusive, safe, computational solutions algorithms. incorporate abstractions. collaborative, and ethical for a purpose. computing culture. SKIL"
+    },
+    {
+      "physical_page": 17,
+      "printed_page": 17,
+      "chars": 3168,
+      "first_200": "ethical factors. *NOTE: All computational thinking practices except Computational Thinking Practice 6 are assessed\u0007in\u0007the\u0007multiple-choice\u0007section\u0007of\u0007the\u0007AP\u0007Exam. AP Computer Science Principles Course "
+    },
+    {
+      "physical_page": 18,
+      "printed_page": 18,
+      "chars": 3168,
+      "first_200": "tral to computing innovations because they communicate initial conditions to programs and represent new knowledge. Computers consume data, transform data, and produce new data, allowing users to creat"
+    },
+    {
+      "physical_page": 19,
+      "printed_page": 19,
+      "chars": 3168,
+      "first_200": "3 College Board The\u0007five\u0007big\u0007ideas\u0007in\u0007AP\u0007Computer\u0007Science\u0007Principles,\u0007and\u0007their\u0007weighting\u0007on\u0007the\u0007 multiple-choice\u0007section\u0007of\u0007the\u0007AP\u0007Exam,\u0007are\u0007listed\u0007below. TOPICS Each big idea is broken down into tea"
+    },
+    {
+      "physical_page": 20,
+      "printed_page": 20,
+      "chars": 3168,
+      "first_200": "1.3 Program Design from Data Principles curricular 4 and Development components, including the 6 2 2.4 Using Programs following: 1 1.4 Identifying and 5 with Data 4 Correcting Errors §"
+    },
+    {
+      "physical_page": 21,
+      "printed_page": 21,
+      "chars": 3168,
+      "first_200": "Effects 1 4.2 Fault Tolerance 3 3.2 Data Abstraction 5 5 5.2 Digital Divide 2 3.3 Mathematical 4.3 Parallel and Distributed 5 5.3 Computing Bias 1 4 Expressions Computing 1"
+    },
+    {
+      "physical_page": 22,
+      "printed_page": 22,
+      "chars": 3168,
+      "first_200": "modules for instruction. In some cases, it may be appropriate for a topic to appear in more than one unit or module. A\u0007benefit\u0007of\u0007topics\u0007is\u0007that\u0007they\u0007enable\u0007the\u0007AP\u0007Program\u0007to\u0007provide\u0007 interested teach"
+    },
+    {
+      "physical_page": 23,
+      "printed_page": 23,
+      "chars": 3168,
+      "first_200": "perspectives offers opportunities to improve the design of innovations. In this big idea, students work collaboratively to design and develop programs using an iterative development process. concepts "
+    },
+    {
+      "physical_page": 24,
+      "printed_page": 24,
+      "chars": 3168,
+      "first_200": "CRD-2 1.B 3.A 4.A 4.C segments rather than trying to describe that big idea. § What are some ways larger sections all at once. you currently plan your When designing"
+    },
+    {
+      "physical_page": 25,
+      "printed_page": 25,
+      "chars": 3168,
+      "first_200": "on lists and procedures, in their program code. identified inputs. Planning ahead may help Providing students with exemplars may help them determine what abstractions can be them consider the types"
+    },
+    {
+      "physical_page": 26,
+      "printed_page": 26,
+      "chars": 3168,
+      "first_200": "using an AP endorsed provider can determine where each topic Objective is being taught in their provider’s curriculum. Topic Skills Unit/Module CRD-1.A, CRD-1.B, 1.1 Collaboration 1.C Explain how coll"
+    },
+    {
+      "physical_page": 27,
+      "printed_page": 27,
+      "chars": 3168,
+      "first_200": "knowledge the intellectual property of others (not assessed). CRD-2.I, CRD-2.J 1.4 Identifying and Correcting 1.B Determine and design an appropriate method or Errors approach to achieve the purpose. "
+    },
+    {
+      "physical_page": 28,
+      "printed_page": 28,
+      "chars": 3168,
+      "first_200": "The Big Idea Planning Notes section provides space for with teachers from the AP community to share ways that they approach teaching some of the topics and skills in this"
+    },
+    {
+      "physical_page": 29,
+      "printed_page": 29,
+      "chars": 3168,
+      "first_200": "IDEA The Skills\u0007section\u0007offers\u0007one\u0007or\u0007more\u0007skills\u0007related\u0007to\u0007the\u0007topic. 3 TOPIC 3.11 SKILLS 1.A Where possible, available resources are listed that might help Binary Search Investigate the situation, "
+    },
+    {
+      "physical_page": 30,
+      "printed_page": 30,
+      "chars": 3168,
+      "first_200": "ram determines the computed result. Programs incorporate iteration and selection constructs to do with content knowledge to progress toward the enduring represent repetition and make decisions to hand"
+    },
+    {
+      "physical_page": 31,
+      "printed_page": 31,
+      "chars": 3168,
+      "first_200": "eed to be included in the course. The content in the exclusion statements will not be assessed on the AP Computer Science Principles Exam. AP Computer Science Principles Course and"
+    },
+    {
+      "physical_page": 32,
+      "printed_page": 32,
+      "chars": 3168,
+      "first_200": "Course\u0007Framework V.1 | 26 Return to Table of Contents © 2023 College Board AP COMPUTER SCIENCE PRINCIPLES BIG IDEA 1 Creative Development 10–13% AP EXAM WEIGHTING AP Computer Science Principles"
+    },
+    {
+      "physical_page": 33,
+      "printed_page": 33,
+      "chars": 3168,
+      "first_200": "ensure it meets these needs. collaboratively with Effective\u0007collaboration\u0007can\u0007often\u0007differ\u0007from\u0007group\u0007work,\u0007because\u0007it\u0007requires\u0007equal\u0007participation\u0007 other students improved and voice from all members "
+    },
+    {
+      "physical_page": 34,
+      "printed_page": 34,
+      "chars": 3168,
+      "first_200": "d can help identify logic errors can be developed while still meeting this early in development. requirement. When implementing program design, Students will need practice identifying programmers ofte"
+    },
+    {
+      "physical_page": 35,
+      "printed_page": 35,
+      "chars": 3168,
+      "first_200": "assessed). CRD-2.I, CRD-2.J 1.4 Identifying and Correcting 1.B Determine\u0007and\u0007design\u0007an\u0007appropriate\u0007method\u0007or\u0007 Errors approach to achieve the purpose. 4.C Identify\u0007and\u0007correct\u0007errors\u0007in\u0007algorithms\u0007and\u0007"
+    },
+    {
+      "physical_page": 36,
+      "printed_page": 36,
+      "chars": 3168,
+      "first_200": "another\u0007 group and play the game using the diagram for directions. Students should identify and correct where the diagram might not be accurate or have missing steps. See the Language"
+    },
+    {
+      "physical_page": 37,
+      "printed_page": 37,
+      "chars": 3168,
+      "first_200": "Effective\u0007collaboration\u0007produces\u0007a\u0007computing\u0007 innovation\u0007that\u0007reflects\u0007the\u0007diversity\u0007of\u0007talents\u0007 and perspectives of those who designed it. CRD-1.A.4 Collaboration that includes diverse perspectives h"
+    },
+    {
+      "physical_page": 38,
+      "printed_page": 38,
+      "chars": 3168,
+      "first_200": "nal skills, including but not limited to: collaboration. 1.C §§ communication §§ consensus building § conflict\u0007resolution § negotiation AP Computer Science Principles Course and Exam Description Cours"
+    },
+    {
+      "physical_page": 39,
+      "printed_page": 39,
+      "chars": 3168,
+      "first_200": "A code segment is a collection of program statements that is part of a program. CRD-2.B.3 A program needs to work for a variety of inputs and situations. CRD-2.B.4 The"
+    },
+    {
+      "physical_page": 40,
+      "printed_page": 40,
+      "chars": 3168,
+      "first_200": "CRD-2.C.4 Inputs\u0007usually\u0007affect\u0007the\u0007output\u0007produced\u0007by\u0007a\u0007 program. CRD-2.C.5 In\u0007event-driven\u0007programming,\u0007program\u0007 statements are executed when triggered rather than\u0007through\u0007the\u0007sequential\u0007flow\u0007of\u0007con"
+    },
+    {
+      "physical_page": 41,
+      "printed_page": 41,
+      "chars": 3168,
+      "first_200": "evelopment processes. The following phases are commonly used when developing a program: §§ investigating\u0007and\u0007reflecting\u0007 §§ designing § prototyping §§ testing CRD-2.E.3 A development process that is i"
+    },
+    {
+      "physical_page": 42,
+      "printed_page": 42,
+      "chars": 3168,
+      "first_200": "the concerns and interests of the people who will use the program. CRD-2.F.3 Some ways investigation can be performed are as follows: § collecting data through surveys §§ user testing"
+    },
+    {
+      "physical_page": 43,
+      "printed_page": 43,
+      "chars": 3168,
+      "first_200": "developed. CRD-2.G.2 Comments are a form of program documentation written into the program to be\u0007read\u0007by\u0007people\u0007and\u0007do\u0007not\u0007affect\u0007how\u0007a\u0007 program runs. CRD-2.G.3 Programmers should document a program t"
+    },
+    {
+      "physical_page": 44,
+      "printed_page": 44,
+      "chars": 3168,
+      "first_200": "velopment 1 TOPIC 1.4 SKILLS 1.B Identifying and Determine and design an appropriate method or approach to achieve the Correcting Errors purpose. 4.C Identify and correct errors in algorithms and"
+    },
+    {
+      "physical_page": 45,
+      "printed_page": 45,
+      "chars": 3168,
+      "first_200": "that occurs during the execution of a program. Programming\u0007languages\u0007define\u0007their\u0007own\u0007run- time errors. CRD-2.I.4 An overflow error is an error that occurs when a computer attempts to handle a number "
+    },
+    {
+      "physical_page": 46,
+      "printed_page": 46,
+      "chars": 3168,
+      "first_200": "rinciples Course and Exam Description Course Framework V.1 | 40 Return to Table of Contents © 2023 College Board AP COMPUTER SCIENCE PRINCIPLES BIG IDEA 2 Data 17–22% AP EXAM"
+    },
+    {
+      "physical_page": 47,
+      "printed_page": 47,
+      "chars": 3168,
+      "first_200": "a computer something complex like in binary and seamlessly translated into what is seen on the screen or heard through speakers. a video of the marching Students will also learn"
+    },
+    {
+      "physical_page": 48,
+      "printed_page": 48,
+      "chars": 3168,
+      "first_200": "between compression algorithms. Some\u0007real-world\u0007problems\u0007and\u0007simulations\u0007 When presented with scenarios that involve the use of large data sets that cannot describe data and metadata for analysis be\u0007e"
+    },
+    {
+      "physical_page": 49,
+      "printed_page": 49,
+      "chars": 3168,
+      "first_200": "n within the program may be necessary. AP Computer Science Principles Course and Exam Description Course Framework V.1 | 43 Return to Table of Contents © 2023 College Board BIG"
+    },
+    {
+      "physical_page": 50,
+      "printed_page": 50,
+      "chars": 3168,
+      "first_200": "Topic Sample Activity 1 2.1 Look for a pattern Provide students with a sentence or paragraph of compressed lossless text and a key. Have them look for patterns in their"
+    },
+    {
+      "physical_page": 51,
+      "printed_page": 51,
+      "chars": 3168,
+      "first_200": "DAT-1.A.2 Computing devices represent data digitally, meaning\u0007that\u0007the\u0007lowest-level\u0007components\u0007of\u0007 any value are bits. DAT-1.A.3 Bit is shorthand for binary digit and is either 0 or 1. DAT-1.A.4 A byt"
+    },
+    {
+      "physical_page": 52,
+      "printed_page": 52,
+      "chars": 3168,
+      "first_200": "erent\u0007contexts. DAT-1.A.8 Analog data have values that change smoothly, rather than in discrete intervals, over time. Some examples of analog data include pitch and volume of music, colors of a"
+    },
+    {
+      "physical_page": 53,
+      "printed_page": 53,
+      "chars": 3168,
+      "first_200": "continued on next page AP Computer Science Principles Course and Exam Description Course Framework V.1 | 47 Return to Table of Contents © 2023 College Board BIG IDEA Data 2"
+    },
+    {
+      "physical_page": 54,
+      "printed_page": 54,
+      "chars": 3168,
+      "first_200": "© 2023 College Board BIG IDEA Data 2 TOPIC 2.2 SKILL 1.D Data Compression Evaluate solution options. Required Course Content AVAILABLE RESOURCE §§ External Resource > Text Compression from CS"
+    },
+    {
+      "physical_page": 55,
+      "printed_page": 55,
+      "chars": 3168,
+      "first_200": "continued on next page AP Computer Science Principles Course and Exam Description Course Framework V.1 | 49 Return to Table of Contents © 2023 College Board BIG IDEA Data 2"
+    },
+    {
+      "physical_page": 56,
+      "printed_page": 56,
+      "chars": 3168,
+      "first_200": "be generated from data. 5.D from Data Describe the impact of gathering data. Required Course Content ENDURING UNDERSTANDING DAT-2 Programs can be used to process data, which allows users to"
+    },
+    {
+      "physical_page": 57,
+      "printed_page": 57,
+      "chars": 3168,
+      "first_200": "DAT-2.B.2 Changes and deletions made to metadata do not change the primary data. DAT-2.B.3 Metadata\u0007are\u0007used\u0007for\u0007finding,\u0007organizing,\u0007and\u0007 managing information. DAT-2.B.4 Metadata\u0007can\u0007increase\u0007the\u0007eff"
+    },
+    {
+      "physical_page": 58,
+      "printed_page": 58,
+      "chars": 3168,
+      "first_200": "and\u0007capitalizations\u0007with\u0007the\u0007same\u0007word).\u0007 DAT-2.C.5 Problems of bias are often created by the type or source of data being collected. Bias is not eliminated by simply collecting more data. continued o"
+    },
+    {
+      "physical_page": 59,
+      "printed_page": 59,
+      "chars": 3168,
+      "first_200": "and create new knowledge. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE DAT-2.D DAT-2.D.1 Extract information from data Programs can be used to process data to using a program. 2.B acquire information. DAT-2"
+    },
+    {
+      "physical_page": 60,
+      "printed_page": 60,
+      "chars": 3168,
+      "first_200": "ment in a list, or adding a parent’s email to every student record §§ filtering\u0007a\u0007data\u0007set,\u0007such\u0007as\u0007keeping\u0007only\u0007the\u0007 positive numbers from a list, or keeping only students who signed up for band from"
+    },
+    {
+      "physical_page": 61,
+      "printed_page": 61,
+      "chars": 3168,
+      "first_200": "AP EXAM WEIGHTING AP Computer Science Principles Course and Exam Description Course Framework V.1 | 57 Return to Table of Contents © 2023 College Board Remember to go to AP"
+    },
+    {
+      "physical_page": 62,
+      "printed_page": 62,
+      "chars": 3168,
+      "first_200": "be if you completed the 1.A 2.A 2.B 3.B 4.B written\u0007differently,\u0007or\u0007if\u0007it\u0007could\u0007be\u0007written\u0007at\u0007 steps in your regular all, without the use of the abstraction. Some problems are so simple that writing m"
+    },
+    {
+      "physical_page": 63,
+      "printed_page": 63,
+      "chars": 3168,
+      "first_200": "grams interaction, such as each\u0007accomplish\u0007a\u0007specific\u0007instance\u0007of\u0007a\u0007 that perform calculations, to more complex pressing buttons? task. After identifying the commonalities, programs that leverage abst"
+    },
+    {
+      "physical_page": 64,
+      "printed_page": 64,
+      "chars": 3168,
+      "first_200": "Explain how abstraction manages complexity. 3.C 3.3 Mathematical Expressions 2.A Represent algorithmic processes without using a AAP-2.A, AAP-2.B, programming language. 2.B Implement and apply an algo"
+    },
+    {
+      "physical_page": 65,
+      "printed_page": 65,
+      "chars": 3168,
+      "first_200": "A GLANCE (cont’d) Learning Objectives Topic Skills Unit/Module 3.10 Lists 2.B Implement and apply an algorithm. AAP-2.N, 4.B Determine the result of code segments. AAP-2.O 3.11 Binary Search 1.A Inves"
+    },
+    {
+      "physical_page": 66,
+      "printed_page": 66,
+      "chars": 3168,
+      "first_200": "output produced when these statements are put into a program. 2 3.6 Using manipulatives When learning about conditionals, take a printout of a simple conditional statement and cut it into"
+    },
+    {
+      "physical_page": 67,
+      "printed_page": 67,
+      "chars": 3168,
+      "first_200": "through variables. 4.B Assignments Determine the result of code segments. Required Course Content AVAILABLE RESOURCE §§ AP CSP Exam Reference Sheet (see Appendix) ENDURING UNDERSTANDING AAP-1 To\u0007find\u0007"
+    },
+    {
+      "physical_page": 68,
+      "printed_page": 68,
+      "chars": 3168,
+      "first_200": "LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE AAP-1.B AAP-1.B.1 Determine the value of a The assignment operator allows a program to variable as a result of an change the value represented by a"
+    },
+    {
+      "physical_page": 69,
+      "printed_page": 69,
+      "chars": 3168,
+      "first_200": "3.B Use abstraction to manage complexity in a program. 3.C Explain how abstraction manages complexity. Required Course Content AVAILABLE RESOURCE §§ AP CSP Exam Reference Sheet (see Appendix) ENDURING"
+    },
+    {
+      "physical_page": 70,
+      "printed_page": 70,
+      "chars": 3168,
+      "first_200": "action: Data abstraction provides a separation a. \u0007Develop data abstraction between the abstract properties of a data type using lists to store multiple and the concrete details of its representation."
+    },
+    {
+      "physical_page": 71,
+      "printed_page": 71,
+      "chars": 3168,
+      "first_200": "second, third, and so on items. For example, § Text: aList [value1, value2, value3, ...] Block: aList valuel, value2, value3 creates a new list that contains the values value1, value2,"
+    },
+    {
+      "physical_page": 72,
+      "printed_page": 72,
+      "chars": 3168,
+      "first_200": "The exam reference sheet describes a list structure whose index values are 1 through the number of elements in the list, inclusive. For all list operations, if a list index"
+    },
+    {
+      "physical_page": 73,
+      "printed_page": 73,
+      "chars": 3168,
+      "first_200": "ges. AAP-2.A.4 Every algorithm can be constructed using combinations of sequencing, selection, and iteration. AAP-2.B AAP-2.B.1 Represent\u0007a\u0007step-by-step\u0007 Sequencing is the application of each step of "
+    },
+    {
+      "physical_page": 74,
+      "printed_page": 74,
+      "chars": 3168,
+      "first_200": "considerations when expressing an algorithm in a programming language. AAP-2.C AAP-2.C.1 Evaluate expressions that use Arithmetic operators are part of most arithmetic\u0007operators. 4.B programming langu"
+    },
+    {
+      "physical_page": 75,
+      "printed_page": 75,
+      "chars": 3168,
+      "first_200": "e decisions to handle varied input values. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE AAP-2.D AAP-2.D.1 Evaluate expressions that String concatenation joins together two or manipulate\u0007strings. 4.B more\u0007st"
+    },
+    {
+      "physical_page": 76,
+      "printed_page": 76,
+      "chars": 3168,
+      "first_200": "e a. \u0007Write expressions using following relational operators: =, ≠, >, <, ≥, relational\u0007operators. 2.B and ≤. b. \u0007Evaluate expressions Text and Block: that use relational §§ a = b"
+    },
+    {
+      "physical_page": 77,
+      "printed_page": 77,
+      "chars": 3168,
+      "first_200": "Block: condition1 AND condition2 which evaluates to true if both condition1 and condition2 are true; otherwise it evaluates to false. AAP-2.F.4 The exam reference sheet provides Text: condition1 OR co"
+    },
+    {
+      "physical_page": 78,
+      "printed_page": 78,
+      "chars": 3168,
+      "first_200": "Implement and apply an algorithm. 4.B Determine the result of code segments. Required Course Content AVAILABLE RESOURCES §§ Professional ENDURING UNDERSTANDING Development > Teaching and AAP-2 Assessi"
+    },
+    {
+      "physical_page": 79,
+      "printed_page": 79,
+      "chars": 3168,
+      "first_200": "© 2023 College Board BIG IDEA Algorithms and Programming 3 LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE AAP-2.H in which the code in block of For selection: statements is executed if the Boolean"
+    },
+    {
+      "physical_page": 80,
+      "printed_page": 80,
+      "chars": 3168,
+      "first_200": "IDEA Algorithms and Programming 3 TOPIC 3.7 SKILLS 2.B Nested Conditionals Implement and apply an algorithm. 4.B Determine the result of code segments. Required Course Content ENDURING UNDERSTANDING A"
+    },
+    {
+      "physical_page": 81,
+      "printed_page": 81,
+      "chars": 3168,
+      "first_200": "uses iteration without using a Iteration\u0007repeats\u0007a\u0007specified\u0007number\u0007of\u0007times\u0007 programming\u0007language. 2.A or until a given condition is met. AAP-2.K AAP-2.K.1 For iteration: Iteration statements change "
+    },
+    {
+      "physical_page": 82,
+      "printed_page": 82,
+      "chars": 3168,
+      "first_200": "Block: REPEAT UNTIL condition block of statements in which the code in block of statements is repeated until the Boolean expression condition evaluates to true. AAP-2.K.4 In REPEAT UNTIL(condition) it"
+    },
+    {
+      "physical_page": 83,
+      "printed_page": 83,
+      "chars": 3168,
+      "first_200": "Some conditional statements can be written as equivalent Boolean expressions. AAP-2.L.4 Some Boolean expressions can be written as equivalent conditional statements. AAP-2.L.5 Different\u0007algorithms\u0007can"
+    },
+    {
+      "physical_page": 84,
+      "printed_page": 84,
+      "chars": 3168,
+      "first_200": "time, reducing testing, and simplifying the identification\u0007of\u0007errors. AP Computer Science Principles Course and Exam Description Course Framework V.1 | 79 Return to Table of Contents © 2023 College Bo"
+    },
+    {
+      "physical_page": 85,
+      "printed_page": 85,
+      "chars": 3168,
+      "first_200": "value of aList[i] to the variable x. §§ assigning a value to an element of a list Text: aList[i] x Block: aList i x assigns the value of x to"
+    },
+    {
+      "physical_page": 86,
+      "printed_page": 86,
+      "chars": 3168,
+      "first_200": "value is placed at the end of aList. § removing elements Text: REMOVE(aList, i) Block: REMOVE aList, i removes the item at index i in aList and shifts to the"
+    },
+    {
+      "physical_page": 87,
+      "printed_page": 87,
+      "chars": 3168,
+      "first_200": "Iteration statements can be used to traverse a list. AAP-2.O.3 The exam reference sheet provides Text: FOR EACH item IN aList { <block of statements> } Block: FOR EACH item"
+    },
+    {
+      "physical_page": 88,
+      "printed_page": 88,
+      "chars": 3168,
+      "first_200": "Return to Table of Contents © 2023 College Board BIG IDEA Algorithms and Programming 3 TOPIC 3.11 SKILLS 1.A Binary Search Investigate the situation, context, or task. 1.D Evaluate solution"
+    },
+    {
+      "physical_page": 89,
+      "printed_page": 89,
+      "chars": 3168,
+      "first_200": "Data must be in sorted order to use the binary search algorithm. AAP-2.P.3 Binary\u0007search\u0007is\u0007often\u0007more\u0007efficient\u0007than\u0007 sequential/linear search when applied to sorted data. AP Computer Science Princip"
+    },
+    {
+      "physical_page": 90,
+      "printed_page": 90,
+      "chars": 3168,
+      "first_200": "AAP-3.A.4 A procedure call interrupts the sequential execution of statements, causing the program to execute the statements within the procedure before continuing. Once the last statement in the proce"
+    },
+    {
+      "physical_page": 91,
+      "printed_page": 91,
+      "chars": 3168,
+      "first_200": "procedure Text: DISPLAY(expression) Block: DISPLAY expression to display the value of expression, followed by a space. AAP-3.A.7 The exam reference sheet provides the Text: RETURN(expression) Block: R"
+    },
+    {
+      "physical_page": 92,
+      "printed_page": 92,
+      "chars": 3168,
+      "first_200": "block of statements RETURN expression AAP-3.A.9 The exam reference sheet provides procedure Text: INPUT() Block: INPUT which accepts a value from the user and returns the input value. AP Computer"
+    },
+    {
+      "physical_page": 93,
+      "printed_page": 93,
+      "chars": 3168,
+      "first_200": "and with more\u0007confidence. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE AAP-3.B AAP-3.B.1 Explain how the use of One common type of abstraction is procedural procedural abstraction abstraction, which provide"
+    },
+    {
+      "physical_page": 94,
+      "printed_page": 94,
+      "chars": 3168,
+      "first_200": "lows programmers to change the internals of the\u0007procedure\u0007(to\u0007make\u0007it\u0007faster,\u0007more\u0007efficient,\u0007 use less storage, etc.) without needing to notify users of the change as long as what the procedure does "
+    },
+    {
+      "physical_page": 95,
+      "printed_page": 95,
+      "chars": 3168,
+      "first_200": "continued on next page AP Computer Science Principles Course and Exam Description Course Framework V.1 | 88 Return to Table of Contents © 2023 College Board BIG IDEA Algorithms and"
+    },
+    {
+      "physical_page": 96,
+      "printed_page": 96,
+      "chars": 3168,
+      "first_200": "ing new AAP-3.D.2 programs. 2.B Existing code segments can come from internal or external sources, such as libraries or previously written code. AAP-3.D.3 The\u0007use\u0007of\u0007libraries\u0007simplifies\u0007the\u0007task\u0007of\u0007 "
+    },
+    {
+      "physical_page": 97,
+      "printed_page": 97,
+      "chars": 3168,
+      "first_200": "S § Professional Development > Teaching and Assessing Module: ENDURING UNDERSTANDING Algorithmic Thinking § AP CSP Exam Reference AAP-3 Sheet (see Appendix) Programmers break down problems into smalle"
+    },
+    {
+      "physical_page": 98,
+      "printed_page": 98,
+      "chars": 3168,
+      "first_200": "ing\u0007procedures\u0007and\u0007leveraging\u0007parameters,\u0007programmers\u0007generalize\u0007processes\u0007 that can be reused. Procedures allow programmers to draw upon existing code that has already been tested, allowing them to w"
+    },
+    {
+      "physical_page": 99,
+      "printed_page": 99,
+      "chars": 3168,
+      "first_200": "inciples Course and Exam Description Course Framework V.1 | 92 Return to Table of Contents © 2023 College Board BIG IDEA Algorithms and Programming 3 LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE AAP-3.F"
+    },
+    {
+      "physical_page": 100,
+      "printed_page": 100,
+      "chars": 3168,
+      "first_200": "-4.A.2 b. \u0007Identify situations where a A decision problem is a problem with a yes/no heuristic solution may be answer (e.g., is there a path from A to B?). An"
+    },
+    {
+      "physical_page": 101,
+      "printed_page": 101,
+      "chars": 3168,
+      "first_200": "at AAP-4.A.6 run in reasonable time and Different\u0007correct\u0007algorithms\u0007for\u0007the\u0007same\u0007 those that do not. 1.D problem\u0007can\u0007have\u0007different\u0007efficiencies.\u0007 b. \u0007Identify situations where a AAP-4.A.7 heuristic "
+    },
+    {
+      "physical_page": 102,
+      "printed_page": 102,
+      "chars": 3168,
+      "first_200": "tence of A decidable problem is a decision problem for undecidable problems in which an algorithm can be written to produce a computer\u0007science. 1.A correct output for all inputs (e.g.,"
+    },
+    {
+      "physical_page": 103,
+      "printed_page": 103,
+      "chars": 3168,
+      "first_200": "Questions for this big idea. Whether assigned as homework or completed in class, the Topic Questions\u0007can\u0007be\u0007used\u0007to\u0007spot- check student understanding and help identify content and skills to emphasize\u0007"
+    },
+    {
+      "physical_page": 104,
+      "printed_page": 104,
+      "chars": 3168,
+      "first_200": "impractical to use. In order or devices. of dividing tasks among to\u0007minimize\u0007this\u0007runtime,\u0007the\u0007individual\u0007 group members? processes that comprise a program can be Preparing for the AP Exam § Is there "
+    },
+    {
+      "physical_page": 105,
+      "printed_page": 105,
+      "chars": 3168,
+      "first_200": "Using kinesthetic learning techniques to simulate the connections and routers AP Computer Science Principles Course and Exam Description Course Framework V.1 | 99 Return to Table of Contents © 2023"
+    },
+    {
+      "physical_page": 106,
+      "printed_page": 106,
+      "chars": 3168,
+      "first_200": "their answers to their journals: §§ How\u0007is\u0007the\u0007Internet\u0007like\u0007the\u0007US\u0007Post\u0007Office?\u0007 § Explain\u0007the\u0007difference\u0007between\u0007circuit\u0007switching\u0007and\u0007packet\u0007switching. Ask students to use what they learned from re"
+    },
+    {
+      "physical_page": 107,
+      "printed_page": 107,
+      "chars": 3168,
+      "first_200": "computing system is a group of computing devices and programs working together for a common purpose. CSN-1.A.3 A computer network is a group of interconnected computing devices capable of sending"
+    },
+    {
+      "physical_page": 108,
+      "printed_page": 108,
+      "chars": 3168,
+      "first_200": "ally measured in bits per second. CSN-1.B CSN-1.B.1 Explain how the Internet The Internet is a computer network works. 5.A consisting of interconnected networks that use\u0007standardized,\u0007open\u0007(nonproprie"
+    },
+    {
+      "physical_page": 109,
+      "printed_page": 109,
+      "chars": 3168,
+      "first_200": "used for routing the packet between the origin and the destination on the Internet, as well as for data reassembly. CSN-1.C.3 Packets may arrive at the destination in order, out"
+    },
+    {
+      "physical_page": 110,
+      "printed_page": 110,
+      "chars": 3168,
+      "first_200": "ansfer of data. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE CSN-1.E CSN-1.E.1 For\u0007fault-tolerant\u0007systems,\u0007 The Internet\u0007has\u0007been\u0007engineered\u0007to\u0007be\u0007fault- like the Internet: tolerant, with abstractions for r"
+    },
+    {
+      "physical_page": 111,
+      "printed_page": 111,
+      "chars": 3168,
+      "first_200": "ces and fault tolerance. 1.D more people. b. Explain how a given system is fault-tolerant. 5.A c. Identify vulnerabilities to failure in a system. 1.D AP Computer Science Principles Course"
+    },
+    {
+      "physical_page": 112,
+      "printed_page": 112,
+      "chars": 3168,
+      "first_200": "CSN-2.A.6 A parallel computing solution takes as long as its sequential tasks plus the longest of its parallel tasks. continued on next page AP Computer Science Principles Course and Exam"
+    },
+    {
+      "physical_page": 113,
+      "printed_page": 113,
+      "chars": 3168,
+      "first_200": "be solved using a single computer. CSN-2.B.5 When increasing the use of parallel computing in\u0007a\u0007solution,\u0007the\u0007efficiency\u0007of\u0007the\u0007solution\u0007 is still limited by the sequential portion. This means that at"
+    },
+    {
+      "physical_page": 114,
+      "printed_page": 114,
+      "chars": 3168,
+      "first_200": "21–26% AP EXAM WEIGHTING 5 Impact of Computing Developing Understanding ESSENTIAL The creation of computer programs can have extensive impacts, some unintended, on QUESTIONS societies,\u0007economies,\u0007and\u0007"
+    },
+    {
+      "physical_page": 115,
+      "printed_page": 115,
+      "chars": 3168,
+      "first_200": "the computing innovation uses to complete its task; any data privacy, security, or storage Investigating the impact of existing concerns that might be associated with the computing innovations can hel"
+    },
+    {
+      "physical_page": 116,
+      "printed_page": 116,
+      "chars": 3168,
+      "first_200": "5.3 Computing Bias 5.E Evaluate the use of computing based on legal and ethical factors. IOC-1.E 5.4 Crowdsourcing 1.C Explain\u0007how\u0007collaboration\u0007affects\u0007the\u0007development\u0007of\u0007a\u0007solution. IOC-1.F 5.5 Lega"
+    },
+    {
+      "physical_page": 117,
+      "printed_page": 117,
+      "chars": 3168,
+      "first_200": "and\u0007security\u0007risks,\u0007especially\u0007when\u0007it\u0007comes\u0007to\u0007personally\u0007identifiable\u0007information\u0007(PII)\u0007 and\u0007the\u0007impact\u0007of\u0007collecting\u0007such\u0007data.\u0007Sample\u0007topics\u0007might\u0007include\u0007not\u0007recognizing\u0007a\u0007 phishing email, being "
+    },
+    {
+      "physical_page": 118,
+      "printed_page": 118,
+      "chars": 3168,
+      "first_200": "and\u0007harmful\u0007by\u0007different\u0007people,\u0007or\u0007even\u0007by\u0007the\u0007 same person. IOC-1.A.5 Advances in computing have generated and increased\u0007creativity\u0007in\u0007other\u0007fields,\u0007such\u0007as\u0007 medicine, engineering, communications, a"
+    },
+    {
+      "physical_page": 119,
+      "printed_page": 119,
+      "chars": 3168,
+      "first_200": "\u0007and\u0007 harmful\u0007effects\u0007of\u0007these\u0007new\u0007uses. IOC-1.B.4 It is not possible for a programmer to consider all the ways a computing innovation can be used. IOC-1.B.5 Computing innovations have often had unint"
+    },
+    {
+      "physical_page": 120,
+      "printed_page": 120,
+      "chars": 3168,
+      "first_200": "The\u0007digital\u0007divide\u0007can\u0007affect\u0007both\u0007groups\u0007and\u0007 individuals. IOC-1.C.4 The digital divide raises issues of equity, access,\u0007and\u0007influence,\u0007both\u0007globally\u0007and\u0007locally. IOC-1.C.5 The\u0007digital\u0007divide\u0007is\u0007affe"
+    },
+    {
+      "physical_page": 121,
+      "printed_page": 121,
+      "chars": 3168,
+      "first_200": "Programmers should take action to reduce bias in algorithms used for computing innovations as a way of combating existing human biases. IOC-1.D.3 Biases can be embedded at all levels of"
+    },
+    {
+      "physical_page": 122,
+      "printed_page": 122,
+      "chars": 3168,
+      "first_200": "Crowdsourcing is the practice of obtaining input or information from a large number of people via the Internet. IOC-1.E.5 Human capabilities can be enhanced by collaboration via computing. IOC-1.E.6 C"
+    },
+    {
+      "physical_page": 123,
+      "printed_page": 123,
+      "chars": 3168,
+      "first_200": "§ Blown to Bits: While\u0007computing\u0007innovations\u0007are\u0007typically\u0007designed\u0007to\u0007achieve\u0007a\u0007specific\u0007purpose,\u0007 Chapter 7 they may have unintended consequences. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE IOC-1.F IOC-"
+    },
+    {
+      "physical_page": 124,
+      "printed_page": 124,
+      "chars": 3168,
+      "first_200": "eely available and may be redistributed and modified §§ open\u0007access—online\u0007research\u0007output\u0007free\u0007of\u0007 any and all restrictions on access and free of many restrictions on use, such as copyright or licens"
+    },
+    {
+      "physical_page": 125,
+      "printed_page": 125,
+      "chars": 3168,
+      "first_200": "Course Framework V.1 | 120 Return to Table of Contents © 2023 College Board BIG IDEA Impact of Computing 5 TOPIC 5.6 SKILLS 5.D Safe Computing Describe the impact of"
+    },
+    {
+      "physical_page": 126,
+      "printed_page": 126,
+      "chars": 3168,
+      "first_200": "§§ phone number(s) §§ medical information §§ §§ biometric data IOC-2.A.2 Search engines can record and maintain a history of searches made by users. IOC-2.A.3 Websites can record and maintain"
+    },
+    {
+      "physical_page": 127,
+      "printed_page": 127,
+      "chars": 3168,
+      "first_200": "ed online can be used to simplify making online purchases. IOC-2.A.10 Commercial and governmental curation of information may be exploited if privacy and other protections are ignored. IOC-2.A.11 Info"
+    },
+    {
+      "physical_page": 128,
+      "printed_page": 128,
+      "chars": 3168,
+      "first_200": "Return to Table of Contents © 2023 College Board BIG IDEA Impact of Computing 5 LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE IOC-2.B IOC-2.B.1 Explain how computing Authentication measures protect devices r"
+    },
+    {
+      "physical_page": 129,
+      "printed_page": 129,
+      "chars": 3168,
+      "first_200": "§§ Public key encryption pairs a public key for encryption and a private key for decryption. The sender does not need the receiver’s private key to encrypt a message, but"
+    },
+    {
+      "physical_page": 130,
+      "printed_page": 130,
+      "chars": 3168,
+      "first_200": "eration. IOC-2.B.10 All\u0007real-world\u0007systems\u0007have\u0007errors\u0007or\u0007design\u0007 flaws\u0007that\u0007can\u0007be\u0007exploited\u0007to\u0007compromise\u0007 them.\u0007Regular\u0007software\u0007updates\u0007help\u0007fix\u0007errors\u0007 that could compromise a computing system. I"
+    },
+    {
+      "physical_page": 131,
+      "printed_page": 131,
+      "chars": 3168,
+      "first_200": "mework V.1 | 124 Return to Table of Contents © 2023 College Board BIG IDEA Impact of Computing 5 LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE IOC-2.C IOC-2.C.5 Explain how unauthorized A malicious"
+    },
+    {
+      "physical_page": 132,
+      "printed_page": 132,
+      "chars": 3168,
+      "first_200": "formance task, teachers will want to be sure teachers a complete curriculum, including daily lesson to include this time in their planning. plans and activities, that is completely aligned to"
+    },
+    {
+      "physical_page": 133,
+      "printed_page": 133,
+      "chars": 3168,
+      "first_200": "Appropriate programming languages for this course select a programming language that is appropriate are ones that allow students to evaluate expressions, for the course and their students. The Curricu"
+    },
+    {
+      "physical_page": 134,
+      "printed_page": 134,
+      "chars": 3168,
+      "first_200": "t provides both block and text editors for students at\u0007different\u0007levels.\u0007Microsoft\u0007MakeCode\u0007is\u0007a\u0007free,\u0007open-source,\u0007web-based\u0007 environment with open educational resources for teachers. Processing This"
+    },
+    {
+      "physical_page": 135,
+      "printed_page": 135,
+      "chars": 3168,
+      "first_200": "kills and knowledge of the Appendix, to use when taking the AP Exam. The the programming constructs described in the course Exam Reference Sheet is not meant to be a"
+    },
+    {
+      "physical_page": 136,
+      "printed_page": 136,
+      "chars": 3168,
+      "first_200": "tracing by recording any values that are changed, printed, or returned. Create a plan Students\u0007analyze\u0007the\u0007tasks Assists in breaking Have students brainstorm in a problem and create programming tasks "
+    },
+    {
+      "physical_page": 137,
+      "printed_page": 137,
+      "chars": 3168,
+      "first_200": "Return to Table of Contents © 2023 College Board Programming and Problem-Solving (cont’d) Strategy Definition Purpose Example Error analysis Students\u0007analyze\u0007an\u0007 Allows students to When students begin"
+    },
+    {
+      "physical_page": 138,
+      "printed_page": 138,
+      "chars": 3168,
+      "first_200": "t expected that can be used to design multiple representations of output or results based on program\u0007code,\u0007generalize\u0007 the same set of data, such input\u0007and\u0007specifications.\u0007 program behavior, identify "
+    },
+    {
+      "physical_page": 139,
+      "printed_page": 139,
+      "chars": 3168,
+      "first_200": "code, while the other that another student square. Then, have them (the observer, pointer, or can understand. It also work in pairs to modify navigator) reviews each provides\u0007built-in\u0007support\u0007 the pro"
+    },
+    {
+      "physical_page": 140,
+      "printed_page": 140,
+      "chars": 3168,
+      "first_200": "on\u0007the\u0007floor.\u0007Finally,\u0007ask\u0007 students to compare their predictions to the actual outcomes and discuss where their predictions went wrong. Simplify the Students use simpler Provides insight into a more "
+    },
+    {
+      "physical_page": 141,
+      "printed_page": 141,
+      "chars": 3168,
+      "first_200": "data sets, have students solution process to the solve\u0007a\u0007problem\u0007a\u0007different\u0007 start by thinking about starting point. way to think about it possible conclusions that by starting at the ideal can be"
+    },
+    {
+      "physical_page": 142,
+      "printed_page": 142,
+      "chars": 3168,
+      "first_200": "a whole-class\u0007activity,\u0007have\u0007 students break into two larger groups of opposing viewpoints. Jigsaw Each student in a group Allows students to Have\u0007different\u0007students\u0007 reads\u0007a\u0007different\u0007text\u0007or\u0007 summar"
+    },
+    {
+      "physical_page": 143,
+      "printed_page": 143,
+      "chars": 3168,
+      "first_200": "materials to learn. the statement applies to the student, they remain standing. If the statement does not apply to the student, they sit down. Repeat the process with several statements."
+    },
+    {
+      "physical_page": 144,
+      "printed_page": 144,
+      "chars": 3168,
+      "first_200": "the complexity of what with a larger group. occurs under the hood. Have students consider what abstractions they encounter in everyday life. Then, working in pairs, ask students to share"
+    },
+    {
+      "physical_page": 145,
+      "printed_page": 145,
+      "chars": 3168,
+      "first_200": "f\u0007candy\u0007in\u0007it.\u0007 Their\u0007job\u0007is\u0007to\u0007find\u0007a\u0007number\u0007 provided by the teacher among the group of 15 students. They can use their candy as currency to “pay” one of the students at the front of the"
+    },
+    {
+      "physical_page": 146,
+      "printed_page": 146,
+      "chars": 3168,
+      "first_200": "rovided with their own private key code. Only one of the students should have the correct code to unlock the box. Debrief with students about the difference\u0007between\u0007public\u0007 key and private"
+    },
+    {
+      "physical_page": 147,
+      "printed_page": 147,
+      "chars": 3168,
+      "first_200": "sion and When students are representation\u0007to\u0007organize\u0007 facilitates discussion by planning their code, information. representing information in have them diagram or visual form. create\u0007flowcharts\u0007of\u0007 t"
+    },
+    {
+      "physical_page": 148,
+      "printed_page": 148,
+      "chars": 3168,
+      "first_200": "m requirements to the other students, ensuring that the student does not leave out any key points. continued on next page AP Computer Science Principles Course and Exam Description Instructional"
+    },
+    {
+      "physical_page": 149,
+      "printed_page": 149,
+      "chars": 3168,
+      "first_200": "pictures, notations, and come up with their own connections. examples or pictures that will help them remember the terms later in the course. There are several apps and websites that"
+    },
+    {
+      "physical_page": 150,
+      "printed_page": 150,
+      "chars": 3168,
+      "first_200": "ollow, so providing students these skills in class throughout the school year. with practice applying these skills will help prepare them for the exam and set them up for success."
+    },
+    {
+      "physical_page": 151,
+      "printed_page": 151,
+      "chars": 3168,
+      "first_200": "before creating this computing their purpose, and their innovation? Do these data need to be real-world\u0007implications. represented in a particular way? continued on next page AP Computer Science Princi"
+    },
+    {
+      "physical_page": 152,
+      "printed_page": 152,
+      "chars": 3168,
+      "first_200": "This saves time when implementing the program, as logic errors can be identified\u0007and\u0007solved\u0007 much earlier in the process, preventing additional rework. 1.C: Explain When presented with a scenario, exp"
+    },
+    {
+      "physical_page": 153,
+      "printed_page": 153,
+      "chars": 3168,
+      "first_200": "n next page AP Computer Science Principles Course and Exam Description Instructional Approaches V.1 | 141 Return to Table of Contents © 2023 College Board Practice 1: Computational Solution Design"
+    },
+    {
+      "physical_page": 154,
+      "printed_page": 154,
+      "chars": 3168,
+      "first_200": "What might be the limitations? the amount of time it students to share with takes to complete a the group where they feel task can help make connections should be"
+    },
+    {
+      "physical_page": 155,
+      "printed_page": 155,
+      "chars": 3168,
+      "first_200": "© 2023 College Board Practice 2: Algorithms and Program Development (cont’d) Instructional Sample Activities Skills Tasks/Questions Notes and Strategies 2.B: Implement and Write program code that Prio"
+    },
+    {
+      "physical_page": 156,
+      "printed_page": 156,
+      "chars": 3168,
+      "first_200": "ther necessary data in a similarities to the way Provide students with a through variables. program, and represent these variables are used in math set of short problems that data"
+    },
+    {
+      "physical_page": 157,
+      "printed_page": 157,
+      "chars": 3168,
+      "first_200": "by using lists and writing to use in a variety of only contain output program code that is general situations or to still function statements for each line enough to"
+    },
+    {
+      "physical_page": 158,
+      "printed_page": 158,
+      "chars": 3168,
+      "first_200": "they would've needed Key questions for students: to write the program 1. \u0007 differently\u0007if\u0007they\u0007didn't\u0007 use the abstraction. If the student did not use any abstraction, they should explain where in"
+    },
+    {
+      "physical_page": 159,
+      "printed_page": 159,
+      "chars": 3168,
+      "first_200": "so, it adds 1 to player A’s score. Key questions for students: 1. \u0007 2. What are the individual steps that are being taken in this program code segment? 4.B:"
+    },
+    {
+      "physical_page": 160,
+      "printed_page": 160,
+      "chars": 3168,
+      "first_200": "© 2023 College Board Practice 4: Code Analysis (cont’d) Sample Activities Skills Tasks/Questions Instructional Notes and Strategies 4.C: Identify and Given program code, Students will encounter Markin"
+    },
+    {
+      "physical_page": 161,
+      "printed_page": 161,
+      "chars": 3168,
+      "first_200": "© 2023 College Board Practice 5: Computing Innovations Instructional Sample Activities Skills Tasks/Questions Notes and Strategies 5.A: Explain how Explain how computing devices Using the Internet Kin"
+    },
+    {
+      "physical_page": 162,
+      "printed_page": 162,
+      "chars": 3168,
+      "first_200": "a free hand. Once all the messages have reached their destination, that student will reassemble the message and report it to the rest of the class. Be sure to debrief"
+    },
+    {
+      "physical_page": 163,
+      "printed_page": 163,
+      "chars": 3168,
+      "first_200": "nes, metadata available, what data set is small, voice\u0007assistants,\u0007fitness\u0007 questions might you be able challenge students to devices) and how these to answer? Is there additional create more abstract"
+    },
+    {
+      "physical_page": 164,
+      "printed_page": 164,
+      "chars": 3168,
+      "first_200": "Instructional Approaches V.1 | 148 Return to Table of Contents © 2023 College Board Practice 5: Computing Innovations (cont’d) Instructional Sample Activities Skills Tasks/Questions Notes and Strategi"
+    },
+    {
+      "physical_page": 165,
+      "printed_page": 165,
+      "chars": 3168,
+      "first_200": "create\u0007a\u0007flawed\u0007data\u0007set\u0007 § Any bias that might exist due can have future of pictures that supports factors. to the way the computing impacts on them an incorrect claim. For innovation was"
+    },
+    {
+      "physical_page": 166,
+      "printed_page": 166,
+      "chars": 3168,
+      "first_200": "eyond group work, Assigning group work is Pair programming the development where work is simply divided different\u0007from\u0007building\u0007 Introduce students to of solutions. among group members, the skills nec"
+    },
+    {
+      "physical_page": 167,
+      "printed_page": 167,
+      "chars": 3168,
+      "first_200": "keep your identity safe how data are shared when online? Information that is put among students during 2. \u0007How are you preventing online is incredibly times of collaboration. access by"
+    },
+    {
+      "physical_page": 168,
+      "printed_page": 168,
+      "chars": 3168,
+      "first_200": "o what 1. When are you required to When completing the was shared and discuss credit another author, and Create performance task, the\u0007real-life\u0007impacts\u0007and\u0007 what is the best way to students"
+    },
+    {
+      "physical_page": 169,
+      "printed_page": 169,
+      "chars": 3168,
+      "first_200": "When a partnership is not working well, mediation and § Providing feedback on program design and reflection\u0007can\u0007be\u0007helpful\u0007in\u0007getting\u0007it\u0007back\u0007on\u0007track.\u0007The\u0007 development to improve the overall quality "
+    },
+    {
+      "physical_page": 170,
+      "printed_page": 170,
+      "chars": 3168,
+      "first_200": "information on but can earn more points by completing additional how to make your computer science classroom challenges that move them to a more advanced more accessible to students with"
+    },
+    {
+      "physical_page": 171,
+      "printed_page": 171,
+      "chars": 3168,
+      "first_200": "ommon for teachers to pair content from multiple big ideas and skills. While we have segmented each big idea into topics, there may be times when you introduce part of"
+    },
+    {
+      "physical_page": 172,
+      "printed_page": 172,
+      "chars": 3168,
+      "first_200": "© 2023 College Board THIS PAGE IS INTENTIONALLY LEFT BLANK. AP COMPUTER SCIENCE PRINCIPLES Exam Information Exam Overview The AP Computer Science Principles Exam assesses student understanding of the "
+    },
+    {
+      "physical_page": 173,
+      "printed_page": 173,
+      "chars": 3168,
+      "first_200": "2 End-of-course AP Create performance task Exam The\u0007AP\u0007Exam\u0007assesses\u0007each\u0007of\u0007the\u0007five\u0007big\u0007ideas\u0007of\u0007the\u0007course\u0007with\u0007the\u0007following\u0007weighting\u0007on\u0007the\u0007multiple- choice section: Big Ideas Exam Weighting Big"
+    },
+    {
+      "physical_page": 174,
+      "printed_page": 174,
+      "chars": 3168,
+      "first_200": "raded system using their voice. The upgraded system (but not the original system) stores all information from the calling session in a database for future reference. This includes the customer’s"
+    },
+    {
+      "physical_page": 175,
+      "printed_page": 175,
+      "chars": 3168,
+      "first_200": "h of the following may be an\u0007unintended\u0007effect of the use of Call Center? §§ Which of the following is the [LEAST/MOST] [likely/plausible] data [privacy/security/ storage] concern of the upgraded syst"
+    },
+    {
+      "physical_page": 176,
+      "printed_page": 176,
+      "chars": 3168,
+      "first_200": "§ AAP-2.J: Express an algorithm that uses iteration without using a programming language. §§ AAP-2.K.b: Determine the result or side effect of iteration statements. § AAP-2.L: Compare multiple algorit"
+    },
+    {
+      "physical_page": 177,
+      "printed_page": 177,
+      "chars": 3168,
+      "first_200": "testing. (Skill 4.C) §§ Written Response 2(c): Data and Procedural Abstraction assesses students’ ability to explain how abstraction manages complexity. (Skill 3.C) AP Computer Science Principles Cour"
+    },
+    {
+      "physical_page": 178,
+      "printed_page": 178,
+      "chars": 3168,
+      "first_200": "ols can produce incomplete code, code\u0007that\u0007creates\u0007or\u0007introduces\u0007biases,\u0007code\u0007with\u0007errors,\u0007inefficiencies\u0007in\u0007how\u0007the\u0007 code\u0007executes,\u0007or\u0007code\u0007complexities\u0007that\u0007make\u0007it\u0007difficult\u0007to\u0007understand\u0007and\u0007there"
+    },
+    {
+      "physical_page": 179,
+      "printed_page": 179,
+      "chars": 3168,
+      "first_200": "ing students with assistance during the actual performance task; teachers should encourage students to take advantage of the opportunity to get assistance and feedback from them during practice. §§ In"
+    },
+    {
+      "physical_page": 180,
+      "printed_page": 180,
+      "chars": 3168,
+      "first_200": "s\u0007final\u0007by\u0007the\u0007deadline\u0007posted\u0007on\u0007AP\u0007Central.\u0007 Only\u0007files\u0007that\u0007are\u0007submitted\u0007as\u0007final\u0007will\u0007be\u0007sent\u0007for\u0007scoring.\u0007Additionally,\u0007if\u0007students\u0007 do\u0007not\u0007submit\u0007their\u0007Personalized\u0007Project\u0007Reference\u0007by\u0007the\u0007dea"
+    },
+    {
+      "physical_page": 181,
+      "printed_page": 181,
+      "chars": 3168,
+      "first_200": "en captures of their program code provided in the Personalized\u0007Project\u0007Reference\u0007cannot\u0007include\u0007any\u0007course\u0007content\u0007beyond\u0007the\u0007 program code. All comments that were included in the program code during "
+    },
+    {
+      "physical_page": 182,
+      "printed_page": 182,
+      "chars": 3168,
+      "first_200": "ment scoring. §§ Allow students to collaborate during the creation of their video or their Personalized\u0007Project\u0007Reference.\u0007 §§ Provide feedback on practice written response prompts before all three co"
+    },
+    {
+      "physical_page": 183,
+      "printed_page": 183,
+      "chars": 3168,
+      "first_200": "enrolls? (A) 1001 0100 (B) 1001 0111 (C) 1101 0100 (D) 1101 0111 AP Computer Science Principles Course and Exam Description Exam Information V.1 | 175 Return to Table of"
+    },
+    {
+      "physical_page": 184,
+      "printed_page": 184,
+      "chars": 3168,
+      "first_200": "enough to drive but not old enough to vote, and evaluates to false otherwise? I. (age ≥ 16) AND (age ≤ 18) II. (age ≥ 16) AND (NOT(age ≥ 18))"
+    },
+    {
+      "physical_page": 185,
+      "printed_page": 185,
+      "chars": 3168,
+      "first_200": "Return to Table of Contents © 2023 College Board 9. The following code segment is intended to set max equal to the maximum value among the integer variables x, y,"
+    },
+    {
+      "physical_page": 186,
+      "printed_page": 186,
+      "chars": 3168,
+      "first_200": "sses are dependent on any of the other processes. Execution Time on Process Either Processor X 60 seconds Y 30 seconds Z 50 seconds Which of the following best approximates"
+    },
+    {
+      "physical_page": 187,
+      "printed_page": 187,
+      "chars": 3168,
+      "first_200": "he following is LEAST likely to be included in the directory? (A) A list of common issues and whether each issue requires a human representative (B) A list of common"
+    },
+    {
+      "physical_page": 188,
+      "printed_page": 188,
+      "chars": 3168,
+      "first_200": "r 0 REPEAT 3 TIMES REPEAT 3 TIMES { { drawCircle(x, y, r) r r + 1 r r + 1 y y + 1 y y + 1 drawCircle(x,"
+    },
+    {
+      "physical_page": 189,
+      "printed_page": 189,
+      "chars": 3168,
+      "first_200": "ntify an expected user of your program. Describe one way your program’s design Design, Function, and Purpose meets the needs of this user. Written Response 2(a): Consider the first iteration"
+    },
+    {
+      "physical_page": 190,
+      "printed_page": 190,
+      "chars": 3168,
+      "first_200": "B DAT-2.B 11 C 4.C CRD-2.I.b 12 C 1.D CSN-2.A.b 13 A 1.D AAP-2.P.a 14 C 3.A CRD-2.C 15 B 5.C IOC-1.A 16 A 5.D IOC-2.A 17 B,C 3.B AAP-3.A.a"
+    },
+    {
+      "physical_page": 191,
+      "printed_page": 191,
+      "chars": 3168,
+      "first_200": "point. (0-1 points) • If\u0007the\u0007program\u0007requirements\u0007do\u0007not\u0007appear\u0007in\u0007the\u0007Personalized\u0007Project\u0007Reference,\u0007consider\u0007the\u0007full\u0007 • A procedure • A call to the procedure program code file when scoring this po"
+    },
+    {
+      "physical_page": 192,
+      "printed_page": 192,
+      "chars": 3168,
+      "first_200": "criteria, including those within bulleted lists, in each row to earn the point for that row. • Terms\u0007and\u0007phrases\u0007defined\u0007in\u0007the\u0007terminology\u0007list\u0007are\u0007italicized\u0007when\u0007they\u0007first\u0007appear\u0007in\u0007the\u0007scoring\u0007cr"
+    },
+    {
+      "physical_page": 193,
+      "printed_page": 193,
+      "chars": 3168,
+      "first_200": "• The response describes expected behavior that is implausible, inaccurate, or inconsistent with the program. Written Response 2(c): The written response: Consider the Personalized Project Reference a"
+    },
+    {
+      "physical_page": 194,
+      "printed_page": 194,
+      "chars": 3168,
+      "first_200": "examples include: databases, hash tables, dictionaries, sets, or any other type that aggregates elements in a single structure. Data stored in a list: Input\u0007into\u0007the\u0007list\u0007can\u0007be\u0007through\u0007an\u0007initializat"
+    },
+    {
+      "physical_page": 195,
+      "printed_page": 195,
+      "chars": 3168,
+      "first_200": "“when”. AP Computer Science Principles Course and Exam Description Scoring Guidelines V.1 | 192 Return to Table of Contents © 2023 College Board AP COMPUTER SCIENCE PRINCIPLES Student Handouts AP"
+    },
+    {
+      "physical_page": 196,
+      "printed_page": 196,
+      "chars": 3168,
+      "first_200": "tion Student Handouts V.1 | 197 Return to Table of Contents © 2023 College Board Submission Requirements COMPONENT A: PROGRAM CODE (CREATED INDEPENDENTLY OR COLLABORATIVELY) Submit\u0007one\u0007PDF\u0007file\u0007that\u0007c"
+    },
+    {
+      "physical_page": 197,
+      "printed_page": 197,
+      "chars": 3168,
+      "first_200": "ments in a single structure. Some data\u0007that\u0007is\u0007stored\u0007and\u0007used\u0007to\u0007manage\u0007program\u0007complexity\u0007and\u0007help\u0007fulfill\u0007 examples include lists, the program’s purpose databases, and sets. IMPORTANT: The data abs"
+    },
+    {
+      "physical_page": 198,
+      "printed_page": 198,
+      "chars": 3168,
+      "first_200": "Return to Table of Contents © 2023 College Board COMPONENT B: VIDEO (CREATED INDEPENDENTLY) Submit\u0007one\u0007video\u0007file\u0007that\u0007 demonstrates the running of your program as described below. Collaboration is no"
+    },
+    {
+      "physical_page": 199,
+      "printed_page": 199,
+      "chars": 3168,
+      "first_200": "© 2023 College Board List: Capture and paste two program code segments you developed during DEFINITION: the administration of this task that contain a list (or other collection type) List"
+    },
+    {
+      "physical_page": 200,
+      "printed_page": 200,
+      "chars": 3168,
+      "first_200": "significant\u0007modifications\u0007to\u0007 the program code). AP Computer Science Principles Course and Exam Description Student Handouts V.1 | 201 Return to Table of Contents © 2023 College Board THIS PAGE IS INT"
+    },
+    {
+      "physical_page": 201,
+      "printed_page": 201,
+      "chars": 3168,
+      "first_200": "© 2023 College Board Attestations During\u0007the\u0007final\u0007submission\u0007process\u0007in\u0007the\u0007AP\u0007Digital\u0007Portfolio,\u0007students\u0007will\u0007be\u0007 asked to attest that they have followed the Performance Task guidelines and have\u0007no"
+    },
+    {
+      "physical_page": 202,
+      "printed_page": 202,
+      "chars": 3168,
+      "first_200": "Portfolio file submission requirements and process,\u0007paying\u0007attention\u0007to\u0007the\u0007instructions\u0007concerning\u0007the\u0007file\u0007type,\u0007size,\u0007 and length to be uploaded. This is important to ensure that work is sent for A"
+    },
+    {
+      "physical_page": 203,
+      "printed_page": 203,
+      "chars": 3168,
+      "first_200": "© 2023 College Board Completing the Performance Task You must: §§ Submit\u0007all\u0007three\u0007components\u0007of\u0007your\u0007performance\u0007task\u0007as\u0007final\u0007prior\u0007 to the submission deadline, which can be found on the AP Computer"
+    },
+    {
+      "physical_page": 204,
+      "printed_page": 204,
+      "chars": 3168,
+      "first_200": "g the program, or making revisions to the program, from anyone other than your collaborative partner(s). §§ Submit practice performance tasks or any work that has been revised, amended, or"
+    },
+    {
+      "physical_page": 205,
+      "printed_page": 205,
+      "chars": 3168,
+      "first_200": "AP CSP Exam Reference Sheet AP Computer Science Principles Course and Exam Description Appendix V.1 | 211 Return to Table of Contents © 2023 College Board THIS PAGE IS INTENTIONALLY"
+    },
+    {
+      "physical_page": 206,
+      "printed_page": 206,
+      "chars": 3168,
+      "first_200": "comparison using relational operators evaluates to a Boolean value. a > b a < b For example, a = b evaluates to true if a and b are a ≥"
+    },
+    {
+      "physical_page": 207,
+      "printed_page": 207,
+      "chars": 3168,
+      "first_200": "2023 College Board Instruction Explanation Iteration Text: The code in block of statements is executed n times. REPEAT n TIMES { <block of statements> } Block: REPEAT n TIMES block"
+    },
+    {
+      "physical_page": 208,
+      "printed_page": 208,
+      "chars": 3168,
+      "first_200": "x Text: Assigns the value of aList[j] to aList[i]. aList[i] ← aList[j] Block: aList i aList j Text: Any values in aList at indices greater than or equal to i"
+    },
+    {
+      "physical_page": 209,
+      "printed_page": 209,
+      "chars": 3168,
+      "first_200": "meter2,... block of statements Text: Defines procName as\u0007a\u0007procedure\u0007that\u0007takes\u0007zero\u0007or\u0007more\u0007 PROCEDURE procName(parameter1, arguments. The procedure contains block of statements parameter2, ...) and "
+    },
+    {
+      "physical_page": 210,
+      "printed_page": 210,
+      "chars": 3168,
+      "first_200": "direction relative to where the robot is facing; otherwise evaluates to Block: false. The value of direction can be left, right, forward, or backward. CAN_MOVE direction AP Computer Science Principles"
+    },
+    {
+      "physical_page": 211,
+      "printed_page": 211,
+      "chars": 3168,
+      "first_200": "Collaboration that includes diverse perspectives helps avoid bias in the development of computing innovations. CRD-1.A.5 Consultation and communication with users are important aspects of the developm"
+    },
+    {
+      "physical_page": 212,
+      "printed_page": 212,
+      "chars": 3168,
+      "first_200": "erative design process CRD-2.A.2 An understanding of the purpose of a computing innovation that is user-focused, provides developers with an improved ability to develop that that incorporates computin"
+    },
+    {
+      "physical_page": 213,
+      "printed_page": 213,
+      "chars": 3168,
+      "first_200": "that\u0007affects\u0007the\u0007flow\u0007of\u0007execution. CRD-2.C.4 Inputs\u0007usually\u0007affect\u0007the\u0007output\u0007produced\u0007by\u0007a\u0007program.\u0007 CRD-2.C.5 In\u0007event-driven\u0007programming,\u0007program\u0007statements\u0007are\u0007 executed when triggered rather tha"
+    },
+    {
+      "physical_page": 214,
+      "printed_page": 214,
+      "chars": 3168,
+      "first_200": "CRD-2.E.3 A\u0007development\u0007process\u0007that\u0007is\u0007iterative\u0007requires\u0007refinement\u0007and\u0007 revision\u0007based\u0007on\u0007feedback,\u0007testing,\u0007or\u0007reflection\u0007throughout\u0007 the process. This may require revisiting earlier phases of the"
+    },
+    {
+      "physical_page": 215,
+      "printed_page": 215,
+      "chars": 3168,
+      "first_200": "program innovate using an must provide. iterative design process CRD-2.F.5 that is user-focused, A\u0007program’s\u0007specification\u0007defines\u0007the\u0007requirements\u0007for\u0007the\u0007 that incorporates program. implementation/ "
+    },
+    {
+      "physical_page": 216,
+      "printed_page": 216,
+      "chars": 3168,
+      "first_200": "Not all programming environments support comments, so continued on next page other methods of documentation may be required. AP Computer Science Principles Course and Exam Description Appendix V.1 | 2"
+    },
+    {
+      "physical_page": 217,
+      "printed_page": 217,
+      "chars": 3168,
+      "first_200": "The\u0007following\u0007are\u0007effective\u0007ways\u0007to\u0007find\u0007and\u0007correct\u0007errors:\u0007 §§ test cases § hand tracing § visualizations § debuggers §§ adding extra output statement(s) CRD-2.J CRD-2.J.1 Identify inputs and In the"
+    },
+    {
+      "physical_page": 218,
+      "printed_page": 218,
+      "chars": 3168,
+      "first_200": ".C represents data from) procedures. internally is different DAT-1.A.2 from the way the data Computing devices represent data digitally, meaning that the are interpreted and lowest-level\u0007components\u0007of"
+    },
+    {
+      "physical_page": 219,
+      "printed_page": 219,
+      "chars": 3168,
+      "first_200": "nique, which means measuring values of the analog signal at regular intervals called samples. The samples are\u0007measured\u0007to\u0007figure\u0007out\u0007the\u0007exact\u0007bits\u0007required\u0007to\u0007store\u0007 continued on next page each sampl"
+    },
+    {
+      "physical_page": 220,
+      "printed_page": 220,
+      "chars": 3168,
+      "first_200": "For binary numbers: Number bases, including binary and decimal, are used to a. Calculate the binary represent data. (base 2) equivalent of a positive integer (base 10) DAT-1.C.2 and\u0007vice\u0007versa. 2.B"
+    },
+    {
+      "physical_page": 221,
+      "printed_page": 221,
+      "chars": 3168,
+      "first_200": "a Programs are used to representation and the compression algorithm applied. translate data into a representation more DAT-1.D.4 easily understood by Lossless data compression algorithms can usually r"
+    },
+    {
+      "physical_page": 222,
+      "printed_page": 222,
+      "chars": 3168,
+      "first_200": "d in data does not necessarily indicate that a causal relationship exists. Additional research is needed to understand the exact nature of the relationship. DAT-2.A.4 Often, a single source does"
+    },
+    {
+      "physical_page": 223,
+      "printed_page": 223,
+      "chars": 3168,
+      "first_200": ",\u0007such\u0007as: § the need to clean data §§ incomplete data §§ invalid data § the need to combine data sources DAT-2.C.3 Depending on how data were collected, they may not"
+    },
+    {
+      "physical_page": 224,
+      "printed_page": 224,
+      "chars": 3168,
+      "first_200": "ding Learning Objective Essential Knowledge DAT-2 DAT-2.D DAT-2.D.1 Extract information from data Programs can be used to process data to acquire information. Programs can be used using\u0007a\u0007program. 2.B"
+    },
+    {
+      "physical_page": 225,
+      "printed_page": 225,
+      "chars": 3168,
+      "first_200": "are used in an iterative and interactive way when be used to gain insight and processing information to allow users to gain insight and knowledge\u0007from\u0007data. 5.B knowledge about data. DAT-2.E.2"
+    },
+    {
+      "physical_page": 226,
+      "printed_page": 226,
+      "chars": 3168,
+      "first_200": "that in turn contains multiple values. programmers represent AAP-1.A.2 and organize data in Using meaningful variable names helps with the readability of multiple ways. program code and understanding "
+    },
+    {
+      "physical_page": 227,
+      "printed_page": 227,
+      "chars": 3168,
+      "first_200": "Return to Table of Contents © 2023 College Board Big Idea 3: Algorithms and Programming (AAP) (cont’d) Enduring Understanding Learning Objective Essential Knowledge AAP-1 AAP-1.C AAP-1.C.1 Represent a"
+    },
+    {
+      "physical_page": 228,
+      "printed_page": 228,
+      "chars": 3168,
+      "first_200": "a\u0007collection\u0007of\u0007data\u0007a\u0007name\u0007without\u0007referencing\u0007the\u0007specific\u0007 multiple ways. code. 3.C details of the representation. AAP-1.D.3 Data abstractions can be created using lists. AAP-1.D.4 Developing a dat"
+    },
+    {
+      "physical_page": 229,
+      "printed_page": 229,
+      "chars": 3168,
+      "first_200": "Block: aList continued on next page creates a new empty list and assigns it to aList. AP Computer Science Principles Course and Exam Description Appendix V.1 | 233 Return to"
+    },
+    {
+      "physical_page": 230,
+      "printed_page": 230,
+      "chars": 3168,
+      "first_200": "s are implemented using constructs to represent programming languages. repetition and make AAP-2.A.4 decisions to handle Every algorithm can be constructed using combinations of varied input values. s"
+    },
+    {
+      "physical_page": 231,
+      "printed_page": 231,
+      "chars": 3168,
+      "first_200": "The way statements arithmetic\u0007operators. 4.B and include addition, subtraction, multiplication, division, and are sequenced modulus operators. and combined in a AAP-2.C.2 program determines The exam r"
+    },
+    {
+      "physical_page": 232,
+      "printed_page": 232,
+      "chars": 3168,
+      "first_200": "relational\u0007operators. 2.B operators: =, ≠, >, <, ≥, and ≤. b. \u0007Evaluate expressions that Text and Block: use\u0007relational\u0007operators. § a = b 4.B §§ a ≠ b §§ a >"
+    },
+    {
+      "physical_page": 233,
+      "printed_page": 233,
+      "chars": 3168,
+      "first_200": "Text: condition1 AND condition2 Block: condition1 AND condition2 which evaluates to true if both condition1 and condition2 are true; otherwise it evaluates to false. AAP-2.F.4 The exam reference sheet"
+    },
+    {
+      "physical_page": 234,
+      "printed_page": 234,
+      "chars": 3168,
+      "first_200": "conditional\u0007statements. AAP-2.H.2 program determines 4.B The exam reference sheet provides the computed result. Text: Programs incorporate IF(condition) iteration and selection { constructs to represe"
+    },
+    {
+      "physical_page": 235,
+      "printed_page": 235,
+      "chars": 3168,
+      "first_200": "a. \u0007Write nested conditional statements within conditional statements. statements. 2.B b. \u0007Determine the result of nested conditional continued on next page statements. 4.B AP Computer Science Princip"
+    },
+    {
+      "physical_page": 236,
+      "printed_page": 236,
+      "chars": 3168,
+      "first_200": "{ <block of statements> } Block: REPEAT UNTIL condition block of statements in which the code in block of statements is repeated until the Boolean expression condition evaluates to true."
+    },
+    {
+      "physical_page": 237,
+      "printed_page": 237,
+      "chars": 3168,
+      "first_200": "AP-2.L.4 repetition and make Some Boolean expressions can be written as equivalent decisions to handle conditional statements. varied input values. AAP-2.L.5 Different\u0007algorithms\u0007can\u0007be\u0007developed\u0007or\u0007u"
+    },
+    {
+      "physical_page": 238,
+      "printed_page": 238,
+      "chars": 3168,
+      "first_200": "ex i. The\u0007first\u0007 element of aList is at index 1 and is accessed using the notation aList[1]. § assigning a value of an element of a list to a variable"
+    },
+    {
+      "physical_page": 239,
+      "printed_page": 239,
+      "chars": 3168,
+      "first_200": "nd value is placed at index i in aList. § adding elements to the end of the list Text: APPEND(aList, value) Block: APPEND aList, value increases the length of aList"
+    },
+    {
+      "physical_page": 240,
+      "printed_page": 240,
+      "chars": 3168,
+      "first_200": "ration statements portion of elements are accessed. and combined in a to\u0007traverse\u0007a\u0007list. 2.B X \u0007\u0007EXCLUSION STATEMENT (EK AAP-2.O.1): program determines b. Determine the result of an Traversing multip"
+    },
+    {
+      "physical_page": 241,
+      "printed_page": 241,
+      "chars": 3168,
+      "first_200": "in order, until the desired value is found or all elements in the list have been checked. AAP-2.P AAP-2.P.1 For binary search algorithms: The binary search algorithm starts at the"
+    },
+    {
+      "physical_page": 242,
+      "printed_page": 242,
+      "chars": 3168,
+      "first_200": "Parameters are input variables of a procedure. Arguments programmers generalize specify the values of the parameters when a procedure is processes that can be called. reused. Procedures AAP-3.A.4 allo"
+    },
+    {
+      "physical_page": 243,
+      "printed_page": 243,
+      "chars": 3168,
+      "first_200": "Block: DISPLAY expression continued on next page to display the value of expression, followed by a space. AP Computer Science Principles Course and Exam Description Appendix V.1 | 242 Return"
+    },
+    {
+      "physical_page": 244,
+      "printed_page": 244,
+      "chars": 3168,
+      "first_200": "RETURN expression AAP-3.A.9 The exam reference sheet provides procedure Text: INPUT() Block: INPUT continued on next page which accepts a value from the user and returns the input value. AP"
+    },
+    {
+      "physical_page": 245,
+      "printed_page": 245,
+      "chars": 3168,
+      "first_200": "enabling the procedures to be reused with a range of input values or arguments. AAP-3.B.6 Using procedural abstraction helps improve code readability. AAP-3.B.7 Using procedural abstraction in a progr"
+    },
+    {
+      "physical_page": 246,
+      "printed_page": 246,
+      "chars": 3168,
+      "first_200": "The exam reference sheet provides Text: PROCEDURE procName(parameter1, parameter2, ...) { <block of statements> RETURN(expression) } Block: PROCEDURE procName parameter1, parameter2,... block of state"
+    },
+    {
+      "physical_page": 247,
+      "printed_page": 247,
+      "chars": 3168,
+      "first_200": "\u0007of\u0007creating\u0007complex\u0007 programmers generalize programs. processes that can be reused. Procedures AAP-3.D.4 allow programmers Application\u0007program\u0007interfaces\u0007(APIs)\u0007are\u0007specifications\u0007for\u0007how\u0007 the proced"
+    },
+    {
+      "physical_page": 248,
+      "printed_page": 248,
+      "chars": 3168,
+      "first_200": "-world\u0007phenomena\u0007or\u0007 outcomes. 1.A A simulation is a representation that uses varying sets of values manageable pieces. By to\u0007reflect\u0007the\u0007changing\u0007state\u0007of\u0007a\u0007phenomenon.\u0007 b. Compare simulations with c"
+    },
+    {
+      "physical_page": 249,
+      "printed_page": 249,
+      "chars": 3168,
+      "first_200": "run in reasonable time and a computer can solve AAP-4.A.2 those\u0007that\u0007do\u0007not. 1.D a problem, it may not b. \u0007Identify situations where a A decision problem is a problem with a"
+    },
+    {
+      "physical_page": 250,
+      "printed_page": 250,
+      "chars": 3168,
+      "first_200": "fferent\u0007correct\u0007algorithms\u0007for\u0007the\u0007same\u0007problem\u0007can\u0007have\u0007 a problem, it may not different\u0007efficiencies.\u0007 be able to do so in a AAP-4.A.7 reasonable amount Algorithms\u0007with\u0007a\u0007polynomial\u0007efficiency\u0007or\u0007lo"
+    },
+    {
+      "physical_page": 251,
+      "printed_page": 251,
+      "chars": 3168,
+      "first_200": "outside the scope of this course and the AP Exam. AAP-4.B.3 An undecidable problem may have some instances that have an algorithmic solution, but there is no algorithmic solution that"
+    },
+    {
+      "physical_page": 252,
+      "printed_page": 252,
+      "chars": 3168,
+      "first_200": "receiver. CSN-1.A.6 Routing\u0007is\u0007the\u0007process\u0007of\u0007finding\u0007a\u0007path\u0007from\u0007sender\u0007to\u0007receiver. CSN-1.A.7 The bandwidth of a computer network is the maximum amount of\u0007data\u0007that\u0007can\u0007be\u0007sent\u0007in\u0007a\u0007fixed\u0007amount\u0007of\u0007"
+    },
+    {
+      "physical_page": 253,
+      "printed_page": 253,
+      "chars": 3168,
+      "first_200": "\u0007 CSN-1.B.7 The Internet was designed to be scalable. CSN-1.C CSN-1.C.1 Explain how data are sent Information is passed through the Internet as a data stream. through the Internet via"
+    },
+    {
+      "physical_page": 254,
+      "printed_page": 254,
+      "chars": 3168,
+      "first_200": "N-1.E.2 b. \u0007Explain how a given system Redundancy is the inclusion of extra components that can be is\u0007fault-tolerant. 5.A used to mitigate failure of a system if other components fail."
+    },
+    {
+      "physical_page": 255,
+      "printed_page": 255,
+      "chars": 3168,
+      "first_200": "or sequential, parallel, and Sequential computing is a computational model in which Parallel and distributed distributed computing: operations are performed in order one at a time. computing leverage "
+    },
+    {
+      "physical_page": 256,
+      "printed_page": 256,
+      "chars": 3168,
+      "first_200": "Distributed computing allows problems to be solved that could not be solved on a single computer because of either the processing time or storage needs involved. CSN-2.B.4 Distributed computing allows"
+    },
+    {
+      "physical_page": 257,
+      "printed_page": 257,
+      "chars": 3168,
+      "first_200": "quences. IOC-1.A.4 A\u0007single\u0007effect\u0007can\u0007be\u0007viewed\u0007as\u0007both\u0007beneficial\u0007and\u0007harmful\u0007by\u0007 different\u0007people,\u0007or\u0007even\u0007by\u0007the\u0007same\u0007person.\u0007 IOC-1.A.5 Advances in computing have generated and increased creativi"
+    },
+    {
+      "physical_page": 258,
+      "printed_page": 258,
+      "chars": 3168,
+      "first_200": "IOC-1.B.5 Computing\u0007innovations\u0007have\u0007often\u0007had\u0007unintended\u0007beneficial\u0007 effects\u0007by\u0007leading\u0007to\u0007advances\u0007in\u0007other\u0007fields. IOC-1.B.6 Rapid sharing of a program or running a program with a large number\u0007of\u0007u"
+    },
+    {
+      "physical_page": 259,
+      "printed_page": 259,
+      "chars": 3168,
+      "first_200": "computing\u0007innovations. 5.E because of biases written into the algorithms or biases in the data used by the innovation. IOC-1.D.2 Programmers should take action to reduce bias in algorithms used for"
+    },
+    {
+      "physical_page": 260,
+      "printed_page": 260,
+      "chars": 3168,
+      "first_200": "Appendix V.1 | 254 Return to Table of Contents © 2023 College Board Big Idea 5: Impact of Computing (IOC) (cont’d) Enduring Understanding Learning Objective Essential Knowledge IOC-1 IOC-1.F IOC-1.F.1"
+    },
+    {
+      "physical_page": 261,
+      "printed_page": 261,
+      "chars": 3168,
+      "first_200": "ess and free of many restrictions on use, such as copyright or license restrictions IOC-1.F.6 The use of material created by someone other than you should always be cited. IOC-1.F.7"
+    },
+    {
+      "physical_page": 262,
+      "printed_page": 262,
+      "chars": 3168,
+      "first_200": "ribe the risks to privacy Personally\u0007identifiable\u0007information\u0007(PII)\u0007is\u0007information\u0007about\u0007 The use of computing from collecting and storing an\u0007individual\u0007that\u0007identifies,\u0007links,\u0007relates,\u0007or\u0007describes\u0007t"
+    },
+    {
+      "physical_page": 263,
+      "printed_page": 263,
+      "chars": 3168,
+      "first_200": "IOC-2.A.9 PII stored online can be used to simplify making online purchases. IOC-2.A.10 Commercial and governmental curation of information may be exploited if privacy and other protections are ignore"
+    },
+    {
+      "physical_page": 264,
+      "printed_page": 264,
+      "chars": 3168,
+      "first_200": "Explain how computing Authentication measures protect devices and information from resources can be protected unauthorized\u0007access.\u0007Examples\u0007of\u0007authentication\u0007measures\u0007 and\u0007can\u0007be\u0007misused. 5.E include "
+    },
+    {
+      "physical_page": 265,
+      "printed_page": 265,
+      "chars": 3168,
+      "first_200": "X \u0007\u0007EXCLUSION STATEMENT (EK IOC-2.B.5): Specific mathematical procedures for encryption and decryption are beyond the scope of this course and the AP Exam. IOC-2.B.6 Certificate\u0007authorities\u0007issue\u0007digi"
+    },
+    {
+      "physical_page": 266,
+      "printed_page": 266,
+      "chars": 3168,
+      "first_200": "user information. Users should review the permission settings of programs to protect their privacy. IOC-2.C IOC-2.C.1 Explain\u0007how\u0007unauthorized\u0007 Phishing is a technique that attempts to trick a user in"
+    }
+  ]
+}

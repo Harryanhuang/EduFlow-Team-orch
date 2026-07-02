@@ -1,0 +1,8 @@
+[
+  {
+    "axis": "source",
+    "severity": "P0",
+    "issue": "local_archive_ref does not exist on disk: /Users/huanganan/Desktop/未命名文件夹/化学课程评估及指引.pdf",
+    "fix": "Re-download or re-archive the PDF to: /Users/huanganan/Desktop/未命名文件夹/化学课程评估及指引.pdf"
+  }
+]

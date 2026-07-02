@@ -1,0 +1,217 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "caie-igcse-psychology-0266",
+      "topic_name": "CAIE IGCSE Psychology",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Psychology (0266) syllabus scope.",
+        "Valid: 2027 → 2029."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-psychology-0266-t001",
+      "topic_name": "1. Why choose this syllabus?",
+      "parent_id": "caie-igcse-psychology-0266",
+      "scope": [
+        "Why choose this syllabus?",
+        "Key concepts",
+        "Craik and Lockhart’s levels of processing (LoP) model of memory",
+        "Craik and Lockhart’s levels of processing (LoP) model of memory continued",
+        "Atkinson and Shiffrin’s multistore model (MSM) of memory",
+        "Motivated forgetting",
+        "Role of the brain in memory and forgetting",
+        "Role of the brain in memory and forgetting continued"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Why choose this syllabus?."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-psychology-0266-t002",
+      "topic_name": "2. Syllabus overview",
+      "parent_id": "caie-igcse-psychology-0266",
+      "scope": [
+        "Syllabus overview",
+        "Key concepts",
+        "Key concepts continued",
+        "Restoration theory of sleep",
+        "Hobson & McCarley’s activation-synthesis theory of dreaming",
+        "Psychodynamic theory of dreaming",
+        "Psychodynamic theory of dreaming continued"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Syllabus overview."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-psychology-0266-t003",
+      "topic_name": "3. Prosocial behaviour",
+      "parent_id": "caie-igcse-psychology-0266",
+      "scope": [
+        "Prosocial behaviour",
+        "Key concepts",
+        "Biological explanation of prosocial behaviour",
+        "Social identity theory of prosocial behaviour",
+        "Social identity theory of prosocial behaviour continued",
+        "Bandura’s social learning theory of prosocial behaviour"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Prosocial behaviour."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-psychology-0266-t004",
+      "topic_name": "4. Visual perception",
+      "parent_id": "caie-igcse-psychology-0266",
+      "scope": [
+        "Visual perception",
+        "Key concepts",
+        "Gibson’s direct theory of perception",
+        "Gregory’s constructivist theory of perception",
+        "Gregory’s constructivist theory of perception continued",
+        "Visual illusions and culture"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Visual perception."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-psychology-0266-t005",
+      "topic_name": "5. Motivation and needs",
+      "parent_id": "caie-igcse-psychology-0266",
+      "scope": [
+        "Motivation and needs",
+        "Key concepts",
+        "Hull’s drive reduction theory of motivation",
+        "Hull’s drive reduction theory of motivation continued",
+        "Positive reinforcement in education",
+        "Psychodynamic motivation and marketing",
+        "Psychodynamic motivation and marketing continued",
+        "Motivation to exercise"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Motivation and needs."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-psychology-0266-t006",
+      "topic_name": "6. Language development",
+      "parent_id": "caie-igcse-psychology-0266",
+      "scope": [
+        "Language development",
+        "Key concepts",
+        "Biological explanation of language acquisition",
+        "Learning theory of language development",
+        "Piaget’s cognitive theory of language development"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Language development."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    }
+  ]
+}

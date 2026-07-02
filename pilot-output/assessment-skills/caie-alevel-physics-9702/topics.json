@@ -1,0 +1,290 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "caie-alevel-physics-9702",
+      "topic_name": "CAIE IGCSE Physics",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Physics (9702) syllabus scope.",
+        "Valid: 2025 → 2026."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-physics-9702-t001",
+      "topic_name": "1. Why choose this syllabus?",
+      "parent_id": "caie-alevel-physics-9702",
+      "scope": [
+        "Why choose this syllabus?",
+        "Physical quantities",
+        "SI units",
+        "Errors and uncertainties",
+        "Scalars and vectors"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Why choose this syllabus?."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-physics-9702-t002",
+      "topic_name": "2. Syllabus overview",
+      "parent_id": "caie-alevel-physics-9702",
+      "scope": [
+        "Syllabus overview",
+        "Equations of motion"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Syllabus overview."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-physics-9702-t003",
+      "topic_name": "3. Dynamics",
+      "parent_id": "caie-alevel-physics-9702",
+      "scope": [
+        "Dynamics",
+        "Momentum and Newton’s laws of motion",
+        "Non-uniform motion",
+        "Linear momentum and its conservation"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Dynamics."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-physics-9702-t004",
+      "topic_name": "4. Forces, density and pressure",
+      "parent_id": "caie-alevel-physics-9702",
+      "scope": [
+        "Forces, density and pressure",
+        "Turning effects of forces",
+        "Equilibrium of forces",
+        "Density and pressure"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Forces, density and pressure."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-physics-9702-t005",
+      "topic_name": "5. Work, energy and power",
+      "parent_id": "caie-alevel-physics-9702",
+      "scope": [
+        "Work, energy and power",
+        "Energy conservation",
+        "Gravitational potential energy and kinetic energy"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Work, energy and power."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-physics-9702-t007",
+      "topic_name": "7. Waves",
+      "parent_id": "caie-alevel-physics-9702",
+      "scope": [
+        "Waves",
+        "Progressive waves",
+        "Transverse and longitudinal waves",
+        "Doppler effect for sound waves",
+        "Electromagnetic spectrum",
+        "Polarisation"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Waves."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-physics-9702-t009",
+      "topic_name": "9. Electricity",
+      "parent_id": "caie-alevel-physics-9702",
+      "scope": [
+        "Electricity",
+        "Electric current",
+        "Potential difference and power",
+        "Resistance and resistivity"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Electricity."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-physics-9702-t012",
+      "topic_name": "12. Motion in a circle",
+      "parent_id": "caie-alevel-physics-9702",
+      "scope": [
+        "Motion in a circle",
+        "Kinematics of uniform circular motion",
+        "Centripetal acceleration"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Motion in a circle."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-physics-9702-t016",
+      "topic_name": "16. Thermodynamics",
+      "parent_id": "caie-alevel-physics-9702",
+      "scope": [
+        "Thermodynamics",
+        "Internal energy",
+        "The first law of thermodynamics"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Thermodynamics."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-physics-9702-t017",
+      "topic_name": "17. Oscillations",
+      "parent_id": "caie-alevel-physics-9702",
+      "scope": [
+        "Oscillations",
+        "Simple harmonic oscillations",
+        "Energy in simple harmonic motion",
+        "Damped and forced oscillations, resonance"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Oscillations."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-physics-9702-t020",
+      "topic_name": "20. Magnetic fields",
+      "parent_id": "caie-alevel-physics-9702",
+      "scope": [
+        "Magnetic fields",
+        "Concept of a magnetic field",
+        "Force on a current-carrying conductor",
+        "Force on a moving charge",
+        "Magnetic fields due to currents",
+        "Electromagnetic induction"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Magnetic fields."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-physics-9702-t023",
+      "topic_name": "23. Nuclear physics",
+      "parent_id": "caie-alevel-physics-9702",
+      "scope": [
+        "Nuclear physics",
+        "Mass defect and nuclear binding energy",
+        "Radioactive decay"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Nuclear physics."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    }
+  ]
+}

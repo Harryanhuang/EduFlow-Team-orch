@@ -1,0 +1,8 @@
+[
+  {
+    "axis": "source",
+    "severity": "P1",
+    "issue": "document_version 'Effective Fall 2025' does not match any Fall YYYY in PDF (['Fall 2022'])",
+    "fix": "Set document_version to 'Effective Fall 2022'"
+  }
+]

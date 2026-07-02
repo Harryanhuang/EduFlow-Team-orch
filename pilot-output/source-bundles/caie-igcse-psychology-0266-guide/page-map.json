@@ -1,0 +1,93 @@
+{
+  "schema_version": "1",
+  "source_id": "primary_syllabus",
+  "page_ref_convention": "printed_page",
+  "physical_page_offset_note": "printed_page ≈ physical_page for CAIE IGCSE syllabi.",
+  "mappings": [
+    {
+      "target": "assessment_identity.system",
+      "page_refs": [
+        "title page (physical 1)"
+      ],
+      "evidence_note": "Cambridge IGCSE syllabus publication."
+    },
+    {
+      "target": "assessment_identity.valid_from",
+      "page_refs": [
+        "title page (physical 1)"
+      ],
+      "evidence_note": "Syllabus valid 2027 → 2029."
+    },
+    {
+      "target": "topics.caie-igcse-psychology-0266.scope",
+      "page_refs": [
+        "p.5-9"
+      ],
+      "evidence_note": "Aims, content overview, assessment overview."
+    },
+    {
+      "target": "topics.caie-igcse-psychology-0266-t001.scope",
+      "page_refs": [
+        "p.10-12"
+      ],
+      "evidence_note": "Topic 1: Why choose this syllabus?."
+    },
+    {
+      "target": "topics.caie-igcse-psychology-0266-t002.scope",
+      "page_refs": [
+        "p.12-14"
+      ],
+      "evidence_note": "Topic 2: Syllabus overview."
+    },
+    {
+      "target": "topics.caie-igcse-psychology-0266-t003.scope",
+      "page_refs": [
+        "p.14-16"
+      ],
+      "evidence_note": "Topic 3: Prosocial behaviour."
+    },
+    {
+      "target": "topics.caie-igcse-psychology-0266-t004.scope",
+      "page_refs": [
+        "p.16-18"
+      ],
+      "evidence_note": "Topic 4: Visual perception."
+    },
+    {
+      "target": "topics.caie-igcse-psychology-0266-t005.scope",
+      "page_refs": [
+        "p.18-20"
+      ],
+      "evidence_note": "Topic 5: Motivation and needs."
+    },
+    {
+      "target": "topics.caie-igcse-psychology-0266-t006.scope",
+      "page_refs": [
+        "p.20-22"
+      ],
+      "evidence_note": "Topic 6: Language development."
+    },
+    {
+      "target": "assessment.papers",
+      "page_refs": [
+        "p.45-49"
+      ],
+      "evidence_note": "Paper structure, durations, weighting."
+    },
+    {
+      "target": "assessment.assessment_objectives",
+      "page_refs": [
+        "p.8-9"
+      ],
+      "evidence_note": "AO definitions in Section 2."
+    },
+    {
+      "target": "assessment.question_styles",
+      "page_refs": [
+        "p.46-47"
+      ],
+      "evidence_note": "Question styles and command words."
+    }
+  ],
+  "draft_notes": []
+}

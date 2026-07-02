@@ -585,6 +585,19 @@ worker_to_manager = true
 user_to_user = true
 user_to_manager = true
 
+[team.agents.worker_syllabus]
+runtime = "course_backup_kimi"
+role  = "考纲技能专员。负责根据学科考纲（syllabus）生成标准化的考纲 skill 文件，覆盖 AP/A-Level/IGCSE/IB/DSE 等国际课程体系的各学科。"
+specialty = ["考纲分析", "skill 生成", "学科知识结构化", "syllabus标准化"]
+tone = "严谨、结构化、以考纲为准"
+notes = "你只接 manager 的正式派单。你的目标是根据学科考纲（syllabus）生成标准化的考纲 skill 文件。职责范围：AP/A-Level/IGCSE/IB/DSE 等国际课程体系的各学科考纲 skill 生成。若任务本质不是考纲 skill 生成，而是课程教研、题库或系统问题，立刻回 manager 重判。外显规则：接单后必须用 eduflow say worker_syllabus \"任务已接单：<一句话任务>\" --to user；真正开始处理后用 \"任务已开始处理：<第一步>\" 或 \"阶段进度：<已做/正在做/下一步>\" 做短 ACK；完工后用 \"已交接：<产物>，等待 manager 审核\"。细节和长报告只 send 给 manager。"
+card_color = "indigo"
+category = "course"
+lazy = false
+
+[team.agents.worker_syllabus.publish_overrides]
+worker_to_user = true
+
 # ── [chat.publish]  群里能看到什么消息 ─────────────────────
 # sender→receiver 维度过滤; 角色: user (老板) / manager / worker
 # 值: true=进群发卡  false=只走 send/inbox 不进群  "always"=不可关
@@ -619,7 +632,7 @@ ready_marker_timeout_s = 60
 # silent-drop 不重连; 紧阈值让 self-restart + catchup 在 ~2 min 内补回
 # 漏的事件而不是 ~10 min. Linux WebSocket 稳定, 600s 避免空闲群被反复
 # 重启 (180s 太紧, 1200s 太松, 都踩过坑).
-stale_event_threshold_s     = 1800
+stale_event_threshold_s     = 3600  # 2026-07-02 R-fix-B: 1800 -> 3600 (less thrash)
 lark_call_timeout_s            = 90     # 单次 lark-cli 调用超时
 alarm_card_color               = "red"  # 守护进入 cooldown 时报警卡片颜色
 seen_max_lines                 = 5000   # router.seen 去重表 trim 阈值

@@ -1,0 +1,670 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "caie-igcse-biology-0610",
+      "topic_name": "CAIE IGCSE Biology",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Biology (0610) syllabus scope.",
+        "Valid: 2023 → 2025."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-biology-0610-core",
+      "topic_name": "Core (grades C-G)",
+      "parent_id": "caie-igcse-biology-0610",
+      "scope": [
+        "Paper 1 (MCQ) and Paper 3 (theory) at Core tier; candidates can achieve C-G."
+      ],
+      "out_of_scope": [],
+      "classification_hints": [
+        "Items written for grades C-G; recall and application of core syllabus objectives."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-biology-0610-extended",
+      "topic_name": "Extended (grades A*-G)",
+      "parent_id": "caie-igcse-biology-0610",
+      "scope": [
+        "Paper 2 (MCQ) and Paper 4 (theory) at Extended tier; covers Core + Supplement; grades A*-G."
+      ],
+      "out_of_scope": [],
+      "classification_hints": [
+        "Items requiring Supplement-level depth; cross-topic synthesis."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-biology-0610-t001",
+      "topic_name": "1. Why choose this syllabus?",
+      "parent_id": "caie-igcse-biology-0610",
+      "scope": [
+        "Why choose this syllabus?",
+        "Characteristics of living organisms",
+        "Concept and uses of classification systems",
+        "Features of organisms"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Why choose this syllabus?."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-biology-0610-t002",
+      "topic_name": "2. Syllabus overview",
+      "parent_id": "caie-igcse-biology-0610",
+      "scope": [
+        "Syllabus overview",
+        "Cell structure",
+        "Size of specimens"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Syllabus overview."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-biology-0610-t003",
+      "topic_name": "3. Movement into and out of cells",
+      "parent_id": "caie-igcse-biology-0610",
+      "scope": [
+        "Movement into and out of cells",
+        "Diffusion",
+        "Osmosis",
+        "Active transport"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Movement into and out of cells."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-biology-0610-t004",
+      "topic_name": "4. Biological molecules",
+      "parent_id": "caie-igcse-biology-0610",
+      "scope": [
+        "Biological molecules",
+        "Biological molecules"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Biological molecules."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-biology-0610-t005",
+      "topic_name": "5. Enzymes",
+      "parent_id": "caie-igcse-biology-0610",
+      "scope": [
+        "Enzymes",
+        "Enzymes"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Enzymes."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-biology-0610-t006",
+      "topic_name": "6. Plant nutrition",
+      "parent_id": "caie-igcse-biology-0610",
+      "scope": [
+        "Plant nutrition",
+        "Photosynthesis",
+        "Photosynthesis continued",
+        "Leaf structure"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Plant nutrition."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-biology-0610-t007",
+      "topic_name": "7. Human nutrition",
+      "parent_id": "caie-igcse-biology-0610",
+      "scope": [
+        "Human nutrition",
+        "Digestive system",
+        "Physical digestion",
+        "Chemical digestion",
+        "Absorption"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Human nutrition."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-biology-0610-t008",
+      "topic_name": "8. Transport in plants",
+      "parent_id": "caie-igcse-biology-0610",
+      "scope": [
+        "Transport in plants",
+        "Xylem and phloem",
+        "Water uptake",
+        "Transpiration",
+        "Translocation"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Transport in plants."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-biology-0610-t009",
+      "topic_name": "9. Transport in animals",
+      "parent_id": "caie-igcse-biology-0610",
+      "scope": [
+        "Transport in animals",
+        "Circulatory systems",
+        "Heart",
+        "Blood vessels",
+        "Blood"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Transport in animals."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-biology-0610-t010",
+      "topic_name": "10. Diseases and immunity",
+      "parent_id": "caie-igcse-biology-0610",
+      "scope": [
+        "Diseases and immunity",
+        "Diseases and immunity",
+        "Diseases and immunity continued"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Diseases and immunity."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-biology-0610-t011",
+      "topic_name": "11. Gas exchange in humans",
+      "parent_id": "caie-igcse-biology-0610",
+      "scope": [
+        "Gas exchange in humans",
+        "Gas exchange in humans"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Gas exchange in humans."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-biology-0610-t012",
+      "topic_name": "12. Respiration",
+      "parent_id": "caie-igcse-biology-0610",
+      "scope": [
+        "Respiration",
+        "Respiration",
+        "Aerobic respiration",
+        "Anaerobic respiration",
+        "Anaerobic respiration continued"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Respiration."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-biology-0610-t013",
+      "topic_name": "13. Excretion in humans",
+      "parent_id": "caie-igcse-biology-0610",
+      "scope": [
+        "Excretion in humans",
+        "Excretion in humans"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Excretion in humans."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-biology-0610-t014",
+      "topic_name": "14. Coordination and response",
+      "parent_id": "caie-igcse-biology-0610",
+      "scope": [
+        "Coordination and response",
+        "Coordination and response",
+        "Sense organs",
+        "Hormones",
+        "Homeostasis",
+        "Tropic responses"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Coordination and response."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-biology-0610-t015",
+      "topic_name": "15. Drugs",
+      "parent_id": "caie-igcse-biology-0610",
+      "scope": [
+        "Drugs",
+        "Drugs"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Drugs."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-biology-0610-t016",
+      "topic_name": "16. Reproduction",
+      "parent_id": "caie-igcse-biology-0610",
+      "scope": [
+        "Reproduction",
+        "Asexual reproduction",
+        "Sexual reproduction",
+        "Sexual reproduction in plants",
+        "Sexual reproduction in plants continued",
+        "Sexual reproduction in humans",
+        "Sexual hormones in humans",
+        "Sexually transmitted infections"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Reproduction."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-biology-0610-t017",
+      "topic_name": "17. Inheritance",
+      "parent_id": "caie-igcse-biology-0610",
+      "scope": [
+        "Inheritance",
+        "Chromosomes, genes and proteins",
+        "Chromosomes, genes and proteins continued",
+        "Mitosis",
+        "Meiosis",
+        "Monohybrid inheritance",
+        "Monohybrid inheritance continued"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Inheritance."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-biology-0610-t018",
+      "topic_name": "18. Variation and selection",
+      "parent_id": "caie-igcse-biology-0610",
+      "scope": [
+        "Variation and selection",
+        "Variation",
+        "Adaptive features",
+        "Selection"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Variation and selection."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-biology-0610-t019",
+      "topic_name": "19. Organisms and their environment",
+      "parent_id": "caie-igcse-biology-0610",
+      "scope": [
+        "Organisms and their environment",
+        "Energy flow",
+        "Food chains and food webs",
+        "Food chains and food webs continued",
+        "Nutrient cycles",
+        "Populations"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Organisms and their environment."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-biology-0610-t020",
+      "topic_name": "20. Human influences on ecosystems",
+      "parent_id": "caie-igcse-biology-0610",
+      "scope": [
+        "Human influences on ecosystems",
+        "Food supply",
+        "Habitat destruction",
+        "Pollution",
+        "Conservation"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Human influences on ecosystems."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-biology-0610-t021",
+      "topic_name": "21. Biotechnology and genetic modification",
+      "parent_id": "caie-igcse-biology-0610",
+      "scope": [
+        "Biotechnology and genetic modification",
+        "Biotechnology and genetic modification",
+        "Biotechnology",
+        "Genetic modification",
+        "Genetic modification continued"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Biotechnology and genetic modification."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    }
+  ]
+}

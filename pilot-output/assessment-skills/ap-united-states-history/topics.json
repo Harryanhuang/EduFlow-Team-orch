@@ -1,0 +1,348 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "ap-united-states-history",
+      "topic_name": "AP United States History",
+      "parent_id": "",
+      "scope": [
+        "AP United States History course framework (College Board).",
+        "Valid: 2025 → (ongoing).",
+        "Units 1–9 with cumulative exam weightings."
+      ],
+      "out_of_scope": [
+        "Pre-AP / general high-school level content unless explicitly cited in CED.",
+        "University-level content beyond AP expectations.",
+        "Other AP subjects."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific unit fits.",
+        "Prefer specific Unit N nodes for content questions."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-united-states-history-unit01",
+      "topic_name": "Unit 1: Period 1: 1491–1607",
+      "parent_id": "ap-united-states-history",
+      "scope": [
+        "Unit 1 content as defined in AP United States History CED.",
+        "Exam weighting: 4–6%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Period 1: 1491–1607."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_1.1",
+          "text": "Core content and concepts for Unit 1: Period 1: 1491–1607."
+        },
+        {
+          "ek_id": "EK_1.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 1: Period 1: 1491–1607."
+        },
+        {
+          "ek_id": "EK_1.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 1: Period 1: 1491–1607."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-united-states-history-unit02",
+      "topic_name": "Unit 2: Period 2: 1607–1754",
+      "parent_id": "ap-united-states-history",
+      "scope": [
+        "Unit 2 content as defined in AP United States History CED.",
+        "Exam weighting: 6–8%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Period 2: 1607–1754."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_2.1",
+          "text": "Core content and concepts for Unit 2: Period 2: 1607–1754."
+        },
+        {
+          "ek_id": "EK_2.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 2: Period 2: 1607–1754."
+        },
+        {
+          "ek_id": "EK_2.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 2: Period 2: 1607–1754."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-united-states-history-unit03",
+      "topic_name": "Unit 3: Period 3: 1754–1800",
+      "parent_id": "ap-united-states-history",
+      "scope": [
+        "Unit 3 content as defined in AP United States History CED.",
+        "Exam weighting: 10–17%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Period 3: 1754–1800."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_3.1",
+          "text": "Core content and concepts for Unit 3: Period 3: 1754–1800."
+        },
+        {
+          "ek_id": "EK_3.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 3: Period 3: 1754–1800."
+        },
+        {
+          "ek_id": "EK_3.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 3: Period 3: 1754–1800."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-united-states-history-unit04",
+      "topic_name": "Unit 4: Period 4: 1800–1848",
+      "parent_id": "ap-united-states-history",
+      "scope": [
+        "Unit 4 content as defined in AP United States History CED.",
+        "Exam weighting: 10–17%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Period 4: 1800–1848."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_4.1",
+          "text": "Core content and concepts for Unit 4: Period 4: 1800–1848."
+        },
+        {
+          "ek_id": "EK_4.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 4: Period 4: 1800–1848."
+        },
+        {
+          "ek_id": "EK_4.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 4: Period 4: 1800–1848."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-united-states-history-unit05",
+      "topic_name": "Unit 5: Period 5: 1844–1877",
+      "parent_id": "ap-united-states-history",
+      "scope": [
+        "Unit 5 content as defined in AP United States History CED.",
+        "Exam weighting: 10–17%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Period 5: 1844–1877."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_5.1",
+          "text": "Core content and concepts for Unit 5: Period 5: 1844–1877."
+        },
+        {
+          "ek_id": "EK_5.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 5: Period 5: 1844–1877."
+        },
+        {
+          "ek_id": "EK_5.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 5: Period 5: 1844–1877."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-united-states-history-unit06",
+      "topic_name": "Unit 6: Period 6: 1865–1898",
+      "parent_id": "ap-united-states-history",
+      "scope": [
+        "Unit 6 content as defined in AP United States History CED.",
+        "Exam weighting: 10–17%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Period 6: 1865–1898."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_6.1",
+          "text": "Core content and concepts for Unit 6: Period 6: 1865–1898."
+        },
+        {
+          "ek_id": "EK_6.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 6: Period 6: 1865–1898."
+        },
+        {
+          "ek_id": "EK_6.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 6: Period 6: 1865–1898."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-united-states-history-unit07",
+      "topic_name": "Unit 7: Period 7: 1890–1945",
+      "parent_id": "ap-united-states-history",
+      "scope": [
+        "Unit 7 content as defined in AP United States History CED.",
+        "Exam weighting: 10–17%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Period 7: 1890–1945."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_7.1",
+          "text": "Core content and concepts for Unit 7: Period 7: 1890–1945."
+        },
+        {
+          "ek_id": "EK_7.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 7: Period 7: 1890–1945."
+        },
+        {
+          "ek_id": "EK_7.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 7: Period 7: 1890–1945."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-united-states-history-unit08",
+      "topic_name": "Unit 8: Period 8: 1945–1980",
+      "parent_id": "ap-united-states-history",
+      "scope": [
+        "Unit 8 content as defined in AP United States History CED.",
+        "Exam weighting: 10–17%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Period 8: 1945–1980."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_8.1",
+          "text": "Core content and concepts for Unit 8: Period 8: 1945–1980."
+        },
+        {
+          "ek_id": "EK_8.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 8: Period 8: 1945–1980."
+        },
+        {
+          "ek_id": "EK_8.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 8: Period 8: 1945–1980."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-united-states-history-unit09",
+      "topic_name": "Unit 9: Period 9: 1980–Present",
+      "parent_id": "ap-united-states-history",
+      "scope": [
+        "Unit 9 content as defined in AP United States History CED.",
+        "Exam weighting: 4–6%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Period 9: 1980–Present."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_9.1",
+          "text": "Kevin Byrne, Gustavus Adolphus College, St"
+        },
+        {
+          "ek_id": "EK_9.2",
+          "text": "John Rosinbum, Director, AP U"
+        },
+        {
+          "ek_id": "EK_9.3",
+          "text": "AP U.S. History Course and Exam Description                                                                               \u0007 V"
+        },
+        {
+          "ek_id": "EK_9.4",
+          "text": "THIS PAGE IS INTENTIONALLY LEFT BLANK"
+        },
+        {
+          "ek_id": "EK_9.5",
+          "text": "Individual teachers are responsible for designing            is optional, the AP Program"
+        }
+      ]
+    }
+  ]
+}

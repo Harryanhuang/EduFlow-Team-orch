@@ -1,0 +1,49 @@
+{
+  "schema_version": "1",
+  "id": "caie-igcse-economics-0455",
+  "assessment_type": "syllabus",
+  "system": "CAIE IGCSE",
+  "board_or_owner": "Cambridge Assessment International Education",
+  "subject": "Economics",
+  "level": "IGCSE (14-16 years)",
+  "assessment_code": "0455",
+  "valid_from": "2023",
+  "valid_to": "2025",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_syllabus",
+      "title": "Cambridge IGCSE Economics 0455 syllabus (2023-2025)",
+      "url": "https://www.cambridgeinternational.org/Images/596138-2023-2025-syllabus.pdf",
+      "source_document_type": "syllabus",
+      "source_layout_profile": "caie_igcse_syllabus",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/01-IGCSE知识库/03-学科知识/CAIE/Economics (0455)/02-课本与考纲/考纲/CAIE_Economics_0455_Syllabus_2025-2026.pdf",
+      "file_checksum_sha256": "b57fc6edc536207ee731851d17bdcb376653c1760988567e7a8ca97fb7e25d31",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "2025-2026 reprint of 2023-2025 syllabus",
+      "retrieved_at": "2026-06-30",
+      "page_refs": [
+        "p.1-30"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "printed_page ≈ physical_page for CAIE IGCSE syllabi.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text.",
+      "notes": "Source bundle lives at pilot-output/source-bundles/caie-igcse-economics-0455-guide/."
+    }
+  ],
+  "aliases": [
+    "igcse economics",
+    "cambridge economics 0455",
+    "caie economics"
+  ],
+  "canonical_id": "caie-igcse-economics-0455",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "Cambridge IGCSE Economics 0455. Single-tier; covers microeconomics, macroeconomics, and economics of individual countries and international trade."
+}

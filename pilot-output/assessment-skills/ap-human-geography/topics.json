@@ -1,0 +1,280 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "ap-human-geography",
+      "topic_name": "AP Human Geography",
+      "parent_id": "",
+      "scope": [
+        "AP Human Geography course framework (College Board).",
+        "Valid: 2025 → (ongoing).",
+        "Units 1–7 with cumulative exam weightings."
+      ],
+      "out_of_scope": [
+        "Pre-AP / general high-school level content unless explicitly cited in CED.",
+        "University-level content beyond AP expectations.",
+        "Other AP subjects."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific unit fits.",
+        "Prefer specific Unit N nodes for content questions."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-human-geography-unit01",
+      "topic_name": "Unit 1: Thinking Geographically",
+      "parent_id": "ap-human-geography",
+      "scope": [
+        "Unit 1 content as defined in AP Human Geography CED.",
+        "Exam weighting: 8–10%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Thinking Geographically."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_1.1",
+          "text": "Core content and concepts for Unit 1: Thinking Geographically."
+        },
+        {
+          "ek_id": "EK_1.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 1: Thinking Geographically."
+        },
+        {
+          "ek_id": "EK_1.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 1: Thinking Geographically."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-human-geography-unit02",
+      "topic_name": "Unit 2: Population and Migration Patterns and Processes",
+      "parent_id": "ap-human-geography",
+      "scope": [
+        "Unit 2 content as defined in AP Human Geography CED.",
+        "Exam weighting: 12–17%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Population and Migration Patterns and Processes."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_2.1",
+          "text": "Core content and concepts for Unit 2: Population and Migration Patterns and Processes."
+        },
+        {
+          "ek_id": "EK_2.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 2: Population and Migration Patterns and Processes."
+        },
+        {
+          "ek_id": "EK_2.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 2: Population and Migration Patterns and Processes."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-human-geography-unit03",
+      "topic_name": "Unit 3: Cultural Patterns and Processes",
+      "parent_id": "ap-human-geography",
+      "scope": [
+        "Unit 3 content as defined in AP Human Geography CED.",
+        "Exam weighting: 12–17%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Cultural Patterns and Processes."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_3.1",
+          "text": "Core content and concepts for Unit 3: Cultural Patterns and Processes."
+        },
+        {
+          "ek_id": "EK_3.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 3: Cultural Patterns and Processes."
+        },
+        {
+          "ek_id": "EK_3.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 3: Cultural Patterns and Processes."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-human-geography-unit04",
+      "topic_name": "Unit 4: Political Patterns and Processes",
+      "parent_id": "ap-human-geography",
+      "scope": [
+        "Unit 4 content as defined in AP Human Geography CED.",
+        "Exam weighting: 12–17%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Political Patterns and Processes."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_4.1",
+          "text": "Core content and concepts for Unit 4: Political Patterns and Processes."
+        },
+        {
+          "ek_id": "EK_4.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 4: Political Patterns and Processes."
+        },
+        {
+          "ek_id": "EK_4.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 4: Political Patterns and Processes."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-human-geography-unit05",
+      "topic_name": "Unit 5: Agriculture and Rural Land-Use Patterns and Processes",
+      "parent_id": "ap-human-geography",
+      "scope": [
+        "Unit 5 content as defined in AP Human Geography CED.",
+        "Exam weighting: 12–17%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Agriculture and Rural Land-Use Patterns and Processes."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_5.1",
+          "text": "Core content and concepts for Unit 5: Agriculture and Rural Land-Use Patterns and Processes."
+        },
+        {
+          "ek_id": "EK_5.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 5: Agriculture and Rural Land-Use Patterns and Processes."
+        },
+        {
+          "ek_id": "EK_5.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 5: Agriculture and Rural Land-Use Patterns and Processes."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-human-geography-unit06",
+      "topic_name": "Unit 6: Cities and Urban Land-Use Patterns and Processes",
+      "parent_id": "ap-human-geography",
+      "scope": [
+        "Unit 6 content as defined in AP Human Geography CED.",
+        "Exam weighting: 12–17%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Cities and Urban Land-Use Patterns and Processes."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_6.1",
+          "text": "Core content and concepts for Unit 6: Cities and Urban Land-Use Patterns and Processes."
+        },
+        {
+          "ek_id": "EK_6.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 6: Cities and Urban Land-Use Patterns and Processes."
+        },
+        {
+          "ek_id": "EK_6.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 6: Cities and Urban Land-Use Patterns and Processes."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-human-geography-unit07",
+      "topic_name": "Unit 7: Industrial and Economic Development Patterns and Processes",
+      "parent_id": "ap-human-geography",
+      "scope": [
+        "Unit 7 content as defined in AP Human Geography CED.",
+        "Exam weighting: 12–17%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Industrial and Economic Development Patterns and Processes."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_7.1",
+          "text": "THIS PAGE IS INTENTIONALLY LEFT BLANK"
+        },
+        {
+          "ek_id": "EK_7.2",
+          "text": "Louisville, KY, for her assistance with the development of this curriculum"
+        },
+        {
+          "ek_id": "EK_7.3",
+          "text": "AP Human Geography Course and Exam Description                                                                     ﻿ V"
+        },
+        {
+          "ek_id": "EK_7.4",
+          "text": "THIS PAGE IS INTENTIONALLY LEFT BLANK"
+        },
+        {
+          "ek_id": "EK_7.5",
+          "text": "This course and exam description presents the content       Placement” or “AP"
+        }
+      ]
+    }
+  ]
+}

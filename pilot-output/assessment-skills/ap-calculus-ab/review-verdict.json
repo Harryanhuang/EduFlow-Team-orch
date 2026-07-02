@@ -1,0 +1,56 @@
+{
+  "schema_version": "2",
+  "skill_id": "ap-calculus-ab",
+  "reviewer": "review-syllabus-skill/strict_v2",
+  "reviewed_at": "2026-07-02",
+  "verdict": "fail",
+  "axes": {
+    "A_pdf_identity": {
+      "verdict": "pass",
+      "notes": "ok"
+    },
+    "B_topic_match": {
+      "verdict": "pass",
+      "notes": "ok",
+      "expected_units": 10,
+      "actual_units": 10,
+      "generic_topic_count": 0,
+      "empty_shell_count": 0
+    },
+    "C_ek_truth": {
+      "verdict": "fail",
+      "notes": "generic_ek=0 real_ek=0 empty_ek=25 pdf_mentions=277; PDF has 277 LO/EK mentions but skill has 0 real EK",
+      "generic_ek_count": 0,
+      "real_ek_count": 0,
+      "empty_ek_count": 25
+    },
+    "D_assessment": {
+      "verdict": "pass",
+      "notes": "ok",
+      "pdf_mcq": 45,
+      "skill_mcq": 45,
+      "pdf_frq": 6,
+      "skill_frq": 6,
+      "pdf_has_pt": false
+    },
+    "E_contamination": {
+      "verdict": "pass",
+      "notes": "ok"
+    }
+  },
+  "field_completeness": {
+    "metadata": true,
+    "topics": true,
+    "assessment": true,
+    "skill_md": true,
+    "examples": true
+  },
+  "deviations": [
+    {
+      "severity": "P0",
+      "field": "C",
+      "issue": "generic_ek=0 real_ek=0 empty_ek=25 pdf_mentions=277; PDF has 277 LO/EK mentions but skill has 0 real EK",
+      "fix": "(see notes)"
+    }
+  ]
+}

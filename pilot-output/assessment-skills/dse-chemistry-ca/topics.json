@@ -1,0 +1,863 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "dse-chemistry-ca",
+      "topic_name": "DSE Chemistry",
+      "parent_id": "",
+      "scope": [
+        "Hong Kong DSE Chemistry curriculum (S4-S6)",
+        "Compulsory part (12 topics) and elective part (choose 2 of 3 topics)",
+        "Public exam: Paper 1 (compulsory), Paper 2 (elective), SBA (practical/inquiry skills)"
+      ],
+      "out_of_scope": [
+        "Non-DSE chemistry curricula unless explicitly compared",
+        "University-level chemistry",
+        "Teacher pedagogy, school administration, resource selection"
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits",
+        "Prefer compulsory/elective subdivision nodes for broad queries"
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "dse-chemistry-compulsory",
+      "topic_name": "Compulsory Part",
+      "parent_id": "dse-chemistry-ca",
+      "scope": [
+        "Twelve compulsory topics assessed in Paper 1",
+        "Approximately 182 curriculum hours"
+      ],
+      "out_of_scope": [
+        "Elective topics (Paper 2 only)",
+        "Topic 16 investigative study (SBA context only)"
+      ],
+      "classification_hints": [
+        "Route ordinary chemistry content here unless it clearly matches an elective",
+        "Use the specific topic node, not this parent, for final classification"
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "chem-earth",
+      "topic_name": "Earth",
+      "parent_id": "dse-chemistry-compulsory",
+      "scope": [
+        "Atmosphere, oceans and crust as sources of chemicals",
+        "Physical separation methods: evaporation, distillation, crystallisation, filtration",
+        "Chemical tests for water and sodium/chloride in salt",
+        "Chemical changes: thermal decomposition of silver oxide, action of heat/water/acid on calcium carbonate",
+        "Conservation of natural resources and safe disposal"
+      ],
+      "out_of_scope": [
+        "Detailed atmospheric chemistry beyond composition",
+        "Industrial extraction methods for metals (covered in Metals and Redox)",
+        "Quantitative separation yield calculations"
+      ],
+      "classification_hints": [
+        "Look for keywords: sea water, salt extraction, distillation, crystallisation, filtration, natural resources",
+        "Items about separating sand/salt/sugar mixtures belong here"
+      ],
+      "common_misconceptions": [
+        "Confusing filtration with evaporation",
+        "Thinking all mixtures can be separated by a single method"
+      ],
+      "common_misclassifications": [
+        {
+          "confused_with": "chem-metals",
+          "reason": "Metal ores may appear, but extraction methods and reactivity are in Metals."
+        }
+      ],
+      "prerequisite_topics": [],
+      "overlap_links": [
+        {
+          "target_skill_id": "dse-chemistry-ca",
+          "target_topic_id": "chem-metals",
+          "relation": "later_extension",
+          "notes": "Natural resources link to metal ores and recycling."
+        }
+      ],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "chem-microscopic-world-i",
+      "topic_name": "Microscopic World I",
+      "parent_id": "dse-chemistry-compulsory",
+      "scope": [
+        "Atomic structure: protons, neutrons, electrons; atomic number and mass number",
+        "Electronic structure and the periodic table",
+        "Ionic, covalent and metallic bonding; electron diagrams",
+        "Structure-property relationships for giant ionic, giant covalent and simple molecular substances",
+        "Chemical formulae and naming of ionic/covalent compounds",
+        "Relative atomic/molecular mass and basic stoichiometric ideas"
+      ],
+      "out_of_scope": [
+        "Polarity and intermolecular forces (Microscopic World II)",
+        "Mole calculations beyond formula mass (Metals / Acids)",
+        "Shapes of molecules / VSEPR (Microscopic World II)"
+      ],
+      "classification_hints": [
+        "Look for: atomic structure, bonding types, electron diagrams, formula/naming, structure-property links",
+        "Distinguish from Microscopic World II by absence of polarity, IMF, hydrogen bonding"
+      ],
+      "common_misconceptions": [
+        "Intermolecular forces are chemical bonds",
+        "Ionic compounds form molecules"
+      ],
+      "common_misclassifications": [
+        {
+          "confused_with": "chem-microscopic-world-ii",
+          "reason": "Both cover bonding and structure; II adds polarity, IMF, hydrogen bonding and VSEPR."
+        }
+      ],
+      "prerequisite_topics": [],
+      "overlap_links": [
+        {
+          "target_skill_id": "dse-chemistry-ca",
+          "target_topic_id": "chem-microscopic-world-ii",
+          "relation": "later_extension",
+          "notes": "Extends bonding to polarity and intermolecular forces."
+        },
+        {
+          "target_skill_id": "dse-chemistry-ca",
+          "target_topic_id": "chem-metals",
+          "relation": "prerequisite",
+          "notes": "Bonding and formulae needed for metal reactions and stoichiometry."
+        }
+      ],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "chem-metals",
+      "topic_name": "Metals",
+      "parent_id": "dse-chemistry-compulsory",
+      "scope": [
+        "Occurrence of metals and metal ores; metal recycling",
+        "Reactions of common metals with oxygen, water and dilute acids",
+        "Metal reactivity series and displacement reactions",
+        "Mole concept, Avogadro constant, molar mass, empirical and molecular formulae",
+        "Stoichiometric calculations including reacting masses and limiting reagents",
+        "Metal corrosion and rust prevention"
+      ],
+      "out_of_scope": [
+        "Detailed metallurgy/electrolytic extraction (Redox/Electrolysis)",
+        "Transition metal chemistry (Patterns in the Chemical World)",
+        "Alloys (Materials Chemistry elective)"
+      ],
+      "classification_hints": [
+        "Look for: reactivity series, displacement, mole calculations, empirical formula, rusting, recycling",
+        "Items requiring mole stoichiometry for the first time often belong here"
+      ],
+      "common_misconceptions": [
+        "All metals react with water",
+        "Rust is the same as general corrosion"
+      ],
+      "common_misclassifications": [
+        {
+          "confused_with": "chem-redox-electrochemistry",
+          "reason": "Displacement reactions are redox, but systematic redox/electrolysis is in topic 7."
+        }
+      ],
+      "prerequisite_topics": [
+        "chem-microscopic-world-i"
+      ],
+      "overlap_links": [
+        {
+          "target_skill_id": "dse-chemistry-ca",
+          "target_topic_id": "chem-redox-electrochemistry",
+          "relation": "later_extension",
+          "notes": "Redox explanations of metal displacement and corrosion."
+        }
+      ],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "chem-acids-bases",
+      "topic_name": "Acids and Bases",
+      "parent_id": "dse-chemistry-compulsory",
+      "scope": [
+        "Acid and base properties; hydroxide ions and hydrogen ions",
+        "Indicators (litmus, methyl orange, phenolphthalein) and pH scale",
+        "Strong/weak acids and alkalis; neutralisation",
+        "Molar concentration and related calculations",
+        "Acid-base titrations and standard solutions",
+        "Preparation of salts by neutralisation, carbonate reaction, direct combination"
+      ],
+      "out_of_scope": [
+        "Buffer solutions and pH calculations involving Ka (beyond guide)",
+        "Organic acid reactions beyond simple neutralisation (Carbon Compounds)"
+      ],
+      "classification_hints": [
+        "Look for: pH, indicator colour changes, titration, salt preparation, neutralisation, molarity",
+        "Distinguish from Redox by absence of oxidation number/electron transfer"
+      ],
+      "common_misconceptions": [
+        "Strong acids have the highest pH",
+        "Neutralisation always gives pH 7 for weak acid/alkali salts"
+      ],
+      "common_misclassifications": [
+        {
+          "confused_with": "chem-chemical-energetics",
+          "reason": "Neutralisation enthalpy appears in energetics, but acid-base concepts belong here."
+        }
+      ],
+      "prerequisite_topics": [
+        "chem-microscopic-world-i",
+        "chem-metals"
+      ],
+      "overlap_links": [
+        {
+          "target_skill_id": "dse-chemistry-ca",
+          "target_topic_id": "chem-chemical-energetics",
+          "relation": "related",
+          "notes": "Enthalpy of neutralisation links the two topics."
+        }
+      ],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "chem-fossil-fuels-carbon",
+      "topic_name": "Fossil Fuels and Carbon Compounds",
+      "parent_id": "dse-chemistry-compulsory",
+      "scope": [
+        "Coal, petroleum and natural gas as fossil fuels and hydrocarbon sources",
+        "Fractional distillation of petroleum; properties of fractions",
+        "Combustion of hydrocarbons and environmental issues (air pollution, acid rain, global warming)",
+        "Alkanes and alkenes: structure, reactions (combustion, substitution, addition), cracking",
+        "Alcohols and carboxylic acids: structure, naming and simple reactions"
+      ],
+      "out_of_scope": [
+        "Full organic reaction mechanisms (Carbon Compounds topic)",
+        "Detailed polymer chemistry (Materials Chemistry elective / Carbon Compounds)",
+        "Industrial synthesis of methanol (Industrial Chemistry elective)"
+      ],
+      "classification_hints": [
+        "Look for: fossil fuels, fractional distillation, alkanes, alkenes, cracking, alcohols, carboxylic acids, environmental effects",
+        "Basic organic chemistry before the systematic Carbon Compounds topic"
+      ],
+      "common_misconceptions": [
+        "Cracking only produces alkenes",
+        "All hydrocarbons are alkanes"
+      ],
+      "common_misclassifications": [
+        {
+          "confused_with": "chem-carbon-compounds",
+          "reason": "Both cover carbon compounds; Carbon Compounds is the deeper systematic treatment including isomerism and more functional groups."
+        }
+      ],
+      "prerequisite_topics": [
+        "chem-microscopic-world-i"
+      ],
+      "overlap_links": [
+        {
+          "target_skill_id": "dse-chemistry-ca",
+          "target_topic_id": "chem-carbon-compounds",
+          "relation": "later_extension",
+          "notes": "Systematic organic chemistry builds on this introductory topic."
+        }
+      ],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "chem-microscopic-world-ii",
+      "topic_name": "Microscopic World II",
+      "parent_id": "dse-chemistry-compulsory",
+      "scope": [
+        "Electronegativity and polar covalent bonds",
+        "Molecular polarity and shapes of simple molecules",
+        "Intermolecular forces: van der Waals forces and hydrogen bonding",
+        "Structure and properties of ice",
+        "Giant covalent structures: diamond, graphite, silicon dioxide"
+      ],
+      "out_of_scope": [
+        "Detailed VSEPR beyond simple molecules",
+        "Quantum mechanical explanations of bonding"
+      ],
+      "classification_hints": [
+        "Look for: electronegativity, polar bonds, molecular polarity, hydrogen bonding, IMF, ice structure, diamond/graphite",
+        "Distinguish from Microscopic World I by presence of polarity/IMF"
+      ],
+      "common_misconceptions": [
+        "Hydrogen bonding occurs in any molecule containing hydrogen",
+        "van der Waals forces are stronger than covalent bonds"
+      ],
+      "common_misclassifications": [
+        {
+          "confused_with": "chem-microscopic-world-i",
+          "reason": "Both are structure/bonding topics; II covers polarity and intermolecular forces."
+        }
+      ],
+      "prerequisite_topics": [
+        "chem-microscopic-world-i"
+      ],
+      "overlap_links": [
+        {
+          "target_skill_id": "dse-chemistry-ca",
+          "target_topic_id": "chem-chemical-energetics",
+          "relation": "related",
+          "notes": "Bond breaking/forming links to enthalpy changes."
+        }
+      ],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "chem-redox-electrochemistry",
+      "topic_name": "Redox Reactions, Chemical Cells and Electrolysis",
+      "parent_id": "dse-chemistry-compulsory",
+      "scope": [
+        "Simple chemical cells: metal electrodes, electrolytes, salt bridge, electrode potentials/voltages",
+        "Oxidation and reduction in terms of oxygen/hydrogen/electron transfer and oxidation numbers",
+        "Common oxidising/reducing agents and their observations",
+        "Electrolysis: cells, preferential discharge, anode/cathode reactions, electroplating",
+        "Industrial electrolysis context (aluminium extraction, chlor-alkali mentioned in elective)"
+      ],
+      "out_of_scope": [
+        "Standard electrode potentials and Nernst equation",
+        "Detailed industrial chlor-alkali cells (Industrial Chemistry elective)",
+        "Fuel cell mechanisms beyond simple recognition"
+      ],
+      "classification_hints": [
+        "Look for: oxidation number, redox equations, chemical cells, electrolysis, electroplating, displacement",
+        "If item involves both redox and electrochemical cells, route here rather than Metals"
+      ],
+      "common_misconceptions": [
+        "Oxidation always involves oxygen",
+        "In electrolysis the anode is always positive"
+      ],
+      "common_misclassifications": [
+        {
+          "confused_with": "chem-metals",
+          "reason": "Metal displacement is redox, but systematic electrochemistry belongs here."
+        }
+      ],
+      "prerequisite_topics": [
+        "chem-microscopic-world-i",
+        "chem-metals"
+      ],
+      "overlap_links": [
+        {
+          "target_skill_id": "dse-chemistry-ca",
+          "target_topic_id": "chem-elective-industrial",
+          "relation": "later_extension",
+          "notes": "Electrolysis underpins chlor-alkali industry in elective."
+        }
+      ],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "chem-chemical-energetics",
+      "topic_name": "Chemical Reactions and Energy",
+      "parent_id": "dse-chemistry-compulsory",
+      "scope": [
+        "Energy changes in chemical reactions; exothermic and endothermic reactions",
+        "Enthalpy change as heat change at constant pressure",
+        "Standard enthalpy changes of reaction, combustion, formation and neutralisation",
+        "Simple calorimetry experiments",
+        "Hess's law and enthalpy cycle calculations"
+      ],
+      "out_of_scope": [
+        "Bomb calorimetry",
+        "Born-Haber cycles",
+        "Entropy and Gibbs free energy"
+      ],
+      "classification_hints": [
+        "Look for: enthalpy, exothermic/endothermic, calorimetry, Hess's law, standard enthalpy changes",
+        "If item is about heat change rather than reaction mechanism, route here"
+      ],
+      "common_misconceptions": [
+        "Breaking bonds releases energy",
+        "Exothermic reactions have positive enthalpy change"
+      ],
+      "common_misclassifications": [
+        {
+          "confused_with": "chem-reaction-kinetics",
+          "reason": "Both discuss energy; kinetics focuses on activation energy and rate, energetics on overall enthalpy change."
+        }
+      ],
+      "prerequisite_topics": [
+        "chem-microscopic-world-i",
+        "chem-metals",
+        "chem-acids-bases"
+      ],
+      "overlap_links": [
+        {
+          "target_skill_id": "dse-chemistry-ca",
+          "target_topic_id": "chem-reaction-kinetics",
+          "relation": "related",
+          "notes": "Activation energy is in kinetics; overall enthalpy is here."
+        }
+      ],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "chem-reaction-kinetics",
+      "topic_name": "Reaction Rate",
+      "parent_id": "dse-chemistry-compulsory",
+      "scope": [
+        "Methods to follow reaction progress (titration, gas volume/pressure, mass, colour, turbidity)",
+        "Average and instantaneous rates; initial rate",
+        "Factors affecting rate: concentration, temperature, surface area, catalysts",
+        "Molar volume of gas at room temperature and pressure (24 dm³)"
+      ],
+      "out_of_scope": [
+        "Rate equations and orders (Industrial Chemistry elective)",
+        "Arrhenius equation (Industrial Chemistry elective)",
+        "Maxwell-Boltzmann distribution (Industrial Chemistry elective)"
+      ],
+      "classification_hints": [
+        "Look for: rate of reaction, factors affecting rate, initial rate, gas volume measurements",
+        "If item asks about rate equation or order, route to Industrial Chemistry elective"
+      ],
+      "common_misconceptions": [
+        "Catalysts change the enthalpy change of a reaction",
+        "Increasing concentration always changes rate constant"
+      ],
+      "common_misclassifications": [
+        {
+          "confused_with": "chem-elective-industrial",
+          "reason": "Industrial Chemistry covers rate equations, activation energy and Maxwell-Boltzmann in depth."
+        }
+      ],
+      "prerequisite_topics": [
+        "chem-metals",
+        "chem-chemical-energetics"
+      ],
+      "overlap_links": [
+        {
+          "target_skill_id": "dse-chemistry-ca",
+          "target_topic_id": "chem-elective-industrial",
+          "relation": "later_extension",
+          "notes": "Rate equations and catalysis are extended in Industrial Chemistry."
+        }
+      ],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "chem-chemical-equilibrium",
+      "topic_name": "Chemical Equilibrium",
+      "parent_id": "dse-chemistry-compulsory",
+      "scope": [
+        "Reversible and irreversible reactions; dynamic equilibrium",
+        "Equilibrium constant Kc in terms of concentration",
+        "Effect of temperature and concentration on equilibrium position",
+        "Relationship between enthalpy sign and temperature effect on Kc"
+      ],
+      "out_of_scope": [
+        "Effect of adding inert species on equilibrium",
+        "Redox and acid-base equilibrium systems in depth",
+        "Kp and partial pressures"
+      ],
+      "classification_hints": [
+        "Look for: equilibrium constant Kc, Le Chatelier, dynamic equilibrium, reversible reactions",
+        "If item involves Kp or inert gas effects, it is out of scope"
+      ],
+      "common_misconceptions": [
+        "At equilibrium the concentrations of reactants and products are equal",
+        "A catalyst shifts the equilibrium position"
+      ],
+      "common_misclassifications": [
+        {
+          "confused_with": "chem-elective-industrial",
+          "reason": "Industrial processes apply equilibrium, but the industrial context belongs to the elective."
+        }
+      ],
+      "prerequisite_topics": [
+        "chem-reaction-kinetics"
+      ],
+      "overlap_links": [
+        {
+          "target_skill_id": "dse-chemistry-ca",
+          "target_topic_id": "chem-elective-industrial",
+          "relation": "later_extension",
+          "notes": "Haber process links equilibrium and industrial chemistry."
+        }
+      ],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "chem-carbon-compounds",
+      "topic_name": "Chemistry of Carbon Compounds",
+      "parent_id": "dse-chemistry-compulsory",
+      "scope": [
+        "Homologous series, structural/formula/naming for alkanes, alkenes, haloalkanes, alcohols, aldehydes/ketones, carboxylic acids, esters, amides, primary amines",
+        "Structural, cis-trans and optical isomerism (basic recognition)",
+        "Reactions of the listed functional groups",
+        "Addition and condensation polymers (nylon, polyester)"
+      ],
+      "out_of_scope": [
+        "Full reaction mechanisms beyond curly-arrow descriptions where specified",
+        "Aromatic chemistry beyond recognition of benzene as feedstock",
+        "Amino acid/protein chemistry (Materials Chemistry elective context)"
+      ],
+      "classification_hints": [
+        "Look for: functional groups, organic reactions, isomerism, polymers, nomenclature",
+        "Distinguish from Fossil Fuels by level of depth and range of functional groups"
+      ],
+      "common_misconceptions": [
+        "Alkenes undergo substitution with bromine",
+        "Esters are produced by addition polymerisation"
+      ],
+      "common_misclassifications": [
+        {
+          "confused_with": "chem-fossil-fuels-carbon",
+          "reason": "Fossil Fuels introduces alkanes/alkenes/alcohols/acids; Carbon Compounds is the systematic treatment."
+        }
+      ],
+      "prerequisite_topics": [
+        "chem-microscopic-world-i",
+        "chem-fossil-fuels-carbon",
+        "chem-microscopic-world-ii"
+      ],
+      "overlap_links": [
+        {
+          "target_skill_id": "dse-chemistry-ca",
+          "target_topic_id": "chem-elective-materials",
+          "relation": "later_extension",
+          "notes": "Materials Chemistry extends polymer and material science aspects."
+        },
+        {
+          "target_skill_id": "dse-chemistry-ca",
+          "target_topic_id": "chem-elective-analytical",
+          "relation": "later_extension",
+          "notes": "Analytical Chemistry includes tests for organic functional groups."
+        }
+      ],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "chem-periodic-patterns",
+      "topic_name": "Patterns in the Chemical World",
+      "parent_id": "dse-chemistry-compulsory",
+      "scope": [
+        "Periodic trends in physical properties (bonding, melting point, conductivity) across Period 3 (Na–Ar)",
+        "Trends in bonding, stoichiometry and acid-base character of oxides Na2O to Cl2O",
+        "Transition metals: coloured ions, variable oxidation states, catalytic properties"
+      ],
+      "out_of_scope": [
+        "Detailed thermodynamic explanation of periodic trends",
+        "Complex ion chemistry of transition metals"
+      ],
+      "classification_hints": [
+        "Look for: period 3 trends, oxide acid-base character, transition metal colours/oxidation states",
+        "Do not route simple metal reactivity here; that is Metals"
+      ],
+      "common_misconceptions": [
+        "All period 3 oxides are acidic",
+        "Transition metals are only those in the d-block"
+      ],
+      "common_misclassifications": [
+        {
+          "confused_with": "chem-metals",
+          "reason": "Metals covers reactivity and extraction; this topic covers periodic trends and transition metals."
+        }
+      ],
+      "prerequisite_topics": [
+        "chem-microscopic-world-i",
+        "chem-microscopic-world-ii",
+        "chem-metals",
+        "chem-acids-bases"
+      ],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "dse-chemistry-electives",
+      "topic_name": "Elective Part",
+      "parent_id": "dse-chemistry-ca",
+      "scope": [
+        "Three elective topics; students choose two",
+        "Assessed in Paper 2 (20% of public exam)"
+      ],
+      "out_of_scope": [
+        "Compulsory part content",
+        "A fourth elective option (the curriculum has three electives)"
+      ],
+      "classification_hints": [
+        "Use this parent only for broad queries about electives",
+        "Route to the specific elective topic for final classification"
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [
+        "dse-chemistry-compulsory"
+      ],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "chem-elective-industrial",
+      "topic_name": "Industrial Chemistry",
+      "parent_id": "dse-chemistry-electives",
+      "scope": [
+        "Rate equations, reaction order and rate constant",
+        "Activation energy and Maxwell-Boltzmann distribution",
+        "Catalysis and industrial processes",
+        "Haber process, chlor-alkali industry, methanol synthesis",
+        "Green chemistry principles and atom economy"
+      ],
+      "out_of_scope": [
+        "General compulsory kinetics (topic 9)",
+        "Fuel cells and batteries (compulsory Redox only)"
+      ],
+      "classification_hints": [
+        "Look for: rate equation, order, activation energy, Arrhenius, Haber process, chlor-alkali, atom economy",
+        "If item is about industrial conditions and equilibrium yield, route here"
+      ],
+      "common_misconceptions": [
+        "Higher temperature always increases yield",
+        "Catalysts change equilibrium position"
+      ],
+      "common_misclassifications": [
+        {
+          "confused_with": "chem-reaction-kinetics",
+          "reason": "Compulsory kinetics covers factors qualitatively; Industrial Chemistry adds rate equations and activation energy quantitatively."
+        },
+        {
+          "confused_with": "chem-chemical-equilibrium",
+          "reason": "Industrial processes apply equilibrium, but rate/economic factors make this Industrial Chemistry."
+        }
+      ],
+      "prerequisite_topics": [
+        "chem-reaction-kinetics",
+        "chem-chemical-equilibrium",
+        "chem-redox-electrochemistry"
+      ],
+      "overlap_links": [
+        {
+          "target_skill_id": "dse-chemistry-ca",
+          "target_topic_id": "chem-chemical-equilibrium",
+          "relation": "prerequisite",
+          "notes": "Haber process links to equilibrium principles."
+        }
+      ],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "chem-elective-materials",
+      "topic_name": "Materials Chemistry",
+      "parent_id": "dse-chemistry-electives",
+      "scope": [
+        "Natural polymers: cellulose, chitin",
+        "Synthetic polymers: addition/condensation polymerisation, thermoplastics/thermosets, biodegradable plastics",
+        "Metals and alloys: crystal packing, unit cells, coordination number, alloy properties",
+        "Liquid crystals and nanomaterials",
+        "Green chemistry in materials production"
+      ],
+      "out_of_scope": [
+        "Simple polymer recognition in Carbon Compounds (compulsory)",
+        "General metal reactivity (Metals topic)"
+      ],
+      "classification_hints": [
+        "Look for: polymer structure/processing, alloys, liquid crystals, nanomaterials, biodegradable plastics",
+        "Distinguish from Carbon Compounds by emphasis on materials and properties rather than reaction pathways"
+      ],
+      "common_misconceptions": [
+        "All plastics are thermoplastics",
+        "Nanomaterials are only carbon-based"
+      ],
+      "common_misclassifications": [
+        {
+          "confused_with": "chem-carbon-compounds",
+          "reason": "Carbon Compounds covers functional group reactions; Materials Chemistry covers polymer/alloy/materials science."
+        }
+      ],
+      "prerequisite_topics": [
+        "chem-microscopic-world-i",
+        "chem-microscopic-world-ii",
+        "chem-carbon-compounds"
+      ],
+      "overlap_links": [
+        {
+          "target_skill_id": "dse-chemistry-ca",
+          "target_topic_id": "chem-carbon-compounds",
+          "relation": "prerequisite",
+          "notes": "Polymer concepts build on addition/condensation reactions."
+        }
+      ],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "chem-elective-analytical",
+      "topic_name": "Analytical Chemistry",
+      "parent_id": "dse-chemistry-electives",
+      "scope": [
+        "Chemical tests for cations, anions, gases and organic functional groups",
+        "Separation and purification: crystallisation, distillation/fractional distillation, solvent extraction, chromatography (Rf, melting/boiling point purity)",
+        "Quantitative analysis: volumetric analysis including acid-base and redox titrations",
+        "Instrumental methods: colorimetry, IR spectroscopy (functional group identification), mass spectrometry (molecular structure and simple fragmentation)"
+      ],
+      "out_of_scope": [
+        "Detailed instrument operation principles",
+        "NMR spectroscopy",
+        "General separation methods in Earth topic (physical only)"
+      ],
+      "classification_hints": [
+        "Look for: qualitative analysis, chromatography, titration, IR spectrum, mass spectrum, colorimetry",
+        "If item is about identifying an unknown compound using tests/spectra, route here"
+      ],
+      "common_misconceptions": [
+        "IR spectroscopy determines molecular mass",
+        "Chromatography Rf values are always the same regardless of solvent"
+      ],
+      "common_misclassifications": [
+        {
+          "confused_with": "chem-acids-bases",
+          "reason": "Acid-base titrations are a subset; Analytical Chemistry includes redox titrations and instrumental methods too."
+        },
+        {
+          "confused_with": "chem-earth",
+          "reason": "Earth covers simple physical separation; Analytical Chemistry covers systematic qualitative/quantitative/instrumental analysis."
+        }
+      ],
+      "prerequisite_topics": [
+        "chem-acids-bases",
+        "chem-redox-electrochemistry",
+        "chem-carbon-compounds"
+      ],
+      "overlap_links": [
+        {
+          "target_skill_id": "dse-chemistry-ca",
+          "target_topic_id": "chem-carbon-compounds",
+          "relation": "prerequisite",
+          "notes": "Organic functional group tests require prior knowledge of functional groups."
+        }
+      ],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "chem-investigative-study",
+      "topic_name": "Investigative Study",
+      "parent_id": "dse-chemistry-ca",
+      "scope": [
+        "Inquiry-based project work supporting SBA",
+        "Experimental design, data collection, error analysis, reporting"
+      ],
+      "out_of_scope": [
+        "Not a public-exam content topic",
+        "Not a standalone topic for item classification unless explicitly about practical investigation design"
+      ],
+      "classification_hints": [
+        "Only use when the prompt is about designing/carrying out a chemistry investigation",
+        "If the item is a written exam-style question, route to the relevant compulsory/elective topic"
+      ],
+      "common_misconceptions": [
+        "Investigative Study is examined as a topic in Paper 1 or Paper 2"
+      ],
+      "common_misclassifications": [
+        {
+          "confused_with": "chem-elective-analytical",
+          "reason": "Both involve practical skills; Analytical Chemistry is an assessed elective content topic."
+        }
+      ],
+      "prerequisite_topics": [
+        "dse-chemistry-compulsory"
+      ],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    }
+  ]
+}

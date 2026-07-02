@@ -1,0 +1,348 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "ap-european-history",
+      "topic_name": "AP European History",
+      "parent_id": "",
+      "scope": [
+        "AP European History course framework (College Board).",
+        "Valid: 2025 → (ongoing).",
+        "Units 1–8 with cumulative exam weightings."
+      ],
+      "out_of_scope": [
+        "Pre-AP / general high-school level content unless explicitly cited in CED.",
+        "University-level content beyond AP expectations.",
+        "Other AP subjects."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific unit fits.",
+        "Prefer specific Unit N nodes for content questions."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-european-history-unit01",
+      "topic_name": "Unit 1: Renaissance and Exploration",
+      "parent_id": "ap-european-history",
+      "scope": [
+        "Unit 1 content as defined in AP European History CED.",
+        "Exam weighting: 10–15%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Renaissance and Exploration."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_1.1",
+          "text": "Core content and concepts for Unit 1: Renaissance and Exploration."
+        },
+        {
+          "ek_id": "EK_1.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 1: Renaissance and Exploration."
+        },
+        {
+          "ek_id": "EK_1.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 1: Renaissance and Exploration."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-european-history-unit02",
+      "topic_name": "Unit 2: Age of Reformation",
+      "parent_id": "ap-european-history",
+      "scope": [
+        "Unit 2 content as defined in AP European History CED.",
+        "Exam weighting: 10–15%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Age of Reformation."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_2.1",
+          "text": "Core content and concepts for Unit 2: Age of Reformation."
+        },
+        {
+          "ek_id": "EK_2.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 2: Age of Reformation."
+        },
+        {
+          "ek_id": "EK_2.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 2: Age of Reformation."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-european-history-unit03",
+      "topic_name": "Unit 3: Absolutism and Constitutionalism",
+      "parent_id": "ap-european-history",
+      "scope": [
+        "Unit 3 content as defined in AP European History CED.",
+        "Exam weighting: 10–15%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Absolutism and Constitutionalism."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_3.1",
+          "text": "Core content and concepts for Unit 3: Absolutism and Constitutionalism."
+        },
+        {
+          "ek_id": "EK_3.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 3: Absolutism and Constitutionalism."
+        },
+        {
+          "ek_id": "EK_3.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 3: Absolutism and Constitutionalism."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-european-history-unit04",
+      "topic_name": "Unit 4: Scientific, Philosophical, and",
+      "parent_id": "ap-european-history",
+      "scope": [
+        "Unit 4 content as defined in AP European History CED.",
+        "Exam weighting: 10–15%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Scientific, Philosophical, and."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_4.1",
+          "text": "Core content and concepts for Unit 4: Scientific, Philosophical, and."
+        },
+        {
+          "ek_id": "EK_4.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 4: Scientific, Philosophical, and."
+        },
+        {
+          "ek_id": "EK_4.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 4: Scientific, Philosophical, and."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-european-history-unit05",
+      "topic_name": "Unit 5: Conflict, Crisis, and Reaction in the",
+      "parent_id": "ap-european-history",
+      "scope": [
+        "Unit 5 content as defined in AP European History CED.",
+        "Exam weighting: 10–15%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Conflict, Crisis, and Reaction in the."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_5.1",
+          "text": "Core content and concepts for Unit 5: Conflict, Crisis, and Reaction in the."
+        },
+        {
+          "ek_id": "EK_5.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 5: Conflict, Crisis, and Reaction in the."
+        },
+        {
+          "ek_id": "EK_5.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 5: Conflict, Crisis, and Reaction in the."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-european-history-unit06",
+      "topic_name": "Unit 6: Industrialization and Its Effects",
+      "parent_id": "ap-european-history",
+      "scope": [
+        "Unit 6 content as defined in AP European History CED.",
+        "Exam weighting: 10–15%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Industrialization and Its Effects."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_6.1",
+          "text": "Core content and concepts for Unit 6: Industrialization and Its Effects."
+        },
+        {
+          "ek_id": "EK_6.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 6: Industrialization and Its Effects."
+        },
+        {
+          "ek_id": "EK_6.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 6: Industrialization and Its Effects."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-european-history-unit09",
+      "topic_name": "Unit 9: Cold War and Contemporary Europe",
+      "parent_id": "ap-european-history",
+      "scope": [
+        "Unit 9 content as defined in AP European History CED.",
+        "Exam weighting: 10–15%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Cold War and Contemporary Europe."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_9.1",
+          "text": "Patricia Nardi, George W"
+        },
+        {
+          "ek_id": "EK_9.2",
+          "text": "Wendy Owen-Bumsted, Formerly at St"
+        },
+        {
+          "ek_id": "EK_9.3",
+          "text": "SPECIAL THANKS Christopher Budano and John R"
+        },
+        {
+          "ek_id": "EK_9.4",
+          "text": "AP European History Course and Exam Description                                                                         ﻿ V"
+        },
+        {
+          "ek_id": "EK_9.5",
+          "text": "THIS PAGE IS INTENTIONALLY LEFT BLANK"
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-european-history-unit07",
+      "topic_name": "Unit 7: Learning Objective A         KC-3.4",
+      "parent_id": "ap-european-history",
+      "scope": [
+        "Unit 7 content as defined in AP European History CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Learning Objective A         KC-3.4."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_7.1",
+          "text": "Core content and concepts for Unit 7: Learning Objective A         KC-3.4."
+        },
+        {
+          "ek_id": "EK_7.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 7: Learning Objective A         KC-3.4."
+        },
+        {
+          "ek_id": "EK_7.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 7: Learning Objective A         KC-3.4."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-european-history-unit08",
+      "topic_name": "Unit 8: Learning Objective A          KC-4.1",
+      "parent_id": "ap-european-history",
+      "scope": [
+        "Unit 8 content as defined in AP European History CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Learning Objective A          KC-4.1."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_8.1",
+          "text": "Core content and concepts for Unit 8: Learning Objective A          KC-4.1."
+        },
+        {
+          "ek_id": "EK_8.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 8: Learning Objective A          KC-4.1."
+        },
+        {
+          "ek_id": "EK_8.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 8: Learning Objective A          KC-4.1."
+        }
+      ]
+    }
+  ]
+}

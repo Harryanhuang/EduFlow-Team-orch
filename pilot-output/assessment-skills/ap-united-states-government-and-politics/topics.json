@@ -1,0 +1,212 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "ap-united-states-government-and-politics",
+      "topic_name": "AP United States Government and Politics",
+      "parent_id": "",
+      "scope": [
+        "AP United States Government and Politics course framework (College Board).",
+        "Valid: 2025 → (ongoing).",
+        "Units 1–5 with cumulative exam weightings."
+      ],
+      "out_of_scope": [
+        "Pre-AP / general high-school level content unless explicitly cited in CED.",
+        "University-level content beyond AP expectations.",
+        "Other AP subjects."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific unit fits.",
+        "Prefer specific Unit N nodes for content questions."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-united-states-government-and-politics-unit01",
+      "topic_name": "Unit 1: Foundations of American Democracy",
+      "parent_id": "ap-united-states-government-and-politics",
+      "scope": [
+        "Unit 1 content as defined in AP United States Government and Politics CED.",
+        "Exam weighting: 15–22%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Foundations of American Democracy."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_1.1",
+          "text": "Core content and concepts for Unit 1: Foundations of American Democracy."
+        },
+        {
+          "ek_id": "EK_1.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 1: Foundations of American Democracy."
+        },
+        {
+          "ek_id": "EK_1.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 1: Foundations of American Democracy."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-united-states-government-and-politics-unit02",
+      "topic_name": "Unit 2: Interactions Among Branches of Government",
+      "parent_id": "ap-united-states-government-and-politics",
+      "scope": [
+        "Unit 2 content as defined in AP United States Government and Politics CED.",
+        "Exam weighting: 25–36%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Interactions Among Branches of Government."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_2.1",
+          "text": "Core content and concepts for Unit 2: Interactions Among Branches of Government."
+        },
+        {
+          "ek_id": "EK_2.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 2: Interactions Among Branches of Government."
+        },
+        {
+          "ek_id": "EK_2.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 2: Interactions Among Branches of Government."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-united-states-government-and-politics-unit03",
+      "topic_name": "Unit 3: Civil Liberties and Civil Rights",
+      "parent_id": "ap-united-states-government-and-politics",
+      "scope": [
+        "Unit 3 content as defined in AP United States Government and Politics CED.",
+        "Exam weighting: 13–18%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Civil Liberties and Civil Rights."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_3.1",
+          "text": "Core content and concepts for Unit 3: Civil Liberties and Civil Rights."
+        },
+        {
+          "ek_id": "EK_3.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 3: Civil Liberties and Civil Rights."
+        },
+        {
+          "ek_id": "EK_3.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 3: Civil Liberties and Civil Rights."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-united-states-government-and-politics-unit04",
+      "topic_name": "Unit 4: American Political Ideologies and Beliefs",
+      "parent_id": "ap-united-states-government-and-politics",
+      "scope": [
+        "Unit 4 content as defined in AP United States Government and Politics CED.",
+        "Exam weighting: 10–15%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: American Political Ideologies and Beliefs."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_4.1",
+          "text": "Core content and concepts for Unit 4: American Political Ideologies and Beliefs."
+        },
+        {
+          "ek_id": "EK_4.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 4: American Political Ideologies and Beliefs."
+        },
+        {
+          "ek_id": "EK_4.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 4: American Political Ideologies and Beliefs."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-united-states-government-and-politics-unit05",
+      "topic_name": "Unit 5: Political Participation",
+      "parent_id": "ap-united-states-government-and-politics",
+      "scope": [
+        "Unit 5 content as defined in AP United States Government and Politics CED.",
+        "Exam weighting: 20–27%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Political Participation."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_5.1",
+          "text": "Jenifer Hitchcock, John"
+        },
+        {
+          "ek_id": "EK_5.2",
+          "text": "Jim Huneycutt, Director, AP U"
+        },
+        {
+          "ek_id": "EK_5.3",
+          "text": "Jim Riddlesperger, Janice Schimmel, Rebecca Small, D"
+        },
+        {
+          "ek_id": "EK_5.4",
+          "text": "AP U.S. Government and Politics Course and Exam Description                                                ﻿ V"
+        },
+        {
+          "ek_id": "EK_5.5",
+          "text": "THIS PAGE IS INTENTIONALLY LEFT BLANK"
+        }
+      ]
+    }
+  ]
+}

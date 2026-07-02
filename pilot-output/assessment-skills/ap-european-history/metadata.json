@@ -1,0 +1,49 @@
+{
+  "schema_version": "1",
+  "id": "ap-european-history",
+  "assessment_type": "course_and_exam_description",
+  "system": "AP",
+  "board_or_owner": "College Board",
+  "subject": "European History",
+  "level": "AP (high school / college intro)",
+  "assessment_code": "AP European History",
+  "valid_from": "2023",
+  "valid_to": "(ongoing)",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_course_description",
+      "title": "AP European History Course and Exam Description",
+      "url": "https://apcentral.collegeboard.org/courses/european-history",
+      "source_document_type": "course_and_exam_description",
+      "source_layout_profile": "ap_college_board_ced",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/03-AP知识库/03-学科知识/AP European History/02-课本与考纲/考纲/ap-european-history-course-and-exam-description.pdf",
+      "file_checksum_sha256": "1a6d856f6e8c5a9a3e82ad95f867afa49255107fbad44fbfe5dbf4584b10a07f",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "Effective Fall 2023",
+      "retrieved_at": "2026-07-01",
+      "page_refs": [
+        "p.1-297"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "AP CED uses printed_page; usually matches physical_page.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text.",
+      "notes": "Source bundle lives at pilot-output/source-bundles/ap-european-history-guide/."
+    }
+  ],
+  "aliases": [
+    "ap-european-history",
+    "ap european history",
+    "college board european history"
+  ],
+  "canonical_id": "ap-european-history",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "College Board AP European History."
+}

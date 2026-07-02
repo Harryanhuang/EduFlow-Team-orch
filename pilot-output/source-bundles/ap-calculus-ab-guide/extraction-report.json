@@ -1,0 +1,126 @@
+{
+  "schema_version": "1",
+  "source_id": "primary_ced",
+  "extracted_at": "2026-07-01",
+  "extracted_by": "worker_syllabus",
+  "extraction_profile": "ap_college_board_ced",
+  "sections_extracted": [
+    {
+      "section": "Unit 1: Limits and Continuity                       10–12%",
+      "page_refs": [
+        "Unit 1"
+      ],
+      "extracted_content_summary": "Unit 1 content with weighting 4–7%.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Unit 2: Differentiation: Definition",
+      "page_refs": [
+        "Unit 2"
+      ],
+      "extracted_content_summary": "Unit 2 content with weighting n/a.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Unit 3: Differentiation: Composite,",
+      "page_refs": [
+        "Unit 3"
+      ],
+      "extracted_content_summary": "Unit 3 content with weighting n/a.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Unit 4: Contextual Applications of",
+      "page_refs": [
+        "Unit 4"
+      ],
+      "extracted_content_summary": "Unit 4 content with weighting n/a.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Unit 5: Analytical Applications of",
+      "page_refs": [
+        "Unit 5"
+      ],
+      "extracted_content_summary": "Unit 5 content with weighting n/a.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Unit 6: Integration and",
+      "page_refs": [
+        "Unit 6"
+      ],
+      "extracted_content_summary": "Unit 6 content with weighting n/a.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Unit 7: Differential Equations                      6–12%",
+      "page_refs": [
+        "Unit 7"
+      ],
+      "extracted_content_summary": "Unit 7 content with weighting 6–9%.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Unit 8: Applications of Integration                 10–15%",
+      "page_refs": [
+        "Unit 8"
+      ],
+      "extracted_content_summary": "Unit 8 content with weighting 6–9%.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Unit 9: Parametric Equations, Polar",
+      "page_refs": [
+        "Unit 9"
+      ],
+      "extracted_content_summary": "Unit 9 content with weighting n/a.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Unit 10: Infinite Sequences and",
+      "page_refs": [
+        "Unit 10"
+      ],
+      "extracted_content_summary": "Unit 10 content with weighting n/a.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Exam Information",
+      "page_refs": [
+        "Exam Information section"
+      ],
+      "extracted_content_summary": "Section I + II structure.",
+      "target_asset": "assessment.json"
+    }
+  ],
+  "sections_not_extracted": [
+    {
+      "section": "Front matter / sample questions",
+      "page_refs": [
+        "various"
+      ],
+      "reason": "programme_background / not_assessable_scope"
+    }
+  ],
+  "sections_pending_review": [
+    {
+      "section": "Per-unit page ranges",
+      "page_refs": [
+        "varies"
+      ],
+      "reason": "Page ranges not auto-captured; verify visually."
+    }
+  ],
+  "split_recommendations": {
+    "topics_json": "10 units captured.",
+    "assessment_json": "Section I + II structure.",
+    "references": "source-index.md and page-map.json copied into skill package references/."
+  },
+  "known_risks": [
+    "Extractor and reviewer are the same agent; confidence capped at medium.",
+    "Per-unit page ranges are approximate.",
+    "Topic details (essential knowledge statements) not exhaustively captured."
+  ],
+  "notes": "Skill package covers 10 units for AP Calculus AB."
+}

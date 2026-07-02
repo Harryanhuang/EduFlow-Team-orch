@@ -1,0 +1,49 @@
+{
+  "schema_version": "1",
+  "id": "caie-alevel-history-9489",
+  "assessment_type": "syllabus",
+  "system": "CAIE A-Level",
+  "board_or_owner": "Cambridge Assessment International Education",
+  "subject": "History",
+  "level": "A-Level (16-19 years)",
+  "assessment_code": "9489",
+  "valid_from": "2026",
+  "valid_to": "2026",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_syllabus",
+      "title": "Cambridge International AS & A Level History 9489 syllabus (2026)",
+      "url": "https://www.cambridgeinternational.org/Images/9489-2026-syllabus.pdf",
+      "source_document_type": "syllabus",
+      "source_layout_profile": "caie_igcse_syllabus",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/02-Alevel知识库/03-学科知识/CAIE History/02-课本与考纲/考纲/CAIE_History_9489_Syllabus_2026.pdf",
+      "file_checksum_sha256": "84bb715d92578f38cb2c4647d86fa2daaeb06ffd88ddeb304991d97a066d415d",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "2026 syllabus",
+      "retrieved_at": "2026-07-02",
+      "page_refs": [
+        "p.1-52"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "printed_page ≈ physical_page for CAIE IGCSE syllabi.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text.",
+      "notes": "Source bundle lives at pilot-output/source-bundles/caie-alevel-history-9489-guide/."
+    }
+  ],
+  "aliases": [
+    "alevel history 9489",
+    "cambridge a-level history",
+    "caie a-level history"
+  ],
+  "canonical_id": "caie-alevel-history-9489",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "Cambridge A-Level History 9489. Four papers: P1 Document Question, P2 Outlines, P3 Interpretations, P4 Depth Study."
+}

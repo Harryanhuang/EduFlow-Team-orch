@@ -1,0 +1,122 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "aqa-ial-accounting-9615",
+      "topic_name": "CAIE IGCSE Accounting",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Accounting (9615) syllabus scope.",
+        "Valid: 2025 → 2026."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "aqa-ial-accounting-9615-unit01",
+      "topic_name": "Topic 1: Introduction to financial accounting",
+      "parent_id": "aqa-ial-accounting-9615",
+      "scope": [
+        "Topic 1 content as defined in AQA IAL aqa-ial-accounting-9615."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Introduction to financial accounting."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "aqa-ial-accounting-9615-unit02",
+      "topic_name": "Topic 2: Financial accounting concepts",
+      "parent_id": "aqa-ial-accounting-9615",
+      "scope": [
+        "Topic 2 content as defined in AQA IAL aqa-ial-accounting-9615."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Financial accounting concepts."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "aqa-ial-accounting-9615-unit03",
+      "topic_name": "Topic 3: Financial accounting techniques",
+      "parent_id": "aqa-ial-accounting-9615",
+      "scope": [
+        "Topic 3 content as defined in AQA IAL aqa-ial-accounting-9615."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Financial accounting techniques."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "aqa-ial-accounting-9615-unit04",
+      "topic_name": "Topic 4: Management accounting concepts",
+      "parent_id": "aqa-ial-accounting-9615",
+      "scope": [
+        "Topic 4 content as defined in AQA IAL aqa-ial-accounting-9615."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Management accounting concepts."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "aqa-ial-accounting-9615-unit05",
+      "topic_name": "Topic 5: Management accounting techniques",
+      "parent_id": "aqa-ial-accounting-9615",
+      "scope": [
+        "Topic 5 content as defined in AQA IAL aqa-ial-accounting-9615."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Management accounting techniques."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    }
+  ]
+}

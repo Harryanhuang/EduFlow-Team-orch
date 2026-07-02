@@ -1,0 +1,1197 @@
+{
+  "schema_version": "1",
+  "subject": "computer-science-a",
+  "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/03-AP知识库/03-学科知识/AP Computer Science A/02-课本与考纲/考纲/ap-computer-science-a-course-and-exam-description.pdf",
+  "file_checksum_sha256": "c81501ad5a022c83f1ca51119cccd1907b1394e1416d8c2a01bd43a38ab16486",
+  "pdfinfo": {
+    "Title": "AP® Computer Science A Course and Exam Description, Effective Fall 2025",
+    "Subject": "AP Computer Science A; Advanced Placement; AP CSA",
+    "Keywords": "2025; AP Computer Science A; teacher resources; course resources; exam resources; AP CSA; Advanced Placement; course information; exam information; curriculum information; curriculum resources; teaching resources; AP resources and supports; instructional model; course framework; instructional approaches; scoring guidelines; ADA",
+    "Author": "College Board",
+    "Creator": "Adobe InDesign CC 14.0 (Macintosh)",
+    "Producer": "Adobe PDF Library 15.0; modified using iTextSharp 4.1.6 by 1T3XT",
+    "CreationDate": "Mon Jun  9 09:04:16 2025 CST",
+    "ModDate": "Wed Jun 18 00:45:59 2025 CST",
+    "Custom Metadata": "yes",
+    "Metadata Stream": "yes",
+    "Tagged": "yes",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "AcroForm",
+    "JavaScript": "no",
+    "Pages": "194",
+    "Encrypted": "yes (print:yes copy:yes change:no addNotes:no algorithm:AES-256)",
+    "Page size": "612 x 792 pts (letter)",
+    "Page rot": "0",
+    "File size": "4204647 bytes",
+    "Optimized": "no",
+    "PDF version": "1.7"
+  },
+  "total_pages": 194,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": 1,
+      "chars": 3014,
+      "first_200": "INCLUDES Course framework Instructional section Sample exam questions AP Computer ® Science A COURSE AND EXAM DESCRIPTION Effective Fall 2025 AP Computer ® Science A COURSE AND EXAM DESCRIPTION Effect"
+    },
+    {
+      "physical_page": 2,
+      "printed_page": 2,
+      "chars": 3014,
+      "first_200": "he\u0007histories\u0007and\u0007cultures\u0007of\u0007 different\u0007peoples.\u0007The\u0007study\u0007of\u0007different\u0007nationalities,\u0007cultures,\u0007religions,\u0007races,\u0007and\u0007 ethnicities is essential within a variety of academic disciplines. AP courses gr"
+    },
+    {
+      "physical_page": 3,
+      "printed_page": 3,
+      "chars": 3014,
+      "first_200": "rray APPENDIX 185 Java Quick Reference Acknowledgments College Board would like to acknowledge the following committee members, consultants, and reviewers for their assistance with and commitment to t"
+    },
+    {
+      "physical_page": 4,
+      "printed_page": 4,
+      "chars": 3014,
+      "first_200": "er, Director, AP Product Development and Editorial Andrea Pellerito, Senior Director, Course Product Manager Monica Roman, Senior Director, Project Manager Natalya Tabony, Executive Director, AP Strat"
+    },
+    {
+      "physical_page": 5,
+      "printed_page": 5,
+      "chars": 3014,
+      "first_200": "ation’s leading colleges and universities, and AP and that educators can expand readiness by opening Exams are developed and scored by college faculty and access\u0007to\u0007Pre-AP\u0007course\u0007work.\u0007We\u0007commit\u0007to\u0007su"
+    },
+    {
+      "physical_page": 6,
+      "printed_page": 6,
+      "chars": 3014,
+      "first_200": "eover,\u0007by\u0007organizing\u0007 courses meet or exceed the curricular and resource the AP course content and skills into units, the AP expectations that college and secondary school faculty Program is able to"
+    },
+    {
+      "physical_page": 7,
+      "printed_page": 7,
+      "chars": 3014,
+      "first_200": "r the students should know and be able to do upon the number of points students must earn on the AP Exam completion of the AP course. The resulting course"
+    },
+    {
+      "physical_page": 8,
+      "printed_page": 8,
+      "chars": 3014,
+      "first_200": "edit. 5 Extremely\u0007well\u0007qualified A 4 Well\u0007qualified A−, B+, B How AP Exams Are Scored The exam scoring process, like the course and exam 3 Qualified B−, C+, C development process,"
+    },
+    {
+      "physical_page": 9,
+      "printed_page": 9,
+      "chars": 3014,
+      "first_200": "oming an AP and CEUs that can be applied to PD requirements Reader, including opportunities to: by states, districts, and schools. § Bring positive changes to the classroom: How to"
+    },
+    {
+      "physical_page": 10,
+      "printed_page": 10,
+      "chars": 3014,
+      "first_200": "th content and skills that will be assessed on the AP Exam. Students can view their own progress over time to improve their performance before the AP Exam. QUESTION BANK"
+    },
+    {
+      "physical_page": 11,
+      "printed_page": 11,
+      "chars": 3014,
+      "first_200": "e student understanding of the content and skills covered in the unit and provide actionable feedback to students. § As you teach each topic, use AP Classroom to assign student"
+    },
+    {
+      "physical_page": 12,
+      "printed_page": 12,
+      "chars": 3014,
+      "first_200": "subset of Java. Lab Requirement The\u0007AP\u0007Computer\u0007Science\u0007A\u0007course\u0007must\u0007include\u0007a\u0007minimum\u0007of\u000720\u0007hours\u0007of\u0007hands-on,\u0007 structured\u0007lab\u0007experiences\u0007to\u0007engage\u0007students\u0007in\u0007individual\u0007or\u0007group\u0007problem-solving.\u0007"
+    },
+    {
+      "physical_page": 13,
+      "printed_page": 13,
+      "chars": 3014,
+      "first_200": "researchers have indicated are the main goals of Complexity” knowledge areas. Teachers can review the an\u0007introductory,\u0007college-level\u0007computer\u0007science\u0007 Computer Science Curricula from\u0007ACM\u0007and\u0007IEEE-CS\u0007 "
+    },
+    {
+      "physical_page": 14,
+      "printed_page": 14,
+      "chars": 3014,
+      "first_200": "rovide students with access to the computer for at least three hours a week; additional internet. It is essential that each computer science time is desirable. Student and instructor access"
+    },
+    {
+      "physical_page": 15,
+      "printed_page": 15,
+      "chars": 3014,
+      "first_200": "skills that students should develop during the AP Computer Science A course. These skills form the basis of tasks on the AP Computer Science A Exam. While many\u0007different\u0007skills\u0007can\u0007be\u0007applied\u0007to\u0007any\u0007o"
+    },
+    {
+      "physical_page": 16,
+      "printed_page": 16,
+      "chars": 3014,
+      "first_200": "3.A Determine\u0007the\u0007 4.A Describe\u0007the\u0007 5.A Explain\u0007how\u0007 appropriate program code to implement an result or output behavior of a code computing impacts design to solve a algorithm. based on statement seg"
+    },
+    {
+      "physical_page": 17,
+      "printed_page": 17,
+      "chars": 3014,
+      "first_200": "e\u0007able\u0007to\u0007do,\u0007and\u0007understand\u0007 with a focus on ideas that encompass core principles, theories, and processes of computer science. The framework also encourages instruction that prepares students for ad"
+    },
+    {
+      "physical_page": 18,
+      "printed_page": 18,
+      "chars": 3014,
+      "first_200": "What data can be provided to students to ensure Topics their programs are thoroughly tested? Each unit is divided into teachable segments called § What problems could a student solve"
+    },
+    {
+      "physical_page": 19,
+      "printed_page": 19,
+      "chars": 3014,
+      "first_200": "Return to Table of Contents © 2025 College Board Course at Using Objects Selection and a Glance UNIT UNIT 1 and Methods 2 Iteration Periods 15–25 ~32–34 Class Periods 25–35"
+    },
+    {
+      "physical_page": 20,
+      "printed_page": 20,
+      "chars": 3014,
+      "first_200": "4 1.4 Assignment with approximate weighting 4 Statements and Input 2 and suggested pacing. 2.5 Compound Boolean 2 3 1.5 Casting and Range of Expressions Please note, pacing is based"
+    },
+    {
+      "physical_page": 21,
+      "printed_page": 21,
+      "chars": 3014,
+      "first_200": "1.9 Method Signatures 2 2 1.10 Calling Class Methods 2.10 Implementing String COMPUTATIONAL THINKING 3 3 Algorithms PRACTICES 1.11 Math 2 Class 2 4 2.11 Nested Iteration 1 Design Code"
+    },
+    {
+      "physical_page": 22,
+      "printed_page": 22,
+      "chars": 3014,
+      "first_200": "ultiple-choice\u0007 (partial) Multiple-choice: ~15 questions and\u0007free-response\u0007questions.\u0007 Progress Check Unit 2 Part 2: Progress Check Unit 1 Part 3: Topics 2.7–2.12 The feedback from the Progress Topics"
+    },
+    {
+      "physical_page": 23,
+      "printed_page": 23,
+      "chars": 3014,
+      "first_200": "Traversals 2 3 3.5 Methods: How to Write 3 4 Them 2 4.5 Implementing Array 2 3 3.6 Methods: Passing and 4 Algorithms 4 Returning References of 2 an Object"
+    },
+    {
+      "physical_page": 24,
+      "printed_page": 24,
+      "chars": 3014,
+      "first_200": "questions Progress Check Unit 4 Part 2: Free-response: 2 questions Topics 4.6–4.10 § Class Design Multiple-choice: ~21 questions Free-response: 2 questions § Data Analysis with ArrayList Progress Chec"
+    },
+    {
+      "physical_page": 25,
+      "printed_page": 25,
+      "chars": 3014,
+      "first_200": "© 2025 College Board Using the Unit Guides UNIT OPENERS UNIT 1 15–25 % AP EXAM WEIGHTING ~32–34 CLASS PERIODS Developing Understanding provides an overview that contextualizes\u0007and\u0007situates\u0007the\u0007key\u0007con"
+    },
+    {
+      "physical_page": 26,
+      "printed_page": 26,
+      "chars": 3014,
+      "first_200": "existing program code? Building Computational practicing these calls, students should begin areas of emphasis for that unit. § How can you use to understand why parameter types and random numbers"
+    },
+    {
+      "physical_page": 27,
+      "printed_page": 27,
+      "chars": 3014,
+      "first_200": "iven understanding and tracing code, especially for problem or accomplish a task. (1.A) the multiple-choice section of the AP Exam. Early success will foster students’ confidence, During the early sta"
+    },
+    {
+      "physical_page": 28,
+      "printed_page": 28,
+      "chars": 3014,
+      "first_200": "Multiple- code on the computer. (3.A) choice and free-response questions contain Students should be able to determine the user-defined classes that students will utilize result of program code that us"
+    },
+    {
+      "physical_page": 29,
+      "printed_page": 29,
+      "chars": 3014,
+      "first_200": "2.A Write program code to implement an algorithm. 3.A Determine the result or output based on statement execution order in an algorithm. 3.D Explain why a code segment will not"
+    },
+    {
+      "physical_page": 30,
+      "printed_page": 30,
+      "chars": 3014,
+      "first_200": "AP Computer Science A Course and Exam Description AP Computer Science A Course and Exam Description Course Framework V.1 | 20 Return to Table of Contents © 2025 College Board"
+    },
+    {
+      "physical_page": 31,
+      "printed_page": 31,
+      "chars": 3014,
+      "first_200": "While they play the game, they should keep track of the various nouns they encounter and actions that happen as part of the game. The nouns can be represented in"
+    },
+    {
+      "physical_page": 32,
+      "printed_page": 32,
+      "chars": 3014,
+      "first_200": "\u0007offer\u0007possible\u0007skills\u0007to\u0007pair\u0007with the\u0007topic. 1 Using Objects and Methods SUGGESTED SKILLS 1.A TOPIC 1.2 Learning objectives define\u0007what\u0007a\u0007student\u0007needs\u0007to\u0007be\u0007able\u0007 Determine an appropriate program d"
+    },
+    {
+      "physical_page": 33,
+      "printed_page": 33,
+      "chars": 3014,
+      "first_200": "used in this course define the set of values and corresponding operations on those values for numbers and on the\u0007AP\u0007Computer\u0007Science\u0007A\u0007Exam.\u0007However,\u0007such\u0007content\u0007 Boolean values. 1.2.A.3 may be provi"
+    },
+    {
+      "physical_page": 34,
+      "printed_page": 34,
+      "chars": 3014,
+      "first_200": "A variable is a storage location that holds a value, which can change while the program is running. Every variable has a name and an associated data type. A variable"
+    },
+    {
+      "physical_page": 35,
+      "printed_page": 35,
+      "chars": 3014,
+      "first_200": "Multiple-choice: ~12 questions Progress Check Unit 1 Part 2: Topics 1.5–1.9 Multiple-choice: ~15 questions Progress Check Unit 1 Part 3: Topics 1.10–1.15 Multiple-choice: ~18 questions Free-response: "
+    },
+    {
+      "physical_page": 36,
+      "printed_page": 36,
+      "chars": 3014,
+      "first_200": "l\u0007be\u0007implemented.\u0007Typically,\u0007 a program. This is the fun and rewarding part there are many ways in which statements of programming because it involves putting can be written to yield the same"
+    },
+    {
+      "physical_page": 37,
+      "printed_page": 37,
+      "chars": 3014,
+      "first_200": "Reference (see Appendix) regularly during solution and helps expose them to new ways class will help students become familiar with of solving the problem that may be better this resource"
+    },
+    {
+      "physical_page": 38,
+      "printed_page": 38,
+      "chars": 3014,
+      "first_200": "3.A Determine\u0007the\u0007result\u0007or\u0007output\u0007based\u0007on\u0007 statement execution order in an algorithm. 3.D Explain\u0007why\u0007a\u0007code\u0007segment\u0007will\u0007not\u0007compile\u0007 or work as intended and modify the code to correct the error. 1"
+    },
+    {
+      "physical_page": 39,
+      "printed_page": 39,
+      "chars": 3014,
+      "first_200": "Instructional Periods Suggested Skills 1.10 Calling Class Methods 3 2.C Write\u0007program\u0007code\u0007involving\u0007procedural\u0007 abstractions. 3.C Determine\u0007the\u0007result\u0007or\u0007output\u0007based\u0007on\u0007code\u0007 that contains procedura"
+    },
+    {
+      "physical_page": 40,
+      "printed_page": 40,
+      "chars": 3014,
+      "first_200": "Review the results in class to identify and address any student misunderstandings. AP Computer Science A Course and Exam Description Course Framework V.1 | 27 Return to Table of Contents"
+    },
+    {
+      "physical_page": 41,
+      "printed_page": 41,
+      "chars": 3014,
+      "first_200": "ment operators, while the other student has a list of statements that accomplish the same thing without using compound statements. Be sure the statements\u0007are\u0007in\u0007a\u0007different\u0007order.\u0007Students\u0007should\u0007take"
+    },
+    {
+      "physical_page": 42,
+      "printed_page": 42,
+      "chars": 3014,
+      "first_200": "rtner to compare answers and come to an agreement, and then have groups share with the entire class.\u0007 After completing this unit, students will have covered all of the necessary"
+    },
+    {
+      "physical_page": 43,
+      "printed_page": 43,
+      "chars": 3014,
+      "first_200": "r some errors. Errors detectable\u0007by\u0007the\u0007compiler\u0007need\u0007to\u0007be\u0007fixed\u0007 before the program can be run. 1.1.C 1.1.C.1 Identify types of A syntax error is a mistake in the program programming errors. where t"
+    },
+    {
+      "physical_page": 44,
+      "printed_page": 44,
+      "chars": 3014,
+      "first_200": "© 2025 College Board UNIT 1 Using Objects and Methods SUGGESTED SKILLS 1.A TOPIC 1.2 Variables and Determine an appropriate program design to solve a problem or accomplish a Data"
+    },
+    {
+      "physical_page": 45,
+      "printed_page": 45,
+      "chars": 3014,
+      "first_200": "1.2.B.2 A variable is a storage location that holds a value, which can change while the program is running. Every variable has a name and an associated data type. A"
+    },
+    {
+      "physical_page": 46,
+      "printed_page": 46,
+      "chars": 3014,
+      "first_200": "ror. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 1.3.A 1.3.A.1 Develop code to generate System.out.print and System.out. output and determine println display information on the computer the result that wou"
+    },
+    {
+      "physical_page": 47,
+      "printed_page": 47,
+      "chars": 3014,
+      "first_200": "int value. An arithmetic operation that uses at least one double value will evaluate to a double value. X \u0007 \u0007EXCLUSION STATEMENT—Expressions that result in special double values (e.g., infinities"
+    },
+    {
+      "physical_page": 48,
+      "printed_page": 48,
+      "chars": 3014,
+      "first_200": "addition and subtraction. Operators with the same precedence are evaluated from left to right. 1.3.C.6 An attempt to divide an integer by\u0007the\u0007integer\u0007zero\u0007will\u0007result\u0007in\u0007an ArithmeticException. X \u0007 \u0007E"
+    },
+    {
+      "physical_page": 49,
+      "printed_page": 49,
+      "chars": 3014,
+      "first_200": "ese statements. a value. Reference types can be assigned a new object or null if there is no object. The literal null is a special value used to indicate that"
+    },
+    {
+      "physical_page": 50,
+      "printed_page": 50,
+      "chars": 3014,
+      "first_200": "1.5.A.1 Develop code to cast The casting operators (int) and primitive\u0007values\u0007to\u0007different\u0007 (double) can be used to convert from a primitive types in arithmetic double value to an int value (or"
+    },
+    {
+      "physical_page": 51,
+      "printed_page": 51,
+      "chars": 3014,
+      "first_200": "continued on next page AP Computer Science A Course and Exam Description Course Framework V.1 | 36 Return to Table of Contents © 2025 College Board UNIT Using Objects and"
+    },
+    {
+      "physical_page": 52,
+      "printed_page": 52,
+      "chars": 3014,
+      "first_200": "ired Course Content LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 1.6.A 1.6.A.1 Develop code for assignment Compound assignment operators +=, −=, statements with compound *=, /=, and %= can be used in place"
+    },
+    {
+      "physical_page": 53,
+      "printed_page": 53,
+      "chars": 3014,
+      "first_200": "1 TOPIC 1.7 SUGGESTED SKILLS 4.A Application Program Describe the behavior of a code segment or program. Interface (API) and Libraries Required Course Content LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 1."
+    },
+    {
+      "physical_page": 54,
+      "printed_page": 54,
+      "chars": 3014,
+      "first_200": "tten for both the original and use of code through programmer and other programmers to comments. understand the code and its functionality, but are ignored by the compiler and are"
+    },
+    {
+      "physical_page": 55,
+      "printed_page": 55,
+      "chars": 3014,
+      "first_200": "3.C Method Signatures Determine the result or output based on code that contains procedural abstractions. Required Course Content LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 1.9.A 1.9.A.1 Identify the corr"
+    },
+    {
+      "physical_page": 56,
+      "printed_page": 56,
+      "chars": 3014,
+      "first_200": "Framework V.1 | 41 Return to Table of Contents © 2025 College Board UNIT 1 Using Objects and Methods LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 1.9.B 1.9.B.3 Describe how to call An"
+    },
+    {
+      "physical_page": 57,
+      "printed_page": 57,
+      "chars": 3014,
+      "first_200": "UNIT Using Objects and Methods 1 TOPIC 1.10 SUGGESTED SKILLS 2.C Calling Class Methods Write program code involving procedural abstractions. 3.C Determine the result or output based on code that"
+    },
+    {
+      "physical_page": 58,
+      "printed_page": 58,
+      "chars": 3014,
+      "first_200": "Return to Table of Contents © 2025 College Board UNIT 1 Using Objects and Methods SUGGESTED SKILLS TOPIC 1.11 Math Class 2.C Write program code involving procedural abstractions. 4.A Describe"
+    },
+    {
+      "physical_page": 59,
+      "printed_page": 59,
+      "chars": 3014,
+      "first_200": "• static double random() returns a double value greater than or equal to 0.0 and less than 1.0. 1.11.A.3 The values returned from Math.random() can be manipulated using arithmetic and"
+    },
+    {
+      "physical_page": 60,
+      "printed_page": 60,
+      "chars": 3014,
+      "first_200": "superclass. Classes that extend a superclass, called subclasses, can draw upon the existing attributes and behaviors of the superclass without replacing these in the code. This creates\u0007an inheritance "
+    },
+    {
+      "physical_page": 61,
+      "printed_page": 61,
+      "chars": 3014,
+      "first_200": "constructor, lists the types of the values that are passed and their variable names. 1.13.A.3 Constructors are said to be overloaded when there\u0007are\u0007multiple\u0007constructors\u0007with\u0007different\u0007 signatures. 1."
+    },
+    {
+      "physical_page": 62,
+      "printed_page": 62,
+      "chars": 3014,
+      "first_200": "arameter list in the constructor signature. When calling constructors, arguments are passed using call by value. Call by value initializes\u0007the\u0007parameters\u0007with\u0007copies\u0007of\u0007the\u0007 arguments. 1.13.C.4 A cons"
+    },
+    {
+      "physical_page": 63,
+      "printed_page": 63,
+      "chars": 3014,
+      "first_200": "UNIT Using Objects and Methods 1 TOPIC 1.15 SUGGESTED SKILLS String Manipulation 2.C Write program code involving procedural abstractions. 3.C Determine the result or output based on code that contain"
+    },
+    {
+      "physical_page": 64,
+      "printed_page": 64,
+      "chars": 3014,
+      "first_200": "bject is immutable, meaning once a String object is created, its attributes cannot be changed. Methods called on a String object do not change the content of the String object."
+    },
+    {
+      "physical_page": 65,
+      "printed_page": 65,
+      "chars": 3014,
+      "first_200": "behavior of the method\u0007is\u0007specific\u0007to\u0007the\u0007subclass. X \u0007 \u0007EXCLUSION STATEMENT—Overriding the toString method of a class is outside the scope of the AP Computer Science A course and exam. 1.15.B 1.15.B."
+    },
+    {
+      "physical_page": 66,
+      "printed_page": 66,
+      "chars": 3014,
+      "first_200": "str; returns -1 if not found. • boolean equals(Object other) returns true if this corresponds to the same sequence of characters as other; returns false otherwise. • int compareTo(String other)"
+    },
+    {
+      "physical_page": 67,
+      "printed_page": 67,
+      "chars": 3014,
+      "first_200": "Whether assigned as homework or completed in class, the Progress Checks provide each student with immediate feedback related to this unit’s topics and skills. Progress Check Unit 2 Part 1:"
+    },
+    {
+      "physical_page": 68,
+      "printed_page": 68,
+      "chars": 3014,
+      "first_200": "Boolean expressions with relational and logical operators. This unit also introduces several pick-your-own-path\u0007 standard algorithms that use iteration. Knowledge of standard algorithms makes solving "
+    },
+    {
+      "physical_page": 69,
+      "printed_page": 69,
+      "chars": 3014,
+      "first_200": "nts struggle to explain why result of a given program code segment a code segment will not compile or work as based\u0007on\u0007specific\u0007input\u0007and\u0007on\u0007the\u0007 intended. It helps to have students work with"
+    },
+    {
+      "physical_page": 70,
+      "printed_page": 70,
+      "chars": 3014,
+      "first_200": "parameters. These close paper, each with a line of program code that reading techniques can help students can be used to assemble the correct and process the questions quickly without"
+    },
+    {
+      "physical_page": 71,
+      "printed_page": 71,
+      "chars": 3014,
+      "first_200": "3.A Determine\u0007the\u0007result\u0007or\u0007output\u0007based\u0007on\u0007 statement execution order in an algorithm. 2.7 \u0007 3 2.A Write\u0007program\u0007code\u0007to\u0007implement\u0007an\u0007algorithm. 3.A Determine\u0007the\u0007result\u0007or\u0007output\u0007based\u0007on\u0007 statement"
+    },
+    {
+      "physical_page": 72,
+      "printed_page": 72,
+      "chars": 3014,
+      "first_200": "that contains procedural abstractions. 3.D Explain\u0007why\u0007a\u0007code\u0007segment\u0007will\u0007not\u0007compile\u0007 or work as intended and modify the code to correct the error. 2.11 \u0007Nested Iteration 2 2.A Write\u0007program\u0007code\u0007to"
+    },
+    {
+      "physical_page": 73,
+      "printed_page": 73,
+      "chars": 3014,
+      "first_200": "arious sample inputs, keeping track of the statements that get executed\u0007and\u0007the\u0007order\u0007in\u0007which\u0007they\u0007are\u0007executed.\u0007This\u0007can\u0007help\u0007students\u0007find\u0007errors\u0007 and validate results. 2 2.2–2.6 Pair Programming H"
+    },
+    {
+      "physical_page": 74,
+      "printed_page": 74,
+      "chars": 3014,
+      "first_200": "version\u0007of\u0007the\u0007code\u0007segment\u0007and\u0007share\u0007their conclusions. AP Computer Science A Course and Exam Description Course Framework V.1 | 59 Return to Table of Contents © 2025 College Board UNIT 2 Selection a"
+    },
+    {
+      "physical_page": 75,
+      "printed_page": 75,
+      "chars": 3014,
+      "first_200": "problem or accomplish a Selection and task. Repetition Required Course Content LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 2.1.A 2.1.A.1 Represent patterns and The building blocks of algorithms include alg"
+    },
+    {
+      "physical_page": 76,
+      "printed_page": 76,
+      "chars": 3014,
+      "first_200": "references. 2.2.A.2 Numeric values can be compared using the relational operators <, >, <=, and >= to determine the relationship between the values. 2.2.A.3 An expression involving relational operator"
+    },
+    {
+      "physical_page": 77,
+      "printed_page": 77,
+      "chars": 3014,
+      "first_200": "by using selection 2.3.A.2 statements and determine the result of these processes. An if statement is a type of selection statement\u0007that\u0007affects\u0007the\u0007flow\u0007of\u0007control\u0007by\u0007 executing\u0007different\u0007segments\u0007of"
+    },
+    {
+      "physical_page": 78,
+      "printed_page": 78,
+      "chars": 3014,
+      "first_200": "The Boolean expression of the inner nested if statement is evaluated only if the Boolean expression of the outer if statement evaluates to true. 2.4.A.3 A multiway selection (if-else-if) is"
+    },
+    {
+      "physical_page": 79,
+      "printed_page": 79,
+      "chars": 3014,
+      "first_200": "algorithm. Required Course Content LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 2.5.A 2.5.A.1 Develop code to represent Logical operators ! (not), && (and), and || compound Boolean (or) are used with Boolea"
+    },
+    {
+      "physical_page": 80,
+      "printed_page": 80,
+      "chars": 3014,
+      "first_200": "expressions are equivalent. 2.6.A.2 De Morgan’s law can be applied to Boolean expressions to create equivalent Boolean expressions. Under De Morgan’s law, the Boolean expression !(a && b) is equivalen"
+    },
+    {
+      "physical_page": 81,
+      "printed_page": 81,
+      "chars": 3014,
+      "first_200": "n to Table of Contents © 2025 College Board UNIT Selection and Iteration 2 TOPIC 2.7 SUGGESTED SKILLS while Loops 2.A Write program code to implement an algorithm. 3.A Determine"
+    },
+    {
+      "physical_page": 82,
+      "printed_page": 82,
+      "chars": 3014,
+      "first_200": "evaluates to false. 2.7.A.4 Off by one errors\u0007occur\u0007when\u0007the\u0007iteration\u0007 statement loops one time too many or one time too few. 2.7.B 2.7.B.1 Develop code to represent A while loop is a"
+    },
+    {
+      "physical_page": 83,
+      "printed_page": 83,
+      "chars": 3014,
+      "first_200": "variable. The Boolean expression is evaluated immediately after the loop control variable is initialized\u0007and\u0007then\u0007following\u0007each\u0007execution\u0007of\u0007 the increment statement until it is false. In each iterat"
+    },
+    {
+      "physical_page": 84,
+      "printed_page": 84,
+      "chars": 3014,
+      "first_200": "tent LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 2.9.A 2.9.A.1 Develop code for standard There are standard algorithms to: and original algorithms • identify if an integer is or is not evenly (without"
+    },
+    {
+      "physical_page": 85,
+      "printed_page": 85,
+      "chars": 3014,
+      "first_200": "UNIT Selection and Iteration 2 TOPIC 2.11 SUGGESTED SKILLS 2.A Nested Iteration Write program code to implement an algorithm. 3.D Explain why a code segment will not compile or work"
+    },
+    {
+      "physical_page": 86,
+      "printed_page": 86,
+      "chars": 3014,
+      "first_200": ".A TOPIC 2.12 Informal Run-Time Describe the behavior of a code segment or program. Analysis Required Course Content LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 2.12.A 2.12.A.1 Calculate statement A statem"
+    },
+    {
+      "physical_page": 87,
+      "printed_page": 87,
+      "chars": 3014,
+      "first_200": "Multiple-choice: ~15 questions Free-response: 2 questions §§ Class Design AP Computer Science A Course and Exam Description Course Framework V.1 | 74 Return to Table of Contents © 2025 College"
+    },
+    {
+      "physical_page": 88,
+      "printed_page": 88,
+      "chars": 3014,
+      "first_200": "code saves time because it has already been the class is syntactically correct in terms tested.\u0007By\u0007using\u0007built-in\u0007Java\u0007classes\u0007such\u0007 of its instance variables, constructors, and as String and Math or\u0007"
+    },
+    {
+      "physical_page": 89,
+      "printed_page": 89,
+      "chars": 3014,
+      "first_200": "determining the number of times a given instructed to design and implement a loop structure will execute as well as the class\u0007based\u0007on\u0007provided\u0007specifications\u0007 implications associated with code change"
+    },
+    {
+      "physical_page": 90,
+      "printed_page": 90,
+      "chars": 3014,
+      "first_200": "\u0007how\u0007computing\u0007impacts\u0007society,\u0007 economy, and culture. 3.3 Anatomy of a Class 2 1.A Determine\u0007an\u0007appropriate\u0007program\u0007design\u0007to\u0007 solve a problem or accomplish a task. 2.B Write\u0007program\u0007code\u0007involving\u0007d"
+    },
+    {
+      "physical_page": 91,
+      "printed_page": 91,
+      "chars": 3014,
+      "first_200": "| 77 Return to Table of Contents © 2025 College Board UNIT 3 Class Creation UNIT AT A GLANCE (cont’d) Topic Instructional Periods Suggested Skills 3.8 \u0007Scope and Access 2"
+    },
+    {
+      "physical_page": 92,
+      "printed_page": 92,
+      "chars": 3014,
+      "first_200": "play the game, they should keep track of the various nouns they encounter and actions that happen as part of the game. The nouns can be represented in the computer"
+    },
+    {
+      "physical_page": 93,
+      "printed_page": 93,
+      "chars": 3014,
+      "first_200": "ired Course Content LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 3.1.A 3.1.A.1 Represent the design of a Abstraction is the process of reducing program by using natural complexity by focusing on the main"
+    },
+    {
+      "physical_page": 94,
+      "printed_page": 94,
+      "chars": 3014,
+      "first_200": "does it. Through method decomposition, a programmer breaks down larger behaviors of the class into smaller behaviors by creating methods to represent each individual smaller behavior. A procedural abs"
+    },
+    {
+      "physical_page": 95,
+      "printed_page": 95,
+      "chars": 3014,
+      "first_200": "diagrams. AP Computer Science A Course and Exam Description Course Framework V.1 | 81 Return to Table of Contents © 2025 College Board UNIT 3 Class Creation SUGGESTED SKILLS 5.A"
+    },
+    {
+      "physical_page": 96,
+      "printed_page": 96,
+      "chars": 3014,
+      "first_200": "obtain permission and often purchase the code before integrating it into their program. AP Computer Science A Course and Exam Description Course Framework V.1 | 82 Return to Table of"
+    },
+    {
+      "physical_page": 97,
+      "printed_page": 97,
+      "chars": 3014,
+      "first_200": "his course, constructors are always designated public. 3.3.A.4 Instance variables belong\u0007to\u0007the\u0007object,\u0007and\u0007 each object has its own copy of the variable. 3.3.A.5 Access to attributes should be kept i"
+    },
+    {
+      "physical_page": 98,
+      "printed_page": 98,
+      "chars": 3014,
+      "first_200": "l state of an object, which should include initial values for all instance variables. When a constructor is called, memory is allocated for the object and the associated object reference"
+    },
+    {
+      "physical_page": 99,
+      "printed_page": 99,
+      "chars": 3014,
+      "first_200": "mework V.1 | 84 Return to Table of Contents © 2025 College Board UNIT Class Creation 3 TOPIC 3.5 SUGGESTED SKILLS 2.C Methods: How to Write program code involving procedural"
+    },
+    {
+      "physical_page": 100,
+      "printed_page": 100,
+      "chars": 3014,
+      "first_200": "header contains the keyword void before through methods written in a the method name. class using primitive values 3.5.A.2 and determine the result of calling these methods. A\u0007non-void\u0007method\u0007returns\u0007"
+    },
+    {
+      "physical_page": 101,
+      "printed_page": 101,
+      "chars": 3014,
+      "first_200": "ameters receive values behaviors of an object through those parameters and use those values through methods written in a in accomplishing the method’s task. class using primitive values 3.5.A.8 and"
+    },
+    {
+      "physical_page": 102,
+      "printed_page": 102,
+      "chars": 3014,
+      "first_200": "to alter the state of the object. It is good programming practice to not modify mutable objects that are passed as parameters unless required in the specification. 3.6.A.2 When the"
+    },
+    {
+      "physical_page": 103,
+      "printed_page": 103,
+      "chars": 3014,
+      "first_200": "f a class sharing a single copy of the the class. class variable. Class variables are designated with the static keyword before the variable type. 3.7.B.2 Class variables that are"
+    },
+    {
+      "physical_page": 104,
+      "printed_page": 104,
+      "chars": 3014,
+      "first_200": "the error. 4.A Describe the behavior of a Required Course Content code segment or program. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 3.8.A 3.8.A.1 Explain where variables can Local variables are\u0007variable"
+    },
+    {
+      "physical_page": 105,
+      "printed_page": 105,
+      "chars": 3014,
+      "first_200": "being called. 3.9.A.2 The keyword this can be used to pass the current object as an argument in a method call. 3.9.A.3 Class methods do not have a this reference."
+    },
+    {
+      "physical_page": 106,
+      "printed_page": 106,
+      "chars": 3014,
+      "first_200": "§ Data Analysis with ArrayList Progress Check Unit 4 Part 3: Topics 4.11–4.17 Multiple-choice: ~21 questions Free-response: 2 questions § 2D Array AP Computer Science A Course and Exam Description"
+    },
+    {
+      "physical_page": 107,
+      "printed_page": 107,
+      "chars": 3014,
+      "first_200": "while an array is more powerful math and computer science concept. In this unit, students will learn how to write appropriate for storing simple recursive methods and determine the purpose"
+    },
+    {
+      "physical_page": 108,
+      "printed_page": 108,
+      "chars": 3014,
+      "first_200": "cific\u0007purpose,\u0007they\u0007may\u0007 Exam—Data\u0007Analysis\u0007with ArrayList— have unintended consequences that students are provided with an outline of a can impact society as a whole. Students data set that has been "
+    },
+    {
+      "physical_page": 109,
+      "printed_page": 109,
+      "chars": 3014,
+      "first_200": "-sized\u0007array\u0007and\u0007use\u0007it\u0007 structure.\u0007While\u0007there\u0007is\u0007a\u0007specific\u0007nested\u0007 to trace the code that is given. Recursion is structure to traverse elements in a 2D array assessed\u0007only\u0007through\u0007the\u0007multiple-choi"
+    },
+    {
+      "physical_page": 110,
+      "printed_page": 110,
+      "chars": 3014,
+      "first_200": "5.A Explain\u0007how\u0007computing\u0007impacts\u0007society,\u0007 economy, and culture. 4.2 Introduction to Using Data 1 1.B Determine\u0007what\u0007knowledge\u0007can\u0007be\u0007extracted\u0007 Sets from data. 4.3 Array Creation and Access 2 2.B Wr"
+    },
+    {
+      "physical_page": 111,
+      "printed_page": 111,
+      "chars": 3014,
+      "first_200": "described. 4.7 Wrapper Classes 1 2.B Write\u0007program\u0007code\u0007involving\u0007data\u0007 abstractions. continued on next page AP Computer Science A Course and Exam Description Course Framework V.1 | 95 Return to Table"
+    },
+    {
+      "physical_page": 112,
+      "printed_page": 112,
+      "chars": 3014,
+      "first_200": "4.A Describe\u0007the\u0007behavior\u0007of\u0007a\u0007code\u0007segment\u0007or\u0007 program. 4.11 2D Array Creation and 2 2.B Write\u0007program\u0007code\u0007involving\u0007data\u0007 Access abstractions. 3.B Determine\u0007the\u0007result\u0007or\u0007output\u0007based\u0007on\u0007code\u0007 that"
+    },
+    {
+      "physical_page": 113,
+      "printed_page": 113,
+      "chars": 3014,
+      "first_200": "program. 4.14 Searching Algorithms 3 2.B Write\u0007program\u0007code\u0007involving\u0007data\u0007 abstractions. 3.B Determine\u0007the\u0007result\u0007or\u0007output\u0007based\u0007on\u0007code\u0007 that contains data abstractions. 4.A Describe\u0007the\u0007behavior\u0007o"
+    },
+    {
+      "physical_page": 114,
+      "printed_page": 114,
+      "chars": 3014,
+      "first_200": "UCTIONAL ACTIVITIES The\u0007sample\u0007activities\u0007on\u0007this\u0007page\u0007are\u0007optional\u0007and\u0007are\u0007offered\u0007to\u0007provide\u0007possible\u0007ways\u0007to\u0007 incorporate various instructional approaches into the classroom. Teachers do not need t"
+    },
+    {
+      "physical_page": 115,
+      "printed_page": 115,
+      "chars": 3014,
+      "first_200": "\u0007a\u0007class\u0007discussing\u0007the\u0007different\u0007approaches\u0007 students used. 5 4.10 Predict and Confirm Have\u0007students\u0007look\u0007at\u0007the\u0007code\u0007they\u0007wrote\u0007to\u0007solve\u0007the\u0007free-response\u0007question\u0007for\u0007 arrays on paper, and have the"
+    },
+    {
+      "physical_page": 116,
+      "printed_page": 116,
+      "chars": 3014,
+      "first_200": "objects\u0007and\u0007access\u0007the\u0007randomly\u0007stored elements. 9 4.12 Activating Prior Knowledge When\u0007introducing\u00072D\u0007arrays\u0007and\u0007row-major\u0007traversal,\u0007ask\u0007students\u0007which\u0007part\u0007of\u0007the\u0007 nested for loop structure loops o"
+    },
+    {
+      "physical_page": 117,
+      "printed_page": 117,
+      "chars": 3014,
+      "first_200": "Course Framework V.1 | 99 Return to Table of Contents © 2025 College Board UNIT 4 Data Collections SUGGESTED SKILLS 1.B TOPIC 4.1 Determine what knowledge can be extracted from"
+    },
+    {
+      "physical_page": 118,
+      "printed_page": 118,
+      "chars": 3014,
+      "first_200": "appropriate data Contents of a data set might be related to set to use in order to solve a a specific question or topic and might not problem or answer"
+    },
+    {
+      "physical_page": 119,
+      "printed_page": 119,
+      "chars": 3014,
+      "first_200": "© 2025 College Board UNIT 4 Data Collections SUGGESTED SKILLS 2.B TOPIC 4.3 Write program code involving data abstractions. Array Creation and Access 3.B Determine the result or output based"
+    },
+    {
+      "physical_page": 120,
+      "printed_page": 120,
+      "chars": 3014,
+      "first_200": "of the array, inclusive. Using an index value outside of this range will result in an ArrayIndexOutOfBoundsException. AP Computer Science A Course and Exam Description Course Framework V.1 | 102"
+    },
+    {
+      "physical_page": 121,
+      "printed_page": 121,
+      "chars": 3014,
+      "first_200": "hile loop requires elements to be accessed using their indices. 4.4.A.3 An enhanced for loop header includes a variable, referred to as the enhanced for loop variable. For each iteration"
+    },
+    {
+      "physical_page": 122,
+      "printed_page": 122,
+      "chars": 3014,
+      "first_200": "specification that involves • compute a sum or average arrays and determine the result of these algorithms. • determine if at least one element has a particular property • determine"
+    },
+    {
+      "physical_page": 123,
+      "printed_page": 123,
+      "chars": 3014,
+      "first_200": "abstractions. 4.B Describe the initial Required Course Content conditions that must be met for a code segment to work as intended or described. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 4.6.A 4.6.A.1 Dev"
+    },
+    {
+      "physical_page": 124,
+      "printed_page": 124,
+      "chars": 3014,
+      "first_200": "5 Return to Table of Contents © 2025 College Board UNIT 4 Data Collections LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 4.6.A 4.6.A.6 Develop code to read data The following Scanner methods and"
+    },
+    {
+      "physical_page": 125,
+      "printed_page": 125,
+      "chars": 3014,
+      "first_200": "the empty string if called immediately after another Scanner method that is reading from the file or input source. • String next() returns the next String read from the file"
+    },
+    {
+      "physical_page": 126,
+      "printed_page": 126,
+      "chars": 3014,
+      "first_200": "LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 4.6.A 4.6.A.8 Develop code to read data The following additional String method— from a text file. including\u0007what\u0007it\u0007does\u0007and\u0007when\u0007it\u0007is\u0007used—is\u0007 part of the Java"
+    },
+    {
+      "physical_page": 127,
+      "printed_page": 127,
+      "chars": 3014,
+      "first_200": "counterparts and determine an Integer object is created, its attributes the result of using these cannot be changed. A Double object is objects. immutable, meaning once a Double object is"
+    },
+    {
+      "physical_page": 128,
+      "printed_page": 128,
+      "chars": 3014,
+      "first_200": "continued on next page AP Computer Science A Course and Exam Description Course Framework V.1 | 108 Return to Table of Contents © 2025 College Board UNIT Data Collections 4"
+    },
+    {
+      "physical_page": 129,
+      "printed_page": 129,
+      "chars": 3014,
+      "first_200": "alling methods on these objects. The ArrayList constructor ArrayList() constructs an empty list. 4.8.A.3 Java allows the generic type ArrayList<E>, where the type parameter E specifies the type of the"
+    },
+    {
+      "physical_page": 130,
+      "printed_page": 130,
+      "chars": 3014,
+      "first_200": "re ArrayList objects and used—are\u0007part\u0007of\u0007the\u0007Java\u0007Quick\u0007Reference: determine the result of calling • int size() returns the number of methods on these objects. elements in the list. • boolean add(E o"
+    },
+    {
+      "physical_page": 131,
+      "printed_page": 131,
+      "chars": 3014,
+      "first_200": "st is when iteration traverse the elements of or recursive statements are used to access an ArrayList and all or an ordered sequence of the elements in determine the results"
+    },
+    {
+      "physical_page": 132,
+      "printed_page": 132,
+      "chars": 3014,
+      "first_200": "Determine the result or output based on code that contains data abstractions. 3.D Explain why a code segment will not compile or work as intended and Required Course Content modify"
+    },
+    {
+      "physical_page": 133,
+      "printed_page": 133,
+      "chars": 3014,
+      "first_200": "e and Exam Description Course Framework V.1 | 113 Return to Table of Contents © 2025 College Board UNIT 4 Data Collections SUGGESTED SKILLS 2.B TOPIC 4.11 Write program code"
+    },
+    {
+      "physical_page": 134,
+      "printed_page": 134,
+      "chars": 3014,
+      "first_200": "{ {1, 2, 3}, {4, 5, 6} };. 4.11.A.4 The square brackets [row][col] are used to access and modify an element in a 2D array. For the purposes of the"
+    },
+    {
+      "physical_page": 135,
+      "printed_page": 135,
+      "chars": 3014,
+      "first_200": ". length and the number of columns is values[0].length. Using an index value outside of these ranges will result in an ArrayIndexOutOfBoundsException. AP Computer Science A Course and Exam Description"
+    },
+    {
+      "physical_page": 136,
+      "printed_page": 136,
+      "chars": 3014,
+      "first_200": "loop used to traverse a 2D array traverses the rows. Therefore, the enhanced for loop variable must be the type of each row, which is a 1D array. The inner"
+    },
+    {
+      "physical_page": 137,
+      "printed_page": 137,
+      "chars": 3014,
+      "first_200": "to correct the error. 4.A Describe the behavior of a LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE code segment or program. 4.13.A 4.13.A.1 Develop code for standard There\u0007are\u0007standard\u0007algorithms\u0007that\u0007utiliz"
+    },
+    {
+      "physical_page": 138,
+      "printed_page": 138,
+      "chars": 3014,
+      "first_200": "© 2025 College Board UNIT 4 Data Collections SUGGESTED SKILLS 2.B TOPIC 4.14 Write program code involving data abstractions. 3.B Searching Algorithms Determine the result or output based on code"
+    },
+    {
+      "physical_page": 139,
+      "printed_page": 139,
+      "chars": 3014,
+      "first_200": "contains data abstractions. 4.A Describe the behavior of a code segment or program. 4.B Describe the initial conditions that must be met for a code segment to work Required Course"
+    },
+    {
+      "physical_page": 140,
+      "printed_page": 140,
+      "chars": 3014,
+      "first_200": "4.B Describe the initial conditions that must be met for a code segment to work Required Course Content as intended or described. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 4.16.A 4.16.A.1 Determine the"
+    },
+    {
+      "physical_page": 141,
+      "printed_page": 141,
+      "chars": 3014,
+      "first_200": "Describe the behavior of a code segment or program. and Sorting 4.B Describe the initial conditions that must be met for a code segment to work as intended or described."
+    },
+    {
+      "physical_page": 142,
+      "printed_page": 142,
+      "chars": 3014,
+      "first_200": "e AP Computer Science A course and exam. continued on next page AP Computer Science A Course and Exam Description Course Framework V.1 | 121 Return to Table of Contents"
+    },
+    {
+      "physical_page": 143,
+      "printed_page": 143,
+      "chars": 3014,
+      "first_200": "online tutorials, workshop consultants, colleagues, or 17\u0007is\u0007acceptable.\u0007Features\u0007of\u0007Java\u00078,\u0007including\u0007Lambda\u0007 other means? What features do they feel are essential expressions and the Stream API, are"
+    },
+    {
+      "physical_page": 144,
+      "printed_page": 144,
+      "chars": 3014,
+      "first_200": "rs for most of these questions extremely helpful when teaching students how to are freely available online, they are best used as program. The table on the following page shows"
+    },
+    {
+      "physical_page": 145,
+      "printed_page": 145,
+      "chars": 3014,
+      "first_200": "ulum\u0007or\u0007textbook\u0007that\u0007 CSTA\u0007is\u0007a\u0007community\u0007run\u0007by\u0007K-12\u0007computer\u0007science\u0007 encourages teaching the creation of classes early, it is teachers\u0007for\u0007K-12\u0007computer\u0007science\u0007teachers.\u0007Local\u0007 possible to cover "
+    },
+    {
+      "physical_page": 146,
+      "printed_page": 146,
+      "chars": 3014,
+      "first_200": "Considering the weighting of the remaining units being\u0007a\u0007full\u0007and\u0007comparable\u0007introductory\u0007college-level\u0007 can help determine which topics may be acceptable course. Each unit has a suggested number of c"
+    },
+    {
+      "physical_page": 147,
+      "printed_page": 147,
+      "chars": 3014,
+      "first_200": "bypass it. The goal is for students to become skilled accuracy,\u0007write\u0007precise\u0007prompts,\u0007identify\u0007and\u0007fix\u0007 problem\u0007solvers\u0007who\u0007can\u0007effectively\u0007leverage\u0007AI\u0007tools\u0007 issues,\u0007integrate\u0007AI-generated\u0007code\u0007with"
+    },
+    {
+      "physical_page": 148,
+      "printed_page": 148,
+      "chars": 3014,
+      "first_200": "ould develop skills to evaluate and verify\u0007AI-generated\u0007code. AP Computer Science A Course and Exam Description Instructional Approaches V.1 | 128 Return to Table of Contents © 2025 College Board Uses"
+    },
+    {
+      "physical_page": 149,
+      "printed_page": 149,
+      "chars": 3014,
+      "first_200": "ing explanations of code behavior and program execution and behavior execution\u0007flow § Relying solely on AI for debugging § Learning\u0007how\u0007to\u0007identify\u0007and\u0007fix\u0007common\u0007 without learning troubleshooting pro"
+    },
+    {
+      "physical_page": 150,
+      "printed_page": 150,
+      "chars": 3014,
+      "first_200": "g the Computational Thinking Practices Throughout the course, students will develop follow. In addition, each scoring criteria in the scoring computational thinking practices that are fundamental guid"
+    },
+    {
+      "physical_page": 151,
+      "printed_page": 151,
+      "chars": 3014,
+      "first_200": "calls are legal and appropriate. 1.B Does the data set have enough Direct students to the U.S. Government’s Determine what information to answer your question? Open Data site data.gov\u0007and\u0007have\u0007them\u0007fi"
+    },
+    {
+      "physical_page": 152,
+      "printed_page": 152,
+      "chars": 3014,
+      "first_200": "the\u0007difference\u0007in\u0007process\u0007and\u0007time\u0007taken. Give students an algorithm for one of the sorts in the course (insertion, selection, or merge sort) and have them write the code to implement that sort. 2.B H"
+    },
+    {
+      "physical_page": 153,
+      "printed_page": 153,
+      "chars": 3014,
+      "first_200": "other\u0007than\u0007row-major\u0007order.\u0007Then\u0007ask\u0007them\u0007 to develop and implement the algorithm to match their traversal. Create four new groups of students, comprised of one member from each of the former groups, "
+    },
+    {
+      "physical_page": 154,
+      "printed_page": 154,
+      "chars": 3014,
+      "first_200": "w will you to craft prompts that go beyond the communicate that in your prompt? walkthrough. For instance, students can be taught to ask AI to explain why breaking tasks"
+    },
+    {
+      "physical_page": 155,
+      "printed_page": 155,
+      "chars": 3014,
+      "first_200": "va Quick When introducing students to new Determine the result or Reference (see Appendix) to understand methods, have them predict the output method calls? of\u0007several\u0007different\u0007statements\u0007that\u0007use\u0007 o"
+    },
+    {
+      "physical_page": 156,
+      "printed_page": 156,
+      "chars": 3014,
+      "first_200": "t only to correct errors but also to explain why the original code does not compile or work as intended. This approach builds both error diagnosis and debugging skills. AP"
+    },
+    {
+      "physical_page": 157,
+      "printed_page": 157,
+      "chars": 3014,
+      "first_200": "te methods, Describe the initial method is called? provide\u0007them\u0007with\u0007the\u0007specifications\u0007for\u0007 several methods and a collection of method conditions that must be Does a given method have headers. Ask th"
+    },
+    {
+      "physical_page": 158,
+      "printed_page": 158,
+      "chars": 3014,
+      "first_200": "findings. Using an Iterative Development Process The instructional strategies tables include strategies § Analyze Code: In this phase, students evaluate and that facilitate students’ use of a process "
+    },
+    {
+      "physical_page": 159,
+      "printed_page": 159,
+      "chars": 3014,
+      "first_200": "phases need not be implemented in linear order. their solution by writing a program. The strategy Students may choose to return to earlier phases as of pair programming allows students"
+    },
+    {
+      "physical_page": 160,
+      "printed_page": 160,
+      "chars": 3014,
+      "first_200": "bute, the information necessary for a given behavior, and what value might be returned. Error Analysis Students\u0007analyze\u0007an\u0007existing\u0007solution\u0007 When students begin to write methods, to determine whether"
+    },
+    {
+      "physical_page": 161,
+      "printed_page": 161,
+      "chars": 3014,
+      "first_200": "to help that they know to use them in their solution them understand the concepts and and, if the method returns a value, what the interpretations of tasks required to"
+    },
+    {
+      "physical_page": 162,
+      "printed_page": 162,
+      "chars": 3014,
+      "first_200": "the String “experts” on problems they class,\u0007assign\u0007students\u0007as\u0007“experts”\u0007on\u0007the\u0007different\u0007 understand well; groups rotate methods within the Java Quick Reference (see through the expert stations to A"
+    },
+    {
+      "physical_page": 163,
+      "printed_page": 163,
+      "chars": 3014,
+      "first_200": "ts put themselves in sorted order understanding of a new concept. based on some criteria, and ask participants and A\u0007kinesthetic-tactile\u0007learning\u0007style\u0007 observers what they noticed about the process. "
+    },
+    {
+      "physical_page": 164,
+      "printed_page": 164,
+      "chars": 3014,
+      "first_200": "to reassemble the class in order: class header, instance variables, constructors, and methods. Using Students use objects to examine When illustrating how values are passed to and Manipulatives relati"
+    },
+    {
+      "physical_page": 165,
+      "printed_page": 165,
+      "chars": 3014,
+      "first_200": "problem. Paraphrasing Students restate, in their own Provide students with a method header that words, essential information includes Javadoc comments. Have the students expressed in text. describe in"
+    },
+    {
+      "physical_page": 166,
+      "printed_page": 166,
+      "chars": 3014,
+      "first_200": "olution together contributions\u0007of\u0007ideas\u0007from\u0007all\u0007group\u0007members—helps\u0007 using pair programming. One student (the driver) student\u0007engagement\u0007and\u0007confidence\u0007and\u0007encourages\u0007 writes program code, while the "
+    },
+    {
+      "physical_page": 167,
+      "printed_page": 167,
+      "chars": 3014,
+      "first_200": "g\u0007 what makes simulations more robust; for example, it objectives\u0007focused\u0007on\u0007input\u0007until\u0007file\u0007reading\u0007in\u0007Unit\u00074,\u0007 is what ensures viewers get appropriate suggestions input is a necessary component for"
+    },
+    {
+      "physical_page": 168,
+      "printed_page": 168,
+      "chars": 3014,
+      "first_200": "to Table of Contents © 2025 College Board THIS PAGE IS INTENTIONALLY LEFT BLANK. AP COMPUTER SCIENCE A Exam Information Exam Overview The AP Computer Science A Exam assesses student"
+    },
+    {
+      "physical_page": 169,
+      "printed_page": 169,
+      "chars": 3014,
+      "first_200": "Exam Weighting for Computational Thinking Practices Multiple-Choice Section Practice 1: Design Code 2–10% Practice 2: Develop Code 22–38% Practice 3: Analyze Code 37–53% Practice 4: Document Code and "
+    },
+    {
+      "physical_page": 170,
+      "printed_page": 170,
+      "chars": 3014,
+      "first_200": "Exam Information V.1 | 147 Return to Table of Contents © 2025 College Board Task Verbs Used in Free-Response Questions The following task verbs are commonly used in the free-response"
+    },
+    {
+      "physical_page": 171,
+      "printed_page": 171,
+      "chars": 3014,
+      "first_200": "ng code segments, appearing in a class other than Date, will correctly create an instance of a Date object? (A) Date birthday = new Date(\"September\", \"5th\"); (B) Date birthday ="
+    },
+    {
+      "physical_page": 172,
+      "printed_page": 172,
+      "chars": 3014,
+      "first_200": "is equivalent to !x || !y || z ? (A) !(x && y) && z (B) !(x && y) || z (C) !(x || y) && z (D) !(x ||"
+    },
+    {
+      "physical_page": 173,
+      "printed_page": 173,
+      "chars": 3014,
+      "first_200": "e following class declarations are used to represent information about an apartment and a duplex, which is a building containing two apartments. { public int calculateRent() { /* implementation not"
+    },
+    {
+      "physical_page": 174,
+      "printed_page": 174,
+      "chars": 3014,
+      "first_200": "downloaded it. §§ Data set 2 contains an entry for each application available from the store. Each entry includes the ID number and age of the customer who most recently"
+    },
+    {
+      "physical_page": 175,
+      "printed_page": 175,
+      "chars": 3014,
+      "first_200": "{ String[] temp = scan.next().split(\"-\"); \u0007 usernames.add(temp[0].substring(0, 1) + temp[1]); } AP Computer Science A Course and Exam Description Exam Information V.1 | 157 Return to Table of Contents"
+    },
+    {
+      "physical_page": 176,
+      "printed_page": 176,
+      "chars": 3014,
+      "first_200": "elements of arr so that they are in order from least to greatest. public static void selectionSort(int[] arr) { for (int j = 0; j < arr.length - 1; j++)"
+    },
+    {
+      "physical_page": 177,
+      "printed_page": 177,
+      "chars": 3014,
+      "first_200": "ion() { /* to be implemented in part (b) */ } /* There may be instance variables, constructors, and methods that are not shown. */ } AP Computer Science A"
+    },
+    {
+      "physical_page": 178,
+      "printed_page": 178,
+      "chars": 3014,
+      "first_200": "© 2025 College Board Complete the MessageBuilder constructor. You must use getNextWord appropriately in order to receive full credit. /** * \u0007 * \u0007 * as described in part (a)"
+    },
+    {
+      "physical_page": 179,
+      "printed_page": 179,
+      "chars": 3014,
+      "first_200": "© 2025 College Board Return Value Statement (blank if no value) Explanation String info; CupcakeMachine c1 = CupcakeMachine c1 new CupcakeMachine(10, 1.75); is constructed with 10 cupcakes and a cost"
+    },
+    {
+      "physical_page": 180,
+      "printed_page": 180,
+      "chars": 3014,
+      "first_200": "ke. info = c2.takeOrder(10); \"Order number 1, A customer orders 10 cost $15.0\" cupcakes for a total cost of 10 × $1.50. There are now 0 cupcakes remaining in the"
+    },
+    {
+      "physical_page": 181,
+      "printed_page": 181,
+      "chars": 3014,
+      "first_200": "cost of the available items in inventory whose cost is between the parameters lower and upper, inclusive. Suppose inventory contains the following seven ItemInfo objects. For the inventory shown, aver"
+    },
+    {
+      "physical_page": 182,
+      "printed_page": 182,
+      "chars": 3014,
+      "first_200": "Return to Table of Contents © 2025 College Board Write the Schedule method columnWithFewest. The method should return the index of a column in sched that contains the fewest occurrences"
+    },
+    {
+      "physical_page": 183,
+      "printed_page": 183,
+      "chars": 3014,
+      "first_200": ".3 5 A 2.A 2.3.A 2.3.A.3 2.3.A.4 6 B 2.A 2.6.A 2.6.A.1 2.6.A.2 7 A 2.A 2.11.A 2.11.A.1 8 B 3.A 2.12.A 2.12.A.1 9 C 1.A 3.1.A 3.1.A.2 3.1.A.7 10"
+    },
+    {
+      "physical_page": 184,
+      "printed_page": 184,
+      "chars": 3014,
+      "first_200": "Return to Table of Contents © 2025 College Board THIS PAGE IS INTENTIONALLY LEFT BLANK. AP COMPUTER SCIENCE A Scoring Guidelines Applying the Scoring Criteria Algorithm Points Each question’s scoring"
+    },
+    {
+      "physical_page": 185,
+      "printed_page": 185,
+      "chars": 3014,
+      "first_200": "e” category only if the correction can be unambiguously inferred from context as in the example “ArayList” instead of “ArrayList”. As a counterexample, if the code declares “int G=99, g=0;”,"
+    },
+    {
+      "physical_page": 186,
+      "printed_page": 186,
+      "chars": 3014,
+      "first_200": "Responses will not earn the point if they 1 point and the strings obtained from getNextWord • fail\u0007to\u0007initialize message and numWords is assigned the correct count • calculate an incorrect"
+    },
+    {
+      "physical_page": 187,
+      "printed_page": 187,
+      "chars": 3014,
+      "first_200": "{ String message = \"Order cannot be filled\"; if (quantity <= availCupcakes) { availCupcakes -= quantity; double cost = quantity * cupcakeCost; message = \"Order number \" + orderNum +"
+    },
+    {
+      "physical_page": 188,
+      "printed_page": 188,
+      "chars": 3014,
+      "first_200": "• declare method as something other than public 6 Builds message based on int parameter, updates Responses can still earn the point even if they 1 point number of available"
+    },
+    {
+      "physical_page": 189,
+      "printed_page": 189,
+      "chars": 3014,
+      "first_200": "count = 0; for (ItemInfo it : inventory) { if (it.isAvailable() && it.getCost() >= lower && it.getCost() <= upper) { sum += it.getCost(); count++; } } return sum / count;"
+    },
+    {
+      "physical_page": 190,
+      "printed_page": 190,
+      "chars": 3014,
+      "first_200": "n the point even if they 1 point accumulates sum of costs from inventory • compute a sum of incorrectly identified costs within a loop • call getCost incorrectly •"
+    },
+    {
+      "physical_page": 191,
+      "printed_page": 191,
+      "chars": 3014,
+      "first_200": "if (count < minCount) { minCol = col; minCount = count; } } return minCol; } AP Computer Science A Course and Exam Description Scoring Guidelines V.1 | 180 Return"
+    },
+    {
+      "physical_page": 192,
+      "printed_page": 192,
+      "chars": 3014,
+      "first_200": "vancing to the next column • fail\u0007to\u0007initialize\u0007a\u0007count 6 Returns index of column with smallest Responses can still earn the point even if they 1 point computed count (algorithm) • compute"
+    },
+    {
+      "physical_page": 193,
+      "printed_page": 193,
+      "chars": 3014,
+      "first_200": "this is equal to other; returns a value > 0 if this is greater than other. Strings are ordered based upon the alphabet. String[] split(String del) Returns a String array"
+    },
+    {
+      "physical_page": 194,
+      "printed_page": 194,
+      "chars": 3014,
+      "first_200": "dex AP Computer Science A Course and Exam Description Appendix V.1 | 185 Return to Table of Contents © 2025 College Board File Class File(String pathname) The File constructor that"
+    }
+  ]
+}

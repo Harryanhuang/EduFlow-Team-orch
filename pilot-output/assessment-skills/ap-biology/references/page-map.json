@@ -1,0 +1,79 @@
+{
+  "schema_version": "1",
+  "source_id": "primary_ced",
+  "page_ref_convention": "printed_page",
+  "physical_page_offset_note": "AP CED pages are typically labeled with printed_page numbers.",
+  "mappings": [
+    {
+      "target": "assessment_identity.system",
+      "page_refs": [
+        "title page"
+      ],
+      "evidence_note": "College Board AP CED."
+    },
+    {
+      "target": "topics.course_framework",
+      "page_refs": [
+        "Section 1"
+      ],
+      "evidence_note": "Course framework overview."
+    },
+    {
+      "target": "topics.ap-biology-unit01",
+      "page_refs": [
+        "Unit 1"
+      ],
+      "evidence_note": "Unit 1: Chemistry of Life (8–11%)."
+    },
+    {
+      "target": "topics.ap-biology-unit02",
+      "page_refs": [
+        "Unit 2"
+      ],
+      "evidence_note": "Unit 2: Cells (10–13%)."
+    },
+    {
+      "target": "topics.ap-biology-unit03",
+      "page_refs": [
+        "Unit 3"
+      ],
+      "evidence_note": "Unit 3: Cellular Energetics (12–16%)."
+    },
+    {
+      "target": "topics.ap-biology-unit04",
+      "page_refs": [
+        "Unit 4"
+      ],
+      "evidence_note": "Unit 4: Cell Communication and Cell Cycle (10–15%)."
+    },
+    {
+      "target": "topics.ap-biology-unit05",
+      "page_refs": [
+        "Unit 5"
+      ],
+      "evidence_note": "Unit 5: Heredity (8–11%)."
+    },
+    {
+      "target": "topics.ap-biology-unit06",
+      "page_refs": [
+        "Unit 6"
+      ],
+      "evidence_note": "Unit 6: Gene Expression and Regulation (12–16%)."
+    },
+    {
+      "target": "topics.ap-biology-unit07",
+      "page_refs": [
+        "Unit 7"
+      ],
+      "evidence_note": "Unit 7: Natural Selection (13–20%)."
+    },
+    {
+      "target": "topics.ap-biology-unit08",
+      "page_refs": [
+        "Unit 8"
+      ],
+      "evidence_note": "Unit 8: Ecology (10–15%)."
+    }
+  ],
+  "draft_notes": []
+}

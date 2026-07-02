@@ -1,0 +1,65 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "edexcel-ial-accounting",
+      "topic_name": "CAIE IGCSE Accounting",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Accounting (ACC (IAL)) syllabus scope.",
+        "Valid: 2025 → 2026."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "edexcel-ial-accounting-unit01",
+      "topic_name": "Topic 1: The Accounting System and Financial Statements",
+      "parent_id": "edexcel-ial-accounting",
+      "scope": [
+        "Topic 1 content as defined in Edexcel IAL edexcel-ial-accounting."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: The Accounting System and Financial Statements."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "edexcel-ial-accounting-unit02",
+      "topic_name": "Topic 2: Further Aspects of Financial Accounting",
+      "parent_id": "edexcel-ial-accounting",
+      "scope": [
+        "Topic 2 content as defined in Edexcel IAL edexcel-ial-accounting."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Further Aspects of Financial Accounting."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    }
+  ]
+}

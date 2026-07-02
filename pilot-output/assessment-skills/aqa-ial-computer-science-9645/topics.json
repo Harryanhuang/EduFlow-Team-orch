@@ -1,0 +1,65 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "aqa-ial-computer-science-9645",
+      "topic_name": "CAIE IGCSE Computer Science",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Computer Science (9645) syllabus scope.",
+        "Valid: 2025 → 2026."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "aqa-ial-computer-science-9645-unit01",
+      "topic_name": "Unit 1: Fundamentals of programming",
+      "parent_id": "aqa-ial-computer-science-9645",
+      "scope": [
+        "Unit 1 content as defined in AQA IAL aqa-ial-computer-science-9645."
+      ],
+      "out_of_scope": [
+        "Content belonging to other units."
+      ],
+      "classification_hints": [
+        "Look for keywords: Fundamentals of programming."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "aqa-ial-computer-science-9645-unit02",
+      "topic_name": "Unit 2: Fundamentals of data structures",
+      "parent_id": "aqa-ial-computer-science-9645",
+      "scope": [
+        "Unit 2 content as defined in AQA IAL aqa-ial-computer-science-9645."
+      ],
+      "out_of_scope": [
+        "Content belonging to other units."
+      ],
+      "classification_hints": [
+        "Look for keywords: Fundamentals of data structures."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    }
+  ]
+}

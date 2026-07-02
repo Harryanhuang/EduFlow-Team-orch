@@ -1,0 +1,34 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "ap-chinese-language-and-culture",
+      "topic_name": "AP Chinese Language and Culture",
+      "parent_id": "",
+      "scope": [
+        "AP Chinese Language and Culture course framework (College Board).",
+        "Valid: 2025 → (ongoing).",
+        "Units 1–N/A with cumulative exam weightings."
+      ],
+      "out_of_scope": [
+        "Pre-AP / general high-school level content unless explicitly cited in CED.",
+        "University-level content beyond AP expectations.",
+        "Other AP subjects."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific unit fits.",
+        "Prefer specific Unit N nodes for content questions."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    }
+  ]
+}

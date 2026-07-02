@@ -1,0 +1,306 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "ap-music-theory",
+      "topic_name": "AP Music Theory",
+      "parent_id": "",
+      "scope": [
+        "AP Music Theory course framework (College Board).",
+        "Valid: 2025 → (ongoing).",
+        "Units 1–8 with cumulative exam weightings."
+      ],
+      "out_of_scope": [
+        "Pre-AP / general high-school level content unless explicitly cited in CED.",
+        "University-level content beyond AP expectations.",
+        "Other AP subjects."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific unit fits.",
+        "Prefer specific Unit N nodes for content questions."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-music-theory-unit01",
+      "topic_name": "Unit 1: Music Fundamentals I: Pitch, Major Scales and Key",
+      "parent_id": "ap-music-theory",
+      "scope": [
+        "Unit 1 content as defined in AP Music Theory CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Music Fundamentals I: Pitch, Major Scales and Key."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_1.1",
+          "text": "Signatures, Rhythm, Meter, and Expressive Elements"
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-music-theory-unit02",
+      "topic_name": "Unit 2: Music Fundamentals II: Minor Scales and Key",
+      "parent_id": "ap-music-theory",
+      "scope": [
+        "Unit 2 content as defined in AP Music Theory CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Music Fundamentals II: Minor Scales and Key."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_2.1",
+          "text": "Core content and concepts for Unit 2: Music Fundamentals II: Minor Scales and Key."
+        },
+        {
+          "ek_id": "EK_2.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 2: Music Fundamentals II: Minor Scales and Key."
+        },
+        {
+          "ek_id": "EK_2.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 2: Music Fundamentals II: Minor Scales and Key."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-music-theory-unit03",
+      "topic_name": "Unit 3: Music Fundamentals III: Triads and Seventh Chords",
+      "parent_id": "ap-music-theory",
+      "scope": [
+        "Unit 3 content as defined in AP Music Theory CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Music Fundamentals III: Triads and Seventh Chords."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_3.1",
+          "text": "Core content and concepts for Unit 3: Music Fundamentals III: Triads and Seventh Chords."
+        },
+        {
+          "ek_id": "EK_3.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 3: Music Fundamentals III: Triads and Seventh Chords."
+        },
+        {
+          "ek_id": "EK_3.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 3: Music Fundamentals III: Triads and Seventh Chords."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-music-theory-unit04",
+      "topic_name": "Unit 4: Harmony and Voice Leading I: Chord Function,",
+      "parent_id": "ap-music-theory",
+      "scope": [
+        "Unit 4 content as defined in AP Music Theory CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Harmony and Voice Leading I: Chord Function,."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_4.1",
+          "text": "Core content and concepts for Unit 4: Harmony and Voice Leading I: Chord Function,."
+        },
+        {
+          "ek_id": "EK_4.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 4: Harmony and Voice Leading I: Chord Function,."
+        },
+        {
+          "ek_id": "EK_4.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 4: Harmony and Voice Leading I: Chord Function,."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-music-theory-unit05",
+      "topic_name": "Unit 5: Harmony and Voice Leading II: Chord Progressions and",
+      "parent_id": "ap-music-theory",
+      "scope": [
+        "Unit 5 content as defined in AP Music Theory CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Harmony and Voice Leading II: Chord Progressions and."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_5.1",
+          "text": "Core content and concepts for Unit 5: Harmony and Voice Leading II: Chord Progressions and."
+        },
+        {
+          "ek_id": "EK_5.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 5: Harmony and Voice Leading II: Chord Progressions and."
+        },
+        {
+          "ek_id": "EK_5.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 5: Harmony and Voice Leading II: Chord Progressions and."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-music-theory-unit06",
+      "topic_name": "Unit 6: Harmony and Voice Leading III: Embellishments,",
+      "parent_id": "ap-music-theory",
+      "scope": [
+        "Unit 6 content as defined in AP Music Theory CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Harmony and Voice Leading III: Embellishments,."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_6.1",
+          "text": "Core content and concepts for Unit 6: Harmony and Voice Leading III: Embellishments,."
+        },
+        {
+          "ek_id": "EK_6.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 6: Harmony and Voice Leading III: Embellishments,."
+        },
+        {
+          "ek_id": "EK_6.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 6: Harmony and Voice Leading III: Embellishments,."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-music-theory-unit07",
+      "topic_name": "Unit 7: Harmony and Voice Leading IV: Secondary Function",
+      "parent_id": "ap-music-theory",
+      "scope": [
+        "Unit 7 content as defined in AP Music Theory CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Harmony and Voice Leading IV: Secondary Function."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_7.1",
+          "text": "Core content and concepts for Unit 7: Harmony and Voice Leading IV: Secondary Function."
+        },
+        {
+          "ek_id": "EK_7.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 7: Harmony and Voice Leading IV: Secondary Function."
+        },
+        {
+          "ek_id": "EK_7.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 7: Harmony and Voice Leading IV: Secondary Function."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-music-theory-unit08",
+      "topic_name": "Unit 8: Modes and Form",
+      "parent_id": "ap-music-theory",
+      "scope": [
+        "Unit 8 content as defined in AP Music Theory CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Modes and Form."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_8.1",
+          "text": "SPECIAL THANKS John R"
+        },
+        {
+          "ek_id": "EK_8.2",
+          "text": "AP Music Theory Course and Exam Description                                                                   V"
+        },
+        {
+          "ek_id": "EK_8.3",
+          "text": "THIS PAGE IS INTENTIONALLY LEFT BLANK"
+        },
+        {
+          "ek_id": "EK_8.4",
+          "text": "This course and exam description presents the content       “Advanced Placement” or “AP"
+        },
+        {
+          "ek_id": "EK_8.5",
+          "text": "AP Music Theory Course and Exam Description                                                                   V"
+        }
+      ]
+    }
+  ]
+}

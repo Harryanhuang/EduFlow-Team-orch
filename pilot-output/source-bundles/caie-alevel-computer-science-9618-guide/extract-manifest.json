@@ -1,0 +1,319 @@
+{
+  "schema_version": "1",
+  "subject": "computer-science",
+  "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/02-A-Level知识库/03-考试局/CAIE/Computer Science (9618)/02-课本与考纲/考纲/CAIE_ComputerScience_9618_Syllabus_2025-2026.pdf",
+  "file_checksum_sha256": "086aa17c2b29678bb4f6de83d09b28f0274b4d5c652aa0b224cfa1e066fbac92",
+  "pdfinfo": {
+    "Title": "Cambridge International AS & A Level 9618 Computer Science syllabus for examination in 2024 and 2025",
+    "Author": "Document Production Team",
+    "Creator": "Adobe InDesign 18.1 (Windows)",
+    "Producer": "Adobe PDF Library 17.0",
+    "CreationDate": "Tue Apr 18 18:15:41 2023 CST",
+    "ModDate": "Tue Apr 18 18:15:48 2023 CST",
+    "Custom Metadata": "no",
+    "Metadata Stream": "yes",
+    "Tagged": "yes",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "none",
+    "JavaScript": "no",
+    "Pages": "48",
+    "Encrypted": "no",
+    "Page size": "595.276 x 841.89 pts (A4)",
+    "Page rot": "0",
+    "File size": "887357 bytes",
+    "Optimized": "yes",
+    "PDF version": "1.7"
+  },
+  "total_pages": 48,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": 1,
+      "chars": 2795,
+      "first_200": "Syllabus Cambridge International AS & A Level Computer Science 9618 Use this syllabus for exams in 2024 and 2025. Exams are available in the June and November series. Version 2"
+    },
+    {
+      "physical_page": 2,
+      "printed_page": 2,
+      "chars": 2795,
+      "first_200": "ionally recognised standard, ISO 9001:2015. Learn more at www.cambridgeinternational.org/ISO9001 © Cambridge University Press & Assessment September 2021 Cambridge Assessment International Education i"
+    },
+    {
+      "physical_page": 3,
+      "printed_page": 3,
+      "chars": 2795,
+      "first_200": "Accessibility and equality 44 After the exam 45 How students, teachers and higher education can use the grades 46 Grade descriptions 46 Changes to this syllabus for 2024 and 2025"
+    },
+    {
+      "physical_page": 4,
+      "printed_page": 4,
+      "chars": 2795,
+      "first_200": "reflective, as programmers, improving their own programming solution innovative, creating efficient solutions to problems engaged, in technology, how it is built and how software solutions are develop"
+    },
+    {
+      "physical_page": 5,
+      "printed_page": 5,
+      "chars": 2795,
+      "first_200": "r and an understanding of the rules and methods that are used in this data transfer. Communication could range from the internal transfer of data within a computer system, to"
+    },
+    {
+      "physical_page": 6,
+      "printed_page": 6,
+      "chars": 2795,
+      "first_200": "nt that their Cambridge International AS & A Level qualifications are accepted as equivalent, grade for grade, to UK AS & A Levels by leading universities worldwide. Cambridge International AS"
+    },
+    {
+      "physical_page": 7,
+      "printed_page": 7,
+      "chars": 2795,
+      "first_200": "aration assessment • Example candidate • Candidate Results • Next steps guides. • Endorsed resources. responses. Service. • Schemes of work. • Online forums. • Past papers and • Principal"
+    },
+    {
+      "physical_page": 8,
+      "printed_page": 8,
+      "chars": 2795,
+      "first_200": "nderstanding to develop computer based solutions to problems. Cambridge Assessment International Education is an education organisation and politically neutral. The contents of this syllabus, examinat"
+    },
+    {
+      "physical_page": 9,
+      "printed_page": 9,
+      "chars": 2795,
+      "first_200": "Introduction to Abstract Data Types (ADT) 11 Programming 11.1 Programming Basics 11.2 Constructs 11.3 Structured Programming 12 Software Development 12.1 Program Development Life cycle 12.2 Program De"
+    },
+    {
+      "physical_page": 10,
+      "printed_page": 10,
+      "chars": 2795,
+      "first_200": "es specific to this syllabus. The School Support Hub community offers teachers the opportunity to connect with each other and to ask questions related to the syllabus. School feedback: ‘Cambridge"
+    },
+    {
+      "physical_page": 11,
+      "printed_page": 11,
+      "chars": 2795,
+      "first_200": "Written paper. and evidence of testing. Externally assessed. Candidates answer all Candidates will be required to use either Java questions. (console mode), Visual Basic* (console mode) or Python (con"
+    },
+    {
+      "physical_page": 12,
+      "printed_page": 12,
+      "chars": 2795,
+      "first_200": "www.cambridgeinternational.org/alevel 12 Cambridge International AS & A Level Computer Science 9618 syllabus for 2024 and 2025. Syllabus overview Assessment objectives The assessment objectives (AOs) "
+    },
+    {
+      "physical_page": 13,
+      "printed_page": 13,
+      "chars": 2795,
+      "first_200": "esources and examples to support your learners’ study. These should be appropriate for the learners’ age, cultural background and learning context as well as complying with your school policies and"
+    },
+    {
+      "physical_page": 14,
+      "printed_page": 14,
+      "chars": 2795,
+      "first_200": "aracter data in its internal binary form, depending (American Standard Code for Information on the character set used Interchange), extended ASCII and Unicode. Students will not be expected to memoris"
+    },
+    {
+      "physical_page": 15,
+      "printed_page": 15,
+      "chars": 2795,
+      "first_200": "www.cambridgeinternational.org/alevel 15 Cambridge International AS & A Level Computer Science 9618 syllabus for 2024 and 2025. Subject content 2 Communication 2.1 Networks including the internet Cand"
+    },
+    {
+      "physical_page": 16,
+      "printed_page": 16,
+      "chars": 2795,
+      "first_200": "nd on-demand Importance of bit rates broadband speed on bit streaming Show understanding of the differences between the World Wide Web (WWW) and the internet Describe the hardware that is"
+    },
+    {
+      "physical_page": 17,
+      "printed_page": 17,
+      "chars": 2795,
+      "first_200": "Including: Laser printer, 3D printer, microphone, devices speakers, magnetic hard disk, solid state (flash) memory, optical disc reader/writer, touchscreen, virtual reality headset Show understanding "
+    },
+    {
+      "physical_page": 18,
+      "printed_page": 18,
+      "chars": 2795,
+      "first_200": "• a logic expression • a truth table Construct a truth table From: • a problem statement • a logic circuit • a logic expression Construct a logic expression From:"
+    },
+    {
+      "physical_page": 19,
+      "printed_page": 19,
+      "chars": 2795,
+      "first_200": "• processor type and number of cores • the bus width • clock speed • cache memory Understand how different ports provide connection Including connection to: to peripheral devices •"
+    },
+    {
+      "physical_page": 20,
+      "printed_page": 20,
+      "chars": 2795,
+      "first_200": "• Input and output of data • Arithmetic operations • Unconditional and conditional instructions • Compare instructions Show understanding of and be able to use different Including immediate, direct, i"
+    },
+    {
+      "physical_page": 21,
+      "printed_page": 21,
+      "chars": 2795,
+      "first_200": "CMP #n Compare the contents of ACC with number n CMI <address> Indirect addressing. The address to be used is at the given address. Compare the contents of ACC with"
+    },
+    {
+      "physical_page": 22,
+      "printed_page": 22,
+      "chars": 2795,
+      "first_200": "operand XOR <address> Bitwise XOR operation of the contents of ACC with the contents of <address> OR #n / Bn / &n Bitwise OR operation of the contents of ACC"
+    },
+    {
+      "physical_page": 23,
+      "printed_page": 23,
+      "chars": 2795,
+      "first_200": "disk repair software, file compression, back-up software Show understanding of program libraries Including: • software under development is often constructed using existing code from program libraries"
+    },
+    {
+      "physical_page": 24,
+      "printed_page": 24,
+      "chars": 2795,
+      "first_200": "A Level Computer Science 9618 syllabus for 2024 and 2025. Subject content 6 Security, privacy and data integrity 6.1 Data Security Candidates should be able to: Notes and guidance Explain"
+    },
+    {
+      "physical_page": 25,
+      "printed_page": 25,
+      "chars": 2795,
+      "first_200": "onal ethics as a computing professional ethical body including BCS (British Computer Society), IEEE (Institute of Electrical and Electronic Engineers) Show understanding of the need to act ethically a"
+    },
+    {
+      "physical_page": 26,
+      "printed_page": 26,
+      "chars": 2795,
+      "first_200": "Cambridge International AS & A Level Computer Science 9618 syllabus for 2024 and 2025. Subject content 8.2 Database Management Systems (DBMS) Candidates should be able to: Notes and guidance Show"
+    },
+    {
+      "physical_page": 27,
+      "printed_page": 27,
+      "chars": 2795,
+      "first_200": "• BOOLEAN • INTEGER • REAL • DATE • TIME change a table definition (ALTER TABLE) add a primary key to a table (PRIMARY KEY (field)) add a foreign key"
+    },
+    {
+      "physical_page": 28,
+      "printed_page": 28,
+      "chars": 2795,
+      "first_200": "at an algorithm is a solution to a problem expressed as a sequence of defined steps Use suitable identifier names for the representation of data used by a problem and"
+    },
+    {
+      "physical_page": 29,
+      "printed_page": 29,
+      "chars": 2795,
+      "first_200": "using a linear search 10.3 Files Candidates should be able to: Notes and guidance Show understanding of why files are needed Write pseudocode to handle text files that consist of"
+    },
+    {
+      "physical_page": 30,
+      "printed_page": 30,
+      "chars": 2795,
+      "first_200": "‘count-controlled’ loop: • a ‘post-condition’ loop • a ‘pre-condition’ loop Justify why one loop structure may be better suited to solve a problem than the others Back to contents page"
+    },
+    {
+      "physical_page": 31,
+      "printed_page": 31,
+      "chars": 2795,
+      "first_200": "code from a structure modules / procedures / functions which are part of chart the algorithm design Show understanding of the purpose of state-transition diagrams to document an algorithm Back"
+    },
+    {
+      "physical_page": 32,
+      "printed_page": 32,
+      "chars": 2795,
+      "first_200": "de an appropriate infrastructure for solutions of problems. The syllabus encourages opportunities for students to apply their skills in a practical context that are required in the digital industry. 1"
+    },
+    {
+      "physical_page": 33,
+      "printed_page": 33,
+      "chars": 2795,
+      "first_200": "Show understanding of the consequences of a Understand how underflow and overflow can occur binary representation only being an approximation to the real number it represents (in certain cases) Show"
+    },
+    {
+      "physical_page": 34,
+      "printed_page": 34,
+      "chars": 2795,
+      "first_200": "Instruction Set Understand interrupt handling on CISC and RISC Computers (CISC) processors processors Show understanding of the importance / use of pipelining and registers in RISC processors Show und"
+    },
+    {
+      "physical_page": 35,
+      "printed_page": 35,
+      "chars": 2795,
+      "first_200": "nagement The concept of multi-tasking and a process The process states: running, ready and blocked The need for scheduling and the function and benefits of different scheduling routines (including rou"
+    },
+    {
+      "physical_page": 36,
+      "printed_page": 36,
+      "chars": 2795,
+      "first_200": "text, cipher text, encryption, symmetric key cryptography and asymmetric key cryptography How the keys can be used to send a private message from the public to an individual/ organisation How"
+    },
+    {
+      "physical_page": 37,
+      "printed_page": 37,
+      "chars": 2795,
+      "first_200": "and the supervised learning, unsupervised learning reasons for using these methods. Show understanding of back propagation of errors and regression methods in machine learning Back to contents page ww"
+    },
+    {
+      "physical_page": 38,
+      "printed_page": 38,
+      "chars": 2795,
+      "first_200": "tify its use for a given situation. Candidates will not be required to write code for a graph structure Show how it is possible for ADTs to be implemented Describe"
+    },
+    {
+      "physical_page": 39,
+      "printed_page": 39,
+      "chars": 2795,
+      "first_200": "ve (Procedural) programming: • Assumed knowledge and understanding of Structural Programming (see details in AS content section 11.3) • understanding of and ability to write imperative (procedural) pr"
+    },
+    {
+      "physical_page": 40,
+      "printed_page": 40,
+      "chars": 2795,
+      "first_200": "yllabus for 2024 and 2025. Subject content 20.2 File Processing and Exception Handling Candidates should be able to: Notes and guidance Write code to perform file-processing operations Open (in read,"
+    },
+    {
+      "physical_page": 41,
+      "printed_page": 41,
+      "chars": 2795,
+      "first_200": "ional AS & A Level Computer Science 9618 syllabus for 2024 and 2025. 4 Details of the assessment The AS Level will be assessed through two external written papers. Both"
+    },
+    {
+      "physical_page": 42,
+      "printed_page": 42,
+      "chars": 2795,
+      "first_200": "sults to paste into the evidence document. Candidates must save their work at regular intervals and centres are recommended to enable the auto save function. If there is no evidence"
+    },
+    {
+      "physical_page": 43,
+      "printed_page": 43,
+      "chars": 2795,
+      "first_200": "tify support a case with evidence/argument Outline set out main points Predict suggest what may happen based on available information Sketch make a simple freehand drawing showing the key features,"
+    },
+    {
+      "physical_page": 44,
+      "printed_page": 44,
+      "chars": 2795,
+      "first_200": "llabuses in a single exam series. The only exceptions are: • Cambridge International AS & A Level Information and Communication Technology 9626 • syllabuses with the same title at the"
+    },
+    {
+      "physical_page": 45,
+      "printed_page": 45,
+      "chars": 2795,
+      "first_200": "to complete the Cambridge International A Level in a following series, subject to the rules and time limits described in the Cambridge Handbook. Regulations for carrying forward entries for staged"
+    },
+    {
+      "physical_page": 46,
+      "printed_page": 46,
+      "chars": 2795,
+      "first_200": "and integrity of the assessment. • Availability of access arrangements should be checked by centres at the start of the course. Details of our standard access arrangements and modified question"
+    },
+    {
+      "physical_page": 47,
+      "printed_page": 47,
+      "chars": 2795,
+      "first_200": "f abilities yet have the capacity to stretch our most able.’ Feedback from: Director of Studies, Auckland Grammar School, New Zealand Back to contents page www.cambridgeinternational.org/alevel 45 Cam"
+    },
+    {
+      "physical_page": 48,
+      "printed_page": 48,
+      "chars": 2795,
+      "first_200": "Cambridge International AS & A Level Computer Science 9618 syllabus for 2024 and 2025. What else you need to know Changes to this syllabus for 2024 and 2025 The syllabus"
+    }
+  ]
+}

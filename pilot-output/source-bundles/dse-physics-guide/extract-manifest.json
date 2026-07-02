@@ -1,0 +1,49 @@
+{
+  "schema_version": "1",
+  "subject": "physics",
+  "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/05-DSE知识库/03-学科知识/DSE Physics/02-課本與考綱/考綱/物理 -2028.pdf",
+  "file_checksum_sha256": "d6223fbd4ac8d6f0a2d04556d828c6fa251e046dd8249e331afcbb763c1a3b00",
+  "pdfinfo": {
+    "Title": "2028年香港中學文憑考試物理科評核大綱",
+    "Author": "HKEAA",
+    "Creator": "Microsoft® Word 2019",
+    "Producer": "Microsoft® Word 2019",
+    "CreationDate": "Wed Mar  5 14:26:47 2025 CST",
+    "ModDate": "Thu May 15 13:55:43 2025 CST",
+    "Custom Metadata": "no",
+    "Metadata Stream": "yes",
+    "Tagged": "yes",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "none",
+    "JavaScript": "no",
+    "Pages": "3",
+    "Encrypted": "no",
+    "Page size": "595.32 x 841.92 pts (A4)",
+    "Page rot": "0",
+    "File size": "183202 bytes",
+    "Optimized": "no",
+    "PDF version": "1.7"
+  },
+  "total_pages": 3,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": 1,
+      "chars": 808,
+      "first_200": "物理 引言 本科的公開評核建基於課程發展議會及香港考試及評核局聯合編訂的高中物 理 科 課 程 及 評 估 指 引 ( 中 四 至 中 六 ) 。 考 生 須 參 閱 上 述 指 引 內"
+    },
+    {
+      "physical_page": 2,
+      "printed_page": 2,
+      "chars": 808,
+      "first_200": "略見於下表： 組成部分 比重 時間 兩小時三十 試卷一 試題涵蓋必修部分 60% 分鐘 公開考試 試卷二 試題涵蓋選修部分 20% 一小時 校本評核 20% 公開考試 試 卷 一 由 甲 、 乙 兩 部 組 成 ， 甲"
+    },
+    {
+      "physical_page": 3,
+      "printed_page": 3,
+      "chars": 808,
+      "first_200": "課 程 內 容 結 合，並 在 正 常 的 學 與 教 循 環 中 完 成。此 外，考 生 亦 可 設 計 和 進 行 一 個 探"
+    }
+  ]
+}

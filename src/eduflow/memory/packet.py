@@ -82,17 +82,20 @@ def _render_capsule(cap: dict) -> str:
 def _render_memories(agent: str, task_id: str | None) -> tuple[list[str], set[str]]:
     """Query confirmed memories relevant to agent scope, render markdown lines.
 
-    Returns a tuple of (rendered_lines, memory_ids) where memory_ids is the
-    set of memory IDs that contributed to the rendered lines.  The packet
-    budget owns MAX_MEMORIES lines; semantic recall may supplement.
+    V3 P0-1: applies effective_confidence (age + usage decay) for sorting.
+    V3 P0-2: returns separate pinned / relevant segments.
+
+    Returns (rendered_lines, memory_ids) where memory_ids is the set of IDs
+    that contributed. The packet budget owns MAX_MEMORIES lines; semantic
+    recall may supplement.
     """
     try:
-        from eduflow.memory.items import list_memories
+        from eduflow.memory.items import list_memories, list_pinned_memories
         from eduflow.memory.scope_aliases import resolve_alias
+        from eduflow.memory.decay import effective_confidence, touch_item
     except ImportError:
         return [], set()
 
-    # Resolve agent → scope
     resolved_scope = resolve_alias(agent) if agent else None
     if not resolved_scope:
         resolved_scope = f"agent:{agent}" if agent else ""
@@ -100,15 +103,60 @@ def _render_memories(agent: str, task_id: str | None) -> tuple[list[str], set[st
     if not resolved_scope:
         return [], set()
 
+    # V3 P0-2: pinned memories get a separate "curated core" segment.
+    pinned_items = list_pinned_memories(scope=resolved_scope, limit=20)
+
+    # Non-pinned memories for the "relevant" segment
     memories = list_memories(scope=resolved_scope, status="confirmed", limit=MAX_MEMORIES)
+
+    # V3 P0-1: compute effective_confidence, sort by it descending
+    now = __import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat()
+    for m in memories:
+        m["effective_confidence"] = effective_confidence(
+            base_confidence=m.get("confidence", 1.0),
+            created_at=m.get("created_at", now),
+            updated_at=m.get("updated_at", now),
+            now=now,
+        )
+    memories.sort(key=lambda m: (m.get("effective_confidence", 0), m.get("importance", 5)), reverse=True)
+
     lines: list[str] = []
     ids: set[str] = set()
-    for m in memories:
-        kind = m.get("kind", "")
-        summary = m.get("summary", "") or m.get("content", "")[:100]
-        importance = m.get("importance", 5)
-        lines.append(f"- [{kind}] {summary} (importance={importance})")
-        ids.add(m.get("id", ""))
+
+    # Curated core (pinned, always present, no decay)
+    if pinned_items:
+        lines.append("### 📌 Curated Core (pinned)")
+        for m in pinned_items:
+            mid = m.get("id", "")
+            kind = m.get("kind", "")
+            summary = m.get("summary", "") or m.get("content", "")[:100]
+            importance = m.get("importance", 5)
+            lines.append(f"- [📌][{kind}] {summary} (importance={importance})")
+            ids.add(mid)
+            # V3 P0-1: touch to mark as recently used
+            try:
+                touch_item(mid)
+            except Exception:
+                pass
+
+    # Relevant segment (decayed + sorted)
+    if memories:
+        lines.append("### Relevant Memories (decayed)")
+        for m in memories:
+            mid = m.get("id", "")
+            if mid in ids:
+                continue  # already in pinned
+            kind = m.get("kind", "")
+            summary = m.get("summary", "") or m.get("content", "")[:100]
+            importance = m.get("importance", 5)
+            eff = m.get("effective_confidence", 1.0)
+            lines.append(f"- [{kind}] {summary} (eff_conf={eff:.2f}, importance={importance})")
+            ids.add(mid)
+            try:
+                touch_item(mid)
+            except Exception:
+                pass
+
     return lines, ids
 
 
@@ -162,6 +210,67 @@ def _semantic_recall(
             break
         lines.append(line)
         total_chars += line_len + 1  # +1 for newline
+
+    return lines
+
+
+def _dual_query_recall(
+    agent: str,
+    task_id: str | None,
+    existing_memory_ids: set[str],
+    budget_remaining: int,
+) -> list[str]:
+    """V3 P1-4: dual query (topic + workflow/project background).
+
+    Returns up to 2 markdown lines for memories that were NOT already
+    recalled by scope match. Source annotation: [topic], [background], [both].
+    """
+    try:
+        from eduflow.memory.dual_query import dual_query_memories
+    except ImportError:
+        return []
+
+    topic_query = _build_semantic_query(agent, task_id)
+    if not topic_query:
+        return []
+
+    # Extract workflow_id / lane from task capsule
+    workflow_id = None
+    lane = None
+    if task_id:
+        try:
+            from eduflow.memory.capsules import get_capsule
+            cap = get_capsule(task_id)
+            if cap:
+                workflow_id = cap.get("workflow_id") or None
+        except Exception:
+            pass
+
+    try:
+        results = dual_query_memories(
+            topic_query,
+            workflow_id=workflow_id,
+            lane=lane,
+            limit=10,
+        )
+    except Exception:
+        return []
+
+    new_results = [r for r in results if r.get("id", "") not in existing_memory_ids]
+
+    lines: list[str] = []
+    total_chars = 0
+    for r in new_results[:2]:
+        kind = r.get("kind", "")
+        source = r.get("_source", "topic")
+        summary = (r.get("summary", "") or r.get("content", "")[:100])
+        importance = r.get("importance", 5)
+        line = f"- [dual:{source}][{kind}] {summary} (importance={importance})"
+        line_len = _char_len(line)
+        if budget_remaining - total_chars - line_len < 0:
+            break
+        lines.append(line)
+        total_chars += line_len + 1
 
     return lines
 
@@ -300,16 +409,25 @@ def assemble_memory_packet(
     if budget_remaining > 0:
         semantic_lines = _semantic_recall(agent, task_id, recalled_ids, budget_remaining)
 
-    all_memory_lines = memory_lines + semantic_lines
+    # V3 P1-4: dual query (topic + workflow background)
+    dual_lines: list[str] = []
+    if budget_remaining > 0:
+        dual_lines = _dual_query_recall(agent, task_id, recalled_ids, budget_remaining)
+
+    all_memory_lines = memory_lines + semantic_lines + dual_lines
     if all_memory_lines:
         mem_header = "## Relevant Confirmed Memories\n"
         mem_text = "\n".join(all_memory_lines)
-        # Enforce MAX_MEMORY_CHARS budget
+        # Enforce MAX_MEMORY_CHARS budget: drop dual/semantic first
         if _char_len(mem_text) > MAX_MEMORY_CHARS:
-            # Drop semantic lines first, then truncate
-            while semantic_lines and _char_len("\n".join(memory_lines + semantic_lines)) > MAX_MEMORY_CHARS:
-                semantic_lines.pop()
-            mem_text = "\n".join(memory_lines + semantic_lines)
+            while (dual_lines or semantic_lines) and _char_len(
+                "\n".join(memory_lines + semantic_lines + dual_lines)
+            ) > MAX_MEMORY_CHARS:
+                if dual_lines:
+                    dual_lines.pop()
+                elif semantic_lines:
+                    semantic_lines.pop()
+            mem_text = "\n".join(memory_lines + semantic_lines + dual_lines)
             if _char_len(mem_text) > MAX_MEMORY_CHARS:
                 mem_text = mem_text[:MAX_MEMORY_CHARS] + "..."
         mem_section = mem_header + mem_text + "\n"

@@ -1,0 +1,170 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "ap-african-american-studies",
+      "topic_name": "AP African American Studies",
+      "parent_id": "",
+      "scope": [
+        "AP African American Studies course framework (College Board).",
+        "Valid: 2025 → (ongoing).",
+        "Units 1–4 with cumulative exam weightings."
+      ],
+      "out_of_scope": [
+        "Pre-AP / general high-school level content unless explicitly cited in CED.",
+        "University-level content beyond AP expectations.",
+        "Other AP subjects."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific unit fits.",
+        "Prefer specific Unit N nodes for content questions."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-african-american-studies-unit01",
+      "topic_name": "Unit 1: Origins of the African Diaspora",
+      "parent_id": "ap-african-american-studies",
+      "scope": [
+        "Unit 1 content as defined in AP African American Studies CED.",
+        "Exam weighting: 20–25%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Origins of the African Diaspora."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_1.1",
+          "text": "Core content and concepts for Unit 1: Origins of the African Diaspora."
+        },
+        {
+          "ek_id": "EK_1.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 1: Origins of the African Diaspora."
+        },
+        {
+          "ek_id": "EK_1.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 1: Origins of the African Diaspora."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-african-american-studies-unit02",
+      "topic_name": "Unit 2: Freedom, Enslavement, and Resistance",
+      "parent_id": "ap-african-american-studies",
+      "scope": [
+        "Unit 2 content as defined in AP African American Studies CED.",
+        "Exam weighting: 30–35%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Freedom, Enslavement, and Resistance."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_2.1",
+          "text": "Core content and concepts for Unit 2: Freedom, Enslavement, and Resistance."
+        },
+        {
+          "ek_id": "EK_2.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 2: Freedom, Enslavement, and Resistance."
+        },
+        {
+          "ek_id": "EK_2.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 2: Freedom, Enslavement, and Resistance."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-african-american-studies-unit03",
+      "topic_name": "Unit 3: The Practice of Freedom",
+      "parent_id": "ap-african-american-studies",
+      "scope": [
+        "Unit 3 content as defined in AP African American Studies CED.",
+        "Exam weighting: 20–25%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: The Practice of Freedom."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_3.1",
+          "text": "Core content and concepts for Unit 3: The Practice of Freedom."
+        },
+        {
+          "ek_id": "EK_3.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 3: The Practice of Freedom."
+        },
+        {
+          "ek_id": "EK_3.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 3: The Practice of Freedom."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-african-american-studies-unit04",
+      "topic_name": "Unit 4: Movements and Debates",
+      "parent_id": "ap-african-american-studies",
+      "scope": [
+        "Unit 4 content as defined in AP African American Studies CED.",
+        "Exam weighting: 20–25%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Movements and Debates."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_4.1",
+          "text": "Core content and concepts for Unit 4: Movements and Debates."
+        },
+        {
+          "ek_id": "EK_4.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 4: Movements and Debates."
+        },
+        {
+          "ek_id": "EK_4.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 4: Movements and Debates."
+        }
+      ]
+    }
+  ]
+}

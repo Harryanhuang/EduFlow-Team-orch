@@ -1,0 +1,327 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "caie-igcse-combinedsci-0653",
+      "topic_name": "CAIE IGCSE Combined Science",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Combined Science (0653) syllabus scope.",
+        "Valid: 2028 → 2029."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-combinedsci-0653-core",
+      "topic_name": "Core (grades C-G)",
+      "parent_id": "caie-igcse-combinedsci-0653",
+      "scope": [
+        "Paper 1 (MCQ) and Paper 3 (theory) at Core tier; grades C-G."
+      ],
+      "out_of_scope": [],
+      "classification_hints": [
+        "Items written for grades C-G; recall and application of core syllabus objectives."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-combinedsci-0653-extended",
+      "topic_name": "Extended (grades A*-G)",
+      "parent_id": "caie-igcse-combinedsci-0653",
+      "scope": [
+        "Paper 2 (MCQ) and Paper 4 (theory) at Extended tier; covers Core + Supplement; grades A*-G."
+      ],
+      "out_of_scope": [],
+      "classification_hints": [
+        "Items requiring Supplement-level depth; cross-topic synthesis."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-combinedsci-0653-t001",
+      "topic_name": "1. Why choose this syllabus?",
+      "parent_id": "caie-igcse-combinedsci-0653",
+      "scope": [
+        "Why choose this syllabus?"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Why choose this syllabus?."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-combinedsci-0653-t002",
+      "topic_name": "2. Syllabus overview",
+      "parent_id": "caie-igcse-combinedsci-0653",
+      "scope": [
+        "Syllabus overview"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Syllabus overview."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-combinedsci-0653-t013",
+      "topic_name": "13. Drugs",
+      "parent_id": "caie-igcse-combinedsci-0653",
+      "scope": [
+        "Drugs"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Drugs."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-combinedsci-0653-t014",
+      "topic_name": "14. Reproduction",
+      "parent_id": "caie-igcse-combinedsci-0653",
+      "scope": [
+        "Reproduction"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Reproduction."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-combinedsci-0653-t015",
+      "topic_name": "15. Organisms and their environment",
+      "parent_id": "caie-igcse-combinedsci-0653",
+      "scope": [
+        "Organisms and their environment"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Organisms and their environment."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-combinedsci-0653-t201",
+      "topic_name": "Motion, forces and energy",
+      "parent_id": "caie-igcse-combinedsci-0653",
+      "scope": [
+        "Motion, forces and energy"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Motion, forces and energy."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-combinedsci-0653-t202",
+      "topic_name": "Thermal physics",
+      "parent_id": "caie-igcse-combinedsci-0653",
+      "scope": [
+        "Thermal physics"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Thermal physics."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-combinedsci-0653-t203",
+      "topic_name": "Waves",
+      "parent_id": "caie-igcse-combinedsci-0653",
+      "scope": [
+        "Waves"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Waves."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-combinedsci-0653-t204",
+      "topic_name": "Electricity",
+      "parent_id": "caie-igcse-combinedsci-0653",
+      "scope": [
+        "Electricity"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Electricity."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-combinedsci-0653-t205",
+      "topic_name": "Space physics",
+      "parent_id": "caie-igcse-combinedsci-0653",
+      "scope": [
+        "Space physics"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Space physics."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": "1",
+  "id": "ap-human-geography",
+  "assessment_type": "course_and_exam_description",
+  "system": "AP",
+  "board_or_owner": "College Board",
+  "subject": "Human Geography",
+  "level": "AP (high school / college intro)",
+  "assessment_code": "AP Human Geography",
+  "valid_from": "2020",
+  "valid_to": "(ongoing)",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_course_description",
+      "title": "AP Human Geography Course and Exam Description",
+      "url": "https://apcentral.collegeboard.org/courses/human-geography",
+      "source_document_type": "course_and_exam_description",
+      "source_layout_profile": "ap_college_board_ced",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/03-AP知识库/03-学科知识/AP Human Geography/02-课本与考纲/考纲/ap-human-geography-course-and-exam-description.pdf",
+      "file_checksum_sha256": "ae2ce6c0614a45717418eff8ce98f7336a8e89a8239b68a65baa96e94087c457",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "Effective Fall 2020",
+      "retrieved_at": "2026-07-01",
+      "page_refs": [
+        "p.1-185"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "AP CED uses printed_page; usually matches physical_page.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text.",
+      "notes": "Source bundle lives at pilot-output/source-bundles/ap-human-geography-guide/."
+    }
+  ],
+  "aliases": [
+    "ap-human-geography",
+    "ap human geography",
+    "college board human geography"
+  ],
+  "canonical_id": "ap-human-geography",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "College Board AP Human Geography."
+}

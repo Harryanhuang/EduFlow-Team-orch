@@ -1,0 +1,269 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "caie-igcse-physics-0625",
+      "topic_name": "CAIE IGCSE Physics",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Physics (0625) syllabus scope.",
+        "Valid: 2023 → 2025."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-physics-0625-core",
+      "topic_name": "Core (grades C-G)",
+      "parent_id": "caie-igcse-physics-0625",
+      "scope": [
+        "Paper 1 (MCQ) and Paper 3 (theory) at Core tier; candidates can achieve C-G."
+      ],
+      "out_of_scope": [],
+      "classification_hints": [
+        "Items written for grades C-G; recall and application of core syllabus objectives."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-physics-0625-extended",
+      "topic_name": "Extended (grades A*-G)",
+      "parent_id": "caie-igcse-physics-0625",
+      "scope": [
+        "Paper 2 (MCQ) and Paper 4 (theory) at Extended tier; covers Core + Supplement; grades A*-G."
+      ],
+      "out_of_scope": [],
+      "classification_hints": [
+        "Items requiring Supplement-level depth; cross-topic synthesis."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-physics-0625-t001",
+      "topic_name": "1. Why choose this syllabus?",
+      "parent_id": "caie-igcse-physics-0625",
+      "scope": [
+        "Why choose this syllabus?",
+        "Physical quantities and measurement techniques",
+        "Motion",
+        "Mass and weight",
+        "Density",
+        "Forces",
+        "Forces continued",
+        "Momentum",
+        "Energy, work and power",
+        "Energy, work and power continued",
+        "Energy, work and power continued",
+        "Pressure"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Why choose this syllabus?."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-physics-0625-t002",
+      "topic_name": "2. Syllabus overview",
+      "parent_id": "caie-igcse-physics-0625",
+      "scope": [
+        "Syllabus overview",
+        "Kinetic particle model of matter",
+        "Kinetic particle model of matter continued",
+        "Thermal properties and temperature",
+        "Transfer of thermal energy",
+        "Transfer of thermal energy continued"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Syllabus overview."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-physics-0625-t003",
+      "topic_name": "3. Waves",
+      "parent_id": "caie-igcse-physics-0625",
+      "scope": [
+        "Waves",
+        "General properties of waves",
+        "General properties of waves continued",
+        "Light",
+        "Light continued",
+        "Electromagnetic spectrum",
+        "Electromagnetic spectrum continued",
+        "Sound",
+        "Sound continued"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Waves."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-physics-0625-t004",
+      "topic_name": "4. Electricity and magnetism",
+      "parent_id": "caie-igcse-physics-0625",
+      "scope": [
+        "Electricity and magnetism",
+        "Simple phenomena of magnetism",
+        "Electrical quantities",
+        "Electrical quantities continued",
+        "Electric circuits",
+        "Electric circuits continued",
+        "Electrical safety",
+        "Electromagnetic effects",
+        "Electromagnetic effects continued"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Electricity and magnetism."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-physics-0625-t005",
+      "topic_name": "5. Nuclear physics",
+      "parent_id": "caie-igcse-physics-0625",
+      "scope": [
+        "Nuclear physics",
+        "The nuclear model of the atom",
+        "Radioactivity",
+        "Radioactivity continued",
+        "Radioactivity continued"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Nuclear physics."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-physics-0625-t006",
+      "topic_name": "6. Space physics",
+      "parent_id": "caie-igcse-physics-0625",
+      "scope": [
+        "Space physics",
+        "Earth and the Solar System",
+        "Earth and the Solar System continued",
+        "Earth and the Solar System continued",
+        "Stars and the Universe",
+        "Stars and the Universe continued",
+        "Stars and the Universe continued"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Space physics."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    }
+  ]
+}

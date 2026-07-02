@@ -1,0 +1,350 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "ap-calculus-ab",
+      "topic_name": "AP Calculus AB",
+      "parent_id": "",
+      "scope": [
+        "AP Calculus AB course framework (College Board).",
+        "Valid: 2025 → (ongoing).",
+        "Units 1–10 with cumulative exam weightings."
+      ],
+      "out_of_scope": [
+        "Pre-AP / general high-school level content unless explicitly cited in CED.",
+        "University-level content beyond AP expectations.",
+        "Other AP subjects."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific unit fits.",
+        "Prefer specific Unit N nodes for content questions."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-calculus-ab-unit01",
+      "topic_name": "Unit 1: Limits and Continuity",
+      "parent_id": "ap-calculus-ab",
+      "scope": [
+        "Unit 1 content as defined in AP Calculus AB CED.",
+        "Exam weighting: 4–7%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Limits and Continuity                       10–12%."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_1.1",
+          "text": "Core content and concepts for Unit 1: Limits and Continuity."
+        },
+        {
+          "ek_id": "EK_1.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 1: Limits and Continuity."
+        },
+        {
+          "ek_id": "EK_1.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 1: Limits and Continuity."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-calculus-ab-unit02",
+      "topic_name": "Unit 2: Differentiation: Definition and Basic Derivative Rules",
+      "parent_id": "ap-calculus-ab",
+      "scope": [
+        "Unit 2 content as defined in AP Calculus AB CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Differentiation: Definition."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_2.1",
+          "text": "Core content and concepts for Unit 2: Differentiation: Definition and Basic Derivative Rules."
+        },
+        {
+          "ek_id": "EK_2.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 2: Differentiation: Definition and Basic Derivative Rules."
+        },
+        {
+          "ek_id": "EK_2.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 2: Differentiation: Definition and Basic Derivative Rules."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-calculus-ab-unit03",
+      "topic_name": "Unit 3: Differentiation: Composite, Implicit, and Inverse Functions",
+      "parent_id": "ap-calculus-ab",
+      "scope": [
+        "Unit 3 content as defined in AP Calculus AB CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Differentiation: Composite,."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_3.1",
+          "text": "Implicit, and Inverse Functions                     9–13%                 4–7%"
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-calculus-ab-unit04",
+      "topic_name": "Unit 4: Contextual Applications of Differentiation",
+      "parent_id": "ap-calculus-ab",
+      "scope": [
+        "Unit 4 content as defined in AP Calculus AB CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Contextual Applications of."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_4.1",
+          "text": "Differentiation                                     10–15%                6–9%"
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-calculus-ab-unit05",
+      "topic_name": "Unit 5: Analytical Applications of Differentiation",
+      "parent_id": "ap-calculus-ab",
+      "scope": [
+        "Unit 5 content as defined in AP Calculus AB CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Analytical Applications of."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_5.1",
+          "text": "Differentiation                                     15–18%                8–11%"
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-calculus-ab-unit06",
+      "topic_name": "Unit 6: Integration and Accumulation of Change",
+      "parent_id": "ap-calculus-ab",
+      "scope": [
+        "Unit 6 content as defined in AP Calculus AB CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Integration and."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_6.1",
+          "text": "Accumulation of Change                              17–20%                17–20%"
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-calculus-ab-unit07",
+      "topic_name": "Unit 7: Differential Equations",
+      "parent_id": "ap-calculus-ab",
+      "scope": [
+        "Unit 7 content as defined in AP Calculus AB CED.",
+        "Exam weighting: 6–9%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Differential Equations                      6–12%."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_7.1",
+          "text": "Core content and concepts for Unit 7: Differential Equations."
+        },
+        {
+          "ek_id": "EK_7.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 7: Differential Equations."
+        },
+        {
+          "ek_id": "EK_7.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 7: Differential Equations."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-calculus-ab-unit08",
+      "topic_name": "Unit 8: Applications of Integration",
+      "parent_id": "ap-calculus-ab",
+      "scope": [
+        "Unit 8 content as defined in AP Calculus AB CED.",
+        "Exam weighting: 6–9%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Applications of Integration                 10–15%."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_8.1",
+          "text": "Core content and concepts for Unit 8: Applications of Integration."
+        },
+        {
+          "ek_id": "EK_8.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 8: Applications of Integration."
+        },
+        {
+          "ek_id": "EK_8.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 8: Applications of Integration."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-calculus-ab-unit09",
+      "topic_name": "Unit 9: Parametric Equations, Polar Coordinates, and Vector-Valued Functions",
+      "parent_id": "ap-calculus-ab",
+      "scope": [
+        "Unit 9 content as defined in AP Calculus AB CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Parametric Equations, Polar."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_9.1",
+          "text": "Core content and concepts for Unit 9: Parametric Equations, Polar Coordinates, and Vector-Valued Functions."
+        },
+        {
+          "ek_id": "EK_9.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 9: Parametric Equations, Polar Coordinates, and Vector-Valued Functions."
+        },
+        {
+          "ek_id": "EK_9.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 9: Parametric Equations, Polar Coordinates, and Vector-Valued Functions."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-calculus-ab-unit10",
+      "topic_name": "Unit 10: Infinite Sequences and Series",
+      "parent_id": "ap-calculus-ab",
+      "scope": [
+        "Unit 10 content as defined in AP Calculus AB CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Infinite Sequences and."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_10.1",
+          "text": "The following table shows how the big ideas spiral across units"
+        },
+        {
+          "ek_id": "EK_10.2",
+          "text": "Plan                                                CHA                                                            CHA       2"
+        },
+        {
+          "ek_id": "EK_10.3",
+          "text": "Please note, pacing is based                                                                                    FUN      2"
+        },
+        {
+          "ek_id": "EK_10.4",
+          "text": "MATHEMATICAL PRACTICES                               LIM       1"
+        },
+        {
+          "ek_id": "EK_10.5",
+          "text": "Mathematical practices spiral throughout                                                                            FUN      2"
+        }
+      ]
+    }
+  ]
+}

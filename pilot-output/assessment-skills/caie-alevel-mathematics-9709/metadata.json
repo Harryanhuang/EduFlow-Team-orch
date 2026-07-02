@@ -1,0 +1,49 @@
+{
+  "schema_version": "1",
+  "id": "caie-alevel-mathematics-9709",
+  "assessment_type": "syllabus",
+  "system": "CAIE A-Level",
+  "board_or_owner": "Cambridge Assessment International Education",
+  "subject": "Mathematics",
+  "level": "A-Level (16-19 years)",
+  "assessment_code": "9709",
+  "valid_from": "2025",
+  "valid_to": "2026",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_syllabus",
+      "title": "Cambridge A-Level Mathematics 9709 syllabus (2025-2026)",
+      "url": "https://www.cambridgeinternational.org/Images/9709-2025-2026-syllabus.pdf",
+      "source_document_type": "syllabus",
+      "source_layout_profile": "caie_igcse_syllabus",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/02-A-Level知识库/03-考试局/CAIE/Mathematics (9709)/02-课本与考纲/考纲/CAIE_Mathematics_9709_Syllabus_2025-2026.pdf",
+      "file_checksum_sha256": "3a7a37692399f47ff5e0d94cc41f9dd33d3b99467ce83aa4bad28c6136f96256",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "2025-2026 syllabus",
+      "retrieved_at": "2026-07-02",
+      "page_refs": [
+        "p.1-59"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "printed_page ≈ physical_page for CAIE IGCSE syllabi.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text.",
+      "notes": "Source bundle lives at pilot-output/source-bundles/caie-alevel-mathematics-9709-guide/."
+    }
+  ],
+  "aliases": [
+    "alevel maths 9709",
+    "cambridge a-level mathematics",
+    "caie a-level math"
+  ],
+  "canonical_id": "caie-alevel-mathematics-9709",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "Cambridge A-Level Mathematics 9709. Six papers: P1-P3 Pure Mathematics + P4 Mechanics + P5/P6 Probability & Statistics."
+}

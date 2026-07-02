@@ -1,0 +1,24 @@
+{
+  "schema_version": "1",
+  "source_id": "primary_syllabus",
+  "file_locked": true,
+  "identity_status": "verified",
+  "coverage_status": "complete_for_scope",
+  "traceability_status": "complete_with_approximate_offset",
+  "page_ref_status": "approximate_offset_recorded",
+  "rendered_pages_status": "not_created",
+  "dual_pass_checked": false,
+  "independent_reviewer_required": true,
+  "review_status": "pending_review",
+  "extraction_confidence": "medium",
+  "blocking_risks": [
+    "Rendered high-impact pages not created; visual review pending.",
+    "Same agent performed extraction and review.",
+    "Per-topic page ranges are approximate."
+  ],
+  "identity_risks": [],
+  "page_ref_risks": [
+    "approx topic page ranges"
+  ],
+  "reuse_status": "reusable_with_review"
+}

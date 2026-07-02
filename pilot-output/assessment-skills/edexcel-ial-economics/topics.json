@@ -1,0 +1,103 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "edexcel-ial-economics",
+      "topic_name": "CAIE IGCSE Economics",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Economics (ECO (IAL)) syllabus scope.",
+        "Valid: 2025 → 2026."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "edexcel-ial-economics-unit01",
+      "topic_name": "Topic 1: Markets, Consumers and Firms",
+      "parent_id": "edexcel-ial-economics",
+      "scope": [
+        "Topic 1 content as defined in Edexcel IAL edexcel-ial-economics."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Markets, Consumers and Firms."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "edexcel-ial-economics-unit02",
+      "topic_name": "Topic 2: The Wider Economic Environment",
+      "parent_id": "edexcel-ial-economics",
+      "scope": [
+        "Topic 2 content as defined in Edexcel IAL edexcel-ial-economics."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: The Wider Economic Environment."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "edexcel-ial-economics-unit03",
+      "topic_name": "Topic 3: The Global Economy",
+      "parent_id": "edexcel-ial-economics",
+      "scope": [
+        "Topic 3 content as defined in Edexcel IAL edexcel-ial-economics."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: The Global Economy."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "edexcel-ial-economics-unit04",
+      "topic_name": "Topic 4: Making Markets Work",
+      "parent_id": "edexcel-ial-economics",
+      "scope": [
+        "Topic 4 content as defined in Edexcel IAL edexcel-ial-economics."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Making Markets Work."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    }
+  ]
+}

@@ -1,0 +1,359 @@
+{
+  "schema_version": "1",
+  "subject": "computer-science",
+  "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/01-IGCSE知识库/03-学科知识/CAIE/Computer Science (0478)/02-课本与考纲/考纲/CAIE_ComputerScience_0478_Syllabus_2025-2026.pdf",
+  "file_checksum_sha256": "48cd6cf03e2a29cdf6c106aee2677919a6b17b4b50a7ab6ddded1ca7633cbdb4",
+  "pdfinfo": {
+    "Creator": "Adobe InDesign 18.2 (Windows)",
+    "Producer": "Adobe PDF Library 17.0",
+    "CreationDate": "Wed Jun 28 16:48:07 2023 CST",
+    "ModDate": "Wed Jun 28 16:48:12 2023 CST",
+    "Custom Metadata": "no",
+    "Metadata Stream": "yes",
+    "Tagged": "yes",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "none",
+    "JavaScript": "no",
+    "Pages": "55",
+    "Encrypted": "no",
+    "Page size": "595.276 x 841.89 pts (A4)",
+    "Page rot": "0",
+    "File size": "961664 bytes",
+    "Optimized": "yes",
+    "PDF version": "1.7"
+  },
+  "total_pages": 55,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": 1,
+      "chars": 2616,
+      "first_200": "Syllabus Cambridge IGCSE™ Computer Science 0478 Use this syllabus for exams in 2023, 2024 and 2025. Exams are available in the June and November series. Exams are also available in"
+    },
+    {
+      "physical_page": 2,
+      "printed_page": 2,
+      "chars": 2616,
+      "first_200": "tted to copy material from this booklet for their own internal use. However, we cannot give permission to centres to photocopy any material that is acknowledged to a third party"
+    },
+    {
+      "physical_page": 3,
+      "printed_page": 3,
+      "chars": 2616,
+      "first_200": ". ............................................................................................ 48 Before you start 48 Making entries 49 After the exam 50 How students and teachers can use the grades 5"
+    },
+    {
+      "physical_page": 4,
+      "printed_page": 4,
+      "chars": 2616,
+      "first_200": "ter science and using technical language to communicate their knowledge and understanding responsible, working systematically, safely and securely when using technology reflective, learning from their"
+    },
+    {
+      "physical_page": 5,
+      "printed_page": 5,
+      "chars": 2616,
+      "first_200": "ter and recognised qualifications in the world. It is very popular in Egypt because it provides the perfect preparation for success at advanced level programmes.’ Managing Director of British School"
+    },
+    {
+      "physical_page": 6,
+      "printed_page": 6,
+      "chars": 2616,
+      "first_200": "ductory Training – face-to-face or online • Extension Training – face-to-face or online • Enrichment Professional Development – face-to-face or online Find out more at www.cambridgeinternational.org/e"
+    },
+    {
+      "physical_page": 7,
+      "printed_page": 7,
+      "chars": 2616,
+      "first_200": "n logic 6 www.cambridgeinternational.org/igcse Back to contents page Cambridge IGCSE Computer Science 0478 syllabus for 2023, 2024 and 2025. Syllabus overview Assessment overview All candidates take t"
+    },
+    {
+      "physical_page": 8,
+      "printed_page": 8,
+      "chars": 2616,
+      "first_200": "Assessment objectives as a percentage of the qualification Assessment objective Weighting in IGCSE % AO1 40 AO2 40 AO3 20 Total 100 Assessment objectives as a percentage of each component"
+    },
+    {
+      "physical_page": 9,
+      "printed_page": 9,
+      "chars": 2616,
+      "first_200": "also need to have access to a system with direct-access file capability on backing store and hardcopy facilities. Computer systems 1 Data representation 1.1 Number systems Candidates should be able"
+    },
+    {
+      "physical_page": 10,
+      "printed_page": 10,
+      "chars": 2616,
+      "first_200": "ent or store, for example 16-bit • An overflow error occurs when a value outside this limit should be returned Back to contents page www.cambridgeinternational.org/igcse 9 Cambridge IGCSE Computer Sci"
+    },
+    {
+      "physical_page": 11,
+      "printed_page": 11,
+      "chars": 2616,
+      "first_200": "ter sets, including computer American standard code for information • Unicode allows for a greater range of characters interchange (ASCII) and Unicode and symbols than ASCII, including different langu"
+    },
+    {
+      "physical_page": 12,
+      "printed_page": 12,
+      "chars": 2616,
+      "first_200": "• The colour depth is the number of bits used to represent each colour • The file size and quality of the image increases as the resolution and colour depth"
+    },
+    {
+      "physical_page": 13,
+      "printed_page": 13,
+      "chars": 2616,
+      "first_200": "le rate, resolution and length of 3 Understand the purpose of and need for data track compression • Compression exists to reduce the size of the file • The impact"
+    },
+    {
+      "physical_page": 14,
+      "printed_page": 14,
+      "chars": 2616,
+      "first_200": "• The packet header includes the: – destination address – packet number – originator’s address (c) Describe the process of packet switching • Data is broken down into packets •"
+    },
+    {
+      "physical_page": 15,
+      "printed_page": 15,
+      "chars": 2616,
+      "first_200": "a transmission and how these errors can occur interference, e.g. data loss, data gain and data change 2 Describe the processes involved in each of the • Including parity byte"
+    },
+    {
+      "physical_page": 16,
+      "printed_page": 16,
+      "chars": 2616,
+      "first_200": "– units: arithmetic logic unit (ALU) and control Von Neumann architecture unit (CU) – registers: program counter (PC), memory address register (MAR), memory data register (MDR), current instruction re"
+    },
+    {
+      "physical_page": 17,
+      "printed_page": 17,
+      "chars": 2616,
+      "first_200": "dedicated function, e.g. domestic appliances, they are commonly used cars, security systems, lighting systems or vending machines. This is different to a general purpose computer that is used to perfo"
+    },
+    {
+      "physical_page": 18,
+      "printed_page": 18,
+      "chars": 2616,
+      "first_200": "– light emitting diode (LED) screen – liquid crystal display (LCD) projector – liquid crystal display (LCD) screen – speaker – 3D printer 3 (a) \u0007Understand what is meant by"
+    },
+    {
+      "physical_page": 19,
+      "printed_page": 19,
+      "chars": 2616,
+      "first_200": "• Including the role of: – random access memory (RAM) – read only memory (ROM) • Including why a computer needs both RAM and ROM, and the difference between them"
+    },
+    {
+      "physical_page": 20,
+      "printed_page": 20,
+      "chars": 2616,
+      "first_200": "ambridgeinternational.org/igcse Back to contents page Cambridge IGCSE Computer Science 0478 syllabus for 2023, 2024 and 2025. Subject content 3.4 Network hardware Candidates should be able to: Notes a"
+    },
+    {
+      "physical_page": 21,
+      "printed_page": 21,
+      "chars": 2616,
+      "first_200": "ility software • Application software provides the services that the user requires 2 Describe the role and basic functions of an • Including: operating system – managing files – handling"
+    },
+    {
+      "physical_page": 22,
+      "printed_page": 22,
+      "chars": 2616,
+      "first_200": "• Software interrupts include division by zero and two processes trying to access the same memory location • Hardware interrupts include pressing a key on the keyboard and moving the"
+    },
+    {
+      "physical_page": 23,
+      "printed_page": 23,
+      "chars": 2616,
+      "first_200": ".org/igcse Back to contents page Cambridge IGCSE Computer Science 0478 syllabus for 2023, 2024 and 2025. Subject content 4.2 \u0007Types of programming language, translators and integrated development envi"
+    },
+    {
+      "physical_page": 24,
+      "printed_page": 24,
+      "chars": 2616,
+      "first_200": "protocol secure (HTTPS) 4 Explain the purpose and functions of a web • The main purpose of a web browser is to render browser hypertext markup language (HTML) and display"
+    },
+    {
+      "physical_page": 25,
+      "printed_page": 25,
+      "chars": 2616,
+      "first_200": "– storing login details 5.2 \u0007Digital currency Candidates should be able to: Notes and guidance 1 Understand the concept of a digital currency and • A digital currency is one"
+    },
+    {
+      "physical_page": 26,
+      "printed_page": 26,
+      "chars": 2616,
+      "first_200": "-virus and anti-spyware – authentication (username and password, biometrics, two-step verification) – automating software updates – checking the spelling and tone of communications – checking the URL "
+    },
+    {
+      "physical_page": 27,
+      "printed_page": 27,
+      "chars": 2616,
+      "first_200": "hat is meant by robotics • Robotics is a branch of computer science that incorporates the design, construction and operation of robots • Examples include factory equipment, domestic robots and"
+    },
+    {
+      "physical_page": 28,
+      "printed_page": 28,
+      "chars": 2616,
+      "first_200": "gent behaviour – expert systems – machine learning • Expert systems have a knowledge base, a rule base, an inference engine and an interface • Machine learning is when a"
+    },
+    {
+      "physical_page": 29,
+      "printed_page": 29,
+      "chars": 2616,
+      "first_200": "testing – testing: testing program code with the use of test data 2 (a) \u0007Understand that every computer system is made up of sub-systems, which are made up of further"
+    },
+    {
+      "physical_page": 30,
+      "printed_page": 30,
+      "chars": 2616,
+      "first_200": "ximum, minimum and average values 5 (a) \u0007Understand the need for validation checks • Including: to be made on input data and the different – range check types of validation"
+    },
+    {
+      "physical_page": 31,
+      "printed_page": 31,
+      "chars": 2616,
+      "first_200": "rejected value 7 Complete a trace table to document a dry-run of • Including, at each step in an algorithm: an algorithm – variables – outputs – user prompts 8"
+    },
+    {
+      "physical_page": 32,
+      "printed_page": 32,
+      "chars": 2616,
+      "first_200": "ration • Including: – count-controlled loops – pre-condition loops – post-condition loops (d)\u0007 \u0007Understand and use the concepts of totalling and counting (e) \u0007Understand and use the concept of string"
+    },
+    {
+      "physical_page": 33,
+      "printed_page": 33,
+      "chars": 2616,
+      "first_200": "> – >= – <> (not equal to) • Boolean, limited to: – AND – OR – NOT 5 Understand and use nested statements • Including nested selection and iteration"
+    },
+    {
+      "physical_page": 34,
+      "printed_page": 34,
+      "chars": 2616,
+      "first_200": "– procedures and functions – relevant and appropriate commenting of syntax • Use meaningful identifiers for: – variables – constants – arrays – procedures and functions 8.2 \u0007Arrays Candidates should"
+    },
+    {
+      "physical_page": 35,
+      "printed_page": 35,
+      "chars": 2616,
+      "first_200": "2 Suggest suitable basic data types • Including: – text/alphanumeric – character – Boolean – integer – real – date/time 3 Understand the purpose of a primary key and identify"
+    },
+    {
+      "physical_page": 36,
+      "printed_page": 36,
+      "chars": 2616,
+      "first_200": "– OR – NAND – NOR – XOR (EOR) – the binary output produced from all the possible binary inputs • NOT is a single input gate • All other"
+    },
+    {
+      "physical_page": 37,
+      "printed_page": 37,
+      "chars": 2616,
+      "first_200": "www.cambridgeinternational.org/igcse 29 Cambridge IGCSE Computer Science 0478 syllabus for 2023, 2024 and 2025. 4 Details of the assessment Paper 1 – Computer Systems Written paper, 1 hour 45 minutes,"
+    },
+    {
+      "physical_page": 38,
+      "printed_page": 38,
+      "chars": 2616,
+      "first_200": "random numbers, decimals, fractions, percentages and ratios • use both positive and negative integers, and real numbers • use arithmetic and Boolean operators • use different number systems, including"
+    },
+    {
+      "physical_page": 39,
+      "printed_page": 39,
+      "chars": 2616,
+      "first_200": "478 syllabus for 2023, 2024 and 2025. Details of the assessment Pseudocode The following information sets out how pseudocode will appear within the examinations of this syllabus. The numbers and"
+    },
+    {
+      "physical_page": 40,
+      "printed_page": 40,
+      "chars": 2616,
+      "first_200": "// values of X and Y PROCEDURE SWAP(X : INTEGER, Y : INTEGER) Temp ← X // temporarily store X X ← Y Y ← Temp ENDPROCEDURE Variables, constants and"
+    },
+    {
+      "physical_page": 41,
+      "printed_page": 41,
+      "chars": 2616,
+      "first_200": "Variable declarations (8.1.1) Declarations are made as follows: DECLARE <identifier> : <data type> Example – variable declarations DECLARE Counter : INTEGER DECLARE TotalToPay : REAL DECLARE GameOver "
+    },
+    {
+      "physical_page": 42,
+      "printed_page": 42,
+      "chars": 2616,
+      "first_200": "rrays (8.2.1) In the main pseudocode statements, only one index value is used for each dimension in the square brackets. Example – using arrays StudentNames[1] ← \"Ali\" NoughtsAndCrosses[2,3] ← ꞌXꞌ"
+    },
+    {
+      "physical_page": 43,
+      "printed_page": 43,
+      "chars": 2616,
+      "first_200": "ion have higher precedence over addition and subtraction (this is the normal mathematical convention). However, it is good practice to make the order of operations in complex expressions explicit by"
+    },
+    {
+      "physical_page": 44,
+      "printed_page": 44,
+      "chars": 2616,
+      "first_200": "utines (8.1.7) ROUND(<identifier>, <places>) Returns the value of the identifier rounded to places number of decimal places. The identifier should be of data type real, places should be data type"
+    },
+    {
+      "physical_page": 45,
+      "printed_page": 45,
+      "chars": 2616,
+      "first_200": "SE statements are written as follows: CASE OF <identifier> <value 1> : <statement> <value 2> : <statement> ... ENDCASE An OTHERWISE clause can be the last case: CASE OF <identifier>"
+    },
+    {
+      "physical_page": 46,
+      "printed_page": 46,
+      "chars": 2616,
+      "first_200": "FOR <identifier> ← <value1> TO <value2> STEP <increment> <statements> NEXT <identifier> The increment must be an expression that evaluates to an integer. In this case the identifier will be assigned"
+    },
+    {
+      "physical_page": 47,
+      "printed_page": 47,
+      "chars": 2616,
+      "first_200": "www.cambridgeinternational.org/igcse 43 Cambridge IGCSE Computer Science 0478 syllabus for 2023, 2024 and 2025. Details of the assessment Procedures and functions Procedures and functions are defined "
+    },
+    {
+      "physical_page": 48,
+      "printed_page": 48,
+      "chars": 2616,
+      "first_200": "f the value returned. A function with no parameters is defined as follows: FUNCTION <identifier> RETURNS <data type> <statements> ENDFUNCTION A function with parameters is defined as follows: FUNCTION"
+    },
+    {
+      "physical_page": 49,
+      "printed_page": 49,
+      "chars": 2616,
+      "first_200": "E command as follows: WRITEFILE <File identifier>, <Variable> When the command is executed, the data is written into the file. Files should be closed when they are no longer needed"
+    },
+    {
+      "physical_page": 50,
+      "printed_page": 50,
+      "chars": 2616,
+      "first_200": "Back to contents page www.cambridgeinternational.org/igcse 47 Cambridge IGCSE Computer Science 0478 syllabus for 2023, 2024 and 2025. 5 What else you need to know This section is an overview of"
+    },
+    {
+      "physical_page": 51,
+      "printed_page": 51,
+      "chars": 2616,
+      "first_200": "he achievements of learners who pass exams in a range of different subjects. Learn more about Cambridge ICE at www.cambridgeinternational.org/cambridgeice 48 www.cambridgeinternational.org/igcse Back "
+    },
+    {
+      "physical_page": 52,
+      "printed_page": 52,
+      "chars": 2616,
+      "first_200": "ccess arrangements if they give candidates an unfair advantage over others or if they compromise the standards being assessed. Candidates who cannot access the assessment of any component may be"
+    },
+    {
+      "physical_page": 53,
+      "printed_page": 53,
+      "chars": 2616,
+      "first_200": "e descriptions for Cambridge IGCSE Computer Science will be published after the first assessment of the syllabus in 2023. Find more information at www.cambridgeinternational.org/0478 50 www.cambridgei"
+    },
+    {
+      "physical_page": 54,
+      "printed_page": 54,
+      "chars": 2616,
+      "first_200": "• There has been a limited amount of change to topics: – some topics have been removed, such as ethics – some topics have been added, such as robotics, artificial"
+    },
+    {
+      "physical_page": 55,
+      "printed_page": 55,
+      "chars": 2616,
+      "first_200": "onsistency with the approach at AS & A Level. • Paper 1 Theory has been renamed Paper 1 Computer Systems. • Paper 2 Problem-solving and Programming has been renamed Paper"
+    }
+  ]
+}

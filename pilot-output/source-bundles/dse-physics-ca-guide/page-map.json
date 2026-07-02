@@ -1,0 +1,88 @@
+{
+  "schema_version": "1",
+  "source_id": "dse-physics-ca-guide",
+  "mappings": [
+    {
+      "target": "topics.physics-heat-gases.scope",
+      "page_refs": ["p.17-21"],
+      "evidence_note": "Compulsory topic I 'Heat and Gases': temperature, heat capacity, latent heat, kinetic theory, gas laws, thermodynamics. 23 curriculum hours."
+    },
+    {
+      "target": "topics.physics-force-motion.scope",
+      "page_refs": ["p.22-28"],
+      "evidence_note": "Compulsory topic II 'Force and Motion': kinematics, Newton's laws, moment, work/energy/power, gravitation, circular motion, simple harmonic motion. 50 curriculum hours."
+    },
+    {
+      "target": "topics.physics-wave-motion.scope",
+      "page_refs": ["p.29-33"],
+      "evidence_note": "Compulsory topic III 'Wave Motion': wave properties, reflection/refraction, diffraction, interference, sound, light, stationary waves. 47 curriculum hours."
+    },
+    {
+      "target": "topics.physics-electricity-magnetism.scope",
+      "page_refs": ["p.34-39"],
+      "evidence_note": "Compulsory topic IV 'Electricity and Magnetism': electrostatics, circuits, domestic electricity, electromagnetic effects, magnetic field, AC. 48 curriculum hours."
+    },
+    {
+      "target": "topics.physics-radioactivity-nuclear.scope",
+      "page_refs": ["p.40-43"],
+      "evidence_note": "Compulsory topic V 'Radioactivity and Nuclear Energy': radiation types, decay equations, half-life, nuclear energy, fission/fusion, safety. 16 curriculum hours."
+    },
+    {
+      "target": "topics.physics-elective-astronomy.scope",
+      "page_refs": ["p.44-50"],
+      "evidence_note": "Elective topic VI 'Astronomy and Space Science': celestial observations, Kepler's laws, stellar evolution, cosmology, space exploration. 25 curriculum hours."
+    },
+    {
+      "target": "topics.physics-elective-atomic-world.scope",
+      "page_refs": ["p.51-56"],
+      "evidence_note": "Elective topic VII 'Atomic World': Rutherford/Bohr models, photoelectric effect, atomic spectra, X-rays, wave-particle duality, nanotechnology. 25 curriculum hours."
+    },
+    {
+      "target": "topics.physics-elective-energy.scope",
+      "page_refs": ["p.57-63"],
+      "evidence_note": "Elective topic VIII 'Energy and Use of Energy': energy forms, transfer, efficiency, power generation, renewable energy, environmental impact. 25 curriculum hours."
+    },
+    {
+      "target": "topics.physics-elective-medical.scope",
+      "page_refs": ["p.64-70"],
+      "evidence_note": "Elective topic IX 'Medical Physics': vision correction, hearing, ultrasound, X-ray imaging, CT, MRI, radiotherapy, nuclear medicine. 25 curriculum hours."
+    },
+    {
+      "target": "assessment.papers.paper1.scope",
+      "page_refs": ["p.74-78"],
+      "evidence_note": "Paper 1 covers compulsory part (topics I-V), 60%, 2h30m."
+    },
+    {
+      "target": "assessment.papers.paper2.scope",
+      "page_refs": ["p.74-78"],
+      "evidence_note": "Paper 2 covers elective part (2 of 4 topics VI-IX), 20%, 1h."
+    },
+    {
+      "target": "assessment.sba.scope",
+      "page_refs": ["p.74-103"],
+      "evidence_note": "School-based assessment (SBA) 20%; assesses practical and inquiry skills."
+    },
+    {
+      "target": "assessment.question_styles",
+      "page_refs": ["p.76-78"],
+      "evidence_note": "Public exam uses MCQ, short questions, structured questions and essay questions."
+    },
+    {
+      "target": "assessment.assessment_objectives",
+      "page_refs": ["p.74-75"],
+      "evidence_note": "Assessment objectives: knowledge/understanding, experimental skills, data handling/application, communication/evaluation."
+    }
+  ],
+  "draft_notes": [
+    {
+      "target": "assessment.difficulty_ladder",
+      "page_refs": [],
+      "note": "No explicit difficulty taxonomy in source; inferred from question-style descriptions on p.76-78."
+    },
+    {
+      "target": "topics.physics-curriculum-planning.scope",
+      "page_refs": ["p.71"],
+      "note": "Curriculum planning section is implementation guidance, not assessable content."
+    }
+  ]
+}

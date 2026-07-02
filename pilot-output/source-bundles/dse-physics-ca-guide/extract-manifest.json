@@ -1,0 +1,931 @@
+{
+  "schema_version": "1",
+  "subject": "physics",
+  "local_archive_ref": "/Users/huanganan/Desktop/未命名文件夹/物理课程评估及指引.pdf",
+  "file_checksum_sha256": "613f053a4c10d7b8314b5c3d5083e8affccd39232c4589b74f98f88d486a2af0",
+  "pdfinfo": {
+    "Title": "Microsoft Word - Phy C&A Guide_c_20151102_Clean.doc",
+    "Author": "yhlau",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "Producer": "Acrobat Distiller 9.5.5 (Windows)",
+    "CreationDate": "Tue Nov 24 14:11:16 2015 CST",
+    "ModDate": "Tue Nov 24 14:11:16 2015 CST",
+    "Custom Metadata": "no",
+    "Metadata Stream": "yes",
+    "Tagged": "no",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "none",
+    "JavaScript": "no",
+    "Pages": "150",
+    "Encrypted": "no",
+    "Page size": "595.22 x 842 pts (A4)",
+    "Page rot": "0",
+    "File size": "1620112 bytes",
+    "Optimized": "yes",
+    "PDF version": "1.5"
+  },
+  "total_pages": 150,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": null,
+      "chars": 880,
+      "first_200": "(cid:18809)(cid:11040)(cid:13569)(cid:20570)(cid:11040)(cid:20346)(cid:26560)(cid:10119)(cid:3) (cid:16913)(cid:17326)(cid:18809) (cid:23130)(cid:18867)(cid:9074)(cid:23037)(cid:7896)(cid:12975)(cid:1"
+    },
+    {
+      "physical_page": 2,
+      "printed_page": null,
+      "chars": 0,
+      "first_200": ""
+    },
+    {
+      "physical_page": 3,
+      "printed_page": null,
+      "chars": 1169,
+      "first_200": "(cid:1182) (cid:5301) (cid:26537)(cid:13600) (cid:11965)(cid:22952) i (cid:19156)(cid:7592)(cid:19080) (cid:14634)(cid:23166) 1.1 (cid:20596)(cid:13847) 1 1.2 (cid:18809)(cid:11040)(cid:18809)(cid:180"
+    },
+    {
+      "physical_page": 4,
+      "printed_page": null,
+      "chars": 2315,
+      "first_200": "(cid:19156)(cid:7601)(cid:19080) (cid:23130)(cid:18867)(cid:22839)(cid:17683) 3.1 (cid:7651)(cid:11190)(cid:9031)(cid:8687) 74 3.2 (cid:11040)(cid:20346)(cid:24538)(cid:18867) 75 3.3 (cid:23130)(cid:1"
+    },
+    {
+      "physical_page": 5,
+      "printed_page": null,
+      "chars": 1809,
+      "first_200": "(cid:19156)(cid:7740)(cid:19080) (cid:23037)(cid:7896) 5.1 (cid:23037)(cid:7896)(cid:17964)(cid:22906)(cid:21018) 104 5.2 (cid:24538)(cid:11261)(cid:12239)(cid:9268)(cid:19941)(cid:19704)(cid:12239)(c"
+    },
+    {
+      "physical_page": 6,
+      "printed_page": null,
+      "chars": 817,
+      "first_200": "(cid:26092)(cid:25260) (cid:7592) (cid:24821)(cid:9136)(cid:11040)(cid:17607)(cid:7605)(cid:9140)(cid:26280)(cid:22825)(cid:17964)(cid:13802)(cid:25915)(cid:22544)(cid:19856)(cid:13114)(cid:9268)(cid:"
+    },
+    {
+      "physical_page": 7,
+      "printed_page": null,
+      "chars": 8531,
+      "first_200": "i (cid:1031) (cid:1602) (cid:13569)(cid:20570)(cid:19737)(cid:19444)(cid:11240)((cid:13569)(cid:19737)(cid:11240)(cid:28859)(cid:17318)(cid:13537)(cid:18905)(cid:13569)(cid:20570)(cid:11240)))(cid:136"
+    },
+    {
+      "physical_page": 8,
+      "printed_page": null,
+      "chars": 1475,
+      "first_200": "(cid:23130)(cid:18867)(cid:17956)(cid:11261)(cid:23320)(cid:13995)(cid:9074)(cid:20395)(cid:23037)(cid:11240)(cid:7758)(cid:13995)(cid:11225)(cid:11150)(cid:13669)(cid:12397)(cid:15465)(cid:739)(cid:1"
+    },
+    {
+      "physical_page": 9,
+      "printed_page": null,
+      "chars": 7170,
+      "first_200": "(cid:3203)(cid:907)(cid:3349) (cid:3959)(cid:4949) (cid:14036)(cid:19080)(cid:13712)(cid:9936)(cid:23122)(cid:13750)(cid:16913)(cid:17326)(cid:18809)(cid:7940)(cid:16482)(cid:7601)(cid:11804)(cid:8670"
+    },
+    {
+      "physical_page": 10,
+      "printed_page": null,
+      "chars": 7203,
+      "first_200": "(cid:19692)(cid:9136)(cid:18809)(cid:11040)(cid:18809)(cid:28855)(cid:16913)(cid:17326)(cid:739)(cid:8894)(cid:11040)(cid:28856) (cid:14793)(cid:11959) II(cid:28873)(cid:19692)(cid:9136)(cid:18809)(ci"
+    },
+    {
+      "physical_page": 11,
+      "printed_page": null,
+      "chars": 7990,
+      "first_200": "iii (cid:11661)(cid:18867)(cid:11040)(cid:739)(cid:24915)(cid:11040)(cid:739)(cid:19771)(cid:16263)(cid:11040)(cid:9268)(cid:18809)(cid:12840)(cid:7614)(cid:17652)(cid:19185)(cid:7605)(cid:9140)(cid:2"
+    },
+    {
+      "physical_page": 12,
+      "printed_page": null,
+      "chars": 2326,
+      "first_200": "1.5 (cid:4534)(cid:1987)(cid:973)(cid:4944)(cid:3635)(cid:1015)(cid:973)(cid:5090)(cid:3173)(cid:3952)(cid:2133)(cid:1088)(cid:4193)(cid:1937)(cid:4626)(cid:3031) (cid:16913)(cid:17326)(cid:18809)(cid"
+    },
+    {
+      "physical_page": 13,
+      "printed_page": null,
+      "chars": 2704,
+      "first_200": "(cid:27264)(cid:7637)(cid:11040)(cid:8670)(cid:13176)(cid:8003)(cid:10434)(cid:14405)(cid:23959)(cid:12089)(cid:25156)(cid:13133)(cid:11184)(cid:7602)(cid:13569)(cid:20570)(cid:9074)(cid:11225)(cid:14"
+    },
+    {
+      "physical_page": 14,
+      "printed_page": null,
+      "chars": 59,
+      "first_200": "(cid:28855)(cid:18978) (cid:17957) (cid:26537)(cid:28856) 6"
+    },
+    {
+      "physical_page": 15,
+      "printed_page": null,
+      "chars": 5948,
+      "first_200": "(cid:3203)(cid:914)(cid:3349) (cid:4944)(cid:3635)(cid:2190)(cid:4396) (cid:16913)(cid:17326)(cid:18809)(cid:23130)(cid:18867)(cid:14174)(cid:14707)(cid:22997)(cid:11074)(cid:11040)(cid:17607)(cid:993"
+    },
+    {
+      "physical_page": 16,
+      "printed_page": null,
+      "chars": 4799,
+      "first_200": "(6) (cid:5090)(cid:3230)(cid:3774)(cid:3635) (cid:9936)(cid:7637)(cid:9859)(cid:28859)(cid:11040)(cid:17607)(cid:9111)(cid:24503)(cid:24566)(cid:18364)(cid:20346)(cid:12141)(cid:8086)(cid:24720)(cid:8"
+    },
+    {
+      "physical_page": 17,
+      "printed_page": null,
+      "chars": 5292,
+      "first_200": "2.2.2 (cid:1502)(cid:2760)(cid:1705)(cid:4216)(cid:3635) (1) (cid:2301)(cid:5090)(cid:2136)(cid:4514) (cid:11040)(cid:17607)(cid:12657)(cid:20645) (cid:3) (cid:13750)(cid:24400)(cid:7731)(cid:16913)(c"
+    },
+    {
+      "physical_page": 18,
+      "printed_page": null,
+      "chars": 4568,
+      "first_200": "(cid:3) (cid:8429)(cid:8622)(cid:12657)(cid:17616)(cid:8360)(cid:9744)(cid:12776)(cid:11105)(cid:23001)(cid:17964)(cid:13992)(cid:27264)(cid:19558)(cid:18530)(cid:11854)(cid:24538)(cid:22516)(cid:2495"
+    },
+    {
+      "physical_page": 19,
+      "printed_page": null,
+      "chars": 3107,
+      "first_200": "(8) (cid:1680)(cid:1378) (cid:11040)(cid:17607)(cid:12657)(cid:20645) (cid:3) (cid:9936)(cid:11191)(cid:19692)(cid:22966)(cid:23166)(cid:7637)(cid:28859)(cid:7651)(cid:8829)(cid:9067)(cid:20911)(cid:7"
+    },
+    {
+      "physical_page": 20,
+      "printed_page": null,
+      "chars": 4229,
+      "first_200": "2.2.3 (cid:4669)(cid:2422)(cid:6272)(cid:1705)(cid:4362)(cid:2123)(cid:289) (1) (cid:4345)(cid:961)(cid:4345)(cid:915)(cid:1041)(cid:2399) (cid:11040)(cid:17607)(cid:12657)(cid:20645) (cid:3) (cid:245"
+    },
+    {
+      "physical_page": 21,
+      "printed_page": null,
+      "chars": 1650,
+      "first_200": "(cid:9918) 2.1 (cid:19941)(cid:19704)(cid:23130)(cid:18867)(cid:24720)(cid:8622)(cid:24949)(cid:22825)(cid:17964)(cid:11040)(cid:20346)(cid:18070)(cid:14785)(cid:740) (cid:2) (cid:17318)(cid:23561)(ci"
+    },
+    {
+      "physical_page": 22,
+      "printed_page": null,
+      "chars": 10338,
+      "first_200": "xiv 2.3 (cid:4944)(cid:3635)(cid:3656)(cid:4396)(cid:1015)(cid:3220)(cid:5699) (cid:14036)(cid:23130)(cid:18867)(cid:8877)(cid:12948)(cid:12141)(cid:8086)(cid:9268)(cid:24608)(cid:8086)(cid:8465)(cid:"
+    },
+    {
+      "physical_page": 23,
+      "printed_page": null,
+      "chars": 4151,
+      "first_200": "(cid:12141)(cid:8086)(cid:24720)(cid:8622) (cid:28855)(cid:8473) 184(cid:11191)(cid:13802)(cid:28856) (cid:11938)(cid:23320)(cid:23130)(cid:13802) (cid:28855)(cid:11191)(cid:13802)(cid:28856) II. (cid"
+    },
+    {
+      "physical_page": 24,
+      "printed_page": null,
+      "chars": 8285,
+      "first_200": "(cid:13596)(cid:8115)(cid:23130)(cid:18867)(cid:17964)(cid:8463)(cid:11105)(cid:17625)(cid:7685)(cid:8115)(cid:23130)(cid:26612)(cid:9268)(cid:7592)(cid:26541)(cid:13130)(cid:18974)(cid:18364)(cid:203"
+    },
+    {
+      "physical_page": 25,
+      "printed_page": null,
+      "chars": 5338,
+      "first_200": "2.3.1 184 (cid:1144)(cid:2437)(cid:3325)(cid:1001) (cid:528)(cid:1221) (cid:955)(cid:2580)(cid:529) I. 23 (cid:4823)(cid:1705)(cid:2619)(cid:6223) (cid:528) (cid:955)(cid:2580)(cid:529) (cid:14634)(ci"
+    },
+    {
+      "physical_page": 26,
+      "printed_page": null,
+      "chars": 4049,
+      "first_200": "(cid:11040)(cid:17607)(cid:12657)(cid:11040)(cid:20346) (cid:11040)(cid:17607)(cid:12657)(cid:20645) (cid:16729)(cid:9268)(cid:8463)(cid:20645) (cid:2) (cid:23093)(cid:23296)(cid:16729)(cid:13783)(cid"
+    },
+    {
+      "physical_page": 27,
+      "printed_page": null,
+      "chars": 2945,
+      "first_200": "(cid:11040)(cid:17607)(cid:12657)(cid:11040)(cid:20346) (cid:11040)(cid:17607)(cid:12657)(cid:20645) d. (cid:15307)(cid:27260) (cid:13846)(cid:24593)(cid:15307)(cid:27260)(cid:11074)(cid:12083) (cid:2"
+    },
+    {
+      "physical_page": 28,
+      "printed_page": null,
+      "chars": 7117,
+      "first_200": "(cid:11938)(cid:23320)(cid:11040)(cid:20911)(cid:13569)(cid:15587)(cid:8829) (cid:11040)(cid:17607)(cid:26544)(cid:13108)(cid:13193)(cid:24951)(cid:11854)(cid:15307)(cid:27260)(cid:15955)(cid:11854)(c"
+    },
+    {
+      "physical_page": 29,
+      "printed_page": null,
+      "chars": 3839,
+      "first_200": "(cid:8353)(cid:8164)(cid:22888)(cid:9268)(cid:12531)(cid:11854) (cid:24503)(cid:24566)(cid:14036)(cid:23130)(cid:26612)(cid:17964)(cid:11040)(cid:20346)(cid:24566)(cid:18867)(cid:28859)(cid:11040)(cid"
+    },
+    {
+      "physical_page": 30,
+      "printed_page": null,
+      "chars": 6709,
+      "first_200": "II. 50 (cid:922)(cid:1705)(cid:4206)(cid:2895) (cid:28855) (cid:955)(cid:2580)(cid:28856) (cid:14634)(cid:24472) (cid:24563)(cid:8829)(cid:13783)(cid:7778)(cid:8121)(cid:17607)(cid:15587)(cid:7637)(ci"
+    },
+    {
+      "physical_page": 31,
+      "printed_page": null,
+      "chars": 4337,
+      "first_200": "(cid:11040)(cid:17607)(cid:12657)(cid:11040)(cid:20346) (cid:11040)(cid:17607)(cid:12657)(cid:20645) (cid:2) (cid:17616)(cid:7925)(cid:18851)-(cid:13802)(cid:25915)(cid:9074)(cid:24519)(cid:11854)-(ci"
+    },
+    {
+      "physical_page": 32,
+      "printed_page": null,
+      "chars": 4115,
+      "first_200": "(cid:11040)(cid:17607)(cid:12657)(cid:11040)(cid:20346) (cid:11040)(cid:17607)(cid:12657)(cid:20645) (cid:16899)(cid:26555)(cid:24563)(cid:8829)(cid:19156)(cid:7732)(cid:11074)(cid:12083) (cid:2) (cid"
+    },
+    {
+      "physical_page": 33,
+      "printed_page": null,
+      "chars": 3830,
+      "first_200": "(cid:11040)(cid:17607)(cid:12657)(cid:11040)(cid:20346) (cid:11040)(cid:17607)(cid:12657)(cid:20645) (cid:2) (cid:13136)(cid:11190)(cid:8468)(cid:11959) P.E. = mgh (cid:2) (cid:22923)(cid:15394)(cid:1"
+    },
+    {
+      "physical_page": 34,
+      "printed_page": null,
+      "chars": 6540,
+      "first_200": "(cid:11040)(cid:17607)(cid:12657)(cid:11040)(cid:20346) (cid:11040)(cid:17607)(cid:12657)(cid:20645) GMm g. (cid:11965)(cid:8771) (cid:2) (cid:23122)(cid:8610)(cid:16899)(cid:26555)(cid:21460)(cid:140"
+    },
+    {
+      "physical_page": 35,
+      "printed_page": null,
+      "chars": 8209,
+      "first_200": "(cid:6) (cid:17616)(cid:8771)(cid:8283)(cid:12487)(cid:9744)(cid:15828)(cid:11074)(cid:7940)(cid:9915)(cid:9232)(cid:24563)(cid:8829)(cid:17964)(cid:16913)(cid:27260)(cid:28859)(cid:8478)(cid:8946)(ci"
+    },
+    {
+      "physical_page": 36,
+      "printed_page": null,
+      "chars": 5152,
+      "first_200": "(cid:2) (cid:25593)(cid:23686)(cid:18809)(cid:11040)(cid:11102)(cid:16482)(cid:11187)(cid:15338)(cid:13980)(cid:14001)(cid:8657)(cid:13668)(cid:17496)(cid:8069)(cid:17964)(cid:9102)(cid:26630)(cid:206"
+    },
+    {
+      "physical_page": 37,
+      "printed_page": null,
+      "chars": 5490,
+      "first_200": "III. 47 (cid:1890)(cid:2895) (cid:28855) (cid:955)(cid:2580)(cid:28856) (cid:14634)(cid:24472) (cid:14036)(cid:23130)(cid:26612)(cid:13712)(cid:9936)(cid:22966)(cid:23166)(cid:15498)(cid:17964)(cid:14"
+    },
+    {
+      "physical_page": 38,
+      "printed_page": null,
+      "chars": 4187,
+      "first_200": "(cid:11040)(cid:17607)(cid:12657)(cid:11040)(cid:20346) (cid:11040)(cid:17607)(cid:12657)(cid:20645) (cid:9077)(cid:11180)(cid:9268)(cid:12864)(cid:11180) (cid:2) (cid:23093)(cid:23296)(cid:13668)(cid"
+    },
+    {
+      "physical_page": 39,
+      "printed_page": null,
+      "chars": 3570,
+      "first_200": "(cid:11040)(cid:17607)(cid:12657)(cid:11040)(cid:20346) (cid:11040)(cid:17607)(cid:12657)(cid:20645) (cid:24503)(cid:25481)(cid:17964)(cid:12728)(cid:8311) (cid:2) (cid:7821)(cid:7940)(cid:9918)(cid:1"
+    },
+    {
+      "physical_page": 40,
+      "printed_page": null,
+      "chars": 6339,
+      "first_200": "(cid:11938)(cid:23320)(cid:11040)(cid:20911)(cid:13569)(cid:15587)(cid:8829) (cid:11040)(cid:17607)(cid:12657)(cid:17616)(cid:9132)(cid:18902)(cid:16913)(cid:17326)(cid:14793)(cid:10035)(cid:28859)(ci"
+    },
+    {
+      "physical_page": 41,
+      "printed_page": null,
+      "chars": 5491,
+      "first_200": "(cid:8353)(cid:8164)(cid:22888)(cid:9268)(cid:12531)(cid:11854) (cid:24503)(cid:24566)(cid:14036)(cid:23130)(cid:26612)(cid:17964)(cid:11040)(cid:20346)(cid:24566)(cid:18867)(cid:28859)(cid:11040)(cid"
+    },
+    {
+      "physical_page": 42,
+      "printed_page": null,
+      "chars": 5350,
+      "first_200": "IV. 48 (cid:4253)(cid:1705)(cid:4470) (cid:28855) (cid:955)(cid:2580)(cid:28856) (cid:14634)(cid:24472) (cid:14036)(cid:23130)(cid:26612)(cid:13130)(cid:22966)(cid:26275)(cid:11040)(cid:9268)(cid:1853"
+    },
+    {
+      "physical_page": 43,
+      "printed_page": null,
+      "chars": 4077,
+      "first_200": "(cid:11040)(cid:17607)(cid:12657)(cid:11040)(cid:20346) (cid:11040)(cid:17607)(cid:12657)(cid:20645) Q (cid:2) (cid:28605)(cid:8610)(cid:28294)(cid:26275)(cid:21279)(cid:9232)(cid:9909)(cid:26275)(cid"
+    },
+    {
+      "physical_page": 44,
+      "printed_page": null,
+      "chars": 3483,
+      "first_200": "(cid:11040)(cid:17607)(cid:12657)(cid:11040)(cid:20346) (cid:11040)(cid:17607)(cid:12657)(cid:20645) (cid:15928)(cid:17964)(cid:8463)(cid:26275)(cid:26083)(cid:20911)(cid:8465)(cid:20397)(cid:17964)(c"
+    },
+    {
+      "physical_page": 45,
+      "printed_page": null,
+      "chars": 4824,
+      "first_200": "(cid:11040)(cid:17607)(cid:12657)(cid:11040)(cid:20346) (cid:11040)(cid:17607)(cid:12657)(cid:20645) (cid:18537)(cid:10204)(cid:7637)(cid:12776)(cid:9087)(cid:17964)(cid:28632) (cid:2) (cid:14922)(cid"
+    },
+    {
+      "physical_page": 46,
+      "printed_page": null,
+      "chars": 7150,
+      "first_200": "(cid:11040)(cid:17607)(cid:12657)(cid:11040)(cid:20346) (cid:11040)(cid:17607)(cid:12657)(cid:20645) (cid:7821)(cid:27264)(cid:10363)(cid:8283)(cid:24288)(cid:26275)(cid:20645) (cid:2) (cid:22966)(cid"
+    },
+    {
+      "physical_page": 47,
+      "printed_page": null,
+      "chars": 6712,
+      "first_200": "(cid:2) (cid:22693)(cid:7940)(cid:26275)(cid:8829)(cid:14855)(cid:9268)(cid:17956)(cid:26275)(cid:14855)(cid:26275)(cid:23959)(cid:10495)(cid:7838) (cid:2) (cid:24951)(cid:11854)(cid:8943)(cid:10363)("
+    },
+    {
+      "physical_page": 48,
+      "printed_page": null,
+      "chars": 5478,
+      "first_200": "V. 16 (cid:1835)(cid:2516)(cid:3164)(cid:3741)(cid:1705)(cid:2593)(cid:2760) (cid:28855) (cid:955)(cid:2580)(cid:28856) (cid:14634)(cid:24472) (cid:14036)(cid:23130)(cid:26612)(cid:13130)(cid:22966)(c"
+    },
+    {
+      "physical_page": 49,
+      "printed_page": null,
+      "chars": 3570,
+      "first_200": "(cid:11040)(cid:17607)(cid:12657)(cid:11040)(cid:20346) (cid:11040)(cid:17607)(cid:12657)(cid:20645) (cid:2) (cid:7821)(cid:22552)(cid:23346)(cid:12975)(cid:13600)(cid:13665)(cid:18867) N = N e-kt (ci"
+    },
+    {
+      "physical_page": 50,
+      "printed_page": null,
+      "chars": 6417,
+      "first_200": "(cid:11040)(cid:17607)(cid:12657)(cid:11040)(cid:20346) (cid:11040)(cid:17607)(cid:12657)(cid:20645) (cid:23698)(cid:20645)(cid:25988)(cid:8042) (cid:2) (cid:23122)(cid:8610)(cid:23698)(cid:20645)(cid"
+    },
+    {
+      "physical_page": 51,
+      "printed_page": null,
+      "chars": 4634,
+      "first_200": "(cid:8353)(cid:8164)(cid:22888)(cid:9268)(cid:12531)(cid:11854) (cid:24503)(cid:24566)(cid:14036)(cid:23130)(cid:26612)(cid:17964)(cid:11040)(cid:20346)(cid:24566)(cid:18867)(cid:28859)(cid:11040)(cid"
+    },
+    {
+      "physical_page": 52,
+      "printed_page": null,
+      "chars": 8510,
+      "first_200": "2.3.2 50 (cid:5287)(cid:2437)(cid:3325)(cid:1001)(cid:528)(cid:1221) (cid:955)(cid:2580)(cid:500)(cid:1210)(cid:5287)(cid:1665)(cid:973)(cid:1663)(cid:2433)(cid:4944)(cid:5778)(cid:529) VI. 25 (cid:10"
+    },
+    {
+      "physical_page": 53,
+      "printed_page": null,
+      "chars": 4313,
+      "first_200": "(cid:17964)(cid:13665)(cid:11959)(cid:17326)(cid:22923)(cid:14001)(cid:25988)(cid:23130)(cid:26612)(cid:28859)(cid:28347)(cid:8861)(cid:11040)(cid:17607)(cid:7651)(cid:8829)(cid:25945)(cid:23336)(cid:"
+    },
+    {
+      "physical_page": 54,
+      "printed_page": null,
+      "chars": 3907,
+      "first_200": "(cid:11040)(cid:17607)(cid:12657)(cid:11040)(cid:20346) (cid:11040)(cid:17607)(cid:12657)(cid:20645) GMm (cid:20645)(cid:24951)(cid:11056)(cid:12270) (cid:2) (cid:25993)(cid:24947)(cid:11965)(cid:8771"
+    },
+    {
+      "physical_page": 55,
+      "printed_page": null,
+      "chars": 9176,
+      "first_200": "(cid:11938)(cid:23320)(cid:11040)(cid:20911)(cid:13569)(cid:15587)(cid:8829) (cid:14036)(cid:23130)(cid:26612)(cid:14023)(cid:14019)(cid:11040)(cid:17607)(cid:11040)(cid:20346)(cid:10146)(cid:14036)(c"
+    },
+    {
+      "physical_page": 56,
+      "printed_page": null,
+      "chars": 9595,
+      "first_200": "(cid:6) (cid:17616)(cid:11191)(cid:14019)(cid:24584)(cid:25481)(cid:22888)(cid:15828)(cid:16929)(cid:15154)(cid:17964)(cid:10449)(cid:23561)(cid:28855)(cid:7987)(cid:10538)(cid:16403)(cid:13767)(cid:1"
+    },
+    {
+      "physical_page": 57,
+      "printed_page": null,
+      "chars": 6018,
+      "first_200": "(cid:11189)(cid:11187)(cid:12838)(cid:9944)(cid:17323)(cid:10430)(cid:17607)(cid:9253)(cid:17964)(cid:9479)(cid:18658) (cid:6) (cid:18364)(cid:20346)(cid:14001)(cid:25988)(cid:10449)(cid:13615)(cid:11"
+    },
+    {
+      "physical_page": 58,
+      "printed_page": null,
+      "chars": 5482,
+      "first_200": "(cid:2) (cid:13133)(cid:9087)(cid:15828)(cid:24951)(cid:9268)(cid:22888)(cid:15828)(cid:17964)(cid:7605)(cid:18530)(cid:11074)(cid:12239)(cid:28859)(cid:7918)(cid:7797)(cid:9111)(cid:12102)(cid:15828)"
+    },
+    {
+      "physical_page": 59,
+      "printed_page": null,
+      "chars": 8845,
+      "first_200": "VII. 25 (cid:2458)(cid:951)(cid:1064)(cid:2266) (cid:28855) (cid:955)(cid:2580)(cid:28856) (cid:14634)(cid:24472) (cid:19692)(cid:12728)(cid:7592)(cid:8623)(cid:16913)(cid:23698)(cid:17964)(cid:13992)"
+    },
+    {
+      "physical_page": 60,
+      "printed_page": null,
+      "chars": 4733,
+      "first_200": "(cid:24608)(cid:8086)(cid:14036)(cid:23130)(cid:26612)(cid:13802)(cid:28859)(cid:11040)(cid:17607)(cid:22825)(cid:8479)(cid:8257)(cid:8771)(cid:739)(cid:24563)(cid:8829)(cid:9268)(cid:15498)(cid:17964"
+    },
+    {
+      "physical_page": 61,
+      "printed_page": null,
+      "chars": 4268,
+      "first_200": "(cid:11040)(cid:17607)(cid:12657)(cid:11040)(cid:20346)(cid:28796) (cid:11040)(cid:17607)(cid:12657)(cid:20645)(cid:28796) (cid:2) (cid:8936)(cid:8653)(cid:17251)(cid:16870)(cid:15315)(cid:9031)(cid:1"
+    },
+    {
+      "physical_page": 62,
+      "printed_page": null,
+      "chars": 7531,
+      "first_200": "(cid:11040)(cid:17607)(cid:12657)(cid:11040)(cid:20346)(cid:28796) (cid:11040)(cid:17607)(cid:12657)(cid:20645)(cid:28796) (cid:9140)(cid:17964)(cid:16913)(cid:17326)(cid:12239)(cid:23698) (cid:9936)("
+    },
+    {
+      "physical_page": 63,
+      "printed_page": null,
+      "chars": 7164,
+      "first_200": "(cid:19375)(cid:28856)(cid:739)(cid:19637)(cid:19483)(cid:19273)(cid:9268)(cid:19637)(cid:19483)(cid:19842)(cid:740)(cid:19637)(cid:19483)(cid:14072)(cid:13633)(cid:9936)(cid:7605)(cid:9140)(cid:17964"
+    },
+    {
+      "physical_page": 64,
+      "printed_page": null,
+      "chars": 6907,
+      "first_200": "(cid:25887)(cid:16482) 500 (cid:19637)(cid:19483)(cid:17964)(cid:12397)(cid:15465) (cid:2) (cid:24538)(cid:22516)(cid:11150)(cid:27135)(cid:11261)(cid:18658)(cid:9132)(cid:18902)(cid:19637)(cid:19483)"
+    },
+    {
+      "physical_page": 65,
+      "printed_page": null,
+      "chars": 9322,
+      "first_200": "VIII. 25 (cid:2760)(cid:3782)(cid:1705)(cid:2760)(cid:3981)(cid:1937)(cid:1644)(cid:1172) (cid:28855) (cid:955)(cid:2580)(cid:28856) (cid:14634)(cid:24472) (cid:9516)(cid:17616)(cid:9132)(cid:18902)(c"
+    },
+    {
+      "physical_page": 66,
+      "printed_page": null,
+      "chars": 4374,
+      "first_200": "(cid:11040)(cid:17607)(cid:12657)(cid:11040)(cid:20346) (cid:11040)(cid:17607)(cid:12657)(cid:20645) a. (cid:11102)(cid:11245)(cid:17616)(cid:26275) (cid:11102)(cid:17616)(cid:20415)(cid:20645)(cid:26"
+    },
+    {
+      "physical_page": 67,
+      "printed_page": null,
+      "chars": 4231,
+      "first_200": "(cid:11040)(cid:17607)(cid:12657)(cid:11040)(cid:20346) (cid:11040)(cid:17607)(cid:12657)(cid:20645) (cid:2) (cid:25993)(cid:24947)(cid:22693)(cid:8543)(cid:20645)(cid:8771)(cid:16482)(cid:22693)(cid:"
+    },
+    {
+      "physical_page": 68,
+      "printed_page": null,
+      "chars": 4303,
+      "first_200": "lx (cid:11040)(cid:17607)(cid:12657)(cid:11040)(cid:20346) (cid:11040)(cid:17607)(cid:12657)(cid:20645) c. (cid:9111)(cid:8501)(cid:17607)(cid:9268)(cid:7605)(cid:9111)(cid:8501)(cid:17607) (cid:20645"
+    },
+    {
+      "physical_page": 69,
+      "printed_page": null,
+      "chars": 9629,
+      "first_200": "(cid:11040)(cid:17607)(cid:13755)(cid:13668)(cid:24503)(cid:24566)(cid:7592)(cid:7747)(cid:17607)(cid:15587)(cid:17964)(cid:12397)(cid:10283)(cid:9268)(cid:18809)(cid:12840)(cid:17964)(cid:23320)(cid:"
+    },
+    {
+      "physical_page": 70,
+      "printed_page": null,
+      "chars": 7891,
+      "first_200": "(cid:2) (cid:13534)(cid:26222)(cid:9074)(cid:8622)(cid:14136)(cid:7605)(cid:9140)(cid:12042)(cid:11959)(cid:17964)(cid:9111)(cid:8501)(cid:17607)(cid:20911)(cid:7605)(cid:9111)(cid:8501)(cid:17607)(ci"
+    },
+    {
+      "physical_page": 71,
+      "printed_page": null,
+      "chars": 6042,
+      "first_200": "(cid:8353)(cid:8164)(cid:22888)(cid:9268)(cid:12531)(cid:11854) (cid:24503)(cid:24566)(cid:14036)(cid:23130)(cid:26612)(cid:17964)(cid:11040)(cid:20346)(cid:24566)(cid:18867)(cid:28859)(cid:11040)(cid"
+    },
+    {
+      "physical_page": 72,
+      "printed_page": null,
+      "chars": 7903,
+      "first_200": "IX. 25 (cid:5748)(cid:5090)(cid:1922)(cid:3163)(cid:5090) (cid:28855) (cid:955)(cid:2580)(cid:28856) (cid:14634)(cid:24472) (cid:14036)(cid:23130)(cid:26612)(cid:11040)(cid:20346)(cid:14001)(cid:25988"
+    },
+    {
+      "physical_page": 73,
+      "printed_page": null,
+      "chars": 3878,
+      "first_200": "(cid:11040)(cid:17607)(cid:12657)(cid:11040)(cid:20346) (cid:11040)(cid:17607)(cid:12657)(cid:20645) (cid:15485) (cid:2) (cid:17616)(cid:11248)(cid:8433)(cid:11854)(cid:16482)(cid:24503)(cid:25481)(ci"
+    },
+    {
+      "physical_page": 74,
+      "printed_page": null,
+      "chars": 4834,
+      "first_200": "(cid:11040)(cid:17607)(cid:12657)(cid:11040)(cid:20346) (cid:11040)(cid:17607)(cid:12657)(cid:20645) (cid:8433)(cid:20030)(cid:8463)(cid:19042)(cid:25481)(cid:11040) (cid:2) (cid:13175)(cid:24472)(cid"
+    },
+    {
+      "physical_page": 75,
+      "printed_page": null,
+      "chars": 9956,
+      "first_200": "(cid:11938)(cid:23320)(cid:11040)(cid:20911)(cid:13569)(cid:15587)(cid:8829) (cid:14036)(cid:24720)(cid:8622)(cid:24949)(cid:28294)(cid:9936)(cid:13668)(cid:24915)(cid:11040)(cid:23010)(cid:13663)(cid"
+    },
+    {
+      "physical_page": 76,
+      "printed_page": null,
+      "chars": 7303,
+      "first_200": "(cid:7821)(cid:7603)(cid:11938)(cid:23320)(cid:11040)(cid:17607)(cid:9111)(cid:20645)(cid:19771)(cid:15135)(cid:17964)(cid:11040)(cid:20346)(cid:12397)(cid:10283)(cid:28859)(cid:7821)(cid:8003)(cid:90"
+    },
+    {
+      "physical_page": 77,
+      "printed_page": null,
+      "chars": 3972,
+      "first_200": "(cid:8353)(cid:8164)(cid:22888)(cid:9268)(cid:12531)(cid:11854) (cid:24503)(cid:24566)(cid:14036)(cid:23130)(cid:26612)(cid:17964)(cid:11040)(cid:20346)(cid:24566)(cid:18867)(cid:28859)(cid:11040)(cid"
+    },
+    {
+      "physical_page": 78,
+      "printed_page": null,
+      "chars": 2780,
+      "first_200": "(cid:18809)(cid:11040)(cid:739)(cid:18809)(cid:12840)(cid:739)(cid:18662)(cid:13995)(cid:9268)(cid:17496)(cid:10283)(cid:17964)(cid:24523)(cid:19987) (cid:28347)(cid:8861)(cid:11040)(cid:17607)(cid:11"
+    },
+    {
+      "physical_page": 79,
+      "printed_page": null,
+      "chars": 5377,
+      "first_200": "16 (cid:3030)(cid:1586)(cid:2292)(cid:3230) (cid:528) (cid:955)(cid:2580)(cid:529) X. 16 (cid:1922)(cid:3163)(cid:2301)(cid:3030)(cid:1586)(cid:2292)(cid:3230) (cid:528) (cid:955)(cid:2580)(cid:529) ("
+    },
+    {
+      "physical_page": 80,
+      "printed_page": null,
+      "chars": 6295,
+      "first_200": "(cid:13802)(cid:25915)(cid:11057)(cid:13114)- (cid:11040)(cid:17607)(cid:26544)(cid:22839)(cid:17683)(cid:7592)(cid:26541)(cid:11150)(cid:27135)(cid:24538)(cid:22516)(cid:13130)(cid:18974)(cid:28859)("
+    },
+    {
+      "physical_page": 81,
+      "printed_page": null,
+      "chars": 2740,
+      "first_200": "(cid:23037)(cid:7896) (cid:16482)(cid:8039)(cid:13668)(cid:11040)(cid:20346)(cid:28859)(cid:13569)(cid:11731)(cid:9268)(cid:11040)(cid:17607)(cid:12657)(cid:8473)(cid:9140)(cid:9454)(cid:22966)(cid:90"
+    },
+    {
+      "physical_page": 82,
+      "printed_page": null,
+      "chars": 6316,
+      "first_200": "(cid:3203)(cid:927)(cid:3349) (cid:4944)(cid:3635)(cid:3285)(cid:3613) (cid:14036)(cid:19080)(cid:11225)(cid:19156)(cid:7732)(cid:19080)(cid:12776)(cid:7795)(cid:19681)(cid:17964)(cid:23130)(cid:18867"
+    },
+    {
+      "physical_page": 83,
+      "printed_page": null,
+      "chars": 3304,
+      "first_200": "3.2 (cid:5090)(cid:3230)(cid:3774)(cid:3635) (cid:9936)(cid:748)334 (cid:10201)(cid:9202)(cid:13984)(cid:749)(cid:7637)(cid:13176)(cid:8610)(cid:7726)(cid:748)(cid:11040)(cid:20346)(cid:24538)(cid:188"
+    },
+    {
+      "physical_page": 84,
+      "printed_page": null,
+      "chars": 5623,
+      "first_200": "(cid:9111)(cid:13668)(cid:7637)(cid:9859)(cid:11965)(cid:8461)(cid:17964)(cid:23130)(cid:26612) (cid:8257)(cid:23011) I (cid:16729)(cid:9268)(cid:15307)(cid:27260) (cid:26124) (cid:19080) (cid:19304) "
+    },
+    {
+      "physical_page": 85,
+      "printed_page": null,
+      "chars": 3534,
+      "first_200": "(cid:289) (cid:8478)(cid:7806)(cid:18809)(cid:18070)(cid:289) (cid:289) (cid:7637)(cid:7740)(cid:289) (cid:16913)(cid:17326)(cid:289) (cid:7987)(cid:10538)(cid:28873)(cid:19692)(cid:9136)(cid:18809)(c"
+    },
+    {
+      "physical_page": 86,
+      "printed_page": null,
+      "chars": 3574,
+      "first_200": "(cid:11040)(cid:17607)(cid:12657)(cid:9936)(cid:7601)(cid:11804)(cid:17964)(cid:8645)(cid:7637)(cid:18809)(cid:11040)(cid:18809)(cid:17964)(cid:18364)(cid:20346)(cid:11674)(cid:17178)(cid:12095)(cid:7"
+    },
+    {
+      "physical_page": 87,
+      "printed_page": null,
+      "chars": 9340,
+      "first_200": "3.3.2 (cid:2124)(cid:6012)(cid:5090)(cid:4534)(cid:3058)(cid:1307)(cid:1479) (cid:14036)(cid:19080)(cid:25993)(cid:24472)(cid:10538)(cid:7933)(cid:9111)(cid:9936)(cid:11040)(cid:20911)(cid:13569)(cid:"
+    },
+    {
+      "physical_page": 88,
+      "printed_page": null,
+      "chars": 5729,
+      "first_200": "(cid:23130)(cid:26612) (cid:11804)(cid:19650) I. (cid:16729)(cid:9268)(cid:15307)(cid:27260)(cid:28855)(cid:15307)(cid:27260)(cid:26124)(cid:10430)(cid:28856) II. (cid:8771)(cid:9268)(cid:24563)(cid:8"
+    },
+    {
+      "physical_page": 89,
+      "printed_page": null,
+      "chars": 6504,
+      "first_200": "(cid:20645)(cid:28859)(cid:12102)(cid:20404)(cid:17326)(cid:22923)(cid:19514)(cid:11000)(cid:8463)(cid:20645)(cid:17964)(cid:14634)(cid:12189)(cid:740)(cid:9864)(cid:15116)(cid:748)(cid:16729)(cid:926"
+    },
+    {
+      "physical_page": 90,
+      "printed_page": null,
+      "chars": 8327,
+      "first_200": "(cid:9463)(cid:26612)(cid:740)(cid:11183)(cid:13130)(cid:18974)(cid:18364)(cid:20346)(cid:17964)(cid:19771)(cid:27135)(cid:20911)(cid:23130)(cid:18867)(cid:7637)(cid:7605)(cid:9140)(cid:24720)(cid:862"
+    },
+    {
+      "physical_page": 91,
+      "printed_page": null,
+      "chars": 5887,
+      "first_200": "(cid:23130)(cid:26612) (cid:12141)(cid:8086)(cid:24720)(cid:8622)(cid:17964)(cid:11934)(cid:11261)(cid:23130)(cid:26612) I. (cid:15307)(cid:27260) II. (cid:12915)(cid:27260)(cid:24563)(cid:8829)(cid:7"
+    },
+    {
+      "physical_page": 92,
+      "printed_page": null,
+      "chars": 7092,
+      "first_200": "3.4 (cid:4944)(cid:3635)(cid:3213)(cid:5986) 3.4.1 (cid:1302)(cid:2575)(cid:1937)(cid:4944)(cid:3635)(cid:3213)(cid:5986) (cid:14001)(cid:13552)(cid:17964)(cid:23130)(cid:18867)(cid:19737)(cid:19444)("
+    },
+    {
+      "physical_page": 93,
+      "printed_page": null,
+      "chars": 7054,
+      "first_200": "(6) (cid:6210)(cid:2400)(cid:4485)(cid:3163) (cid:25594)(cid:13668)(cid:16913)(cid:17326)(cid:11040)(cid:18317)(cid:23296)(cid:7605)(cid:13663)(cid:17956)(cid:11261)(cid:28859)(cid:17318)(cid:7819)(ci"
+    },
+    {
+      "physical_page": 94,
+      "printed_page": null,
+      "chars": 8455,
+      "first_200": "(cid:16482)(cid:8956)(cid:8785)(cid:17956)(cid:11261)(cid:9268)(cid:19273)(cid:17326)(cid:14281)(cid:8463)(cid:16913)(cid:17326)(cid:18809)(cid:23130)(cid:18867)(cid:28859)(cid:7821)(cid:9074)(cid:180"
+    },
+    {
+      "physical_page": 95,
+      "printed_page": null,
+      "chars": 1899,
+      "first_200": "(cid:2) (cid:8733)(cid:24520)(cid:18978)(cid:25915)(cid:23355)(cid:13569)(cid:11731)(cid:9067)(cid:20911)(cid:11184)(cid:14613)(cid:17956)(cid:11261)(cid:23130)(cid:18867)(cid:28874) (cid:2) (cid:2494"
+    },
+    {
+      "physical_page": 96,
+      "printed_page": null,
+      "chars": 7361,
+      "first_200": "(cid:3203)(cid:1124)(cid:3349) (cid:5090)(cid:4534)(cid:3058) (cid:14036)(cid:19080)(cid:11225)(cid:16913)(cid:17326)(cid:18809)(cid:23130)(cid:18867)(cid:7667)(cid:14001)(cid:13552)(cid:11040)(cid:20"
+    },
+    {
+      "physical_page": 97,
+      "printed_page": null,
+      "chars": 4591,
+      "first_200": "(2) (cid:962)(cid:1302)(cid:1937)(cid:1941)(cid:5885)(cid:1705)(cid:4086)(cid:5141) (cid:9936)(cid:22960)(cid:17683)(cid:11040)(cid:20911)(cid:13569)(cid:15587)(cid:8829)(cid:13802)(cid:28859)(cid:126"
+    },
+    {
+      "physical_page": 98,
+      "printed_page": null,
+      "chars": 7555,
+      "first_200": "(11) (cid:4003)(cid:6109)(cid:5090)(cid:1171)(cid:1937)(cid:1261)(cid:4780)(cid:1796) (cid:15223)(cid:8115)(cid:11040)(cid:17607)(cid:9132)(cid:20882)(cid:14001)(cid:7605)(cid:9140)(cid:17964)(cid:169"
+    },
+    {
+      "physical_page": 99,
+      "printed_page": null,
+      "chars": 7895,
+      "first_200": "(cid:18076)(cid:13133)(cid:13669)(cid:13569) (cid:7738)(cid:8829)(cid:13569)(cid:11040) (cid:8115)(cid:7778)(cid:8894) (cid:13130)(cid:18974) (cid:8473)(cid:9140)(cid:11938)(cid:14707) (cid:2) (cid:18"
+    },
+    {
+      "physical_page": 100,
+      "printed_page": null,
+      "chars": 6413,
+      "first_200": "(cid:14148)(cid:740)(cid:17694)(cid:16606)(cid:28859)(cid:24620)(cid:9111)(cid:14001)(cid:8478)(cid:7806)(cid:17964)(cid:12728)(cid:14148)(cid:9111)(cid:7821)(cid:24572)(cid:20891)(cid:740) (1) (cid:4"
+    },
+    {
+      "physical_page": 101,
+      "printed_page": null,
+      "chars": 8355,
+      "first_200": "(2) (cid:3932)(cid:3432)(cid:4534)(cid:2518)(cid:1186)(cid:4183)(cid:2577) (cid:9936)(cid:17318)(cid:7794)(cid:17964)(cid:23663)(cid:22962)(cid:11804)(cid:7819)(cid:22647)(cid:28859)(cid:13252)(cid:11"
+    },
+    {
+      "physical_page": 102,
+      "printed_page": null,
+      "chars": 8818,
+      "first_200": "(cid:7987)(cid:11000)(cid:28873) (cid:9936)(cid:23130)(cid:26612) VII(cid:748)(cid:9031)(cid:11000)(cid:7614)(cid:17652)(cid:749)(cid:7637)(cid:28859)(cid:9111)(cid:11938)(cid:23320)(cid:11040)(cid:17"
+    },
+    {
+      "physical_page": 103,
+      "printed_page": null,
+      "chars": 7185,
+      "first_200": "(cid:17964)(cid:12471)(cid:23296)(cid:28859)(cid:17326)(cid:22923)(cid:9936)(cid:24538)(cid:22516)(cid:11150)(cid:27135)(cid:9268)(cid:24951)(cid:11854)(cid:13802)(cid:28859)(cid:11191)(cid:12139)(cid"
+    },
+    {
+      "physical_page": 104,
+      "printed_page": null,
+      "chars": 9831,
+      "first_200": "(cid:7987)(cid:11000)(cid:28873) (cid:13569)(cid:13104)(cid:20645)(cid:24951)(cid:17964)(cid:748)(cid:24305)(cid:18851)(cid:24566)(cid:18867)(cid:749)(cid:24513)(cid:8115)(cid:23130)(cid:26612)(cid:12"
+    },
+    {
+      "physical_page": 105,
+      "printed_page": null,
+      "chars": 7559,
+      "first_200": "(cid:14001)(cid:12080)(cid:10434)(cid:17964)(cid:12397)(cid:10283)(cid:24741)(cid:9111)(cid:7821)(cid:13129)(cid:17616)(cid:9463)(cid:26612)(cid:16482)(cid:14036)(cid:11040)(cid:20346)(cid:17964)(cid:"
+    },
+    {
+      "physical_page": 106,
+      "printed_page": null,
+      "chars": 9644,
+      "first_200": "(9) (cid:1395)(cid:1172)(cid:4183)(cid:2811)(cid:2301)(cid:1502)(cid:3774)(cid:1353)(cid:981)(cid:2895)(cid:5090)(cid:3230) (cid:23663)(cid:22962)(cid:18809)(cid:12840)(cid:13783)(cid:23130)(cid:10154"
+    },
+    {
+      "physical_page": 107,
+      "printed_page": null,
+      "chars": 8255,
+      "first_200": "(cid:2) (cid:19802)(cid:7602)(cid:23037)(cid:7896)(cid:11661)(cid:8479)(cid:16482)(cid:11040)(cid:17607)(cid:9268)(cid:13569)(cid:11731)(cid:13176)(cid:8003)(cid:8987)(cid:13802)(cid:17964)(cid:9862)("
+    },
+    {
+      "physical_page": 108,
+      "printed_page": null,
+      "chars": 9491,
+      "first_200": "4.4.2 (cid:1302)(cid:2575)(cid:1937)(cid:1251)(cid:13240) (cid:13569)(cid:11731)(cid:12657)(cid:13176)(cid:8003)(cid:13750)(cid:18530)(cid:739)(cid:26595)(cid:11118)(cid:7612)(cid:9074)(cid:13802)(cid"
+    },
+    {
+      "physical_page": 109,
+      "printed_page": null,
+      "chars": 5184,
+      "first_200": "(cid:9268)(cid:18530)(cid:23093)(cid:10538)(cid:7933)(cid:9111)(cid:13980)(cid:14001)(cid:13552)(cid:9944)(cid:11040)(cid:20346)(cid:740) 4.5 (cid:4003)(cid:6109)(cid:5090)(cid:1171)(cid:1937)(cid:126"
+    },
+    {
+      "physical_page": 110,
+      "printed_page": null,
+      "chars": 9754,
+      "first_200": "(cid:7987)(cid:11000)(cid:28873) (cid:9936)(cid:22013)(cid:17326)(cid:23130)(cid:26612)II(c)(cid:748)(cid:12915)(cid:27260)(cid:24563)(cid:8829)(cid:749)(cid:13802)(cid:28859)(cid:13569)(cid:11731)(ci"
+    },
+    {
+      "physical_page": 111,
+      "printed_page": null,
+      "chars": 75,
+      "first_200": "(cid:528)(cid:18978)(cid:289) (cid:17957)(cid:289) (cid:26537)(cid:529) 103"
+    },
+    {
+      "physical_page": 112,
+      "printed_page": null,
+      "chars": 6978,
+      "first_200": "(cid:3203)(cid:982)(cid:3349) (cid:3729)(cid:1367) (cid:14036)(cid:19080)(cid:13712)(cid:9936)(cid:23122)(cid:13750)(cid:23037)(cid:7896)(cid:9936)(cid:16913)(cid:17326)(cid:18809)(cid:17964)(cid:1104"
+    },
+    {
+      "physical_page": 113,
+      "printed_page": null,
+      "chars": 9837,
+      "first_200": "(cid:748)(cid:11189)(cid:11040)(cid:20346)(cid:17964)(cid:23037)(cid:7896)(cid:749)(cid:13783)(cid:22825)(cid:23037)(cid:11074)(cid:11040)(cid:20346)(cid:17964)(cid:24538)(cid:11854)(cid:740)(cid:2451"
+    },
+    {
+      "physical_page": 114,
+      "printed_page": null,
+      "chars": 6642,
+      "first_200": "5.3 (cid:23037)(cid:7896)(cid:18070)(cid:14785) (cid:23037)(cid:7896)(cid:18070)(cid:14785)(cid:20911)(cid:7667)(cid:8693)(cid:19080)(cid:19304)(cid:12776)(cid:22544)(cid:24472)(cid:17964)(cid:23130)("
+    },
+    {
+      "physical_page": 115,
+      "printed_page": null,
+      "chars": 6459,
+      "first_200": "(2) (cid:16655)(cid:26639)(cid:7605)(cid:9140)(cid:11040)(cid:17607)(cid:20645)(cid:8771)(cid:17964)(cid:11670)(cid:17688) (cid:11076)(cid:13129)(cid:17616)(cid:7605)(cid:9140)(cid:26251)(cid:11854)(c"
+    },
+    {
+      "physical_page": 116,
+      "printed_page": null,
+      "chars": 8472,
+      "first_200": "5.4.2 (cid:14281)(cid:8463)(cid:23037)(cid:7896)(cid:15587)(cid:8829) (cid:16913)(cid:17326)(cid:18809)(cid:12657)(cid:13129)(cid:17616)(cid:8775)(cid:23130)(cid:739)(cid:11150)(cid:27135)(cid:739)(ci"
+    },
+    {
+      "physical_page": 117,
+      "printed_page": null,
+      "chars": 6792,
+      "first_200": "5.5 (cid:8468)(cid:25907)(cid:23037)(cid:14304) 5.5.1 (cid:7651)(cid:11190)(cid:9031)(cid:8687) (1) (cid:24821)(cid:9136)(cid:23130)(cid:18867) (cid:26945)(cid:15831)(cid:7637)(cid:11040)(cid:13615)(c"
+    },
+    {
+      "physical_page": 118,
+      "printed_page": null,
+      "chars": 6604,
+      "first_200": "5.5.2 (cid:23037)(cid:14304)(cid:22997)(cid:22960) (cid:7603)(cid:22544)(cid:26647)(cid:18658)(cid:16913)(cid:17326)(cid:18809)(cid:20882) 2016 (cid:11804)(cid:13615)(cid:12601)(cid:23054)(cid:23839)("
+    },
+    {
+      "physical_page": 119,
+      "printed_page": null,
+      "chars": 7886,
+      "first_200": "(cid:14281)(cid:14036)(cid:23037)(cid:14304)(cid:22825)(cid:15338)(cid:11040)(cid:17607)(cid:9067)(cid:20911)(cid:14001)(cid:12471)(cid:20305)(cid:17964)(cid:15587)(cid:8829)(cid:28859)(cid:14001)(cid"
+    },
+    {
+      "physical_page": 120,
+      "printed_page": null,
+      "chars": 3494,
+      "first_200": "(cid:9936)(cid:22954)(cid:11074)(cid:26945)(cid:15831)(cid:7637)(cid:11040)(cid:13615)(cid:12601)(cid:19156) 4 (cid:19650)(cid:9268)(cid:19156) 5 (cid:19650)(cid:17964)(cid:19185)(cid:19650)(cid:15324"
+    },
+    {
+      "physical_page": 121,
+      "printed_page": null,
+      "chars": 5948,
+      "first_200": "(cid:3203)(cid:996)(cid:3349) (cid:5090)(cid:4534)(cid:3058)(cid:4183)(cid:3981) (cid:14036)(cid:19080)(cid:13712)(cid:9936)(cid:23122)(cid:13750)(cid:24608)(cid:13423)(cid:9268)(cid:9516)(cid:17616)("
+    },
+    {
+      "physical_page": 122,
+      "printed_page": null,
+      "chars": 6769,
+      "first_200": "6.3 (cid:4183)(cid:3981)(cid:1937)(cid:5930)(cid:1393) 6.3.1 (cid:3058)(cid:2301)(cid:2588) (cid:9936)(cid:8956)(cid:8785)(cid:11040)(cid:17607)(cid:11040)(cid:20346)(cid:16913)(cid:17326)(cid:11040)("
+    },
+    {
+      "physical_page": 123,
+      "printed_page": null,
+      "chars": 8302,
+      "first_200": "(cid:8829)(cid:13596)(cid:9136)(cid:13668)(cid:23130)(cid:18867)(cid:7667)(cid:7637)(cid:28859)(cid:7821)(cid:9074)(cid:23130)(cid:10154)(cid:7602)(cid:10538)(cid:7933)(cid:24538)(cid:22516)(cid:15587"
+    },
+    {
+      "physical_page": 124,
+      "printed_page": null,
+      "chars": 7596,
+      "first_200": "6.3.4 (cid:3058)(cid:1595)(cid:1469)(cid:3623)(cid:2518)(cid:1937)(cid:4183)(cid:3981) (cid:13569)(cid:20570)(cid:11240)(cid:11183)(cid:7605)(cid:13663)(cid:17956)(cid:11261)(cid:11040)(cid:20911)(cid"
+    },
+    {
+      "physical_page": 125,
+      "printed_page": null,
+      "chars": 8304,
+      "first_200": "(1) (cid:2961)(cid:930)(cid:5090)(cid:2851)(cid:1937)(cid:2961)(cid:5778)(cid:2368)(cid:3613) (cid:11184)(cid:7602)(cid:11040)(cid:26122)(cid:9936)(cid:16482)(cid:7637)(cid:11040)(cid:17956)(cid:11261"
+    },
+    {
+      "physical_page": 126,
+      "printed_page": null,
+      "chars": 7431,
+      "first_200": "(cid:8147)(cid:17326)(cid:23320)(cid:26612)(cid:740)(cid:11102)(cid:25887)(cid:9111)(cid:9516)(cid:17616)(cid:14036)(cid:12975)(cid:11965)(cid:7637)(cid:13176)(cid:9074)(cid:17964)(cid:23663)(cid:1592"
+    },
+    {
+      "physical_page": 127,
+      "printed_page": null,
+      "chars": 5783,
+      "first_200": "6.5 (cid:4183)(cid:3981)(cid:4485)(cid:3163) 6.5.1 (cid:5447)(cid:1687)(cid:1302)(cid:1172)(cid:1937)(cid:4183)(cid:3981) (cid:11040)(cid:17607)(cid:9268)(cid:13569)(cid:11731)(cid:9967)(cid:14001)(ci"
+    },
+    {
+      "physical_page": 128,
+      "printed_page": null,
+      "chars": 88,
+      "first_200": "(cid:33) (cid:33) (cid:28855)(cid:18978) (cid:17957) (cid:26537)(cid:28856) (cid:33) 120"
+    },
+    {
+      "physical_page": 129,
+      "printed_page": null,
+      "chars": 5556,
+      "first_200": "(cid:2005)(cid:5301)(cid:907)(cid:33) (cid:2843)(cid:1245)(cid:5090)(cid:1171)(cid:972)(cid:1237)(cid:4641)(cid:2366)(cid:1937)(cid:2580)(cid:3796)(cid:1988)(cid:4883)(cid:3048)(cid:1705)(cid:3058)(ci"
+    },
+    {
+      "physical_page": 130,
+      "printed_page": null,
+      "chars": 6939,
+      "first_200": "(cid:7603)(cid:22544)(cid:8639)(cid:8610)(cid:7605)(cid:9140)(cid:11057)(cid:13114)(cid:13665)(cid:14320)(cid:28859)(cid:11040)(cid:14281)(cid:9111)(cid:14305)(cid:13442)(cid:14036)(cid:24147)(cid:179"
+    },
+    {
+      "physical_page": 131,
+      "printed_page": null,
+      "chars": 4592,
+      "first_200": "(1) (cid:33) (cid:6251)(cid:2226)(cid:1001)(cid:3220)(cid:1015)(cid:1001)(cid:2660)(cid:1276)(cid:3048) (cid:11183)(cid:8465)(cid:8115)(cid:12734)(cid:7601)(cid:8115)(cid:17301)(cid:8653)(cid:17964)(c"
+    },
+    {
+      "physical_page": 132,
+      "printed_page": null,
+      "chars": 5085,
+      "first_200": "(2) (cid:5118)(cid:2212)(cid:1284)(cid:2580)(cid:3796)(cid:1988)(cid:1276)(cid:3048) (cid:11040)(cid:14281)(cid:9111)(cid:9936)(cid:7601)(cid:8115)(cid:17301)(cid:8653)(cid:17964)(cid:13802)(cid:25915"
+    },
+    {
+      "physical_page": 133,
+      "printed_page": null,
+      "chars": 4524,
+      "first_200": "(cid:2005)(cid:5301)(cid:914)(cid:33) (cid:3514)(cid:1090)(cid:1705)(cid:5767)(cid:4574)(cid:33) (cid:33) 1. Physics Education http://www.iop.org/journals/physed (cid:746)Physics Education(cid:747)(ci"
+    },
+    {
+      "physical_page": 134,
+      "printed_page": null,
+      "chars": 2464,
+      "first_200": "6. (cid:973)(cid:5090)(cid:1922)(cid:3163) (cid:746)(cid:7637)(cid:11040)(cid:16913)(cid:17326)(cid:747)(cid:8946)(cid:14000)(cid:8626)(cid:17625)(cid:7637)(cid:9907)(cid:13569)(cid:20570)(cid:11040)("
+    },
+    {
+      "physical_page": 135,
+      "printed_page": null,
+      "chars": 5517,
+      "first_200": "(cid:2005)(cid:5301)(cid:927)(cid:33) (cid:33) (cid:3058)(cid:1595)(cid:1469)(cid:4883)(cid:4569)(cid:1937)(cid:4183)(cid:3981)(cid:33) 1. (cid:1922)(cid:3163)(cid:3868) http://www.hk-phy.org (cid:135"
+    },
+    {
+      "physical_page": 136,
+      "printed_page": null,
+      "chars": 6524,
+      "first_200": "5. (cid:2997)(cid:5017)(cid:6160)(cid:973)(cid:5090)(cid:3230) http://resources.edb.gov.hk/physics/index_c.html (cid:748)(cid:8043)(cid:24538)(cid:11040)(cid:17607)(cid:11040)(cid:20346)(cid:18809)(ci"
+    },
+    {
+      "physical_page": 137,
+      "printed_page": null,
+      "chars": 2451,
+      "first_200": "10. (cid:5748)(cid:5090)(cid:1922)(cid:3163)(cid:5090)(cid:33) http://www.hkedcity.net/article/project/medicalphysics/ (cid:14036)(cid:19802)(cid:26537)(cid:16482)(cid:13656)(cid:27264)(cid:7637)(cid:"
+    },
+    {
+      "physical_page": 138,
+      "printed_page": null,
+      "chars": 7219,
+      "first_200": "(cid:3730)(cid:3900)(cid:6025)(cid:4096)(cid:289) (cid:289) (cid:17616)(cid:23110) (cid:22923)(cid:24947) (cid:5384)(cid:1172)(cid:5090)(cid:3230) (cid:12657)(cid:17616)(cid:11040)(cid:20346)((cid:869"
+    },
+    {
+      "physical_page": 139,
+      "printed_page": null,
+      "chars": 7903,
+      "first_200": "(cid:17616)(cid:23110) (cid:22923)(cid:24947) (cid:5287)(cid:2437)(cid:2301)(cid:1182) (cid:16482)(cid:24821)(cid:9136)(cid:11040)(cid:17607)(cid:7605)(cid:9140)(cid:17964)(cid:20912)(cid:23883)(cid:7"
+    },
+    {
+      "physical_page": 140,
+      "printed_page": null,
+      "chars": 7119,
+      "first_200": "(cid:17616)(cid:23110) (cid:22923)(cid:24947) (cid:5090)(cid:3230)(cid:2529)(cid:3174) (cid:13783)(cid:12975)(cid:11040)(cid:17607)(cid:9936)(cid:11040)(cid:20346)(cid:24566)(cid:18867)(cid:7637)(cid:"
+    },
+    {
+      "physical_page": 141,
+      "printed_page": null,
+      "chars": 4730,
+      "first_200": "(cid:17616)(cid:23110) (cid:22923)(cid:24947) (cid:2592)(cid:1153)(cid:4944)(cid:3635) (cid:12729)(cid:8121)(cid:28347)(cid:8861)(cid:11040)(cid:14281)(cid:9268)(cid:13569)(cid:11731)(cid:13129)(cid:1"
+    },
+    {
+      "physical_page": 142,
+      "printed_page": null,
+      "chars": 6620,
+      "first_200": "(cid:2902)(cid:1333)(cid:1038)(cid:5976)(cid:289) (cid:11653)(cid:9136)(cid:18317)(cid:7732)(cid:28855)(cid:19856)(cid:28856) (cid:14041)(cid:11803)(cid:739)(cid:21163)(cid:9479)(cid:11124)(cid:739)(c"
+    },
+    {
+      "physical_page": 143,
+      "printed_page": null,
+      "chars": 3113,
+      "first_200": "(cid:23130)(cid:18867)(cid:20911)(cid:13569)(cid:11040)(cid:11040)(cid:13995) (2001) (cid:746)(cid:22516)(cid:8829)(cid:18364)(cid:18974)(cid:20911)(cid:23130)(cid:18867)(cid:13569)(cid:11040)(cid:263"
+    },
+    {
+      "physical_page": 144,
+      "printed_page": null,
+      "chars": 2301,
+      "first_200": "Calvin, S. (2004). Following in Einstein’s footsteps: Teaching the photoelectric effect. The Physics Teacher, 42 (6), 340-341. Chen, C. X., & Zhang, C. G. (1999). New demonstration of photoelectric ef"
+    },
+    {
+      "physical_page": 145,
+      "printed_page": null,
+      "chars": 2067,
+      "first_200": "Fitzgerald, M. A. (2002). A rubric for selecting inquiry-based activities. Science Scope, 9, 22-25. Hafner, J. C., & Hafner, P. M. (2003). Quantitative analysis of the rubric as an assessment tool: An"
+    },
+    {
+      "physical_page": 146,
+      "printed_page": null,
+      "chars": 2205,
+      "first_200": "Oxford Cambridge and RSA Examinations. (2002a). Advanced Subsidiary GCE and Advanced GCE Physics B (Advancing Physics) specifications (2nd ed.). Cambridge: OCR. Oxford Cambridge and RSA Examinations. "
+    },
+    {
+      "physical_page": 147,
+      "printed_page": null,
+      "chars": 372,
+      "first_200": "Victorian Curriculum and Assessment Authority. (2004). Physics study design. Melbourne: VCAA. Retrieved January 18, 2007, from http://www.vcaa.vic.edu.au/vce/studies /physics /physicsd.pdf Welsh Joint"
+    },
+    {
+      "physical_page": 148,
+      "printed_page": null,
+      "chars": 3392,
+      "first_200": "(cid:4944)(cid:3635)(cid:3623)(cid:2518)(cid:6012)(cid:3950)(cid:609)(cid:2409)(cid:3549)(cid:1333)(cid:4162)(cid:1015)(cid:3729)(cid:2593)(cid:1469)(cid:1922)(cid:3163)(cid:1729)(cid:2473)(cid:3950)("
+    },
+    {
+      "physical_page": 149,
+      "printed_page": null,
+      "chars": 2023,
+      "first_200": "(cid:4944)(cid:3635)(cid:3623)(cid:2518)(cid:6012)(cid:3950)(cid:609)(cid:2409)(cid:3549)(cid:1333)(cid:4162)(cid:1015)(cid:3729)(cid:2593)(cid:1469)(cid:33) (cid:1922)(cid:3163)(cid:1729)(cid:2473)(c"
+    },
+    {
+      "physical_page": 150,
+      "printed_page": null,
+      "chars": 1420,
+      "first_200": "(cid:4944)(cid:3635)(cid:3623)(cid:2518)(cid:6012)(cid:3950)(cid:609)(cid:2409)(cid:3549)(cid:1333)(cid:4162)(cid:1015)(cid:3729)(cid:2593)(cid:1469)(cid:33) (cid:1922)(cid:3163)(cid:1729)(cid:2473)(c"
+    }
+  ]
+}

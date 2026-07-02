@@ -1,0 +1,94 @@
+{
+  "schema_version": "1",
+  "source_id": "primary_ced",
+  "extracted_at": "2026-07-01",
+  "extracted_by": "worker_syllabus",
+  "extraction_profile": "ap_college_board_ced",
+  "sections_extracted": [
+    {
+      "section": "Unit 1: Teacher’s Choice – Latin Prose",
+      "page_refs": [
+        "Unit 1"
+      ],
+      "extracted_content_summary": "Unit 1 content with weighting n/a.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Unit 2: Pliny’s Letters: Eruption of Mt. Vesuvius",
+      "page_refs": [
+        "Unit 2"
+      ],
+      "extracted_content_summary": "Unit 2 content with weighting n/a.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Unit 3: Pliny’s Letters: Ghosts and Apparitions, Letters to Trajan",
+      "page_refs": [
+        "Unit 3"
+      ],
+      "extracted_content_summary": "Unit 3 content with weighting n/a.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Unit 4: Teacher’s Choice – Latin Poetry and Vergil’s Aeneid,",
+      "page_refs": [
+        "Unit 4"
+      ],
+      "extracted_content_summary": "Unit 4 content with weighting n/a.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Unit 5: Vergil’s Aeneid, Excerpts from Books 4, 6, 7, 11, and 12",
+      "page_refs": [
+        "Unit 5"
+      ],
+      "extracted_content_summary": "Unit 5 content with weighting n/a.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Unit 6: Spring Project and Teacher’s Choice –",
+      "page_refs": [
+        "Unit 6"
+      ],
+      "extracted_content_summary": "Unit 6 content with weighting n/a.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Exam Information",
+      "page_refs": [
+        "Exam Information section"
+      ],
+      "extracted_content_summary": "Section I + II structure.",
+      "target_asset": "assessment.json"
+    }
+  ],
+  "sections_not_extracted": [
+    {
+      "section": "Front matter / sample questions",
+      "page_refs": [
+        "various"
+      ],
+      "reason": "programme_background / not_assessable_scope"
+    }
+  ],
+  "sections_pending_review": [
+    {
+      "section": "Per-unit page ranges",
+      "page_refs": [
+        "varies"
+      ],
+      "reason": "Page ranges not auto-captured; verify visually."
+    }
+  ],
+  "split_recommendations": {
+    "topics_json": "6 units captured.",
+    "assessment_json": "Section I + II structure.",
+    "references": "source-index.md and page-map.json copied into skill package references/."
+  },
+  "known_risks": [
+    "Extractor and reviewer are the same agent; confidence capped at medium.",
+    "Per-unit page ranges are approximate.",
+    "Topic details (essential knowledge statements) not exhaustively captured."
+  ],
+  "notes": "Skill package covers 6 units for AP Latin."
+}

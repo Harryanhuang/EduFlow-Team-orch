@@ -1,0 +1,149 @@
+{
+  "schema_version": "1",
+  "source_id": "primary_syllabus",
+  "page_ref_convention": "printed_page",
+  "physical_page_offset_note": "printed_page ≈ physical_page for CAIE IGCSE syllabi.",
+  "mappings": [
+    {
+      "target": "assessment_identity.system",
+      "page_refs": [
+        "title page (physical 1)"
+      ],
+      "evidence_note": "Cambridge IGCSE syllabus publication."
+    },
+    {
+      "target": "assessment_identity.valid_from",
+      "page_refs": [
+        "title page (physical 1)"
+      ],
+      "evidence_note": "Syllabus valid 2028 → 2030."
+    },
+    {
+      "target": "topics.caie-igcse-addmath-0606.scope",
+      "page_refs": [
+        "p.5-9"
+      ],
+      "evidence_note": "Aims, content overview, assessment overview."
+    },
+    {
+      "target": "topics.caie-igcse-addmath-0606-t001.scope",
+      "page_refs": [
+        "p.10-12"
+      ],
+      "evidence_note": "Topic 1: Why choose this syllabus?."
+    },
+    {
+      "target": "topics.caie-igcse-addmath-0606-t002.scope",
+      "page_refs": [
+        "p.12-14"
+      ],
+      "evidence_note": "Topic 2: Syllabus overview."
+    },
+    {
+      "target": "topics.caie-igcse-addmath-0606-t003.scope",
+      "page_refs": [
+        "p.14-16"
+      ],
+      "evidence_note": "Topic 3: Factors of polynomials."
+    },
+    {
+      "target": "topics.caie-igcse-addmath-0606-t004.scope",
+      "page_refs": [
+        "p.16-18"
+      ],
+      "evidence_note": "Topic 4: Equations, inequalities and graphs."
+    },
+    {
+      "target": "topics.caie-igcse-addmath-0606-t005.scope",
+      "page_refs": [
+        "p.18-20"
+      ],
+      "evidence_note": "Topic 5: Simultaneous equations."
+    },
+    {
+      "target": "topics.caie-igcse-addmath-0606-t006.scope",
+      "page_refs": [
+        "p.20-22"
+      ],
+      "evidence_note": "Topic 6: Logarithmic and exponential functions."
+    },
+    {
+      "target": "topics.caie-igcse-addmath-0606-t007.scope",
+      "page_refs": [
+        "p.22-24"
+      ],
+      "evidence_note": "Topic 7: Straight-line graphs."
+    },
+    {
+      "target": "topics.caie-igcse-addmath-0606-t008.scope",
+      "page_refs": [
+        "p.24-26"
+      ],
+      "evidence_note": "Topic 8: Coordinate geometry of the circle."
+    },
+    {
+      "target": "topics.caie-igcse-addmath-0606-t009.scope",
+      "page_refs": [
+        "p.26-28"
+      ],
+      "evidence_note": "Topic 9: Circular measure."
+    },
+    {
+      "target": "topics.caie-igcse-addmath-0606-t010.scope",
+      "page_refs": [
+        "p.28-30"
+      ],
+      "evidence_note": "Topic 10: Trigonometry."
+    },
+    {
+      "target": "topics.caie-igcse-addmath-0606-t011.scope",
+      "page_refs": [
+        "p.30-32"
+      ],
+      "evidence_note": "Topic 11: Permutations and combinations."
+    },
+    {
+      "target": "topics.caie-igcse-addmath-0606-t012.scope",
+      "page_refs": [
+        "p.32-34"
+      ],
+      "evidence_note": "Topic 12: Series."
+    },
+    {
+      "target": "topics.caie-igcse-addmath-0606-t013.scope",
+      "page_refs": [
+        "p.34-36"
+      ],
+      "evidence_note": "Topic 13: Vectors in two dimensions."
+    },
+    {
+      "target": "topics.caie-igcse-addmath-0606-t014.scope",
+      "page_refs": [
+        "p.36-38"
+      ],
+      "evidence_note": "Topic 14: Calculus."
+    },
+    {
+      "target": "assessment.papers",
+      "page_refs": [
+        "p.45-49"
+      ],
+      "evidence_note": "Paper structure, durations, weighting."
+    },
+    {
+      "target": "assessment.assessment_objectives",
+      "page_refs": [
+        "p.8-9"
+      ],
+      "evidence_note": "AO definitions in Section 2."
+    },
+    {
+      "target": "assessment.question_styles",
+      "page_refs": [
+        "p.46-47"
+      ],
+      "evidence_note": "Question styles and command words."
+    }
+  ],
+  "draft_notes": []
+}

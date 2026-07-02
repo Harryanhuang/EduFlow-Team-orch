@@ -1,0 +1,102 @@
+{
+  "schema_version": "1",
+  "source_id": "primary_ced",
+  "extracted_at": "2026-07-01",
+  "extracted_by": "worker_syllabus",
+  "extraction_profile": "ap_college_board_ced",
+  "sections_extracted": [
+    {
+      "section": "Unit 1: Thinking Geographically",
+      "page_refs": [
+        "Unit 1"
+      ],
+      "extracted_content_summary": "Unit 1 content with weighting 8–10%.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Unit 2: Population and Migration Patterns and Processes",
+      "page_refs": [
+        "Unit 2"
+      ],
+      "extracted_content_summary": "Unit 2 content with weighting 12–17%.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Unit 3: Cultural Patterns and Processes",
+      "page_refs": [
+        "Unit 3"
+      ],
+      "extracted_content_summary": "Unit 3 content with weighting 12–17%.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Unit 4: Political Patterns and Processes",
+      "page_refs": [
+        "Unit 4"
+      ],
+      "extracted_content_summary": "Unit 4 content with weighting 12–17%.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Unit 5: Agriculture and Rural Land-Use Patterns and Processes",
+      "page_refs": [
+        "Unit 5"
+      ],
+      "extracted_content_summary": "Unit 5 content with weighting 12–17%.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Unit 6: Cities and Urban Land-Use Patterns and Processes",
+      "page_refs": [
+        "Unit 6"
+      ],
+      "extracted_content_summary": "Unit 6 content with weighting 12–17%.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Unit 7: Industrial and Economic Development Patterns and Processes",
+      "page_refs": [
+        "Unit 7"
+      ],
+      "extracted_content_summary": "Unit 7 content with weighting 12–17%.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Exam Information",
+      "page_refs": [
+        "Exam Information section"
+      ],
+      "extracted_content_summary": "Section I + II structure.",
+      "target_asset": "assessment.json"
+    }
+  ],
+  "sections_not_extracted": [
+    {
+      "section": "Front matter / sample questions",
+      "page_refs": [
+        "various"
+      ],
+      "reason": "programme_background / not_assessable_scope"
+    }
+  ],
+  "sections_pending_review": [
+    {
+      "section": "Per-unit page ranges",
+      "page_refs": [
+        "varies"
+      ],
+      "reason": "Page ranges not auto-captured; verify visually."
+    }
+  ],
+  "split_recommendations": {
+    "topics_json": "7 units captured.",
+    "assessment_json": "Section I + II structure.",
+    "references": "source-index.md and page-map.json copied into skill package references/."
+  },
+  "known_risks": [
+    "Extractor and reviewer are the same agent; confidence capped at medium.",
+    "Per-unit page ranges are approximate.",
+    "Topic details (essential knowledge statements) not exhaustively captured."
+  ],
+  "notes": "Skill package covers 7 units for AP Human Geography."
+}

@@ -1,0 +1,122 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "dse-tourism-and-hospitality",
+      "topic_name": "CAIE IGCSE Tourism and Hospitality",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Tourism and Hospitality (DSE Tourism and Hospitality) syllabus scope.",
+        "Valid: 2024 → (ongoing)."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "dse-tourism-and-hospitality-unit01",
+      "topic_name": "Unit 1",
+      "parent_id": "dse-tourism-and-hospitality",
+      "scope": [
+        "Unit 1 content as defined in HKDSE syllabus."
+      ],
+      "out_of_scope": [
+        "Content belonging to other units."
+      ],
+      "classification_hints": [
+        "Look for HKDSE dse-tourism-and-hospitality Unit 1 keywords."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "dse-tourism-and-hospitality-unit02",
+      "topic_name": "Unit 2",
+      "parent_id": "dse-tourism-and-hospitality",
+      "scope": [
+        "Unit 2 content as defined in HKDSE syllabus."
+      ],
+      "out_of_scope": [
+        "Content belonging to other units."
+      ],
+      "classification_hints": [
+        "Look for HKDSE dse-tourism-and-hospitality Unit 2 keywords."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "dse-tourism-and-hospitality-unit03",
+      "topic_name": "Unit 3",
+      "parent_id": "dse-tourism-and-hospitality",
+      "scope": [
+        "Unit 3 content as defined in HKDSE syllabus."
+      ],
+      "out_of_scope": [
+        "Content belonging to other units."
+      ],
+      "classification_hints": [
+        "Look for HKDSE dse-tourism-and-hospitality Unit 3 keywords."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "dse-tourism-and-hospitality-unit04",
+      "topic_name": "Unit 4",
+      "parent_id": "dse-tourism-and-hospitality",
+      "scope": [
+        "Unit 4 content as defined in HKDSE syllabus."
+      ],
+      "out_of_scope": [
+        "Content belonging to other units."
+      ],
+      "classification_hints": [
+        "Look for HKDSE dse-tourism-and-hospitality Unit 4 keywords."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "dse-tourism-and-hospitality-unit05",
+      "topic_name": "Unit 5",
+      "parent_id": "dse-tourism-and-hospitality",
+      "scope": [
+        "Unit 5 content as defined in HKDSE syllabus."
+      ],
+      "out_of_scope": [
+        "Content belonging to other units."
+      ],
+      "classification_hints": [
+        "Look for HKDSE dse-tourism-and-hospitality Unit 5 keywords."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    }
+  ]
+}

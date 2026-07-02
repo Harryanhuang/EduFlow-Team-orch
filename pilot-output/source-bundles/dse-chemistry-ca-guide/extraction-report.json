@@ -1,0 +1,105 @@
+{
+  "schema_version": "1",
+  "source_id": "dse-chemistry-ca-guide",
+  "extracted_at": "2026-06-30",
+  "extracted_by": "worker_syllabus",
+  "extraction_profile": "dse_curriculum_assessment_guide",
+  "sections_extracted": [
+    {
+      "section": "Curriculum framework and learning objectives",
+      "page_refs": ["p.7-15"],
+      "extracted_content_summary": "Aims, knowledge/skills/values learning objectives, design principles, compulsory/elective structure.",
+      "target_asset": "topics.json / assessment.json"
+    },
+    {
+      "section": "Compulsory topics 1-12",
+      "page_refs": ["p.16-62"],
+      "extracted_content_summary": "Topic overviews, student learning outcomes, suggested activities, STSE links.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Elective topics 13-15 (choose 2 of 3)",
+      "page_refs": ["p.63-77"],
+      "extracted_content_summary": "Industrial Chemistry, Materials Chemistry, Analytical Chemistry overviews and learning outcomes.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Investigative Study topic 16",
+      "page_refs": ["p.78-80"],
+      "extracted_content_summary": "Inquiry-based learning design; supports SBA skills but not public-exam content.",
+      "target_asset": "references"
+    },
+    {
+      "section": "Assessment framework",
+      "page_refs": ["p.115-124"],
+      "extracted_content_summary": "Public exam design (Paper 1 60% 2h30m, Paper 2 20% 1h), SBA 20%, question styles, assessment objectives, grading principles.",
+      "target_asset": "assessment.json"
+    },
+    {
+      "section": "Appendix 2 experimental techniques",
+      "page_refs": ["p.137-138"],
+      "extracted_content_summary": "Skill opportunities cross-referenced to topics; not standalone assessable content.",
+      "target_asset": "references"
+    }
+  ],
+  "sections_not_extracted": [
+    {
+      "section": "Title page, copyright, committee lists",
+      "page_refs": ["p.i-ii", "p.149-152"],
+      "reason": "admin / copyright"
+    },
+    {
+      "section": "Chapter 1 overview and rationale",
+      "page_refs": ["p.1-5"],
+      "reason": "programme background"
+    },
+    {
+      "section": "Chapter 3 curriculum planning guidance",
+      "page_refs": ["p.81-98"],
+      "reason": "school implementation guidance"
+    },
+    {
+      "section": "Chapter 4 learning and teaching strategies",
+      "page_refs": ["p.99-114"],
+      "reason": "teaching guidance"
+    },
+    {
+      "section": "Chapter 6 learning and teaching resources",
+      "page_refs": ["p.125-132"],
+      "reason": "resource guidance"
+    },
+    {
+      "section": "Appendix 1 timetabling arrangements",
+      "page_refs": ["p.133-136"],
+      "reason": "admin"
+    },
+    {
+      "section": "Glossary and references",
+      "page_refs": ["p.139-148"],
+      "reason": "support / reference"
+    }
+  ],
+  "sections_pending_review": [
+    {
+      "section": "High-impact tables in assessment design",
+      "page_refs": ["p.121"],
+      "reason": "needs_visual_review"
+    },
+    {
+      "section": "Two-column topic tables",
+      "page_refs": ["p.19-77"],
+      "reason": "column_layout"
+    }
+  ],
+  "split_recommendations": {
+    "topics_json": "Compulsory topics 1-12 and electives 13-15 as topic nodes; topic 16 and STSE links as references only.",
+    "assessment_json": "Paper structure, SBA, question styles, assessment objectives, confidence thresholds.",
+    "references": "Appendix 2 skill list, glossary, curriculum planning notes, STSE links."
+  },
+  "known_risks": [
+    "Extractor and reviewer are the same agent; confidence capped at medium.",
+    "Rendered pages not produced; visual review pending.",
+    "Detailed annual exam item counts and tier rules are outside this guide; rely on HKEAA exam regulations for verification."
+  ],
+  "notes": "No large passages of official text copied; only structured summaries and page references recorded."
+}

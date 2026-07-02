@@ -1,0 +1,84 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "dse-health-management-and-social-care",
+      "topic_name": "CAIE IGCSE Health Management and Social Care",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Health Management and Social Care (DSE Health Management and Social Care) syllabus scope.",
+        "Valid: 2024 → (ongoing)."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "dse-health-management-and-social-care-unit01",
+      "topic_name": "Unit 1",
+      "parent_id": "dse-health-management-and-social-care",
+      "scope": [
+        "Unit 1 content as defined in HKDSE syllabus."
+      ],
+      "out_of_scope": [
+        "Content belonging to other units."
+      ],
+      "classification_hints": [
+        "Look for HKDSE dse-health-management-and-social-care Unit 1 keywords."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "dse-health-management-and-social-care-unit02",
+      "topic_name": "Unit 2",
+      "parent_id": "dse-health-management-and-social-care",
+      "scope": [
+        "Unit 2 content as defined in HKDSE syllabus."
+      ],
+      "out_of_scope": [
+        "Content belonging to other units."
+      ],
+      "classification_hints": [
+        "Look for HKDSE dse-health-management-and-social-care Unit 2 keywords."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "dse-health-management-and-social-care-unit03",
+      "topic_name": "Unit 3",
+      "parent_id": "dse-health-management-and-social-care",
+      "scope": [
+        "Unit 3 content as defined in HKDSE syllabus."
+      ],
+      "out_of_scope": [
+        "Content belonging to other units."
+      ],
+      "classification_hints": [
+        "Look for HKDSE dse-health-management-and-social-care Unit 3 keywords."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    }
+  ]
+}

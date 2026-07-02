@@ -1,0 +1,104 @@
+{
+  "schema_version": "1",
+  "source_id": "primary_syllabus",
+  "page_ref_convention": "printed_page",
+  "physical_page_offset_note": "Body pages use Arabic numerals starting at physical page 9 = printed page 1; offset = physical_page - 8. Front matter uses Roman numerals.",
+  "mappings": [
+    {
+      "target": "assessment_identity.system",
+      "page_refs": ["title page (physical 1)"],
+      "evidence_note": "Hong Kong DSE Biology Curriculum and Assessment Guide."
+    },
+    {
+      "target": "assessment_identity.valid_from",
+      "page_refs": ["title page (physical 1)"],
+      "evidence_note": "2007, updated November 2015."
+    },
+    {
+      "target": "topics.dse-biology-ca.scope",
+      "page_refs": ["p.7-11 (physical 15-19)"],
+      "evidence_note": "Compulsory + elective structure, total 250 curriculum hours."
+    },
+    {
+      "target": "topics.dse-biology-compulsory.scope",
+      "page_refs": ["p.7-8 (physical 15-16)"],
+      "evidence_note": "Four compulsory topics: I-IV; ~200 hours."
+    },
+    {
+      "target": "topics.cells_molecules.scope",
+      "page_refs": ["p.13-15 (physical 21-23)"],
+      "evidence_note": "Subtopics: life molecules, cell organisation, membrane transport, cell cycle/division, cell energetics."
+    },
+    {
+      "target": "topics.heredity_evolution.scope",
+      "page_refs": ["p.20-21 (physical 28-29)"],
+      "evidence_note": "Subtopics: basic genetics, molecular genetics, biodiversity and evolution."
+    },
+    {
+      "target": "topics.organisms_environment.scope",
+      "page_refs": ["p.25-30 (physical 33-38)"],
+      "evidence_note": "Subtopics: plant life processes, animal life processes, reproduction/growth/development, coordination/response, homeostasis, ecosystems."
+    },
+    {
+      "target": "topics.health_disease.scope",
+      "page_refs": ["p.33-34 (physical 41-42)"],
+      "evidence_note": "Subtopics: personal health, disease, body defence mechanisms."
+    },
+    {
+      "target": "topics.dse-biology-elective.scope",
+      "page_refs": ["p.8 (physical 16)", "p.36-51 (physical 44-59)"],
+      "evidence_note": "Four elective topics: V-VIII; students choose 2; ~50 hours total."
+    },
+    {
+      "target": "topics.human_physiology_regulation.scope",
+      "page_refs": ["p.37-38 (physical 45-46)"],
+      "evidence_note": "Subtopics: osmoregulation, thermoregulation, blood-gas regulation, reproductive hormone control."
+    },
+    {
+      "target": "topics.applied_ecology.scope",
+      "page_refs": ["p.42-43 (physical 50-51)"],
+      "evidence_note": "Subtopics: human impact, pollution control, conservation, global issues."
+    },
+    {
+      "target": "topics.microbes_humans.scope",
+      "page_refs": ["p.47-48 (physical 55-56)"],
+      "evidence_note": "Subtopics: microbiology, use of microbes, microbial genetics, harmful microbes."
+    },
+    {
+      "target": "topics.bioengineering.scope",
+      "page_refs": ["p.51 (physical 59)"],
+      "evidence_note": "Subtopics: modern biotech techniques, applications, bioethics."
+    },
+    {
+      "target": "assessment.papers.paper1.scope",
+      "page_refs": ["p.80 (physical 88)"],
+      "evidence_note": "Compulsory part; 60%; 2.5 hours."
+    },
+    {
+      "target": "assessment.papers.paper2.scope",
+      "page_refs": ["p.80 (physical 88)"],
+      "evidence_note": "Elective part; answer 2 of 4 topics; 20%; 1 hour."
+    },
+    {
+      "target": "assessment.papers.sba.scope",
+      "page_refs": ["p.80-81 (physical 88-89)"],
+      "evidence_note": "School-based assessment; practical/inquiry work; 20%."
+    },
+    {
+      "target": "assessment.assessment_objectives",
+      "page_refs": ["p.76-77 (physical 84-85)"],
+      "evidence_note": "Knowledge/recall, application, scientific investigation, practical skills, data analysis, evaluation, STSE communication."
+    },
+    {
+      "target": "assessment.question_styles",
+      "page_refs": ["p.80-81 (physical 88-89)"],
+      "evidence_note": "Multiple choice, short answer, structured, essay."
+    },
+    {
+      "target": "out_of_scope.admin",
+      "page_refs": ["p.1-4 (physical 9-12)", "p.53-62 (physical 61-70)", "p.63-78 (physical 71-86)", "p.83-104 (physical 91-113)"],
+      "evidence_note": "Introduction, curriculum planning, learning/teaching guidance, resources, appendices, references, committee lists."
+    }
+  ],
+  "draft_notes": []
+}

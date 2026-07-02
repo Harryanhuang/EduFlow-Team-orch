@@ -1,0 +1,49 @@
+{
+  "schema_version": "1",
+  "id": "ap-world-history-modern",
+  "assessment_type": "course_and_exam_description",
+  "system": "AP",
+  "board_or_owner": "College Board",
+  "subject": "World History: Modern",
+  "level": "AP (high school / college intro)",
+  "assessment_code": "AP World History: Modern",
+  "valid_from": "2023",
+  "valid_to": "(ongoing)",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_course_description",
+      "title": "AP World History: Modern Course and Exam Description",
+      "url": "https://apcentral.collegeboard.org/courses/world-history-modern",
+      "source_document_type": "course_and_exam_description",
+      "source_layout_profile": "ap_college_board_ced",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/03-AP知识库/03-学科知识/AP World History Modern/02-课本与考纲/考纲/ap-world-history-modern-course-and-exam-description.pdf",
+      "file_checksum_sha256": "d24ff8ec00619a5aca1f7f9ed11490530c97b21729c10231618689a76b4fcd0f",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "Effective Fall 2023",
+      "retrieved_at": "2026-07-01",
+      "page_refs": [
+        "p.1-260"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "AP CED uses printed_page; usually matches physical_page.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text.",
+      "notes": "Source bundle lives at pilot-output/source-bundles/ap-world-history-modern-guide/."
+    }
+  ],
+  "aliases": [
+    "ap-world-history-modern",
+    "ap world history: modern",
+    "college board world history: modern"
+  ],
+  "canonical_id": "ap-world-history-modern",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "College Board AP World History: Modern."
+}

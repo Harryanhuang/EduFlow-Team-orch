@@ -1,0 +1,238 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "ap-latin",
+      "topic_name": "AP Latin",
+      "parent_id": "",
+      "scope": [
+        "AP Latin course framework (College Board).",
+        "Valid: 2025 → (ongoing).",
+        "Units 1–6 with cumulative exam weightings."
+      ],
+      "out_of_scope": [
+        "Pre-AP / general high-school level content unless explicitly cited in CED.",
+        "University-level content beyond AP expectations.",
+        "Other AP subjects."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific unit fits.",
+        "Prefer specific Unit N nodes for content questions."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-latin-unit01",
+      "topic_name": "Unit 1: Teacher’s Choice – Latin Prose",
+      "parent_id": "ap-latin",
+      "scope": [
+        "Unit 1 content as defined in AP Latin CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Teacher’s Choice – Latin Prose."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_1.1",
+          "text": "Core content and concepts for Unit 1: Teacher’s Choice – Latin Prose."
+        },
+        {
+          "ek_id": "EK_1.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 1: Teacher’s Choice – Latin Prose."
+        },
+        {
+          "ek_id": "EK_1.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 1: Teacher’s Choice – Latin Prose."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-latin-unit02",
+      "topic_name": "Unit 2: Pliny’s Letters: Eruption of Mt. Vesuvius",
+      "parent_id": "ap-latin",
+      "scope": [
+        "Unit 2 content as defined in AP Latin CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Pliny’s Letters: Eruption of Mt. Vesuvius."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_2.1",
+          "text": "Core content and concepts for Unit 2: Pliny’s Letters: Eruption of Mt. Vesuvius."
+        },
+        {
+          "ek_id": "EK_2.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 2: Pliny’s Letters: Eruption of Mt. Vesuvius."
+        },
+        {
+          "ek_id": "EK_2.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 2: Pliny’s Letters: Eruption of Mt. Vesuvius."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-latin-unit03",
+      "topic_name": "Unit 3: Pliny’s Letters: Ghosts and Apparitions, Letters to Trajan",
+      "parent_id": "ap-latin",
+      "scope": [
+        "Unit 3 content as defined in AP Latin CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Pliny’s Letters: Ghosts and Apparitions, Letters to Trajan."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_3.1",
+          "text": "Core content and concepts for Unit 3: Pliny’s Letters: Ghosts and Apparitions, Letters to Trajan."
+        },
+        {
+          "ek_id": "EK_3.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 3: Pliny’s Letters: Ghosts and Apparitions, Letters to Trajan."
+        },
+        {
+          "ek_id": "EK_3.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 3: Pliny’s Letters: Ghosts and Apparitions, Letters to Trajan."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-latin-unit04",
+      "topic_name": "Unit 4: Teacher’s Choice – Latin Poetry and Vergil’s Aeneid,",
+      "parent_id": "ap-latin",
+      "scope": [
+        "Unit 4 content as defined in AP Latin CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Teacher’s Choice – Latin Poetry and Vergil’s Aeneid,."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_4.1",
+          "text": "Excerpts from Books 1 and 2"
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-latin-unit05",
+      "topic_name": "Unit 5: Vergil’s Aeneid, Excerpts from Books 4, 6, 7, 11, and 12",
+      "parent_id": "ap-latin",
+      "scope": [
+        "Unit 5 content as defined in AP Latin CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Vergil’s Aeneid, Excerpts from Books 4, 6, 7, 11, and 12."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_5.1",
+          "text": "Core content and concepts for Unit 5: Vergil’s Aeneid, Excerpts from Books 4, 6, 7, 11, and 12."
+        },
+        {
+          "ek_id": "EK_5.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 5: Vergil’s Aeneid, Excerpts from Books 4, 6, 7, 11, and 12."
+        },
+        {
+          "ek_id": "EK_5.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 5: Vergil’s Aeneid, Excerpts from Books 4, 6, 7, 11, and 12."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-latin-unit06",
+      "topic_name": "Unit 6: Spring Project and Teacher’s Choice –",
+      "parent_id": "ap-latin",
+      "scope": [
+        "Unit 6 content as defined in AP Latin CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Spring Project and Teacher’s Choice –."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_6.1",
+          "text": "Each unit is broken down into teachable segments called readings"
+        },
+        {
+          "ek_id": "EK_6.2",
+          "text": "Students should be able to apply these skills in a variety of contexts"
+        },
+        {
+          "ek_id": "EK_6.3",
+          "text": "Read and comprehend Latin poetry and prose"
+        },
+        {
+          "ek_id": "EK_6.4",
+          "text": "Latin poetry and prose"
+        },
+        {
+          "ek_id": "EK_6.5",
+          "text": "Identify the meaning of Latin words and phrases"
+        }
+      ]
+    }
+  ]
+}

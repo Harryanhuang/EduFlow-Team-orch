@@ -1,0 +1,95 @@
+{
+  "schema_version": "1",
+  "source_id": "dse-mathematics-ca-guide",
+  "extracted_at": "2026-06-30",
+  "extracted_by": "worker_syllabus",
+  "extraction_profile": "dse_curriculum_assessment_guide",
+  "sections_extracted": [
+    {
+      "section": "Curriculum framework and learning objectives",
+      "page_refs": ["p.5-11"],
+      "extracted_content_summary": "Aims, knowledge/skills/values learning objectives, design principles, compulsory/extended part structure.",
+      "target_asset": "topics.json / assessment.json"
+    },
+    {
+      "section": "Compulsory part learning content",
+      "page_refs": ["p.12-32"],
+      "extracted_content_summary": "Number and Algebra, Measures Shapes and Space, Data Handling strands; 18 learning units including advanced learning units.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Extended part Module 1 (Calculus and Statistics)",
+      "page_refs": ["p.33-49"],
+      "extracted_content_summary": "Foundation knowledge, calculus, statistics and advanced learning unit for Module 1.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Extended part Module 2 (Algebra and Calculus)",
+      "page_refs": ["p.53-61"],
+      "extracted_content_summary": "Foundation knowledge, algebra, calculus and advanced learning unit for Module 2.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Assessment framework",
+      "page_refs": ["p.87-94"],
+      "extracted_content_summary": "Public exam design (Compulsory Paper 1 / Paper 2; Module 1 / Module 2 papers), assessment objectives, question styles, grading principles.",
+      "target_asset": "assessment.json"
+    }
+  ],
+  "sections_not_extracted": [
+    {
+      "section": "Title page, copyright, committee lists",
+      "page_refs": ["p.i-ii", "p.125-134"],
+      "reason": "admin / copyright"
+    },
+    {
+      "section": "Chapter 1 overview and rationale",
+      "page_refs": ["p.1-3"],
+      "reason": "programme background"
+    },
+    {
+      "section": "Chapter 3 curriculum planning guidance",
+      "page_refs": ["p.63-74"],
+      "reason": "school implementation guidance"
+    },
+    {
+      "section": "Chapter 4 learning and teaching strategies",
+      "page_refs": ["p.75-86"],
+      "reason": "teaching guidance"
+    },
+    {
+      "section": "Chapter 6 learning and teaching resources",
+      "page_refs": ["p.95-100"],
+      "reason": "resource guidance"
+    },
+    {
+      "section": "Appendices, glossary and references",
+      "page_refs": ["p.101-124"],
+      "reason": "support / reference"
+    }
+  ],
+  "sections_pending_review": [
+    {
+      "section": "High-impact assessment design table",
+      "page_refs": ["p.93"],
+      "reason": "needs_visual_review"
+    },
+    {
+      "section": "Formula-heavy learning-content tables",
+      "page_refs": ["p.15-61"],
+      "reason": "symbol_rendering"
+    }
+  ],
+  "split_recommendations": {
+    "topics_json": "Compulsory part strands and learning units; Module 1 and Module 2 foundation/calculus/statistics/algebra learning units as topic nodes; advanced learning units as references only.",
+    "assessment_json": "Paper structure, assessment objectives, question styles, difficulty ladder, confidence thresholds.",
+    "references": "Advanced learning units, curriculum planning notes, teaching strategies, resource lists."
+  },
+  "known_risks": [
+    "Extractor and reviewer are the same agent; confidence capped at medium.",
+    "Rendered pages not produced; visual review pending.",
+    "Detailed annual exam item counts and calculator/formula-sheet rules are outside this guide; rely on HKEAA exam regulations for verification.",
+    "Mathematical notation in extracted text may contain rendering artefacts; scope statements avoid copying raw formula lines."
+  ],
+  "notes": "No large passages of official text copied; only structured summaries and page references recorded."
+}

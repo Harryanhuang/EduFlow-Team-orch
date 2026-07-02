@@ -241,6 +241,12 @@ def _stale_event_threshold_s() -> float:
     platform-aware default (see `_platform_default_stale_event_threshold_s`).
     Legacy `EDUFLOW_ROUTER_STALE_S` env (without `_EVENT_THRESHOLD`) is
     still honored as a backwards-compat alias since it shipped first.
+
+    Per-process ±jitter is applied once at module import so multiple
+    router instances don't all expire on the same wall-clock tick
+    (which previously caused 'thundering herd' respawn storms on quiet
+    chats). Set `router.stale_event_threshold_jitter_pct = 0` in
+    eduflow.toml to disable for testing.
     """
     # Legacy env-var alias (shipped before the tunables framework).
     legacy = os.environ.get("EDUFLOW_ROUTER_STALE_S", "").strip()
@@ -255,8 +261,33 @@ def _stale_event_threshold_s() -> float:
         "router.stale_event_threshold_s",
         _platform_default_stale_event_threshold_s()))
     if configured < 60:
-        return _platform_default_stale_event_threshold_s()
-    return configured
+        configured = _platform_default_stale_event_threshold_s()
+    return _jittered_threshold(configured)
+
+
+# Cache the jittered threshold per process so it stays stable for the
+# whole router lifetime (rather than flapping on every poll). Without
+# this, two router instances reading the same toml value would both
+# pick independent jitters — fine in theory, but if any caller does
+# `if idle > threshold` in a tight loop, jitter noise makes the value
+# flapping enough to matter for tests.
+_JITTER_CACHE: dict[float, float] = {}
+
+
+def _jittered_threshold(base: float) -> float:
+    """Apply ±jitter_pct to `base` once per process. Range is
+    [base * (1 - pct), base * (1 + pct)]."""
+    jitter_pct = float(tunables.tunable(
+        "router.stale_event_threshold_jitter_pct", 0.10))  # ±10% default
+    if jitter_pct <= 0:
+        return base
+    if base in _JITTER_CACHE:
+        return _JITTER_CACHE[base]
+    import random as _random
+    factor = 1.0 + _random.uniform(-jitter_pct, jitter_pct)
+    jittered = base * factor
+    _JITTER_CACHE[base] = jittered
+    return jittered
 
 
 def _write_stall_reason(reason: str, detail: str = "") -> None:

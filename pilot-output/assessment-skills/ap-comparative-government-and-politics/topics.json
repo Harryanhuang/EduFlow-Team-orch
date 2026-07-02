@@ -1,0 +1,212 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "ap-comparative-government-and-politics",
+      "topic_name": "AP Comparative Government and Politics",
+      "parent_id": "",
+      "scope": [
+        "AP Comparative Government and Politics course framework (College Board).",
+        "Valid: 2025 → (ongoing).",
+        "Units 1–5 with cumulative exam weightings."
+      ],
+      "out_of_scope": [
+        "Pre-AP / general high-school level content unless explicitly cited in CED.",
+        "University-level content beyond AP expectations.",
+        "Other AP subjects."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific unit fits.",
+        "Prefer specific Unit N nodes for content questions."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-comparative-government-and-politics-unit01",
+      "topic_name": "Unit 1: Political Systems, Regimes, and Governments",
+      "parent_id": "ap-comparative-government-and-politics",
+      "scope": [
+        "Unit 1 content as defined in AP Comparative Government and Politics CED.",
+        "Exam weighting: 18–27%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Political Systems, Regimes, and Governments."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_1.1",
+          "text": "Core content and concepts for Unit 1: Political Systems, Regimes, and Governments."
+        },
+        {
+          "ek_id": "EK_1.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 1: Political Systems, Regimes, and Governments."
+        },
+        {
+          "ek_id": "EK_1.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 1: Political Systems, Regimes, and Governments."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-comparative-government-and-politics-unit02",
+      "topic_name": "Unit 2: Political Institutions",
+      "parent_id": "ap-comparative-government-and-politics",
+      "scope": [
+        "Unit 2 content as defined in AP Comparative Government and Politics CED.",
+        "Exam weighting: 22–33%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Political Institutions."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_2.1",
+          "text": "Core content and concepts for Unit 2: Political Institutions."
+        },
+        {
+          "ek_id": "EK_2.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 2: Political Institutions."
+        },
+        {
+          "ek_id": "EK_2.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 2: Political Institutions."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-comparative-government-and-politics-unit03",
+      "topic_name": "Unit 3: Political Culture and Participation",
+      "parent_id": "ap-comparative-government-and-politics",
+      "scope": [
+        "Unit 3 content as defined in AP Comparative Government and Politics CED.",
+        "Exam weighting: 11–18%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Political Culture and Participation."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_3.1",
+          "text": "Core content and concepts for Unit 3: Political Culture and Participation."
+        },
+        {
+          "ek_id": "EK_3.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 3: Political Culture and Participation."
+        },
+        {
+          "ek_id": "EK_3.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 3: Political Culture and Participation."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-comparative-government-and-politics-unit04",
+      "topic_name": "Unit 4: Party and Electoral Systems and Citizen Organizations",
+      "parent_id": "ap-comparative-government-and-politics",
+      "scope": [
+        "Unit 4 content as defined in AP Comparative Government and Politics CED.",
+        "Exam weighting: 13–18%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Party and Electoral Systems and Citizen Organizations."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_4.1",
+          "text": "Core content and concepts for Unit 4: Party and Electoral Systems and Citizen Organizations."
+        },
+        {
+          "ek_id": "EK_4.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 4: Party and Electoral Systems and Citizen Organizations."
+        },
+        {
+          "ek_id": "EK_4.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 4: Party and Electoral Systems and Citizen Organizations."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-comparative-government-and-politics-unit05",
+      "topic_name": "Unit 5: Political and Economic Changes and Development",
+      "parent_id": "ap-comparative-government-and-politics",
+      "scope": [
+        "Unit 5 content as defined in AP Comparative Government and Politics CED.",
+        "Exam weighting: 16–24%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Political and Economic Changes and Development."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_5.1",
+          "text": "THIS PAGE IS INTENTIONALLY LEFT BLANK"
+        },
+        {
+          "ek_id": "EK_5.2",
+          "text": "Christopher Budano, Krista Dornbush, D"
+        },
+        {
+          "ek_id": "EK_5.3",
+          "text": "AP Comparative Government and Politics Course and Exam Description                                        ﻿ V"
+        },
+        {
+          "ek_id": "EK_5.4",
+          "text": "THIS PAGE IS INTENTIONALLY LEFT BLANK"
+        },
+        {
+          "ek_id": "EK_5.5",
+          "text": "AP course content and skills into units, the AP Program      have\u0007established\u0007for\u0007college-level\u0007courses"
+        }
+      ]
+    }
+  ]
+}

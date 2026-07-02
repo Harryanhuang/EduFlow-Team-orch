@@ -137,15 +137,18 @@ def main(argv: list[str]) -> int:
                              expected_cmdline=spec.expected_cmdline,
                              force=force)
 
-    session = config.session_name()
-    if tmux.has_session(session):
-        if tmux.kill_session(session):
-            print(f"🛑 tmux session {session} killed")
-        else:
-            warn(f"⚠️  failed to kill tmux session {session}")
-            rc |= 1
+    if rest:
+        print("⏭  tmux session left running (named daemon shutdown)")
     else:
-        print(f"⏭  tmux session {session} not running")
+        session = config.session_name()
+        if tmux.has_session(session):
+            if tmux.kill_session(session):
+                print(f"🛑 tmux session {session} killed")
+            else:
+                warn(f"⚠️  failed to kill tmux session {session}")
+                rc |= 1
+        else:
+            print(f"⏭  tmux session {session} not running")
 
     print("✅ team down" if rc == 0 else "⚠️  team down with warnings")
     return rc

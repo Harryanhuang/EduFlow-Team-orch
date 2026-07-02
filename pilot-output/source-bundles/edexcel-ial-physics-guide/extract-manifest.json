@@ -1,0 +1,552 @@
+{
+  "schema_version": "1",
+  "subject": "physics",
+  "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/02-A-Level知识库/03-考试局/Edexcel/Physics (IAL)/02-课本与考纲/考纲/Edexcel_Physics_ALevel_Specification_2025-2026.pdf",
+  "file_checksum_sha256": "5b363d105200e1235716dd40b20c428f95c2ec7d6dac0de060b5effd106cd256",
+  "pdfinfo": {
+    "Title": "International A Level Physics Specification",
+    "Creator": "Acrobat PDFMaker 21 for Word",
+    "Producer": "Adobe PDF Library 21.5.80",
+    "CreationDate": "Wed Jul 14 19:37:35 2021 CST",
+    "ModDate": "Fri Aug 13 22:29:38 2021 CST",
+    "Custom Metadata": "yes",
+    "Metadata Stream": "yes",
+    "Tagged": "no",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "AcroForm",
+    "JavaScript": "no",
+    "Pages": "87",
+    "Encrypted": "no",
+    "Page size": "595.276 x 841.89 pts (A4)",
+    "Page rot": "0",
+    "File size": "1325021 bytes",
+    "Optimized": "yes",
+    "PDF version": "1.6"
+  },
+  "total_pages": 87,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": 1,
+      "chars": 2224,
+      "first_200": "INTERNATIONAL ADVANCED LEVEL PHYSICS SPECIFICATION Pearson Edexcel International Advanced Subsidiary in Physics (XPH11) Pearson Edexcel International Advanced Level in Physics (YPH11) First teaching S"
+    },
+    {
+      "physical_page": 2,
+      "printed_page": 2,
+      "chars": 2224,
+      "first_200": "t Page issue number These sentences have been added to ensure that thorough information on assessment criteria is provided: This paper may contain some synoptic questions which require knowledge 9,"
+    },
+    {
+      "physical_page": 3,
+      "printed_page": 3,
+      "chars": 2224,
+      "first_200": "51 Appendix 2: Pearson World Class Qualification design principles 52 Appendix 3: Transferable skills 54 Appendix 4: Level 3 Extended Project qualification 56 Appendix 5: Glossary 58 Appendix 6: Mathe"
+    },
+    {
+      "physical_page": 4,
+      "printed_page": 4,
+      "chars": 2224,
+      "first_200": "en papers that are externally assessed. Approach Learners will develop their knowledge and understanding of physics by applying the concepts in this specification to a range of different problems that"
+    },
+    {
+      "physical_page": 5,
+      "printed_page": 5,
+      "chars": 2224,
+      "first_200": "ing skills • their interest in and enthusiasm for the subject, including developing an interest in further study and careers associated with the subject. Qualification abbreviations used in this speci"
+    },
+    {
+      "physical_page": 6,
+      "printed_page": 6,
+      "chars": 2224,
+      "first_200": "ratively with a panel of educational thought leaders and assessment experts to ensure that Pearson Edexcel qualifications are globally relevant, represent world-class best practice and maintain a cons"
+    },
+    {
+      "physical_page": 7,
+      "printed_page": 7,
+      "chars": 2224,
+      "first_200": "ge by broadening and deepening skills. For example learners will: • develop and use a range of mathematical skills which support their knowledge and understanding of Physics • gain experience"
+    },
+    {
+      "physical_page": 8,
+      "printed_page": 8,
+      "chars": 2224,
+      "first_200": "iety of teaching and learning support to help you deliver the new specifications, including: • Practical Skills Guides and Mathematical Skills Guides - to help you ensure that students are"
+    },
+    {
+      "physical_page": 9,
+      "printed_page": 9,
+      "chars": 2224,
+      "first_200": "ntribute 50 percent towards the International Advanced Level qualification. The qualification will include questions that target mathematics at Level 2 or above (see Appendix 6: Mathematical skills an"
+    },
+    {
+      "physical_page": 10,
+      "printed_page": 10,
+      "chars": 2224,
+      "first_200": "per may include multiple-choice, short open, open-response, calculations and extended-writing questions. The paper will include questions that target mathematics at Level 2 or above (see Appendix 6: M"
+    },
+    {
+      "physical_page": 11,
+      "printed_page": 11,
+      "chars": 2224,
+      "first_200": "s IAS IAL Availability: January, June and October First assessment: June 2019 50 marks Content overview Students are expected to develop experimental skills, and a knowledge and understanding of exper"
+    },
+    {
+      "physical_page": 12,
+      "printed_page": 12,
+      "chars": 2224,
+      "first_200": "d exemplifications). A minimum of 36 marks will be awarded for mathematics at Level 2 or above. Candidates will be expected to apply their knowledge and understanding to familiar and"
+    },
+    {
+      "physical_page": 13,
+      "printed_page": 13,
+      "chars": 2224,
+      "first_200": "s in Physics II Externally assessed 20% of 10% of the total the total Written examination: 1 hour and 20 minutes IA2 IAL Availability: January, June and October First assessment:"
+    },
+    {
+      "physical_page": 14,
+      "printed_page": 14,
+      "chars": 2224,
+      "first_200": "dents should be able to explain ideas and use their knowledge to apply, analyse, interpret and evaluate, as appropriate. Throughout the course, students should develop their ability to apply mathemati"
+    },
+    {
+      "physical_page": 15,
+      "printed_page": 15,
+      "chars": 2224,
+      "first_200": "n of apparatus, with reasons. When data handling, candidates will be expected to use significant figures appropriately, to process data and to plot graphs. In analysing outcomes and drawing valid"
+    },
+    {
+      "physical_page": 16,
+      "printed_page": 16,
+      "chars": 2224,
+      "first_200": "of an irregular rod, investigate the conservation of momentum using light gates and air track, Hooke’s law and the Young modulus experiments for a variety of materials. Mathematical skills Mathematica"
+    },
+    {
+      "physical_page": 17,
+      "printed_page": 17,
+      "chars": 2224,
+      "first_200": "thematics at Level 2 or above in this paper. • Candidates will be expected to apply their knowledge and understanding to familiar and unfamiliar contexts. • Calculators may be used"
+    },
+    {
+      "physical_page": 18,
+      "printed_page": 18,
+      "chars": 2224,
+      "first_200": "tended body 9 be able to use the equation ∑F = ma, and understand how to use this equation in situations where m is constant (Newton’s second law of motion),"
+    },
+    {
+      "physical_page": 19,
+      "printed_page": 19,
+      "chars": 2224,
+      "first_200": "gy and kinetic energy 21 be able to use the equations relating power, time and energy transferred or work E W done P = and P = t t 22"
+    },
+    {
+      "physical_page": 20,
+      "printed_page": 20,
+      "chars": 2224,
+      "first_200": "and force-compression graphs b understand the terms limit of proportionality, elastic limit, yield point, elastic deformation and plastic deformation and be able to apply them to these graphs 30 be"
+    },
+    {
+      "physical_page": 21,
+      "printed_page": 21,
+      "chars": 2224,
+      "first_200": "quids, demonstrating progressive and stationary waves on a slinky. Mathematical skills Mathematical skills that could be developed in this topic include substituting numerical values into algebraic eq"
+    },
+    {
+      "physical_page": 22,
+      "printed_page": 22,
+      "chars": 2224,
+      "first_200": "le applications in medical physics or music. This unit includes many opportunities for developing experimental skills and techniques by carrying out more than just the core practical experiments. Cand"
+    },
+    {
+      "physical_page": 23,
+      "printed_page": 23,
+      "chars": 2224,
+      "first_200": "nternational Advanced Subsidiary/Advanced Level in Physics Specification – Issue 3 – July 2021 Pearson Education Limited 2021 47 be able to predict whether total internal reflection will occur at an"
+    },
+    {
+      "physical_page": 24,
+      "printed_page": 24,
+      "chars": 2224,
+      "first_200": "levels and understand how to calculate the frequency of radiation that could be emitted or absorbed in a transition between energy levels. Pearson Edexcel International Advanced Subsidiary/Advanced Le"
+    },
+    {
+      "physical_page": 25,
+      "printed_page": 25,
+      "chars": 2224,
+      "first_200": "stand how to sketch, recognise and interpret current-potential difference graphs for components, including ohmic conductors, filament bulbs, thermistors and diodes ρl 71 be able to use the equation R "
+    },
+    {
+      "physical_page": 26,
+      "printed_page": 26,
+      "chars": 2224,
+      "first_200": "Unit description Introduction Students are expected to develop experimental skills, and a knowledge and understanding of experimental techniques, by carrying out a range of practical experiments and i"
+    },
+    {
+      "physical_page": 27,
+      "printed_page": 27,
+      "chars": 2224,
+      "first_200": "Education Limited 2021 3.3 Planning Students will be expected to plan an experiment set by Pearson, although they will not be expected to carry it out. Candidates will be assessed"
+    },
+    {
+      "physical_page": 28,
+      "printed_page": 28,
+      "chars": 2224,
+      "first_200": "point that is not on the line of a graph – students may be shown a diagram of a micrometer that is being used to measure the diameter of a"
+    },
+    {
+      "physical_page": 29,
+      "printed_page": 29,
+      "chars": 2224,
+      "first_200": "students are not expected to compound percentage uncertainties). 26 Pearson Edexcel International Advanced Subsidiary/Advanced Level in Physics Specification – Issue 3 – July 2021 Pearson Education Li"
+    },
+    {
+      "physical_page": 30,
+      "printed_page": 30,
+      "chars": 2224,
+      "first_200": "• The assessment is 1 hour and 45 minutes. • The assessment is out of 90 marks. • Candidates must answer all questions. • The paper may include multiple-choice, short"
+    },
+    {
+      "physical_page": 31,
+      "printed_page": 31,
+      "chars": 2224,
+      "first_200": "nd how to determine whether a collision is elastic or inelastic p2 86 be able to derive and use the equation E k = for the kinetic energy of a"
+    },
+    {
+      "physical_page": 32,
+      "printed_page": 32,
+      "chars": 2224,
+      "first_200": "Q this equation Q1Q2 94 be able to use the equation F = for the force between two charges 4πε 0 r 2 Q 95 be able to use the"
+    },
+    {
+      "physical_page": 33,
+      "printed_page": 33,
+      "chars": 2224,
+      "first_200": "ble to use the equation Q = Q0e-t/RC and derive and use related equations for exponential discharge in a resistor-capacitor circuit, I = I0 e-t/RC, and V = V0 e-t/RC"
+    },
+    {
+      "physical_page": 34,
+      "printed_page": 34,
+      "chars": 2224,
+      "first_200": "understand how large-angle alpha particle scattering gives evidence for a nuclear model of the atom and how our understanding of atomic structure has changed over time 113 understand that electrons"
+    },
+    {
+      "physical_page": 35,
+      "printed_page": 35,
+      "chars": 2224,
+      "first_200": "le interaction is possible 124 be able to write and interpret particle equations given the relevant particle symbols. Pearson Edexcel International Advanced Subsidiary/Advanced Level in Physics 31 Spe"
+    },
+    {
+      "physical_page": 36,
+      "printed_page": 36,
+      "chars": 2224,
+      "first_200": "modelled by y = sin x, y = cos x, y = k/x, y = k/x2 32 Pearson Edexcel International Advanced Subsidiary/Advanced Level in Physics Specification – Issue 3 –"
+    },
+    {
+      "physical_page": 37,
+      "printed_page": 37,
+      "chars": 2224,
+      "first_200": "concept of internal energy as the random distribution of potential and kinetic energy amongst molecules 129 understand the concept of absolute zero and how the average kinetic energy of molecules"
+    },
+    {
+      "physical_page": 38,
+      "printed_page": 38,
+      "chars": 2224,
+      "first_200": "le to determine the half-lives of radioactive isotopes graphically and be able to use the equations for radioactive decay d𝑁𝑁 ln 2 activity A = λN , = −λN, λ"
+    },
+    {
+      "physical_page": 39,
+      "printed_page": 39,
+      "chars": 2224,
+      "first_200": "resonant frequencies of the oscillation of known masses 150 understand how to apply conservation of energy to damped and undamped oscillating systems 151 understand the distinction between free and fo"
+    },
+    {
+      "physical_page": 40,
+      "printed_page": 40,
+      "chars": 2224,
+      "first_200": "tand what is meant by a black body radiator and be able to interpret radiation curves for such a radiator 162 be able to use the Stefan-Boltzmann law equation L"
+    },
+    {
+      "physical_page": 41,
+      "printed_page": 41,
+      "chars": 2224,
+      "first_200": "ected to further develop the experimental skills they acquired in Units 1 and 2. Students are expected to develop these skills, and a knowledge and understanding of experimental techniques, by"
+    },
+    {
+      "physical_page": 42,
+      "printed_page": 42,
+      "chars": 2224,
+      "first_200": "de questions that target mathematics at Level 2. A minimum of 20 marks will be awarded for mathematics at Level 2 or above in this paper. • Calculators may be"
+    },
+    {
+      "physical_page": 43,
+      "printed_page": 43,
+      "chars": 2224,
+      "first_200": "examples may include using set squares to measure the diameter of a cylinder and using a marker for timing oscillations • comment on the number of readings taken • comment"
+    },
+    {
+      "physical_page": 44,
+      "printed_page": 44,
+      "chars": 2224,
+      "first_200": "rcentage uncertainty in measurements for a single reading using half the resolution of the instrument and from multiple readings using the half range. 40 Pearson Edexcel International Advanced Subsidi"
+    },
+    {
+      "physical_page": 45,
+      "printed_page": 45,
+      "chars": 2224,
+      "first_200": "20 minutes Availability: January, June and October First assessment: June 2019 Unit 4: Further IA2 Externally assessed 90 marks Mechanics, Fields and Written examination: 1 hour and Particles 45 minut"
+    },
+    {
+      "physical_page": 46,
+      "printed_page": 46,
+      "chars": 2224,
+      "first_200": "sessment across the IAS/IAL Science qualifications can be found in Appendix 9: Taxonomy. Assessment objectives and weightings % in % in % in IAS IA2 IAL AO1 Demonstrate knowledge and"
+    },
+    {
+      "physical_page": 47,
+      "printed_page": 47,
+      "chars": 2224,
+      "first_200": "AO1 AO2(a) AO2(b) AO3 Unit 1 8.5–9.0 8.5–9.0 2.25–2.75 0 Unit 2 8.5–9.0 8.5–9.0 2.25–2.75 0 Unit 3 0 0 0 10 Unit 4 7.3–7.8 8.4–8.9 3.6–4.0 0 Unit 5"
+    },
+    {
+      "physical_page": 48,
+      "printed_page": 48,
+      "chars": 2224,
+      "first_200": "Pearson Edexcel International Advanced Subsidiary/Advanced Level in Physics Specification – Issue 3 – July 2021 Pearson Education Limited 2021 Administration and general information Entries, resitting"
+    },
+    {
+      "physical_page": 49,
+      "printed_page": 49,
+      "chars": 2224,
+      "first_200": "g the demands of the assessment. The intention behind an access arrangement is to meet the particular needs of an individual student with a disability without affecting the integrity of"
+    },
+    {
+      "physical_page": 50,
+      "printed_page": 50,
+      "chars": 2224,
+      "first_200": "Pearson Edexcel International Advanced Subsidiary/Advanced Level in Physics Specification – Issue 3 – July 2021 Pearson Education Limited 2021 Candidate malpractice Candidate malpractice refers to any"
+    },
+    {
+      "physical_page": 51,
+      "printed_page": 51,
+      "chars": 2224,
+      "first_200": "ll be reported. Only Units 1, 2 and 3 will contribute to the International Advanced Subsidiary grade. All six units will contribute to the International Advanced Level grade. The first"
+    },
+    {
+      "physical_page": 52,
+      "printed_page": 52,
+      "chars": 2224,
+      "first_200": "e Unclassified (U). International Advanced Level (cash-in code: YPH11) Qualification Maximum A B C D E grade uniform mark 600 480 420 360 300 240 Candidates with a uniform mark"
+    },
+    {
+      "physical_page": 53,
+      "printed_page": 53,
+      "chars": 2224,
+      "first_200": "54 Appendix 4: Level 3 Extended Project qualification 56 Appendix 5: Glossary 58 Appendix 6: Mathematical skills and exemplifications 59 Appendix 7: Equations 65 Appendix 8: Data sheet 72 Appendix"
+    },
+    {
+      "physical_page": 54,
+      "printed_page": 54,
+      "chars": 2224,
+      "first_200": "or International Advanced the qualification. Centres will need to Level – YPH11 use the entry codes only when entering students for their qualification. Entry codes The entry codes are used"
+    },
+    {
+      "physical_page": 55,
+      "printed_page": 55,
+      "chars": 2224,
+      "first_200": "nd be able to do in the 21st century, and to consider how we can give them the opportunity to access that sort of education.” Sir Michael Barber. 52 Pearson"
+    },
+    {
+      "physical_page": 56,
+      "printed_page": 56,
+      "chars": 2224,
+      "first_200": "Institute of Education International, Singapore Dr Peter Hill Bahram Bekhradnia Former Chief Executive ACARA President, Higher Education Policy Institute Professor Jonathan Osborne Dame Sally Coates S"
+    },
+    {
+      "physical_page": 57,
+      "printed_page": 57,
+      "chars": 2224,
+      "first_200": "rapersonal skills and interpersonal skills. The skills have been interpreted for this specification to ensure they are appropriate for the subject. All of the skills listed are evident or accessible"
+    },
+    {
+      "physical_page": 58,
+      "printed_page": 58,
+      "chars": 2224,
+      "first_200": "tual • Adaptability openness • Personal and social responsibility • Continuous learning Intrapersonal skills • Intellectual interest and curiosity Work ethic/ • Initiative conscientiousness • Self-dir"
+    },
+    {
+      "physical_page": 59,
+      "printed_page": 59,
+      "chars": 2224,
+      "first_200": "• Empathy/perspective taking • Negotiation Leadership • Responsibility • Assertive communication • Self-presentation Pearson Edexcel International Advanced Subsidiary/Advanced Level in Physics 55 Spec"
+    },
+    {
+      "physical_page": 60,
+      "printed_page": 60,
+      "chars": 2224,
+      "first_200": "cludes teaching the technical skills (for example, research skills) and an 80-GLH guided element that includes mentoring students through the project work. The qualification is 100% internally assesse"
+    },
+    {
+      "physical_page": 61,
+      "printed_page": 61,
+      "chars": 2224,
+      "first_200": "ir advantage? • Over its working lifetime, does the energy output from a photovoltaic solar panel exceed the energy required to make, install and operate it? Using the Extended Project"
+    },
+    {
+      "physical_page": 62,
+      "printed_page": 62,
+      "chars": 2224,
+      "first_200": "ternational Advanced Abbreviated to IAL. Level International A2 (IA2) The additional content required for an IAL. Linear Linear qualifications have all assessments at the end of a course of study."
+    },
+    {
+      "physical_page": 63,
+      "printed_page": 63,
+      "chars": 2224,
+      "first_200": "ave been taught, and to have acquired competence in, the appropriate areas of mathematics relevant to the subject as indicated in the table on the following pages 3. The assessment"
+    },
+    {
+      "physical_page": 64,
+      "printed_page": 64,
+      "chars": 2224,
+      "first_200": "form such as c = 3.00 x 108 m s–1 C.0.3 Use ratios, fractions and Candidates may be tested on their ability to: percentages • calculate efficiency of devices •"
+    },
+    {
+      "physical_page": 65,
+      "printed_page": 65,
+      "chars": 2224,
+      "first_200": "ficant figures • understand that calculated results can only be reported to the limits of the least accurate measurement. C.1.2 Find arithmetic means Candidates may be tested on their ability"
+    },
+    {
+      "physical_page": 66,
+      "printed_page": 66,
+      "chars": 2224,
+      "first_200": "o: symbols: =, <, <<, >>, >, ∝, • recognise the significance of the symbols in ≈, ∆ the expression F ∝ ∆p/∆t C.2.2 Change the subject of an Candidates"
+    },
+    {
+      "physical_page": 67,
+      "printed_page": 67,
+      "chars": 2224,
+      "first_200": "ce applied. C.3.3 Understand that y = mx + c Candidates may be tested on their ability to: represents a linear relationship • rearrange and compare v = u +"
+    },
+    {
+      "physical_page": 68,
+      "printed_page": 68,
+      "chars": 2224,
+      "first_200": "tantaneous rate of change and • understand that the gradient of the tangent of average rate of change a displacement-time graph gives the velocity at a point in time which"
+    },
+    {
+      "physical_page": 69,
+      "printed_page": 69,
+      "chars": 2224,
+      "first_200": "context of A Level Physics (assessment is not limited to the examples given below) (iv) C.3 – graphs C.3.11 Use logarithmic plots to test Candidates may be tested on their"
+    },
+    {
+      "physical_page": 70,
+      "printed_page": 70,
+      "chars": 2224,
+      "first_200": "• calculate the magnitude of a resultant vector, resolving forces into components to solve problems. C.4.5 Use sin, cos and tan in physical Candidates may be tested on their ability"
+    },
+    {
+      "physical_page": 71,
+      "printed_page": 71,
+      "chars": 2224,
+      "first_200": "m W = mg Momentum p = mv Moment of force = Fx Materials Density m ρ= V Stokes’ law F = 6πηrv Hooke’s law ∆F = k∆x Young modulus"
+    },
+    {
+      "physical_page": 72,
+      "printed_page": 72,
+      "chars": 2224,
+      "first_200": "International Advanced Subsidiary/Advanced Level in Physics Specification – Issue 3 – July 2021 Pearson Education Limited 2021 Electricity Current ∆Q I= ∆t Potential difference W V= Q Resistance V R="
+    },
+    {
+      "physical_page": 73,
+      "printed_page": 73,
+      "chars": 2224,
+      "first_200": "F E= Q Coulomb’s law Q1Q2 F= 4πε 0 r 2 Q E= 4 πε 0 r 2 V E= d Electric potential Q V= 4 πε 0 r Capacitance"
+    },
+    {
+      "physical_page": 74,
+      "printed_page": 74,
+      "chars": 2224,
+      "first_200": "dt Nuclear and particle physics In a magnetic field p r= BQ Mass-energy ∆E = c2∆m Unit 5: Thermodynamics, Radiation, Oscillations and Cosmology Thermodynamics Heating ∆E = mc∆θ ΔE ="
+    },
+    {
+      "physical_page": 75,
+      "printed_page": 75,
+      "chars": 2224,
+      "first_200": "F= r2 Gravitational field Gm g= r2 Gravitational potential − Gm Vgrav = r 70 Pearson Edexcel International Advanced Subsidiary/Advanced Level in Physics Specification – Issue 3 – July 2021"
+    },
+    {
+      "physical_page": 76,
+      "printed_page": 76,
+      "chars": 2224,
+      "first_200": "3.00 × 108 m s−1 vacuum Stefan-Boltzmann σ = 5.67 x 10-8 W m-2 K-4 constant Unified atomic mass unit u = 1.66 x 10-27 kg 72 Pearson Edexcel International"
+    },
+    {
+      "physical_page": 77,
+      "printed_page": 77,
+      "chars": 2224,
+      "first_200": "d and back judgements made. Deduce Draw/reach conclusion(s) from the information provided. Derive Combine two or more equations or principles to develop a new equation. Describe Give an account of"
+    },
+    {
+      "physical_page": 78,
+      "printed_page": 78,
+      "chars": 2224,
+      "first_200": "command words are really synonyms. They generally all require a recall of one or more pieces of information. Give a reason/reasons When a statement has been made and the requirement"
+    },
+    {
+      "physical_page": 79,
+      "printed_page": 79,
+      "chars": 2224,
+      "first_200": "n about the quality of evidence and of the explanations that are based on it. This involves an appreciation of the causes of uncertainties that can arise in practical work"
+    },
+    {
+      "physical_page": 80,
+      "printed_page": 80,
+      "chars": 2224,
+      "first_200": "rue value is considered unknowable. Accuracy A measurement result is considered accurate if it is judged to be close to the true value. It is a quality denoting the closeness"
+    },
+    {
+      "physical_page": 81,
+      "printed_page": 81,
+      "chars": 2224,
+      "first_200": "f the percentage uncertainty. Error The difference between the measurement result and the true value if a true value is thought to exist. This is not a mistake in the"
+    },
+    {
+      "physical_page": 82,
+      "printed_page": 82,
+      "chars": 2224,
+      "first_200": "the value of the mean. Since we are expecting students to produce an estimate of the uncertainty any suitable value that indicates half the range is acceptable. Example: A student"
+    },
+    {
+      "physical_page": 83,
+      "printed_page": 83,
+      "chars": 2224,
+      "first_200": "0.4 A. The resolution of the instrument is 0.1 A but the uncertainty in a reading is 0.05 A. Calculating percentage uncertainties The percentage uncertainty in a measurement can be"
+    },
+    {
+      "physical_page": 84,
+      "printed_page": 84,
+      "chars": 2224,
+      "first_200": "sics Specification – Issue 3 – July 2021 Pearson Education Limited 2021 The percentage uncertainty in the area of the square tile is calculated by multiplying the percentage uncertainty in"
+    },
+    {
+      "physical_page": 85,
+      "printed_page": 85,
+      "chars": 2224,
+      "first_200": "e can = 115 mm ± 2 mm. The volume V of the can is: V = 3.4 × 103 mm2 × 115 mm = 3.9 × 105 mm3 ="
+    },
+    {
+      "physical_page": 86,
+      "printed_page": 86,
+      "chars": 2224,
+      "first_200": "t the measured value of g is accurate. This method should always be used when the percentage uncertainty in the value is known. b. Calculating a percentage difference If the"
+    },
+    {
+      "physical_page": 87,
+      "printed_page": 87,
+      "chars": 2224,
+      "first_200": "o symbolic algebraic manipulation that contain printed instructions o symbolic differentiation or integration or formulae. o communication with other machines or the internet The candidate is responsi"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": "1",
+  "id": "ap-spanish-literature-and-culture",
+  "assessment_type": "course_and_exam_description",
+  "system": "AP",
+  "board_or_owner": "College Board",
+  "subject": "Spanish Literature and Culture",
+  "level": "AP (high school / college intro)",
+  "assessment_code": "AP Spanish Literature and Culture",
+  "valid_from": "2023",
+  "valid_to": "(ongoing)",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_course_description",
+      "title": "AP Spanish Literature and Culture Course and Exam Description",
+      "url": "https://apcentral.collegeboard.org/courses/spanish-literature-and-culture",
+      "source_document_type": "course_and_exam_description",
+      "source_layout_profile": "ap_college_board_ced",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/03-AP知识库/03-学科知识/AP Spanish Literature and Culture/02-课本与考纲/考纲/ap-spanish-literature-and-culture-course-and-exam-description.pdf",
+      "file_checksum_sha256": "768c29f3d9883d14b7d00e07eae7c2d67622b4459179fb9cd08764d63d3b8c1a",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "Effective Fall 2023",
+      "retrieved_at": "2026-07-01",
+      "page_refs": [
+        "p.1-210"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "AP CED uses printed_page; usually matches physical_page.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text.",
+      "notes": "Source bundle lives at pilot-output/source-bundles/ap-spanish-literature-and-culture-guide/."
+    }
+  ],
+  "aliases": [
+    "ap-spanish-literature-and-culture",
+    "ap spanish literature and culture",
+    "college board spanish literature and culture"
+  ],
+  "canonical_id": "ap-spanish-literature-and-culture",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "College Board AP Spanish Literature and Culture."
+}

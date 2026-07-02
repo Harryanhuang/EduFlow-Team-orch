@@ -1,0 +1,49 @@
+{
+  "schema_version": "1",
+  "id": "caie-igcse-geography-0460",
+  "assessment_type": "syllabus",
+  "system": "CAIE IGCSE",
+  "board_or_owner": "Cambridge Assessment International Education",
+  "subject": "Geography",
+  "level": "IGCSE (14-16 years)",
+  "assessment_code": "0460",
+  "valid_from": "2027",
+  "valid_to": "2029",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_syllabus",
+      "title": "Cambridge IGCSE Geography 0460 syllabus (2027-2029)",
+      "url": "https://www.cambridgeinternational.org/Images/718150-2027-2029-syllabus.pdf",
+      "source_document_type": "syllabus",
+      "source_layout_profile": "caie_igcse_syllabus",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/01-IGCSE知识库/03-学科知识/CAIE/Geography (0460)/02-课本与考纲/考纲/CAIE_Geography_0460_Syllabus_2027-2029.pdf",
+      "file_checksum_sha256": "8b1b64b726d67b10fb0dff513e05dd2447087ebc569d1b15669f28dd743c7b0b",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "2027-2029 syllabus",
+      "retrieved_at": "2026-07-01",
+      "page_refs": [
+        "p.1-52"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "printed_page ≈ physical_page for CAIE IGCSE syllabi.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text.",
+      "notes": "Source bundle lives at pilot-output/source-bundles/caie-igcse-geography-0460-guide/."
+    }
+  ],
+  "aliases": [
+    "igcse geography",
+    "cambridge geography 0460",
+    "caie geography"
+  ],
+  "canonical_id": "caie-igcse-geography-0460",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "Cambridge IGCSE Geography 0460. Single-tier; three themes, geographical skills, and a coursework or alternative-to-coursework component."
+}

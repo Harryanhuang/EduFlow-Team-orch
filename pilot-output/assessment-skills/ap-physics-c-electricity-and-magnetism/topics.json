@@ -1,0 +1,234 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "ap-physics-c-electricity-and-magnetism",
+      "topic_name": "AP Physics C: Electricity and Magnetism",
+      "parent_id": "",
+      "scope": [
+        "AP Physics C: Electricity and Magnetism course framework (College Board).",
+        "Valid: 2025 → (ongoing).",
+        "Units 8–13 with cumulative exam weightings."
+      ],
+      "out_of_scope": [
+        "Pre-AP / general high-school level content unless explicitly cited in CED.",
+        "University-level content beyond AP expectations.",
+        "Other AP subjects."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific unit fits.",
+        "Prefer specific Unit N nodes for content questions."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-physics-c-electricity-and-magnetism-unit08",
+      "topic_name": "Unit 8: Electric Charges, Fields, and Gauss’s Law",
+      "parent_id": "ap-physics-c-electricity-and-magnetism",
+      "scope": [
+        "Unit 8 content as defined in AP Physics C: Electricity and Magnetism CED.",
+        "Exam weighting: 15–25%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Electric Charges, Fields, and Gauss’s Law."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_8.1",
+          "text": "Core content and concepts for Unit 8: Electric Charges, Fields, and Gauss’s Law."
+        },
+        {
+          "ek_id": "EK_8.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 8: Electric Charges, Fields, and Gauss’s Law."
+        },
+        {
+          "ek_id": "EK_8.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 8: Electric Charges, Fields, and Gauss’s Law."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-physics-c-electricity-and-magnetism-unit09",
+      "topic_name": "Unit 9: Electric Potential",
+      "parent_id": "ap-physics-c-electricity-and-magnetism",
+      "scope": [
+        "Unit 9 content as defined in AP Physics C: Electricity and Magnetism CED.",
+        "Exam weighting: 10–20%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Electric Potential."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_9.1",
+          "text": "Core content and concepts for Unit 9: Electric Potential."
+        },
+        {
+          "ek_id": "EK_9.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 9: Electric Potential."
+        },
+        {
+          "ek_id": "EK_9.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 9: Electric Potential."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-physics-c-electricity-and-magnetism-unit10",
+      "topic_name": "Unit 10: Conductors and Capacitors",
+      "parent_id": "ap-physics-c-electricity-and-magnetism",
+      "scope": [
+        "Unit 10 content as defined in AP Physics C: Electricity and Magnetism CED.",
+        "Exam weighting: 10–15%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Conductors and Capacitors."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_10.1",
+          "text": "Core content and concepts for Unit 10: Conductors and Capacitors."
+        },
+        {
+          "ek_id": "EK_10.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 10: Conductors and Capacitors."
+        },
+        {
+          "ek_id": "EK_10.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 10: Conductors and Capacitors."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-physics-c-electricity-and-magnetism-unit11",
+      "topic_name": "Unit 11: Electric Circuits",
+      "parent_id": "ap-physics-c-electricity-and-magnetism",
+      "scope": [
+        "Unit 11 content as defined in AP Physics C: Electricity and Magnetism CED.",
+        "Exam weighting: 15–25%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Electric Circuits."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_11.1",
+          "text": "Core content and concepts for Unit 11: Electric Circuits."
+        },
+        {
+          "ek_id": "EK_11.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 11: Electric Circuits."
+        },
+        {
+          "ek_id": "EK_11.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 11: Electric Circuits."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-physics-c-electricity-and-magnetism-unit12",
+      "topic_name": "Unit 12: Magnetic Fields and Electromagnetism",
+      "parent_id": "ap-physics-c-electricity-and-magnetism",
+      "scope": [
+        "Unit 12 content as defined in AP Physics C: Electricity and Magnetism CED.",
+        "Exam weighting: 10–20%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Magnetic Fields and Electromagnetism."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_12.1",
+          "text": "Core content and concepts for Unit 12: Magnetic Fields and Electromagnetism."
+        },
+        {
+          "ek_id": "EK_12.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 12: Magnetic Fields and Electromagnetism."
+        },
+        {
+          "ek_id": "EK_12.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 12: Magnetic Fields and Electromagnetism."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-physics-c-electricity-and-magnetism-unit13",
+      "topic_name": "Unit 13: Electromagnetic Induction",
+      "parent_id": "ap-physics-c-electricity-and-magnetism",
+      "scope": [
+        "Unit 13 content as defined in AP Physics C: Electricity and Magnetism CED.",
+        "Exam weighting: 10–20%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Electromagnetic Induction."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_13.1",
+          "text": "AP Physics C: Electricity and Magnetism Course and Exam Description                                         ﻿ V"
+        },
+        {
+          "ek_id": "EK_13.2",
+          "text": "AP Physics C: Electricity and Magnetism Course and Exam Description                        ﻿ V"
+        }
+      ]
+    }
+  ]
+}

@@ -9,7 +9,7 @@ from __future__ import annotations
 import shlex
 import shutil
 
-from .base import CliAdapter, MULTILINE_SUBMIT_KEYS, SPINNER_CHARS
+from .base import CliAdapter, MULTILINE_SUBMIT_KEYS, OPENAI_COMPAT_AUTH, SPINNER_CHARS
 
 
 HERMES_WORKDIR = "/Volumes/Halobster/Obsidian Edu"
@@ -60,3 +60,6 @@ class HermesAgentAdapter(CliAdapter):
             "429",
             "too many requests",
         ]
+
+    def auth_slots(self):
+        return OPENAI_COMPAT_AUTH

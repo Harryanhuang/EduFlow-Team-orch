@@ -26,6 +26,7 @@ the Feishu env into their `eduflow say` shell-outs.
 from __future__ import annotations
 
 import json
+import os
 import shlex
 import shutil
 import time
@@ -275,6 +276,13 @@ def _ensure_claude_agent_home(agent: str) -> None:
             settings.write_bytes(host_settings.read_bytes())
         except OSError:
             pass
+    host_local_settings = Path.home() / ".claude" / "settings.local.json"
+    local_settings = claude_dir / "settings.local.json"
+    if _path_readable(host_local_settings):
+        try:
+            local_settings.write_bytes(host_local_settings.read_bytes())
+        except OSError:
+            pass
     if not settings.exists():
         settings.write_text(
             '{\n'
@@ -368,29 +376,85 @@ def pane_spawn_prefix() -> str:
     return pane_env_prefix()
 
 
+def _write_spawn_env_file(agent: str, env_line: str) -> Path | None:
+    """Write env vars to a 0600 private file under spawn-env/.
+
+    Returns the path if successful, None on any I/O error. The file is
+    sourced by the pane prefix so credentials never enter tmux scrollback.
+    """
+    spawn_dir = paths.state_dir() / "spawn-env"
+    try:
+        spawn_dir.mkdir(parents=True, exist_ok=True)
+    except OSError:
+        return None
+    env_file = spawn_dir / f"{agent}.sh"
+    try:
+        env_file.write_text(env_line + "\n", encoding="utf-8")
+        env_file.chmod(0o600)
+    except OSError:
+        return None
+    return env_file
+
+
 def pane_spawn_prefix_for_runtime(resolved: dict) -> str:
     """Build the shell prefix for a specific resolved runtime.
 
     If the runtime points at an `env_profile`, inject those vars inline so the
     selected provider really follows the runtime decision rather than only
-    changing labels in config.
+    changing labels in config.  Also injects per-agent credentials via
+    agent_auth so each pane gets the right API key without leaking into
+    tmux scrollback.
     """
     base = pane_spawn_prefix()
     profile_name = resolved.get("env_profile", "")
-    if not profile_name:
-        return base
+    profile_vars: dict[str, str] = {}
+    if profile_name:
+        try:
+            profile = config.env_profile_config(profile_name)
+            for key in _PROFILE_ENV_KEYS:
+                value = profile.get(key)
+                if value:
+                    profile_vars[key] = str(value)
+        except KeyError:
+            pass
+
+    # agent_auth per-agent credential priority
+    auth_prefix = ""
     try:
-        profile = config.env_profile_config(profile_name)
-    except KeyError:
+        cli = resolved.get("cli", "claude-code")
+        adapter = get_adapter(cli)
+        from eduflow.runtime import agent_auth
+        auth_prefix = agent_auth.spawn_env_prefix(
+            resolved.get("agent", ""), adapter
+        )
+    except (KeyError, ImportError):
+        pass
+
+    parts = [f"{k}={shlex.quote(v)}" for k, v in profile_vars.items()]
+    if auth_prefix:
+        # Avoid overriding env_profile credentials: if the profile already
+        # sets ANTHROPIC_AUTH_TOKEN, skip agent_auth's token (it resolves
+        # from .env which may carry a different provider's key).
+        profile_keys = set(profile_vars.keys())
+        if "ANTHROPIC_AUTH_TOKEN" in profile_keys and "ANTHROPIC_AUTH_TOKEN" in auth_prefix:
+            # Strip agent_auth's ANTHROPIC_AUTH_TOKEN to let env_profile win
+            import re as _re
+            auth_prefix = _re.sub(r'ANTHROPIC_AUTH_TOKEN=\S+\s*', '', auth_prefix).strip()
+        if auth_prefix:
+            parts.append(auth_prefix)
+    if not parts:
         return base
-    overrides = []
-    for key in _PROFILE_ENV_KEYS:
-        value = profile.get(key)
-        if value:
-            overrides.append(f"{key}={shlex.quote(str(value))}")
-    if not overrides:
-        return base
-    return f"{base} {' '.join(overrides)}"
+
+    # 0600 private file injection
+    agent_name = resolved.get("agent", "")
+    if agent_name:
+        env_file = _write_spawn_env_file(agent_name, " ".join(parts))
+        if env_file and env_file.exists():
+            # Use set -a to auto-export all vars sourced from the file
+            return f"{base} set -a && . {shlex.quote(str(env_file))} && set +a &&"
+
+    # Fallback: inline (secrets may enter scrollback)
+    return f"{base} {' '.join(parts)}"
 
 
 # Outcome strings returned by provision_pane. Callers print/log differently
@@ -423,36 +487,37 @@ def _write_runtime_status(agent: str, resolved: dict, *, reason: str = "",
     distinguish proved_ready from ready_unproven without re-running the
     full probe.
     """
-    from eduflow.util import read_json, write_json
+    from eduflow.util import file_lock, read_json, write_json
     import time as _time
     path = paths.runtime_status_file()
     path.parent.mkdir(parents=True, exist_ok=True)
-    data = read_json(path, {"agents": {}})
-    data.setdefault("agents", {})
-    row = {
-        "runtime": resolved.get("selected_runtime", "inline"),
-        "cli": resolved.get("cli", "claude-code"),
-        "model": resolved.get("model", ""),
-        "provider": resolved.get("provider", ""),
-        "env_profile": resolved.get("env_profile", ""),
-        "reason": reason,
-    }
-    if env_ok is not None:
-        row["env_ok"] = env_ok
-    if smoke_ok is not None:
-        row["smoke_ok"] = smoke_ok
-    if inbox_verified is not None:
-        row["inbox_verified"] = inbox_verified
-    # verified_at is written ONLY when the caller explicitly passes it —
-    # the READY success path in restart_with_runtime. Earlier impl stamped
-    # verified_at whenever env_ok or smoke_ok was set, which polluted
-    # env_drift / smoke_failed / ready_unproven states with a timestamp
-    # that semantically means "proved_ready". Now: no explicit value, no
-    # stamp. Callers that mean "full proof" pass verified_at=time.time().
-    if verified_at is not None:
-        row["verified_at"] = verified_at
-    data["agents"][agent] = row
-    write_json(path, data)
+    with file_lock(path):
+        data = read_json(path, {"agents": {}})
+        data.setdefault("agents", {})
+        row = {
+            "runtime": resolved.get("selected_runtime", "inline"),
+            "cli": resolved.get("cli", "claude-code"),
+            "model": resolved.get("model", ""),
+            "provider": resolved.get("provider", ""),
+            "env_profile": resolved.get("env_profile", ""),
+            "reason": reason,
+        }
+        if env_ok is not None:
+            row["env_ok"] = env_ok
+        if smoke_ok is not None:
+            row["smoke_ok"] = smoke_ok
+        if inbox_verified is not None:
+            row["inbox_verified"] = inbox_verified
+        # verified_at is written ONLY when the caller explicitly passes it —
+        # the READY success path in restart_with_runtime. Earlier impl stamped
+        # verified_at whenever env_ok or smoke_ok was set, which polluted
+        # env_drift / smoke_failed / ready_unproven states with a timestamp
+        # that semantically means "proved_ready". Now: no explicit value, no
+        # stamp. Callers that mean "full proof" pass verified_at=time.time().
+        if verified_at is not None:
+            row["verified_at"] = verified_at
+        data["agents"][agent] = row
+        write_json(path, data)
 
 
 def current_runtime_status(agent: str) -> dict:
@@ -615,6 +680,24 @@ def _nudge_latest_high_priority_inbox(agent: str, target: tmux.Target) -> None:
         return
 
 
+def _wait_for_pid_exit(pid: int, *, timeout_s: float = 3.0) -> None:
+    """Block until *pid* exits or *timeout_s* elapses.
+
+    Uses ``os.kill(pid, 0)`` which succeeds (no-op signal) when the process
+    exists and raises ``ProcessLookupError`` once it has exited.  Polls every
+    100 ms.
+    """
+    deadline = time.monotonic() + timeout_s
+    while time.monotonic() < deadline:
+        try:
+            os.kill(pid, 0)
+        except ProcessLookupError:
+            return  # pid is gone
+        except PermissionError:
+            return  # pid exists but we can't signal it — good enough
+        time.sleep(0.1)
+
+
 def _spawn_once(agent: str, target: tmux.Target, resolved: dict, *,
                 respawn: bool = False) -> tuple[str, str]:
     """Try to provision the pane with one resolved runtime.
@@ -622,6 +705,7 @@ def _spawn_once(agent: str, target: tmux.Target, resolved: dict, *,
     Returns `(outcome, switch_reason)` where `switch_reason` is the signal that
     may justify moving to the next runtime in the fallback chain.
     """
+    resolved.setdefault("agent", agent)
     cli = resolved.get("cli", "claude-code")
     model = resolved.get("model", "opus")
     identity.write(agent, role=resolved.get("role") or agent, cli=cli, model=model)
@@ -640,9 +724,17 @@ def _spawn_once(agent: str, target: tmux.Target, resolved: dict, *,
         print(f"  ⚠️ {agent}: {e}", file=sys.stderr)
         return CONFIG_ERROR, ""
     cmd = f"{pane_spawn_prefix_for_runtime(resolved)} {adapter.spawn_cmd(agent, model)}"
+    # Capture old pane PID before respawn so we can wait for it to exit.
+    # `respawn-pane -k` is async — the old process may still be tearing down
+    # when the new one starts, causing stale output in the pane.
+    old_pid = tmux.get_pane_pid(target) if respawn else None
     spawned = tmux.respawn_agent(target, cmd) if respawn else tmux.spawn_agent(target, cmd)
     if not spawned:
         return SPAWN_FAILED, "spawn_failed"
+    # Wait for the old process to fully exit before checking for the ready
+    # marker, so stale output from the dying process is not misinterpreted.
+    if respawn and old_pid is not None:
+        _wait_for_pid_exit(old_pid, timeout_s=3.0)
     from eduflow.runtime import tunables
     ready_timeout = float(tunables.tunable("wake.ready_marker_timeout_s", 60.0))
     if wake.wait_until_ready(target, adapter, timeout_s=ready_timeout):

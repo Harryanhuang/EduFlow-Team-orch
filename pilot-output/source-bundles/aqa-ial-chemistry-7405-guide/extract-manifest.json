@@ -1,0 +1,341 @@
+{
+  "schema_version": "1",
+  "subject": "chemistry",
+  "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/02-A-Level知识库/03-考试局/AQA/Chemistry (7405)/02-课本与考纲/考纲/oxfordaqa-a-level-chemistry-specification.pdf",
+  "file_checksum_sha256": "daea3e4ffcd6f8dc296418b1482d6a84da8bc34c99d452065ba85e7e56e98040",
+  "pdfinfo": {
+    "Creator": "Adobe InDesign 20.1 (Windows)",
+    "Producer": "Adobe PDF Library 17.0",
+    "CreationDate": "Tue May 27 20:09:55 2025 CST",
+    "ModDate": "Tue May 27 20:10:08 2025 CST",
+    "Custom Metadata": "no",
+    "Metadata Stream": "yes",
+    "Tagged": "yes",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "none",
+    "JavaScript": "no",
+    "Pages": "52",
+    "Encrypted": "no",
+    "Page size": "595.276 x 841.89 pts (A4)",
+    "Page rot": "0",
+    "File size": "3284812 bytes",
+    "Optimized": "yes",
+    "PDF version": "1.4"
+  },
+  "total_pages": 52,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": 1,
+      "chars": 2287,
+      "first_200": "International AS and A-level Chemistry (9620) Specification For teaching from September 2019 onwards For International AS exams May/June 2020 onwards For International A-level exams May/June 2020 onwa"
+    },
+    {
+      "physical_page": 2,
+      "printed_page": 2,
+      "chars": 2287,
+      "first_200": "44 4.4 Assessment weightings 45 5 General administration 46 5.1 Entries and codes 46 5.2 Overlaps with other qualifications 46 5.3 Awarding grades and reporting results 47 5.4 Resits 47"
+    },
+    {
+      "physical_page": 3,
+      "printed_page": 3,
+      "chars": 2287,
+      "first_200": "xfordaqa.com/9620 for the most up-to-date specification, resources, support and administration OxfordAQA International AS and A-level Chemistry (9620). For International AS and A-level exams May/June "
+    },
+    {
+      "physical_page": 4,
+      "printed_page": 4,
+      "chars": 2287,
+      "first_200": "speak English as a second language. Multiple choice questions are given at the end of papers allowing students to manage their time better. Practical work is at the heart of"
+    },
+    {
+      "physical_page": 5,
+      "printed_page": 5,
+      "chars": 2287,
+      "first_200": "omparable in standard to the Ofqual regulated qualifications offered in the UK. Our qualifications have been independently benchmarked by UK ENIC, the UK national agency for providing expert opinion o"
+    },
+    {
+      "physical_page": 6,
+      "printed_page": 6,
+      "chars": 2287,
+      "first_200": "experienced teachers to provide you with resources that will help you confidently plan, teach and prepare for exams. Teaching resources You will have access to: • sample schemes of work"
+    },
+    {
+      "physical_page": 7,
+      "printed_page": 7,
+      "chars": 2287,
+      "first_200": "be taken over two years. The specification content for the International AS is half that of an International A-level. The International AS can be taken as a stand-alone qualification or"
+    },
+    {
+      "physical_page": 8,
+      "printed_page": 8,
+      "chars": 2287,
+      "first_200": "+ Unit 2: Organic 1 and Physical 1 What’s assessed What’s assessed Content: Content: 3.1.1 – 3.1.5 International AS Physical chemistry 3.1.6 – 3.1.7 International AS Physical chemistry 3.2.1 –"
+    },
+    {
+      "physical_page": 9,
+      "printed_page": 9,
+      "chars": 2287,
+      "first_200": "ational A2 3.1.11 – 3.1.12 International A2 Physical chemistry Physical chemistry 3.2.4 – 3.2.6 International A2 3.3.7 – 3.3.16 International A2 Inorganic chemistry Organic chemistry Knowledge of chem"
+    },
+    {
+      "physical_page": 10,
+      "printed_page": 10,
+      "chars": 2287,
+      "first_200": "anic chemistry. Sections 3.1.1 to 3.1.7 of the Physical chemistry content, sections 3.2.1 to 3.2.3 of the Inorganic chemistry content and sections 3.3.1 to 3.3.6 of the Organic chemistry content"
+    },
+    {
+      "physical_page": 11,
+      "printed_page": 11,
+      "chars": 2287,
+      "first_200": "elements • calculate relative atomic mass from isotopic abundance, limited to mononuclear ions. 12 Visit oxfordaqa.com/9620 for the most up-to-date specification, resources, support and administration"
+    },
+    {
+      "physical_page": 12,
+      "printed_page": 12,
+      "chars": 2287,
+      "first_200": "the gas constant, R. Visit oxfordaqa.com/9620 for the most up-to-date specification, resources, support and administration 13 OxfordAQA International AS and A-level Chemistry (9620). For International"
+    },
+    {
+      "physical_page": 13,
+      "printed_page": 13,
+      "chars": 2287,
+      "first_200": "ns are held together in these structures. Materials scientists use knowledge of structure and bonding to engineer new materials with desirable properties. These new materials may offer new application"
+    },
+    {
+      "physical_page": 14,
+      "printed_page": 14,
+      "chars": 2287,
+      "first_200": "l each other. Pairs of electrons in the outer shell of atoms arrange themselves as far apart as possible to minimise repulsion. Lone pair–lone pair repulsion is greater than lone"
+    },
+    {
+      "physical_page": 15,
+      "printed_page": 15,
+      "chars": 2287,
+      "first_200": "e heat energy change measured under conditions of constant pressure. Standard enthalpy changes refer to standard conditions, ie 100 kPa and a stated temperature (eg ∆H298q). Students should be able"
+    },
+    {
+      "physical_page": 16,
+      "printed_page": 16,
+      "chars": 2287,
+      "first_200": "xidation, reduction and redox equations Oxidation is the process of electron loss and oxidising agents are electron acceptors. Reduction is the process of electron gain and reducing agents are electro"
+    },
+    {
+      "physical_page": 17,
+      "printed_page": 17,
+      "chars": 2287,
+      "first_200": "1.6.5 Catalysts A catalyst is a substance that increases the rate of a chemical reaction without being changed in chemical composition or amount. Catalysts work by providing an alternative reaction"
+    },
+    {
+      "physical_page": 18,
+      "printed_page": 18,
+      "chars": 2287,
+      "first_200": "20 onwards. Version 5.3 3.1.7.2 Equilibrium constant Kc for homogeneous systems The equilibrium constant Kc is deduced from the equation for a reversible reaction. The concentration, in mol dm–3, of"
+    },
+    {
+      "physical_page": 19,
+      "printed_page": 19,
+      "chars": 2287,
+      "first_200": "evel exams May/June 2020 onwards. Version 5.3 3.1.8.2 Gibbs free-energy change, ∆G, and entropy change, ∆S ∆H, whilst important, is not sufficient to explain feasible change. The concept of increasing"
+    },
+    {
+      "physical_page": 20,
+      "printed_page": 20,
+      "chars": 2287,
+      "first_200": "ls can be used as a commercial source of electrical energy. The simplified electrode reactions in a lithium cell: Positive electrode: Li+ + CoO2 + e– g Li+[CoO2]– Visit oxfordaqa.com/9620"
+    },
+    {
+      "physical_page": 21,
+      "printed_page": 21,
+      "chars": 2287,
+      "first_200": "for this dissociation. Kw = [H+][OH–] The value of Kw varies with temperature. Students should be able to: • use Kw to calculate the pH of a strong base from"
+    },
+    {
+      "physical_page": 22,
+      "printed_page": 22,
+      "chars": 2287,
+      "first_200": "A-level exams May/June 2020 onwards. Version 5.3 3.1.11 Rate equations (International A2) In rate equations, the mathematical relationship between rate of reaction and concentration gives information "
+    },
+    {
+      "physical_page": 23,
+      "printed_page": 23,
+      "chars": 2287,
+      "first_200": "rt and administration OxfordAQA International AS and A-level Chemistry (9620). For International AS and A-level exams May/June 2020 onwards. Version 5.3 3.1.12 Equilibrium constant Kp for homogeneous "
+    },
+    {
+      "physical_page": 24,
+      "printed_page": 24,
+      "chars": 2287,
+      "first_200": "rms of their structure and bonding. Visit oxfordaqa.com/9620 for the most up-to-date specification, resources, support and administration 25 OxfordAQA International AS and A-level Chemistry (9620). Fo"
+    },
+    {
+      "physical_page": 25,
+      "printed_page": 25,
+      "chars": 2287,
+      "first_200": "logens to behave as oxidising agents and the halide ions to behave as reducing agents. 3.2.3.1 Trends in properties The trends in electronegativity and boiling point of the halogens. Students"
+    },
+    {
+      "physical_page": 26,
+      "printed_page": 26,
+      "chars": 2287,
+      "first_200": "tions offer opportunities to develop an in-depth understanding of how and why these reactions occur. 3.2.4.1 Properties of Period 3 elements and their oxides and chlorides The reactions of Na"
+    },
+    {
+      "physical_page": 27,
+      "printed_page": 27,
+      "chars": 2287,
+      "first_200": "sub-level in atoms or ions. The characteristic properties include: • complex formation • formation of coloured ions • variable oxidation state • catalytic activity. A ligand is a molecule or"
+    },
+    {
+      "physical_page": 28,
+      "printed_page": 28,
+      "chars": 2287,
+      "first_200": "Cisplatin is the cis isomer. Ag+ forms the linear complex [Ag(NH3)2]+ as used in Tollens’ reagent. 3.2.5.4 Formation of coloured ions Transition metal ions can be identified by their colour."
+    },
+    {
+      "physical_page": 29,
+      "printed_page": 29,
+      "chars": 2287,
+      "first_200": "erogeneous catalyst in the Haber process. Heterogeneous catalysts can become poisoned by impurities that block the active sites and consequently have reduced efficiency; this has a cost implication. A"
+    },
+    {
+      "physical_page": 30,
+      "printed_page": 30,
+      "chars": 2287,
+      "first_200": "lent compounds of the element carbon. These structurally diverse compounds vary from naturally occurring petroleum fuels to DNA and the molecules in living systems. Organic compounds also demonstrate "
+    },
+    {
+      "physical_page": 31,
+      "printed_page": 31,
+      "chars": 2287,
+      "first_200": "• the formation of a covalent bond is shown by a curly arrow that starts from a lone electron pair or from another covalent bond • the breaking of a"
+    },
+    {
+      "physical_page": 32,
+      "printed_page": 32,
+      "chars": 2287,
+      "first_200": "The internal combustion engine produces a number of pollutants including NOx, CO, carbon and unburned hydrocarbons. These gaseous pollutants from internal combustion engines can be removed using catal"
+    },
+    {
+      "physical_page": 33,
+      "printed_page": 33,
+      "chars": 2287,
+      "first_200": "and A-level exams May/June 2020 onwards. Version 5.3 3.3.4.1 Structure, bonding and reactivity Alkenes are unsaturated hydrocarbons. Bonding in alkenes involves a double covalent bond, a centre of hig"
+    },
+    {
+      "physical_page": 34,
+      "printed_page": 34,
+      "chars": 2287,
+      "first_200": "une 2020 onwards. Version 5.3 3.3.5 Alcohols (International AS) Alcohols have many scientific, medicinal and industrial uses. 3.3.5.1 Oxidation of alcohols Alcohols are classified as primary, secondar"
+    },
+    {
+      "physical_page": 35,
+      "printed_page": 35,
+      "chars": 2287,
+      "first_200": "etry Mass spectrometry can be used to determine the molecular formula of a compound. Students should be able to: • use precise atomic masses and the precise molecular mass to"
+    },
+    {
+      "physical_page": 36,
+      "printed_page": 36,
+      "chars": 2287,
+      "first_200": "produce hydroxynitriles. Aldehydes and unsymmetrical ketones form mixtures of enantiomers when they react with KCN followed by dilute acid. The hazards of using KCN. Students should be able to: 36"
+    },
+    {
+      "physical_page": 37,
+      "printed_page": 37,
+      "chars": 2287,
+      "first_200": "37 OxfordAQA International AS and A-level Chemistry (9620). For International AS and A-level exams May/June 2020 onwards. Version 5.3 The nucleophilic addition–elimination reactions of water, alcohols"
+    },
+    {
+      "physical_page": 38,
+      "printed_page": 38,
+      "chars": 2287,
+      "first_200": "lkylation using AlCl3 as a catalyst; identity of the products formed in these reactions • outline the free-radical attack of chlorine on benzene and methylbenzene; identity of the products formed"
+    },
+    {
+      "physical_page": 39,
+      "printed_page": 39,
+      "chars": 2287,
+      "first_200": "Condensation polymers are formed by reactions between: • dicarboxylic acids and diols • dicarboxylic acids and diamines • amino acids. The repeating units in polyesters (eg Terylene) and polyamides (e"
+    },
+    {
+      "physical_page": 40,
+      "printed_page": 40,
+      "chars": 2287,
+      "first_200": "ino acids can be separated and identified by thin-layer chromatography. Amino acids can be located on a chromatogram using developing agents such as ninhydrin or ultraviolet light and identified by"
+    },
+    {
+      "physical_page": 41,
+      "printed_page": 41,
+      "chars": 2287,
+      "first_200": "and infrared spectroscopy as an analytical technique. The emphasis is on the use of analytical data to solve problems rather than on spectroscopic theory. 3.3.15.1 Nuclear magnetic resonance spectrosc"
+    },
+    {
+      "physical_page": 42,
+      "printed_page": 42,
+      "chars": 2287,
+      "first_200": "plate • column chromatography (CC) – a column is packed with a solid and a solvent moves down the column • gas chromatography (GC) – a column is packed with"
+    },
+    {
+      "physical_page": 43,
+      "printed_page": 43,
+      "chars": 2287,
+      "first_200": "als are available in English only. Our International AS and A-level exams in Chemistry include questions that allow students to demonstrate their ability to: • demonstrate knowledge and understanding "
+    },
+    {
+      "physical_page": 44,
+      "printed_page": 44,
+      "chars": 2287,
+      "first_200": "llow a depth of treatment that prepares students for further study in chemistry • understand the tentative nature of science and understand the importance of critical thinking • apply scientific"
+    },
+    {
+      "physical_page": 45,
+      "printed_page": 45,
+      "chars": 2287,
+      "first_200": "10 22 AO4 7 5 12 Overall weighting of units (%) 50 50 100 4.3.2 Assessment Objective weightings for International A-level Chemistry Assessment Objectives (AOs) Unit weightings (approx %) Overall"
+    },
+    {
+      "physical_page": 46,
+      "printed_page": 46,
+      "chars": 2287,
+      "first_200": "0 20 (50) 100 3 80 21 105 4 80 21 105 5 60 18 90 Qualification International AS (Unit 1 + Unit 2) – 40 (100) 200 International A-level"
+    },
+    {
+      "physical_page": 47,
+      "printed_page": 47,
+      "chars": 2287,
+      "first_200": "9621 OxfordAQA International Advanced Level Chemistry 9622 Please check the current version of the Entry Codes book and the latest information about making entries on oxfordaqa.com/exams-administratio"
+    },
+    {
+      "physical_page": 48,
+      "printed_page": 48,
+      "chars": 2287,
+      "first_200": "ational Unit 3 Unit 4 Unit 5 International AS Chemistry A-level Chemistry Maximum uniform 100 100 200 105 105 90 500 mark A* * See note below A 80–100 80–100"
+    },
+    {
+      "physical_page": 49,
+      "printed_page": 49,
+      "chars": 2287,
+      "first_200": "620 for the most up-to-date specification, resources, support and administration 47 OxfordAQA International AS and A-level Chemistry (9620). For International AS and A-level exams May/June 2020 onward"
+    },
+    {
+      "physical_page": 50,
+      "printed_page": 50,
+      "chars": 2287,
+      "first_200": "May/June 2020 onwards. Version 5.3 6 Practical assessment Practical work is at the heart of science and we expect students taking this course to have a rich diet of practical"
+    },
+    {
+      "physical_page": 51,
+      "printed_page": 51,
+      "chars": 2287,
+      "first_200": "knowledge and The International A2 written papers test knowledge and understanding of the procedures involved and require an understanding of the procedures involved and require an evaluation of the t"
+    },
+    {
+      "physical_page": 52,
+      "printed_page": 52,
+      "chars": 2287,
+      "first_200": "propriate number of significant figures. 2. Recognise and use appropriate units in calculations. 3. Use fractions, ratios and percentages. 4. Use power functions. 5. Calculate arithmetic means. 6. Mak"
+    }
+  ]
+}

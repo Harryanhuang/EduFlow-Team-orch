@@ -1,0 +1,7 @@
+interface:
+  display_name: "老师图补 Markdown"
+  short_description: "把老师资料图补成可发布的 Markdown"
+  default_prompt: "Use $findclass-teacher-image-to-md to extract a teacher profile image into an existing Obsidian teacher Markdown file, normalize good_subject and good_field to system values, and keep class_style natural."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,86 @@
+{
+  "schema_version": "1",
+  "source_id": "primary_ced",
+  "page_ref_convention": "printed_page",
+  "physical_page_offset_note": "AP CED pages are typically labeled with printed_page numbers.",
+  "mappings": [
+    {
+      "target": "assessment_identity.system",
+      "page_refs": [
+        "title page"
+      ],
+      "evidence_note": "College Board AP CED."
+    },
+    {
+      "target": "topics.course_framework",
+      "page_refs": [
+        "Section 1"
+      ],
+      "evidence_note": "Course framework overview."
+    },
+    {
+      "target": "topics.ap-statistics-unit01",
+      "page_refs": [
+        "Unit 1"
+      ],
+      "evidence_note": "Unit 1: Exploring One-Variable Data (15–23%)."
+    },
+    {
+      "target": "topics.ap-statistics-unit02",
+      "page_refs": [
+        "Unit 2"
+      ],
+      "evidence_note": "Unit 2: Exploring Two-Variable Data (5–7%)."
+    },
+    {
+      "target": "topics.ap-statistics-unit03",
+      "page_refs": [
+        "Unit 3"
+      ],
+      "evidence_note": "Unit 3: Collecting Data (12–15%)."
+    },
+    {
+      "target": "topics.ap-statistics-unit04",
+      "page_refs": [
+        "Unit 4"
+      ],
+      "evidence_note": "Unit 4: Probability, Random Variables, and (10–20%)."
+    },
+    {
+      "target": "topics.ap-statistics-unit05",
+      "page_refs": [
+        "Unit 5"
+      ],
+      "evidence_note": "Unit 5: Sampling Distributions (7–12%)."
+    },
+    {
+      "target": "topics.ap-statistics-unit06",
+      "page_refs": [
+        "Unit 6"
+      ],
+      "evidence_note": "Unit 6: Inference for Categorical Data: Proportions (12–15%)."
+    },
+    {
+      "target": "topics.ap-statistics-unit07",
+      "page_refs": [
+        "Unit 7"
+      ],
+      "evidence_note": "Unit 7: Inference for Quantitative Data: Means (10–18%)."
+    },
+    {
+      "target": "topics.ap-statistics-unit08",
+      "page_refs": [
+        "Unit 8"
+      ],
+      "evidence_note": "Unit 8: Inference for Categorical Data: Chi-Square (2–5%)."
+    },
+    {
+      "target": "topics.ap-statistics-unit09",
+      "page_refs": [
+        "Unit 9"
+      ],
+      "evidence_note": "Unit 9: Inference for Quantitative Data: Slopes (2–5%)."
+    }
+  ],
+  "draft_notes": []
+}

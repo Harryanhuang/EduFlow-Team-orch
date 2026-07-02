@@ -1,0 +1,45 @@
+學習單位 學習重點 時間 注釋
+3. 指 數 函 數 與 對 數 3.1 理解有理數指數的定義 16 定義包括 和 。
+函數
+3.2 理解有理指數的定律 有理指數定律包括：
+ a p a q = a p + q
+
+1
+8
+a
+a
+p
+q
+= a p  q
+ (a p)q = a pq
+ a p b p = (ab) p
+
+a
+b
+p
+p
+
+ a
+b
+ p
+3.3 理解對數的定義及其性質（包括換底公 對數性質包括：
+式）
+ log 1 = 0
+a
+ log a = 1
+a
+ log MN = log M + log N
+a a a
+ log
+a
+M
+N
+= log M  log N
+a a
+ log M k = k log M
+a a
+log N
+ log N = a
+b
+log b
+a

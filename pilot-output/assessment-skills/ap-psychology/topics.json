@@ -1,0 +1,196 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "ap-psychology",
+      "topic_name": "AP Psychology",
+      "parent_id": "",
+      "scope": [
+        "AP Psychology course framework (College Board).",
+        "Valid: 2025 → (ongoing).",
+        "Units 1–5 with cumulative exam weightings."
+      ],
+      "out_of_scope": [
+        "Pre-AP / general high-school level content unless explicitly cited in CED.",
+        "University-level content beyond AP expectations.",
+        "Other AP subjects."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific unit fits.",
+        "Prefer specific Unit N nodes for content questions."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-psychology-unit01",
+      "topic_name": "Unit 1: Biological Bases of Behavior",
+      "parent_id": "ap-psychology",
+      "scope": [
+        "Unit 1 content as defined in AP Psychology CED.",
+        "Exam weighting: 15–25%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Biological Bases of Behavior."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_1.1",
+          "text": "Core content and concepts for Unit 1: Biological Bases of Behavior."
+        },
+        {
+          "ek_id": "EK_1.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 1: Biological Bases of Behavior."
+        },
+        {
+          "ek_id": "EK_1.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 1: Biological Bases of Behavior."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-psychology-unit02",
+      "topic_name": "Unit 2: Cognition",
+      "parent_id": "ap-psychology",
+      "scope": [
+        "Unit 2 content as defined in AP Psychology CED.",
+        "Exam weighting: 15–25%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Cognition."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_2.1",
+          "text": "Core content and concepts for Unit 2: Cognition."
+        },
+        {
+          "ek_id": "EK_2.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 2: Cognition."
+        },
+        {
+          "ek_id": "EK_2.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 2: Cognition."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-psychology-unit03",
+      "topic_name": "Unit 3: Development and Learning",
+      "parent_id": "ap-psychology",
+      "scope": [
+        "Unit 3 content as defined in AP Psychology CED.",
+        "Exam weighting: 15–25%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Development and Learning."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_3.1",
+          "text": "Core content and concepts for Unit 3: Development and Learning."
+        },
+        {
+          "ek_id": "EK_3.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 3: Development and Learning."
+        },
+        {
+          "ek_id": "EK_3.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 3: Development and Learning."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-psychology-unit04",
+      "topic_name": "Unit 4: Social Psychology and Personality",
+      "parent_id": "ap-psychology",
+      "scope": [
+        "Unit 4 content as defined in AP Psychology CED.",
+        "Exam weighting: 15–25%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Social Psychology and Personality."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_4.1",
+          "text": "Core content and concepts for Unit 4: Social Psychology and Personality."
+        },
+        {
+          "ek_id": "EK_4.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 4: Social Psychology and Personality."
+        },
+        {
+          "ek_id": "EK_4.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 4: Social Psychology and Personality."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-psychology-unit05",
+      "topic_name": "Unit 5: Mental and Physical Health",
+      "parent_id": "ap-psychology",
+      "scope": [
+        "Unit 5 content as defined in AP Psychology CED.",
+        "Exam weighting: 15–25%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Mental and Physical Health."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_5.1",
+          "text": "Each unit is broken down into teachable segments called topics"
+        }
+      ]
+    }
+  ]
+}

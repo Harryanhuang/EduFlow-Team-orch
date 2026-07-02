@@ -1,0 +1,121 @@
+{
+  "schema_version": "1",
+  "papers": [
+    {
+      "paper_id": "section_i",
+      "name": "Section I: Multiple Choice",
+      "question_styles": [
+        "multiple_choice"
+      ],
+      "duration_minutes": 120,
+      "total_marks": 70,
+      "weighting_percent": 70,
+      "coverage_notes": "70 MCQ across the 5 Big Ideas.",
+      "calculator_allowed": false,
+      "formula_sheet_allowed": false
+    },
+    {
+      "paper_id": "create_pt",
+      "name": "Create Performance Task",
+      "question_styles": [
+        "performance_task"
+      ],
+      "duration_minutes": 720,
+      "total_marks": 30,
+      "weighting_percent": 30,
+      "coverage_notes": "12 hours in-class + individual code/video + write-up.",
+      "calculator_allowed": false,
+      "formula_sheet_allowed": false
+    },
+    {
+      "paper_id": "explore_pt",
+      "name": "Explore Performance Task",
+      "question_styles": [
+        "performance_task"
+      ],
+      "duration_minutes": 480,
+      "total_marks": 30,
+      "weighting_percent": 30,
+      "coverage_notes": "Computing artifact + written response exploring a computing innovation.",
+      "calculator_allowed": false,
+      "formula_sheet_allowed": false
+    }
+  ],
+  "assessment_objectives": [],
+  "question_styles": [
+    {
+      "style_id": "multiple_choice",
+      "name": "Multiple Choice",
+      "description": "Section I MCQ (70 questions)."
+    },
+    {
+      "style_id": "performance_task",
+      "name": "Performance Task",
+      "description": "Create Performance Task + Explore Performance Task (coursework)."
+    }
+  ],
+  "difficulty_ladder": [
+    {
+      "level": "foundation",
+      "description": "Recall of facts, definitions, basic application."
+    },
+    {
+      "level": "standard",
+      "description": "Multi-step application within one unit."
+    },
+    {
+      "level": "challenge",
+      "description": "Cross-unit synthesis, unfamiliar contexts."
+    }
+  ],
+  "difficulty_scale": "ordinal_3",
+  "confidence_thresholds": {
+    "route_minimum": 0.8,
+    "classification_minimum": 0.75,
+    "review_required_below": 0.75
+  },
+  "lesson_use": {
+    "supported": false,
+    "modes": [],
+    "teacher_use_contract_ref": "",
+    "student_use_contract_ref": "",
+    "parent_use_contract_ref": "",
+    "notes": "Set supported=true only when teacher/student/parent mode is declared and validated."
+  },
+  "generation_constraints": {
+    "must_match_scope": true,
+    "mark_out_of_scope_as_extension": true
+  },
+  "marking_guidance": {
+    "command_words_ref": "AP command words defined in the CED Section 2 'Exam Instructions'.",
+    "notes": "AP exams use a 5-point scoring scale (1-5). College credit typically awarded at 3+."
+  },
+  "mcq_count": 70,
+  "frq_count": 0,
+  "duration_hours": 9,
+  "performance_tasks": [
+    {
+      "task_id": "create_pt",
+      "name": "Create Performance Task",
+      "description": "Students develop a computer program by applying programming concepts; 12 hours in class + individual write-up.",
+      "duration_hours": 12,
+      "weighting_percent": 30,
+      "deliverables": [
+        "Program code",
+        "Video of running program",
+        "Written responses"
+      ]
+    },
+    {
+      "task_id": "explore_pt",
+      "name": "Explore Performance Task",
+      "description": "Students explore a computing innovation; written response with computing artifact + written reflection.",
+      "duration_hours": 8,
+      "weighting_percent": 30,
+      "deliverables": [
+        "Computing artifact (program/code/diagram)",
+        "Written response (≈ 400 words minimum)"
+      ]
+    }
+  ]
+}

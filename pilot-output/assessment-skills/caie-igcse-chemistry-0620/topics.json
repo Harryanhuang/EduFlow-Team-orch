@@ -1,0 +1,430 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "caie-igcse-chemistry-0620",
+      "topic_name": "CAIE IGCSE Chemistry",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Chemistry (0620) syllabus scope.",
+        "Valid: 2023 → 2025."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-chemistry-0620-core",
+      "topic_name": "Core (grades C-G)",
+      "parent_id": "caie-igcse-chemistry-0620",
+      "scope": [
+        "Paper 1 (MCQ) and Paper 3 (theory) at Core tier; candidates can achieve C-G."
+      ],
+      "out_of_scope": [],
+      "classification_hints": [
+        "Items written for grades C-G; recall and application of core syllabus objectives."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-chemistry-0620-extended",
+      "topic_name": "Extended (grades A*-G)",
+      "parent_id": "caie-igcse-chemistry-0620",
+      "scope": [
+        "Paper 2 (MCQ) and Paper 4 (theory) at Extended tier; covers Core + Supplement; grades A*-G."
+      ],
+      "out_of_scope": [],
+      "classification_hints": [
+        "Items requiring Supplement-level depth; cross-topic synthesis."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-chemistry-0620-t001",
+      "topic_name": "1. Why choose this syllabus?",
+      "parent_id": "caie-igcse-chemistry-0620",
+      "scope": [
+        "Why choose this syllabus?",
+        "Solids, liquids and gases",
+        "Diffusion"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Why choose this syllabus?."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-chemistry-0620-t002",
+      "topic_name": "2. Syllabus overview",
+      "parent_id": "caie-igcse-chemistry-0620",
+      "scope": [
+        "Syllabus overview",
+        "Elements, compounds and mixtures",
+        "Atomic structure and the Periodic Table",
+        "Isotopes",
+        "Ions and ionic bonds",
+        "Simple molecules and covalent bonds",
+        "Giant covalent structures",
+        "Metallic bonding"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Syllabus overview."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-chemistry-0620-t003",
+      "topic_name": "3. Stoichiometry",
+      "parent_id": "caie-igcse-chemistry-0620",
+      "scope": [
+        "Stoichiometry",
+        "Formulae",
+        "Relative masses of atoms and molecules",
+        "The mole and the Avogadro constant"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Stoichiometry."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-chemistry-0620-t004",
+      "topic_name": "4. Electrochemistry",
+      "parent_id": "caie-igcse-chemistry-0620",
+      "scope": [
+        "Electrochemistry",
+        "Electrolysis",
+        "Electrolysis continued",
+        "Hydrogen–oxygen fuel cells"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Electrochemistry."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-chemistry-0620-t005",
+      "topic_name": "5. Chemical energetics",
+      "parent_id": "caie-igcse-chemistry-0620",
+      "scope": [
+        "Chemical energetics",
+        "Exothermic and endothermic reactions"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Chemical energetics."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-chemistry-0620-t006",
+      "topic_name": "6. Chemical reactions",
+      "parent_id": "caie-igcse-chemistry-0620",
+      "scope": [
+        "Chemical reactions",
+        "Physical and chemical changes",
+        "Rate of reaction",
+        "Reversible reactions and equilibrium",
+        "Redox"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Chemical reactions."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-chemistry-0620-t007",
+      "topic_name": "7. Acids, bases and salts",
+      "parent_id": "caie-igcse-chemistry-0620",
+      "scope": [
+        "Acids, bases and salts",
+        "The characteristic properties of acids and bases",
+        "Oxides",
+        "Preparation of salts"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Acids, bases and salts."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-chemistry-0620-t008",
+      "topic_name": "8. The Periodic Table",
+      "parent_id": "caie-igcse-chemistry-0620",
+      "scope": [
+        "The Periodic Table",
+        "Arrangement of elements",
+        "Group I properties",
+        "Group VII properties",
+        "Transition elements",
+        "Noble gases"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: The Periodic Table."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-chemistry-0620-t009",
+      "topic_name": "9. Metals",
+      "parent_id": "caie-igcse-chemistry-0620",
+      "scope": [
+        "Metals",
+        "Properties of metals",
+        "Uses of metals",
+        "Alloys and their properties",
+        "Reactivity series",
+        "Corrosion of metals",
+        "Extraction of metals"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Metals."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-chemistry-0620-t010",
+      "topic_name": "10. Chemistry of the environment",
+      "parent_id": "caie-igcse-chemistry-0620",
+      "scope": [
+        "Chemistry of the environment",
+        "Water",
+        "Fertilisers",
+        "Air quality and climate",
+        "Air quality and climate continued"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Chemistry of the environment."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-chemistry-0620-t011",
+      "topic_name": "11. Organic chemistry",
+      "parent_id": "caie-igcse-chemistry-0620",
+      "scope": [
+        "Organic chemistry",
+        "Formulae, functional groups and terminology",
+        "Formulae, functional groups and terminology continued",
+        "Naming organic compounds",
+        "Fuels",
+        "Alkanes",
+        "Alkenes",
+        "Alcohols",
+        "Carboxylic acids",
+        "Polymers"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Organic chemistry."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-chemistry-0620-t012",
+      "topic_name": "12. Experimental techniques and chemical analysis",
+      "parent_id": "caie-igcse-chemistry-0620",
+      "scope": [
+        "Experimental techniques and chemical analysis",
+        "Experimental design",
+        "Acid–base titrations",
+        "Chromatography",
+        "Separation and purification",
+        "Identification of ions and gases",
+        "Identification of ions and gases continued"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Experimental techniques and chemical analysis."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    }
+  ]
+}

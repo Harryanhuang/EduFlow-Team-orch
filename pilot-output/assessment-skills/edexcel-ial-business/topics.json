@@ -1,0 +1,103 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "edexcel-ial-business",
+      "topic_name": "CAIE IGCSE Business",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Business (BUS (IAL)) syllabus scope.",
+        "Valid: 2025 → 2026."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "edexcel-ial-business-unit01",
+      "topic_name": "Topic 1: Marketing and People",
+      "parent_id": "edexcel-ial-business",
+      "scope": [
+        "Topic 1 content as defined in Edexcel IAL edexcel-ial-business."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Marketing and People."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "edexcel-ial-business-unit02",
+      "topic_name": "Topic 2: Managing Business Activities",
+      "parent_id": "edexcel-ial-business",
+      "scope": [
+        "Topic 2 content as defined in Edexcel IAL edexcel-ial-business."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Managing Business Activities."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "edexcel-ial-business-unit03",
+      "topic_name": "Topic 3: Business Decisions and Strategy",
+      "parent_id": "edexcel-ial-business",
+      "scope": [
+        "Topic 3 content as defined in Edexcel IAL edexcel-ial-business."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Business Decisions and Strategy."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "edexcel-ial-business-unit04",
+      "topic_name": "Topic 4: Global Business",
+      "parent_id": "edexcel-ial-business",
+      "scope": [
+        "Topic 4 content as defined in Edexcel IAL edexcel-ial-business."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Global Business."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    }
+  ]
+}

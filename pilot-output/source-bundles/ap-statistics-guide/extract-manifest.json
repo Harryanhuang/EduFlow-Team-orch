@@ -1,0 +1,1701 @@
+{
+  "schema_version": "1",
+  "subject": "statistics",
+  "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/03-AP知识库/03-学科知识/AP Statistics/02-课本与考纲/考纲/ap-statistics-course-and-exam-description.pdf",
+  "file_checksum_sha256": "818f4f74986ebc05e2ed7014e6f74389a5e139a4b227e18100b8dc21659e0fe4",
+  "pdfinfo": {
+    "Title": "AP® Statistics Course and Exam Description",
+    "Subject": "AP; Advanced Placement",
+    "Keywords": "AP® ; Course and Exam Description; CED; 2025; instructional model; course framework; science practices; course content; course at a glance; unit guides; equations; AP resources and supports; course information; exam information; sample exam questions; teaching resources; teacher materials; ADA",
+    "Author": "College Board",
+    "Creator": "Adobe InDesign CC 14.0 (Macintosh)",
+    "Producer": "Adobe PDF Library 15.0; modified using iTextSharp 4.1.6 by 1T3XT",
+    "CreationDate": "Fri Aug  8 10:48:25 2025 CST",
+    "ModDate": "Mon Sep 22 22:22:45 2025 CST",
+    "Custom Metadata": "yes",
+    "Metadata Stream": "yes",
+    "Tagged": "yes",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "AcroForm",
+    "JavaScript": "no",
+    "Pages": "278",
+    "Encrypted": "yes (print:yes copy:yes change:no addNotes:no algorithm:AES-256)",
+    "Page size": "612 x 792 pts (letter)",
+    "Page rot": "0",
+    "File size": "11462074 bytes",
+    "Optimized": "no",
+    "PDF version": "1.7"
+  },
+  "total_pages": 278,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": 1,
+      "chars": 3196,
+      "first_200": "INCLUDES Course framework Instructional section Sample exam questions AP Statistics ® COURSE AND EXAM DESCRIPTION Effective Fall 2020 AP Statistics ® COURSE AND EXAM DESCRIPTION Effective Fall 2020 AP"
+    },
+    {
+      "physical_page": 2,
+      "printed_page": 2,
+      "chars": 3196,
+      "first_200": "s. AP courses ground such studies in primary sources so that students can evaluate experiences and evidence for themselves. 6. \u0007Every\u0007AP\u0007student\u0007who\u0007engages\u0007with\u0007evidence\u0007is\u0007listened\u0007to\u0007and\u0007respected."
+    },
+    {
+      "physical_page": 3,
+      "printed_page": 3,
+      "chars": 3196,
+      "first_200": "Kerri Swails Freeland, University High School, Morgantown, WV Kenneth Koehler, Iowa State University, Ames, IA Michael Lacey, Peters Township High School, McMurray, PA Laura Marshall, Phillips Exeter "
+    },
+    {
+      "physical_page": 4,
+      "printed_page": 4,
+      "chars": 3196,
+      "first_200": "nts: Access, arguments,\u0007and\u0007see\u0007many\u0007sides\u0007of\u0007an\u0007issue—skills\u0007 that prepare them for college and beyond. Taking Opportunity, and Readiness AP courses\u0007demonstrates\u0007to\u0007college\u0007admission\u0007officers\u0007 The AP"
+    },
+    {
+      "physical_page": 5,
+      "printed_page": 5,
+      "chars": 3196,
+      "first_200": "that represent a sequence found in widely adopted was created to provide teachers and administrators college textbooks and that many AP teachers have with clear guidelines on curricular and resource"
+    },
+    {
+      "physical_page": 6,
+      "printed_page": 6,
+      "chars": 3196,
+      "first_200": "llabi and AP Exams are not\u0007norm-referenced\u0007or\u0007graded\u0007on\u0007a\u0007curve.\u0007 course\u0007offerings\u0007of\u0007colleges\u0007and\u0007universities.\u0007Using\u0007 Instead,\u0007they\u0007are\u0007criterion-referenced,\u0007which\u0007means\u0007that\u0007 this research and data"
+    },
+    {
+      "physical_page": 7,
+      "printed_page": 7,
+      "chars": 3196,
+      "first_200": "follows: stakeholders in both secondary schools and higher education institutions. This feedback is carefully Credit College Grade considered to ensure that AP courses and exams are AP Score Recommend"
+    },
+    {
+      "physical_page": 8,
+      "printed_page": 8,
+      "chars": 3196,
+      "first_200": "ponse\u0007sections\u0007of\u0007the\u0007AP\u0007Exams.\u0007 § Earn Continuing Education Units (CEUs): Ninety-eight\u0007percent\u0007of\u0007surveyed\u0007educators\u0007who\u0007took\u0007 AP Readers earn professional development hours part in the AP Reading sa"
+    },
+    {
+      "physical_page": 9,
+      "printed_page": 9,
+      "chars": 3196,
+      "first_200": "PROGRESS DASHBOARD This dashboard allows teachers to review class and individual student progress throughout the year. Teachers can view class trends and see where students struggle with content and s"
+    },
+    {
+      "physical_page": 10,
+      "printed_page": 10,
+      "chars": 3196,
+      "first_200": "m the same online class rosters that enable students to access resources. The coordinator reviews, updates, and submits this information as the school’s exam order in the fall. § Student"
+    },
+    {
+      "physical_page": 11,
+      "printed_page": 11,
+      "chars": 3196,
+      "first_200": "room to assign students the online Personal Progress Checks, as homework or as\u0007an\u0007in-class\u0007task.\u0007 § Provide\u0007question-level\u0007feedback\u0007to\u0007students\u0007through\u0007answer\u0007rationales;\u0007provide\u0007unit-\u0007and\u0007 skill-leve"
+    },
+    {
+      "physical_page": 12,
+      "printed_page": 12,
+      "chars": 3196,
+      "first_200": "eflects a commitment to what college faculty value and mirrors the core curricula found in corresponding college courses. This framework defines content students must know and skills students must mas"
+    },
+    {
+      "physical_page": 13,
+      "printed_page": 13,
+      "chars": 3196,
+      "first_200": "Course Skills The AP Statistics course skills describe what a student should be able to do while exploring course concepts. The table that follows presents these skills, which students should"
+    },
+    {
+      "physical_page": 14,
+      "printed_page": 14,
+      "chars": 3196,
+      "first_200": "ntify key and relevant graphical representations of 4.B Interpret statistical information to answer a distributions. 3.B Determine\u0007parameters\u0007 calculations\u0007and\u0007findings\u0007to\u0007 question or solve a problem"
+    },
+    {
+      "physical_page": 15,
+      "printed_page": 15,
+      "chars": 3196,
+      "first_200": "cifies\u0007what\u0007 students must know, be able to do, and understand, with a focus on three big ideas that encompass the principles and processes in the discipline of statistics. The framework"
+    },
+    {
+      "physical_page": 16,
+      "printed_page": 16,
+      "chars": 3196,
+      "first_200": "Return to Table of Contents © 2020 College Board BIG IDEA 3: DATA-BASED PREDICTIONS, DECISIONS, AND CONCLUSIONS (DAT) Data-based\u0007regression\u0007models\u0007describe\u0007relationships\u0007between\u0007variables\u0007 and are a t"
+    },
+    {
+      "physical_page": 17,
+      "printed_page": 17,
+      "chars": 3196,
+      "first_200": "a: Chi-Square 2–5% Unit 9: Inference for Quantitative Data: Slopes 2–5% AP Statistics Course and Exam Description Course Framework V.1 | 18 Return to Table of Contents © 2020 College"
+    },
+    {
+      "physical_page": 18,
+      "printed_page": 18,
+      "chars": 3196,
+      "first_200": "UNIT One-Variable Two-Variable 1 Data 2 Data ~14–16 Class Periods 15–23% AP Exam Weighting ~10–11 Class Periods 5–7% AP Exam Weighting VAR 1.1 Introducing Statistics: VAR 2.1 Introducing Statistics: P"
+    },
+    {
+      "physical_page": 19,
+      "printed_page": 19,
+      "chars": 3196,
+      "first_200": "4 with Graphs each unit DAT 2.6 Linear Regression § Spiraling of the big ideas and UNC 1.6 Describing the 2 Models Distribution of a course skills across units 2"
+    },
+    {
+      "physical_page": 20,
+      "printed_page": 20,
+      "chars": 3196,
+      "first_200": "s Checks Multiple-choice: ∼35 questions Multiple-choice: ∼35 questions shows students the areas where Free-response: 2 questions Free-response: 2 questions they need to focus. § Exploring\u0007Data § Explo"
+    },
+    {
+      "physical_page": 21,
+      "printed_page": 21,
+      "chars": 3196,
+      "first_200": "UNC 5.4 Biased and Unbiased VAR 4.4 Mutually 1 with Sampling 4 Point Estimates 4 Exclusive Events 3 VAR 3.5 Introduction to VAR 5.5 Sampling Distributions VAR 4.5 Conditional Probability"
+    },
+    {
+      "physical_page": 22,
+      "printed_page": 22,
+      "chars": 3196,
+      "first_200": "Multiple-choice: ∼45 questions Multiple-choice: ∼35 questions Free-response: 2 questions Free-response: 2 questions Free-response: 2 questions § Exploring\u0007Data\u0007and\u0007Collecting\u0007Data § Probability § Prob"
+    },
+    {
+      "physical_page": 23,
+      "printed_page": 23,
+      "chars": 3196,
+      "first_200": "VAR 8.3 Carrying Out a UNC 7.3 Justifying a Claim DAT Chi-Square Test for About a Population Goodness of Fit 4 3 4 Mean Based on a 4 Confidence Interval"
+    },
+    {
+      "physical_page": 24,
+      "printed_page": 24,
+      "chars": 3196,
+      "first_200": "o UNC Justifying a 4 Population Means Claim Based on a Confidence Interval VAR 7.9 4 for a Difference of DAT Population Proportions 3 VAR Setting Up a Test for"
+    },
+    {
+      "physical_page": 25,
+      "printed_page": 25,
+      "chars": 3196,
+      "first_200": "gned\u0007with extensive input from the community of AP Statistics educators, the unit guides\u0007offer\u0007teachers\u0007helpful\u0007guidance\u0007in\u0007building\u0007 students’ skills and knowledge. The suggested sequence was\u0007identif"
+    },
+    {
+      "physical_page": 26,
+      "printed_page": 26,
+      "chars": 3196,
+      "first_200": "develop understanding as they spiral throughout the course. The essential questions\u0007are\u0007thought-provoking\u0007questions\u0007that\u0007 Developing Understanding BIG IDEA 1 Variation and Unit 1 introduces students t"
+    },
+    {
+      "physical_page": 27,
+      "printed_page": 27,
+      "chars": 3196,
+      "first_200": "\u0007exam\u0007data. 2.A 2.B 2.D discuss unusual features such as gaps Having access to a world of data is or outliers. Teachers can reinforce that meaningless without the ability to organize"
+    },
+    {
+      "physical_page": 28,
+      "printed_page": 28,
+      "chars": 3196,
+      "first_200": "s should include both a easoning for with that type of distribution (e.g., SOCS their choice and rationales for not choosing or CUSS) but then struggle to discuss the others."
+    },
+    {
+      "physical_page": 29,
+      "printed_page": 29,
+      "chars": 3196,
+      "first_200": "2.A Describe data presented numerically or graphically. objectives,\u0007AP\u0007Exam\u0007questions\u0007also\u0007reflect\u0007this\u0007pairing. 1.4 Representing a 2.B Construct numerical or graphical Categorical Variable representa"
+    },
+    {
+      "physical_page": 30,
+      "printed_page": 30,
+      "chars": 3196,
+      "first_200": "Course Framework V.1 | 27 Return to Table of Contents © 2020 College Board Using the Unit Guides The Sample Instructional Activities page includes optional UNIT activities that can help"
+    },
+    {
+      "physical_page": 31,
+      "printed_page": 31,
+      "chars": 3196,
+      "first_200": "ut how the graphs compare. Then ask them, “What do you notice? What do you wonder? What questions could be answered with these graphs?” Have students share their ideas with"
+    },
+    {
+      "physical_page": 32,
+      "printed_page": 32,
+      "chars": 3196,
+      "first_200": "Describe probability distributions. Statistical Argumentation Learning objectives\u0007define\u0007what\u0007a\u0007student\u0007needs\u0007to\u0007be\u0007able\u0007 Required Course Content 4.B Interpret statistical calculations and findings to"
+    },
+    {
+      "physical_page": 33,
+      "printed_page": 33,
+      "chars": 3196,
+      "first_200": "variable from a The Importance of for sample proportions. population with population proportion, p, the Communication in [Skill 3.B] sampling distribution of the sample proportion, AP Statistics requi"
+    },
+    {
+      "physical_page": 34,
+      "printed_page": 34,
+      "chars": 3196,
+      "first_200": "Return to Table of Contents © 2020 College Board REQUIRED COURSE CONTENT LABELING SYSTEM BIG IDEA ENDURING LEARNING ESSENTIAL UNDERSTANDING OBJECTIVE KNOWLEDGE VAR VAR-1 VAR-1.A VAR-1.A.1 Variation an"
+    },
+    {
+      "physical_page": 35,
+      "printed_page": 35,
+      "chars": 3196,
+      "first_200": "Personal Progress Check for this unit. Whether assigned as homework or completed in class, the Personal Progress Check provides each student with immediate feedback related to this unit’s topics and"
+    },
+    {
+      "physical_page": 36,
+      "printed_page": 36,
+      "chars": 3196,
+      "first_200": "rs. Teachers can reinforce that meaningless\u0007without\u0007the\u0007ability\u0007to\u0007organize\u0007 these elements must be addressed in their and\u0007analyze\u0007that\u0007information.\u0007To\u0007develop\u0007 descriptions and that all data has cont"
+    },
+    {
+      "physical_page": 37,
+      "printed_page": 37,
+      "chars": 3196,
+      "first_200": "© 2020 College Board UNIT 1 Exploring One-Variable Data UNIT AT A GLANCE Enduring Class Periods Understanding Topic Skills ~14–16 CLASS\u0007PERIODS 1.1 Introducing Statistics: What 1.A Identify the questi"
+    },
+    {
+      "physical_page": 38,
+      "printed_page": 38,
+      "chars": 3196,
+      "first_200": "3.A \u0007Determine\u0007relative\u0007frequencies,\u0007proportions,\u0007or\u0007 probabilities using simulation or calculations. Go to AP Classroom to assign the Personal Progress Check for Unit 1. Review the results in class t"
+    },
+    {
+      "physical_page": 39,
+      "printed_page": 39,
+      "chars": 3196,
+      "first_200": "with various parts shaded. Have students create the question that could have resulted in the picture shown (e.g., if a value of 15 is labeled and the distribution is shaded"
+    },
+    {
+      "physical_page": 40,
+      "printed_page": 40,
+      "chars": 3196,
+      "first_200": "numerically or graphically. Variation: Variables Required Course Content ILLUSTRATIVE EXAMPLES Categorical variables: §§ Dominant\u0007hand § Age group (young or old) ENDURING UNDERSTANDING § Highest degre"
+    },
+    {
+      "physical_page": 41,
+      "printed_page": 41,
+      "chars": 3196,
+      "first_200": "esent key features of data. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE UNC-1.A UNC-1.A.1 Represent categorical data A frequency table gives the number of cases using frequency or relative falling into eac"
+    },
+    {
+      "physical_page": 42,
+      "printed_page": 42,
+      "chars": 3196,
+      "first_200": "2.D Compare distributions or relative positions of points within a distribution. Required Course Content ENDURING UNDERSTANDING UNC-1 Graphical representations and statistics allow us to identify and "
+    },
+    {
+      "physical_page": 43,
+      "printed_page": 43,
+      "chars": 3196,
+      "first_200": "discrete variable: § Number of students in a class A continuous variable: ENDURING UNDERSTANDING § Height of a child UNC-1 Graphical representations and statistics allow us to identify and represent"
+    },
+    {
+      "physical_page": 44,
+      "printed_page": 44,
+      "chars": 3196,
+      "first_200": "Return to Table of Contents © 2020 College Board UNIT Exploring One-Variable Data 1 LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE UNC-1.G UNC-1.G.3 Represent quantitative A dotplot represents each observatio"
+    },
+    {
+      "physical_page": 45,
+      "printed_page": 45,
+      "chars": 3196,
+      "first_200": "s, clusters, or multiple peaks. UNC-1.H.2 Outliers\u0007for\u0007one-variable\u0007data\u0007are\u0007data\u0007points\u0007 that are unusually small or large relative to the rest of the data. UNC-1.H.3 A distribution is skewed to the "
+    },
+    {
+      "physical_page": 46,
+      "printed_page": 46,
+      "chars": 3196,
+      "first_200": "are concentrations of data usually quantitative data distributions. separated by gaps. [Skill 2.A] UNC-1.H.7 Descriptive\u0007statistics\u0007does\u0007not\u0007attribute\u0007 properties of a data set to a larger population,"
+    },
+    {
+      "physical_page": 47,
+      "printed_page": 47,
+      "chars": 3196,
+      "first_200": "The median of a data set is the middle value when data are ordered. When the number of data points is even, the median can take on any value between"
+    },
+    {
+      "physical_page": 48,
+      "printed_page": 48,
+      "chars": 3196,
+      "first_200": "ile range, and standard deviation. UNC-1.J.2 The\u0007range\u0007is\u0007defined\u0007as\u0007the\u0007difference\u0007between\u0007 the maximum data value and the minimum data value. The interquartile range (IQR) is defined\u0007as\u0007the\u0007differen"
+    },
+    {
+      "physical_page": 49,
+      "printed_page": 49,
+      "chars": 3196,
+      "first_200": "Course Framework V.1 | 45 Return to Table of Contents © 2020 College Board UNIT 1 Exploring One-Variable Data SKILLS Data Analysis TOPIC 1.8 2.B Construct numerical or graphical representations"
+    },
+    {
+      "physical_page": 50,
+      "printed_page": 50,
+      "chars": 3196,
+      "first_200": "be used to justify represented graphically. claims about the data in context. [Skill 2.A] UNC-1.M.2 If a distribution is relatively symmetric, then the mean and median are relatively close to"
+    },
+    {
+      "physical_page": 51,
+      "printed_page": 51,
+      "chars": 3196,
+      "first_200": "viation, relative frequency, quantitative data. [Skill 2.D] etc.) can be used to compare two or more independent samples. AP Statistics Course and Exam Description Course Framework V.1 | 47 Return"
+    },
+    {
+      "physical_page": 52,
+      "printed_page": 52,
+      "chars": 3196,
+      "first_200": "observations are within 3 standard deviations of the mean. This is called the empirical rule. VAR-2.A.4 Many\u0007variables\u0007can\u0007be\u0007modeled\u0007by\u0007a\u0007 normal distribution. continued on next page AP Statistics Co"
+    },
+    {
+      "physical_page": 53,
+      "printed_page": 53,
+      "chars": 3196,
+      "first_200": "normal\u0007table,\u0007or\u0007computer-generated\u0007output,\u0007to\u0007 estimate parameters for some populations. VAR-2.C VAR-2.C.1 Compare measures of Percentiles and z-scores\u0007may\u0007be\u0007used\u0007to\u0007 relative position in data sets."
+    },
+    {
+      "physical_page": 54,
+      "printed_page": 54,
+      "chars": 3196,
+      "first_200": "XAM WEIGHTING ~10–11 CLASS PERIODS Exploring Two-Variable Data Developing Understanding BIG IDEA 1 Building\u0007on\u0007Unit\u00071,\u0007students\u0007will\u0007explore\u0007relationships\u0007in\u0007two-variable\u0007categorical\u0007or\u0007 Variation and"
+    },
+    {
+      "physical_page": 55,
+      "printed_page": 55,
+      "chars": 3196,
+      "first_200": "a relationship, for example. If the question is BIG IDEA 3 perform their calculations using technology to about\u0007a\u0007linear\u0007model\u0007for\u0007predicting the\u0007weight\u0007 Data-Based help them become more aware of proc"
+    },
+    {
+      "physical_page": 56,
+      "printed_page": 56,
+      "chars": 3196,
+      "first_200": "Class Periods Understanding Topic Skills ~10–11 CLASS\u0007PERIODS 2.1 Introducing Statistics: 1.A Identify the question to be answered or problem VAR-1 Are Variables Related? to be solved (not assessed). "
+    },
+    {
+      "physical_page": 57,
+      "printed_page": 57,
+      "chars": 3196,
+      "first_200": "predicted response. Go to AP Classroom to assign the Personal Progress Check for Unit 2. Review the results in class to identify and address any student misunderstandings. AP Statistics Course"
+    },
+    {
+      "physical_page": 58,
+      "printed_page": 58,
+      "chars": 3196,
+      "first_200": "Predict and Confirm Have\u0007students\u0007toss\u0007a\u0007handful\u0007of\u0007M&Ms\u0007and\u0007record\u0007how\u0007many\u0007land\u0007M\u0007side\u0007up.\u0007This\u0007is\u0007trial\u00071.\u0007 Then\u0007have\u0007them\u0007remove\u0007the\u0007ones\u0007that\u0007were\u0007M\u0007side\u0007up.\u0007For\u0007trial\u00072,\u0007have\u0007students\u0007toss\u0007the\u0007 "
+    },
+    {
+      "physical_page": 59,
+      "printed_page": 59,
+      "chars": 3196,
+      "first_200": "Compare distributions or relative positions of points Two Categorical within a distribution. Variables Required Course Content ENDURING UNDERSTANDING UNC-1 Graphical representations and statistics all"
+    },
+    {
+      "physical_page": 60,
+      "printed_page": 60,
+      "chars": 3196,
+      "first_200": "LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE UNC-1.Q UNC-1.Q.1 Calculate statistics for The marginal relative frequencies are the row two categorical variables. and\u0007column\u0007totals\u0007in\u0007a\u0007two-way\u0007table\u0007divided\u0007"
+    },
+    {
+      "physical_page": 61,
+      "printed_page": 61,
+      "chars": 3196,
+      "first_200": "numerically or graphically. Quantitative Variables Required Course Content ENDURING UNDERSTANDING UNC-1 Graphical representations and statistics allow us to identify and represent key features of data"
+    },
+    {
+      "physical_page": 62,
+      "printed_page": 62,
+      "chars": 3196,
+      "first_200": "A positive association means that as values of one variable increase, the values of the other variable tend to increase. A negative association means that as values of one variable"
+    },
+    {
+      "physical_page": 63,
+      "printed_page": 63,
+      "chars": 3196,
+      "first_200": "Data Analysis Correlation 2.C Calculate summary statistics, relative positions of points within a distribution, correlation, and predicted response. Statistical Argumentation 4.B Interpret statistical"
+    },
+    {
+      "physical_page": 64,
+      "printed_page": 64,
+      "chars": 3196,
+      "first_200": "Course Framework V.1 | 61 Return to Table of Contents © 2020 College Board UNIT 2 Exploring Two-Variable Data LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE DAT-1.C DAT-1.C.1 Interpret the correlation for a"
+    },
+    {
+      "physical_page": 65,
+      "printed_page": 65,
+      "chars": 3196,
+      "first_200": "predicted response. Required Course Content ENDURING UNDERSTANDING DAT-1 Regression models may allow us to predict responses to changes in an explanatory variable. LEARNING OBJECTIVE ESSENTIAL KNOWLED"
+    },
+    {
+      "physical_page": 66,
+      "printed_page": 66,
+      "chars": 3196,
+      "first_200": "lots. [Skill 2.B] DAT-1.E.2 A residual plot is a plot of residuals versus explanatory variable values or predicted response values. DAT-1.F DAT-1.F.1 Describe\u0007the\u0007form\u0007of\u0007 Apparent randomness in a res"
+    },
+    {
+      "physical_page": 67,
+      "printed_page": 67,
+      "chars": 3196,
+      "first_200": "Interpret statistical Required Course Content calculations and findings to assign meaning or assess a claim. ENDURING UNDERSTANDING DAT-1 Regression models may allow us to predict responses to changes"
+    },
+    {
+      "physical_page": 68,
+      "printed_page": 68,
+      "chars": 3196,
+      "first_200": "LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE DAT-1.H DAT-1.H.1 Interpret\u0007coefficients\u0007for\u0007the\u0007 The\u0007coefficients\u0007of\u0007the\u0007least-squares\u0007 least-squares\u0007regression\u0007 regression model are the estimated slope and l"
+    },
+    {
+      "physical_page": 69,
+      "printed_page": 69,
+      "chars": 3196,
+      "first_200": "predicted response. Required Course Content ENDURING UNDERSTANDING DAT-1 Regression models may allow us to predict responses to changes in an explanatory variable. LEARNING OBJECTIVE ESSENTIAL KNOWLED"
+    },
+    {
+      "physical_page": 70,
+      "printed_page": 70,
+      "chars": 3196,
+      "first_200": "idual plots after transformation of data and/or movement 2 of r \u0007to\u0007a\u0007value\u0007closer\u0007to\u00071\u0007offers\u0007evidence\u0007 that\u0007the\u0007least-squares\u0007regression\u0007line\u0007for\u0007the\u0007 transformed data is a more appropriate model to"
+    },
+    {
+      "physical_page": 71,
+      "printed_page": 71,
+      "chars": 3196,
+      "first_200": "Return to Table of Contents © 2020 College Board UNIT 3 12–15% AP EXAM WEIGHTING ~9–10 CLASS PERIODS Collecting Data Developing Understanding BIG IDEA 1 Depending\u0007on\u0007how\u0007data\u0007are\u0007collected,\u0007we\u0007may\u0007or\u0007"
+    },
+    {
+      "physical_page": 72,
+      "printed_page": 72,
+      "chars": 3196,
+      "first_200": "Although\u0007students\u0007may\u0007recognize\u0007that\u0007 across groups, researchers can conclude they need to justify their reasoning, they that\u0007statistically\u0007significant\u0007differences\u0007in\u0007 often struggle to include explic"
+    },
+    {
+      "physical_page": 73,
+      "printed_page": 73,
+      "chars": 3196,
+      "first_200": "roblem. VAR-3 3.6 Selecting an 1.C Experimental Design 3.7 Inference and Experiments 4.B Interpret\u0007statistical\u0007calculations\u0007and\u0007findings\u0007to\u0007 assign meaning or assess a claim. Go to AP Classroom to ass"
+    },
+    {
+      "physical_page": 74,
+      "printed_page": 74,
+      "chars": 3196,
+      "first_200": "he pair whose partner guesses the most terms correctly from the descriptions given. 4 3.5 Sentence Starters Provide students with the scenario from 2006 Form B FRQ 5. Have them"
+    },
+    {
+      "physical_page": 75,
+      "printed_page": 75,
+      "chars": 3196,
+      "first_200": "UNIT Collecting Data 3 TOPIC 3.2 SKILLS Selecting Statistical Introduction to Methods 1.C Describe\u0007an\u0007appropriate\u0007 Planning a Study method for gathering and representing data. Statistical Argumentatio"
+    },
+    {
+      "physical_page": 76,
+      "printed_page": 76,
+      "chars": 3196,
+      "first_200": "population from which the sample was taken. DAT-2.A.4 In\u0007an\u0007experiment,\u0007different\u0007conditions\u0007 (treatments) are assigned to experimental units (participants or subjects). DAT-2.B DAT-2.B.1 Identify app"
+    },
+    {
+      "physical_page": 77,
+      "printed_page": 77,
+      "chars": 3196,
+      "first_200": "1.C Describe\u0007an\u0007appropriate\u0007 and Data Collection method for gathering and representing data. Required Course Content ENDURING UNDERSTANDING DAT-2 The\u0007way\u0007we\u0007collect\u0007data\u0007influences\u0007what\u0007we\u0007can\u0007and\u0007can"
+    },
+    {
+      "physical_page": 78,
+      "printed_page": 78,
+      "chars": 3196,
+      "first_200": "© 2020 College Board UNIT 3 Collecting Data LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE DAT-2.C DAT-2.C.4 Identify a sampling method, A cluster sample involves the division of a given a description of"
+    },
+    {
+      "physical_page": 79,
+      "printed_page": 79,
+      "chars": 3196,
+      "first_200": "3 TOPIC 3.4 SKILL Selecting Statistical Potential Problems Methods 1.C Describe an appropriate with Sampling method for gathering and representing data. Required Course Content ENDURING UNDERSTANDING "
+    },
+    {
+      "physical_page": 80,
+      "printed_page": 80,
+      "chars": 3196,
+      "first_200": "response) introduce potential for bias because they do not use chance to select the individuals. AP Statistics Course and Exam Description Course Framework V.1 | 79 Return to Table of"
+    },
+    {
+      "physical_page": 81,
+      "printed_page": 81,
+      "chars": 3196,
+      "first_200": "been administered. VAR-3.A.4 A confounding variable in an experiment is a variable that is related to the explanatory variable\u0007and\u0007influences\u0007the\u0007response\u0007 variable and may create a false perception o"
+    },
+    {
+      "physical_page": 82,
+      "printed_page": 82,
+      "chars": 3196,
+      "first_200": "experimental\u0007units\u0007in\u0007a\u0007completely\u0007randomized\u0007 design include using a random number generator, a table of random values, drawing chips without replacement, etc. VAR-3.C.3 In\u0007a\u0007single-blind\u0007experiment,"
+    },
+    {
+      "physical_page": 83,
+      "printed_page": 83,
+      "chars": 3196,
+      "first_200": "e.\u0007A\u0007randomized\u0007block\u0007 design helps to separate natural variability from differences\u0007due\u0007to\u0007the\u0007blocking\u0007variable. VAR-3.C.9 A matched pairs design is a special case of a\u0007randomized\u0007block\u0007design.\u0007Usin"
+    },
+    {
+      "physical_page": 84,
+      "printed_page": 84,
+      "chars": 3196,
+      "first_200": "There are advantages and disadvantages for experimental design each experimental design depending on the is appropriate. [Skill 1.C] question of interest, the resources available, and the nature of th"
+    },
+    {
+      "physical_page": 85,
+      "printed_page": 85,
+      "chars": 3196,
+      "first_200": "If the experimental units used in an experiment are representative of some larger group of units, the results of an experiment can be generalized\u0007to\u0007the\u0007larger\u0007group.\u0007Random\u0007 selection of experimental"
+    },
+    {
+      "physical_page": 86,
+      "printed_page": 86,
+      "chars": 3196,
+      "first_200": "Return to Table of Contents © 2020 College Board UNIT 4 10–20% AP\u0007EXAM\u0007WEIGHTING ~18–20 CLASS\u0007PERIODS Probability, Random Variables, and Probability Distributions Developing Understanding BIG IDEA 1 P"
+    },
+    {
+      "physical_page": 87,
+      "printed_page": 87,
+      "chars": 3196,
+      "first_200": "for P  A | B  can be presented intuitively the structure of the formula, substitution of with\u0007two-way\u0007tables.\u0007Simulations\u0007can\u0007also\u0007 relevant values extracted from the problem, help\u0007students\u0007internal"
+    },
+    {
+      "physical_page": 88,
+      "printed_page": 88,
+      "chars": 3196,
+      "first_200": "AP Statistics Course and Exam Description Course Framework V.1 | 87 Return to Table of Contents © 2020 College Board UNIT 4 Probability, Random Variables, and Probability Distributions UNIT AT"
+    },
+    {
+      "physical_page": 89,
+      "printed_page": 89,
+      "chars": 3196,
+      "first_200": "UNIT Probability, Random Variables, and Probability Distributions 4 UNIT AT A GLANCE (cont’d) Enduring Class Periods Understanding Topic Skills ~18–20 CLASS\u0007PERIODS 4.10 Introduction to the 3.A Binomi"
+    },
+    {
+      "physical_page": 90,
+      "printed_page": 90,
+      "chars": 3196,
+      "first_200": "tify the\u0007formula\u0007needed\u0007to\u0007solve\u0007each\u0007problem,\u0007without\u0007doing\u0007the\u0007final\u0007calculations.\u0007Then\u0007have\u0007 them share their thoughts with a partner. 3 4.5 Create Representations 4.6 Provide students with the sce"
+    },
+    {
+      "physical_page": 91,
+      "printed_page": 91,
+      "chars": 3196,
+      "first_200": "SKILL Selecting Statistical Introducing Statistics: Methods 1.A Identify the question to be Random and answered or problem to be solved. Non-Random Patterns? Required Course Content ENDURING UNDERSTAN"
+    },
+    {
+      "physical_page": 92,
+      "printed_page": 92,
+      "chars": 3196,
+      "first_200": "random process. The corresponding UNC-2.A.3 collection of outcomes would be (1, 6), (2, 5), An event is a collection of outcomes. (3, 4), (4, 3), (5, 2), and UNC-2.A.4 (6,"
+    },
+    {
+      "physical_page": 93,
+      "printed_page": 93,
+      "chars": 3196,
+      "first_200": "3.A Determine\u0007relative\u0007 Probability frequencies, proportions, or probabilities using simulation or calculations. Statistical Argumentation 4.B Interpret statistical Required Course Content calculation"
+    },
+    {
+      "physical_page": 94,
+      "printed_page": 94,
+      "chars": 3196,
+      "first_200": "Return to Table of Contents © 2020 College Board UNIT 4 Probability, Random Variables, and Probability Distributions SKILL Statistical TOPIC 4.4 Mutually Exclusive Argumentation 4.B Interpret statisti"
+    },
+    {
+      "physical_page": 95,
+      "printed_page": 95,
+      "chars": 3196,
+      "first_200": "frequencies, proportions, or probabilities using simulation or calculations. Required Course Content ENDURING UNDERSTANDING VAR-4 The\u0007likelihood\u0007of\u0007a\u0007random\u0007event\u0007can\u0007be\u0007quantified. LEARNING OBJECTIVE"
+    },
+    {
+      "physical_page": 96,
+      "printed_page": 96,
+      "chars": 3196,
+      "first_200": "[Skill 3.A] event B will occur. VAR-4.E.2 If, and only if, events A and B are independent, then P ( A | B) = P ( A), P (B |"
+    },
+    {
+      "physical_page": 97,
+      "printed_page": 97,
+      "chars": 3196,
+      "first_200": "Statistical and Probability 4.B Argumentation Distributions Interpret statistical calculations and findings to assign meaning or assess a claim. Required Course Content ILLUSTRATIVE EXAMPLES Outcomes "
+    },
+    {
+      "physical_page": 98,
+      "printed_page": 98,
+      "chars": 3196,
+      "first_200": "VAR-5.A.4 A cumulative probability distribution can be represented as a table or function showing the probability of being less than or equal to each value of the random variable. VAR-5.B"
+    },
+    {
+      "physical_page": 99,
+      "printed_page": 99,
+      "chars": 3196,
+      "first_200": "The standard deviation for a discrete random  ( x − μ ) ⋅ P ( x ). 2 variable X is σ X = i X i VAR-5.D VAR-5.D.1"
+    },
+    {
+      "physical_page": 100,
+      "printed_page": 100,
+      "chars": 3196,
+      "first_200": "om variables are independent if knowing information about one of them does not change the probability distribution of the other. VAR-5.E.3 For independent random variables X and Y and real"
+    },
+    {
+      "physical_page": 101,
+      "printed_page": 101,
+      "chars": 3196,
+      "first_200": "ch trial having two possible outcomes (success or failure), with the probability of success p and the probability of failure 1 – p. UNC-3.B UNC-3.B.1 Calculate probabilities for The probability"
+    },
+    {
+      "physical_page": 102,
+      "printed_page": 102,
+      "chars": 3196,
+      "first_200": "calculations and findings to assign meaning or assess Required Course Content a claim. ENDURING UNDERSTANDING UNC-3 Probabilistic reasoning allows us to anticipate patterns in data. LEARNING OBJECTIVE"
+    },
+    {
+      "physical_page": 103,
+      "printed_page": 103,
+      "chars": 3196,
+      "first_200": "success p and the probability of failure 1 – p. UNC-3.E.2 The\u0007probability\u0007that\u0007the\u0007first\u0007success\u0007for\u0007 repeated independent trials with probability of success p occurs on trial x is calculated as P(X ="
+    },
+    {
+      "physical_page": 104,
+      "printed_page": 104,
+      "chars": 3196,
+      "first_200": "distribution for a random variables using must be between 0 μ X =  xi ⋅ P ( x i ) σ X = i X (x − μ )"
+    },
+    {
+      "physical_page": 105,
+      "printed_page": 105,
+      "chars": 3196,
+      "first_200": "σ X = np (1 − p ) probability P ( X = x ) = nx p x (1 − p)n− x () §§ Binary distribution x = 0,1,2,3,...,n."
+    },
+    {
+      "physical_page": 106,
+      "printed_page": 106,
+      "chars": 3196,
+      "first_200": "first\u0007success §§ p is the same for each repetition (random). 4 UNIT Course Framework V.1 | 103 Note:\u0007Other\u0007notation\u0007could\u0007also\u0007be\u0007correct\u0007if\u0007properly\u0007defined.\u0007Incorrect\u0007notation\u0007will\u0007result\u0007in\u0007lost\u0007po"
+    },
+    {
+      "physical_page": 107,
+      "printed_page": 107,
+      "chars": 3196,
+      "first_200": "Return to Table of Contents © 2020 College Board UNIT 5 7–12% AP\u0007EXAM\u0007WEIGHTING ~10–12 CLASS\u0007PERIODS Sampling Distributions Developing Understanding BIG IDEA 1 This unit applies probabilistic reasonin"
+    },
+    {
+      "physical_page": 108,
+      "printed_page": 108,
+      "chars": 3196,
+      "first_200": "the distribution of a population, a sample of a normal distribution aids in understanding values (heights, for example), or a sample the probability being calculated. Students statistic from repeated "
+    },
+    {
+      "physical_page": 109,
+      "printed_page": 109,
+      "chars": 3196,
+      "first_200": "butions UNIT AT A GLANCE Enduring Class Periods Understanding Topic Skills ~10–12 CLASS\u0007PERIODS 5.1 Introducing Statistics: 1.A Identify the question to be answered or problem VAR-1 Why Is My Sample"
+    },
+    {
+      "physical_page": 110,
+      "printed_page": 110,
+      "chars": 3196,
+      "first_200": "Distributions 5 SAMPLE INSTRUCTIONAL ACTIVITIES The\u0007sample\u0007activities\u0007on\u0007this\u0007page\u0007are\u0007optional\u0007and\u0007are\u0007offered\u0007to\u0007provide\u0007possible\u0007ways\u0007to\u0007 incorporate various instructional approaches into the class"
+    },
+    {
+      "physical_page": 111,
+      "printed_page": 111,
+      "chars": 3196,
+      "first_200": "© 2020 College Board UNIT 5 Sampling Distributions SKILL Selecting Statistical TOPIC 5.1 Introducing Statistics: Methods 1.A Identify the question to be answered or problem to be solved. Why Is"
+    },
+    {
+      "physical_page": 112,
+      "printed_page": 112,
+      "chars": 3196,
+      "first_200": "distributions. Required Course Content ILLUSTRATIVE EXAMPLE Continuous random variable: ENDURING UNDERSTANDING If one looks at a clock at a random time, the probability VAR-6 that the minute hand is T"
+    },
+    {
+      "physical_page": 113,
+      "printed_page": 113,
+      "chars": 3196,
+      "first_200": "5 Sampling Distributions LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE VAR-6.B VAR-6.B.2 Determine the interval Intervals associated with a given area in a associated with a given area normal distribution ca"
+    },
+    {
+      "physical_page": 114,
+      "printed_page": 114,
+      "chars": 3196,
+      "first_200": "VAR-6.C.1 Determine\u0007the\u0007 Normal distributions are symmetrical and appropriateness of using “bell-shaped.”\u0007As\u0007a\u0007result,\u0007normal\u0007distributions\u0007 the normal distribution to can be used to approximate distr"
+    },
+    {
+      "physical_page": 115,
+      "printed_page": 115,
+      "chars": 3196,
+      "first_200": "and that n\u0007is\u0007sufficiently\u0007large. UNC-3.H.4 A\u0007randomization\u0007distribution\u0007is\u0007a\u0007collection\u0007of\u0007 statistics generated by simulation assuming known values for the parameters. For a randomized\u0007experiment,\u0007t"
+    },
+    {
+      "physical_page": 116,
+      "printed_page": 116,
+      "chars": 3196,
+      "first_200": "A sample statistic is a point estimator of the corresponding population parameter. AP Statistics Course and Exam Description Course Framework V.1 | 114 Return to Table of Contents © 2020"
+    },
+    {
+      "physical_page": 117,
+      "printed_page": 117,
+      "chars": 3196,
+      "first_200": "◆ Sampling Distributions LEARNING UNC-3.K OBJECTIVE ESSENTIAL UNC-3.K.1 KNOWLEDGE ◆◆ Calculations Determine\u0007parameters\u0007of\u0007 LOR-1.A For independent samples (sampling with LOR-1.A.1 Aren’t Enough! a sam"
+    },
+    {
+      "physical_page": 118,
+      "printed_page": 118,
+      "chars": 3196,
+      "first_200": "TOPIC 5.6 Sampling and Simulation 3.B Determine\u0007parameters\u0007for\u0007 probability distributions. 3.C Distributions for Differences in Sample Describe\u0007probability\u0007 distributions. Proportions Statistical Argu"
+    },
+    {
+      "physical_page": 119,
+      "printed_page": 119,
+      "chars": 3196,
+      "first_200": "16 Return to Table of Contents © 2020 College Board UNIT Sampling Distributions 5 LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE UNC-3.O UNC-3.O.1 Determine\u0007whether\u0007a\u0007 The\u0007sampling\u0007distribution\u0007of\u0007the\u0007differe"
+    },
+    {
+      "physical_page": 120,
+      "printed_page": 120,
+      "chars": 3196,
+      "first_200": "UNC-3.Q.1 ◆◆ Calculations Aren’t Enough! Determine\u0007parameters\u0007for\u0007 LOR-1.A For a numerical variable, when random LOR-1.A.1 The Importance of a sampling distribution for sampling with replacement from "
+    },
+    {
+      "physical_page": 121,
+      "printed_page": 121,
+      "chars": 3196,
+      "first_200": "NING OBJECTIVE ESSENTIAL KNOWLEDGE UNC-3.R UNC-3.R.2 Determine whether a sampling For a numerical variable, if the population distribution of a sample distribution cannot be modeled with a mean can be"
+    },
+    {
+      "physical_page": 122,
+      "printed_page": 122,
+      "chars": 3196,
+      "first_200": "d σ 2 , the sampling distribution of\u0007the\u0007difference\u0007in\u0007sample\u0007means\u0007 x1 − x 2 has mean μ x −x = μ1 − μ2 and standard deviation, ( 1 2) σ 12 σ"
+    },
+    {
+      "physical_page": 123,
+      "printed_page": 123,
+      "chars": 3196,
+      "first_200": "modeled with a normal distribution but both sample\u0007sizes\u0007are\u0007greater\u0007than\u0007or\u0007equal\u0007to\u000730. UNC-3.V UNC-3.V.1 Interpret probabilities and Probabilities and parameters for a sampling parameters for a sam"
+    },
+    {
+      "physical_page": 124,
+      "printed_page": 124,
+      "chars": 3196,
+      "first_200": "sample proportion deviation of a §§ Normal or np ≥ 10 and n binomial random n(1 − p) ≥ 10 , (Large counts) variable, X §§ For standard deviations: population"
+    },
+    {
+      "physical_page": 125,
+      "printed_page": 125,
+      "chars": 3196,
+      "first_200": "§§ 10% rule Sampling μ x §§ SRS (Random) μx = μ σ distribution for the σx = §§ Normal\u0007or\u0007sample\u0007size\u0007≥30 n sample mean §§ 10% rule Sampling μ1 − μ2"
+    },
+    {
+      "physical_page": 126,
+      "printed_page": 126,
+      "chars": 3196,
+      "first_200": "Data: Proportions 12–15% AP\u0007EXAM\u0007WEIGHTING ~16–18 CLASS\u0007PERIODS AP Statistics Course and Exam Description Course Framework V.1 | 123 Return to Table of Contents © 2020 College Board Remember to go to"
+    },
+    {
+      "physical_page": 127,
+      "printed_page": 127,
+      "chars": 3196,
+      "first_200": "o\u0007types\u0007of\u0007errors\u0007that\u0007can\u0007 population proportions? be\u0007made\u0007in\u0007a\u0007significance\u0007test,\u0007their\u0007probabilities,\u0007and\u0007possible\u0007consequences\u0007in\u0007context. BIG IDEA 2 Building Course Skills early and often that st"
+    },
+    {
+      "physical_page": 128,
+      "printed_page": 128,
+      "chars": 3196,
+      "first_200": "to use language provided in the question. interval:\u0007“We\u0007are\u000795%\u0007confident\u0007that\u0007 In 2017 FRQ 2, for example, the response the interval from to captures the might\u0007read\u0007“We\u0007can\u0007be\u000795%\u0007confident\u0007that\u0007 [pa"
+    },
+    {
+      "physical_page": 129,
+      "printed_page": 129,
+      "chars": 3196,
+      "first_200": "4.B Interpret\u0007statistical\u0007calculations\u0007and\u0007findings\u0007to\u0007 assign meaning or assess a claim. 6.6 Concluding a Test for a 4.E Justify a claim using a decision based on DAT-3 Population Proportion signific"
+    },
+    {
+      "physical_page": 130,
+      "printed_page": 130,
+      "chars": 3196,
+      "first_200": "dentify an appropriate inference method for of Two Population VAR-6 Proportions significance\u0007tests. 4.C Verify that inference procedures apply in a given situation. 6.11 Carrying Out a Test 3.E Calcul"
+    },
+    {
+      "physical_page": 131,
+      "printed_page": 131,
+      "chars": 3196,
+      "first_200": "“reject H 0”, or if they will “fail to reject H 0.”\u0007Make\u0007sure\u0007students\u0007avoid\u0007the\u0007common\u0007mistake\u0007 of implying that evidence supports an “accept H 0” conclusion or a “reject H a” conclusion. 3 6.2"
+    },
+    {
+      "physical_page": 132,
+      "printed_page": 132,
+      "chars": 3196,
+      "first_200": "Return to Table of Contents © 2020 College Board UNIT 6 Inference for Categorical Data: Proportions SKILLS Selecting Statistical TOPIC 6.2 Constructing a Methods 1.D Identify an appropriate inference "
+    },
+    {
+      "physical_page": 133,
+      "printed_page": 133,
+      "chars": 3196,
+      "first_200": "cal Data: Proportions 6 LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE UNC-4.B UNC-4.B.2 Verify the conditions In\u0007order\u0007to\u0007calculate\u0007a\u0007confidence\u0007interval\u0007to\u0007 for calculating estimate a population proportion,"
+    },
+    {
+      "physical_page": 134,
+      "printed_page": 134,
+      "chars": 3196,
+      "first_200": "z* for a one sample proportion. n UNC-4.C.4 The formula for margin of error can be rearranged to solve for n, the minimum sample size\u0007needed\u0007to\u0007achieve\u0007a\u0007given\u0007margin\u0007of\u0007error.\u0007 For this purpose, use "
+    },
+    {
+      "physical_page": 135,
+      "printed_page": 135,
+      "chars": 3196,
+      "first_200": "UNC-4.D.2 Critical values represent the boundaries encompassing the middle C% of the standard normal distribution, where C% is an approximate\u0007confidence\u0007level\u0007for\u0007a\u0007proportion. UNC-4.E UNC-4.E.1 Calcu"
+    },
+    {
+      "physical_page": 136,
+      "printed_page": 136,
+      "chars": 3196,
+      "first_200": "Make\u0007an\u0007appropriate\u0007 claim or draw an appropriate conclusion. Required Course Content AVAILABLE RESOURCE ENDURING UNDERSTANDING §§ Classroom Resource > Calculations UNC-4 Aren’t Enough! An interval of"
+    },
+    {
+      "physical_page": 137,
+      "printed_page": 137,
+      "chars": 3196,
+      "first_200": "from 0.268 to 0.292 UNC-4.F.3 contains the population In repeated random sampling with the proportion of all United same\u0007sample\u0007size,\u0007approximately\u0007C%\u0007of\u0007 States\u0007twelfth-grade\u0007 students who would answ"
+    },
+    {
+      "physical_page": 138,
+      "printed_page": 138,
+      "chars": 3196,
+      "first_200": "proportion. [Skill 4.A] 1 proportional to . n UNC-4.H.2 For\u0007a\u0007given\u0007sample,\u0007the\u0007width\u0007of\u0007the\u0007confidence\u0007 interval for a population proportion increases as\u0007the\u0007confidence\u0007level\u0007increases. UNC-4.H.3 The"
+    },
+    {
+      "physical_page": 139,
+      "printed_page": 139,
+      "chars": 3196,
+      "first_200": "Argumentation Required Course Content 4.C Verify that inference procedures apply in a given situation. ENDURING UNDERSTANDING VAR-6 The normal distribution may be used to model variation. AVAILABLE RE"
+    },
+    {
+      "physical_page": 140,
+      "printed_page": 140,
+      "chars": 3196,
+      "first_200": "ypothesized\u0007 value for the population proportion. VAR-6.D.4 A\u0007one-sided\u0007alternative\u0007hypothesis\u0007for\u0007a\u0007 proportion is either H a : p < p0 or H a : p > p0 .\u0007 A\u0007two-sided\u0007alternate\u0007hypothesis\u0007is\u0007H a : p1 "
+    },
+    {
+      "physical_page": 141,
+      "printed_page": 141,
+      "chars": 3196,
+      "first_200": "b. To check that the sampling distribution of p̂ is approximately normal (shape): i. Assuming that H 0 is true ( p = p0 ), verify that both the number"
+    },
+    {
+      "physical_page": 142,
+      "printed_page": 142,
+      "chars": 3196,
+      "first_200": "Content calculations and findings to assign meaning or assess a claim. ENDURING UNDERSTANDING VAR-6 The normal distribution may be used to model variation. AVAILABLE RESOURCE §§ Classroom Resource > I"
+    },
+    {
+      "physical_page": 143,
+      "printed_page": 143,
+      "chars": 3196,
+      "first_200": "continued on next page AP Statistics Course and Exam Description Course Framework V.1 | 137 Return to Table of Contents © 2020 College Board UNIT 6 Inference for Categorical Data:"
+    },
+    {
+      "physical_page": 144,
+      "printed_page": 144,
+      "chars": 3196,
+      "first_200": "A.2 An interpretation of the p-value\u0007of\u0007a\u0007 significance\u0007test\u0007for\u0007a\u0007one-sample\u0007proportion\u0007 should\u0007recognize\u0007that\u0007the\u0007p-value\u0007is\u0007computed\u0007 by assuming that the probability model and null hypothesis are "
+    },
+    {
+      "physical_page": 145,
+      "printed_page": 145,
+      "chars": 3196,
+      "first_200": "Communication in Significance\u0007testing\u0007allows\u0007us\u0007to\u0007make\u0007decisions\u0007about\u0007hypotheses\u0007within\u0007a\u0007 AP Statistics particular context. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE DAT-3.B DAT-3.B.1 Justify a claim "
+    },
+    {
+      "physical_page": 146,
+      "printed_page": 146,
+      "chars": 3196,
+      "first_200": "m about the Small p-values\u0007indicate\u0007that\u0007the\u0007observed\u0007 population based on the value of the test statistic would be unusual results of a significance test if the null hypothesis and probability model "
+    },
+    {
+      "physical_page": 147,
+      "printed_page": 147,
+      "chars": 3196,
+      "first_200": "© 2020 College Board UNIT Inference for Categorical Data: Proportions 6 TOPIC 6.7 SKILLS Selecting Statistical Potential Errors When Methods 1.B Identify key and relevant Performing Tests information "
+    },
+    {
+      "physical_page": 148,
+      "printed_page": 148,
+      "chars": 3196,
+      "first_200": "LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE Interpret statistical UNC-5.A UNC-5.A.1 calculations and findings to Identify Type I and Type II A Type I error occurs when the null hypothesis assign meaning or"
+    },
+    {
+      "physical_page": 149,
+      "printed_page": 149,
+      "chars": 3196,
+      "first_200": ". UNC-5.C UNC-5.C.1 Identify\u0007factors\u0007that\u0007affect\u0007 The probability of a Type II error decreases the probability of errors in when any of the following occurs, provided the significance\u0007testing.\u0007 others"
+    },
+    {
+      "physical_page": 150,
+      "printed_page": 150,
+      "chars": 3196,
+      "first_200": "confidence intervals. Two Proportions 4.C Statistical Argumentation Verify that inference procedures apply in a Required Course Content given situation. Using Probability and Simulation 3.D ENDURING U"
+    },
+    {
+      "physical_page": 151,
+      "printed_page": 151,
+      "chars": 3196,
+      "first_200": "check that n1 ≤ 10% N1 and n2 ≤ 10% N 2 . b. To check that sampling distribution of p̂1 − ˆ p2 is approximately normal (shape). i. For"
+    },
+    {
+      "physical_page": 152,
+      "printed_page": 152,
+      "chars": 3196,
+      "first_200": "Calculate an interval estimate Confidence\u0007intervals\u0007for\u0007a\u0007difference\u0007in\u0007 based\u0007on\u0007a\u0007confidence\u0007 proportions can be used to calculate interval interval\u0007for\u0007a\u0007difference\u0007 estimates\u0007with\u0007specified\u0007units."
+    },
+    {
+      "physical_page": 153,
+      "printed_page": 153,
+      "chars": 3196,
+      "first_200": "AP Statistics ENDURING UNDERSTANDING UNC-4 An interval of values should be used to estimate parameters, in order to account for uncertainty. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE UNC-4.M UNC-4.M.1 In"
+    },
+    {
+      "physical_page": 154,
+      "printed_page": 154,
+      "chars": 3196,
+      "first_200": "proportions. a value of 0\u0007for\u0007the\u0007difference\u0007in\u0007population\u0007 [Skill 1.F] proportions,\u0007indicating\u0007no\u0007difference\u0007or\u0007effect. VAR-6.H.2 The\u0007null\u0007hypothesis\u0007for\u0007a\u0007difference\u0007in\u0007 proportions is: H 0 : p1 = p"
+    },
+    {
+      "physical_page": 155,
+      "printed_page": 155,
+      "chars": 3196,
+      "first_200": "independent, random samples or a randomized\u0007experiment. ii. When sampling without replacement, check that n1 ≤ 10% N1 and n2 ≤ 10% N 2 . b. To check that the sampling"
+    },
+    {
+      "physical_page": 156,
+      "printed_page": 156,
+      "chars": 3196,
+      "first_200": " ˆpc ) 1  1 n1 n2 n ˆp + n ˆp where ˆpc = 1 1 2 2 . n1 + n2 CLARIFYING STATEMENT: The formulas for test"
+    },
+    {
+      "physical_page": 157,
+      "printed_page": 157,
+      "chars": 3196,
+      "first_200": "ach other. DAT-3.D DAT-3.D.1 Justify a claim about A formal decision explicitly compares the the population based on p-value\u0007to\u0007the\u0007significance\u0007 . If the p-value\u0007≤\u0007 , the\u0007results\u0007of\u0007a\u0007significance\u0007"
+    },
+    {
+      "physical_page": 158,
+      "printed_page": 158,
+      "chars": 3196,
+      "first_200": "§§ Inference\u0007and\u0007Collecting\u0007Data §§ Investigative Task AP Statistics Course and Exam Description Course Framework V.1 | 152 Return to Table of Contents © 2020 College Board UNIT 7 10–18% AP EXAM"
+    },
+    {
+      "physical_page": 159,
+      "printed_page": 159,
+      "chars": 3196,
+      "first_200": "encourage students to be mindful of notation using\u0007statistical\u0007inference\u0007for\u0007significance\u0007 as true based on the and use the formula sheet as a reference. tests, students should identify the correct re"
+    },
+    {
+      "physical_page": 160,
+      "printed_page": 160,
+      "chars": 3196,
+      "first_200": "Confidence Interval for a 1.D Identify an appropriate inference method for Population Mean VAR-7, UNC-4 confidence\u0007intervals. 4.C Verify that inference procedures apply in a given situation. 3.D 7.3 J"
+    },
+    {
+      "physical_page": 161,
+      "printed_page": 161,
+      "chars": 3196,
+      "first_200": "Two Means 4.C Verify that inference procedures apply in a given situation. 3.D UNC-4 conditions for inference are met. 7.7 Justifying a Claim 4.B Interpret\u0007statistical\u0007calculations\u0007and\u0007findings\u0007to\u0007 Ab"
+    },
+    {
+      "physical_page": 162,
+      "printed_page": 162,
+      "chars": 3196,
+      "first_200": "gies. Activity Topic Sample Activity 1 7.2 Predict and Confirm After\u0007introducing\u0007the\u0007confidence\u0007interval\u0007formula\u0007for\u0007a\u0007population\u0007mean\u0007when\u0007sigma\u0007 is known, x  z  , have students discuss in small gr"
+    },
+    {
+      "physical_page": 163,
+      "printed_page": 163,
+      "chars": 3196,
+      "first_200": "ing Statistics: Methods 1.A Identify the question to Why Should I Worry be answered or problem to be solved. About Error? Required Course Content ENDURING UNDERSTANDING VAR-1 Given that variation"
+    },
+    {
+      "physical_page": 164,
+      "printed_page": 164,
+      "chars": 3196,
+      "first_200": "As the degrees of freedom increase, the area in the tails of a t-distribution\u0007decreases. continued on next page AP Statistics Course and Exam Description Course Framework V.1 | 158 Return"
+    },
+    {
+      "physical_page": 165,
+      "printed_page": 165,
+      "chars": 3196,
+      "first_200": "a. To check for independence: matched pairs. [Skill 4.C] i. Data\u0007should\u0007be\u0007collected\u0007using\u0007a\u0007random\u0007 sample\u0007or\u0007a\u0007randomized\u0007experiment. ii. When sampling without replacement, check that n ≤ 10% N , wh"
+    },
+    {
+      "physical_page": 166,
+      "printed_page": 166,
+      "chars": 3196,
+      "first_200": "  standard error (SE), which equals t *  s .  n UNC-4.R UNC-4.R.1 Calculate an appropriate The point estimate for a population mean is the confidence\u0007interval\u0007for\u0007a\u0007 sample"
+    },
+    {
+      "physical_page": 167,
+      "printed_page": 167,
+      "chars": 3196,
+      "first_200": "Argumentation 4.B Interpret statistical About a Population calculations and findings to assign meaning or assess a claim. Mean Based on a 4.D Justify a claim based on a Confidence Interval"
+    },
+    {
+      "physical_page": 168,
+      "printed_page": 168,
+      "chars": 3196,
+      "first_200": "ulation\u0007mean\u0007 for all footprints found in interval for a population either contains the population mean or it does the cave falls within the mean, including the mean not, because each"
+    },
+    {
+      "physical_page": 169,
+      "printed_page": 169,
+      "chars": 3196,
+      "first_200": "1 . n UNC-4.U.3 For\u0007a\u0007given\u0007sample,\u0007the\u0007width\u0007of\u0007the\u0007confidence\u0007 interval for a population mean increases as the confidence\u0007level\u0007increases. AP Statistics Course and Exam Description Course Framework "
+    },
+    {
+      "physical_page": 170,
+      "printed_page": 170,
+      "chars": 3196,
+      "first_200": "tion\u0007may\u0007be\u0007used\u0007to\u0007model\u0007variation. AVAILABLE RESOURCE §§ Classroom Resource > Inference LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE VAR-7.B VAR-7.B.1 Identify an appropriate The appropriate test for a po"
+    },
+    {
+      "physical_page": 171,
+      "printed_page": 171,
+      "chars": 3196,
+      "first_200": "difference\u0007between\u0007values\u0007in\u0007 distribution is approximately normal: matched pairs. [Skill 4.C] a. To check for independence: i. Data\u0007should\u0007be\u0007collected\u0007using\u0007a\u0007random\u0007 sample\u0007or\u0007a\u0007randomized\u0007experime"
+    },
+    {
+      "physical_page": 172,
+      "printed_page": 172,
+      "chars": 3196,
+      "first_200": "Argumentation 4.B Interpret statistical Required Course Content calculations and findings to assign meaning or assess a claim. 4.E ENDURING UNDERSTANDING Justify a claim using a decision based on VAR-"
+    },
+    {
+      "physical_page": 173,
+      "printed_page": 173,
+      "chars": 3196,
+      "first_200": "Statistics Course and Exam Description Course Framework V.1 | 165 Return to Table of Contents © 2020 College Board UNIT 7 Inference for Quantitative Data: Means ENDURING UNDERSTANDING DAT-3 Significan"
+    },
+    {
+      "physical_page": 174,
+      "printed_page": 174,
+      "chars": 3196,
+      "first_200": "Return to Table of Contents © 2020 College Board UNIT Inference for Quantitative Data: Means 7 TOPIC 7.6 SKILLS Selecting Statistical Confidence Intervals Methods 1.D Identify an appropriate for the"
+    },
+    {
+      "physical_page": 175,
+      "printed_page": 175,
+      "chars": 3196,
+      "first_200": "e\u0007interval\u0007 Consider a simple random sample from procedure\u0007for\u0007a\u0007difference\u0007of\u0007 population\u00071\u0007of\u0007size\u0007n1 ,\u0007mean μ1 ,\u0007and\u0007standard\u0007 two population means. deviation σ 1 and a second simple random [Skill "
+    },
+    {
+      "physical_page": 176,
+      "printed_page": 176,
+      "chars": 3196,
+      "first_200": "randomized\u0007experiment. ii. When sampling without replacement, check that n1 ≤ 10%N 1 and n2 ≤ 10%N 2 . b. To check that the sampling distribution of (x1 − x 2"
+    },
+    {
+      "physical_page": 177,
+      "printed_page": 177,
+      "chars": 3196,
+      "first_200": "UNIT Inference for Quantitative Data: Means 7 LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE UNC-4.Y UNC-4.Y.2 Calculate an appropriate For\u0007a\u0007difference\u0007of\u0007two\u0007population\u0007means\u0007 confidence interval where the "
+    },
+    {
+      "physical_page": 178,
+      "printed_page": 178,
+      "chars": 3196,
+      "first_200": "response times for two for uncertainty. fire stations (northern – southern): “Based on these samples, one can be 95 LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE percent confident that the difference in the"
+    },
+    {
+      "physical_page": 179,
+      "printed_page": 179,
+      "chars": 3196,
+      "first_200": "SKILLS Selecting Statistical Setting Up a Test Methods 1.E Identify an appropriate for the Difference of inference method for significance tests. Two Population Means 1.F Identify null and alternative"
+    },
+    {
+      "physical_page": 180,
+      "printed_page": 180,
+      "chars": 3196,
+      "first_200": "continued on next page AP Statistics Course and Exam Description Course\u0007Framework V.1 | 171 Return to Table of Contents © 2020 College Board UNIT 7 Inference for Quantitative Data: Means"
+    },
+    {
+      "physical_page": 181,
+      "printed_page": 181,
+      "chars": 3196,
+      "first_200": "Return to Table of Contents © 2020 College Board UNIT Inference for Quantitative Data: Means 7 TOPIC 7.9 SKILLS Using Probability Carrying Out a Test and Simulation 3.E Calculate a"
+    },
+    {
+      "physical_page": 182,
+      "printed_page": 182,
+      "chars": 3196,
+      "first_200": "VAR-7.I.1 §§ Classroom Resource > Calculate an appropriate test For a single quantitative variable, data collected Inference statistic\u0007for\u0007a\u0007difference\u0007of\u0007 using independent random samples or a ILLUST"
+    },
+    {
+      "physical_page": 183,
+      "printed_page": 183,
+      "chars": 3196,
+      "first_200": "t ≈ 7.13, then the p-value\u0007 and the standard error formulas for each of is the area greater than 7.13 for a t-distribution\u0007with\u0007 the relevant test statistics that are provided"
+    },
+    {
+      "physical_page": 184,
+      "printed_page": 184,
+      "chars": 3196,
+      "first_200": "The\u0007results\u0007of\u0007a\u0007significance\u0007test\u0007for\u0007a\u0007 two-sample\u0007test\u0007for\u0007a\u0007difference\u0007between\u0007 two population means can serve as the statistical reasoning to support the answer to a research question about the p"
+    },
+    {
+      "physical_page": 185,
+      "printed_page": 185,
+      "chars": 3196,
+      "first_200": "r this unit. Whether assigned as homework or completed in class, the Personal Progress Check provides each student with immediate feedback related to this unit’s topics and skills. Personal Progress"
+    },
+    {
+      "physical_page": 186,
+      "printed_page": 186,
+      "chars": 3196,
+      "first_200": "language to justify a claim that the\u0007same\u0007problem-solving\u0007structure\u0007to\u0007 from the question. For example, “The there is no association chi-square\u0007significance\u0007testing:\u0007State\u0007the\u0007 null hypothesis is that"
+    },
+    {
+      "physical_page": 187,
+      "printed_page": 187,
+      "chars": 3196,
+      "first_200": "Return to Table of Contents © 2020 College Board UNIT 8 Inference for Categorical Data: Chi-Square UNIT AT A GLANCE Enduring Class Periods Understanding Topic Skills ~10–11 CLASS\u0007PERIODS VAR-1 8.1"
+    },
+    {
+      "physical_page": 188,
+      "printed_page": 188,
+      "chars": 3196,
+      "first_200": "ck for Unit 8. Review the results in class to identify and address any student misunderstandings. AP Statistics Course and Exam Description Course Framework V.1 | 180 Return to Table"
+    },
+    {
+      "physical_page": 189,
+      "printed_page": 189,
+      "chars": 3196,
+      "first_200": "Inference for Categorical Data: Chi-Square SKILL Selecting Statistical TOPIC 8.1 Introducing Statistics: Methods 1.A Identify the question to be answered or problem to be solved. Are My Results Unexpe"
+    },
+    {
+      "physical_page": 190,
+      "printed_page": 190,
+      "chars": 3196,
+      "first_200": "hypotheses. 1.E Required Course Content Identify an appropriate inference method for significance tests. Using Probability ENDURING UNDERSTANDING and Simulation VAR-8 3.A The\u0007chi-square\u0007distribution\u0007m"
+    },
+    {
+      "physical_page": 191,
+      "printed_page": 191,
+      "chars": 3196,
+      "first_200": "f proportions in a set of that at least one of these proportions is not as categorical data. [Skill 1.F] specified\u0007in\u0007the\u0007null\u0007hypothesis. continued on next page AP Statistics Course and Exam"
+    },
+    {
+      "physical_page": 192,
+      "printed_page": 192,
+      "chars": 3196,
+      "first_200": "used (shape). i. A conservative check for large counts is that all expected counts should be greater than 5. AP Statistics Course and Exam Description Course Framework V.1 | 184"
+    },
+    {
+      "physical_page": 193,
+      "printed_page": 193,
+      "chars": 3196,
+      "first_200": "a decision based on VAR-8 significance tests. The\u0007chi-square\u0007distribution\u0007may\u0007be\u0007used\u0007to\u0007model\u0007variation. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE AVAILABLE RESOURCE VAR-8.F VAR-8.F.1 §§ Classroom Resou"
+    },
+    {
+      "physical_page": 194,
+      "printed_page": 194,
+      "chars": 3196,
+      "first_200": "\u0007 chi-square\u0007test\u0007for\u0007goodness\u0007of\u0007fit\u0007is\u0007the\u0007 of\u0007fit.\u0007[Skill 4.B] probability, given the null hypothesis and probability model are true, of obtaining a test statistic as, or more, extreme than the obs"
+    },
+    {
+      "physical_page": 195,
+      "printed_page": 195,
+      "chars": 3196,
+      "first_200": "ribution\u0007may\u0007be\u0007used\u0007to\u0007model\u0007variation. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE VAR-8.H VAR-8.H.1 Calculate expected counts The expected count in a particular cell of for\u0007two-way\u0007tables\u0007of\u0007 a\u0007two-way\u0007"
+    },
+    {
+      "physical_page": 196,
+      "printed_page": 196,
+      "chars": 3196,
+      "first_200": "test for independence are: H 0: There is no association between two categorical variables in a given population or the two categorical variables are independent. H a : Two categorical"
+    },
+    {
+      "physical_page": 197,
+      "printed_page": 197,
+      "chars": 3196,
+      "first_200": "ii. For\u0007a\u0007test\u0007for\u0007homogeneity:\u0007Data\u0007should\u0007 be\u0007collected\u0007using\u0007a\u0007stratified\u0007random\u0007 sample\u0007or\u0007randomized\u0007experiment. iii. When sampling without replacement, check that n ≤ 10%N . b. The\u0007chi-square\u0007te"
+    },
+    {
+      "physical_page": 198,
+      "printed_page": 198,
+      "chars": 3196,
+      "first_200": "Expected count with degrees of freedom equal to: (number of rows − 1)(number of columns − 1). VAR-8.M VAR-8.M.1 Determine\u0007the\u0007p-value\u0007for\u0007 The p-value\u0007for\u0007a\u0007chi-square\u0007test\u0007for\u0007 a\u0007chi-square\u0007significa"
+    },
+    {
+      "physical_page": 199,
+      "printed_page": 199,
+      "chars": 3196,
+      "first_200": "the\u0007null\u0007hypothesis\u0007for\u0007a test\u0007for\u0007 results\u0007of\u0007a\u0007chi-square\u0007 homogeneity or independence is based on test for homogeneity or comparison of the p-value independence. [Skill 4.E] . DAT-3.L.2 The\u0007result"
+    },
+    {
+      "physical_page": 200,
+      "printed_page": 200,
+      "chars": 3196,
+      "first_200": "completed in class, the Personal Progress Check provides each student with immediate feedback related to this unit’s topics and skills. Personal Progress Check 9 Multiple-choice: ~25 questions Free-re"
+    },
+    {
+      "physical_page": 201,
+      "printed_page": 201,
+      "chars": 3196,
+      "first_200": "data? of the residual s, and standard error of the they\u0007work\u0007through\u0007full-length\u0007sections\u0007of\u0007 slope in context from computer output. past exams in order to leave enough time BIG IDEA 3 They should"
+    },
+    {
+      "physical_page": 202,
+      "printed_page": 202,
+      "chars": 3196,
+      "first_200": "ding Topic Skills ~7–8 CLASS\u0007PERIODS VAR-1 9.1 Introducing Statistics: 1.A Identify the question to be answered or problem Do Those Points Align? to be solved (not assessed). 9.2 Confidence Intervals"
+    },
+    {
+      "physical_page": 203,
+      "printed_page": 203,
+      "chars": 3196,
+      "first_200": "© 2020 College Board UNIT Inference for Quantitative Data: Slopes 9 SAMPLE INSTRUCTIONAL ACTIVITIES The\u0007sample\u0007activities\u0007on\u0007this\u0007page\u0007are\u0007optional\u0007and\u0007are\u0007offered\u0007to\u0007provide\u0007possible\u0007ways\u0007to\u0007 incorpo"
+    },
+    {
+      "physical_page": 204,
+      "printed_page": 204,
+      "chars": 3196,
+      "first_200": "Course Framework V.1 | 197 Return to Table of Contents © 2020 College Board UNIT 9 Inference for Quantitative Data: Slopes SKILL Selecting Statistical TOPIC 9.1 Introducing Statistics: Methods 1.A"
+    },
+    {
+      "physical_page": 205,
+      "printed_page": 205,
+      "chars": 3196,
+      "first_200": "ical Argumentation Verify that inference procedures apply in a Required Course Content given situation. Using Probability and Simulation 3.D ENDURING UNDERSTANDING Construct a confidence UNC-4 interva"
+    },
+    {
+      "physical_page": 206,
+      "printed_page": 206,
+      "chars": 3196,
+      "first_200": "n σx = i regression line, σ, can be estimated by n the standard deviation of the residuals UNC-4.AC.3 from the sample regression line, The\u0007appropriate\u0007confidence\u0007interval\u0007   . (Note: This"
+    },
+    {
+      "physical_page": 207,
+      "printed_page": 207,
+      "chars": 3196,
+      "first_200": "ormally\u0007 distributed. Analysis of graphical representations of residuals may be used to check for normality. i. If the observed distribution is skewed, n should be greater than 30. UNC-4.AE UNC-4.AE.1"
+    },
+    {
+      "physical_page": 208,
+      "printed_page": 208,
+      "chars": 3196,
+      "first_200": "9 TOPIC 9.3 SKILLS Statistical Justifying a Claim About Argumentation 4.B Interpret statistical the Slope of a Regression calculations and findings to assign meaning or assess a claim. Model Based"
+    },
+    {
+      "physical_page": 209,
+      "printed_page": 209,
+      "chars": 3196,
+      "first_200": "o the sample taken and details about the population it represents. UNC-4.AH UNC-4.AH.1 Justify a claim based on a A\u0007confidence\u0007interval\u0007for\u0007the\u0007slope\u0007of\u0007a\u0007 confidence\u0007interval\u0007for\u0007the\u0007 regression mode"
+    },
+    {
+      "physical_page": 210,
+      "printed_page": 210,
+      "chars": 3196,
+      "first_200": "] hypothesis is H 0 : β < β 0 or H 0 : β > β 0 , or H 0 : β ≠ β0 . continued on next"
+    },
+    {
+      "physical_page": 211,
+      "printed_page": 211,
+      "chars": 3196,
+      "first_200": "Description Course Framework V.1 | 203 Return to Table of Contents © 2020 College Board UNIT 9 Inference for Quantitative Data: Slopes SKILLS Using Probability TOPIC 9.5 Carrying Out a"
+    },
+    {
+      "physical_page": 212,
+      "printed_page": 212,
+      "chars": 3196,
+      "first_200": "1. continued on next page AP Statistics Course and Exam Description Course Framework V.1 | 204 Return to Table of Contents © 2020 College Board UNIT Inference for Quantitative Data:"
+    },
+    {
+      "physical_page": 213,
+      "printed_page": 213,
+      "chars": 3196,
+      "first_200": "and how to apply all learning objectives relating to inference. AP Statistics Course and Exam Description Course Framework V.1 | 206 Return to Table of Contents © 2020 College Board"
+    },
+    {
+      "physical_page": 214,
+      "printed_page": 214,
+      "chars": 3196,
+      "first_200": "t it. For an example of publishers\u0007offer\u0007teachers\u0007the\u0007opportunity\u0007to\u0007request\u0007 computer\u0007output,\u0007see\u0007sample\u0007multiple-choice\u0007question\u0007 a sample copy of a textbook they are interested in #16 on p. 247. ad"
+    },
+    {
+      "physical_page": 215,
+      "printed_page": 215,
+      "chars": 3196,
+      "first_200": "for use in the classroom (in conjunction with calculators to make them comparable to statistical Workshop Statistics: Discovery with Data, features found on newer models. The only acceptable published"
+    },
+    {
+      "physical_page": 216,
+      "printed_page": 216,
+      "chars": 3196,
+      "first_200": "ollection of learning, through a simulation process is an important skill not assessment, tutoring, data, and computing only for the AP Exam but also for sound statistical resources for statistics"
+    },
+    {
+      "physical_page": 217,
+      "printed_page": 217,
+      "chars": 3196,
+      "first_200": "© 2020 College Board CONTENT REINFORCEMENT statistical knowledge and participate in live If a teacher is looking for resources or activities to discussions with other students and teachers use\u0007for\u0007a\u0007p"
+    },
+    {
+      "physical_page": 218,
+      "printed_page": 218,
+      "chars": 3196,
+      "first_200": "laboration. While some teachers are the only results, and compare their class with random AP Statistics teacher in their school or district, online samples of students in the United States"
+    },
+    {
+      "physical_page": 219,
+      "printed_page": 219,
+      "chars": 3196,
+      "first_200": "Undergraduate Statistics Education (CAUSE) that data themselves. causeweb.org/cause For that reason, running an exercise that simulates the CAUSE\u0007is\u0007a\u0007national\u0007organization\u0007whose\u0007mission\u0007 event in a c"
+    },
+    {
+      "physical_page": 220,
+      "printed_page": 220,
+      "chars": 3196,
+      "first_200": "technology, These approaches, along with targeted strategies projects\u0007and\u0007laboratories,\u0007cooperative\u0007group\u0007problem- for teaching AP Statistics, will allow students to build solving, and writing. interd"
+    },
+    {
+      "physical_page": 221,
+      "printed_page": 221,
+      "chars": 3196,
+      "first_200": "coefficients). have them select which strips are relevant and assemble those into a model solution. They should set aside the strips that are not relevant to the solution. continued on"
+    },
+    {
+      "physical_page": 222,
+      "printed_page": 222,
+      "chars": 3196,
+      "first_200": "o heights from the list using a random number generator or a random number table\u0007and\u0007then\u0007find\u0007the\u0007mean\u0007of\u0007 these two heights. Have all students collectively create a dotplot of their sample means. In"
+    },
+    {
+      "physical_page": 223,
+      "printed_page": 223,
+      "chars": 3196,
+      "first_200": "en explain the faulty reasoning. have occurred. they do the same types of problems on their own. continued on next page AP Statistics Course and Exam Description Instructional Approaches V.1"
+    },
+    {
+      "physical_page": 224,
+      "printed_page": 224,
+      "chars": 3196,
+      "first_200": "ts’ writing, as\u0007a\u0007method\u0007for\u0007end-of-unit\u0007or\u0007 to the next solution. Using and gives students end-of-course\u0007review. sticky notes, students practice reading and write a positive comment doing error analy"
+    },
+    {
+      "physical_page": 225,
+      "printed_page": 225,
+      "chars": 3196,
+      "first_200": "Instructional Approaches V.1 | 215 Return to Table of Contents © 2020 College Board Strategy Definition Purpose Example Marking the Text Students highlight, Helps the student Give students examples of"
+    },
+    {
+      "physical_page": 226,
+      "printed_page": 226,
+      "chars": 3196,
+      "first_200": "board. When the pair thinks that they have correctly made all matches, have them compare their arrangements to see how well they did. Model Questions Students answer Provides rigorous After"
+    },
+    {
+      "physical_page": 227,
+      "printed_page": 227,
+      "chars": 3196,
+      "first_200": "Purpose Example Note-Taking Students create a record Helps\u0007in\u0007organizing\u0007 Have students write down the of information while ideas and processing conditions\u0007to\u0007be\u0007verified\u0007when\u0007 reading a text or liste"
+    },
+    {
+      "physical_page": 228,
+      "printed_page": 228,
+      "chars": 3196,
+      "first_200": "normal, while the fourth graph is three items and then write a bimodal. Have students examine reason why. Students then their graph and write on mini respond within their groups."
+    },
+    {
+      "physical_page": 229,
+      "printed_page": 229,
+      "chars": 3196,
+      "first_200": "(or triads), with one teacher and the other with key vocabulary terms partner seated so their back is to their back to the teacher. by having students use the teacher."
+    },
+    {
+      "physical_page": 230,
+      "printed_page": 230,
+      "chars": 3196,
+      "first_200": "when we perform 20 trials? Have students perform the simulation, then\u0007confirm\u0007their\u0007predictions. Quickwrite Students write for a short, Helps generate ideas in Provide students with a prompt, specific"
+    },
+    {
+      "physical_page": 231,
+      "printed_page": 231,
+      "chars": 3196,
+      "first_200": "answer questions and earn practice applying their of the course. For instance, when points for the team. statistics knowledge reviewing for a unit test, students and skills. can earn 5"
+    },
+    {
+      "physical_page": 232,
+      "printed_page": 232,
+      "chars": 3196,
+      "first_200": "and the process continues until each student has their original paper back. continued on next page AP Statistics Course and Exam Description Instructional Approaches V.1 | 219 Return to Table"
+    },
+    {
+      "physical_page": 233,
+      "printed_page": 233,
+      "chars": 3196,
+      "first_200": "scores are independent, what is their combined standard deviation of their team score?” The answer is written on the next card (“Solution: 22.4”). Continue posting solution cards with\u0007new\u0007problems\u0007unt"
+    },
+    {
+      "physical_page": 234,
+      "printed_page": 234,
+      "chars": 3196,
+      "first_200": "modeling a sentence the slope in context. For example, structure that would students could be given the apply for a particular scenario in 2017 FRQ 1, including type of problem."
+    },
+    {
+      "physical_page": 235,
+      "printed_page": 235,
+      "chars": 3196,
+      "first_200": "y, provides variable, have students sketch a given set of characteristics exposure to varying “bimodal,\u0007left-skewed”\u0007distribution\u0007 then switch papers to solutions based on the or a “symmetric, bimodal"
+    },
+    {
+      "physical_page": 236,
+      "printed_page": 236,
+      "chars": 3196,
+      "first_200": "procedure while the group checks that the conditions have been verified.\u0007Student\u0007C\u0007finds\u0007the\u0007value\u0007 of\u0007the\u0007test\u0007statistic\u0007while\u0007others\u0007find\u0007 the p-value.\u0007Student\u0007D\u0007states\u0007the\u0007 conclusion while the gro"
+    },
+    {
+      "physical_page": 237,
+      "printed_page": 237,
+      "chars": 3196,
+      "first_200": "ud Students talk through Helps in When students have learned the a\u0007difficult\u0007problem\u0007 comprehending the different\u0007types\u0007of\u0007inference\u0007tests\u0007 by describing what text, understanding and intervals, have t"
+    },
+    {
+      "physical_page": 238,
+      "printed_page": 238,
+      "chars": 3196,
+      "first_200": "likely to make those errors themselves. Use Students use objects to Supports When constructing the sampling Manipulatives examine relationships comprehension by distribution of the sample mean, betwee"
+    },
+    {
+      "physical_page": 239,
+      "printed_page": 239,
+      "chars": 3196,
+      "first_200": "e table that follows provides examples of questions, activities, and suggested strategies for teaching students to successfully select statistical methods for different\u0007topics\u0007throughout\u0007the\u0007course.\u0007 "
+    },
+    {
+      "physical_page": 240,
+      "printed_page": 240,
+      "chars": 3196,
+      "first_200": "1.4, representing data. § How do I get an unbiased sample? 1.5, 3.3] § Is one sampling method better than § Have students illustrate another in this context? In what"
+    },
+    {
+      "physical_page": 241,
+      "printed_page": 241,
+      "chars": 3196,
+      "first_200": "roportion? flowchart\u0007of\u0007questions\u0007that\u0007 § What formula on the formula sheet leads to each inference could help with the construction of method. the interval? § Have students use § What\u0007is\u0007the\u0007name\u0007of\u0007"
+    },
+    {
+      "physical_page": 242,
+      "printed_page": 242,
+      "chars": 3196,
+      "first_200": "7.8, 8.2, 8.5, 9.4] § Are\u0007the\u0007data\u0007paired?\u0007If\u0007I\u0007shuffled\u0007the\u0007 data, would we lose information? (If § Give students a context so, then it’s paired.) and ask them to write hypotheses (1) for a"
+    },
+    {
+      "physical_page": 243,
+      "printed_page": 243,
+      "chars": 3196,
+      "first_200": "about the situation? for the time it takes to get representations of § Sketch and Switch to school. distributions. 2.C Calculate § Is this quantitative or § Have students use"
+    },
+    {
+      "physical_page": 244,
+      "printed_page": 244,
+      "chars": 3196,
+      "first_200": "difference)\u0007 scatterplots or dotplots between these graphs? that\u0007are\u0007similar\u0007and\u0007different\u0007 § Describe\u0007the\u0007context\u0007for\u0007each\u0007 and have them describe the of these distributions. similarities\u0007and\u0007differe"
+    },
+    {
+      "physical_page": 245,
+      "printed_page": 245,
+      "chars": 3196,
+      "first_200": "tions. frequency of shots made. why not? § How is a population § Have students compare and contrast distribution\u0007different\u0007 two\u0007sampling\u0007distributions\u0007of\u0007different\u0007 from a sampling sample\u0007sizes\u0007to\u0007exp"
+    },
+    {
+      "physical_page": 246,
+      "printed_page": 246,
+      "chars": 3196,
+      "first_200": "hes V.1 | 229 Return to Table of Contents © 2020 College Board Skill Category 3: Using Probability and Simulation (continued) Instructional Skill Key Questions Sample Activities Strategies 3.B Determi"
+    },
+    {
+      "physical_page": 247,
+      "printed_page": 247,
+      "chars": 3196,
+      "first_200": "\u0007 interval, provided § Think Aloud condition for this random sample, calculate statistic, conditions for context? then calculate interval. Students then inference are met. compare their intervals (sam"
+    },
+    {
+      "physical_page": 248,
+      "printed_page": 248,
+      "chars": 3196,
+      "first_200": "nts develop these their arguments on the AP Exam. Students often communication skills, teachers can: need targeted support to develop this skill, so § Have students practice explaining their solutions"
+    },
+    {
+      "physical_page": 249,
+      "printed_page": 249,
+      "chars": 3196,
+      "first_200": "§ What are your assumptions about § Have students look at student this scenario? samples of inappropriate claims or drawing inappropriate conclusions § What, if anything, from released FRQs. Then"
+    },
+    {
+      "physical_page": 250,
+      "printed_page": 250,
+      "chars": 3196,
+      "first_200": "actually a fair deck. This can lead to meaning or assess Starters a discussion of how likely it is to see a claim. the results assuming we’re dealing with a"
+    },
+    {
+      "physical_page": 251,
+      "printed_page": 251,
+      "chars": 3196,
+      "first_200": "knowledge (i.e., involving\u0007a\u0007significance\u0007test\u0007and\u0007 that we’ve “proven” ask students to be explicit about something)? three things: How does the p-value\u0007 compare to alpha? What do we say about the nul"
+    },
+    {
+      "physical_page": 252,
+      "printed_page": 252,
+      "chars": 3196,
+      "first_200": "Exam Weighting Unit 1: Exploring One-Variable Data 15–23% Unit 2: Exploring Two-Variable Data 5–7% Unit 3: Collecting Data 12–15% Unit 4: Probability, Random Variables, and Probability Distributions 1"
+    },
+    {
+      "physical_page": 253,
+      "printed_page": 253,
+      "chars": 3196,
+      "first_200": "s this skill category. Skill 3: Using Multiple-choice\u0007questions\u0007will\u0007assess\u0007students’\u0007 One\u0007free-response\u0007question\u0007will\u0007 ability to explore random phenomena. primarily focus on probability and Probabil"
+    },
+    {
+      "physical_page": 254,
+      "printed_page": 254,
+      "chars": 3196,
+      "first_200": "sociated with Skill investigative task. Categories 1, 3, and 4. The\u0007five\u0007free-response\u0007questions\u0007in\u0007Part\u0007A\u0007include\u0007 § One question that focuses on two or more the following: skill categories. The inve"
+    },
+    {
+      "physical_page": 255,
+      "printed_page": 255,
+      "chars": 3196,
+      "first_200": "topic in words or by circling, shading, or marking given information, without elaboration or explanation. Also phrased as “What is? or “Which?” Interpret:\u0007Describe\u0007the\u0007connection\u0007between\u0007a\u0007mathematica"
+    },
+    {
+      "physical_page": 256,
+      "printed_page": 256,
+      "chars": 3196,
+      "first_200": "a random sample of 600 adults in the United States indicated that they consumed at least 3 pounds of bacon that year. 0.17  0.25 (A) z   0.17"
+    },
+    {
+      "physical_page": 257,
+      "printed_page": 257,
+      "chars": 3196,
+      "first_200": "ms (kg) and standard deviation 2.2 kg. Approximately what percent of the penguins from the population have a weight between 13.0 kg and 16.5 kg? (A) 17% (B) 34% (C)"
+    },
+    {
+      "physical_page": 258,
+      "printed_page": 258,
+      "chars": 3196,
+      "first_200": "ion Exam Information V.1 | 243 Return to Table of Contents © 2020 College Board 10. An agricultural engineer selected a random sample of 30 farms in the United States"
+    },
+    {
+      "physical_page": 259,
+      "printed_page": 259,
+      "chars": 3196,
+      "first_200": "© 2020 College Board (A) The p-value is less than α, and the null hypothesis should be rejected. There is convincing statistical evidence that the mean daily intake of iron"
+    },
+    {
+      "physical_page": 260,
+      "printed_page": 260,
+      "chars": 3196,
+      "first_200": "t on an order is linear. (B) For each amount spent on an order, the distribution of time to fill the order is approximately normal. (C) The standard deviation of"
+    },
+    {
+      "physical_page": 261,
+      "printed_page": 261,
+      "chars": 3196,
+      "first_200": "cing statistical evidence, at a level of significance of   0.05, that there is a difference between the mean lead concentration of region A and the mean lead concentration"
+    },
+    {
+      "physical_page": 262,
+      "printed_page": 262,
+      "chars": 3196,
+      "first_200": "1 2.A, 2.D, 4.E UNC-1.H, UNC-1.M, UNC-1.O, DAT-3.H 1, 7 2 2.B, 3.A, 3.B, 4.B UNC-3.B, VAR-5.A, VAR-5.C, UNC-3.C, VAR-5.D 4 The scoring information for the questions within this course"
+    },
+    {
+      "physical_page": 263,
+      "printed_page": 263,
+      "chars": 3196,
+      "first_200": "50 ppm) is greater than the median 2. Center (e.g., correct location of mean and/or median) UNC-1.M lead concentration of Region A (between 50 ppm 3. Variability (e.g., correct range"
+    },
+    {
+      "physical_page": 264,
+      "printed_page": 264,
+      "chars": 3196,
+      "first_200": "ignificance\u0007level,\u0007α Incorrect (I) if the response does not satisfy the criteria for E or P. AP Statistics Course and Exam Description Scoring Guidelines V.1 | 252 Return to Table of"
+    },
+    {
+      "physical_page": 265,
+      "printed_page": 265,
+      "chars": 3196,
+      "first_200": "s General Scoring Notes Each part of the question (indicated by a letter) is initially scored by determining if it meets the criteria for essentially\u0007correct,\u0007partially\u0007correct,\u0007or\u0007incorrect.\u0007The\u0007resp"
+    },
+    {
+      "physical_page": 266,
+      "printed_page": 266,
+      "chars": 3196,
+      "first_200": "4.B =\u00070(0.008)\u0007+\u00071(0.096)\u0007+\u00072(0.384)\u0007+\u00073(0.512) 1. Calculates the expected value correctly. VAR-5.C = 2.4 A correct expected value calculation that is consistent with incorrect probabilities reported "
+    },
+    {
+      "physical_page": 267,
+      "printed_page": 267,
+      "chars": 3196,
+      "first_200": "Return to Table of Contents © 2020 College Board AP STATISTICS Appendix AP STATISTICS Formula Sheet and Tables AP Statistics Course and Exam Description Appendix V.1 | 259 Return to"
+    },
+    {
+      "physical_page": 268,
+      "printed_page": 268,
+      "chars": 3196,
+      "first_200": "p x 1  p  n x   where x  0, 1, 2, 3,  , n If X has a geometric distribution with 1 1 p"
+    },
+    {
+      "physical_page": 269,
+      "printed_page": 269,
+      "chars": 3196,
+      "first_200": "1  ˆp2  ˆp1 − ˆp2  pˆ  pˆ p1  p2   ˆp  ˆp  s ˆp1  ˆp2  1 2 1 2 n1"
+    },
+    {
+      "physical_page": 270,
+      "printed_page": 270,
+      "chars": 3196,
+      "first_200": " 1 2 1 2 n1 n2 n1 n2 Sampling distributions for simple linear regression: Standard Error* of Random Variable Parameters of Sampling Distribution Sample Statistic For slope:  ,"
+    },
+    {
+      "physical_page": 271,
+      "printed_page": 271,
+      "chars": 3196,
+      "first_200": "n 1 *Standard\u0007deviation\u0007is\u0007a\u0007measurement\u0007of\u0007variability\u0007from\u0007the\u0007theoretical\u0007population.\u0007Standard\u0007error\u0007is\u0007the\u0007estimate\u0007of\u0007the\u0007standard\u0007deviation.\u0007\u0007If\u0007the\u0007standard\u0007 deviation of the statistic is assu"
+    },
+    {
+      "physical_page": 272,
+      "printed_page": 272,
+      "chars": 3196,
+      "first_200": "9 .0233 −1.8 .0359 .0351 .0344 .0336 .0329 .0322 .0314 .0307 .0301 .0294 −1.7 .0446 .0436 .0427 .0418 .0409 .0401 .0392 .0384 .0375 .0367 −1.6 .0548 .0537 .0526 .0516 .0505"
+    },
+    {
+      "physical_page": 273,
+      "printed_page": 273,
+      "chars": 3196,
+      "first_200": "Return to Table of Contents © 2020 College Board Table entry for z is the probability lying below z. Table A Standard Normal Probabilities (continued) z .00 .01 .02 .03"
+    },
+    {
+      "physical_page": 274,
+      "printed_page": 274,
+      "chars": 3196,
+      "first_200": ".9861 .9864 .9868 .9871 .9875 .9878 .9881 .9884 .9887 .9890 2.3 .9893 .9896 .9898 .9901 .9904 .9906 .9909 .9911 .9913 .9916 2.4 .9918 .9920 .9922 .9925 .9927 .9929 .9931 .9932"
+    },
+    {
+      "physical_page": 275,
+      "printed_page": 275,
+      "chars": 3196,
+      "first_200": "2 .816 1.061 1.386 1.886 2.920 4.303 4.849 6.965 9.925 14.09 22.33 31.60 3 .765 .978 1.250 1.638 2.353 3.182 3.482 4.541 5.841 7.453 10.21 12.92 4 .741 .941 1.190"
+    },
+    {
+      "physical_page": 276,
+      "printed_page": 276,
+      "chars": 3196,
+      "first_200": "Appendix V.1 | 266 Return to Table of Contents © 2020 College Board Table B t Distribution Critical Values (continued) Tail Probability p df .25 .20 .15 .10 .05 .025"
+    },
+    {
+      "physical_page": 277,
+      "printed_page": 277,
+      "chars": 3196,
+      "first_200": "© 2020 College Board Table entry for p\u0007is\u0007the\u0007point\u0007( χ 2) with probability p lying above it. Table C χ 2 Critical Values Tail probability p df .25 .20 .15 .10"
+    },
+    {
+      "physical_page": 278,
+      "printed_page": 278,
+      "chars": 3196,
+      "first_200": "36.19 38.58 40.88 43.82 45.97 20 23.83 25.04 26.50 28.41 31.41 34.17 35.02 37.57 40.00 42.34 45.31 47.50 continued on next page AP Statistics Course and Exam Description Appendix V.1"
+    }
+  ]
+}

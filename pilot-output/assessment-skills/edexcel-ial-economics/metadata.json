@@ -1,0 +1,48 @@
+{
+  "schema_version": "1",
+  "id": "edexcel-ial-economics",
+  "assessment_type": "syllabus",
+  "system": "Edexcel International A-Level",
+  "board_or_owner": "Pearson Edexcel",
+  "subject": "Economics",
+  "level": "International A-Level (IAL)",
+  "assessment_code": "ECO (IAL)",
+  "valid_from": "2025",
+  "valid_to": "2026",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_syllabus",
+      "title": "Pearson Edexcel International A-Level Economics specification (2025-2026)",
+      "url": "https://qualifications.pearson.com/en/qualifications/edexcel-international-advanced-levels/economics.html",
+      "source_document_type": "syllabus",
+      "source_layout_profile": "caie_igcse_syllabus",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/02-A-Level知识库/03-考试局/Edexcel/Economics (IAL)/02-课本与考纲/考纲/Edexcel_Economics_ALevel_Specification_2025-2026.pdf",
+      "file_checksum_sha256": "4c9fc8032c73e6830495891d3f625d6e9d3d81891dc4ecb51daa911a5593f911",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "2025-2026 specification",
+      "retrieved_at": "2026-07-02",
+      "page_refs": [
+        "p.1-76"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "printed_page ≈ physical_page for CAIE IGCSE syllabi.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text.",
+      "notes": "Source bundle lives at pilot-output/source-bundles/edexcel-ial-economics-guide/."
+    }
+  ],
+  "aliases": [
+    "edexcel ial economics",
+    "pearson edexcel economics"
+  ],
+  "canonical_id": "edexcel-ial-economics",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "Pearson Edexcel International A-Level Economics. Three papers: P1, P2, P3."
+}

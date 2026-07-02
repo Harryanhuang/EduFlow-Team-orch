@@ -82,6 +82,19 @@ def test_manager_has_collective_dispatch_hard_constraint():
     assert "绝不一条 say 代替 N 次 send" in text
 
 
+def test_manager_identity_requires_context_recovery_above_90_percent():
+    text = identity.render("manager", role="主管", cli="claude-code", model="opus")
+
+    assert "context ≥90%" in text
+    assert "context 强制恢复协议" in text
+    assert "auto_ops context snapshot" in text
+    assert "level=compact_recommended" in text
+    assert "eduflow compact <agent>" in text
+    assert "/compact <agent>" in text
+    assert "禁止" in text and "文字提醒" in text
+    assert "不得继续派该 agent 长任务" in text
+
+
 def test_render_argument_order_contract_present_in_manager():
     text = identity.render("manager", role="r", cli="c", model="m")
     assert "eduflow send <recipient> <sender>" in text
@@ -355,6 +368,18 @@ def test_init_prompt_manager_targets_user_only_in_hint():
     with isolated_env():
         prompt = identity.init_prompt("manager")
     assert "--to user" in prompt
+
+
+def test_init_prompt_manager_hoists_context_recovery_redline():
+    with isolated_env(team={"agents": {"manager": {}}}):
+        prompt = identity.init_prompt("manager")
+
+    assert "context>=90%" in prompt
+    assert "compact_recommended" in prompt
+    assert "eduflow compact <agent>" in prompt
+    assert "/compact <agent>" in prompt
+    assert "禁止只 send 文字提醒" in prompt
+    assert "不派长活" in prompt
 
 
 def test_init_prompt_teaches_inbox_processing_after_R168():

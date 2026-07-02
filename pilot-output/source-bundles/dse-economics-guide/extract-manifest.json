@@ -1,0 +1,43 @@
+{
+  "schema_version": "1",
+  "subject": "economics",
+  "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/05-DSE知识库/03-学科知识/DSE Economics/02-課本與考綱/考綱/經濟 -2028.pdf",
+  "file_checksum_sha256": "352124161cd50da6d1531d095e138c0e5e1940a59d7662df2adf55ce903251a0",
+  "pdfinfo": {
+    "Title": "2028年香港中學文憑考試經濟科評核大綱",
+    "Author": "HKEAA",
+    "Creator": "Microsoft® Word 2019",
+    "Producer": "Microsoft® Word 2019",
+    "CreationDate": "Sun May 11 16:12:08 2025 CST",
+    "ModDate": "Sun May 11 16:12:08 2025 CST",
+    "Custom Metadata": "no",
+    "Metadata Stream": "yes",
+    "Tagged": "yes",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "none",
+    "JavaScript": "no",
+    "Pages": "2",
+    "Encrypted": "no",
+    "Page size": "595.44 x 841.68 pts (A4)",
+    "Page rot": "0",
+    "File size": "110286 bytes",
+    "Optimized": "no",
+    "PDF version": "1.7"
+  },
+  "total_pages": 2,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": 1,
+      "chars": 642,
+      "first_200": "經濟 引言 本 科 的 公 開評 核 建 基於課 程 發 展 議會 與 香 港考試 及 評 核 局聯 合 編 訂的 經 濟 科 課 程及 評"
+    },
+    {
+      "physical_page": 2,
+      "printed_page": 2,
+      "chars": 642,
+      "first_200": "甲部： 短 題 目 。 考 核 範 圍 ： 必 修 部 分 。 全 部 試 題 26% 均須作答。 乙部： 結 構 / 文 章 式 / 資"
+    }
+  ]
+}

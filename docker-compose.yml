@@ -16,6 +16,26 @@
 # emulated — switch to a bridge port-publish if the long-poll dies.
 
 services:
+  agent-chrome:
+    container_name: agent-chrome
+    build:
+      context: ./docker/agent-chrome
+    image: eduflow-agent-chrome:dev
+    shm_size: "1gb"
+    ports:
+      - "127.0.0.1:9233:9223"
+      - "127.0.0.1:6080:6080"
+    command:
+      - sh
+      - -lc
+      - rm -f /data/profile/Singleton* && Xvfb :99 -screen 0 1280x900x24 -nolisten tcp & env DISPLAY=:99 fluxbox >/tmp/fluxbox.log 2>&1 & x11vnc -display :99 -forever -shared -nopw -listen 0.0.0.0 -rfbport 5900 >/tmp/x11vnc.log 2>&1 & websockify --web=/usr/share/novnc 6080 localhost:5900 >/tmp/novnc.log 2>&1 & perl /opt/agent-chrome/tcp-proxy.pl 9223 127.0.0.1 9222 & perl /opt/agent-chrome/tcp-proxy.pl 10086 host.docker.internal 10086 & exec env DISPLAY=:99 /usr/lib/chromium/chromium --no-sandbox --disable-dev-shm-usage --remote-debugging-port=9222 --remote-allow-origins='*' --user-data-dir=/data/profile --download-default-directory=/downloads --disable-extensions-except=/extensions/kimi-webbridge --load-extension=/extensions/kimi-webbridge about:blank
+    volumes:
+      - agent-chrome-profile:/data/profile
+      - ./team-data/agent-chrome-extensions/kimi-webbridge:/extensions/kimi-webbridge:ro
+      - /Users/huanganan/Downloads/agent-chrome:/downloads
+      - ./docker/agent-chrome/tcp-proxy.pl:/opt/agent-chrome/tcp-proxy.pl:ro
+    restart: unless-stopped
+
   eduflow:
     build: .
     image: eduflow:dev
@@ -79,3 +99,6 @@ services:
     # starts tmux + daemons inside; `eduflow down` stops them; the
     # container itself stays around until `docker compose down`.
     command: ["sleep", "infinity"]
+
+volumes:
+  agent-chrome-profile:

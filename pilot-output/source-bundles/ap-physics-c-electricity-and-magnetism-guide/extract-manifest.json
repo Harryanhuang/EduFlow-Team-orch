@@ -1,0 +1,1203 @@
+{
+  "schema_version": "1",
+  "subject": "physics-c-electricity-and-magnetism",
+  "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/03-AP知识库/03-学科知识/AP Physics C Electricity and Magnetism/02-课本与考纲/考纲/ap-physics-c-electricity-and-magnetism-course-and-exam-description.pdf",
+  "file_checksum_sha256": "6b03fdaaeb49a6b3aa72dd3d7c60d6302e71dc8881132d2dd861fcd63bb99f1b",
+  "pdfinfo": {
+    "Title": "AP® Physics C: Electricity and Magnetism Course and Exam Description",
+    "Subject": "AP® Physics C: Electricity and Magnetism; Advanced Placement",
+    "Keywords": "AP® Physics C: Electricity and Magnetism Course and Exam Description; CED; Effective Fall 2024; course content; course information; course resources; exam content; exam format; sample exam questions; exam information; teacher resources; planning and pacing; teacher information; AP resources and supports; instructional model; course framework; laboratory investigations; scoring guidelines; scoring resources; scoring information; 10/25; ADA",
+    "Author": "College Board",
+    "Creator": "Adobe InDesign CC 14.0 (Macintosh)",
+    "Producer": "Adobe PDF Library 15.0",
+    "CreationDate": "Sat Feb 24 19:59:03 2024 CST",
+    "ModDate": "Fri Oct 17 20:28:39 2025 CST",
+    "Custom Metadata": "no",
+    "Metadata Stream": "yes",
+    "Tagged": "yes",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "AcroForm",
+    "JavaScript": "no",
+    "Pages": "195",
+    "Encrypted": "yes (print:yes copy:yes change:no addNotes:no algorithm:AES-256)",
+    "Page size": "612 x 792 pts (letter)",
+    "Page rot": "0",
+    "File size": "7565741 bytes",
+    "Optimized": "no",
+    "PDF version": "1.7"
+  },
+  "total_pages": 195,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": 1,
+      "chars": 3260,
+      "first_200": "INCLUDES Course framework Instructional section Sample exam questions AP Physics C: ® Electricity and Magnetism COURSE AND EXAM DESCRIPTION Effective Fall 2024 AP Physics C: ® Electricity and Magnetis"
+    },
+    {
+      "physical_page": 2,
+      "printed_page": 2,
+      "chars": 3260,
+      "first_200": "ground such studies in primary sources so that students can evaluate experiences and evidence for themselves. 6. \u0007Every\u0007AP\u0007student\u0007who\u0007engages\u0007with\u0007evidence\u0007is\u0007listened\u0007to\u0007and\u0007respected.\u0007 Students are"
+    },
+    {
+      "physical_page": 3,
+      "printed_page": 3,
+      "chars": 3260,
+      "first_200": "Acknowledgments College Board would like to acknowledge the following committee members, consultants, and reviewers for their assistance with and commitment to the development of this course. All indi"
+    },
+    {
+      "physical_page": 4,
+      "printed_page": 4,
+      "chars": 3260,
+      "first_200": "Return to Table of Contents © 2020 College Board College Board Staff Amy Johnson, Director, AP Physics Curriculum and Assessment Jesse Miner, Director, AP Physics Curriculum and Assessment John Pinizz"
+    },
+    {
+      "physical_page": 5,
+      "printed_page": 5,
+      "chars": 3260,
+      "first_200": "ear\u0007colleges\u0007and\u0007universities\u0007in\u0007the\u0007United\u0007States\u0007 can be achieved. grant credit, advanced placement, or both on the basis\u0007of\u0007successful\u0007AP\u0007Exam\u0007scores—more\u0007than\u00073,300\u0007 institutions worldwide annuall"
+    },
+    {
+      "physical_page": 6,
+      "printed_page": 6,
+      "chars": 3260,
+      "first_200": "ll AP Readers administrator)\u0007to\u0007confirm\u0007awareness\u0007and\u0007understanding\u0007 are thoroughly trained, and their work is monitored of the curricular and resource requirements. A syllabus throughout the Reading "
+    },
+    {
+      "physical_page": 7,
+      "printed_page": 7,
+      "chars": 3260,
+      "first_200": "nalysis to ensure that questions are accurate, fair, college course. and valid, and that there is an appropriate spread of difficulty\u0007across\u0007the\u0007questions.\u0007 § The number of points college faculty indi"
+    },
+    {
+      "physical_page": 8,
+      "printed_page": 8,
+      "chars": 3260,
+      "first_200": "educators—make\u0007improvements\u0007to\u0007the\u0007way\u0007they\u0007 setting their own credit and placement policies, most teach or score because of their experience at the private colleges and universities award credit and/"
+    },
+    {
+      "physical_page": 9,
+      "printed_page": 9,
+      "chars": 3260,
+      "first_200": "rience. The platform provides a variety of powerful resources and tools\u0007to\u0007provide\u0007yearlong\u0007support\u0007to\u0007teachers\u0007and\u0007students,\u0007offering\u0007opportunities\u0007to\u0007give\u0007and\u0007 get meaningful feedback on student pro"
+    },
+    {
+      "physical_page": 10,
+      "printed_page": 10,
+      "chars": 3260,
+      "first_200": "se and Exam Description ﻿ V.1 | 4 Return to Table of Contents © 2020 College Board Instructional Model Integrating AP resources throughout the course can help students develop skills"
+    },
+    {
+      "physical_page": 11,
+      "printed_page": 11,
+      "chars": 3260,
+      "first_200": "s, and Gauss's Law § Electric Potential § Conductors and Capacitors § Electric Circuits § Magnetic Fields and Electromagnetism § Electromagnetic Induction College Course Equivalent AP Physics C: Elect"
+    },
+    {
+      "physical_page": 12,
+      "printed_page": 12,
+      "chars": 3260,
+      "first_200": "t is not a complete curriculum. Teachers C:\u0007Electricity\u0007and\u0007Magnetism\u0007course\u0007defines\u0007concepts,\u0007 create their own local curriculum by selecting, for each skills, and understandings required by represen"
+    },
+    {
+      "physical_page": 13,
+      "printed_page": 13,
+      "chars": 3260,
+      "first_200": "ghout the course, providing teachers with one way to integrate the skills into the course content\u0007with\u0007sufficient\u0007repetition\u0007to\u0007prepare\u0007students\u0007to\u0007apply\u0007those\u0007skills\u0007when\u0007 taking the AP Physics C: El"
+    },
+    {
+      "physical_page": 14,
+      "printed_page": 14,
+      "chars": 3260,
+      "first_200": "nt\u0007times\u0007and\u0007locations\u0007in\u0007a\u0007 single scenario. 2.D Predict\u0007new\u0007values\u0007or\u0007factors\u0007of\u0007 change of physical quantities using functional dependence between variables. AP Physics C: Electricity and Magnetism"
+    },
+    {
+      "physical_page": 15,
+      "printed_page": 15,
+      "chars": 3260,
+      "first_200": "r school’s academic calendar. AP Physics C: Electricity and Magnetism Course and Exam Description Course Framework V.1 | 13 Return to Table of Contents © 2024 College Board Exam Weighting"
+    },
+    {
+      "physical_page": 16,
+      "printed_page": 16,
+      "chars": 3260,
+      "first_200": "Exam. The three science practices, and their associated skills, Many of the equations in this document are provided will be applied to all learning objectives in the course for\u0007reference\u0007and\u0007guidance,"
+    },
+    {
+      "physical_page": 17,
+      "printed_page": 17,
+      "chars": 3260,
+      "first_200": "3 Energy The Course at a Glance provides 1 1 a\u0007useful\u0007visual\u0007organization\u0007for\u0007 8.2 Conservation of 2 9.2 Electric Potential 2 Electric Charge and the 3 the AP Physics C: Electricity and"
+    },
+    {
+      "physical_page": 18,
+      "printed_page": 18,
+      "chars": 3260,
+      "first_200": "§ Qualitative/Quantitative Translation § Qualitative/Quantitative Translation they need to focus. Course Framework V.1 | 15 Return to Table of Contents © 2024 College Board Magnetic UNIT Conductors an"
+    },
+    {
+      "physical_page": 19,
+      "printed_page": 19,
+      "chars": 3260,
+      "first_200": "s 12.4 Ampère’s Law 2 3 1 3 2 11.5 Compound Direct 3 Current Circuits 1 2 11.6 Kirchhoff’s Loop Rule 3 1 2 11.7 Kirchhoff’s Junction 3 Rule 1"
+    },
+    {
+      "physical_page": 20,
+      "printed_page": 20,
+      "chars": 3260,
+      "first_200": "lysis § Qualitative/Quantitative Translation V.1 | 17 © 2024 College Board THIS PAGE IS INTENTIONALLY LEFT BLANK. AP PHYSICS C: ELECTRICITY AND MAGNETISM Unit Guides Introduction Designed with input f"
+    },
+    {
+      "physical_page": 21,
+      "printed_page": 21,
+      "chars": 3260,
+      "first_200": "AP EXAM WEIGHTING contextualizes\u0007and\u0007situates\u0007the\u0007key\u0007content\u0007of\u0007the\u0007unit\u0007within\u0007 Electric Charges, the scope of the course. Fields, and Gauss’s Law The essential questions\u0007are\u0007thought-provoking\u0007quest"
+    },
+    {
+      "physical_page": 22,
+      "printed_page": 22,
+      "chars": 3260,
+      "first_200": "emphasis for that unit. The first question on the AP Physics C: to get a balloon to stick Electricity and Magnetism Exam—the to the wall? 1.A 1.C 2.A Mathematical Routines"
+    },
+    {
+      "physical_page": 23,
+      "printed_page": 23,
+      "chars": 3260,
+      "first_200": "making and justifying claims about that same situation. Being able to identify, create, scenario. While Unit 8 offers content perfect and use graphs that represent the same for practicing the"
+    },
+    {
+      "physical_page": 24,
+      "printed_page": 24,
+      "chars": 3260,
+      "first_200": "The Unit at a Glance table shows the topics, related enduring UNIT understandings, and suggested skills. 8 Electric Charges, Fields, and Gauss’s Law The suggested skills for each topic show"
+    },
+    {
+      "physical_page": 25,
+      "printed_page": 25,
+      "chars": 3260,
+      "first_200": "ons in a single scenario. 3.B Apply an appropriate law, definition, theoretical relationship, or model to make a claim. 3.C Justify or support a claim using evidence from experimental data,"
+    },
+    {
+      "physical_page": 26,
+      "printed_page": 26,
+      "chars": 3260,
+      "first_200": "Course Framework V.1 | 20 Return to Table of Contents © 2024 College Board Using the Unit Guides The Sample Instructional Activities page includes optional UNIT activities that can help"
+    },
+    {
+      "physical_page": 27,
+      "printed_page": 27,
+      "chars": 3260,
+      "first_200": "have students draw acceleration versus time and velocity versus time graphs for the times when the light sphere attracts, collides elastically with, and then repels from the heavier sphere. 3"
+    },
+    {
+      "physical_page": 28,
+      "printed_page": 28,
+      "chars": 3260,
+      "first_200": "qualitative sketches Learning objectives\u0007define\u0007what\u0007a\u0007student\u0007needs\u0007to\u0007be\u0007able\u0007 of graphs that represent features of a model or Charge Distributions the behavior of a physical to do with content know"
+    },
+    {
+      "physical_page": 29,
+      "printed_page": 29,
+      "chars": 3260,
+      "first_200": "at different times and LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE locations in a single scenario. the AP Exam. 8.4.A 8.4.A.1 3.C Describe the electric field Expressions for the electric field of specified"
+    },
+    {
+      "physical_page": 30,
+      "printed_page": 30,
+      "chars": 3260,
+      "first_200": "knowledge statements where appropriate. the electric field resulting from the following charge distributions and locations: an infinitely long, uniformly charged wire or cylinder at a distance from it"
+    },
+    {
+      "physical_page": 31,
+      "printed_page": 31,
+      "chars": 3260,
+      "first_200": "iate feedback related to this unit’s topic and skills. Progress Check 8 Multiple-choice: ~18 questions Free-response: 4 questions § Mathematical Routines § Translation Between Representations § Experi"
+    },
+    {
+      "physical_page": 32,
+      "printed_page": 32,
+      "chars": 3260,
+      "first_200": "to create and use mathematical models buildings? representations (1.A and 1.C) to demonstrate and representations. Students will be an understanding of the relationships § Why can a bird land required"
+    },
+    {
+      "physical_page": 33,
+      "printed_page": 33,
+      "chars": 3260,
+      "first_200": "solution\u0007technique\u0007are\u0007critical\u0007problem- solving skills that should be given space to\u0007be\u0007developed\u0007as\u0007a\u0007first\u0007step\u0007towards\u0007 deriving equations (2.A) to represent physical scenarios. AP Physics C: Elec"
+    },
+    {
+      "physical_page": 34,
+      "printed_page": 34,
+      "chars": 3260,
+      "first_200": "3.B Apply\u0007an\u0007appropriate\u0007law,\u0007definition,\u0007theoretical\u0007relationship,\u0007or\u0007model\u0007to\u0007make\u0007a\u0007 claim. 8.4 \u0007 Electric Fields of Charge 1.C Create\u0007qualitative\u0007sketches\u0007of\u0007graphs\u0007that\u0007represent\u0007features\u0007of\u0007a\u0007mo"
+    },
+    {
+      "physical_page": 35,
+      "printed_page": 35,
+      "chars": 3260,
+      "first_200": "lues\u0007or\u0007factors\u0007of\u0007change\u0007of\u0007physical\u0007quantities\u0007using\u0007functional\u0007 dependence between variables. Go to AP Classroom to assign the Progress Check for Unit 8. Review the results in class to identify and"
+    },
+    {
+      "physical_page": 36,
+      "printed_page": 36,
+      "chars": 3260,
+      "first_200": "ther\u0007the\u0007pieces\u0007of\u0007tape\u0007will\u0007be\u0007charged\u0007and\u0007if\u0007they\u0007will\u0007have\u0007different\u0007or\u0007 similar charges. 4 8.3 Desktop Experiment Tasks Have students play the PhET simulation “Electric Field Hockey.” Have a compe"
+    },
+    {
+      "physical_page": 37,
+      "printed_page": 37,
+      "chars": 3260,
+      "first_200": "factors of change of physical quantities using functional dependence LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE between variables. 8.1.A 8.1.A.1 3.B Describe the electric Charge is a fundamental property "
+    },
+    {
+      "physical_page": 38,
+      "printed_page": 38,
+      "chars": 3260,
+      "first_200": "Electric Charges, Fields, and Gauss’s Law LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 8.1.A 8.1.A.3 Describe the electric The direction of the electrostatic force force that results from depends on the sig"
+    },
+    {
+      "physical_page": 39,
+      "printed_page": 39,
+      "chars": 3260,
+      "first_200": "Gravitational forces dominate at larger scales even though they are weaker than electrostatic forces, because systems at large scales tend to be electrically neutral. 8.1.C 8.1.C.1 Describe the electr"
+    },
+    {
+      "physical_page": 40,
+      "printed_page": 40,
+      "chars": 3260,
+      "first_200": "electrons\u0007can\u0007change\u0007configurations\u0007within\u0007 the material. 8.1.C.4.ii Conductors are made from electrically conducting materials in which charge carriers move easily; insulators are made from electrica"
+    },
+    {
+      "physical_page": 41,
+      "printed_page": 41,
+      "chars": 3260,
+      "first_200": "uced charge separation occurs when the electrostatic force between two systems alters the distribution of charges within the systems, resulting in the polarization\u0007of\u0007one\u0007or\u0007both\u0007systems. 8.2.A.1.iii "
+    },
+    {
+      "physical_page": 42,
+      "printed_page": 42,
+      "chars": 3260,
+      "first_200": "tric Fields Create quantitative graphs with appropriate scales and units, including plotting data. 2.A Derive a symbolic expression from known quantities by selecting and following a logical mathemati"
+    },
+    {
+      "physical_page": 43,
+      "printed_page": 43,
+      "chars": 3260,
+      "first_200": "  F E= E q 8.3.A.2.i A test charge is a point charge of small enough magnitude such that its presence does\u0007not\u0007significantly\u0007affect\u0007an\u0007electric\u0007field\u0007 in its vicinity. 8.3.A.2.ii An\u0007electric\u0007field\u0007p"
+    },
+    {
+      "physical_page": 44,
+      "printed_page": 44,
+      "chars": 3260,
+      "first_200": "Electric\u0007field\u0007line\u0007diagrams\u0007are\u0007simplified\u0007 models\u0007of\u0007electric\u0007field\u0007maps\u0007and\u0007can\u0007be\u0007 used to determine the relative magnitude and\u0007direction\u0007of\u0007the\u0007electric\u0007field\u0007at\u0007any\u0007 position in the diagram. 8.3"
+    },
+    {
+      "physical_page": 45,
+      "printed_page": 45,
+      "chars": 3260,
+      "first_200": "© 2024 College Board UNIT Electric Charges, Fields, and Gauss’s Law 8 TOPIC 8.4 SUGGESTED SKILLS 1.C Electric Fields of Create qualitative sketches of graphs that represent features of a"
+    },
+    {
+      "physical_page": 46,
+      "printed_page": 46,
+      "chars": 3260,
+      "first_200": "on and the principle of superposition. experimental data, physical Relevant equation: representations, or physical principles or laws. 8.4.A.2 Symmetry considerations of certain charge distributions c"
+    },
+    {
+      "physical_page": 47,
+      "printed_page": 47,
+      "chars": 3260,
+      "first_200": "defined\u0007as 8.5.A.2.i The\u0007direction\u0007of\u0007the\u0007area\u0007vector\u0007is\u0007defined\u0007 as perpendicular to the plane of the surface and outward from a closed surface. 8.5.A.2.ii The\u0007sign\u0007of\u0007flux\u0007is\u0007given\u0007by\u0007the\u0007dot\u0007produc"
+    },
+    {
+      "physical_page": 48,
+      "printed_page": 48,
+      "chars": 3260,
+      "first_200": "and following a logical mathematical pathway. 2.B Required Course Content Calculate or estimate an unknown quantity with units from known quantities, by selecting and following a logical computational"
+    },
+    {
+      "physical_page": 49,
+      "printed_page": 49,
+      "chars": 3260,
+      "first_200": "over the length (one dimension), area (two dimensions), or volume (three dimensions) of the charge distribution. For example: continued on next page AP Physics C: Electricity and Magnetism Course and"
+    },
+    {
+      "physical_page": 50,
+      "printed_page": 50,
+      "chars": 3260,
+      "first_200": "om to assign students the online Progress Check for this unit. Whether assigned as homework or completed in class, the Progress Check provides each student with immediate feedback related to"
+    },
+    {
+      "physical_page": 51,
+      "printed_page": 51,
+      "chars": 3260,
+      "first_200": "Exam—the\u0007Translation\u0007Between\u0007 § Why is a car battery Throughout this unit, there are many Representations\u0007(TBR)\u0007question— more dangerous than a opportunities for students to create graphs requires stu"
+    },
+    {
+      "physical_page": 52,
+      "printed_page": 52,
+      "chars": 3260,
+      "first_200": "good practice for the TBR, content from any unit\u0007may\u0007be\u0007included\u0007in\u0007this\u0007free-response\u0007 question on the AP Exam. AP Physics C: Electricity and Magnetism Course and Exam Description Course Framework V."
+    },
+    {
+      "physical_page": 53,
+      "printed_page": 53,
+      "chars": 3260,
+      "first_200": "es. 3.A Create\u0007experimental\u0007procedures\u0007that\u0007are\u0007appropriate\u0007for\u0007a\u0007given\u0007scientific\u0007 question. 3.C Justify\u0007or\u0007support\u0007a\u0007claim\u0007using\u0007evidence\u0007from\u0007experimental\u0007data,\u0007 physical representations, or physic"
+    },
+    {
+      "physical_page": 54,
+      "printed_page": 54,
+      "chars": 3260,
+      "first_200": "© 2024 College Board UNIT 9 Electric Potential SUGGESTED SKILLS 1.C TOPIC 9.1 Electric Potential Energy Create qualitative sketches of graphs that represent features of a model or the behavior"
+    },
+    {
+      "physical_page": 55,
+      "printed_page": 55,
+      "chars": 3260,
+      "first_200": "Electric Potential Create quantitative graphs with appropriate scales and units, including plotting data. 2.A Derive a symbolic expression from known quantities by selecting and following a logical ma"
+    },
+    {
+      "physical_page": 56,
+      "printed_page": 56,
+      "chars": 3260,
+      "first_200": "e is 9.2.A.2.ii The electric potential due to multiple point charges can be determined by the principle of scalar superposition of the electric potential due to each of the point"
+    },
+    {
+      "physical_page": 57,
+      "printed_page": 57,
+      "chars": 3260,
+      "first_200": "al to the and\u0007electric\u0007field. negative of the spatial rate of change in electric potential at that location. Relevant equation: 9.2.B.2 The change in electric potential between two points can be"
+    },
+    {
+      "physical_page": 58,
+      "printed_page": 58,
+      "chars": 3260,
+      "first_200": "ectors. An isoline map of electric potential and electric field. can\u0007be\u0007constructed\u0007from\u0007an\u0007electric\u0007field\u0007 vector\u0007map,\u0007and\u0007an\u0007electric\u0007field\u0007map\u0007may\u0007 be constructed from an isoline map. 9.2.B.3.iii A"
+    },
+    {
+      "physical_page": 59,
+      "printed_page": 59,
+      "chars": 3260,
+      "first_200": "ergy. AP Physics C: Electricity and Magnetism Course and Exam Description Course Framework V.1 | 48 Return to Table of Contents © 2024 College Board AP PHYSICS C: ELECTRICITY AND"
+    },
+    {
+      "physical_page": 60,
+      "printed_page": 60,
+      "chars": 3260,
+      "first_200": "ing Understanding ESSENTIAL In\u0007Unit\u00078,\u0007students\u0007investigated\u0007why\u0007all\u0007objects\u0007have\u0007an\u0007electric\u0007charge.\u0007In\u0007Unit\u000710,\u0007students\u0007 QUESTIONS will examine how that charge can be stored. Conductors, capacitors"
+    },
+    {
+      "physical_page": 61,
+      "printed_page": 61,
+      "chars": 3260,
+      "first_200": "and mathematically. Using content from capacitance, Unit 10 also encourages any\u0007unit,\u0007the\u0007QQT\u0007first\u0007requires\u0007students\u0007 students to derive new expressions to make a claim and provide evidence and from "
+    },
+    {
+      "physical_page": 62,
+      "printed_page": 62,
+      "chars": 3260,
+      "first_200": "content.\u0007Having\u0007frequent\u0007opportunities— diagrams, graphs, and verbal descriptions, including those that present themselves can help students prepare for the QQT in\u0007Unit\u000710—to\u0007translate\u0007between\u0007differe"
+    },
+    {
+      "physical_page": 63,
+      "printed_page": 63,
+      "chars": 3260,
+      "first_200": "tion,\u0007theoretical\u0007relationship,\u0007or\u0007model\u0007to\u0007make\u0007a\u0007 claim. 10.4 Dielectrics 1.B Create\u0007quantitative\u0007graphs\u0007with\u0007appropriate\u0007scales\u0007and\u0007units,\u0007including\u0007plotting\u0007 data. 2.B Calculate\u0007or\u0007estimate\u0007an\u0007unk"
+    },
+    {
+      "physical_page": 64,
+      "printed_page": 64,
+      "chars": 3260,
+      "first_200": "ting of ionosphere and Earth’s surface, and the charge and potential difference\u0007of\u0007the\u0007“capacitor.” 3 10.3 Desktop Experiment Tasks Have students construct their own capacitor from sheets of aluminum "
+    },
+    {
+      "physical_page": 65,
+      "printed_page": 65,
+      "chars": 3260,
+      "first_200": "or more scenarios or at different times and locations in a single scenario. Required Course Content 3.B Apply an appropriate law, definition, theoretical relationship, or model to make a claim."
+    },
+    {
+      "physical_page": 66,
+      "printed_page": 66,
+      "chars": 3260,
+      "first_200": "10.1.A.3.i The time interval over which charges reach electrostatic equilibrium within a conductor is so short as to be negligible. 10.1.A.3.ii When a conductor reaches electrostatic equilibrium, all "
+    },
+    {
+      "physical_page": 67,
+      "printed_page": 67,
+      "chars": 3260,
+      "first_200": "Electrostatic shielding is the process of surrounding an area with a closed, conducting shell to create a region inside the conductor that\u0007is\u0007free\u0007from\u0007external\u0007electric\u0007fields. AP Physics C: Electric"
+    },
+    {
+      "physical_page": 68,
+      "printed_page": 68,
+      "chars": 3260,
+      "first_200": "10.2.A.1 3.B Describe the movement of When conductors are in electrical contact, Apply an appropriate law, charge and the resulting charges will be redistributed such that the definition, theoretical "
+    },
+    {
+      "physical_page": 69,
+      "printed_page": 69,
+      "chars": 3260,
+      "first_200": "charge stored on each plate to the electric potential\u0007difference\u0007created\u0007by\u0007the\u0007separation\u0007 of those charges. Relevant equation: 10.3.A.2.i The capacitance of a capacitor depends only on the physical "
+    },
+    {
+      "physical_page": 70,
+      "printed_page": 70,
+      "chars": 3260,
+      "first_200": "except near the edges of the plates. 10.3.A.3.i The\u0007magnitude\u0007of\u0007the\u0007electric\u0007field\u0007between\u0007 two charged parallel plates, where the plate separation is much smaller than the dimensions of the plates, "
+    },
+    {
+      "physical_page": 71,
+      "printed_page": 71,
+      "chars": 3260,
+      "first_200": "Required Course Content factors of change of physical quantities using functional dependence between variables. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 3.A 10.4.A 10.4.A.1 Create experimental Describe "
+    },
+    {
+      "physical_page": 72,
+      "printed_page": 72,
+      "chars": 3260,
+      "first_200": "Electric Circuits 15–25% AP EXAM WEIGHTING ~12/~24 CLASS PERIODS AP Physics C: Electricity and Magnetism Course and Exam Description Course Framework V.1 | 61 Return to Table of Contents ©"
+    },
+    {
+      "physical_page": 73,
+      "printed_page": 73,
+      "chars": 3260,
+      "first_200": "o cause across the course by using the electrical components they learned about in Unit 10 and will electricity\u0007to\u0007go\u0007off\u0007in\u0007 come\u0007to\u0007discover\u0007in\u0007Unit\u000711\u0007to\u0007create,\u0007modify,\u0007and\u0007analyze\u0007circuits.\u0007Stude"
+    },
+    {
+      "physical_page": 74,
+      "printed_page": 74,
+      "chars": 3260,
+      "first_200": "s,\u0007linearize\u0007and\u0007analyze\u0007 bulbs\u0007that\u0007turn\u0007on\u0007or\u0007off\u0007as\u0007various\u0007switches\u0007 data. Practicing designing experiments, are opened or closed. performing data analysis, and discussing Once students have desig"
+    },
+    {
+      "physical_page": 75,
+      "printed_page": 75,
+      "chars": 3260,
+      "first_200": "tational pathway. 2.D Predict\u0007new\u0007values\u0007or\u0007factors\u0007of\u0007change\u0007of\u0007physical\u0007quantities\u0007using\u0007functional\u0007 dependence between variables. 3.A Create\u0007experimental\u0007procedures\u0007that\u0007are\u0007appropriate\u0007for\u0007a\u0007given"
+    },
+    {
+      "physical_page": 76,
+      "printed_page": 76,
+      "chars": 3260,
+      "first_200": "\u0007or\u0007more\u0007scenarios\u0007or\u0007at\u0007different\u0007times\u0007and\u0007 locations in a single scenario. 3.B Apply\u0007an\u0007appropriate\u0007law,\u0007definition,\u0007theoretical\u0007relationship,\u0007or\u0007model\u0007to\u0007make\u0007a\u0007claim. 11.7 Kirchhoff’s Junction 1."
+    },
+    {
+      "physical_page": 77,
+      "printed_page": 77,
+      "chars": 3260,
+      "first_200": "by applying various voltages and measuring the resulting current. 2 11.4 Construct an Argument Have students justify with evidence why a small 1 resistor can only handle a small amount"
+    },
+    {
+      "physical_page": 78,
+      "printed_page": 78,
+      "chars": 3260,
+      "first_200": "situations. 2.A Derive a symbolic expression from known quantities by selecting and following a logical mathematical pathway. 2.D Required Course Content Predict new values or factors of change of phy"
+    },
+    {
+      "physical_page": 79,
+      "printed_page": 79,
+      "chars": 3260,
+      "first_200": "If\u0007the\u0007current\u0007is\u0007zero\u0007in\u0007a\u0007section\u0007of\u0007wire,\u0007 the net motion of charge carriers in the wire\u0007is\u0007also\u0007zero,\u0007although\u0007individual\u0007charge\u0007 carriers\u0007will\u0007not\u0007have\u0007zero\u0007speed.\u0007 11.1.A.2 Current\u0007density\u0007is\u0007th"
+    },
+    {
+      "physical_page": 80,
+      "printed_page": 80,
+      "chars": 3260,
+      "first_200": "have a direction. Because its direction is relative to the current carrier and not space, current does not obey the laws of vector addition and has no vector components. 11.1.A.4.i"
+    },
+    {
+      "physical_page": 81,
+      "printed_page": 81,
+      "chars": 3260,
+      "first_200": "locations in a single scenario. Required Course Content 3.B Apply an appropriate law, definition, theoretical relationship, or model to make a claim. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 3.C 11.2.A "
+    },
+    {
+      "physical_page": 82,
+      "printed_page": 82,
+      "chars": 3260,
+      "first_200": "its constituent elements. continued on next page AP Physics C: Electricity and Magnetism Course and Exam Description Course Framework V.1 | 69 Return to Table of Contents © 2024 College"
+    },
+    {
+      "physical_page": 83,
+      "printed_page": 83,
+      "chars": 3260,
+      "first_200": "1.B Resistance, Resistivity, Create quantitative graphs with appropriate scales and units, including plotting and Ohm’s Law data. 2.B Calculate or estimate an unknown quantity with units from known qu"
+    },
+    {
+      "physical_page": 84,
+      "printed_page": 84,
+      "chars": 3260,
+      "first_200": "length and is inversely proportional to its relationship, or model to cross-sectional\u0007area. make a claim. Relevant equation: 11.3.A.2.i Resistivity is a fundamental property of a material that depends"
+    },
+    {
+      "physical_page": 85,
+      "printed_page": 85,
+      "chars": 3260,
+      "first_200": "11.3.B.1.iii Resistors can also convert electrical energy to thermal energy, which may change the temperature of both the resistor and the resistor’s environment. 11.3.B.1.iv The resistance of an ohmi"
+    },
+    {
+      "physical_page": 86,
+      "printed_page": 86,
+      "chars": 3260,
+      "first_200": "2.C Compare physical quantities between two or more scenarios or at different times and LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE locations in a single scenario. 11.4.A 11.4.A.1 3.B Describe the transfer"
+    },
+    {
+      "physical_page": 87,
+      "printed_page": 87,
+      "chars": 3260,
+      "first_200": "Required Course Content or more scenarios or at different times and locations in a single scenario. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 3.C 11.5.A 11.5.A.1 Justify or support a claim Describe the"
+    },
+    {
+      "physical_page": 88,
+      "printed_page": 88,
+      "chars": 3260,
+      "first_200": "UNIT Electric Circuits 11 LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 11.5.A 11.5.A.2.ii Describe the equivalent The inverse of the equivalent resistance resistance of multiple of a set of resistors connec"
+    },
+    {
+      "physical_page": 89,
+      "printed_page": 89,
+      "chars": 3260,
+      "first_200": "across the terminals of the battery is reduced relative\u0007to\u0007the\u0007potential\u0007difference\u0007when\u0007there\u0007 is no current in the battery. Derived equation: continued on next page AP Physics C: Electricity and Mag"
+    },
+    {
+      "physical_page": 90,
+      "printed_page": 90,
+      "chars": 3260,
+      "first_200": "that\u0007no\u0007charge\u0007flows\u0007through\u0007them. 11.5.C.3 Nonideal ammeters and voltmeters will change the properties of the circuit being measured. BOUNDARY STATEMENT Unless otherwise stated, all batteries, wires,"
+    },
+    {
+      "physical_page": 91,
+      "printed_page": 91,
+      "chars": 3260,
+      "first_200": "or more scenarios or at different times and LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE locations in a single scenario. 11.6.A 11.6.A.1 3.B Describe a circuit or Energy changes in simple electrical circuit"
+    },
+    {
+      "physical_page": 92,
+      "printed_page": 92,
+      "chars": 3260,
+      "first_200": "s that are appropriate for a given scientific question. 3.B LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE Apply an appropriate law, 11.7.A 11.7.A.1 definition, theoretical Describe a circuit or Kirchhoff’s\u0007j"
+    },
+    {
+      "physical_page": 93,
+      "printed_page": 93,
+      "chars": 3260,
+      "first_200": "mathematical pathway. 2.D Required Course Content Predict new values or factors of change of physical quantities using functional dependence between variables. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 3"
+    },
+    {
+      "physical_page": 94,
+      "printed_page": 94,
+      "chars": 3260,
+      "first_200": "continued on next page AP Physics C: Electricity and Magnetism Course and Exam Description Course Framework V.1 | 79 Return to Table of Contents © 2024 College Board UNIT 11"
+    },
+    {
+      "physical_page": 95,
+      "printed_page": 95,
+      "chars": 3260,
+      "first_200": "he\u0007potential\u0007difference\u0007across\u0007a\u0007capacitor\u0007 and the current in the branch of the circuit containing the capacitor each change over time as the capacitor charges and discharges, but both will reach a s"
+    },
+    {
+      "physical_page": 96,
+      "printed_page": 96,
+      "chars": 3260,
+      "first_200": "After a long time, a charging capacitor approaches a state of being fully charged, reaching\u0007a\u0007maximum\u0007potential\u0007difference\u0007 at\u0007which\u0007there\u0007is\u0007zero\u0007current\u0007in\u0007the\u0007circuit\u0007 branch in which the capacitor"
+    },
+    {
+      "physical_page": 97,
+      "printed_page": 97,
+      "chars": 3260,
+      "first_200": "Remember to go to AP Classroom to assign students the online Progress Check for this unit. Whether assigned as homework or completed in class, the Progress Check provides each student"
+    },
+    {
+      "physical_page": 98,
+      "printed_page": 98,
+      "chars": 3260,
+      "first_200": "ence Practices On\u0007both\u0007the\u0007multiple-choice\u0007and\u0007free- § Why\u0007does\u0007the\u0007deflection\u0007 2.C 2.D 3.B 3.C response sections of the AP Physics C: of a pair of parallel Electricity and Magnetism Exam, students Un"
+    },
+    {
+      "physical_page": 99,
+      "printed_page": 99,
+      "chars": 3260,
+      "first_200": "e habit of\u0007their\u0007claims\u0007and\u0007justifications\u0007made\u0007with\u0007 of including references to the right hand rule functional dependence (2.D, 3.C), starting with and the resistance to the change in magnetic the\u0007fi"
+    },
+    {
+      "physical_page": 100,
+      "printed_page": 100,
+      "chars": 3260,
+      "first_200": "sing\u0007evidence\u0007from\u0007experimental\u0007data,\u0007physical\u0007 representations, or physical principles or laws. 12.4 Ampère’s Law 1.A Create\u0007diagrams,\u0007tables,\u0007charts,\u0007or\u0007schematics\u0007to\u0007represent\u0007physical\u0007situations.\u0007"
+    },
+    {
+      "physical_page": 101,
+      "printed_page": 101,
+      "chars": 3260,
+      "first_200": "on the wire. Then, have students compare the force on the wire from Earth’s magnetic field\u0007to\u0007the\u0007wire’s\u0007weight\u0007(which\u0007is\u0007the\u0007force\u0007on\u0007the\u0007wire\u0007from\u0007Earth’s\u0007gravitational\u0007field). 3 12.4 Create a Plan "
+    },
+    {
+      "physical_page": 102,
+      "printed_page": 102,
+      "chars": 3260,
+      "first_200": "ector\u0007field\u0007that\u0007can\u0007be\u0007 experimental data, physical magnetic\u0007field. used to determine the magnetic force exerted representations, or physical on moving electric charges, electric currents, principles"
+    },
+    {
+      "physical_page": 103,
+      "printed_page": 103,
+      "chars": 3260,
+      "first_200": "Return to Table of Contents © 2024 College Board UNIT Magnetic Fields and Electromagnetism 12 LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 12.1.B 12.1.B.1 Describe the magnetic Magnetic dipoles result from "
+    },
+    {
+      "physical_page": 104,
+      "printed_page": 104,
+      "chars": 3260,
+      "first_200": "atomic magnetic dipoles. 12.1.B.3.ii Paramagnetic materials such as aluminum, titanium, and magnesium interact weakly with\u0007an\u0007external\u0007magnetic\u0007field,\u0007in\u0007that\u0007the\u0007 magnetic dipoles of the material do "
+    },
+    {
+      "physical_page": 105,
+      "printed_page": 105,
+      "chars": 3260,
+      "first_200": "rmeability\u0007of\u0007matter\u0007has\u0007values\u0007different\u0007 from that of free space and arises from the matter’s composition and arrangement. It is not a constant for a material and varies based on many factors, inclu"
+    },
+    {
+      "physical_page": 106,
+      "printed_page": 106,
+      "chars": 3260,
+      "first_200": "at different times and locations in a single LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE scenario. 12.2.A 12.2.A.1 3.A Describe\u0007the\u0007magnetic\u0007field\u0007 A single moving charged object produces a Create experime"
+    },
+    {
+      "physical_page": 107,
+      "printed_page": 107,
+      "chars": 3260,
+      "first_200": "escription Course Framework V.1 | 91 Return to Table of Contents © 2024 College Board UNIT 12 Magnetic Fields and Electromagnetism LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 12.2.B 12.2.B.2 Describe the f"
+    },
+    {
+      "physical_page": 108,
+      "printed_page": 108,
+      "chars": 3260,
+      "first_200": "Derive a symbolic expression from known quantities by selecting and following a logical mathematical pathway. Required Course Content 2.D Predict new values or factors of change of physical quantities"
+    },
+    {
+      "physical_page": 109,
+      "printed_page": 109,
+      "chars": 3260,
+      "first_200": "Return to Table of Contents © 2024 College Board UNIT 12 Magnetic Fields and Electromagnetism LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 12.3.B 12.3.B.1 Describe the force exerted A\u0007magnetic\u0007field\u0007will\u0007ex"
+    },
+    {
+      "physical_page": 110,
+      "printed_page": 110,
+      "chars": 3260,
+      "first_200": "ng and following a logical mathematical pathway. 2.B Required Course Content Calculate or estimate an unknown quantity with units from known quantities, by selecting and following a logical computatio"
+    },
+    {
+      "physical_page": 111,
+      "printed_page": 111,
+      "chars": 3260,
+      "first_200": "ity and Magnetism Course and Exam Description Course Framework V.1 | 95 Return to Table of Contents © 2024 College Board UNIT 12 Magnetic Fields and Electromagnetism LEARNING OBJECTIVE ESSENTIAL"
+    },
+    {
+      "physical_page": 112,
+      "printed_page": 112,
+      "chars": 3260,
+      "first_200": "ts to use Maxwell’s fourth equation with a changing electric field. However, students should understand that a changing electric field generates a magnetic field. AP Physics C: Electricity and Magneti"
+    },
+    {
+      "physical_page": 113,
+      "printed_page": 113,
+      "chars": 3260,
+      "first_200": "UNIT 13 10–20% AP EXAM WEIGHTING ~10/~20 CLASS PERIODS Electromagnetic Induction Developing Understanding ESSENTIAL Throughout the course, students explored the vital roles electricity and magnetism p"
+    },
+    {
+      "physical_page": 114,
+      "printed_page": 114,
+      "chars": 3260,
+      "first_200": "in an induced current when the magnetic proficient\u0007in\u0007calculating\u0007unknown\u0007quantities\u0007 flux\u0007through\u0007the\u0007loop\u0007is\u0007changing\u0007or\u0007if\u0007the\u0007 with unit and/or symbolic expressions from magnetic\u0007field\u0007is\u0007turned\u0007o"
+    },
+    {
+      "physical_page": 115,
+      "printed_page": 115,
+      "chars": 3260,
+      "first_200": "t\u0007physical\u0007situations.\u0007 2.A Derive\u0007a\u0007symbolic\u0007expression\u0007from\u0007known\u0007quantities\u0007by\u0007selecting\u0007and\u0007following\u0007a\u0007 logical mathematical pathway. 2.C Compare\u0007physical\u0007quantities\u0007between\u0007two\u0007or\u0007more\u0007scenarios"
+    },
+    {
+      "physical_page": 116,
+      "printed_page": 116,
+      "chars": 3260,
+      "first_200": "Return to Table of Contents © 2024 College Board UNIT Electromagnetic Induction 13 UNIT AT A GLANCE (cont’d) Topics Suggested Skills 13.5 Circuits with Resistors 1.C Create\u0007qualitative\u0007sketches\u0007of\u0007gra"
+    },
+    {
+      "physical_page": 117,
+      "printed_page": 117,
+      "chars": 3260,
+      "first_200": "are free to alter or edit them. The examples below were developed in partnership with teachers from the AP community to share ways that they approach teaching some of the"
+    },
+    {
+      "physical_page": 118,
+      "printed_page": 118,
+      "chars": 3260,
+      "first_200": "SUGGESTED SKILLS 1.A Magnetic Flux Create diagrams, tables, charts, or schematics to represent physical situations. 2.A Derive a symbolic expression from known quantities by selecting and following a "
+    },
+    {
+      "physical_page": 119,
+      "printed_page": 119,
+      "chars": 3260,
+      "first_200": "13.1.A.1.ii The\u0007sign\u0007of\u0007flux\u0007is\u0007given\u0007by\u0007the\u0007dot\u0007product\u0007 of\u0007the\u0007magnetic\u0007field\u0007vector\u0007and\u0007the\u0007area\u0007 vector. 13.1.A.2 The\u0007total\u0007magnetic\u0007flux\u0007passing\u0007through\u0007a\u0007 surface\u0007is\u0007defined\u0007by\u0007the\u0007surface\u0007integ"
+    },
+    {
+      "physical_page": 120,
+      "printed_page": 120,
+      "chars": 3260,
+      "first_200": "induced emf \u0007is\u0007equal\u0007to\u0007the\u0007magnetic\u0007field\u0007 multiplied by the rate of change in area perpendicular\u0007to\u0007the\u0007magnetic\u0007field. 13.2.A.1.iii When an emf is induced in a long solenoid, the total induced emf"
+    },
+    {
+      "physical_page": 121,
+      "printed_page": 121,
+      "chars": 3260,
+      "first_200": ".2.A.4 Maxwell’s equations can be used to show that\u0007electric\u0007and\u0007magnetic\u0007fields\u0007obey\u0007wave\u0007 equations and that electromagnetic waves travel at a constant speed in free space. Derived equation: BOUNDAR"
+    },
+    {
+      "physical_page": 122,
+      "printed_page": 122,
+      "chars": 3260,
+      "first_200": "acceleration. 13.3.A.3 The force on a conducting loop is proportional to the induced current in the loop, which depends on the rate of change of magnetic flux,\u0007the\u0007resistance\u0007of\u0007the\u0007loop,\u0007and\u0007the\u0007velo"
+    },
+    {
+      "physical_page": 123,
+      "printed_page": 123,
+      "chars": 3260,
+      "first_200": "mathematical pathway. Required Course Content 2.C Compare physical quantities between two or more scenarios or at different times and LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE locations in a single scena"
+    },
+    {
+      "physical_page": 124,
+      "printed_page": 124,
+      "chars": 3260,
+      "first_200": "2 13.4.A.2.i The\u0007energy\u0007stored\u0007in\u0007the\u0007magnetic\u0007field\u0007 generated by an inductor in which current is flowing\u0007can\u0007be\u0007dissipated\u0007through\u0007a\u0007resistor\u0007 or used to charge a capacitor. continued on next page A"
+    },
+    {
+      "physical_page": 125,
+      "printed_page": 125,
+      "chars": 3260,
+      "first_200": "Create qualitative sketches of graphs that represent features of a model or and Inductors the behavior of a physical system. 2.A (LR Circuits) Derive a symbolic expression from known quantities"
+    },
+    {
+      "physical_page": 126,
+      "printed_page": 126,
+      "chars": 3260,
+      "first_200": "Derived equation: 13.5.A.3 The\u0007time\u0007constant\u0007is\u0007a\u0007significant\u0007feature\u0007of\u0007the\u0007 behavior of an LR circuit. 13.5.A.3.i The time constant of a circuit is a measure of how quickly an LR circuit will reach "
+    },
+    {
+      "physical_page": 127,
+      "printed_page": 127,
+      "chars": 3260,
+      "first_200": "e interval. 13.5.A.4.i When a switch is initially closed or opened in a circuit containing an inductor, the induced emf will be equal in magnitude and opposite in direction to"
+    },
+    {
+      "physical_page": 128,
+      "printed_page": 128,
+      "chars": 3260,
+      "first_200": "plotting and Inductors data. 2.B Calculate or estimate an (LC Circuits) unknown quantity with units from known quantities, by selecting and following a logical computational pathway. Required Course C"
+    },
+    {
+      "physical_page": 129,
+      "printed_page": 129,
+      "chars": 3260,
+      "first_200": "d 2q 1 2 =− q dt LC 13.6.A.3 The angular frequency of an oscillating LC circuit\u0007can\u0007be\u0007derived\u0007from\u0007the\u0007differential\u0007 equation that describes an LC circuit. Derived equation: AP Physics C: Electricity"
+    },
+    {
+      "physical_page": 130,
+      "printed_page": 130,
+      "chars": 3260,
+      "first_200": "oratory experience might businesses that can help with laboratory equipment and incorporate a sequence involving all four levels of materials.\u0007Teachers\u0007can\u0007also\u0007utilize\u0007online\u0007donation\u0007sites\u0007 inquiry\u0007"
+    },
+    {
+      "physical_page": 131,
+      "printed_page": 131,
+      "chars": 3260,
+      "first_200": "ege Board How to Set Up a Lab Program Physics\u0007is\u0007a\u0007way\u0007of\u0007approaching\u0007scientific\u0007discovery\u0007 to a college course, the equipment and time allotted that requires personal observation and physical to labo"
+    },
+    {
+      "physical_page": 132,
+      "printed_page": 132,
+      "chars": 3260,
+      "first_200": "modifications\u0007or\u0007ask\u0007for\u0007additional\u0007equipment\u0007 writing\u0007experimental\u0007procedures\u0007and\u0007analyzing\u0007data.\u0007 appropriate for their design. It is also helpful for After completion, students should be able to de"
+    },
+    {
+      "physical_page": 133,
+      "printed_page": 133,
+      "chars": 3260,
+      "first_200": "§ Know where safety equipment is located in the lab, the collaboration. After students are given a question such\u0007as\u0007the\u0007fire\u0007extinguisher,\u0007safety\u0007goggles,\u0007and\u0007 for\u0007investigation,\u0007they\u0007may\u0007present\u0007thei"
+    },
+    {
+      "physical_page": 134,
+      "printed_page": 134,
+      "chars": 3260,
+      "first_200": "ss period?” Within labs, students explore patterns and systems to § “Do students need to be in the ‘lab’ part of the make conclusions that can be used to predict"
+    },
+    {
+      "physical_page": 135,
+      "printed_page": 135,
+      "chars": 3260,
+      "first_200": "§ “Performing experimental procedures. discussion, and application of concepts; and then end the unit with one or two more complex labs that § Collecting,\u0007plotting,\u0007and\u0007analyzing\u0007data\u0007as\u0007needed. incor"
+    },
+    {
+      "physical_page": 136,
+      "printed_page": 136,
+      "chars": 3260,
+      "first_200": "ride and accomplishment after Most\u0007labs\u0007can\u0007be\u0007broadly\u0007categorized\u0007into\u0007three\u0007types:\u0007 self-correcting.\u0007Not\u0007only\u0007does\u0007this\u0007student\u0007learn\u0007how\u0007 Investigations,\u0007Verifications,\u0007and\u0007Applications.\u0007\u0007 to overc"
+    },
+    {
+      "physical_page": 137,
+      "printed_page": 137,
+      "chars": 3260,
+      "first_200": "§ Labs that have small details that require careful apply a known physical principle or idea to a lab attention as well as labs that are basic and setup\u0007in\u0007order\u0007to\u0007find\u0007a\u0007specific\u0007answer\u0007or\u0007quantity."
+    },
+    {
+      "physical_page": 138,
+      "printed_page": 138,
+      "chars": 3260,
+      "first_200": ", duct § A combination approach, including both printed tape, clear tape, etc.) workbook style pages and full laboratory notebooks § Scissors § Traditional lab manual and full lab report"
+    },
+    {
+      "physical_page": 139,
+      "printed_page": 139,
+      "chars": 3260,
+      "first_200": "ght be asked about on the AP implemented in the classroom. Cell phones have Exam. stopwatches,\u0007video\u0007cameras\u0007(and\u0007most\u0007with\u0007slow- AP Physics C: Electricity and Magnetism Course and Exam Description La"
+    },
+    {
+      "physical_page": 140,
+      "printed_page": 140,
+      "chars": 3260,
+      "first_200": "AP Central provides an example textbook list to help that will provide required course content, teachers determine whether a text is considered appropriate in should provide students with regular oppo"
+    },
+    {
+      "physical_page": 141,
+      "printed_page": 141,
+      "chars": 3260,
+      "first_200": "1.B The student works The student plots The student applies The student creates Create quantitative graphs with a graph data on a graph that is appropriate scales appropriate graphs with"
+    },
+    {
+      "physical_page": 142,
+      "printed_page": 142,
+      "chars": 3260,
+      "first_200": "student selects The student is The student performs Calculate or estimate an works with a from a set of given given possible a calculation on their unknown quantity with units"
+    },
+    {
+      "physical_page": 143,
+      "printed_page": 143,
+      "chars": 3260,
+      "first_200": "es, or procedure on their appropriate for a given provided by the by the teacher. augments an outline own. scientific\u0007question.\u0007 teacher. of a procedure provided by the teacher. 3.B The"
+    },
+    {
+      "physical_page": 144,
+      "printed_page": 144,
+      "chars": 3260,
+      "first_200": "Take out the “data” or “results” section §§ Let students do the thinking: Create opportunities from traditional labs. If the procedure is thorough for students to choose what they will"
+    },
+    {
+      "physical_page": 145,
+      "printed_page": 145,
+      "chars": 3260,
+      "first_200": "nother. at any point during the rotation so that all students have the opportunity to lead work and engage with multiple problems. Changing Students translate from one For\u0007a\u0007given\u0007situation\u0007involving\u0007"
+    },
+    {
+      "physical_page": 146,
+      "printed_page": 146,
+      "chars": 3260,
+      "first_200": "reasoning Provide\u0007students\u0007with\u0007an\u0007electric\u0007field\u0007map\u0007 Argument to present assumptions about of the area around two unknown charges mathematical situations, support and ask them to construct an argume"
+    },
+    {
+      "physical_page": 147,
+      "printed_page": 147,
+      "chars": 3260,
+      "first_200": "off\u0007the\u0007desk,\u0007and\u0007then\u0007pull\u0007the\u0007pieces\u0007of\u0007 a given question and is followed by a tape together. reformulating step, where students reconsider their previous explanations Students can then investigate "
+    },
+    {
+      "physical_page": 148,
+      "printed_page": 148,
+      "chars": 3260,
+      "first_200": "s the problem but are not opportunities to practice this instructional permitted to write anything. In the strategy. second round, called “pens without friends,” students return to their desk where\u0007th"
+    },
+    {
+      "physical_page": 149,
+      "printed_page": 149,
+      "chars": 3260,
+      "first_200": "focus on key information that helps Classroom\u0007-\u0007or\u0007have\u0007them\u0007look\u0007at\u0007a\u0007write\u0007up\u0007 them understand the concepts and of\u0007another\u0007student’s\u0007experimental\u0007design\u0007-\u0007 interpretations of tasks required to solve"
+    },
+    {
+      "physical_page": 150,
+      "printed_page": 150,
+      "chars": 3260,
+      "first_200": "s can be used to determine if a given mathematical calculation will produce the desired answer. Note Taking Students create a record of information Have students write down descriptions while"
+    },
+    {
+      "physical_page": 151,
+      "printed_page": 151,
+      "chars": 3260,
+      "first_200": "(numeric or symbolic) for the resistance. variables involved, but also frequently include variables that are not important to the task. Students rank the variations of\u0007a\u0007specified\u0007physical\u0007quantity\u0007an"
+    },
+    {
+      "physical_page": 152,
+      "printed_page": 152,
+      "chars": 3260,
+      "first_200": "something is incorrect, students must of\u0007the\u0007magnetic\u0007field.\u0007Students\u0007can\u0007 identify the error and explain how to identify what, if anything, is wrong with correct it. the\u0007provided\u0007free-body\u0007diagrams\u0007f"
+    },
+    {
+      "physical_page": 153,
+      "printed_page": 153,
+      "chars": 3260,
+      "first_200": "at are fundamental to the discipline of physics. Students will\u0007benefit\u0007from\u0007multiple\u0007opportunities\u0007to\u0007develop\u0007these\u0007practices\u0007in\u0007a\u0007scaffolded\u0007manner.\u0007The\u0007tables\u0007that\u0007follow\u0007 look at each of the scienc"
+    },
+    {
+      "physical_page": 154,
+      "printed_page": 154,
+      "chars": 3260,
+      "first_200": "cience Practice 1: Creating Representations Questions to Skills Ask Students Sample Activities 1.A §§ What kind of model or representation Have students divide their paper Create diagrams, tables, wou"
+    },
+    {
+      "physical_page": 155,
+      "printed_page": 155,
+      "chars": 3260,
+      "first_200": "§ How should the data be graphed so that Ask students what properties the\u0007best-fit\u0007curve\u0007shows\u0007a\u0007relationship? can be determined from the § What do the data on the graph show? known values"
+    },
+    {
+      "physical_page": 156,
+      "printed_page": 156,
+      "chars": 3260,
+      "first_200": "form of an equation before substituting values, as representations to describe and explain phenomena, well as be able to solve the equation and interpret the as well as to solve"
+    },
+    {
+      "physical_page": 157,
+      "printed_page": 157,
+      "chars": 3260,
+      "first_200": "ic with units from known § What known quantities can be field\u0007and\u0007the\u0007terminal\u0007velocity\u0007 quantities, by selecting used to calculate the unknown of the bar. and following a logical quantity? computatio"
+    },
+    {
+      "physical_page": 158,
+      "printed_page": 158,
+      "chars": 3260,
+      "first_200": "ds would you use to describe the functional dependence of the variables on each other? AP Physics C: Electricity and Magnetism Course and Exam Description Instructional Approaches V.1 | 137"
+    },
+    {
+      "physical_page": 159,
+      "printed_page": 159,
+      "chars": 3260,
+      "first_200": "ing and Argumentation Questions to Ask Skills Students Sample Activities 3.A § What information will be needed Have students design an Create experimental to\u0007answer\u0007the\u0007scientific\u0007question?\u0007 experimen"
+    },
+    {
+      "physical_page": 160,
+      "printed_page": 160,
+      "chars": 3260,
+      "first_200": "§ What is your purpose (e.g., to on\u0007a\u0007provided\u0007electric\u0007field\u0007as\u0007a\u0007 theoretical relationship, define,\u0007show\u0007causality,\u0007compare,\u0007 function of radius graph. or model to make a claim. or explain a process"
+    },
+    {
+      "physical_page": 161,
+      "printed_page": 161,
+      "chars": 3260,
+      "first_200": "Skill 2.C—Comparisons Derive a symbolic expression from known quantities by Compare physical quantities between two or more selecting and following a logical mathematical pathway. scenarios or at diff"
+    },
+    {
+      "physical_page": 162,
+      "printed_page": 162,
+      "chars": 3260,
+      "first_200": "current in the battery after the switch is closed, and I o . When the switch is closed, the current in Bulb 1 is I c. provides\u0007a\u0007correct\u0007justification?\u0007 Which of the"
+    },
+    {
+      "physical_page": 163,
+      "printed_page": 163,
+      "chars": 3260,
+      "first_200": "Question 2: Translation Between Representations Question 3: Experimental Design and Analysis Question 4: Qualitative/Quantitative Translation AP Physics C: Electricity and Magnetism Course and Exam De"
+    },
+    {
+      "physical_page": 164,
+      "printed_page": 164,
+      "chars": 3260,
+      "first_200": "ing and 20–25% following a logical computational pathway. 40–45% 2.C Compare physical quantities between two or more scenarios or at different times and locations in a 10–15% single scenario. 2.D"
+    },
+    {
+      "physical_page": 165,
+      "printed_page": 165,
+      "chars": 3260,
+      "first_200": "justify their prediction using that reasoning or analysis. §§ Use their representations, mathematical analysis, or graph to make a prediction about how those representations would change if properties"
+    },
+    {
+      "physical_page": 166,
+      "printed_page": 166,
+      "chars": 3260,
+      "first_200": "ents may not be directly assessed on their ability to create diagrams or other representations of the system to answer the QQT, those skills may still help students to answer"
+    },
+    {
+      "physical_page": 167,
+      "printed_page": 167,
+      "chars": 3260,
+      "first_200": "agnetism Course and Exam Description Exam Information V.1 | 150 Return to Table of Contents © 2024 College Board Sample Exam Questions The sample exam questions that follow illustrate the"
+    },
+    {
+      "physical_page": 168,
+      "printed_page": 168,
+      "chars": 3260,
+      "first_200": "B Positive Negative C Negative Positive D Negative Negative (A) A (B) B (C) C (D) D AP Physics C: Electricity and Magnetism Course and Exam Description Exam Information V.1"
+    },
+    {
+      "physical_page": 169,
+      "printed_page": 169,
+      "chars": 3260,
+      "first_200": "is inserted into the capacitor with capacitance , and the new equivalent 3 capacitance between points A and B is 2Ceq . What is the value of the dielectric constant"
+    },
+    {
+      "physical_page": 170,
+      "printed_page": 170,
+      "chars": 3260,
+      "first_200": "gnitude that is done inside the sphere. 9. With the particle held in place at the center of the charged spherical region, what is the magnitude of the net electric"
+    },
+    {
+      "physical_page": 171,
+      "printed_page": 171,
+      "chars": 3260,
+      "first_200": "re b is a positive constant. What is the total electric flux through the surface of the cube? (A) Zero (B) ba3 (C) 2ba3 (D) 6ba3 AP Physics C: Electricity"
+    },
+    {
+      "physical_page": 172,
+      "printed_page": 172,
+      "chars": 3260,
+      "first_200": "A B C D 15. Two small spheres are arranged along a line and have charges of −3Q and +4Q , as shown in the figure. The tick marks on"
+    },
+    {
+      "physical_page": 173,
+      "printed_page": 173,
+      "chars": 3260,
+      "first_200": "© 2024 College Board +z C 2R +y O +x R Figure 2 (b) Derive an expression for the magnitude of the electric field due to the ring at Point"
+    },
+    {
+      "physical_page": 174,
+      "printed_page": 174,
+      "chars": 3260,
+      "first_200": "as n0 turns per unit of length along the axis. Starting at time t = 0, the current I in the solenoid is varied according to the equation I (t"
+    },
+    {
+      "physical_page": 175,
+      "printed_page": 175,
+      "chars": 3260,
+      "first_200": "ween the wires. (a) i. Indicate quantities that could be measured by the students that would allow them to determine the relationship between the magnitude of the magnetic force exerted"
+    },
+    {
+      "physical_page": 176,
+      "printed_page": 176,
+      "chars": 3260,
+      "first_200": "part (c)(iii) and the measured values L =1.4 m and d = 0.005 m as needed, calculate the magnetic permeability of free space, µ0 . AP Physics C: Electricity and"
+    },
+    {
+      "physical_page": 177,
+      "printed_page": 177,
+      "chars": 3260,
+      "first_200": "3.B 8.1.A 8.1.A.3 4 C 2.A 12.4.A 12.4.A.1 5 B 2.B 9.2.B 9.2.B.2 6 C 2.A 10.4.A 10.4.A.5 7 D 3.C 13.5.A 13.5.A.3 8 B 3.C 9.3.A 9.3.A.1 9 A"
+    },
+    {
+      "physical_page": 178,
+      "printed_page": 178,
+      "chars": 3260,
+      "first_200": "otential due to the sphere is equal and opposite in sign to the potential of the ring. (a) ii For a multi-step derivation starting with a statement of conservation of"
+    },
+    {
+      "physical_page": 179,
+      "printed_page": 179,
+      "chars": 3260,
+      "first_200": "Scoring Guidelines V.1 | 170 Return to Table of Contents © 2024 College Board Scoring Guidelines for Question 2: Translation Between Representations 12 points Learning Objectives: 12.4.A 13.1.A 13.2.A"
+    },
+    {
+      "physical_page": 180,
+      "printed_page": 180,
+      "chars": 3260,
+      "first_200": "d b 1 Scoring note: The curve need not extend to include negative flux values for times t > to earn this point. b For a continuous curve that has"
+    },
+    {
+      "physical_page": 181,
+      "printed_page": 181,
+      "chars": 3260,
+      "first_200": "indicating that a graph involving force and distance can be used to determine the relationship 1 point (b) ii For describing a valid method of determining whether the graph is"
+    },
+    {
+      "physical_page": 182,
+      "printed_page": 182,
+      "chars": 3260,
+      "first_200": "2 Scoring note: Linear regression on the given data, graphed as F vs I , yields a slope of 0.0657 mN A and µ 0 = 1.47 × 10−6 N"
+    },
+    {
+      "physical_page": 183,
+      "printed_page": 183,
+      "chars": 3260,
+      "first_200": "or correctly substituting the current in the capacitor branch as Example Response (Starting with loop rule): Example response (Starting with junction rule): Total for Part (b) 3 points AP Physics"
+    },
+    {
+      "physical_page": 184,
+      "printed_page": 184,
+      "chars": 3260,
+      "first_200": "se words, when used in the context of AP introductory physics problem: “A block is at rest at Physics,\u0007have\u0007very\u0007specific\u0007and\u0007intentional\u0007meanings.\u0007 the top of an inclined plane. Determine the speed T"
+    },
+    {
+      "physical_page": 185,
+      "printed_page": 185,
+      "chars": 3260,
+      "first_200": "tational\u0007effects\u0007from\u0007the\u0007Sun\u0007are\u0007considered.\u0007Even\u0007 of a scenario. Ultimately, the language used to describe tidal\u0007effects\u0007from\u0007the\u0007Moon\u0007are\u0007only\u0007considered\u0007after\u0007 the natural world can be very import"
+    },
+    {
+      "physical_page": 186,
+      "printed_page": 186,
+      "chars": 3260,
+      "first_200": "§ Air resistance is negligible. A PHYSICAL THING WHERE THE INTERNAL § Frictional/drag forces are negligible. STRUCTURE AND PROPERTIES OF THE THING § Edge\u0007effects\u0007of\u0007charged\u0007plates\u0007are\u0007negligible. ARE "
+    },
+    {
+      "physical_page": 187,
+      "printed_page": 187,
+      "chars": 3260,
+      "first_200": "behavior\u0007of\u0007the\u0007truck\u0007 § Energy bar charts itself.\u0007Sudden\u0007accelerations—in\u0007any\u0007direction—may\u0007 § Momentum charts have\u0007significant\u0007effects\u0007on\u0007how\u0007the\u0007truck\u0007behaves.\u0007 § Free-body\u0007diagrams Furthermore, us"
+    },
+    {
+      "physical_page": 188,
+      "printed_page": 188,
+      "chars": 3260,
+      "first_200": "ects. The object model is used throughout AP Physics C: Electricity and Magnetism to simplify the analysis of most phenomena. An “object” can be anything because what the object is"
+    },
+    {
+      "physical_page": 189,
+      "printed_page": 189,
+      "chars": 3260,
+      "first_200": "s constant. In the second choice, where the student within. However, the complex motion of the pieces of decides to only consider the cereal within the box as cereal within"
+    },
+    {
+      "physical_page": 190,
+      "printed_page": 190,
+      "chars": 3260,
+      "first_200": "A point charge can be introduced as another important simplifying model in physics, like object. A point charge is a charged system that can be modeled as an object Particle"
+    },
+    {
+      "physical_page": 191,
+      "printed_page": 191,
+      "chars": 3260,
+      "first_200": "two horizontal, charged explore the nature of the small, it was discovered that conducting plates. The object has mass, and charge, protons and neutrons do have structure and are made"
+    },
+    {
+      "physical_page": 192,
+      "printed_page": 192,
+      "chars": 3260,
+      "first_200": "hertz, Hz joule, J Neutron mass, mn = 1.67 × 10−27 kg kilogram, kg Electron mass, me = 9.11 × 10−31 kg meter, m Elementary charge, e = 1.60 ×"
+    },
+    {
+      "physical_page": 193,
+      "printed_page": 193,
+      "chars": 3260,
+      "first_200": "ription 1 Appendix V.1 | 184 Return to Table of Contents © 2024 College Board ELECTRICITY AND MAGNETISM q1q2 q1q2 A = area A = area k C = capacitance"
+    },
+    {
+      "physical_page": 194,
+      "printed_page": 194,
+      "chars": 3260,
+      "first_200": "f = frequency F = force F = force 0 h = height I = rotational inertia J = impulse k = spring constant k = spring constant K ="
+    },
+    {
+      "physical_page": 195,
+      "printed_page": 195,
+      "chars": 3260,
+      "first_200": "S = 2 rℓ + 2 r 2 s = arc length c S = surface area a Circle Sphere tan = V = volume b A = r2 4"
+    }
+  ]
+}

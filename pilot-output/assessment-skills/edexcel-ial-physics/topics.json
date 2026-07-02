@@ -1,0 +1,141 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "edexcel-ial-physics",
+      "topic_name": "CAIE IGCSE Physics",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Physics (PHY (IAL)) syllabus scope.",
+        "Valid: 2025 → 2026."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "edexcel-ial-physics-unit01",
+      "topic_name": "Topic 1: Mechanics",
+      "parent_id": "edexcel-ial-physics",
+      "scope": [
+        "Topic 1 content as defined in Edexcel IAL edexcel-ial-physics."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Mechanics."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "edexcel-ial-physics-unit02",
+      "topic_name": "Topic 2: Waves and Optics",
+      "parent_id": "edexcel-ial-physics",
+      "scope": [
+        "Topic 2 content as defined in Edexcel IAL edexcel-ial-physics."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Waves and Optics."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "edexcel-ial-physics-unit03",
+      "topic_name": "Topic 3: Electricity",
+      "parent_id": "edexcel-ial-physics",
+      "scope": [
+        "Topic 3 content as defined in Edexcel IAL edexcel-ial-physics."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Electricity."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "edexcel-ial-physics-unit04",
+      "topic_name": "Topic 4: Thermal Physics",
+      "parent_id": "edexcel-ial-physics",
+      "scope": [
+        "Topic 4 content as defined in Edexcel IAL edexcel-ial-physics."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Thermal Physics."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "edexcel-ial-physics-unit05",
+      "topic_name": "Topic 5: Atomic and Nuclear Physics",
+      "parent_id": "edexcel-ial-physics",
+      "scope": [
+        "Topic 5 content as defined in Edexcel IAL edexcel-ial-physics."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Atomic and Nuclear Physics."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "edexcel-ial-physics-unit06",
+      "topic_name": "Topic 6: Further Mechanics and Thermal Physics",
+      "parent_id": "edexcel-ial-physics",
+      "scope": [
+        "Topic 6 content as defined in Edexcel IAL edexcel-ial-physics."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Further Mechanics and Thermal Physics."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    }
+  ]
+}

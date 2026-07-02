@@ -1,0 +1,340 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "ap-statistics",
+      "topic_name": "AP Statistics",
+      "parent_id": "",
+      "scope": [
+        "AP Statistics course framework (College Board).",
+        "Valid: 2025 → (ongoing).",
+        "Units 1–9 with cumulative exam weightings."
+      ],
+      "out_of_scope": [
+        "Pre-AP / general high-school level content unless explicitly cited in CED.",
+        "University-level content beyond AP expectations.",
+        "Other AP subjects."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific unit fits.",
+        "Prefer specific Unit N nodes for content questions."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-statistics-unit01",
+      "topic_name": "Unit 1: Exploring One-Variable Data",
+      "parent_id": "ap-statistics",
+      "scope": [
+        "Unit 1 content as defined in AP Statistics CED.",
+        "Exam weighting: 15–23%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Exploring One-Variable Data."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_1.1",
+          "text": "Core content and concepts for Unit 1: Exploring One-Variable Data."
+        },
+        {
+          "ek_id": "EK_1.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 1: Exploring One-Variable Data."
+        },
+        {
+          "ek_id": "EK_1.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 1: Exploring One-Variable Data."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-statistics-unit02",
+      "topic_name": "Unit 2: Exploring Two-Variable Data",
+      "parent_id": "ap-statistics",
+      "scope": [
+        "Unit 2 content as defined in AP Statistics CED.",
+        "Exam weighting: 5–7%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Exploring Two-Variable Data."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_2.1",
+          "text": "Core content and concepts for Unit 2: Exploring Two-Variable Data."
+        },
+        {
+          "ek_id": "EK_2.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 2: Exploring Two-Variable Data."
+        },
+        {
+          "ek_id": "EK_2.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 2: Exploring Two-Variable Data."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-statistics-unit03",
+      "topic_name": "Unit 3: Collecting Data",
+      "parent_id": "ap-statistics",
+      "scope": [
+        "Unit 3 content as defined in AP Statistics CED.",
+        "Exam weighting: 12–15%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Collecting Data."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_3.1",
+          "text": "Core content and concepts for Unit 3: Collecting Data."
+        },
+        {
+          "ek_id": "EK_3.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 3: Collecting Data."
+        },
+        {
+          "ek_id": "EK_3.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 3: Collecting Data."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-statistics-unit04",
+      "topic_name": "Unit 4: Probability, Random Variables, and",
+      "parent_id": "ap-statistics",
+      "scope": [
+        "Unit 4 content as defined in AP Statistics CED.",
+        "Exam weighting: 10–20%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Probability, Random Variables, and."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_4.1",
+          "text": "Probability Distributions"
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-statistics-unit05",
+      "topic_name": "Unit 5: Sampling Distributions",
+      "parent_id": "ap-statistics",
+      "scope": [
+        "Unit 5 content as defined in AP Statistics CED.",
+        "Exam weighting: 7–12%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Sampling Distributions."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_5.1",
+          "text": "Core content and concepts for Unit 5: Sampling Distributions."
+        },
+        {
+          "ek_id": "EK_5.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 5: Sampling Distributions."
+        },
+        {
+          "ek_id": "EK_5.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 5: Sampling Distributions."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-statistics-unit06",
+      "topic_name": "Unit 6: Inference for Categorical Data: Proportions",
+      "parent_id": "ap-statistics",
+      "scope": [
+        "Unit 6 content as defined in AP Statistics CED.",
+        "Exam weighting: 12–15%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Inference for Categorical Data: Proportions."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_6.1",
+          "text": "Core content and concepts for Unit 6: Inference for Categorical Data: Proportions."
+        },
+        {
+          "ek_id": "EK_6.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 6: Inference for Categorical Data: Proportions."
+        },
+        {
+          "ek_id": "EK_6.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 6: Inference for Categorical Data: Proportions."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-statistics-unit07",
+      "topic_name": "Unit 7: Inference for Quantitative Data: Means",
+      "parent_id": "ap-statistics",
+      "scope": [
+        "Unit 7 content as defined in AP Statistics CED.",
+        "Exam weighting: 10–18%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Inference for Quantitative Data: Means."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_7.1",
+          "text": "Core content and concepts for Unit 7: Inference for Quantitative Data: Means."
+        },
+        {
+          "ek_id": "EK_7.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 7: Inference for Quantitative Data: Means."
+        },
+        {
+          "ek_id": "EK_7.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 7: Inference for Quantitative Data: Means."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-statistics-unit08",
+      "topic_name": "Unit 8: Inference for Categorical Data: Chi-Square",
+      "parent_id": "ap-statistics",
+      "scope": [
+        "Unit 8 content as defined in AP Statistics CED.",
+        "Exam weighting: 2–5%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Inference for Categorical Data: Chi-Square."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_8.1",
+          "text": "Core content and concepts for Unit 8: Inference for Categorical Data: Chi-Square."
+        },
+        {
+          "ek_id": "EK_8.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 8: Inference for Categorical Data: Chi-Square."
+        },
+        {
+          "ek_id": "EK_8.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 8: Inference for Categorical Data: Chi-Square."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-statistics-unit09",
+      "topic_name": "Unit 9: Inference for Quantitative Data: Slopes",
+      "parent_id": "ap-statistics",
+      "scope": [
+        "Unit 9 content as defined in AP Statistics CED.",
+        "Exam weighting: 2–5%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Inference for Quantitative Data: Slopes."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_9.1",
+          "text": "The following table shows how the big ideas spiral across units"
+        },
+        {
+          "ek_id": "EK_9.2",
+          "text": "VAR       1.1 Introducing Statistics:        VAR       2"
+        },
+        {
+          "ek_id": "EK_9.3",
+          "text": "Please note, pacing is based                      UNC       1"
+        },
+        {
+          "ek_id": "EK_9.4",
+          "text": "Teach                                                UNC       1"
+        },
+        {
+          "ek_id": "EK_9.5",
+          "text": "SKILL CATEGORIES                                      4                                           DAT       2"
+        }
+      ]
+    }
+  ]
+}

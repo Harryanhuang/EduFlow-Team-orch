@@ -1,0 +1,141 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "dse-integrated-science",
+      "topic_name": "CAIE IGCSE Integrated Science",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Integrated Science (DSE Integrated Science) syllabus scope.",
+        "Valid: 2024 → (ongoing)."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "dse-integrated-science-unit01",
+      "topic_name": "Unit 1",
+      "parent_id": "dse-integrated-science",
+      "scope": [
+        "Unit 1 content as defined in HKDSE syllabus."
+      ],
+      "out_of_scope": [
+        "Content belonging to other units."
+      ],
+      "classification_hints": [
+        "Look for HKDSE dse-integrated-science Unit 1 keywords."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "dse-integrated-science-unit02",
+      "topic_name": "Unit 2",
+      "parent_id": "dse-integrated-science",
+      "scope": [
+        "Unit 2 content as defined in HKDSE syllabus."
+      ],
+      "out_of_scope": [
+        "Content belonging to other units."
+      ],
+      "classification_hints": [
+        "Look for HKDSE dse-integrated-science Unit 2 keywords."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "dse-integrated-science-unit03",
+      "topic_name": "Unit 3",
+      "parent_id": "dse-integrated-science",
+      "scope": [
+        "Unit 3 content as defined in HKDSE syllabus."
+      ],
+      "out_of_scope": [
+        "Content belonging to other units."
+      ],
+      "classification_hints": [
+        "Look for HKDSE dse-integrated-science Unit 3 keywords."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "dse-integrated-science-unit04",
+      "topic_name": "Unit 4",
+      "parent_id": "dse-integrated-science",
+      "scope": [
+        "Unit 4 content as defined in HKDSE syllabus."
+      ],
+      "out_of_scope": [
+        "Content belonging to other units."
+      ],
+      "classification_hints": [
+        "Look for HKDSE dse-integrated-science Unit 4 keywords."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "dse-integrated-science-unit05",
+      "topic_name": "Unit 5",
+      "parent_id": "dse-integrated-science",
+      "scope": [
+        "Unit 5 content as defined in HKDSE syllabus."
+      ],
+      "out_of_scope": [
+        "Content belonging to other units."
+      ],
+      "classification_hints": [
+        "Look for HKDSE dse-integrated-science Unit 5 keywords."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "dse-integrated-science-unit06",
+      "topic_name": "Unit 6",
+      "parent_id": "dse-integrated-science",
+      "scope": [
+        "Unit 6 content as defined in HKDSE syllabus."
+      ],
+      "out_of_scope": [
+        "Content belonging to other units."
+      ],
+      "classification_hints": [
+        "Look for HKDSE dse-integrated-science Unit 6 keywords."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    }
+  ]
+}

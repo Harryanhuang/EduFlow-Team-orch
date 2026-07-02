@@ -1,0 +1,150 @@
+{
+  "schema_version": "1",
+  "papers": [
+    {
+      "paper_id": "paper1",
+      "name": "Paper 1",
+      "question_styles": [
+        "multiple_choice",
+        "short_answer",
+        "structured",
+        "essay"
+      ],
+      "duration_minutes": 150,
+      "total_marks": null,
+      "weighting_percent": 60,
+      "coverage_notes": "Compulsory part (12 topics). Source: C&A Guide p.121.",
+      "calculator_allowed": true,
+      "formula_sheet_allowed": false
+    },
+    {
+      "paper_id": "paper2",
+      "name": "Paper 2",
+      "question_styles": [
+        "short_answer",
+        "structured",
+        "essay"
+      ],
+      "duration_minutes": 60,
+      "total_marks": null,
+      "weighting_percent": 20,
+      "coverage_notes": "Elective part; students answer on 2 of the 3 elective topics. Source: C&A Guide p.121.",
+      "calculator_allowed": true,
+      "formula_sheet_allowed": false
+    },
+    {
+      "paper_id": "sba",
+      "name": "School-based Assessment",
+      "question_styles": [
+        "practical",
+        "investigation_report"
+      ],
+      "duration_minutes": null,
+      "total_marks": null,
+      "weighting_percent": 20,
+      "coverage_notes": "Practical and inquiry skills assessed by school teachers, moderated by HKEAA. Source: C&A Guide p.121-124.",
+      "calculator_allowed": true,
+      "formula_sheet_allowed": false
+    }
+  ],
+  "assessment_objectives": [
+    {
+      "ao_id": "AO1",
+      "name": "Knowledge and understanding",
+      "description": "Recall and understand chemical facts, laws, principles, vocabulary and rules.",
+      "weighting_qualification_percent": null,
+      "weighting_by_paper": {},
+      "classification_hints": [
+        "Items asking for definitions, formulae, equations, properties"
+      ]
+    },
+    {
+      "ao_id": "AO2",
+      "name": "Experimental skills and techniques",
+      "description": "Use apparatus and materials safely; make accurate observations; handle data and measurements.",
+      "weighting_qualification_percent": null,
+      "weighting_by_paper": {},
+      "classification_hints": [
+        "Items involving practical procedures, apparatus, observations, safety"
+      ]
+    },
+    {
+      "ao_id": "AO3",
+      "name": "Data handling and application",
+      "description": "Process, interpret and translate chemical data; perform calculations; apply knowledge to familiar and unfamiliar situations.",
+      "weighting_qualification_percent": null,
+      "weighting_by_paper": {},
+      "classification_hints": [
+        "Items requiring calculation, graph interpretation, stoichiometry"
+      ]
+    },
+    {
+      "ao_id": "AO4",
+      "name": "Communication and evaluation",
+      "description": "Select and organise scientific information; communicate logically; evaluate chemical issues and evidence-based decisions.",
+      "weighting_qualification_percent": null,
+      "weighting_by_paper": {},
+      "classification_hints": [
+        "Essay-style or evaluation questions; STSE-related arguments"
+      ]
+    }
+  ],
+  "question_styles": [
+    {
+      "style_id": "multiple_choice",
+      "name": "Multiple choice",
+      "description": "Broad coverage of the curriculum; tests recall and basic application."
+    },
+    {
+      "style_id": "short_answer",
+      "name": "Short answer",
+      "description": "Tests basic knowledge and concepts in concise responses."
+    },
+    {
+      "style_id": "structured",
+      "name": "Structured question",
+      "description": "Requires analysis of provided information and application to different contexts."
+    },
+    {
+      "style_id": "essay",
+      "name": "Essay",
+      "description": "In-depth discussion of chemistry-related issues; tests logical organisation and expression."
+    }
+  ],
+  "difficulty_ladder": [
+    {
+      "level": "foundation",
+      "description": "Recall of facts, definitions or direct one-step calculations within a single topic."
+    },
+    {
+      "level": "standard",
+      "description": "Multi-step application within one topic; interpret simple data or diagrams."
+    },
+    {
+      "level": "challenge",
+      "description": "Cross-topic synthesis, unfamiliar contexts, evaluation or extended explanation."
+    }
+  ],
+  "difficulty_scale": "ordinal_3",
+  "confidence_thresholds": {
+    "route_minimum": 0.8,
+    "classification_minimum": 0.75,
+    "review_required_below": 0.75
+  },
+  "lesson_use": {
+    "supported": false,
+    "modes": [],
+    "teacher_use_contract_ref": "",
+    "student_use_contract_ref": "",
+    "parent_use_contract_ref": "",
+    "notes": "Set supported=true only when at least one teacher/student/parent-facing mode is intentionally declared and validated."
+  },
+  "generation_constraints": {
+    "must_match_scope": true,
+    "mark_out_of_scope_as_extension": true
+  },
+  "marking_guidance": {
+    "command_words_ref": "DSE Chemistry command terms are implied in the C&A Guide and annual examination reports; no separate command-word appendix is in this source.",
+    "notes": "Marks are awarded for correct chemical knowledge, working, and communication. Partial credit is common for multi-step calculations and structured questions."
+  }
+}

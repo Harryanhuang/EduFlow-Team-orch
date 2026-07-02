@@ -1,0 +1,49 @@
+{
+  "schema_version": "1",
+  "id": "dse-mathematics",
+  "assessment_type": "syllabus",
+  "system": "DSE",
+  "board_or_owner": "HKEAA / Curriculum Development Council",
+  "subject": "Mathematics",
+  "level": "DSE Senior Secondary (S4-S6)",
+  "assessment_code": "DSE Mathematics",
+  "valid_from": "2024",
+  "valid_to": "(ongoing)",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_syllabus",
+      "title": "DSE Mathematics Syllabus (Compulsory + Module 1/2)",
+      "url": "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html",
+      "source_document_type": "syllabus",
+      "source_layout_profile": "caie_igcse_syllabus",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/05-DSE知识库/03-学科知识/DSE Mathematics/02-課本與考綱/考綱/數學-2028.pdf",
+      "file_checksum_sha256": "01f1fcd0b4b020310f91e8ce3aa4ef4c0af3af720e056000f992379085bb13cf",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "2028 syllabus (Category A)",
+      "retrieved_at": "2026-07-02",
+      "page_refs": [
+        "p.1-5"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "printed_page ≈ physical_page for CAIE IGCSE syllabi.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text.",
+      "notes": "Source bundle lives at pilot-output/source-bundles/dse-mathematics-guide/."
+    }
+  ],
+  "aliases": [
+    "dse math",
+    "hong kong dse maths",
+    "hkdse mathematics"
+  ],
+  "canonical_id": "dse-mathematics",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "HKDSE Mathematics (Category A). Compulsory + Module 1 (Calculus and Statistics). Two papers."
+}

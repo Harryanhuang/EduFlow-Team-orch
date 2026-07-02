@@ -1,0 +1,314 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "ap-biology",
+      "topic_name": "AP Biology",
+      "parent_id": "",
+      "scope": [
+        "AP Biology course framework (College Board).",
+        "Valid: 2025 → (ongoing).",
+        "Units 1–8 with cumulative exam weightings."
+      ],
+      "out_of_scope": [
+        "Pre-AP / general high-school level content unless explicitly cited in CED.",
+        "University-level content beyond AP expectations.",
+        "Other AP subjects."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific unit fits.",
+        "Prefer specific Unit N nodes for content questions."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-biology-unit01",
+      "topic_name": "Unit 1: Chemistry of Life",
+      "parent_id": "ap-biology",
+      "scope": [
+        "Unit 1 content as defined in AP Biology CED.",
+        "Exam weighting: 8–11%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Chemistry of Life."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_1.1",
+          "text": "Core content and concepts for Unit 1: Chemistry of Life."
+        },
+        {
+          "ek_id": "EK_1.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 1: Chemistry of Life."
+        },
+        {
+          "ek_id": "EK_1.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 1: Chemistry of Life."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-biology-unit02",
+      "topic_name": "Unit 2: Cells",
+      "parent_id": "ap-biology",
+      "scope": [
+        "Unit 2 content as defined in AP Biology CED.",
+        "Exam weighting: 10–13%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Cells."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_2.1",
+          "text": "Core content and concepts for Unit 2: Cells."
+        },
+        {
+          "ek_id": "EK_2.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 2: Cells."
+        },
+        {
+          "ek_id": "EK_2.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 2: Cells."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-biology-unit03",
+      "topic_name": "Unit 3: Cellular Energetics",
+      "parent_id": "ap-biology",
+      "scope": [
+        "Unit 3 content as defined in AP Biology CED.",
+        "Exam weighting: 12–16%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Cellular Energetics."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_3.1",
+          "text": "Core content and concepts for Unit 3: Cellular Energetics."
+        },
+        {
+          "ek_id": "EK_3.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 3: Cellular Energetics."
+        },
+        {
+          "ek_id": "EK_3.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 3: Cellular Energetics."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-biology-unit04",
+      "topic_name": "Unit 4: Cell Communication and Cell Cycle",
+      "parent_id": "ap-biology",
+      "scope": [
+        "Unit 4 content as defined in AP Biology CED.",
+        "Exam weighting: 10–15%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Cell Communication and Cell Cycle."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_4.1",
+          "text": "Core content and concepts for Unit 4: Cell Communication and Cell Cycle."
+        },
+        {
+          "ek_id": "EK_4.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 4: Cell Communication and Cell Cycle."
+        },
+        {
+          "ek_id": "EK_4.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 4: Cell Communication and Cell Cycle."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-biology-unit05",
+      "topic_name": "Unit 5: Heredity",
+      "parent_id": "ap-biology",
+      "scope": [
+        "Unit 5 content as defined in AP Biology CED.",
+        "Exam weighting: 8–11%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Heredity."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_5.1",
+          "text": "Core content and concepts for Unit 5: Heredity."
+        },
+        {
+          "ek_id": "EK_5.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 5: Heredity."
+        },
+        {
+          "ek_id": "EK_5.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 5: Heredity."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-biology-unit06",
+      "topic_name": "Unit 6: Gene Expression and Regulation",
+      "parent_id": "ap-biology",
+      "scope": [
+        "Unit 6 content as defined in AP Biology CED.",
+        "Exam weighting: 12–16%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Gene Expression and Regulation."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_6.1",
+          "text": "Core content and concepts for Unit 6: Gene Expression and Regulation."
+        },
+        {
+          "ek_id": "EK_6.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 6: Gene Expression and Regulation."
+        },
+        {
+          "ek_id": "EK_6.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 6: Gene Expression and Regulation."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-biology-unit07",
+      "topic_name": "Unit 7: Natural Selection",
+      "parent_id": "ap-biology",
+      "scope": [
+        "Unit 7 content as defined in AP Biology CED.",
+        "Exam weighting: 13–20%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Natural Selection."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_7.1",
+          "text": "Core content and concepts for Unit 7: Natural Selection."
+        },
+        {
+          "ek_id": "EK_7.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 7: Natural Selection."
+        },
+        {
+          "ek_id": "EK_7.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 7: Natural Selection."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-biology-unit08",
+      "topic_name": "Unit 8: Ecology",
+      "parent_id": "ap-biology",
+      "scope": [
+        "Unit 8 content as defined in AP Biology CED.",
+        "Exam weighting: 10–15%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Ecology."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_8.1",
+          "text": "Amy B. Dykstra, Bethel University, St"
+        },
+        {
+          "ek_id": "EK_8.2",
+          "text": "AP Biology Course and Exam Description                                                                        ﻿ V"
+        },
+        {
+          "ek_id": "EK_8.3",
+          "text": "THIS PAGE IS INTENTIONALLY LEFT BLANK"
+        },
+        {
+          "ek_id": "EK_8.4",
+          "text": "AP Program is able to provide teachers and students with       have\u0007established\u0007for\u0007college-level\u0007courses"
+        },
+        {
+          "ek_id": "EK_8.5",
+          "text": "AP Biology Course and Exam Descripti"
+        }
+      ]
+    }
+  ]
+}

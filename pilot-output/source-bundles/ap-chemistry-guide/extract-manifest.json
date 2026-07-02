@@ -1,0 +1,1461 @@
+{
+  "schema_version": "1",
+  "subject": "chemistry",
+  "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/03-AP知识库/03-学科知识/AP Chemistry/02-课本与考纲/考纲/ap-chemistry-course-and-exam-description.pdf",
+  "file_checksum_sha256": "235a2ffb0994c54d924d0cbc43e04d5e6c207dc8ecb0421cb0c75f6a45798af4",
+  "pdfinfo": {
+    "Title": "AP® Chemistry Course and Exam Description",
+    "Subject": "AP; Advanced Placement",
+    "Keywords": "AP® Course and Exam Description; CED; AP Resources and Supports; Instructional Model; Course Framework; Course at a Glance; Unit Guides; course information; exam information; assessment information; teacher resources; course resources; exam resources; student resources; 9/2025; ADA",
+    "Author": "College Board",
+    "Creator": "Adobe InDesign CC 14.0 (Macintosh)",
+    "Producer": "Adobe PDF Library 15.0; modified using iTextSharp 4.1.6 by 1T3XT",
+    "CreationDate": "Wed Jul 16 21:32:54 2025 CST",
+    "ModDate": "Fri Sep 26 06:54:20 2025 CST",
+    "Custom Metadata": "yes",
+    "Metadata Stream": "yes",
+    "Tagged": "no",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "AcroForm",
+    "JavaScript": "no",
+    "Pages": "238",
+    "Encrypted": "yes (print:yes copy:yes change:no addNotes:no algorithm:AES-256)",
+    "Page size": "612 x 792 pts (letter)",
+    "Page rot": "0",
+    "File size": "4400176 bytes",
+    "Optimized": "no",
+    "PDF version": "1.7"
+  },
+  "total_pages": 238,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": 1,
+      "chars": 2857,
+      "first_200": "INCLUDES \u0007Course framework \u0007Instructional section \u0007Sample exam questions AP Chemistry ® COURSE AND EXAM DESCRIPTION Effective Fall 2024 AP Chemistry ® COURSE AND EXAM DESCRIPTION Effective Fall 2024 A"
+    },
+    {
+      "physical_page": 2,
+      "printed_page": 2,
+      "chars": 2857,
+      "first_200": "\u0007question\u0007the\u0007meaning,\u0007purpose,\u0007or\u0007effect\u0007of\u0007such\u0007content\u0007within\u0007the\u0007 literary work as a whole.” 5. \u0007AP\u0007courses\u0007foster\u0007an\u0007open-minded\u0007approach\u0007to\u0007the\u0007histories\u0007and\u0007cultures\u0007of\u0007 different\u0007peoples.\u0007The\u0007"
+    },
+    {
+      "physical_page": 3,
+      "printed_page": 3,
+      "chars": 2857,
+      "first_200": "nd Bases 161 UNIT 9: Thermodynamics and Electrochemistry LABORATORY INVESTIGATIONS 181 Lab Experiments 184 \u0007How to Set Up a Lab Program INSTRUCTIONAL APPROACHES 189 Selecting and Using Course Material"
+    },
+    {
+      "physical_page": 4,
+      "printed_page": 4,
+      "chars": 2857,
+      "first_200": "Magrogan, Senior Director, AP Science Department Head Daniel McDonough, Senior Director, AP Content and Assessment Publications Allison Thurber, Vice President, AP Curriculum and Assessment AP Chemist"
+    },
+    {
+      "physical_page": 5,
+      "printed_page": 5,
+      "chars": 2857,
+      "first_200": "eceive AP scores. Offering AP Courses: The AP Course Audit AP Course Development The AP Program unequivocally supports the principle In\u0007an\u0007ongoing\u0007effort\u0007to\u0007maintain\u0007alignment\u0007with\u0007best\u0007 that each sch"
+    },
+    {
+      "physical_page": 6,
+      "printed_page": 6,
+      "chars": 2857,
+      "first_200": "ance assessments, as applicable, are scored by and the school principal (or designated administrator) to thousands of college faculty and expert AP teachers. confirm\u0007awareness\u0007and\u0007understanding\u0007of\u0007the"
+    },
+    {
+      "physical_page": 7,
+      "printed_page": 7,
+      "chars": 2857,
+      "first_200": "students The AP Test Development Committees are responsible earn when their professors administer AP Exam for developing each AP Exam, ensuring the exam questions to them. questions are aligned to"
+    },
+    {
+      "physical_page": 8,
+      "printed_page": 8,
+      "chars": 2857,
+      "first_200": "n/a both AP teachers and college faculty. While multiple-choice\u0007questions\u0007are\u0007scored\u0007by\u0007machine,\u0007the\u0007 1 No recommendation n/a free-response\u0007questions\u0007and\u0007through-course\u0007 AP Chemistry Course and Exam D"
+    },
+    {
+      "physical_page": 9,
+      "printed_page": 9,
+      "chars": 2857,
+      "first_200": "h\u0007school\u0007and\u0007college\u0007 requirements and to start the application process. educators—make\u0007improvements\u0007to\u0007the\u0007way\u0007they\u0007 AP Chemistry Course and Exam Description ﻿ V.1 | 3 Return to Table of Contents © 2"
+    },
+    {
+      "physical_page": 10,
+      "printed_page": 10,
+      "chars": 2857,
+      "first_200": "AP Exam. QUESTION BANK The Question Bank is a searchable library of all AP questions that teachers use to build custom practice for their students. Teachers can create and assign"
+    },
+    {
+      "physical_page": 11,
+      "printed_page": 11,
+      "chars": 2857,
+      "first_200": "Assess Teachers can measure student understanding of the content and skills covered in the unit and provide actionable feedback to students. § As you teach each topic, use AP Classroom"
+    },
+    {
+      "physical_page": 12,
+      "printed_page": 12,
+      "chars": 2857,
+      "first_200": "curricular requirements by providing opportunities for students to engage in the science practices\u0007as\u0007they\u0007design\u0007plans\u0007for\u0007experiments,\u0007make\u0007predictions,\u0007collect\u0007and\u0007analyze\u0007data,\u0007 apply mathematical"
+    },
+    {
+      "physical_page": 13,
+      "printed_page": 13,
+      "chars": 2857,
+      "first_200": "ms\u0007with\u0007scientific\u0007evidence\u0007from\u0007data,\u0007models,\u0007 and meets state or local requirements. The result is a and theories. Students will develop inquiry and course that prepares students for college credit "
+    },
+    {
+      "physical_page": 14,
+      "printed_page": 14,
+      "chars": 2857,
+      "first_200": "practices on the AP Chemistry exam. More detailed information about teaching the science practices can be found in the Instructional Approaches section of this publication. AP Chemistry Course and Exa"
+    },
+    {
+      "physical_page": 15,
+      "printed_page": 15,
+      "chars": 2857,
+      "first_200": "\u0007of\u0007 laboratory setups\u0007or\u0007results,\u0007while\u0007 attending to precision where appropriate. 2.E Identify\u0007or\u0007describe\u0007potential\u0007 sources of experimental error. 2.F Explain\u0007how\u0007modifications\u0007 to\u0007an experimental"
+    },
+    {
+      "physical_page": 16,
+      "printed_page": 16,
+      "chars": 2857,
+      "first_200": "riables within an equation when one 6.D Provide\u0007reasoning\u0007to\u0007justify\u0007a\u0007claim\u0007 and representations. variable changes. using chemical principles or laws, or using\u0007mathematical\u0007justification.\u0007 4.D Explai"
+    },
+    {
+      "physical_page": 17,
+      "printed_page": 17,
+      "chars": 2857,
+      "first_200": "ssary\u0007for\u0007student\u0007success.\u0007The\u0007framework\u0007specifies\u0007 what students must know, be able to do, and understand with a focus on core principles, theories, and processes of chemistry that prepare them for a"
+    },
+    {
+      "physical_page": 18,
+      "printed_page": 18,
+      "chars": 2857,
+      "first_200": "CS § How could students create or interpret graphs and other visual representations? Each unit is broken down into teachable segments called topics. The topic pages (starting on p. 30)"
+    },
+    {
+      "physical_page": 19,
+      "printed_page": 19,
+      "chars": 2857,
+      "first_200": "UNIT UNIT Structure and 1 Properties 2 Structure and Properties ~9–10 Class Periods 7–9% AP Exam Weighting ~12–13 Class Periods 7–9% AP Exam Weighting 1.1 Moles and Molar Mass 2.1"
+    },
+    {
+      "physical_page": 20,
+      "printed_page": 20,
+      "chars": 2857,
+      "first_200": "2.6 Resonance and § Progression of topics within 4 Spectroscopy 6 Formal Charge each unit. 1.7 Periodic Trends 2.7 VSEPR and § Spiraling of the science 4 6 Hybridization practices\u0007across"
+    },
+    {
+      "physical_page": 21,
+      "printed_page": 21,
+      "chars": 2857,
+      "first_200": "s Periods 7–9% AP Exam Weighting ~13–14 Class Periods 7–9% AP Exam Weighting 3.1 Intermolecular and 4.1 Introduction for 6 5.1 Reaction Rates 4 2 Interparticle Forces Reactions 5 5.2"
+    },
+    {
+      "physical_page": 22,
+      "printed_page": 22,
+      "chars": 2857,
+      "first_200": "4.8 Introduction to 1 5 Approximation Acid-Base Reactions 3.9 Separation of Solutions 2 and Mixtures 5.10 Multistep Reaction 4.9 Oxidation-Reduction 5 3 Energy Profile (Redox) Reactions 4 6 5.11 Catal"
+    },
+    {
+      "physical_page": 23,
+      "printed_page": 23,
+      "chars": 2857,
+      "first_200": "Weighting 6.1 Endothermic and 7.1 Introduction to 8.1 Introduction to Acids 6 Exothermic Processes 6 Equilibrium 5 and Bases 3 6.2 Energy Diagrams 7.2 Direction of Reversible 8.2 pH and"
+    },
+    {
+      "physical_page": 24,
+      "printed_page": 24,
+      "chars": 2857,
+      "first_200": "elier’s Principle 7.11 Introduction to 5 Solubility Equilibria 2 7.12 Common-Ion Effect Progress Check 6 Progress Check 7 Progress Check 8 Multiple-choice: ~20 questions Multiple-choice: ~30 questions"
+    },
+    {
+      "physical_page": 25,
+      "printed_page": 25,
+      "chars": 2857,
+      "first_200": "9.10 Cell Potential 6 Under Nonstandard Conditions 9.11 Electrolysis and 5 Faraday’s Law Progress Check 9 Multiple-choice: ~30 questions Free-response: 2 questions § Short § Long V.1 | 20 Return"
+    },
+    {
+      "physical_page": 26,
+      "printed_page": 26,
+      "chars": 2857,
+      "first_200": "ng the Unit Guides UNIT OPENERS UNIT 1 7–9 % AP EXAM WEIGHTING ~9–10 CLASS PERIODS Developing Understanding provides an overview that contextualizes\u0007and\u0007situates\u0007the\u0007key\u0007content\u0007of\u0007the\u0007unit\u0007within\u0007 At"
+    },
+    {
+      "physical_page": 27,
+      "printed_page": 27,
+      "chars": 2857,
+      "first_200": "properties as a function of atomic number. The electronic structure of an atom can be described by an electron configuration that provides that unit. § How can large quantities a"
+    },
+    {
+      "physical_page": 28,
+      "printed_page": 28,
+      "chars": 2857,
+      "first_200": "connect that evidence to known Students will also practice translating chemical theories. However, many students between data and various representations consistently demonstrate difficulty with (e.g."
+    },
+    {
+      "physical_page": 29,
+      "printed_page": 29,
+      "chars": 2857,
+      "first_200": "th graphically to identify patterns and chemical theories and models. relationships. Once a pattern is identified, AP Chemistry Course and Exam Description Course Framework V.1 | 27 The Unit at"
+    },
+    {
+      "physical_page": 30,
+      "printed_page": 30,
+      "chars": 2857,
+      "first_200": "to solve a problem from given information (e.g., text, with any of the skills. 1.4 Composition of Mixtures mathematical expressions, graphs, or tables). 1.5 Atomic Structure and 1.A Describe the"
+    },
+    {
+      "physical_page": 31,
+      "printed_page": 31,
+      "chars": 2857,
+      "first_200": "1 particular topic. SAMPLE INSTRUCTIONAL ACTIVITIES The sample activities on this page are optional and are offered to provide possible ways to incorporate various instructional approaches into the cl"
+    },
+    {
+      "physical_page": 32,
+      "printed_page": 32,
+      "chars": 2857,
+      "first_200": "r particular approach and come up with additional approaches to this problem. 4 1.4 Explore Representations 1.5 Translate PES data into an electron configuration and/or predict a PES spectrum based"
+    },
+    {
+      "physical_page": 33,
+      "printed_page": 33,
+      "chars": 2857,
+      "first_200": "ailable resources are provided that might help teachers address a particular topic. Required Course Content Learning objectives\u0007define\u0007what\u0007a\u0007student\u0007needs\u0007to\u0007be\u0007able\u0007 AVAILABLE RESOURCES § Classroom "
+    },
+    {
+      "physical_page": 34,
+      "printed_page": 34,
+      "chars": 2857,
+      "first_200": "the isotopic masses using the mass of each isotope and its relative abundance. Exclusion Statement: Interpreting mass spectra of samples containing multiple elements or peaks arising from species othe"
+    },
+    {
+      "physical_page": 35,
+      "printed_page": 35,
+      "chars": 2857,
+      "first_200": "7–9% AP EXAM WEIGHTING ~9–10 CLASS PERIODS AP Chemistry Course and Exam Description Course Framework V.1 | 25 Return to Table of Contents © 2024 College Board Remember to go"
+    },
+    {
+      "physical_page": 36,
+      "printed_page": 36,
+      "chars": 2857,
+      "first_200": "y\u0007an\u0007electron\u0007configuration\u0007that\u0007provides\u0007 § How can large quantities a method for describing the distribution of electrons in an atom or ion. In subsequent units, of objects be counted students will "
+    },
+    {
+      "physical_page": 37,
+      "printed_page": 37,
+      "chars": 2857,
+      "first_200": "sequent units. periodic trends to the shell model, Coulomb’s law, and elements of quantum theory. Many of the most useful concepts in To combat these challenges, teachers chemistry relate to"
+    },
+    {
+      "physical_page": 38,
+      "printed_page": 38,
+      "chars": 2857,
+      "first_200": "bles). 1.5 Atomic Structure and 1.A Describe\u0007the\u0007components\u0007of\u0007and\u0007quantitative\u0007information\u0007from\u0007models\u0007and\u0007 Electron Configuration representations\u0007that\u0007illustrate\u0007particulate-level\u0007properties\u0007only.\u0007 "
+    },
+    {
+      "physical_page": 39,
+      "printed_page": 39,
+      "chars": 2857,
+      "first_200": "onduct a simulation of a mass spectrometer, using a strong magnet and steel ball bearings of various masses, to show students how mass can be used to separate particles\u0007based\u0007on\u0007their\u0007ability\u0007to\u0007be\u0007ma"
+    },
+    {
+      "physical_page": 40,
+      "printed_page": 40,
+      "chars": 2857,
+      "first_200": "Moles and Routines 5.B Identify an appropriate theory, definition, or mathematical relationship to solve a problem. Molar Mass AVAILABLE RESOURCES § AP Chemistry Lab Required Course Content Manual > I"
+    },
+    {
+      "physical_page": 41,
+      "printed_page": 41,
+      "chars": 2857,
+      "first_200": "EQN: n = m/M AP Chemistry Course and Exam Description Course Framework V.1 | 30 Return to Table of Contents © 2024 College Board UNIT Atomic Structure and Properties 1"
+    },
+    {
+      "physical_page": 42,
+      "printed_page": 42,
+      "chars": 2857,
+      "first_200": "be estimated from the weighted average of the isotopic masses using the mass of each isotope and its relative abundance. Exclusion Statement: Interpreting mass spectra of samples containing multiple e"
+    },
+    {
+      "physical_page": 43,
+      "printed_page": 43,
+      "chars": 2857,
+      "first_200": ".3 The chemical formula that lists the lowest whole number ratio of atoms of the elements in a compound is the empirical formula. AP Chemistry Course and Exam Description Course"
+    },
+    {
+      "physical_page": 44,
+      "printed_page": 44,
+      "chars": 2857,
+      "first_200": "iption Course Framework V.1 | 33 Return to Table of Contents © 2024 College Board UNIT 1 Atomic Structure and Properties SUGGESTED SKILL Models and TOPIC 1.5 Atomic Structure and"
+    },
+    {
+      "physical_page": 45,
+      "printed_page": 45,
+      "chars": 2857,
+      "first_200": "mechanics, as delineated in the Aufbau principle and\u0007exemplified\u0007in\u0007the\u0007periodic\u0007table\u0007of\u0007the\u0007 elements. Exclusion Statement: The assignment of quantum numbers to electrons in subshells of an atom wil"
+    },
+    {
+      "physical_page": 46,
+      "printed_page": 46,
+      "chars": 2857,
+      "first_200": "oscopy AVAILABLE RESOURCES § Classroom Resource > Required Course Content Exploring Atomic Structure Using Photoelectron Spectroscopy LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE (PES) Data 1.6.A 1.6.A.1 § "
+    },
+    {
+      "physical_page": 47,
+      "printed_page": 47,
+      "chars": 2857,
+      "first_200": "omena (e.g., of atoms or molecules) using given chemical theories, models, and representations. Required Course Content AVAILABLE RESOURCES § The Exam > 2021 Chief Reader Report LEARNING OBJECTIVE ESS"
+    },
+    {
+      "physical_page": 48,
+      "printed_page": 48,
+      "chars": 2857,
+      "first_200": "estimate values of properties in the absence of data. AP Chemistry Course and Exam Description Course Framework V.1 | 37 Return to Table of Contents © 2024 College Board UNIT"
+    },
+    {
+      "physical_page": 49,
+      "printed_page": 49,
+      "chars": 2857,
+      "first_200": "Structure and Properties 7–9% AP EXAM WEIGHTING ~12–13 CLASS PERIODS AP Chemistry Course and Exam Description Course Framework V.1 | 39 Return to Table of Contents © 2024 College Board"
+    },
+    {
+      "physical_page": 50,
+      "printed_page": 50,
+      "chars": 2857,
+      "first_200": "In subsequent units, easier to break than students will use the periodic table and the atomic properties to predict the type of bonding others? present between two atoms based on"
+    },
+    {
+      "physical_page": 51,
+      "printed_page": 51,
+      "chars": 2857,
+      "first_200": "Instead of simply connecting chemical number of valence electrons, violating theories to phenomena occurring at the the octet rule, or confusing molecular atomic level, it is important to provide geom"
+    },
+    {
+      "physical_page": 52,
+      "printed_page": 52,
+      "chars": 2857,
+      "first_200": "iguration).\u0007 2.6 Resonance and 6.C Support\u0007a\u0007claim\u0007with\u0007evidence\u0007from\u0007representations\u0007or\u0007models\u0007at\u0007the\u0007 Formal Charge particulate level, such as the structure of atoms and/or molecules. 2.7 VSEPR and "
+    },
+    {
+      "physical_page": 53,
+      "printed_page": 53,
+      "chars": 2857,
+      "first_200": "ow the structure of an ionic crystal. Engage students in a discussion about malleability/brittleness, and ask why distorting an ionic crystal causes shattering. This also introduces Coulombic forces i"
+    },
+    {
+      "physical_page": 54,
+      "printed_page": 54,
+      "chars": 2857,
+      "first_200": "presentative between the type of bonding elements increase going from left to right and the properties of the across a period and decrease going down elements participating in a group."
+    },
+    {
+      "physical_page": 55,
+      "printed_page": 55,
+      "chars": 2857,
+      "first_200": "ption Course Framework V.1 | 44 Return to Table of Contents © 2024 College Board UNIT Compound Structure and Properties 2 LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 2.1.A 2.1.A.4 Explain the relationship"
+    },
+    {
+      "physical_page": 56,
+      "printed_page": 56,
+      "chars": 2857,
+      "first_200": "assroom Resource > Represent the relationship A graph of potential energy versus the distance Ending Misconceptions between potential energy between atoms (internuclear distance) is About the Energy o"
+    },
+    {
+      "physical_page": 57,
+      "printed_page": 57,
+      "chars": 2857,
+      "first_200": "Return to Table of Contents © 2024 College Board UNIT Compound Structure and Properties 2 TOPIC 2.3 SUGGESTED SKILL Model Analysis Structure of 4.C Explain the connection between\u0007particulate-level\u0007 Io"
+    },
+    {
+      "physical_page": 58,
+      "printed_page": 58,
+      "chars": 2857,
+      "first_200": "Return to Table of Contents © 2024 College Board UNIT 2 Compound Structure and Properties SUGGESTED SKILL Model Analysis TOPIC 2.4 4.C Explain the connection between\u0007particulate-level\u0007 Structure of Me"
+    },
+    {
+      "physical_page": 59,
+      "printed_page": 59,
+      "chars": 2857,
+      "first_200": "to Table of Contents © 2024 College Board UNIT Compound Structure and Properties 2 TOPIC 2.5 SUGGESTED SKILL Representing Data Lewis Diagrams and Phenomena 3.B Represent chemical substances or phenome"
+    },
+    {
+      "physical_page": 60,
+      "printed_page": 60,
+      "chars": 2857,
+      "first_200": "Properties SUGGESTED SKILL Argumentation TOPIC 2.6 6.C Support a claim with evidence from Resonance and representations or models at the particulate level, such as the structure of atoms Formal Charge"
+    },
+    {
+      "physical_page": 61,
+      "printed_page": 61,
+      "chars": 2857,
+      "first_200": "UNIT Compound Structure and Properties 2 TOPIC 2.7 SUGGESTED SKILL Argumentation VSEPR and 6.C Support a claim with evidence from representations or Hybridization models at the particulate level, such"
+    },
+    {
+      "physical_page": 62,
+      "printed_page": 62,
+      "chars": 2857,
+      "first_200": "tetrahedral, trigonal pyramidal, bent, trigonal bipyramidal,\u0007seesaw,\u0007T-shaped,\u0007octahedral,\u0007 square pyramidal, square planar) ii. Bond angles iii. Relative bond energies based on bond order iv. Relativ"
+    },
+    {
+      "physical_page": 63,
+      "printed_page": 63,
+      "chars": 2857,
+      "first_200": "nomenclature. i. \u0007Explain structural properties of molecules. Exclusion Statement: Hybridization involving ii. \u0007Explain electron properties d orbitals will not be assessed on the AP Exam. of molecules"
+    },
+    {
+      "physical_page": 64,
+      "printed_page": 64,
+      "chars": 2857,
+      "first_200": "© 2024 College Board AP CHEMISTRY UNIT 3 Properties of Substances and Mixtures 18–22% AP EXAM WEIGHTING ~14–15 CLASS PERIODS AP Chemistry Course and Exam Description Course Framework V.1 |"
+    },
+    {
+      "physical_page": 65,
+      "printed_page": 65,
+      "chars": 2857,
+      "first_200": "of physical changes. The properties of solids, liquids, between particles and\u0007gases\u0007reflect\u0007the\u0007relative\u0007orderliness\u0007of\u0007the\u0007arrangement\u0007of\u0007particles\u0007in\u0007those\u0007states,\u0007their\u0007 influence\u0007the\u0007properties\u0007 r"
+    },
+    {
+      "physical_page": 66,
+      "printed_page": 66,
+      "chars": 2857,
+      "first_200": "iling skills, essential for success in the remainder points, and vapor pressures of molecules in of the course. Students should be able to the solid and/or liquid state. explain relationships"
+    },
+    {
+      "physical_page": 67,
+      "printed_page": 67,
+      "chars": 2857,
+      "first_200": "of a substance using models and representations. 3.3 Solids, Liquids, and Gases 3.C Represent\u0007visually\u0007the\u0007relationship\u0007between\u0007the\u0007structures\u0007and\u0007interactions\u0007 across multiple levels or scales (e.g.,"
+    },
+    {
+      "physical_page": 68,
+      "printed_page": 68,
+      "chars": 2857,
+      "first_200": "ent misunderstandings. AP Chemistry Course and Exam Description Course Framework V.1 | 56 Return to Table of Contents © 2024 College Board UNIT Properties of Substances and Mixtures 3 SAMPLE"
+    },
+    {
+      "physical_page": 69,
+      "printed_page": 69,
+      "chars": 2857,
+      "first_200": "ate a particulate representation of each of the mixtures (which illustrate the interactions between the molecules that allow/disallow the solubility). 5 3.9 Post-Lab Discussion After\u0007investigating\u0007thr"
+    },
+    {
+      "physical_page": 70,
+      "printed_page": 70,
+      "chars": 2857,
+      "first_200": "ing\u0007dipoles.\u0007London\u0007dispersion\u0007forces\u0007 the relative strength of their are often the strongest net intermolecular intermolecular forces when: force between large molecules. i. The molecules are of the "
+    },
+    {
+      "physical_page": 71,
+      "printed_page": 71,
+      "chars": 2857,
+      "first_200": "olecules are of two iii.\u0007\u0007Ion-dipole\u0007forces\u0007of\u0007attraction\u0007are\u0007present\u0007 different chemical species. between ions and polar molecules. These tend\u0007to\u0007be\u0007stronger\u0007than\u0007dipole- dipole forces. 3.1.A.3 The r"
+    },
+    {
+      "physical_page": 72,
+      "printed_page": 72,
+      "chars": 2857,
+      "first_200": "try Required Course Content Lab Manual > Investigation 6: What’s in That Bottle? LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 3.2.A 3.2.A.1 Explain the relationship Many properties of liquids and solids are"
+    },
+    {
+      "physical_page": 73,
+      "printed_page": 73,
+      "chars": 2857,
+      "first_200": "across another layer. They conduct electricity only when the ions are mobile, as when the ionic solid is melted (i.e., in a molten state) or dissolved\u0007in\u0007water\u0007or\u0007another solvent. continued on next"
+    },
+    {
+      "physical_page": 74,
+      "printed_page": 74,
+      "chars": 2857,
+      "first_200": "atively weak intermolecular forces. Molecular solids generally have a low melting point because of the relatively weak intermolecular forces present between the molecules. They do not conduct electric"
+    },
+    {
+      "physical_page": 75,
+      "printed_page": 75,
+      "chars": 2857,
+      "first_200": "nting Data TOPIC 3.3 Solids, Liquids, and Phenomena 3.C Represent visually the relationship between the structures and interactions across multiple levels or and Gases scales (e.g., particulate to mac"
+    },
+    {
+      "physical_page": 76,
+      "printed_page": 76,
+      "chars": 2857,
+      "first_200": "ypically have similar molar volume because, in both phases, the constituent particles are in close contact at all times. 3.3.A.4 In the gas phase, the particles are in constant motion."
+    },
+    {
+      "physical_page": 77,
+      "printed_page": 77,
+      "chars": 2857,
+      "first_200": "equation when one variable changes. Required Course Content AVAILABLE RESOURCES §§ The Exam > 2017 Chief Reader Report LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 3.4.A 3.4.A.1 Explain the relationship The"
+    },
+    {
+      "physical_page": 78,
+      "printed_page": 78,
+      "chars": 2857,
+      "first_200": "nd representations. Required Course Content LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 3.5.A 3.5.A.1 Explain the relationship The kinetic molecular theory (KMT) relates between the motion the macroscopic "
+    },
+    {
+      "physical_page": 79,
+      "printed_page": 79,
+      "chars": 2857,
+      "first_200": "perties of Substances and Mixtures 3 TOPIC 3.6 SUGGESTED SKILL Argumentation Deviation from 6.E Provide reasoning to justify a claim using connections Ideal Gas Law between particulate and macroscopic"
+    },
+    {
+      "physical_page": 80,
+      "printed_page": 80,
+      "chars": 2857,
+      "first_200": "Mixtures Calculate, estimate, or predict an unknown quantity from known quantities by selecting and following a logical computational pathway and attending to precision (e.g., performing dimensional a"
+    },
+    {
+      "physical_page": 81,
+      "printed_page": 81,
+      "chars": 2857,
+      "first_200": "Represent visually the of Solutions relationship between the structures and interactions across multiple levels or scales (e.g., particulate to macroscopic). Required Course Content AVAILABLE RESOURCE"
+    },
+    {
+      "physical_page": 82,
+      "printed_page": 82,
+      "chars": 2857,
+      "first_200": "that are aligned to\u0007the\u0007question\u0007 (which may include a Solutions and Mixtures sketch of\u0007a\u0007lab\u0007setup). AVAILABLE RESOURCES Required Course Content §§ AP Chemistry Lab Manual > Investigation 5: Sticky Q"
+    },
+    {
+      "physical_page": 83,
+      "printed_page": 83,
+      "chars": 2857,
+      "first_200": "Model Analysis Solubility 4.D Explain the degree to which a model or representation describes the connection between\u0007particulate- level properties and macroscopic properties. Required Course Content L"
+    },
+    {
+      "physical_page": 84,
+      "printed_page": 84,
+      "chars": 2857,
+      "first_200": "e\u0007different\u0007types\u0007of\u0007molecular\u0007 and the types of molecular motion or electronic transition: or electronic transitions i. Microwave radiation is associated with associated with that region. transitions"
+    },
+    {
+      "physical_page": 85,
+      "printed_page": 85,
+      "chars": 2857,
+      "first_200": "analysis and attending to significant figures). Required Course Content LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 3.12.A 3.12.A.1 Explain the properties of When a photon is absorbed (or emitted) by an an"
+    },
+    {
+      "physical_page": 86,
+      "printed_page": 86,
+      "chars": 2857,
+      "first_200": "and molar absorptivity. The molar absorptivity, ε, describes how intensely a chemical species absorbs light of\u0007a\u0007specific\u0007wavelength.\u0007The\u0007path\u0007length,\u0007b, and concentration, c, are proportional to the "
+    },
+    {
+      "physical_page": 87,
+      "printed_page": 87,
+      "chars": 2857,
+      "first_200": "to assign students the online Progress Check for this unit. Whether assigned as homework or completed in class, the Progress Check provides each student with immediate feedback related to this"
+    },
+    {
+      "physical_page": 88,
+      "printed_page": 88,
+      "chars": 2857,
+      "first_200": "On the AP Exam, students must be able In\u0007Unit\u00073,\u0007students\u0007constructed\u0007particulate- to\u0007demonstrate\u0007proficiency\u0007in\u0007writing\u0007and\u0007 level representations of compounds and balancing chemical equations (molec"
+    },
+    {
+      "physical_page": 89,
+      "printed_page": 89,
+      "chars": 2857,
+      "first_200": "critical to student success in the remainder of the course. AP Chemistry Course and Exam Description Course Framework V.1 | 75 Return to Table of Contents © 2024 College Board"
+    },
+    {
+      "physical_page": 90,
+      "printed_page": 90,
+      "chars": 2857,
+      "first_200": "© 2024 College Board UNIT Chemical Reactions 4 SAMPLE INSTRUCTIONAL ACTIVITIES The\u0007sample\u0007activities\u0007on\u0007this\u0007page\u0007are\u0007optional\u0007and\u0007are\u0007offered\u0007to\u0007provide\u0007possible\u0007ways\u0007to\u0007 incorporate various instruct"
+    },
+    {
+      "physical_page": 91,
+      "printed_page": 91,
+      "chars": 2857,
+      "first_200": "claim with evidence. Then have them pair up and evaluate the strength of each other’s claims. 5 4.9 Simulations After viewing a simulation on metal/metal ion reactions, provide students with"
+    },
+    {
+      "physical_page": 92,
+      "printed_page": 92,
+      "chars": 2857,
+      "first_200": "itate, and/or color change provide possible evidence that a chemical change has occurred. AP Chemistry Course and Exam Description Course Framework V.1 | 78 Return to Table of Contents ©"
+    },
+    {
+      "physical_page": 93,
+      "printed_page": 93,
+      "chars": 2857,
+      "first_200": "Reader Report i. For physical changes. 4.2.A.2 ii. For given information Chemical equations represent chemical about the identity of the changes. These changes are the result reactants and/or product."
+    },
+    {
+      "physical_page": 94,
+      "printed_page": 94,
+      "chars": 2857,
+      "first_200": "Course Framework V.1 | 80 Return to Table of Contents © 2024 College Board UNIT Chemical Reactions 4 TOPIC 4.4 SUGGESTED SKILL Argumentation Physical and 6.B Support a claim with"
+    },
+    {
+      "physical_page": 95,
+      "printed_page": 95,
+      "chars": 2857,
+      "first_200": ", plausible arguments could be made for the dissolution of a salt in water, as either a physical or chemical process, involves breaking of ionic bonds, and the formation of\u0007ion-dipole\u0007interactions\u0007bet"
+    },
+    {
+      "physical_page": 96,
+      "printed_page": 96,
+      "chars": 2857,
+      "first_200": "can be combined with the ideal gas law and calculations involving molarity to quantitatively study gases and solutions. AP Chemistry Course and Exam Description Course Framework V.1 | 82 Return"
+    },
+    {
+      "physical_page": 97,
+      "printed_page": 97,
+      "chars": 2857,
+      "first_200": "4.6.A.1 Reader Report Identify the equivalence Titrations may be used to determine the point in a titration based on amount of an analyte in solution. The titrant has the amounts"
+    },
+    {
+      "physical_page": 98,
+      "printed_page": 98,
+      "chars": 2857,
+      "first_200": "ndicated by changes in oxidation numbers of the involved species. Combustion is an important subclass of oxidation-reduction\u0007reactions,\u0007in\u0007which\u0007a\u0007 species reacts with oxygen gas. In the case of hydro"
+    },
+    {
+      "physical_page": 99,
+      "printed_page": 99,
+      "chars": 2857,
+      "first_200": "tion reactions frequently involve base, oxidation-reduction, or mixing ions in aqueous solution to produce an precipitation. insoluble or sparingly soluble ionic compound. All sodium, potassium, ammon"
+    },
+    {
+      "physical_page": 100,
+      "printed_page": 100,
+      "chars": 2857,
+      "first_200": "8.A.3 When\u0007an\u0007acid\u0007or\u0007base\u0007ionizes\u0007in\u0007water,\u0007the\u0007 conjugate\u0007acid-base\u0007pairs\u0007can\u0007be\u0007identified\u0007and\u0007 their relative strengths compared. Exclusion Statement: Lewis acid-base concepts will not be assessed"
+    },
+    {
+      "physical_page": 101,
+      "printed_page": 101,
+      "chars": 2857,
+      "first_200": "AP CHEMISTRY UNIT 5 Kinetics 7–9% AP EXAM WEIGHTING ~13–14 CLASS PERIODS AP Chemistry Course and Exam Description Course Framework V.1 | 89 Return to Table of Contents © 2024"
+    },
+    {
+      "physical_page": 102,
+      "printed_page": 102,
+      "chars": 2857,
+      "first_200": "observable and measurable. When measuring rates of change, §§ Why are some students are measuring the concentration of reactant or product species as a function of medications taken every time."
+    },
+    {
+      "physical_page": 103,
+      "printed_page": 103,
+      "chars": 2857,
+      "first_200": "confuse\u0007the\u0007units\u0007of\u0007 time during the course of a reaction. In the graphs with the units represented in the addition, students will examine proposed chemical equation. Teachers can ensure reaction mec"
+    },
+    {
+      "physical_page": 104,
+      "printed_page": 104,
+      "chars": 2857,
+      "first_200": "from\u0007models\u0007 Mechanisms and\u0007representations\u0007that\u0007illustrate\u0007both\u0007particulate-level\u0007and\u0007macroscopic-level\u0007 properties. 5.8 Reaction Mechanism and 5.B Identify\u0007an\u0007appropriate\u0007theory,\u0007definition,\u0007or\u0007math"
+    },
+    {
+      "physical_page": 105,
+      "printed_page": 105,
+      "chars": 2857,
+      "first_200": "surface area and decide which data to collect. Groups use whiteboards\u0007to\u0007present\u0007their\u0007data\u0007and\u0007major\u0007findings\u0007to\u0007the\u0007rest\u0007of\u0007the\u0007class.\u0007 2 5.2 Post-Lab Discussion Using a spectrophotometer, have stud"
+    },
+    {
+      "physical_page": 106,
+      "printed_page": 106,
+      "chars": 2857,
+      "first_200": "Return to Table of Contents © 2024 College Board UNIT 5 Kinetics SUGGESTED SKILL Argumentation TOPIC 5.1 6.E Provide reasoning to justify a claim using connections Reaction Rates between particulate"
+    },
+    {
+      "physical_page": 107,
+      "printed_page": 107,
+      "chars": 2857,
+      "first_200": "Mathematical Introduction to Rate Law Routines 5.C Explain the relationship between variables within an equation when one variable changes. Required Course Content AVAILABLE RESOURCES §§ AP Chemistry "
+    },
+    {
+      "physical_page": 108,
+      "printed_page": 108,
+      "chars": 2857,
+      "first_200": "s the overall order of the reaction. 5.2.A.4 The proportionality constant in the rate law is called the rate constant. The value of this constant is temperature dependent and the"
+    },
+    {
+      "physical_page": 109,
+      "printed_page": 109,
+      "chars": 2857,
+      "first_200": "If a reaction is second order with respect to a reactant being monitored, a plot of the reciprocal of the concentration of that reactant versus time will be linear. 5.3.A.4"
+    },
+    {
+      "physical_page": 110,
+      "printed_page": 110,
+      "chars": 2857,
+      "first_200": "tant\u0007illustration\u0007of\u0007first\u0007order\u0007kinetics. AP Chemistry Course and Exam Description Course Framework V.1 | 97 Return to Table of Contents © 2024 College Board UNIT 5 Kinetics SUGGESTED SKILL Mathemati"
+    },
+    {
+      "physical_page": 111,
+      "printed_page": 111,
+      "chars": 2857,
+      "first_200": "between particulate and macroscopic scales or levels. Required Course Content LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 5.5.A 5.5.A.1 Explain the relationship For an elementary reaction to successfully b"
+    },
+    {
+      "physical_page": 112,
+      "printed_page": 112,
+      "chars": 2857,
+      "first_200": "ENTIAL KNOWLEDGE 5.6.A 5.6.A.1 Represent the activation Elementary reactions typically involve the energy and overall energy breaking of some bonds and the forming of change in an elementary new ones."
+    },
+    {
+      "physical_page": 113,
+      "printed_page": 113,
+      "chars": 2857,
+      "first_200": "Arrhenius equation will not be assessed on the AP Exam. AP Chemistry Course and Exam Description Course Framework V.1 | 100 Return to Table of Contents © 2024 College Board"
+    },
+    {
+      "physical_page": 114,
+      "printed_page": 114,
+      "chars": 2857,
+      "first_200": "chemical reaction. 5.7.A.3 A reaction intermediate is produced by some elementary steps and consumed by others, such that it is present only while a reaction is occurring. 5.7.A.4 Experimental detecti"
+    },
+    {
+      "physical_page": 115,
+      "printed_page": 115,
+      "chars": 2857,
+      "first_200": "will not be assessed on the AP Exam. AP Chemistry Course and Exam Description Course Framework V.1 | 102 Return to Table of Contents © 2024 College Board UNIT Kinetics"
+    },
+    {
+      "physical_page": 116,
+      "printed_page": 116,
+      "chars": 2857,
+      "first_200": "© 2024 College Board UNIT 5 Kinetics SUGGESTED SKILL Representing Data TOPIC 5.10 Multistep Reaction and Phenomena 3.B Represent chemical substances or phenomena with appropriate diagrams or models (e"
+    },
+    {
+      "physical_page": 117,
+      "printed_page": 117,
+      "chars": 2857,
+      "first_200": "§§ The Exam > 2021 Chief Reader Report LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 5.11.A 5.11.A.1 Explain the relationship In order for a catalyst to increase the rate of between\u0007the\u0007effect\u0007of\u0007 a reaction"
+    },
+    {
+      "physical_page": 118,
+      "printed_page": 118,
+      "chars": 2857,
+      "first_200": "reactions involving these new bound reaction intermediate(s). AP Chemistry Course and Exam Description Course Framework V.1 | 105 Return to Table of Contents © 2024 College Board THIS PAGE IS"
+    },
+    {
+      "physical_page": 119,
+      "printed_page": 119,
+      "chars": 2857,
+      "first_200": "be the essential role of energy and explain and predict the QUESTIONS direction of changes in matter. The availability or disposition of energy plays a role in virtually §§ Why"
+    },
+    {
+      "physical_page": 120,
+      "printed_page": 120,
+      "chars": 2857,
+      "first_200": "tion, students often struggle to reaction occurs. Students will construct determine the number of bonds that were representations of energy using appropriate broken and made in the reaction. Teachers "
+    },
+    {
+      "physical_page": 121,
+      "printed_page": 121,
+      "chars": 2857,
+      "first_200": "duction to Enthalpy of 5.F Calculate,\u0007estimate,\u0007or\u0007predict\u0007an\u0007unknown\u0007quantity\u0007from\u0007known\u0007quantities\u0007by\u0007 Reaction selecting and following a logical computational pathway and attending to precision (e."
+    },
+    {
+      "physical_page": 122,
+      "printed_page": 122,
+      "chars": 2857,
+      "first_200": "Have student pairs generate a list of exothermic and endothermic processes that occur in their everyday life. Have them share their lists with other pairs to determine if\u0007they\u0007have\u0007correctly\u0007identifie"
+    },
+    {
+      "physical_page": 123,
+      "printed_page": 123,
+      "chars": 2857,
+      "first_200": "with hydrochloric acid to determine the enthalpy change of the following reaction: Mg + O2 → MgO. Then have them evaluate their results and discuss sources of error. AP Chemistry"
+    },
+    {
+      "physical_page": 124,
+      "printed_page": 124,
+      "chars": 2857,
+      "first_200": "ermic reactions, the system gains energy from the surroundings by heat transfer to or work done on the system. 6.1.A.4 The formation of a solution may be an exothermic or"
+    },
+    {
+      "physical_page": 125,
+      "printed_page": 125,
+      "chars": 2857,
+      "first_200": "process.\u0007 AP Chemistry Course and Exam Description Course Framework V.1 | 113 Return to Table of Contents © 2024 College Board UNIT 6 Thermochemistry SUGGESTED SKILL Argumentation TOPIC 6.3 6.E"
+    },
+    {
+      "physical_page": 126,
+      "printed_page": 126,
+      "chars": 2857,
+      "first_200": "6 TOPIC 6.4 SUGGESTED SKILL Question and Heat Capacity Method 2.D and Calorimetry Make observations or collect data from representations of laboratory setups or results, while attending to precision w"
+    },
+    {
+      "physical_page": 127,
+      "printed_page": 127,
+      "chars": 2857,
+      "first_200": "e. Calorimetry experiments are used to measure the transfer of heat. 6.4.A.2 The\u0007first\u0007law\u0007of\u0007thermodynamics\u0007states\u0007 that energy is conserved in chemical and physical processes. 6.4.A.3 The transfer o"
+    },
+    {
+      "physical_page": 128,
+      "printed_page": 128,
+      "chars": 2857,
+      "first_200": "mixture within the calorimeter can be used to determine\u0007the\u0007direction\u0007of\u0007energy\u0007flow.\u0007If\u0007the\u0007 temperature of the mixture increases, thermal energy is released by the dissolution process (exothermic). "
+    },
+    {
+      "physical_page": 129,
+      "printed_page": 129,
+      "chars": 2857,
+      "first_200": "§ AP Chemistry Lab LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE Manual > Investigation 6.5.A 6.5.A.1 12: The Hand Warmer Challenge: Where Does Explain changes in the heat Energy must be transferred to"
+    },
+    {
+      "physical_page": 130,
+      "printed_page": 130,
+      "chars": 2857,
+      "first_200": "Return to Table of Contents © 2024 College Board UNIT 6 Thermochemistry TOPIC 6.6 SUGGESTED SKILL Model Analysis 5.F Calculate, estimate, or predict an unknown Introduction to quantity from known"
+    },
+    {
+      "physical_page": 131,
+      "printed_page": 131,
+      "chars": 2857,
+      "first_200": "\u0007from\u0007that\u0007of\u0007the\u0007 reactants because of the breaking and forming of\u0007bonds.\u0007The\u0007energy\u0007difference\u0007results\u0007in\u0007a\u0007 change in the kinetic energy of the particles, which manifests as a temperature change. E"
+    },
+    {
+      "physical_page": 132,
+      "printed_page": 132,
+      "chars": 2857,
+      "first_200": "a logical computational pathway and attending to precision (e.g., performing dimensional analysis and attending to significant figures). Required Course Content LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE "
+    },
+    {
+      "physical_page": 133,
+      "printed_page": 133,
+      "chars": 2857,
+      "first_200": "sis and attending to significant figures). Required Course Content LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 6.8.A 6.8.A.1 Calculate the enthalpy Tables of standard enthalpies of formation can change for"
+    },
+    {
+      "physical_page": 134,
+      "printed_page": 134,
+      "chars": 2857,
+      "first_200": "NING OBJECTIVE ESSENTIAL KNOWLEDGE 6.9.A 6.9.A.1 Represent a chemical Many processes can be broken down into a or physical process as a series of steps. Each step in the series"
+    },
+    {
+      "physical_page": 135,
+      "printed_page": 135,
+      "chars": 2857,
+      "first_200": "Course Framework V.1 | 121 Return to Table of Contents © 2024 College Board THIS PAGE IS INTENTIONALLY LEFT BLANK. AP CHEMISTRY UNIT 7 Equilibrium 7–9% AP EXAM WEIGHTING ~13–15"
+    },
+    {
+      "physical_page": 136,
+      "printed_page": 136,
+      "chars": 2857,
+      "first_200": "hese two processes are in a dynamic competition, sensitive to initial conditions and forward and reverse external perturbations. A change in conditions, such as addition of a chemical species, change"
+    },
+    {
+      "physical_page": 137,
+      "printed_page": 137,
+      "chars": 2857,
+      "first_200": "eaction\u0007through\u0007particulate- struggle to connect the value of a large level representations, portraying both the K to a reaction proceeding essentially to forward and reverse rates of the reaction com"
+    },
+    {
+      "physical_page": 138,
+      "printed_page": 138,
+      "chars": 2857,
+      "first_200": "between\u0007particulate-level\u0007properties\u0007and\u0007macroscopic\u0007properties.\u0007 7.3 Reaction Quotient and 3.A Represent\u0007chemical\u0007phenomena\u0007using\u0007appropriate\u0007graphing\u0007techniques,\u0007 Equilibrium Constant including corr"
+    },
+    {
+      "physical_page": 139,
+      "printed_page": 139,
+      "chars": 2857,
+      "first_200": "UNIT Equilibrium 7 SAMPLE INSTRUCTIONAL ACTIVITIES The\u0007sample\u0007activities\u0007on\u0007this\u0007page\u0007are\u0007optional\u0007and\u0007are\u0007offered\u0007to\u0007provide\u0007possible\u0007ways\u0007to\u0007 incorporate various instructional approaches into the cl"
+    },
+    {
+      "physical_page": 140,
+      "printed_page": 140,
+      "chars": 2857,
+      "first_200": "ciple. 4 7.11 Post-Lab Discussion After examining the Ksp tables for patterns (including ion charge, ionic radius, polyatomic vs. monoatomic ions, etc.), have students investigate the Ksp of lead (II)"
+    },
+    {
+      "physical_page": 141,
+      "printed_page": 141,
+      "chars": 2857,
+      "first_200": "of electrons in redox reactions. 7.1.A.2 When equilibrium is reached, no observable changes occur in the system. Reactants and products are simultaneously present, and the concentrations or partial pr"
+    },
+    {
+      "physical_page": 142,
+      "printed_page": 142,
+      "chars": 2857,
+      "first_200": "describes the connection between\u0007particulate- level properties and macroscopic properties. Required Course Content LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 7.2.A 7.2.A.1 Explain the relationship If the "
+    },
+    {
+      "physical_page": 143,
+      "printed_page": 143,
+      "chars": 2857,
+      "first_200": "Kp = Qp. toward the equilibrium constant such that at equilibrium Kc = Qc and Kp = Qp. As examples, for the reaction aA+bBcC+dD the law of mass action indicates"
+    },
+    {
+      "physical_page": 144,
+      "printed_page": 144,
+      "chars": 2857,
+      "first_200": "s in quotient Qc or Qp, for a equilibrium with that species in the gas phase will reversible reaction, and the not be assessed on the AP Exam. corresponding equilibrium"
+    },
+    {
+      "physical_page": 145,
+      "printed_page": 145,
+      "chars": 2857,
+      "first_200": "Argumentation Magnitude of the 6.D Provide reasoning to justify a claim using chemical Equilibrium Constant principles or laws, or using mathematical justification. Required Course Content LEARNING OB"
+    },
+    {
+      "physical_page": 146,
+      "printed_page": 146,
+      "chars": 2857,
+      "first_200": "7.6.A.3 When reactions are added together, the K of the resulting overall reaction is the product of the K’s for the reactions that were summed. 7.6.A.4 Since the expressions for"
+    },
+    {
+      "physical_page": 147,
+      "printed_page": 147,
+      "chars": 2857,
+      "first_200": "A.1 Identify the concentrations or The concentrations or partial pressures of partial pressures of chemical species at equilibrium can be predicted given species at equilibrium based the balanced reac"
+    },
+    {
+      "physical_page": 148,
+      "printed_page": 148,
+      "chars": 2857,
+      "first_200": "Return to Table of Contents © 2024 College Board UNIT Equilibrium 7 TOPIC 7.9 SUGGESTED SKILL Argumentation Introduction to Le 6.F Explain the connection between experimental Châtelier’s Principle res"
+    },
+    {
+      "physical_page": 149,
+      "printed_page": 149,
+      "chars": 2857,
+      "first_200": "inciple can be used to predict\u0007the\u0007effect\u0007that\u0007a\u0007stress\u0007will\u0007have\u0007on\u0007 experimentally measurable properties such as pH, temperature, and color of a solution. AP Chemistry Course and Exam Description Co"
+    },
+    {
+      "physical_page": 150,
+      "printed_page": 150,
+      "chars": 2857,
+      "first_200": "ption Course Framework V.1 | 138 Return to Table of Contents © 2024 College Board UNIT Equilibrium 7 TOPIC 7.11 SUGGESTED SKILL Mathematical Introduction to Routines 5.B Identify an appropriate"
+    },
+    {
+      "physical_page": 151,
+      "printed_page": 151,
+      "chars": 2857,
+      "first_200": "culate the Ksp of a substance. AP Chemistry Course and Exam Description Course Framework V.1 | 139 Return to Table of Contents © 2024 College Board UNIT 7 Equilibrium TOPIC"
+    },
+    {
+      "physical_page": 152,
+      "printed_page": 152,
+      "chars": 2857,
+      "first_200": "Remember to go to AP Classroom to assign students the online Progress Check\u0007for\u0007this unit. Whether assigned as homework or completed in class, the Progress Check provides each student with immediate"
+    },
+    {
+      "physical_page": 153,
+      "printed_page": 153,
+      "chars": 2857,
+      "first_200": "On the AP Exam, students must be § Why are some acids In\u0007Unit\u00078,\u0007students\u0007will\u0007apply\u0007the\u0007explanations able to use experimental data to make stronger than others? and calculations they learned in Unit "
+    },
+    {
+      "physical_page": 154,
+      "printed_page": 154,
+      "chars": 2857,
+      "first_200": "and implement mathematical routines to error\u0007may\u0007have\u0007affected\u0007experimental\u0007results manipulate and interpret titration data and and\u0007associated calculations. connect that interpretation to chemistry co"
+    },
+    {
+      "physical_page": 155,
+      "printed_page": 155,
+      "chars": 2857,
+      "first_200": "6.D Provide\u0007reasoning\u0007to\u0007justify\u0007a\u0007claim\u0007using\u0007chemical\u0007principles\u0007or\u0007laws,\u0007or\u0007using\u0007 mathematical justification. 8.9 Henderson-Hasselbalch 5.F Calculate,\u0007estimate,\u0007or\u0007predict\u0007an\u0007unknown\u0007quantity\u0007from"
+    },
+    {
+      "physical_page": 156,
+      "printed_page": 156,
+      "chars": 2857,
+      "first_200": "ions.\u0007Percent\u0007ionization\u0007is\u0007discussed\u0007and\u0007how\u0007ICE\u0007charts\u0007 reflect\u0007the\u0007percent\u0007ionization\u0007is\u0007explained. 2 8.5 Post-Lab Discussion After collecting data on a weak acid/strong base titration, have studen"
+    },
+    {
+      "physical_page": 157,
+      "printed_page": 157,
+      "chars": 2857,
+      "first_200": "EQN: pH = −log[H3O+] solution of water. EQN: pOH = −log[OH−] The terms “hydrogen ion” and “hydronium ion” and the symbols H+(aq) and H3O+(aq) are often used interchangeably for the"
+    },
+    {
+      "physical_page": 158,
+      "printed_page": 158,
+      "chars": 2857,
+      "first_200": "Routines 5.B Identify an appropriate Acids and Bases theory, definition, or mathematical relationship to solve a problem. Required Course Content LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 8.2.A 8.2.A.1 C"
+    },
+    {
+      "physical_page": 159,
+      "printed_page": 159,
+      "chars": 2857,
+      "first_200": "ILL Mathematical TOPIC 8.3 Weak Acid and Routines 5.C Explain the relationship between variables within an equation when one variable changes.\u0007 Base Equilibria Required Course Content LEARNING OBJECTI"
+    },
+    {
+      "physical_page": 160,
+      "printed_page": 160,
+      "chars": 2857,
+      "first_200": "in\u0007this\u0007way.\u0007 Thus, the concentration of OH− in the solution does not equal the initial concentration of the base, and the vast majority of the base molecules\u0007remain\u0007un-ionized. continued on next page"
+    },
+    {
+      "physical_page": 161,
+      "printed_page": 161,
+      "chars": 2857,
+      "first_200": "\u0007pair,\u0007the\u0007acid\u0007 ionization\u0007constant\u0007and\u0007base\u0007ionization\u0007 constant are related by Kw: EQN: Kw = Ka × Kb EQN: pKw = pKa + pKb AP Chemistry Course and Exam Description Course Framework V.1 | 149"
+    },
+    {
+      "physical_page": 162,
+      "printed_page": 162,
+      "chars": 2857,
+      "first_200": "ion is formed, and the pH can be determined\u0007from\u0007the\u0007Henderson-Hasselbalch\u0007 (H−H)\u0007equation\u0007(see\u00078.9.A.1).\u0007If\u0007the\u0007strong\u0007base\u0007 is in excess, then the pH can be determined from the moles of excess hydro"
+    },
+    {
+      "physical_page": 163,
+      "printed_page": 163,
+      "chars": 2857,
+      "first_200": "be determined from the equilibrium represented by the equation: HB+(aq) + H2O(l)  B(aq) + H3O+(aq). 8.4.A.4 When a weak acid and a weak base are mixed, they will react"
+    },
+    {
+      "physical_page": 164,
+      "printed_page": 164,
+      "chars": 2857,
+      "first_200": "the analyte. This is the case for titrations of strong acids/bases and weak acids/bases. 8.5.A.3 For titrations of weak acids/bases, it is useful to consider the point halfway to the"
+    },
+    {
+      "physical_page": 165,
+      "printed_page": 165,
+      "chars": 2857,
+      "first_200": "base) is present at the equivalence point and can\u0007undergo\u0007proton-transfer\u0007reactions\u0007with\u0007 the surrounding water, producing basic (acidic) solutions. 8.5.A.5 For polyprotic acids, titration curves can "
+    },
+    {
+      "physical_page": 166,
+      "printed_page": 166,
+      "chars": 2857,
+      "first_200": "d-base\u0007reactions,\u0007and\u0007the\u0007relative\u0007 of an acid or base and strength of these protons, can be inferred from the structure of the the molecular structure. molecule or ion. i. Strong acids (such as"
+    },
+    {
+      "physical_page": 167,
+      "printed_page": 167,
+      "chars": 2857,
+      "first_200": "Make observations or collect data from representations of laboratory setups or results, while attending to precision where appropriate. Required Course Content AVAILABLE RESOURCES §§ The Exam > 2022 C"
+    },
+    {
+      "physical_page": 168,
+      "printed_page": 168,
+      "chars": 2857,
+      "first_200": "© 2024 College Board UNIT 8 Acids and Bases SUGGESTED SKILL Argumentation TOPIC 8.8 6.D Provide reasoning to justify a claim using chemical Properties of Buffers principles or laws, or"
+    },
+    {
+      "physical_page": 169,
+      "printed_page": 169,
+      "chars": 2857,
+      "first_200": "quantity from known quantities by selecting and following a logical computational pathway and attending to precision (e.g., performing dimensional analysis and attending to significant figures). Requi"
+    },
+    {
+      "physical_page": 170,
+      "printed_page": 170,
+      "chars": 2857,
+      "first_200": "the\u0007buffer. [A − ] EQN: pH = pKa + log [HA ] Exclusion Statement: Computation of the change in pH resulting from the addition of an acid or a base"
+    },
+    {
+      "physical_page": 171,
+      "printed_page": 171,
+      "chars": 2857,
+      "first_200": "id. When a buffer\u0007has\u0007more\u0007conjugate\u0007base\u0007than\u0007acid,\u0007it\u0007 has\u0007a\u0007greater\u0007buffer\u0007capacity\u0007for\u0007addition\u0007of\u0007 added acid than base. AP Chemistry Course and Exam Description Course Framework V.1 | 158 Return"
+    },
+    {
+      "physical_page": 172,
+      "printed_page": 172,
+      "chars": 2857,
+      "first_200": "a salt. base,\u0007or\u0007the\u0007hydroxide\u0007ion.\u0007These\u0007effects\u0007can\u0007 be understood qualitatively using Le Châtelier’s principle. Exclusion Statement: Computations of solubility as a function of pH will not be asses"
+    },
+    {
+      "physical_page": 173,
+      "printed_page": 173,
+      "chars": 2857,
+      "first_200": "UNIT 9 7–9% AP EXAM WEIGHTING ~10–13 CLASS PERIODS Thermodynamics and Electrochemistry Developing Understanding ESSENTIAL This\u0007unit\u0007allows\u0007students\u0007to\u0007connect\u0007principles\u0007and\u0007calculations\u0007across\u0007Units\u0007"
+    },
+    {
+      "physical_page": 174,
+      "printed_page": 174,
+      "chars": 2857,
+      "first_200": "mical state that both enthalpy and entropy drive systems. Sometimes support of such the reaction by using the equation for Gibbs claims comes from students being able to free energy"
+    },
+    {
+      "physical_page": 175,
+      "printed_page": 175,
+      "chars": 2857,
+      "first_200": "comprehensive claims about what is concentrations of product. happening in a galvanic or electrolytic cell. AP Chemistry Course and Exam Description Course Framework V.1 | 163 Return to Table of"
+    },
+    {
+      "physical_page": 176,
+      "printed_page": 176,
+      "chars": 2857,
+      "first_200": "ignificant\u0007figures). 9.10 \u0007\u0007Cell Potential 6.D Provide\u0007reasoning\u0007to\u0007justify\u0007a\u0007claim\u0007using\u0007chemical\u0007principles\u0007or\u0007laws,\u0007or\u0007using\u0007 Under Nonstandard mathematical\u0007justification.\u0007\u0007 Conditions 9.11 \u0007\u0007Elect"
+    },
+    {
+      "physical_page": 177,
+      "printed_page": 177,
+      "chars": 2857,
+      "first_200": "to ask as many questions as they can while the clock is running. Allow the clock to run for as long as possible and then examine the magnesium anode after"
+    },
+    {
+      "physical_page": 178,
+      "printed_page": 178,
+      "chars": 2857,
+      "first_200": "become freer to move and generally occupy a larger volume. Similarly, for a gas, the entropy increases when there is an increase in volume (at constant temperature), and the gas"
+    },
+    {
+      "physical_page": 179,
+      "printed_page": 179,
+      "chars": 2857,
+      "first_200": "Calculate, estimate, or Entropy Change predict an unknown quantity from known quantities by selecting and following a logical computational pathway and attending to precision (e.g., performing dimensi"
+    },
+    {
+      "physical_page": 180,
+      "printed_page": 180,
+      "chars": 2857,
+      "first_200": "© 2024 College Board UNIT 9 Thermodynamics and Electrochemistry SUGGESTED SKILL Argumentation TOPIC 9.3 6.E Provide reasoning to justify a claim using connections Gibbs Free Energy between particulate"
+    },
+    {
+      "physical_page": 181,
+      "printed_page": 181,
+      "chars": 2857,
+      "first_200": "The standard Gibbs free energy change for a physical or chemical process may also be determined\u0007from\u0007the\u0007standard\u0007Gibbs\u0007 free energy\u0007of\u0007formation\u0007of\u0007the\u0007reactants\u0007 and products.\u0007\u0007 EQN: ΔG°reaction = Σ"
+    },
+    {
+      "physical_page": 182,
+      "printed_page": 182,
+      "chars": 2857,
+      "first_200": "all T >0 <0 >< no T >0 >0 >> high T <0 <0 << low T In cases where ΔH° < 0 and ΔS° > 0, no calculation of"
+    },
+    {
+      "physical_page": 183,
+      "printed_page": 183,
+      "chars": 2857,
+      "first_200": "not proceed at a noticeable rate does not mean that the chemical system is at equilibrium. If a process is known to be thermodynamically favored, and yet does not occur"
+    },
+    {
+      "physical_page": 184,
+      "printed_page": 184,
+      "chars": 2857,
+      "first_200": "= e−ΔG°/RT and EQN: ΔG° = −RT ln K. 9.5.A.3 Connections between K and ΔG° can be made qualitatively through estimation. When ΔG° is near\u0007zero,\u0007the\u0007equilibrium\u0007constant\u0007will\u0007be\u0007close\u0007 to 1. When ΔG° is"
+    },
+    {
+      "physical_page": 185,
+      "printed_page": 185,
+      "chars": 2857,
+      "first_200": "entropic contributions to each of these factors. However, making predictions for the total change in free energy of dissolution can be challenging due to the cancellations among the free energies"
+    },
+    {
+      "physical_page": 186,
+      "printed_page": 186,
+      "chars": 2857,
+      "first_200": "ii. Light to drive the overall conversion of carbon dioxide to glucose in photosynthesis. 9.7.A.2 A desired product can be formed by coupling a thermodynamically unfavorable reaction that produces tha"
+    },
+    {
+      "physical_page": 187,
+      "printed_page": 187,
+      "chars": 2857,
+      "first_200": "electrode mass, evolution of a gas at an electrode, ion\u0007flow\u0007through\u0007the\u0007salt\u0007bridge)\u0007can\u0007be\u0007described\u0007 at both the macroscopic and particulate levels. 9.8.A.2 Galvanic, sometimes called voltaic, cell"
+    },
+    {
+      "physical_page": 188,
+      "printed_page": 188,
+      "chars": 2857,
+      "first_200": "Routines 5.F Calculate, estimate, or Free Energy predict an unknown quantity from known quantities by selecting and following a logical computational pathway and attending to precision (e.g., performi"
+    },
+    {
+      "physical_page": 189,
+      "printed_page": 189,
+      "chars": 2857,
+      "first_200": "ΔGo (standard Gibbs free energy change) is proportional to the negative of the cell potential for the redox reaction from which it is constructed. Thus, a cell with a positive"
+    },
+    {
+      "physical_page": 190,
+      "printed_page": 190,
+      "chars": 2857,
+      "first_200": "9.10.A.3 The standard cell potential Eo corresponds to the standard conditions of Q = 1. As the system approaches equilibrium, the magnitude (i.e., absolute value) of the cell potential decreases,"
+    },
+    {
+      "physical_page": 191,
+      "printed_page": 191,
+      "chars": 2857,
+      "first_200": "standing of electrochemical cells under changes in the cell potential. nonstandard conditions. However, students should\u0007qualitatively\u0007understand\u0007the\u0007effects\u0007 of concentration on cell potential and use"
+    },
+    {
+      "physical_page": 192,
+      "printed_page": 192,
+      "chars": 2857,
+      "first_200": "Contents © 2024 College Board AP CHEMISTRY Laboratory Investigations Lab Experiments Student-directed,\u0007inquiry-based\u0007lab\u0007experience\u0007 chemistry course. A list of commonly used instruments, supports the"
+    },
+    {
+      "physical_page": 193,
+      "printed_page": 193,
+      "chars": 2857,
+      "first_200": "ctrophotometers and pH chemistry\u0007textbooks\u0007also\u0007typically\u0007offer\u0007an\u0007associated\u0007 meters, to complete the recommended labs. None of lab manual. Science classroom supply companies may the recommended labs"
+    },
+    {
+      "physical_page": 194,
+      "printed_page": 194,
+      "chars": 2857,
+      "first_200": "rs\u0007 comparable\u0007to\u0007those\u0007required\u0007for\u0007a\u0007high\u0007school-level\u0007 to borrow their equipment. They may even donate AP Chemistry Course and Exam Description Laboratory Investigations V.1 | 181 Return to Table o"
+    },
+    {
+      "physical_page": 195,
+      "printed_page": 195,
+      "chars": 2857,
+      "first_200": "how\u0007precise\u0007volumes\u0007of\u0007reactants\u0007can\u0007be\u0007effectively\u0007 The AP Chemistry Exam directly assesses the learning dispensed, knowing how to evaluate when the end point objectives of the course framework, whic"
+    },
+    {
+      "physical_page": 196,
+      "printed_page": 196,
+      "chars": 2857,
+      "first_200": "nd\u0007other\u0007quantities\u0007to\u0007characterize\u0007a\u0007voltaic\u0007cell,\u0007 chemical species of interest, and using standard and\u0007utilizing\u0007external\u0007power\u0007sources\u0007to\u0007perform\u0007an\u0007 solutions to generate a calibration curve or m"
+    },
+    {
+      "physical_page": 197,
+      "printed_page": 197,
+      "chars": 2857,
+      "first_200": "ical version of this lab, students are given a may want to consider collaborating with other teachers, series of known solutions and a set procedure attending\u0007workshops\u0007about\u0007inquiry-based\u0007labs\u0007(e.g.,"
+    },
+    {
+      "physical_page": 198,
+      "printed_page": 198,
+      "chars": 2857,
+      "first_200": "ples of how lab entails student groups investigating different teachers can modify common cookbook experiments factors that affect cell potential, such as electrode follow. Note that these are not det"
+    },
+    {
+      "physical_page": 199,
+      "printed_page": 199,
+      "chars": 2857,
+      "first_200": "rature change, gas evolution, etc.) and its absence\u0007(in\u0007the\u0007identification\u0007of\u0007spectator\u0007ions,\u0007for\u0007 § Use of safety goggles, eye washes, body showers, example). Students should know how to make and fir"
+    },
+    {
+      "physical_page": 200,
+      "printed_page": 200,
+      "chars": 2857,
+      "first_200": "sses and Procedures chemistry course. Students should be familiar with the following general § All facilities should conform to federal, state, and types of chemical lab work: local laws and"
+    },
+    {
+      "physical_page": 201,
+      "printed_page": 201,
+      "chars": 2857,
+      "first_200": "© 2024 College Board AP CHEMISTRY Instructional Approaches Selecting and Using Course Materials In\u0007addition\u0007to\u0007using\u0007a\u0007college-level\u0007textbook\u0007that\u0007 will cover the required course content, students are"
+    },
+    {
+      "physical_page": 202,
+      "printed_page": 202,
+      "chars": 2857,
+      "first_200": ". § Learner\u0007is\u0007given\u0007data\u0007and\u0007asked\u0007to\u0007analyze\u0007it. Instead\u0007of\u0007seeking\u0007confirmation\u0007of\u0007concepts,\u0007inquiry- based labs and classroom activities allow students, with § Learner\u0007is\u0007given\u0007the\u0007data\u0007and\u0007told\u0007h"
+    },
+    {
+      "physical_page": 203,
+      "printed_page": 203,
+      "chars": 2857,
+      "first_200": "predictions about what the proposed mechanism for the reaction should be. Then have groups share their proposal and reasoning for other groups to evaluate and provide feedback. Demos with Q&A"
+    },
+    {
+      "physical_page": 204,
+      "printed_page": 204,
+      "chars": 2857,
+      "first_200": "udents are told the boiling Representations and/or\u0007analyze\u0007pictures,\u0007 information using multiple point of CCl4 is higher than tables, graphs, lists, ways to present data and CH2Cl2. Have them create e"
+    },
+    {
+      "physical_page": 205,
+      "printed_page": 205,
+      "chars": 2857,
+      "first_200": "concentration) chart to help students work through the subtasks of this complicated problem. Manipulatives Students use objects to Provides a visual Have students use molecule examine relationships re"
+    },
+    {
+      "physical_page": 206,
+      "printed_page": 206,
+      "chars": 2857,
+      "first_200": "Return to Table of Contents © 2024 College Board Strategy Definition Purpose Example Predict & Confirm Students make conjectures Stimulates thinking by Given a particular molecular about what results "
+    },
+    {
+      "physical_page": 207,
+      "printed_page": 207,
+      "chars": 2857,
+      "first_200": "stic interact with, and reaction (pertaining to a simulations and can either manipulate variables limiting reagent problem). enter or alter parameters associated\u0007with\u0007difficult\u0007 Each iteration of the "
+    },
+    {
+      "physical_page": 208,
+      "printed_page": 208,
+      "chars": 2857,
+      "first_200": "rationale. AP Chemistry Course and Exam Description Instructional Approaches V.1 | 193 Return to Table of Contents © 2024 College Board Developing the Science Practices Throughout the course, students"
+    },
+    {
+      "physical_page": 209,
+      "printed_page": 209,
+      "chars": 2857,
+      "first_200": "which evaporates faster and particulate-level and then ask them to describe why. macroscopic-level properties. AP Chemistry Course and Exam Description Instructional Approaches V.1 | 194 Return to Tab"
+    },
+    {
+      "physical_page": 210,
+      "printed_page": 210,
+      "chars": 2857,
+      "first_200": "s position on the periodic table and its electronic structure. 2.C What experimental Given that a precipitate is a Explore Identify experimental procedure would separate a solid trapped in a"
+    },
+    {
+      "physical_page": 211,
+      "printed_page": 211,
+      "chars": 2857,
+      "first_200": "to a Discussion modifications to an asked to explain why one chemical system and ask them experimental procedure result\u0007is\u0007different\u0007than\u0007the\u0007 to explain what would happen to other based on change in"
+    },
+    {
+      "physical_page": 212,
+      "printed_page": 212,
+      "chars": 2857,
+      "first_200": "© 2024 College Board Science Practice 3: Representing Data and Phenomena (cont'd) Instructional Skill Questions/Tasks Sample Activities Strategies 3.C Students are provided with Students are told that"
+    },
+    {
+      "physical_page": 213,
+      "printed_page": 213,
+      "chars": 2857,
+      "first_200": "m of a gas and tell them that model is consistent with that is consistent with the pressure of the gas is chemical theories. experimental data. lower than expected. Have"
+    },
+    {
+      "physical_page": 214,
+      "printed_page": 214,
+      "chars": 2857,
+      "first_200": "cience Practice 5: Mathematical Routines Instructional Skill Questions/Tasks Sample Activities Strategies 5.A What data needs to be Ask students to determine Think-Pair-Share Identify quantities colle"
+    },
+    {
+      "physical_page": 215,
+      "printed_page": 215,
+      "chars": 2857,
+      "first_200": "Return to Table of Contents © 2024 College Board Science Practice 5: Mathematical Routines \u0003(cont'd) Instructional Skill Questions/Tasks Sample Activities Strategies 5.D A student is given a Give stud"
+    },
+    {
+      "physical_page": 216,
+      "printed_page": 216,
+      "chars": 2857,
+      "first_200": "nd attending to significant figures). Science Practice 6: Develop an explanation or scientific argument The ability to formulate a coherent argument, that is, to make a claim that is clearly"
+    },
+    {
+      "physical_page": 217,
+      "printed_page": 217,
+      "chars": 2857,
+      "first_200": "her’s claims based on the mathematical relationship determined during the Q&A. 6.B A chemist successfully After investigating three § Post-Lab\u0007 Support a claim separates a mixture of different\u0007dyes\u0007us"
+    },
+    {
+      "physical_page": 218,
+      "printed_page": 218,
+      "chars": 2857,
+      "first_200": "point. Have them use their particulate representations to explain why one boiling point is higher than the other. continued on next page AP Chemistry Course and Exam Description Instructional Approach"
+    },
+    {
+      "physical_page": 219,
+      "printed_page": 219,
+      "chars": 2857,
+      "first_200": "ction at equilibrium, use Le an online simulation of § Predict\u0007&\u0007Confirm between experimental Châtelier’s principle to a chemical system in results and chemical explain the direction of equilibrium an"
+    },
+    {
+      "physical_page": 220,
+      "printed_page": 220,
+      "chars": 2857,
+      "first_200": "ming, can be found below: Number of Exam Section Question Type Questions Weighting Timing I Multiple-choice questions 60 50% 90 minutes II Free-response questions 50% 105 minutes Long questions 3"
+    },
+    {
+      "physical_page": 221,
+      "printed_page": 221,
+      "chars": 2857,
+      "first_200": "Practice 4: Model Analysis 23–30% Practice 5: Mathematical Routines 35–42% Practice 6: Argumentation 8–12% Section II: Free-Response All\u0007six\u0007science\u0007practices\u0007are\u0007assessed\u0007in\u0007the\u0007free-response\u0007section"
+    },
+    {
+      "physical_page": 222,
+      "printed_page": 222,
+      "chars": 2857,
+      "first_200": "topic in words or by circling given information. Also phrased as “What is?\" or “Which?”\u0007or\u0007other\u0007interrogatory\u0007words. Justify: Provide evidence to support, qualify, or defend a claim and/or provide re"
+    },
+    {
+      "physical_page": 223,
+      "printed_page": 223,
+      "chars": 2857,
+      "first_200": "oard 3. Based on the results of the paper chromatography experiment shown above, which of the following can be concluded about the dye? (A) It has a small molar mass."
+    },
+    {
+      "physical_page": 224,
+      "printed_page": 224,
+      "chars": 2857,
+      "first_200": "m rate. (D) Curve Y, because it takes a shorter time for the reaction to go to completion due to the larger surface area of CaCO3(s). AP Chemistry Course and"
+    },
+    {
+      "physical_page": 225,
+      "printed_page": 225,
+      "chars": 2857,
+      "first_200": "n to Table of Contents © 2024 College Board Beaker X Beaker Y 50 mL H2O 100 mL 1.0 M NaCl 10. Beaker X contains 50 mL of distilled water"
+    },
+    {
+      "physical_page": 226,
+      "printed_page": 226,
+      "chars": 2857,
+      "first_200": "ected 15. In a third experiment, 0.10 g samples of Mg(s) are placed in excess HCl(aq) of various concentrations: 0.050 M, 0.10 M, 0.25 M, and 0.50 M. The reactions"
+    },
+    {
+      "physical_page": 227,
+      "printed_page": 227,
+      "chars": 2857,
+      "first_200": "d to form SO3 according to the following equation. 2 SO2(g) + O2(g) → 2 SO3(g) ΔH° = −198 kJ/molrxn (f) Is the value of ΔS° for the reaction represented"
+    },
+    {
+      "physical_page": 228,
+      "printed_page": 228,
+      "chars": 2857,
+      "first_200": "tion Type Skill Learning Objective 1 Short 3.A, 3.B, 6.D 1.6.A 2 Long 1.A, 3.B, 4.C, 2.5.A, 2.7.A, 4.2.A, 5.C, 5.E, 5.F, 6.D 4.5.A, 4.7.A, 6.9.B, 9.1.A, 9.3.A The scoring"
+    },
+    {
+      "physical_page": 229,
+      "printed_page": 229,
+      "chars": 2857,
+      "first_200": "1.6.A Relative Number of Electrons 1000 100 10 1 0.1 Binding Energy (MJ/mol) See the student’s drawing. One point for the X located above the leftmost peak (at 100 MJ/mol)"
+    },
+    {
+      "physical_page": 230,
+      "printed_page": 230,
+      "chars": 2857,
+      "first_200": "he combustion of S8(s) to form SO2(g). (b) Calculate the volume of O2(g), measured at 1.00 atm and 298 K, that is required to completely combust a 500.0 g sample"
+    },
+    {
+      "physical_page": 231,
+      "printed_page": 231,
+      "chars": 2857,
+      "first_200": "5.F One point for calculating the moles of O2. 4.5.A 1 mol S8 8 mol O2 500.0 g S8 × × = 15.60 mol O2 256.5 g S8 1 mol"
+    },
+    {
+      "physical_page": 232,
+      "printed_page": 232,
+      "chars": 2857,
+      "first_200": "otal for part (d) 2 points (e) Based\u0007on\u0007the\u0007diagram\u0007you\u0007drew\u0007in\u0007part\u0007(d),\u0007what\u0007is\u0007the\u0007approximate\u0007oxygen-sulfur-oxygen\u0007bond\u0007 1 point angle in SO2? 1.A One point for an angle that is consistent with th"
+    },
+    {
+      "physical_page": 233,
+      "printed_page": 233,
+      "chars": 2857,
+      "first_200": "point for indicating an increased thermodynamic favorability along with a valid justification. 9.3.A • ΔGrxn = ΔHrxn − TΔSrxn. Assuming that both ΔHrxn and ΔSrxn are constant, as the value"
+    },
+    {
+      "physical_page": 234,
+      "printed_page": 234,
+      "chars": 2857,
+      "first_200": "B C N O F Ne 6.94 9.01 10.81 12.01 14.01 16.00 19.00 20.18 11 12 13 14 15 16 17 18 Na Mg Al Si P S Cl Ar"
+    },
+    {
+      "physical_page": 235,
+      "printed_page": 235,
+      "chars": 2857,
+      "first_200": "192.22 195.08 196.97 200.59 204.38 207.2 208.98 87 88 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 Fr Ra 89-103 Rf Db Sg"
+    },
+    {
+      "physical_page": 236,
+      "printed_page": 236,
+      "chars": 2857,
+      "first_200": "Factor Prefix Symbol mole, mol 1 hertz = 1 s−1 109 giga G liter, L meter, m 1 atm = 760 mm Hg = 760 torr 106 mega M second,"
+    },
+    {
+      "physical_page": 237,
+      "printed_page": 237,
+      "chars": 2857,
+      "first_200": "= mole fraction moles A m = mass PA = Ptotal × X A , where X A = total moles M = molar mass D = density Ptotal ="
+    },
+    {
+      "physical_page": 238,
+      "printed_page": 238,
+      "chars": 2857,
+      "first_200": "(PA ) a (PB )b Kw (water) + − −14 K w = [H 3O ][OH ] = 1.0 × 10 at 25°C Ka (acid) pK w = 14 ="
+    }
+  ]
+}

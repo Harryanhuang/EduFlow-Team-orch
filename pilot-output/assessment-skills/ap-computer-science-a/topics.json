@@ -1,0 +1,166 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "ap-computer-science-a",
+      "topic_name": "AP Computer Science A",
+      "parent_id": "",
+      "scope": [
+        "AP Computer Science A course framework (College Board).",
+        "Valid: 2025 → (ongoing).",
+        "Units 1–4 with cumulative exam weightings."
+      ],
+      "out_of_scope": [
+        "Pre-AP / general high-school level content unless explicitly cited in CED.",
+        "University-level content beyond AP expectations.",
+        "Other AP subjects."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific unit fits.",
+        "Prefer specific Unit N nodes for content questions."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-computer-science-a-unit01",
+      "topic_name": "Unit 1: Using Objects and Methods",
+      "parent_id": "ap-computer-science-a",
+      "scope": [
+        "Unit 1 content as defined in AP Computer Science A CED.",
+        "Exam weighting: 15–25%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Using Objects and Methods."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_1.1",
+          "text": "Core content and concepts for Unit 1: Using Objects and Methods."
+        },
+        {
+          "ek_id": "EK_1.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 1: Using Objects and Methods."
+        },
+        {
+          "ek_id": "EK_1.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 1: Using Objects and Methods."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-computer-science-a-unit02",
+      "topic_name": "Unit 2: Selection and Iteration",
+      "parent_id": "ap-computer-science-a",
+      "scope": [
+        "Unit 2 content as defined in AP Computer Science A CED.",
+        "Exam weighting: 25–35%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Selection and Iteration."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_2.1",
+          "text": "Core content and concepts for Unit 2: Selection and Iteration."
+        },
+        {
+          "ek_id": "EK_2.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 2: Selection and Iteration."
+        },
+        {
+          "ek_id": "EK_2.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 2: Selection and Iteration."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-computer-science-a-unit03",
+      "topic_name": "Unit 3: Class Creation",
+      "parent_id": "ap-computer-science-a",
+      "scope": [
+        "Unit 3 content as defined in AP Computer Science A CED.",
+        "Exam weighting: 10–18%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Class Creation."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_3.1",
+          "text": "Core content and concepts for Unit 3: Class Creation."
+        },
+        {
+          "ek_id": "EK_3.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 3: Class Creation."
+        },
+        {
+          "ek_id": "EK_3.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 3: Class Creation."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-computer-science-a-unit04",
+      "topic_name": "Unit 4: Data Collections",
+      "parent_id": "ap-computer-science-a",
+      "scope": [
+        "Unit 4 content as defined in AP Computer Science A CED.",
+        "Exam weighting: 30–40%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Data Collections."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_4.1",
+          "text": "AP Computer Science A Course and Exam Description                                                              V"
+        },
+        {
+          "ek_id": "EK_4.2",
+          "text": "THIS PAGE IS INTENTIONALLY LEFT BLANK"
+        }
+      ]
+    }
+  ]
+}

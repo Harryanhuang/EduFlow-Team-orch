@@ -1,0 +1,126 @@
+{
+  "schema_version": "1",
+  "source_id": "primary_syllabus",
+  "extracted_at": "2026-06-30",
+  "extracted_by": "worker_syllabus",
+  "extraction_profile": "dse_curriculum_assessment_guide",
+  "sections_extracted": [
+    {
+      "section": "Curriculum structure and topic list",
+      "page_refs": ["p.7-11 (physical 15-19)"],
+      "extracted_content_summary": "Compulsory part (4 topics, ~200 hours) and elective part (4 topics choose 2, ~50 hours); total 250 hours.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Compulsory Part I: Cells and Molecules",
+      "page_refs": ["p.13-15 (physical 21-23)"],
+      "extracted_content_summary": "Life molecules, cell organisation, membrane transport, cell cycle/division, cell energetics (photosynthesis and respiration).",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Compulsory Part II: Heredity and Evolution",
+      "page_refs": ["p.20-21 (physical 28-29)"],
+      "extracted_content_summary": "Mendelian genetics, molecular genetics (DNA, protein synthesis, mutations, biotech), biodiversity and evolution.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Compulsory Part III: Organisms and Environment",
+      "page_refs": ["p.25-30 (physical 33-38)"],
+      "extracted_content_summary": "Plant and animal life processes, reproduction/growth/development, coordination/response, homeostasis, ecosystems.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Compulsory Part IV: Health and Disease",
+      "page_refs": ["p.33-34 (physical 41-42)"],
+      "extracted_content_summary": "Personal health, disease (infectious/non-infectious), body defence mechanisms and immunity.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Elective Part V: Human Physiology: Regulation and Control",
+      "page_refs": ["p.37-38 (physical 45-46)"],
+      "extracted_content_summary": "Osmoregulation, thermoregulation, blood-gas regulation, reproductive hormone control.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Elective Part VI: Applied Ecology",
+      "page_refs": ["p.42-43 (physical 50-51)"],
+      "extracted_content_summary": "Human impact on environment, pollution control, conservation, global issues.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Elective Part VII: Microbes and Humans",
+      "page_refs": ["p.47-48 (physical 55-56)"],
+      "extracted_content_summary": "Microbiology, use of microbes, microbial genetics, harmful microbes.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Elective Part VIII: Bioengineering",
+      "page_refs": ["p.51 (physical 59)"],
+      "extracted_content_summary": "Modern biotech techniques, applications, bioethics.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Assessment objectives",
+      "page_refs": ["p.76-77 (physical 84-85)"],
+      "extracted_content_summary": "Recall/understanding, application, investigation/practical skills, data analysis, evaluation, STSE communication.",
+      "target_asset": "assessment.json"
+    },
+    {
+      "section": "Public assessment design",
+      "page_refs": ["p.80 (physical 88)"],
+      "extracted_content_summary": "Paper 1 compulsory 60% 2.5h; Paper 2 elective 20% 1h (answer 2 of 4); SBA 20%.",
+      "target_asset": "assessment.json"
+    },
+    {
+      "section": "Question styles and level descriptors",
+      "page_refs": ["p.80-82 (physical 88-90)"],
+      "extracted_content_summary": "Multiple choice, short answer, structured, essay; standards-referenced reporting levels 1-5 with ** and *.",
+      "target_asset": "assessment.json"
+    }
+  ],
+  "sections_not_extracted": [
+    {
+      "section": "Chapter 1 Introduction",
+      "page_refs": ["p.1-4 (physical 9-12)"],
+      "reason": "programme_background"
+    },
+    {
+      "section": "Chapter 3 Curriculum Planning",
+      "page_refs": ["p.53-62 (physical 61-70)"],
+      "reason": "admin / teacher_guidance"
+    },
+    {
+      "section": "Chapter 4 Learning and Teaching",
+      "page_refs": ["p.63-78 (physical 71-86)"],
+      "reason": "pedagogy / not_assessable_scope"
+    },
+    {
+      "section": "Chapter 6 Learning and Teaching Resources",
+      "page_refs": ["p.83-88 (physical 91-96)"],
+      "reason": "resource_guidance"
+    },
+    {
+      "section": "Appendices, glossary, references, committee lists",
+      "page_refs": ["p.89-104 (physical 97-113)"],
+      "reason": "admin / support / copyright"
+    }
+  ],
+  "sections_pending_review": [
+    {
+      "section": "High-impact rendered pages",
+      "page_refs": ["p.7-8", "p.13-15", "p.20-21", "p.25-30", "p.33-34", "p.37-38", "p.42-43", "p.47-48", "p.51", "p.76-77", "p.80"],
+      "reason": "needs_visual_review"
+    }
+  ],
+  "split_recommendations": {
+    "topics_json": "Compulsory and elective topic tree with subtopic scope bullets.",
+    "assessment_json": "Papers, AOs, question styles, difficulty ladder, confidence thresholds, marking guidance.",
+    "references": "Source-index and page-map copied into skill package references/."
+  },
+  "known_risks": [
+    "Extractor and reviewer are the same agent; confidence capped at medium.",
+    "Rendered high-impact pages not created in this run.",
+    "Document last updated 2015; subsequent HKEAA amendments not captured."
+  ],
+  "notes": "Structured extraction only; no full official text copied."
+}

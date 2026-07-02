@@ -1,0 +1,336 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "ap-chemistry",
+      "topic_name": "AP Chemistry",
+      "parent_id": "",
+      "scope": [
+        "AP Chemistry course framework (College Board).",
+        "Valid: 2025 → (ongoing).",
+        "Units 1–9 with cumulative exam weightings."
+      ],
+      "out_of_scope": [
+        "Pre-AP / general high-school level content unless explicitly cited in CED.",
+        "University-level content beyond AP expectations.",
+        "Other AP subjects."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific unit fits.",
+        "Prefer specific Unit N nodes for content questions."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-chemistry-unit01",
+      "topic_name": "Unit 1: Atomic Structure and Properties",
+      "parent_id": "ap-chemistry",
+      "scope": [
+        "Unit 1 content as defined in AP Chemistry CED.",
+        "Exam weighting: 7–9%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Atomic Structure and Properties."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_1.1",
+          "text": "Core content and concepts for Unit 1: Atomic Structure and Properties."
+        },
+        {
+          "ek_id": "EK_1.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 1: Atomic Structure and Properties."
+        },
+        {
+          "ek_id": "EK_1.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 1: Atomic Structure and Properties."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-chemistry-unit02",
+      "topic_name": "Unit 2: Compound Structure and Properties",
+      "parent_id": "ap-chemistry",
+      "scope": [
+        "Unit 2 content as defined in AP Chemistry CED.",
+        "Exam weighting: 7–9%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Compound Structure and Properties."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_2.1",
+          "text": "Core content and concepts for Unit 2: Compound Structure and Properties."
+        },
+        {
+          "ek_id": "EK_2.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 2: Compound Structure and Properties."
+        },
+        {
+          "ek_id": "EK_2.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 2: Compound Structure and Properties."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-chemistry-unit03",
+      "topic_name": "Unit 3: Properties of Substances and Mixtures",
+      "parent_id": "ap-chemistry",
+      "scope": [
+        "Unit 3 content as defined in AP Chemistry CED.",
+        "Exam weighting: 18–22%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Properties of Substances and Mixtures."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_3.1",
+          "text": "Core content and concepts for Unit 3: Properties of Substances and Mixtures."
+        },
+        {
+          "ek_id": "EK_3.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 3: Properties of Substances and Mixtures."
+        },
+        {
+          "ek_id": "EK_3.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 3: Properties of Substances and Mixtures."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-chemistry-unit04",
+      "topic_name": "Unit 4: Chemical Reactions",
+      "parent_id": "ap-chemistry",
+      "scope": [
+        "Unit 4 content as defined in AP Chemistry CED.",
+        "Exam weighting: 7–9%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Chemical Reactions."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_4.1",
+          "text": "Core content and concepts for Unit 4: Chemical Reactions."
+        },
+        {
+          "ek_id": "EK_4.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 4: Chemical Reactions."
+        },
+        {
+          "ek_id": "EK_4.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 4: Chemical Reactions."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-chemistry-unit05",
+      "topic_name": "Unit 5: Kinetics",
+      "parent_id": "ap-chemistry",
+      "scope": [
+        "Unit 5 content as defined in AP Chemistry CED.",
+        "Exam weighting: 7–9%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Kinetics."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_5.1",
+          "text": "Core content and concepts for Unit 5: Kinetics."
+        },
+        {
+          "ek_id": "EK_5.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 5: Kinetics."
+        },
+        {
+          "ek_id": "EK_5.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 5: Kinetics."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-chemistry-unit06",
+      "topic_name": "Unit 6: Thermochemistry",
+      "parent_id": "ap-chemistry",
+      "scope": [
+        "Unit 6 content as defined in AP Chemistry CED.",
+        "Exam weighting: 7–9%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Thermochemistry."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_6.1",
+          "text": "Core content and concepts for Unit 6: Thermochemistry."
+        },
+        {
+          "ek_id": "EK_6.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 6: Thermochemistry."
+        },
+        {
+          "ek_id": "EK_6.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 6: Thermochemistry."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-chemistry-unit07",
+      "topic_name": "Unit 7: Equilibrium",
+      "parent_id": "ap-chemistry",
+      "scope": [
+        "Unit 7 content as defined in AP Chemistry CED.",
+        "Exam weighting: 7–9%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Equilibrium."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_7.1",
+          "text": "Core content and concepts for Unit 7: Equilibrium."
+        },
+        {
+          "ek_id": "EK_7.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 7: Equilibrium."
+        },
+        {
+          "ek_id": "EK_7.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 7: Equilibrium."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-chemistry-unit08",
+      "topic_name": "Unit 8: Acids and Bases",
+      "parent_id": "ap-chemistry",
+      "scope": [
+        "Unit 8 content as defined in AP Chemistry CED.",
+        "Exam weighting: 11–15%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Acids and Bases."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_8.1",
+          "text": "Core content and concepts for Unit 8: Acids and Bases."
+        },
+        {
+          "ek_id": "EK_8.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 8: Acids and Bases."
+        },
+        {
+          "ek_id": "EK_8.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 8: Acids and Bases."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-chemistry-unit09",
+      "topic_name": "Unit 9: Thermodynamics and Electrochemistry",
+      "parent_id": "ap-chemistry",
+      "scope": [
+        "Unit 9 content as defined in AP Chemistry CED.",
+        "Exam weighting: 7–9%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Thermodynamics and Electrochemistry."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_9.1",
+          "text": "AP Chemistry Course and Exam Description                                                                     ﻿ V"
+        },
+        {
+          "ek_id": "EK_9.2",
+          "text": "THIS PAGE IS INTENTIONALLY LEFT BLANK"
+        }
+      ]
+    }
+  ]
+}

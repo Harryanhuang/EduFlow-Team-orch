@@ -15,7 +15,7 @@ from __future__ import annotations
 
 import shlex
 
-from .base import CliAdapter, MULTILINE_SUBMIT_KEYS, SPINNER_CHARS
+from .base import AuthSlot, CliAdapter, MULTILINE_SUBMIT_KEYS, SPINNER_CHARS
 
 
 class GeminiCliAdapter(CliAdapter):
@@ -54,3 +54,10 @@ class GeminiCliAdapter(CliAdapter):
             "RESOURCE_EXHAUSTED",
             "429",
         ]
+
+    def auth_slots(self) -> AuthSlot | None:
+        return AuthSlot(
+            token_env=None,
+            api_key_envs=("GEMINI_API_KEY",),
+            login_credfile=".gemini/oauth_creds.json",
+        )

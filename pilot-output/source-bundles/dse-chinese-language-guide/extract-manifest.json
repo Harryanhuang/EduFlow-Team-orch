@@ -1,0 +1,43 @@
+{
+  "schema_version": "1",
+  "subject": "chinese-language",
+  "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/05-DSE知识库/03-学科知识/DSE Chinese Language/02-課本與考綱/考綱/中國語文-2028.pdf",
+  "file_checksum_sha256": "c4b4535057527b51433fd44186e4e80339d46a52d7134249e2ea5dd3369c3e3e",
+  "pdfinfo": {
+    "Title": "2028年香港中學文憑考試中國語文科評核大綱",
+    "Author": "HKEAA",
+    "Creator": "Microsoft® Word 2019",
+    "Producer": "Microsoft® Word 2019",
+    "CreationDate": "Thu Mar  6 08:48:42 2025 CST",
+    "ModDate": "Tue Mar 11 15:21:38 2025 CST",
+    "Custom Metadata": "no",
+    "Metadata Stream": "yes",
+    "Tagged": "yes",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "none",
+    "JavaScript": "no",
+    "Pages": "2",
+    "Encrypted": "no",
+    "Page size": "595.44 x 841.68 pts (A4)",
+    "Page rot": "0",
+    "File size": "153827 bytes",
+    "Optimized": "no",
+    "PDF version": "1.7"
+  },
+  "total_pages": 2,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": 1,
+      "chars": 741,
+      "first_200": "中國語文 引言 本 科 的 公 開評 核 以 課程發 展 議 會 與香 港 考 試及評 核 局 聯 合編 訂 的 中國語 文 科 課 程及 評 估指引（中四至中六）為根據。考生須參閱上述指引，以了解對考生的能力要求。"
+    },
+    {
+      "physical_page": 2,
+      "printed_page": 2,
+      "chars": 741,
+      "first_200": "、鑑賞、運用不同策 略等能力。 試卷分甲、乙兩部分。甲部考核指定的文言經典學習材料，佔全卷 百分之三 十；乙部擷取若干課外篇章設問，文白兼備，佔全卷 百分之七十 。全部試題 均須作答。 設題方式包括問答、選擇、填表、填充等。 2028-HKDSE-CH LANG 1 試卷二 寫作能力 佔全科總分百分之四十五，考試時間為兩小時十五分鐘。 本卷主要考核考生理解、組織、構思、表達、創作等能力。 試卷分甲"
+    }
+  ]
+}

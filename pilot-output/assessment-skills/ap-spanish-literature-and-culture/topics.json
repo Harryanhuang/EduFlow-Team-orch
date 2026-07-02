@@ -1,0 +1,314 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "ap-spanish-literature-and-culture",
+      "topic_name": "AP Spanish Literature and Culture",
+      "parent_id": "",
+      "scope": [
+        "AP Spanish Literature and Culture course framework (College Board).",
+        "Valid: 2025 → (ongoing).",
+        "Units 1–8 with cumulative exam weightings."
+      ],
+      "out_of_scope": [
+        "Pre-AP / general high-school level content unless explicitly cited in CED.",
+        "University-level content beyond AP expectations.",
+        "Other AP subjects."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific unit fits.",
+        "Prefer specific Unit N nodes for content questions."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-spanish-literature-and-culture-unit01",
+      "topic_name": "Unit 1: La época medieval",
+      "parent_id": "ap-spanish-literature-and-culture",
+      "scope": [
+        "Unit 1 content as defined in AP Spanish Literature and Culture CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: La época medieval."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_1.1",
+          "text": "Core content and concepts for Unit 1: La época medieval."
+        },
+        {
+          "ek_id": "EK_1.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 1: La época medieval."
+        },
+        {
+          "ek_id": "EK_1.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 1: La época medieval."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-spanish-literature-and-culture-unit02",
+      "topic_name": "Unit 2: El siglo XVI",
+      "parent_id": "ap-spanish-literature-and-culture",
+      "scope": [
+        "Unit 2 content as defined in AP Spanish Literature and Culture CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: El siglo XVI."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_2.1",
+          "text": "Core content and concepts for Unit 2: El siglo XVI."
+        },
+        {
+          "ek_id": "EK_2.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 2: El siglo XVI."
+        },
+        {
+          "ek_id": "EK_2.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 2: El siglo XVI."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-spanish-literature-and-culture-unit03",
+      "topic_name": "Unit 3: El siglo XVII",
+      "parent_id": "ap-spanish-literature-and-culture",
+      "scope": [
+        "Unit 3 content as defined in AP Spanish Literature and Culture CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: El siglo XVII."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_3.1",
+          "text": "Core content and concepts for Unit 3: El siglo XVII."
+        },
+        {
+          "ek_id": "EK_3.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 3: El siglo XVII."
+        },
+        {
+          "ek_id": "EK_3.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 3: El siglo XVII."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-spanish-literature-and-culture-unit04",
+      "topic_name": "Unit 4: La literatura romántica, realista y naturalista",
+      "parent_id": "ap-spanish-literature-and-culture",
+      "scope": [
+        "Unit 4 content as defined in AP Spanish Literature and Culture CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: La literatura romántica, realista y naturalista."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_4.1",
+          "text": "Core content and concepts for Unit 4: La literatura romántica, realista y naturalista."
+        },
+        {
+          "ek_id": "EK_4.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 4: La literatura romántica, realista y naturalista."
+        },
+        {
+          "ek_id": "EK_4.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 4: La literatura romántica, realista y naturalista."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-spanish-literature-and-culture-unit05",
+      "topic_name": "Unit 5: La Generación del 98 y el Modernismo",
+      "parent_id": "ap-spanish-literature-and-culture",
+      "scope": [
+        "Unit 5 content as defined in AP Spanish Literature and Culture CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: La Generación del 98 y el Modernismo."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_5.1",
+          "text": "Core content and concepts for Unit 5: La Generación del 98 y el Modernismo."
+        },
+        {
+          "ek_id": "EK_5.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 5: La Generación del 98 y el Modernismo."
+        },
+        {
+          "ek_id": "EK_5.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 5: La Generación del 98 y el Modernismo."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-spanish-literature-and-culture-unit06",
+      "topic_name": "Unit 6: Teatro y poesía del siglo XX",
+      "parent_id": "ap-spanish-literature-and-culture",
+      "scope": [
+        "Unit 6 content as defined in AP Spanish Literature and Culture CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Teatro y poesía del siglo XX."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_6.1",
+          "text": "Core content and concepts for Unit 6: Teatro y poesía del siglo XX."
+        },
+        {
+          "ek_id": "EK_6.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 6: Teatro y poesía del siglo XX."
+        },
+        {
+          "ek_id": "EK_6.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 6: Teatro y poesía del siglo XX."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-spanish-literature-and-culture-unit07",
+      "topic_name": "Unit 7: El Boom latinoamericano",
+      "parent_id": "ap-spanish-literature-and-culture",
+      "scope": [
+        "Unit 7 content as defined in AP Spanish Literature and Culture CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: El Boom latinoamericano."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_7.1",
+          "text": "Core content and concepts for Unit 7: El Boom latinoamericano."
+        },
+        {
+          "ek_id": "EK_7.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 7: El Boom latinoamericano."
+        },
+        {
+          "ek_id": "EK_7.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 7: El Boom latinoamericano."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-spanish-literature-and-culture-unit08",
+      "topic_name": "Unit 8: Escritores contemporáneos de Estados Unidos y España",
+      "parent_id": "ap-spanish-literature-and-culture",
+      "scope": [
+        "Unit 8 content as defined in AP Spanish Literature and Culture CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Escritores contemporáneos de Estados Unidos y España."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_8.1",
+          "text": "SPECIAL THANKS John R"
+        },
+        {
+          "ek_id": "EK_8.2",
+          "text": "AP Spanish Literature and Culture Course and Exam Description                                                        ﻿ V"
+        },
+        {
+          "ek_id": "EK_8.3",
+          "text": "THIS PAGE IS INTENTIONALLY LEFT BLANK"
+        },
+        {
+          "ek_id": "EK_8.4",
+          "text": "This course and exam description presents the content       Placement”\u0007or\u0007“AP"
+        },
+        {
+          "ek_id": "EK_8.5",
+          "text": "AP Spanish Literature and Culture Course and Exam Description                                               ﻿ V"
+        }
+      ]
+    }
+  ]
+}

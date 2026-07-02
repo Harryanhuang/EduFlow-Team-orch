@@ -1,0 +1,218 @@
+{
+  "schema_version": "1",
+  "subject": "additional-mathematics",
+  "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/01-IGCSE知识库/03-学科知识/CAIE/Additional Mathematics (0606)/02-课本与考纲/考纲/CAIE_AdditionalMathematics_0606_Syllabus_2028-2030.pdf",
+  "file_checksum_sha256": "a2cc6095cce5e1ba45a4d461535808479f53246367a24dd63a3eee4238cf265c",
+  "pdfinfo": {
+    "Title": "Cambridge IGCSE 0606 Additional Mathematics syllabus for exams in 2028, 2029 and 2030",
+    "Subject": "Additional Mathematics",
+    "Author": "Document Production Team",
+    "Creator": "Adobe InDesign 20.0 (Windows)",
+    "Producer": "Adobe PDF Library 17.0",
+    "CreationDate": "Fri Jun 20 15:28:29 2025 CST",
+    "ModDate": "Fri Jun 20 15:29:10 2025 CST",
+    "Custom Metadata": "no",
+    "Metadata Stream": "yes",
+    "Tagged": "no",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "none",
+    "JavaScript": "no",
+    "Pages": "31",
+    "Encrypted": "no",
+    "Page size": "595.276 x 841.89 pts (A4)",
+    "Page rot": "0",
+    "File size": "721070 bytes",
+    "Optimized": "yes",
+    "PDF version": "1.7"
+  },
+  "total_pages": 31,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": 1,
+      "chars": 2677,
+      "first_200": "Syllabus Cambridge IGCSE™ Additional Mathematics 0606 Use this syllabus for exams in 2028, 2029 and 2030. Exams are available in the June and November series. Exams are also available in"
+    },
+    {
+      "physical_page": 2,
+      "printed_page": 2,
+      "chars": 2677,
+      "first_200": "think the Cambridge curriculum is superb preparation for university.’ Feedback from: Christoph Guttentag, Dean of Undergraduate Admissions, Duke University, USA © Cambridge University Press & Assessme"
+    },
+    {
+      "physical_page": 3,
+      "printed_page": 3,
+      "chars": 2677,
+      "first_200": ".................................................. 26 Before you start 26 Making entries 27 Accessibility and equality 27 After the exam 28 How students and teachers can use the grades 29 Changes to t"
+    },
+    {
+      "physical_page": 4,
+      "printed_page": 4,
+      "chars": 2677,
+      "first_200": "r highly numerate subjects. It is designed to stretch the more able candidates and provides a smooth transition to Cambridge International AS & A Level Mathematics. Our approach in Cambridge"
+    },
+    {
+      "physical_page": 5,
+      "printed_page": 5,
+      "chars": 2677,
+      "first_200": "l prepared to follow a wide range of courses including Cambridge International AS & A Level Mathematics. Many universities require a combination of Cambridge International AS & A Levels and"
+    },
+    {
+      "physical_page": 6,
+      "printed_page": 6,
+      "chars": 2677,
+      "first_200": "he resources available on the Schools Support Hub, a wide range of endorsed textbooks and associated teaching and learning support are available from Cambridge at www.cambridge.org/education and from "
+    },
+    {
+      "physical_page": 7,
+      "printed_page": 7,
+      "chars": 2677,
+      "first_200": "l: • engage in mathematics in a way that builds on their existing mathematical knowledge and enhances their enjoyment of the subject • develop their instinct for mathematical enquiry and"
+    },
+    {
+      "physical_page": 8,
+      "printed_page": 8,
+      "chars": 2677,
+      "first_200": "Cambridge IGCSE Additional Mathematics 0606 syllabus for 2028, 2029 and 2030. Syllabus overview Assessment overview All candidates take two components. Candidates will be eligible for grades A* to E. "
+    },
+    {
+      "physical_page": 9,
+      "printed_page": 9,
+      "chars": 2677,
+      "first_200": "generalisations • make logical inferences and draw conclusions from mathematical data or results • communicate methods and results in a clear and logical form • interpret information in different form"
+    },
+    {
+      "physical_page": 10,
+      "printed_page": 10,
+      "chars": 2677,
+      "first_200": "t be required unless specifically mentioned in the syllabus. Candidates will be expected to be familiar with the scientific notation for the expression of compound units, e.g. 5 m s–1"
+    },
+    {
+      "physical_page": 11,
+      "printed_page": 11,
+      "chars": 2677,
+      "first_200": "x • f : x ↦ lg x, for x > 0 • f –1(x) • fg(x) [= f(g(x))] • f 2(x) [= f(f(x))] The notation f 2(x) will not"
+    },
+    {
+      "physical_page": 12,
+      "printed_page": 12,
+      "chars": 2677,
+      "first_200": "alue of the quadratic function f : x ↦ ax2 + bx + c by completing the square or by differentiation. 2.2. Use the maximum or minimum value of f(x)"
+    },
+    {
+      "physical_page": 13,
+      "printed_page": 13,
+      "chars": 2677,
+      "first_200": "to obtain a product of a linear factor and a quadratic factor, for example by observation or by algebraic long division. 3.3. Solve cubic equations. 4 Equations, inequalities and graphs"
+    },
+    {
+      "physical_page": 14,
+      "printed_page": 14,
+      "chars": 2677,
+      "first_200": "olynomials and The points of intersection of the graph with the their moduli, when given as a product of three coordinate axes should be clearly labelled. linear factors. 4.5. Solve"
+    },
+    {
+      "physical_page": 15,
+      "printed_page": 15,
+      "chars": 2677,
+      "first_200": "www.cambridgeinternational.org/igcse 14 Cambridge IGCSE Additional Mathematics 0606 syllabus for 2028, 2029 and 2030. Subject content 6 Logarithmic and exponential functions continued 6.2. Know and us"
+    },
+    {
+      "physical_page": 16,
+      "printed_page": 16,
+      "chars": 2677,
+      "first_200": "• (x – a)2 + (y – b)2 = r2 • x2 + y2 + 2gx + 2fy + c = 0 Formula is given in the List of formulas."
+    },
+    {
+      "physical_page": 17,
+      "printed_page": 17,
+      "chars": 2677,
+      "first_200": "10.2. Understand and use the amplitude and For example: y = sin x and y = 3sin 2x period of a trigonometric function, including The period may be in either"
+    },
+    {
+      "physical_page": 18,
+      "printed_page": 18,
+      "chars": 2677,
+      "first_200": "r • 12 10.6. Prove trigonometric relationships involving the Includes the use of the relationships in 10.4. six trigonometric functions. For example: • sin x tan x + cos x"
+    },
+    {
+      "physical_page": 19,
+      "printed_page": 19,
+      "chars": 2677,
+      "first_200": "he expansion of . KnO an–rbr, 0 ⩽ r ⩽ n . KrO d2x + 1 n . 10 LP x Knowledge of the greatest term and properties of the"
+    },
+    {
+      "physical_page": 20,
+      "printed_page": 20,
+      "chars": 2677,
+      "first_200": "• solving problems using vector geometry, with a diagram given in more complex cases. 13.4. Compose and resolve velocities. Determine a resultant vector by adding two or more vectors together."
+    },
+    {
+      "physical_page": 21,
+      "printed_page": 21,
+      "chars": 2677,
+      "first_200": "radians. 14.4. Differentiate products and quotients of functions. 14.5. Use differentiation to find gradients, tangents and normals. 14.6. Use differentiation to find stationary points. Points of infl"
+    },
+    {
+      "physical_page": 22,
+      "printed_page": 22,
+      "chars": 2677,
+      "first_200": "arbitrary constant. • sec2 (ax + b) • eax+b 14.13. Evaluate definite integrals and apply Plane areas include: integration to the evaluation of plane areas. • between a line and"
+    },
+    {
+      "physical_page": 23,
+      "printed_page": 23,
+      "chars": 2677,
+      "first_200": "Paper 1 Written paper, 2 hours, 80 marks Use of a calculator is not allowed. Candidates answer all questions. Structured and unstructured questions. This paper consists of questions based on"
+    },
+    {
+      "physical_page": 24,
+      "printed_page": 24,
+      "chars": 2677,
+      "first_200": "JnN n! where n is a positive integer and KK OO = - n r) !r! LrP ( Arithmetic series un = a + ^n − 1h d Sn ="
+    },
+    {
+      "physical_page": 25,
+      "printed_page": 25,
+      "chars": 2677,
+      "first_200": "– cover the range of values that has been requested. Candidates should calculate the coordinates of points and connect them appropriately (where a table of values is not provided, the"
+    },
+    {
+      "physical_page": 26,
+      "printed_page": 26,
+      "chars": 2677,
+      "first_200": "Accuracy • Answers are expected to be given in their simplest form unless the question states otherwise. • Where a question asks for ‘exact values’ the answer may need to"
+    },
+    {
+      "physical_page": 27,
+      "printed_page": 27,
+      "chars": 2677,
+      "first_200": "calculate from given facts, figures or information with or without the use of a calculator Write give an answer in a specific form Write down give an answer without significant"
+    },
+    {
+      "physical_page": 28,
+      "printed_page": 28,
+      "chars": 2677,
+      "first_200": "uses with the same title at the same level. Cambridge IGCSE, Cambridge IGCSE (9–1) and Cambridge O Level syllabuses are at the same level. Group awards: Cambridge ICE Cambridge ICE"
+    },
+    {
+      "physical_page": 29,
+      "printed_page": 29,
+      "chars": 2677,
+      "first_200": "f assessment at www.cambridgeinternational.org/eoguide Language This syllabus and the related assessment materials are available in English only. Accessibility and equality Syllabus and assessment des"
+    },
+    {
+      "physical_page": 30,
+      "printed_page": 30,
+      "chars": 2677,
+      "first_200": "in the syllabus document and, where applicable, any access arrangement restrictions listed in the syllabus document. • Contact us at the start of the course to find out if we"
+    },
+    {
+      "physical_page": 31,
+      "printed_page": 31,
+      "chars": 2677,
+      "first_200": "make sure they continue to meet the needs of our schools. In updating this syllabus, we have made it easier for teachers and students to understand, keeping the familiar features"
+    }
+  ]
+}

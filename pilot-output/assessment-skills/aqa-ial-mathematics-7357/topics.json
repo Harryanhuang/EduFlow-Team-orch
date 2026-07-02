@@ -1,0 +1,27 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "aqa-ial-mathematics-7357",
+      "topic_name": "CAIE IGCSE Mathematics",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Mathematics (IAL Maths 7357) syllabus scope.",
+        "Valid: 2025 → 2026."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    }
+  ]
+}

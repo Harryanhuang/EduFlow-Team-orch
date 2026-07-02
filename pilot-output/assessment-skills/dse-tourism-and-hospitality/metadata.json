@@ -1,0 +1,48 @@
+{
+  "schema_version": "1",
+  "id": "dse-tourism-and-hospitality",
+  "assessment_type": "syllabus",
+  "system": "DSE",
+  "board_or_owner": "HKEAA / Curriculum Development Council",
+  "subject": "Tourism and Hospitality",
+  "level": "DSE Senior Secondary (S4-S6)",
+  "assessment_code": "DSE Tourism and Hospitality",
+  "valid_from": "2024",
+  "valid_to": "(ongoing)",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_syllabus",
+      "title": "DSE Tourism and Hospitality Syllabus",
+      "url": "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html",
+      "source_document_type": "syllabus",
+      "source_layout_profile": "caie_igcse_syllabus",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/05-DSE知识库/03-学科知识/DSE Tourism and Hospitality/02-課本與考綱/考綱/Tourism_and_Hospitality_DSE_Syllabus_2015.pdf",
+      "file_checksum_sha256": "022585f1e6e30cc5915c5fd459737fe18ce3bafa9d329aa6d688d4423999279b",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "2028 syllabus (Category A)",
+      "retrieved_at": "2026-07-02",
+      "page_refs": [
+        "p.1-133"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "printed_page ≈ physical_page for CAIE IGCSE syllabi.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text.",
+      "notes": "Source bundle lives at pilot-output/source-bundles/dse-tourism-and-hospitality-guide/."
+    }
+  ],
+  "aliases": [
+    "dse tourism and hospitality",
+    "hkdse"
+  ],
+  "canonical_id": "dse-tourism-and-hospitality",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "HKDSE Tourism and Hospitality (Category A)."
+}

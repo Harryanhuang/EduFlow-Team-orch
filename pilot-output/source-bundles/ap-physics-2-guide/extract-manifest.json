@@ -1,0 +1,1473 @@
+{
+  "schema_version": "1",
+  "subject": "physics-2-algebra-based",
+  "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/03-AP知识库/03-学科知识/AP Physics 2/02-课本与考纲/考纲/ap-physics-2-course-and-exam-description.pdf",
+  "file_checksum_sha256": "cc57e83ce19819972f41b978010fb15c98c7c634b8bb109127f6c2347f197e4d",
+  "pdfinfo": {
+    "Title": "AP® Physics 2: Algebra-Based Course and Exam Description",
+    "Subject": "AP® Physics 2: Algebra-Based; Advanced Placement",
+    "Keywords": "AP® Physics 2: Algebra-Based Course and Exam Description; CED; Effective Fall 2024; course content; course information; course resources; exam content; exam format; sample exam questions; exam information; teacher resources; planning and pacing; teacher information; AP resources and supports; instructional model; course framework; laboratory investigations; scoring guidelines; scoring resources; scoring information; 10/25; ADA",
+    "Author": "College Board",
+    "Creator": "Adobe InDesign CC 14.0 (Macintosh)",
+    "Producer": "Adobe PDF Library 15.0",
+    "CreationDate": "Thu Mar 14 19:50:28 2024 CST",
+    "ModDate": "Fri Oct 17 20:29:00 2025 CST",
+    "Custom Metadata": "no",
+    "Metadata Stream": "yes",
+    "Tagged": "yes",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "AcroForm",
+    "JavaScript": "no",
+    "Pages": "240",
+    "Encrypted": "yes (print:yes copy:yes change:no addNotes:no algorithm:AES-256)",
+    "Page size": "612 x 792 pts (letter)",
+    "Page rot": "0",
+    "File size": "5420305 bytes",
+    "Optimized": "no",
+    "PDF version": "1.7"
+  },
+  "total_pages": 240,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": 1,
+      "chars": 3236,
+      "first_200": "INCLUDES Course framework Instructional section Sample exam questions AP Physics 2: ® Algebra-Based COURSE AND EXAM DESCRIPTION Effective Fall 2024 AP Physics 2: ® Algebra-Based COURSE AND EXAM DESCRI"
+    },
+    {
+      "physical_page": 2,
+      "printed_page": 2,
+      "chars": 3236,
+      "first_200": "rimary sources so that students can evaluate experiences and evidence for themselves. 6. \u0007Every\u0007AP\u0007student\u0007who\u0007engages\u0007with\u0007evidence\u0007is\u0007listened\u0007to\u0007and\u0007respected.\u0007 Students are encouraged to evaluate "
+    },
+    {
+      "physical_page": 3,
+      "printed_page": 3,
+      "chars": 3236,
+      "first_200": "rmation: Equations Acknowledgments College Board would like to acknowledge the following committee members, consultants, and reviewers for their assistance with and commitment to the development of th"
+    },
+    {
+      "physical_page": 4,
+      "printed_page": 4,
+      "chars": 3236,
+      "first_200": "hnson, Director, AP Physics Curriculum and Assessment Jesse Miner, Director, AP Physics Curriculum and Assessment John Pinizzotto, Director, AP Physics Curriculum and Assessment Shu-Kang Chen, Executi"
+    },
+    {
+      "physical_page": 5,
+      "printed_page": 5,
+      "chars": 3236,
+      "first_200": "ores. Offering AP Courses: The AP Course Audit AP Course Development The AP Program unequivocally supports the principle In an ongoing effort to maintain alignment with best that each school"
+    },
+    {
+      "physical_page": 6,
+      "printed_page": 6,
+      "chars": 3236,
+      "first_200": "outline, detailing how course requirements is scored online. All AP Readers are thoroughly trained, are met, is submitted by the AP teacher for review by and their work is monitored"
+    },
+    {
+      "physical_page": 7,
+      "printed_page": 7,
+      "chars": 3236,
+      "first_200": "points college faculty indicate, after and analysis to ensure that questions are accurate, fair, reviewing each AP question, that they expect is and valid, and that there is an appropriate"
+    },
+    {
+      "physical_page": 8,
+      "printed_page": 8,
+      "chars": 3236,
+      "first_200": "the private colleges and universities award credit and/ AP Reading. or advanced placement for AP scores of 3 or higher. §§ Gain in-depth understanding of AP Exam and AP Additionally,"
+    },
+    {
+      "physical_page": 9,
+      "printed_page": 9,
+      "chars": 3236,
+      "first_200": "and tools to provide yearlong support to teachers and students, offering opportunities to give and get meaningful feedback on student progress. UNIT GUIDES Appearing in this publication and on AP"
+    },
+    {
+      "physical_page": 10,
+      "printed_page": 10,
+      "chars": 3236,
+      "first_200": "﻿ V.1 | 4 Return to Table of Contents © 2024 College Board Instructional Model Integrating AP resources throughout the course can help students develop skills and conceptual understandings. The"
+    },
+    {
+      "physical_page": 11,
+      "printed_page": 11,
+      "chars": 3236,
+      "first_200": "§§ Electric Circuits §§ Magnetism and Electromagnetism §§ Geometric Optics § Waves, Sound, and Physical Optics §§ Modern Physics College Course Equivalent AP Physics 2 is equivalent to the second"
+    },
+    {
+      "physical_page": 12,
+      "printed_page": 12,
+      "chars": 3236,
+      "first_200": "concept, content that enables students to explore the colleges and universities for granting college credit course learning objectives and meets state or local and placement. Students will practice re"
+    },
+    {
+      "physical_page": 13,
+      "printed_page": 13,
+      "chars": 3236,
+      "first_200": "ics 2 course. These practices form the basis of many tasks on the AP Physics 2 Exam. The Unit Guides that follow embed and spiral these practices throughout the course,"
+    },
+    {
+      "physical_page": 14,
+      "printed_page": 14,
+      "chars": 3236,
+      "first_200": "between two or more scenarios or laws. at different times and locations in a single scenario. 2.D Predict new values or factors of change of physical quantities using functional dependence"
+    },
+    {
+      "physical_page": 15,
+      "printed_page": 15,
+      "chars": 3236,
+      "first_200": "hysics 2: Algebra-Based Course and Exam Description Course Framework V.1 | 13 Return to Table of Contents © 2024 College Board Exam Weighting for the Multiple-Choice Section of the AP"
+    },
+    {
+      "physical_page": 16,
+      "printed_page": 16,
+      "chars": 3236,
+      "first_200": "ny of the equations in this The three science practices, and their associated skills, document are provided for reference and guidance, or to will be applied to all learning objectives"
+    },
+    {
+      "physical_page": 17,
+      "printed_page": 17,
+      "chars": 3236,
+      "first_200": "1 a\u0007useful\u0007visual\u0007organization\u0007 2 10.2 Conservation of 1 3 Electric Charge and the for the AP Physics 2 course 2 3 Process of Charging components, including: 1 1 9.3 Thermal Energy"
+    },
+    {
+      "physical_page": 18,
+      "printed_page": 18,
+      "chars": 3236,
+      "first_200": "-response\u0007questions.\u0007The\u0007 feedback from these checks Progress Check 9 Progress Check 10 shows students the areas where Multiple-choice: ~18 questions Multiple-choice: ~24 questions they need to focus."
+    },
+    {
+      "physical_page": 19,
+      "printed_page": 19,
+      "chars": 3236,
+      "first_200": "2 12.4 Electromagnetic 2 2 3 3 Induction and 3 Faraday’s Law 1 2 11.5 Compound Direct 3 Current (DC) Circuits 1 2 11.6 Kirchhoff’s Loop Rule 3 1 2"
+    },
+    {
+      "physical_page": 20,
+      "printed_page": 20,
+      "chars": 3236,
+      "first_200": "2 15.6 Compton Scattering 3 1 2 14.7 Diffraction 1 2 3 3 1 1 2 2 15.8 Types of Radioactive 3 3 Decay 1 2 3 Progress Check 14"
+    },
+    {
+      "physical_page": 21,
+      "printed_page": 21,
+      "chars": 3236,
+      "first_200": "optional sequence for this course. AP Physics 2: Algebra-Based Course and Exam Description Course Framework V.1 | 19 Return to Table of Contents © 2024 College Board THIS PAGE IS"
+    },
+    {
+      "physical_page": 22,
+      "printed_page": 22,
+      "chars": 3236,
+      "first_200": "d material properties such as specific unit. § How cold can something heat and thermal conductivity will be studied. Unit 9 also acquaints students with the second get? law of"
+    },
+    {
+      "physical_page": 23,
+      "printed_page": 23,
+      "chars": 3236,
+      "first_200": "make a claims and provide Unit 9 also encourages students to derive evidence and reasoning to support their claim expressions from fundamental principles without reference to equations. Students (2.A)"
+    },
+    {
+      "physical_page": 24,
+      "printed_page": 24,
+      "chars": 3236,
+      "first_200": "including equations, diagrams, graphs, and verbal descriptions, can help students prepare for the QQT question. AP Physics 2: Algebra-Based Course and Exam Description Course Framework V.1 | 25 The Un"
+    },
+    {
+      "physical_page": 25,
+      "printed_page": 25,
+      "chars": 3236,
+      "first_200": "mathematical pathway. 2.C Compare physical quantities between two or more scenarios or at different times and locations in a single scenario. 3.C Justify or support a claim using evidence from"
+    },
+    {
+      "physical_page": 26,
+      "printed_page": 26,
+      "chars": 3236,
+      "first_200": "The Sample Instructional Activities page includes optional UNIT activities that can help teachers tie together the content and skill 9 Thermodynamics for a particular topic. SAMPLE INSTRUCTIONAL ACTIV"
+    },
+    {
+      "physical_page": 27,
+      "printed_page": 27,
+      "chars": 3236,
+      "first_200": "ake a PV, PT, and VT diagram (respectively) of the cycle. 5 9.4 Construct an Argument/Concept-Oriented Demonstration Look up a photo of a “Contigo Autospout Addison Water Bottle” and show"
+    },
+    {
+      "physical_page": 28,
+      "printed_page": 28,
+      "chars": 3236,
+      "first_200": "ECTIVE ESSENTIAL KNOWLEDGE Justify or support a claim using evidence from experimental data, physical 14.5.A Describe the properties of a 14.5.A.1 The Doppler effect describes the relationship Boundar"
+    },
+    {
+      "physical_page": 29,
+      "printed_page": 29,
+      "chars": 3236,
+      "first_200": "For a wave source moving away from an observer, the observed frequency is less than the rest frequency. BOUNDARY STATEMENT: Only qualitative treatments of the Doppler effect are required for"
+    },
+    {
+      "physical_page": 30,
+      "printed_page": 30,
+      "chars": 3236,
+      "first_200": "§§ Qualitative/Quantitative Translation AP Physics 2: Algebra-Based Course and Exam Description Course Framework V.1 | 24 Return to Table of Contents © 2024 College Board UNIT 9 15–18% AP EXAM"
+    },
+    {
+      "physical_page": 31,
+      "printed_page": 31,
+      "chars": 3236,
+      "first_200": "systems, and how these interactions result in by\u0007describing\u0007and\u0007analyzing\u0007a\u0007scenario.\u0007Using\u0007 change. Alongside gaining proficiency in the content from any unit, the QQT first requires use of specific "
+    },
+    {
+      "physical_page": 32,
+      "printed_page": 32,
+      "chars": 3236,
+      "first_200": "translate between different representations, including equations, diagrams, graphs, and verbal descriptions, can help students prepare for the QQT question. AP Physics 2: Algebra-Based Course and Exam"
+    },
+    {
+      "physical_page": 33,
+      "printed_page": 33,
+      "chars": 3236,
+      "first_200": "a physical system. 2.A Derive a symbolic expression from known quantities by selecting and following a logical mathematical pathway. 2.C Compare physical quantities between two or more scenarios or at"
+    },
+    {
+      "physical_page": 34,
+      "printed_page": 34,
+      "chars": 3236,
+      "first_200": "k V.1 | 27 Return to Table of Contents © 2024 College Board UNIT 9 Thermodynamics SAMPLE INSTRUCTIONAL ACTIVITIES The sample activities on this page are optional and are offered"
+    },
+    {
+      "physical_page": 35,
+      "printed_page": 35,
+      "chars": 3236,
+      "first_200": "water would spray out if there is more or less water in the bottle (answer: less). Ask students to discuss what would happen if the bottle is taken out of"
+    },
+    {
+      "physical_page": 36,
+      "printed_page": 36,
+      "chars": 3236,
+      "first_200": "Justify or support a claim Describe the pressure a gas Atoms in a gas collide with and exert forces on using evidence from experimental data, physical exerts on its container"
+    },
+    {
+      "physical_page": 37,
+      "printed_page": 37,
+      "chars": 3236,
+      "first_200": ".1.B 9.1.B.1.ii Describe the temperature The\u0007root-mean-square\u0007speed\u0007 of a system in terms of the corresponding to the average kinetic atomic motion within that energy for an ideal gas is related to"
+    },
+    {
+      "physical_page": 38,
+      "printed_page": 38,
+      "chars": 3236,
+      "first_200": "locations in a single scenario. Required Course Content 3.B Apply an appropriate law, definition, theoretical relationship, or model to make a claim. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 3.C 9.2.A 9"
+    },
+    {
+      "physical_page": 39,
+      "printed_page": 39,
+      "chars": 3236,
+      "first_200": "f Contents © 2024 College Board UNIT 9 Thermodynamics SUGGESTED SKILLS 1.A TOPIC 9.3 Create diagrams, tables, Thermal Energy charts, or schematics to represent physical situations. 2.C Compare physica"
+    },
+    {
+      "physical_page": 40,
+      "printed_page": 40,
+      "chars": 3236,
+      "first_200": "lower-energy\u0007atoms. 9.3.A.3.ii After many collisions of atoms from different\u0007systems,\u0007the\u0007most\u0007probable\u0007state\u0007 is one in which both systems have the same temperature. 9.3.A.4 Thermal equilibrium resul"
+    },
+    {
+      "physical_page": 41,
+      "printed_page": 41,
+      "chars": 3236,
+      "first_200": "Compare physical quantities between two or more scenarios or at different times and LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE locations in a single scenario. 9.4.A 9.4.A.1 3.C Describe the internal energ"
+    },
+    {
+      "physical_page": 42,
+      "printed_page": 42,
+      "chars": 3236,
+      "first_200": "tement of conservation of energy that processes. accounts for energy transferred into or out of a system by work, heating, or cooling. 9.4.B.1.i For an isolated system, the total energy"
+    },
+    {
+      "physical_page": 43,
+      "printed_page": 43,
+      "chars": 3236,
+      "first_200": "is equal to the area underneath the curve of a plot of pressure vs. volume for the gas. 9.4.B.3 Special cases of thermal processes depend on the relationship between the"
+    },
+    {
+      "physical_page": 44,
+      "printed_page": 44,
+      "chars": 3236,
+      "first_200": "a logical computational pathway. Required Course Content 2.D Predict new values or factors of change of physical quantities using functional dependence LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE between v"
+    },
+    {
+      "physical_page": 45,
+      "printed_page": 45,
+      "chars": 3236,
+      "first_200": "on the arrangement and interactions of the atoms that make up the material. BOUNDARY STATEMENT AP Physics 2 will model specific heat as independent of temperature. AP Physics 2: Algebra-Based"
+    },
+    {
+      "physical_page": 46,
+      "printed_page": 46,
+      "chars": 3236,
+      "first_200": "9.6.A.2.iii Maximum entropy occurs when a system is in thermodynamic equilibrium. 9.6.A.3 The change in a system’s entropy is determined by the system’s interactions with its surroundings. 9.6.A.3.i I"
+    },
+    {
+      "physical_page": 47,
+      "printed_page": 47,
+      "chars": 3236,
+      "first_200": "ourse Framework V.1 | 39 Return to Table of Contents © 2024 College Board Remember to go to AP Classroom to assign students the online Progress Check for this unit."
+    },
+    {
+      "physical_page": 48,
+      "printed_page": 48,
+      "chars": 3236,
+      "first_200": "Building the Preparing for the AP Exam lightning storm? Science Practices The\u0007second\u0007free-response\u0007question\u0007on\u0007 §§ How can you protect 1.A 1.C 2.A the\u0007AP\u0007Physics\u00072\u0007Exam—the\u0007Translation\u0007 your electroni"
+    },
+    {
+      "physical_page": 49,
+      "printed_page": 49,
+      "chars": 3236,
+      "first_200": "pictures,\u0007motion\u0007diagrams,\u0007free-body\u0007 asked to create energy bar charts to model diagrams, graphs, energy bar charts, electric the energy of a system containing a small field vector diagrams, and equi"
+    },
+    {
+      "physical_page": 50,
+      "printed_page": 50,
+      "chars": 3236,
+      "first_200": "r model to make a claim. 3.C Justify or support a claim using evidence from experimental data, physical representations, or physical principles or laws. Electric Fields 10.3 \u0007 1.A Create"
+    },
+    {
+      "physical_page": 51,
+      "printed_page": 51,
+      "chars": 3236,
+      "first_200": "graphs with appropriate scales and units, including plotting data. 2.B Calculate or estimate an unknown quantity with units from known quantities, by selecting and following a logical computational pa"
+    },
+    {
+      "physical_page": 52,
+      "printed_page": 52,
+      "chars": 3236,
+      "first_200": "ing Contentions Show students a diagram with two charged spheres, A and B, hanging from strings anchored to the same point in the ceiling, with the string for sphere A"
+    },
+    {
+      "physical_page": 53,
+      "printed_page": 53,
+      "chars": 3236,
+      "first_200": "UNIT Electric Force, Field, and Potential 10 TOPIC 10.1 SUGGESTED SKILLS 1.A Electric Charge and Create diagrams, tables, charts, or schematics to represent physical Electric Force situations. 2.A Der"
+    },
+    {
+      "physical_page": 54,
+      "printed_page": 54,
+      "chars": 3236,
+      "first_200": "e elementary charge e , can be considered to be the smallest indivisible amount of charge. 10.1.A.1.iii The charge of an electron is −e , the charge of a proton"
+    },
+    {
+      "physical_page": 55,
+      "printed_page": 55,
+      "chars": 3236,
+      "first_200": "10.1.A.4 Electric forces are responsible for some of the macroscopic properties of objects in everyday experiences. However, the large number of particle interactions that occur make it more convenien"
+    },
+    {
+      "physical_page": 56,
+      "printed_page": 56,
+      "chars": 3236,
+      "first_200": "material or medium. continued on next page AP Physics 2: Algebra-Based Course and Exam Description Course Framework V.1 | 46 Return to Table of Contents © 2024 College Board UNIT"
+    },
+    {
+      "physical_page": 57,
+      "printed_page": 57,
+      "chars": 3236,
+      "first_200": "cs to represent physical Electric Charge and situations. 2.C Compare physical quantities between two or more scenarios or at different times and the Process of Charging locations in a single"
+    },
+    {
+      "physical_page": 58,
+      "printed_page": 58,
+      "chars": 3236,
+      "first_200": "unless there is a transfer of charge to or from the system. 10.2.A.3 Grounding involves electrically connecting a charged system to a much larger and approximately neutral system (e.g., Earth)."
+    },
+    {
+      "physical_page": 59,
+      "printed_page": 59,
+      "chars": 3236,
+      "first_200": "g and following a logical computational LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE pathway. 10.3.A 10.3.A.1 3.B Describe the electric field Electric fields may originate from charged Apply an appropriate "
+    },
+    {
+      "physical_page": 60,
+      "printed_page": 60,
+      "chars": 3236,
+      "first_200": "Field, and Potential LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 10.3.A 10.3.A.3.i Describe the electric field The\u0007net\u0007electric\u0007field\u0007at\u0007a\u0007given\u0007location\u0007is\u0007 produced by a charged the\u0007vector\u0007sum\u0007of\u0007individ"
+    },
+    {
+      "physical_page": 61,
+      "printed_page": 61,
+      "chars": 3236,
+      "first_200": "charge as the sphere located at the center of the sphere. 10.3.B.2 While in electrostatic equilibrium, the excess charge of an insulator is distributed throughout the interior of the insulator"
+    },
+    {
+      "physical_page": 62,
+      "printed_page": 62,
+      "chars": 3236,
+      "first_200": "quantities by selecting and following a logical mathematical pathway. Required Course Content 2.D Predict new values or factors of change of physical quantities using functional dependence LEARNING OB"
+    },
+    {
+      "physical_page": 63,
+      "printed_page": 63,
+      "chars": 3236,
+      "first_200": "© 2024 College Board UNIT 10 Electric Force, Field, and Potential SUGGESTED SKILLS 1.A TOPIC 10.5 Electric Potential Create diagrams, tables, charts, or schematics to represent physical situations. 2."
+    },
+    {
+      "physical_page": 64,
+      "printed_page": 64,
+      "chars": 3236,
+      "first_200": "electric potential. continued on next page AP Physics 2: Algebra-Based Course and Exam Description Course Framework V.1 | 52 Return to Table of Contents © 2024 College Board UNIT Electric"
+    },
+    {
+      "physical_page": 65,
+      "printed_page": 65,
+      "chars": 3236,
+      "first_200": "hat students calculate the electric potential of configurations of four or fewer particles (or more in situations of high symmetry). AP Physics 2: Algebra-Based Course and Exam Description Course Fram"
+    },
+    {
+      "physical_page": 66,
+      "printed_page": 66,
+      "chars": 3236,
+      "first_200": "capacitor is proportional to the area of one of its plates and inversely proportional to the distance between its plates. The constant of proportionality is the product of the dielectric"
+    },
+    {
+      "physical_page": 67,
+      "printed_page": 67,
+      "chars": 3236,
+      "first_200": "6.A.4 The electric potential energy stored in a capacitor is equal to the work done by an external force to separate that amount of charge on the capacitor. 10.6.A.5 The"
+    },
+    {
+      "physical_page": 68,
+      "printed_page": 68,
+      "chars": 3236,
+      "first_200": "The movement of a charged object between two points with different electric potentials results in a change in kinetic energy of the object consistent with the conservation of energy. AP"
+    },
+    {
+      "physical_page": 69,
+      "printed_page": 69,
+      "chars": 3236,
+      "first_200": "© 2024 College Board UNIT 11 15–18% AP EXAM WEIGHTING ~12–20 CLASS PERIODS Electric Circuits Developing Understanding ESSENTIAL Unit 11 revisits the behavior of charged particles to deepen students’ u"
+    },
+    {
+      "physical_page": 70,
+      "printed_page": 70,
+      "chars": 3236,
+      "first_200": "multiple opportunities to create graphs and information. On the AP Physics 2 Exam, it analyze\u0007data.\u0007(2.B, 2.D). These important is also important that students use correct skills\u0007will\u0007be\u0007tested\u0007on\u0007the"
+    },
+    {
+      "physical_page": 71,
+      "printed_page": 71,
+      "chars": 3236,
+      "first_200": "single scenario. 3.B Apply an appropriate law, definition, theoretical relationship, or model to make a claim. 3.C Justify or support a claim using evidence from experimental data, physical representa"
+    },
+    {
+      "physical_page": 72,
+      "printed_page": 72,
+      "chars": 3236,
+      "first_200": "11 UNIT AT A GLANCE (cont’d) Topic Suggested Skills Compound Direct 11.5 \u0007 1.A Create diagrams, tables, charts, or schematics to represent physical situations. Current (DC) 2.A Derive a symbolic"
+    },
+    {
+      "physical_page": 73,
+      "printed_page": 73,
+      "chars": 3236,
+      "first_200": "ical representations, or physical principles or laws. Go to AP Classroom to assign the Progress Check for Unit 11. Review the results in class to identify and address any student"
+    },
+    {
+      "physical_page": 74,
+      "printed_page": 74,
+      "chars": 3236,
+      "first_200": "to five light bulbs in parallel. Ask students to measure the potential difference across and current though the battery and then make a graph whose slope is the internal resistance"
+    },
+    {
+      "physical_page": 75,
+      "printed_page": 75,
+      "chars": 3236,
+      "first_200": "scenario. Required Course Content 3.B Apply an appropriate law, definition, theoretical relationship, or model to make a claim. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 3.C 11.1.A 11.1.A.1 Justify or su"
+    },
+    {
+      "physical_page": 76,
+      "printed_page": 76,
+      "chars": 3236,
+      "first_200": "bra-Based Course and Exam Description Course Framework V.1 | 63 Return to Table of Contents © 2024 College Board UNIT 11 Electric Circuits SUGGESTED SKILLS 1.A TOPIC 11.2 Simple Circuits"
+    },
+    {
+      "physical_page": 77,
+      "printed_page": 77,
+      "chars": 3236,
+      "first_200": "to describe\u0007and\u0007analyze\u0007electric\u0007circuits. 11.2.A.4.i The properties of an electric circuit are dependent on the physical arrangement of its constituent elements. continued on next page AP Physics 2: "
+    },
+    {
+      "physical_page": 78,
+      "printed_page": 78,
+      "chars": 3236,
+      "first_200": "logical computational pathway. 2.D Predict new values or Required Course Content factors of change of physical quantities using functional dependence between variables. LEARNING OBJECTIVE ESSENTIAL KN"
+    },
+    {
+      "physical_page": 79,
+      "printed_page": 79,
+      "chars": 3236,
+      "first_200": "UNIT Electric Circuits 11 LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 11.3.B 11.3.B.1.i Describe the electrical Materials that obey Ohm’s law have characteristics of elements constant resistance for all cu"
+    },
+    {
+      "physical_page": 80,
+      "printed_page": 80,
+      "chars": 3236,
+      "first_200": "Relevant equation: Derived equations: 11.4.A.2 The brightness of a bulb increases with power, so power can be used to qualitatively predict the brightness of bulbs in a circuit. AP Physics"
+    },
+    {
+      "physical_page": 81,
+      "printed_page": 81,
+      "chars": 3236,
+      "first_200": "at different times and locations in a single LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE scenario. 11.5.A 11.5.A.1 3.B Describe the equivalent Circuit elements may be connected in series Apply an appropria"
+    },
+    {
+      "physical_page": 82,
+      "printed_page": 82,
+      "chars": 3236,
+      "first_200": "the equivalent The inverse of the equivalent resistance resistance of multiple of a set of resistors connected in parallel resistors connected in a is equal to the sum of the"
+    },
+    {
+      "physical_page": 83,
+      "printed_page": 83,
+      "chars": 3236,
+      "first_200": "n series with an ideal battery and the remainder of the circuit. 11.5.B.3 When there is current in a nonideal battery with internal resistance r , the potential difference across"
+    },
+    {
+      "physical_page": 84,
+      "printed_page": 84,
+      "chars": 3236,
+      "first_200": "so\u0007that\u0007no\u0007charge\u0007flows\u0007through\u0007them. 11.5.C.3 Nonideal ammeters and voltmeters will change the properties of the circuit being measured. BOUNDARY STATEMENT AP Physics 2 only expects students to quali"
+    },
+    {
+      "physical_page": 85,
+      "printed_page": 85,
+      "chars": 3236,
+      "first_200": "11.6.A.4 The values of electric potential at points in a circuit can be represented by a graph of electric potential as a function of position within a loop. AP Physics"
+    },
+    {
+      "physical_page": 86,
+      "printed_page": 86,
+      "chars": 3236,
+      "first_200": "e scenario. 11.7.A 11.7.A.1 3.C Describe a circuit or Kirchhoff’s junction rule is a consequence of Justify or support a claim elements of a circuit by the conservation of electric"
+    },
+    {
+      "physical_page": 87,
+      "printed_page": 87,
+      "chars": 3236,
+      "first_200": "stion. individual capacitances. 3.C Relevant equation: Justify or support a claim using evidence from experimental data, physical representations, or physical principles or laws. 11.8.A.1.ii The equiv"
+    },
+    {
+      "physical_page": 88,
+      "printed_page": 88,
+      "chars": 3236,
+      "first_200": "asymptotic value. 11.8.B.1.iii For a discharging capacitor, the time constant represents the time required for the capacitor’s charge to decrease from fully charged to approximately 37 percent of its "
+    },
+    {
+      "physical_page": 89,
+      "printed_page": 89,
+      "chars": 3236,
+      "first_200": "AL KNOWLEDGE 11.8.B 11.8.B.2.iv Describe the behavior After a long time, a charging capacitor of a circuit containing approaches a state of being fully charged, combinations of resistors reaching\u0007a\u0007ma"
+    },
+    {
+      "physical_page": 90,
+      "printed_page": 90,
+      "chars": 3236,
+      "first_200": "a-Based Course and Exam Description Course Framework V.1 | 76 Return to Table of Contents © 2024 College Board AP PHYSICS 2 UNIT 12 Magnetism and Electromagnetism 12–15% AP EXAM"
+    },
+    {
+      "physical_page": 91,
+      "printed_page": 91,
+      "chars": 3236,
+      "first_200": "charges, QUESTIONS and circuits by exploring the relationships between moving charges, the magnetic fields § How does an induction they generate, and the magnetic forces that act on other moving"
+    },
+    {
+      "physical_page": 92,
+      "printed_page": 92,
+      "chars": 3236,
+      "first_200": "identifying justifications for claims, simply justify why they can simplify the equation referencing an equation, law, or physical principle is not sufficient. For example, stating that “the force on "
+    },
+    {
+      "physical_page": 93,
+      "printed_page": 93,
+      "chars": 3236,
+      "first_200": "single scenario. 3.B Apply an appropriate law, definition, theoretical relationship, or model to make a claim. Magnetism and 12.3 \u0007 1.B Create quantitative graphs with appropriate scales and units, in"
+    },
+    {
+      "physical_page": 94,
+      "printed_page": 94,
+      "chars": 3236,
+      "first_200": "Sample Activity 1 12.2 Model Questions/Friends without Pens On AP Central, locate “AP Physics 2 Featured Question: Charged Particle in a Magnetic Field” and have students work through it in"
+    },
+    {
+      "physical_page": 95,
+      "printed_page": 95,
+      "chars": 3236,
+      "first_200": "priate law, Required Course Content definition, theoretical relationship, or model to make a claim. 3.C LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE Justify or support a claim 12.1.A 12.1.A.1 using evidence"
+    },
+    {
+      "physical_page": 96,
+      "printed_page": 96,
+      "chars": 3236,
+      "first_200": "magnetism are system properties that both result from the alignment of magnetic dipoles within a system. continued on next page AP Physics 2: Algebra-Based Course and Exam Description Course Framework"
+    },
+    {
+      "physical_page": 97,
+      "printed_page": 97,
+      "chars": 3236,
+      "first_200": "magnetic materials such as aluminum, titanium, and magnesium interact weakly with\u0007an\u0007external\u0007magnetic\u0007field,\u0007in\u0007that\u0007the\u0007 magnetic dipoles of the material do not remain\u0007aligned\u0007after\u0007the\u0007external\u0007fie"
+    },
+    {
+      "physical_page": 98,
+      "printed_page": 98,
+      "chars": 3236,
+      "first_200": "on many factors, including temperature, orientation, and strength of the external field. AP Physics 2: Algebra-Based Course and Exam Description Course Framework V.1 | 84 Return to Table of Contents"
+    },
+    {
+      "physical_page": 99,
+      "printed_page": 99,
+      "chars": 3236,
+      "first_200": "appropriate law, definition, theoretical produced by moving charged magnetic field. relationship, or model to objects. 12.2.A.1.i make a claim. The\u0007magnetic\u0007field\u0007at\u0007a\u0007particular\u0007point\u0007 produced by a "
+    },
+    {
+      "physical_page": 100,
+      "printed_page": 100,
+      "chars": 3236,
+      "first_200": "etic field. object is proportional to the magnitude of the charge, the magnitude of the charged object’s velocity, and the magnitude of the magnetic\u0007field\u0007and\u0007also\u0007depends\u0007on\u0007the\u0007 angle between the ve"
+    },
+    {
+      "physical_page": 101,
+      "printed_page": 101,
+      "chars": 3236,
+      "first_200": "of Contents © 2024 College Board UNIT Magnetism and Electromagnetism 12 TOPIC 12.3 SUGGESTED SKILLS 1.B Magnetism and Create quantitative graphs with appropriate scales and units, including plotting C"
+    },
+    {
+      "physical_page": 102,
+      "printed_page": 102,
+      "chars": 3236,
+      "first_200": "re. 12.3.A.1.i 3.C The\u0007magnetic\u0007field\u0007vectors\u0007around\u0007a\u0007long,\u0007 Justify or support a claim straight,\u0007current-carrying\u0007wire\u0007are\u0007tangent\u0007 using evidence from to concentric circles centered on that experim"
+    },
+    {
+      "physical_page": 103,
+      "printed_page": 103,
+      "chars": 3236,
+      "first_200": "12.3.B.1 Describe the force exerted A\u0007magnetic\u0007field\u0007may\u0007exert\u0007a\u0007force\u0007on\u0007a\u0007current- on\u0007a\u0007current-carrying\u0007wire\u0007by\u0007 carrying wire. a magnetic field. 12.3.B.1.i The magnitude of the force exerted by a "
+    },
+    {
+      "physical_page": 104,
+      "printed_page": 104,
+      "chars": 3236,
+      "first_200": "2.B Faraday’s Law Calculate or estimate an unknown quantity with units from known quantities, by selecting and following a logical computational pathway. Required Course Content 2.D Predict new values"
+    },
+    {
+      "physical_page": 105,
+      "printed_page": 105,
+      "chars": 3236,
+      "first_200": "urface. 12.4.A.2.ii The\u0007sign\u0007of\u0007the\u0007magnetic\u0007flux\u0007indicates\u0007 whether\u0007the\u0007magnetic\u0007field\u0007is\u0007parallel\u0007to\u0007or\u0007 antiparallel to the area vector. 12.4.A.3 Faraday’s law describes the relationship between ch"
+    },
+    {
+      "physical_page": 106,
+      "printed_page": 106,
+      "chars": 3236,
+      "first_200": ".1 | 90 Return to Table of Contents © 2024 College Board AP PHYSICS 2 UNIT 13 Geometric Optics 12–15% AP EXAM WEIGHTING ~8–12 CLASS PERIODS AP Physics 2: Algebra-Based"
+    },
+    {
+      "physical_page": 107,
+      "printed_page": 107,
+      "chars": 3236,
+      "first_200": "§ Why can’t a flat lens about and modeling light. This unit will focus on using the ray model of light to determine focus light? the images formed by mirrors"
+    },
+    {
+      "physical_page": 108,
+      "printed_page": 108,
+      "chars": 3236,
+      "first_200": "\u0007also\u0007be\u0007asked\u0007to\u0007linearize\u0007and\u0007analyze\u0007 written explanation of how they would make data. Practicing designing experiments, observations or collect data in the given performing data analysis, and disc"
+    },
+    {
+      "physical_page": 109,
+      "printed_page": 109,
+      "chars": 3236,
+      "first_200": "imate an unknown quantity with units from known quantities, by selecting and following a logical computational pathway. 2.D Predict new values or factors of change of physical quantities using functio"
+    },
+    {
+      "physical_page": 110,
+      "printed_page": 110,
+      "chars": 3236,
+      "first_200": "fraction of the orange gelatin dessert without touching it directly. Have students practice writing experimental procedures by writing up their experiment. 2 13.3 Desktop Experiment Tasks Break\u0007studen"
+    },
+    {
+      "physical_page": 111,
+      "printed_page": 111,
+      "chars": 3236,
+      "first_200": "harts, or schematics to represent physical situations. 2.B Calculate or estimate an unknown quantity with units from known quantities, by selecting and following a logical computational pathway. 2.C C"
+    },
+    {
+      "physical_page": 112,
+      "printed_page": 112,
+      "chars": 3236,
+      "first_200": "Return to Table of Contents © 2024 College Board UNIT Geometric Optics 13 LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 13.1.B 13.1.B.2 Describe the reflection of The law of reflection states that the"
+    },
+    {
+      "physical_page": 113,
+      "printed_page": 113,
+      "chars": 3236,
+      "first_200": "by a mirror. axis of a concave (converging) mirror will be experimental data, physical reflected toward a common location, called the representations, or physical principles or laws. focal point. 13.2"
+    },
+    {
+      "physical_page": 114,
+      "printed_page": 114,
+      "chars": 3236,
+      "first_200": "ard UNIT Geometric Optics 13 LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 13.2.A 13.2.A.7 Describe the image formed The location of an image depends on the focal by a mirror. length of the"
+    },
+    {
+      "physical_page": 115,
+      "printed_page": 115,
+      "chars": 3236,
+      "first_200": "that passes through the focal point of the mirror. 13.2.A.9.ii Images formed by a mirror can be upright or inverted, virtual or real, and reduced, enlarged,\u0007or\u0007the\u0007same\u0007size\u0007as\u0007the\u0007object. BOUNDARY ST"
+    },
+    {
+      "physical_page": 116,
+      "printed_page": 116,
+      "chars": 3236,
+      "first_200": "refraction of the two media. Relevant equation: 13.3.A.4.i When a light ray travels from a medium with a higher index of refraction into a medium with a lower index of"
+    },
+    {
+      "physical_page": 117,
+      "printed_page": 117,
+      "chars": 3236,
+      "first_200": "For incident rays beyond the critical angle, all\u0007light\u0007is\u0007reflected\u0007(no\u0007light\u0007is\u0007transmitted\u0007 into the other medium). AP Physics 2: Algebra-Based Course and Exam Description Course Framework V.1 | 101"
+    },
+    {
+      "physical_page": 118,
+      "printed_page": 118,
+      "chars": 3236,
+      "first_200": "refracted light rays diverge such that they appear to have originated from a common point. 13.4.A.5 For a thin lens, the location of an image depends on the focal length"
+    },
+    {
+      "physical_page": 119,
+      "printed_page": 119,
+      "chars": 3236,
+      "first_200": "13.4.A.7 Ray diagrams can be used to determine the location,\u0007type,\u0007size,\u0007and\u0007orientation\u0007of\u0007images\u0007 formed by lenses. 13.4.A.7.i The three principal rays are typically used to\u0007find\u0007the\u0007images\u0007formed\u0007b"
+    },
+    {
+      "physical_page": 120,
+      "printed_page": 120,
+      "chars": 3236,
+      "first_200": "e practices. Progress Check 14 Multiple-choice: ~30 questions Free-response: 4 questions § Mathematical Routines § Translation Between Representations § Experimental Design and Analysis § Qualitative/"
+    },
+    {
+      "physical_page": 121,
+      "printed_page": 121,
+      "chars": 3236,
+      "first_200": "and representations constitutes a large but you can’t see them? those equations (2.A), just as they have in part\u0007of\u0007the\u0007multiple-choice\u0007section\u0007of\u0007the\u0007 previous units. Those new expressions can § What"
+    },
+    {
+      "physical_page": 122,
+      "printed_page": 122,
+      "chars": 3236,
+      "first_200": "Suggested Skills 14.1 \u0007\u0007Properties of Wave 1.C Create qualitative sketches of graphs that represent features of a model or the behavior of Pulses and Waves a physical system. 2.C Compare"
+    },
+    {
+      "physical_page": 123,
+      "printed_page": 123,
+      "chars": 3236,
+      "first_200": "© 2024 College Board UNIT Waves, Sound, and Physical Optics 14 UNIT AT A GLANCE (cont’d) Topic Suggested Skills The Doppler Effect 14.5 \u0007 1.A Create diagrams, tables, charts, or"
+    },
+    {
+      "physical_page": 124,
+      "printed_page": 124,
+      "chars": 3236,
+      "first_200": "ge of physical quantities using functional dependence between variables. 3.A Create experimental procedures that are appropriate for a given scientific question. continued on next page AP Physics 2: A"
+    },
+    {
+      "physical_page": 125,
+      "printed_page": 125,
+      "chars": 3236,
+      "first_200": "measurements necessary to find the wave speed (wavelength and period data) and the maximum speed attained at an antinode point (amplitude and period data). Students then calculate the wave speed"
+    },
+    {
+      "physical_page": 126,
+      "printed_page": 126,
+      "chars": 3236,
+      "first_200": "© 2024 College Board UNIT 14 Waves, Sound, and Physical Optics SUGGESTED SKILLS 1.C TOPIC 14.1 Properties of Wave Create qualitative sketches of graphs that represent features of a model"
+    },
+    {
+      "physical_page": 127,
+      "printed_page": 127,
+      "chars": 3236,
+      "first_200": "ysical constant, c = 3.00 × 108 m/s. continued on next page AP Physics 2: Algebra-Based Course and Exam Description Course Framework V.1 | 112 Return to Table of Contents"
+    },
+    {
+      "physical_page": 128,
+      "printed_page": 128,
+      "chars": 3236,
+      "first_200": "e of a longitudinal pressure wave may be determined by the maximum increase or decrease in pressure from equilibrium pressure. 14.1.A.6.ii The loudness of a sound increases with increasing amplitude."
+    },
+    {
+      "physical_page": 129,
+      "printed_page": 129,
+      "chars": 3236,
+      "first_200": "iod and the frequency of that wave. 14.2.A.1.iv The energy of a wave increases with increasing frequency. 14.2.A.1.v The frequency of a sound wave is related to its pitch. 14.2.A.1.vi"
+    },
+    {
+      "physical_page": 130,
+      "printed_page": 130,
+      "chars": 3236,
+      "first_200": "al Optics SUGGESTED SKILLS 1.A TOPIC 14.3 Boundary Behavior of Create diagrams, tables, charts, or schematics to represent physical Waves and Polarization situations. 2.C Compare physical quantities b"
+    },
+    {
+      "physical_page": 131,
+      "printed_page": 131,
+      "chars": 3236,
+      "first_200": "14.3.A.2.i Transverse\u0007waves\u0007can\u0007be\u0007polarized\u0007and\u0007 oscillate in a single plane. 14.3.A.2.ii Longitudinal\u0007waves\u0007cannot\u0007be\u0007polarized. continued on next page AP Physics 2: Algebra-Based Course and Exam De"
+    },
+    {
+      "physical_page": 132,
+      "printed_page": 132,
+      "chars": 3236,
+      "first_200": "ric and magnetic fields that are mutually representations, or physical perpendicular. principles or laws. 14.4.A.1.i Electromagnetic waves are transverse waves because the oscillations of the\u0007electric"
+    },
+    {
+      "physical_page": 133,
+      "printed_page": 133,
+      "chars": 3236,
+      "first_200": "118 Return to Table of Contents © 2024 College Board UNIT Waves, Sound, and Physical Optics 14 LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 14.4.A 14.4.A.3.iii Describe the properties of an Visible electrom"
+    },
+    {
+      "physical_page": 134,
+      "printed_page": 134,
+      "chars": 3236,
+      "first_200": "ifference between the observed and rest frequencies. 14.5.A.2.i For a wave source moving at the same velocity as the observer, the observed frequency is equal to the rest frequency. 14.5.A.2.ii"
+    },
+    {
+      "physical_page": 135,
+      "printed_page": 135,
+      "chars": 3236,
+      "first_200": "of graphs that represent features of a model or the behavior of a physical system. 2.A Required Course Content Derive a symbolic expression from known quantities by selecting and following"
+    },
+    {
+      "physical_page": 136,
+      "printed_page": 136,
+      "chars": 3236,
+      "first_200": "make a claim. Wave interference may be constructive or destructive. 14.6.A.4.i When the displacements of the superposed wave pulses or waves are in the same direction, the interaction is called"
+    },
+    {
+      "physical_page": 137,
+      "printed_page": 137,
+      "chars": 3236,
+      "first_200": "resultant wave. 14.6.A.6.ii The\u0007beat\u0007frequency\u0007is\u0007the\u0007difference\u0007in\u0007the\u0007 frequencies of the two waves. Relevant equation: f beat = f1 − f 2 14.6.A.6.iii Tuning forks are devices that are commonly used"
+    },
+    {
+      "physical_page": 138,
+      "printed_page": 138,
+      "chars": 3236,
+      "first_200": "Return to Table of Contents © 2024 College Board UNIT Waves, Sound, and Physical Optics 14 LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 14.6.B 14.6.B.2 Describe the properties of a A standing wave"
+    },
+    {
+      "physical_page": 139,
+      "printed_page": 139,
+      "chars": 3236,
+      "first_200": "when the size\u0007of\u0007the\u0007opening\u0007is\u0007comparable\u0007to\u0007the\u0007 wavelength of the wave. 14.7.A.3 Diffraction of multiple wavefronts through a single opening leads to observable interference patterns. 14.7.A.4 Diff"
+    },
+    {
+      "physical_page": 140,
+      "printed_page": 140,
+      "chars": 3236,
+      "first_200": "UNIT Waves, Sound, and Physical Optics 14 LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 14.7.A 14.7.A.4.iv Describe the behavior of For small angles, where , the small a wave and the diffraction angle"
+    },
+    {
+      "physical_page": 141,
+      "printed_page": 141,
+      "chars": 3236,
+      "first_200": "14.8.A.1.i Create experimental When only considering wave interference, procedures that are a double slit creates a pattern of uniformly appropriate for a given spaced maxima. scientific question. 14."
+    },
+    {
+      "physical_page": 142,
+      "printed_page": 142,
+      "chars": 3236,
+      "first_200": "Relevant equation: 14.8.A.1.vi When considering wave interference and wave\u0007diffraction,\u0007a\u0007double\u0007slit\u0007creates\u0007an\u0007 interference pattern of maxima and minima superimposed within the envelope created by\u0007"
+    },
+    {
+      "physical_page": 143,
+      "printed_page": 143,
+      "chars": 3236,
+      "first_200": "BJECTIVE ESSENTIAL KNOWLEDGE scenario. 14.9.A 14.9.A.1 3.B Describe the behavior of light When light travels from one medium to another, Apply an appropriate law, that interacts with a thin film."
+    },
+    {
+      "physical_page": 144,
+      "printed_page": 144,
+      "chars": 3236,
+      "first_200": "thin\u0007film\u0007after\u0007being\u0007reflected\u0007from\u0007the\u0007 second interface exhibit wave interference behavior, resulting in a single wave that is the sum of the two interacting waves. continued on next page AP Physic"
+    },
+    {
+      "physical_page": 145,
+      "printed_page": 145,
+      "chars": 3236,
+      "first_200": "ireflection\u0007coating\u0007has\u0007 a\u0007thickness\u0007equal\u0007to\u0007one-quarter\u0007of\u0007the\u0007 wavelength of the light in the coating, and the index of refraction of the coating is greater than that of air and less than that of t"
+    },
+    {
+      "physical_page": 146,
+      "printed_page": 146,
+      "chars": 3236,
+      "first_200": "titative Translation AP Physics 2: Algebra-Based Course and Exam Description Course Framework V.1 | 132 Return to Table of Contents © 2024 College Board UNIT 15 12–15% AP EXAM WEIGHTING"
+    },
+    {
+      "physical_page": 147,
+      "printed_page": 147,
+      "chars": 3236,
+      "first_200": "an/or use a representation and make and dependencies between variables (2.D). justify claims. The final part of the MR From there, students can also make and question requires students to"
+    },
+    {
+      "physical_page": 148,
+      "printed_page": 148,
+      "chars": 3236,
+      "first_200": "© 2024 College Board UNIT 15 Modern Physics UNIT AT A GLANCE Topic Suggested Skills 15.1 \u0007\u0007Quantum Theory 1.A Create diagrams, tables, charts, or schematics to represent physical situations. and"
+    },
+    {
+      "physical_page": 149,
+      "printed_page": 149,
+      "chars": 3236,
+      "first_200": "ra-Based Course and Exam Description Course Framework V.1 | 134 Return to Table of Contents © 2024 College Board UNIT Modern Physics 15 UNIT AT A GLANCE (cont’d) Topic Suggested"
+    },
+    {
+      "physical_page": 150,
+      "printed_page": 150,
+      "chars": 3236,
+      "first_200": "AP Physics 2: Algebra-Based Course and Exam Description Course Framework V.1 | 135 Return to Table of Contents © 2024 College Board UNIT 15 Modern Physics UNIT AT A GLANCE"
+    },
+    {
+      "physical_page": 151,
+      "printed_page": 151,
+      "chars": 3236,
+      "first_200": "15.3 Desktop Experiment Tasks Charge a capacitor (at least 10 µF ) to 4.5 V or more, and then discharge it across an LED. Have students record the voltage on"
+    },
+    {
+      "physical_page": 152,
+      "printed_page": 152,
+      "chars": 3236,
+      "first_200": "exhibits\u0007both\u0007particle-like\u0007and\u0007 not be explained using classical mechanics. make a claim. wave-like\u0007behavior. These phenomena include, but are not limited to, atomic spectra, blackbody radiation, and"
+    },
+    {
+      "physical_page": 153,
+      "printed_page": 153,
+      "chars": 3236,
+      "first_200": "15.1.A 15.1.A.3 Describe the properties and The speed of a photon depends on the medium behavior of an object that through which the photon travels. exhibits both particle-like and 15.1.A.3.i"
+    },
+    {
+      "physical_page": 154,
+      "printed_page": 154,
+      "chars": 3236,
+      "first_200": "1 3.B Describe the properties of an Atoms have internal structure. Apply an appropriate law, atom. 15.2.A.1.i definition, theoretical relationship, or model to Atoms consist of a small, positively mak"
+    },
+    {
+      "physical_page": 155,
+      "printed_page": 155,
+      "chars": 3236,
+      "first_200": "4 College Board UNIT Modern Physics 15 LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 15.2.A 15.2.A.3 Describe the properties of an The Bohr model of the atom is based on atom. classical physics"
+    },
+    {
+      "physical_page": 156,
+      "printed_page": 156,
+      "chars": 3236,
+      "first_200": "y with units from known quantities, by selecting and following a logical computational pathway. 2.C Compare physical Required Course Content quantities between two or more scenarios or at different ti"
+    },
+    {
+      "physical_page": 157,
+      "printed_page": 157,
+      "chars": 3236,
+      "first_200": "emission of a photon of a single frequency and, therefore, a single wavelength. continued on next page AP Physics 2: Algebra-Based Course and Exam Description Course Framework V.1 | 142"
+    },
+    {
+      "physical_page": 158,
+      "printed_page": 158,
+      "chars": 3236,
+      "first_200": "© 2024 College Board UNIT 15 Modern Physics SUGGESTED SKILLS 1.C TOPIC 15.4 Blackbody Radiation Create qualitative sketches of graphs that represent features of a model or the behavior of"
+    },
+    {
+      "physical_page": 159,
+      "printed_page": 159,
+      "chars": 3236,
+      "first_200": "15.4.A.3.ii The peak wavelength emitted by a blackbody (the wavelength at which the blackbody emits the greatest amount of radiation per unit wavelength) decreases with increasing temperature, as desc"
+    },
+    {
+      "physical_page": 160,
+      "printed_page": 160,
+      "chars": 3236,
+      "first_200": "15.5.A 15.5.A.1 procedures that are Describe an interaction The photoelectric effect is the emission of appropriate for a given between photons and matter electrons when electromagnetic radiation is s"
+    },
+    {
+      "physical_page": 161,
+      "printed_page": 161,
+      "chars": 3236,
+      "first_200": "Return to Table of Contents © 2024 College Board UNIT Modern Physics 15 LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 15.5.A 15.5.A.3.ii Describe an interaction The maximum kinetic energy of an emitted betwe"
+    },
+    {
+      "physical_page": 162,
+      "printed_page": 162,
+      "chars": 3236,
+      "first_200": "h Justify or support a claim between photons and matter a free electron. The Compton effect is when a using evidence from using Compton scattering. photon that emerges from the"
+    },
+    {
+      "physical_page": 163,
+      "printed_page": 163,
+      "chars": 3236,
+      "first_200": "15 LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 15.6.A 15.6.A.3 Describe the interaction The change in wavelength experienced by a between photons and photon after colliding with an electron is related matt"
+    },
+    {
+      "physical_page": 164,
+      "printed_page": 164,
+      "chars": 3236,
+      "first_200": "A.4 For all nuclear reactions, mass and energy may be\u0007exchanged\u0007due\u0007to\u0007mass-energy\u0007equivalence. Relevant equation: E = mc 2 15.7.A.5 Energy may be released in nuclear processes in the form of kinetic "
+    },
+    {
+      "physical_page": 165,
+      "printed_page": 165,
+      "chars": 3236,
+      "first_200": "t which an individual nucleus undergoes radioactive decay is indeterminable, but decay rates can be described using probability 15.7.B.1.ii The\u0007half-life, t1/2 , of a radioactive material is the time "
+    },
+    {
+      "physical_page": 166,
+      "printed_page": 166,
+      "chars": 3236,
+      "first_200": "ysical which individual nuclei decay. subatomic particles with unique properties. representations, or physical principles or laws. 15.8.A.1.i An alpha particle, or helium nucleus, consists of two neut"
+    },
+    {
+      "physical_page": 167,
+      "printed_page": 167,
+      "chars": 3236,
+      "first_200": "Return to Table of Contents © 2024 College Board UNIT Modern Physics 15 LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 15.8.A 15.8.A.2.i Describe the processes by In all nuclear decays, nucleon number (the"
+    },
+    {
+      "physical_page": 168,
+      "printed_page": 168,
+      "chars": 3236,
+      "first_200": "iments Although laboratory work has often been separated student work can be accomplished both with simple, from classroom work, research shows that experience inexpensive materials and with more soph"
+    },
+    {
+      "physical_page": 169,
+      "printed_page": 169,
+      "chars": 3236,
+      "first_200": "aboratory work teachers can choose from to satisfy the guided inquiry an\u0007important\u0007part\u0007their\u0007curriculum.\u0007An analysis\u0007of\u0007data\u0007 lab component for the course. Many publishers and from AP Physics 2 exami"
+    },
+    {
+      "physical_page": 170,
+      "printed_page": 170,
+      "chars": 3236,
+      "first_200": "ions. practical skills, and to develop habits of mind that Often, this simply begins with using the learning might\u0007be\u0007characterized\u0007as\u0007thinking\u0007like\u0007a\u0007physicist.\u0007 objectives to craft a question for st"
+    },
+    {
+      "physical_page": 171,
+      "printed_page": 171,
+      "chars": 3236,
+      "first_200": "Collaboration, and the AP Physics 2 is equivalent to a college course, the Laboratory Record equipment and time allotted to laboratories should be similar to that in a college course."
+    },
+    {
+      "physical_page": 172,
+      "printed_page": 172,
+      "chars": 3236,
+      "first_200": "lity working environment, teachers should first provide of a procedure, check with the teacher before the limitations and safety precautions necessary for proceeding. potential procedures and equipmen"
+    },
+    {
+      "physical_page": 173,
+      "printed_page": 173,
+      "chars": 3236,
+      "first_200": "aterial connects physical actions to conceptual For AP Physics, data is collected any time a student understanding. Labs provide students with an additional writes down an observation or measurement. "
+    },
+    {
+      "physical_page": 174,
+      "printed_page": 174,
+      "chars": 3236,
+      "first_200": "that all of the above can be done individually, Defining “Labs” and “Lab Time” in small lab groups, or as an entire class, as deemed appropriate for any given teacher’s"
+    },
+    {
+      "physical_page": 175,
+      "printed_page": 175,
+      "chars": 3236,
+      "first_200": "ationship my teacher told me is wrong and we have discovered between the current in a resistor and the potential new physics!” or “Perhaps I made a mistake, and I"
+    },
+    {
+      "physical_page": 176,
+      "printed_page": 176,
+      "chars": 3236,
+      "first_200": "Scientific Questioning & Argumentation are appropriate of the teacher, these labs can also be beneficial and to\u0007emphasize.\u0007However,\u0007in\u0007the\u0007act\u0007of\u0007performing\u0007an\u0007 useful\u0007in\u0007the\u0007classroom.\u0007However,\u0007the\u0007p"
+    },
+    {
+      "physical_page": 177,
+      "printed_page": 177,
+      "chars": 3236,
+      "first_200": "quantity in order to find a relationship between two opportunity for students to explore how the invisible variables. can be made visible. By observing macroscopic patterns, trends, and behaviors, stu"
+    },
+    {
+      "physical_page": 178,
+      "printed_page": 178,
+      "chars": 3236,
+      "first_200": "outine to their coin-sized\u0007magnets\u0007that\u0007are\u0007flipped\u0007so\u0007that\u0007their\u0007poles\u0007 advantage in the lab. If structures and routines are follow\u0007a\u0007binary\u0007pattern\u0007(e.g.,\u0007N-S-S-N-N-N-S).\u0007Students\u0007 introduced at the"
+    },
+    {
+      "physical_page": 179,
+      "printed_page": 179,
+      "chars": 3236,
+      "first_200": "h cameras, and apps that can be easily and each of these tools, they need to be made aware of this appropriately implemented in the classroom. equipment, as well as"
+    },
+    {
+      "physical_page": 180,
+      "printed_page": 180,
+      "chars": 3236,
+      "first_200": "While\u0007nearly\u0007all\u0007college-level\u0007physics\u0007textbooks\u0007address\u0007 the seven units of AP Physics 2, it’s important for Teachers will benefit from a wide array of materials teachers to identify other types of s"
+    },
+    {
+      "physical_page": 181,
+      "printed_page": 181,
+      "chars": 3236,
+      "first_200": "CTION FROM TEACHER LESS 1.A The student The student The student The student Create diagrams, tables, works with a selects from a set sharpens, completes, creates their own charts, or"
+    },
+    {
+      "physical_page": 182,
+      "printed_page": 182,
+      "chars": 3236,
+      "first_200": "Return to Table of Contents © 2024 College Board How to Scaffold Inquiry in the AP Classroom Skill MORE AMOUNT OF DIRECTION FROM TEACHER LESS 2.B The student works The"
+    },
+    {
+      "physical_page": 183,
+      "printed_page": 183,
+      "chars": 3236,
+      "first_200": "ected to collect and determine both teacher and is told teacher. analyze\u0007certain\u0007data\u0007 what constitutes how\u0007to\u0007analyze\u0007it.\u0007 by the teacher. evidence to support a claim and collect it on their own. 3.A"
+    },
+    {
+      "physical_page": 184,
+      "printed_page": 184,
+      "chars": 3236,
+      "first_200": "Understanding the different types of inquiry can help §§ Try a goal-oriented task: Completely remove the teachers scaffold the types of labs and activities to procedure, and prompt students with"
+    },
+    {
+      "physical_page": 185,
+      "printed_page": 185,
+      "chars": 3236,
+      "first_200": "Example Ask the Expert Students are assigned as “experts” for Assign students as “experts” on atomic, concepts they understand well; groups quantum, or nuclear questions. Have them rotate through the"
+    },
+    {
+      "physical_page": 186,
+      "printed_page": 186,
+      "chars": 3236,
+      "first_200": "© 2024 College Board Strategy Description Example Conflicting Students are presented with two or Present students with the following scenario: Contentions three statements that disagree in some way. T"
+    },
+    {
+      "physical_page": 187,
+      "printed_page": 187,
+      "chars": 3236,
+      "first_200": "the pulley. Have students create an argument for whether the mass m should be increased or decreased to increase the number of standing waves on the string with the same"
+    },
+    {
+      "physical_page": 188,
+      "printed_page": 188,
+      "chars": 3236,
+      "first_200": "best fit and have them discuss how they could determine the focal length of the lens using their data. Desktop Students perform a demonstration Have\u0007students\u0007analyze\u0007the\u0007following\u0007circuit\u0007 Experiment "
+    },
+    {
+      "physical_page": 189,
+      "printed_page": 189,
+      "chars": 3236,
+      "first_200": "gether d to discuss the problem but are not P permitted to write anything. In the +Q second round, called “pens without friends,” students return to their desk A where\u0007they\u0007complete\u0007and\u0007finalize\u0007their"
+    },
+    {
+      "physical_page": 190,
+      "printed_page": 190,
+      "chars": 3236,
+      "first_200": "discussing their various claims, have students return to their desks and develop a complete argument. Four-Square Students are given a scenario, perhaps As they study circuits, have students do Proble"
+    },
+    {
+      "physical_page": 191,
+      "printed_page": 191,
+      "chars": 3236,
+      "first_200": "imental\u0007design— them understand the concepts and and underline the objects, equipment, key interpretations of tasks required to information (e.g., the electron is released from solve the problem. rest"
+    },
+    {
+      "physical_page": 192,
+      "printed_page": 192,
+      "chars": 3236,
+      "first_200": "of what kinds of scenarios would require this information (i.e., a thermodynamics problem and not an optics problem). Predict and Students predict what will happen in When a circuit is"
+    },
+    {
+      "physical_page": 193,
+      "printed_page": 193,
+      "chars": 3236,
+      "first_200": "amount of time about a designated learned\u0007how\u0007to\u0007analyze\u0007single-\u0007and\u0007double-slit\u0007 topic. experiments, have students list as many ways as possible to change the interference pattern on the screen and e"
+    },
+    {
+      "physical_page": 194,
+      "printed_page": 194,
+      "chars": 3236,
+      "first_200": "s to repeat their steps with resistances that don’t add as easily, while asking them how they would use the “simpler” problem to help them with this second, more complex"
+    },
+    {
+      "physical_page": 195,
+      "printed_page": 195,
+      "chars": 3236,
+      "first_200": "of different metals. Electrons are ejected from each plate because of the light shining on the plate, and the speed of the electrons ejected from Plate A is larger than"
+    },
+    {
+      "physical_page": 196,
+      "printed_page": 196,
+      "chars": 3236,
+      "first_200": "diagrams, graphs, energy bar charts, ray diagrams, and circuit diagrams. Representations help in When physicists describe and explain complex analyzing\u0007phenomena\u0007and\u0007making\u0007predictions\u0007and\u0007 phenomena,"
+    },
+    {
+      "physical_page": 197,
+      "printed_page": 197,
+      "chars": 3236,
+      "first_200": "mple, have students create §§ What features of the four different representations of the representation provide following scenario. “Three identical information relevant to the charged objects are bro"
+    },
+    {
+      "physical_page": 198,
+      "printed_page": 198,
+      "chars": 3236,
+      "first_200": "if anything, is wrong with the graph. relationship between quantities? The “wrong” things can be simple at first (e.g., scales not uniform, labels §§ What data would need to be"
+    },
+    {
+      "physical_page": 199,
+      "printed_page": 199,
+      "chars": 3236,
+      "first_200": "diagrams, and so on, and then choose an appropriate Routines mathematical\u0007representation—instead\u0007of\u0007first\u0007choosing\u0007 Conduct analyses to derive, calculate, estimate, a formula whose variables seem to m"
+    },
+    {
+      "physical_page": 200,
+      "printed_page": 200,
+      "chars": 3236,
+      "first_200": "about §§ Did the derivation begin with what could be asked of them, and an equation or a fundamental what analysis technique they might physics relationship, law, or want to"
+    },
+    {
+      "physical_page": 201,
+      "printed_page": 201,
+      "chars": 3236,
+      "first_200": "ts? stopping potential as a function of frequency, an energy bar chart for the ejected electrons, or a motion map for the ejected electrons. 2.C §§ What relationship(s) link the"
+    },
+    {
+      "physical_page": 202,
+      "printed_page": 202,
+      "chars": 3236,
+      "first_200": "students quantitatively and or limitations surrounding the qualitatively estimate, and then using functional dependence use of the chosen law, definition, determine the changes in the energy between v"
+    },
+    {
+      "physical_page": 203,
+      "printed_page": 203,
+      "chars": 3236,
+      "first_200": "is if it is data they have collected through their plan for collecting data. Designing and improving own investigations. Students should be encouraged experimental\u0007designs\u0007and/or\u0007data-collection\u0007strat"
+    },
+    {
+      "physical_page": 204,
+      "printed_page": 204,
+      "chars": 3236,
+      "first_200": "changes can be made to observations and measurements to refine the data? §§ How\u0007will\u0007the\u0007data\u0007be\u0007analyzed\u0007to\u0007 answer the scientific question? §§ How can a second experiment be designed to answer the s"
+    },
+    {
+      "physical_page": 205,
+      "printed_page": 205,
+      "chars": 3236,
+      "first_200": "Return to Table of Contents © 2024 College Board Practicing with Science Practices and Skills: CASE STUDY—THIN LENS The\u0007following\u0007multiple-choice\u0007questions\u0007(MCQs)\u0007all\u0007use\u0007the\u0007same\u0007stimulus\u0007and\u0007basic\u0007s"
+    },
+    {
+      "physical_page": 206,
+      "printed_page": 206,
+      "chars": 3236,
+      "first_200": "Board Skill 2.D—Functional Skill 3.C—Justify a Claim Dependence Justify or support a claim using evidence from experimental data, physical representations, or physical Predict new values or factors of"
+    },
+    {
+      "physical_page": 207,
+      "printed_page": 207,
+      "chars": 3236,
+      "first_200": "© 2024 College Board THIS PAGE IS INTENTIONALLY LEFT BLANK. AP PHYSICS 2 Exam Information Exam Overview The AP Physics 2 exam assesses student application of the science practices and"
+    },
+    {
+      "physical_page": 208,
+      "printed_page": 208,
+      "chars": 3236,
+      "first_200": "he\u0007multiple-choice\u0007section).\u0007Science\u0007Practices\u00071,\u00072\u0007and\u00073\u0007are\u0007all\u0007assessed\u0007in\u0007the\u0007 free-response\u0007section\u0007with\u0007the\u0007following\u0007weighting. Please note: Required course content (Learning Objectives and Ess"
+    },
+    {
+      "physical_page": 209,
+      "printed_page": 209,
+      "chars": 3236,
+      "first_200": "ysics\u00072\u0007Exam\u0007consists\u0007of\u0007four\u0007question\u0007types\u0007listed\u0007below.\u0007Each\u0007question\u0007 type appears on the exam. Mathematical Routines (MR) Skills: 1.A 1.C 2.A 2.B 3.B 3.C 10 points; suggested time: 20–25 minutes "
+    },
+    {
+      "physical_page": 210,
+      "printed_page": 210,
+      "chars": 3236,
+      "first_200": "e affects a single characteristic. Methods must be able to be performed in a typical high school laboratory. Measurements must be made with realistically obtainable equipment or sensors. Students will"
+    },
+    {
+      "physical_page": 211,
+      "printed_page": 211,
+      "chars": 3236,
+      "first_200": "rm a series of mathematical steps to arrive at a final answer. Describe: Provide the relevant characteristics of a specified topic. Determine: Make a decision or arrive at a conclusion"
+    },
+    {
+      "physical_page": 212,
+      "printed_page": 212,
+      "chars": 3236,
+      "first_200": "Observer B 25 m/s Truck Observer C Observer D (at rest) (at rest) 2. A truck is traveling to the east with a speed of 25 m/s relative to the"
+    },
+    {
+      "physical_page": 213,
+      "printed_page": 213,
+      "chars": 3236,
+      "first_200": "© 2024 College Board 5. A student places a lens 40 cm from an object and observes an enlarged image on a screen on the opposite side of the lens."
+    },
+    {
+      "physical_page": 214,
+      "printed_page": 214,
+      "chars": 3236,
+      "first_200": "C Decreases Increases D Decreases Decreases (A) A (B) B (C) C (D) D AP Physics 2: Algebra-Based Course and Exam Description Exam Information V.1 | 198 Return to Table"
+    },
+    {
+      "physical_page": 215,
+      "printed_page": 215,
+      "chars": 3236,
+      "first_200": "d by a wire. The rails and wire have negligible resistance. The entire apparatus is in a uniform magnetic field of magnitude B that is directed into the page. At"
+    },
+    {
+      "physical_page": 216,
+      "printed_page": 216,
+      "chars": 3236,
+      "first_200": "re connected as shown. The capacitor is initially uncharged and the switch is initially open. What is the current in the battery immediately after the switch is closed? (A) Zero"
+    },
+    {
+      "physical_page": 217,
+      "printed_page": 217,
+      "chars": 3236,
+      "first_200": "w labeled I to indicate the direction of the current in the loop during the interval Δt. • Draw an arrow labeled F to indicate the direction of the net"
+    },
+    {
+      "physical_page": 218,
+      "printed_page": 218,
+      "chars": 3236,
+      "first_200": "na B Figure 1 AP Physics 2: Algebra-Based Course and Exam Description Exam Information V.1 | 204 Return to Table of Contents © 2024 College Board (a) On the diagram"
+    },
+    {
+      "physical_page": 219,
+      "printed_page": 219,
+      "chars": 3236,
+      "first_200": "nstructed for one trial. RX Figure 1 In addition to wires, the resistors, and the battery, the student also has access to an ideal voltmeter and an ideal ammeter. The"
+    },
+    {
+      "physical_page": 220,
+      "printed_page": 220,
+      "chars": 3236,
+      "first_200": "ed in part (c)(ii). (d) Calculate r from the best-fit line drawn on the grid. AP Physics 2: Algebra-Based Course and Exam Description Exam Information V.1 | 207 Return to"
+    },
+    {
+      "physical_page": 221,
+      "printed_page": 221,
+      "chars": 3236,
+      "first_200": "C 3.B 11.8.B 11.8.B.2 9 B 2.B 9.5.A 9.5.A.1 10 C 2.A 12.3.A 12.3.A.1 11 D 2.D 15.4.A 15.4.A.3 12 B 2.A 12.4.A 12.4.A.3 13 A 3.B 14.6.A 14.6.A.6 14"
+    },
+    {
+      "physical_page": 222,
+      "printed_page": 222,
+      "chars": 3236,
+      "first_200": "© 2024 College Board (a) iii For drawing an arrow to indicate that the current direction is counterclockwise 1 point For drawing an arrow to indicate that the magnetic force"
+    },
+    {
+      "physical_page": 223,
+      "printed_page": 223,
+      "chars": 3236,
+      "first_200": "Figure 2 Total for part (a) 3 points (b) For a derivation that applies the relationship between the speed, wavelength, and frequency of a wave v = f 1 point"
+    },
+    {
+      "physical_page": 224,
+      "printed_page": 224,
+      "chars": 3236,
+      "first_200": "2: Algebra-Based Course and Exam Description Scoring Guidelines V.1 | 213 Return to Table of Contents © 2024 College Board Scoring Guidelines for Question 3: Experimental Design and Analysis 10"
+    },
+    {
+      "physical_page": 225,
+      "printed_page": 225,
+      "chars": 3236,
+      "first_200": "Example Response: 1 Graph the resistance R of the resistors as a function of . I R ( ) I ( mA ) 1 I A −1 ( ) 10"
+    },
+    {
+      "physical_page": 226,
+      "printed_page": 226,
+      "chars": 3236,
+      "first_200": "points (b) For using K max = hf − with an attempt to substitute for wavelength 1 point c 1 point For a correct substitution of f = For a"
+    },
+    {
+      "physical_page": 227,
+      "printed_page": 227,
+      "chars": 3236,
+      "first_200": "out the boundaries within which the The intentional use of certain words within specific scientist will consider that phenomenon. Typically, contexts can have a significant impact on student these bou"
+    },
+    {
+      "physical_page": 228,
+      "printed_page": 228,
+      "chars": 3236,
+      "first_200": "een done so with alignment to their respective AP when teaching, teachers and students can hone their Physics courses. The boundaries of these models are understanding in measured and intentional"
+    },
+    {
+      "physical_page": 229,
+      "printed_page": 229,
+      "chars": 3236,
+      "first_200": "doors and windows, the wheels, the frame, the radio, Representations that are frequently used within AP the suspension, and so on. The user treats the truck as Physics 2, include"
+    },
+    {
+      "physical_page": 230,
+      "printed_page": 230,
+      "chars": 3236,
+      "first_200": "student can contact with each other. The amount of friction is communicate their knowledge. True understanding inherently tied to the structure and properties of AP Physics 2: Algebra-Based Course and"
+    },
+    {
+      "physical_page": 231,
+      "printed_page": 231,
+      "chars": 3236,
+      "first_200": "cereal box, the total amount of cereal is conserved, analysis of a problem. There is no single right or wrong in both System A and System B. In both choices"
+    },
+    {
+      "physical_page": 232,
+      "printed_page": 232,
+      "chars": 3236,
+      "first_200": "© 2024 College Board of the box, the total amount of energy in that system with understanding these terms, as they are incredibly is not constant, but energy is conserved."
+    },
+    {
+      "physical_page": 233,
+      "printed_page": 233,
+      "chars": 3236,
+      "first_200": "the small piece of matter that interacts with other particles sphere conducting or nonconducting? That matters, via collisions, like millions of tiny billiard balls on a because polarization of the"
+    },
+    {
+      "physical_page": 234,
+      "printed_page": 234,
+      "chars": 3236,
+      "first_200": "h as conduction, strangely as well, and is rarely, if ever, used. Students convection, or radiation). This term can be problematic may also incorrectly refer to the “amount of heat"
+    },
+    {
+      "physical_page": 235,
+      "printed_page": 235,
+      "chars": 3236,
+      "first_200": "K degree Celsius, °C electron volt, eV 1 atmosphere of pressure, 1 atm = 1.0 × 105 N m 2 = 1.0 × 105 Pa farad, F 1 N ⋅"
+    },
+    {
+      "physical_page": 236,
+      "printed_page": 236,
+      "chars": 3236,
+      "first_200": "T cos θ 1 3 2 45 2 2 35 12 0 9 10 giga G 10 6 mega M tan θ 0 3 3 34 1 4 3 3"
+    },
+    {
+      "physical_page": 237,
+      "printed_page": 237,
+      "chars": 3236,
+      "first_200": "CS A = area c = speciﬁc heat F = force k = thermal conductivity K = kinetic energy L = length m = mass n = number of moles"
+    },
+    {
+      "physical_page": 238,
+      "printed_page": 238,
+      "chars": 3236,
+      "first_200": "n = index of refraction constant s = position f = work function t = time T = period v = speed x = position y = position λ ="
+    },
+    {
+      "physical_page": 239,
+      "printed_page": 239,
+      "chars": 3236,
+      "first_200": "= + t t+ d = distance 2 0 2 0 F = force f = frequency 2 2 ( v x = v x 0 + 2ax x −"
+    },
+    {
+      "physical_page": 240,
+      "printed_page": 240,
+      "chars": 3236,
+      "first_200": "W = work 2 L = rmv sin x = position W = F d = Fd cos L t y = vertical position xcm r a = angular acceleration"
+    }
+  ]
+}

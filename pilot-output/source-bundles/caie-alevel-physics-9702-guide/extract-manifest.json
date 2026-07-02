@@ -1,0 +1,440 @@
+{
+  "schema_version": "1",
+  "subject": "physics",
+  "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/02-A-Level知识库/03-考试局/CAIE/Physics (9702)/02-课本与考纲/考纲/CAIE_Physics_9702_Syllabus_2025-2026.pdf",
+  "file_checksum_sha256": "1cba1cdca33c51a39dd6dfdc69d612f48967abcd89b6ceacdf9ffd6fa2e2b195",
+  "pdfinfo": {
+    "Title": "Cambridge International AS&A Level 9702 Physics syllabus for examination in 2025, 2026 and 2027",
+    "Keywords": "Cambridge; syllabus; AS&A Level; Physics; 2025; 2026; 2027",
+    "Author": "Document Production Team",
+    "Creator": "Adobe InDesign 16.1 (Windows)",
+    "Producer": "Adobe PDF Library 15.0",
+    "CreationDate": "Wed Sep  7 22:37:19 2022 CST",
+    "ModDate": "Wed Sep  7 22:39:19 2022 CST",
+    "Custom Metadata": "no",
+    "Metadata Stream": "yes",
+    "Tagged": "yes",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "none",
+    "JavaScript": "no",
+    "Pages": "68",
+    "Encrypted": "no",
+    "Page size": "595.276 x 841.89 pts (A4)",
+    "Page rot": "0",
+    "File size": "2553732 bytes",
+    "Optimized": "no",
+    "PDF version": "1.7"
+  },
+  "total_pages": 68,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": 1,
+      "chars": 2413,
+      "first_200": "Syllabus Cambridge International AS & A Level Physics 9702 Use this syllabus for exams in 2025, 2026 and 2027. Exams are available in the June and November series. Also available"
+    },
+    {
+      "physical_page": 2,
+      "printed_page": 2,
+      "chars": 2413,
+      "first_200": "he Cambridge Pathway. School feedback: ‘We think the Cambridge curriculum is superb preparation for university.’ Feedback from: Christoph Guttentag, Dean of Undergraduate Admissions, Duke University, "
+    },
+    {
+      "physical_page": 3,
+      "printed_page": 3,
+      "chars": 2413,
+      "first_200": "26 4 Details of the assessment . ...................................................................................... 40 Paper 1 Multiple Choice 40 Paper 2 AS Level Structured Questions 40 Paper 3 A"
+    },
+    {
+      "physical_page": 4,
+      "printed_page": 4,
+      "chars": 2413,
+      "first_200": "64 After the exam 65 How students, teachers and higher education can use the grades 66 Grade descriptions 66 Changes to this syllabus for 2025, 2026 and 2027 67 Important:"
+    },
+    {
+      "physical_page": 5,
+      "printed_page": 5,
+      "chars": 2413,
+      "first_200": "oncern for accuracy and precision, objectivity, integrity, enquiry, initiative and inventiveness. They acquire the essential scientific skills required for progression to further studies or employment"
+    },
+    {
+      "physical_page": 6,
+      "printed_page": 6,
+      "chars": 2413,
+      "first_200": "nd developed, will help to underpin the course you will teach. You may identify additional key concepts which will also enrich teaching and learning. The key concepts for Cambridge International"
+    },
+    {
+      "physical_page": 7,
+      "printed_page": 7,
+      "chars": 2413,
+      "first_200": "& A Levels gain places at leading universities worldwide. Our programmes and qualifications are valued by top universities around the world including those in the UK, US (including Ivy League"
+    },
+    {
+      "physical_page": 8,
+      "printed_page": 8,
+      "chars": 2413,
+      "first_200": "’ Feedback from: Yale University, USA Back to contents page www.cambridgeinternational.org/alevel 7 Cambridge International AS & A Level Physics 9702 syllabus for 2025, 2026 and 2027. Why choose this "
+    },
+    {
+      "physical_page": 9,
+      "printed_page": 9,
+      "chars": 2413,
+      "first_200": "s • Cambridge Professional Development Qualifications Find out more at www.cambridgeinternational.org/profdev Supporting exams officers We provide comprehensive support and guidance for all Cambridge "
+    },
+    {
+      "physical_page": 10,
+      "printed_page": 10,
+      "chars": 2413,
+      "first_200": "3 Dynamics 4 Forces, density and pressure 5 Work, energy and power 6 Deformation of solids 7 Waves 8 Superposition 9 Electricity 10 D.C. circuits 11 Particle physics AS Level"
+    },
+    {
+      "physical_page": 11,
+      "printed_page": 11,
+      "chars": 2413,
+      "first_200": "Externally assessed 15.5% of the A Level 38.5% of the A Level Paper 2 Paper 5 AS Level Structured Questions Planning, Analysis and Evaluation 1 hour 15 minutes 1 hour"
+    },
+    {
+      "physical_page": 12,
+      "printed_page": 12,
+      "chars": 2413,
+      "first_200": "AS Level only (Candidates take all AS yes yes yes components in the same exam series) 2 A Level (staged over two years) Year 1 AS Level* yes yes yes"
+    },
+    {
+      "physical_page": 13,
+      "printed_page": 13,
+      "chars": 2413,
+      "first_200": "report trends and draw conclusions • give reasoned explanations for phenomena, patterns and relationships • make predictions and construct arguments to support hypotheses • make sense of new situation"
+    },
+    {
+      "physical_page": 14,
+      "printed_page": 14,
+      "chars": 2413,
+      "first_200": "l skills and investigations 0 0 100 0 100 Total 100 100 100 100 100 Back to contents page www.cambridgeinternational.org/alevel 14 Cambridge International AS & A Level Physics 9702 syllabus"
+    },
+    {
+      "physical_page": 15,
+      "printed_page": 15,
+      "chars": 2413,
+      "first_200": "al work, candidates will be expected to use SI units or, where appropriate, units approved by the BIPM for use with the SI (e.g. minute). A list of SI units"
+    },
+    {
+      "physical_page": 16,
+      "printed_page": 16,
+      "chars": 2413,
+      "first_200": "addition of absolute or percentage uncertainties 1.4 Scalars and vectors Candidates should be able to: 1 \u0007understand the difference between scalar and vector quantities and give examples of scalar and"
+    },
+    {
+      "physical_page": 17,
+      "printed_page": 17,
+      "chars": 2413,
+      "first_200": "velocity 4 define and use force as rate of change of momentum 5 state and apply each of Newton’s laws of motion 6 \u0007describe and use the concept of weight"
+    },
+    {
+      "physical_page": 18,
+      "printed_page": 18,
+      "chars": 2413,
+      "first_200": "orces that acts to produce rotation only 4 define and apply the torque of a couple 4.2 Equilibrium of forces Candidates should be able to: 1 state and apply the"
+    },
+    {
+      "physical_page": 19,
+      "printed_page": 19,
+      "chars": 2413,
+      "first_200": "2 \u0007recall and use the formula ∆EP = mg∆ h for gravitational potential energy changes in a uniform gravitational field 1 3 derive, using the equations of motion, the formula"
+    },
+    {
+      "physical_page": 20,
+      "printed_page": 20,
+      "chars": 2413,
+      "first_200": "wavelength and speed 3 \u0007understand the use of the time-base and y-gain of a cathode-ray oscilloscope (CRO) to determine frequency and amplitude 4 derive, using the definitions of speed, frequency"
+    },
+    {
+      "physical_page": 21,
+      "printed_page": 21,
+      "chars": 2413,
+      "first_200": "olarising filter or a series of polarising filters (calculation of the effect of a polarising filter on the intensity of an unpolarised wave is not required) Back to contents page"
+    },
+    {
+      "physical_page": 22,
+      "printed_page": 22,
+      "chars": 2413,
+      "first_200": ".org/alevel 22 Cambridge International AS & A Level Physics 9702 syllabus for 2025, 2026 and 2027. Subject content 9 Electricity 9.1 Electric current Candidates should be able to: 1 understand"
+    },
+    {
+      "physical_page": 23,
+      "printed_page": 23,
+      "chars": 2413,
+      "first_200": "energy transferred per unit charge in driving charge around a complete circuit 4 distinguish between e.m.f. and potential difference (p.d.) in terms of energy considerations 5 understand the effects o"
+    },
+    {
+      "physical_page": 24,
+      "printed_page": 24,
+      "chars": 2413,
+      "first_200": "me element with different numbers of neutrons in their nuclei 5 understand and use the notation AZ X for the representation of nuclides 6 understand that nucleon number and charge"
+    },
+    {
+      "physical_page": 25,
+      "printed_page": 25,
+      "chars": 2413,
+      "first_200": "called leptons Back to contents page www.cambridgeinternational.org/alevel 25 Cambridge International AS & A Level Physics 9702 syllabus for 2025, 2026 and 2027. Subject content A Level subject conten"
+    },
+    {
+      "physical_page": 26,
+      "printed_page": 26,
+      "chars": 2413,
+      "first_200": "ics 9702 syllabus for 2025, 2026 and 2027. Subject content 13.3 Gravitational field of a point mass Candidates should be able to: 1 \u0007derive, from Newton’s law of gravitation and"
+    },
+    {
+      "physical_page": 27,
+      "printed_page": 27,
+      "chars": 2413,
+      "first_200": "Subject content 14.3 Specific heat capacity and specific latent heat Candidates should be able to: 1 define and use specific heat capacity 2 \u0007define and use specific latent heat and"
+    },
+    {
+      "physical_page": 28,
+      "printed_page": 28,
+      "chars": 2413,
+      "first_200": "16 Thermodynamics An understanding of energy from Cambridge IGCSE/O Level Physics or equivalent is assumed. 16.1 Internal energy Candidates should be able to: 1 \u0007understand that internal energy is det"
+    },
+    {
+      "physical_page": 29,
+      "printed_page": 29,
+      "chars": 2413,
+      "first_200": "tic and potential energy during simple harmonic motion 1 2 recall and use E = 2 mω2 x02 for the total energy of a system undergoing simple harmonic motion 17.3"
+    },
+    {
+      "physical_page": 30,
+      "printed_page": 30,
+      "chars": 2413,
+      "first_200": "Candidates should be able to: 1 \u0007define electric potential at a point as the work done per unit positive charge in bringing a small test charge from infinity to the"
+    },
+    {
+      "physical_page": 31,
+      "printed_page": 31,
+      "chars": 2413,
+      "first_200": "e produced either by moving charges or by permanent magnets 2 represent a magnetic field by field lines 20.2 Force on a current-carrying conductor Candidates should be able to: 1"
+    },
+    {
+      "physical_page": 32,
+      "printed_page": 32,
+      "chars": 2413,
+      "first_200": "nd use the concept of magnetic flux linkage 4 understand and explain experiments that demonstrate: • that a changing magnetic flux can induce an e.m.f. in a circuit • that"
+    },
+    {
+      "physical_page": 33,
+      "printed_page": 33,
+      "chars": 2413,
+      "first_200": "ate nature 2 understand that a photon is a quantum of electromagnetic energy 3 recall and use E = hf 4 use the electronvolt (eV) as a unit of energy"
+    },
+    {
+      "physical_page": 34,
+      "printed_page": 34,
+      "chars": 2413,
+      "first_200": "cs 9702 syllabus for 2025, 2026 and 2027. Subject content 23 Nuclear physics 23.1 Mass defect and nuclear binding energy Candidates should be able to: 1 \u0007understand the equivalence between"
+    },
+    {
+      "physical_page": 35,
+      "printed_page": 35,
+      "chars": 2413,
+      "first_200": "ation about internal structures 4 \u0007define the specific acoustic impedance of a medium as Z = ρc, where c is the speed of sound in the medium 5 \u0007use IR"
+    },
+    {
+      "physical_page": 36,
+      "printed_page": 36,
+      "chars": 2413,
+      "first_200": "sitron pair 6 \u0007understand that the gamma-ray photons from an annihilation event travel outside the body and can be detected, and an image of the tracer concentration in the tissue"
+    },
+    {
+      "physical_page": 37,
+      "printed_page": 37,
+      "chars": 2413,
+      "first_200": "4 Details of the assessment Paper 1 Multiple Choice Written paper, 1 hour 15 minutes, 40 marks Forty multiple-choice items of the four-choice type testing assessment objectives AO1 and AO2."
+    },
+    {
+      "physical_page": 38,
+      "printed_page": 38,
+      "chars": 2413,
+      "first_200": "on similarities and/or differences Define give precise meaning Describe state the points of a topic / give characteristics and main features Determine establish an answer using the information availab"
+    },
+    {
+      "physical_page": 39,
+      "printed_page": 39,
+      "chars": 2413,
+      "first_200": "e assessed in Paper 3 and Paper 5. In each of these papers, the questions may be based on physics not included in the syllabus content, but candidates will be"
+    },
+    {
+      "physical_page": 40,
+      "printed_page": 40,
+      "chars": 2413,
+      "first_200": "7 marks observation Quality of data Table of results Presentation of data and Recording of data, observations and calculations 6 marks observations Graph Interpretation of graph Analysis, conclusions "
+    },
+    {
+      "physical_page": 41,
+      "printed_page": 41,
+      "chars": 2413,
+      "first_200": "el Physics 9702 syllabus for 2025, 2026 and 2027. Practical assessment Expectations for each skill (Paper 3) Manipulation, measurement and observation Successful collection of data Candidates should b"
+    },
+    {
+      "physical_page": 42,
+      "printed_page": 42,
+      "chars": 2413,
+      "first_200": "will be based on the scatter of points on a graph; in other cases, the candidate’s data may be compared with information supplied by the supervisor or known to the"
+    },
+    {
+      "physical_page": 43,
+      "printed_page": 43,
+      "chars": 2413,
+      "first_200": "he nearest millimetre. The degree of precision used should be compatible with the measuring instrument used: it would be inappropriate to record a distance measured on a millimetre scale as"
+    },
+    {
+      "physical_page": 44,
+      "printed_page": 44,
+      "chars": 2413,
+      "first_200": "m. Graph: Trend line Candidates should be able to: • draw straight lines of best fit or curves to show the trend of a graph • draw tangents to curved"
+    },
+    {
+      "physical_page": 45,
+      "printed_page": 45,
+      "chars": 2413,
+      "first_200": "Candidates should be able to: • draw conclusions from an experiment, including determining the values of constants • explain whether experimental data supports a given hypothesis • make predictions. T"
+    },
+    {
+      "physical_page": 46,
+      "printed_page": 46,
+      "chars": 2413,
+      "first_200": "provide the apparatus for practical examinations. Cambridge is not able to supply apparatus directly or provide advice on local suppliers of apparatus. Back to contents page www.cambridgeinternational"
+    },
+    {
+      "physical_page": 47,
+      "printed_page": 47,
+      "chars": 2413,
+      "first_200": "otted masses (100 g, 50 g, 20 g, 10 g) stand, boss and clamp stop-watch (candidates may use their wristwatches), reading to 0.1 s or better stout pin or round"
+    },
+    {
+      "physical_page": 48,
+      "printed_page": 48,
+      "chars": 2413,
+      "first_200": "ch an answer. They will also be required to estimate the uncertainty in their answer. Some questions on this paper may be set in areas of physics that are difficult"
+    },
+    {
+      "physical_page": 49,
+      "printed_page": 49,
+      "chars": 2413,
+      "first_200": "Treatment of uncertainties Expectations for each skill (Paper 5) Planning Defining the problem Candidates should be able to: • identify the independent variable in the experiment • identify the depend"
+    },
+    {
+      "physical_page": 50,
+      "printed_page": 50,
+      "chars": 2413,
+      "first_200": "ld be able to: • assess the risks of their experiment • describe precautions that should be taken to keep risks to a minimum. Candidates should be able to: •"
+    },
+    {
+      "physical_page": 51,
+      "printed_page": 51,
+      "chars": 2413,
+      "first_200": "able to: • plot a graph following the conventions required for Paper 3 • show error bars, in both directions where appropriate, for each point on the graph • draw"
+    },
+    {
+      "physical_page": 52,
+      "printed_page": 52,
+      "chars": 2413,
+      "first_200": "At AS Level and A Level Arithmetic Candidates should be able to: • recognise and use expressions in decimal and standard form (scientific) notation • use a calculator for addition,"
+    },
+    {
+      "physical_page": 53,
+      "printed_page": 53,
+      "chars": 2413,
+      "first_200": "use the relationship sin θ / cos θ = tan θ • recall and use the trigonometric relationships for triangles a/sin A = b/sin B = c/sin C and a2"
+    },
+    {
+      "physical_page": 54,
+      "printed_page": 54,
+      "chars": 2413,
+      "first_200": "ble to: • calculate exponentials and logarithms (lg and ln) a n kx • recognise and use the logarithms of expressions like ab, ,x ,e b • sketch and recognise"
+    },
+    {
+      "physical_page": 55,
+      "printed_page": 55,
+      "chars": 2413,
+      "first_200": "θ °, rad angular frequency ω rad s–1 angular speed ω rad s­–1 angular velocity ω rad s–1 area A m2 atomic mass ma kg, u attenuation/absorption coefficient μ m"
+    },
+    {
+      "physical_page": 56,
+      "printed_page": 56,
+      "chars": 2413,
+      "first_200": "e C Back to contents page www.cambridgeinternational.org/alevel 55 Cambridge International AS & A Level Physics 9702 syllabus for 2025, 2026 and 2027. Additional information Quantity Usual symbols Usu"
+    },
+    {
+      "physical_page": 57,
+      "printed_page": 57,
+      "chars": 2413,
+      "first_200": "molar gas constant R J mol–1 K–1 moment of force T Nm momentum p Ns neutron mass mn kg, u neutron number N nucleon number A number N, n, m"
+    },
+    {
+      "physical_page": 58,
+      "printed_page": 58,
+      "chars": 2413,
+      "first_200": "ls Usual unit specific acoustic impedance Z kg m –2 s–1 specific heat capacity c J kg–1 K–1 specific latent heat L J kg–1 speed u, v, w, c m"
+    },
+    {
+      "physical_page": 59,
+      "printed_page": 59,
+      "chars": 2413,
+      "first_200": "ation of free fall g = 9.81 m s–2 speed of light in free space c = 3.00 × 108 m s–1 elementary charge e = 1.60 × 10–19 C"
+    },
+    {
+      "physical_page": 60,
+      "printed_page": 60,
+      "chars": 2413,
+      "first_200": "Physics J s for 2025, 2026 and 2027. Additional information 10syllabus 9702 Stefan–Boltzmann constant σ = 5.67 × 10–8 W m–2 K–4 Formulae uniformly accelerated motion s = ut +"
+    },
+    {
+      "physical_page": 61,
+      "printed_page": 61,
+      "chars": 2413,
+      "first_200": ") Q electric potential V = 4rf0 r Qq electrical potential energy EP = 4rf0 r 1 1 1 capacitors in series = + + ... C C1 C2 capacitors"
+    },
+    {
+      "physical_page": 62,
+      "printed_page": 62,
+      "chars": 2413,
+      "first_200": "nformation Circuit symbols The following table gives a guide to the circuit symbols that may be used in examination papers. cell switch battery of cells or earth power supply electric"
+    },
+    {
+      "physical_page": 63,
+      "printed_page": 63,
+      "chars": 2413,
+      "first_200": "e recommend that learners starting this course should have completed a course in Physics or Co-ordinated Science equivalent to Cambridge IGCSE™ or Cambridge O Level. Guided learning hours We design"
+    },
+    {
+      "physical_page": 64,
+      "printed_page": 64,
+      "chars": 2413,
+      "first_200": "Cambridge International AS & A Level Physics 9702 syllabus for 2025, 2026 and 2027. What else you need to know Making entries Exams officers are responsible for submitting entries to"
+    },
+    {
+      "physical_page": 65,
+      "printed_page": 65,
+      "chars": 2413,
+      "first_200": "f all national, cultural or social backgrounds and candidates with protected characteristics; these protected characteristics include special educational needs and disability, religion and belief, and"
+    },
+    {
+      "physical_page": 66,
+      "printed_page": 66,
+      "chars": 2413,
+      "first_200": "apers are available in the Cambridge Handbook www.cambridgeinternational.org/eoguide • Please contact us at the start of the course to find out if we are able to approve an arrangement that"
+    },
+    {
+      "physical_page": 67,
+      "printed_page": 67,
+      "chars": 2413,
+      "first_200": "ar School, New Zealand Back to contents page www.cambridgeinternational.org/alevel 65 Cambridge International AS & A Level Physics 9702 syllabus for 2025, 2026 and 2027. What else you need to know"
+    },
+    {
+      "physical_page": 68,
+      "printed_page": 68,
+      "chars": 2413,
+      "first_200": "Level in 2022. Back to contents page www.cambridgeinternational.org/alevel 66 Cambridge International AS & A Level Physics 9702 syllabus for 2025, 2026 and 2027. What else you need to know Changes"
+    }
+  ]
+}

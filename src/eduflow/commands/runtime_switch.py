@@ -84,14 +84,14 @@ def main(argv: list[str]) -> int:
 
     current = lifecycle.current_runtime_status(agent).get("runtime") or "inline"
     # Record switch event (manual trigger).
-    verify.record_switch_event({
-        "agent": agent,
-        "from_runtime": current,
-        "to_runtime": to_runtime,
-        "reason": reason,
-        "outcome": "pending",
-        "trigger": "manual_cli",
-    })
+    verify.record_switch_event(
+        agent=agent,
+        from_runtime=current,
+        to_runtime=to_runtime,
+        reason=reason,
+        outcome="pending",
+        trigger="manual_cli",
+    )
     outcome = lifecycle.restart_with_runtime(
         agent, target, to_runtime,
         reason=f"manual_cli:{reason}",

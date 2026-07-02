@@ -1,0 +1,49 @@
+{
+  "schema_version": "1",
+  "subject": "chemistry",
+  "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/05-DSE知识库/03-学科知识/DSE Chemistry/02-課本與考綱/考綱/化學 -2028.pdf",
+  "file_checksum_sha256": "242c30efb3b7386f87ded70a1b740bb689b7b192a0bf2626f2c1b44fc6f735e1",
+  "pdfinfo": {
+    "Title": "2028年香港中學文憑考試化學科評核大綱",
+    "Author": "HKEAA",
+    "Creator": "Microsoft® Word 2019",
+    "Producer": "Microsoft® Word 2019",
+    "CreationDate": "Wed Mar  5 15:58:42 2025 CST",
+    "ModDate": "Thu May 15 13:39:21 2025 CST",
+    "Custom Metadata": "no",
+    "Metadata Stream": "yes",
+    "Tagged": "yes",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "none",
+    "JavaScript": "no",
+    "Pages": "3",
+    "Encrypted": "no",
+    "Page size": "595.32 x 841.92 pts (A4)",
+    "Page rot": "0",
+    "File size": "163756 bytes",
+    "Optimized": "no",
+    "PDF version": "1.7"
+  },
+  "total_pages": 3,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": 1,
+      "chars": 818,
+      "first_200": "化學 引言 本科的公開評核建基於課程發展議會及香港考試及評核局聯合編訂的化學科 課 程 及 評 估 指 引 (中 四 至 中 六 )。 考 生 須 參 閱 上 述 指 引 內 的 「 課 程"
+    },
+    {
+      "physical_page": 2,
+      "printed_page": 2,
+      "chars": 818,
+      "first_200": "試卷一 涵蓋課程必修部分 60% 公開考試 分鐘 試卷二 涵蓋課程選修部分 20% 一小時 校本評核 20% 公開考試 試 卷 一 由 甲 、 乙 兩 部 組 成 ， 甲 部 是 多 項 選"
+    },
+    {
+      "physical_page": 3,
+      "printed_page": 3,
+      "chars": 818,
+      "first_200": "可 發 展 他 們 的 共 通 能 力、實 驗 技 能、過 程 技 能 和 報 告 技 能 等 ， 教師亦可從中評核考生有關的能力。 2028-HKDSE-CHEM 2 下表總結校本評核於中五和中六兩年的最少評核數目，以及科內的比重： 最少評核數目* 本科內比重 中五"
+    }
+  ]
+}

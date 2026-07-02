@@ -1,0 +1,48 @@
+{
+  "schema_version": "1",
+  "id": "dse-design-and-applied-technology",
+  "assessment_type": "syllabus",
+  "system": "DSE",
+  "board_or_owner": "HKEAA / Curriculum Development Council",
+  "subject": "Design and Applied Technology",
+  "level": "DSE Senior Secondary (S4-S6)",
+  "assessment_code": "DSE Design and Applied Technology",
+  "valid_from": "2024",
+  "valid_to": "(ongoing)",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_syllabus",
+      "title": "DSE Design and Applied Technology Syllabus",
+      "url": "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html",
+      "source_document_type": "syllabus",
+      "source_layout_profile": "caie_igcse_syllabus",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/05-DSE知识库/03-学科知识/DSE Design and Applied Technology/02-課本與考綱/考綱/Design_and_Applied_Technology_DSE_Syllabus_2015.pdf",
+      "file_checksum_sha256": "59c0889423f7e6053a4c969bd0b065316a000ded286af7c5fb038065c93e286e",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "2028 syllabus (Category A)",
+      "retrieved_at": "2026-07-02",
+      "page_refs": [
+        "p.1-103"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "printed_page ≈ physical_page for CAIE IGCSE syllabi.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text.",
+      "notes": "Source bundle lives at pilot-output/source-bundles/dse-design-and-applied-technology-guide/."
+    }
+  ],
+  "aliases": [
+    "dse design and applied technology",
+    "hkdse"
+  ],
+  "canonical_id": "dse-design-and-applied-technology",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "HKDSE Design and Applied Technology (Category A)."
+}

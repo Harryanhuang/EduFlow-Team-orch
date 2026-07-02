@@ -1,0 +1,65 @@
+{
+  "schema_version": "1",
+  "source_id": "primary_ced",
+  "page_ref_convention": "printed_page",
+  "physical_page_offset_note": "AP CED pages are typically labeled with printed_page numbers.",
+  "mappings": [
+    {
+      "target": "assessment_identity.system",
+      "page_refs": [
+        "title page"
+      ],
+      "evidence_note": "College Board AP CED."
+    },
+    {
+      "target": "topics.course_framework",
+      "page_refs": [
+        "Section 1"
+      ],
+      "evidence_note": "Course framework overview."
+    },
+    {
+      "target": "topics.ap-macroeconomics-unit01",
+      "page_refs": [
+        "Unit 1"
+      ],
+      "evidence_note": "Unit 1: Basic Economic Concepts (5–10%)."
+    },
+    {
+      "target": "topics.ap-macroeconomics-unit02",
+      "page_refs": [
+        "Unit 2"
+      ],
+      "evidence_note": "Unit 2: Economic Indicators and the Business Cycle (12–17%)."
+    },
+    {
+      "target": "topics.ap-macroeconomics-unit03",
+      "page_refs": [
+        "Unit 3"
+      ],
+      "evidence_note": "Unit 3: National Income and Price Determination (17–27%)."
+    },
+    {
+      "target": "topics.ap-macroeconomics-unit04",
+      "page_refs": [
+        "Unit 4"
+      ],
+      "evidence_note": "Unit 4: Financial Sector (18–23%)."
+    },
+    {
+      "target": "topics.ap-macroeconomics-unit05",
+      "page_refs": [
+        "Unit 5"
+      ],
+      "evidence_note": "Unit 5: Long-Run Consequences of Stabilization Policies (20–30%)."
+    },
+    {
+      "target": "topics.ap-macroeconomics-unit06",
+      "page_refs": [
+        "Unit 6"
+      ],
+      "evidence_note": "Unit 6: Open Economy—International Trade and Finance (10–13%)."
+    }
+  ],
+  "draft_notes": []
+}

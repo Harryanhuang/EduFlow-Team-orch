@@ -1,0 +1,318 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "caie-igcse-geography-0460",
+      "topic_name": "CAIE IGCSE Geography",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Geography (0460) syllabus scope.",
+        "Valid: 2027 → 2029."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-geography-0460-t001",
+      "topic_name": "1. Why choose this syllabus?",
+      "parent_id": "caie-igcse-geography-0460",
+      "scope": [
+        "Why choose this syllabus?",
+        "The main hydrological characteristics and processes which operate in rivers and drainage",
+        "The main landforms associated with these processes",
+        "Rivers present opportunities and hazards for people"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Why choose this syllabus?."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-geography-0460-t002",
+      "topic_name": "2. Syllabus overview",
+      "parent_id": "caie-igcse-geography-0460",
+      "scope": [
+        "Syllabus overview",
+        "Physical processes that shape the coast",
+        "The main landforms associated with these processes",
+        "Coasts present opportunities and hazards for people"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Syllabus overview."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-geography-0460-t003",
+      "topic_name": "3. Changing ecosystems",
+      "parent_id": "caie-igcse-geography-0460",
+      "scope": [
+        "Changing ecosystems",
+        "Characteristics of the Antarctic ecosystem",
+        "Threats to the Antarctic ecosystem and how they can be managed",
+        "Characteristics of the tropical rainforest ecosystem",
+        "Threats to tropical rainforest ecosystems and how they can be managed"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Changing ecosystems."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-geography-0460-t004",
+      "topic_name": "4. Tectonic hazards",
+      "parent_id": "caie-igcse-geography-0460",
+      "scope": [
+        "Tectonic hazards",
+        "The structure of the Earth and distribution of earthquakes and volcanoes",
+        "The processes and features associated with earthquakes and volcanoes",
+        "The impacts of tectonic hazards",
+        "Managing the impacts of tectonic hazards"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Tectonic hazards."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-geography-0460-t005",
+      "topic_name": "5. Climate change",
+      "parent_id": "caie-igcse-geography-0460",
+      "scope": [
+        "Climate change",
+        "The natural and human causes of climate change",
+        "The impacts of climate change at a range of geographic scales",
+        "Responses to climate change"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Climate change."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-geography-0460-t006",
+      "topic_name": "6. Changing populations",
+      "parent_id": "caie-igcse-geography-0460",
+      "scope": [
+        "Changing populations",
+        "Populations grow and decline",
+        "Population structures change over time",
+        "The causes and impacts of international migration"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Changing populations."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-geography-0460-t007",
+      "topic_name": "7. Changing towns and cities",
+      "parent_id": "caie-igcse-geography-0460",
+      "scope": [
+        "Changing towns and cities",
+        "Where people live",
+        "Opportunities and challenges of urbanisation",
+        "The management of urban growth"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Changing towns and cities."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-geography-0460-t008",
+      "topic_name": "8. Development",
+      "parent_id": "caie-igcse-geography-0460",
+      "scope": [
+        "Development",
+        "Measuring development",
+        "The world is developing unevenly",
+        "Achieving sustainable development"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Development."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-geography-0460-t009",
+      "topic_name": "9. Changing economies",
+      "parent_id": "caie-igcse-geography-0460",
+      "scope": [
+        "Changing economies",
+        "Changing employment structures",
+        "The impact of globalisation and the role of transnational corporations",
+        "Tourism is a growing industry"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Changing economies."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-geography-0460-t010",
+      "topic_name": "10. Resource provision",
+      "parent_id": "caie-igcse-geography-0460",
+      "scope": [
+        "Resource provision",
+        "How food is produced",
+        "The global patterns of food supply and demand",
+        "The challenges of food supply",
+        "How our energy is produced",
+        "The global patterns of energy supply and demand",
+        "The impacts of energy production"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Resource provision."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    }
+  ]
+}

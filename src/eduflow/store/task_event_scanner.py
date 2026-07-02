@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import re
 
-from eduflow.runtime import paths, watchdog as runtime_watchdog
+from eduflow.runtime import context_monitor, paths, watchdog as runtime_watchdog
 from eduflow.store import (
     local_facts, task_evidence_account, task_publish_gate,
     task_publish_render, tasks,
@@ -44,12 +44,8 @@ WORKER_CONTEXT_GUARD_AGENTS = frozenset({
     "worker_qbank",
 })
 CONTEXT_EXHAUSTION_MARKERS = (
-    "context window exceeds limit",
-    "100% context used",
-    "context used 100%",
     "ready_unproven",
     "cli not ready",
-    "interrupted prompt",
 )
 PRODUCTION_MARKERS = (
     "continuing production",
@@ -889,7 +885,17 @@ def _text_has_any(text: str, markers: tuple[str, ...]) -> bool:
 
 
 def _is_context_exhaustion_text(text: str) -> bool:
-    return _text_has_any(text, CONTEXT_EXHAUSTION_MARKERS)
+    signal = context_monitor.detect_context_usage(text)
+    return bool(signal and signal.exhausted) or _text_has_any(text, CONTEXT_EXHAUSTION_MARKERS)
+
+
+def _context_usage_signal(text: str) -> context_monitor.ContextUsageSignal | None:
+    signal = context_monitor.detect_context_usage(text)
+    if signal:
+        return signal
+    if _text_has_any(text, CONTEXT_EXHAUSTION_MARKERS):
+        return context_monitor.ContextUsageSignal(None, "exhausted", "cli_readiness_failure")
+    return None
 
 
 def _is_production_text(text: str) -> bool:
@@ -926,8 +932,9 @@ def _worker_context_guard_findings(*, now: int) -> list[dict]:
         latest_at = int(latest_evidence.get("created_at") or 0)
         combined = " ".join([status_text, latest_content])
 
-        if _is_context_exhaustion_text(combined):
-            marker_source = latest_content if _is_context_exhaustion_text(latest_content) else status_text
+        context_signal = _context_usage_signal(combined)
+        if context_signal and context_signal.exhausted:
+            marker_source = latest_content if _context_usage_signal(latest_content) else status_text
             rows.append({
                 "category": "worker_context_exhausted",
                 "task_id": f"runtime:{agent}",
@@ -951,6 +958,60 @@ def _worker_context_guard_findings(*, now: int) -> list[dict]:
                     f"latest_evidence={marker_source[:180]}"
                 ),
                 "recommended_action": "restart_worker_runtime",
+            })
+        elif context_signal and context_signal.compact_recommended:
+            marker_source = latest_content if _context_usage_signal(latest_content) else status_text
+            rows.append({
+                "category": "worker_context_compact_recommended",
+                "task_id": f"runtime:{agent}",
+                "agent": agent,
+                "affected_agent": agent,
+                "stage": "runtime",
+                "status": "context_near_limit",
+                "severity": "warn",
+                "live_blocker": False,
+                "allow_continue_original_task": False,
+                "inbox_recovery_needed": False,
+                "age_ms": max(now - max(latest_at, status_at), 0) if max(latest_at, status_at) else 0,
+                "why": (
+                    f"{agent} context is near the limit; compact and reidentify before "
+                    "continuing broad or long-running work"
+                ),
+                "evidence_summary": (
+                    f"affected_agent={agent} {context_signal.marker} "
+                    f"latest_log={latest_evidence.get('local_id') or '-'} "
+                    f"status={status.get('status') or '-'} "
+                    f"status_updated_at={status_at} "
+                    f"latest_evidence={marker_source[:180]}"
+                ),
+                "recommended_action": "run_eduflow_compact_before_long_work",
+            })
+        elif context_signal and context_signal.warning:
+            marker_source = latest_content if _context_usage_signal(latest_content) else status_text
+            rows.append({
+                "category": "worker_context_usage_warning",
+                "task_id": f"runtime:{agent}",
+                "agent": agent,
+                "affected_agent": agent,
+                "stage": "runtime",
+                "status": "context_warning",
+                "severity": "warn",
+                "live_blocker": False,
+                "allow_continue_original_task": True,
+                "inbox_recovery_needed": False,
+                "age_ms": max(now - max(latest_at, status_at), 0) if max(latest_at, status_at) else 0,
+                "why": (
+                    f"{agent} context usage is high; monitor or split the next work packet "
+                    "before it reaches the compact threshold"
+                ),
+                "evidence_summary": (
+                    f"affected_agent={agent} {context_signal.marker} "
+                    f"latest_log={latest_evidence.get('local_id') or '-'} "
+                    f"status={status.get('status') or '-'} "
+                    f"status_updated_at={status_at} "
+                    f"latest_evidence={marker_source[:180]}"
+                ),
+                "recommended_action": "monitor_context_and_split_next_packet",
             })
 
         open_msgs = _open_high_priority_unacked_messages(agent)
@@ -5068,6 +5129,7 @@ def _auto_summary_reasons(*, now: int, anomalies: list[dict]) -> list[str]:
 
     context_risk_categories = {
         "worker_context_exhausted",
+        "worker_context_compact_recommended",
         "worker_high_priority_unacked_while_producing",
         "status_pane_truth_conflict",
         "unsafe_long_context_execution",

@@ -1,0 +1,49 @@
+{
+  "schema_version": "1",
+  "id": "ap-art-history",
+  "assessment_type": "course_and_exam_description",
+  "system": "AP",
+  "board_or_owner": "College Board",
+  "subject": "Art History",
+  "level": "AP (high school / college intro)",
+  "assessment_code": "AP Art History",
+  "valid_from": "2020",
+  "valid_to": "(ongoing)",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_course_description",
+      "title": "AP Art History Course and Exam Description",
+      "url": "https://apcentral.collegeboard.org/courses/art-history",
+      "source_document_type": "course_and_exam_description",
+      "source_layout_profile": "ap_college_board_ced",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/03-AP知识库/03-学科知识/AP Art History/02-课本与考纲/考纲/ap-art-history-course-and-exam-description.pdf",
+      "file_checksum_sha256": "dbd0ad0d793f3249b34ed62605c111b92dacc0475e2e8f6495fd7429b2e46b1c",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "Effective Fall 2020",
+      "retrieved_at": "2026-07-01",
+      "page_refs": [
+        "p.1-368"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "AP CED uses printed_page; usually matches physical_page.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text.",
+      "notes": "Source bundle lives at pilot-output/source-bundles/ap-art-history-guide/."
+    }
+  ],
+  "aliases": [
+    "ap-art-history",
+    "ap art history",
+    "college board art history"
+  ],
+  "canonical_id": "ap-art-history",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "College Board AP Art History."
+}

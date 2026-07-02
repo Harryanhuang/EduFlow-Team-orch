@@ -1,0 +1,272 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "ap-physics-c-mechanics",
+      "topic_name": "AP Physics C: Mechanics",
+      "parent_id": "",
+      "scope": [
+        "AP Physics C: Mechanics course framework (College Board).",
+        "Valid: 2025 → (ongoing).",
+        "Units 1–7 with cumulative exam weightings."
+      ],
+      "out_of_scope": [
+        "Pre-AP / general high-school level content unless explicitly cited in CED.",
+        "University-level content beyond AP expectations.",
+        "Other AP subjects."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific unit fits.",
+        "Prefer specific Unit N nodes for content questions."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-physics-c-mechanics-unit01",
+      "topic_name": "Unit 1: Kinematics",
+      "parent_id": "ap-physics-c-mechanics",
+      "scope": [
+        "Unit 1 content as defined in AP Physics C: Mechanics CED.",
+        "Exam weighting: 10–15%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Kinematics."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_1.1",
+          "text": "Core content and concepts for Unit 1: Kinematics."
+        },
+        {
+          "ek_id": "EK_1.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 1: Kinematics."
+        },
+        {
+          "ek_id": "EK_1.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 1: Kinematics."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-physics-c-mechanics-unit02",
+      "topic_name": "Unit 2: Force and Translational Dynamics",
+      "parent_id": "ap-physics-c-mechanics",
+      "scope": [
+        "Unit 2 content as defined in AP Physics C: Mechanics CED.",
+        "Exam weighting: 20–25%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Force and Translational Dynamics."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_2.1",
+          "text": "Core content and concepts for Unit 2: Force and Translational Dynamics."
+        },
+        {
+          "ek_id": "EK_2.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 2: Force and Translational Dynamics."
+        },
+        {
+          "ek_id": "EK_2.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 2: Force and Translational Dynamics."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-physics-c-mechanics-unit03",
+      "topic_name": "Unit 3: Work, Energy, and Power",
+      "parent_id": "ap-physics-c-mechanics",
+      "scope": [
+        "Unit 3 content as defined in AP Physics C: Mechanics CED.",
+        "Exam weighting: 15–25%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Work, Energy, and Power."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_3.1",
+          "text": "Core content and concepts for Unit 3: Work, Energy, and Power."
+        },
+        {
+          "ek_id": "EK_3.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 3: Work, Energy, and Power."
+        },
+        {
+          "ek_id": "EK_3.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 3: Work, Energy, and Power."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-physics-c-mechanics-unit04",
+      "topic_name": "Unit 4: Linear Momentum",
+      "parent_id": "ap-physics-c-mechanics",
+      "scope": [
+        "Unit 4 content as defined in AP Physics C: Mechanics CED.",
+        "Exam weighting: 10–20%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Linear Momentum."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_4.1",
+          "text": "Core content and concepts for Unit 4: Linear Momentum."
+        },
+        {
+          "ek_id": "EK_4.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 4: Linear Momentum."
+        },
+        {
+          "ek_id": "EK_4.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 4: Linear Momentum."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-physics-c-mechanics-unit05",
+      "topic_name": "Unit 5: Torque and Rotational Dynamics",
+      "parent_id": "ap-physics-c-mechanics",
+      "scope": [
+        "Unit 5 content as defined in AP Physics C: Mechanics CED.",
+        "Exam weighting: 10–15%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Torque and Rotational Dynamics."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_5.1",
+          "text": "Core content and concepts for Unit 5: Torque and Rotational Dynamics."
+        },
+        {
+          "ek_id": "EK_5.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 5: Torque and Rotational Dynamics."
+        },
+        {
+          "ek_id": "EK_5.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 5: Torque and Rotational Dynamics."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-physics-c-mechanics-unit06",
+      "topic_name": "Unit 6: Energy and Momentum of Rotating Systems",
+      "parent_id": "ap-physics-c-mechanics",
+      "scope": [
+        "Unit 6 content as defined in AP Physics C: Mechanics CED.",
+        "Exam weighting: 10–15%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Energy and Momentum of Rotating Systems."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_6.1",
+          "text": "Core content and concepts for Unit 6: Energy and Momentum of Rotating Systems."
+        },
+        {
+          "ek_id": "EK_6.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 6: Energy and Momentum of Rotating Systems."
+        },
+        {
+          "ek_id": "EK_6.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 6: Energy and Momentum of Rotating Systems."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-physics-c-mechanics-unit07",
+      "topic_name": "Unit 7: Oscillations",
+      "parent_id": "ap-physics-c-mechanics",
+      "scope": [
+        "Unit 7 content as defined in AP Physics C: Mechanics CED.",
+        "Exam weighting: 10–15%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Oscillations."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_7.1",
+          "text": "Each unit is divided into teachable segments called topics"
+        },
+        {
+          "ek_id": "EK_7.2",
+          "text": "Physics C: Mechanics Exam"
+        },
+        {
+          "ek_id": "EK_7.3",
+          "text": "Information: Equations in the Appendix"
+        }
+      ]
+    }
+  ]
+}

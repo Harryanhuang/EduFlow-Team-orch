@@ -1,0 +1,1473 @@
+{
+  "schema_version": "1",
+  "subject": "biology",
+  "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/03-AP知识库/03-学科知识/AP Biology/02-课本与考纲/考纲/ap-biology-course-and-exam-description.pdf",
+  "file_checksum_sha256": "6e5892e6c90493546469e14a038db9373bd62453c5d1e5552c0b2314e7996650",
+  "pdfinfo": {
+    "Title": "AP® Biology Course and Exam Description, Effective Fall 2025",
+    "Subject": "AP® Biology; Advanced Placement",
+    "Keywords": "AP® Biology Course and Exam Description, Effective Fall 2025; instructional model; course framework; science practices; course content; course at a glance; unit guides; equations; AP resources and supports; course information; exam information; sample exam questions; teaching resources; teacher materials; ADA",
+    "Author": "College Board",
+    "Creator": "Adobe InDesign CC 14.0 (Macintosh)",
+    "Producer": "Adobe PDF Library 15.0",
+    "CreationDate": "Tue Jun 24 10:32:32 2025 CST",
+    "ModDate": "Fri Jun 27 03:39:52 2025 CST",
+    "Custom Metadata": "no",
+    "Metadata Stream": "yes",
+    "Tagged": "yes",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "AcroForm",
+    "JavaScript": "no",
+    "Pages": "240",
+    "Encrypted": "yes (print:yes copy:yes change:no addNotes:no algorithm:AES-256)",
+    "Page size": "612 x 792 pts (letter)",
+    "Page rot": "0",
+    "File size": "5533533 bytes",
+    "Optimized": "no",
+    "PDF version": "1.7"
+  },
+  "total_pages": 240,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": 1,
+      "chars": 2930,
+      "first_200": "INCLUDES \u0007Course framework \u0007Instructional section \u0007Sample exam questions AP Biology ® COURSE AND EXAM DESCRIPTION Effective Fall 2025 AP Biology ® COURSE AND EXAM DESCRIPTION Effective Fall 2025 AP CO"
+    },
+    {
+      "physical_page": 2,
+      "printed_page": 2,
+      "chars": 2930,
+      "first_200": "ry work as a whole.” 5. \u0007AP\u0007courses\u0007foster\u0007an\u0007open-minded\u0007approach\u0007to\u0007the\u0007histories\u0007and\u0007cultures\u0007of\u0007 different\u0007peoples.\u0007The\u0007study\u0007of\u0007different\u0007nationalities,\u0007cultures,\u0007religions,\u0007races,\u0007and\u0007 ethniciti"
+    },
+    {
+      "physical_page": 3,
+      "printed_page": 3,
+      "chars": 2930,
+      "first_200": "ts College Board would like to acknowledge the following committee members, consultants, and reviewers for their assistance with and commitment to the development\u0007of\u0007this\u0007course.\u0007All\u0007individuals\u0007and\u0007t"
+    },
+    {
+      "physical_page": 4,
+      "printed_page": 4,
+      "chars": 2930,
+      "first_200": "© 2025 College Board THIS PAGE IS INTENTIONALLY LEFT BLANK. About AP The Advanced Placement® Program (AP®) enables free\u0007formative\u0007assessments—Progress\u0007Checks—that\u0007 willing and academically prepared st"
+    },
+    {
+      "physical_page": 5,
+      "printed_page": 5,
+      "chars": 2930,
+      "first_200": "nd skills described in the course framework. with higher education expectations. While the unit sequence represented in this publication Individual teachers are responsible for designing their is opti"
+    },
+    {
+      "physical_page": 6,
+      "printed_page": 6,
+      "chars": 2930,
+      "first_200": "fairness and consistency. In each subject, a highly respected college faculty member serves as Chief Please visit the AP Course Audit website for more Faculty Consultant and, with the help"
+    },
+    {
+      "physical_page": 7,
+      "printed_page": 7,
+      "chars": 2930,
+      "first_200": "§ The number of points college faculty indicate, after and valid, and that there is an appropriate spread of reviewing each AP question, that they expect is difficulty\u0007across\u0007the\u0007questions. necessary "
+    },
+    {
+      "physical_page": 8,
+      "printed_page": 8,
+      "chars": 2930,
+      "first_200": "eges and universities award credit and/ the quality and depth of the responses from the or advanced placement for AP scores of 3 or higher. entire pool of AP Exam"
+    },
+    {
+      "physical_page": 9,
+      "printed_page": 9,
+      "chars": 2930,
+      "first_200": "ughout their AP experience. The platform provides a variety of powerful resources and tools to provide yearlong support to teachers and enable students to receive meaningful feedback on their progress"
+    },
+    {
+      "physical_page": 10,
+      "printed_page": 10,
+      "chars": 2930,
+      "first_200": "ovided by their teacher or AP coordinator. § Students\u0007will\u0007be\u0007asked\u0007for\u0007additional\u0007information\u0007upon\u0007joining\u0007their\u0007first\u0007class\u0007section. *To\u0007report\u0007misuses,\u0007please\u0007call,\u0007877-274-6474\u0007(International:\u0007+1-"
+    },
+    {
+      "physical_page": 11,
+      "printed_page": 11,
+      "chars": 2930,
+      "first_200": "Biology Course AP\u0007Biology\u0007is\u0007an\u0007introductory\u0007college-level\u0007biology\u0007course.\u0007Students\u0007cultivate\u0007their\u0007 understanding\u0007of\u0007biology\u0007through\u0007inquiry-based\u0007investigations\u0007as\u0007they\u0007explore\u0007the\u0007following\u0007 topics"
+    },
+    {
+      "physical_page": 12,
+      "printed_page": 12,
+      "chars": 2930,
+      "first_200": "onal\u0007“content\u0007coverage”\u0007 also\u0007identified\u0007within\u0007the\u0007exclusion\u0007statements\u0007in\u0007the\u0007 model of instruction in favor of one that focuses framework. on essential, conceptual understandings and the This frame"
+    },
+    {
+      "physical_page": 13,
+      "printed_page": 13,
+      "chars": 2930,
+      "first_200": "eturn to Table of Contents © 2025 College Board 1 AP BIOLOGY Science Practices The table that follows presents the science practices that students should develop during the AP Biology"
+    },
+    {
+      "physical_page": 14,
+      "printed_page": 14,
+      "chars": 2930,
+      "first_200": "ts and processes. 2.B Explain\u0007relationships\u0007between\u0007 3.B State\u0007the\u0007null\u0007hypothesis\u0007or\u0007predict\u0007 characteristics of biological models in the results of an experiment. 1.C Explain\u0007biological\u0007concepts\u0007and"
+    },
+    {
+      "physical_page": 15,
+      "printed_page": 15,
+      "chars": 2930,
+      "first_200": "6.A Make\u0007a\u0007scientific\u0007claim. the\u0007data,\u0007including:\u0007x-y\u0007graphs\u0007(bar,\u0007 including: histogram, line, log scale, dual y), scatter 6.B Support\u0007a\u0007claim\u0007with\u0007evidence\u0007 i. mathematical equations in the from bio"
+    },
+    {
+      "physical_page": 16,
+      "printed_page": 16,
+      "chars": 2930,
+      "first_200": "© 2025 College Board THIS PAGE IS INTENTIONALLY LEFT BLANK. 2 AP BIOLOGY Course Content The\u0007framework\u0007specifies\u0007what\u0007students\u0007must\u0007know,\u0007be\u0007able\u0007to\u0007do,\u0007and\u0007 understand, with a focus on the big ideas t"
+    },
+    {
+      "physical_page": 17,
+      "printed_page": 17,
+      "chars": 2930,
+      "first_200": "hanges can result in alteration in the gene pools of populations. Scientific\u0007evidence\u0007supports\u0007that\u0007speciation\u0007and\u0007extinction\u0007have\u0007occurred\u0007 throughout Earth’s history and that life continues to evolv"
+    },
+    {
+      "physical_page": 18,
+      "printed_page": 18,
+      "chars": 2930,
+      "first_200": "\u0007enabling\u0007greater\u0007resiliency\u0007and\u0007flexibility\u0007to\u0007tolerate\u0007and\u0007 respond\u0007to\u0007changes\u0007in\u0007the environment.\u0007 AP Biology Course and Exam Description Course Framework V.1 | 16 Return to Table of Contents © 202"
+    },
+    {
+      "physical_page": 19,
+      "printed_page": 19,
+      "chars": 2930,
+      "first_200": "ollege Board Spiraling the Big Ideas The following table shows how the big ideas spiral throughout the course by showing the units in which each big idea appears. Big Ideas"
+    },
+    {
+      "physical_page": 20,
+      "printed_page": 20,
+      "chars": 2930,
+      "first_200": "Weighting 2 1 1.1 Structure of Water and 2.1 Cell Structure and Plan Hydrogen Bonding 6 Function The course at a glance provides 2 2 1.2 Elements of Life 2.2"
+    },
+    {
+      "physical_page": 21,
+      "printed_page": 21,
+      "chars": 2930,
+      "first_200": "Osmoregulation meeting\u0007five\u0007days\u0007each\u0007week\u0007 for a full academic year. 1 2.8 Mechanisms of § Progression of topics within Transport each unit. 6 2.9 Cell § Spiraling of the big ideas and Compartmentali"
+    },
+    {
+      "physical_page": 22,
+      "printed_page": 22,
+      "chars": 2930,
+      "first_200": "Concept or Process (partial) NOTE:\u0007Partial\u0007versions\u0007of\u0007the\u0007free-response\u0007questions\u0007are\u0007provided\u0007to\u0007prepare\u0007students\u0007for\u0007more\u0007complex,\u0007full\u0007questions\u0007 that they will encounter on the AP Exam. Cell UNIT"
+    },
+    {
+      "physical_page": 23,
+      "printed_page": 23,
+      "chars": 2930,
+      "first_200": "5.4 Non-Mendelian 4.4 Feedback Genetics 4 3.5 Cellular Respiration 4 1 5 4.5 Cell Cycle 5.5 Environmental Effects on Phenotype 6 4.6 Regulation of Cell Cycle Progress Check 3 Progress"
+    },
+    {
+      "physical_page": 24,
+      "printed_page": 24,
+      "chars": 2930,
+      "first_200": "Weighting 1 2 3 6.1 DNA and RNA 7.1 Introduction to Natural 8.1 Responses to the Structure Selection Environment 2 1 6 6.2 DNA Replication 7.2 Natural Selection 8.2 Energy"
+    },
+    {
+      "physical_page": 25,
+      "printed_page": 25,
+      "chars": 2930,
+      "first_200": "6 7.10 Speciation 6 7.11 Variations in Populations 3 7.12 Origins of Life on Earth Progress Check 6 Progress Check 7 Progress Check 8 Multiple-Choice: ~25 questions Multiple-Choice: ~48 questions"
+    },
+    {
+      "physical_page": 26,
+      "printed_page": 26,
+      "chars": 2930,
+      "first_200": "an optional sequence for this course. AP Biology Course and Exam Description Course Framework V.1 | 23 Return to Table of Contents © 2025 College Board Using the Unit Guides"
+    },
+    {
+      "physical_page": 27,
+      "printed_page": 27,
+      "chars": 2930,
+      "first_200": "provoking questions that motivate students and inspire inquiry. § What is the role of energy in the making the properties of water play a vital role in the survival of"
+    },
+    {
+      "physical_page": 28,
+      "printed_page": 28,
+      "chars": 2930,
+      "first_200": "Preparing for the AP Exam provides helpful tips and common and models are important tools to help student\u0007misunderstandings\u0007identified\u0007from\u0007prior\u0007exam\u0007data. Systems Interactions § How would living stu"
+    },
+    {
+      "physical_page": 29,
+      "printed_page": 29,
+      "chars": 2930,
+      "first_200": "ing the causes or On the exam, students tend to struggle effects of a change in, or disruption to, one with the use of language and similar terms, or more"
+    },
+    {
+      "physical_page": 30,
+      "printed_page": 30,
+      "chars": 2930,
+      "first_200": "The suggested skills for each topic show possible ways to Class Periods link\u0007the\u0007content\u0007in\u0007that\u0007topic\u0007to\u0007specific\u0007AP\u0007Biology\u0007skills.\u0007The\u0007 individual skills have been thoughtfully chosen in a way that"
+    },
+    {
+      "physical_page": 31,
+      "printed_page": 31,
+      "chars": 2930,
+      "first_200": "system. Go to AP Classroom to assign the Progress Check for Unit 1. Review the results in class to identify and address any student misunderstandings. 30 | Course Framework V.1"
+    },
+    {
+      "physical_page": 32,
+      "printed_page": 32,
+      "chars": 2930,
+      "first_200": "refer to the Instructional Approaches section beginning on p. 171 for more examples of activities and strategies. Activity Topic Sample Activity 1 1.1 Graph and Switch Have students determine how"
+    },
+    {
+      "physical_page": 33,
+      "printed_page": 33,
+      "chars": 2930,
+      "first_200": "TOPIC PAGES UNIT The suggested skills\u0007offer\u0007a\u0007possible\u0007skill\u0007to\u0007pair\u0007with\u0007the\u0007topic. 8 Ecology SUGGESTED SKILL TOPIC 8.1 Available resources are included where possible to help address a particular to"
+    },
+    {
+      "physical_page": 34,
+      "printed_page": 34,
+      "chars": 2930,
+      "first_200": "the AP Exam. § AP Central > AP Biology Lab Manual > LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE Fruit Fly Behavior Lab 8.1.A 8.1.A.1 § AP Central > Classroom Explain how the"
+    },
+    {
+      "physical_page": 35,
+      "printed_page": 35,
+      "chars": 2930,
+      "first_200": "animals background or additional information for the concept and science § Nocturnal and diurnal continued on next page activity EK 8.1.A.2 § Fight-or-flight\u0007response § Predator warnings practice(s) b"
+    },
+    {
+      "physical_page": 36,
+      "printed_page": 36,
+      "chars": 2930,
+      "first_200": "multiple biological systems and/or scales. AP Biology Course and Exam Description Course Framework V.1 | 25 Return to Table of Contents © 2025 College Board THIS PAGE IS INTENTIONALLY LEFT"
+    },
+    {
+      "physical_page": 37,
+      "printed_page": 37,
+      "chars": 2930,
+      "first_200": "© 2025 College Board UNIT 1 8–11% AP EXAM WEIGHTING ~9–11 CLASS PERIODS Chemistry of Life Developing Understanding BIG IDEA 2 This\u0007first\u0007unit\u0007sets\u0007the\u0007foundation\u0007for\u0007students\u0007to\u0007understand\u0007the\u0007chemica"
+    },
+    {
+      "physical_page": 38,
+      "printed_page": 38,
+      "chars": 2930,
+      "first_200": "gical systems properties of water allow it to play a major depend on relationships that, when role in biological systems and to show compromised,\u0007can\u0007have\u0007far-reaching\u0007 the properties and structure of"
+    },
+    {
+      "physical_page": 39,
+      "printed_page": 39,
+      "chars": 2930,
+      "first_200": "Return to Table of Contents © 2025 College Board UNIT 1 Chemistry of Life UNIT AT A GLANCE Class Periods Topic Suggested Skill ~9-11 CLASS PERIODS 1.1 Structure of Water"
+    },
+    {
+      "physical_page": 40,
+      "printed_page": 40,
+      "chars": 2930,
+      "first_200": "raged to adapt the activities to best support students in your classroom. The following examples were developed in partnership with teachers from the AP community to share ways that they"
+    },
+    {
+      "physical_page": 41,
+      "printed_page": 41,
+      "chars": 2930,
+      "first_200": "Structure of Water and Representations 2.A Describe characteristics of visual representations of biological concepts and processes. Hydrogen Bonding Required Course Content BIG IDEA 4 Systems Interact"
+    },
+    {
+      "physical_page": 42,
+      "printed_page": 42,
+      "chars": 2930,
+      "first_200": "water molecules result in cohesion, adhesion, and surface tension. AP Biology Course and Exam Description Course Framework V.1 | 32 Return to Table of Contents © 2025 College Board UNIT"
+    },
+    {
+      "physical_page": 43,
+      "printed_page": 43,
+      "chars": 2930,
+      "first_200": "acids. AP Biology Course and Exam Description Course Framework V.1 | 33 Return to Table of Contents © 2025 College Board UNIT 1 Chemistry of Life SUGGESTED SKILL Visual TOPIC"
+    },
+    {
+      "physical_page": 44,
+      "printed_page": 44,
+      "chars": 2930,
+      "first_200": "removed from the other. This causes the loss of the equivalent of a water molecule from the reactants and the connection of the two remaining monomers. The connection of many"
+    },
+    {
+      "physical_page": 45,
+      "printed_page": 45,
+      "chars": 2930,
+      "first_200": "linear or branched. X EXCLUSION STATEMENT—The molecular structure of specific carbohydrate polymers is beyond the scope of the AP Exam. AP Biology Course and Exam Description Course Framework V.1 |"
+    },
+    {
+      "physical_page": 46,
+      "printed_page": 46,
+      "chars": 2930,
+      "first_200": "liquid it is at room temperature. continued on next page AP Biology Course and Exam Description Course Framework V.1 | 36 Return to Table of Contents © 2025 College Board"
+    },
+    {
+      "physical_page": 47,
+      "printed_page": 47,
+      "chars": 2930,
+      "first_200": "ids Representations 2.A Describe characteristics of visual representations of biological concepts and processes. Required Course Content BIG IDEA 3 Information Storage and Transmission: Living systems"
+    },
+    {
+      "physical_page": 48,
+      "printed_page": 48,
+      "chars": 2930,
+      "first_200": "Course Framework V.1 | 38 Return to Table of Contents © 2025 College Board UNIT Chemistry of Life 1 LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 1.6.A 1.6.A.3 Describe the structure and DNA"
+    },
+    {
+      "physical_page": 49,
+      "printed_page": 49,
+      "chars": 2930,
+      "first_200": "g systems store, retrieve, transmit, and respond to information essential to life processes. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 1.7.A 1.7.A.1 Describe the structure and Proteins comprise linear ch"
+    },
+    {
+      "physical_page": 50,
+      "printed_page": 50,
+      "chars": 2930,
+      "first_200": "continued on next page AP Biology Course and Exam Description Course Framework V.1 | 40 Return to Table of Contents © 2025 College Board UNIT Chemistry of Life 1 LEARNING"
+    },
+    {
+      "physical_page": 51,
+      "printed_page": 51,
+      "chars": 2930,
+      "first_200": "CLASS PERIODS AP Biology Course and Exam Description Course Framework V.1 | 43 Return to Table of Contents © 2025 College Board Remember to go to AP Classroom to assign"
+    },
+    {
+      "physical_page": 52,
+      "printed_page": 52,
+      "chars": 2930,
+      "first_200": "concepts will be necessary in later units when the focus of instruction § How do the mechanisms shifts\u0007to\u0007cellular\u0007products\u0007and\u0007by-products\u0007and\u0007when\u0007students\u0007learn\u0007why\u0007cellular\u0007exchange\u0007of\u0007 for transp"
+    },
+    {
+      "physical_page": 53,
+      "printed_page": 53,
+      "chars": 2930,
+      "first_200": "cy\u0007in\u0007 the independent and dependent variables describing the characteristics of data given with units, correctly plot data points with in a diagram, graph, or data table and identify appropriate scal"
+    },
+    {
+      "physical_page": 54,
+      "printed_page": 54,
+      "chars": 2930,
+      "first_200": "ationships within biological models, including\u0007mathematical\u0007models,\u0007diagrams,\u0007flowcharts,\u0007and\u0007 systems. 5.A Perform mathematical calculations, including: i. mathematical equations in the curriculum ii"
+    },
+    {
+      "physical_page": 55,
+      "printed_page": 55,
+      "chars": 2930,
+      "first_200": "ard UNIT Cells 2 UNIT AT A GLANCE (cont’d) Class Periods Topic Suggested Skills ~14–16 CLASS PERIODS 2.9 Cell 6.E Predict\u0007the\u0007causes\u0007or\u0007effects\u0007of\u0007a\u0007change\u0007in,\u0007or\u0007 Compartmentalization disruption to, "
+    },
+    {
+      "physical_page": 56,
+      "printed_page": 56,
+      "chars": 2930,
+      "first_200": "ch\u0007cubes\u0007will\u0007become\u0007clear\u0007first,\u0007then\u0007have\u0007them\u0007time\u0007how\u0007long\u0007it\u0007takes\u0007for\u0007the\u0007 cubes\u0007to\u0007become\u0007clear\u0007as\u0007the\u0007vinegar\u0007diffuses\u0007into\u0007the\u0007cubes.\u0007Students\u0007will\u0007find\u0007that\u0007the smaller cubes become clear be"
+    },
+    {
+      "physical_page": 57,
+      "printed_page": 57,
+      "chars": 2930,
+      "first_200": "ic claim. Required Course Content ILLUSTRATIVE EXAMPLE EK 2.1.A.4 § Glycosylation and other chemical\u0007modifications\u0007 of proteins that take BIG IDEA 4 place within the Golgi Systems Interactions: Biolog"
+    },
+    {
+      "physical_page": 58,
+      "printed_page": 58,
+      "chars": 2930,
+      "first_200": "2 Cells LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 2.1.A 2.1.A.3 Explain how the structure Endoplasmic reticulum provides mechanical and function of subcellular support by helping cells maintain shape and"
+    },
+    {
+      "physical_page": 59,
+      "printed_page": 59,
+      "chars": 2930,
+      "first_200": "able ATP to be synthesized\u0007more\u0007efficiently. 2.1.A.6 Lysosomes\u0007are\u0007membrane-enclosed\u0007sacs\u0007 that\u0007contain\u0007hydrolytic\u0007enzymes\u0007that\u0007digest\u0007 material. Lysosomes also play a role in programmed cell death (a"
+    },
+    {
+      "physical_page": 60,
+      "printed_page": 60,
+      "chars": 2930,
+      "first_200": "2 Cells SUGGESTED SKILLS Visual TOPIC 2.2 Cell Size Representations 2.D Represent relationships within biological models, including mathematical models, diagrams, flowcharts, and systems. Statistical "
+    },
+    {
+      "physical_page": 61,
+      "printed_page": 61,
+      "chars": 2930,
+      "first_200": "2wh Surface Area of a Cylinder: 2 + r r = radius l = length h = height w = width s = length of one side of a cube"
+    },
+    {
+      "physical_page": 62,
+      "printed_page": 62,
+      "chars": 2930,
+      "first_200": "affecting\u0007properties\u0007like\u0007rate\u0007of\u0007heat\u0007 exchange with the environment. Smaller amounts of mass exchange proportionally more heat with the ambient environment than do larger masses. As mass\u0007increases,\u0007"
+    },
+    {
+      "physical_page": 63,
+      "printed_page": 63,
+      "chars": 2930,
+      "first_200": "within the interior of the membrane. 2.3.A.2 Embedded proteins can be hydrophilic (with charged and polar side groups), hydrophobic (with nonpolar side groups), or both. i. Hydrophilic regions of the"
+    },
+    {
+      "physical_page": 64,
+      "printed_page": 64,
+      "chars": 2930,
+      "first_200": "ermeability Data Analysis 5.D Use data to evaluate a hypothesis or prediction, including rejecting or failing to reject the null hypothesis. Required Course Content BIG IDEA 2 Energetics: Biological s"
+    },
+    {
+      "physical_page": 65,
+      "printed_page": 65,
+      "chars": 2930,
+      "first_200": "and Exam Description Course Framework V.1 | 55 Return to Table of Contents © 2025 College Board UNIT 2 Cells SUGGESTED SKILL Questions and TOPIC 2.5 Membrane Transport Methods 3.D"
+    },
+    {
+      "physical_page": 66,
+      "printed_page": 66,
+      "chars": 2930,
+      "first_200": "require energy to move large substances or large transport large molecules amounts of substances into and out of cells. across the plasma membrane. i. In endocytosis, the cell takes in"
+    },
+    {
+      "physical_page": 67,
+      "printed_page": 67,
+      "chars": 2930,
+      "first_200": "brane. membrane. i.\u0007 Membranes\u0007may\u0007become\u0007polarized\u0007by\u0007the\u0007 movement of ions across the membrane. + ii. Charged ions, including Na (sodium) and + K (potassium), require channel proteins to move throug"
+    },
+    {
+      "physical_page": 68,
+      "printed_page": 68,
+      "chars": 2930,
+      "first_200": "ILABLE RESOURCES movement of molecules of cells. Movement of water can also be §§ AP Central > Classroom across membranes. described as moving from hypotonic to Resources > Investigation 4:"
+    },
+    {
+      "physical_page": 69,
+      "printed_page": 69,
+      "chars": 2930,
+      "first_200": "f high osmolarity or solute concentration. RELEVANT EQUATION Solute Potential of a Solution: s = −iCRT where: i =\u0007ionization\u0007constant C = molar concentration R = pressure constant L bars R"
+    },
+    {
+      "physical_page": 70,
+      "printed_page": 70,
+      "chars": 2930,
+      "first_200": "AP Biology Course and Exam Description Course Framework V.1 | 60 Return to Table of Contents © 2025 College Board UNIT Cells 2 TOPIC 2.9 SUGGESTED SKILL Argumentation Cell 6.E"
+    },
+    {
+      "physical_page": 71,
+      "printed_page": 71,
+      "chars": 2930,
+      "first_200": "Argumentation TOPIC 2.10 6.B Support a claim with evidence from biological Origins of Cell principles, concepts, processes, and data. Compartmentalization Required Course Content BIG IDEA 1 Evolution:"
+    },
+    {
+      "physical_page": 72,
+      "printed_page": 72,
+      "chars": 2930,
+      "first_200": "© 2025 College Board Remember to go to AP Classroom to assign students the online Progress Checks for this unit. Whether assigned as homework or completed in class, the Progress"
+    },
+    {
+      "physical_page": 73,
+      "printed_page": 73,
+      "chars": 2930,
+      "first_200": "Students often lack an understanding of Since students learned how to make metabolic pathways, confusing them with scientific\u0007claims\u0007in\u0007the\u0007previous\u0007unit,\u0007the\u0007 other processes. Students should know in"
+    },
+    {
+      "physical_page": 74,
+      "printed_page": 74,
+      "chars": 2930,
+      "first_200": "the\u0007differences\u0007between\u0007the\u0007two\u0007processes,\u0007 how they function together within an On the exam, students may be required ecosystem, and the consequences of a to\u0007graph\u0007data\u0007from\u0007an\u0007experiment—using\u0007 disr"
+    },
+    {
+      "physical_page": 75,
+      "printed_page": 75,
+      "chars": 2930,
+      "first_200": "chart. The graph should include the following components: i. the type of graph appropriate for the data ii. axis labeling, including appropriate units and legend iii. scaling iv. accurately plotted"
+    },
+    {
+      "physical_page": 76,
+      "printed_page": 76,
+      "chars": 2930,
+      "first_200": "mine whether\u0007errors\u0007have\u0007occurred\u0007based\u0007on\u0007expected\u0007outcomes\u0007in\u0007enzyme\u0007catalysis. 2 3.4 Construct an Argument Provide students with a visual representation of photosystems I and II and have them work "
+    },
+    {
+      "physical_page": 77,
+      "printed_page": 77,
+      "chars": 2930,
+      "first_200": "ering the activation energy. 3.1.A.2 For\u0007an\u0007enzyme-mediated\u0007chemical\u0007reaction\u0007to\u0007 occur, the shape and charge of the substrate must be compatible with the active site of the enzyme.\u0007This\u0007is\u0007illustrate"
+    },
+    {
+      "physical_page": 78,
+      "printed_page": 78,
+      "chars": 2930,
+      "first_200": "Resources\u0007>\u0007Visualizing\u0007 Energetics: Biological systems use energy and molecular building blocks to grow, Information reproduce, and maintain dynamic homeostasis. LEARNING OBJECTIVE ESSENTIAL KNOWLEDG"
+    },
+    {
+      "physical_page": 79,
+      "printed_page": 79,
+      "chars": 2930,
+      "first_200": "activity. in a solution, increasing the frequency of collisions\u0007between\u0007enzymes\u0007and\u0007substrates\u0007 and therefore increasing the rate of reaction until the optimal temperature is achieved. 3.2.B.3 Competi"
+    },
+    {
+      "physical_page": 80,
+      "printed_page": 80,
+      "chars": 2930,
+      "first_200": "does\u0007not\u0007violate\u0007the\u0007first\u0007and\u0007second\u0007laws\u0007of\u0007 thermodynamics. i. Energy input must exceed energy loss to maintain order and to power cellular processes. ii. Cellular processes that release energy may"
+    },
+    {
+      "physical_page": 81,
+      "printed_page": 81,
+      "chars": 2930,
+      "first_200": "2 Return to Table of Contents © 2025 College Board UNIT Cellular Energetics 3 TOPIC 3.4 SUGGESTED SKILL Argumentation Photosynthesis 6.B Support a claim with evidence from biological principles, conce"
+    },
+    {
+      "physical_page": 82,
+      "printed_page": 82,
+      "chars": 2930,
+      "first_200": "that can STATEMENT— be used in biological processes or stored. Memorization of the steps in ii. Photosynthesis\u0007first\u0007evolved\u0007in\u0007 the Calvin cycle, the structure prokaryotic organisms. of the molecules"
+    },
+    {
+      "physical_page": 83,
+      "printed_page": 83,
+      "chars": 2930,
+      "first_200": "proteins. of ATP synthase, is beyond iii.\u0007Thylakoids\u0007are\u0007organized\u0007in\u0007stacks\u0007 the scope of the AP Exam. called grana. The light reactions of photosynthesis occur in the grana. 3.4.A.3 The light reacti"
+    },
+    {
+      "physical_page": 84,
+      "printed_page": 84,
+      "chars": 2930,
+      "first_200": "ates of the pathways for these processes are beyond the scope of this course and the AP Exam. 3.4.B.2 During photosynthesis, chlorophylls absorb energy from light, boosting electrons to a"
+    },
+    {
+      "physical_page": 85,
+      "printed_page": 85,
+      "chars": 2930,
+      "first_200": "membrane. 3.4.B.5 The formation of the proton gradient is linked to the synthesis of ATP from ADP and inorganic phosphate via ATP synthase. The flow\u0007of\u0007protons\u0007back\u0007through\u0007membrane- bound ATP synthas"
+    },
+    {
+      "physical_page": 86,
+      "printed_page": 86,
+      "chars": 2930,
+      "first_200": "that and fermentation are characteristic of all forms Lab Manual > Cellular allow organisms to use of life. Respiration Lab energy stored in biological § AP Central > Classroom 3.5.A.2"
+    },
+    {
+      "physical_page": 87,
+      "printed_page": 87,
+      "chars": 2930,
+      "first_200": "ESSENTIAL KNOWLEDGE 3.5.A ii. The transfer of electrons, through the ETC, is accompanied by the formation Describe the processes of a proton gradient across the inner and structural features mitochond"
+    },
+    {
+      "physical_page": 88,
+      "printed_page": 88,
+      "chars": 2930,
+      "first_200": "Glycolysis is a biochemical pathway that energy from biological releases the energy in glucose molecules to macromolecules in order to form ATP (from ADP and inorganic phosphate), power cellular funct"
+    },
+    {
+      "physical_page": 89,
+      "printed_page": 89,
+      "chars": 2930,
+      "first_200": "involved, cycle reactions are transferred by NADH and is beyond the scope of this FADH 2 to the ETC in the inner mitochondrial course and the AP Exam. membrane. 3.5.B.5"
+    },
+    {
+      "physical_page": 90,
+      "printed_page": 90,
+      "chars": 2930,
+      "first_200": "the online Progress Checks for this unit. Whether assigned as homework or completed in class, the Progress Checks provide each student with immediate feedback related to this unit’s topic and"
+    },
+    {
+      "physical_page": 91,
+      "printed_page": 91,
+      "chars": 2930,
+      "first_200": "f\u0007 processes by detailing the cell cycle the signal, the recycling of relay molecules § How\u0007do\u0007different\u0007types\u0007 regulation. Students should now be able to between activated and inactivated forms of ce"
+    },
+    {
+      "physical_page": 92,
+      "printed_page": 92,
+      "chars": 2930,
+      "first_200": "omparative question about mitosis and meiosis. AP Biology Course and Exam Description Course Framework V.1 | 81 Return to Table of Contents © 2025 College Board UNIT 4 Cell Communication"
+    },
+    {
+      "physical_page": 93,
+      "printed_page": 93,
+      "chars": 2930,
+      "first_200": "Contents © 2025 College Board UNIT Cell Communication and Cell Cycle 4 SAMPLE INSTRUCTIONAL ACTIVITIES The sample activities on this page are optional ways to incorporate varied instructional approach"
+    },
+    {
+      "physical_page": 94,
+      "printed_page": 94,
+      "chars": 2930,
+      "first_200": "© 2025 College Board UNIT 4 Cell Communication and Cell Cycle SUGGESTED SKILL Concept Explanation TOPIC 4.1 1.B Explain biological concepts and processes. Cell Communication AVAILABLE RESOURCE §§ AP C"
+    },
+    {
+      "physical_page": 95,
+      "printed_page": 95,
+      "chars": 2930,
+      "first_200": "4 TOPIC 4.2 SUGGESTED SKILL Concept Explanation Introduction to Signal 1.A Describe biological concepts and processes. Transduction Required Course Content AVAILABLE RESOURCE §§ AP Central > Classroom"
+    },
+    {
+      "physical_page": 96,
+      "printed_page": 96,
+      "chars": 2930,
+      "first_200": "may be located on the surface of a target cell or in the cytoplasm or nucleus of the target cell. continued on next page AP Biology Course and Exam Description"
+    },
+    {
+      "physical_page": 97,
+      "printed_page": 97,
+      "chars": 2930,
+      "first_200": "Return to Table of Contents © 2025 College Board UNIT Cell Communication and Cell Cycle 4 TOPIC 4.3 SUGGESTED SKILL Argumentation Signal Transduction 6.C Provide reasoning to justify a claim"
+    },
+    {
+      "physical_page": 98,
+      "printed_page": 98,
+      "chars": 2930,
+      "first_200": "tion alter phenotype or result in programmed cell to population density pathway. death (apoptosis). (quorum sensing) § Epinephrine stimulation of glycogen breakdown in mammals 4.3.B 4.3.B.1 EK 4.3.B.1"
+    },
+    {
+      "physical_page": 99,
+      "printed_page": 99,
+      "chars": 2930,
+      "first_200": "Return to Table of Contents © 2025 College Board UNIT 4 Cell Communication and Cell Cycle SUGGESTED SKILL Argumentation TOPIC 4.4 6.E Predict the causes or effects of a change"
+    },
+    {
+      "physical_page": 100,
+      "printed_page": 100,
+      "chars": 2930,
+      "first_200": "response is moved further away from the initial\u0007set\u0007point.\u0007Amplification\u0007occurs\u0007when\u0007 the\u0007stimulus\u0007is\u0007further\u0007intensified,\u0007which,\u0007 in turn, initiates an additional response that produces system change"
+    },
+    {
+      "physical_page": 101,
+      "printed_page": 101,
+      "chars": 2930,
+      "first_200": "Data Analysis 5.A Perform mathematical calculations, including: BIG IDEA 3 i. \u0007mathematical\u0007equations\u0007 Information Storage and Transmission: Living systems store, retrieve, transmit, and in the curric"
+    },
+    {
+      "physical_page": 102,
+      "printed_page": 102,
+      "chars": 2930,
+      "first_200": "vi. Nondividing cells may exit the cell cycle or be held at a particular stage in the cell cycle. continued on next page AP Biology Course and Exam Description Course"
+    },
+    {
+      "physical_page": 103,
+      "printed_page": 103,
+      "chars": 2930,
+      "first_200": "chromatids toward poles. vi. Telophase:\u0007Mitotic\u0007spindle\u0007breaks\u0007down,\u0007 a new nuclear envelope develops, and then the cytoplasm divides. vii. \u0007Cytokinesis:\u0007A\u0007cleavage\u0007furrow\u0007forms\u0007in\u0007 animal cells or a "
+    },
+    {
+      "physical_page": 104,
+      "printed_page": 104,
+      "chars": 2930,
+      "first_200": "dependent kinases control the cell cycle. X EXCLUSION STATEMENT—Knowledge of specific cyclin-CdK pairs or growth factors is beyond the scope of the AP Exam. 4.6.B 4.6.B.1 Describe\u0007the\u0007effects\u0007of\u0007 Disr"
+    },
+    {
+      "physical_page": 105,
+      "printed_page": 105,
+      "chars": 2930,
+      "first_200": "© 2025 College Board UNIT 5 8–11% AP EXAM WEIGHTING ~8–10 CLASS PERIODS Heredity Developing Understanding BIG IDEA 1 Unit 5 focuses on heredity and the biological concepts and processes"
+    },
+    {
+      "physical_page": 106,
+      "printed_page": 106,
+      "chars": 2930,
+      "first_200": "of ratios, as confusion between them is a patterns and trends in data helps students common student error on the exam. describe biological changes that occur BIG IDEA 4 over\u0007time,\u0007predict\u0007short-term\u0007a"
+    },
+    {
+      "physical_page": 107,
+      "printed_page": 107,
+      "chars": 2930,
+      "first_200": "nts © 2025 College Board UNIT 5 Heredity UNIT AT A GLANCE Class Periods Topic Suggested Skills ~8–10 CLASS PERIODS 5.1 Meiosis 1.B Explain\u0007biological\u0007concepts\u0007and\u0007processes. 5.2 Meiosis and Genetic 3."
+    },
+    {
+      "physical_page": 108,
+      "printed_page": 108,
+      "chars": 2930,
+      "first_200": "hey approach teaching some of the topics in this unit. Please refer to the Instructional Approaches section beginning on p. 171 for more examples of activities and strategies. Activity Topic"
+    },
+    {
+      "physical_page": 109,
+      "printed_page": 109,
+      "chars": 2930,
+      "first_200": "BIG IDEA 3 Information Storage and Transmission: Living systems store, retrieve, transmit, and respond to information essential to life processes. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 5.1.A 5.1.A.1 "
+    },
+    {
+      "physical_page": 110,
+      "printed_page": 110,
+      "chars": 2930,
+      "first_200": "cleavage furrow (animal cell) or cell plate (plant cell) forms, and cytokinesis occurs. Two haploid daughter cells are formed (at the end of meiosis I). continued on next page AP"
+    },
+    {
+      "physical_page": 111,
+      "printed_page": 111,
+      "chars": 2930,
+      "first_200": "s and Mitosis and meiosis are similar in the use of a differences\u0007between\u0007the\u0007 spindle apparatus to move chromosomes but phases and outcomes of differ\u0007in\u0007the\u0007number\u0007of\u0007cells\u0007produced\u0007and\u0007the\u0007 mitosis "
+    },
+    {
+      "physical_page": 112,
+      "printed_page": 112,
+      "chars": 2930,
+      "first_200": "rocess called crossing over (recombination), which increases genetic diversity among the resultant gametes. 5.2.A.3 Sexual reproduction in eukaryotes increases genetic variation, including crossing ov"
+    },
+    {
+      "physical_page": 113,
+      "printed_page": 113,
+      "chars": 2930,
+      "first_200": "Predict the causes or effects of a change in, or disruption to, one or more components in a biological system. Required Course Content BIG IDEA 1 Evolution: The process of"
+    },
+    {
+      "physical_page": 114,
+      "printed_page": 114,
+      "chars": 2930,
+      "first_200": "continued on next page AP Biology Course and Exam Description Course Framework V.1 | 101 Return to Table of Contents © 2025 College Board UNIT 5 Heredity LEARNING OBJECTIVE ESSENTIAL"
+    },
+    {
+      "physical_page": 115,
+      "printed_page": 115,
+      "chars": 2930,
+      "first_200": "5.A Perform mathematical Genetics calculations, including: i. \u0007mathematical\u0007equations\u0007 in the curriculum means iii. rates iv. ratios v. \u0007percentages\u0007and\u0007 percent changes Required Course Content 5.C Pe"
+    },
+    {
+      "physical_page": 116,
+      "printed_page": 116,
+      "chars": 2930,
+      "first_200": "in XX individuals. i. Genes located on the same chromosome § In certain species, the are referred to as being genetically linked. chromosomal basis of The probability that these linked"
+    },
+    {
+      "physical_page": 117,
+      "printed_page": 117,
+      "chars": 2930,
+      "first_200": "of\u0007sex-linked\u0007traits\u0007can\u0007often\u0007be\u0007predicted\u0007 from data, including pedigrees, indicating the genotypes and phenotypes of both parents and\u0007offspring. 5.4.A.3 Pleiotropy is a phenomenon in which the expr"
+    },
+    {
+      "physical_page": 118,
+      "printed_page": 118,
+      "chars": 2930,
+      "first_200": "© 2025 College Board UNIT Heredity 5 TOPIC 5.5 SUGGESTED SKILL Concept Explanation Environmental Effects 1.C Explain biological concepts and on Phenotype processes in applied contexts. Required Course"
+    },
+    {
+      "physical_page": 119,
+      "printed_page": 119,
+      "chars": 2930,
+      "first_200": "plasticity (e.g., the ability of individual pheromone production different\u0007environmental\u0007 genotypes\u0007to\u0007produce\u0007different\u0007phenotypes). in yeast and other fungi conditions. AP Biology Course and Exam De"
+    },
+    {
+      "physical_page": 120,
+      "printed_page": 120,
+      "chars": 2930,
+      "first_200": "% AP EXAM WEIGHTING ~18–20 CLASS PERIODS Gene Expression and Regulation Developing Understanding BIG IDEA 3 Progressing\u0007from\u0007the\u0007continuity\u0007of\u0007life\u0007to\u0007gene\u0007expression,\u0007students\u0007gain\u0007in-depth\u0007 Informat"
+    },
+    {
+      "physical_page": 121,
+      "printed_page": 121,
+      "chars": 2930,
+      "first_200": "in phenotype (e.g., an increase or decrease in Throughout the course, students should protein levels). Students should understand be given multiple opportunities to make a that the location of a"
+    },
+    {
+      "physical_page": 122,
+      "printed_page": 122,
+      "chars": 2930,
+      "first_200": "systems. 6.E Predict\u0007the\u0007causes\u0007or\u0007effects\u0007of\u0007a\u0007change\u0007in,\u0007or\u0007 disruption to, one or more components in a biological system. 6.5 Regulation of Gene 6.A Make\u0007a\u0007scientific\u0007claim. Expression 6.6 Gene Exp"
+    },
+    {
+      "physical_page": 123,
+      "printed_page": 123,
+      "chars": 2930,
+      "first_200": "6.3 Think-Pair-Share Have students build a model of transcription using pool noodles (which can usually be purchased at a dollar store). Instruct pairs of students to use everyday materials, such"
+    },
+    {
+      "physical_page": 124,
+      "printed_page": 124,
+      "chars": 2930,
+      "first_200": "information from one molecules and, in some cases, RNA molecules. generation to the next. i. Prokaryotic organisms typically have circular chromosomes. ii. Eukaryotic organisms typically have multiple"
+    },
+    {
+      "physical_page": 125,
+      "printed_page": 125,
+      "chars": 2930,
+      "first_200": "ion 6 TOPIC 6.2 SUGGESTED SKILL Visual DNA Replication Representations 2.B Explain relationships between characteristics of biological models in both theoretical and applied contexts. Required Course "
+    },
+    {
+      "physical_page": 126,
+      "printed_page": 126,
+      "chars": 2930,
+      "first_200": "front of the replication fork. v. DNA polymerase requires RNA primers to initiate DNA synthesis. vi.\u0007 DNA\u0007polymerase\u0007synthesizes\u0007new\u0007 strands of DNA continuously on the leading strand and discontinuou"
+    },
+    {
+      "physical_page": 127,
+      "printed_page": 127,
+      "chars": 2930,
+      "first_200": "information from DNA in the nucleus to the ribosome in the cytoplasm. ii. Distinct transfer RNA (tRNA) molecules bind\u0007specific\u0007amino\u0007acids\u0007and\u0007have\u0007 anticodon sequences that base pair with the codons "
+    },
+    {
+      "physical_page": 128,
+      "printed_page": 128,
+      "chars": 2930,
+      "first_200": "n. 6.3.A.4 In eukaryotic cells the mRNA transcript undergoes\u0007a\u0007series\u0007of\u0007enzyme-mediated\u0007 modifications. i.\u0007 The\u0007addition\u0007of\u0007a\u0007poly-A\u0007tail\u0007makes\u0007mRNA\u0007 more stable. ii. The addition of a GTP cap helps "
+    },
+    {
+      "physical_page": 129,
+      "printed_page": 129,
+      "chars": 2930,
+      "first_200": "surface of the rough ER of eukaryotic cells. 6.4.A.2 In prokaryotic organisms, translation of the mRNA molecule occurs while it is being transcribed. 6.4.A.3 Translation involves many sequential steps"
+    },
+    {
+      "physical_page": 130,
+      "printed_page": 130,
+      "chars": 2930,
+      "first_200": "UNIT Gene Expression and Regulation 6 LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 6.4.A v. tRNA brings the correct amino acid to Explain how the phenotype of the\u0007place\u0007specified\u0007by\u0007the\u0007codon\u0007on\u0007the\u0007 an org"
+    },
+    {
+      "physical_page": 131,
+      "printed_page": 131,
+      "chars": 2930,
+      "first_200": "LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 6.5.A 6.5.A.1 Describe the types of Regulatory sequences are stretches of DNA interactions that regulate that interact with regulatory proteins to control gene e"
+    },
+    {
+      "physical_page": 132,
+      "printed_page": 132,
+      "chars": 2930,
+      "first_200": "UNIT Gene Expression and Regulation 6 LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 6.5.B 6.5.B.1 Explain how the location of Both prokaryotes and eukaryotes have groups regulatory sequences relates of genes"
+    },
+    {
+      "physical_page": 133,
+      "printed_page": 133,
+      "chars": 2930,
+      "first_200": "Negative regulatory molecules inhibit gene expression by binding to DNA and blocking transcription. 6.6.B 6.6.B.1 Explain the connection Gene\u0007regulation\u0007results\u0007in\u0007differential\u0007gene\u0007 between the regul"
+    },
+    {
+      "physical_page": 134,
+      "printed_page": 134,
+      "chars": 2930,
+      "first_200": "AVAILABLE RESOURCE § AP Central > Classroom Resources > From Gene to Protein—A\u0007Historical\u0007 BIG IDEA 3 Perspective Information Storage and Transmission: Living systems store, retrieve, transmit, and IL"
+    },
+    {
+      "physical_page": 135,
+      "printed_page": 135,
+      "chars": 2930,
+      "first_200": "r deleted, causing the reading frame to be shifted. iii. Nonsense mutations occur when there is a point mutation that causes a premature stop. iv. Silent mutations occur when the"
+    },
+    {
+      "physical_page": 136,
+      "printed_page": 136,
+      "chars": 2930,
+      "first_200": "resulting from nondisjunction often result in new phenotypes caused by triploidy (aneuploidy). ii. Changes in chromosome number often result in disorders with developmental limitations. iii. Alteratio"
+    },
+    {
+      "physical_page": 137,
+      "printed_page": 137,
+      "chars": 2930,
+      "first_200": "information if they infect the same host cell. iii. Reproductive processes that increase genetic variation are evolutionarily conserved and are shared by various organisms. AP Biology Course and Exam "
+    },
+    {
+      "physical_page": 138,
+      "printed_page": 138,
+      "chars": 2930,
+      "first_200": "nsmit, and Transformation Lab respond to information essential to life processes. § AP Central > Classroom Resources\u0007>\u0007Visualizing\u0007 Information ILLUSTRATIVE EXAMPLES LEARNING OBJECTIVE ESSENTIAL KNOWL"
+    },
+    {
+      "physical_page": 139,
+      "printed_page": 139,
+      "chars": 2930,
+      "first_200": "the comparison of DNA sequences from various samples. X \u0007\u0007EXCLUSION STATEMENT—Knowledge of the details of each of these genetic engineering techniques is beyond the scope of the AP Exam. AP"
+    },
+    {
+      "physical_page": 140,
+      "printed_page": 140,
+      "chars": 2930,
+      "first_200": "© 2025 College Board UNIT 7 13–20% AP EXAM WEIGHTING ~19–21 CLASS PERIODS Natural Selection Developing Understanding BIG IDEA 1 The concepts in Unit 7 build on foundational content from"
+    },
+    {
+      "physical_page": 141,
+      "printed_page": 141,
+      "chars": 2930,
+      "first_200": "represents. Mastery is demonstrated when “fitness,”\u0007without\u0007proper\u0007explanation\u0007of\u0007 students can create or use models such the underlying concept. Students should as cladograms and phylogenetic trees t"
+    },
+    {
+      "physical_page": 142,
+      "printed_page": 142,
+      "chars": 2930,
+      "first_200": "mechanisms to gain a better understanding. population and to justify the reasoning for their predictions. AP Biology Course and Exam Description Course Framework V.1 | 127 Return to Table of"
+    },
+    {
+      "physical_page": 143,
+      "printed_page": 143,
+      "chars": 2930,
+      "first_200": "© 2025 College Board UNIT Natural Selection 7 UNIT AT A GLANCE (cont’d) Class Periods Topic Suggested Skills ~19–21 CLASS PERIODS 7.7 Common Ancestry 6.E Predict\u0007the\u0007causes\u0007or\u0007effects\u0007of\u0007a\u0007change\u0007in,\u0007"
+    },
+    {
+      "physical_page": 144,
+      "printed_page": 144,
+      "chars": 2930,
+      "first_200": "ies to best support students in your classroom. The following examples were developed in partnership with teachers from the AP community to share ways that they approach teaching some of"
+    },
+    {
+      "physical_page": 145,
+      "printed_page": 145,
+      "chars": 2930,
+      "first_200": "e and Exam Description Course Framework V.1 | 130 Return to Table of Contents © 2025 College Board UNIT Natural Selection 7 TOPIC 7.1 SUGGESTED SKILL Visual Introduction to Representations"
+    },
+    {
+      "physical_page": 146,
+      "printed_page": 146,
+      "chars": 2930,
+      "first_200": "results\u0007in\u0007differential\u0007survival.\u0007Individuals\u0007 with more favorable phenotypes are more likely\u0007to\u0007survive\u0007and\u0007produce\u0007more\u0007offspring,\u0007 thus passing on those favorable traits to subsequent generations. "
+    },
+    {
+      "physical_page": 147,
+      "printed_page": 147,
+      "chars": 2930,
+      "first_200": "or\u0007decrease\u0007the\u0007fitness\u0007of\u0007an\u0007organism\u0007in\u0007 particular environments. 7.2.B 7.2.B.1 Explain how variation in Variation in the number and types of molecules molecules within cells within cells can provid"
+    },
+    {
+      "physical_page": 148,
+      "printed_page": 148,
+      "chars": 2930,
+      "first_200": "1 § AP Central > Classroom Evolution: The process of evolution drives the diversity and unity of life. Resources > Evolution and Change § AP Central > AP Biology Lab"
+    },
+    {
+      "physical_page": 149,
+      "printed_page": 149,
+      "chars": 2930,
+      "first_200": "ic\u0007 drift\u0007that\u0007occurs\u0007when\u0007a\u0007population\u0007size\u0007is\u0007 reduced to a small number of individuals for at least one generation. iv. The\u0007founder\u0007effect\u0007is\u0007a\u0007type\u0007of\u0007genetic\u0007 drift that occurs when a population "
+    },
+    {
+      "physical_page": 150,
+      "printed_page": 150,
+      "chars": 2930,
+      "first_200": "iii.\u0007Gene\u0007flow\u0007between\u0007two\u0007populations\u0007 prevents them from diverging into separate species. 7.4.C 7.4.C.1 Describe the change in Changes in allele frequencies provide evidence the genetic makeup of a "
+    },
+    {
+      "physical_page": 151,
+      "printed_page": 151,
+      "chars": 2930,
+      "first_200": "These conditions are never met, but they provide a valuable null hypothesis. 7.5.A.2 Allele frequencies in a nonevolving population can be calculated from genotype frequencies. RELEVANT EQUATIONS Hard"
+    },
+    {
+      "physical_page": 152,
+      "printed_page": 152,
+      "chars": 2930,
+      "first_200": "patterns in the data iii. \u0007describing\u0007relationships\u0007 between variables Required Course Content BIG IDEA 1 AVAILABLE RESOURCE § AP Central > Classroom Evolution: The process of evolution drives the div"
+    },
+    {
+      "physical_page": 153,
+      "printed_page": 153,
+      "chars": 2930,
+      "first_200": "© 2025 College Board UNIT 7 Natural Selection SUGGESTED SKILL Argumentation TOPIC 7.7 6.E Predict the causes or effects of a change in, or Common Ancestry disruption to, one or"
+    },
+    {
+      "physical_page": 154,
+      "printed_page": 154,
+      "chars": 2930,
+      "first_200": "on an evaluation of the experimental design or evidence. Required Course Content AVAILABLE RESOURCE § AP Central > Classroom Resources > Evolution and Change BIG IDEA 1 Evolution: The process"
+    },
+    {
+      "physical_page": 155,
+      "printed_page": 155,
+      "chars": 2930,
+      "first_200": "evidence that can be used hypothetical evolutionary relationships among to infer an evolutionary lineages that can be tested. relationship. 7.9.A.2 Phylogenetic trees show the amount of change over ti"
+    },
+    {
+      "physical_page": 156,
+      "printed_page": 156,
+      "chars": 2930,
+      "first_200": "Course and Exam Description Course Framework V.1 | 140 Return to Table of Contents © 2025 College Board UNIT Natural Selection 7 LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 7.9.B 7.9.B.1 Explain how"
+    },
+    {
+      "physical_page": 157,
+      "printed_page": 157,
+      "chars": 2930,
+      "first_200": "7.10.A 7.10.A.1 ILLUSTRATIVE EXAMPLES Describe the conditions Speciation occurs when two populations LO 7.10.C under which new species become reproductively isolated from each § Hawaiian Drosophila ma"
+    },
+    {
+      "physical_page": 158,
+      "printed_page": 158,
+      "chars": 2930,
+      "first_200": "continued on next page AP Biology Course and Exam Description Course Framework V.1 | 142 Return to Table of Contents © 2025 College Board UNIT Natural Selection 7 LEARNING OBJECTIVE"
+    },
+    {
+      "physical_page": 159,
+      "printed_page": 159,
+      "chars": 2930,
+      "first_200": "es Explain how the genetic The\u0007level\u0007of\u0007variation\u0007in\u0007a\u0007population\u0007affects\u0007 § Antibiotic resistance in diversity of a species or population dynamics. bacteria (not all individuals population\u0007affects\u0007it"
+    },
+    {
+      "physical_page": 160,
+      "printed_page": 160,
+      "chars": 2930,
+      "first_200": "3.B State the null hypothesis on Earth or predict the results of an experiment. Required Course Content AVAILABLE RESOURCE § AP Central > Classroom Resources > Evolution and Change BIG"
+    },
+    {
+      "physical_page": 161,
+      "printed_page": 161,
+      "chars": 2930,
+      "first_200": "Return to Table of Contents © 2025 College Board THIS PAGE IS INTENTIONALLY LEFT BLANK. AP BIOLOGY UNIT 8 Ecology 10–15% AP EXAM WEIGHTING ~19–21 CLASS PERIODS AP Biology Course"
+    },
+    {
+      "physical_page": 162,
+      "printed_page": 162,
+      "chars": 2930,
+      "first_200": "en systems interact, communities and ecosystems change based on those interactions. The species in a biological more biodiversity present in a system, the more likely that system is to maintain"
+    },
+    {
+      "physical_page": 163,
+      "printed_page": 163,
+      "chars": 2930,
+      "first_200": "c\u0007 is demonstrated by the ability to interpret are transferred through an ecosystem so information storage and the results of an experiment in relation to that they can predict how"
+    },
+    {
+      "physical_page": 164,
+      "printed_page": 164,
+      "chars": 2930,
+      "first_200": "x-y\u0007graphs\u0007(bar,\u0007histogram,\u0007line,\u0007log\u0007scale,\u0007dual\u0007y),\u0007scatter\u0007 plot, box and whisker plot, and pie chart. The graph should include the following components: i. type of graph appropriate for the data i"
+    },
+    {
+      "physical_page": 165,
+      "printed_page": 165,
+      "chars": 2930,
+      "first_200": "rt students in your classroom. The following examples were developed in partnership with teachers from the AP community to share ways that they approach teaching some of the topics in"
+    },
+    {
+      "physical_page": 166,
+      "printed_page": 166,
+      "chars": 2930,
+      "first_200": "changes. AP Biology Course and Exam Description Course Framework V.1 | 151 Return to Table of Contents © 2025 College Board UNIT 8 Ecology SUGGESTED SKILL Questions and TOPIC 8.1"
+    },
+    {
+      "physical_page": 167,
+      "printed_page": 167,
+      "chars": 2930,
+      "first_200": "light\u0007response § Predator warnings § Plant responses to herbivory EK 8.1.B.1 § Territorial marking in mammals § Coloration\u0007in\u0007flowering\u0007 plants and animals § Bird songs § Pack behaviors in animals §"
+    },
+    {
+      "physical_page": 168,
+      "printed_page": 168,
+      "chars": 2930,
+      "first_200": "§ Colony and swarming behavior in insects X \u0007 \u0007EXCLUSION STATEMENT—Knowledge of specific mechanisms of communication is beyond the scope of § Kin selection the AP Exam. 8.1.B.2 Responses to"
+    },
+    {
+      "physical_page": 169,
+      "printed_page": 169,
+      "chars": 2930,
+      "first_200": "grow,\u0007 organisms use to acquire and reproduce, and maintain homeostasis. EK 8.2.C.1 use energy. i.\u0007 Organisms\u0007use\u0007different\u0007strategies\u0007 § Food chains/webs to regulate body temperature and § Trophic py"
+    },
+    {
+      "physical_page": 170,
+      "printed_page": 170,
+      "chars": 2930,
+      "first_200": "Course Framework V.1 | 154 Return to Table of Contents © 2025 College Board UNIT Ecology 8 LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 8.2.B 8.2.B.1 Explain\u0007how\u0007energy\u0007flows\u0007and\u0007 Ecological\u0007levels\u0007of\u0007organ"
+    },
+    {
+      "physical_page": 171,
+      "printed_page": 171,
+      "chars": 2930,
+      "first_200": "photosynthesis, cellular respiration, decomposition, and combustion. 8.2.B.6 The nitrogen cycle involves several steps, including\u0007nitrogen\u0007fixation,\u0007assimilation,\u0007 ammonification,\u0007nitrification,\u0007and\u0007d"
+    },
+    {
+      "physical_page": 172,
+      "printed_page": 172,
+      "chars": 2930,
+      "first_200": "to the soil via decomposition of biomass, or excretion. Phosphate can also be incorporated back into the environment via decomposition of decaying organic matter. 8.2.C 8.2.C.1 Explain how changes in"
+    },
+    {
+      "physical_page": 173,
+      "printed_page": 173,
+      "chars": 2930,
+      "first_200": "s present in their environment, which can occur in the absence of oxygen. 8.2.D.2 Heterotrophs, which include carnivores, herbivores, omnivores, decomposers, and scavengers,\u0007metabolize\u0007carbohydrates,\u0007"
+    },
+    {
+      "physical_page": 174,
+      "printed_page": 174,
+      "chars": 2930,
+      "first_200": "whisker plot, and pie chart. The graph should include the following components: i. \u0007type\u0007of\u0007graph\u0007appropriate\u0007 for the data Required Course Content ii. \u0007axis\u0007labeling,\u0007including\u0007 appropriate units and"
+    },
+    {
+      "physical_page": 175,
+      "printed_page": 175,
+      "chars": 2930,
+      "first_200": "birth\u0007rate,\u0007death\u0007rate,\u0007and\u0007population\u0007size. RELEVANT EQUATION Population\u0007Growth— dN = B−D dt where dt = chage in time B = birth rate D = death rate N = population\u0007size dN =\u0007change\u0007in\u0007population\u0007size "
+    },
+    {
+      "physical_page": 176,
+      "printed_page": 176,
+      "chars": 2930,
+      "first_200": "© 2025 College Board UNIT Ecology 8 TOPIC 8.4 SUGGESTED SKILL Statistical Tests and Effect of Density Data Analysis 5.A Perform mathematical on Populations calculations, including: i. \u0007mathematical\u0007eq"
+    },
+    {
+      "physical_page": 177,
+      "printed_page": 177,
+      "chars": 2930,
+      "first_200": "= rmax N  dt  K  where dt = change in time N =\u0007population\u0007size dN =\u0007change\u0007in\u0007population\u0007size rmax = maximum per capita growth rate of population K = carrying"
+    },
+    {
+      "physical_page": 178,
+      "printed_page": 178,
+      "chars": 2930,
+      "first_200": "a particular species N = total number of organisms of all species 8.5.B 8.5.B.1 Explain how interactions Communities are groups of interacting within and among populations\u0007of\u0007different\u0007species\u0007that\u0007ch"
+    },
+    {
+      "physical_page": 179,
+      "printed_page": 179,
+      "chars": 2930,
+      "first_200": "Return to Table of Contents © 2025 College Board UNIT 8 Ecology SUGGESTED SKILL Argumentation TOPIC 8.6 6.E Predict the causes or effects of a change in, or Biodiversity disruption"
+    },
+    {
+      "physical_page": 180,
+      "printed_page": 180,
+      "chars": 2930,
+      "first_200": "UNIT Ecology 8 TOPIC 8.7 SUGGESTED SKILL Statistical Tests and Disruptions in Data Analysis 5.D Use data to evaluate a Ecosystems hypothesis or prediction, including rejecting or failing to reject"
+    },
+    {
+      "physical_page": 181,
+      "printed_page": 181,
+      "chars": 2930,
+      "first_200": "heterozygous\u0007genotype\u0007has\u0007a\u0007higher\u0007relative\u0007 fitness\u0007than\u0007either\u0007the\u0007homozygous\u0007dominant\u0007 or\u0007homozygous\u0007recessive\u0007genotype. 8.7.A.3 Mutations\u0007are\u0007not\u0007directed\u0007by\u0007specific\u0007 environmental pressures. BIG"
+    },
+    {
+      "physical_page": 182,
+      "printed_page": 182,
+      "chars": 2930,
+      "first_200": "Return to Table of Contents © 2025 College Board AP BIOLOGY Laboratory Investigations Lab Experiments The AP Biology Exam directly assesses the learning some of the investigations in the lab"
+    },
+    {
+      "physical_page": 183,
+      "printed_page": 183,
+      "chars": 2930,
+      "first_200": "lab data and writing reports. A lab assistant in the form so these skills will prove invaluable for both concept of a paid or unpaid aide may also be helpful;"
+    },
+    {
+      "physical_page": 184,
+      "printed_page": 184,
+      "chars": 2930,
+      "first_200": "some\u0007specialized\u0007equipment,\u0007 can apply to for funds to purchase equipment and such as spectrophotometers, gel electrophoresis supplies, and you can also use online donation sites equipment and pH mete"
+    },
+    {
+      "physical_page": 185,
+      "printed_page": 185,
+      "chars": 2930,
+      "first_200": "to Table of Contents © 2025 College Board How to Set Up a Lab Program Prior to performing lab experiments, you can provide Getting Students Started with meaning and purpose"
+    },
+    {
+      "physical_page": 186,
+      "printed_page": 186,
+      "chars": 2930,
+      "first_200": "nts a postlab discussion to debrief procedures, errors, and Students should be given latitude to make design conclusions. Test students’ understanding of biology modifications\u0007or\u0007ask\u0007for\u0007additional\u0007eq"
+    },
+    {
+      "physical_page": 187,
+      "printed_page": 187,
+      "chars": 2930,
+      "first_200": ". AP Biology Course and Exam Description Laboratory Investigations V.1 | 169 Return to Table of Contents © 2025 College Board In addition, it’s important to foster a deep labs"
+    },
+    {
+      "physical_page": 188,
+      "printed_page": 188,
+      "chars": 2930,
+      "first_200": "of each laboratory experience. Topics that should be take individual responsibility for the success or failure of covered include: the collaboration. § Simple\u0007first\u0007aid\u0007for\u0007cuts\u0007and\u0007thermal\u0007and\u0007 After"
+    },
+    {
+      "physical_page": 189,
+      "printed_page": 189,
+      "chars": 2930,
+      "first_200": "es\u0007and\u0007abstracts\u0007from\u0007the\u0007scientific\u0007 learning\u0007activities\u0007that\u0007develop\u0007the\u0007habits\u0007of\u0007scientific\u0007 literature.\u0007Students\u0007may\u0007find\u0007it\u0007useful\u0007to\u0007analyze\u0007primary\u0007 thinking that are essential for student suc"
+    },
+    {
+      "physical_page": 190,
+      "printed_page": 190,
+      "chars": 2930,
+      "first_200": "vities\u0007allow\u0007students,\u0007with\u0007guidance,\u0007to\u0007observe\u0007 phenomena,\u0007explore\u0007ideas,\u0007and\u0007find\u0007patterns.\u0007This\u0007allows\u0007students\u0007to\u0007answer\u0007questions\u0007they\u0007have\u0007developed\u0007 themselves.\u0007You\u0007are\u0007encouraged\u0007to\u0007create\u0007op"
+    },
+    {
+      "physical_page": 191,
+      "printed_page": 191,
+      "chars": 2930,
+      "first_200": "er\u0007to\u0007address\u0007those\u0007concepts\u0007and\u0007skills\u0007effectively,\u0007you\u0007should\u0007incorporate\u0007a\u0007variety\u0007of\u0007 instructional approaches into your daily lessons and activities. You can help students develop mastery of scie"
+    },
+    {
+      "physical_page": 192,
+      "printed_page": 192,
+      "chars": 2930,
+      "first_200": "complete, read it (or show it on a screen), and then facilitate a class discussion. Debate Students engage in Gives students an opportunity Invite students to debate which an informal"
+    },
+    {
+      "physical_page": 193,
+      "printed_page": 193,
+      "chars": 2930,
+      "first_200": "r; photosynthesis to students responds, and evaluates. also gives students the in the outer circle, and the responsibility of supporting outer circle can explain cellular their opinions and responses "
+    },
+    {
+      "physical_page": 194,
+      "printed_page": 194,
+      "chars": 2930,
+      "first_200": "ner or evaluate the methods used. is spun and students answer a question based on where it lands. For example, if the spinner lands\u0007in\u0007the\u0007“Summarize”\u0007 quadrant, students can respond to a"
+    },
+    {
+      "physical_page": 195,
+      "printed_page": 195,
+      "chars": 2930,
+      "first_200": "Students are presented Functions as a formative Provide students with a Check with a common or assessment technique statement on the board or on predictable misconception paper, such as “All"
+    },
+    {
+      "physical_page": 196,
+      "printed_page": 196,
+      "chars": 2930,
+      "first_200": "students can revisit their answer and revise it\u0007to\u0007reflect\u0007on\u0007what\u0007they\u0007have\u0007 learned. Think-Pair- Students consider a topic Provides students an When teaching about biological Share or question and t"
+    },
+    {
+      "physical_page": 197,
+      "printed_page": 197,
+      "chars": 2930,
+      "first_200": "rse, students develop skills that are fundamental to the discipline of biology. These science\u0007practices\u0007represent\u0007the\u0007complex\u0007skills\u0007that\u0007adept\u0007biologists\u0007demonstrate,\u0007and\u0007students\u0007will\u0007benefit\u0007from\u0007 "
+    },
+    {
+      "physical_page": 198,
+      "printed_page": 198,
+      "chars": 2930,
+      "first_200": "continued on next page AP Biology Course and Exam Description Instructional Approaches V.1 | 178 Return to Table of Contents © 2025 College Board Science Practice 1: Concept Explanation (cont'd)"
+    },
+    {
+      "physical_page": 199,
+      "printed_page": 199,
+      "chars": 2930,
+      "first_200": "out\u0007 the year, students should create and use representations of increasing complexity to illustrate biological processes and concepts, communicate information, and describe systems to demonstrate the"
+    },
+    {
+      "physical_page": 200,
+      "printed_page": 200,
+      "chars": 2930,
+      "first_200": "biological concept. AP Biology Course and Exam Description Instructional Approaches V.1 | 180 Return to Table of Contents © 2025 College Board Science Practice 3: Determine scientific questions and me"
+    },
+    {
+      "physical_page": 201,
+      "printed_page": 201,
+      "chars": 2930,
+      "first_200": "Predict the results of an ask them to state the null results of an experiment. experiment. hypothesis or predict the results of an experiment. Students\u0007with\u0007differing\u0007 predictions can argue their case"
+    },
+    {
+      "physical_page": 202,
+      "printed_page": 202,
+      "chars": 2930,
+      "first_200": "investigate answers through procedure, have students experimental design or experimentation, research, propose a new investigation evidence. and information gathering and that makes more sense to disc"
+    },
+    {
+      "physical_page": 203,
+      "printed_page": 203,
+      "chars": 2930,
+      "first_200": "table or graph of a data set Identify\u0007specific\u0007data\u0007points\u0007 (real or hypothetical), such i. identifying specific from a graph. as\u0007the\u0007increase\u0007in\u0007enzyme\u0007 data points activity with an increase in ii. d"
+    },
+    {
+      "physical_page": 204,
+      "printed_page": 204,
+      "chars": 2930,
+      "first_200": "ple of a histogram that consists of uniform range intervals (e.g., 160–199, 200–239) that span the entire range of the data. If enough measurements are made, the data on a"
+    },
+    {
+      "physical_page": 205,
+      "printed_page": 205,
+      "chars": 2930,
+      "first_200": "the individual data points on an x-y plot, creating a scatterplot. Trend lines show the general direction (increase or decrease) in the overall data trends and can be estimated or"
+    },
+    {
+      "physical_page": 206,
+      "printed_page": 206,
+      "chars": 2930,
+      "first_200": "Instructional Approaches V.1 | 188 Return to Table of Contents © 2025 College Board How Graphs are Scored The\u0007second\u0007free-response\u0007question\u0007(FRQ2)\u0007on\u0007the\u0007AP\u0007Biology\u0007Exam\u0007will\u0007have\u0007a\u0007data\u0007table\u0007with\u0007wh"
+    },
+    {
+      "physical_page": 207,
+      "printed_page": 207,
+      "chars": 2930,
+      "first_200": "of Contents © 2025 College Board Science Practice 5: Perform statistical tests and mathematical calculations to analyze and interpret data. It\u0007is\u0007important\u0007for\u0007students\u0007to\u0007be\u0007able\u0007to\u0007routinely\u0007use\u0007mat"
+    },
+    {
+      "physical_page": 208,
+      "printed_page": 208,
+      "chars": 2930,
+      "first_200": "percentages and Calculate a ratio. percent changes Calculate a percent change. 5.B: Use confidence Determine if there is overlap Provide students with Think-Pair-Share intervals and error bars between"
+    },
+    {
+      "physical_page": 209,
+      "printed_page": 209,
+      "chars": 2930,
+      "first_200": "evaluate a hypothesis data, and then justify the from an experiment that or prediction, including prediction. can be found on a website such as Data Nuggets. Have rejecting or failing"
+    },
+    {
+      "physical_page": 210,
+      "printed_page": 210,
+      "chars": 2930,
+      "first_200": "or conclusions. Science Practice 6: Argumentation (cont'd) Instructional Skill Task Sample Activity Strategies 6.A: Make a scientific Make\u0007a\u0007scientific\u0007claim\u0007 Provide half the class Fishbowl claim. re"
+    },
+    {
+      "physical_page": 211,
+      "printed_page": 211,
+      "chars": 2930,
+      "first_200": "AP Biology Course and Exam Description Instructional Approaches V.1 | 192 Return to Table of Contents © 2025 College Board Science Practice 6: Argumentation (cont'd) Instructional Skill Task Sample Ac"
+    },
+    {
+      "physical_page": 212,
+      "printed_page": 212,
+      "chars": 2930,
+      "first_200": "results to support Sagan’s claim, and then explain how the results support the theory of endosymbiosis. 6.E: Predict the causes Predict what happens when Give students a sequence Construct an"
+    },
+    {
+      "physical_page": 213,
+      "printed_page": 213,
+      "chars": 2930,
+      "first_200": "Experimental Results with Graphing (9 pts) Question 3: Scientific Investigation (4 pts) Question 4: Conceptual Analysis (4 pts) Question 5: Analyze Model or Visual Representation of a Biological Conce"
+    },
+    {
+      "physical_page": 214,
+      "printed_page": 214,
+      "chars": 2930,
+      "first_200": "es, and models presented in written format. Students will need to describe and explain these concepts, processes, and models in both conceptual and applied contexts. 2: Visual Representations Individu"
+    },
+    {
+      "physical_page": 215,
+      "printed_page": 215,
+      "chars": 2930,
+      "first_200": "© 2025 College Board Science Practice Multiple-Choice Section Free-Response Section 4: Representing and Describing Individual\u0007and\u0007set-based\u0007multiple- Free-response\u0007questions\u00072\u0007and\u00076\u0007 Data choice quest"
+    },
+    {
+      "physical_page": 216,
+      "printed_page": 216,
+      "chars": 2930,
+      "first_200": "relationships between experimental\u0007results\u0007and\u0007 larger biological concepts, processes, or theories. Finally, students will need to\u0007predict\u0007the\u0007causes\u0007or\u0007 effects of\u0007a\u0007change\u0007in,\u0007or\u0007disruption\u0007 to,\u0007one"
+    },
+    {
+      "physical_page": 217,
+      "printed_page": 217,
+      "chars": 2930,
+      "first_200": "§ Part B (4 points): Construct the appropriate graph from the data provided. §§ Part\u0007C\u0007(2\u0007points):\u0007Analyze\u0007data,\u0007perform\u0007calculations,\u0007state\u0007a\u0007null\u0007hypothesis,\u0007or\u0007 predict results of an experiment. §§"
+    },
+    {
+      "physical_page": 218,
+      "printed_page": 218,
+      "chars": 2930,
+      "first_200": "theories. AP Biology Course and Exam Description Exam Information V.1 | 202 Return to Table of Contents © 2025 College Board Task Verbs Used in Free-Response Questions The following task"
+    },
+    {
+      "physical_page": 219,
+      "printed_page": 219,
+      "chars": 2930,
+      "first_200": "© 2025 College Board Sample Exam Questions The sample exam questions that follow illustrate the relationship between the course framework and the AP Biology Exam and serve as examples of"
+    },
+    {
+      "physical_page": 220,
+      "printed_page": 220,
+      "chars": 2930,
+      "first_200": "early 1970s, researchers hypothesized that carbon was the limiting nutrient 2,000 in many aquatic ecosystems. To test this hypothesis, the researchers divided a small lake in two roughly equal0halves "
+    },
+    {
+      "physical_page": 221,
+      "printed_page": 221,
+      "chars": 2930,
+      "first_200": "atment for the experiment? (A) An untreated section of the lake (B) A section of the lake that was treated with phosphate but not sucrose (C) A different lake that"
+    },
+    {
+      "physical_page": 222,
+      "printed_page": 222,
+      "chars": 2930,
+      "first_200": "+ − − − Based on the data, which of the following most likely describes the evolutionary relationship among the organisms? (A) Because brown algae, red algae, and cyanobacteria lack"
+    },
+    {
+      "physical_page": 223,
+      "printed_page": 223,
+      "chars": 2930,
+      "first_200": "lecules. (B) Polar R groups are too bulky to fit in the middle of the protein and are pushed toward the protein’s surface. (C) Nonpolar R groups that cannot form"
+    },
+    {
+      "physical_page": 224,
+      "printed_page": 224,
+      "chars": 2930,
+      "first_200": "Wall Which of the following best explains the feedback mechanism illustrated in the figure? (A) This is an example of positive feedback, because the few platelets that initially bind attract"
+    },
+    {
+      "physical_page": 225,
+      "printed_page": 225,
+      "chars": 2930,
+      "first_200": "at amino acid position 1014. Part A Scientists hypothesize that this mutation is responsible for some cases of pyrethroid resistance. Figure 1. Schematic drawing of the transmembrane sodium channel ta"
+    },
+    {
+      "physical_page": 226,
+      "printed_page": 226,
+      "chars": 2930,
+      "first_200": "Phenylalanine Tested Phenylalanine October A 39 3 5 31 2008 June A 29 - 5 24 2009 October A 28 - 1 27 2009 June A 46 - 9 37"
+    },
+    {
+      "physical_page": 227,
+      "printed_page": 227,
+      "chars": 2930,
+      "first_200": "Contents © 2025 College Board Interpreting and Evaluating Experimental Results with Graphing (Question 2 on the AP Exam) RH is a hormone that binds to the RH receptor in the"
+    },
+    {
+      "physical_page": 228,
+      "printed_page": 228,
+      "chars": 2930,
+      "first_200": "gure, describe the effect of M9 on the production of CDK proteins. ii. Researchers also investigated the effect of M9 on apoptosis shown in the table. Assuming there were 115,000"
+    },
+    {
+      "physical_page": 229,
+      "printed_page": 229,
+      "chars": 2930,
+      "first_200": "Objective Unit 1 A 1.C LO 4.1.B 4 2 B 6.E LO 5.1.A 5 3 D 3.A LO 6.6.A 6 4 B 6.B LO 8.3.A 8 5 C 5.A LO"
+    },
+    {
+      "physical_page": 230,
+      "printed_page": 230,
+      "chars": 2930,
+      "first_200": "Return to Table of Contents © 2025 College Board AP BIOLOGY Scoring Guidelines Question 1: Interpreting and Evaluating Experimental Results In many countries, Anopheles gambiae mosquitoes are responsi"
+    },
+    {
+      "physical_page": 231,
+      "printed_page": 231,
+      "chars": 2930,
+      "first_200": "less than 10% mortality. Error bars represent standard deviation. “ND” means no data are available. Frequencies of leucine and phenylalanine at position 1014 of the sodium channel Total Heterozygous H"
+    },
+    {
+      "physical_page": 232,
+      "printed_page": 232,
+      "chars": 2930,
+      "first_200": "usceptibility to insecticide ii. Identify the positive control in the experiment. 1 point ■ Testing the strain that is susceptible to the insecticides 3.C iii. Justification of exposing some mosquitoe"
+    },
+    {
+      "physical_page": 233,
+      "printed_page": 233,
+      "chars": 2930,
+      "first_200": "54 Acceptable range is .16 - .17 Total for part C. 3 points AP Biology Course and Exam Description Scoring Guidelines V.1 | 219 Return to Table of Contents ©"
+    },
+    {
+      "physical_page": 234,
+      "printed_page": 234,
+      "chars": 2930,
+      "first_200": "asma membrane and affects cell division. Researchers studying cancer have identified a chemical, M9, that performs the same role as RH, and they were interested in the effect of M9"
+    },
+    {
+      "physical_page": 235,
+      "printed_page": 235,
+      "chars": 2930,
+      "first_200": "lotted and labeled. 4.A Sample response: ■ Data are represented in a bar graph. i. \u0007 1 point 4.A ■ Data and error bars are accurately plotted. i. Using the"
+    },
+    {
+      "physical_page": 236,
+      "printed_page": 236,
+      "chars": 2930,
+      "first_200": "ii. Justify your prediction. 1 point ■ If the signal cannot bind to the receptor, the pathway that leads to an increase in cyclin 1 6.C expression cannot be activated."
+    },
+    {
+      "physical_page": 237,
+      "printed_page": 237,
+      "chars": 2930,
+      "first_200": "lacks a radula (while mollusks have a radula). Part B. Explain how two separate lineages represented in the figure have a body with repeated segments. 1 point Accept one of"
+    },
+    {
+      "physical_page": 238,
+      "printed_page": 238,
+      "chars": 2930,
+      "first_200": "Standard Deviation n = sample size 1 ( xi − x ) 2 x= x s= n i−1 i n −1 s = sample standard deviation (i.e., the sample-based estimate"
+    },
+    {
+      "physical_page": 239,
+      "printed_page": 239,
+      "chars": 2930,
+      "first_200": "ncy of allele 1 in a population 10−3 milli m 10−6 micro µ p+q = 1 q = frequency of allele 2 in a population 10−9 nano n 10−12 pico"
+    },
+    {
+      "physical_page": 240,
+      "printed_page": 240,
+      "chars": 2930,
+      "first_200": "growth rate of population dt K i = ionization constant (1.0 for sucrose because sucrose does not ionize in Simpson’s Diversity Index water) 2 n C = molar concentration Diversity"
+    }
+  ]
+}

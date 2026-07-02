@@ -97,15 +97,28 @@ def enforce_budget(table: str) -> dict:
     priority_cases = _STATUS_PRIORITY[table]
     status_col = _STATUS_COL[table]
     pk_col = "candidate_id" if table == "memory_candidates" else "id"
+
+    # V3 P0-2: pinned memory items are protected from eviction.
+    # For memory_items, we add `pinned DESC` first so non-pinned rows
+    # are evicted before pinned ones. Other tables are unaffected.
+    pinned_clause = ""
+    if table == "memory_items":
+        pinned_clause = "COALESCE(pinned, 0) DESC, "
+
     # Build a CASE expression for ORDER BY
     when_clauses = " ".join(
         f"WHEN {status_col} = ? THEN {pri}" for status, pri in sorted(priority_cases.items(), key=lambda x: x[1])
     ) + " ELSE 99"
-    order_sql = f"(CASE {when_clauses} END) ASC, {order_col} ASC"
+    order_sql = f"{pinned_clause}(CASE {when_clauses} END) ASC, {order_col} ASC"
     params = [s for s, _ in sorted(priority_cases.items(), key=lambda x: x[1])]
 
+    # For memory_items, only consider non-pinned rows for eviction
+    where_extra = ""
+    if table == "memory_items":
+        where_extra = "WHERE COALESCE(pinned, 0) = 0"
+
     rows = conn.execute(
-        f"SELECT {pk_col}, {status_col} FROM {table} ORDER BY {order_sql}",
+        f"SELECT {pk_col}, {status_col} FROM {table} {where_extra} ORDER BY {order_sql}",
         params,
     ).fetchall()
 

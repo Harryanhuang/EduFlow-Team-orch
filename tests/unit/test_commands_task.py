@@ -5,7 +5,7 @@ import contextlib
 import io
 import json
 
-from helpers import attr_patch, env_patch, isolated_env, run_cli
+from helpers import attr_patch, env_patch, isolated_env, run_cli, tmux_patch
 from eduflow.commands import say as say_cmd
 from eduflow.commands import task as task_cmd
 from eduflow.runtime import paths
@@ -109,6 +109,122 @@ def test_task_create_with_by_and_desc():
         t = tasks.list_tasks()[0]
         assert t["creator"] == "manager"
         assert t["description"] == "root cause Y"
+
+
+def test_task_auto_ops_context_scans_all_agents_including_self():
+    team = {
+        "session": "S",
+        "agents": {
+            "manager": {"cli": "claude-code"},
+            "auto_ops": {"cli": "claude-code"},
+            "worker_course": {"cli": "claude-code"},
+        },
+    }
+
+    def has_window(target):
+        return target.window in {"manager", "auto_ops", "worker_course"}
+
+    def capture_pane(target, lines=80):
+        return {
+            "manager": "bypass permissions on\ncontext: 12% (31k/262k)\n>",
+            "auto_ops": "bypass permissions on\ncontext: 84% (220k/262k)\n>",
+            "worker_course": "bypass permissions on\ncontext: 93% (244k/262k)\n>",
+        }[target.window]
+
+    with isolated_env(team=team, runtime_config={"chat_id": "oc_x"}), tmux_patch(
+        has_session=lambda session: True,
+        has_window=has_window,
+        capture_pane=capture_pane,
+    ):
+        rc, out, _ = run_cli(["task", "auto-ops-context"])
+
+    assert rc == 0
+    assert "auto_ops context snapshot" in out
+    assert "agents=3 risks=2" in out
+    assert "- manager: level=ok" in out
+    assert "- auto_ops: level=warning pct=84%" in out
+    assert "- worker_course: level=compact_recommended pct=93%" in out
+
+
+def test_task_auto_ops_context_can_send_report_to_manager():
+    team = {
+        "session": "S",
+        "agents": {
+            "manager": {"cli": "claude-code"},
+            "auto_ops": {"cli": "claude-code"},
+        },
+    }
+
+    with isolated_env(team=team, runtime_config={"chat_id": "oc_x"}), tmux_patch(
+        has_session=lambda session: True,
+        has_window=lambda target: target.window == "auto_ops",
+        capture_pane=lambda target, lines=80: "bypass permissions on\ncontext: 91% (238k/262k)\n>",
+    ):
+        rc, out, _ = run_cli(["task", "auto-ops-context", "--send-manager"])
+        messages = local_facts.list_messages("manager")
+
+    assert rc == 0
+    assert "sent_to_manager=true" in out
+    assert len(messages) == 1
+    assert messages[0]["from"] == "auto_ops"
+    assert messages[0]["priority"] == "高"
+    assert "auto_ops 全员 context 巡检" in messages[0]["content"]
+    assert "auto_ops: level=compact_recommended" in messages[0]["content"]
+    assert "eduflow compact <agent>" in messages[0]["content"]
+    assert "禁止只发文字提醒" in messages[0]["content"]
+
+
+def test_task_auto_ops_production_reports_team_work_state():
+    team = {
+        "session": "S",
+        "agents": {
+            "manager": {"cli": "claude-code"},
+            "worker_course": {"cli": "claude-code"},
+            "worker_syllabus": {"cli": "claude-code"},
+            "review_course": {"cli": "claude-code"},
+        },
+    }
+
+    with isolated_env(team=team, runtime_config={"chat_id": "oc_x"}):
+        local_facts.upsert_status("worker_course", "进行中", "T-79 IB Guide 下载中")
+        local_facts.upsert_status("review_course", "待命", "ready")
+        local_facts.append_message("manager", "user", "请先处理老板消息", priority="高")
+        local_facts.append_message("worker_syllabus", "manager", "请接 T-85 syllabus", priority="高")
+
+        rc, out, _ = run_cli(["task", "auto-ops-production"])
+
+    assert rc == 0
+    assert "auto_ops production snapshot" in out
+    assert "active=1" in out
+    assert "waiting_manager=1" in out
+    assert "- manager: state=waiting_manager" in out
+    assert "- worker_course: state=active" in out
+    assert "- worker_syllabus: state=waiting_worker" in out
+    assert "manager_next_action=manager_read_high_priority_inbox" in out
+
+
+def test_task_auto_ops_production_can_send_report_to_manager():
+    team = {
+        "session": "S",
+        "agents": {
+            "manager": {"cli": "claude-code"},
+            "worker_course": {"cli": "claude-code"},
+        },
+    }
+
+    with isolated_env(team=team, runtime_config={"chat_id": "oc_x"}):
+        local_facts.upsert_status("worker_course", "进行中", "T-79 IB Guide 下载中")
+        rc, out, _ = run_cli(["task", "auto-ops-production", "--send-manager"])
+        messages = local_facts.list_messages("manager")
+
+    assert rc == 0
+    assert "sent_to_manager=true" in out
+    assert len(messages) == 1
+    assert messages[0]["from"] == "auto_ops"
+    assert messages[0]["priority"] == "高"
+    assert "auto_ops 全员生产状态巡检" in messages[0]["content"]
+    assert "auto_ops production snapshot" in messages[0]["content"]
+    assert "manager_next_action=no_action" in messages[0]["content"]
 
 
 def test_task_create_title_with_spaces():

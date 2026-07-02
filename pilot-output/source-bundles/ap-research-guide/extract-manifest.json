@@ -1,0 +1,549 @@
+{
+  "schema_version": "1",
+  "subject": "research",
+  "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/03-AP知识库/03-学科知识/AP Research/02-课本与考纲/考纲/ap-research-course-and-exam-description.pdf",
+  "file_checksum_sha256": "f598d115dc73d95af34d4c67f54a2575818c10875438fabe446e07622c76181e",
+  "pdfinfo": {
+    "Title": "AP® Research Course and Exam Description",
+    "Subject": "Advanced Placement",
+    "Keywords": "Course and Exam Description; CED; course information; course content; exam information; exam content; teacher resources; course resources; teaching support; AP support and processes; sample exam questions; scoring information; scoring resources; fall 2025; ADA",
+    "Author": "College Board",
+    "Creator": "Adobe InDesign CC 14.0 (Macintosh)",
+    "Producer": "Adobe PDF Library 15.0; modified using iTextSharp 4.1.6 by 1T3XT",
+    "CreationDate": "Tue Aug 12 09:13:00 2025 CST",
+    "ModDate": "Mon Sep 15 08:02:21 2025 CST",
+    "Custom Metadata": "yes",
+    "Metadata Stream": "yes",
+    "Tagged": "yes",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "AcroForm",
+    "JavaScript": "no",
+    "Pages": "86",
+    "Encrypted": "yes (print:yes copy:yes change:no addNotes:no algorithm:AES-256)",
+    "Page size": "612 x 783 pts",
+    "Page rot": "0",
+    "File size": "3979513 bytes",
+    "Optimized": "no",
+    "PDF version": "1.7"
+  },
+  "total_pages": 86,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": 1,
+      "chars": 3436,
+      "first_200": "INCLUDES \u0007Curriculum framework \u0007Instructional section \u0007A ssessment overview \u0007Student handouts AP Research ® COURSE AND EXAM DESCRIPTION Effective Fall 2024 IMPORTANT INFORMATION ABOUT AP RESEARCH: Any"
+    },
+    {
+      "physical_page": 2,
+      "printed_page": 2,
+      "chars": 3436,
+      "first_200": "one specific set of cultural or political values, but are expected to have the maturity to analyze perspectives different from their own and to question the meaning, purpose, or effect"
+    },
+    {
+      "physical_page": 3,
+      "printed_page": 3,
+      "chars": 3436,
+      "first_200": "Perspectives 23 Big Idea 4: Synthesize Ideas 27 Big Idea 5: Team, Transform, and Transmit 33 AP Research Instructional Approaches 33 Organizing the Course 37 Teaching the Skills 41 Formative"
+    },
+    {
+      "physical_page": 4,
+      "printed_page": 4,
+      "chars": 3436,
+      "first_200": "er, OH Members of the AP Research Curriculum Review Committee Whitney Arnold, University of California Los Angeles, Los Angeles, CA Michael Dorff, Brigham Young University, Provo, UT Liz Dawes Duraisi"
+    },
+    {
+      "physical_page": 5,
+      "printed_page": 5,
+      "chars": 3436,
+      "first_200": "d by college faculty and skills described in the course framework. experienced AP teachers. Most four-year colleges and The AP Program has a short list of curricular and universities in"
+    },
+    {
+      "physical_page": 6,
+      "printed_page": 6,
+      "chars": 3436,
+      "first_200": "on is scored online. All AP Readers are thoroughly trained, and their work is monitored throughout the Is Developed Reading for fairness and consistency. In each subject, The scope of"
+    },
+    {
+      "physical_page": 7,
+      "printed_page": 7,
+      "chars": 3436,
+      "first_200": "considered to The extensive work done by college faculty and ensure that AP courses and exams are able to provide AP teachers in the development of the course and students"
+    },
+    {
+      "physical_page": 8,
+      "printed_page": 8,
+      "chars": 3436,
+      "first_200": "Readers who travel. AP Credit Policy Search page. § Score from home: AP Readers have online distributed scoring opportunities for certain BECOMING AN AP READER subjects. Check the AP Reader"
+    },
+    {
+      "physical_page": 9,
+      "printed_page": 9,
+      "chars": 3436,
+      "first_200": "labels, which replaces the AP student pack. The AP ID connects a student’s exam materials with the registration information they provided during digital activation, eliminating the need for preadminis"
+    },
+    {
+      "physical_page": 10,
+      "printed_page": 10,
+      "chars": 3436,
+      "first_200": "istration and Ordering. 5 Teacher creates AP Seminar student teams for team assignments. Teacher distributes College Board–provided source material to AP Seminar students. 6 Students submit written pe"
+    },
+    {
+      "physical_page": 11,
+      "printed_page": 11,
+      "chars": 3436,
+      "first_200": "stone program reflect the core academic skills needed for college, career, and life readiness identified by leading educational organizations and College Board membership, including the following: § T"
+    },
+    {
+      "physical_page": 12,
+      "printed_page": 12,
+      "chars": 3436,
+      "first_200": "8 Return to Table of Contents © 2024 College Board AP Capstone Program AP Capstone Reasoning Processes The AP Capstone program allows students to develop and practice reasoning processes that"
+    },
+    {
+      "physical_page": 13,
+      "printed_page": 13,
+      "chars": 3436,
+      "first_200": "or research question broader field or conclusions or new method to or project goal discipline Choosing and understandings accomplish consistently applying an ESE Evaluate the purpose appropriate citat"
+    },
+    {
+      "physical_page": 14,
+      "printed_page": 14,
+      "chars": 3436,
+      "first_200": "10 Return to Table of Contents © 2024 College Board AP Capstone Program AP Research Curricular Requirements The curricular requirements are the core elements of an AP course. The curriculum"
+    },
+    {
+      "physical_page": 15,
+      "printed_page": 15,
+      "chars": 3436,
+      "first_200": "tualization will guide the development and organization of learning outcomes from general to specific, resulting in focused statements about content knowledge and skills needed for success in the cour"
+    },
+    {
+      "physical_page": 16,
+      "printed_page": 16,
+      "chars": 3436,
+      "first_200": "© 2024 College Board AP Capstone Program Big Idea 1: Question and Explore Inquiry and investigation begin when students encounter information about ideas, complex issues, and problems that stimulates "
+    },
+    {
+      "physical_page": 17,
+      "printed_page": 17,
+      "chars": 3436,
+      "first_200": ", they appear in bold blue text. The glossary begins on page 64. AP Research Course and Exam Description 13 Return to Table of Contents © 2024 College Board AP"
+    },
+    {
+      "physical_page": 18,
+      "printed_page": 18,
+      "chars": 3436,
+      "first_200": "EK 1.1D3: Scholarly inquiry should be situated within a broader understanding of the scholarly community and of importance and relevance to that community. LO 1.1E: Developing and EK 1.1E1: A"
+    },
+    {
+      "physical_page": 19,
+      "printed_page": 19,
+      "chars": 3436,
+      "first_200": "on used to address a aided by the effective organization, managing information using problem may come from various secondary management, and selection effective strategies. sources (e.g., articles, ot"
+    },
+    {
+      "physical_page": 20,
+      "printed_page": 20,
+      "chars": 3436,
+      "first_200": "1.3A7: Software and online tools (e.g., SurveyMonkey, SPSS) can be used to survey participants and analyze large data sets. EU 1.4: The relevance and LO 1.4A: Evaluating the EK 1.4A1:"
+    },
+    {
+      "physical_page": 21,
+      "printed_page": 21,
+      "chars": 3436,
+      "first_200": "on the honesty, memory, and reliability of the respondents and/or observers as well as the design of the data collection instrument. EU 1.5: There are multiple ways to LO 1.5A:"
+    },
+    {
+      "physical_page": 22,
+      "printed_page": 22,
+      "chars": 3436,
+      "first_200": "Return to Table of Contents © 2024 College Board AP Capstone Program Enduring Understandings Learning Objectives Essential Knowledge (Students will understand that . . . ) (Students will be skilled"
+    },
+    {
+      "physical_page": 23,
+      "printed_page": 23,
+      "chars": 3436,
+      "first_200": "and corroborate trends, patterns, correlations, and/or themes. LO 1.5C: Demonstrating EK 1.5C1: Scholars carefully plan methods of perseverance through setting inquiry, analysis, and other feasible re"
+    },
+    {
+      "physical_page": 24,
+      "printed_page": 24,
+      "chars": 3436,
+      "first_200": "to conduct research with humans through an institutional review board (IRB). EK 1.5D3: There are copyright and patent laws and guidelines that govern the use and reproduction of others’ instruments,"
+    },
+    {
+      "physical_page": 25,
+      "printed_page": 25,
+      "chars": 3436,
+      "first_200": "to preview and prioritize a written text comprehension requires reading, include skimming, scanning, rereading, and viewing, listening, and thinking questioning. critically. EK 2.1A3: Strategies activ"
+    },
+    {
+      "physical_page": 26,
+      "printed_page": 26,
+      "chars": 3436,
+      "first_200": "evaluate an argument. composed of one or more claims justified the line of reasoning and evidence through evidence. to determine to what extent they EK 2.2A2: An argument’s line of"
+    },
+    {
+      "physical_page": 27,
+      "printed_page": 27,
+      "chars": 3436,
+      "first_200": "explanations, opinions) to support their claims. Evidence has varying degrees of validity. EK 2.2B3: Authors strategically include evidence to support their claims. EK 2.2B4: Writers appeal to (or pos"
+    },
+    {
+      "physical_page": 28,
+      "printed_page": 28,
+      "chars": 3436,
+      "first_200": "with the conclusions. The strength of an argument depends upon an author acknowledging and/or considering the limitations of his or her conclusions, opposing views or perspectives, and/or his or her"
+    },
+    {
+      "physical_page": 29,
+      "printed_page": 29,
+      "chars": 3436,
+      "first_200": "bout this issue? § What are the implications and/or consequences of accepting or rejecting a particular argument? § How can I connect the multiple arguments? What other issues, questions, or"
+    },
+    {
+      "physical_page": 30,
+      "printed_page": 30,
+      "chars": 3436,
+      "first_200": "influence one’s judgment. AP Research Course and Exam Description 22 Return to Table of Contents © 2024 College Board AP Capstone Program Big Idea 4: Synthesize Ideas Once enough information"
+    },
+    {
+      "physical_page": 31,
+      "printed_page": 31,
+      "chars": 3436,
+      "first_200": "EK 4.1A4: Effective arguments may acknowledge other arguments and/or respond to them with counterarguments (e.g., concession, refutation, rebuttal). EK 4.1A5: The line of reasoning is a clear, logical"
+    },
+    {
+      "physical_page": 32,
+      "printed_page": 32,
+      "chars": 3436,
+      "first_200": "EK 4.1A10: Whether developing an argument or conceptualizing an idea or work of art, scholars thoughtfully choose and implement a process aligned with the inquiry or project goal. EK 4.1A11:"
+    },
+    {
+      "physical_page": 33,
+      "printed_page": 33,
+      "chars": 3436,
+      "first_200": "or perspectives. AP Research Course and Exam Description 24 Return to Table of Contents © 2024 College Board AP Capstone Program Enduring Understandings Learning Objectives Essential Knowledge (Studen"
+    },
+    {
+      "physical_page": 34,
+      "printed_page": 34,
+      "chars": 3436,
+      "first_200": "evidence with claims. interpretation or inference, identifying patterns, describing trends, and/or explaining relationships (e.g., comparative, causal, correlational). EU 4.3: Responsible participatio"
+    },
+    {
+      "physical_page": 35,
+      "printed_page": 35,
+      "chars": 3436,
+      "first_200": "ing an appropriate citation style. sources (e.g., APA, MLA, Chicago, AMA). prior findings and contributions of (continued) EK 4.3A6: Appropriation in works of art has others. potential legal and ethic"
+    },
+    {
+      "physical_page": 36,
+      "printed_page": 36,
+      "chars": 3436,
+      "first_200": "rning, and collaboration. ESSENTIAL QUESTIONS § How can I best appeal to and engage my audience? § What is the best medium or genre through which to reach my audience?"
+    },
+    {
+      "physical_page": 37,
+      "printed_page": 37,
+      "chars": 3436,
+      "first_200": "Learning Objectives Essential Knowledge (Students will understand that . . . ) (Students will be skilled at . . . ) (Students will know that . . . ) EU"
+    },
+    {
+      "physical_page": 38,
+      "printed_page": 38,
+      "chars": 3436,
+      "first_200": "this project could impact the field; discusses possible next steps › Bibliography: provides a complete list of sources cited and consulted in the appropriate disciplinary style EK 5.1A2: Coherence is"
+    },
+    {
+      "physical_page": 39,
+      "printed_page": 39,
+      "chars": 3436,
+      "first_200": "ed or presented differently detract from credibility. depending on audience, purpose, and context. LO 5.1C: Communicating EK 5.1C1: Effective organizational and (continued) information through appropr"
+    },
+    {
+      "physical_page": 40,
+      "printed_page": 40,
+      "chars": 3436,
+      "first_200": "effectively to nonexperts or people outside the discipline. LO 5.1E: Engaging an audience by EK 5.1E1: Speakers vary elements of employing effective techniques of delivery (e.g., volume, tempo, moveme"
+    },
+    {
+      "physical_page": 41,
+      "printed_page": 41,
+      "chars": 3436,
+      "first_200": "holars engage thoughtfully with their audiences’ critiques and questions. EU 5.2: Teams are most effective LO 5.2A: Providing individual EK 5.2A1: Knowing and communicating when they draw on the diver"
+    },
+    {
+      "physical_page": 42,
+      "printed_page": 42,
+      "chars": 3436,
+      "first_200": "s in understanding. Strategies of personal conclusions and their for reflection may include journal writing, implications. self-questioning, drawing, exploration of space, and/or guided contemplation."
+    },
+    {
+      "physical_page": 43,
+      "printed_page": 43,
+      "chars": 3436,
+      "first_200": ".3C2: Reflective scholars acknowledge how their inquiry processes and resulting works can be transformational for their own and others’ understanding as well as for their personal identities as schola"
+    },
+    {
+      "physical_page": 44,
+      "printed_page": 44,
+      "chars": 3436,
+      "first_200": "he researcher seeks relevant information in articles, books, and other sources and develops an informed perspective built upon, but not merely derivative of, the ideas in the examined material. As"
+    },
+    {
+      "physical_page": 45,
+      "printed_page": 45,
+      "chars": 3436,
+      "first_200": "understanding and implementation of inquiry in the arts with an emphasis on developing a product, performance, or exhibit alongside the academic paper, presentation, and oral defense. Internship The c"
+    },
+    {
+      "physical_page": 46,
+      "printed_page": 46,
+      "chars": 3436,
+      "first_200": "M THE AP SEMINAR COURSE TO THE AP RESEARCH COURSE To prepare AP Seminar students to enter AP Research, the next course in the AP Capstone program, teachers should provide"
+    },
+    {
+      "physical_page": 47,
+      "printed_page": 47,
+      "chars": 3436,
+      "first_200": "January Students implement their inquiry methods while engaging in progress and reflection interviews with the teacher to ensure challenges with methods and time management are addressed. Students cur"
+    },
+    {
+      "physical_page": 48,
+      "printed_page": 48,
+      "chars": 3436,
+      "first_200": "ions interest into a research question to Teachers provide a visual system for serve as the foundation of a long-term organizing multiple ideas, perspectives, investigation or inquiry. and/or argument"
+    },
+    {
+      "physical_page": 49,
+      "printed_page": 49,
+      "chars": 3436,
+      "first_200": "and purpose of the study to determine whether or not others clearly understand the focus of the study. AP Research Course and Exam Description 37 Return to Table of Contents"
+    },
+    {
+      "physical_page": 50,
+      "printed_page": 50,
+      "chars": 3436,
+      "first_200": "of Methods feasible research or inquiry design Students write citations and brief summaries to accomplish the purpose of the of the research questions and methods of research question and/or project"
+    },
+    {
+      "physical_page": 51,
+      "printed_page": 51,
+      "chars": 3436,
+      "first_200": "Data Table and Graphical Analyses Students plot or categorize images, graphs, and/or other visual presentations of data or information into chunks for the purpose of determining the significance of th"
+    },
+    {
+      "physical_page": 52,
+      "printed_page": 52,
+      "chars": 3436,
+      "first_200": "rse and Exam Description 39 Return to Table of Contents © 2024 College Board AP Capstone Program Representative Instructional Core Skill Area Description Strategies Showcasing Scholarly The process of"
+    },
+    {
+      "physical_page": 53,
+      "printed_page": 53,
+      "chars": 3436,
+      "first_200": "s, moments of critical questioning, and comments or ideas from today’s work that have impacted you. › Describe why these insights, questions, and ideas are important to you. What effect"
+    },
+    {
+      "physical_page": 54,
+      "printed_page": 54,
+      "chars": 3436,
+      "first_200": "a broad Inquiry Background range of perspectives and scholarly sources of information for the chosen field of study. Focused Topic of Inquiry Exhibit knowledge of the field of interest and"
+    },
+    {
+      "physical_page": 55,
+      "printed_page": 55,
+      "chars": 3436,
+      "first_200": "Return to Table of Contents © 2024 College Board AP Capstone Program Timeline Formative Assessment Purpose October–November Poster Presentation of Research Effectively articulate the focused topic of "
+    },
+    {
+      "physical_page": 56,
+      "printed_page": 56,
+      "chars": 3436,
+      "first_200": "Exhibit depth of knowledge of topic of inquiry and articulation of choices made in design and interpretation/synthesis of evidence through the research project through responses to feedback and sugges"
+    },
+    {
+      "physical_page": 57,
+      "printed_page": 57,
+      "chars": 3436,
+      "first_200": "thors) will receive a score of 0 on that particular component of the AP Seminar and/or AP Research Performance Task. In AP Seminar, a team of students that incorporates falsified"
+    },
+    {
+      "physical_page": 58,
+      "printed_page": 58,
+      "chars": 3436,
+      "first_200": "f sources generated by AI organizations, publications, or sources without going to the original sources and that may be pertinent to the area of reviewing the content. inquiry, so that"
+    },
+    {
+      "physical_page": 59,
+      "printed_page": 59,
+      "chars": 3436,
+      "first_200": "put sources in conversation. AP Research Course and Exam Description 44 Return to Table of Contents © 2024 College Board AP Capstone Program Phase of Work Acceptable Use Not Acceptable"
+    },
+    {
+      "physical_page": 60,
+      "printed_page": 60,
+      "chars": 3436,
+      "first_200": "earch) or the checkpoints (AP Seminar) to ensure that they have done this work themselves. Revising a paper › Using spell or grammar checkers. › Accepting AI-generated suggestions for ›"
+    },
+    {
+      "physical_page": 61,
+      "printed_page": 61,
+      "chars": 3436,
+      "first_200": "result in a score of zero on the associated task. § In AP Seminar, teachers assess the authenticity of student work based on checkpoints that take the form of short"
+    },
+    {
+      "physical_page": 62,
+      "printed_page": 62,
+      "chars": 3436,
+      "first_200": "mpetition setting, and/or disseminate their findings by publishing or publicly presenting their findings, teacher approval is sufficient. However, there are two general circumstances in which addition"
+    },
+    {
+      "physical_page": 63,
+      "printed_page": 63,
+      "chars": 3436,
+      "first_200": "hey engage in research. Teachers can also design their own questions and tasks. The combined group of questions and tasks in the PREP document should address all five big ideas"
+    },
+    {
+      "physical_page": 64,
+      "printed_page": 64,
+      "chars": 3436,
+      "first_200": "e to complete the PREP and work-in-progress checks with their student, throughout the year, will result in a score of zero on the Academic Paper. AP Research Course and Exam"
+    },
+    {
+      "physical_page": 65,
+      "printed_page": 65,
+      "chars": 3436,
+      "first_200": "50 Return to Table of Contents © 2024 College Board AP Capstone Program Component Scoring Method Weight Academic Paper (AP) College Board scored 75% 4,000–5,000 words Presentation and Oral Defense"
+    },
+    {
+      "physical_page": 66,
+      "printed_page": 66,
+      "chars": 3436,
+      "first_200": "method. Discussion, Analysis, Interprets the significance of the results, performance/exhibit/product, or findings; explores and/or Evaluation connections to original research question/project goal. C"
+    },
+    {
+      "physical_page": 67,
+      "printed_page": 67,
+      "chars": 3436,
+      "first_200": "ade during the research process (cite or attribute sources or evidence as needed) § explaining the research process/method, evidence generated, conclusions, and implications §§ engaging the audience t"
+    },
+    {
+      "physical_page": 68,
+      "printed_page": 68,
+      "chars": 3436,
+      "first_200": "nd/or expert advisers in these courses and what individuals providing guidance to students should and should not do. AP Research: Role of the Teacher DO DO NOT Make sure students,"
+    },
+    {
+      "physical_page": 69,
+      "printed_page": 69,
+      "chars": 3436,
+      "first_200": "f Contents © 2024 College Board AP Capstone Program Role of Expert Advisers in the Academic Paper Should a student require such, they may engage in communication with one or"
+    },
+    {
+      "physical_page": 70,
+      "printed_page": 70,
+      "chars": 3436,
+      "first_200": "oral defense questions that have already been provided to the students in advance). AP Research Course and Exam Description 55 Return to Table of Contents © 2024 College Board AP"
+    },
+    {
+      "physical_page": 71,
+      "printed_page": 71,
+      "chars": 3436,
+      "first_200": "Form, pp. 54-55) for the teacher’s feedback to help you refine your research question/project goal/method and ultimately approve your proposal prior to you engaging in the work. With assistance from"
+    },
+    {
+      "physical_page": 72,
+      "printed_page": 72,
+      "chars": 3436,
+      "first_200": "Your teacher will be required to affirm to your completion of your PREP and routine progress checks once you have submitted your work as final. NOTE: Students will receive a"
+    },
+    {
+      "physical_page": 73,
+      "printed_page": 73,
+      "chars": 3436,
+      "first_200": "60 Return to Table of Contents © 2024 College Board AP Capstone Program Handout effective Fall 2024 Required Element Description Results, Product, or Presents the findings, evidence, results, or perfo"
+    },
+    {
+      "physical_page": 74,
+      "printed_page": 74,
+      "chars": 3436,
+      "first_200": "sen from the following oral defense question list. The oral defense panel will ask one question pertaining to your research or inquiry process, one question focused on your depth of"
+    },
+    {
+      "physical_page": 75,
+      "printed_page": 75,
+      "chars": 3436,
+      "first_200": "nything that questions, monitor, discuss, and provide guidance on is part of, or contributes to, the final work progress. submitted for assessment. Direct the students to the areas of the"
+    },
+    {
+      "physical_page": 76,
+      "printed_page": 76,
+      "chars": 3436,
+      "first_200": "Digital Portfolio by May 10 at 11.59 p.m. ET. Portfolio. NOTE: Students will receive a zero for the Academic Paper if the affirmations are not completed by the teacher. (continues)"
+    },
+    {
+      "physical_page": 77,
+      "printed_page": 77,
+      "chars": 3436,
+      "first_200": "ing them feedback, such as asking a question to which the understand how to access resources). expert adviser can then respond). Provide general feedback to students about Write, revise, amend,"
+    },
+    {
+      "physical_page": 78,
+      "printed_page": 78,
+      "chars": 3436,
+      "first_200": "ology to produce new text, charts, images, audio, video etc. This includes not only ChatGPT and similar Large Language Models (LLMs), but also many writing assistants or plug-ins that are"
+    },
+    {
+      "physical_page": 79,
+      "printed_page": 79,
+      "chars": 3436,
+      "first_200": "rganizations, publications, or without going to the original sources sources that may be pertinent to the and reviewing the content. area of inquiry, so that the student can then locate"
+    },
+    {
+      "physical_page": 80,
+      "printed_page": 80,
+      "chars": 3436,
+      "first_200": "checkpoints (AP Seminar) to ensure they contrasting elements from within a have done this work themselves. source or across multiple sources. › Develop statements or paragraphs that put sources in"
+    },
+    {
+      "physical_page": 81,
+      "printed_page": 81,
+      "chars": 3436,
+      "first_200": "› Asking generative AI to produce outlining a paper practices in how to structure a research an outline or draft of a specific paper, essay, or report. paper. NOTE: Students"
+    },
+    {
+      "physical_page": 82,
+      "printed_page": 82,
+      "chars": 3436,
+      "first_200": "l 2024 Phase of Work Acceptable Use Not Acceptable Use Developing › Seeking general guidance on › Uncritically using AI to produce Presentations effective presentations. the key points, visuals, or"
+    },
+    {
+      "physical_page": 83,
+      "printed_page": 83,
+      "chars": 3436,
+      "first_200": "© 2024 College Board AP Capstone Program AP Research Glossary alignment — Cohesion between the focus of an inquiry, the method of collecting information, the process of analysis of the"
+    },
+    {
+      "physical_page": 84,
+      "printed_page": 84,
+      "chars": 3436,
+      "first_200": "oint of view conveyed through an argument plagiarism — Failure to acknowledge, attribute, and/or cite any ideas or evidence taken from another source point of view — A position or"
+    },
+    {
+      "physical_page": 85,
+      "printed_page": 85,
+      "chars": 3436,
+      "first_200": "es 74 Return to Table of Contents © 2024 College Board AP Capstone Program AP Research: QUEST Framework Essential Questions Q Question and Explore Challenge and expand the boundaries of"
+    },
+    {
+      "physical_page": 86,
+      "printed_page": 86,
+      "chars": 3436,
+      "first_200": "75 Return to Table of Contents © 2024 College Board AP Capstone Program AP Research Timeline Academic Year 1 AP Seminar instruction begins in the fall Academic Year 2 AP"
+    }
+  ]
+}

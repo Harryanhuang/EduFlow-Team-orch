@@ -1,0 +1,1141 @@
+{
+  "total": 113,
+  "pass": 111,
+  "pass_with_risks": 2,
+  "fail": 0,
+  "p0_total": 0,
+  "p1_total": 0,
+  "p2_total": 2,
+  "results": [
+    {
+      "package": "pilot-output/assessment-skills/ap-african-american-studies",
+      "skill_id": "ap-african-american-studies",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-art-history",
+      "skill_id": "ap-art-history",
+      "verdict": "pass_with_risks",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 1
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-biology",
+      "skill_id": "ap-biology",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-calculus-ab",
+      "skill_id": "ap-calculus-ab",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-chemistry",
+      "skill_id": "ap-chemistry",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-chinese-language-and-culture",
+      "skill_id": "ap-chinese-language-and-culture",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-comparative-government-and-politics",
+      "skill_id": "ap-comparative-government-and-politics",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-computer-science-a",
+      "skill_id": "ap-computer-science-a",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-computer-science-principles",
+      "skill_id": "ap-computer-science-principles",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-cybersecurity",
+      "skill_id": "ap-cybersecurity",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-drawing",
+      "skill_id": "ap-drawing",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-english-language-and-composition",
+      "skill_id": "ap-english-language-and-composition",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-english-literature-and-composition",
+      "skill_id": "ap-english-literature-and-composition",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-environmental-science",
+      "skill_id": "ap-environmental-science",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-european-history",
+      "skill_id": "ap-european-history",
+      "verdict": "pass_with_risks",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 1
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-french-language-and-culture",
+      "skill_id": "ap-french-language-and-culture",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-german-language-and-culture",
+      "skill_id": "ap-german-language-and-culture",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-human-geography",
+      "skill_id": "ap-human-geography",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-italian-language-and-culture",
+      "skill_id": "ap-italian-language-and-culture",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-japanese-language-and-culture",
+      "skill_id": "ap-japanese-language-and-culture",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-latin",
+      "skill_id": "ap-latin",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-macroeconomics",
+      "skill_id": "ap-macroeconomics",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-microeconomics",
+      "skill_id": "ap-microeconomics",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-music-theory",
+      "skill_id": "ap-music-theory",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-physics-1",
+      "skill_id": "ap-physics-1",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-physics-2",
+      "skill_id": "ap-physics-2",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-physics-c-electricity-and-magnetism",
+      "skill_id": "ap-physics-c-electricity-and-magnetism",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-physics-c-mechanics",
+      "skill_id": "ap-physics-c-mechanics",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-precalculus",
+      "skill_id": "ap-precalculus",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-psychology",
+      "skill_id": "ap-psychology",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-research",
+      "skill_id": "ap-research",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-seminar",
+      "skill_id": "ap-seminar",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-spanish-language-and-culture",
+      "skill_id": "ap-spanish-language-and-culture",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-spanish-literature-and-culture",
+      "skill_id": "ap-spanish-literature-and-culture",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-statistics",
+      "skill_id": "ap-statistics",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-united-states-government-and-politics",
+      "skill_id": "ap-united-states-government-and-politics",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-united-states-history",
+      "skill_id": "ap-united-states-history",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/ap-world-history-modern",
+      "skill_id": "ap-world-history-modern",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/aqa-ial-accounting-9615",
+      "skill_id": "aqa-ial-accounting-9615",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/aqa-ial-biology-7402",
+      "skill_id": "aqa-ial-biology-7402",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/aqa-ial-business-9625",
+      "skill_id": "aqa-ial-business-9625",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/aqa-ial-chemistry-7405",
+      "skill_id": "aqa-ial-chemistry-7405",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/aqa-ial-chinese-9676",
+      "skill_id": "aqa-ial-chinese-9676",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/aqa-ial-computer-science-9645",
+      "skill_id": "aqa-ial-computer-science-9645",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/aqa-ial-economics-9640",
+      "skill_id": "aqa-ial-economics-9640",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/aqa-ial-english-language-7702",
+      "skill_id": "aqa-ial-english-language-7702",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/aqa-ial-english-literature-7717",
+      "skill_id": "aqa-ial-english-literature-7717",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/aqa-ial-further-mathematics-9665",
+      "skill_id": "aqa-ial-further-mathematics-9665",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/aqa-ial-geography-9635",
+      "skill_id": "aqa-ial-geography-9635",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/aqa-ial-mathematics-7357",
+      "skill_id": "aqa-ial-mathematics-7357",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/aqa-ial-physics-7408",
+      "skill_id": "aqa-ial-physics-7408",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/aqa-ial-psychology-9685",
+      "skill_id": "aqa-ial-psychology-9685",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/aqa-ial-sociology-9690",
+      "skill_id": "aqa-ial-sociology-9690",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/caie-alevel-accounting-9706",
+      "skill_id": "caie-alevel-accounting-9706",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/caie-alevel-biology-9700",
+      "skill_id": "caie-alevel-biology-9700",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/caie-alevel-business-9609",
+      "skill_id": "caie-alevel-business-9609",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/caie-alevel-chemistry-9701",
+      "skill_id": "caie-alevel-chemistry-9701",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/caie-alevel-computer-science-9618",
+      "skill_id": "caie-alevel-computer-science-9618",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/caie-alevel-economics-9708",
+      "skill_id": "caie-alevel-economics-9708",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/caie-alevel-geography-9696",
+      "skill_id": "caie-alevel-geography-9696",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/caie-alevel-history-9489",
+      "skill_id": "caie-alevel-history-9489",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/caie-alevel-mathematics-9709",
+      "skill_id": "caie-alevel-mathematics-9709",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/caie-alevel-physics-9702",
+      "skill_id": "caie-alevel-physics-9702",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/caie-igcse-addmath-0606",
+      "skill_id": "caie-igcse-addmath-0606",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/caie-igcse-biology-0610",
+      "skill_id": "caie-igcse-biology-0610",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/caie-igcse-business-0450",
+      "skill_id": "caie-igcse-business-0450",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/caie-igcse-chemistry-0620",
+      "skill_id": "caie-igcse-chemistry-0620",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/caie-igcse-chinese-firstlang-0509",
+      "skill_id": "caie-igcse-chinese-firstlang-0509",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/caie-igcse-combinedsci-0653",
+      "skill_id": "caie-igcse-combinedsci-0653",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/caie-igcse-compsci-0478",
+      "skill_id": "caie-igcse-compsci-0478",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/caie-igcse-economics-0455",
+      "skill_id": "caie-igcse-economics-0455",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/caie-igcse-geography-0460",
+      "skill_id": "caie-igcse-geography-0460",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/caie-igcse-history-0470",
+      "skill_id": "caie-igcse-history-0470",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/caie-igcse-mathematics-0580",
+      "skill_id": "caie-igcse-mathematics-0580",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/caie-igcse-physics-0625",
+      "skill_id": "caie-igcse-physics-0625",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/caie-igcse-psychology-0266",
+      "skill_id": "caie-igcse-psychology-0266",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/dse-bafs",
+      "skill_id": "dse-bafs",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/dse-biology",
+      "skill_id": "dse-biology",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/dse-biology-ca",
+      "skill_id": "dse-biology-ca",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/dse-chemistry",
+      "skill_id": "dse-chemistry",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/dse-chemistry-ca",
+      "skill_id": "dse-chemistry-ca",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/dse-chinese-history",
+      "skill_id": "dse-chinese-history",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/dse-chinese-language",
+      "skill_id": "dse-chinese-language",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/dse-chinese-literature",
+      "skill_id": "dse-chinese-literature",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/dse-citizenship-and-social-development",
+      "skill_id": "dse-citizenship-and-social-development",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/dse-combined-science",
+      "skill_id": "dse-combined-science",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/dse-design-and-applied-technology",
+      "skill_id": "dse-design-and-applied-technology",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/dse-economics",
+      "skill_id": "dse-economics",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/dse-english-language",
+      "skill_id": "dse-english-language",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/dse-english-literature",
+      "skill_id": "dse-english-literature",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/dse-ethics-and-religious-studies",
+      "skill_id": "dse-ethics-and-religious-studies",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/dse-geography",
+      "skill_id": "dse-geography",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/dse-health-management-and-social-care",
+      "skill_id": "dse-health-management-and-social-care",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/dse-history",
+      "skill_id": "dse-history",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/dse-information-and-communication-technology",
+      "skill_id": "dse-information-and-communication-technology",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/dse-integrated-science",
+      "skill_id": "dse-integrated-science",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/dse-mathematics",
+      "skill_id": "dse-mathematics",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/dse-music",
+      "skill_id": "dse-music",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/dse-physical-education",
+      "skill_id": "dse-physical-education",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/dse-physics",
+      "skill_id": "dse-physics",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/dse-physics-ca",
+      "skill_id": "dse-physics-ca",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/dse-technology-and-living",
+      "skill_id": "dse-technology-and-living",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/dse-tourism-and-hospitality",
+      "skill_id": "dse-tourism-and-hospitality",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/dse-visual-arts",
+      "skill_id": "dse-visual-arts",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/edexcel-ial-accounting",
+      "skill_id": "edexcel-ial-accounting",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/edexcel-ial-biology",
+      "skill_id": "edexcel-ial-biology",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/edexcel-ial-business",
+      "skill_id": "edexcel-ial-business",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/edexcel-ial-chemistry",
+      "skill_id": "edexcel-ial-chemistry",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/edexcel-ial-computer-science",
+      "skill_id": "edexcel-ial-computer-science",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/edexcel-ial-economics",
+      "skill_id": "edexcel-ial-economics",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/edexcel-ial-mathematics",
+      "skill_id": "edexcel-ial-mathematics",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/edexcel-ial-physics",
+      "skill_id": "edexcel-ial-physics",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    },
+    {
+      "package": "pilot-output/assessment-skills/edexcel-ial-psychology",
+      "skill_id": "edexcel-ial-psychology",
+      "verdict": "pass",
+      "summary": {
+        "P0": 0,
+        "P1": 0,
+        "P2": 0
+      }
+    }
+  ]
+}

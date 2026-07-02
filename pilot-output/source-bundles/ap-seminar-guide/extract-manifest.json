@@ -1,0 +1,921 @@
+{
+  "schema_version": "1",
+  "subject": "seminar",
+  "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/03-AP知识库/03-学科知识/AP Seminar/02-课本与考纲/考纲/ap-seminar-course-and-exam-description.pdf",
+  "file_checksum_sha256": "c9e64e51ff6299f942b5d521df64d0d4f0ceb303c0ec21ec25ffbc46864d1110",
+  "pdfinfo": {
+    "Title": "AP® Seminar Course and Exam Description",
+    "Subject": "Advanced Placement",
+    "Keywords": "Course and Exam Description; CED; course information; course content; exam information; exam content; teacher resources; course resources; teaching support; AP support and processes; sample exam questions; scoring information; scoring resources; fall 2025; ADA",
+    "Author": "College Board",
+    "Creator": "Adobe InDesign CC 14.0 (Macintosh)",
+    "Producer": "Adobe PDF Library 15.0; modified using iTextSharp 4.1.6 by 1T3XT",
+    "CreationDate": "Mon Aug 11 09:37:14 2025 CST",
+    "ModDate": "Mon Sep 15 08:01:31 2025 CST",
+    "Custom Metadata": "yes",
+    "Metadata Stream": "yes",
+    "Tagged": "yes",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "AcroForm",
+    "JavaScript": "no",
+    "Pages": "148",
+    "Encrypted": "yes (print:yes copy:yes change:no addNotes:no algorithm:AES-256)",
+    "Page size": "612 x 783 pts",
+    "Page rot": "0",
+    "File size": "14528647 bytes",
+    "Optimized": "no",
+    "PDF version": "1.7"
+  },
+  "total_pages": 148,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": 1,
+      "chars": 3299,
+      "first_200": "INCLUDES \u0007Curriculum framework \u0007 \u0007A ssessment overview \u0007 AP Seminar ® COURSE AND EXAM DESCRIPTION Effective Fall 2024 IMPORTANT INFORMATION ABOUT AP SEMINAR: Any school can participate in the AP"
+    },
+    {
+      "physical_page": 2,
+      "printed_page": 2,
+      "chars": 3299,
+      "first_200": "but are expected to have the maturity to analyze perspectives different from their own and to question the meaning, purpose, or effect of such content within the literary work as"
+    },
+    {
+      "physical_page": 3,
+      "printed_page": 3,
+      "chars": 3299,
+      "first_200": "14 Big Idea 1: Question and Explore 17 Big Idea 2: Understand and Analyze 20 Big Idea 3: Evaluate Multiple Perspectives Big Idea 4: Synthesize Ideas 24 Big Idea 5:"
+    },
+    {
+      "physical_page": 4,
+      "printed_page": 4,
+      "chars": 3299,
+      "first_200": "sity, Stanford, CA AP Capstone Curriculum and Assessment Development Team Rachel Bettley Nunez, Senior Director, Capstone Curriculum and Assessment Development Edward Biedermann, Executive Director, A"
+    },
+    {
+      "physical_page": 5,
+      "printed_page": 5,
+      "chars": 3299,
+      "first_200": "P Course Audit, a process through which AP teachers’ course materials are reviewed by college AP Course Development faculty. The AP Course Audit was created to provide In an ongoing"
+    },
+    {
+      "physical_page": 6,
+      "printed_page": 6,
+      "chars": 3299,
+      "first_200": "standards. Scores on the free-response and expert AP teachers work within the scope of questions and performance assessments are weighted the corresponding college course to articulate what and combin"
+    },
+    {
+      "physical_page": 7,
+      "printed_page": 7,
+      "chars": 3299,
+      "first_200": "dvanced placement or college credit. achievement in the equivalent college course. Frequent and regular research studies establish the validity of AP How AP Exams Are Scored scores as follows: Please"
+    },
+    {
+      "physical_page": 8,
+      "printed_page": 8,
+      "chars": 3299,
+      "first_200": "nuing Education Units (CEUs): AP days in multiple locations to evaluate and score the Readers earn professional development hours and free-response sections of the AP Exams. Ninety-eight CEUs that can"
+    },
+    {
+      "physical_page": 9,
+      "printed_page": 9,
+      "chars": 3299,
+      "first_200": "tudent’s exam materials with the registration information they provided during digital activation, eliminating the need for preadministration sessions and reducing time spent bubbling on exam day. § T"
+    },
+    {
+      "physical_page": 10,
+      "printed_page": 10,
+      "chars": 3299,
+      "first_200": "ritten performance tasks as final in the AP Digital Portfolio no later 7 than April 30 at 11:59 p.m. ET or an earlier deadline set by their teacher. Students will"
+    },
+    {
+      "physical_page": 11,
+      "printed_page": 11,
+      "chars": 3299,
+      "first_200": "tified by leading educational organizations and College Board membership, including the following: § The American Association of Colleges and Universities (AAC&U), College Learning for the New Global "
+    },
+    {
+      "physical_page": 12,
+      "printed_page": 12,
+      "chars": 3299,
+      "first_200": "8 Return to Table of Contents © 2024 College Board AP Capstone Program AP Capstone Reasoning Processes The AP Capstone program allows students to develop and practice reasoning processes that"
+    },
+    {
+      "physical_page": 13,
+      "printed_page": 13,
+      "chars": 3299,
+      "first_200": "in which they are Use Evidence applying an appropriate situated ESE Evaluate Strategically citation style and effective Sources and UAP Understand choosing evidence to conventions of writing Evidence "
+    },
+    {
+      "physical_page": 14,
+      "printed_page": 14,
+      "chars": 3299,
+      "first_200": "ENV D AP Comparative CULT SC I Government and Politics UR SOC AL A T IF AP U.S. Government EN and Politics IA N L IC AP World Languages AP"
+    },
+    {
+      "physical_page": 15,
+      "printed_page": 15,
+      "chars": 3299,
+      "first_200": "Seminar is a foundational course that engages students in cross-curricular conversations that explore the complexities of academic and real-world topics and issues by analyzing divergent perspectives."
+    },
+    {
+      "physical_page": 16,
+      "printed_page": 16,
+      "chars": 3299,
+      "first_200": "tives or options; propose one or more solutions or resolutions; and present and defend the argument for their solutions through a multimedia presentation. § Students work independently to identify a"
+    },
+    {
+      "physical_page": 17,
+      "printed_page": 17,
+      "chars": 3299,
+      "first_200": "Program Big Idea 1: Question and Explore Inquiry and investigation begin when students encounter information about ideas, complex issues and problems that stimulates their intellectual curiosity. They"
+    },
+    {
+      "physical_page": 18,
+      "printed_page": 18,
+      "chars": 3299,
+      "first_200": "aw upon curiosity and imagination to engage with ideas or explore approaches to complex issues. Note: The first time words from the glossary are used in the curriculum framework tables,"
+    },
+    {
+      "physical_page": 19,
+      "printed_page": 19,
+      "chars": 3299,
+      "first_200": "texts and works, material culture, or efficient, productive, and credible. personally collected data such as from experiments, surveys, questionnaires, interviews, observations, personal narratives). "
+    },
+    {
+      "physical_page": 20,
+      "printed_page": 20,
+      "chars": 3299,
+      "first_200": "of a source requires considering and evaluating the reputation and credentials of the author, publisher, site owner, and/or sponsor; understanding and evaluating the author’s perspective and research "
+    },
+    {
+      "physical_page": 21,
+      "printed_page": 21,
+      "chars": 3299,
+      "first_200": "thor view the issue this way? § What biases may the author have that influence his or her perspective? § Does this argument acknowledge other perspectives? § How do I"
+    },
+    {
+      "physical_page": 22,
+      "printed_page": 22,
+      "chars": 3299,
+      "first_200": "Learning Objectives Essential Knowledge (Students will understand that . . . ) (Students will be skilled at . . . ) (Students will know that . . . ) LO"
+    },
+    {
+      "physical_page": 23,
+      "printed_page": 23,
+      "chars": 3299,
+      "first_200": "about a phenomenon. EK 2.2A4: A lack of understanding of the complexities of an argument (tone, implications, limitations, nuance, context) can lead to oversimplification and/or generalization. EK 2.2"
+    },
+    {
+      "physical_page": 24,
+      "printed_page": 24,
+      "chars": 3299,
+      "first_200": "EK 2.2B4: Writers appeal to (or possibly manipulate) readers through a variety of strategies and techniques (e.g., language, authority, qualifiers, fallacies, emphasis). EK 2.2B5: Evidence may be used"
+    },
+    {
+      "physical_page": 25,
+      "printed_page": 25,
+      "chars": 3299,
+      "first_200": "to compare and contrast different perspectives. These multiple perspectives, which may support, oppose, compete with, or otherwise vary from one another, come together to create the conversation on th"
+    },
+    {
+      "physical_page": 26,
+      "printed_page": 26,
+      "chars": 3299,
+      "first_200": "and Exam Description 20 Return to Table of Contents © 2024 College Board AP Capstone Program Big Idea 4: Synthesize Ideas Once enough information is gathered and evaluated, students synthesize"
+    },
+    {
+      "physical_page": 27,
+      "printed_page": 27,
+      "chars": 3299,
+      "first_200": "Effective arguments acknowledge these limits, increasing credibility by reducing overgeneralization or oversimplification. EK 4.1A4: Effective arguments acknowledge other arguments and/or respond to t"
+    },
+    {
+      "physical_page": 28,
+      "printed_page": 28,
+      "chars": 3299,
+      "first_200": "spatially, chronologically, order of importance) to convey reasoning and relationship (e.g., comparative, causal, correlational). EK 4.1A9: The same argument may be organized, arranged, or supported i"
+    },
+    {
+      "physical_page": 29,
+      "printed_page": 29,
+      "chars": 3299,
+      "first_200": "and attributed contributes to establishing the credibility of one’s own argument. AP Seminar Course and Exam Description 22 Return to Table of Contents © 2024 College Board AP Capstone Program"
+    },
+    {
+      "physical_page": 30,
+      "printed_page": 30,
+      "chars": 3299,
+      "first_200": "le manual. Quoting is using the exact words of others; paraphrasing is restating an idea in one’s own words. EK 4.3A5: Academic disciplines use specific style guides for citing and"
+    },
+    {
+      "physical_page": 31,
+      "printed_page": 31,
+      "chars": 3299,
+      "first_200": "STIONS § How can I best appeal to and engage my audience? § What is the best medium or genre through which to engage my audience? § What common misconceptions"
+    },
+    {
+      "physical_page": 32,
+      "printed_page": 32,
+      "chars": 3299,
+      "first_200": ". . ) (Students will be skilled at . . . ) (Students will know that . . . ) EK 5.1A2: Coherence is achieved when the elements and ideas"
+    },
+    {
+      "physical_page": 33,
+      "printed_page": 33,
+      "chars": 3299,
+      "first_200": "audience. Ineffective use or overuse of these elements disrupts audience engagement and understanding. EK 5.1C2: Data and other information can be presented graphically (e.g., infographics, graphs, ta"
+    },
+    {
+      "physical_page": 34,
+      "printed_page": 34,
+      "chars": 3299,
+      "first_200": "en LO 5.2A: Providing individual EK 5.2A1: Knowing and communicating they draw on the diverse perspectives, contributions to overall collaborative one’s strengths and challenges to a skills, and backg"
+    },
+    {
+      "physical_page": 35,
+      "printed_page": 35,
+      "chars": 3299,
+      "first_200": "thinking/rethinking, vision/revision, and writing/rewriting. LO 5.3B: Reflecting on experiences of EK 5.3B1: Reflection acknowledges collaborative effort. the impact of actions on both the group and i"
+    },
+    {
+      "physical_page": 36,
+      "printed_page": 36,
+      "chars": 3299,
+      "first_200": "of others, students develop their own individual perspectives and add their personal voices to the larger conversation. All in all, the AP Seminar course aims to build independent, critical thinkers"
+    },
+    {
+      "physical_page": 37,
+      "printed_page": 37,
+      "chars": 3299,
+      "first_200": "al and social § Artistic and philosophical § Political and historical § Environmental § Economic § Scientific § Futuristic § Ethical As the AP Program engages students in college-level work,"
+    },
+    {
+      "physical_page": 38,
+      "printed_page": 38,
+      "chars": 3299,
+      "first_200": "be more loosely connected. community issues and challenges: Interdisciplinary connections are made within each theme and issues › Democracy: Does my civic engagement make a are examined through multip"
+    },
+    {
+      "physical_page": 39,
+      "printed_page": 39,
+      "chars": 3299,
+      "first_200": "This course is offered to students who have an interest or area of emphasis in the arts. The selected themes allow students to examine common issues that intersect the various"
+    },
+    {
+      "physical_page": 40,
+      "printed_page": 40,
+      "chars": 3299,
+      "first_200": "© 2024 College Board AP Capstone Program AP Seminar Model Description Example Courses Interdisciplinary All course topics are connected and The two example courses listed here are modeled Courses cros"
+    },
+    {
+      "physical_page": 41,
+      "printed_page": 41,
+      "chars": 3299,
+      "first_200": "student perspective and point of view; question responses and, when needed, additional open- facts, reasons, and evidence; or examine ended questions that allow students to express their implications "
+    },
+    {
+      "physical_page": 42,
+      "printed_page": 42,
+      "chars": 3299,
+      "first_200": "from the text. Discussion Group To allow students to gain new Students engage in an interactive, small-group understanding of or insight into a text or discussion, often with an assigned"
+    },
+    {
+      "physical_page": 43,
+      "printed_page": 43,
+      "chars": 3299,
+      "first_200": "© 2024 College Board AP Capstone Program Representative Core Skill Area Description Instructional Strategies Critical Reading The strategic process of discovering Close reading: Carefully reading, rer"
+    },
+    {
+      "physical_page": 44,
+      "printed_page": 44,
+      "chars": 3299,
+      "first_200": "words, sentences, paragraphs) by numbering, separating phrases, drawing boxes, etc. Inquiry and Research The process of discovering new I-Search paper: A personal research paper understandings or idea"
+    },
+    {
+      "physical_page": 45,
+      "printed_page": 45,
+      "chars": 3299,
+      "first_200": "d repeatedly to get an overview of key scholars or sources in the field. Annotated bibliography: A bibliography that includes a brief summary of each source and a commentary about"
+    },
+    {
+      "physical_page": 46,
+      "printed_page": 46,
+      "chars": 3299,
+      "first_200": "mar, usage, and supporting evidence and to ensure an mechanics appropriate balance of ideas and a coherent line of reasoning. This process can be done prior to the writing process"
+    },
+    {
+      "physical_page": 47,
+      "printed_page": 47,
+      "chars": 3299,
+      "first_200": "working with others to Teambuilding activities: Warm-up activities accomplish a shared task or goal or solve in which group members work together to a problem. solve a small puzzle or"
+    },
+    {
+      "physical_page": 48,
+      "printed_page": 48,
+      "chars": 3299,
+      "first_200": "wledge the ideas and work of others throughout their course work. The student’s individual voice should be clearly evident, and the ideas of others must be acknowledged, attributed, and/or cited."
+    },
+    {
+      "physical_page": 49,
+      "printed_page": 49,
+      "chars": 3299,
+      "first_200": "© 2024 College Board AP Capstone Program Phase of Work Acceptable Use Not Acceptable Use Exploring ideas to Using generative AI tools to get a sense of existing Taking the"
+    },
+    {
+      "physical_page": 50,
+      "printed_page": 50,
+      "chars": 3299,
+      "first_200": "lways read the original text of the sources they intend to use to ensure they are › Copying and pasting AI accurately understanding and utilizing the evidence generated source summaries"
+    },
+    {
+      "physical_page": 51,
+      "printed_page": 51,
+      "chars": 3299,
+      "first_200": "only (AP Research only) PREP-based in-progress meetings (AP Research) to exception would be if use of ensure that they have done this work themselves. generative AI tools is the subject"
+    },
+    {
+      "physical_page": 52,
+      "printed_page": 52,
+      "chars": 3299,
+      "first_200": "enerative AI. Creating Citations / › Seeking guidance on how to cite or check › Using AI to generate citations Bibliography citations. without having directly studied the original sources. ›"
+    },
+    {
+      "physical_page": 53,
+      "printed_page": 53,
+      "chars": 3299,
+      "first_200": "ts that take the form of short conversations with students during which students make their thinking and decision-making visible (similar to an oral defense). These checkpoints should occur during the"
+    },
+    {
+      "physical_page": 54,
+      "printed_page": 54,
+      "chars": 3299,
+      "first_200": "chers must carefully plan a calendar that provides time for the tasks to be completed and uploaded by April 30 at 11:59 p.m. ET. Teachers are required to keep video"
+    },
+    {
+      "physical_page": 55,
+      "printed_page": 55,
+      "chars": 3299,
+      "first_200": "es, and interprets a range of perspectives about the problem or issue; and §§ Students must avoid plagiarism by acknowledging, attributing, and/or citing sources throughout the paper and including a"
+    },
+    {
+      "physical_page": 56,
+      "printed_page": 56,
+      "chars": 3299,
+      "first_200": "stion posed by the teacher. The Oral Defense Following the presentation, teachers should ask one question of each individual student. The questions are designed to prompt student reflection on their"
+    },
+    {
+      "physical_page": 57,
+      "printed_page": 57,
+      "chars": 3299,
+      "first_200": "for students. Hold work-in-progress meetings with students to ask Write, revise, amend, or correct anything that is part of, or questions, monitor, discuss, and provide guidance on contributes to, the"
+    },
+    {
+      "physical_page": 58,
+      "printed_page": 58,
+      "chars": 3299,
+      "first_200": "r the IRR if the affirmation is not completed by the teacher. AP Seminar Course and Exam Description 44 Return to Table of Contents © 2024 College Board AP Capstone"
+    },
+    {
+      "physical_page": 59,
+      "printed_page": 59,
+      "chars": 3299,
+      "first_200": "Return to Table of Contents © 2024 College Board AP Capstone Program Checkpoint #3 (Final Paper) Required steps: Required for IRR and IWA Teachers should read through the final submission"
+    },
+    {
+      "physical_page": 60,
+      "printed_page": 60,
+      "chars": 3299,
+      "first_200": "material (texts) representing a range of perspectives focused on a single theme. Students read and analyze these stimulus materials to identify thematic connections among them and possible areas for i"
+    },
+    {
+      "physical_page": 61,
+      "printed_page": 61,
+      "chars": 3299,
+      "first_200": "their analysis of the stimulus materials; gather additional information through research; analyze, evaluate, and select evidence; and develop a logical, well-reasoned argument of 2,000 words. The fina"
+    },
+    {
+      "physical_page": 62,
+      "printed_page": 62,
+      "chars": 3299,
+      "first_200": "o and understanding of the two criteria below, and a question must be asked to address each of them. Teachers may select questions from the list or formulate more specific"
+    },
+    {
+      "physical_page": 63,
+      "printed_page": 63,
+      "chars": 3299,
+      "first_200": "are working on their groups (teachers must not tell students what to do). research and/or presentations. Suggest possible resources that can help students further Conduct research or provide specific "
+    },
+    {
+      "physical_page": 64,
+      "printed_page": 64,
+      "chars": 3299,
+      "first_200": "Board AP Capstone Program Required Checkpoints in Performance Task 2 To ensure students aren’t using generative AI to bypass work, students must complete interim “checkpoints” with their teacher to de"
+    },
+    {
+      "physical_page": 65,
+      "printed_page": 65,
+      "chars": 3299,
+      "first_200": "2. Each student presents their argument outline to the teacher (for ~2-minutes) in which they explain their choices. This could include how the ideas connect, why they chose particular subsections,"
+    },
+    {
+      "physical_page": 66,
+      "printed_page": 66,
+      "chars": 3299,
+      "first_200": "Return to Table of Contents © 2024 College Board AP Capstone Program DESCRIPTION OF END-OF-COURSE EXAM Five sources will be included with each end-of-course exam. Sources on the end-of-course exam"
+    },
+    {
+      "physical_page": 67,
+      "printed_page": 67,
+      "chars": 3299,
+      "first_200": "AP Seminar Performance Task 1: Team Project and Presentation Student Version Weight: 20% of the AP Seminar score Task Overview You will work in teams of three to five to"
+    },
+    {
+      "physical_page": 68,
+      "printed_page": 68,
+      "chars": 3299,
+      "first_200": "ion. › Analyze the credibility of the sources and relevance of the evidence to your area of inquiry. › Synthesize the perspectives you have gathered and chose which ones would"
+    },
+    {
+      "physical_page": 69,
+      "printed_page": 69,
+      "chars": 3299,
+      "first_200": "› Conduct additional research on solutions or resolutions. ›› Evaluate different solutions in relation to context and complexity of the problem. › Propose a solution or resolution to your problem"
+    },
+    {
+      "physical_page": 70,
+      "printed_page": 70,
+      "chars": 3299,
+      "first_200": "stion in which you will reflect on experiences of collaborative effort and defend your team’s work. w Make sure your answers include specific details about your collaborative work. w Each"
+    },
+    {
+      "physical_page": 71,
+      "printed_page": 71,
+      "chars": 3299,
+      "first_200": "0 for that component of the Team Project and Presentation. A student who incorporates falsified or fabricated information (e.g. evidence, data, sources, and/or authors) will receive a score of 0"
+    },
+    {
+      "physical_page": 72,
+      "printed_page": 72,
+      "chars": 3299,
+      "first_200": "ry issue, potential sub-topics, or what is to generate a research question or generally already widely known about thesis, without engaging with the a topic. actual research or relying solely"
+    },
+    {
+      "physical_page": 73,
+      "printed_page": 73,
+      "chars": 3299,
+      "first_200": "xt of the sources they intend to use to ensure they are accurately understanding and utilizing the evidence from those sources in their work © 2024 College Board 60 Return"
+    },
+    {
+      "physical_page": 74,
+      "printed_page": 74,
+      "chars": 3299,
+      "first_200": "and/or fabricated data). The only questions in their PREP-based in- exception would be if use of progress meetings (AP Research) to generative AI tools is the subject ensure that they"
+    },
+    {
+      "physical_page": 75,
+      "printed_page": 75,
+      "chars": 3299,
+      "first_200": "›› Using spell or grammar checkers. › Accepting AI-generated suggestions for revisions of › Asking for feedback on style written work without critically and tone (students must make evaluating such"
+    },
+    {
+      "physical_page": 76,
+      "printed_page": 76,
+      "chars": 3299,
+      "first_200": "e a score for their performance tasks. Teachers must affirm, to the best of their knowledge, that students completed the checkpoints authentically in the AP Digital Portfolio. Failure to complete"
+    },
+    {
+      "physical_page": 77,
+      "printed_page": 77,
+      "chars": 3299,
+      "first_200": "stablished conventions of grammar, usage, style, and mechanics. (continues) © 2024 College Board 63 Return to Table of Contents AP Capstone Program Handout effective Fall 2024 Task Directions . Indivi"
+    },
+    {
+      "physical_page": 78,
+      "printed_page": 78,
+      "chars": 3299,
+      "first_200": "ims.) ww Evaluate different perspectives by considering objections to them, and their limitations and/or implications. ww Include relevant evidence from credible sources to support your claims. You sh"
+    },
+    {
+      "physical_page": 79,
+      "printed_page": 79,
+      "chars": 3299,
+      "first_200": "consider the implications of any suggested solutions. ww Engage the audience with an effective and clearly organized presentation design that guides them through your argument. ww Engage the audience "
+    },
+    {
+      "physical_page": 80,
+      "printed_page": 80,
+      "chars": 3299,
+      "first_200": "authors on the Team Multimedia Presentation will receive a group score of 0 for that component of the Team Project and Presentation. A student who incorporates falsified or fabricated information"
+    },
+    {
+      "physical_page": 81,
+      "printed_page": 81,
+      "chars": 3299,
+      "first_200": "or what is generally already to generate a research question or widely known about a topic. thesis, without engaging with the actual research or relying solely on generative AI as"
+    },
+    {
+      "physical_page": 82,
+      "printed_page": 82,
+      "chars": 3299,
+      "first_200": "evidence into the final draft. from those sources in their work (continues) © 2024 College Board 67 Return to Table of Contents AP Capstone Program Handout effective Fall 2024 Phase"
+    },
+    {
+      "physical_page": 83,
+      "printed_page": 83,
+      "chars": 3299,
+      "first_200": "falsified and/or fabricated data). in their PREP-based in-progress meetings The only exception would be (AP Research) to ensure that they have if use of generative AI tools is done this"
+    },
+    {
+      "physical_page": 84,
+      "printed_page": 84,
+      "chars": 3299,
+      "first_200": "suggestions for revisions of ›› Asking for feedback on style and written work without critically tone (students must make deliberate evaluating such contributions. choices on what feedback to incorpor"
+    },
+    {
+      "physical_page": 85,
+      "printed_page": 85,
+      "chars": 3299,
+      "first_200": "with the tasks. AP Seminar and AP Research students will need to complete the relevant checkpoints successfully to receive a score for their performance tasks. Teachers must affirm, to the"
+    },
+    {
+      "physical_page": 86,
+      "printed_page": 86,
+      "chars": 3299,
+      "first_200": "When I ask university students in Kyzyl what Tuvan words are untranslatable into English or Russian, they suggest khöömei, because the singing is so connected with the Tuvan environment that"
+    },
+    {
+      "physical_page": 87,
+      "printed_page": 87,
+      "chars": 3299,
+      "first_200": "ject in their modern kitchen in Kyzyl. of seven billion people speaks roughly National Orchestra, an ensemble that 7,000 languages, a statistic that would uses traditional Tuvan instruments and melodi"
+    },
+    {
+      "physical_page": 88,
+      "printed_page": 88,
+      "chars": 3299,
+      "first_200": "bout and Russian and Hindi and Spanish languages’ worth and utility. Does each and Arabic extends seemingly to every language have boxed up within it some hamlet, where they compete"
+    },
+    {
+      "physical_page": 89,
+      "printed_page": 89,
+      "chars": 3299,
+      "first_200": "oard Return to Table of Contents AP Capstone Program Handout effective Fall 2024 AP Capstone Program ® Source Documents TUVAN Language Russia Number of Speakers 235,000 [artyštaar] To burn juniper"
+    },
+    {
+      "physical_page": 90,
+      "printed_page": 90,
+      "chars": 3299,
+      "first_200": "Ai-Xaan Oorzhak throat sings and plays the igil, “make horse walk.” Singers use the term “air horse” to describe the spiritual depths they draw from to produce the harmonic sounds."
+    },
+    {
+      "physical_page": 91,
+      "printed_page": 91,
+      "chars": 3299,
+      "first_200": "uage and culture and wanted to support them (though classes are taught in English). D’Souza is from southern India, and his native language is I WITNESSED the heartrending cost of"
+    },
+    {
+      "physical_page": 92,
+      "printed_page": 92,
+      "chars": 3299,
+      "first_200": "Return to Table of Contents AP Capstone Program Program AP Capstone ® Handout effective Fall 2024 Source Documents a story, he cannot stop until the story to record a grammar"
+    },
+    {
+      "physical_page": 93,
+      "printed_page": 93,
+      "chars": 3299,
+      "first_200": "the sharp-toothed mandible of a river draw a recitation about a spirit whose daughters are eaten by a crocodile, one by belonged to Nimasow’s father until his one, as they"
+    },
+    {
+      "physical_page": 94,
+      "printed_page": 94,
+      "chars": 3299,
+      "first_200": "on points out, some 85 percent reindeer herders of southern Siberia have of languages have yet to be documented. an elaborate vocabulary for reindeer; Understanding them can only enrich our"
+    },
+    {
+      "physical_page": 95,
+      "printed_page": 95,
+      "chars": 3299,
+      "first_200": "Return to Table of Contents AP Capstone Program Handout effective Fall 2024 AP Capstone Program ® Source Documents AKA Language India Number of Speakers 1,000-2,000 [tradzy] a necklace of yellow"
+    },
+    {
+      "physical_page": 96,
+      "printed_page": 96,
+      "chars": 3299,
+      "first_200": "Handout effective Fall 2024 Source Documents SERI THE WISDOM OF THE HANT IIHA CÖHACOMXOJ moment depended on what part of the cactus fruit was ripe on the mountainside or the"
+    },
+    {
+      "physical_page": 97,
+      "printed_page": 97,
+      "chars": 3299,
+      "first_200": "rigation techniques, navigation systems, seasonal characteristic, a seed of their identity. calendars. One Seri told me of a “local expression” traditionally seminomadic hunter- elder, Efraín Estrella"
+    },
+    {
+      "physical_page": 98,
+      "printed_page": 98,
+      "chars": 3299,
+      "first_200": "iants who who grew up among the Seris in El could step over the sea from their home Desemboque and became a graphic artist on Tiburon Island to the mainland"
+    },
+    {
+      "physical_page": 99,
+      "printed_page": 99,
+      "chars": 3299,
+      "first_200": "have proved to be highly reliable language. sea turtles but not leatherbacks, for a simple reason. Leatherbacks, they say, understand their language and are Seri linguists do in remote outposts"
+    },
+    {
+      "physical_page": 100,
+      "printed_page": 100,
+      "chars": 3299,
+      "first_200": "in Aka, on singing in Tuvan, on writing in the recently orthographized Cmiique Iitom dictionary begun by her parents in 1951. Steve remembers the dictionary initiative has given birth to"
+    },
+    {
+      "physical_page": 101,
+      "printed_page": 101,
+      "chars": 3299,
+      "first_200": "ife. Since my visits over the past two years to Palizi and Kyzyl and Seriland, Efraín Estrella died of pancreatitis, and young Pario Nimasow, who unwrapped his father’s shaman’s kit"
+    },
+    {
+      "physical_page": 102,
+      "printed_page": 102,
+      "chars": 3299,
+      "first_200": "[hepem cöicooit] one who dances like the white-tailed deer Chavela’s grandson Jorge Luis Montaño Herrera shakes gourd rattles and assumes the identity of a deer. Just as his grandmother once"
+    },
+    {
+      "physical_page": 103,
+      "printed_page": 103,
+      "chars": 3299,
+      "first_200": "K’asA Henry Washburn, 86, is one of only four fluent speakers of Euchee left. Every day he drives ten miles from his home in West Tulsa to the Euchee Language"
+    },
+    {
+      "physical_page": 104,
+      "printed_page": 104,
+      "chars": 3299,
+      "first_200": "Return to Table of Contents AP Capstone Program AP Capstone Program ® Handout effective Fall 2024 Source Documents © 2024 College Board 9126 © 2016 The College Board Return to"
+    },
+    {
+      "physical_page": 105,
+      "printed_page": 105,
+      "chars": 3299,
+      "first_200": "of Contents AP Capstone Program AP Capstone Program ® Handout effective Fall 2024 Source Documents © 2024 College Board 10035 © 2016 The College Board Return to Table of Contents"
+    },
+    {
+      "physical_page": 106,
+      "printed_page": 106,
+      "chars": 3299,
+      "first_200": "ne Program ® Handout effective Fall 2024 Source Documents * Refers to page 67 in original work. © 2024 College Board 10944 © 2016 The College Board Return to Table"
+    },
+    {
+      "physical_page": 107,
+      "printed_page": 107,
+      "chars": 3299,
+      "first_200": "mes selfishly. Some plants, like the Scandinavian rhododendron, assist their neighbours by sharing resources. Others recognise close relatives and favour them over strangers. And at least one parasiti"
+    },
+    {
+      "physical_page": 108,
+      "printed_page": 108,
+      "chars": 3299,
+      "first_200": "tic bags to prevent any communication above ground. Nevertheless, the healthy partners began producing defence chemicals, suggesting that the plants detect each other’s alarm calls via their mycorrhiz"
+    },
+    {
+      "physical_page": 109,
+      "printed_page": 109,
+      "chars": 3299,
+      "first_200": ". In subsequent research with Meredith Biedrzycki from the University of Delaware in Newark, Dudley discovered that the signals take the form of “exudates” — a cocktail of soluble compounds"
+    },
+    {
+      "physical_page": 110,
+      "printed_page": 110,
+      "chars": 3299,
+      "first_200": "114 Return to Table of Contents AP Capstone Program AP Capstone Program ® Handout effective Fall 2024 Source Documents bean plants. Our modern understanding of plant interactions suggests we could"
+    },
+    {
+      "physical_page": 111,
+      "printed_page": 111,
+      "chars": 3299,
+      "first_200": "vine called dodder has found. Dodder contains almost no chlorophyll — the green molecule that allows plants to produce sugars from sunlight, water and carbon dioxide. Instead, after sprouting as"
+    },
+    {
+      "physical_page": 112,
+      "printed_page": 112,
+      "chars": 3299,
+      "first_200": "51 Return to Table of Contents AP Capstone Program AP Capstone Program ® Handout effective Fall 2024 Source Documents Dear James: I have begun this letter five times and torn"
+    },
+    {
+      "physical_page": 113,
+      "printed_page": 113,
+      "chars": 3299,
+      "first_200": "e isn’t hard to find. Your countrymen don’t know that she exists either, though she has been working for them all their lives. Well, you were born; here you came,"
+    },
+    {
+      "physical_page": 114,
+      "printed_page": 114,
+      "chars": 3299,
+      "first_200": "ich lies behind the words “acceptance” and “integration.” There is no reason for you to try to become like white men and there is no basis whatever for their impertinent"
+    },
+    {
+      "physical_page": 115,
+      "printed_page": 115,
+      "chars": 3299,
+      "first_200": "Return to Table of Contents AP AP Capstone Program Capstone ® Program Handout effective Fall 2024 Source Documents TRAGEDY OF THE COMMONS? SPECIAL SECTION REVIEW The Struggle to Govern the"
+    },
+    {
+      "physical_page": 116,
+      "printed_page": 116,
+      "chars": 3299,
+      "first_200": "Downloaded from www.sciencemag.org on July 8, 2015 mand for natural resources and environmen- tion” (14). The threat of massive ecosystem called human ecology or the “second envi- tal services, stemmi"
+    },
+    {
+      "physical_page": 117,
+      "printed_page": 117,
+      "chars": 3299,
+      "first_200": "ompliance (17–19). A is akin to a coevolutionary race. A set of rules self-governing institutions (3, 10–13). Although comparison of the landings of ground fish crafted to fit one set"
+    },
+    {
+      "physical_page": 118,
+      "printed_page": 118,
+      "chars": 3299,
+      "first_200": "54 Return to Table of Contents AP Capstone Program Program AP Capstone ® Handout Source effective Documents Fall 2024 TRAGEDY OF THE COMMONS? SPECIAL SECTION technological developments increase the po"
+    },
+    {
+      "physical_page": 119,
+      "printed_page": 119,
+      "chars": 3299,
+      "first_200": "social conditions are across scales allow some to ignore rules of erous total catch limits were established for moderate (30–32); (iii) communities maintain commons use or to reshape the rules"
+    },
+    {
+      "physical_page": 120,
+      "printed_page": 120,
+      "chars": 3299,
+      "first_200": "al and aggre- cuss below, meet the main challenges of gated information about resource condi- governance in the absence of ideal con- tions and to use it in making policy"
+    },
+    {
+      "physical_page": 121,
+      "printed_page": 121,
+      "chars": 3299,
+      "first_200": "national, and global, and institutions at all of fails to halt major resource deterioration, as Effective governance requires not only fac- these levels have been created to enable and shown"
+    },
+    {
+      "physical_page": 122,
+      "printed_page": 122,
+      "chars": 3299,
+      "first_200": "TRAGEDY OF THE COMMONS? SPECIAL SECTION knowledge is needed about individual and so- sanctions. Whether enforcement mechanisms sions (76, 101). TEAs and community-based cial values and about the effec"
+    },
+    {
+      "physical_page": 123,
+      "printed_page": 123,
+      "chars": 3299,
+      "first_200": "infrastructure. The importance nance (74, 82–84), and their conflicts, if they effective. They are also economically ineffi- of physical and technological infrastructure is do not escalate to the poin"
+    },
+    {
+      "physical_page": 124,
+      "printed_page": 124,
+      "chars": 3299,
+      "first_200": "can to complement managerial ones. They range ables that differentiate these highly successful provide food in bad times but can also open from ballots and polls, where engagement is programs"
+    },
+    {
+      "physical_page": 125,
+      "printed_page": 125,
+      "chars": 3299,
+      "first_200": "1909 © 2024 © College Board 2016 The College Board 121 56 Return to Table of Contents AP Capstone Program Program AP Capstone ® Handout effective Fall 2024 Source Documents"
+    },
+    {
+      "physical_page": 126,
+      "printed_page": 126,
+      "chars": 3299,
+      "first_200": "“common property” in the ti- pear to be applicable to re- tle. Since then, attention to the commons has grown rap- gional and global resources idly. Since 1968, a total"
+    },
+    {
+      "physical_page": 127,
+      "printed_page": 127,
+      "chars": 3299,
+      "first_200": "robust governance of environmental resources (green, left and (1990). mental and human-envi- right columns) and the governance requirements they help meet (yellow, center column) 6. Committee on the H"
+    },
+    {
+      "physical_page": 128,
+      "printed_page": 128,
+      "chars": 3299,
+      "first_200": "ment (National Academy Press, Washington, DC, decision to collect new information and seemed that the “tragedy of the commons” 1986). was inevitable everywhere not owned pri- 12. J.-M. Baland, J.-P."
+    },
+    {
+      "physical_page": 129,
+      "printed_page": 129,
+      "chars": 3299,
+      "first_200": "ocal commons tions to Manage the Maine Lobster Industry (Univ. radation and impoverishment of local people in are designed in capital cities or by donor Press of New England, Hanover,"
+    },
+    {
+      "physical_page": 130,
+      "printed_page": 130,
+      "chars": 3299,
+      "first_200": "12 DECEMBER 2003 VOL 302 SCIENCE www.sciencemag.org © 2024 College Board © 2016 The College Board 12257 Return to Table of Contents AP Capstone Program AP Capstone Program ® Handout"
+    },
+    {
+      "physical_page": 131,
+      "printed_page": 131,
+      "chars": 3299,
+      "first_200": "on, FL, nance requires an understanding of both environ- Change, National Research Council, New Tools for 2001), pp. 169 –178. mental systems and human-environment interac- Environmental Protection: E"
+    },
+    {
+      "physical_page": 132,
+      "printed_page": 132,
+      "chars": 3299,
+      "first_200": "e, Washington, DC, 2003). 37. J. Burger, E. Ostrom, R. B. Norgaard, D. Policansky, 70. A. C. Finlayson, B. McCay, in Linking Social and 94. E. Ostrom, R. Gardner, J."
+    },
+    {
+      "physical_page": 133,
+      "printed_page": 133,
+      "chars": 3299,
+      "first_200": "evant bibliographies, see (147, 154). on the Human Dimensions of Global Change, Na- annual Climate Variability, Committee on the Hu- 45. D. C. North, Structure and Change in Economic man"
+    },
+    {
+      "physical_page": 134,
+      "printed_page": 134,
+      "chars": 3299,
+      "first_200": "ancisco, CA, 1995). 79. J. A. Wilson, in The Drama of the Commons, Com- Environmental Policy Research, Cambridge, MA, 52. N. Dolšak, E. Ostrom, Eds., The Commons in the New"
+    },
+    {
+      "physical_page": 135,
+      "printed_page": 135,
+      "chars": 3299,
+      "first_200": "ag.org SCIENCE VOL 302 12 DECEMBER 2003 1911 © 2024 College Board 123 © 2016 The College Board Return to Table of Contents 58 AP Capstone Program AP Capstone Program"
+    },
+    {
+      "physical_page": 136,
+      "printed_page": 136,
+      "chars": 3299,
+      "first_200": "ory and Policy Analysis, Indiana Univ., Bloomington, (Island Press, Washington, DC, 1996). 137. C. Tucker, Praxis 15, 47 (1999). 1999). 120. E. Weiss, H. Jacobson, Eds., Engaging Countries: 138. R."
+    },
+    {
+      "physical_page": 137,
+      "printed_page": 137,
+      "chars": 3299,
+      "first_200": "(2003). (2002). Ecological Systems, Santa Fe Institute, Santa Fe, 145. G. Hardin, Science 280, 682 (1998). 159. We thank R. Andrews, G. Daily, J. Hoehn, K. Lee, S. NM, 25"
+    },
+    {
+      "physical_page": 138,
+      "printed_page": 138,
+      "chars": 3299,
+      "first_200": "Table S1 131. D. S. Crook, A. M. Jones, Mt. Res. Dev. 19, 79 (1999). Readings from the Workshop in Political Theory and 132. D. J. Merrey, in Irrigation Management"
+    },
+    {
+      "physical_page": 139,
+      "printed_page": 139,
+      "chars": 3299,
+      "first_200": "ideas. There would be nothing worth checking, exactly right. Otherwise, if you have made up because we would know what is true. So what your mind already, you might not"
+    },
+    {
+      "physical_page": 140,
+      "printed_page": 140,
+      "chars": 3299,
+      "first_200": ", progress which is the fruit demonstrate that it is important to doubt and of freedom of thought. I feel a responsibility that doubt is not a fearful thing, but"
+    },
+    {
+      "physical_page": 141,
+      "printed_page": 141,
+      "chars": 3299,
+      "first_200": "al conditions habitually and permanently lead men to revolution? Does that state of society contain some perturbing principle which prevents the community from ever subsiding into calm and disposes th"
+    },
+    {
+      "physical_page": 142,
+      "printed_page": 142,
+      "chars": 3299,
+      "first_200": "Disobedience” by Henry David Thoreau (1849) I HEARTILY ACCEPT the motto, — “That government is best which governs least”; and I should like to see it acted up to more"
+    },
+    {
+      "physical_page": 143,
+      "printed_page": 143,
+      "chars": 3299,
+      "first_200": ". What makes this duty the more urgent is the fact that the country so overrun is not our own, but ours is the invading army. GO ON TO THE"
+    },
+    {
+      "physical_page": 144,
+      "printed_page": 144,
+      "chars": 3299,
+      "first_200": "STOP END OF EXAM © 2024 College Board 130 Return to Table of Contents AP Capstone Program Handout effective Fall 2024 AP Capstone Tips for Students © 2024 College Board"
+    },
+    {
+      "physical_page": 145,
+      "printed_page": 145,
+      "chars": 3299,
+      "first_200": "Return to Table of Contents © 2024 College Board AP Capstone Program limitation — A boundary or point at which an argument or generalization is no longer valid line of"
+    },
+    {
+      "physical_page": 146,
+      "printed_page": 146,
+      "chars": 3299,
+      "first_200": "ine A timeline for teachers and school administrators showing key dates and activities. About the Appendixes 134 Return to Table of Contents © 2024 College Board AP Capstone Program AP"
+    },
+    {
+      "physical_page": 147,
+      "printed_page": 147,
+      "chars": 3299,
+      "first_200": "ent for different audiences and situations? § How might my communication choices affect my credibility with my audience? § What contributions can I offer to a team? § What is"
+    },
+    {
+      "physical_page": 148,
+      "printed_page": 148,
+      "chars": 3299,
+      "first_200": "in the AP Digital Portfolio. May AP Exam window Administration of AP Seminar End-of-Course Exam. Late May Late-testing administration of the AP Seminar End-of-Course Exam. May–June AP Research teacher"
+    }
+  ]
+}

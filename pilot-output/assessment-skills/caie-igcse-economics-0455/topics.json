@@ -1,0 +1,223 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "caie-igcse-economics-0455",
+      "topic_name": "CAIE IGCSE Economics",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Economics (0455) syllabus scope.",
+        "Valid: 2023 → 2025."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-economics-0455-t001",
+      "topic_name": "1. Why choose this syllabus?",
+      "parent_id": "caie-igcse-economics-0455",
+      "scope": [
+        "Why choose this syllabus?",
+        "The nature of the economic problem",
+        "The factors of production",
+        "Opportunity cost",
+        "Production possibility curve (PPC) diagrams"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Why choose this syllabus?."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-economics-0455-t002",
+      "topic_name": "2. Syllabus overview",
+      "parent_id": "caie-igcse-economics-0455",
+      "scope": [
+        "Syllabus overview",
+        "Microeconomics and macroeconomics",
+        "The role of markets in allocating resources",
+        "Demand",
+        "Supply",
+        "Price determination",
+        "Price changes",
+        "Price elasticity of demand (PED)",
+        "Price elasticity of supply (PES)",
+        "Market economic system",
+        "Market failure",
+        "Mixed economic system"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Syllabus overview."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-economics-0455-t003",
+      "topic_name": "3. Microeconomic decision makers",
+      "parent_id": "caie-igcse-economics-0455",
+      "scope": [
+        "Microeconomic decision makers",
+        "Money and banking",
+        "Households",
+        "Workers",
+        "Trade unions",
+        "Firms",
+        "Firms and production",
+        "Firms’ costs, revenue and objectives",
+        "Market structure"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Microeconomic decision makers."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-economics-0455-t004",
+      "topic_name": "4. Government and the macroeconomy",
+      "parent_id": "caie-igcse-economics-0455",
+      "scope": [
+        "Government and the macroeconomy",
+        "The role of government",
+        "The macroeconomic aims of government",
+        "Fiscal policy",
+        "Fiscal policy continued",
+        "Monetary policy",
+        "Supply-side policy",
+        "Economic growth",
+        "Employment and unemployment",
+        "Inflation and deflation"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Government and the macroeconomy."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-economics-0455-t005",
+      "topic_name": "5. Economic development",
+      "parent_id": "caie-igcse-economics-0455",
+      "scope": [
+        "Economic development",
+        "Living standards",
+        "Poverty",
+        "Population",
+        "Differences in economic development between countries"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Economic development."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-economics-0455-t006",
+      "topic_name": "6. International trade and globalisation",
+      "parent_id": "caie-igcse-economics-0455",
+      "scope": [
+        "International trade and globalisation",
+        "International specialisation",
+        "Globalisation, free trade and protection",
+        "Foreign exchange rates",
+        "Current account of balance of payments"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: International trade and globalisation."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    }
+  ]
+}

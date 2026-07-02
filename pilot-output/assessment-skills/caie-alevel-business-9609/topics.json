@@ -1,0 +1,177 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "caie-alevel-business-9609",
+      "topic_name": "CAIE IGCSE Business",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Business (9609) syllabus scope.",
+        "Valid: 2025 → 2026."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-business-9609-t001",
+      "topic_name": "1. Why choose this syllabus?",
+      "parent_id": "caie-alevel-business-9609",
+      "scope": [
+        "Why choose this syllabus?",
+        "Size of business                         6.2\t  Business strategy",
+        "Business objectives",
+        "Stakeholders in a business",
+        "Enterprise",
+        "Enterprise continued",
+        "Business structure",
+        "Size of business",
+        "Business objectives",
+        "Stakeholders in a business"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Why choose this syllabus?."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-business-9609-t002",
+      "topic_name": "2. Syllabus overview",
+      "parent_id": "caie-alevel-business-9609",
+      "scope": [
+        "Syllabus overview",
+        "Management                               7.3\t Leadership",
+        "Human resource management (HRM)",
+        "Human resource management (HRM) continued",
+        "Motivation",
+        "Management"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Syllabus overview."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-business-9609-t003",
+      "topic_name": "3. Marketing (AS Level)",
+      "parent_id": "caie-alevel-business-9609",
+      "scope": [
+        "Marketing (AS Level)",
+        "Market research                          8.2\t  Marketing strategy",
+        "The marketing mix",
+        "The nature of marketing",
+        "Market research",
+        "The marketing mix",
+        "The marketing mix continued"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Marketing (AS Level)."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-business-9609-t004",
+      "topic_name": "4. Operations management (AS Level)",
+      "parent_id": "caie-alevel-business-9609",
+      "scope": [
+        "Operations management (AS Level)",
+        "Inventory management                     9.2\t  Quality management",
+        "The nature of operations",
+        "The nature of operations continued",
+        "Inventory management",
+        "Capacity utilisation and outsourcing"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Operations management (AS Level)."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-business-9609-t005",
+      "topic_name": "5. Finance and accounting (AS Level)",
+      "parent_id": "caie-alevel-business-9609",
+      "scope": [
+        "Finance and accounting (AS Level)",
+        "Sources of finance                       10.2 Analysis of published accounts",
+        "Costs",
+        "Budgets",
+        "Business finance",
+        "Sources of finance",
+        "Forecasting and managing cash flows",
+        "Costs",
+        "Budgets"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Finance and accounting (AS Level)."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-business-9609-t006",
+      "topic_name": "6. Business and its environment (A Level)",
+      "parent_id": "caie-alevel-business-9609",
+      "scope": [
+        "Business and its environment (A Level)",
+        "External influences on business activity",
+        "External influences on business activity continued",
+        "Business strategy"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Business and its environment (A Level)."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    }
+  ]
+}

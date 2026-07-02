@@ -1,0 +1,49 @@
+{
+  "schema_version": "1",
+  "id": "ap-italian-language-and-culture",
+  "assessment_type": "course_and_exam_description",
+  "system": "AP",
+  "board_or_owner": "College Board",
+  "subject": "Italian Language and Culture",
+  "level": "AP (high school / college intro)",
+  "assessment_code": "AP Italian Language and Culture",
+  "valid_from": "2024",
+  "valid_to": "(ongoing)",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_course_description",
+      "title": "AP Italian Language and Culture Course and Exam Description",
+      "url": "https://apcentral.collegeboard.org/courses/italian-language-and-culture",
+      "source_document_type": "course_and_exam_description",
+      "source_layout_profile": "ap_college_board_ced",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/03-AP知识库/03-学科知识/AP Italian Language and Culture/02-课本与考纲/考纲/ap-italian-language-and-culture-course-and-exam-description.pdf",
+      "file_checksum_sha256": "b30fe2d0997ff9bfacf4f62cfeefd149e354e694337e63a4250805c81bd920f0",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "Effective Fall 2024",
+      "retrieved_at": "2026-07-01",
+      "page_refs": [
+        "p.1-192"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "AP CED uses printed_page; usually matches physical_page.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text.",
+      "notes": "Source bundle lives at pilot-output/source-bundles/ap-italian-language-and-culture-guide/."
+    }
+  ],
+  "aliases": [
+    "ap-italian-language-and-culture",
+    "ap italian language and culture",
+    "college board italian language and culture"
+  ],
+  "canonical_id": "ap-italian-language-and-culture",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "College Board AP Italian Language and Culture."
+}

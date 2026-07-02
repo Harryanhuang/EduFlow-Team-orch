@@ -1,0 +1,103 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "edexcel-ial-computer-science",
+      "topic_name": "CAIE IGCSE Computer Science",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Computer Science (XCS01 (IAL)) syllabus scope.",
+        "Valid: 2025 → 2026."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "edexcel-ial-computer-science-unit01",
+      "topic_name": "Topic 1: Principles of Computation, Algorithms and Data Representation",
+      "parent_id": "edexcel-ial-computer-science",
+      "scope": [
+        "Topic 1 content as defined in Edexcel IAL edexcel-ial-computer-science."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Principles of Computation, Algorithms and Data Representation."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "edexcel-ial-computer-science-unit02",
+      "topic_name": "Topic 2: Computer Components, The Internet and Network Security",
+      "parent_id": "edexcel-ial-computer-science",
+      "scope": [
+        "Topic 2 content as defined in Edexcel IAL edexcel-ial-computer-science."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Computer Components, The Internet and Network Security."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "edexcel-ial-computer-science-unit03",
+      "topic_name": "Topic 3: Software Development",
+      "parent_id": "edexcel-ial-computer-science",
+      "scope": [
+        "Topic 3 content as defined in Edexcel IAL edexcel-ial-computer-science."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Software Development."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "edexcel-ial-computer-science-unit04",
+      "topic_name": "Topic 4: Programming",
+      "parent_id": "edexcel-ial-computer-science",
+      "scope": [
+        "Topic 4 content as defined in Edexcel IAL edexcel-ial-computer-science."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Programming."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    }
+  ]
+}

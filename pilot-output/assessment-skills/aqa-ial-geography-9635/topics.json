@@ -1,0 +1,46 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "aqa-ial-geography-9635",
+      "topic_name": "CAIE IGCSE Geography",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Geography (9635) syllabus scope.",
+        "Valid: 2025 → 2026."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "aqa-ial-geography-9635-unit01",
+      "topic_name": "Unit 1: Water and carbon cycles",
+      "parent_id": "aqa-ial-geography-9635",
+      "scope": [
+        "Unit 1 content as defined in AQA IAL aqa-ial-geography-9635."
+      ],
+      "out_of_scope": [
+        "Content belonging to other units."
+      ],
+      "classification_hints": [
+        "Look for keywords: Water and carbon cycles."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    }
+  ]
+}

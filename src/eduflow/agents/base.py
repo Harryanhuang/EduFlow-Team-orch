@@ -13,6 +13,7 @@ concrete capability needs them, not before.
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
+from dataclasses import dataclass
 
 
 # Braille-pattern spinner glyphs that every Ink/Rich/Bubbletea-style CLI
@@ -58,3 +59,39 @@ class CliAdapter(ABC):
         default; per-CLI adapters override with provider-specific text.
         """
         return []
+
+    def auth_slots(self) -> "AuthSlot | None":
+        """Declare which credential vars / creds file this CLI uses.
+
+        Returns None (unmanaged) by default — adapters that support
+        per-agent credential isolation override with their specific
+        env var names and creds file path.  agent_auth.resolve() uses
+        this to pick the highest-priority credential for each spawn.
+        """
+        return None
+
+
+@dataclass(frozen=True)
+class AuthSlot:
+    """Per-CLI credential slots consumed by agent_auth.resolve().
+
+    Fields:
+      token_env      — env var for a long-term API token (highest priority).
+      login_credfile — path (relative to agent HOME) of a creds JSON file
+                       written by the CLI's own login flow (middle priority).
+      login_token_env — env var to set when using login mode (e.g. the
+                        OAuth access token extracted from credfile).
+      api_key_envs   — tuple of env var names for API keys (lowest priority);
+                       first one found in secrets/environ wins.
+    """
+    token_env: str | None = None
+    login_credfile: str | None = None
+    login_token_env: str | None = None
+    api_key_envs: tuple[str, ...] = ()
+
+
+OPENAI_COMPAT_AUTH = AuthSlot(
+    token_env=None,
+    api_key_envs=("OPENAI_API_KEY",),
+    login_credfile=None,
+)

@@ -1,0 +1,212 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "caie-igcse-business-0450",
+      "topic_name": "CAIE IGCSE Business Studies",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Business Studies (0450) syllabus scope.",
+        "Valid: 2026 → 2026."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-business-0450-t001",
+      "topic_name": "1. Why choose this syllabus?",
+      "parent_id": "caie-igcse-business-0450",
+      "scope": [
+        "Why choose this syllabus?",
+        "Business activity",
+        "Classification of businesses",
+        "Enterprise, business growth and size",
+        "Enterprise, business growth and size continued",
+        "Types of business organisation",
+        "Business objectives and stakeholder objectives"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Why choose this syllabus?."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-business-0450-t002",
+      "topic_name": "2. Syllabus overview",
+      "parent_id": "caie-igcse-business-0450",
+      "scope": [
+        "Syllabus overview",
+        "Motivating employees",
+        "Organisation and management",
+        "Recruitment, selection and training of employees",
+        "Recruitment, selection and training of employees continued",
+        "Internal and external communication"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Syllabus overview."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-business-0450-t003",
+      "topic_name": "3. Marketing",
+      "parent_id": "caie-igcse-business-0450",
+      "scope": [
+        "Marketing",
+        "Marketing, competition and the customer",
+        "Marketing, competition and the customer continued",
+        "Market research",
+        "Marketing mix",
+        "Marketing strategy"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Marketing."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-business-0450-t004",
+      "topic_name": "4. Operations management",
+      "parent_id": "caie-igcse-business-0450",
+      "scope": [
+        "Operations management",
+        "Production of goods and services",
+        "Costs, scale of production and break-even analysis",
+        "Achieving quality production",
+        "Location decisions"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Operations management."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-business-0450-t005",
+      "topic_name": "5. Financial information and decisions",
+      "parent_id": "caie-igcse-business-0450",
+      "scope": [
+        "Financial information and decisions",
+        "Business finance: needs and sources",
+        "Cash-flow forecasting and working capital",
+        "Income statements",
+        "Income statements continued",
+        "Statement of financial position",
+        "Analysis of accounts"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Financial information and decisions."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "caie-igcse-business-0450-t006",
+      "topic_name": "6. External influences on business activity",
+      "parent_id": "caie-igcse-business-0450",
+      "scope": [
+        "External influences on business activity",
+        "Economic issues",
+        "Environmental and ethical issues",
+        "Business and the international economy"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: External influences on business activity."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    }
+  ]
+}

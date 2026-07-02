@@ -485,6 +485,23 @@ def test_ensure_claude_agent_home_copies_host_settings_when_present():
         assert copied_data["skipDangerousModePermissionPrompt"] is True
 
 
+def test_ensure_claude_agent_home_copies_host_local_settings_when_present():
+    """Per-agent HOME isolation must not drop the operator's user-local
+    Claude permissions allowlist. Otherwise panes can re-enter manual
+    confirmation loops even though the host profile already allows tools."""
+    host_local_settings = Path.home() / ".claude" / "settings.local.json"
+    if not host_local_settings.exists():
+        return
+    with isolated_env(team={"agents": {"manager": {"cli": "claude-code"}}}):
+        lifecycle._ensure_claude_agent_home("manager")
+        from eduflow.agents.claude_code import agent_home
+        copied = Path(agent_home("manager")) / ".claude" / "settings.local.json"
+        assert copied.exists(), "expected agent settings.local.json"
+        copied_data = json.loads(copied.read_text())
+        host_data = json.loads(host_local_settings.read_text())
+        assert copied_data == host_data
+
+
 def test_ensure_claude_agent_home_seeds_bypass_acceptance_state():
     with isolated_env(team={"agents": {"manager": {"cli": "claude-code"}}}):
         lifecycle._ensure_claude_agent_home("manager")

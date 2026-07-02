@@ -1,0 +1,37 @@
+{
+  "schema_version": "1",
+  "subject": "history",
+  "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/05-DSE知识库/03-学科知识/DSE History/02-課本與考綱/考綱/歷史 -2028.pdf",
+  "file_checksum_sha256": "8ae544911c126eaf130d4eaf18409b6c7a21ab869404e368d8beeaf172d7c54c",
+  "pdfinfo": {
+    "Title": "2028年香港中學文憑考試歷史科評核大綱",
+    "Author": "HKEAA",
+    "Creator": "Microsoft® Word 2019",
+    "Producer": "Microsoft® Word 2019",
+    "CreationDate": "Wed Apr  2 09:51:30 2025 CST",
+    "ModDate": "Wed Apr  2 09:51:30 2025 CST",
+    "Custom Metadata": "no",
+    "Metadata Stream": "yes",
+    "Tagged": "yes",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "none",
+    "JavaScript": "no",
+    "Pages": "1",
+    "Encrypted": "no",
+    "Page size": "595.32 x 841.92 pts (A4)",
+    "Page rot": "0",
+    "File size": "113903 bytes",
+    "Optimized": "no",
+    "PDF version": "1.7"
+  },
+  "total_pages": 1,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": 1,
+      "chars": 1169,
+      "first_200": "歷史 引言 本科的公開評核建基於課程發展議會及香港考試及評核局聯合編訂的歷史科課 程 及 評 估 指 引 (中 四 至 中 六 )。 考 生 須 參 閱 上 述 指 引 ， 以 了 解 評 核"
+    }
+  ]
+}

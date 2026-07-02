@@ -1,0 +1,65 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "dse-history",
+      "topic_name": "CAIE IGCSE History",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE History (DSE History) syllabus scope.",
+        "Valid: 2024 → (ongoing)."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "dse-history-unit01",
+      "topic_name": "Unit 1",
+      "parent_id": "dse-history",
+      "scope": [
+        "Unit 1 content as defined in HKDSE syllabus."
+      ],
+      "out_of_scope": [
+        "Content belonging to other units."
+      ],
+      "classification_hints": [
+        "Look for HKDSE dse-history Unit 1 keywords."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "dse-history-unit02",
+      "topic_name": "Unit 2",
+      "parent_id": "dse-history",
+      "scope": [
+        "Unit 2 content as defined in HKDSE syllabus."
+      ],
+      "out_of_scope": [
+        "Content belonging to other units."
+      ],
+      "classification_hints": [
+        "Look for HKDSE dse-history Unit 2 keywords."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    }
+  ]
+}

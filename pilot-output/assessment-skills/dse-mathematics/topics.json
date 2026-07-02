@@ -1,0 +1,27 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "dse-mathematics",
+      "topic_name": "CAIE IGCSE Mathematics",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Mathematics (DSE Mathematics) syllabus scope.",
+        "Valid: 2024 → (ongoing)."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    }
+  ]
+}

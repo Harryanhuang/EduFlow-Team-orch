@@ -1,0 +1,141 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "edexcel-ial-biology",
+      "topic_name": "CAIE IGCSE Biology",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Biology (BIO (IAL)) syllabus scope.",
+        "Valid: 2025 → 2026."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "edexcel-ial-biology-unit01",
+      "topic_name": "Topic 1: Cells and Viruses",
+      "parent_id": "edexcel-ial-biology",
+      "scope": [
+        "Topic 1 content as defined in Edexcel IAL edexcel-ial-biology."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Cells and Viruses."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "edexcel-ial-biology-unit02",
+      "topic_name": "Topic 2: Reproduction, the Genome and Gene Expression",
+      "parent_id": "edexcel-ial-biology",
+      "scope": [
+        "Topic 2 content as defined in Edexcel IAL edexcel-ial-biology."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Reproduction, the Genome and Gene Expression."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "edexcel-ial-biology-unit03",
+      "topic_name": "Topic 3: Classification and Biodiversity",
+      "parent_id": "edexcel-ial-biology",
+      "scope": [
+        "Topic 3 content as defined in Edexcel IAL edexcel-ial-biology."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Classification and Biodiversity."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "edexcel-ial-biology-unit04",
+      "topic_name": "Topic 4: Exchange and Transport",
+      "parent_id": "edexcel-ial-biology",
+      "scope": [
+        "Topic 4 content as defined in Edexcel IAL edexcel-ial-biology."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Exchange and Transport."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "edexcel-ial-biology-unit05",
+      "topic_name": "Topic 5: Energy for Biological Processes",
+      "parent_id": "edexcel-ial-biology",
+      "scope": [
+        "Topic 5 content as defined in Edexcel IAL edexcel-ial-biology."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Energy for Biological Processes."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "edexcel-ial-biology-unit06",
+      "topic_name": "Topic 6: Respiration, Muscles and the Internal Environment",
+      "parent_id": "edexcel-ial-biology",
+      "scope": [
+        "Topic 6 content as defined in Edexcel IAL edexcel-ial-biology."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Respiration, Muscles and the Internal Environment."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    }
+  ]
+}

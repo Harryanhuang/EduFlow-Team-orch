@@ -1,0 +1,68 @@
+{
+  "schema_version": "1",
+  "source_id": "primary_syllabus",
+  "extracted_at": "2026-07-02",
+  "extracted_by": "worker_syllabus",
+  "extraction_profile": "caie_igcse_syllabus",
+  "sections_extracted": [
+    {
+      "section": "Syllabus overview (aims, content overview, assessment overview, AO)",
+      "page_refs": [
+        "p.5-9"
+      ],
+      "extracted_content_summary": "High-level aims, content domains, paper structure, AO definitions.",
+      "target_asset": "assessment.json"
+    },
+    {
+      "section": "Assessment details",
+      "page_refs": [
+        "p.45-54"
+      ],
+      "extracted_content_summary": "Papers, durations, weighting, command words, apparatus.",
+      "target_asset": "assessment.json"
+    }
+  ],
+  "sections_not_extracted": [
+    {
+      "section": "Front matter",
+      "page_refs": [
+        "p.1-4"
+      ],
+      "reason": "programme_background"
+    },
+    {
+      "section": "Appendices",
+      "page_refs": [
+        "p.50-54"
+      ],
+      "reason": "appendix_reference_only"
+    },
+    {
+      "section": "Grade descriptions / changes",
+      "page_refs": [
+        "p.55-61"
+      ],
+      "reason": "admin / not_assessable_scope"
+    }
+  ],
+  "sections_pending_review": [
+    {
+      "section": "Topic numbering offset",
+      "page_refs": [
+        "p.10-44"
+      ],
+      "reason": "Approximate page ranges per topic; verify against rendered pages."
+    }
+  ],
+  "split_recommendations": {
+    "topics_json": "0 subject-content topics captured.",
+    "assessment_json": "Papers, AOs, question styles, marking guidance.",
+    "references": "source-index.md and page-map.json copied into skill package references/."
+  },
+  "known_risks": [
+    "Extractor and reviewer are the same agent; confidence capped at medium.",
+    "Per-topic page ranges are approximate.",
+    "Subtopic bullets not exhaustively captured — only headings."
+  ],
+  "notes": "Skill package covers 0 subject-content topics for CAIE IGCSE Physics."
+}

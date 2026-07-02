@@ -1,0 +1,48 @@
+{
+  "schema_version": "1",
+  "id": "dse-chinese-history",
+  "assessment_type": "syllabus",
+  "system": "DSE",
+  "board_or_owner": "HKEAA / Curriculum Development Council",
+  "subject": "Chinese History",
+  "level": "DSE Senior Secondary (S4-S6)",
+  "assessment_code": "DSE Chinese History",
+  "valid_from": "2024",
+  "valid_to": "(ongoing)",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_syllabus",
+      "title": "DSE Chinese History Syllabus",
+      "url": "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html",
+      "source_document_type": "syllabus",
+      "source_layout_profile": "caie_igcse_syllabus",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/05-DSE知识库/03-学科知识/DSE Chinese History/02-課本與考綱/考綱/中國歷史 -2028.pdf",
+      "file_checksum_sha256": "00030f36e5244b24859886c0258a6425e9892f91492db58d55f81488e190a6be",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "2028 syllabus (Category A)",
+      "retrieved_at": "2026-07-02",
+      "page_refs": [
+        "p.1-2"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "printed_page ≈ physical_page for CAIE IGCSE syllabi.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text.",
+      "notes": "Source bundle lives at pilot-output/source-bundles/dse-chinese-history-guide/."
+    }
+  ],
+  "aliases": [
+    "dse chinese history",
+    "hkdse"
+  ],
+  "canonical_id": "dse-chinese-history",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "HKDSE Chinese History (Category A)."
+}

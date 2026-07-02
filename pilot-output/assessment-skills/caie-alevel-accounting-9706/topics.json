@@ -1,0 +1,81 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "caie-alevel-accounting-9706",
+      "topic_name": "CAIE IGCSE Accounting",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Accounting (9706) syllabus scope.",
+        "Valid: 2025 → 2026."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-accounting-9706-t001",
+      "topic_name": "1. Why choose this syllabus?",
+      "parent_id": "caie-alevel-accounting-9706",
+      "scope": [
+        "Why choose this syllabus?",
+        "Accounting for non-current assets               considerations",
+        "Reconciliation and verification             3.3 Business acquisition and merger",
+        "Preparation of financial statements         3.4 Computerised accounting systems",
+        "Analysis and communication of               3.5 Analysis and communication of",
+        "Types of business entity",
+        "The accounting system",
+        "Accounting for non-current assets",
+        "Reconciliation and verification",
+        "Reconciliation and verification continued",
+        "Preparation of financial statements",
+        "Preparation of financial statements continued",
+        "Analysis and communication of accounting information",
+        "Analysis and communication of accounting information continued"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Why choose this syllabus?."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-accounting-9706-t002",
+      "topic_name": "2. Syllabus overview",
+      "parent_id": "caie-alevel-accounting-9706",
+      "scope": [
+        "Syllabus overview",
+        "Costs and cost behaviour",
+        "Traditional costing methods",
+        "Traditional costing methods continued"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Syllabus overview."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    }
+  ]
+}

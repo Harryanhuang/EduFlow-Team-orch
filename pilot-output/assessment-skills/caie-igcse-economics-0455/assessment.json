@@ -1,0 +1,125 @@
+{
+  "schema_version": "1",
+  "papers": [
+    {
+      "paper_id": "paper1",
+      "name": "Paper 1 Multiple Choice",
+      "question_styles": [
+        "multiple_choice"
+      ],
+      "duration_minutes": 45,
+      "total_marks": 30,
+      "weighting_percent": 30,
+      "coverage_notes": "30 MCQs across the syllabus.",
+      "calculator_allowed": true,
+      "formula_sheet_allowed": false
+    },
+    {
+      "paper_id": "paper2",
+      "name": "Paper 2 Short Answer and Data Response",
+      "question_styles": [
+        "short_answer",
+        "data_response",
+        "structured"
+      ],
+      "duration_minutes": 90,
+      "total_marks": 90,
+      "weighting_percent": 70,
+      "coverage_notes": "Short-answer, data response, and structured questions.",
+      "calculator_allowed": true,
+      "formula_sheet_allowed": false
+    }
+  ],
+  "assessment_objectives": [
+    {
+      "ao_id": "AO1",
+      "name": "Demonstrate knowledge and understanding",
+      "description": "Demonstrate knowledge and understanding of economic concepts, terminology and principles.",
+      "weighting_qualification_percent": 40,
+      "weighting_by_paper": {},
+      "classification_hints": [
+        "Items asking for definitions, terminology, recall of economic concepts."
+      ]
+    },
+    {
+      "ao_id": "AO2",
+      "name": "Apply knowledge and understanding",
+      "description": "Apply knowledge and understanding to a range of economic problems.",
+      "weighting_qualification_percent": 40,
+      "weighting_by_paper": {},
+      "classification_hints": [
+        "Items requiring calculation, interpretation of data, application to scenarios."
+      ]
+    },
+    {
+      "ao_id": "AO3",
+      "name": "Analyse, evaluate and make judgements",
+      "description": "Analyse, evaluate and make judgements about economic information, issues and arguments.",
+      "weighting_qualification_percent": 20,
+      "weighting_by_paper": {},
+      "classification_hints": [
+        "Items requiring analysis, evaluation, weighing up of arguments."
+      ]
+    }
+  ],
+  "question_styles": [
+    {
+      "style_id": "multiple_choice",
+      "name": "Multiple choice",
+      "description": "Tests breadth of knowledge across the syllabus."
+    },
+    {
+      "style_id": "short_answer",
+      "name": "Short answer",
+      "description": "Concise factual or definitional responses."
+    },
+    {
+      "style_id": "data_response",
+      "name": "Data response",
+      "description": "Interpretation of economic data, charts and tables."
+    },
+    {
+      "style_id": "structured",
+      "name": "Structured question",
+      "description": "Multi-part questions with progressive difficulty."
+    }
+  ],
+  "difficulty_ladder": [
+    {
+      "level": "foundation",
+      "description": "Recall of facts, definitions or single-step application."
+    },
+    {
+      "level": "standard",
+      "description": "Multi-step application; interpret simple data."
+    },
+    {
+      "level": "challenge",
+      "description": "Cross-topic synthesis; unfamiliar contexts; evaluation."
+    }
+  ],
+  "difficulty_scale": "ordinal_3",
+  "confidence_thresholds": {
+    "route_minimum": 0.8,
+    "classification_minimum": 0.75,
+    "review_required_below": 0.75
+  },
+  "lesson_use": {
+    "supported": false,
+    "modes": [],
+    "teacher_use_contract_ref": "",
+    "student_use_contract_ref": "",
+    "parent_use_contract_ref": "",
+    "notes": "Set supported=true only when a teacher/student/parent mode is declared and validated."
+  },
+  "generation_constraints": {
+    "must_match_scope": true,
+    "mark_out_of_scope_as_extension": true
+  },
+  "marking_guidance": {
+    "command_words_ref": "CAIE IGCSE Economics command words (state, explain, analyse, evaluate, discuss) are defined in Section 4 of the syllabus.",
+    "notes": "Single-tier qualification (grades A*-G). Both papers required."
+  },
+  "mcq_count": 30,
+  "duration_hours": 2
+}

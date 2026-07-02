@@ -12,7 +12,7 @@ from typing import Callable
 
 from eduflow.commands import (
     init, send, inbox, read, status, log, team, workspace,
-    start, hire, fire, up, down, reset, reidentify, switch,
+    start, hire, fire, up, down, reset, compact, reidentify, switch,
     say, router, watchdog, task, remember, recall, forget, peek,
     health, usage, install_hooks, version, task_publish, runtime_guard,
     workflow, runtime, memory_cli,
@@ -49,6 +49,7 @@ _COMMAND_GROUPS: list[tuple[str, list[tuple[str, CommandHandler]]]] = [
         ("up", up.main),
         ("down", down.main),
         ("reset", reset.main),
+        ("compact", compact.main),
         ("reidentify", reidentify.main),
         ("switch", switch.main),
     ]),

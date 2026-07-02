@@ -1,0 +1,374 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "ap-art-history",
+      "topic_name": "AP Art History",
+      "parent_id": "",
+      "scope": [
+        "AP Art History course framework (College Board).",
+        "Valid: 2025 → (ongoing).",
+        "Units 1–10 with cumulative exam weightings."
+      ],
+      "out_of_scope": [
+        "Pre-AP / general high-school level content unless explicitly cited in CED.",
+        "University-level content beyond AP expectations.",
+        "Other AP subjects."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific unit fits.",
+        "Prefer specific Unit N nodes for content questions."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-art-history-unit01",
+      "topic_name": "Unit 1: Global Prehistory, 30,000–500 bce                                                     ~4%",
+      "parent_id": "ap-art-history",
+      "scope": [
+        "Unit 1 content as defined in AP Art History CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Global Prehistory, 30,000–500 bce                                                     ~4%."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_1.1",
+          "text": "Core content and concepts for Unit 1: Global Prehistory, 30,000–500 bce                                                     ~4%."
+        },
+        {
+          "ek_id": "EK_1.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 1: Global Prehistory, 30,000–500 bce                                                     ~4%."
+        },
+        {
+          "ek_id": "EK_1.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 1: Global Prehistory, 30,000–500 bce                                                     ~4%."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-art-history-unit02",
+      "topic_name": "Unit 2: Ancient Mediterranean, 3500 bce–300 ce                                               ~15%",
+      "parent_id": "ap-art-history",
+      "scope": [
+        "Unit 2 content as defined in AP Art History CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Ancient Mediterranean, 3500 bce–300 ce                                               ~15%."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_2.1",
+          "text": "Core content and concepts for Unit 2: Ancient Mediterranean, 3500 bce–300 ce                                               ~15%."
+        },
+        {
+          "ek_id": "EK_2.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 2: Ancient Mediterranean, 3500 bce–300 ce                                               ~15%."
+        },
+        {
+          "ek_id": "EK_2.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 2: Ancient Mediterranean, 3500 bce–300 ce                                               ~15%."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-art-history-unit03",
+      "topic_name": "Unit 3: Early Europe and Colonial Americas, 200–1750 ce                                      ~21%",
+      "parent_id": "ap-art-history",
+      "scope": [
+        "Unit 3 content as defined in AP Art History CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Early Europe and Colonial Americas, 200–1750 ce                                      ~21%."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_3.1",
+          "text": "Core content and concepts for Unit 3: Early Europe and Colonial Americas, 200–1750 ce                                      ~21%."
+        },
+        {
+          "ek_id": "EK_3.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 3: Early Europe and Colonial Americas, 200–1750 ce                                      ~21%."
+        },
+        {
+          "ek_id": "EK_3.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 3: Early Europe and Colonial Americas, 200–1750 ce                                      ~21%."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-art-history-unit04",
+      "topic_name": "Unit 4: Later Europe and Americas, 1750–1980 ce                                              ~21%",
+      "parent_id": "ap-art-history",
+      "scope": [
+        "Unit 4 content as defined in AP Art History CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Later Europe and Americas, 1750–1980 ce                                              ~21%."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_4.1",
+          "text": "Core content and concepts for Unit 4: Later Europe and Americas, 1750–1980 ce                                              ~21%."
+        },
+        {
+          "ek_id": "EK_4.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 4: Later Europe and Americas, 1750–1980 ce                                              ~21%."
+        },
+        {
+          "ek_id": "EK_4.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 4: Later Europe and Americas, 1750–1980 ce                                              ~21%."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-art-history-unit05",
+      "topic_name": "Unit 5: Indigenous Americas, 1000 bce–1980 ce                                                 ~6%",
+      "parent_id": "ap-art-history",
+      "scope": [
+        "Unit 5 content as defined in AP Art History CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Indigenous Americas, 1000 bce–1980 ce                                                 ~6%."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_5.1",
+          "text": "Core content and concepts for Unit 5: Indigenous Americas, 1000 bce–1980 ce                                                 ~6%."
+        },
+        {
+          "ek_id": "EK_5.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 5: Indigenous Americas, 1000 bce–1980 ce                                                 ~6%."
+        },
+        {
+          "ek_id": "EK_5.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 5: Indigenous Americas, 1000 bce–1980 ce                                                 ~6%."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-art-history-unit06",
+      "topic_name": "Unit 6: Africa, 1100–1980 ce                                                                  ~6%",
+      "parent_id": "ap-art-history",
+      "scope": [
+        "Unit 6 content as defined in AP Art History CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Africa, 1100–1980 ce                                                                  ~6%."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_6.1",
+          "text": "Core content and concepts for Unit 6: Africa, 1100–1980 ce                                                                  ~6%."
+        },
+        {
+          "ek_id": "EK_6.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 6: Africa, 1100–1980 ce                                                                  ~6%."
+        },
+        {
+          "ek_id": "EK_6.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 6: Africa, 1100–1980 ce                                                                  ~6%."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-art-history-unit07",
+      "topic_name": "Unit 7: West and Central Asia, 500 bce–1980 ce                                                ~4%",
+      "parent_id": "ap-art-history",
+      "scope": [
+        "Unit 7 content as defined in AP Art History CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: West and Central Asia, 500 bce–1980 ce                                                ~4%."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_7.1",
+          "text": "Core content and concepts for Unit 7: West and Central Asia, 500 bce–1980 ce                                                ~4%."
+        },
+        {
+          "ek_id": "EK_7.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 7: West and Central Asia, 500 bce–1980 ce                                                ~4%."
+        },
+        {
+          "ek_id": "EK_7.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 7: West and Central Asia, 500 bce–1980 ce                                                ~4%."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-art-history-unit08",
+      "topic_name": "Unit 8: South, East, and Southeast Asia, 300 bce–1980 ce                                      ~8%",
+      "parent_id": "ap-art-history",
+      "scope": [
+        "Unit 8 content as defined in AP Art History CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: South, East, and Southeast Asia, 300 bce–1980 ce                                      ~8%."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_8.1",
+          "text": "Core content and concepts for Unit 8: South, East, and Southeast Asia, 300 bce–1980 ce                                      ~8%."
+        },
+        {
+          "ek_id": "EK_8.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 8: South, East, and Southeast Asia, 300 bce–1980 ce                                      ~8%."
+        },
+        {
+          "ek_id": "EK_8.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 8: South, East, and Southeast Asia, 300 bce–1980 ce                                      ~8%."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-art-history-unit09",
+      "topic_name": "Unit 9: The Pacific, 700–1980 ce                                                              ~4%",
+      "parent_id": "ap-art-history",
+      "scope": [
+        "Unit 9 content as defined in AP Art History CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: The Pacific, 700–1980 ce                                                              ~4%."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_9.1",
+          "text": "Core content and concepts for Unit 9: The Pacific, 700–1980 ce                                                              ~4%."
+        },
+        {
+          "ek_id": "EK_9.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 9: The Pacific, 700–1980 ce                                                              ~4%."
+        },
+        {
+          "ek_id": "EK_9.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 9: The Pacific, 700–1980 ce                                                              ~4%."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-art-history-unit10",
+      "topic_name": "Unit 10: Global Contemporary, 1980 ce to Present                                             ~11%",
+      "parent_id": "ap-art-history",
+      "scope": [
+        "Unit 10 content as defined in AP Art History CED.",
+        "Exam weighting: not captured."
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Global Contemporary, 1980 ce to Present                                             ~11%."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_10.1",
+          "text": "SPECIAL THANKS Christopher Budano and John R"
+        },
+        {
+          "ek_id": "EK_10.2",
+          "text": "AP Art History Course and Exam Description                                                                   ﻿ V"
+        },
+        {
+          "ek_id": "EK_10.3",
+          "text": "THIS PAGE IS INTENTIONALLY LEFT BLANK"
+        }
+      ]
+    }
+  ]
+}

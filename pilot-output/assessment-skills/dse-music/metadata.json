@@ -1,0 +1,48 @@
+{
+  "schema_version": "1",
+  "id": "dse-music",
+  "assessment_type": "syllabus",
+  "system": "DSE",
+  "board_or_owner": "HKEAA / Curriculum Development Council",
+  "subject": "Music",
+  "level": "DSE Senior Secondary (S4-S6)",
+  "assessment_code": "DSE Music",
+  "valid_from": "2024",
+  "valid_to": "(ongoing)",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_syllabus",
+      "title": "DSE Music Syllabus",
+      "url": "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html",
+      "source_document_type": "syllabus",
+      "source_layout_profile": "caie_igcse_syllabus",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/05-DSE知识库/03-学科知识/DSE Music/02-課本與考綱/考綱/Music_DSE_Syllabus_2024.pdf",
+      "file_checksum_sha256": "d7dd7bf0968389e85dd885ec2665b26440dc4f49deaa5d9ea3ae0a2f9592ef81",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "2028 syllabus (Category A)",
+      "retrieved_at": "2026-07-02",
+      "page_refs": [
+        "p.1-55"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "printed_page ≈ physical_page for CAIE IGCSE syllabi.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text.",
+      "notes": "Source bundle lives at pilot-output/source-bundles/dse-music-guide/."
+    }
+  ],
+  "aliases": [
+    "dse music",
+    "hkdse"
+  ],
+  "canonical_id": "dse-music",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "HKDSE Music (Category A)."
+}

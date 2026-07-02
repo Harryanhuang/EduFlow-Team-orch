@@ -1,0 +1,48 @@
+{
+  "schema_version": "1",
+  "id": "edexcel-ial-psychology",
+  "assessment_type": "syllabus",
+  "system": "Edexcel International A-Level",
+  "board_or_owner": "Pearson Edexcel",
+  "subject": "Psychology",
+  "level": "International A-Level (IAL)",
+  "assessment_code": "PSY (IAL)",
+  "valid_from": "2025",
+  "valid_to": "2026",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_syllabus",
+      "title": "Pearson Edexcel International A-Level Psychology specification (2025-2026)",
+      "url": "https://qualifications.pearson.com/en/qualifications/edexcel-international-advanced-levels/psychology.html",
+      "source_document_type": "syllabus",
+      "source_layout_profile": "caie_igcse_syllabus",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/02-A-Level知识库/03-考试局/Edexcel/Psychology (IAL)/02-课本与考纲/考纲/ial-psychology-specification-assessment-jan-2026.pdf",
+      "file_checksum_sha256": "0037e8ee016e9873114e316a6f5ea2fbbfaeb6b44782ec24b1e9ca26531eec8d",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "2025-2026 specification",
+      "retrieved_at": "2026-07-02",
+      "page_refs": [
+        "p.1-85"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "printed_page ≈ physical_page for CAIE IGCSE syllabi.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text.",
+      "notes": "Source bundle lives at pilot-output/source-bundles/edexcel-ial-psychology-guide/."
+    }
+  ],
+  "aliases": [
+    "edexcel ial psychology",
+    "pearson edexcel psychology"
+  ],
+  "canonical_id": "edexcel-ial-psychology",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "Pearson Edexcel International A-Level Psychology. Three papers: P1, P2, P3."
+}

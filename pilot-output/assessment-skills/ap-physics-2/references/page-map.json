@@ -1,0 +1,72 @@
+{
+  "schema_version": "1",
+  "source_id": "primary_ced",
+  "page_ref_convention": "printed_page",
+  "physical_page_offset_note": "AP CED pages are typically labeled with printed_page numbers.",
+  "mappings": [
+    {
+      "target": "assessment_identity.system",
+      "page_refs": [
+        "title page"
+      ],
+      "evidence_note": "College Board AP CED."
+    },
+    {
+      "target": "topics.course_framework",
+      "page_refs": [
+        "Section 1"
+      ],
+      "evidence_note": "Course framework overview."
+    },
+    {
+      "target": "topics.ap-physics-2-unit09",
+      "page_refs": [
+        "Unit 9"
+      ],
+      "evidence_note": "Unit 9: Thermodynamics (15–18%)."
+    },
+    {
+      "target": "topics.ap-physics-2-unit10",
+      "page_refs": [
+        "Unit 10"
+      ],
+      "evidence_note": "Unit 10: Electric Force, Field, and Potential (15–18%)."
+    },
+    {
+      "target": "topics.ap-physics-2-unit11",
+      "page_refs": [
+        "Unit 11"
+      ],
+      "evidence_note": "Unit 11: Electric Circuits (15–18%)."
+    },
+    {
+      "target": "topics.ap-physics-2-unit12",
+      "page_refs": [
+        "Unit 12"
+      ],
+      "evidence_note": "Unit 12: Magnetism and Electromagnetism (12–15%)."
+    },
+    {
+      "target": "topics.ap-physics-2-unit13",
+      "page_refs": [
+        "Unit 13"
+      ],
+      "evidence_note": "Unit 13: Geometric Optics (12–15%)."
+    },
+    {
+      "target": "topics.ap-physics-2-unit14",
+      "page_refs": [
+        "Unit 14"
+      ],
+      "evidence_note": "Unit 14: Waves, Sound, and Physical Optics (12–15%)."
+    },
+    {
+      "target": "topics.ap-physics-2-unit15",
+      "page_refs": [
+        "Unit 15"
+      ],
+      "evidence_note": "Unit 15: Modern Physics (12–15%)."
+    }
+  ],
+  "draft_notes": []
+}

@@ -1,0 +1,103 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "aqa-ial-english-language-7702",
+      "topic_name": "CAIE IGCSE English Language",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE English Language (7702) syllabus scope.",
+        "Valid: 2025 → 2026."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "aqa-ial-english-language-7702-unit01",
+      "topic_name": "Unit 1: Language, the individual and society",
+      "parent_id": "aqa-ial-english-language-7702",
+      "scope": [
+        "Unit 1 content as defined in AQA IAL aqa-ial-english-language-7702."
+      ],
+      "out_of_scope": [
+        "Content belonging to other units."
+      ],
+      "classification_hints": [
+        "Look for keywords: Language, the individual and society."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "aqa-ial-english-language-7702-unit02",
+      "topic_name": "Unit 2: Language diversity and change",
+      "parent_id": "aqa-ial-english-language-7702",
+      "scope": [
+        "Unit 2 content as defined in AQA IAL aqa-ial-english-language-7702."
+      ],
+      "out_of_scope": [
+        "Content belonging to other units."
+      ],
+      "classification_hints": [
+        "Look for keywords: Language diversity and change."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "aqa-ial-english-language-7702-unit03",
+      "topic_name": "Unit 3: Content area 3",
+      "parent_id": "aqa-ial-english-language-7702",
+      "scope": [
+        "Unit 3 content as defined in AQA IAL aqa-ial-english-language-7702."
+      ],
+      "out_of_scope": [
+        "Content belonging to other units."
+      ],
+      "classification_hints": [
+        "Look for keywords: Content area 3."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "aqa-ial-english-language-7702-unit04",
+      "topic_name": "Unit 4: Content area 4",
+      "parent_id": "aqa-ial-english-language-7702",
+      "scope": [
+        "Unit 4 content as defined in AQA IAL aqa-ial-english-language-7702."
+      ],
+      "out_of_scope": [
+        "Content belonging to other units."
+      ],
+      "classification_hints": [
+        "Look for keywords: Content area 4."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    }
+  ]
+}

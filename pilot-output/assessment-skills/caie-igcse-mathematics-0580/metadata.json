@@ -1,0 +1,49 @@
+{
+  "schema_version": "1",
+  "id": "caie-igcse-mathematics-0580",
+  "assessment_type": "syllabus",
+  "system": "CAIE IGCSE",
+  "board_or_owner": "Cambridge Assessment International Education",
+  "subject": "Mathematics",
+  "level": "IGCSE (14-16 years)",
+  "assessment_code": "0580",
+  "valid_from": "2023",
+  "valid_to": "2025",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_syllabus",
+      "title": "Cambridge IGCSE Mathematics 0580 syllabus (2023-2025)",
+      "url": "https://www.cambridgeinternational.org/Images/596214-2023-2025-syllabus.pdf",
+      "source_document_type": "syllabus",
+      "source_layout_profile": "caie_igcse_syllabus",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/01-IGCSE知识库/03-学科知识/CAIE/Mathematics (0580)/02-课本与考纲/考纲/CAIE_Mathematics_0580_Syllabus_2025-2026.pdf",
+      "file_checksum_sha256": "627f8e5dab21605f95b9aceec4a2dcdddf91dce5767d6938d647b38041c6d363",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "2025-2026 reprint of 2023-2025 syllabus",
+      "retrieved_at": "2026-06-30",
+      "page_refs": [
+        "p.1-71"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "printed_page ≈ physical_page for CAIE IGCSE syllabi.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text.",
+      "notes": "Source bundle lives at pilot-output/source-bundles/caie-igcse-mathematics-0580-guide/."
+    }
+  ],
+  "aliases": [
+    "igcse maths",
+    "cambridge maths 0580",
+    "caie mathematics"
+  ],
+  "canonical_id": "caie-igcse-mathematics-0580",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "Cambridge IGCSE Mathematics 0580. Two-tier (Core / Extended); investigative component via Paper 5 for Core tier (Extended candidates take Paper 4 only)."
+}

@@ -1,0 +1,340 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "ap-environmental-science",
+      "topic_name": "AP Environmental Science",
+      "parent_id": "",
+      "scope": [
+        "AP Environmental Science course framework (College Board).",
+        "Valid: 2025 → (ongoing).",
+        "Units 1–9 with cumulative exam weightings."
+      ],
+      "out_of_scope": [
+        "Pre-AP / general high-school level content unless explicitly cited in CED.",
+        "University-level content beyond AP expectations.",
+        "Other AP subjects."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific unit fits.",
+        "Prefer specific Unit N nodes for content questions."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-environmental-science-unit01",
+      "topic_name": "Unit 1: The Living World: Ecosystems",
+      "parent_id": "ap-environmental-science",
+      "scope": [
+        "Unit 1 content as defined in AP Environmental Science CED.",
+        "Exam weighting: 6–8%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: The Living World: Ecosystems."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_1.1",
+          "text": "Core content and concepts for Unit 1: The Living World: Ecosystems."
+        },
+        {
+          "ek_id": "EK_1.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 1: The Living World: Ecosystems."
+        },
+        {
+          "ek_id": "EK_1.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 1: The Living World: Ecosystems."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-environmental-science-unit02",
+      "topic_name": "Unit 2: The Living World: Biodiversity",
+      "parent_id": "ap-environmental-science",
+      "scope": [
+        "Unit 2 content as defined in AP Environmental Science CED.",
+        "Exam weighting: 6–8%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: The Living World: Biodiversity."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_2.1",
+          "text": "Core content and concepts for Unit 2: The Living World: Biodiversity."
+        },
+        {
+          "ek_id": "EK_2.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 2: The Living World: Biodiversity."
+        },
+        {
+          "ek_id": "EK_2.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 2: The Living World: Biodiversity."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-environmental-science-unit03",
+      "topic_name": "Unit 3: Populations",
+      "parent_id": "ap-environmental-science",
+      "scope": [
+        "Unit 3 content as defined in AP Environmental Science CED.",
+        "Exam weighting: 10–15%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Populations."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_3.1",
+          "text": "Core content and concepts for Unit 3: Populations."
+        },
+        {
+          "ek_id": "EK_3.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 3: Populations."
+        },
+        {
+          "ek_id": "EK_3.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 3: Populations."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-environmental-science-unit04",
+      "topic_name": "Unit 4: Earth Systems and Resources",
+      "parent_id": "ap-environmental-science",
+      "scope": [
+        "Unit 4 content as defined in AP Environmental Science CED.",
+        "Exam weighting: 10–15%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Earth Systems and Resources."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_4.1",
+          "text": "Core content and concepts for Unit 4: Earth Systems and Resources."
+        },
+        {
+          "ek_id": "EK_4.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 4: Earth Systems and Resources."
+        },
+        {
+          "ek_id": "EK_4.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 4: Earth Systems and Resources."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-environmental-science-unit05",
+      "topic_name": "Unit 5: Land and Water Use",
+      "parent_id": "ap-environmental-science",
+      "scope": [
+        "Unit 5 content as defined in AP Environmental Science CED.",
+        "Exam weighting: 10–15%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Land and Water Use."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_5.1",
+          "text": "Core content and concepts for Unit 5: Land and Water Use."
+        },
+        {
+          "ek_id": "EK_5.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 5: Land and Water Use."
+        },
+        {
+          "ek_id": "EK_5.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 5: Land and Water Use."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-environmental-science-unit06",
+      "topic_name": "Unit 6: Energy Resources and Consumption",
+      "parent_id": "ap-environmental-science",
+      "scope": [
+        "Unit 6 content as defined in AP Environmental Science CED.",
+        "Exam weighting: 10–15%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Energy Resources and Consumption."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_6.1",
+          "text": "Core content and concepts for Unit 6: Energy Resources and Consumption."
+        },
+        {
+          "ek_id": "EK_6.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 6: Energy Resources and Consumption."
+        },
+        {
+          "ek_id": "EK_6.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 6: Energy Resources and Consumption."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-environmental-science-unit07",
+      "topic_name": "Unit 7: Atmospheric Pollution",
+      "parent_id": "ap-environmental-science",
+      "scope": [
+        "Unit 7 content as defined in AP Environmental Science CED.",
+        "Exam weighting: 7–10%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Atmospheric Pollution."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_7.1",
+          "text": "Core content and concepts for Unit 7: Atmospheric Pollution."
+        },
+        {
+          "ek_id": "EK_7.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 7: Atmospheric Pollution."
+        },
+        {
+          "ek_id": "EK_7.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 7: Atmospheric Pollution."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-environmental-science-unit08",
+      "topic_name": "Unit 8: Aquatic and Terrestrial Pollution",
+      "parent_id": "ap-environmental-science",
+      "scope": [
+        "Unit 8 content as defined in AP Environmental Science CED.",
+        "Exam weighting: 7–10%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Aquatic and Terrestrial Pollution."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_8.1",
+          "text": "Core content and concepts for Unit 8: Aquatic and Terrestrial Pollution."
+        },
+        {
+          "ek_id": "EK_8.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 8: Aquatic and Terrestrial Pollution."
+        },
+        {
+          "ek_id": "EK_8.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 8: Aquatic and Terrestrial Pollution."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-environmental-science-unit09",
+      "topic_name": "Unit 9: Global Change",
+      "parent_id": "ap-environmental-science",
+      "scope": [
+        "Unit 9 content as defined in AP Environmental Science CED.",
+        "Exam weighting: 15–20%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Global Change."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_9.1",
+          "text": "AP Environmental Science Course and Exam Description                                                      ﻿ V"
+        },
+        {
+          "ek_id": "EK_9.2",
+          "text": "THIS PAGE IS INTENTIONALLY LEFT BLANK"
+        },
+        {
+          "ek_id": "EK_9.3",
+          "text": "This course and exam description presents the content       Placement” or “AP"
+        }
+      ]
+    }
+  ]
+}

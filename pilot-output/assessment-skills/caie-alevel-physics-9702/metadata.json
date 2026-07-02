@@ -1,0 +1,49 @@
+{
+  "schema_version": "1",
+  "id": "caie-alevel-physics-9702",
+  "assessment_type": "syllabus",
+  "system": "CAIE A-Level",
+  "board_or_owner": "Cambridge Assessment International Education",
+  "subject": "Physics",
+  "level": "A-Level (16-19 years)",
+  "assessment_code": "9702",
+  "valid_from": "2025",
+  "valid_to": "2026",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_syllabus",
+      "title": "Cambridge A-Level Physics 9702 syllabus (2025-2026)",
+      "url": "https://www.cambridgeinternational.org/Images/9702-2025-2026-syllabus.pdf",
+      "source_document_type": "syllabus",
+      "source_layout_profile": "caie_igcse_syllabus",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/02-A-Level知识库/03-考试局/CAIE/Physics (9702)/02-课本与考纲/考纲/CAIE_Physics_9702_Syllabus_2025-2026.pdf",
+      "file_checksum_sha256": "1cba1cdca33c51a39dd6dfdc69d612f48967abcd89b6ceacdf9ffd6fa2e2b195",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "2025-2026 syllabus",
+      "retrieved_at": "2026-07-02",
+      "page_refs": [
+        "p.1-68"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "printed_page ≈ physical_page for CAIE IGCSE syllabi.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text.",
+      "notes": "Source bundle lives at pilot-output/source-bundles/caie-alevel-physics-9702-guide/."
+    }
+  ],
+  "aliases": [
+    "alevel physics 9702",
+    "cambridge a-level physics",
+    "caie a-level physics"
+  ],
+  "canonical_id": "caie-alevel-physics-9702",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "Cambridge A-Level Physics 9702. Six papers across AS + A2 with MCQ, structured, and practical components."
+}

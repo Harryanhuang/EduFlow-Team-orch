@@ -1,0 +1,292 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "caie-alevel-chemistry-9701",
+      "topic_name": "CAIE IGCSE Chemistry",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Chemistry (9701) syllabus scope.",
+        "Valid: 2025 → 2026."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-chemistry-9701-t001",
+      "topic_name": "1. Why choose this syllabus?",
+      "parent_id": "caie-alevel-chemistry-9701",
+      "scope": [
+        "Why choose this syllabus?",
+        "Particles in the atom and atomic radius",
+        "Isotopes",
+        "Electrons, energy levels and atomic orbitals",
+        "Ionisation energy"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Why choose this syllabus?."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-chemistry-9701-t002",
+      "topic_name": "2. Syllabus overview",
+      "parent_id": "caie-alevel-chemistry-9701",
+      "scope": [
+        "Syllabus overview",
+        "Relative masses of atoms and molecules",
+        "The mole and the Avogadro constant",
+        "Formulas",
+        "Reacting masses and volumes (of solutions and gases)",
+        "Li   Be                                                                                  B     C     N     O      F"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Syllabus overview."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-chemistry-9701-t003",
+      "topic_name": "3. Chemical bonding                                       25 Equilibria",
+      "parent_id": "caie-alevel-chemistry-9701",
+      "scope": [
+        "Chemical bonding                                       25 Equilibria",
+        "Electronegativity and bonding",
+        "Ionic bonding",
+        "Metallic bonding",
+        "Covalent bonding and coordinate (dative covalent) bonding",
+        "Shapes of molecules",
+        "Intermolecular forces, electronegativity and bond properties",
+        "Dot-and-cross diagrams"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Chemical bonding                                       25 Equilibria."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-chemistry-9701-t004",
+      "topic_name": "4. States of matter                                       26 Reaction kinetics",
+      "parent_id": "caie-alevel-chemistry-9701",
+      "scope": [
+        "States of matter                                       26 Reaction kinetics",
+        "The gaseous state: ideal and real gases and pV = nRT",
+        "Bonding and structure"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: States of matter                                       26 Reaction kinetics."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-chemistry-9701-t005",
+      "topic_name": "5. Chemical energetics",
+      "parent_id": "caie-alevel-chemistry-9701",
+      "scope": [
+        "Chemical energetics",
+        "Enthalpy change, ΔH",
+        "Hess’s law"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Chemical energetics."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-chemistry-9701-t006",
+      "topic_name": "6. Electrochemistry                                       Inorganic chemistry",
+      "parent_id": "caie-alevel-chemistry-9701",
+      "scope": [
+        "Electrochemistry                                       Inorganic chemistry",
+        "Redox processes: electron transfer and changes in oxidation number (oxidation state)"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Electrochemistry                                       Inorganic chemistry."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-chemistry-9701-t033",
+      "topic_name": "33. Carboxylic acids and derivatives",
+      "parent_id": "caie-alevel-chemistry-9701",
+      "scope": [
+        "Carboxylic acids and derivatives",
+        "Carboxylic acids",
+        "Esters",
+        "Acyl chlorides"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Carboxylic acids and derivatives."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-chemistry-9701-t013",
+      "topic_name": "13. An introduction to AS Level organic chemistry           35 Polymerisation",
+      "parent_id": "caie-alevel-chemistry-9701",
+      "scope": [
+        "An introduction to AS Level organic chemistry           35 Polymerisation",
+        "Formulas, functional groups and the naming of organic compounds",
+        "Characteristic organic reactions",
+        "Shapes of organic molecules; σ and π bonds",
+        "Isomerism: structural isomerism and stereoisomerism"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: An introduction to AS Level organic chemistry           35 Polymerisation."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-chemistry-9701-t014",
+      "topic_name": "14. Hydrocarbons                                            36 Organic synthesis",
+      "parent_id": "caie-alevel-chemistry-9701",
+      "scope": [
+        "Hydrocarbons                                            36 Organic synthesis",
+        "Alkanes",
+        "Alkenes",
+        "Alkenes (continued)"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Hydrocarbons                                            36 Organic synthesis."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-chemistry-9701-t018",
+      "topic_name": "18. Carboxylic acids and derivatives",
+      "parent_id": "caie-alevel-chemistry-9701",
+      "scope": [
+        "Carboxylic acids and derivatives",
+        "Carboxylic acids",
+        "Esters"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Carboxylic acids and derivatives."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-chemistry-9701-t021",
+      "topic_name": "21. Organic synthesis",
+      "parent_id": "caie-alevel-chemistry-9701",
+      "scope": [
+        "Organic synthesis",
+        "Organic synthesis"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Organic synthesis."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-chemistry-9701-t009",
+      "topic_name": "9. The Periodic Table: chemical periodicity",
+      "parent_id": "caie-alevel-chemistry-9701",
+      "scope": [
+        "The Periodic Table: chemical periodicity",
+        "Periodicity of physical properties of the elements in Period 3",
+        "Periodicity of chemical properties of the elements in Period 3",
+        "Chemical periodicity of other elements"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: The Periodic Table: chemical periodicity."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+[
+  {
+    "axis": "topics",
+    "severity": "P1",
+    "issue": "unit count mismatch: PDF has 9 units, skill has 8",
+    "fix": "Re-extract topic tree from PDF Course-at-a-Glance."
+  }
+]

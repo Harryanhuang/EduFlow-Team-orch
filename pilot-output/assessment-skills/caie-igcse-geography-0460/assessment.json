@@ -1,0 +1,166 @@
+{
+  "schema_version": "1",
+  "papers": [
+    {
+      "paper_id": "paper1",
+      "name": "Paper 1 Geographical Themes",
+      "question_styles": [
+        "short_answer",
+        "structured"
+      ],
+      "duration_minutes": 75,
+      "total_marks": 75,
+      "weighting_percent": 45,
+      "coverage_notes": "Three geographical themes (one from each theme group).",
+      "calculator_allowed": true,
+      "formula_sheet_allowed": false
+    },
+    {
+      "paper_id": "paper2",
+      "name": "Paper 2 Geographical Skills",
+      "question_styles": [
+        "structured",
+        "data_response"
+      ],
+      "duration_minutes": 90,
+      "total_marks": 60,
+      "weighting_percent": 27,
+      "coverage_notes": "Geographical skills (cartographic, graphical, statistical).",
+      "calculator_allowed": true,
+      "formula_sheet_allowed": false
+    },
+    {
+      "paper_id": "paper3",
+      "name": "Paper 3 School-based Assessment (Coursework)",
+      "question_styles": [
+        "coursework",
+        "fieldwork"
+      ],
+      "duration_minutes": null,
+      "total_marks": 60,
+      "weighting_percent": 27,
+      "coverage_notes": "One coursework assignment (max 2000 words) based on fieldwork.",
+      "calculator_allowed": false,
+      "formula_sheet_allowed": false
+    },
+    {
+      "paper_id": "paper4",
+      "name": "Paper 4 Alternative to Coursework",
+      "question_styles": [
+        "structured"
+      ],
+      "duration_minutes": 90,
+      "total_marks": 60,
+      "weighting_percent": 27,
+      "coverage_notes": "Written alternative for centres unable to run Paper 3.",
+      "calculator_allowed": true,
+      "formula_sheet_allowed": false
+    }
+  ],
+  "assessment_objectives": [
+    {
+      "ao_id": "AO1",
+      "name": "Demonstrate geographical knowledge",
+      "description": "Demonstrate knowledge of locations, places, processes and environments at a variety of scales.",
+      "weighting_qualification_percent": 30,
+      "weighting_by_paper": {},
+      "classification_hints": [
+        "Items asking for place knowledge, terminology, recall of processes."
+      ]
+    },
+    {
+      "ao_id": "AO2",
+      "name": "Demonstrate understanding",
+      "description": "Demonstrate understanding of the relationships between people and their environments.",
+      "weighting_qualification_percent": 30,
+      "weighting_by_paper": {},
+      "classification_hints": [
+        "Items requiring explanation, linking cause and effect, geographical reasoning."
+      ]
+    },
+    {
+      "ao_id": "AO3",
+      "name": "Apply knowledge and understanding",
+      "description": "Apply knowledge and understanding to interpret, analyse and evaluate geographical information and issues.",
+      "weighting_qualification_percent": 25,
+      "weighting_by_paper": {},
+      "classification_hints": [
+        "Items requiring interpretation of maps, data, photographs; application of concepts."
+      ]
+    },
+    {
+      "ao_id": "AO4",
+      "name": "Select, use and evaluate skills",
+      "description": "Select, use and evaluate a range of geographical skills and techniques.",
+      "weighting_qualification_percent": 15,
+      "weighting_by_paper": {},
+      "classification_hints": [
+        "Items requiring map skills, graph/chart interpretation, statistical analysis, fieldwork."
+      ]
+    }
+  ],
+  "question_styles": [
+    {
+      "style_id": "short_answer",
+      "name": "Short answer",
+      "description": "Concise factual or definitional responses."
+    },
+    {
+      "style_id": "structured",
+      "name": "Structured question",
+      "description": "Multi-part questions with progressive difficulty."
+    },
+    {
+      "style_id": "data_response",
+      "name": "Data response",
+      "description": "Interpretation of geographical data, maps, photographs."
+    },
+    {
+      "style_id": "coursework",
+      "name": "Coursework",
+      "description": "One extended fieldwork-based investigation."
+    },
+    {
+      "style_id": "fieldwork",
+      "name": "Fieldwork",
+      "description": "Primary data collection and analysis."
+    }
+  ],
+  "difficulty_ladder": [
+    {
+      "level": "foundation",
+      "description": "Recall of facts, definitions or single-step application."
+    },
+    {
+      "level": "standard",
+      "description": "Multi-step application; interpret simple data."
+    },
+    {
+      "level": "challenge",
+      "description": "Cross-topic synthesis; unfamiliar contexts; evaluation."
+    }
+  ],
+  "difficulty_scale": "ordinal_3",
+  "confidence_thresholds": {
+    "route_minimum": 0.8,
+    "classification_minimum": 0.75,
+    "review_required_below": 0.75
+  },
+  "lesson_use": {
+    "supported": false,
+    "modes": [],
+    "teacher_use_contract_ref": "",
+    "student_use_contract_ref": "",
+    "parent_use_contract_ref": "",
+    "notes": "Set supported=true only when a teacher/student/parent mode is declared and validated."
+  },
+  "generation_constraints": {
+    "must_match_scope": true,
+    "mark_out_of_scope_as_extension": true
+  },
+  "marking_guidance": {
+    "command_words_ref": "CAIE IGCSE Geography command words (state, describe, explain, suggest, analyse, evaluate) are defined in Section 4 of the syllabus.",
+    "notes": "Single-tier qualification (grades A*-G). Candidates take Paper 3 (Coursework) or Paper 4 (Alternative to Coursework), not both."
+  },
+  "duration_hours": 1
+}

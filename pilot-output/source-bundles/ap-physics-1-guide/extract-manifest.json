@@ -1,0 +1,1401 @@
+{
+  "schema_version": "1",
+  "subject": "physics-1-algebra-based",
+  "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/03-AP知识库/03-学科知识/AP Physics 1/02-课本与考纲/考纲/ap-physics-1-course-and-exam-description.pdf",
+  "file_checksum_sha256": "6e741c770b9a1e8cf388a3befd4d513b5ebc0e3a478b2dddd1a2e9958500d42f",
+  "pdfinfo": {
+    "Title": "AP® Physics 1: Algebra-Based Course and Exam Description",
+    "Subject": "AP; Advanced Placement; AP® Physics 1: Algebra-Based",
+    "Keywords": "AP® Physics 1: Algebra-Based Course and Exam Description; Effective Fall 2024; front matter updates; October 2025; AP resources and supports; instructional model; course framework; laboratory investigations; instructional approach; exam information; course information; scoring guidelines; scoring resources; course resources; exam resources; teacher resources; course materials; teacher materials; ADA",
+    "Author": "College Board",
+    "Creator": "Adobe InDesign CC 14.0 (Macintosh)",
+    "Producer": "Adobe PDF Library 15.0",
+    "CreationDate": "Sat Apr  6 15:03:52 2024 CST",
+    "ModDate": "Thu Oct 16 03:12:36 2025 CST",
+    "Custom Metadata": "no",
+    "Metadata Stream": "yes",
+    "Tagged": "yes",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "AcroForm",
+    "JavaScript": "no",
+    "Pages": "228",
+    "Encrypted": "yes (print:yes copy:yes change:no addNotes:no algorithm:AES-256)",
+    "Page size": "612 x 792 pts (letter)",
+    "Page rot": "0",
+    "File size": "7224928 bytes",
+    "Optimized": "no",
+    "PDF version": "1.7"
+  },
+  "total_pages": 228,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": 1,
+      "chars": 3199,
+      "first_200": "INCLUDES Course framework Instructional section Sample exam questions AP Physics 1: ® Algebra-Based COURSE AND EXAM DESCRIPTION Effective Fall 2024 AP Physics 1: ® Algebra-Based COURSE AND EXAM DESCRI"
+    },
+    {
+      "physical_page": 2,
+      "printed_page": 2,
+      "chars": 3199,
+      "first_200": "ty of academic disciplines. AP courses ground such studies in primary sources so that students can evaluate experiences and evidence for themselves. 6. \u0007Every\u0007AP\u0007student\u0007who\u0007engages\u0007with\u0007evidence\u0007is\u0007l"
+    },
+    {
+      "physical_page": 3,
+      "printed_page": 3,
+      "chars": 3199,
+      "first_200": "4: Qualitative/Quantitative Translation APPENDIX 213 Vocabulary and Definitions of Important Ideas in AP Physics 217 Table of Information: Equations Acknowledgments College Board would like to acknowl"
+    },
+    {
+      "physical_page": 4,
+      "printed_page": 4,
+      "chars": 3199,
+      "first_200": "ifornia Merced, Merced, CA Matt Vonk, University of Wisconsin, River Falls, WI AP Physics 1: Algebra-Based Course and Exam Description ﻿ V.1 | v Return to Table of Contents ©"
+    },
+    {
+      "physical_page": 5,
+      "printed_page": 5,
+      "chars": 3199,
+      "first_200": "l students should have access to academically universities, and AP Exams are developed and scored challenging coursework before they enroll in AP by college faculty and experienced AP teachers. Most"
+    },
+    {
+      "physical_page": 6,
+      "printed_page": 6,
+      "chars": 3199,
+      "first_200": "Return to Table of Contents © 2024 College Board The AP Course Audit form is submitted by the AP questions\u0007and\u0007through-course\u0007performance\u0007 teacher and the school principal (or designated assessments, "
+    },
+    {
+      "physical_page": 7,
+      "printed_page": 7,
+      "chars": 3199,
+      "first_200": "m. earn when their professors administer AP Exam The AP Test Development Committees are responsible questions to them. for developing each AP Exam, ensuring the exam § Performance that researchers"
+    },
+    {
+      "physical_page": 8,
+      "printed_page": 8,
+      "chars": 3199,
+      "first_200": "ile multiplechoice 1 No recommendation n/a questions are scored by machine, the freeresponse AP Physics 1: Algebra-Based Course and Exam Description ﻿ V.1 | 2 Return to Table of Contents"
+    },
+    {
+      "physical_page": 9,
+      "printed_page": 9,
+      "chars": 3199,
+      "first_200": "﻿ V.1 | 3 Return to Table of Contents © 2024 College Board AP Resources and Support By completing a simple class selection process at the start of the school"
+    },
+    {
+      "physical_page": 10,
+      "printed_page": 10,
+      "chars": 3199,
+      "first_200": "t\u0007they\u0007have\u0007added\u0007the\u0007course\u0007they\u0007teach\u0007to\u0007their\u0007AP\u0007Course\u0007Audit\u0007 account and have had it approved by their school’s administrator. § Teachers or AP coordinators, depending on who the school has decid"
+    },
+    {
+      "physical_page": 11,
+      "printed_page": 11,
+      "chars": 3199,
+      "first_200": "© 2024 College Board About the AP Physics 1 Course AP\u0007Physics\u00071\u0007is\u0007an\u0007algebra-based,\u0007introductory\u0007college-level\u0007physics\u0007course.\u0007Students\u0007 cultivate their understanding of physics by developing models "
+    },
+    {
+      "physical_page": 12,
+      "printed_page": 12,
+      "chars": 3199,
+      "first_200": "mework reflects a commitment to what physics teachers, professors, and researchers have agreed is the main goal of a college-level physics course: to help students develop a deep understanding of"
+    },
+    {
+      "physical_page": 13,
+      "printed_page": 13,
+      "chars": 3199,
+      "first_200": "© 2024 College Board THIS PAGE IS INTENTIONALLY LEFT BLANK. 1 AP PHYSICS 1 Science Practices The table that follows presents the science practices that students should develop during the"
+    },
+    {
+      "physical_page": 14,
+      "printed_page": 14,
+      "chars": 3199,
+      "first_200": "h units from known claim. quantities, by selecting and following a 1.C Create\u0007qualitative\u0007sketches\u0007of\u0007 logical computational pathway. 3.C Justify or support a claim using graphs that represent feature"
+    },
+    {
+      "physical_page": 15,
+      "printed_page": 15,
+      "chars": 3199,
+      "first_200": "an cover both the required course content and the Progress Checks. The number of suggested class periods is based on a schedule in which the class meets\u0007five\u0007days\u0007a\u0007week\u0007for\u000745\u0007minutes\u0007each\u0007day\u0007or\u0007for"
+    },
+    {
+      "physical_page": 16,
+      "printed_page": 16,
+      "chars": 3199,
+      "first_200": "ctices to justify or support a claim about the behavior of are described as discrete practices; they are in fact a system, physical phenomena, or outcome of an interrelated.\u0007For\u0007example,\u0007scientific\u0007qu"
+    },
+    {
+      "physical_page": 17,
+      "printed_page": 17,
+      "chars": 3199,
+      "first_200": "Periods 18–23% AP Exam Weighting 1 1 1.1 Scalars and Vectors in Plan 2 3 One Dimension 2 3 The Course at a Glance provides 1 1 a\u0007useful\u0007visual\u0007organization\u0007 2 2"
+    },
+    {
+      "physical_page": 18,
+      "printed_page": 18,
+      "chars": 3199,
+      "first_200": "science 3 practices across units. 1 2 2.8 Spring Forces Teach 3 1 PRACTICES 2 2.9 Circular Motion Science Practices spiral throughout the course 3 1 Creating 3 Scientific Representations"
+    },
+    {
+      "physical_page": 19,
+      "printed_page": 19,
+      "chars": 3199,
+      "first_200": "Weighting ~15–20 Class Periods 10–15% AP Exam Weighting 1 1 1 2 3.1 Translational Kinetic 2 4.1 Linear Momentum 2 3 Energy 3 3 1 1 1 2 3.2 Work"
+    },
+    {
+      "physical_page": 20,
+      "printed_page": 20,
+      "chars": 3199,
+      "first_200": "Translation § Qualitative/Quantitative Translation V.1 | 18 © 2024 College Board UNIT Energy and UNIT UNIT 6 Momentum of 7 Oscillations 8 Fluids Rotating Systems ~8–14 Class Periods 5–8% AP"
+    },
+    {
+      "physical_page": 21,
+      "printed_page": 21,
+      "chars": 3199,
+      "first_200": "ranslation Between Representations § Translation Between Representations § Translation Between Representations § Experimental Design and Analysis § Experimental Design and Analysis § Experimental Desi"
+    },
+    {
+      "physical_page": 22,
+      "printed_page": 22,
+      "chars": 3199,
+      "first_200": "Developing Understanding provides an overview that 1 10–15 ~12–17 CLASS PERIODS % AP EXAM WEIGHTING contextualizes\u0007and\u0007situates\u0007the\u0007key\u0007content\u0007of\u0007the\u0007unit\u0007within\u0007the\u0007 scope of the course. Kinematics "
+    },
+    {
+      "physical_page": 23,
+      "printed_page": 23,
+      "chars": 3199,
+      "first_200": "conflicting reports? § How can we estimate the height of a very tall Science Practices Creating models and representations is a fundamental piece of the second building with only a"
+    },
+    {
+      "physical_page": 24,
+      "printed_page": 24,
+      "chars": 3199,
+      "first_200": "g Representations and models include, but speed, you must give some common misconceptions they may are not limited to, sketches of the physical yourself four times as have about motion,"
+    },
+    {
+      "physical_page": 25,
+      "printed_page": 25,
+      "chars": 3199,
+      "first_200": "link\u0007the\u0007content\u0007in\u0007that\u0007topic\u0007to\u0007specific\u0007AP\u0007Physics\u0007skills.\u0007The\u0007 Topic Suggested Skills individual skills have been thoughtfully chosen in a way that 1.1 Scalars and Vectors in One Dimension 1.A Cre"
+    },
+    {
+      "physical_page": 26,
+      "printed_page": 26,
+      "chars": 3199,
+      "first_200": "d following a logical mathematical pathway. 2.C Compare physical quantities between two or more scenarios or at different times and locations in a single scenario. 3.B Apply an appropriate law,"
+    },
+    {
+      "physical_page": 27,
+      "printed_page": 27,
+      "chars": 3199,
+      "first_200": "2 for a particular topic. SAMPLE INSTRUCTIONAL ACTIVITIES The sample activities on this page are optional and are offered to provide possible ways to incorporate various instructional approaches in th"
+    },
+    {
+      "physical_page": 28,
+      "printed_page": 28,
+      "chars": 3199,
+      "first_200": "Task Have students use the “My Solar System” PhET applet to create circular orbits of varying radii around the central star and record radius, period, and planet mass for various"
+    },
+    {
+      "physical_page": 29,
+      "printed_page": 29,
+      "chars": 3199,
+      "first_200": "5 Learning objectives\u0007define\u0007what\u0007a\u0007student\u0007needs\u0007to\u0007be\u0007able\u0007to\u0007do\u0007 TOPIC 5.2 SUGGESTED SKILLS with content knowledge in order to progress through the course. 1.C Connecting Linear and Create qualitat"
+    },
+    {
+      "physical_page": 30,
+      "printed_page": 30,
+      "chars": 3199,
+      "first_200": "2.C the AP Exam. Compare physical quantities between two LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE or more scenarios or at different times and locations in a single Boundary statements provide guidance t"
+    },
+    {
+      "physical_page": 31,
+      "printed_page": 31,
+      "chars": 3199,
+      "first_200": "where appropriate. point, and vice versa. 5.2.A.2 Derived relationships of linear velocity and of the tangential component of acceleration to their respective angular quantities are given by the follo"
+    },
+    {
+      "physical_page": 32,
+      "printed_page": 32,
+      "chars": 3199,
+      "first_200": "Remember to go to AP Classroom to assign students the online Progress Check for this unit. Whether assigned as homework or completed in class, the Progress Check provides each student"
+    },
+    {
+      "physical_page": 33,
+      "printed_page": 33,
+      "chars": 3199,
+      "first_200": "Translation Between Representations (TBR) § Why might it seem studying kinematics, students will learn to question—and\u0007the\u0007analysis\u0007of\u0007models\u0007 like you are moving represent\u0007motion—both\u0007constant\u0007veloci"
+    },
+    {
+      "physical_page": 34,
+      "printed_page": 34,
+      "chars": 3199,
+      "first_200": "their reasoning and\u0007gain\u0007proficiency\u0007in\u0007using\u0007mathematical\u0007 models to describe physical phenomena. AP Physics 1: Algebra-Based Course and Exam Description Course Framework V.1 | 27 Return to Table of "
+    },
+    {
+      "physical_page": 35,
+      "printed_page": 35,
+      "chars": 3199,
+      "first_200": "culate or estimate an unknown quantity with units from known quantities, by selecting and following a logical computational pathway. 3.C Justify or support a claim using evidence from experimental dat"
+    },
+    {
+      "physical_page": 36,
+      "printed_page": 36,
+      "chars": 3199,
+      "first_200": "Activity 1 1.2 Desktop Experiment Task Give\u0007each\u0007group\u0007a\u0007pull-back\u0007toy\u0007car.\u0007Ask\u0007students\u0007to\u0007lay\u0007out\u0007strips\u0007of\u0007paper\u00070.5\u0007m\u0007apart and\u0007take\u0007a\u0007video\u0007of\u0007the\u0007car\u0007as\u0007it\u0007is\u0007released,\u0007speeds\u0007up,\u0007and\u0007slows\u0007down"
+    },
+    {
+      "physical_page": 37,
+      "printed_page": 37,
+      "chars": 3199,
+      "first_200": "1 TOPIC 1.1 SUGGESTED SKILLS 1.A Scalars and Vectors Create diagrams, tables, charts, or schematics to represent physical in One Dimension situations. 2.C Compare physical quantities between two or mo"
+    },
+    {
+      "physical_page": 38,
+      "printed_page": 38,
+      "chars": 3199,
+      "first_200": "1.1.A.3 Distance and speed are examples of scalar quantities, while position, displacement, velocity, and acceleration are examples of vector quantities. 1.1.A.3.i Vectors are notated with an arrow ab"
+    },
+    {
+      "physical_page": 39,
+      "printed_page": 39,
+      "chars": 3199,
+      "first_200": "hysical extensive properties such as mass and charge. representations, or physical 1.2.A.2 principles or laws. Displacement is the change in an object’s position. Relevant equation: 1.2.B 1.2.B.1 Desc"
+    },
+    {
+      "physical_page": 40,
+      "printed_page": 40,
+      "chars": 3199,
+      "first_200": "ds a value that is very close to the instantaneous velocity or instantaneous acceleration. AP Physics 1: Algebra-Based Course and Exam Description Course Framework V.1 | 33 Return to Table"
+    },
+    {
+      "physical_page": 41,
+      "printed_page": 41,
+      "chars": 3199,
+      "first_200": "acceleration caused by the force of gravity is downward, constant, and has a measured value approximately equal to a g = g ≈ 10 m/s 2. 1.3.A.4 Graphs of position,"
+    },
+    {
+      "physical_page": 42,
+      "printed_page": 42,
+      "chars": 3199,
+      "first_200": "1.3.A.4.iv The change in velocity of an object during a time interval is equal to the area under the curve of a graph of the acceleration of the object as"
+    },
+    {
+      "physical_page": 43,
+      "printed_page": 43,
+      "chars": 3199,
+      "first_200": ".B.2 The observed velocity of an object results from the combination of the object’s velocity and the velocity of the observer’s reference frame. 1.4.B.2.i Combining the motion of an object"
+    },
+    {
+      "physical_page": 44,
+      "printed_page": 44,
+      "chars": 3199,
+      "first_200": "Derive a symbolic expression from known quantities by selecting and following a logical mathematical pathway. 2.D Required Course Content Predict new values or factors of change of physical quantities"
+    },
+    {
+      "physical_page": 45,
+      "printed_page": 45,
+      "chars": 3199,
+      "first_200": "Course Framework V.1 | 37 Return to Table of Contents © 2024 College Board UNIT 1 Kinematics LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 1.5.B 1.5.B.1 Describe the motion of Motion\u0007in\u0007two\u0007dimensions\u0007can\u0007be"
+    },
+    {
+      "physical_page": 46,
+      "printed_page": 46,
+      "chars": 3199,
+      "first_200": "ss Check 2 Multiple-choice: ~30 questions Free-response: 4 questions § Mathematical Routines § Translation Between Representations § Experimental Design and Analysis § Qualitative/Quantitative Transla"
+    },
+    {
+      "physical_page": 47,
+      "printed_page": 47,
+      "chars": 3199,
+      "first_200": "els and representations a scenario. Using content from any unit, weight as a truck with the that\u0007will\u0007help\u0007them\u0007further\u0007analyze\u0007systems,\u0007 the\u0007QQT\u0007first\u0007requires\u0007students\u0007to\u0007make\u0007a\u0007 same\u0007birds\u0007flying\u0007a"
+    },
+    {
+      "physical_page": 48,
+      "printed_page": 48,
+      "chars": 3199,
+      "first_200": "2 Force and Translational Dynamics UNIT AT A GLANCE Topic Suggested Skills 2.1 Systems and Center 1.B Create quantitative graphs with appropriate scales and units, including plotting data. of Mass"
+    },
+    {
+      "physical_page": 49,
+      "printed_page": 49,
+      "chars": 3199,
+      "first_200": "nd Translational Dynamics 2 UNIT AT A GLANCE (cont’d) Topic Suggested Skills 2.5 Newton’s Second 1.A Create diagrams, tables, charts, or schematics to represent physical situations. Law 2.A Derive a"
+    },
+    {
+      "physical_page": 50,
+      "printed_page": 50,
+      "chars": 3199,
+      "first_200": "mathematical pathway. 2.C Compare\u0007physical\u0007quantities\u0007between\u0007two\u0007or\u0007more\u0007scenarios\u0007or\u0007at\u0007different\u0007times\u0007and\u0007 locations in a single scenario. 3.A Create\u0007experimental\u0007procedures\u0007that\u0007are\u0007appropriate\u0007f"
+    },
+    {
+      "physical_page": 51,
+      "printed_page": 51,
+      "chars": 3199,
+      "first_200": "2.5 Working Backward Put students in pairs. Have student A write a Newton’s second law equation either with symbols\u0007or\u0007plugged-in\u0007numbers\u0007including\u0007units.\u0007Then,\u0007have\u0007student\u0007B\u0007describe\u0007a\u0007situation\u0007 th"
+    },
+    {
+      "physical_page": 52,
+      "printed_page": 52,
+      "chars": 3199,
+      "first_200": "At\u0007the\u0007bottom,\u0007the\u0007object\u0007is\u0007neither\u0007speeding\u0007up\u0007nor\u0007 slowing down, so what force is registered at the bottom?” Expect students to (incorrectly) answer, “2 N” and discuss, as a class, why this answer "
+    },
+    {
+      "physical_page": 53,
+      "printed_page": 53,
+      "chars": 3199,
+      "first_200": "rom\u0007each\u0007other\u0007as\u0007well\u0007as\u0007 from the system as a whole. 2.1.A.5 The\u0007internal\u0007structure\u0007of\u0007a\u0007system\u0007affects\u0007the\u0007 analysis of that system. 2.1.A.6 As variables external to a system are changed, the syste"
+    },
+    {
+      "physical_page": 54,
+      "printed_page": 54,
+      "chars": 3199,
+      "first_200": "ED SKILLS 1.A TOPIC 2.2 Forces and Create diagrams, tables, charts, or schematics to represent physical Free-Body Diagrams situations. 2.B Calculate or estimate an unknown quantity with units from kno"
+    },
+    {
+      "physical_page": 55,
+      "printed_page": 55,
+      "chars": 3199,
+      "first_200": "Forces exerted on an object or system are represented as vectors originating from the representation of the center of mass, such as a dot. A system is treated as though"
+    },
+    {
+      "physical_page": 56,
+      "printed_page": 56,
+      "chars": 3199,
+      "first_200": "ng functional dependence between variables. 3.B Apply an appropriate law, definition,\u0007theoretical\u0007 Required Course Content relationship, or model to make a claim. 3.C Justify or support a claim LEARNI"
+    },
+    {
+      "physical_page": 57,
+      "printed_page": 57,
+      "chars": 3199,
+      "first_200": "ter of mass with negligible friction. continued on next page AP Physics 1: Algebra-Based Course and Exam Description Course Framework V.1 | 50 Return to Table of Contents © 2024"
+    },
+    {
+      "physical_page": 58,
+      "printed_page": 58,
+      "chars": 3199,
+      "first_200": "such that the net force exerted on a system\u0007is\u0007zero. Derived equation: i 2.4.A.3 Newton’s\u0007first\u0007law\u0007states\u0007that\u0007if\u0007the\u0007net\u0007force\u0007 exerted\u0007on\u0007a\u0007system\u0007is\u0007zero,\u0007the\u0007velocity\u0007of\u0007that\u0007 system will remain "
+    },
+    {
+      "physical_page": 59,
+      "printed_page": 59,
+      "chars": 3199,
+      "first_200": "quantities by selecting and following a logical mathematical pathway. 2.D Required Course Content Predict new values or factors of change of physical quantities using functional dependence between var"
+    },
+    {
+      "physical_page": 60,
+      "printed_page": 60,
+      "chars": 3199,
+      "first_200": "tities by selecting and following a logical mathematical pathway. 2.D Predict new values or factors of change of Required Course Content physical quantities using functional dependence between variabl"
+    },
+    {
+      "physical_page": 61,
+      "printed_page": 61,
+      "chars": 3199,
+      "first_200": "the test object. continued on next page AP Physics 1: Algebra-Based Course and Exam Description Course Framework V.1 | 54 Return to Table of Contents © 2024 College Board UNIT"
+    },
+    {
+      "physical_page": 62,
+      "printed_page": 62,
+      "chars": 3199,
+      "first_200": "of the system is not equal to the magnitude of the gravitational force exerted on the system. 2.6.C.3 A system appears weightless when there are no forces exerted on the"
+    },
+    {
+      "physical_page": 63,
+      "printed_page": 63,
+      "chars": 3199,
+      "first_200": "2 TOPIC 2.7 SUGGESTED SKILLS 1.C Kinetic and Create qualitative sketches of graphs that represent features of a model or Static Friction the behavior of a physical system. 2.B Calculate"
+    },
+    {
+      "physical_page": 64,
+      "printed_page": 64,
+      "chars": 3199,
+      "first_200": "the motion of each make a claim. surface relative to the other surface. 2.7.A.1.ii The force of friction between two surfaces does\u0007not\u0007depend\u0007on\u0007the\u0007size\u0007of\u0007the\u0007surface\u0007 area of contact. 2.7.A.2 The m"
+    },
+    {
+      "physical_page": 65,
+      "printed_page": 65,
+      "chars": 3199,
+      "first_200": "2.7.B.2.i Slipping and sliding refer to situations in which two surfaces are moving relative to each other. 2.7.B.2.ii There exists a maximum value for which static friction will prevent an"
+    },
+    {
+      "physical_page": 66,
+      "printed_page": 66,
+      "chars": 3199,
+      "first_200": "mathematical pathway. 2.C Required Course Content Compare physical quantities between two or more scenarios or at\u0007different\u0007times\u0007and\u0007 locations in a single LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE scen"
+    },
+    {
+      "physical_page": 67,
+      "printed_page": 67,
+      "chars": 3199,
+      "first_200": "g plotting data. 2.A Derive a symbolic expression from known quantities by selecting and following a logical mathematical pathway. 2.D Predict new values or factors of change of Required Course"
+    },
+    {
+      "physical_page": 68,
+      "printed_page": 68,
+      "chars": 3199,
+      "first_200": "continued on next page AP Physics 1: Algebra-Based Course and Exam Description Course Framework V.1 | 60 Return to Table of Contents © 2024 College Board UNIT Force and Translational"
+    },
+    {
+      "physical_page": 69,
+      "printed_page": 69,
+      "chars": 3199,
+      "first_200": "T=1 f 2.9.A.5.iii For an object traveling at a constant speed in a circular path, the period is given by the derived equation continued on next page AP Physics 1:"
+    },
+    {
+      "physical_page": 70,
+      "printed_page": 70,
+      "chars": 3199,
+      "first_200": "AP EXAM WEIGHTING ~22–27 CLASS PERIODS AP Physics 1: Algebra-Based Course and Exam Description Course Framework V.1 | 63 Return to Table of Contents © 2024 College Board Remember to"
+    },
+    {
+      "physical_page": 71,
+      "printed_page": 71,
+      "chars": 3199,
+      "first_200": "to understand the limiting factors of each technique. § If energy is conserved, why are we running out Building the of it? Science Practices Preparing for the AP Exam §"
+    },
+    {
+      "physical_page": 72,
+      "printed_page": 72,
+      "chars": 3199,
+      "first_200": "Return to Table of Contents © 2024 College Board UNIT 3 Work, Energy, and Power UNIT AT A GLANCE Topic Suggested Skills 3.1 Translational 1.C Create qualitative sketches of graphs"
+    },
+    {
+      "physical_page": 73,
+      "printed_page": 73,
+      "chars": 3199,
+      "first_200": "Return to Table of Contents © 2024 College Board UNIT Work, Energy, and Power 3 UNIT AT A GLANCE (cont’d) Topic Suggested Skills 3.5 Power 1.B Create quantitative graphs with"
+    },
+    {
+      "physical_page": 74,
+      "printed_page": 74,
+      "chars": 3199,
+      "first_200": ".4 Desktop Experiment Task Divide\u0007students\u0007into\u0007groups\u0007and\u0007give\u0007each\u0007group\u0007a\u0007spring-loaded\u0007ball\u0007launcher,\u0007scale,\u0007and\u0007 meterstick. Ask students to determine the spring constant of the spring in the lau"
+    },
+    {
+      "physical_page": 75,
+      "printed_page": 75,
+      "chars": 3199,
+      "first_200": "features of a model or Kinetic Energy the behavior of a physical system. 2.B Calculate or estimate an unknown quantity with units from known quantities, by selecting and following a"
+    },
+    {
+      "physical_page": 76,
+      "printed_page": 76,
+      "chars": 3199,
+      "first_200": "Return to Table of Contents © 2024 College Board UNIT 3 Work, Energy, and Power SUGGESTED SKILLS 1.B TOPIC 3.2 Work Create quantitative graphs with appropriate scales and units, including"
+    },
+    {
+      "physical_page": 77,
+      "printed_page": 77,
+      "chars": 3199,
+      "first_200": "3.2.A.2 Work is a scalar quantity that may be positive, negative,\u0007or\u0007zero. 3.2.A.3 The amount of work done on a system by a constant force is related to the components of"
+    },
+    {
+      "physical_page": 78,
+      "printed_page": 78,
+      "chars": 3199,
+      "first_200": "3.2.A.4.i An external force may change the configuration\u0007of\u0007a\u0007system.\u0007The\u0007component\u0007 of the external force parallel to the displacement times the displacement of the point of application of the force "
+    },
+    {
+      "physical_page": 79,
+      "printed_page": 79,
+      "chars": 3199,
+      "first_200": "ased Course and Exam Description Course Framework V.1 | 72 Return to Table of Contents © 2024 College Board UNIT Work, Energy, and Power 3 TOPIC 3.3 SUGGESTED SKILLS 1.C"
+    },
+    {
+      "physical_page": 80,
+      "printed_page": 80,
+      "chars": 3199,
+      "first_200": "more objects Apply an appropriate law, of a system. has potential energy if the objects within that definition,\u0007theoretical\u0007 system only interact with each other through relationship, or model to cons"
+    },
+    {
+      "physical_page": 81,
+      "printed_page": 81,
+      "chars": 3199,
+      "first_200": "mass (e.g., moons, planets or stars) is given by the equation m1m2 U g = −G r 3.3.A.4.iii Because\u0007the\u0007gravitational\u0007field\u0007near\u0007the\u0007 surface of a planet is nearly constant, the change in gravitational"
+    },
+    {
+      "physical_page": 82,
+      "printed_page": 82,
+      "chars": 3199,
+      "first_200": "nergy situations. 2.A Derive a symbolic expression from known quantities by selecting and following a logical mathematical pathway. 2.C Required Course Content Compare physical quantities between two "
+    },
+    {
+      "physical_page": 83,
+      "printed_page": 83,
+      "chars": 3199,
+      "first_200": "a transfer of energy between the system and its surroundings. 3.4.B.3 A system may be selected so that the total energy of that system is constant. 3.4.B.4 If the total"
+    },
+    {
+      "physical_page": 84,
+      "printed_page": 84,
+      "chars": 3199,
+      "first_200": "UNIT Work, Energy, and Power 3 TOPIC 3.5 SUGGESTED SKILLS 1.B Power Create quantitative graphs with appropriate scales and units, including plotting data. 2.A Derive a symbolic expression from known"
+    },
+    {
+      "physical_page": 85,
+      "printed_page": 85,
+      "chars": 3199,
+      "first_200": "3.C 3.5.A.2 Justify or support a claim Average power is the amount of energy being using evidence from transferred or converted, divided by the time it experimental data, physical took"
+    },
+    {
+      "physical_page": 86,
+      "printed_page": 86,
+      "chars": 3199,
+      "first_200": "Check provides each student with immediate feedback related to this unit’s topics and science practices Progress Check 4 Multiple-choice: ~18 questions Free-response: 4 questions § Mathematical Routin"
+    },
+    {
+      "physical_page": 87,
+      "printed_page": 87,
+      "chars": 3199,
+      "first_200": "Inquiry learning and critical thinking and break when thrown students will need to justify their selection problem-solving\u0007skills\u0007are\u0007best\u0007developed\u0007 on the pavement, but of the kind of data needed an"
+    },
+    {
+      "physical_page": 88,
+      "printed_page": 88,
+      "chars": 3199,
+      "first_200": "Course Framework V.1 | 81 Return to Table of Contents © 2024 College Board UNIT 4 Linear Momentum UNIT AT A GLANCE Topic Suggested Skills 4.1 Linear Momentum 1.C Create"
+    },
+    {
+      "physical_page": 89,
+      "printed_page": 89,
+      "chars": 3199,
+      "first_200": "3.B Go to AP Classroom to assign the Progress Check for Unit 4. Review the results in class to identify and address any student misunderstandings. AP Physics 1: Algebra-Based Course"
+    },
+    {
+      "physical_page": 90,
+      "printed_page": 90,
+      "chars": 3199,
+      "first_200": "with its spring side. Have students predict in which case more force is registered and explain why. 5 4.4 Desktop Experiment Task Have\u0007two\u0007carts\u0007with\u0007different\u0007masses\u0007collide\u0007in\u0007a\u0007nonstick\u0007collision.\u0007"
+    },
+    {
+      "physical_page": 91,
+      "printed_page": 91,
+      "chars": 3199,
+      "first_200": "larger than the net external force exerted on those objects during the interaction. 4.1.A.3.ii As\u0007only\u0007the\u0007initial\u0007and\u0007final\u0007states\u0007of\u0007a\u0007 collision\u0007are\u0007analyzed,\u0007the\u0007object\u0007model\u0007 may\u0007be\u0007used\u0007to\u0007analy"
+    },
+    {
+      "physical_page": 92,
+      "printed_page": 92,
+      "chars": 3199,
+      "first_200": "following a logical mathematical pathway. 2.D Required Course Content Predict new values or factors of change of physical quantities using functional dependence between variables. LEARNING OBJECTIVE E"
+    },
+    {
+      "physical_page": 93,
+      "printed_page": 93,
+      "chars": 3199,
+      "first_200": "under the curve of a graph of the net external force exerted on the system as a function of time. 4.2.A.5 The net external force exerted on a system is"
+    },
+    {
+      "physical_page": 94,
+      "printed_page": 94,
+      "chars": 3199,
+      "first_200": "tents © 2024 College Board UNIT Linear Momentum 4 TOPIC 4.3 SUGGESTED SKILLS 1.A Conservation of Create diagrams, tables, charts, or schematics to represent physical Linear Momentum situations. 2.A De"
+    },
+    {
+      "physical_page": 95,
+      "printed_page": 95,
+      "chars": 3199,
+      "first_200": "ns, or physical linear momentum. center-of-mass\u0007velocity. principles or laws. 4.3.A.1.i For a collection of objects, the velocity of a system’s center of mass can be calculated using the equation mi"
+    },
+    {
+      "physical_page": 96,
+      "printed_page": 96,
+      "chars": 3199,
+      "first_200": "A system may be selected so that the total momentum of that system is constant. 4.3.A.3.iii If the total momentum of a system changes, that change will be equivalent to"
+    },
+    {
+      "physical_page": 97,
+      "printed_page": 97,
+      "chars": 3199,
+      "first_200": "is\u0007nonzero,\u0007momentum\u0007is\u0007transferred\u0007between\u0007 the system and the environment. AP Physics 1: Algebra-Based Course and Exam Description Course Framework V.1 | 88 Return to Table of Contents © 2024 Colleg"
+    },
+    {
+      "physical_page": 98,
+      "printed_page": 98,
+      "chars": 3199,
+      "first_200": "ollision between objects is one in Create experimental procedures that are interaction between objects which the initial kinetic energy of the system is appropriate for a given is elastic or"
+    },
+    {
+      "physical_page": 99,
+      "printed_page": 99,
+      "chars": 3199,
+      "first_200": "rse Framework V.1 | 91 Return to Table of Contents © 2024 College Board Remember to go to AP Classroom to assign students the online Progress Check for this unit."
+    },
+    {
+      "physical_page": 100,
+      "printed_page": 100,
+      "chars": 3199,
+      "first_200": "nd Canyon Skywalk? Building the Preparing for the AP Exam §§ Why does a tightrope walker use a long pole? Science Practices The analysis of functional relationships 2.A 2.C 2.D"
+    },
+    {
+      "physical_page": 101,
+      "printed_page": 101,
+      "chars": 3199,
+      "first_200": "a variable to determining how that value benefit\u0007from\u0007many\u0007opportunities\u0007to\u0007practice\u0007 changes when the value of other variables in these important mathematical skills that will a related equation chan"
+    },
+    {
+      "physical_page": 102,
+      "printed_page": 102,
+      "chars": 3199,
+      "first_200": "bles. 3.B Apply\u0007an\u0007appropriate\u0007law,\u0007definition,\u0007theoretical\u0007relationship,\u0007or\u0007model\u0007to\u0007make\u0007a\u0007claim. 5.4 Rotational Inertia 1.B Create quantitative graphs with appropriate scales and units, including p"
+    },
+    {
+      "physical_page": 103,
+      "printed_page": 103,
+      "chars": 3199,
+      "first_200": "Go to AP Classroom to assign the Progress Check for Unit 5. Review the results in class to identify and address any student misunderstandings. AP Physics 1: Algebra-Based Course and"
+    },
+    {
+      "physical_page": 104,
+      "printed_page": 104,
+      "chars": 3199,
+      "first_200": "dynamics. 5 5.6 Create a Plan Have students complete the necessary research to determine the rotational inertia of a\u0007human\u0007body\u0007in\u0007different\u0007configurations\u0007(e.g.,\u0007arms\u0007outstretched,\u0007arms\u0007pulled\u0007in).\u0007T"
+    },
+    {
+      "physical_page": 105,
+      "printed_page": 105,
+      "chars": 3199,
+      "first_200": "Predict new values or factors of change of physical quantities using functional dependence between variables. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 3.A 5.1.A 5.1.A.1 Create experimental Describe the "
+    },
+    {
+      "physical_page": 106,
+      "printed_page": 106,
+      "chars": 3199,
+      "first_200": "cribed using the motion of the system’s center of mass, the system may be treated as a single object. For example, the rotation of Earth about its axis may be"
+    },
+    {
+      "physical_page": 107,
+      "printed_page": 107,
+      "chars": 3199,
+      "first_200": "For constant angular acceleration, the mathematical relationships between angular displacement, angular velocity, and angular acceleration can be described with the following equations: 5.1.A.4.ii Gra"
+    },
+    {
+      "physical_page": 108,
+      "printed_page": 108,
+      "chars": 3199,
+      "first_200": "expression from known quantities by selecting and following a logical mathematical pathway. Required Course Content 2.C Compare physical quantities between two or more scenarios or at\u0007different\u0007times\u0007"
+    },
+    {
+      "physical_page": 109,
+      "printed_page": 109,
+      "chars": 3199,
+      "first_200": "Return to Table of Contents © 2024 College Board UNIT 5 Torque and Rotational Dynamics SUGGESTED SKILLS 1.A TOPIC 5.3 Torque Create diagrams, tables, charts, or schematics to represent physical"
+    },
+    {
+      "physical_page": 110,
+      "printed_page": 110,
+      "chars": 3199,
+      "first_200": "5.3.B.2 The magnitude of the torque exerted on a rigid system by a force is described by the following equation, where is the angle between the force vector and the"
+    },
+    {
+      "physical_page": 111,
+      "printed_page": 111,
+      "chars": 3199,
+      "first_200": "pathway. Required Course Content 2.C Compare physical quantities between two or more scenarios or at\u0007different\u0007times\u0007and\u0007 LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE locations in a single scenario. 5.4.A 5"
+    },
+    {
+      "physical_page": 112,
+      "printed_page": 112,
+      "chars": 3199,
+      "first_200": "continued on next page AP Physics 1: Algebra-Based Course and Exam Description Course Framework V.1 | 101 Return to Table of Contents © 2024 College Board UNIT 5 Torque and"
+    },
+    {
+      "physical_page": 113,
+      "printed_page": 113,
+      "chars": 3199,
+      "first_200": "e sketches of graphs that represent features of a model or and Newton’s First the behavior of a physical system. 2.A Law in Rotational Form Derive a symbolic expression from"
+    },
+    {
+      "physical_page": 114,
+      "printed_page": 114,
+      "chars": 3199,
+      "first_200": "5.5.A.1.ii Rotational\u0007equilibrium\u0007is\u0007a\u0007configuration\u0007of\u0007 torques such that the net torque exerted on the\u0007system\u0007is\u0007zero.\u0007 Relevant equation: 5.5.A.1.iii The\u0007rotational\u0007analog\u0007of\u0007Newton’s\u0007first\u0007law\u0007 is"
+    },
+    {
+      "physical_page": 115,
+      "printed_page": 115,
+      "chars": 3199,
+      "first_200": "the same direction. The angular acceleration of the rigid system is inversely proportional to the rotational inertia of the rigid system. Relevant equation: 5.6.A.3 To fully describe a rotating rigid"
+    },
+    {
+      "physical_page": 116,
+      "printed_page": 116,
+      "chars": 3199,
+      "first_200": "§ Qualitative/Quantitative Translation AP Physics 1: Algebra-Based Course and Exam Description Course Framework V.1 | 106 Return to Table of Contents © 2024 College Board UNIT 6 5–8% AP EXAM"
+    },
+    {
+      "physical_page": 117,
+      "printed_page": 117,
+      "chars": 3199,
+      "first_200": "from opportunities to investigate changes dependencies between variables (2.D). in systems, including practicing using From there, students can also make and fundamental principles of physics to decid"
+    },
+    {
+      "physical_page": 118,
+      "printed_page": 118,
+      "chars": 3199,
+      "first_200": "their claim in FRQ #1, the MR question. AP Physics 1: Algebra-Based Course and Exam Description Course Framework V.1 | 107 Return to Table of Contents © 2024 College Board"
+    },
+    {
+      "physical_page": 119,
+      "printed_page": 119,
+      "chars": 3199,
+      "first_200": "sical principles or laws. continued on next page AP Physics 1: Algebra-Based Course and Exam Description Course Framework V.1 | 108 Return to Table of Contents © 2024 College Board"
+    },
+    {
+      "physical_page": 120,
+      "printed_page": 120,
+      "chars": 3199,
+      "first_200": "ples below were developed in partnership with teachers from the AP community to share ways that they approach teaching some of the topics in this unit. Please refer to the"
+    },
+    {
+      "physical_page": 121,
+      "printed_page": 121,
+      "chars": 3199,
+      "first_200": "© 2024 College Board UNIT Energy and Momentum of Rotating Systems 6 TOPIC 6.1 SUGGESTED SKILLS 1.A Rotational Kinetic Create diagrams, tables, charts, or schematics to represent physical Energy situat"
+    },
+    {
+      "physical_page": 122,
+      "printed_page": 122,
+      "chars": 3199,
+      "first_200": "using evidence from system in terms of the and angular velocity of the rigid system and is experimental data, physical rotational inertia and angular given by the equation representations, or"
+    },
+    {
+      "physical_page": 123,
+      "printed_page": 123,
+      "chars": 3199,
+      "first_200": "JECTIVE ESSENTIAL KNOWLEDGE 2.D 6.2.A 6.2.A.1 Predict new values or Describe the work done on A torque can transfer energy into or out of an factors of change of a"
+    },
+    {
+      "physical_page": 124,
+      "printed_page": 124,
+      "chars": 3199,
+      "first_200": "Derive a symbolic expression from known quantities by selecting and following a logical mathematical pathway. 2.D Required Course Content Predict new values or factors of change of physical quantities"
+    },
+    {
+      "physical_page": 125,
+      "printed_page": 125,
+      "chars": 3199,
+      "first_200": "ct, the speed of the object, and the angle between the radial distance and the velocity of the object. continued on next page AP Physics 1: Algebra-Based Course and Exam"
+    },
+    {
+      "physical_page": 126,
+      "printed_page": 126,
+      "chars": 3199,
+      "first_200": "theorem relates the angular impulse delivered to an object or rigid system and the change in angular momentum of that object or rigid system. 6.3.C.2.i The angular impulse exerted on"
+    },
+    {
+      "physical_page": 127,
+      "printed_page": 127,
+      "chars": 3199,
+      "first_200": "ematically manipulate the magnitude of angular momentum using one-dimensional vector conventions, the direction of angular momentum and angular impulse is beyond the scope of the course. AP Physics 1:"
+    },
+    {
+      "physical_page": 128,
+      "printed_page": 128,
+      "chars": 3199,
+      "first_200": "total angular momentum of that system is constant. 6.4.A.2.iii The angular speed of a nonrigid system may change without the angular momentum of the system changing if the system changes"
+    },
+    {
+      "physical_page": 129,
+      "printed_page": 129,
+      "chars": 3199,
+      "first_200": "© 2024 College Board UNIT 6 Energy and Momentum of Rotating Systems SUGGESTED SKILLS 1.A TOPIC 6.5 Rolling Create diagrams, tables, charts, or schematics to represent physical situations. 2.A Derive"
+    },
+    {
+      "physical_page": 130,
+      "printed_page": 130,
+      "chars": 3199,
+      "first_200": "ribe the motion of a When slipping, the motion of a system’s center system that is rolling while of mass and the system’s rotational motion slipping. cannot be directly related."
+    },
+    {
+      "physical_page": 131,
+      "printed_page": 131,
+      "chars": 3199,
+      "first_200": "6.6.A.2 The motion of satellites in orbits is constrained by conservation laws. 6.6.A.2.i In circular orbits, the system’s total mechanical energy, the system’s gravitational potential energy, and the"
+    },
+    {
+      "physical_page": 132,
+      "printed_page": 132,
+      "chars": 3199,
+      "first_200": "system consisting of two satellite’s velocity such that the mechanical objects interacting only via energy\u0007of\u0007the\u0007satellite–central-object\u0007system\u0007is\u0007 gravitational forces. equal\u0007to\u0007zero.\u0007 6.6.A.3.i Wh"
+    },
+    {
+      "physical_page": 133,
+      "printed_page": 133,
+      "chars": 3199,
+      "first_200": "s Check 7 Multiple-choice: ~18 questions Free-response: 4 questions § Mathematical Routines § Translation Between Representations § Experimental Design and Analysis § Qualitative/Quantitative Translat"
+    },
+    {
+      "physical_page": 134,
+      "printed_page": 134,
+      "chars": 3199,
+      "first_200": "verbal models of scenarios, as well as (1.C) that may include force, energy, or compare these models to mathematical momentum as either a function of position representations of the same"
+    },
+    {
+      "physical_page": 135,
+      "printed_page": 135,
+      "chars": 3199,
+      "first_200": "representations are consistent with each other. While Unit 7 content provides especially good practice for the TBR, content from any unit\u0007may\u0007be\u0007included\u0007in\u0007this\u0007free-response\u0007 question on the AP Exam"
+    },
+    {
+      "physical_page": 136,
+      "printed_page": 136,
+      "chars": 3199,
+      "first_200": "g evidence from experimental data, physical representations, or physical principles or laws. 7.4 Energy of Simple 1.A Create diagrams, tables, charts, or schematics to represent physical situations. H"
+    },
+    {
+      "physical_page": 137,
+      "printed_page": 137,
+      "chars": 3199,
+      "first_200": "scillation and amplitude (measured in degrees), and then explain why the period decreases and the amplitude angle increases. 4 7.2 Create a Plan Have\u0007students\u0007choose\u0007a\u0007song\u0007and\u0007find\u0007its\u0007tempo\u0007(in\u0007beat"
+    },
+    {
+      "physical_page": 138,
+      "printed_page": 138,
+      "chars": 3199,
+      "first_200": "in a direction opposite to the object’s displacement from an equilibrium position. 7.1.A.2.ii An equilibrium position is a location at which the net force exerted on an object or system\u0007is\u0007zero."
+    },
+    {
+      "physical_page": 139,
+      "printed_page": 139,
+      "chars": 3199,
+      "first_200": "Required Course Content Predict new values or factors of change of physical quantities using functional dependence between variables. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 3.A 7.2.A 7.2.A.1 Create ex"
+    },
+    {
+      "physical_page": 140,
+      "printed_page": 140,
+      "chars": 3199,
+      "first_200": "Required Course Content factors of change of physical quantities using functional dependence between variables. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 3.C 7.3.A 7.3.A.1 Justify or support a claim Desc"
+    },
+    {
+      "physical_page": 141,
+      "printed_page": 141,
+      "chars": 3199,
+      "first_200": "Create diagrams, tables, charts, or schematics to represent physical Harmonic Oscillators situations. 2.B Calculate or estimate an unknown quantity with units from known quantities, by selecting and f"
+    },
+    {
+      "physical_page": 142,
+      "printed_page": 142,
+      "chars": 3199,
+      "first_200": "7.4.A.3 The kinetic energy of a system exhibiting SHM is at a maximum when the system’s potential energy is at a minimum. 7.4.A.4 The potential energy of a system exhibiting"
+    },
+    {
+      "physical_page": 143,
+      "printed_page": 143,
+      "chars": 3199,
+      "first_200": "e-choice: ~18 questions Free-response: 4 questions § Mathematical Routines § Translation Between Representations § Experimental Design and Analysis § Qualitative/Quantitative Translation AP Physics 1:"
+    },
+    {
+      "physical_page": 144,
+      "printed_page": 144,
+      "chars": 3199,
+      "first_200": "be challenged by encouraging students to and connecting related knowledge between identify the fundamental physical principle fundamental ideas. In this unit, students will needed to answer a question"
+    },
+    {
+      "physical_page": 145,
+      "printed_page": 145,
+      "chars": 3199,
+      "first_200": "use and clear, concise explanations will help and 3.C)—is\u0007a\u0007critical\u0007skill\u0007when\u0007answering\u0007 students\u0007be\u0007more\u0007successful\u0007on\u0007the\u0007free- scientific\u0007questions.\u0007Inquiry\u0007experiences\u0007 response section of the A"
+    },
+    {
+      "physical_page": 146,
+      "printed_page": 146,
+      "chars": 3199,
+      "first_200": "logical computational pathway. 2.C Compare\u0007physical\u0007quantities\u0007between\u0007two\u0007or\u0007more\u0007scenarios\u0007or\u0007at\u0007different\u0007times\u0007and\u0007 locations in a single scenario. 3.C Justify or support a claim using evidence fr"
+    },
+    {
+      "physical_page": 147,
+      "printed_page": 147,
+      "chars": 3199,
+      "first_200": "nstruct an Argument Search “pressure versus height graph” online and download a graph of air pressure as a function of elevation. Have students explain why the slope decreases with elevation"
+    },
+    {
+      "physical_page": 148,
+      "printed_page": 148,
+      "chars": 3199,
+      "first_200": "Calculate or estimate an unknown quantity with units from known quantities, by selecting and following a logical computational pathway. 2.C Compare physical Required Course Content quantities between "
+    },
+    {
+      "physical_page": 149,
+      "printed_page": 149,
+      "chars": 3199,
+      "first_200": "2.B Calculate or estimate an unknown quantity with units from known quantities, by selecting and following a logical computational pathway. Required Course Content 2.C Compare physical quantities betw"
+    },
+    {
+      "physical_page": 150,
+      "printed_page": 150,
+      "chars": 3199,
+      "first_200": "e\u0007result\u0007of\u0007 exerted\u0007by\u0007a\u0007fluid. the entirety of the interactions between the fluid’s\u0007constituent\u0007particles\u0007and\u0007the\u0007surface\u0007 with which those particles interact. 8.2.B.2 The\u0007absolute\u0007pressure\u0007of\u0007a\u0007flu"
+    },
+    {
+      "physical_page": 151,
+      "printed_page": 151,
+      "chars": 3199,
+      "first_200": "The buoyant force exerted on an object by a fluid\u0007is\u0007a\u0007result\u0007of\u0007the\u0007collective\u0007forces\u0007exerted\u0007 on the object by the particles making up the fluid. 8.3.B.3 The magnitude of the buoyant force exerted o"
+    },
+    {
+      "physical_page": 152,
+      "printed_page": 152,
+      "chars": 3199,
+      "first_200": "physical quantities between two or more scenarios or at\u0007different\u0007times\u0007and\u0007 locations in a single LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE scenario. 8.4.A 8.4.A.1 3.A Describe\u0007the\u0007flow\u0007of\u0007an\u0007 A\u0007differe"
+    },
+    {
+      "physical_page": 153,
+      "printed_page": 153,
+      "chars": 3199,
+      "first_200": "8.4.B 8.4.B.1 Describe\u0007the\u0007flow\u0007of\u0007a\u0007fluid\u0007 A\u0007difference\u0007in\u0007gravitational\u0007potential\u0007energies\u0007 as\u0007a\u0007result\u0007of\u0007a\u0007difference\u0007 between\u0007two\u0007locations\u0007in\u0007a\u0007fluid\u0007will\u0007result\u0007in\u0007 in energy between two a\u0007diff"
+    },
+    {
+      "physical_page": 154,
+      "printed_page": 154,
+      "chars": 3199,
+      "first_200": "are\u0007encouraged\u0007to\u0007make\u0007every\u0007effort\u0007to\u0007provide\u0007a\u0007range\u0007 they have constructed. AP Physics courses require of\u0007experiences—from\u0007experiments\u0007students\u0007contrive\u0007 students to engage with data in a variety o"
+    },
+    {
+      "physical_page": 155,
+      "printed_page": 155,
+      "chars": 3199,
+      "first_200": "oratory program document. Consider the needs of the classroom when be adapted to local conditions and funding as it aims deciding what type of lab notebook to use. to\u0007offer\u0007the\u0007students\u0007a\u0007well-rounded"
+    },
+    {
+      "physical_page": 156,
+      "printed_page": 156,
+      "chars": 3199,
+      "first_200": "component\u0007comparable\u0007 objectives to craft a question for students to to\u0007a\u0007semester-long\u0007introductory\u0007college-level\u0007physics\u0007 investigate. Teachers may choose to give students a laboratory. Students mus"
+    },
+    {
+      "physical_page": 157,
+      "printed_page": 157,
+      "chars": 3199,
+      "first_200": "to Table of Contents © 2024 College Board Communication, Group investigation designs for each experiment so that those precautions\u0007can\u0007be\u0007incorporated\u0007into\u0007final\u0007student- Collaboration, and the select"
+    },
+    {
+      "physical_page": 158,
+      "printed_page": 158,
+      "chars": 3199,
+      "first_200": "procedure, check with the teacher before their own laboratory experience involves special proceeding. responsibilities for teachers. To ensure a safe Teachers should interact constantly with students "
+    },
+    {
+      "physical_page": 159,
+      "printed_page": 159,
+      "chars": 3199,
+      "first_200": "collected\u0007and/or\u0007analyzed.\u0007A\u0007follow-up\u0007question\u0007might\u0007 of time they spent per week in the laboratory shows then be: “What is the threshold for collecting data?” that increased lab time correlates with"
+    },
+    {
+      "physical_page": 160,
+      "printed_page": 160,
+      "chars": 3199,
+      "first_200": "AP Physics 1: Algebra-Based Course and Exam Description Laboratory Investigations V.1 | 148 Return to Table of Contents © 2024 College Board § “Post-lab”\u0007activities,\u0007such\u0007as\u0007interpreting,\u0007 discovery s"
+    },
+    {
+      "physical_page": 161,
+      "printed_page": 161,
+      "chars": 3199,
+      "first_200": "ta. The ability for students to having been taught the answer in the classroom. For use instant feedback to check the accuracy of their example, a lab may pose the"
+    },
+    {
+      "physical_page": 162,
+      "printed_page": 162,
+      "chars": 3199,
+      "first_200": "room.\u0007However,\u0007the\u0007power\u0007of\u0007self- all solution for students in the classroom. Students AP Physics 1: Algebra-Based Course and Exam Description Laboratory Investigations V.1 | 149 Return to Table of Co"
+    },
+    {
+      "physical_page": 163,
+      "printed_page": 163,
+      "chars": 3199,
+      "first_200": "ne\u0007is\u0007the\u0007best\u0007 classroom;\u0007there\u0007are\u0007many\u0007different\u0007methods\u0007that\u0007can\u0007 “physics” string. Fishing line is inexpensive, be employed. Some suggested lab formats include: thin, easily available, and strong"
+    },
+    {
+      "physical_page": 164,
+      "printed_page": 164,
+      "chars": 3199,
+      "first_200": "g. equipment as well as more complex data collection The sensor then makes some assumptions and analysis, students would be able to focus on about the speed of sound to"
+    },
+    {
+      "physical_page": 165,
+      "printed_page": 165,
+      "chars": 3199,
+      "first_200": "cameras, and apps that can be easily and one gate to the next. Due to how photogates appropriately implemented in the classroom. work, a single photogate cannot measure the Cell"
+    },
+    {
+      "physical_page": 166,
+      "printed_page": 166,
+      "chars": 3199,
+      "first_200": "ook Materials The AP Physics 1 Student Workbook is a resource made available on AP Classroom by the AP Program Teachers\u0007will\u0007benefit\u0007from\u0007a\u0007wide\u0007array\u0007of\u0007materials\u0007 to\u0007help\u0007students\u0007further\u0007their\u0007flue"
+    },
+    {
+      "physical_page": 167,
+      "printed_page": 167,
+      "chars": 3199,
+      "first_200": "t\u0007for\u0007teachers\u0007to\u0007 answer key should be treated as secure material. identify other types of secondary sources (such as lab manuals, the AP Physics 1 Student Workbook, TIPERS etc.) to supplement the"
+    },
+    {
+      "physical_page": 168,
+      "printed_page": 168,
+      "chars": 3199,
+      "first_200": "the teacher. axes have been on their own. labeled for the student by the teacher. 1.C The student works The student is able The student creates The student creates Create"
+    },
+    {
+      "physical_page": 169,
+      "printed_page": 169,
+      "chars": 3199,
+      "first_200": "teacher. principles. a logical computational pathway. 2.C The student The student is given The student is The student can Compare physical quantities is given the possible relationships directed towar"
+    },
+    {
+      "physical_page": 170,
+      "printed_page": 170,
+      "chars": 3199,
+      "first_200": "nt is The student is given The student is The student devises Apply an appropriate law, given procedures, broad guidelines coached in the a claim or prediction definition,\u0007theoretical\u0007 relationships, "
+    },
+    {
+      "physical_page": 171,
+      "printed_page": 171,
+      "chars": 3199,
+      "first_200": "entually, teachers will students with some guidelines at this step. For want students to design their own experiments, but example, students need to think about a question, students\u0007may\u0007need\u0007some\u0007prac"
+    },
+    {
+      "physical_page": 172,
+      "printed_page": 172,
+      "chars": 3199,
+      "first_200": "at any point during the rotation so that all students have the opportunity to lead work and engage with multiple problems. Changing Students translate from one For a given situation"
+    },
+    {
+      "physical_page": 173,
+      "printed_page": 173,
+      "chars": 3199,
+      "first_200": "each other, and when they are no longer touching, the child is moving faster than the adult. Then, ask students to evaluate the following claims: Claim1: “The adult pushed harder"
+    },
+    {
+      "physical_page": 174,
+      "printed_page": 174,
+      "chars": 3199,
+      "first_200": "by\u0007scaffolding\u0007the\u0007process.\u0007Have\u0007students\u0007 identify the steps needed to determine the relationship, including collecting and analyzing\u0007data,\u0007as\u0007well\u0007as\u0007what\u0007to\u0007do\u0007with\u0007 the collected data. Debriefing "
+    },
+    {
+      "physical_page": 175,
+      "printed_page": 175,
+      "chars": 3199,
+      "first_200": "oefficient.\u0007 while considering the results of the experiment. Discussion Students work within groups to discuss As a review for the AP Physics 1 Groups related content, create problem solutions, Exam,"
+    },
+    {
+      "physical_page": 176,
+      "printed_page": 176,
+      "chars": 3199,
+      "first_200": "continued on next page AP Physics 1: Algebra-Based Course and Exam Description Instructional Approaches V.1 | 161 Return to Table of Contents © 2024 College Board Strategy Description Example Four-Squ"
+    },
+    {
+      "physical_page": 177,
+      "printed_page": 177,
+      "chars": 3199,
+      "first_200": "representations support a claim they make about the situation. Then, have them share their steps with a partner and receive feedback on their graphs, claims, evidence, and reasoning. Marking the"
+    },
+    {
+      "physical_page": 178,
+      "printed_page": 178,
+      "chars": 3199,
+      "first_200": "Have students meaningless calculation might involve explain why the other expressions are substituting a wrong numerical value into meaningless, and address and discuss an expression. any misconceptio"
+    },
+    {
+      "physical_page": 179,
+      "printed_page": 179,
+      "chars": 3199,
+      "first_200": "the block? Qualitative Students are presented with an initial Ask students what would happen to the Reasoning and\u0007a\u0007final\u0007version\u0007of\u0007the\u0007same\u0007physical\u0007 angular momentum of an object in orbit situation"
+    },
+    {
+      "physical_page": 180,
+      "printed_page": 180,
+      "chars": 3199,
+      "first_200": "s rank the variations of a specified\u0007physical\u0007quantity\u0007and\u0007must\u0007also\u0007 explain the reasoning for their ranking choices,\u0007as\u0007well\u0007as\u0007rate\u0007their\u0007confidence\u0007in\u0007 their ranking. continued on next page AP Phy"
+    },
+    {
+      "physical_page": 181,
+      "printed_page": 181,
+      "chars": 3199,
+      "first_200": "the pumpkin and continues traveling away from the archer, while the pumpkin swings to angle pass. Bounce arrow:\u0007Bounces\u0007off\u0007the\u0007pumpkin\u0007 back toward the archer, while the pumpkin swings to angle bounc"
+    },
+    {
+      "physical_page": 182,
+      "printed_page": 182,
+      "chars": 3199,
+      "first_200": "they would substitute, and so on. “What, If Students\u0007analyze\u0007a\u0007statement\u0007or\u0007 Have\u0007students\u0007analyze\u0007a\u0007free-body\u0007 Anything, Is diagrammed situation to determine if it is diagram or a force diagram that "
+    },
+    {
+      "physical_page": 183,
+      "printed_page": 183,
+      "chars": 3199,
+      "first_200": "m/s2information (10 kg ) (10 )(10 m) 12 (10could be m/ kg ) 12.65 an\u0007equation\u0007with\u0007specific\u0007values\u0007for\u0007all,\u0007or\u0007 2 + (10 kg ) (10 m/s2 ) (2 m) and ask students to create"
+    },
+    {
+      "physical_page": 184,
+      "printed_page": 184,
+      "chars": 3199,
+      "first_200": "resentations\u0007help\u0007in\u0007analyzing\u0007phenomena\u0007and\u0007 phenomena, they try to simplify real objects, systems, making predictions and communicating ideas. AP and processes to make the analysis manageable. Physi"
+    },
+    {
+      "physical_page": 185,
+      "printed_page": 185,
+      "chars": 3199,
+      "first_200": "Representations can include graphs, §§ What features of the equations, narratives, bar charts, motion representation provide maps,\u0007free-body\u0007diagrams,\u0007or\u0007sketches\u0007 information relevant to the of physi"
+    },
+    {
+      "physical_page": 186,
+      "printed_page": 186,
+      "chars": 3199,
+      "first_200": "does the pattern show about the be\u0007more\u0007difficult\u0007and\u0007address\u0007student\u0007 relationship between quantities? misconceptions later in the course. §§ What data would need to be graphed to create a linear rel"
+    },
+    {
+      "physical_page": 187,
+      "printed_page": 187,
+      "chars": 3199,
+      "first_200": "alculate, estimate, or match the “givens” in the problem. predict physical phenomena. Students should also be able to work with the algebraic Physicists commonly use mathematical representations form "
+    },
+    {
+      "physical_page": 188,
+      "printed_page": 188,
+      "chars": 3199,
+      "first_200": "are\u0007given\u0007to\u0007analyze.\u0007 definition? If so, which one? §§ Are the steps clearly written out When deriving the equation for and annotated? Are any steps determining the speed of water coming skipped?"
+    },
+    {
+      "physical_page": 189,
+      "printed_page": 189,
+      "chars": 3199,
+      "first_200": "© 2024 College Board Science Practice 2: Mathematical Routines Skill Questions to Ask Students Sample Activities 2.C §§ What relationship(s) link the Have\u0007students\u0007analyze\u0007a\u0007scenario\u0007 Compare physical"
+    },
+    {
+      "physical_page": 190,
+      "printed_page": 190,
+      "chars": 3199,
+      "first_200": "understand\u0007that\u0007scientific\u0007 Describe experimental procedures, analyze data, instruments do not produce exact measurements and and support claims learn what steps they can take to decrease uncertainty."
+    },
+    {
+      "physical_page": 191,
+      "printed_page": 191,
+      "chars": 3199,
+      "first_200": "ded to collect the a curve is needed to determine the appropriate for a given work done on or by the object or necessary data? scientific question. system. §§ How"
+    },
+    {
+      "physical_page": 192,
+      "printed_page": 192,
+      "chars": 3199,
+      "first_200": "ossibilities\u0007and\u0007 the evidence for and against each claim. 3.C §§ What reasoning (e.g., physical laws, While rolling a hollow sphere and a Justify or support a claim theories) supports your"
+    },
+    {
+      "physical_page": 193,
+      "printed_page": 193,
+      "chars": 3199,
+      "first_200": "sion from known quantities by Compare physical quantities between two or more selecting and following a logical mathematical pathway. scenarios or at different times and/or locations within a single s"
+    },
+    {
+      "physical_page": 194,
+      "printed_page": 194,
+      "chars": 3199,
+      "first_200": "ng statements correctly explains why the total mechanical energy of the block–Earth E2. What is the ratio E1 ? system decreases as the block travels to point A? E2 (A)"
+    },
+    {
+      "physical_page": 195,
+      "printed_page": 195,
+      "chars": 3199,
+      "first_200": "minutes Question 1: Mathematical Routines Question 2: Translation Between Representations Question 3: Experimental Design and Analysis Question 4: Qualitative/Quantitative Translation AP Physics 1: Al"
+    },
+    {
+      "physical_page": 196,
+      "printed_page": 196,
+      "chars": 3199,
+      "first_200": "ehavior of a physical N/A system. 2.A Derive a symbolic expression from known quantities by selecting and following a logical 15–20% mathematical pathway. 2.B Calculate or estimate an unknown quantity"
+    },
+    {
+      "physical_page": 197,
+      "printed_page": 197,
+      "chars": 3199,
+      "first_200": "fication\u0007 is expected to be a logical and sequential application of physics concepts that demonstrates a student’s ability to connect multiple concepts to each other. Translation Between Representatio"
+    },
+    {
+      "physical_page": 198,
+      "printed_page": 198,
+      "chars": 3199,
+      "first_200": "B 3.C 8\u0007points;\u0007suggested\u0007time:\u000715-20\u0007minutes The Qualitative/Quantitative Translation (QQT) question assesses students’ ability to connect the nature of the scenario, the physical laws that govern th"
+    },
+    {
+      "physical_page": 199,
+      "printed_page": 199,
+      "chars": 3199,
+      "first_200": ": Provide qualitative reasoning beyond mathematical derivations or expressions to support, qualify, or defend a claim. Label: Provide labels indicating unit, scale, and/or components in a diagram, gra"
+    },
+    {
+      "physical_page": 200,
+      "printed_page": 200,
+      "chars": 3199,
+      "first_200": "nts v x and v y , respectively as a function of time, as shown. Which of the following diagrams could represent the forces exerted on the object? (A) +y"
+    },
+    {
+      "physical_page": 201,
+      "printed_page": 201,
+      "chars": 3199,
+      "first_200": "1 2 3 4 5 6 At time t = 0, a car is moving in the positive direction along a straight road. The graph represents the car’s velocity v"
+    },
+    {
+      "physical_page": 202,
+      "printed_page": 202,
+      "chars": 3199,
+      "first_200": "M −d0 Equilibrium d0 Floor Trial 2 7. In Trial 1 of an experiment, Block 1 of mass M is oscillating at the end of a spring. The other end"
+    },
+    {
+      "physical_page": 203,
+      "printed_page": 203,
+      "chars": 3199,
+      "first_200": "© 2024 College Board A B 10. Block A is initially held at rest on a horizontal table and is connected to a horizontal spring that is fixed to a"
+    },
+    {
+      "physical_page": 204,
+      "printed_page": 204,
+      "chars": 3199,
+      "first_200": "dulum is shorter; the period of the mass on the spring is the same. AP Physics 1: Algebra-Based Course and Exam Description Exam Information V.1 | 190 Return to Table"
+    },
+    {
+      "physical_page": 205,
+      "printed_page": 205,
+      "chars": 3199,
+      "first_200": "1 | 192 Return to Table of Contents © 2024 College Board Section II: Free–Response Questions FREE–RESPONSE QUESTION: MATHEMATICAL ROUTINES Disk M R Ramp Figure 1 1. In Experiment 1,"
+    },
+    {
+      "physical_page": 206,
+      "printed_page": 206,
+      "chars": 3199,
+      "first_200": "your reasoning. In your justification, include qualitative reasoning beyond mathematical derivations or expressions. FREE–RESPONSE QUESTION: TRANSLATION BETWEEN REPRESENTATIONS Original Position of Bl"
+    },
+    {
+      "physical_page": 207,
+      "printed_page": 207,
+      "chars": 3199,
+      "first_200": "– Fmax Figure 3 Figure 4 B. i. \u0007 ii. \u0007Starting with the equation for the period of a mass on a spring, derive an expression for the mass of"
+    },
+    {
+      "physical_page": 208,
+      "printed_page": 208,
+      "chars": 3199,
+      "first_200": "lates the density of the liquid and the chosen feature of the graph. AP Physics 1: Algebra-Based Course and Exam Description Exam Information V.1 | 196 Return to Table of"
+    },
+    {
+      "physical_page": 209,
+      "printed_page": 209,
+      "chars": 3199,
+      "first_200": "the best-fit line that you drew in part Ciii. FREE–RESPONSE QUESTION: QUALITATIVE/QUANTITATIVE TRANSLATION Block 1 Block 2 v0 M1 M2 Figure 1 4. Block 1 of mass M1 slides to"
+    },
+    {
+      "physical_page": 210,
+      "printed_page": 210,
+      "chars": 3199,
+      "first_200": "B 2.D 6.3.C 6.3.C.2 15 A 2.D 8.4.A 8.4.A.2 AP Physics 1: Algebra-Based Course and Exam Description Exam Information V.1 | 199 Return to Table of Contents © 2024 College"
+    },
+    {
+      "physical_page": 211,
+      "printed_page": 211,
+      "chars": 3199,
+      "first_200": "a the center of mass of the disk. α = R For a correct expression for the translational acceleration of the center of mass of the disk in terms of"
+    },
+    {
+      "physical_page": 212,
+      "printed_page": 212,
+      "chars": 3199,
+      "first_200": "Total for part (b) 3 points Total for question 1 10 points AP Physics 1: Algebra-Based Course and Exam Description Scoring Guidelines V.1 | 202 Return to Table of Contents"
+    },
+    {
+      "physical_page": 213,
+      "printed_page": 213,
+      "chars": 3199,
+      "first_200": "sketch that has the same period as the graph given in part (b) of 2t0 . 1 point For a sketch that has the same magnitude above and below the"
+    },
+    {
+      "physical_page": 214,
+      "printed_page": 214,
+      "chars": 3199,
+      "first_200": "to Table of Contents © 2024 College Board Scoring Guidelines for Question 3: Experimental Design and Analysis 10 points Learning Objectives: 1.5.B 8.2.B 8.4.B (a) i For indicating all the"
+    },
+    {
+      "physical_page": 215,
+      "printed_page": 215,
+      "chars": 3199,
+      "first_200": "1 point whose slope can be used to determine the acceleration due to gravity. Examples of acceptable responses may include the following: • Graphing v 2 as a function of"
+    },
+    {
+      "physical_page": 216,
+      "printed_page": 216,
+      "chars": 3199,
+      "first_200": "2 v vs. 2h Slope equals g v vs. h Slope equals 2g For a value of g within a range 9 m/s 2 to 12 m/s 2 1 point"
+    },
+    {
+      "physical_page": 217,
+      "printed_page": 217,
+      "chars": 3199,
+      "first_200": "magnitude and opposite in direction. If the mass of Block 2 is very very small, the force exerted on it by Block 1 will mean that relative to Block 1,"
+    },
+    {
+      "physical_page": 218,
+      "printed_page": 218,
+      "chars": 3199,
+      "first_200": "erator and denominator cancel leaving the final mass equal to the initial mass, which is what I claimed in part (a). Total for part (c) 2 points Total for question"
+    },
+    {
+      "physical_page": 219,
+      "printed_page": 219,
+      "chars": 3199,
+      "first_200": "ion and to help students be more conscientious about the air\u0007resistance;\u0007the\u0007slight\u0007increase\u0007in\u0007gravitational\u0007field\u0007 language\u0007they\u0007use\u0007to\u0007describe\u0007a\u0007scenario—that\u0007they\u0007are\u0007 as the block slides downwar"
+    },
+    {
+      "physical_page": 220,
+      "printed_page": 220,
+      "chars": 3199,
+      "first_200": "§§ Energy bar charts Even\u0007tidal\u0007effects\u0007from\u0007the\u0007Moon\u0007are\u0007only\u0007considered\u0007 §§ Momentum charts after introductory courses. This spherical, uniform §§ Free-body\u0007diagrams description\u0007of\u0007Earth\u0007is\u0007a\u0007simpli"
+    },
+    {
+      "physical_page": 221,
+      "printed_page": 221,
+      "chars": 3199,
+      "first_200": "es some key characteristics, and §§ Edge\u0007effects\u0007of\u0007charged\u0007plates\u0007are\u0007negligible. is used, as most models are, to simplify the analysis and descriptions of the interactions between two or §§ Strings,"
+    },
+    {
+      "physical_page": 222,
+      "printed_page": 222,
+      "chars": 3199,
+      "first_200": "Consider a box of cereal. In physical\u0007size\u0007of\u0007the\u0007object\u0007itself.\u0007Objects\u0007cannot\u0007be\u0007 reality, this is a very complex system. A cardboard box, compressed, twisted, or rotated because the physical a plas"
+    },
+    {
+      "physical_page": 223,
+      "printed_page": 223,
+      "chars": 3199,
+      "first_200": "se, it is up to the the small pieces of cereal move, bounce, accelerate, student to create their own mental representation of the and collide with each other and the"
+    },
+    {
+      "physical_page": 224,
+      "printed_page": 224,
+      "chars": 3199,
+      "first_200": "constant.\u0007In\u0007the\u0007first\u0007choice,\u0007where\u0007the\u0007student\u0007decides\u0007 to continue to include each individual piece of cereal as part of the system, even as the cereal spills from the box, the total amount of cere"
+    },
+    {
+      "physical_page": 225,
+      "printed_page": 225,
+      "chars": 3199,
+      "first_200": "Appendix V.1 | 216 Return to Table of Contents © 2024 College Board AP PHYSICS 1 Table of Information: Equations AP Physics 1: Algebra-Based Course and Exam Description Appendix V.1"
+    },
+    {
+      "physical_page": 226,
+      "printed_page": 226,
+      "chars": 3199,
+      "first_200": "d A = area Right Triangle A = bh V = wh b = base a 2 + b2 = c 2 C = circumference a Triangle Cylinder s h"
+    },
+    {
+      "physical_page": 227,
+      "printed_page": 227,
+      "chars": 3199,
+      "first_200": "= 02 + 2 ( − 0 ) F = force  k = spring constant v=r h = height  mi xi xcm = K = kinetic energy I"
+    },
+    {
+      "physical_page": 228,
+      "printed_page": 228,
+      "chars": 3199,
+      "first_200": "a = angular acceleration 1 q = angle or angular 1 T= position Us k ( x )2 f 2 r = density Gm1m2 m t = torque UG ="
+    }
+  ]
+}

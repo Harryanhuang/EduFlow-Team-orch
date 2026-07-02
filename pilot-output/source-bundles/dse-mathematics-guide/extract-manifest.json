@@ -1,0 +1,61 @@
+{
+  "schema_version": "1",
+  "subject": "mathematics",
+  "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/05-DSE知识库/03-学科知识/DSE Mathematics/02-課本與考綱/考綱/數學-2028.pdf",
+  "file_checksum_sha256": "01f1fcd0b4b020310f91e8ce3aa4ef4c0af3af720e056000f992379085bb13cf",
+  "pdfinfo": {
+    "Title": "2028年香港中學文憑考試數學科評核大綱",
+    "Author": "HKEAA",
+    "Creator": "Microsoft® Word 2019",
+    "Producer": "Microsoft® Word 2019",
+    "CreationDate": "Wed Mar  6 21:26:02 2024 CST",
+    "ModDate": "Thu May 15 13:54:53 2025 CST",
+    "Custom Metadata": "no",
+    "Metadata Stream": "yes",
+    "Tagged": "yes",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "none",
+    "JavaScript": "no",
+    "Pages": "5",
+    "Encrypted": "no",
+    "Page size": "595.44 x 841.68 pts (A4)",
+    "Page rot": "0",
+    "File size": "299015 bytes",
+    "Optimized": "no",
+    "PDF version": "1.7"
+  },
+  "total_pages": 5,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": 1,
+      "chars": 1194,
+      "first_200": "數學 引言 本 科 的 公 開評 核 建 基於課 程 發 展 議會 與 香 港考試 及 評 核 局聯 合 編 訂的 數 學 科 課 程及 評"
+    },
+    {
+      "physical_page": 2,
+      "printed_page": 2,
+      "chars": 1194,
+      "first_200": "範圍為 必修部分中基 礎課題及 中一至中 三數學科課程中基礎 課題。 乙部題目範圍為必修部分和中一至中三數學科課程中基礎 課題及非基礎課題。 甲部會再分為兩部，甲部(1)（佔 35 分）包括八題至十一題簡易問 題；甲部(2)（佔 35 分）包括四題至七題較難問題。 乙部（佔 35 分）包括四題至七題 問題。 2028-HKDSE-MATH 2 1 試卷二（ 1 小時）（佔 35％） 4 2 本卷分"
+    },
+    {
+      "physical_page": 3,
+      "printed_page": 3,
+      "chars": 1194,
+      "first_200": "。 註： 1. 考生須具有必修部分和中一至中三數學科課程中基礎課題及非基礎課題的知 識。 2. 電子計算機及數學繪圖儀器均可應用。 3. 三角公式將附印在試卷內供考生參考。 4. 本科試卷將於適當處採用國際單位及公制單位。 5. 考生須參考數學科試卷常用符號。 2028-HKDSE-MATH 3 香 港 中 學文 憑 考 試數 學科 試 卷 常用 符 號 （ *"
+    },
+    {
+      "physical_page": 4,
+      "printed_page": 4,
+      "chars": 1194,
+      "first_200": "開 區 間 {x  R : a  x  b} * * f : A→B f 為定義域 A 至值域 B 的函數 n * * a k =1 k"
+    },
+    {
+      "physical_page": 5,
+      "printed_page": 5,
+      "chars": 1194,
+      "first_200": "B 所 表 的 向 量 * a 向量 a * â 與 a 同向的單位向量 * i,j,k 向三個笛卡兒坐標軸同向的單位向量 * a a 的量 * ab a 及 b 的純量積 * ab"
+    }
+  ]
+}

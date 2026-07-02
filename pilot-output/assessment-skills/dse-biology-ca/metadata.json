@@ -1,0 +1,49 @@
+{
+  "schema_version": "1",
+  "id": "dse-biology-ca",
+  "assessment_type": "syllabus",
+  "system": "DSE",
+  "board_or_owner": "HKEAA/CDI",
+  "subject": "Biology",
+  "level": "Senior Secondary (S4-S6)",
+  "assessment_code": "DSE-BIO",
+  "valid_from": "2007",
+  "valid_to": "(updated 2015, ongoing)",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_syllabus",
+      "title": "生物課程及評估指引 (中四至中六)",
+      "url": "https://www.hkeaa.edu.hk/tc/hkdse/assessment/assessment_framework/",
+      "source_document_type": "course_and_assessment_guide",
+      "source_layout_profile": "dse_curriculum_assessment_guide",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/05-DSE知识库/03-学科知识/DSE Biology/02-課本與考綱/考綱/生物 -2028.pdf",
+      "file_checksum_sha256": "c87a62cecaeb07ff599615bd46972b76c480b3778d981bd4d77527cdb64712d1",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "2007 (updated November 2015)",
+      "retrieved_at": "2026-06-30",
+      "page_refs": [
+        "p.7-82"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "printed_page = physical_page - 8 for body pages; front matter uses Roman numerals.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text; store only structured summaries and short citations.",
+      "notes": "Source bundle reused from pilot-output/source-bundles/dse-biology-ca-guide."
+    }
+  ],
+  "aliases": [
+    "dse biology",
+    "hkdse biology",
+    "dse bio"
+  ],
+  "canonical_id": "dse-biology-ca",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "DSE Biology curriculum and assessment guide. Electives: choose 2 of Human Physiology: Regulation and Control, Applied Ecology, Microbes and Humans, Bioengineering."
+}

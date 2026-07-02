@@ -1,0 +1,3393 @@
+{
+  "schema_version": "1",
+  "subject": "united-states-history",
+  "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/03-AP知识库/03-学科知识/AP United States History/02-课本与考纲/考纲/ap-us-history-course-and-exam-description.pdf",
+  "file_checksum_sha256": "4258209279ce25b4b838fc04d11349a0fd0d8ff1a3801e12887406fbe9a23f11",
+  "pdfinfo": {
+    "Title": "AP® United States History Course and Exam Description",
+    "Subject": "Advanced Placement",
+    "Keywords": "Course and Exam Description; CED; course information; course content; exam information; exam content; teacher resources; course resources; teaching support; AP support and processes; sample exam questions; scoring information; scoring resources; fall 2025; ADA",
+    "Author": "College Board",
+    "Creator": "Adobe InDesign 15.1 (Macintosh)",
+    "Producer": "Adobe PDF Library 15.0; modified using iTextSharp 4.1.6 by 1T3XT",
+    "CreationDate": "Mon Jul 21 12:19:19 2025 CST",
+    "ModDate": "Mon Sep 15 08:01:18 2025 CST",
+    "Custom Metadata": "yes",
+    "Metadata Stream": "yes",
+    "Tagged": "yes",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "AcroForm",
+    "JavaScript": "no",
+    "Pages": "560",
+    "Encrypted": "yes (print:yes copy:yes change:no addNotes:no algorithm:AES-256)",
+    "Page size": "612 x 792 pts (letter)",
+    "Page rot": "0",
+    "File size": "4087154 bytes",
+    "Optimized": "no",
+    "PDF version": "1.7"
+  },
+  "total_pages": 560,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": 1,
+      "chars": 3145,
+      "first_200": "INCLUDES Course framework Instructional section Sample exam questions AP U.S. ® History COURSE AND EXAM DESCRIPTION Effective Fall 2023 AP U.S. ® History COURSE AND EXAM DESCRIPTION Effective Fall 202"
+    },
+    {
+      "physical_page": 2,
+      "printed_page": 2,
+      "chars": 3145,
+      "first_200": "plines. AP courses ground such studies in primary sources so that students can evaluate experiences and evidence for themselves. 6. \u0007Every\u0007AP\u0007student\u0007who\u0007engages\u0007with\u0007evidence\u0007is\u0007listened\u0007to\u0007and\u0007respe"
+    },
+    {
+      "physical_page": 3,
+      "printed_page": 3,
+      "chars": 3145,
+      "first_200": "Acknowledgments College Board would like to acknowledge the following individuals for their assistance with and contributions to the development of this course over the years.\u0007All\u0007individuals’\u0007affilia"
+    },
+    {
+      "physical_page": 4,
+      "printed_page": 4,
+      "chars": 3145,
+      "first_200": "Kopelman, Executive Director, AP Instruction Daniel McDonough, Senior Director, AP Content Integration John Rosinbum, Director, AP U.S. History Kelly Stromberg, Executive Director, AP History and Soci"
+    },
+    {
+      "physical_page": 5,
+      "printed_page": 5,
+      "chars": 3145,
+      "first_200": "universities in the United States grant credit, students in their plans for college and careers. advanced placement, or both on the basis of successful AP Exam scores; more than 3,300"
+    },
+    {
+      "physical_page": 6,
+      "printed_page": 6,
+      "chars": 3145,
+      "first_200": "questions\u0007and\u0007through-course\u0007performance\u0007 AP teacher\u0007and\u0007the\u0007school\u0007principal\u0007(or\u0007designated\u0007 assessments, as applicable, are scored by thousands administrator)\u0007to\u0007confirm\u0007awareness\u0007and\u0007understanding\u0007"
+    },
+    {
+      "physical_page": 7,
+      "printed_page": 7,
+      "chars": 3145,
+      "first_200": "esponsible questions to them. for developing each AP Exam, ensuring the exam § The number of points researchers have found questions are aligned to the course framework. The to be"
+    },
+    {
+      "physical_page": 8,
+      "printed_page": 8,
+      "chars": 3145,
+      "first_200": "n \u0007 V.1 | 2 Return to Table of Contents © 2020 College Board While colleges and universities are responsible for educators—make\u0007improvements\u0007to\u0007the\u0007way\u0007they\u0007 setting their own credit and placement pol"
+    },
+    {
+      "physical_page": 9,
+      "printed_page": 9,
+      "chars": 3145,
+      "first_200": "© 2020 College Board AP Resources and Supports By completing a simple activation process at the start of the school year, teachers and students receive access to a robust set"
+    },
+    {
+      "physical_page": 10,
+      "printed_page": 10,
+      "chars": 3145,
+      "first_200": "Return to Table of Contents © 2020 College Board Digital Activation In order to teach an AP class and make sure students are registered to take the AP Exam, teachers\u0007must\u0007first\u0007complete\u0007the\u0007digital\u0007ac"
+    },
+    {
+      "physical_page": 11,
+      "printed_page": 11,
+      "chars": 3145,
+      "first_200": "© 2020 College Board Instructional Model Integrating AP resources throughout the course can help students develop the historical thinking skills and conceptual understandings. The instructional model "
+    },
+    {
+      "physical_page": 12,
+      "printed_page": 12,
+      "chars": 3145,
+      "first_200": "utilizing\u0007reasoning\u0007about\u0007comparison,\u0007causation,\u0007and\u0007continuity\u0007and\u0007change.\u0007The\u0007course\u0007 also provides eight themes that students explore throughout the course in order to make connections\u0007among\u0007histor"
+    },
+    {
+      "physical_page": 13,
+      "printed_page": 13,
+      "chars": 3145,
+      "first_200": "of the founding documents and a capacity to trace their Specific Historical Examples influence\u0007will\u0007find\u0007opportunities\u0007throughout\u0007the\u0007course\u0007 to draw on and apply this knowledge. As has been the case "
+    },
+    {
+      "physical_page": 14,
+      "printed_page": 14,
+      "chars": 3145,
+      "first_200": "and Exam Description Course\u0007Framework V.1 | 13 Return to Table of Contents © 2020 College Board THIS PAGE IS INTENTIONALLY LEFT BLANK. 1 AP U.S. HISTORY Historical Thinking Skills and"
+    },
+    {
+      "physical_page": 15,
+      "printed_page": 15,
+      "chars": 3145,
+      "first_200": "Argumentation 6 Processes 1 Situation 2 in Sources 3 Analyze the context of historical Connections 5 Develop an argument. Identify and explain historical Analyze sourcing and situation of Analyze argu"
+    },
+    {
+      "physical_page": 16,
+      "printed_page": 16,
+      "chars": 3145,
+      "first_200": "entify\u0007the\u0007evidence\u0007 5.B Explain\u0007how\u0007a\u0007historical\u0007 specific\u0007and\u0007relevant\u0007evidence. development, or process. purpose, historical situation, and/ used in a source to support 4.B Explain\u0007how\u0007a\u0007specific\u0007 "
+    },
+    {
+      "physical_page": 17,
+      "printed_page": 17,
+      "chars": 3145,
+      "first_200": "pieces of historical evidence. 6.D Corroborate,\u0007qualify,\u0007or\u0007 modify an argument using diverse and alternative evidence in order to develop a complex argument. This argument might: § Explain nuance of "
+    },
+    {
+      "physical_page": 18,
+      "printed_page": 18,
+      "chars": 3145,
+      "first_200": "§ Explain the relative historical significance\u0007of\u0007a\u0007source’s\u0007 credibility and limitations. § Explain how or why a historical Course\u0007Framework V.1 | 16 claim or argument is or is not effective. © 2020"
+    },
+    {
+      "physical_page": 19,
+      "printed_page": 19,
+      "chars": 3145,
+      "first_200": "significance\u0007of\u0007specific\u0007historical\u0007 historical developments and § 2.iii:\u0007Explain\u0007the\u0007difference\u0007between\u0007 developments in relation to a larger processes. primary and secondary causes pattern of contin"
+    },
+    {
+      "physical_page": 20,
+      "printed_page": 20,
+      "chars": 3145,
+      "first_200": "of course adjust the pacing based on the needs of their students, alternate schedules (e.g., block scheduling), or their school’s academic calendar. A NOTE ABOUT PERIODIZATION Following\u0007the\u0007example\u0007of"
+    },
+    {
+      "physical_page": 21,
+      "printed_page": 21,
+      "chars": 3145,
+      "first_200": "udents and school. for AP U.S. History. Units Exam Weighting Unit 1: Period 1: 1491–1607 4–6% Unit 2: Period 2: 1607–1754 6–8% Unit 3: Period 3: 1754–1800 10–17% Unit 4:"
+    },
+    {
+      "physical_page": 22,
+      "printed_page": 22,
+      "chars": 3145,
+      "first_200": "POLITICS AND POWER (PCE) This\u0007theme\u0007focuses\u0007on\u0007how\u0007different\u0007social\u0007and\u0007political\u0007groups\u0007have\u0007 influenced\u0007society\u0007and\u0007government\u0007in\u0007the\u0007United\u0007States\u0007as\u0007well\u0007as\u0007how\u0007 political beliefs and institutions"
+    },
+    {
+      "physical_page": 23,
+      "printed_page": 23,
+      "chars": 3145,
+      "first_200": "America in the World WOR American and Regional Culture ARC Social Structures Course Framework V.1 | 23 SOC Return to Table of Contents © 2020 College Board Course at Period"
+    },
+    {
+      "physical_page": 24,
+      "printed_page": 24,
+      "chars": 3145,
+      "first_200": "5 Interactions Between meeting\u0007five\u0007days\u0007each\u0007week\u0007 SOC American Indians for a full academic year. 2 and Europeans 5 § Progression of topics within WXT 2.6 Slavery in the each unit. WOR SOC"
+    },
+    {
+      "physical_page": 25,
+      "printed_page": 25,
+      "chars": 3145,
+      "first_200": "partial) § questions. The feedback from the Personal Progress Checks shows students the areas where NOTE:\u0007Partial\u0007versions\u0007of\u0007the\u0007free-response\u0007questions\u0007are\u0007provided\u0007to\u0007prepare\u0007students\u0007for\u0007more\u0007 the"
+    },
+    {
+      "physical_page": 26,
+      "printed_page": 26,
+      "chars": 3145,
+      "first_200": "5 3 PCE PCE 1 PCE 4 3 PCE 4.8 Jackson and WOR 5.8 Military Conflict in Federal Power PCE 3 5 the Civil War 3 ARC NAT 4 2"
+    },
+    {
+      "physical_page": 27,
+      "printed_page": 27,
+      "chars": 3145,
+      "first_200": "UNIT Period 7: UNIT Period 8: 6 1865–1898 7 1890–1945 8 1945–1980 ~18 Class Periods 10–17% AP Exam Weighting ~21 Class Periods 10–17% AP Exam Weighting ~20 Class Periods 10–17%"
+    },
+    {
+      "physical_page": 28,
+      "printed_page": 28,
+      "chars": 3145,
+      "first_200": "5 5 WXT 5 SOC SOC PCE 4 PCE 5 5 SOC SOC 2 WOR 5 1 PCE ARC SOC 4 5 1 GEO 8.13 The Environment and PCE WOR"
+    },
+    {
+      "physical_page": 29,
+      "printed_page": 29,
+      "chars": 3145,
+      "first_200": "Weighting 4 PCE 9.2 Reagan and 3 Conservatism WOR 9.3 The End of the 1 Cold War WXT 9.4 A Changing Economy 1 MIG 2 WOR 9.6 Challenges of the"
+    },
+    {
+      "physical_page": 30,
+      "printed_page": 30,
+      "chars": 3145,
+      "first_200": "AP EXAM WEIGHTING The Class Periods column has been left blank so that teachers can\u0007customize\u0007the\u0007time\u0007they\u0007spend\u0007on\u0007each\u0007topic. Period 1: 1491–1607 The suggested skill for each topic shows one way te"
+    },
+    {
+      "physical_page": 31,
+      "printed_page": 31,
+      "chars": 3145,
+      "first_200": "development, or process. European Contact 1.3 European Exploration in Causation 1.A Identify a historical concept, WOR the Americas development, or process. 1.4 Columbian Exchange, Causation 3.A Ident"
+    },
+    {
+      "physical_page": 32,
+      "printed_page": 32,
+      "chars": 3145,
+      "first_200": "TOPIC 1.1 These topics encourage the use of the key concepts Contextualization 4.A Identify and describe Contextualizing a historical context for a specific historical development or process. Period 1"
+    },
+    {
+      "physical_page": 33,
+      "printed_page": 33,
+      "chars": 3145,
+      "first_200": "1607. time, they developed distinct and increasingly complex societies by adapting to and transforming their diverse environments. KC-1.1.I Different native societies adapted to and transformed their "
+    },
+    {
+      "physical_page": 34,
+      "printed_page": 34,
+      "chars": 3145,
+      "first_200": "thematic focus\u0007of\u0007the\u0007topic\u0007is\u0007the\u0007long-term\u0007takeaway\u0007that\u0007 leaves a lasting impression on students. Developments Native American and Processes 1.A Identify a historical Societies Before concept, deve"
+    },
+    {
+      "physical_page": 35,
+      "printed_page": 35,
+      "chars": 3145,
+      "first_200": "enduring understanding. “Native North America: Geographic and environmental factors, including competition over and debates A Place of History” about natural resources, shape the development of Americ"
+    },
+    {
+      "physical_page": 36,
+      "printed_page": 36,
+      "chars": 3145,
+      "first_200": "and along the Atlantic seaboard, some societies developed mixed agricultural and hunter-gatherer economies that favored the development of permanent villages. Additionally, Optional Sources\u0007pages\u0007offe"
+    },
+    {
+      "physical_page": 37,
+      "printed_page": 37,
+      "chars": 3145,
+      "first_200": "~8 CLASS PERIODS AP U.S. History Course and Exam Description Course Framework V.1 | 33 Return to Table of Contents © 2020 College Board Remember to go to AP Classroom"
+    },
+    {
+      "physical_page": 38,
+      "printed_page": 38,
+      "chars": 3145,
+      "first_200": ".4 Columbian Exchange, Causation 3.A Identify and describe a claim GEO Spanish Exploration, and/or\u0007argument\u0007in\u0007a\u0007text-based\u0007or\u0007 and Conquest non-text-based\u0007source. 1.5 Labor, Slavery, and Causation 5."
+    },
+    {
+      "physical_page": 39,
+      "printed_page": 39,
+      "chars": 3145,
+      "first_200": "he context for As native populations migrated and settled European encounters in the across the vast expanse of North America over Americas from 1491 to 1607. time, they developed distinct"
+    },
+    {
+      "physical_page": 40,
+      "printed_page": 40,
+      "chars": 3145,
+      "first_200": "KC-1.2.III In their interactions, Europeans and Native Americans asserted divergent worldviews regarding issues such as religion, gender roles, family, land use, and power. AP U.S. History Course and "
+    },
+    {
+      "physical_page": 41,
+      "printed_page": 41,
+      "chars": 3145,
+      "first_200": "e ___________________________________________________________________. Conclude the activity with a class debrief that concentrates on what is meant by placing events in historical context. Discuss ho"
+    },
+    {
+      "physical_page": 42,
+      "printed_page": 42,
+      "chars": 3145,
+      "first_200": "rica impacts the environment and reshapes geography, which leads to debates about environmental and geographic issues. LEARNING OBJECTIVE HISTORICAL DEVELOPMENTS Unit 1: Learning Objective B KC-1.1.I."
+    },
+    {
+      "physical_page": 43,
+      "printed_page": 43,
+      "chars": 3145,
+      "first_200": "S. history, rather than an endorsement of their ideas or values. AP students are not asked to affiliate\u0007themselves\u0007with\u0007the\u0007cultural\u0007or\u0007political\u0007values\u0007in\u0007these\u0007sources,\u0007but\u0007instead\u0007to\u0007analyze\u0007 such "
+    },
+    {
+      "physical_page": 44,
+      "printed_page": 44,
+      "chars": 3145,
+      "first_200": "oke colony, 1590, John Carter Brown Library at Brown University. These images capture many aspects of Algonquian life on the eve of colonial contact. AP U.S. History Course and Exam"
+    },
+    {
+      "physical_page": 45,
+      "printed_page": 45,
+      "chars": 3145,
+      "first_200": "geographic region for this activity. \u0007 SUGGESTED SKILL 1. For homework, ask students to read the sections in their textbook about Indigenous Development and societies before European arrival. In class"
+    },
+    {
+      "physical_page": 46,
+      "printed_page": 46,
+      "chars": 3145,
+      "first_200": "ify a historical in the Americas concept, development, or process. Required Course Content THEMATIC FOCUS America in the World WOR Diplomatic, economic, cultural, and military interactions between emp"
+    },
+    {
+      "physical_page": 47,
+      "printed_page": 47,
+      "chars": 3145,
+      "first_200": "of Samuel de Champlain, 1604–1618, ed. W. L. Grant (New York: Charles Scribner’s Sons, 1907),\u0007p.\u000717.\u0007In\u0007this\u0007letter,\u0007Champlain\u0007summarizes\u0007his\u0007rationale\u0007for\u0007exploration. § Richard Hakluyt: Richard Hakl"
+    },
+    {
+      "physical_page": 48,
+      "printed_page": 48,
+      "chars": 3145,
+      "first_200": "AP U.S. History Course and Exam Description Course Framework V.1 | 45 Return to Table of Contents © 2020 College Board UNIT 1 Period 1: 1491–1607 SUGGESTED SKILL Claims and"
+    },
+    {
+      "physical_page": 49,
+      "printed_page": 49,
+      "chars": 3145,
+      "first_200": "widespread deadly epidemics that devastated native populations and by the introduction of crops and animals not found in the Americas. AP U.S. History Course and Exam Description Course Framework V.1"
+    },
+    {
+      "physical_page": 50,
+      "printed_page": 50,
+      "chars": 3145,
+      "first_200": "ribes the impact of the magnetic compass on early modern sailing. KC-1.2.II.A Epidemics: § Crowd Diseases: Alan Taylor, American Colonies: The Settling of North America (New York: Penguin, 2001), pp."
+    },
+    {
+      "physical_page": 51,
+      "printed_page": 51,
+      "chars": 3145,
+      "first_200": "© 2020 College Board UNIT Period 1: 1491–1607 1 OPTIONAL ACTIVITY TOPIC 1.4 Discussion Columbian Exchange, Students explore the impact of the Columbian Exchange by identifying and describing the Spani"
+    },
+    {
+      "physical_page": 52,
+      "printed_page": 52,
+      "chars": 3145,
+      "first_200": "UNIT 1 Period 1: 1491–1607 SUGGESTED SKILL Making Connections TOPIC 1.5 5.A Identify patterns among or connections between Labor, Slavery, and historical developments and processes. Caste in the Spani"
+    },
+    {
+      "physical_page": 53,
+      "printed_page": 53,
+      "chars": 3145,
+      "first_200": "Contents © 2020 College Board UNIT Period 1: 1491–1607 1 OPTIONAL SOURCES TOPIC 1.5 Labor, Slavery, Teachers\u0007have\u0007the\u0007flexibility\u0007to\u0007include\u0007in\u0007their\u0007syllabus\u0007primary\u0007and\u0007secondary\u0007sources\u0007that\u0007 and C"
+    },
+    {
+      "physical_page": 54,
+      "printed_page": 54,
+      "chars": 3145,
+      "first_200": "tify\u0007relevant\u0007 connections between this source and the encomienda and caste systems. Colonial System Duration: ~30 mins Sequence: Anytime SUGGESTED SKILL 1. As preparation for this activity, ask stude"
+    },
+    {
+      "physical_page": 55,
+      "printed_page": 55,
+      "chars": 3145,
+      "first_200": "in a source to support an argument. Native Americans, and Africans AVAILABLE RESOURCES § Classroom Resources > White–Native American Contact in Required Course Content Early American History § Lesson "
+    },
+    {
+      "physical_page": 56,
+      "printed_page": 56,
+      "chars": 3145,
+      "first_200": "e, Europeans and Native Americans adopted some useful aspects of each other’s culture. KC-1.2.III.B As European encroachments on Native Americans’ lands and demands on their labor increased, native pe"
+    },
+    {
+      "physical_page": 57,
+      "printed_page": 57,
+      "chars": 3145,
+      "first_200": "Cultural Teachers\u0007have\u0007the\u0007flexibility\u0007to\u0007include\u0007in\u0007their\u0007syllabus\u0007primary\u0007and\u0007secondary\u0007sources\u0007that\u0007 Interactions align with local standards and priorities. The following optional sources and activ"
+    },
+    {
+      "physical_page": 58,
+      "printed_page": 58,
+      "chars": 3145,
+      "first_200": "Wiener Publishers, 1998), pp.\u000744–46.\u0007Chapter\u00073\u0007summarizes\u0007Taino\u0007resistance\u0007in\u0007the\u0007context\u0007of\u0007the\u0007encomienda\u0007 system and the African slave trade. AP U.S. History Course and Exam Description Course Fram"
+    },
+    {
+      "physical_page": 59,
+      "printed_page": 59,
+      "chars": 3145,
+      "first_200": "© 2020 College Board UNIT Period 1: 1491–1607 1 OPTIONAL ACTIVITY TOPIC 1.6 Identifying Historical Evidence Cultural Interactions Students\u0007develop\u0007a\u0007process\u0007for\u0007analyzing\u0007an\u0007author’s\u0007argument.\u0007Provide"
+    },
+    {
+      "physical_page": 60,
+      "printed_page": 60,
+      "chars": 3145,
+      "first_200": "erstand\u0007 arguments is important for history class and a wide range of academic and real world situations. AP U.S. History Course and Exam Description Course Framework V.1 | 57 Return"
+    },
+    {
+      "physical_page": 61,
+      "printed_page": 61,
+      "chars": 3145,
+      "first_200": "UNIT Period 1: 1491–1607 1 LEARNING OBJECTIVE REVIEW: UNIT 1 KEY CONCEPTS Unit 1: Learning Objective G KC-1.2 Explain the effects of the Contact among Europeans, Native Americans, development of"
+    },
+    {
+      "physical_page": 62,
+      "printed_page": 62,
+      "chars": 3145,
+      "first_200": "s\u0007of\u0007the\u0007Spanish\u0007 Make a historically to the Americas. Record their responses on the left side of the board. defensible claim. 2. List the eight AP U.S. History Themes across the top"
+    },
+    {
+      "physical_page": 63,
+      "printed_page": 63,
+      "chars": 3145,
+      "first_200": "d Exam Description Course Framework V.1 | 61 Return to Table of Contents © 2020 College Board Remember to go to AP Classroom to assign students the online Personal Progress"
+    },
+    {
+      "physical_page": 64,
+      "printed_page": 64,
+      "chars": 3145,
+      "first_200": "WXT connections between historical developments and processes. 2.5 Interactions Between Comparison 2.A Identify a source’s point of WOR American Indians and view, purpose, historical situation, Europe"
+    },
+    {
+      "physical_page": 65,
+      "printed_page": 65,
+      "chars": 3145,
+      "first_200": "UNIT Period 2: 1607–1754 2 TOPIC 2.1 SUGGESTED SKILL Contextualization Contextualizing 4.A Identify and describe a historical context for Period 2 a specific historical development or process. Spend a"
+    },
+    {
+      "physical_page": 66,
+      "printed_page": 66,
+      "chars": 3145,
+      "first_200": "Spanish, French, Dutch, and British colonizers\u0007had\u0007different\u0007economic\u0007and\u0007 imperial goals involving land and labor that shaped the social and political development of their colonies as well as their r"
+    },
+    {
+      "physical_page": 67,
+      "printed_page": 67,
+      "chars": 3145,
+      "first_200": "British colonies to evolve in their political and cultural attitudes as they became increasingly tied to Britain and one another. KC-2.2.II Like other European empires in the Americas that participate"
+    },
+    {
+      "physical_page": 68,
+      "printed_page": 68,
+      "chars": 3145,
+      "first_200": "development or process. board. 4. Ask\u0007the\u0007entire\u0007class\u0007to\u0007brainstorm\u0007one\u0007specific\u0007piece\u0007of\u0007historical\u0007evidence\u0007connected\u0007 to the best responses. Debrief\u0007by\u0007emphasizing\u0007the\u0007idea\u0007that\u0007while\u0007historical\u0007c"
+    },
+    {
+      "physical_page": 69,
+      "printed_page": 69,
+      "chars": 3145,
+      "first_200": "Indians to build economic and diplomatic relationships and acquire furs and other products for export to Europe. KC-2.1.I.C English\u0007colonization\u0007efforts\u0007attracted\u0007a\u0007 comparatively large number of male"
+    },
+    {
+      "physical_page": 70,
+      "printed_page": 70,
+      "chars": 3145,
+      "first_200": "of the Smithsonian’s National Museum of the American Indian (2020). This article gives a history\u0007of\u0007Genízaros\u0007along\u0007with\u0007contemporary\u0007photographs\u0007of\u0007Genízaro\u0007historic\u0007sites\u0007in\u0007 New Mexico. § Repartimi"
+    },
+    {
+      "physical_page": 71,
+      "printed_page": 71,
+      "chars": 3145,
+      "first_200": "enant relationship with God, will build a new Israel to be emulated by Christians the world over. Suggested excerpt: the last three paragraphs. AP U.S. History Course and Exam Description"
+    },
+    {
+      "physical_page": 72,
+      "printed_page": 72,
+      "chars": 3145,
+      "first_200": "TOPIC 2.3 The Regions of Evidence in Sources 3.A Identify and describe a claim and/or argument in\u0007a\u0007text-based\u0007or\u0007 non-text-based\u0007source. British Colonies AVAILABLE RESOURCE § Professional Required Co"
+    },
+    {
+      "physical_page": 73,
+      "printed_page": 73,
+      "chars": 3145,
+      "first_200": "The colonies of the southern Atlantic coast and the British West Indies used long growing seasons to develop plantation economies based on exporting staple crops. They depended on the labor"
+    },
+    {
+      "physical_page": 74,
+      "printed_page": 74,
+      "chars": 3145,
+      "first_200": "gn with local standards and priorities. The following optional sources and activity are not required AP course content, but are instead simply examples of sources appropriate for a college-level\u0007cours"
+    },
+    {
+      "physical_page": 75,
+      "printed_page": 75,
+      "chars": 3145,
+      "first_200": "revival group. Suggested excerpt: the narration and performance that begins at the 18:30 mark. § Task System: Daniel\u0007Littlefield,\u0007“The\u0007Varieties\u0007of\u0007Slave\u0007Labor,”\u0007Freedom’s\u0007Story,\u0007 TeacherServe, Nation"
+    },
+    {
+      "physical_page": 76,
+      "printed_page": 76,
+      "chars": 3145,
+      "first_200": "Return to Table of Contents © 2020 College Board UNIT 2 Period 2: 1607–1754 TOPIC 2.3 OPTIONAL ACTIVITY The Regions of Create Representations British Colonies Students create an annotated map"
+    },
+    {
+      "physical_page": 77,
+      "printed_page": 77,
+      "chars": 3145,
+      "first_200": "ared to the homogeneity of New England and the demographics of the other regions. This representation in a visual form can serve as a quick way to review. AP U.S."
+    },
+    {
+      "physical_page": 78,
+      "printed_page": 78,
+      "chars": 3145,
+      "first_200": "American Indians, were exchanged between Europe, Africa, and the Americas through extensive trade networks. European colonial economies focused on acquiring, producing, and exporting commodities that "
+    },
+    {
+      "physical_page": 79,
+      "printed_page": 79,
+      "chars": 3145,
+      "first_200": "Examples and Sources KC-2.1.III.B Cultural changes in Indigenous communities: § Horses in the Great Plains: Long Soldier (Hunkpapa Lakota), “Winter Count on cloth,” ca. 1902, Smithsonian National Muse"
+    },
+    {
+      "physical_page": 80,
+      "printed_page": 80,
+      "chars": 3145,
+      "first_200": "UNIT Period 2: 1607–1754 2 OPTIONAL ACTIVITY TOPIC 2.4 Making Connections Transatlantic Trade Students read “The Boston Declaration of Grievances” (1689) and identify relevant connections between this"
+    },
+    {
+      "physical_page": 81,
+      "printed_page": 81,
+      "chars": 3145,
+      "first_200": "TOPIC 2.5 Interactions Between Situation 2.A Identify a source’s point of view, purpose, historical situation, and/or audience. American Indians and Europeans Required Course Content THEMATIC FOCUS Am"
+    },
+    {
+      "physical_page": 82,
+      "printed_page": 82,
+      "chars": 3145,
+      "first_200": "turn to Table of Contents © 2020 College Board UNIT Period 2: 1607–1754 2 OPTIONAL SOURCES TOPIC 2.5 Interactions Teachers\u0007have\u0007the\u0007flexibility\u0007to\u0007include\u0007in\u0007their\u0007syllabus\u0007primary\u0007and\u0007secondary\u0007sourc"
+    },
+    {
+      "physical_page": 83,
+      "printed_page": 83,
+      "chars": 3145,
+      "first_200": "liances: § Covenant Chain: “The\u0007Second\u0007answer\u0007of\u0007the\u0007five\u0007nations\u0007of\u0007Indians...14th\u0007Septr.\u00071722,”\u0007 in Documents Relative to the Colonial History of the State of New York, vol. 5, ed. E. B. O’Callaghan"
+    },
+    {
+      "physical_page": 84,
+      "printed_page": 84,
+      "chars": 3145,
+      "first_200": "Sourcing and Citation 2. Organize\u0007students\u0007into\u0007groups\u0007and\u0007give\u0007each\u0007the\u0007excerpts\u0007from\u0007John\u0007Smith\u0007and\u0007Edward\u0007 2.A Waterhouse described for this topic. Do not include the date or author of the passages"
+    },
+    {
+      "physical_page": 85,
+      "printed_page": 85,
+      "chars": 3145,
+      "first_200": "well as a shortage of indentured servants. Small New England farms used relatively few enslaved laborers, all port cities held significant\u0007minorities\u0007of\u0007enslaved\u0007people,\u0007 and the emerging plantation s"
+    },
+    {
+      "physical_page": 86,
+      "printed_page": 86,
+      "chars": 3145,
+      "first_200": "ily and gender systems, culture, and religion. AP U.S. History Course and Exam Description Course Framework V.1 | 85 Return to Table of Contents © 2020 College Board UNIT 2"
+    },
+    {
+      "physical_page": 87,
+      "printed_page": 87,
+      "chars": 3145,
+      "first_200": "roon War: Vincent Brown, Tacky’s Revolt: The Story of an Atlantic Slave War (Cambridge: Belknap Press, 2020), pp. 108–17. Brown provides an overview of the First Maroon War between British"
+    },
+    {
+      "physical_page": 88,
+      "printed_page": 88,
+      "chars": 3145,
+      "first_200": "ntaining culture: § Gullah: John Rose, The Old Plantation, watercolor, c. 1785–90, Williamsburg, Virginia, Collections of Abby Aldrich Rockefeller Folk Art Museum. This unsigned, undated painting by a"
+    },
+    {
+      "physical_page": 89,
+      "printed_page": 89,
+      "chars": 3145,
+      "first_200": "referenced\u0007in\u0007the\u0007source\u0007influenced\u0007the\u0007development\u0007of\u0007enslavement. and processes. 3. Assign students the individual task of writing one or two sentences that connect enslavement in the region they de"
+    },
+    {
+      "physical_page": 90,
+      "printed_page": 90,
+      "chars": 3145,
+      "first_200": "e\u0007expression,\u0007demographic\u0007change,\u0007philosophy,\u0007religious\u0007beliefs,\u0007scientific\u0007 ideas, social mores, and technology shape national, regional, and group cultures in America, and these varying cultures oft"
+    },
+    {
+      "physical_page": 91,
+      "printed_page": 91,
+      "chars": 3145,
+      "first_200": "\u0007goals\u0007and\u0007interests\u0007 and colonists at times diverged, leading to a of European leaders and growing mistrust on both sides of the Atlantic. colonists\u0007affected\u0007how\u0007they\u0007 Colonists, especially in Britis"
+    },
+    {
+      "physical_page": 92,
+      "printed_page": 92,
+      "chars": 3145,
+      "first_200": "greements of West New Jersey: “Concessions and Agreements of West New Jersey” (1676). Chapter 16 mandates religious freedom for all inhabitants of the colony. Signed by over 150 men (mostly"
+    },
+    {
+      "physical_page": 93,
+      "printed_page": 93,
+      "chars": 3145,
+      "first_200": "a\u0007portable\u0007outdoor\u0007pulpit\u0007like\u0007this\u0007one\u0007because\u0007he\u0007drew\u0007too\u0007big\u0007a\u0007crowd\u0007to\u0007fit\u0007indoors\u0007or\u0007 because churches banned him from preaching inside. KC-2.1.III.D KC-2.2.I.D Dissatisfaction and resistance: § "
+    },
+    {
+      "physical_page": 94,
+      "printed_page": 94,
+      "chars": 3145,
+      "first_200": "what they learned in the document. 1.A 3. Next, ask them to identify one change and one continuity demonstrated by the Identify a historical document. concept, development, or process. 4."
+    },
+    {
+      "physical_page": 95,
+      "printed_page": 95,
+      "chars": 3145,
+      "first_200": "KC-2.1.I Spanish, French, Dutch, and British colonizers\u0007had\u0007different\u0007economic\u0007and imperial goals involving land and labor that shaped the social and political development of their colonies as well as"
+    },
+    {
+      "physical_page": 96,
+      "printed_page": 96,
+      "chars": 3145,
+      "first_200": "stronger bonds with Britain and resistance to Britain’s control. KC-2.2.I Transatlantic commercial, religious, philosophical, and political exchanges led residents of the British colonies to evolve in"
+    },
+    {
+      "physical_page": 97,
+      "printed_page": 97,
+      "chars": 3145,
+      "first_200": "nce. 5. Ask students to share their examples and brainstorm at least three pieces of historical § Explain\u0007how\u0007specific\u0007 evidence that support the ideas expressed in their argument. examples of histori"
+    },
+    {
+      "physical_page": 98,
+      "printed_page": 98,
+      "chars": 3145,
+      "first_200": "Return to Table of Contents © 2020 College Board UNIT 3 10–17% AP EXAM WEIGHTING ~17 CLASS PERIODS Period 3: 1754–1800 UNIT AT A GLANCE Thematic Class Periods Reasoning Focus"
+    },
+    {
+      "physical_page": 99,
+      "printed_page": 99,
+      "chars": 3145,
+      "first_200": "© 2020 College Board UNIT 3 Period 3: 1754–1800 UNIT AT A GLANCE (cont’d) Thematic Class Periods Reasoning Focus Topic Process Suggested Skill ~17 CLASS PERIODS 3.7 The Articles of"
+    },
+    {
+      "physical_page": 100,
+      "printed_page": 100,
+      "chars": 3145,
+      "first_200": "© 2020 College Board UNIT Period 3: 1754–1800 3 TOPIC 3.1 SUGGESTED SKILL Contextualization Contextualizing 4.A Identify and describe a historical context for Period 3 a specific historical developmen"
+    },
+    {
+      "physical_page": 101,
+      "printed_page": 101,
+      "chars": 3145,
+      "first_200": "political advantage in North America culminated in the Seven Years’ War (the French and Indian War), in which Britain defeated France and allied American Indians. KC-3.1.II The desire of many"
+    },
+    {
+      "physical_page": 102,
+      "printed_page": 102,
+      "chars": 3145,
+      "first_200": "liberties\u0007and\u0007limiting\u0007both\u0007centralized\u0007power\u0007 and excessive popular influence. KC-3.2.III.i New forms of national culture and political institutions developed in the United States alongside continued"
+    },
+    {
+      "physical_page": 103,
+      "printed_page": 103,
+      "chars": 3145,
+      "first_200": "TOPIC 3.1 Going Deeper in Historical Context Contextualizing Period 3 The purpose of this activity is to help students develop a deeper understanding of contextualization.\u0007As\u0007students\u0007prepare\u0007to\u0007cover"
+    },
+    {
+      "physical_page": 104,
+      "printed_page": 104,
+      "chars": 3145,
+      "first_200": "ld WOR Diplomatic, economic, cultural, and military interactions between empires, nations, and peoples shape the development of America and America’s increasingly important role in the world. LEARNING"
+    },
+    {
+      "physical_page": 105,
+      "printed_page": 105,
+      "chars": 3145,
+      "first_200": "3 OPTIONAL SOURCES TOPIC 3.2 The Seven Years’ Teachers\u0007have\u0007the\u0007flexibility\u0007to\u0007include\u0007in\u0007their\u0007syllabus\u0007primary\u0007and\u0007secondary\u0007sources\u0007that\u0007 War (The French align with local standards and priorities. "
+    },
+    {
+      "physical_page": 106,
+      "printed_page": 106,
+      "chars": 3145,
+      "first_200": "e Framework V.1 | 105 Return to Table of Contents © 2020 College Board UNIT 3 Period 3: 1754–1800 TOPIC 3.2 OPTIONAL ACTIVITY The Seven Years’ Explaining Historical Events Through"
+    },
+    {
+      "physical_page": 107,
+      "printed_page": 107,
+      "chars": 3145,
+      "first_200": "of this concept. AP U.S. History Course and Exam Description Course Framework V.1 | 106 Return to Table of Contents © 2020 College Board UNIT Period 3: 1754–1800 3 TOPIC"
+    },
+    {
+      "physical_page": 108,
+      "printed_page": 108,
+      "chars": 3145,
+      "first_200": "Revolutionary War. consent and to assert imperial authority in the colonies, began to unite the colonists against perceived and real constraints on their economic activities and political rights. KC-3"
+    },
+    {
+      "physical_page": 109,
+      "printed_page": 109,
+      "chars": 3145,
+      "first_200": "ad\u0007to\u0007analyze\u0007 such documents for the historical information they can yield. Examples and Sources KC-3.1.II.A New taxes: § Stamp Act: Benjamin\u0007Wilson,\u0007“The\u0007Repeal,\u0007or\u0007the\u0007Funeral\u0007Procession\u0007of\u0007Miss\u0007Am"
+    },
+    {
+      "physical_page": 110,
+      "printed_page": 110,
+      "chars": 3145,
+      "first_200": "UNIT Period 3: 1754–1800 3 KC-3.1.II.B Calls for resistance: § John Adams: John Adams, “A Dissertation on the Canon and Feudal Law,” Boston Gazette, October 21, 1765. Adams wrote this"
+    },
+    {
+      "physical_page": 111,
+      "printed_page": 111,
+      "chars": 3145,
+      "first_200": "Green Mountain Boys when they achieved an early victory for the Patriots by capturing Fort Ticonderoga from\u0007the\u0007British\u0007in\u00071775.\u0007Suggested\u0007excerpt:\u0007the\u0007first\u0007two\u0007and\u0007a\u0007half\u0007pages. AP U.S. History Cour"
+    },
+    {
+      "physical_page": 112,
+      "printed_page": 112,
+      "chars": 3145,
+      "first_200": "Identify a source’s point of view, purpose, historical § What do you see in the image? situation, and/or audience. § Do\u0007you\u0007recognize\u0007any\u0007symbols? § What is the connection between this tax and"
+    },
+    {
+      "physical_page": 113,
+      "printed_page": 113,
+      "chars": 3145,
+      "first_200": "nd individualism shape American national identity, cultural values, and beliefs about American exceptionalism, and in turn, these ideas shape political institutions and society. Throughout American hi"
+    },
+    {
+      "physical_page": 114,
+      "printed_page": 114,
+      "chars": 3145,
+      "first_200": "Philosophical Teachers\u0007have\u0007the\u0007flexibility\u0007to\u0007include\u0007in\u0007their\u0007syllabus\u0007primary\u0007and\u0007secondary\u0007sources\u0007that\u0007 Foundations of align with local standards and priorities. The following optional sources an"
+    },
+    {
+      "physical_page": 115,
+      "printed_page": 115,
+      "chars": 3145,
+      "first_200": "\u0007students\u0007to\u0007analyze\u0007the\u0007source\u0007specifically\u0007for\u0007point\u0007of\u0007view.\u0007Guide\u0007them\u0007to\u0007 Situation consider\u0007how\u0007the\u0007author’s\u0007background\u0007might\u0007have\u0007influenced\u0007what\u0007she\u0007wrote\u0007in\u0007this\u0007 2.B poem. Explain the point "
+    },
+    {
+      "physical_page": 116,
+      "printed_page": 116,
+      "chars": 3145,
+      "first_200": "e World WOR Diplomatic, economic, cultural, and military interactions between empires, nations, and peoples shape the development of America and America’s increasingly important role in the world. LEA"
+    },
+    {
+      "physical_page": 117,
+      "printed_page": 117,
+      "chars": 3145,
+      "first_200": "§ Dunmore’s Proclamation of 1775: John Murray, Earl of Dunmore, Lord Dunmore’s Proclamation, Pennsylvania Journal and Weekly Advertiser, December 6, 1775. In November\u00071775,\u0007Dunmore\u0007issued\u0007his\u0007Proclama"
+    },
+    {
+      "physical_page": 118,
+      "printed_page": 118,
+      "chars": 3145,
+      "first_200": "thesis statement: Despite considerable Loyalist opposition, the SUGGESTED SKILL Patriot cause succeeded because of George Washington’s military leadership and the Argumentation colonists’ commitment. "
+    },
+    {
+      "physical_page": 119,
+      "printed_page": 119,
+      "chars": 3145,
+      "first_200": "d transformed throughout American history, shaping government policy, economic systems,\u0007culture,\u0007and\u0007the\u0007lives\u0007of\u0007citizens. LEARNING OBJECTIVE HISTORICAL DEVELOPMENTS Unit 3: Learning Objective F KC-3"
+    },
+    {
+      "physical_page": 120,
+      "printed_page": 120,
+      "chars": 3145,
+      "first_200": "set the American Revolution. forth in the Declaration of Independence reverberated in France, Haiti, and Latin America, inspiring future independence movements. AP U.S. History Course and Exam Descrip"
+    },
+    {
+      "physical_page": 121,
+      "printed_page": 121,
+      "chars": 3145,
+      "first_200": "ges\u00078–10\u0007in\u0007the\u00071760\u0007second\u0007edition. § Freedom petitions in Massachusetts courts: Prince Hall et al., “Petition for freedom to the Massachusetts Council and the House of Representatives,” January 13, "
+    },
+    {
+      "physical_page": 122,
+      "printed_page": 122,
+      "chars": 3145,
+      "first_200": "highlight\u0007the\u0007claim\u0007about\u0007enslavement\u0007by\u0007Benezet.\u0007Guide\u0007students\u0007through\u0007the\u0007process\u0007 Evidence in Sources of discretely highlighting only the claim. Some students are inclined to highlight too 3.A muc"
+    },
+    {
+      "physical_page": 123,
+      "printed_page": 123,
+      "chars": 3145,
+      "first_200": "Learning Objective H KC-3.2.II.A Explain\u0007how\u0007different\u0007forms\u0007 Many new state constitutions placed power of government developed in the hands of the legislative branch and and changed as a result of ma"
+    },
+    {
+      "physical_page": 124,
+      "printed_page": 124,
+      "chars": 3145,
+      "first_200": ".II.A State constitutions: § Massachusetts: Massachusetts State Constitution (1780). The text indicates that protecting\u0007natural\u0007rights\u0007and\u0007advancing\u0007representative\u0007self-government\u0007are\u0007the\u0007 foundations"
+    },
+    {
+      "physical_page": 125,
+      "printed_page": 125,
+      "chars": 3145,
+      "first_200": "776\u0007(everything\u0007from\u0007“Whereas\u0007 SUGGESTED SKILL George…” to “…his allegiance & protection”) and ask students to describe what they Claims and see. As students share their ideas, help them see how this "
+    },
+    {
+      "physical_page": 126,
+      "printed_page": 126,
+      "chars": 3145,
+      "first_200": "KC-3.2.II.D The Constitutional Convention compromised over the representation of slave states in Congress and the role of the federal government in regulating both slavery and the slave trade, allowin"
+    },
+    {
+      "physical_page": 127,
+      "printed_page": 127,
+      "chars": 3145,
+      "first_200": "Convention and required AP course content, but are instead simply examples of sources appropriate for a Debates over college-level\u0007course.\u0007None\u0007of\u0007the\u0007AP\u0007Exam\u0007questions\u0007require\u0007students\u0007to\u0007have\u0007studie"
+    },
+    {
+      "physical_page": 128,
+      "printed_page": 128,
+      "chars": 3145,
+      "first_200": "ework. Choose an excerpt from one of the Federalist Papers or one of the Ratification sources suggested for this topic and complete each of the steps listed below for this"
+    },
+    {
+      "physical_page": 129,
+      "printed_page": 129,
+      "chars": 3145,
+      "first_200": "3 TOPIC 3.9 SUGGESTED SKILL Making Connections The Constitution 5.A Identify patterns among or connections between historical developments and processes. Required Course Content THEMATIC FOCUS Politic"
+    },
+    {
+      "physical_page": 130,
+      "printed_page": 130,
+      "chars": 3145,
+      "first_200": "opments and processes. § Identify\u0007one\u0007part\u0007of\u0007each\u0007article\u0007that\u0007reflects\u0007a\u0007change\u0007in\u0007U.S.\u0007History. § What evidence can you provide to demonstrate this change? § Identify\u0007one\u0007part\u0007of\u0007each\u0007article\u0007that\u0007"
+    },
+    {
+      "physical_page": 131,
+      "printed_page": 131,
+      "chars": 3145,
+      "first_200": "§ Classroom Resources > Lesson Plans for AP U.S. History: The Alien and Sedition Acts THEMATIC FOCUS § Professional America in the World WOR Development > Teaching and Diplomatic, economic,"
+    },
+    {
+      "physical_page": 132,
+      "printed_page": 132,
+      "chars": 3145,
+      "first_200": "KC-3.3.I.D An ambiguous relationship between the federal government and American Indian tribes contributed to problems regarding treaties and American Indian legal claims relating to the seizure\u0007of\u0007th"
+    },
+    {
+      "physical_page": 133,
+      "printed_page": 133,
+      "chars": 3145,
+      "first_200": "Alexander\u0007Hamilton,\u0007and\u0007the\u0007Democratic- Republican\u0007Party,\u0007led\u0007by\u0007Thomas\u0007Jefferson\u0007and\u0007 James Madison. KC-3.3.II.C George Washington’s Farewell Address encouraged national unity, as he cautioned agains"
+    },
+    {
+      "physical_page": 134,
+      "printed_page": 134,
+      "chars": 3145,
+      "first_200": "n 5. § Citizen Genet: Edmond Charles Genet, letter to George Washington, August 13, 1793. In this letter, the French diplomat Edmund Genet appeals to President Washington for support\u0007in\u0007the\u0007midst\u0007of\u0007t"
+    },
+    {
+      "physical_page": 135,
+      "printed_page": 135,
+      "chars": 3145,
+      "first_200": "eghdotxa, letter to George Washington, April 7, 1793. Oneida men fought with Patriot forces in several battles and multiple members of the Oneida Nation received\u0007officer\u0007commissions\u0007in\u0007the\u0007Continental"
+    },
+    {
+      "physical_page": 136,
+      "printed_page": 136,
+      "chars": 3145,
+      "first_200": "of the four approaches would be\u0007the\u0007best\u0007option\u0007for\u0007determining\u0007the\u0007historical\u0007significance\u0007of\u0007the\u0007source,\u0007conduct\u0007a\u0007 class\u0007discussion\u0007where\u0007each\u0007group\u0007shares\u0007their\u0007findings. As a class, discuss the l"
+    },
+    {
+      "physical_page": 137,
+      "printed_page": 137,
+      "chars": 3145,
+      "first_200": "© 2020 College Board UNIT Period 3: 1754–1800 3 OPTIONAL SOURCES TOPIC 3.11 Developing an Teachers\u0007have\u0007the\u0007flexibility\u0007to\u0007include\u0007in\u0007their\u0007syllabus\u0007primary\u0007and\u0007secondary\u0007sources\u0007that\u0007 American Identi"
+    },
+    {
+      "physical_page": 138,
+      "printed_page": 138,
+      "chars": 3145,
+      "first_200": "blication on his electrical experiment, holding a lightning rod, while lightning strikes in the Philadelphia background. AP U.S. History Course and Exam Description Course Framework V.1 | 137 Return t"
+    },
+    {
+      "physical_page": 139,
+      "printed_page": 139,
+      "chars": 3145,
+      "first_200": "development, or process. 2. Instruct students to turn to a partner and discuss their responses. § To what extent do you agree with each other and why? 3. Ask one"
+    },
+    {
+      "physical_page": 140,
+      "printed_page": 140,
+      "chars": 3145,
+      "first_200": "s of the world continued to move westward, frontier cultures that had emerged in the colonial period continued to grow, fueling social, political, and ethnic tensions. continued on next page"
+    },
+    {
+      "physical_page": 141,
+      "printed_page": 141,
+      "chars": 3145,
+      "first_200": "ffiliate\u0007themselves\u0007with\u0007the\u0007cultural\u0007or\u0007political\u0007values\u0007in\u0007these\u0007sources,\u0007but\u0007instead\u0007to\u0007analyze\u0007 such documents for the historical information they can yield. Examples and Sources KC-3.3.I.A Indige"
+    },
+    {
+      "physical_page": 142,
+      "printed_page": 142,
+      "chars": 3145,
+      "first_200": "followers\u0007were\u0007executed\u0007for\u0007the\u0007 rebellion.\u0007Suggested\u0007excerpt:\u0007the\u0007first\u0007three\u0007pages\u0007of\u0007testimony\u0007(until\u0007the\u0007testimony\u0007of\u0007 Thilmans Dick). AP U.S. History Course and Exam Description Course Framework "
+    },
+    {
+      "physical_page": 143,
+      "printed_page": 143,
+      "chars": 3145,
+      "first_200": "(comparison, causation, or continuity and and processes. change) for the connection they are making. Ask students to choose and complete a graphic\u0007organizer\u0007that\u0007works\u0007well\u0007to\u0007analyze\u0007this\u0007connection."
+    },
+    {
+      "physical_page": 144,
+      "printed_page": 144,
+      "chars": 3145,
+      "first_200": "lly relevant evidence support an argument. The\u0007final\u0007topic\u0007in\u0007this\u0007unit\u0007focuses\u0007on\u0007the\u0007skill\u0007of\u0007argumentation\u0007and\u0007so\u0007provides\u0007an\u0007 opportunity for your students to draw upon the key concepts and histor"
+    },
+    {
+      "physical_page": 145,
+      "printed_page": 145,
+      "chars": 3145,
+      "first_200": "© 2020 College Board UNIT 3 Period 3: 1754–1800 LEARNING OBJECTIVE REVIEW: UNIT 3 KEY CONCEPTS Unit 3: Learning Objective P KC-3.2 Explain how the American The American Revolution’s democratic"
+    },
+    {
+      "physical_page": 146,
+      "printed_page": 146,
+      "chars": 3145,
+      "first_200": "trade\u0007intensified\u0007conflicts\u0007among\u0007peoples\u0007 and nations. KC-3.3.I In the decades after American independence, interactions\u0007among\u0007different\u0007groups\u0007resulted\u0007 in competition for resources, shifting allian"
+    },
+    {
+      "physical_page": 147,
+      "printed_page": 147,
+      "chars": 3145,
+      "first_200": "evidence. during the period from 1607 to 1800 (making sure they are related to the theme their § Describe\u0007specific\u0007 group selected). Then ask students to draft a thesis statement using"
+    },
+    {
+      "physical_page": 148,
+      "printed_page": 148,
+      "chars": 3145,
+      "first_200": "© 2020 College Board Remember to go to AP Classroom to assign students the online Personal Progress Check for this unit. Whether assigned as homework or completed in class, the"
+    },
+    {
+      "physical_page": 149,
+      "printed_page": 149,
+      "chars": 3145,
+      "first_200": "audience of a source. 4.5 Market Revolution: Causation 6.B Support an argument using Industrialization specific\u0007and\u0007relevant\u0007evidence. § Describe\u0007specific\u0007examples\u0007of\u0007 WXT historically relevant eviden"
+    },
+    {
+      "physical_page": 150,
+      "printed_page": 150,
+      "chars": 3145,
+      "first_200": "4.11 An Age of Reform Comparison 3.B Identify the evidence used in a source to support an argument. 4.12 African Americans in Continuity and 3.D Explain how claims or evidence"
+    },
+    {
+      "physical_page": 151,
+      "printed_page": 151,
+      "chars": 3145,
+      "first_200": "ing and To understand context, your students could examine: Assessing Module— § Change from and/or continuity with preceding historical developments. Period 4: 1800–1848, § Similarities\u0007and/or\u0007differe"
+    },
+    {
+      "physical_page": 152,
+      "printed_page": 152,
+      "chars": 3145,
+      "first_200": "© 2020 College Board UNIT 4 Period 4: 1800–1848 LEARNING OBJECTIVE PREVIEW: UNIT 4 KEY CONCEPTS Unit 4: Learning Objective A KC-4.2 Explain the context in which Innovations in technology,"
+    },
+    {
+      "physical_page": 153,
+      "printed_page": 153,
+      "chars": 3145,
+      "first_200": "erritory throughout the North American continent and promote foreign trade. KC-4.3.II The United States’ acquisition of lands in the West gave rise to contests over the extension of slavery into"
+    },
+    {
+      "physical_page": 154,
+      "printed_page": 154,
+      "chars": 3145,
+      "first_200": "tudents to predict how the developments and processes they discussed in this activity will connect to the events they study in period 4. AP U.S. History Course and Exam Description"
+    },
+    {
+      "physical_page": 155,
+      "printed_page": 155,
+      "chars": 3145,
+      "first_200": "omatic\u0007efforts. AP U.S. History Course and Exam Description Course Framework V.1 | 156 Return to Table of Contents © 2020 College Board UNIT Period 4: 1800–1848 4 OPTIONAL SOURCES TOPIC"
+    },
+    {
+      "physical_page": 156,
+      "printed_page": 156,
+      "chars": 3145,
+      "first_200": "of\u0007Jefferson,\u0007use\u0007this\u0007activity\u0007to\u0007help\u0007students\u0007develop\u0007a\u0007deeper\u0007understanding\u0007of\u0007historical\u0007 of Jefferson situation. Duration: ~20 mins Sequence: Anytime SUGGESTED SKILL 1. Before beginning this act"
+    },
+    {
+      "physical_page": 157,
+      "printed_page": 157,
+      "chars": 3145,
+      "first_200": "ics and Power PCE Debates fostered by social and political groups about the role of government in American social, political, and economic life shape government policy, institutions, political\u0007parties"
+    },
+    {
+      "physical_page": 158,
+      "printed_page": 158,
+      "chars": 3145,
+      "first_200": "I.D KC-4.2.III.D KC-4.2.III.C Regional interests and attempts at political compromise: § Compromise Tariff of 1833: James Madison, letter to William C. Rives, March 12, 1833. In\u0007this\u0007letter,\u0007written\u0007j"
+    },
+    {
+      "physical_page": 159,
+      "printed_page": 159,
+      "chars": 3145,
+      "first_200": "Missouri. Situation 2.B 2. Distribute individual copies of the source and ask students to record the main idea of the excerpt. Explain the point of view, purpose, historical situation, 3."
+    },
+    {
+      "physical_page": 160,
+      "printed_page": 160,
+      "chars": 3145,
+      "first_200": "\u0007sought\u0007influence\u0007and\u0007 control over the Western Hemisphere through a variety of means, including military actions, American Indian removal, and diplomatic efforts\u0007such\u0007as\u0007the\u0007Monroe\u0007Doctrine. AP U.S. "
+    },
+    {
+      "physical_page": 161,
+      "printed_page": 161,
+      "chars": 3145,
+      "first_200": "riod of conflict.\u0007Suggested\u0007excerpt:\u0007Sheldon’s\u0007description\u0007of\u0007their\u0007time\u0007in\u0007St.\u0007Augustine,\u0007located\u0007 in the middle of the narrative. § War of 1812: John James Barralet and Benjamin Tanner, “America gui"
+    },
+    {
+      "physical_page": 162,
+      "printed_page": 162,
+      "chars": 3145,
+      "first_200": "ant military leader on horseback in front of a grand and majestic neoclassical building. § Purpose: …depicting an abundance of fruit, vegetables, and other objects produced by the work of"
+    },
+    {
+      "physical_page": 163,
+      "printed_page": 163,
+      "chars": 3145,
+      "first_200": "Return to Table of Contents © 2020 College Board UNIT 4 Period 4: 1800–1848 SUGGESTED SKILL Argumentation TOPIC 4.5 6.B Support an argument using specific and Market Revolution: relevant evidence."
+    },
+    {
+      "physical_page": 164,
+      "printed_page": 164,
+      "chars": 3145,
+      "first_200": "ransportation networks linked the North and Midwest more closely than they linked regions in the South. KC-4.2.III.B Increasing Southern cotton production and the related growth of Northern manufactur"
+    },
+    {
+      "physical_page": 165,
+      "printed_page": 165,
+      "chars": 3145,
+      "first_200": "r, Slater proposes a business venture with merchant and manufacturer Moses Brown. KC-4.2.I.B Agricultural inventions: § John Deere’s steel plow: Hiram M. Drache, “The Impact of John Deere’s Plow,” Ill"
+    },
+    {
+      "physical_page": 166,
+      "printed_page": 166,
+      "chars": 3145,
+      "first_200": "ents’ ability to support a historical argument with relevant evidence. This\u0007activity\u0007is\u0007designed\u0007to\u0007scaffold\u0007the\u0007skill\u0007of\u0007argumentation.\u0007Developing\u0007a\u0007historical\u0007 argument involves multiple steps inclu"
+    },
+    {
+      "physical_page": 167,
+      "printed_page": 167,
+      "chars": 3145,
+      "first_200": "Return to Table of Contents © 2020 College Board UNIT 4 Period 4: 1800–1848 SUGGESTED SKILL Making Connections TOPIC 4.6 5.B Explain how a historical development or process Market Revolution:"
+    },
+    {
+      "physical_page": 168,
+      "printed_page": 168,
+      "chars": 3145,
+      "first_200": "they supported themselves producing goods for distant markets. KC-4.2.II.C Gender and family roles changed in response to the market revolution, particularly with the\u0007growth\u0007of\u0007definitions\u0007of\u0007domestic"
+    },
+    {
+      "physical_page": 169,
+      "printed_page": 169,
+      "chars": 3145,
+      "first_200": "taining Observations on the Climate and Agriculture of the Western States, the Manners of the People, the Prospects of Emigrants, &c., &c. (Edinburgh: W. & C. Tait, 1822). Flint was"
+    },
+    {
+      "physical_page": 170,
+      "printed_page": 170,
+      "chars": 3145,
+      "first_200": "1851), Letter XVII. Poet\u0007and\u0007journalist\u0007William\u0007Bryant\u0007describes\u0007the\u0007forty-year\u0007union\u0007of\u0007Charity\u0007Bryant\u0007and\u0007 Sylvia Drake. Suggested excerpt: the fourth paragraph, beginning “I passed a few days in th"
+    },
+    {
+      "physical_page": 171,
+      "printed_page": 171,
+      "chars": 3145,
+      "first_200": "ied environments along the 5.B Mississippi\u0007River.\u0007Students\u0007will\u0007remain\u0007in\u0007groups\u0007for\u0007the\u0007first\u0007three\u0007steps. Explain how a historical 2. Ask\u0007students\u0007to\u0007share\u0007their\u0007findings\u0007and\u0007encourage\u0007each\u0007to\u0007annot"
+    },
+    {
+      "physical_page": 172,
+      "printed_page": 172,
+      "chars": 3145,
+      "first_200": "white men, and it was accompanied by the growth of political parties. AP U.S. History Course and Exam Description Course Framework V.1 | 174 Return to Table of Contents ©"
+    },
+    {
+      "physical_page": 173,
+      "printed_page": 173,
+      "chars": 3145,
+      "first_200": "activity to develop students’ ability to explain a historical development. Duration: ~25 mins Sequence: End of lesson SUGGESTED SKILL 1. Start\u0007the\u0007class\u0007by\u0007writing\u0007“universal\u0007suffrage”\u0007on\u0007the\u0007board.\u0007A"
+    },
+    {
+      "physical_page": 174,
+      "printed_page": 174,
+      "chars": 3145,
+      "first_200": "Claims and Jackson and Evidence in Sources 3.D Explain how claims or Federal Power evidence support, modify, or refute a source’s argument. Required Course Content THEMATIC FOCUS Politics and Power"
+    },
+    {
+      "physical_page": 175,
+      "printed_page": 175,
+      "chars": 3145,
+      "first_200": "Developments; no prior knowledge of any of these sources is needed to answer related exam questions. These sources represent a variety of persons and perspectives relevant to U.S. history, rather"
+    },
+    {
+      "physical_page": 176,
+      "printed_page": 176,
+      "chars": 3145,
+      "first_200": "Surrender Speech” (1832). Sauk leader Black Hawk delivered this speech upon surrendering to U.S. forces following the Black Hawk War. Black Hawk describes the Sauk grievances that led to war,"
+    },
+    {
+      "physical_page": 177,
+      "printed_page": 177,
+      "chars": 3145,
+      "first_200": "of the debates related to the American System from Claims and topic 4.3 and provide a brief history of the Cumberland Road (National Road). Explain to Evidence in Sources students"
+    },
+    {
+      "physical_page": 178,
+      "printed_page": 178,
+      "chars": 3145,
+      "first_200": "d a wide range of academic and real world situations. AP U.S. History Course and Exam Description Course Framework V.1 | 180 Return to Table of Contents © 2020 College"
+    },
+    {
+      "physical_page": 179,
+      "printed_page": 179,
+      "chars": 3145,
+      "first_200": "hers\u0007have\u0007the\u0007flexibility\u0007to\u0007include\u0007in\u0007their\u0007syllabus\u0007primary\u0007and\u0007secondary\u0007sources\u0007that\u0007 Culture align with local standards and priorities. The following optional sources and activity are not requir"
+    },
+    {
+      "physical_page": 180,
+      "printed_page": 180,
+      "chars": 3145,
+      "first_200": "§ Margaret Fuller: Margaret Fuller, “The Great Lawsuit. Man versus Men. Woman versus Women.” The Dial, July 1843. This article highlights the tension between American ideals of liberty and equality"
+    },
+    {
+      "physical_page": 181,
+      "printed_page": 181,
+      "chars": 3145,
+      "first_200": "lture If you selected the painting by Thomas Cole, use this activity to develop students’ ability to explain the historical context surrounding the development of an American culture. This activity\u0007fo"
+    },
+    {
+      "physical_page": 182,
+      "printed_page": 182,
+      "chars": 3145,
+      "first_200": "5.B Explain how a historical development or process Awakening relates to another historical development or process. Required Course Content THEMATIC FOCUS American and Regional Culture ARC Creative\u0007ex"
+    },
+    {
+      "physical_page": 183,
+      "printed_page": 183,
+      "chars": 3145,
+      "first_200": "Second Great Awakening: § African Methodist Episcopal Church: Richard Allen, The Life, Experience, and Gospel Labours of the Rt. Rev. Richard Allen (Philadelphia: Martin & Boden Printers, 1833), pp. 1"
+    },
+    {
+      "physical_page": 184,
+      "printed_page": 184,
+      "chars": 3145,
+      "first_200": "§ Jarena Lee: Jarena Lee, Religious Experience and Journal of Mrs. Jarena Lee (Philadelphia:\u0007self-published,\u00071849),\u0007pp.\u000710–11.\u0007In\u0007this\u0007section\u0007of\u0007her\u0007autobiography,\u0007 “My Call\u0007to\u0007Preach\u0007the\u0007Gospel,”\u0007Le"
+    },
+    {
+      "physical_page": 185,
+      "printed_page": 185,
+      "chars": 3145,
+      "first_200": "udents\u0007in\u0007pairs\u0007and\u0007ask\u0007them\u0007to\u0007briefly\u0007review\u0007their\u0007homework\u0007while\u0007making\u0007 Explain how a historical relevant connections between the two social/religious movements. Provide the development or process"
+    },
+    {
+      "physical_page": 186,
+      "printed_page": 186,
+      "chars": 3145,
+      "first_200": "Return to Table of Contents © 2020 College Board UNIT Period 4: 1800–1848 4 TOPIC 4.11 SUGGESTED SKILL Claims and An Age of Reform Evidence in Sources 3.B Identify the"
+    },
+    {
+      "physical_page": 187,
+      "printed_page": 187,
+      "chars": 3145,
+      "first_200": "ing to the growth of the free African American population, even as many state governments restricted African Americans’ rights. KC-4.3.II.B.i Antislavery movements increased in the North. continued on"
+    },
+    {
+      "physical_page": 188,
+      "printed_page": 188,
+      "chars": 3145,
+      "first_200": "ts are not asked to affiliate\u0007themselves\u0007with\u0007the\u0007cultural\u0007or\u0007political\u0007values\u0007in\u0007these\u0007sources,\u0007but\u0007instead\u0007to\u0007analyze\u0007 such documents for the historical information they can yield. Examples and Sour"
+    },
+    {
+      "physical_page": 189,
+      "printed_page": 189,
+      "chars": 3145,
+      "first_200": "frican Americans. § Mary M’Clintock: Elizabeth\u0007Cady\u0007Stanton,\u0007“Planning\u0007the\u0007Seneca\u0007Falls\u0007Convention,\u00071848,”\u0007 in Women’s Rights Emerges within the Anti-Slavery Movement, 1830–1870: A Brief History with "
+    },
+    {
+      "physical_page": 190,
+      "printed_page": 190,
+      "chars": 3145,
+      "first_200": "existed around 1846. § Fruitlands: “Amos Bronson Alcott,” in The New American Cyclopaedia: A Popular Dictionary of General Knowledge, Volume I, ed. George Ripley and Charles A. Dana (New York:"
+    },
+    {
+      "physical_page": 191,
+      "printed_page": 191,
+      "chars": 3145,
+      "first_200": "Constitution. AP U.S. History Course and Exam Description Course Framework V.1 | 193 Return to Table of Contents © 2020 College Board UNIT 4 Period 4: 1800–1848 TOPIC 4.11 OPTIONAL"
+    },
+    {
+      "physical_page": 192,
+      "printed_page": 192,
+      "chars": 3145,
+      "first_200": "ty\u0007to\u0007effectively\u0007analyze\u0007and\u0007understand\u0007arguments\u0007is\u0007 important\u0007for\u0007history\u0007class\u0007and\u0007a\u0007wide\u0007range\u0007of\u0007academic\u0007and\u0007real-world\u0007situations. AP U.S. History Course and Exam Description Course Framework "
+    },
+    {
+      "physical_page": 193,
+      "printed_page": 193,
+      "chars": 3145,
+      "first_200": "Period 4: 1800–1848 TOPIC 4.12 African OPTIONAL SOURCES Americans in the Teachers\u0007have\u0007the\u0007flexibility\u0007to\u0007include\u0007in\u0007their\u0007syllabus\u0007primary\u0007and\u0007secondary\u0007sources\u0007that\u0007 Early Republic align with local "
+    },
+    {
+      "physical_page": 194,
+      "printed_page": 194,
+      "chars": 3145,
+      "first_200": "African American communities and strategies: § African Meeting House in Boston: Charles Shaw, A Topographical and Historical Description of Boston, from the First Settlement of the Town to the Present"
+    },
+    {
+      "physical_page": 195,
+      "printed_page": 195,
+      "chars": 3145,
+      "first_200": "blication. AP U.S. History Course and Exam Description Course Framework V.1 | 197 Return to Table of Contents © 2020 College Board UNIT 4 Period 4: 1800–1848 TOPIC 4.12 OPTIONAL"
+    },
+    {
+      "physical_page": 196,
+      "printed_page": 196,
+      "chars": 3145,
+      "first_200": "itional research to identify evidence, not provided in the source, to either support or refute the author’s claim. § At the bottom of the passage, identify your position on the"
+    },
+    {
+      "physical_page": 197,
+      "printed_page": 197,
+      "chars": 3145,
+      "first_200": "iness leaders continued to rely on the production and export of traditional agricultural staples, contributing to the growth of a distinctive Southern regional identity. KC-4.3.II.A As overcultivation"
+    },
+    {
+      "physical_page": 198,
+      "printed_page": 198,
+      "chars": 3145,
+      "first_200": "praises and condemns the institution of slavery in the United States. AP U.S. History Course and Exam Description Course Framework V.1 | 200 Return to Table of Contents © 2020"
+    },
+    {
+      "physical_page": 199,
+      "printed_page": 199,
+      "chars": 3145,
+      "first_200": "| 201 Return to Table of Contents © 2020 College Board UNIT 4 Period 4: 1800–1848 SUGGESTED SKILL Argumentation TOPIC 4.14 6.C Use historical reasoning to explain relationships Causation in"
+    },
+    {
+      "physical_page": 200,
+      "printed_page": 200,
+      "chars": 3145,
+      "first_200": "distinctive cultures of their own. KC-4.1.III Increasing numbers of Americans, many inspired by new religious and intellectual movements, worked primarily outside of government institutions to advance"
+    },
+    {
+      "physical_page": 201,
+      "printed_page": 201,
+      "chars": 3145,
+      "first_200": "The U.S. interest in increasing foreign trade and expanding its national borders shaped the nation’s foreign policy and spurred government and private initiatives. KC-4.3.I Struggling to create an ind"
+    },
+    {
+      "physical_page": 202,
+      "printed_page": 202,
+      "chars": 3145,
+      "first_200": "§ Evaluate\u0007the\u0007extent\u0007to\u0007which\u0007changes\u0007in\u0007electoral\u0007politics\u0007influenced\u0007the\u0007development\u0007 of democracy between 1820 and 1840. § Comparison:\u0007Changes\u0007in\u0007electoral\u0007politics\u0007significantly\u0007expanded\u0007democrac"
+    },
+    {
+      "physical_page": 203,
+      "printed_page": 203,
+      "chars": 3145,
+      "first_200": "Period 5: 1844–1877 10–17% AP EXAM WEIGHTING ~17 CLASS PERIODS AP U.S. History Course and Exam Description Course Framework V.1 | 205 Return to Table of Contents © 2020 College"
+    },
+    {
+      "physical_page": 204,
+      "printed_page": 204,
+      "chars": 3145,
+      "first_200": "O development, or process. 5.3 The Mexican–American Causation 3.C Compare the arguments or main WOR War ideas of two sources. 5.4 The Compromise of 1850 Comparison 4.B \u0007Explain\u0007how\u0007a\u0007specific\u0007historic"
+    },
+    {
+      "physical_page": 205,
+      "printed_page": 205,
+      "chars": 3145,
+      "first_200": "nce PCE support, modify, or refute a source’s argument. 5.11 Failure of Continuity 3.C Compare the arguments or main NAT Reconstruction and Change ideas of two sources. 5.12 Comparison in"
+    },
+    {
+      "physical_page": 206,
+      "printed_page": 206,
+      "chars": 3145,
+      "first_200": "her countries. KC-5.1.I Popular enthusiasm for U.S. expansion, bolstered by economic and security interests, resulted in the acquisition of new territories, substantial migration westward, and new ove"
+    },
+    {
+      "physical_page": 207,
+      "printed_page": 207,
+      "chars": 3145,
+      "first_200": "The Union victory in the Civil War and the contested reconstruction of the South settled the issues of slavery and secession, but left unresolved many questions about the power of"
+    },
+    {
+      "physical_page": 208,
+      "printed_page": 208,
+      "chars": 3145,
+      "first_200": "Period 5 In\u0007this\u0007activity\u0007students\u0007practice\u0007contextualizing\u0007by\u0007using\u0007developments\u0007in\u0007period\u00074\u0007to\u0007 contextualize\u0007the\u0007Civil\u0007War. Duration: ~30 mins Sequence: End of lesson 1. Show students the “Unit at "
+    },
+    {
+      "physical_page": 209,
+      "printed_page": 209,
+      "chars": 3145,
+      "first_200": "TOPIC 5.2 Manifest Destiny and Processes 1.B Explain a historical concept, development, or process. Required Course Content THEMATIC FOCUS Geography and the Environment GEO Geographic and environmenta"
+    },
+    {
+      "physical_page": 210,
+      "printed_page": 210,
+      "chars": 3145,
+      "first_200": "create more ties with Asia. AP U.S. History Course and Exam Description Course Framework V.1 | 212 Return to Table of Contents © 2020 College Board UNIT Period 5: 1844–1877"
+    },
+    {
+      "physical_page": 211,
+      "printed_page": 211,
+      "chars": 3145,
+      "first_200": "Chapter 2 and the beginning of Chapter 6 to the paragraph ending “…I retired from active business in the kitchen.” KC-5.1.I.B Advocates of annexing western lands: § John O’Sullivan: John"
+    },
+    {
+      "physical_page": 212,
+      "printed_page": 212,
+      "chars": 3145,
+      "first_200": "cription Course Framework V.1 | 214 Return to Table of Contents © 2020 College Board UNIT Period 5: 1844–1877 5 OPTIONAL ACTIVITY TOPIC 5.2 Explaining Historical Events through Maps Manifest"
+    },
+    {
+      "physical_page": 213,
+      "printed_page": 213,
+      "chars": 3145,
+      "first_200": "Return to Table of Contents © 2020 College Board UNIT 5 Period 5: 1844–1877 SUGGESTED SKILL Claims and TOPIC 5.3 The Mexican–American Evidence in Sources 3.C Compare the arguments or"
+    },
+    {
+      "physical_page": 214,
+      "printed_page": 214,
+      "chars": 3145,
+      "first_200": "5 OPTIONAL SOURCES TOPIC 5.3 The Mexican– Teachers\u0007have\u0007the\u0007flexibility\u0007to\u0007include\u0007in\u0007their\u0007syllabus\u0007primary\u0007and\u0007secondary\u0007sources\u0007that\u0007 American War align with local standards and priorities. The fol"
+    },
+    {
+      "physical_page": 215,
+      "printed_page": 215,
+      "chars": 3145,
+      "first_200": "s\u0007 between the Llano and Colorado rivers, a region under the control of the Comanche. He met\u0007with\u0007ten\u0007Comanche\u0007leaders\u0007in\u00071847\u0007to\u0007create\u0007and\u0007sign\u0007the\u0007Meusebach-Comanche\u0007 Treaty. AP U.S. History Course"
+    },
+    {
+      "physical_page": 216,
+      "printed_page": 216,
+      "chars": 3145,
+      "first_200": "students to carefully read the sources and identify one similarity between the main SUGGESTED SKILL ideas in each. Guide students in underlining or highlighting the section in each source Claims"
+    },
+    {
+      "physical_page": 217,
+      "printed_page": 217,
+      "chars": 3145,
+      "first_200": "n history, notions of national identity and culture have coexisted with varying degrees of regional and group identities. LEARNING OBJECTIVE HISTORICAL DEVELOPMENTS Unit 5: Learning Objective D KC-5.2"
+    },
+    {
+      "physical_page": 218,
+      "printed_page": 218,
+      "chars": 3145,
+      "first_200": "An abolitionist and women’s rights advocate, Swisshelm was the owner and editor of the Pittsburgh Saturday Visiter. In this article (available from the Library of Congress), Swisshelm questions the va"
+    },
+    {
+      "physical_page": 219,
+      "printed_page": 219,
+      "chars": 3145,
+      "first_200": "and the source? Why or why not? Close\u0007this\u0007activity\u0007by\u0007discussing\u0007how\u0007to\u0007differentiate\u0007between\u0007relevant\u0007and\u0007irrelevant\u0007events\u0007 when considering the historical context of a particular development. Ask "
+    },
+    {
+      "physical_page": 220,
+      "printed_page": 220,
+      "chars": 3145,
+      "first_200": "arose that was aimed at limiting new immigrants’ political\u0007power\u0007and\u0007cultural\u0007influence. continued on next page AP U.S. History Course and Exam Description Course Framework V.1 | 223 Return to Table o"
+    },
+    {
+      "physical_page": 221,
+      "printed_page": 221,
+      "chars": 3145,
+      "first_200": "achieve their goals. KC-5.2.I.C Defenders of slavery based their arguments on racial doctrines, the view that slavery was a positive social good, and the belief that slavery and states’ rights"
+    },
+    {
+      "physical_page": 222,
+      "printed_page": 222,
+      "chars": 3145,
+      "first_200": "ecial\u0007Congressional\u0007Committee.\u0007Read\u0007and\u0007Judge\u0007 Us”\u0007(San\u0007Francisco:\u0007Alta\u0007Print,\u0007December\u00078,\u00071877),\u0007identifier\u0007325.251.Si9,\u0007Chinese in\u0007California,\u0007Online\u0007Archive\u0007of\u0007California.\u0007Organized\u0007in\u0007the\u00071850s,\u0007t"
+    },
+    {
+      "physical_page": 223,
+      "printed_page": 223,
+      "chars": 3145,
+      "first_200": "2021. This is an episode of a podcast by the University of Texas history department. Historian Zachary Schrag narrates the story of the 1844 Philadelphia nativist riots and situates\u0007the\u0007riots\u0007within\u0007t"
+    },
+    {
+      "physical_page": 224,
+      "printed_page": 224,
+      "chars": 3145,
+      "first_200": "h\u0007 beginning with “Although we may not readily see it, our position is not a hopeless one…”. § Harriet Beecher Stowe: Harriet Beecher Stowe, Uncle Tom’s Cabin; or, Life Among"
+    },
+    {
+      "physical_page": 225,
+      "printed_page": 225,
+      "chars": 3145,
+      "first_200": "you selected the California Supreme Court case People v. Hall, use this activity to strengthen students’ ability to explain the historical situation of a primary source. This activity should be"
+    },
+    {
+      "physical_page": 226,
+      "printed_page": 226,
+      "chars": 3145,
+      "first_200": "development or process Compromise relates to another historical development or process. Required Course Content AVAILABLE RESOURCE § AP Professional Development > Teaching and Assessing Module— THEMAT"
+    },
+    {
+      "physical_page": 227,
+      "printed_page": 227,
+      "chars": 3145,
+      "first_200": "hers\u0007have\u0007the\u0007flexibility\u0007to\u0007include\u0007in\u0007their\u0007syllabus\u0007primary\u0007and\u0007secondary\u0007sources\u0007that\u0007 align with local standards and priorities. The following optional sources and activity are not required AP co"
+    },
+    {
+      "physical_page": 228,
+      "printed_page": 228,
+      "chars": 3145,
+      "first_200": "TOPIC 5.6 Making Historical Connections Failure of Compromise If you selected the Anthony Burns case source, use this activity to strengthen students’ ability to make historical connections. Because t"
+    },
+    {
+      "physical_page": 229,
+      "printed_page": 229,
+      "chars": 3145,
+      "first_200": "ed Course Content THEMATIC FOCUS Politics and Power PCE Debates fostered by social and political groups about the role of government in American social, political, and economic life shape government"
+    },
+    {
+      "physical_page": 230,
+      "printed_page": 230,
+      "chars": 3145,
+      "first_200": "n: § Alexander Stephens: Alexander Stephens, “Cornerstone Speech” (speech, Savannah, March 21, 1861). Stephens discusses slavery and its relationship to secession. Suggested excerpt: from the paragrap"
+    },
+    {
+      "physical_page": 231,
+      "printed_page": 231,
+      "chars": 3145,
+      "first_200": "be\u0007three\u0007to\u0007four\u0007sentences\u0007long\u0007and\u0007should\u0007also\u0007use\u0007at\u0007least\u0007two\u0007pieces\u0007of\u0007specific\u0007 evidence to explain secession. Encourage students to use the information from steps 1 and 2 to help formulate a res"
+    },
+    {
+      "physical_page": 232,
+      "printed_page": 232,
+      "chars": 3145,
+      "first_200": "resources, and the wartime destruction of the South’s infrastructure. AP U.S. History Course and Exam Description Course Framework V.1 | 235 Return to Table of Contents © 2020 College Board"
+    },
+    {
+      "physical_page": 233,
+      "printed_page": 233,
+      "chars": 3145,
+      "first_200": "stream\u0007in\u0007northern\u0007Virginia\u0007is\u0007known\u0007by\u0007two\u0007different\u0007names,\u0007Bull\u0007Run\u0007and\u0007Manassas.\u0007 On July 21, 1861 Union and Confederate forces clashed resulting in a Union retreat. On August 29 and 30, 1862, Unio"
+    },
+    {
+      "physical_page": 234,
+      "printed_page": 234,
+      "chars": 3145,
+      "first_200": "E.\u0007Lee.\u0007 On pages 725–728, McPherson describes Grant’s strategy during the battle. § Ulysses S. Grant: Currier & Ives, “The Old Bull Dog on the Right Track,” 1864. This cartoon mocks"
+    },
+    {
+      "physical_page": 235,
+      "printed_page": 235,
+      "chars": 3145,
+      "first_200": "hange\u0007reflected\u0007in\u0007the\u0007documents. To close, ask a few students to share their events or developments and lead a discussion on how changes in Union leadership (like Lincoln’s decision to replace McClel"
+    },
+    {
+      "physical_page": 236,
+      "printed_page": 236,
+      "chars": 3145,
+      "first_200": "and in turn, these ideas shape political institutions and society. Throughout American history, notions of national identity and culture have coexisted with varying degrees of regional and group ident"
+    },
+    {
+      "physical_page": 237,
+      "printed_page": 237,
+      "chars": 3145,
+      "first_200": ".I.B African Americans in the Union Army: § First South Carolina Volunteer Infantry Regiment: Seth Rogers, letter to his family, January 21, 1863. Rogers, a lifelong abolitionist from Vermont, served"
+    },
+    {
+      "physical_page": 238,
+      "printed_page": 238,
+      "chars": 3145,
+      "first_200": "purpose, historical situation, § Taylor\u0007escaped\u0007slavery\u0007with\u0007her\u0007uncle\u0007by\u0007fleeing\u0007to\u0007the\u0007Union\u0007Army. and/or audience of a § Taylor supported the African American First South Carolina Regiment of the U"
+    },
+    {
+      "physical_page": 239,
+      "printed_page": 239,
+      "chars": 3145,
+      "first_200": ".II.ii Explain\u0007the\u0007effects\u0007of\u0007 Reconstruction altered relationships between government policy during the states and the federal government and led Reconstruction on society to\u0007debates\u0007over\u0007new\u0007definit"
+    },
+    {
+      "physical_page": 240,
+      "printed_page": 240,
+      "chars": 3145,
+      "first_200": "© 2020 College Board UNIT Period 5: 1844–1877 5 OPTIONAL SOURCES TOPIC 5.10 Reconstruction Teachers\u0007have\u0007the\u0007flexibility\u0007to\u0007include\u0007in\u0007their\u0007syllabus\u0007primary\u0007and\u0007secondary\u0007sources\u0007that\u0007 align with loc"
+    },
+    {
+      "physical_page": 241,
+      "printed_page": 241,
+      "chars": 3145,
+      "first_200": "and incautious Republicans…” to the end of the speech. § Swing Around the Circle: David Ross Locke (under the pseudonym Petroleum V. Nasby), “How the President went into the Excursion"
+    },
+    {
+      "physical_page": 242,
+      "printed_page": 242,
+      "chars": 3145,
+      "first_200": "ed excerpt: the syllabus and short decision. § Frances E. W. Harper: Frances Ellen Watkins Harper, “We Are All Bound Up Together” (speech, National Woman’s Rights Convention, New York, 1866)."
+    },
+    {
+      "physical_page": 243,
+      "printed_page": 243,
+      "chars": 3145,
+      "first_200": "© 2020 College Board UNIT Period 5: 1844–1877 5 § Shaw University: Catalogue of Shaw University, 1876–’77 (Raleigh: Edwards, Broughton & Co., 1877). This catalogue, from the oldest historically Black"
+    },
+    {
+      "physical_page": 244,
+      "printed_page": 244,
+      "chars": 3145,
+      "first_200": "§ Underline the place where you see claims written in the passage. 3. Ask students to think about the author’s reasoning. § Does\u0007the\u0007author\u0007give\u0007any\u0007reasons\u0007for\u0007making\u0007the\u0007claims? § What reasons does "
+    },
+    {
+      "physical_page": 245,
+      "printed_page": 245,
+      "chars": 3145,
+      "first_200": "Compare the arguments or Reconstruction main ideas of two sources. Required Course Content AVAILABLE RESOURCE § Classroom Resources > Essay from the American Organization of Historians and THEMATIC FO"
+    },
+    {
+      "physical_page": 246,
+      "printed_page": 246,
+      "chars": 3145,
+      "first_200": "Framework V.1 | 247 Return to Table of Contents © 2020 College Board UNIT 5 Period 5: 1844–1877 TOPIC 5.11 Failure of OPTIONAL SOURCES Reconstruction Teachers\u0007have\u0007the\u0007flexibility\u0007to\u0007include\u0007in\u0007their\u0007"
+    },
+    {
+      "physical_page": 247,
+      "printed_page": 247,
+      "chars": 3145,
+      "first_200": "\u00071868.\u0007One\u0007of\u0007them,\u0007Philip\u0007Joiner,\u0007organized\u0007a\u0007 march from Albany, Georgia to Camilla to protest the unconstitutional expulsion. Local White\u0007citizens\u0007in\u0007Camilla\u0007fired\u0007upon\u0007the\u0007marchers,\u0007killing\u0007betwee"
+    },
+    {
+      "physical_page": 248,
+      "printed_page": 248,
+      "chars": 3145,
+      "first_200": "© 2020 College Board UNIT 5 Period 5: 1844–1877 TOPIC 5.11 OPTIONAL ACTIVITY Failure of Close Reading Reconstruction If you chose the Slaughterhouse Cases and United States v. Cruikshank, have"
+    },
+    {
+      "physical_page": 249,
+      "printed_page": 249,
+      "chars": 3145,
+      "first_200": "5 TOPIC 5.12 SUGGESTED SKILL Argumentation Comparison in 6.C Use historical reasoning to explain relationships Period 5 among pieces of historical evidence. The\u0007final\u0007topic\u0007in\u0007this\u0007unit\u0007focuses\u0007on\u0007the"
+    },
+    {
+      "physical_page": 250,
+      "printed_page": 250,
+      "chars": 3145,
+      "first_200": "Return to Table of Contents © 2020 College Board UNIT 5 Period 5: 1844–1877 LEARNING OBJECTIVE REVIEW: UNIT 5 KEY CONCEPTS Unit 5: Learning Objective M KC-5.2 Compare the relative"
+    },
+    {
+      "physical_page": 251,
+      "printed_page": 251,
+      "chars": 3145,
+      "first_200": "eventually led to the Union military victory over the Confederacy in the devastating Civil War. KC-5.3.II.i Reconstruction and the Civil War ended slavery, altered relationships between the states and"
+    },
+    {
+      "physical_page": 252,
+      "printed_page": 252,
+      "chars": 3145,
+      "first_200": "ant to the prompt. evidence. § Support\u0007an\u0007argument\u0007in\u0007response\u0007to\u0007the\u0007prompt\u0007using\u0007specific\u0007and\u0007relevant\u0007examples\u0007 of evidence. § Use historical reasoning (e.g., comparison, causation, continuity or c"
+    },
+    {
+      "physical_page": 253,
+      "printed_page": 253,
+      "chars": 3145,
+      "first_200": "Remember to go to AP Classroom to assign students the online Personal Progress Check for this unit. Whether assigned as homework or completed in class, the Personal Progress Check provides"
+    },
+    {
+      "physical_page": 254,
+      "printed_page": 254,
+      "chars": 3145,
+      "first_200": "use(s) of a source. 6.5 Technological Causation 5.B Explain how a historical Innovation development or process relates to another historical development or process. 6.6 The Rise of Continuity and 4.B"
+    },
+    {
+      "physical_page": 255,
+      "printed_page": 255,
+      "chars": 3145,
+      "first_200": "including how these might limit the use(s) of a source. 6.12 Controversies over the Continuity and 4.B \u0007Explain\u0007how\u0007a\u0007specific\u0007historical\u0007 Role of Government in Change development or process is situat"
+    },
+    {
+      "physical_page": 256,
+      "printed_page": 256,
+      "chars": 3145,
+      "first_200": "SUGGESTED SKILL Contextualization Contextualizing 4.B Explain how a specific historical development or Period 6 process is situated within a broader historical context. Spend a class period helping st"
+    },
+    {
+      "physical_page": 257,
+      "printed_page": 257,
+      "chars": 3145,
+      "first_200": ", along with periods of instability, spurred a variety of responses from farmers. continued on next page AP U.S. History Course and Exam Description Course Framework V.1 | 259 Return"
+    },
+    {
+      "physical_page": 258,
+      "printed_page": 258,
+      "chars": 3145,
+      "first_200": "KC-6.3.II Dramatic social changes in the period inspired\u0007political\u0007debates\u0007over\u0007citizenship,\u0007 corruption, and the proper relationship between business and government. AP U.S. History Course and Exam D"
+    },
+    {
+      "physical_page": 259,
+      "printed_page": 259,
+      "chars": 3145,
+      "first_200": "m the period after 1865. Circulate the room to check the students’ work. Ask a few students with accurate predictions to come to the board and draw a line connecting"
+    },
+    {
+      "physical_page": 260,
+      "printed_page": 260,
+      "chars": 3145,
+      "first_200": "ca. KC-6.2.II.A The building of transcontinental railroads, the discovery of mineral resources, and government policies promoted economic growth and created new communities and centers of commercial a"
+    },
+    {
+      "physical_page": 261,
+      "printed_page": 261,
+      "chars": 3145,
+      "first_200": "or use with steam\u0007powered\u0007tractors,\u0007John\u0007Deere\u0007highlights\u0007both\u0007the\u0007benefits\u0007and\u0007limitations\u0007of the\u0007 new technology. KC-6.1.III.B Local and regional cooperative organizations: § Colored Farmers’ Allian"
+    },
+    {
+      "physical_page": 262,
+      "printed_page": 262,
+      "chars": 3145,
+      "first_200": "e hose team of America,” 1888. These photographs show the emergence and growth of Deadwood, South Dakota as a center of the Black Hills Gold Rush in the 1870s. §"
+    },
+    {
+      "physical_page": 263,
+      "printed_page": 263,
+      "chars": 3145,
+      "first_200": "source “I Feed You All!,” a visual that was inspired by the Granger Economic movement, use this activity to develop students’ ability to explain a historical concept while Development also"
+    },
+    {
+      "physical_page": 264,
+      "printed_page": 264,
+      "chars": 3145,
+      "first_200": "h and pull factors shape immigration to and migration within America, and the Images and the AP demographic change as a result of these moves shapes the migrants, society, and"
+    },
+    {
+      "physical_page": 265,
+      "printed_page": 265,
+      "chars": 3145,
+      "first_200": "Course Framework V.1 | 266 Return to Table of Contents © 2020 College Board UNIT Period 6: 1865–1898 6 OPTIONAL SOURCES TOPIC 6.3 Westward Teachers\u0007have\u0007the\u0007flexibility\u0007to\u0007include\u0007in\u0007their\u0007syllabus\u0007pr"
+    },
+    {
+      "physical_page": 266,
+      "printed_page": 266,
+      "chars": 3145,
+      "first_200": "” Dodge City Times, July 31, 1884, p. 2. This article, available through the Library of Congress, discusses the history of cattle ranching in California, including the role of Mexican"
+    },
+    {
+      "physical_page": 267,
+      "printed_page": 267,
+      "chars": 3145,
+      "first_200": "red before a Senate Committee in 1883 in which he asks the Federal Government to send the Sioux money, agricultural equipment, horses, food, and other supplies. Assimilation policies: § Carlisle"
+    },
+    {
+      "physical_page": 268,
+      "printed_page": 268,
+      "chars": 3145,
+      "first_200": "Development \u0007~40 mins Sequence: Anytime 1. Ask students to read each source and think about what the authors are trying to SUGGESTED SKILL explain. Claims and Evidence in Sources §"
+    },
+    {
+      "physical_page": 269,
+      "printed_page": 269,
+      "chars": 3145,
+      "first_200": "The\u0007development\u0007of\u0007and\u0007debates\u0007about\u0007democracy,\u0007freedom,\u0007citizenship,\u0007diversity,\u0007 and individualism shape American national identity, cultural values, and beliefs about American exceptionalism, and in"
+    },
+    {
+      "physical_page": 270,
+      "printed_page": 270,
+      "chars": 3145,
+      "first_200": "TOPIC 6.4 The “New South” Teachers\u0007have\u0007the\u0007flexibility\u0007to\u0007include\u0007in\u0007their\u0007syllabus\u0007primary\u0007and\u0007secondary\u0007sources\u0007that\u0007 align with local standards and priorities. The following optional sources and a"
+    },
+    {
+      "physical_page": 271,
+      "printed_page": 271,
+      "chars": 3145,
+      "first_200": "and what she hopes the publication of Southern Horrors will accomplish. AP U.S. History Course and Exam Description Course Framework V.1 | 271 Return to Table of Contents © 2020"
+    },
+    {
+      "physical_page": 272,
+      "printed_page": 272,
+      "chars": 3145,
+      "first_200": ". Explain the significance of a source’s point of view, § Industrialization purpose, historical situation, and/or audience, including § Sharecropping how these might limit the use(s) of a source. §"
+    },
+    {
+      "physical_page": 273,
+      "printed_page": 273,
+      "chars": 3145,
+      "first_200": "nment policy shape the American economy. In turn, economic activity shapes society and government policy and drives technological innovation. LEARNING OBJECTIVE HISTORICAL DEVELOPMENTS Unit 6: Learnin"
+    },
+    {
+      "physical_page": 274,
+      "printed_page": 274,
+      "chars": 3145,
+      "first_200": "Course Framework V.1 | 275 Return to Table of Contents © 2020 College Board UNIT 6 Period 6: 1865–1898 TOPIC 6.5 OPTIONAL ACTIVITY Technological Making and Explaining Connections Innovation Select\u0007one"
+    },
+    {
+      "physical_page": 275,
+      "printed_page": 275,
+      "chars": 3145,
+      "first_200": "Course Framework V.1 | 276 Return to Table of Contents © 2020 College Board UNIT Period 6: 1865–1898 6 TOPIC 6.6 SUGGESTED SKILL Contextualization The Rise of Industrial 4.B Explain"
+    },
+    {
+      "physical_page": 276,
+      "printed_page": 276,
+      "chars": 3145,
+      "first_200": "rapid\u0007 economic development and business consolidation. KC-6.1.I.B.ii Businesses\u0007made\u0007use\u0007of\u0007redesigned\u0007financial\u0007 and management structures, advances in marketing, and a growing labor force to dramat"
+    },
+    {
+      "physical_page": 277,
+      "printed_page": 277,
+      "chars": 3145,
+      "first_200": "nuary\u000727,\u00071880,\u0007records\u0007of\u0007the\u0007Patent\u0007and\u0007Trademark\u0007Office,\u0007record\u0007 group 241, National Archives. This patent, issued for the incandescent lightbulb, was an early\u0007step\u0007in\u0007the\u0007electrification\u0007of\u0007the\u0007Un"
+    },
+    {
+      "physical_page": 278,
+      "printed_page": 278,
+      "chars": 3145,
+      "first_200": "Great West (New York: W. W. Norton & Company, 1991), pp. 235–238. In the section titled “Triumph of the Packers” in AP U.S. History Course and Exam Description Course Framework"
+    },
+    {
+      "physical_page": 279,
+      "printed_page": 279,
+      "chars": 3145,
+      "first_200": "om Poverty to Two Hundred Millions,” The Saint Paul Globe, August 2, 1896, p. 12. This article includes a description of the rise of Standard Oil and John D. Rockefeller."
+    },
+    {
+      "physical_page": 280,
+      "printed_page": 280,
+      "chars": 3145,
+      "first_200": "hem understand this history better. 5. Ask\u0007students\u0007to\u0007fill\u0007the\u0007outer\u0007circles\u0007with\u0007historical\u0007events.\u0007Place\u0007events\u0007that\u0007came\u0007 before to the left, during above and below, and after to the right. Use th"
+    },
+    {
+      "physical_page": 281,
+      "printed_page": 281,
+      "chars": 3145,
+      "first_200": "workers’ real wages increased, providing new associated with the growth access to a variety of goods and services; of industrial capitalism from many Americans’ standards of living improved, 1865 to"
+    },
+    {
+      "physical_page": 282,
+      "printed_page": 282,
+      "chars": 3145,
+      "first_200": "ears, Roebuck, and Company: Sears, Roebuck and Company, Consumers Guide no. 107 (Chicago, 1898). The Sears, Roebuck and Co. catalog or Consumers Guide offered\u0007Americans\u0007across\u0007the\u0007country\u0007access\u0007to\u0007a\u0007"
+    },
+    {
+      "physical_page": 283,
+      "printed_page": 283,
+      "chars": 3145,
+      "first_200": "6 § Knights of Labor: Constitution of the General Assembly District Assemblies and Local Assemblies of the Order of the Knights of Labor of North America (September 1883). The\u0007Preamble\u0007to\u0007the\u0007constitu"
+    },
+    {
+      "physical_page": 284,
+      "printed_page": 284,
+      "chars": 3145,
+      "first_200": "hange) they feel best matches the thesis they selected. 5. Instruct\u0007students\u0007to\u0007use\u0007this\u0007reasoning\u0007process\u0007to\u0007organize\u0007and\u0007draft\u0007a\u0007body\u0007paragraph\u0007 to support the thesis that includes a topic sentence "
+    },
+    {
+      "physical_page": 285,
+      "printed_page": 285,
+      "chars": 3145,
+      "first_200": "Urbanization § Classroom Resources THEMATIC FOCUS > Essay from the Migration and Settlement MIG American Organization of Historians and AP Push and pull factors shape immigration to and migration with"
+    },
+    {
+      "physical_page": 286,
+      "printed_page": 286,
+      "chars": 3145,
+      "first_200": "d Migration in Teachers\u0007have\u0007the\u0007flexibility\u0007to\u0007include\u0007in\u0007their\u0007syllabus\u0007primary\u0007and\u0007secondary\u0007sources\u0007that\u0007 the Gilded Age align with local standards and priorities. The following optional sources a"
+    },
+    {
+      "physical_page": 287,
+      "printed_page": 287,
+      "chars": 3145,
+      "first_200": "from 1890 of an inn in the Polish neighborhood\u0007of\u0007Chicago.\u0007The\u0007sign\u0007identifies\u0007this\u0007building\u0007as\u0007a\u0007meeting\u0007place\u0007of\u0007the\u0007 Kosciuszko\u0007Guards,\u0007a\u0007Polish\u0007immigrant\u0007organization\u0007named\u0007after\u0007a\u0007Polish\u0007soldier\u0007"
+    },
+    {
+      "physical_page": 288,
+      "printed_page": 288,
+      "chars": 3145,
+      "first_200": "clues that help you Compare the arguments or understand\u0007what\u0007the\u0007historian\u0007believes\u0007is\u0007significant\u0007about\u0007the\u0007topic\u0007of\u0007the\u0007excerpt.\u0007 main ideas of two sources. Historians often title works based on the"
+    },
+    {
+      "physical_page": 289,
+      "printed_page": 289,
+      "chars": 3145,
+      "first_200": "of international migration. Many immigrants negotiated compromises between the cultures they brought and the culture they found in the United States. KC-6.3.I.A Social commentators advocated theories "
+    },
+    {
+      "physical_page": 290,
+      "printed_page": 290,
+      "chars": 3145,
+      "first_200": "and Americanization: § Chinese Exclusion Act: Chinese Equal Rights League, “Appeal of the Chinese Equal Rights League to the People of the United States for Equality of Manhood,” 1892. In"
+    },
+    {
+      "physical_page": 291,
+      "printed_page": 291,
+      "chars": 3145,
+      "first_200": "e temporary work relief at the Denison House for immigrant women. § Hiram House: Manuel Levine, “The Social Reform Club,” in A Historical Report of The Sixteen Years Work at"
+    },
+    {
+      "physical_page": 292,
+      "printed_page": 292,
+      "chars": 3145,
+      "first_200": "ion article about the Tape case and relates to another historical ask students to read it and consider how the experience of the Tape family in 1885 development or process."
+    },
+    {
+      "physical_page": 293,
+      "printed_page": 293,
+      "chars": 3145,
+      "first_200": "wealthy had a moral obligation to help the less fortunate and improve society, as articulated in the idea known as the Gospel of Wealth, and they made philanthropic contributions that"
+    },
+    {
+      "physical_page": 294,
+      "printed_page": 294,
+      "chars": 3145,
+      "first_200": "90s.” § Historically Black colleges and universities: Bobby L. Lovett, America’s Historically Black Colleges & Universities: A Narrative History from the Nineteenth Century into the Twenty-First Centu"
+    },
+    {
+      "physical_page": 295,
+      "printed_page": 295,
+      "chars": 3145,
+      "first_200": "uke: Robert F. Durden, The Dukes of Durham, (Durham: Duke University Press, 1987), pp. 82–84. Durden discusses the Duke families’ motivation for giving. § Bridget “Biddy” Mason: Marne L. Campbell,"
+    },
+    {
+      "physical_page": 296,
+      "printed_page": 296,
+      "chars": 3145,
+      "first_200": "ach question. They should highlight the portions of text that help them answer 4.B each question with the appropriate color. Students should use their notes from earlier Explain how a"
+    },
+    {
+      "physical_page": 297,
+      "printed_page": 297,
+      "chars": 3145,
+      "first_200": "HISTORICAL DEVELOPMENTS Unit 6: Learning Objective I KC-6.3.I.C Explain\u0007how\u0007different\u0007reform\u0007 A number of artists and critics, including movements responded to the agrarians, utopians, socialists, and"
+    },
+    {
+      "physical_page": 298,
+      "printed_page": 298,
+      "chars": 3145,
+      "first_200": "\u0007Rogers\u0007offers\u0007his\u0007commentary\u0007in\u0007 this\u0007cartoon\u0007that\u0007appeared\u0007on\u0007the\u0007cover\u0007of\u0007the\u0007magazine\u0007during\u0007the\u0007strike. § Washington Gladden: Washington Gladden, Applied Christianity: Moral Aspects of Social Que"
+    },
+    {
+      "physical_page": 299,
+      "printed_page": 299,
+      "chars": 3145,
+      "first_200": "(speech, Chicago, 1893), pp. 6–7. In this address, Willard, the president of the Woman’s Christian Temperance Union, recounts the success of the movement and predicts a future where women share"
+    },
+    {
+      "physical_page": 300,
+      "printed_page": 300,
+      "chars": 3145,
+      "first_200": "f\u0007the\u0007 SUGGESTED SKILL source with a source line/attribution similar to those used on the exam. See the sample Sourcing and exam questions in the Course and Exam Description for examples."
+    },
+    {
+      "physical_page": 301,
+      "printed_page": 301,
+      "chars": 3145,
+      "first_200": "© 2020 College Board UNIT 6 Period 6: 1865–1898 § Link: ◆ How does the source and intended audience link to reform movements in the Gilded Age? Close by allowing"
+    },
+    {
+      "physical_page": 302,
+      "printed_page": 302,
+      "chars": 3145,
+      "first_200": "“Government Power” Debates fostered by social and political groups about the role of government in American social, political, and economic life shape government policy, institutions, political\u0007partie"
+    },
+    {
+      "physical_page": 303,
+      "printed_page": 303,
+      "chars": 3145,
+      "first_200": "l to provide government aid to farmers. § Horace Greeley: “Proceedings of the Liberal Republican Convention, in Cincinnati, May 1st,\u00072d,\u0007and\u00073d,\u00071872”\u0007(New\u0007York:\u0007Baker\u0007&\u0007Godwin,\u00071872),\u0007pp.\u000719–21.\u0007This"
+    },
+    {
+      "physical_page": 304,
+      "printed_page": 304,
+      "chars": 3145,
+      "first_200": "with a partner and complete the following SUGGESTED SKILL steps: Contextualization § Read through the source title and description: What does the year of publication, title, 4.B and\u0007author\u0007suggest\u0007abo"
+    },
+    {
+      "physical_page": 305,
+      "printed_page": 305,
+      "chars": 3145,
+      "first_200": ".13 Politics in Evidence in Sources 3.D Explain how claims or evidence support, modify, or refute a source’s argument. the Gilded Age Required Course Content THEMATIC FOCUS Politics and Power"
+    },
+    {
+      "physical_page": 306,
+      "printed_page": 306,
+      "chars": 3145,
+      "first_200": "6 OPTIONAL SOURCES TOPIC 6.13 Politics in the Teachers\u0007have\u0007the\u0007flexibility\u0007to\u0007include\u0007in\u0007their\u0007syllabus\u0007primary\u0007and\u0007secondary\u0007sources\u0007that\u0007 Gilded Age align with local standards and priorities. The f"
+    },
+    {
+      "physical_page": 307,
+      "printed_page": 307,
+      "chars": 3145,
+      "first_200": "f the suggested\u0007sources\u0007for\u0007agrarian\u0007activists\u0007to\u0007use\u0007with\u0007this\u0007activity.\u0007 Duration: ~15 mins Sequence: End of lesson SUGGESTED SKILL 1. Print the source in the center of a paper, leaving wide margins"
+    },
+    {
+      "physical_page": 308,
+      "printed_page": 308,
+      "chars": 3145,
+      "first_200": "argument might: § Explain nuance of an issue\u0007by\u0007analyzing\u0007 multiple variables. § Explain relevant The\u0007final\u0007topic\u0007in\u0007this\u0007unit\u0007focuses\u0007on\u0007the\u0007skill\u0007of\u0007argumentation\u0007and\u0007so\u0007provides\u0007an\u0007 and insightful "
+    },
+    {
+      "physical_page": 309,
+      "printed_page": 309,
+      "chars": 3145,
+      "first_200": "nt\u0007policies—generated\u0007 > Essay from the rapid economic development and American Organization business consolidation. of Historians and AP (“Race and Citizenship”) KC-6.1.II A variety of perspectives o"
+    },
+    {
+      "physical_page": 310,
+      "printed_page": 310,
+      "chars": 3145,
+      "first_200": "opportunity, frequently provoking competition\u0007and\u0007violent\u0007conflict. KC-6.3 The Gilded Age produced new cultural and intellectual\u0007movements,\u0007public\u0007reform\u0007efforts,\u0007 and political debates over economic "
+    },
+    {
+      "physical_page": 311,
+      "printed_page": 311,
+      "chars": 3145,
+      "first_200": "understanding of the historical SUGGESTED SKILL development that is the focus of the prompt. Review the rubric and translate the Argumentation expectation for complexity into student friendly language"
+    },
+    {
+      "physical_page": 312,
+      "printed_page": 312,
+      "chars": 3145,
+      "first_200": "Course Framework V.1 | 309 Return to Table of Contents © 2020 College Board UNIT 6 Period 6: 1865–1898 § Use the documents and your knowledge of the period to"
+    },
+    {
+      "physical_page": 313,
+      "printed_page": 313,
+      "chars": 3145,
+      "first_200": "Personal Progress Check provides each student with immediate feedback related to this unit’s topics and skills. Personal Progress Check 7 Multiple-choice: ~40 questions Short-answer: 2 questions § Sec"
+    },
+    {
+      "physical_page": 314,
+      "printed_page": 314,
+      "chars": 3145,
+      "first_200": "opment or process relates WXT Technology to another historical development or process. continued on next page AP U.S. History Course and Exam Description Course Framework V.1 | 313 Return to"
+    },
+    {
+      "physical_page": 315,
+      "printed_page": 315,
+      "chars": 3145,
+      "first_200": "alternative evidence in order to develop a complex argument. This argument might: § Explain nuance of an issue by analyzing\u0007multiple\u0007variables. § Explain relevant and insightful connections within and"
+    },
+    {
+      "physical_page": 316,
+      "printed_page": 316,
+      "chars": 3145,
+      "first_200": "your students could examine: § § Whenever possible, draw upon students’ relevant prior knowledge, and anchor this contextualization\u0007lesson\u0007in\u0007historical\u0007source\u0007material\u0007of\u0007varying\u0007formats\u0007such\u0007as\u0007visu"
+    },
+    {
+      "physical_page": 317,
+      "printed_page": 317,
+      "chars": 3145,
+      "first_200": "while\u0007significant\u0007changes\u0007occurred\u0007in\u0007internal\u0007 and international migration patterns. KC-7.2.I Popular\u0007culture\u0007grew\u0007in\u0007influence\u0007in\u0007U.S.\u0007 society, even as debates increased over the effects\u0007of\u0007culture"
+    },
+    {
+      "physical_page": 318,
+      "printed_page": 318,
+      "chars": 3145,
+      "first_200": "e American interests. KC-7.3.III U.S. participation in World War II transformed American society, while the victory of the United States and its allies over the Axis powers vaulted the U.S."
+    },
+    {
+      "physical_page": 319,
+      "printed_page": 319,
+      "chars": 3145,
+      "first_200": "opments are often best understood in the context of regional, national, or global processes that develop over time. Label the triangles on the board as\u0007follows:\u0007top:\u0007“broad\u0007development,”\u0007middle:\u0007“spec"
+    },
+    {
+      "physical_page": 320,
+      "printed_page": 320,
+      "chars": 3145,
+      "first_200": "Course Framework V.1 | 318 Return to Table of Contents © 2020 College Board UNIT Period 7: 1890–1945 7 TOPIC 7.2 SUGGESTED SKILL Sourcing and Imperialism: Debates Situation 2.C Explain"
+    },
+    {
+      "physical_page": 321,
+      "printed_page": 321,
+      "chars": 3145,
+      "first_200": "should not extend its territory overseas. AP U.S. History Course and Exam Description Course Framework V.1 | 319 Return to Table of Contents © 2020 College Board UNIT 7 Period"
+    },
+    {
+      "physical_page": 322,
+      "printed_page": 322,
+      "chars": 3145,
+      "first_200": "3 (Boston: Little, Brown, and Company, 1898), pp. 81–83. Mahan was a military strategists in the nineteenth and early twentieth centuries. In this work, he considers the importance of sea"
+    },
+    {
+      "physical_page": 323,
+      "printed_page": 323,
+      "chars": 3145,
+      "first_200": "lani: Lili’uokalani, letter to William McKinley, June 17, 1897. Queen Lili’uokalani wrote this letter to President McKinley to protest the annexation of her kingdom. § Mark Twain: Mark Twain, “To"
+    },
+    {
+      "physical_page": 324,
+      "printed_page": 324,
+      "chars": 3145,
+      "first_200": "Return to Table of Contents © 2020 College Board UNIT Period 7: 1890–1945 7 TOPIC 7.3 SUGGESTED SKILL Sourcing and The Spanish–American Situation 2.B Explain the point of view, War"
+    },
+    {
+      "physical_page": 325,
+      "printed_page": 325,
+      "chars": 3145,
+      "first_200": "ave\u0007studied\u0007these\u0007 specific\u0007sources.\u0007These\u0007sources\u0007represent\u0007a\u0007variety\u0007of\u0007persons\u0007and\u0007perspectives\u0007relevant\u0007to\u0007 U.S. history, rather than an endorsement of their ideas or values. AP students are not a"
+    },
+    {
+      "physical_page": 326,
+      "printed_page": 326,
+      "chars": 3145,
+      "first_200": "Sourcing and 2. Since the goal of this activity is to explain sourcing (not merely identify it), share the Situation following sentence starters: 2.B § Point of view: Written by"
+    },
+    {
+      "physical_page": 327,
+      "printed_page": 327,
+      "chars": 3145,
+      "first_200": "Return to Table of Contents © 2020 College Board UNIT 7 Period 7: 1890–1945 Conclude with a class discussion focused on explaining that when they are sourcing, students must\u0007go\u0007beyond\u0007mere\u0007identificat"
+    },
+    {
+      "physical_page": 328,
+      "printed_page": 328,
+      "chars": 3145,
+      "first_200": "Development > Teaching and THEMATIC FOCUS Assessing Module— Period 7: 1890–1945, Politics and Power PCE Focus on Research Debates fostered by social and political groups about the role of government"
+    },
+    {
+      "physical_page": 329,
+      "printed_page": 329,
+      "chars": 3145,
+      "first_200": "iption Course Framework V.1 | 327 Return to Table of Contents © 2020 College Board UNIT 7 Period 7: 1890–1945 THEMATIC FOCUS Geography and the Environment GEO Geographic and environmental"
+    },
+    {
+      "physical_page": 330,
+      "printed_page": 330,
+      "chars": 3145,
+      "first_200": ",\u0007but\u0007instead\u0007to\u0007analyze\u0007 such documents for the historical information they can yield. Examples and Sources KC-7.1.II.A Progressive Era journalists: § Ng Poon Chew: Ng Poon Chew, “The Treatment of th"
+    },
+    {
+      "physical_page": 331,
+      "printed_page": 331,
+      "chars": 3145,
+      "first_200": ", 1903), pp. 1–4. DuBois explores the position of African Americans in the United States, explaining the concept of the veil and a double consciousness. § Mary “Mother” Jones: Mary"
+    },
+    {
+      "physical_page": 332,
+      "printed_page": 332,
+      "chars": 3145,
+      "first_200": "gradualism of Washington. The Library of Congress has Hughes’s drafts of the poem with his handwritten revisions. KC-7.1.II.C Preservationists and conservationists: § John Muir: John Muir, letter to T"
+    },
+    {
+      "physical_page": 333,
+      "printed_page": 333,
+      "chars": 3145,
+      "first_200": "g. Explain the significance of a source’s point of view, § POV:\u0007What\u0007about\u0007the\u0007author’s\u0007background\u0007could\u0007have\u0007influenced\u0007what\u0007they\u0007said\u0007in\u0007the\u0007 purpose, historical situation, source? and/or audience, "
+    },
+    {
+      "physical_page": 334,
+      "printed_page": 334,
+      "chars": 3145,
+      "first_200": "pe the development of America and America’s increasingly important role in the world. LEARNING OBJECTIVE HISTORICAL DEVELOPMENTS Unit 7: Learning Objective F KC-7.3.II.A Explain the causes and After i"
+    },
+    {
+      "physical_page": 335,
+      "printed_page": 335,
+      "chars": 3145,
+      "first_200": "ollowing optional sources and activity are not Diplomacy required AP course content, but are instead simply examples of sources appropriate for a college-level\u0007course.\u0007None\u0007of\u0007the\u0007AP\u0007Exam\u0007questions\u0007re"
+    },
+    {
+      "physical_page": 336,
+      "printed_page": 336,
+      "chars": 3145,
+      "first_200": "one of the suggested image sources for this topic. Duration: ~10 mins Sequence: Start of lesson and end of lesson SUGGESTED SKILL 1. Display the image at the start of"
+    },
+    {
+      "physical_page": 337,
+      "printed_page": 337,
+      "chars": 3145,
+      "first_200": ".D Explain how claims or Home Front evidence support, modify, or refute a source’s argument. Required Course Content THEMATIC FOCUS Migration and Settlement MIG Push and pull factors shape immigration"
+    },
+    {
+      "physical_page": 338,
+      "printed_page": 338,
+      "chars": 3145,
+      "first_200": "7.6 World War I: OPTIONAL SOURCES Home Front Teachers\u0007have\u0007the\u0007flexibility\u0007to\u0007include\u0007in\u0007their\u0007syllabus\u0007primary\u0007and\u0007secondary\u0007sources\u0007that\u0007 align with local standards and priorities. The following opt"
+    },
+    {
+      "physical_page": 339,
+      "printed_page": 339,
+      "chars": 3145,
+      "first_200": "a (Chapel Hill: UNC Press, 2005), pp. 23–28. Gregory studies the 20th century migrations of Black and White citizens\u0007seeking\u0007opportunities\u0007in\u0007the\u0007North\u0007and\u0007West.\u0007In\u0007this\u0007excerpt,\u0007he\u0007looks\u0007at\u0007the\u0007 firs"
+    },
+    {
+      "physical_page": 340,
+      "printed_page": 340,
+      "chars": 3145,
+      "first_200": "1919. Suggested excerpt: Chapter III. § 1921 Tulsa Massacre: Maurice Willows, “Report,” December 31, 1921. Willows, the director of relief for the American Red Cross, produced this report of the"
+    },
+    {
+      "physical_page": 341,
+      "printed_page": 341,
+      "chars": 3145,
+      "first_200": "e\u0007author’s\u0007claims\u0007confirmed\u0007or\u0007called\u0007into\u0007question\u0007by\u0007 historical evidence? Look at your class notes or conduct additional research to identify evidence, not provided in the source, to either support"
+    },
+    {
+      "physical_page": 342,
+      "printed_page": 342,
+      "chars": 3145,
+      "first_200": "and government policy shape the American economy. In turn, economic activity shapes society and government policy and drives technological innovation. LEARNING OBJECTIVE HISTORICAL DEVELOPMENTS Unit 7"
+    },
+    {
+      "physical_page": 343,
+      "printed_page": 343,
+      "chars": 3145,
+      "first_200": "tific management: Clarence Bertrand Thompson, The Theory and Practice of Scientific Management\u0007(Houghton:\u0007Boston,\u00071917),\u0007pp.\u000710–11.\u0007Thompson\u0007defines\u0007and\u0007 outlines\u0007the\u0007value\u0007of\u0007scientific\u0007management\u0007to"
+    },
+    {
+      "physical_page": 344,
+      "printed_page": 344,
+      "chars": 3145,
+      "first_200": "1920s: Innovations in Students make connections between multiple historical developments related to Communication consumerism. Use this activity as a brief introduction to a broader lesson on the inno"
+    },
+    {
+      "physical_page": 345,
+      "printed_page": 345,
+      "chars": 3145,
+      "first_200": "Plans for AP U.S. History: Consumer Culture and the 1920s THEMATIC FOCUS Migration and Settlement MIG Push and pull factors shape immigration to and migration within America, and the demographic"
+    },
+    {
+      "physical_page": 346,
+      "printed_page": 346,
+      "chars": 3145,
+      "first_200": "and popular culture in the United regional identities, such as the Harlem States over time. Renaissance movement. KC-7.2.I.D In the 1920s, cultural and political controversies emerged as Americans deb"
+    },
+    {
+      "physical_page": 347,
+      "printed_page": 347,
+      "chars": 3145,
+      "first_200": "(Florence Nightingale Graham) cosmetics business that began with a salon in New York City. § Rudolph Valentino: The Four Horsemen of the Apocalypse, directed by Rex Ingram (1921, Metro Pictures)."
+    },
+    {
+      "physical_page": 348,
+      "printed_page": 348,
+      "chars": 3145,
+      "first_200": "anzetti,\u0007“Last\u0007statement\u0007of\u0007 Bartolomeo\u0007Vanzetti,”\u0007August\u00071929.\u0007Having\u0007been\u0007convicted\u0007of\u0007multiple\u0007murders\u0007 and\u0007sentenced\u0007to\u0007death,\u0007Vanzetti\u0007addresses\u0007the\u0007court\u0007for\u0007a\u0007final\u0007time.\u0007He\u0007pleads\u0007his\u0007 innocen"
+    },
+    {
+      "physical_page": 349,
+      "printed_page": 349,
+      "chars": 3145,
+      "first_200": "excerpt: the paragraph on page 274 of Oliver Wendell Holmes’ majority opinion that starts with “The attack is not upon the procedure…” AP U.S. History Course and Exam Description Course"
+    },
+    {
+      "physical_page": 350,
+      "printed_page": 350,
+      "chars": 3145,
+      "first_200": "cated for policies that would\u0007strip\u0007the\u0007children\u0007of\u0007non-white\u0007immigrants,\u0007especially\u0007Asians,\u0007of\u0007their\u0007birthright\u0007 citizenship.\u0007Suggested\u0007excerpt:\u0007from\u0007“The\u0007Picture\u0007Brides”\u0007on\u0007page\u000727\u0007to\u0007the\u0007paragraph\u0007"
+    },
+    {
+      "physical_page": 351,
+      "printed_page": 351,
+      "chars": 3145,
+      "first_200": "e\u0007source?\u0007Annotate\u0007your\u0007findings. Explain how a specific § Read\u0007the\u0007source:\u0007Work\u0007with\u0007a\u0007partner\u0007to\u0007write\u0007one\u0007sentence\u0007that\u0007describes\u0007the\u0007specific\u0007 historical development or process is situated within "
+    },
+    {
+      "physical_page": 352,
+      "printed_page": 352,
+      "chars": 3145,
+      "first_200": "LEARNING OBJECTIVE HISTORICAL DEVELOPMENTS Unit 7: Learning Objective J KC-7.1.I Explain the causes of the The United States continued its transition Great Depression and its from a rural, agricultura"
+    },
+    {
+      "physical_page": 353,
+      "printed_page": 353,
+      "chars": 3145,
+      "first_200": "themselves\u0007with\u0007the\u0007cultural\u0007or\u0007political\u0007values\u0007in\u0007these\u0007sources,\u0007but\u0007instead\u0007to\u0007analyze\u0007 such documents for the historical information they can yield. Examples and Sources KC-7.1.I Large companies: "
+    },
+    {
+      "physical_page": 354,
+      "printed_page": 354,
+      "chars": 3145,
+      "first_200": "ion\u0007result\u0007in\u0007calls\u0007for\u0007a\u0007stronger\u0007financial\u0007regulatory\u0007system? § How did the Great Depression transform the U.S. into a limited welfare state? 3. Provide students with a copy of the source and ask th"
+    },
+    {
+      "physical_page": 355,
+      "printed_page": 355,
+      "chars": 3145,
+      "first_200": "development or process relates to another historical development or process. Required Course Content AVAILABLE RESOURCE § Professional Development > Teaching and Assessing Module— THEMATIC FOCUS Perio"
+    },
+    {
+      "physical_page": 356,
+      "printed_page": 356,
+      "chars": 3145,
+      "first_200": "KC-7.2.II.B.ii The increased demand for war production and labor during World War II and the economic difficulties\u0007of\u0007the\u00071930s\u0007led\u0007many\u0007Americans\u0007 to migrate to urban centers in search of economic op"
+    },
+    {
+      "physical_page": 357,
+      "printed_page": 357,
+      "chars": 3145,
+      "first_200": "tion: Franklin D. Roosevelt, “Executive Order 7057 Establishing the Puerto Rico Reconstruction Administration.” May 28, 1935. The executive order outlines the parameters of PRRA. § Recreation in Tenne"
+    },
+    {
+      "physical_page": 358,
+      "printed_page": 358,
+      "chars": 3145,
+      "first_200": "rpt: the paragraph beginning “In other words, said Plato...” to the paragraph ending “...government the means with which to do so.” § Emma Tenayuca: Henry\u0007A.\u0007Guerra,\u0007Jr.,\u0007“Miracle\u0007of\u0007Loaves\u0007Re-enacted"
+    },
+    {
+      "physical_page": 359,
+      "printed_page": 359,
+      "chars": 3145,
+      "first_200": "© 2020 College Board UNIT 7 Period 7: 1890–1945 TOPIC 7.10 OPTIONAL ACTIVITY New Deal Making and Explaining Connections Students make and explain relevant connections between a source and the"
+    },
+    {
+      "physical_page": 360,
+      "printed_page": 360,
+      "chars": 3145,
+      "first_200": "providing relief, recovery, or reform? § Evaluate the extent to which FDR’s New Deal can be considered successful in ending the\u0007Great Depression.\u0007Use\u0007the\u0007source\u0007and\u0007evidence\u0007from\u0007your\u0007homework\u0007to\u0007brie"
+    },
+    {
+      "physical_page": 361,
+      "printed_page": 361,
+      "chars": 3145,
+      "first_200": "World Stage” and peoples shape the development of America and America’s increasingly important role in the world. LEARNING OBJECTIVE HISTORICAL DEVELOPMENTS Unit 7: Learning Objective B KC-7.3.II.D Ex"
+    },
+    {
+      "physical_page": 362,
+      "printed_page": 362,
+      "chars": 3145,
+      "first_200": "Relations, 1893–2014 (New York: Oxford University Press, 2008), pp. 157–161. In 1924, U.S. banker Charles Dawes led the negotiations of an arrangement that not only helped Germany repay reparations fr"
+    },
+    {
+      "physical_page": 363,
+      "printed_page": 363,
+      "chars": 3145,
+      "first_200": "reign\u0007policy\u0007vs.\u0007non-interventionist\u0007foreign\u0007policy 1.B § Internationalism\u0007vs.\u0007isolationism Explain a historical concept, development, or process. 2. Lead\u0007a\u0007discussion\u0007about\u0007these\u0007terms.\u0007Ask\u0007students\u0007"
+    },
+    {
+      "physical_page": 364,
+      "printed_page": 364,
+      "chars": 3145,
+      "first_200": "interwar period, like many historical developments, is nuanced and requires a careful evaluation of the evidence to understand.\u0007This\u0007is\u0007why\u0007it\u0007is\u0007important\u0007to\u0007identify\u0007and\u0007explain\u0007specific\u0007historical\u0007"
+    },
+    {
+      "physical_page": 365,
+      "printed_page": 365,
+      "chars": 3145,
+      "first_200": "he Great Depression, and the transformed American society. country’s strong industrial base played a pivotal role in winning the war by equipping and provisioning allies and millions of U.S. troops."
+    },
+    {
+      "physical_page": 366,
+      "printed_page": 366,
+      "chars": 3145,
+      "first_200": "B-17F\u0007(Flying\u0007Fortress)\u0007bombing\u0007planes.\u0007Fuselage\u0007sections,”\u00071942,\u0007call\u0007number\u0007 LC-USW3–041020-E,\u0007Library\u0007of\u0007Congress.\u0007This\u0007is\u0007a\u0007photograph\u0007of\u0007one\u0007of\u0007the\u0007main\u0007 manufacturing\u0007facilities\u0007for\u0007the\u0007B-17\u0007“Fl"
+    },
+    {
+      "physical_page": 367,
+      "printed_page": 367,
+      "chars": 3145,
+      "first_200": "\u0007depicts\u0007 the wartime employment opportunities at Willow Run, a manufacturing facility in Michigan built by Ford Motor Company that produced aircraft during the war. AP U.S. History Course and Exam"
+    },
+    {
+      "physical_page": 368,
+      "printed_page": 368,
+      "chars": 3145,
+      "first_200": "z,\u0007Bracero\u0007Oral\u0007History\u0007Project,\u0007University\u0007of\u0007Texas\u0007at\u0007El\u0007Paso,\u0007Salinas,\u0007 July 28, 2005, pp 1–4. McQuinn worked as a bookkeeper handling payroll for Mexican migrant\u0007farm\u0007workers\u0007during\u0007World\u0007War\u0007II\u0007i"
+    },
+    {
+      "physical_page": 369,
+      "printed_page": 369,
+      "chars": 3145,
+      "first_200": "ited\u0007States\u0007society. Close the activity by leading a debrief about how and why U.S. participation in World War II transformed American society. AP U.S. History Course and Exam Description Course Frame"
+    },
+    {
+      "physical_page": 370,
+      "printed_page": 370,
+      "chars": 3145,
+      "first_200": "ved military victory through Allied cooperation, technological\u0007and\u0007scientific\u0007advances,\u0007the\u0007 contributions of servicemen and women, and campaigns\u0007such\u0007as\u0007Pacific\u0007“island-hopping”\u0007 and\u0007the\u0007D-Day\u0007invasi"
+    },
+    {
+      "physical_page": 371,
+      "printed_page": 371,
+      "chars": 3145,
+      "first_200": "sted excerpt: the section titled “What Are We Fighting For?”. § Norman Rockwell: Norman Rockwell, Four Freedoms: Freedom of Speech, February 20, 1943; Freedom of Worship, February 27, 1943; Freedom"
+    },
+    {
+      "physical_page": 372,
+      "printed_page": 372,
+      "chars": 3145,
+      "first_200": "916–1952,\u0007Dwight\u0007D.\u0007Eisenhower\u0007Library,\u0007National\u0007Archives\u0007 and\u0007Records\u0007Administration.\u0007In\u0007this\u0007document,\u0007Eisenhower\u0007offers\u0007encouragement\u0007to\u0007the\u0007 175,000-member\u0007expeditionary\u0007force\u0007on\u0007the\u0007eve\u0007of\u0007the\u0007D-"
+    },
+    {
+      "physical_page": 373,
+      "printed_page": 373,
+      "chars": 3145,
+      "first_200": "ompt below. Ask students Argumentation to\u0007read\u0007each\u0007of\u0007the\u0007sources\u0007independently\u0007and\u0007highlight\u0007evidence\u0007of\u0007the\u0007effects\u0007of\u0007U.S.\u0007 6.C involvement in World War II. Use historical reasoning § Evaluate\u0007the"
+    },
+    {
+      "physical_page": 374,
+      "printed_page": 374,
+      "chars": 3145,
+      "first_200": "Required Course Content THEMATIC FOCUS America in the World WOR Diplomatic, economic, cultural, and military interactions between empires, nations, and peoples shape the development of America and Ame"
+    },
+    {
+      "physical_page": 375,
+      "printed_page": 375,
+      "chars": 3145,
+      "first_200": "Course Framework V.1 | 368 Return to Table of Contents © 2020 College Board UNIT Period 7: 1890–1945 7 OPTIONAL ACTIVITY TOPIC 7.14 Connecting Sources and Argument Postwar Diplomacy Students\u0007analyze\u0007t"
+    },
+    {
+      "physical_page": 376,
+      "printed_page": 376,
+      "chars": 3145,
+      "first_200": "the audience. Look for proper nouns and pronouns that indicate the intended audience. 3. Ask students to compare their color coding with a classmate and work together to describe the"
+    },
+    {
+      "physical_page": 377,
+      "printed_page": 377,
+      "chars": 3145,
+      "first_200": "events\u0007of\u0007the\u0007first\u0007half\u0007of\u0007 society and its economic system. the 20th century in shaping KC-7.1.I American identity. AVAILABLE RESOURCE The United States continued its transition § External Resource "
+    },
+    {
+      "physical_page": 378,
+      "printed_page": 378,
+      "chars": 3145,
+      "first_200": "ng Objective O KC-7.2 Compare the relative Innovations in communications and technology significance of the major contributed to the growth of mass culture, events of the first half of while\u0007significa"
+    },
+    {
+      "physical_page": 379,
+      "printed_page": 379,
+      "chars": 3145,
+      "first_200": "AP U.S. History Course and Exam Description Course Framework V.1 | 371 Return to Table of Contents © 2020 College Board UNIT 7 Period 7: 1890–1945 TOPIC 7.15 OPTIONAL ACTIVITY"
+    },
+    {
+      "physical_page": 380,
+      "printed_page": 380,
+      "chars": 3145,
+      "first_200": "n\u0007they\u0007demonstrate\u0007a\u0007detailed\u0007understanding\u0007of\u0007 the history they are writing about. This might include: ◆ Effectively\u0007using\u0007an\u0007abundance\u0007of\u0007evidence\u0007to\u0007support\u0007an\u0007argument. ◆ Consistently demonstratin"
+    },
+    {
+      "physical_page": 381,
+      "printed_page": 381,
+      "chars": 3145,
+      "first_200": "ruct\u0007them\u0007to\u0007exchange\u0007essays.\u0007Ask\u0007them\u0007to\u0007read\u0007 each other’s essay and discuss how well they feel that they have done the following. § Demonstrated that the history of this topic is complicated and ex"
+    },
+    {
+      "physical_page": 382,
+      "printed_page": 382,
+      "chars": 3145,
+      "first_200": "Contents © 2020 College Board UNIT 8 10–17% AP EXAM WEIGHTING ~20 CLASS PERIODS Period 8: 1945–1980 UNIT AT A GLANCE Thematic Class Periods Reasoning Focus Topic Process Suggested Skill"
+    },
+    {
+      "physical_page": 383,
+      "printed_page": 383,
+      "chars": 3145,
+      "first_200": "continued on next page AP U.S. History Course and Exam Description Course Framework V.1 | 377 Return to Table of Contents © 2020 College Board UNIT 8 Period 8: 1945–1980"
+    },
+    {
+      "physical_page": 384,
+      "printed_page": 384,
+      "chars": 3145,
+      "first_200": "alternative evidence in order to develop a complex argument. This argument might: § Explain nuance of an issue by analyzing\u0007multiple\u0007variables. § Explain relevant and insightful connections within and"
+    },
+    {
+      "physical_page": 385,
+      "printed_page": 385,
+      "chars": 3145,
+      "first_200": "which your students will § Classroom Resources most need context. > Essay from the American Organization To understand context, your students could examine: of Historians and AP § Change from"
+    },
+    {
+      "physical_page": 386,
+      "printed_page": 386,
+      "chars": 3145,
+      "first_200": "© 2020 College Board UNIT 8 Period 8: 1945–1980 LEARNING OBJECTIVE PREVIEW: UNIT 8 KEY CONCEPTS Unit 8: Learning Objective A KC-8.2 Explain the context for societal New movements for"
+    },
+    {
+      "physical_page": 387,
+      "printed_page": 387,
+      "chars": 3145,
+      "first_200": "Rapid economic and social changes in American society fostered a sense of optimism in the postwar years. KC-8.3.II New demographic and social developments, along with anxieties over the Cold War,"
+    },
+    {
+      "physical_page": 388,
+      "printed_page": 388,
+      "chars": 3145,
+      "first_200": "from 1945 to the 1980s. 3. Lead\u0007a\u0007discussion\u0007on\u0007the\u0007origins\u0007of\u0007the\u0007Cold\u0007War\u0007by\u0007briefly\u0007describing\u0007each\u0007 development below and asking students to consider how these developments connect to U.S. history"
+    },
+    {
+      "physical_page": 389,
+      "printed_page": 389,
+      "chars": 3145,
+      "first_200": "eological\u0007influence,\u0007create\u0007a\u0007free-market\u0007 global economy, and build an international security system. KC-8.1.I.A As postwar tensions dissolved the wartime alliance between Western democracies and the"
+    },
+    {
+      "physical_page": 390,
+      "printed_page": 390,
+      "chars": 3145,
+      "first_200": "ds and priorities. The following optional sources and activity are not required AP course content, but are instead simply examples of sources appropriate for a college-level\u0007course.\u0007None\u0007of\u0007the\u0007AP\u0007Exa"
+    },
+    {
+      "physical_page": 391,
+      "printed_page": 391,
+      "chars": 3145,
+      "first_200": "2020 College Board UNIT 8 Period 8: 1945–1980 § Jack Whelan: John “Jack” Joseph Whelan, Jr., oral history, interviewed by Jongwoo Han, Korean War Legacy Foundation. Whelan was drafted into"
+    },
+    {
+      "physical_page": 392,
+      "printed_page": 392,
+      "chars": 3145,
+      "first_200": "lop a deeper understanding of sourcing and the limitations of sourcing. Select one of the suggested primary sources for each of the historical developments in this topic (Policymakers; International a"
+    },
+    {
+      "physical_page": 393,
+      "printed_page": 393,
+      "chars": 3145,
+      "first_200": "Return to Table of Contents © 2020 College Board UNIT 8 Period 8: 1945–1980 SUGGESTED SKILL Sourcing and TOPIC 8.3 The Red Scare Situation 2.B Explain the point of view,"
+    },
+    {
+      "physical_page": 394,
+      "printed_page": 394,
+      "chars": 3145,
+      "first_200": "are instead simply examples of sources appropriate for a college-level\u0007course.\u0007None\u0007of\u0007the\u0007AP\u0007Exam\u0007questions\u0007require\u0007students\u0007to\u0007have\u0007studied\u0007these\u0007 specific\u0007sources.\u0007These\u0007sources\u0007represent\u0007a\u0007variety"
+    },
+    {
+      "physical_page": 395,
+      "printed_page": 395,
+      "chars": 3145,
+      "first_200": "© 2020 College Board UNIT 8 Period 8: 1945–1980 TOPIC 8.3 OPTIONAL ACTIVITY The Red Scare Sourcing If you selected the source from Paul Robeson, use this activity to strengthen"
+    },
+    {
+      "physical_page": 396,
+      "printed_page": 396,
+      "chars": 3145,
+      "first_200": "Explain the significance of After 1945 a source’s point of view, purpose, historical situation, and/or audience, including how these might limit the use(s) of a source. Required Course Content THEMATI"
+    },
+    {
+      "physical_page": 397,
+      "printed_page": 397,
+      "chars": 3145,
+      "first_200": "sources appropriate for a college-level\u0007course.\u0007None\u0007of\u0007the\u0007AP\u0007Exam\u0007questions\u0007require\u0007students\u0007to\u0007have\u0007studied\u0007these\u0007 specific\u0007sources.\u0007These\u0007sources\u0007represent\u0007a\u0007variety\u0007of\u0007persons\u0007and\u0007perspectives\u0007re"
+    },
+    {
+      "physical_page": 398,
+      "printed_page": 398,
+      "chars": 3145,
+      "first_200": "gested\u0007excerpt:\u0007the\u0007first\u0007three\u0007paragraphs\u0007and\u0007points\u0007two\u0007and\u0007three. KC-8.3.I.A Technological developments: § Air conditioning: Matt Largey, “Birth of the Cool: A Brief History of Air Conditioning” (A"
+    },
+    {
+      "physical_page": 399,
+      "printed_page": 399,
+      "chars": 3145,
+      "first_200": ". 25–52. McGirr’s book traces the growth of grassroots conservatism in California during the 1950s and 1960s. § Florida: Gary Mormino, “Look Away Dixieland” in Land of Sunshine, State of"
+    },
+    {
+      "physical_page": 400,
+      "printed_page": 400,
+      "chars": 3145,
+      "first_200": "se\u0007continuities\u0007and\u0007changes\u0007and\u0007why\u0007this\u0007is\u0007significant\u0007for\u0007understanding\u0007economic\u0007 growth or migration in the period after 1945. Debrief the activity by reinforcing the importance of considering a so"
+    },
+    {
+      "physical_page": 401,
+      "printed_page": 401,
+      "chars": 3145,
+      "first_200": "intellectuals, and rebellious youth. AP U.S. History Course and Exam Description Course Framework V.1 | 393 Return to Table of Contents © 2020 College Board UNIT 8 Period 8: 1945–1980"
+    },
+    {
+      "physical_page": 402,
+      "printed_page": 402,
+      "chars": 3145,
+      "first_200": "York: Oxford University Press, 2004), pp. 62–65. Altschuer discusses the role race played in Chuck Berry’s music as well as how his music appealed to American youth. § John Kenneth"
+    },
+    {
+      "physical_page": 403,
+      "printed_page": 403,
+      "chars": 3145,
+      "first_200": "me\u0007that\u0007is\u0007different\u0007from\u0007the\u0007one\u0007they\u0007 broader historical context selected in step 2. 4. Tell students to use their class notes or textbook to identify and describe a historical development related t"
+    },
+    {
+      "physical_page": 404,
+      "printed_page": 404,
+      "chars": 3145,
+      "first_200": "used measures including desegregation of the armed services and Brown v. Board of Education (1954) to promote greater racial equality. AP U.S. History Course and Exam Description Course Framework V.1"
+    },
+    {
+      "physical_page": 405,
+      "printed_page": 405,
+      "chars": 3145,
+      "first_200": "troops\u0007in\u0007the\u0007desegregation\u0007 of Central High School in Little Rock, AR. § Thurgood Marshall: “Along the N.A.A.C.P. Battlefront,” The Crisis, February 1954, pp. 93–95. In the section titled “Marshall D"
+    },
+    {
+      "physical_page": 406,
+      "printed_page": 406,
+      "chars": 3145,
+      "first_200": "in Chapter IV. KC-8.2.I.B.i Successes in ending segregation: § Browder v. Gayle: Browder v. Gayle, 142 F. Supp. 707 (M.D. Ala. 1956). The court’s ruling found bus segregation unconstitutional under"
+    },
+    {
+      "physical_page": 407,
+      "printed_page": 407,
+      "chars": 3145,
+      "first_200": "podcast from Berkeley News, Journalist Anne Brice and professor of African American studies\u0007Ula\u0007Taylor\u0007discuss\u0007the\u0007role\u0007of\u0007women\u0007in\u0007organizing\u0007the\u0007Montgomery\u0007Bus\u0007Boycott. § Jackie Robinson: Jackie Rob"
+    },
+    {
+      "physical_page": 408,
+      "printed_page": 408,
+      "chars": 3145,
+      "first_200": "and processes. § Who were some of the main civil rights activists and political leaders that fought for greater racial equality at the time? What were their goals? § What"
+    },
+    {
+      "physical_page": 409,
+      "printed_page": 409,
+      "chars": 3145,
+      "first_200": "i Postwar\u0007decolonization\u0007and\u0007the\u0007emergence\u0007 of powerful nationalist movements in Africa and the Middle East led both sides in the Cold War to seek allies among new nations, many of which remained nona"
+    },
+    {
+      "physical_page": 410,
+      "printed_page": 410,
+      "chars": 3145,
+      "first_200": "mala\u0007-\u0007Operations\u0007Against,”\u0007memorandum\u0007for\u0007CI/ICD\u0007PP/OPS,\u0007May\u000715,\u00071957\u0007 document number 0000919960, Freedom of Information Act Electronic Reading Room. This\u0007document\u0007from\u0007Árbenz’s\u0007CIA\u0007file\u0007demonstrate"
+    },
+    {
+      "physical_page": 411,
+      "printed_page": 411,
+      "chars": 3145,
+      "first_200": "ugal\u0007in\u00071975.\u0007The\u0007conflict\u0007 became\u0007a\u0007proxy\u0007war,\u0007with\u0007the\u0007Soviets\u0007and\u0007Cubans\u0007supporting\u0007the\u0007pro-communist\u0007MPLA\u0007 and the U.S. and South Africa aiding UNITA. In this brief statement, Ford protests a Sena"
+    },
+    {
+      "physical_page": 412,
+      "printed_page": 412,
+      "chars": 3145,
+      "first_200": "World Power Students compare Henry Kissinger’s memo about Salvador Allende to the CIA memo about Mohammad\u0007Mosaddegh\u0007to\u0007describe\u0007similarities\u0007and\u0007differences\u0007and\u0007explain\u0007patterns\u0007in\u0007U.S.\u0007 foreign polic"
+    },
+    {
+      "physical_page": 413,
+      "printed_page": 413,
+      "chars": 3145,
+      "first_200": "History: The Tet Offensive: 1968 THEMATIC FOCUS America in the World WOR Diplomatic, economic, cultural, and military interactions between empires, nations, and peoples shape the development of Americ"
+    },
+    {
+      "physical_page": 414,
+      "printed_page": 414,
+      "chars": 3145,
+      "first_200": "ility\u0007to\u0007include\u0007in\u0007their\u0007syllabus\u0007primary\u0007and\u0007secondary\u0007sources\u0007that\u0007 align with local standards and priorities. The following optional sources and activity are not required AP course content, but ar"
+    },
+    {
+      "physical_page": 415,
+      "printed_page": 415,
+      "chars": 3145,
+      "first_200": "Course Framework V.1 | 405 Return to Table of Contents © 2020 College Board UNIT 8 Period 8: 1945–1980 § War Powers Act: United States Congress, “Joint Resolution Concerning the"
+    },
+    {
+      "physical_page": 416,
+      "printed_page": 416,
+      "chars": 3145,
+      "first_200": "vidence supports the claim. 4. The groups will then exchange answers with other groups with the same claim to read how they defended the claim. After exchanging among the groups,"
+    },
+    {
+      "physical_page": 417,
+      "printed_page": 417,
+      "chars": 3145,
+      "first_200": "over time. KC-8.2.III.A Liberalism,\u0007based\u0007on\u0007anti-communism\u0007abroad\u0007 and\u0007a\u0007firm\u0007belief\u0007in\u0007the\u0007efficacy\u0007of\u0007government\u0007 power to achieve social goals at home, reached a high\u0007point\u0007of\u0007political\u0007influence\u0007"
+    },
+    {
+      "physical_page": 418,
+      "printed_page": 418,
+      "chars": 3145,
+      "first_200": "od 8: 1945–1980 TOPIC 8.9 Great Society OPTIONAL SOURCES Teachers\u0007have\u0007the\u0007flexibility\u0007to\u0007include\u0007in\u0007their\u0007syllabus\u0007primary\u0007and\u0007secondary\u0007sources\u0007that\u0007 align with local standards and priorities. The f"
+    },
+    {
+      "physical_page": 419,
+      "printed_page": 419,
+      "chars": 3145,
+      "first_200": ". Johnson, “Remarks on Project Head Start” (speech, Washington D.C., May 18, 1965). Johnson’s remarks outline the goals of the Head Start program, contextualizing\u0007them\u0007within\u0007the\u0007greater\u0007scope\u0007of\u0007the\u0007"
+    },
+    {
+      "physical_page": 420,
+      "printed_page": 420,
+      "chars": 3145,
+      "first_200": "n:\u0007A\u0007children’s\u0007exodus\u0007from\u0007Cuba,”\u0007 interviewed by Maria Anderson, Smithsonian Sparks, July 11, 2017. In this interview, museum\u0007curator\u0007Steve\u0007Velasquez\u0007describes\u0007Operation\u0007Pedro\u0007Pan\u0007which\u0007brought\u000714,0"
+    },
+    {
+      "physical_page": 421,
+      "printed_page": 421,
+      "chars": 3145,
+      "first_200": "reflects\u0007a\u0007similarity\u0007or\u0007difference\u0007in\u0007the\u0007New\u0007Deal\u0007and\u0007Great\u0007Society. Review\u0007the\u0007students’\u0007work.\u0007Emphasize\u0007that\u0007the\u0007ability\u0007to\u0007effectively\u0007make\u0007and\u0007explain\u0007 similarities\u0007and\u0007differences\u0007among\u0007histori"
+    },
+    {
+      "physical_page": 422,
+      "printed_page": 422,
+      "chars": 3145,
+      "first_200": "nation. Debates among civil rights\u0007activists\u0007over\u0007the\u0007efficacy\u0007of\u0007nonviolence\u0007 increased after 1965. continued on next page AP U.S. History Course and Exam Description Course Framework V.1 | 413 Retur"
+    },
+    {
+      "physical_page": 423,
+      "printed_page": 423,
+      "chars": 3145,
+      "first_200": "not Rights Movement required AP course content, but are instead simply examples of sources appropriate for a (1960s) college-level\u0007course.\u0007None\u0007of\u0007the\u0007AP\u0007Exam\u0007questions\u0007require\u0007students\u0007to\u0007have\u0007studie"
+    },
+    {
+      "physical_page": 424,
+      "printed_page": 424,
+      "chars": 3145,
+      "first_200": "his\u0007oral\u0007history,\u0007Rustin\u0007reflects\u0007on\u0007his\u0007participation\u0007in\u0007the\u0007planning\u0007and\u0007managing\u0007of\u0007the\u0007 1963 March on Washington and what he thought made it such a success. AP U.S. History Course and Exam Descrip"
+    },
+    {
+      "physical_page": 425,
+      "printed_page": 425,
+      "chars": 3145,
+      "first_200": "§ Freedom Summer: Mississippi Project Map, Student Nonviolent Coordinating Committee,\u0007“Report\u0007on\u0007the\u0007Mississippi\u0007Project,”\u00071964,\u0007identifier\u0007fsSAVFB47F11000,\u0007 Freedom Summer Digital Collection, Wiscons"
+    },
+    {
+      "physical_page": 426,
+      "printed_page": 426,
+      "chars": 3145,
+      "first_200": "8 § Selma to Montgomery March: Student Nonviolent Coordinating Committee, “SNCC Bulletin: Information on Today’s Brutality in Selma, Alabama,” March 7, 1965. This report details\u0007the\u0007violence\u0007during\u0007th"
+    },
+    {
+      "physical_page": 427,
+      "printed_page": 427,
+      "chars": 3145,
+      "first_200": "istorical\u0007developments\u0007or\u0007processes\u0007from\u0007an\u0007earlier\u0007time-period.\u0007Select\u0007one\u0007of\u0007the\u0007 (1960s) suggested primary sources for civil rights activists and leaders, strategies and tactics, or federal governm"
+    },
+    {
+      "physical_page": 428,
+      "printed_page": 428,
+      "chars": 3145,
+      "first_200": "UNIT Period 8: 1945–1980 8 TOPIC 8.11 SUGGESTED SKILL Making Connections The Civil Rights 5.B Explain how a historical development or process Movement Expands relates to another historical development"
+    },
+    {
+      "physical_page": 429,
+      "printed_page": 429,
+      "chars": 3145,
+      "first_200": "lign with local standards and priorities. The following optional sources and activity are not required AP course content, but are instead simply examples of sources appropriate for a college-level\u0007cou"
+    },
+    {
+      "physical_page": 430,
+      "printed_page": 430,
+      "chars": 3145,
+      "first_200": "KC-8.2.II.B American Indian movements: § American Indian Movement (AIM): American Indian Movement, “Trail of Broken Treaties 20-point\u0007Position\u0007Paper,”\u0007October\u00071972.\u0007In\u00071972,\u0007AIM\u0007activists\u0007organized\u0007th"
+    },
+    {
+      "physical_page": 431,
+      "printed_page": 431,
+      "chars": 3145,
+      "first_200": "sense of personal adequacy and competence.” KC-8.2.II.B Asian American movements: § Emma Gee: Daryl Joji Maeda, Rethinking the Asian American Movement (New York: Routledge, 2012), pp. 9–12. Gee played"
+    },
+    {
+      "physical_page": 432,
+      "printed_page": 432,
+      "chars": 3145,
+      "first_200": ".” KC-8.2.II.A Feminist movements: § Shirley Chisholm: Shirley Chisholm, “Shirley Chisholm: Declares Presidential Bid” (speech, New York, January 25, 1972). In this speech, Chisholm explains that whil"
+    },
+    {
+      "physical_page": 433,
+      "printed_page": 433,
+      "chars": 3145,
+      "first_200": "§ Gay Liberation Front: “The Gay Liberation Front platform statement,” December 2, 1970.\u0007This\u0007statement\u0007outlines\u0007the\u0007organization’s\u0007goals\u0007and\u0007concerns,\u0007and\u0007recommends\u0007 ways to address them. § Marsha P"
+    },
+    {
+      "physical_page": 434,
+      "printed_page": 434,
+      "chars": 3145,
+      "first_200": "TOPIC 8.11 OPTIONAL ACTIVITY The Civil Rights Making and Explaining Connections Movement Expands Students make and explain relevant connections between a source from this topic and the African America"
+    },
+    {
+      "physical_page": 435,
+      "printed_page": 435,
+      "chars": 3145,
+      "first_200": "sentences\u0007that\u0007answer\u0007each\u0007of\u0007the\u0007following\u0007questions: § How does this source relate to the expansion of the civil rights movement? § How\u0007effective\u0007were\u0007the\u0007different\u0007tactics\u0007and\u0007strategies\u0007in\u0007achievi"
+    },
+    {
+      "physical_page": 436,
+      "printed_page": 436,
+      "chars": 3145,
+      "first_200": "to violence. KC-8.2.III.D Some groups on the left also rejected liberal policies, arguing that political leaders did too little to transform the racial and economic status quo at home and"
+    },
+    {
+      "physical_page": 437,
+      "printed_page": 437,
+      "chars": 3145,
+      "first_200": "includes a joint interview with Martin Luther King. § Kent State shooting: John Paul Filo, “The Kent State Shootings,” May 4, 1970. This photograph captures the aftermath of the Kent"
+    },
+    {
+      "physical_page": 438,
+      "printed_page": 438,
+      "chars": 3145,
+      "first_200": "TOPIC 8.12 Making Connections Youth Culture of the 1960s Students view the image from the 1967 March on the Pentagon and consider how the response to the Vietnam War depicted"
+    },
+    {
+      "physical_page": 439,
+      "printed_page": 439,
+      "chars": 3145,
+      "first_200": "ronmental factors, including competition over and debates about natural resources, shape the development of America and foster regional diversity. The development of America impacts the environment an"
+    },
+    {
+      "physical_page": 440,
+      "printed_page": 440,
+      "chars": 3145,
+      "first_200": "-level\u0007course.\u0007None\u0007of\u0007the\u0007AP\u0007Exam\u0007questions\u0007require\u0007students\u0007to\u0007have\u0007studied\u0007these\u0007 specific\u0007sources.\u0007These\u0007sources\u0007represent\u0007a\u0007variety\u0007of\u0007persons\u0007and\u0007perspectives\u0007relevant\u0007to\u0007 U.S. history, rather t"
+    },
+    {
+      "physical_page": 441,
+      "printed_page": 441,
+      "chars": 3145,
+      "first_200": "ntal policy such as the Clear Air Act. § Endangered Species Act: Richard Nixon, “Statement on Signing the Endangered Species Act of 1973” (statement, San Clemente, December 28, 1973). Nixon"
+    },
+    {
+      "physical_page": 442,
+      "printed_page": 442,
+      "chars": 3145,
+      "first_200": "t\u0007to\u0007identify\u0007one\u0007effect\u0007that\u0007it\u0007had\u0007 and processes. on policy or action. Close\u0007by\u0007asking\u0007a\u0007few\u0007groups\u0007to\u0007share\u0007and\u0007discuss\u0007the\u0007similarities\u0007and\u0007differences\u0007in\u0007the\u0007 effects\u0007of\u0007each\u0007incident.\u0007Concentra"
+    },
+    {
+      "physical_page": 443,
+      "printed_page": 443,
+      "chars": 3145,
+      "first_200": "KC-8.2.III.F The 1970s saw growing clashes between conservatives and liberals over social and cultural issues, the power of the federal government, race, and movements for greater individual rights. c"
+    },
+    {
+      "physical_page": 444,
+      "printed_page": 444,
+      "chars": 3145,
+      "first_200": "iety\u0007of\u0007persons\u0007and\u0007perspectives\u0007relevant\u0007to\u0007 U.S. history, rather than an endorsement of their ideas or values. AP students are not asked to affiliate\u0007themselves\u0007with\u0007the\u0007cultural\u0007or\u0007political\u0007values"
+    },
+    {
+      "physical_page": 445,
+      "printed_page": 445,
+      "chars": 3145,
+      "first_200": "ot only in Asia, but around the world”) and from 22:05 (“I want to be sure there is no misunderstanding...”) to the speech’s end. § Young Americans for Freedom: Young"
+    },
+    {
+      "physical_page": 446,
+      "printed_page": 446,
+      "chars": 3145,
+      "first_200": "n\u0007in\u0007America\u0007fighting\u0007against\u0007the\u0007passage\u0007of\u0007the\u0007Equal\u0007 Rights Amendment, and Betty Friedan was one of the most prominent voices in favor. In this clip, they debate this issue directly, with a focus o"
+    },
+    {
+      "physical_page": 447,
+      "printed_page": 447,
+      "chars": 3145,
+      "first_200": "and Anne Gimenez: Robert Paul Lamb, Upon This Rock: The Remarkable Story of John and Anne Gimenez; the Miracle of Rock Church, as told to Robert Paul Lamb (Columbus,\u0007Souls\u0007Books,\u00071979),\u0007pp.\u00075–10.\u0007John"
+    },
+    {
+      "physical_page": 448,
+      "printed_page": 448,
+      "chars": 3145,
+      "first_200": "Transition Students\u0007practice\u0007contextualization\u0007by\u0007matching\u0007broad\u0007patterns\u0007with\u0007specific\u0007historical\u0007 developments\u0007in\u0007sources.\u0007Select\u0007two\u0007to\u0007four\u0007suggested\u0007sources\u0007from\u0007different\u0007categories\u0007 from this t"
+    },
+    {
+      "physical_page": 449,
+      "printed_page": 449,
+      "chars": 3145,
+      "first_200": "should practice the suggested skill for this topic. historical\u0007significance\u0007 of a source’s credibility and limitations. Required Course Content § Explain how or why a historical claim LEARNING OBJECTI"
+    },
+    {
+      "physical_page": 450,
+      "printed_page": 450,
+      "chars": 3145,
+      "first_200": "Return to Table of Contents © 2020 College Board UNIT Period 8: 1945–1980 8 LEARNING OBJECTIVE REVIEW: UNIT 8 KEY CONCEPTS Unit 8: Learning Objective Q KC-8.2 Explain the extent"
+    },
+    {
+      "physical_page": 451,
+      "printed_page": 451,
+      "chars": 3145,
+      "first_200": "to\u0007significant\u0007political\u0007and\u0007moral\u0007debates\u0007 that sharply divided the nation. AP U.S. History Course and Exam Description Course Framework V.1 | 439 Return to Table of Contents © 2020 College Board UNI"
+    },
+    {
+      "physical_page": 452,
+      "printed_page": 452,
+      "chars": 3145,
+      "first_200": "pportunity reinforced democratic ideas) and/or time periods (e.g. how democratic ideas have motivated\u0007reforms\u0007since\u0007Reconstruction)\u0007to\u0007support\u0007the\u0007claim. § Qualify: Provide evidence that supports the "
+    },
+    {
+      "physical_page": 453,
+      "printed_page": 453,
+      "chars": 3145,
+      "first_200": "© 2020 College Board THIS PAGE IS INTENTIONALLY LEFT BLANK. AP U.S. HISTORY UNIT 9 Period 9: 1980–Present 4–6% AP EXAM WEIGHTING ~8 CLASS PERIODS AP U.S. History Course and"
+    },
+    {
+      "physical_page": 454,
+      "printed_page": 454,
+      "chars": 3145,
+      "first_200": "within a broader historical context. 9.2 Reagan and Continuity and 3.C Compare the arguments or main PCE Conservatism Change ideas of two sources. 9.3 The End of the Cold War"
+    },
+    {
+      "physical_page": 455,
+      "printed_page": 455,
+      "chars": 3145,
+      "first_200": "§ Explain relevant and insightful connections within and across periods. § Explain the relative historical significance\u0007of\u0007a\u0007source’s\u0007 credibility and limitations. § Explain how or why a historical cl"
+    },
+    {
+      "physical_page": 456,
+      "printed_page": 456,
+      "chars": 3145,
+      "first_200": "nduct an activity that engages students in exploring context. Required Course Content LEARNING OBJECTIVE PREVIEW: UNIT 9 KEY CONCEPTS Unit 9: Learning Objective A KC-9.1 Explain the context in which"
+    },
+    {
+      "physical_page": 457,
+      "printed_page": 457,
+      "chars": 3145,
+      "first_200": "interventionist foreign policy that continued in later administrations, even after the end of the Cold War. KC-9.3.II Following the attacks of September 11, 2001,\u0007U.S.\u0007foreign\u0007policy\u0007efforts\u0007focused\u0007o"
+    },
+    {
+      "physical_page": 458,
+      "printed_page": 458,
+      "chars": 3145,
+      "first_200": "environment (Topic 9.6) 3. Ask\u0007each\u0007group\u0007to\u0007briefly\u0007share\u0007their\u0007predictions\u0007and\u0007hang\u0007their\u0007poster\u0007on\u0007the\u0007 classroom wall. Return to each poster as you complete the associated topic while teaching per"
+    },
+    {
+      "physical_page": 459,
+      "printed_page": 459,
+      "chars": 3145,
+      "first_200": "of government met with inertia and liberal opposition, as many programs remained popular with voters. KC-9.1.I.C Policy\u0007debates\u0007continued\u0007over\u0007free-trade\u0007 agreements, the scope of the government socia"
+    },
+    {
+      "physical_page": 460,
+      "printed_page": 460,
+      "chars": 3145,
+      "first_200": "t of their ideas or values. AP students are not asked to affiliate\u0007themselves\u0007with\u0007the\u0007cultural\u0007or\u0007political\u0007values\u0007in\u0007these\u0007sources,\u0007but\u0007instead\u0007to\u0007analyze\u0007 such documents for the historical informat"
+    },
+    {
+      "physical_page": 461,
+      "printed_page": 461,
+      "chars": 3145,
+      "first_200": "a chorus of discordant voices.” § Moral Majority: Jerry Falwell, Listen, America! (Toronto: Bantam Books, 1981), pp. 231–234. Falwell calls on Christians to join the Moral Majority using a mixture"
+    },
+    {
+      "physical_page": 462,
+      "printed_page": 462,
+      "chars": 3145,
+      "first_200": "ption Course Framework V.1 | 452 Return to Table of Contents © 2020 College Board UNIT Period 9: 1980–Present 9 OPTIONAL ACTIVITY TOPIC 9.2 Close Reading Reagan and Conservativism Ask\u0007students\u0007to\u0007comp"
+    },
+    {
+      "physical_page": 463,
+      "printed_page": 463,
+      "chars": 3145,
+      "first_200": "TOPIC 9.3 The End of and Processes 1.B Explain a historical concept, development, or process. the Cold War AVAILABLE RESOURCE § Professional Required Course Content Development > Teaching and Assessin"
+    },
+    {
+      "physical_page": 464,
+      "printed_page": 464,
+      "chars": 3145,
+      "first_200": "UNIT Period 9: 1980–Present 9 OPTIONAL SOURCES TOPIC 9.3 The End of the Teachers\u0007have\u0007the\u0007flexibility\u0007to\u0007include\u0007in\u0007their\u0007syllabus\u0007primary\u0007and\u0007secondary\u0007sources\u0007that\u0007 Cold War align with local standar"
+    },
+    {
+      "physical_page": 465,
+      "printed_page": 465,
+      "chars": 3145,
+      "first_200": "Founded in 1990, APEC aimed to increase trade and economic cooperation amongst its members. It became a\u0007key\u0007part\u0007of\u0007Clinton’s\u0007effort\u0007to\u0007promote\u0007global\u0007market\u0007expansion.\u0007Suggested\u0007excerpt:\u0007 Item 2. AP "
+    },
+    {
+      "physical_page": 466,
+      "printed_page": 466,
+      "chars": 3145,
+      "first_200": "ith the same source. Instruct students with the same source to form a group. Developments and Processes 2. In groups, ask students to read the source to determine how well"
+    },
+    {
+      "physical_page": 467,
+      "printed_page": 467,
+      "chars": 3145,
+      "first_200": "of economic and technological improvements in digital communications change over time. enabled increased American participation in worldwide economic opportunities. KC-9.2.I.B Technological innovation"
+    },
+    {
+      "physical_page": 468,
+      "printed_page": 468,
+      "chars": 3145,
+      "first_200": "\u0007cultural\u0007or\u0007political\u0007values\u0007in\u0007these\u0007sources,\u0007but\u0007instead\u0007to\u0007analyze\u0007 such documents for the historical information they can yield. Examples and Sources KC-9.2.I.A KC-9.2.I.B KC-9.2.I.D Changes in t"
+    },
+    {
+      "physical_page": 469,
+      "printed_page": 469,
+      "chars": 3145,
+      "first_200": "d select the trend most evident in the reading. Then, using the source, ask students to explain the historical significance\u0007of\u0007this\u0007trend\u0007in\u0007a\u0007paragraph. 3. Ask students to form groups of three to sha"
+    },
+    {
+      "physical_page": 470,
+      "printed_page": 470,
+      "chars": 3145,
+      "first_200": "Development > Teaching and THEMATIC FOCUS Assessing Module— Period 9: 1980–Present, Migration and Settlement MIG Focus on Research Push and pull factors shape immigration to and migration within Ameri"
+    },
+    {
+      "physical_page": 471,
+      "printed_page": 471,
+      "chars": 3145,
+      "first_200": "historical information they can yield. Examples and Sources KC-9.2.II.A Influence of the American South and West: § Republicans and the South: “Electoral College Results,” National Archives, 2023, htt"
+    },
+    {
+      "physical_page": 472,
+      "printed_page": 472,
+      "chars": 3145,
+      "first_200": "ate the merits of obtaining U.S. citizenship.\u0007Suggested\u0007excerpt:\u0007various\u0007clips\u0007of\u0007this\u0007episode\u0007are\u0007available\u0007online;\u0007select\u0007a\u0007 clip\u0007that\u0007exemplifies\u0007the\u0007debate. AP U.S. History Course and Exam Descrip"
+    },
+    {
+      "physical_page": 473,
+      "printed_page": 473,
+      "chars": 3145,
+      "first_200": "students might Explain the significance of use this source as evidence in a response to the following prompt: a source’s point of view, purpose, historical situation, § Evaluate\u0007the\u0007extent\u0007to\u0007which\u0007mi"
+    },
+    {
+      "physical_page": 474,
+      "printed_page": 474,
+      "chars": 3145,
+      "first_200": "highlight\u0007generational\u0007differences,\u0007to\u0007entertain\u0007the\u0007audience,\u0007to\u0007generate\u0007revenue\u0007 for the television network…. Considering the potential complexity of the episode’s purpose,\u0007it\u0007may\u0007be\u0007difficult\u0007to\u0007d"
+    },
+    {
+      "physical_page": 475,
+      "printed_page": 475,
+      "chars": 3145,
+      "first_200": "Return to Table of Contents © 2020 College Board UNIT 9 Period 9: 1980–Present SUGGESTED SKILL Sourcing and TOPIC 9.6 Challenges of the Situation 2.C Explain the significance of a"
+    },
+    {
+      "physical_page": 476,
+      "printed_page": 476,
+      "chars": 3145,
+      "first_200": "challenges, the United States continued as the world’s leading superpower in the 21st century. AP U.S. History Course and Exam Description Course Framework V.1 | 466 Return to Table of"
+    },
+    {
+      "physical_page": 477,
+      "printed_page": 477,
+      "chars": 3145,
+      "first_200": "that if we lived in a police state...” and end with “...this is truly a breathtaking expansion of police power.” § Islamophobia: Maryam Qudrat Aseel, Torn Between Two Cultures: An"
+    },
+    {
+      "physical_page": 478,
+      "printed_page": 478,
+      "chars": 3145,
+      "first_200": "s\u0007that\u0007 explain how or why the document’s point of view, purpose, historical situation, or audience is relevant to an argument that responds to the learning objective. Encourage students\u0007to\u0007connect\u0007sp"
+    },
+    {
+      "physical_page": 479,
+      "printed_page": 479,
+      "chars": 3145,
+      "first_200": "d skill for this topic. § Explain the relative historical\u0007significance\u0007 of a source’s credibility Required Course Content and limitations. § Explain how or why a historical claim LEARNING OBJECTIVE RE"
+    },
+    {
+      "physical_page": 480,
+      "printed_page": 480,
+      "chars": 3145,
+      "first_200": "Course Framework V.1 | 469 Return to Table of Contents © 2020 College Board UNIT 9 Period 9: 1980–Present LEARNING OBJECTIVE REVIEW: UNIT 9 KEY CONCEPTS Unit 9: Learning Objective"
+    },
+    {
+      "physical_page": 481,
+      "printed_page": 481,
+      "chars": 3145,
+      "first_200": "f lesson 1. Ask students to draft a response to the long essay prompt below. This activity is SUGGESTED SKILL designed to assess and improve the students’ skills in writing"
+    },
+    {
+      "physical_page": 482,
+      "printed_page": 482,
+      "chars": 3145,
+      "first_200": "Instructional Approaches Selecting and Using Course Materials Using a wide array of historical source material helps AP Central has an example textbook list of students\u0007become\u0007proficient\u0007with\u0007the\u0007hist"
+    },
+    {
+      "physical_page": 483,
+      "printed_page": 483,
+      "chars": 3145,
+      "first_200": "selections or online compilations of primary sources related to particular topic areas. AP U.S. History Course and Exam Description Instructional Approaches V.1 | 475 Return to Table of Contents ©"
+    },
+    {
+      "physical_page": 484,
+      "printed_page": 484,
+      "chars": 3145,
+      "first_200": "h students, teachers may consider a variety Ultimately, a command of the ideas and language of of sources that vary in complexity, building toward the\u0007founding\u0007documents\u0007and\u0007their\u0007influence\u0007will\u0007not\u0007 "
+    },
+    {
+      "physical_page": 485,
+      "printed_page": 485,
+      "chars": 3145,
+      "first_200": "and the king. Create Students create tables, Helps\u0007students\u0007organize\u0007 Give students a set of data, Representations graphs, or other infographics information using multiple such as voting patterns by r"
+    },
+    {
+      "physical_page": 486,
+      "printed_page": 486,
+      "chars": 3145,
+      "first_200": "a facilitated discussion solidify and deepen financial\u0007panics,\u0007lead\u0007students\u0007 that leads to consensus understanding in a debrief to ensure understanding or helps them of content. their understanding. "
+    },
+    {
+      "physical_page": 487,
+      "printed_page": 487,
+      "chars": 3145,
+      "first_200": "llectual, and technological ideas. Make sure students use\u0007any\u0007organizer\u0007thoughtfully\u0007 and\u0007are\u0007not\u0007simply\u0007filling\u0007 in the blanks. Guided A guided discussion is an Helps students see the Use brainstormi"
+    },
+    {
+      "physical_page": 488,
+      "printed_page": 488,
+      "chars": 3145,
+      "first_200": "n return to their text in its entirety; by corruption, social injustice, original groups to share their teaching others, they and economic inequality. new knowledge. become experts. Look for a"
+    },
+    {
+      "physical_page": 489,
+      "printed_page": 489,
+      "chars": 3145,
+      "first_200": "ts to edit argumentation, ask small improved on) to evaluate and existing claims and match groups of students to write revise. Then students match those claims with existing claims and"
+    },
+    {
+      "physical_page": 490,
+      "printed_page": 490,
+      "chars": 3145,
+      "first_200": "textbook. Have groups present\u0007their\u0007findings\u0007and\u0007 lead a discussion about propaganda,\u0007mobilization,\u0007 and preparedness. Quickwrite Students write for a short, Helps students generate As\u0007preparation\u0007for"
+    },
+    {
+      "physical_page": 491,
+      "printed_page": 491,
+      "chars": 3145,
+      "first_200": "Purpose Example Shared Inquiry Students actively read a Allows a teacher to lead Provide a selection of primary provocative text, asking a deep discussion about sources from individuals interpretive q"
+    },
+    {
+      "physical_page": 492,
+      "printed_page": 492,
+      "chars": 3145,
+      "first_200": "and outcomes. Think-Pair- Students think through a Enables the development To practice comparing the Share question or issue alone, of initial ideas that responses by the executive, pair with a"
+    },
+    {
+      "physical_page": 493,
+      "printed_page": 493,
+      "chars": 3145,
+      "first_200": "nts need to establish a depth of knowledge about historical events, processes, and people and their actions. This skill allows students to gain that empirical knowledge that they can then"
+    },
+    {
+      "physical_page": 494,
+      "printed_page": 494,
+      "chars": 3145,
+      "first_200": "guided reading of Reasoning her perspective. Booker T. Washington’s § Jigsaw of view, purpose, “Atlanta Compromise” historical situation, § Identify the purpose. speech. Ask them to and/or audience. §"
+    },
+    {
+      "physical_page": 495,
+      "printed_page": 495,
+      "chars": 3145,
+      "first_200": "© 2020 College Board Historical Thinking Skill 3: Analyze arguments in primary and secondary sources Because historians rely on primary and secondary sources to serve as evidence to\u0007support\u0007their\u0007clai"
+    },
+    {
+      "physical_page": 496,
+      "printed_page": 496,
+      "chars": 3145,
+      "first_200": "What outside evidence modify, or refute a § Explain how outside evidence supports and refutes the source’s argument. supports the claims in claims made? the source. § Explain how outside"
+    },
+    {
+      "physical_page": 497,
+      "printed_page": 497,
+      "chars": 3145,
+      "first_200": "g to the American Revolution and process is situated the U.S. Constitution. Extend explain how an event relates within a broader to a broader process. the discussion to include historical"
+    },
+    {
+      "physical_page": 498,
+      "printed_page": 498,
+      "chars": 3145,
+      "first_200": "§ Graphic development or process? and describe a pattern or and processes. Organizer connection between the § What\u0007are\u0007the\u0007effects\u0007of\u0007this\u0007 emergent nationalism and development or process? single-part"
+    },
+    {
+      "physical_page": 499,
+      "printed_page": 499,
+      "chars": 3145,
+      "first_200": "vements, using change over time? causation or patterns of continuity and change § How or why are developments over time. and processes similar and/or\u0007different? AP U.S. History Course and Exam"
+    },
+    {
+      "physical_page": 500,
+      "printed_page": 500,
+      "chars": 3145,
+      "first_200": "regarding positions Have students break down the to take? prompt into potential positions § What historical reasoning (Manifest Destiny was socially process is indicated motivated or Manifest Destiny "
+    },
+    {
+      "physical_page": 501,
+      "printed_page": 501,
+      "chars": 3145,
+      "first_200": "ons specific and process established in outlined in a sample prompt, relevant evidence. the prompt. such as Evaluate the extent § Hone your initial list of to which Reconstruction §"
+    },
+    {
+      "physical_page": 502,
+      "printed_page": 502,
+      "chars": 3145,
+      "first_200": "historical evidence. categories in which to graphic\u0007organizer\u0007(such\u0007as\u0007a\u0007 § Debate compare the evidence. Venn\u0007diagram\u0007or\u0007flow\u0007chart)\u0007to\u0007 arrange the evidence in a way § If causation is indicated, that"
+    },
+    {
+      "physical_page": 503,
+      "printed_page": 503,
+      "chars": 3145,
+      "first_200": "nificant\u0007effect\u0007on\u0007the\u0007 variables and explain their and insightful development or process. impact\u0007on\u0007the\u0007effectiveness\u0007 connections within § How does the of the New Deal programs. and across periods. "
+    },
+    {
+      "physical_page": 504,
+      "printed_page": 504,
+      "chars": 3145,
+      "first_200": "§ Graphic source’s credibility situation, or audience preparing the nation for World Organizer and limitations. relevant to the argument? War I. § How\u0007would\u0007this\u0007effect\u0007 § Think-Pair-Share Ask them to"
+    },
+    {
+      "physical_page": 505,
+      "printed_page": 505,
+      "chars": 3145,
+      "first_200": "© 2020 College Board Developing the Reasoning Processes Reasoning processes describe the cognitive operations and changed in the period 1450–1607, successful that students will be required to apply wh"
+    },
+    {
+      "physical_page": 506,
+      "printed_page": 506,
+      "chars": 3145,
+      "first_200": "Instructional Approaches V.1 | 492 Return to Table of Contents © 2020 College Board Sample Reasoning Instructional Process Key Tasks Examples Strategies Causation 2.i: Describe causes and/or Describe\u0007"
+    },
+    {
+      "physical_page": 507,
+      "printed_page": 507,
+      "chars": 3145,
+      "first_200": "and New Deal over time. (Topic 7.10) 3.iii: Explain the relative Explain the extent to which the § Self/Peer historical\u0007significance\u0007of\u0007specific\u0007 events of the period from 1945 Revision historical dev"
+    },
+    {
+      "physical_page": 508,
+      "printed_page": 508,
+      "chars": 3145,
+      "first_200": "Technology Theme 3: Geography and the Environment Theme 4: Migration and Settlement Theme 5: Politics and Power Theme 6: America in the World Theme 7: American and Regional Culture Theme"
+    },
+    {
+      "physical_page": 509,
+      "printed_page": 509,
+      "chars": 3145,
+      "first_200": "ives on a historical development or process. The question requires students to do the following: § Respond to the prompt with a historically defensible thesis or claim that establishes a"
+    },
+    {
+      "physical_page": 510,
+      "printed_page": 510,
+      "chars": 3145,
+      "first_200": "and processes. essay question assess students’ ability to identify and explain historical developments and processes. Skill 2: Sourcing and Multiple-choice\u0007questions\u0007assess\u0007students’\u0007ability\u0007 Short-an"
+    },
+    {
+      "physical_page": 511,
+      "printed_page": 511,
+      "chars": 3145,
+      "first_200": "so assess this skill. Skill 5: Making Multiple-choice\u0007questions\u0007assess\u0007students’\u0007ability\u0007 The\u0007document-based\u0007question,\u0007long\u0007 Connections to\u0007analyze\u0007patterns\u0007and\u0007connections\u0007between\u0007and\u0007 essay question"
+    },
+    {
+      "physical_page": 512,
+      "printed_page": 512,
+      "chars": 3145,
+      "first_200": "excerpt. “May it . . . please your most excellent Majesty, that it may be declared . . . in this present parliament assembled, and by the authority of the"
+    },
+    {
+      "physical_page": 513,
+      "printed_page": 513,
+      "chars": 3145,
+      "first_200": "© 2020 College Board Questions 5–7 refer to the following excerpt. “The Erie Canal poured into New York City [wealth] far exceeding that which its early friends predicted. . ."
+    },
+    {
+      "physical_page": 514,
+      "printed_page": 514,
+      "chars": 3145,
+      "first_200": "of life, liberty or property, without due process of law,’ it becomes our duty by legislation, whenever such legislation is necessary, to maintain this provision of the Constitution against all"
+    },
+    {
+      "physical_page": 515,
+      "printed_page": 515,
+      "chars": 3145,
+      "first_200": "ose depicted in the image most directly contributed to (A) calls to limit arms and naval destroyers for the major world powers (B) critical wartime provisioning for the Allies that"
+    },
+    {
+      "physical_page": 516,
+      "printed_page": 516,
+      "chars": 3145,
+      "first_200": "litical support in areas of the South that Republicans had previously dominated. (B) Republicans overcame divisions within their party with Ronald Reagan’s election as president in 1980. (C) Third-par"
+    },
+    {
+      "physical_page": 517,
+      "printed_page": 517,
+      "chars": 3145,
+      "first_200": "from the period 1880–1929 that is not specifically mentioned in the excerpts could be used to support Peiss’ argument. (C) Briefly explain how ONE specific historical event, development, or circumstan"
+    },
+    {
+      "physical_page": 518,
+      "printed_page": 518,
+      "chars": 3145,
+      "first_200": "me to time, adopt in regard to aboriginal tribes of that country. . . . In consideration of the cession aforesaid, the United States agree to pay . . ."
+    },
+    {
+      "physical_page": 519,
+      "printed_page": 519,
+      "chars": 3145,
+      "first_200": "sources,—due, in other words, to our natural advantages, and not to our intelligent preparations,—the United States is woefully unready, not only in fact but in purpose, to assert in the"
+    },
+    {
+      "physical_page": 520,
+      "printed_page": 520,
+      "chars": 3145,
+      "first_200": "Return to Table of Contents © 2020 College Board Document 6 Source: Puck, a satirical magazine, November 20, 1901. Courtesy\u0007of\u0007the\u0007Library\u0007of\u0007Congress\u0007#LC-DIG-ppmsca-25583 Document 7 Source: President"
+    },
+    {
+      "physical_page": 521,
+      "printed_page": 521,
+      "chars": 3145,
+      "first_200": "e in the function of the federal government in the period from 1776 to 1800. In your response you should do the following: § Respond to the prompt with a"
+    },
+    {
+      "physical_page": 522,
+      "printed_page": 522,
+      "chars": 3145,
+      "first_200": "Unit 7: Learning Objective G Free-Response Question Question Type Skill Thematic Focus Learning Objective 1 Document- 1.B, 2.B, 2.C, WOR Unit 7: Learning based 3.C, 3.D, 4.A, Objectives B, C,"
+    },
+    {
+      "physical_page": 523,
+      "printed_page": 523,
+      "chars": 3145,
+      "first_200": "context relevant to the prompt. developments, or processes that occur before, during, or continue after the time frame of the prompt that are relevant to the topic. This point is"
+    },
+    {
+      "physical_page": 524,
+      "printed_page": 524,
+      "chars": 3145,
+      "first_200": "ional piece of evidence must be different from piece\u0007of\u0007specific\u0007historical\u0007 the evidence used to earn the point for evidence (beyond that found contextualization. in the documents) relevant to an arg"
+    },
+    {
+      "physical_page": 525,
+      "printed_page": 525,
+      "chars": 3145,
+      "first_200": "continuity and change; OR § Explaining relevant and insightful connections within and across periods or geographical areas. These connections should clearly relate to an argument that responds to the "
+    },
+    {
+      "physical_page": 526,
+      "printed_page": 526,
+      "chars": 3145,
+      "first_200": "response, it must be more than merely a phrase or reference. AP U.S. History Course and Exam Description Exam Information V.1 | 519 Return to Table of Contents © 2020"
+    },
+    {
+      "physical_page": 527,
+      "printed_page": 527,
+      "chars": 3145,
+      "first_200": "evant to relevant evidence. the topic of the prompt. continued on next page AP U.S. History Course and Exam Description Exam Information V.1 | 520 Return to Table of Contents"
+    },
+    {
+      "physical_page": 528,
+      "printed_page": 528,
+      "chars": 3145,
+      "first_200": "and difference, or both continuity and change; OR § Explaining relevant and insightful connections within and across periods or geographical areas. These connections should clearly relate to an argume"
+    },
+    {
+      "physical_page": 529,
+      "printed_page": 529,
+      "chars": 3145,
+      "first_200": "a phrase or reference. AP U.S. History Course and Exam Description Exam Information V.1 | 521 Return to Table of Contents © 2020 College Board AP US HISTORY Scoring Guidelines"
+    },
+    {
+      "physical_page": 530,
+      "printed_page": 530,
+      "chars": 3145,
+      "first_200": "Scoring Guidelines V.1 | 523 Return to Table of Contents © 2020 College Board General Scoring Notes • Each point is earned independently. • Accuracy: These scoring guidelines require that"
+    },
+    {
+      "physical_page": 531,
+      "printed_page": 531,
+      "chars": 3145,
+      "first_200": "f the New Woman became a cultural phenomenon, as the older idea of separate spheres diminished. The idea of the New Woman supported a more public role for women in"
+    },
+    {
+      "physical_page": 532,
+      "printed_page": 532,
+      "chars": 3145,
+      "first_200": "a historical development related to the prompt through sophisticated argumentation\u0007and/or\u0007effective\u0007use\u0007of\u0007evidence. Document 1 Source: Treaty concerning the Cession of the Russian Possessions in Nort"
+    },
+    {
+      "physical_page": 533,
+      "printed_page": 533,
+      "chars": 3145,
+      "first_200": "rgest liberty, the purest Christianity, the highest civilization—having developed peculiarly aggressive traits calculated to impress its institutions upon mankind, will spread itself over the earth. D"
+    },
+    {
+      "physical_page": 534,
+      "printed_page": 534,
+      "chars": 3145,
+      "first_200": "States as far as present circumstances permit this to be done. We adhere to the policy . . . of peace with the Chinese nation, of furtherance of lawful commerce,"
+    },
+    {
+      "physical_page": 535,
+      "printed_page": 535,
+      "chars": 3145,
+      "first_200": "ore right to do injustice to another nation, strong or weak, than an individual has to do injustice to another individual; that the same moral law applies in one case"
+    },
+    {
+      "physical_page": 536,
+      "printed_page": 536,
+      "chars": 3145,
+      "first_200": "7 points Reporting Scoring Criteria Category Row A 0 points 1 point Thesis/Claim Does not meet the criteria for one point. Responds to the prompt with a historically defensible thesis/claim"
+    },
+    {
+      "physical_page": 537,
+      "printed_page": 537,
+      "chars": 3145,
+      "first_200": "with China, and helping other nations.” • “Different causes and events had a major importance in expanding the role Establish a line of reasoning that evaluates the topic of the"
+    },
+    {
+      "physical_page": 538,
+      "printed_page": 538,
+      "chars": 3145,
+      "first_200": "entire period. AP U.S. History Course and Exam Description Scoring Guidelines V.1 | 532 Return to Table of Contents © 2020 College Board Reporting Scoring Criteria Category Row B 0"
+    },
+    {
+      "physical_page": 539,
+      "printed_page": 539,
+      "chars": 3145,
+      "first_200": "• US trade with Asia Examples of acceptable contextualization: • “In the time period after the Civil War, Europe was growing its colonial empires in Africa and Asia, and the"
+    },
+    {
+      "physical_page": 540,
+      "printed_page": 540,
+      "chars": 3145,
+      "first_200": "he • Accurately\u0007describe—rather\u0007than\u0007simply\u0007quote— • Support an argument in response to the prompt documents the content from at least three of the documents by accurately using the content of at leas"
+    },
+    {
+      "physical_page": 541,
+      "printed_page": 541,
+      "chars": 3145,
+      "first_200": "imperialism) • (Document 3): “Mahan argues that the United States needs a stronger navy to support its growing economy and maintain its power. Having a strong navy meant gaining bases"
+    },
+    {
+      "physical_page": 542,
+      "printed_page": 542,
+      "chars": 3145,
+      "first_200": "Decision Rules and Scoring Notes Responses that do not earn this point: Responses that earn 1 point: • Provide evidence that is not relevant to an • Must use at"
+    },
+    {
+      "physical_page": 543,
+      "printed_page": 543,
+      "chars": 3145,
+      "first_200": "Scoring Criteria Category Row C Examples of evidence beyond the documents relevant to an argument about the prompt: (continued) • “Newspapers had risen in popularity among the public, a majority"
+    },
+    {
+      "physical_page": 544,
+      "printed_page": 544,
+      "chars": 3145,
+      "first_200": "Identify the point of view, purpose, historical purpose, historical situation, or audience is relevant to an argument that addresses the prompt for situation, and/or audience but fail to explain how"
+    },
+    {
+      "physical_page": 545,
+      "printed_page": 545,
+      "chars": 3145,
+      "first_200": "uring the period) Example of acceptable explanation of the relevance of the audience: • (Document 5): “As a presidential address to Congress, document 7 likely offers a picture of what"
+    },
+    {
+      "physical_page": 546,
+      "printed_page": 546,
+      "chars": 3145,
+      "first_200": "• Explaining both cause and effect, both similarity and difference, or both continuity and change; OR • Explaining relevant and insightful connections within and across periods or geographical areas. "
+    },
+    {
+      "physical_page": 547,
+      "printed_page": 547,
+      "chars": 3145,
+      "first_200": "attempts to increase trade in Asia and build the Panama Canal to transport goods (Explains multiple causes or effects) • Qualifying or modifying an argument by considering evidence that shows"
+    },
+    {
+      "physical_page": 548,
+      "printed_page": 548,
+      "chars": 3145,
+      "first_200": "in North concerning United States for $7.2 million in gold America\u0007continued\u0007long-standing\u0007policies\u0007of\u0007western\u0007expansion\u0007across\u0007the\u0007continent.\u0007(situation) Russian • Russians in the territory may retur"
+    },
+    {
+      "physical_page": 549,
+      "printed_page": 549,
+      "chars": 3145,
+      "first_200": "ion\u0007was\u0007in\u0007progress\u0007with\u0007anti-Western\u0007attacks\u0007by\u0007Chinese\u0007on\u0007foreign\u0007delegations\u0007 Open Door peace in China, preserve an independent China, and missionaries in China. This note was an attempt to respond"
+    },
+    {
+      "physical_page": 550,
+      "printed_page": 550,
+      "chars": 3145,
+      "first_200": "had previously engaged in direct intervention both with military and diplomatic Roosevelt, actions in foreign lands are timid and unmanly force\u0007in\u0007numerous\u0007parts\u0007of\u0007Latin\u0007America\u0007(such\u0007as\u0007Venezuela,\u0007P"
+    },
+    {
+      "physical_page": 551,
+      "printed_page": 551,
+      "chars": 3145,
+      "first_200": "6 points General Scoring Notes • Except where otherwise noted, each point of these rubrics is earned independently; for example, a student could earn a point for evidence without earning"
+    },
+    {
+      "physical_page": 552,
+      "printed_page": 552,
+      "chars": 3145,
+      "first_200": "tablish a line of reasoning. categories of the argument. • Are\u0007overgeneralized.\u0007 Examples that do not earn this point: Examples that earn this point: Provide a historically defensible claim, but do"
+    },
+    {
+      "physical_page": 553,
+      "printed_page": 553,
+      "chars": 3145,
+      "first_200": "© 2020 College Board Reporting Scoring Criteria Category Row B 0 points 1 point Contextualization Does not meet the criteria for one point. Describes a broader historical context relevant to"
+    },
+    {
+      "physical_page": 554,
+      "printed_page": 554,
+      "chars": 3145,
+      "first_200": "governments.” • “Under the Articles of Confederation, the national government did not have the power to tax.” (Minimally acceptable contextualization) Additional Notes: • The response must describe br"
+    },
+    {
+      "physical_page": 555,
+      "printed_page": 555,
+      "chars": 3145,
+      "first_200": "in the function of the federal government from • Provide evidence that is outside the time 1776 to 1800. period or region specified in the prompt. • Repeat information that"
+    },
+    {
+      "physical_page": 556,
+      "printed_page": 556,
+      "chars": 3145,
+      "first_200": "• The influence of Shays’ Rebellion on the framers of the guarantor of individual rights.” (Uses evidence to Constitution support an argument about a change in federal authority) • George"
+    },
+    {
+      "physical_page": 557,
+      "printed_page": 557,
+      "chars": 3145,
+      "first_200": "Return to Table of Contents © 2020 College Board Reporting Scoring Criteria Category Row D 0 points 1 point 2 points Analysis and Does not meet the criteria for one"
+    },
+    {
+      "physical_page": 558,
+      "printed_page": 558,
+      "chars": 3145,
+      "first_200": "ference, or both continuity and change; OR • Explaining relevant and insightful connections within and across periods or geographical areas. These connections should clearly relate to an argument that"
+    },
+    {
+      "physical_page": 559,
+      "printed_page": 559,
+      "chars": 3145,
+      "first_200": "vided: Provide evidence but offer • Explaining changes in the United States national • Assessing both Federalist arguments in favor of the Constitution and no reasoning to connect the government"
+    },
+    {
+      "physical_page": 560,
+      "printed_page": 560,
+      "chars": 3145,
+      "first_200": "slavery in the territories), and evidence regarding America’s role in the world\u0007(e.g.\u0007Quasi-War).\u0007(Uses evidence to demonstrate a sophisticated understanding of different perspectives relevant to the "
+    }
+  ]
+}

@@ -1,0 +1,626 @@
+{
+  "schema_version": "1",
+  "subject": "mathematics",
+  "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/02-A-Level知识库/03-考试局/Edexcel/Mathematics (IAL)/02-课本与考纲/考纲/Edexcel_Mathematics_ALevel_Specification_2025-2026.pdf",
+  "file_checksum_sha256": "71351e66d8434cc8976fa41801b65d77bdcad56f902e45807bc635bca317b408",
+  "pdfinfo": {
+    "Title": "International Advanced Level Mathematics/Further Mathematics/Pure Mathematics Specification",
+    "Subject": "International Advanced Level Mathematics Specification Issue 3",
+    "Author": "Patel, Parul",
+    "Creator": "Acrobat PDFMaker 19 for Word",
+    "Producer": "Adobe PDF Library 19.10.123",
+    "CreationDate": "Thu Apr 11 15:59:08 2019 CST",
+    "ModDate": "Mon Apr  7 16:59:36 2025 CST",
+    "Custom Metadata": "yes",
+    "Metadata Stream": "yes",
+    "Tagged": "no",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "AcroForm",
+    "JavaScript": "no",
+    "Pages": "99",
+    "Encrypted": "no",
+    "Page size": "595.276 x 841.89 pts (A4)",
+    "Page rot": "0",
+    "File size": "2438609 bytes",
+    "Optimized": "yes",
+    "PDF version": "1.6"
+  },
+  "total_pages": 99,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": 1,
+      "chars": 2291,
+      "first_200": "INTERNATIONAL ADVANCED LEVEL EDEXCEL INTERNATIONAL GCSE MATHEMATICS/ ECONOMICS FURTHER MATHEMATICS/ SPECIFICATION PURE MATHEMATICS Edexcel International GCSE in Economics (9-1) (4ET0) First examinatio"
+    },
+    {
+      "physical_page": 2,
+      "printed_page": 2,
+      "chars": 2291,
+      "first_200": "gazines and other publications and websites.) All information in this specification is correct at time of going to publication. ISBN 978 1 446 94981 8 All the material in this"
+    },
+    {
+      "physical_page": 3,
+      "printed_page": 3,
+      "chars": 2291,
+      "first_200": "21 Unit P4: Pure Mathematics 4 26 Unit FP1: Further Pure Mathematics 1 30 Unit FP2: Further Pure Mathematics 2 36 Unit FP3: Further Pure Mathematics 3 40 Unit M1:"
+    },
+    {
+      "physical_page": 4,
+      "printed_page": 4,
+      "chars": 2291,
+      "first_200": "re not accredited or regulated by any UK regulatory body. Key features This specification includes the following key features. Structure The Pearson Edexcel International Advanced Subsidiary in Mathem"
+    },
+    {
+      "physical_page": 5,
+      "printed_page": 5,
+      "chars": 2291,
+      "first_200": "hat must be covered. Examples: throughout the content, we have included examples of what could be covered or what might support teaching and learning. It is important to note that"
+    },
+    {
+      "physical_page": 6,
+      "printed_page": 6,
+      "chars": 2291,
+      "first_200": "onal Advanced Level – IAL 2 Pearson Edexcel International Advanced Subsidiary/Advanced Level in Mathematics, Further Mathematics and Pure Mathematics – Specification – Issue 3 – April 2019 © Pearson E"
+    },
+    {
+      "physical_page": 7,
+      "printed_page": 7,
+      "chars": 2291,
+      "first_200": "el International Advanced Subsidiary/Advanced Level in Mathematics, Further Mathematics 3 and Pure Mathematics – Specification – Issue 3 – April 2019 © Pearson Education Limited 2019 Why choose Pearso"
+    },
+    {
+      "physical_page": 8,
+      "printed_page": 8,
+      "chars": 2291,
+      "first_200": "of mathematics to other fields of study, to the world of work and to society in general • take increasing responsibility for their own learning and the evaluation of their"
+    },
+    {
+      "physical_page": 9,
+      "printed_page": 9,
+      "chars": 2291,
+      "first_200": "events each year for teachers to deepen their understanding of our qualifications. Get help and support Our subject advisor service will ensure that you receive help and guidance from us."
+    },
+    {
+      "physical_page": 10,
+      "printed_page": 10,
+      "chars": 2291,
+      "first_200": "June and 2019 (x, y); trigonometry; differentiation; integration. October P2: Pure WMA12/01 January, June 2019 33⅓ % 16⅔ % Proof; algebra and functions; coordinate geometry Mathematics 2 June and in"
+    },
+    {
+      "physical_page": 11,
+      "printed_page": 11,
+      "chars": 2291,
+      "first_200": "7 and Pure Mathematics – Specification – Issue 3 – April 2019 © Pearson Education Limited 2019 Unit *Unit Availability First IAS IAL Content overview code: assessment weighting weighting FP2:"
+    },
+    {
+      "physical_page": 12,
+      "printed_page": 12,
+      "chars": 2291,
+      "first_200": "statics of rigid bodies. M3: WME03/01 January and June 2020 33⅓ % 16⅔ % Further kinematics; elastic strings and springs; Mechanics 3 June further dynamics; motion in a circle; statics"
+    },
+    {
+      "physical_page": 13,
+      "printed_page": 13,
+      "chars": 2291,
+      "first_200": "estimation, confidence intervals and tests; goodness of fit and contingency tables; regression and correlation. D1: Decision WDM11/01 January and June 2019 33⅓ % 16⅔ % Algorithms; algorithms on graphs"
+    },
+    {
+      "physical_page": 14,
+      "printed_page": 14,
+      "chars": 2291,
+      "first_200": "M1 and D1 or M1 and M2 or S1 and D1 or S1 and S2 International Advanced Level in Further FP1 and either FP2 or FP2, FP3, M1, M2, M3,"
+    },
+    {
+      "physical_page": 15,
+      "printed_page": 15,
+      "chars": 2291,
+      "first_200": "47 Unit M3: Mechanics 3 50 Unit S1: Statistics 1 53 Unit S2: Statistics 2 57 Unit S3: Statistics 3 60 Unit D1: Decision Mathematics 1 63 Pearson Edexcel International"
+    },
+    {
+      "physical_page": 16,
+      "printed_page": 16,
+      "chars": 2291,
+      "first_200": "mmon usage. Quadratic equations 2 −b ± b − 4ac ax2 + bx + c = 0 has roots 2a Trigonometry In the triangle ABC, a b c = ="
+    },
+    {
+      "physical_page": 17,
+      "printed_page": 17,
+      "chars": 2291,
+      "first_200": "to know and to use function. b2 − 4ac > 0, b2 − 4ac = 0 and b2 − 4ac < 0 1.5 Completing the square. Solution of Solution of"
+    },
+    {
+      "physical_page": 18,
+      "printed_page": 18,
+      "chars": 2291,
+      "first_200": "including expanding polynomials of degree n, n  3, e.g. x3 + 4x2 + 3x. The brackets and collecting like terms, factorisation. notation f(x) may be used. 14 Pearson Edexcel"
+    },
+    {
+      "physical_page": 19,
+      "printed_page": 19,
+      "chars": 2291,
+      "first_200": "(ii) the equation of a line parallel (or perpendicular) to a ax + by + c = 0. given line through a given point. For example, the line perpendicular to"
+    },
+    {
+      "physical_page": 20,
+      "printed_page": 20,
+      "chars": 2291,
+      "first_200": "x2 + 5x − 3 multiples. (2x + 5)(x − 1) and is expected. 3 x 4.3 Applications of differentiation to Use of differentiation to find equations of tangents and"
+    },
+    {
+      "physical_page": 21,
+      "printed_page": 21,
+      "chars": 2291,
+      "first_200": "nt: June 2019. • The assessment is 1 hour and 30 minutes. • The assessment is out of 75 marks. • Students must answer all questions. • Calculators may be"
+    },
+    {
+      "physical_page": 22,
+      "printed_page": 22,
+      "chars": 2291,
+      "first_200": "cal steps to a conclusion; use methods of proof stated below: 1.2 Proof by exhaustion Proof by exhaustion. This involves trying all the options. Suppose x and y are odd"
+    },
+    {
+      "physical_page": 23,
+      "printed_page": 23,
+      "chars": 2291,
+      "first_200": "ational Advanced Subsidiary/Advanced Level in Mathematics, Further Mathematics and Pure Mathematics – Specification – Issue 3 – April 2019 © Pearson Education Limited 2019 What students need to learn:"
+    },
+    {
+      "physical_page": 24,
+      "printed_page": 24,
+      "chars": 2291,
+      "first_200": "loga  1  ≡ −loga x, x loga a = 1 where a, x, y > 0, a ≠ 1. 5.3 The solution of equations of the Students may"
+    },
+    {
+      "physical_page": 25,
+      "printed_page": 25,
+      "chars": 2291,
+      "first_200": "For example, find the finite area bounded by the curve y = 6x − x2 and the line y = 2x. ∫ x dy will not be required. Students will"
+    },
+    {
+      "physical_page": 26,
+      "printed_page": 26,
+      "chars": 2291,
+      "first_200": "in the assessments. 3. Notation and formulae Students will be expected to understand the symbols outlined in Appendix 7: Notation. Formulae that students are expected to know are given below"
+    },
+    {
+      "physical_page": 27,
+      "printed_page": 27,
+      "chars": 2291,
+      "first_200": "k 1 ekx ekx + c k 1 ln | x | + c, x ≠ 0 x f ′(x) + g′(x) f(x) + g(x) + c f ′(g(x)) g′(x)"
+    },
+    {
+      "physical_page": 28,
+      "printed_page": 28,
+      "chars": 2291,
+      "first_200": "y = | ax + b | and the graphs of y = | f(x) | and y = f(| x |), given the graph of y = f(x). For"
+    },
+    {
+      "physical_page": 29,
+      "printed_page": 29,
+      "chars": 2291,
+      "first_200": "equivalent cos x cos 2x + sin x sin 2x ≡ cos x. forms of r cos (θ ± a) or r sin (θ ± a). 3. Exponential and logarithms"
+    },
+    {
+      "physical_page": 30,
+      "printed_page": 30,
+      "chars": 2291,
+      "first_200": "range of values predicted is appropriate. Consideration of a second improved model may be required. d x Knowledge and use of the result (a ) = ax ln a is"
+    },
+    {
+      "physical_page": 31,
+      "printed_page": 31,
+      "chars": 2291,
+      "first_200": "which leads will be given. including recurrence relations of the form xn + 1 = f(xn) Pearson Edexcel International Advanced Subsidiary/Advanced Level in Mathematics, Further Mathematics 25 and Pure Ma"
+    },
+    {
+      "physical_page": 32,
+      "printed_page": 32,
+      "chars": 2291,
+      "first_200": "     z  c  26 Pearson Edexcel International Advanced Subsidiary/Advanced Level in Mathematics, Further Mathematics and Pure Mathematics – Specification – Issue 3 – April"
+    },
+    {
+      "physical_page": 33,
+      "printed_page": 33,
+      "chars": 2291,
+      "first_200": "tions involving connected rates of change may be set. equations. Pearson Edexcel International Advanced Subsidiary/Advanced Level in Mathematics, Further Mathematics 27 and Pure Mathematics – Specific"
+    },
+    {
+      "physical_page": 34,
+      "printed_page": 34,
+      "chars": 2291,
+      "first_200": "2 as 2 and is also required x +5 (2 x − 1) 4 (see P3 section 5.2). 6.4 Analytical solution of simple first General and particular solutions will be"
+    },
+    {
+      "physical_page": 35,
+      "printed_page": 35,
+      "chars": 2291,
+      "first_200": " OB = b = b1i + b2j + b3k then a.b = a1b1 + a2b2 + a3b3 and a .b cos ∠AOB = a b Students should know that"
+    },
+    {
+      "physical_page": 36,
+      "printed_page": 36,
+      "chars": 2291,
+      "first_200": "5 marks. • Students must answer all questions. • Calculators may be used in the examination. Please see Appendix 6: Use of calculators. • The booklet Mathematical Formulae and Statistical"
+    },
+    {
+      "physical_page": 37,
+      "printed_page": 37,
+      "chars": 2291,
+      "first_200": "imaginary part and equality of complex numbers should be known. r cos θ + i r sin θ. 1.2 Sum, product and quotient of | z1z2 | = | z1"
+    },
+    {
+      "physical_page": 38,
+      "printed_page": 38,
+      "chars": 2291,
+      "first_200": "α3 + β3 ≡ (α + β)3 − 3αβ(α + β). involving the sum of roots and product of roots. 2.3 Forming quadratic equations with 1 1 1 1 2"
+    },
+    {
+      "physical_page": 39,
+      "printed_page": 39,
+      "chars": 2291,
+      "first_200": "International Advanced Subsidiary/Advanced Level in Mathematics, Further Mathematics 33 and Pure Mathematics – Specification – Issue 3 – April 2019 © Pearson Education Limited 2019 What students need "
+    },
+    {
+      "physical_page": 40,
+      "printed_page": 40,
+      "chars": 2291,
+      "first_200": "Further Mathematics and Pure Mathematics – Specification – Issue 3 – April 2019 © Pearson Education Limited 2019 What students need to learn: Guidance 8. Proof 8.1 Proof by mathematical"
+    },
+    {
+      "physical_page": 41,
+      "printed_page": 41,
+      "chars": 2291,
+      "first_200": "second order differential equations; Maclaurin and Taylor series; Polar coordinates. FP2.2 Assessment information 1. Prerequisites A knowledge of the specifications for P1, P2, P3, P4 and FP1, their p"
+    },
+    {
+      "physical_page": 42,
+      "printed_page": 42,
+      "chars": 2291,
+      "first_200": "1 1 1 using partial fractions such as = − . r (r + 1) r r +1 3. Further complex numbers 3.1 Euler’s relation eiθ = cos θ +"
+    },
+    {
+      "physical_page": 43,
+      "printed_page": 43,
+      "chars": 2291,
+      "first_200": "ucation Limited 2019 What students need to learn: Guidance 4. First order differential equations 4.1 Further solution of first order The formation of the differential equation may be required. differe"
+    },
+    {
+      "physical_page": 44,
+      "printed_page": 44,
+      "chars": 2291,
+      "first_200": "cluding the term in (x − π)3. 6.4 Use of Taylor series method for Students may, for example, be required to find the solution series solutions of differential in powers"
+    },
+    {
+      "physical_page": 45,
+      "printed_page": 45,
+      "chars": 2291,
+      "first_200": "for P1, P2, P3, P4 and FP1, their prerequisites and associated formulae, is assumed and may be tested. 2. Examination • First assessment: June 2020. • The assessment is 1"
+    },
+    {
+      "physical_page": 46,
+      "printed_page": 46,
+      "chars": 2291,
+      "first_200": "be graphs, properties and logarithmic   equivalents. required to prove this and similar results. 2. Further coordinate systems 2.1 Cartesian and parametric equations Extension of work from FP1. for"
+    },
+    {
+      "physical_page": 47,
+      "printed_page": 47,
+      "chars": 2291,
+      "first_200": "2 1 2 artanh x2. hyperbolic functions. Pearson Edexcel International Advanced Subsidiary/Advanced Level in Mathematics, Further Mathematics 41 and Pure Mathematics – Specification – Issue 3 – April 20"
+    },
+    {
+      "physical_page": 48,
+      "printed_page": 48,
+      "chars": 2291,
+      "first_200": "2 for In = n 0 2sin (n +1) x In + 2 = + In n +1 sin nx for In = ∫ sin x dx , n >"
+    },
+    {
+      "physical_page": 49,
+      "printed_page": 49,
+      "chars": 2291,
+      "first_200": "atrices. represented by B followed by the transformation represented by A. 6.3 Transpose of a matrix. Use of the relation (AB)T = BTAT. 6.4 Evaluation of 3 × 3 determinants."
+    },
+    {
+      "physical_page": 50,
+      "printed_page": 50,
+      "chars": 2291,
+      "first_200": "mulae Students will be expected to understand the symbols outlined in Appendix 7: Notation. Formulae that students are expected to know are given below and will not appear in the"
+    },
+    {
+      "physical_page": 51,
+      "printed_page": 51,
+      "chars": 2291,
+      "first_200": "in the case of constant time change of velocity velocity, and of acceleration = in the time case of constant acceleration, will be required. 3. Kinematics of a particle moving"
+    },
+    {
+      "physical_page": 52,
+      "printed_page": 52,
+      "chars": 2291,
+      "first_200": "s will be confined to those of a one-dimensional principle of conservation of nature. momentum applied to two particles colliding directly. 4.4 Coefficient of friction. An understanding of F ="
+    },
+    {
+      "physical_page": 53,
+      "printed_page": 53,
+      "chars": 2291,
+      "first_200": "• Students must answer all questions. • Calculators may be used in the examination. Please see Appendix 6: Use of calculators. • The booklet Mathematical Formulae and Statistical Tables will"
+    },
+    {
+      "physical_page": 54,
+      "printed_page": 54,
+      "chars": 2291,
+      "first_200": "mass distribution in one and two dimensions. 2.2 Centre of mass of uniform plane The use of an axis of symmetry will be acceptable where figures, and simple cases of"
+    },
+    {
+      "physical_page": 55,
+      "printed_page": 55,
+      "chars": 2291,
+      "first_200": "smooth or rough vertical walls and on smooth or rough ground. Pearson Edexcel International Advanced Subsidiary/Advanced Level in Mathematics, Further Mathematics 49 and Pure Mathematics – Specificati"
+    },
+    {
+      "physical_page": 56,
+      "printed_page": 56,
+      "chars": 2291,
+      "first_200": "λ x2 The energy stored in an elastic string = 2l For SHM: x = −ω 2x, x = a cos ωt or x = a sin ωt, v2 ="
+    },
+    {
+      "physical_page": 57,
+      "printed_page": 57,
+      "chars": 2291,
+      "first_200": "(i.e. showing that x = −ω 2x). Geometric or calculus methods of solution will be acceptable. Students will be expected to be familiar with standard formulae, which may be quoted"
+    },
+    {
+      "physical_page": 58,
+      "printed_page": 58,
+      "chars": 2291,
+      "first_200": "athematics Externally assessed S1.1 Unit description Mathematical models in probability and statistics; representation and summary of data; probability; correlation and regression; discrete random var"
+    },
+    {
+      "physical_page": 59,
+      "printed_page": 59,
+      "chars": 2291,
+      "first_200": "ematics – Specification – Issue 3 – April 2019 © Pearson Education Limited 2019 2. Notation and formulae Cumulative distribution function for a discrete random variable: continued F(x0) = P(X"
+    },
+    {
+      "physical_page": 60,
+      "printed_page": 60,
+      "chars": 2291,
+      "first_200": "us, grouped or ungrouped. Understanding and use of coding. 2.3 Measures of dispersion – variance, Simple interpolation may be required. Interpretation of standard deviation, range and measures of loca"
+    },
+    {
+      "physical_page": 61,
+      "printed_page": 61,
+      "chars": 2291,
+      "first_200": "y may be used. Linear change of variable may be required. 4.3 The product moment correlation Derivations and tests of significance will not be required. coefficient, its use, interpretation and"
+    },
+    {
+      "physical_page": 62,
+      "printed_page": 62,
+      "chars": 2291,
+      "first_200": "ption The Binomial and Poisson distributions; continuous random variables; continuous distributions; samples; hypothesis tests. S2.2 Assessment information 1. Prerequisites A knowledge of the specific"
+    },
+    {
+      "physical_page": 63,
+      "printed_page": 63,
+      "chars": 2291,
+      "first_200": "a dF(x) f(x) = dx Pearson Edexcel International Advanced Subsidiary/Advanced Level in Mathematics, Further Mathematics 57 and Pure Mathematics – Specification – Issue 3 – April 2019 © Pearson Educatio"
+    },
+    {
+      "physical_page": 64,
+      "printed_page": 64,
+      "chars": 2291,
+      "first_200": "∫ f ( x ) dx . −∞ The formulae used in defining f(x) will be restricted to simple polynomials which may be expressed piecewise. 2.3 Relationship between density and"
+    },
+    {
+      "physical_page": 65,
+      "printed_page": 65,
+      "chars": 2291,
+      "first_200": "Tests for the parameter p of a binomial distribution may involve the use of a normal approximation to calculate probabilities. Pearson Edexcel International Advanced Subsidiary/Advanced Level in Mathe"
+    },
+    {
+      "physical_page": 66,
+      "printed_page": 66,
+      "chars": 2291,
+      "first_200": "∼ N(μy, σy2). 60 Pearson Edexcel International Advanced Subsidiary/Advanced Level in Mathematics, Further Mathematics and Pure Mathematics – Specification – Issue 3 – April 2019 © Pearson Education Li"
+    },
+    {
+      "physical_page": 67,
+      "printed_page": 67,
+      "chars": 2291,
+      "first_200": "f a confidence interval Link with hypothesis tests. and its interpretation. 3.4 Confidence limits for a Normal Students will be expected to know how to apply the Normal mean, with"
+    },
+    {
+      "physical_page": 68,
+      "printed_page": 68,
+      "chars": 2291,
+      "first_200": "population variances are unknown. S x2 S y + nx n y A knowledge of the t-distribution is not required. 4. Goodness of fit and contingency tables 4.1 The null"
+    },
+    {
+      "physical_page": 69,
+      "printed_page": 69,
+      "chars": 2291,
+      "first_200": "Students should show clearly how an algorithm has been applied. Matrix representation will be required but matrix manipulation is not required. Students will be required to model and interpret situati"
+    },
+    {
+      "physical_page": 70,
+      "printed_page": 70,
+      "chars": 2291,
+      "first_200": "sort, chosen as the middle item of the list. binary search. 2. Algorithms on graphs 2.1 The minimum spanning tree Matrix representation for Prim’s algorithm is expected. (minimum connector) problem."
+    },
+    {
+      "physical_page": 71,
+      "printed_page": 71,
+      "chars": 2291,
+      "first_200": "finding the critical path. Earliest and latest event times. Earliest and latest start and finish times for activities. 4.4 Total float. Gantt (cascade) charts. Scheduling. 5. Linear programming 5.1 Fo"
+    },
+    {
+      "physical_page": 72,
+      "printed_page": 72,
+      "chars": 2291,
+      "first_200": "er vertex is called a complete graph. The travelling salesman problem is ‘find a route of minimum length which visits every vertex in an undirected network’. In the ‘classical’ problem,"
+    },
+    {
+      "physical_page": 73,
+      "printed_page": 73,
+      "chars": 2291,
+      "first_200": "tics 2 IA2 FP3: Further Mathematics 3 IA2 M1: Mechanics 1 IAS M2: Mechanics 2 IA2 M3: Mechanics 3 IA2 S1: Statistics 1 IAS S2: Statistics 2 IA2 S3: Statistics"
+    },
+    {
+      "physical_page": 74,
+      "printed_page": 74,
+      "chars": 2291,
+      "first_200": "ssion of the assumptions made and refinement of such models. AO4 Comprehend translations of common 5% 5% 5% realistic contexts into mathematics; use the results of calculations to make predictions,"
+    },
+    {
+      "physical_page": 75,
+      "printed_page": 75,
+      "chars": 2291,
+      "first_200": "15 5–10 5–10 S1 20–25 20–25 15–20 5–10 5–10 S2 25–30 20–25 10–15 5–10 5–10 S3 25–30 20–25 10–15 5–10 5–10 D1 20–25 20–25 15–20 5–10 5–10 Pearson Edexcel International"
+    },
+    {
+      "physical_page": 76,
+      "printed_page": 76,
+      "chars": 2291,
+      "first_200": "1        IAS Mathematics        award IAS Further Mathematics        award IAS"
+    },
+    {
+      "physical_page": 77,
+      "printed_page": 77,
+      "chars": 2291,
+      "first_200": "th a protected characteristic (as defined by the UK Equality Act 2010) are not, when they are undertaking one of our qualifications, disadvantaged in comparison to students who do not"
+    },
+    {
+      "physical_page": 78,
+      "printed_page": 78,
+      "chars": 2291,
+      "first_200": "d if it involves unreasonable costs to the awarding organisation, timeframes or affects the security or integrity of the assessment. This is because the adjustment is not ‘reasonable’. Special conside"
+    },
+    {
+      "physical_page": 79,
+      "printed_page": 79,
+      "chars": 2291,
+      "first_200": "n a JCQ Form M2(a) (available at www.jcq.org.uk/exams-office/malpractice). The form, supporting documentation and as much information as possible should be emailed to pqsmalpractice@pearson.com. Note "
+    },
+    {
+      "physical_page": 80,
+      "printed_page": 80,
+      "chars": 2291,
+      "first_200": "matics – Specification – Issue 3 – April 2019 © Pearson Education Limited 2019 Qualification results The minimum uniform marks required for each grade: International Advanced Subsidiary (cash-in code:"
+    },
+    {
+      "physical_page": 81,
+      "printed_page": 81,
+      "chars": 2291,
+      "first_200": "learning and other requirements There are no prior learning or other requirements for these qualifications. Students who would benefit most from studying these qualifications are likely to have a Leve"
+    },
+    {
+      "physical_page": 82,
+      "printed_page": 82,
+      "chars": 2291,
+      "first_200": "xamination. Unit FP1: WFM01/01 Unit FP2: WFM02/01 Unit FP3: WFM03/01 Unit M1: WME01/01 Unit M2: WME02/01 Unit M3: WME03/01 Unit S1: WST01/01 Unit S2: WST02/01 Unit S3: WST03/01 Unit D1:"
+    },
+    {
+      "physical_page": 83,
+      "printed_page": 83,
+      "chars": 2291,
+      "first_200": "qualification. 78 Pearson Edexcel International Advanced Subsidiary/Advanced Level in Mathematics, Further Mathematics and Pure Mathematics – Specification – Issue 3 – April 2019 © Pearson Education L"
+    },
+    {
+      "physical_page": 84,
+      "printed_page": 84,
+      "chars": 2291,
+      "first_200": "marking assessments against UK and overseas providers to ensure that they are at the right level of demand • establishing External Subject Advisory Groups, drawing on independent subject-specific expe"
+    },
+    {
+      "physical_page": 85,
+      "printed_page": 85,
+      "chars": 2291,
+      "first_200": "Mathematics – Specification – Issue 3 – April 2019 © Pearson Education Limited 2019 Appendix 3: Transferable skills The need for transferable skills In recent years, higher-education institutions and "
+    },
+    {
+      "physical_page": 86,
+      "printed_page": 86,
+      "chars": 2291,
+      "first_200": "19 Cognitive • Critical thinking Assimilating given information, or processes and • Problem solving data found, determining the goal strategies and establishing at least one Cognitive skills • Analysi"
+    },
+    {
+      "physical_page": 87,
+      "printed_page": 87,
+      "chars": 2291,
+      "first_200": "Reflecting on ideas learnt, Intrapersonal skills • Continuous learning problems met, whether solved or Work ethic/ • Initiative not, and using these to improve conscientiousness on one’s own performan"
+    },
+    {
+      "physical_page": 88,
+      "printed_page": 88,
+      "chars": 2291,
+      "first_200": "nd • Communication collaboration • Collaboration Interpersonal skills Use mathematics as an effective • Teamwork medium of communication of ideas, concepts and solutions to • Cooperation problems. Use"
+    },
+    {
+      "physical_page": 89,
+      "printed_page": 89,
+      "chars": 2291,
+      "first_200": "evelop skills in the following areas: research, critical thinking, extended writing and project management. Students identify and agree a topic area of their choice for in-depth study (which may or"
+    },
+    {
+      "physical_page": 90,
+      "printed_page": 90,
+      "chars": 2291,
+      "first_200": "and Pure Mathematics – Specification – Issue 3 – April 2019 © Pearson Education Limited 2019 In the context of the Extended Project, critical thinking refers to the ability to"
+    },
+    {
+      "physical_page": 91,
+      "printed_page": 91,
+      "chars": 2291,
+      "first_200": "athematics with design and technology can carry out design projects involving the need to model a situation mathematically in planning their design. A wide range of information to support the"
+    },
+    {
+      "physical_page": 92,
+      "printed_page": 92,
+      "chars": 2291,
+      "first_200": "to see the proportionate achievement of a student across all units of study. Uniform Mark Scale (UMS) Student actual marks (or raw marks) will be converted into a UMS mark"
+    },
+    {
+      "physical_page": 93,
+      "printed_page": 93,
+      "chars": 2291,
+      "first_200": "internet The candidate is responsible • be borrowed from another candidate during an for the following: examination for any reason* • the calculator’s power supply • have retrievable information store"
+    },
+    {
+      "physical_page": 94,
+      "printed_page": 94,
+      "chars": 2291,
+      "first_200": "p  the set of rational numbers,  : p ∈ Z , q ∈ Z +  q  1.14 ℚ+ the set of positive rational numbers, {x ∈"
+    },
+    {
+      "physical_page": 95,
+      "printed_page": 95,
+      "chars": 2291,
+      "first_200": "is isomorphic to 2.6 ∝ is proportional to 2.7 < is less than 2.8 ,  is less than or equal to, is not greater than 2.9 > is greater"
+    },
+    {
+      "physical_page": 96,
+      "printed_page": 96,
+      "chars": 2291,
+      "first_200": "for n ∈ ℚ r! 4. Functions 4.1 f(x) the value of the function f at x f is a function under which each element of set A has an"
+    },
+    {
+      "physical_page": 97,
+      "printed_page": 97,
+      "chars": 2291,
+      "first_200": "to base 10 6. Circular and hyperbolic functions 6.1 sin, cos, tan,  the circular functions  cosec, sec, cot  6.2 arcsin, arccos, arctan,  the inverse circular functions"
+    },
+    {
+      "physical_page": 98,
+      "printed_page": 98,
+      "chars": 2291,
+      "first_200": "AB the magnitude of AB 9.7 a.b the scalar product of a and b 9.8 a×b the vector product of a and b 10. Probability and statistics 10.1 A, B,"
+    },
+    {
+      "physical_page": 99,
+      "printed_page": 99,
+      "chars": 2291,
+      "first_200": "the values 0, 1, 2, … 10.20 B(n, p) binomial distribution with parameters n and p 10.21 N(μ, σ2) normal distribution with mean μ and variance σ2 10.22 μ population"
+    }
+  ]
+}

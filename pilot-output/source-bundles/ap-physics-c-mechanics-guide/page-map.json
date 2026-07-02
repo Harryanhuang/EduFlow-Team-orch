@@ -1,0 +1,72 @@
+{
+  "schema_version": "1",
+  "source_id": "primary_ced",
+  "page_ref_convention": "printed_page",
+  "physical_page_offset_note": "AP CED pages are typically labeled with printed_page numbers.",
+  "mappings": [
+    {
+      "target": "assessment_identity.system",
+      "page_refs": [
+        "title page"
+      ],
+      "evidence_note": "College Board AP CED."
+    },
+    {
+      "target": "topics.course_framework",
+      "page_refs": [
+        "Section 1"
+      ],
+      "evidence_note": "Course framework overview."
+    },
+    {
+      "target": "topics.ap-physics-c-mechanics-unit01",
+      "page_refs": [
+        "Unit 1"
+      ],
+      "evidence_note": "Unit 1: Kinematics (10–15%)."
+    },
+    {
+      "target": "topics.ap-physics-c-mechanics-unit02",
+      "page_refs": [
+        "Unit 2"
+      ],
+      "evidence_note": "Unit 2: Force and Translational Dynamics (20–25%)."
+    },
+    {
+      "target": "topics.ap-physics-c-mechanics-unit03",
+      "page_refs": [
+        "Unit 3"
+      ],
+      "evidence_note": "Unit 3: Work, Energy, and Power (15–25%)."
+    },
+    {
+      "target": "topics.ap-physics-c-mechanics-unit04",
+      "page_refs": [
+        "Unit 4"
+      ],
+      "evidence_note": "Unit 4: Linear Momentum (10–20%)."
+    },
+    {
+      "target": "topics.ap-physics-c-mechanics-unit05",
+      "page_refs": [
+        "Unit 5"
+      ],
+      "evidence_note": "Unit 5: Torque and Rotational Dynamics (10–15%)."
+    },
+    {
+      "target": "topics.ap-physics-c-mechanics-unit06",
+      "page_refs": [
+        "Unit 6"
+      ],
+      "evidence_note": "Unit 6: Energy and Momentum of Rotating Systems (10–15%)."
+    },
+    {
+      "target": "topics.ap-physics-c-mechanics-unit07",
+      "page_refs": [
+        "Unit 7"
+      ],
+      "evidence_note": "Unit 7: Oscillations (10–15%)."
+    }
+  ],
+  "draft_notes": []
+}

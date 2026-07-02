@@ -1,0 +1,201 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Content-Two-Columns</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    .slide {
+      width: 1920px;
+      height: 1080px;
+      background-color: #FFFFFF;
+      font-family: 'PingFang SC', 'Microsoft YaHei', 'PingFang TC', 'Hiragino Sans GB', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+    .title-block {
+      position: absolute;
+      left: 80px;
+      top: 100px;
+      width: 1680px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .title-block [data-slot="title"] {
+      font-weight: 600;
+      font-size: 64px;
+      line-height: 1.25;
+      color: #20283A;
+    }
+    .title-block [data-slot="subtitle"] {
+      font-weight: 400;
+      font-size: 40px;
+      line-height: 1.4;
+      color: #20283A;
+      /* 等效灰色（避免 opacity 导出丢失） */
+      color: #17495C; /* black @ 60% on white */
+    }
+    .content-row {
+      position: absolute;
+      left: 80px;
+      top: 304px;
+      width: 1760px;
+      display: flex;
+      flex-direction: row;
+      gap: 32px;
+      align-items: center;
+    }
+    .content-card {
+      width: 864px;
+      height: 676px;
+      background-color: #F2FAFD;
+      border-radius: 16px;
+      padding: 56px;
+      display: flex;
+      flex-direction: column;
+      gap: 84px;
+    }
+    .card-image {
+      width: 140px;
+      height: 140px;
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: #FFFFFF;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-image img {
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+    }
+    .card-text {
+      display: flex;
+      flex-direction: column;
+      gap: 27px;
+      flex: 1;
+    }
+    .content-card [data-slot$="Heading"] {
+      font-weight: 500;
+      font-size: 40px;
+      line-height: 1.22;
+      color: #20283A;
+    }
+    .content-card [data-slot$="Copy"] {
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 1.22;
+      color: #20283A;
+      /* 等效灰色（避免 opacity 导出丢失） */
+      color: #20283A; /* black @ 70% on white */
+    }
+  </style>
+<style id="qoderwork-sea-blue-base">
+    .slide {
+      color: #20283A !important;
+      letter-spacing: 0 !important;
+    }
+    .title-block [data-slot="title"] {
+      color: #123A4A !important;
+      font-weight: 700 !important;
+      letter-spacing: 0 !important;
+    }
+    .title-block [data-slot="subtitle"] {
+      color: #17495C !important;
+      font-weight: 500 !important;
+    }
+    .content-card,
+    .comparison-col,
+    .timeline-step {
+      border: 1px solid rgba(45,156,196,0.18) !important;
+      box-shadow: none !important;
+    }
+    .content-card,
+    .col-right {
+      background-color: #F2FAFD !important;
+    }
+    .col-left {
+      background-color: #E6F5FA !important;
+    }
+    .card-image {
+      background-color: #FFFFFF !important;
+      border: 1px solid rgba(210,161,72,0.35) !important;
+    }
+    .card-image img {
+      color: #2D9CC4 !important;
+    }
+    [data-slot$="Heading"],
+    [data-slot$="Label"] {
+      color: #123A4A !important;
+      font-weight: 700 !important;
+    }
+    [data-slot$="Copy"],
+    [data-slot$="Item1"],
+    [data-slot$="Item2"],
+    [data-slot$="Item3"],
+    [data-slot$="Item4"] {
+      color: #20283A !important;
+    }
+    .col-items [data-slot$="Item1"]::before,
+    .col-items [data-slot$="Item2"]::before,
+    .col-items [data-slot$="Item3"]::before,
+    .col-items [data-slot$="Item4"]::before {
+      background-color: #D2A148 !important;
+    }
+  </style>
+<style id="eduflow-sea-theme">
+  .slide { color: #20283A !important; }
+  .title-block [data-slot="title"] { color: #123A4A !important; font-weight: 750 !important; letter-spacing: 0 !important; }
+  .title-block [data-slot="subtitle"] { color: #17495C !important; font-weight: 500 !important; }
+  .content-card, .comparison-col, .timeline-step { border: 1px solid rgba(45,156,196,0.18) !important; box-shadow: none !important; }
+  .card-image { background-color: #FFFFFF !important; border: 1px solid rgba(210,161,72,0.35) !important; }
+  .card-image img { color: #2D9CC4 !important; }
+  [data-slot$="Heading"], [data-slot$="Label"] { color: #123A4A !important; font-weight: 750 !important; }
+  [data-slot$="Copy"], [data-slot$="Item1"], [data-slot$="Item2"], [data-slot$="Item3"], [data-slot$="Item4"] { color: #20283A !important; }
+</style>
+
+<style id="compact-two">
+  .title-block { top: 86px !important; gap: 12px !important; }
+  .title-block [data-slot="title"] { font-size: 58px !important; line-height: 1.16 !important; }
+  .title-block [data-slot="subtitle"] { font-size: 31px !important; line-height: 1.32 !important; }
+  .content-row { top: 284px !important; height: 710px !important; }
+  .content-card { padding: 40px 46px !important; gap: 28px !important; }
+  .card-image { width: 80px !important; height: 80px !important; }
+  .card-image img { width: 44px !important; height: 44px !important; }
+  .card-text { gap: 16px !important; }
+  .content-card [data-slot$="Heading"] { font-size: 34px !important; line-height: 1.18 !important; }
+  .content-card [data-slot$="Copy"] { font-size: 24px !important; line-height: 1.32 !important; }
+</style>
+</head>
+<body>
+  <div class="slide" data-template="content-two-columns">
+    <div class="title-block">
+      <h1 data-slot="title">IG 的桥梁功能与年度节奏</h1>
+      <p data-slot="subtitle">IG 不是“低配版 A-Level”，而是把学生从中文校内学习带到国际课程学习状态。</p>
+    </div>
+    <div class="content-row">
+      <div class="content-card">
+        <div class="card-image">
+          <img data-slot="block1Image" src="data:image/svg+xml;base64,PCEtLSBAbGljZW5zZSBsdWNpZGUtc3RhdGljIHYwLjQ2OC4wIC0gSVNDIC0tPgo8c3ZnCiAgY2xhc3M9Imx1Y2lkZSBsdWNpZGUtd2F5cG9pbnRzIgogIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICBzdHJva2U9ImN1cnJlbnRDb2xvciIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjQuNSIgcj0iMi41IiAvPgogIDxwYXRoIGQ9Im0xMC4yIDYuMy0zLjkgMy45IiAvPgogIDxjaXJjbGUgY3g9IjQuNSIgY3k9IjEyIiByPSIyLjUiIC8+CiAgPHBhdGggZD0iTTcgMTJoMTAiIC8+CiAgPGNpcmNsZSBjeD0iMTkuNSIgY3k9IjEyIiByPSIyLjUiIC8+CiAgPHBhdGggZD0ibTEzLjggMTcuNyAzLjktMy45IiAvPgogIDxjaXJjbGUgY3g9IjEyIiBjeT0iMTkuNSIgcj0iMi41IiAvPgo8L3N2Zz4K" alt="">
+        </div>
+        <div class="card-text">
+          <h2 data-slot="block1Heading">五个桥梁功能</h2>
+          <p data-slot="block1Copy">语言衔接、学术表达、考试方式、实验与数据、学习习惯共同决定学生能否进入 A-Level 状态。</p>
+        </div>
+      </div>
+      <div class="content-card">
+        <div class="card-image">
+          <img data-slot="block2Image" src="data:image/svg+xml;base64,PCEtLSBAbGljZW5zZSBsdWNpZGUtc3RhdGljIHYwLjQ2OC4wIC0gSVNDIC0tPgo8c3ZnCiAgY2xhc3M9Imx1Y2lkZSBsdWNpZGUtY2FsZW5kYXItcmFuZ2UiCiAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iY3VycmVudENvbG9yIgogIHN0cm9rZS13aWR0aD0iMiIKICBzdHJva2UtbGluZWNhcD0icm91bmQiCiAgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIKPgogIDxyZWN0IHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgeD0iMyIgeT0iNCIgcng9IjIiIC8+CiAgPHBhdGggZD0iTTE2IDJ2NCIgLz4KICA8cGF0aCBkPSJNMyAxMGgxOCIgLz4KICA8cGF0aCBkPSJNOCAydjQiIC8+CiAgPHBhdGggZD0iTTE3IDE0aC02IiAvPgogIDxwYXRoIGQ9Ik0xMyAxOEg3IiAvPgogIDxwYXRoIGQ9Ik03IDE0aC4wMSIgLz4KICA8cGF0aCBkPSJNMTcgMThoLjAxIiAvPgo8L3N2Zz4K" alt="">
+        </div>
+        <div class="card-text">
+          <h2 data-slot="block2Heading">一年制节奏</h2>
+          <p data-slot="block2Copy">8-9 月诊断分层；10-2 月推进 topic 与补弱；3-6 月真题、mock 与国际考；暑期复盘选课和升学方向。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body></html>

@@ -1,0 +1,296 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "dse-physics-ca",
+      "topic_name": "DSE Physics",
+      "parent_id": "",
+      "scope": [
+        "Hong Kong DSE Physics curriculum (S4-S6)",
+        "Compulsory + 2 of 4 elective topics"
+      ],
+      "out_of_scope": [
+        "Non-DSE physics curricula unless explicitly compared"
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits"
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "dse-physics-compulsory",
+      "topic_name": "Compulsory Part",
+      "parent_id": "dse-physics-ca",
+      "scope": [
+        "6 compulsory topics assessed in Paper 1"
+      ],
+      "out_of_scope": [
+        "Elective topics"
+      ],
+      "classification_hints": [
+        "Route ordinary physics content here unless it clearly matches an elective"
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "heat_gases",
+      "topic_name": "I. Heat and Gases",
+      "parent_id": "dse-physics-compulsory",
+      "scope": [
+        "Temperature, heat, internal energy, specific heat capacity, latent heat, gas laws, kinetic theory."
+      ],
+      "out_of_scope": [],
+      "classification_hints": [
+        "Look for: temperature, heat, gas laws, kinetic theory"
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "mechanics",
+      "topic_name": "II. Mechanics",
+      "parent_id": "dse-physics-compulsory",
+      "scope": [
+        "Motion in 1D/2D, forces, work, energy, power, momentum, projectiles, circular motion."
+      ],
+      "out_of_scope": [],
+      "classification_hints": [
+        "Look for: kinematics, dynamics, energy, momentum"
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "waves",
+      "topic_name": "III. Waves",
+      "parent_id": "dse-physics-compulsory",
+      "scope": [
+        "Wave motion, transverse/longitudinal, reflection, refraction, diffraction, interference, standing waves, sound."
+      ],
+      "out_of_scope": [],
+      "classification_hints": [
+        "Look for: wave, sound, interference, diffraction"
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "electricity_magnetism",
+      "topic_name": "IV. Electricity and Magnetism",
+      "parent_id": "dse-physics-compulsory",
+      "scope": [
+        "Electrostatics, DC circuits, magnetic fields, electromagnetic induction, AC."
+      ],
+      "out_of_scope": [],
+      "classification_hints": [
+        "Look for: charge, current, circuit, magnetic field, induction"
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "radioactivity_nuclear",
+      "topic_name": "V. Radioactivity and Nuclear Energy",
+      "parent_id": "dse-physics-compulsory",
+      "scope": [
+        "Atomic structure, radioactive decay, half-life, fission, fusion, nuclear energy."
+      ],
+      "out_of_scope": [],
+      "classification_hints": [
+        "Look for: radiation, decay, fission, fusion, half-life"
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "astronomy_space",
+      "topic_name": "VI. Astronomy and Space Science",
+      "parent_id": "dse-physics-compulsory",
+      "scope": [
+        "Celestial sphere, solar system, stellar evolution, cosmology, space exploration."
+      ],
+      "out_of_scope": [],
+      "classification_hints": [
+        "Look for: star, galaxy, solar system, universe"
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "dse-physics-elective",
+      "topic_name": "Elective Part",
+      "parent_id": "dse-physics-ca",
+      "scope": [
+        "Candidates take 2 of 4 elective topics in Paper 2"
+      ],
+      "out_of_scope": [],
+      "classification_hints": [
+        "Use this parent for general elective content"
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "atomic_world",
+      "topic_name": "Elective 1: Atomic World",
+      "parent_id": "dse-physics-elective",
+      "scope": [
+        "Photoelectric effect, Bohr model, wave-particle duality, quantum mechanics basics."
+      ],
+      "out_of_scope": [],
+      "classification_hints": [
+        "Look for: photoelectric, Bohr, quantum, photon"
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "energy_energy_use",
+      "topic_name": "Elective 2: Energy and Energy Use",
+      "parent_id": "dse-physics-elective",
+      "scope": [
+        "Renewable and non-renewable energy, energy efficiency, electricity generation, transmission, building design."
+      ],
+      "out_of_scope": [],
+      "classification_hints": [
+        "Look for: energy, power generation, renewable, efficiency"
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "medical_physics",
+      "topic_name": "Elective 3: Medical Physics",
+      "parent_id": "dse-physics-elective",
+      "scope": [
+        "Diagnostic imaging (X-ray, ultrasound, MRI, CT), radiation therapy, optical instruments."
+      ],
+      "out_of_scope": [],
+      "classification_hints": [
+        "Look for: X-ray, ultrasound, MRI, medical imaging"
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "electromagnetic_induction",
+      "topic_name": "Elective 4: Electromagnetic Induction and Electromagnetic Waves",
+      "parent_id": "dse-physics-elective",
+      "scope": [
+        "Faraday's law, Lenz's law, AC generators, transformers, EM spectrum, communication."
+      ],
+      "out_of_scope": [],
+      "classification_hints": [
+        "Look for: induction, transformer, electromagnetic wave"
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "schema_version": "1",
+  "source_id": "primary_ced",
+  "page_ref_convention": "printed_page",
+  "physical_page_offset_note": "AP CED pages are typically labeled with printed_page numbers.",
+  "mappings": [
+    {
+      "target": "assessment_identity.system",
+      "page_refs": [
+        "title page"
+      ],
+      "evidence_note": "College Board AP CED."
+    },
+    {
+      "target": "topics.course_framework",
+      "page_refs": [
+        "Section 1"
+      ],
+      "evidence_note": "Course framework overview."
+    },
+    {
+      "target": "topics.ap-calculus-ab-unit01",
+      "page_refs": [
+        "Unit 1"
+      ],
+      "evidence_note": "Unit 1: Limits and Continuity                       10–12% (4–7%)."
+    },
+    {
+      "target": "topics.ap-calculus-ab-unit02",
+      "page_refs": [
+        "Unit 2"
+      ],
+      "evidence_note": "Unit 2: Differentiation: Definition (weighting n/a)."
+    },
+    {
+      "target": "topics.ap-calculus-ab-unit03",
+      "page_refs": [
+        "Unit 3"
+      ],
+      "evidence_note": "Unit 3: Differentiation: Composite, (weighting n/a)."
+    },
+    {
+      "target": "topics.ap-calculus-ab-unit04",
+      "page_refs": [
+        "Unit 4"
+      ],
+      "evidence_note": "Unit 4: Contextual Applications of (weighting n/a)."
+    },
+    {
+      "target": "topics.ap-calculus-ab-unit05",
+      "page_refs": [
+        "Unit 5"
+      ],
+      "evidence_note": "Unit 5: Analytical Applications of (weighting n/a)."
+    },
+    {
+      "target": "topics.ap-calculus-ab-unit06",
+      "page_refs": [
+        "Unit 6"
+      ],
+      "evidence_note": "Unit 6: Integration and (weighting n/a)."
+    },
+    {
+      "target": "topics.ap-calculus-ab-unit07",
+      "page_refs": [
+        "Unit 7"
+      ],
+      "evidence_note": "Unit 7: Differential Equations                      6–12% (6–9%)."
+    },
+    {
+      "target": "topics.ap-calculus-ab-unit08",
+      "page_refs": [
+        "Unit 8"
+      ],
+      "evidence_note": "Unit 8: Applications of Integration                 10–15% (6–9%)."
+    },
+    {
+      "target": "topics.ap-calculus-ab-unit09",
+      "page_refs": [
+        "Unit 9"
+      ],
+      "evidence_note": "Unit 9: Parametric Equations, Polar (weighting n/a)."
+    },
+    {
+      "target": "topics.ap-calculus-ab-unit10",
+      "page_refs": [
+        "Unit 10"
+      ],
+      "evidence_note": "Unit 10: Infinite Sequences and (weighting n/a)."
+    }
+  ],
+  "draft_notes": []
+}

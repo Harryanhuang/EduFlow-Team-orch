@@ -1,0 +1,38 @@
+學習單位 學習重點 時間 注釋
+ cos 2A = cos2A  sin2A
+= 1  2 sin2A = 2 cos2A  1
+ tan 2A =
+4
+9
+1
+2
+
+t a
+t a
+n
+n
+A
+2 A
+ sin2A =
+1
+2
+(1  cos 2A)
+ cos2A =
+1
+2
+(1 + cos 2A)
+ 2sinAcosBsin(AB)sin(AB)
+ 2cosAcosBcos(AB)cos(AB)
+ 2sinAsinBcos(AB)cos(AB)
+AB AB
+ sinAsinB2sin cos
+2 2
+AB AB
+ sinAsinB2cos sin
+2 2
+AB AB
+ cosAcosB2cos cos
+2 2
+AB AB
+ cosAcosB2sin sin
+2 2

@@ -1,0 +1,102 @@
+{
+  "schema_version": "1",
+  "source_id": "primary_ced",
+  "extracted_at": "2026-07-01",
+  "extracted_by": "worker_syllabus",
+  "extraction_profile": "ap_college_board_ced",
+  "sections_extracted": [
+    {
+      "section": "Unit 9: Thermodynamics",
+      "page_refs": [
+        "Unit 9"
+      ],
+      "extracted_content_summary": "Unit 9 content with weighting 15–18%.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Unit 10: Electric Force, Field, and Potential",
+      "page_refs": [
+        "Unit 10"
+      ],
+      "extracted_content_summary": "Unit 10 content with weighting 15–18%.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Unit 11: Electric Circuits",
+      "page_refs": [
+        "Unit 11"
+      ],
+      "extracted_content_summary": "Unit 11 content with weighting 15–18%.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Unit 12: Magnetism and Electromagnetism",
+      "page_refs": [
+        "Unit 12"
+      ],
+      "extracted_content_summary": "Unit 12 content with weighting 12–15%.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Unit 13: Geometric Optics",
+      "page_refs": [
+        "Unit 13"
+      ],
+      "extracted_content_summary": "Unit 13 content with weighting 12–15%.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Unit 14: Waves, Sound, and Physical Optics",
+      "page_refs": [
+        "Unit 14"
+      ],
+      "extracted_content_summary": "Unit 14 content with weighting 12–15%.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Unit 15: Modern Physics",
+      "page_refs": [
+        "Unit 15"
+      ],
+      "extracted_content_summary": "Unit 15 content with weighting 12–15%.",
+      "target_asset": "topics.json"
+    },
+    {
+      "section": "Exam Information",
+      "page_refs": [
+        "Exam Information section"
+      ],
+      "extracted_content_summary": "Section I + II structure.",
+      "target_asset": "assessment.json"
+    }
+  ],
+  "sections_not_extracted": [
+    {
+      "section": "Front matter / sample questions",
+      "page_refs": [
+        "various"
+      ],
+      "reason": "programme_background / not_assessable_scope"
+    }
+  ],
+  "sections_pending_review": [
+    {
+      "section": "Per-unit page ranges",
+      "page_refs": [
+        "varies"
+      ],
+      "reason": "Page ranges not auto-captured; verify visually."
+    }
+  ],
+  "split_recommendations": {
+    "topics_json": "7 units captured.",
+    "assessment_json": "Section I + II structure.",
+    "references": "source-index.md and page-map.json copied into skill package references/."
+  },
+  "known_risks": [
+    "Extractor and reviewer are the same agent; confidence capped at medium.",
+    "Per-unit page ranges are approximate.",
+    "Topic details (essential knowledge statements) not exhaustively captured."
+  ],
+  "notes": "Skill package covers 7 units for AP Physics 2: Algebra-Based."
+}

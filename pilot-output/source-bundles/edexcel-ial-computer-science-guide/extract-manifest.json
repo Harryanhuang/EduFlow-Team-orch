@@ -1,0 +1,667 @@
+{
+  "schema_version": "1",
+  "subject": "computer-science",
+  "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/02-A-Level知识库/03-考试局/Edexcel/Computer Science (IAL)/02-课本与考纲/考纲/ial-computer-science-specification.pdf",
+  "file_checksum_sha256": "73a63871603bb21ec03f20229edaaaeefadeea2d68b5e162e58ac758b9cbb67e",
+  "pdfinfo": {
+    "Title": "International Advanced Level in Computer Science – Specification",
+    "Subject": "Issue 1 – First teaching September 2026",
+    "Creator": "Adobe InDesign 21.1 (Macintosh)",
+    "Producer": "Adobe PDF Library 18.0",
+    "CreationDate": "Tue Mar 10 20:51:36 2026 CST",
+    "ModDate": "Fri Mar 13 18:24:50 2026 CST",
+    "Custom Metadata": "no",
+    "Metadata Stream": "yes",
+    "Tagged": "no",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "none",
+    "JavaScript": "no",
+    "Pages": "106",
+    "Encrypted": "no",
+    "Page size": "595.276 x 841.89 pts (A4)",
+    "Page rot": "0",
+    "File size": "2162178 bytes",
+    "Optimized": "yes",
+    "PDF version": "1.4"
+  },
+  "total_pages": 106,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": 1,
+      "chars": 2591,
+      "first_200": "International Advanced Level Computer Science Specification Pearson Edexcel International Advanced Subsidiary in Computer Science (XCP01) Pearson Edexcel International Advanced Level in Computer Scien"
+    },
+    {
+      "physical_page": 2,
+      "printed_page": 2,
+      "chars": 2591,
+      "first_200": "vanced Level in Computer Science are part of a suite of International Advanced Level qualifications offered by Pearson. These qualifications are not accredited or regulated by any UK regulatory body."
+    },
+    {
+      "physical_page": 3,
+      "printed_page": 3,
+      "chars": 2591,
+      "first_200": "ent (IDE) • apply programming techniques and system knowledge to develop practical and effective solutions • build knowledge of computer systems, architecture, networks, cybersecurity and data handlin"
+    },
+    {
+      "physical_page": 4,
+      "printed_page": 4,
+      "chars": 2591,
+      "first_200": "rall qualification grade. It is strongly recommended that learners follow a parallel approach to unit completion. For the IAS, learners should complete Unit 1 alongside Unit 2 during the first"
+    },
+    {
+      "physical_page": 5,
+      "printed_page": 5,
+      "chars": 2591,
+      "first_200": "y removing the reliance on pseudocode to capture or define algorithms, learners engage directly with authentic programming environments, supporting deeper understanding and development of transferable"
+    },
+    {
+      "physical_page": 6,
+      "printed_page": 6,
+      "chars": 2591,
+      "first_200": "ork with examiner commentaries • examiner commentaries following each examination series • additional support and training for the onscreen provision and practical programming examinations. Pearson Ed"
+    },
+    {
+      "physical_page": 7,
+      "printed_page": 7,
+      "chars": 2591,
+      "first_200": "Advanced Level qualification. This qualification will include questions that target mathematics at level 2 or above. Overall, a minimum of 10% of the marks across the papers will be awarded"
+    },
+    {
+      "physical_page": 8,
+      "printed_page": 8,
+      "chars": 2591,
+      "first_200": "8 Issue 1 – DCL1 – March 2026 Content and assessment overview Pearson Edexcel International Advanced Subsidiary in Computer Science. Unit 1: \u0007Principles of Computer Science Unit 2: \u0007Practical Programm"
+    },
+    {
+      "physical_page": 9,
+      "printed_page": 9,
+      "chars": 2591,
+      "first_200": "um open response, to design, write, test and refine a program extended open response, tabular and or solve a problem using Python 3 in an diagrammatic items. integrated development environment"
+    },
+    {
+      "physical_page": 10,
+      "printed_page": 10,
+      "chars": 2591,
+      "first_200": "This unit assesses practical applications applications of computational thinking. of computational thinking. These will be These will be assessed in topics 11 to 16. assessed in topics 17 to 21."
+    },
+    {
+      "physical_page": 11,
+      "printed_page": 11,
+      "chars": 2591,
+      "first_200": "paper-based or onscreen. assessment. *See Appendix 1: Codes for a description of this code and all other codes relevant to this qualification. Pearson Edexcel International Advanced level in Computer "
+    },
+    {
+      "physical_page": 12,
+      "printed_page": 12,
+      "chars": 2591,
+      "first_200": "ata is represented, how networks operate, and how information is structured and secured. Emphasis is placed on computational thinking, logic, problem-solving strategies, and the enabling technologies "
+    },
+    {
+      "physical_page": 13,
+      "printed_page": 13,
+      "chars": 2591,
+      "first_200": "it (CPU) • Function b. Memory: • Characteristics • Random access memory (RAM) • Why needed • Read-only memory (ROM) • Operation • Cache Be able to: c. Input/output •"
+    },
+    {
+      "physical_page": 14,
+      "printed_page": 14,
+      "chars": 2591,
+      "first_200": "the CPU. • Accumulator (ACC) Learners should be familiar with and be • Stack pointer (SP) able to use the CPU component symbols • Status register (SR) shown in Appendix"
+    },
+    {
+      "physical_page": 15,
+      "printed_page": 15,
+      "chars": 2591,
+      "first_200": "Know and understand: a. CPU registers • Definition b. Cache: • Function • Level 1 • Characteristics • Level 2 • Operation • Level 3 • Benefits c. Main memory"
+    },
+    {
+      "physical_page": 16,
+      "printed_page": 16,
+      "chars": 2591,
+      "first_200": "tion b. User management • Function c. Peripheral management • Characteristics • Why needed d. Process management e. Memory management 1.2.2 Multitasking: Know and understand: a. Time sharing • Definit"
+    },
+    {
+      "physical_page": 17,
+      "printed_page": 17,
+      "chars": 2591,
+      "first_200": "• Benefits • First-come, first-served (FCFS) • Drawbacks • Shortest job first (SJF) • Multi-level queue Be able to: • interpret and complete a diagrammatic representation of process states •"
+    },
+    {
+      "physical_page": 18,
+      "printed_page": 18,
+      "chars": 2591,
+      "first_200": "Learners should: 2.1.1 Number bases: Know and understand: a. Binary • Definition b. Denary • Function c. Hexadecimal • Characteristics • Why needed Be able to: • convert unsigned integers"
+    },
+    {
+      "physical_page": 19,
+      "printed_page": 19,
+      "chars": 2591,
+      "first_200": "• tera (T) units of measurement • calculate the maximum number of states that can be represented by a given number of bits. Pearson Edexcel International Advanced level in Computer"
+    },
+    {
+      "physical_page": 20,
+      "printed_page": 20,
+      "chars": 2591,
+      "first_200": "Be able to: • convert signed fractional denary numbers to fixed-point signed binary and vice versa • work with halves, quarters and eighths. Pearson Edexcel International Advanced level in Computer"
+    },
+    {
+      "physical_page": 21,
+      "printed_page": 21,
+      "chars": 2591,
+      "first_200": "underflow Know and understand: • Definition • Function • Characteristics 2.3 Text Content Learners should: 2.3.1 \u0007Character encoding systems: Know and understand: a. ASCII/extended ASCII • Definition "
+    },
+    {
+      "physical_page": 22,
+      "printed_page": 22,
+      "chars": 2591,
+      "first_200": "• interpret and complete a diagrammatic • Fibre representation of a network. g. Firewall • Hardware • Software 3.1.2 Network components: Know and understand: a. Bandwidth • Definition b. Speed/transfe"
+    },
+    {
+      "physical_page": 23,
+      "printed_page": 23,
+      "chars": 2591,
+      "first_200": "• Benefits • Drawbacks 3.2.2 Methods of encryption: Know and understand: a. Symmetric: • Definition • Known shared key • Function • Key exchange • Characteristics b. Asymmetric: • Why"
+    },
+    {
+      "physical_page": 24,
+      "printed_page": 24,
+      "chars": 2591,
+      "first_200": "cience – Specification 22 Issue 1 – DCL1 – March 2026 3.2 Encryption (continued) Content Learners should: 3.2.4 Vernam cipher algorithm Know and understand: • Definition • Function • Characteristics"
+    },
+    {
+      "physical_page": 25,
+      "printed_page": 25,
+      "chars": 2591,
+      "first_200": "-one (1:1) • interpret, complete, find and correct • One-to-many (1:M) errors in a schema expressed in • Many-to-many (M:M) parenthetical notation. e. Ways of representing: Learners should be familiar"
+    },
+    {
+      "physical_page": 26,
+      "printed_page": 26,
+      "chars": 2591,
+      "first_200": "s Content Learners should: 4.2.1 Data structures: Know and understand: a. Array • Definition b. List • Function c. Dictionary • Characteristics • Operation d. Record • Benefits e. Tuple"
+    },
+    {
+      "physical_page": 27,
+      "printed_page": 27,
+      "chars": 2591,
+      "first_200": "• Function • Insert • Characteristics • Delete • Operation • Search • Benefits • Drawbacks Be able to: • hand trace operations on a stack • show the contents"
+    },
+    {
+      "physical_page": 28,
+      "printed_page": 28,
+      "chars": 2591,
+      "first_200": "nding of the queue ADT is assessed in Unit 1. Their ability to represent and handle a queue implemented as a fixed-length list is assessed in Unit 2. Pearson Edexcel"
+    },
+    {
+      "physical_page": 29,
+      "printed_page": 29,
+      "chars": 2591,
+      "first_200": "Learners’ ability to interpret and develop algorithms is assessed in Unit 1. Their ability to convert algorithms into code is assessed in Unit 2. 5.1.2 Trace table Know and understand:"
+    },
+    {
+      "physical_page": 30,
+      "printed_page": 30,
+      "chars": 2591,
+      "first_200": "is assessed in Unit 1. Their ability to use recursion in code is assessed in Unit 2. 5.2 Searching and sorting algorithms Content Learners should: 5.2.1 Linear search algorithm: Know"
+    },
+    {
+      "physical_page": 31,
+      "printed_page": 31,
+      "chars": 2591,
+      "first_200": "• Operation • Benefits • Drawbacks Be able to: • hand trace the operation of a binary search algorithm. Learners’ understanding of how a binary search algorithm works is assessed"
+    },
+    {
+      "physical_page": 32,
+      "printed_page": 32,
+      "chars": 2591,
+      "first_200": "vanced level in Computer Science – Specification 29 Issue 1 – DCL1 – March 2026 5.2 Searching and sorting algorithms (continued) Content Learners should: 5.2.4 Insertion sort algorithm Know and"
+    },
+    {
+      "physical_page": 33,
+      "printed_page": 33,
+      "chars": 2591,
+      "first_200": "Be able to: • NAND • interpret and create Boolean • NOR expressions. b. Order of precedence Learners should be familiar with and be able to use the Boolean algebraic"
+    },
+    {
+      "physical_page": 34,
+      "printed_page": 34,
+      "chars": 2591,
+      "first_200": "Learners’ understanding of the procedural programming paradigm is assessed in Unit 1. Their ability to use procedural programming is assessed in Unit 2. 5.4.2 \u0007 Declarative programming Know and unders"
+    },
+    {
+      "physical_page": 35,
+      "printed_page": 35,
+      "chars": 2591,
+      "first_200": "Operation • Processing • Benefits • Modelling and analysis • Drawbacks • Networking Be able to: • Security • interpret and complete a diagrammatic representation of a big data system."
+    },
+    {
+      "physical_page": 36,
+      "printed_page": 36,
+      "chars": 2591,
+      "first_200": "• Characteristics • Why needed • Operation • Benefits • Drawbacks Be able to: • interpret and complete a diagrammatic representation of a supervised/ unsupervised ML system. 6.2.3 \u0007 Large"
+    },
+    {
+      "physical_page": 37,
+      "printed_page": 37,
+      "chars": 2591,
+      "first_200": "te • Characteristics c. Syntax checker • Why needed d. Debugger: • Operation • Breakpoints • Benefits • Stepping • Drawbacks e. Memory inspection Learners’ understanding of features of an"
+    },
+    {
+      "physical_page": 38,
+      "printed_page": 38,
+      "chars": 2591,
+      "first_200": "• Benefits • Drawbacks Pearson Edexcel International Advanced level in Computer Science – Specification 35 Issue 1 – DCL1 – March 2026 6.3 Tools (continued) Content Learners should: 6.3.4 \u0007"
+    },
+    {
+      "physical_page": 39,
+      "printed_page": 39,
+      "chars": 2591,
+      "first_200": "cument. Centres must ensure secure examination conditions. For more information refer to the section: Assessment information Unit 2 and Unit 4 practical programming. Sample assessment materials A samp"
+    },
+    {
+      "physical_page": 40,
+      "printed_page": 40,
+      "chars": 2591,
+      "first_200": "• select and use appropriate variables and constants. b. Assignment Further details provided in the c. Access Programming Language Subset (PLS) document. 7.1.3 \u0007 Operators: Be able to: a. Arithmetic"
+    },
+    {
+      "physical_page": 41,
+      "printed_page": 41,
+      "chars": 2591,
+      "first_200": "Programming Language Subset d. Boolean (PLS) document. e. String 8.1.2 \u0007 Data structures: Be able to: a. Array • select and use one- and two- dimensional data structures b. List"
+    },
+    {
+      "physical_page": 42,
+      "printed_page": 42,
+      "chars": 2591,
+      "first_200": "Further details provided in the c. Randomisation Programming Language Subset d. Data type conversions (PLS) document. 8.2.2 \u0007 Methods to handle string data: Be able to: a. Length • select"
+    },
+    {
+      "physical_page": 43,
+      "printed_page": 43,
+      "chars": 2591,
+      "first_200": "earners’ understanding of data structures f. Traverse is assessed in Unit 1. Their ability to create and handle data structures in code is assessed in Unit 2. Pearson Edexcel International"
+    },
+    {
+      "physical_page": 44,
+      "printed_page": 44,
+      "chars": 2591,
+      "first_200": "the Programming Language Subset c. Dequeue (PLS) document. d. IsEmpty Learners’ understanding of the queue ADT e. IsFull is assessed in Unit 1. Their ability to create f. Size and"
+    },
+    {
+      "physical_page": 45,
+      "printed_page": 45,
+      "chars": 2591,
+      "first_200": "e Programming Language Subset (PLS) document. Learners’ understanding of relational databases is assessed in Unit 1. Their ability to administer an SQLite database is assessed in Unit 2. 8.3.2 \u0007"
+    },
+    {
+      "physical_page": 46,
+      "printed_page": 46,
+      "chars": 2591,
+      "first_200": "document. Learners’ understanding of relational databases is assessed in Unit 1. Their ability to query an SQLite database is assessed in Unit 2. Pearson Edexcel International Advanced level in Comput"
+    },
+    {
+      "physical_page": 47,
+      "printed_page": 47,
+      "chars": 2591,
+      "first_200": "ods to a. \u0007Problem decomposition into produce correct outcomes. component parts Further details provided in the Good b. Clear and appropriate logic Programming Practice Guide (GPPG). c. \u0007Variables, co"
+    },
+    {
+      "physical_page": 48,
+      "printed_page": 48,
+      "chars": 2591,
+      "first_200": "• select and use appropriate methods to improve the consistency of code. b. Line breaks layout Further details provided in the Good c. Naming conventions Programming Practice Guide (GPPG). d."
+    },
+    {
+      "physical_page": 49,
+      "printed_page": 49,
+      "chars": 2591,
+      "first_200": "• correct errors in program code a. Testing and debugging • produce accurate outcomes b. Reviewing and refining • refine solutions to meet requirements. Further details provided in the Good"
+    },
+    {
+      "physical_page": 50,
+      "printed_page": 50,
+      "chars": 2591,
+      "first_200": "parameters. 10.2 Implementing algorithms Content Learners should: 10.2.1 \u0007Create programmed solutions Be able to: from algorithms: • convert algorithms into code. a. Expressed in words b. Expressed in"
+    },
+    {
+      "physical_page": 51,
+      "printed_page": 51,
+      "chars": 2591,
+      "first_200": "ort algorithm: Be able to: a. Worst case • implement and use an appropriate bubble sort algorithm. b. Exit with no swaps Learners’ understanding of how a bubble c. Reduce"
+    },
+    {
+      "physical_page": 52,
+      "printed_page": 52,
+      "chars": 2591,
+      "first_200": "Unit 2. Pearson Edexcel International Advanced level in Computer Science – Specification 47 Issue 1 – DCL1 – March 2026 Unit 3: \u0007Advanced Principles of Computer Science Assessment information First"
+    },
+    {
+      "physical_page": 53,
+      "printed_page": 53,
+      "chars": 2591,
+      "first_200": "• Characteristics • Operation • Benefits • Drawbacks Be able to: • interpret and complete a diagrammatic representation of the internal components of a computer system based on the Harvard"
+    },
+    {
+      "physical_page": 54,
+      "printed_page": 54,
+      "chars": 2591,
+      "first_200": "• Register write back (WB) • Drawbacks b. Branch hazards Be able to: • interpret and complete a diagrammatic representation of the pipelining process. Pearson Edexcel International Advanced level in"
+    },
+    {
+      "physical_page": 55,
+      "printed_page": 55,
+      "chars": 2591,
+      "first_200": "• Benefits o Accelerometer • Drawbacks o Vibration Be able to: o Sound • interpret and complete a design for an o Temperature embedded system • Actuators • interpret and"
+    },
+    {
+      "physical_page": 56,
+      "printed_page": 56,
+      "chars": 2591,
+      "first_200": "terpret and complete a diagrammatic representation of I/O in a computer system. 11.2.2 Virtualisation: Know and understand: a. Containerisation • Definition b. Virtual machines • Function • Characteri"
+    },
+    {
+      "physical_page": 57,
+      "printed_page": 57,
+      "chars": 2591,
+      "first_200": "• Benefits • Drawbacks Be able to: • convert fractional numbers into binary and vice versa using 16-bit half precision IEEE-754 standard (1-bit sign), 5-bit exponent (biased), and 10-bit significand."
+    },
+    {
+      "physical_page": 58,
+      "printed_page": 58,
+      "chars": 2591,
+      "first_200": "• Function • Characteristics • Why needed • Operation Be able to: • interpret and complete a diagrammatic representation of encapsulation/ decapsulation of packets flowing through the TCP/IP protocol "
+    },
+    {
+      "physical_page": 59,
+      "printed_page": 59,
+      "chars": 2591,
+      "first_200": "NS) Know and understand: • Definition • Function • Characteristics • Why needed • Operation • Benefits • Drawbacks Be able to: • interpret and complete a diagrammatic representation of"
+    },
+    {
+      "physical_page": 60,
+      "printed_page": 60,
+      "chars": 2591,
+      "first_200": "cel International Advanced level in Computer Science – Specification 55 Issue 1 – DCL1 – March 2026 12.3 Cybersecurity Content Learners should: 12.3.1 \u0007CIA triad model Know and understand: •"
+    },
+    {
+      "physical_page": 61,
+      "printed_page": 61,
+      "chars": 2591,
+      "first_200": "Be able to: • calculate the parity bit for a given set of bits • calculate the parity bits for a given two-dimensional parity block • calculate the checksum for"
+    },
+    {
+      "physical_page": 62,
+      "printed_page": 62,
+      "chars": 2591,
+      "first_200": "n Edexcel International Advanced level in Computer Science – Specification 57 Issue 1 – DCL1 – March 2026 Content Topic 13: Programming languages 13.1 Types of programming languages Content Learners"
+    },
+    {
+      "physical_page": 63,
+      "printed_page": 63,
+      "chars": 2591,
+      "first_200": "assessed in Unit 4. 13.1.2 \u0007 Functional programming Know and understand: paradigm: • Definition a. Concepts: • Function • Pure functions • Characteristics • First-class functions • Why needed •"
+    },
+    {
+      "physical_page": 64,
+      "printed_page": 64,
+      "chars": 2591,
+      "first_200": "• read and write simple assembly language code • Bitwise • trace the execution of a simple assembly • Branch language program. • Data movement Learners should be familiar with"
+    },
+    {
+      "physical_page": 65,
+      "printed_page": 65,
+      "chars": 2591,
+      "first_200": "list ADT is assessed in Unit 3. Their ability to implement and handle a linked list is assessed in Unit 4. 14.1.2 \u0007 Hash table: Know and understand: a. Structure"
+    },
+    {
+      "physical_page": 66,
+      "printed_page": 66,
+      "chars": 2591,
+      "first_200": "14.1.3 \u0007Graph: Know and understand: a. Structure • Definition b. Ways to represent: • Function • Adjacency matrix • Characteristics • Adjacency list • Operation c. Types: • Benefits •"
+    },
+    {
+      "physical_page": 67,
+      "printed_page": 67,
+      "chars": 2591,
+      "first_200": "pre-order, in-order, • show the contents of a tree after post-order] operations are performed. Learners’ understanding of the tree ADT is assessed in Unit 3. Their ability to implement and"
+    },
+    {
+      "physical_page": 68,
+      "printed_page": 68,
+      "chars": 2591,
+      "first_200": "queue implemented as a fixed-length list is assessed in Unit 4. Pearson Edexcel International Advanced level in Computer Science – Specification 62 Issue 1 – DCL1 – March 2026 Content"
+    },
+    {
+      "physical_page": 69,
+      "printed_page": 69,
+      "chars": 2591,
+      "first_200": "• Characteristics • Operation • Benefits • Drawbacks Be able to: • hand trace the operation of a merge sort algorithm. Learners’ understanding of how the merge sort algorithm works"
+    },
+    {
+      "physical_page": 70,
+      "printed_page": 70,
+      "chars": 2591,
+      "first_200": "sort algorithm works is assessed in Unit 3. Their ability to implement a recursive quick sort in code is assessed in Unit 4. 15.2.3 \u0007Shortest path algorithms: Know and understand:"
+    },
+    {
+      "physical_page": 71,
+      "printed_page": 71,
+      "chars": 2591,
+      "first_200": "• Why needed • Linear Be able to: • Linearithmic • analyse algorithms to establish best and • Polynomial worst Big O • Exponential • give the best and worst"
+    },
+    {
+      "physical_page": 72,
+      "printed_page": 72,
+      "chars": 2591,
+      "first_200": "• Function • Why needed • Operation • Benefits • Drawbacks Be able to: • use Karnaugh maps to simplify Boolean algebraic expressions. Pearson Edexcel International Advanced level in Computer"
+    },
+    {
+      "physical_page": 73,
+      "printed_page": 73,
+      "chars": 2591,
+      "first_200": "• Benefits • Drawbacks Be able to: • interpret and complete a diagrammatic representation of a blockchain. 16.1.3 \u0007Quantum computing: Know and understand: a. Qubits • Definition b. Principles •"
+    },
+    {
+      "physical_page": 74,
+      "printed_page": 74,
+      "chars": 2591,
+      "first_200": "Ethical issues • Definition b. Legal frameworks • Function c. Codes of conduct • Characteristics • Why needed Pearson Edexcel International Advanced level in Computer Science – Specification 67 Issue"
+    },
+    {
+      "physical_page": 75,
+      "printed_page": 75,
+      "chars": 2591,
+      "first_200": "olve them remain consistent. The advanced theory of programming covered in Topics 13, 14 and 15 of Unit 3 underpins and supports the practical coding, which is the focus of"
+    },
+    {
+      "physical_page": 76,
+      "printed_page": 76,
+      "chars": 2591,
+      "first_200": "braries, files, modules and subprograms. Pearson Edexcel International Advanced level in Computer Science – Specification 70 Issue 1 – DCL1 – March 2026 Content Topic 18: Representing and handling dat"
+    },
+    {
+      "physical_page": 77,
+      "printed_page": 77,
+      "chars": 2591,
+      "first_200": ". Shape e. Load and save text files 18.1.4 \u0007Methods to handle data Be able to: analysis (Pandas): • select and use appropriate methods for a. Load CSV handling data"
+    },
+    {
+      "physical_page": 78,
+      "printed_page": 78,
+      "chars": 2591,
+      "first_200": "t and Be able to: handle a linked list: • select and use appropriate methods to a. Represent: represent a linked list • Classes • select and use appropriate methods"
+    },
+    {
+      "physical_page": 79,
+      "printed_page": 79,
+      "chars": 2591,
+      "first_200": "ability to amend and write a hash table is • Traverse assessed in Unit 4. Pearson Edexcel International Advanced level in Computer Science – Specification 72 Issue 1 – DCL1"
+    },
+    {
+      "physical_page": 80,
+      "printed_page": 80,
+      "chars": 2591,
+      "first_200": "y to amend and write code to handle collisions in a hash table is assessed in Unit 4. 18.2.6 \u0007Methods to represent a graph: Be able to: a. Adjacency matrix"
+    },
+    {
+      "physical_page": 81,
+      "printed_page": 81,
+      "chars": 2591,
+      "first_200": "(PLS) document. • Find • Traverse Learners’ understanding of the tree ADT is assessed in Unit 3. Their ability to amend and write binary search trees is assessed in Unit"
+    },
+    {
+      "physical_page": 82,
+      "printed_page": 82,
+      "chars": 2591,
+      "first_200": "Programming Practice Guide (GPPG). c. \u0007Variables, constants, data types and data structures appropriate to the problem d. \u0007Programming constructs appropriate to the problem 19.1.2 \u0007Methods to implemen"
+    },
+    {
+      "physical_page": 83,
+      "printed_page": 83,
+      "chars": 2591,
+      "first_200": "Programming Practice Guide (GPPG). d. Fixed-line length 19.2.2 \u0007Readability: Be able to: a. Meaningful identifiers • use appropriate methods to promote readability of program code. b. Informative comm"
+    },
+    {
+      "physical_page": 84,
+      "printed_page": 84,
+      "chars": 2591,
+      "first_200": "Programming Practice Guide (GPG). Pearson Edexcel International Advanced level in Computer Science – Specification 76 Issue 1 – DCL1 – March 2026 Content Topic 20: Additional programming paradigms 20."
+    },
+    {
+      "physical_page": 85,
+      "printed_page": 85,
+      "chars": 2591,
+      "first_200": "unctional programming. c. Higher-order functions Further details provided in the d. Immutable variables Programming Language Subset e. Avoid side effects (PLS) document. f. Lazy evaluation Learners’ u"
+    },
+    {
+      "physical_page": 86,
+      "printed_page": 86,
+      "chars": 2591,
+      "first_200": "• implement and use a recursive quick sort algorithm. Learners’ understanding of how the quick sort algorithm works is assessed in Unit 3. Their ability to implement a recursive quick"
+    },
+    {
+      "physical_page": 87,
+      "printed_page": 87,
+      "chars": 2591,
+      "first_200": "Unit 2 Unit 3 Unit 4 June 2027 3 3 ✘ ✘ January 2028 3 3 ✘ ✘ June 2028 3 3 3 3 January 2029 onwards 3 3 3"
+    },
+    {
+      "physical_page": 88,
+      "printed_page": 88,
+      "chars": 2591,
+      "first_200": "nd refine code during practical programming assessments. As these units are assessed onscreen, familiarity with the chosen IDE is essential for supporting productivity and problem-solving. Centres mus"
+    },
+    {
+      "physical_page": 89,
+      "printed_page": 89,
+      "chars": 2591,
+      "first_200": "will remain valid for the lifetime of the qualification. If updates are required, the latest version will be published on the Pearson Edexcel International Advanced Level in Computer Science qualifica"
+    },
+    {
+      "physical_page": 90,
+      "printed_page": 90,
+      "chars": 2591,
+      "first_200": "including to solve programming problems. Design, program, test and refine programmed solutions using different AO3 types of programming paradigms. Assessment objectives for International Advanced Subs"
+    },
+    {
+      "physical_page": 91,
+      "printed_page": 91,
+      "chars": 2591,
+      "first_200": "learners to have equal opportunity to access our qualifications and assessments, and our qualifications to be awarded in a way that is fair to every learner. We are committed to"
+    },
+    {
+      "physical_page": 92,
+      "printed_page": 92,
+      "chars": 2591,
+      "first_200": "se the adjustment is not ‘reasonable’. Special consideration Special consideration is a post-examination adjustment to a learner’s mark or grade to reflect temporary injury, illness or other indisposi"
+    },
+    {
+      "physical_page": 93,
+      "printed_page": 93,
+      "chars": 2591,
+      "first_200": "t version of the document General and Vocational Qualifications Suspected Malpractice in Examinations and Assessments Policies and Procedures, available at http://www.jcq.org.uk/exams- office/malpract"
+    },
+    {
+      "physical_page": 94,
+      "printed_page": 94,
+      "chars": 2591,
+      "first_200": "nced Level (cash-in code: YCP01) Qualification Maximum A B C D E grade uniform mark 400 320 280 240 200 160 Learners with a uniform mark in the range 0–159"
+    },
+    {
+      "physical_page": 95,
+      "printed_page": 95,
+      "chars": 2591,
+      "first_200": "assigned a unit code. This Unit 1 Written: unit code is used as an entry code WCP01/01 to indicate that a learner wishes to Onscreen: take the assessment for that"
+    },
+    {
+      "physical_page": 96,
+      "printed_page": 96,
+      "chars": 2591,
+      "first_200": "res to obtain the overall grade for the qualification. Pearson Edexcel International Advanced level in Computer Science – Specification 90 Issue 1 – DCL1 – March 2026 Appendix 2: Symbols"
+    },
+    {
+      "physical_page": 97,
+      "printed_page": 97,
+      "chars": 2591,
+      "first_200": "XOR A XOR B A B Pearson Edexcel International Advanced level in Computer Science – Specification 93 Issue 1 – DCL1 – March 2026 Unit 3 and Unit 4 UML"
+    },
+    {
+      "physical_page": 98,
+      "printed_page": 98,
+      "chars": 2591,
+      "first_200": "earson Edexcel International Advanced level in Computer Science – Specification 96 Issue 1 – DCL1 – March 2026 Arithmetic and logical operations ADD Rd, Rn, <operand> Add the value in"
+    },
+    {
+      "physical_page": 99,
+      "printed_page": 99,
+      "chars": 2591,
+      "first_200": "MOV Rd, <operand> Move the value in <operand> into register Rd. LDR Rd, <address> Load the contents of the memory location <address> into register Rd. STR Rd, <address> Store the"
+    },
+    {
+      "physical_page": 100,
+      "printed_page": 100,
+      "chars": 2591,
+      "first_200": "fication, entry codes are used in combination with cash-in codes. International Abbreviated to IAS. Advanced Subsidiary International Advanced Level Abbreviated to IAL. International A2 (IA2) Addition"
+    },
+    {
+      "physical_page": 101,
+      "printed_page": 101,
+      "chars": 2591,
+      "first_200": "ks Negative outcomes or effects resulting from the use of the specified item. The disadvantages that it results in. Function Specific action(s) or task(s) performed by the specified item. What"
+    },
+    {
+      "physical_page": 102,
+      "printed_page": 102,
+      "chars": 2591,
+      "first_200": "ts in the response need to be in order and linked, but do not need to include a justification or reason. Explain An explanation requires a justification of a point."
+    },
+    {
+      "physical_page": 103,
+      "printed_page": 103,
+      "chars": 2591,
+      "first_200": "Co-operation ‘the bundle To support of knowledge, the design attributes and of our qualifications, thecapacities that can be Pearson Research learned Team and that selected and enable evaluated indivi"
+    },
+    {
+      "physical_page": 104,
+      "printed_page": 104,
+      "chars": 2591,
+      "first_200": "for the subject. assessment of the qualification. Some skills are directly assessed. Pearson materials will All of the skills listed are evident or accessible in the teaching, learning and/or assessme"
+    },
+    {
+      "physical_page": 105,
+      "printed_page": 105,
+      "chars": 2591,
+      "first_200": "processes and • Problem solving Problem solving in the strategies application of unifying • Analysis patterns and themes in Cognitive skills • Reasoning chemistry and using them in • Interpretation"
+    },
+    {
+      "physical_page": 106,
+      "printed_page": 106,
+      "chars": 2591,
+      "first_200": "Communication to convey a Teamwork and • Communication science process or technique collaboration • Collaboration (verbally or in writing) to peers Interpersonal skills • Teamwork and teachers and ans"
+    }
+  ]
+}

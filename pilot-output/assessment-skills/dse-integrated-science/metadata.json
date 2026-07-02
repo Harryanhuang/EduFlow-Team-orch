@@ -1,0 +1,48 @@
+{
+  "schema_version": "1",
+  "id": "dse-integrated-science",
+  "assessment_type": "syllabus",
+  "system": "DSE",
+  "board_or_owner": "HKEAA / Curriculum Development Council",
+  "subject": "Integrated Science",
+  "level": "DSE Senior Secondary (S4-S6)",
+  "assessment_code": "DSE Integrated Science",
+  "valid_from": "2024",
+  "valid_to": "(ongoing)",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_syllabus",
+      "title": "DSE Integrated Science Syllabus",
+      "url": "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html",
+      "source_document_type": "syllabus",
+      "source_layout_profile": "caie_igcse_syllabus",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/05-DSE知识库/03-学科知识/DSE Integrated Science/02-課本與考綱/考綱/Integrated_Science_DSE_Syllabus_2015.pdf",
+      "file_checksum_sha256": "665017310419c4325dc6bdcfb8767fcd8d4164e61b882dcded1ad12133f14243",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "2028 syllabus (Category A)",
+      "retrieved_at": "2026-07-02",
+      "page_refs": [
+        "p.1-158"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "printed_page ≈ physical_page for CAIE IGCSE syllabi.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text.",
+      "notes": "Source bundle lives at pilot-output/source-bundles/dse-integrated-science-guide/."
+    }
+  ],
+  "aliases": [
+    "dse integrated science",
+    "hkdse"
+  ],
+  "canonical_id": "dse-integrated-science",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "HKDSE Integrated Science (Category A)."
+}

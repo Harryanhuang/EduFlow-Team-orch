@@ -1,0 +1,118 @@
+{
+  "schema_version": "1",
+  "source_id": "dse-chemistry-ca-guide",
+  "mappings": [
+    {
+      "target": "topics.chem-earth.scope",
+      "page_refs": ["p.16-18"],
+      "evidence_note": "Compulsory topic 'Earth': planet composition, separation methods, tests for water, carbonate reactions."
+    },
+    {
+      "target": "topics.chem-microscopic-world-i.scope",
+      "page_refs": ["p.19-24"],
+      "evidence_note": "Compulsory topic 'Microscopic World I': atomic structure, periodic table, bonding (ionic/covalent/metallic), structure-property relationships, formulae."
+    },
+    {
+      "target": "topics.chem-metals.scope",
+      "page_refs": ["p.25-29"],
+      "evidence_note": "Compulsory topic 'Metals': occurrence, reactivity series, extraction, corrosion, moles/stoichiometry, reactions."
+    },
+    {
+      "target": "topics.chem-acids-bases.scope",
+      "page_refs": ["p.30-33"],
+      "evidence_note": "Compulsory topic 'Acids and Bases': acid/base properties, indicators, pH, molarity, titrations, salt preparation."
+    },
+    {
+      "target": "topics.chem-fossil-fuels-carbon.scope",
+      "page_refs": ["p.34-38"],
+      "evidence_note": "Compulsory topic 'Fossil Fuels and Carbon Compounds': hydrocarbons, fractional distillation, alkanes/alkenes, alcohols/carboxylic acids, polymers."
+    },
+    {
+      "target": "topics.chem-microscopic-world-ii.scope",
+      "page_refs": ["p.39-41"],
+      "evidence_note": "Compulsory topic 'Microscopic World II': electronegativity, polar bonds, molecular polarity, intermolecular forces, hydrogen bonding, giant covalent structures."
+    },
+    {
+      "target": "topics.chem-redox-electrochemistry.scope",
+      "page_refs": ["p.42-46"],
+      "evidence_note": "Compulsory topic 'Redox, Chemical Cells and Electrolysis': oxidation numbers, redox reactions, simple cells, electrolysis, electroplating."
+    },
+    {
+      "target": "topics.chem-chemical-energetics.scope",
+      "page_refs": ["p.47-48"],
+      "evidence_note": "Compulsory topic 'Chemical Reactions and Energy': enthalpy change, calorimetry, Hess's law; bomb calorimetry out of scope."
+    },
+    {
+      "target": "topics.chem-reaction-kinetics.scope",
+      "page_refs": ["p.49-51"],
+      "evidence_note": "Compulsory topic 'Reaction Rate': methods to follow reactions, factors affecting rate (concentration, temperature, surface area, catalyst), molar volume of gas."
+    },
+    {
+      "target": "topics.chem-chemical-equilibrium.scope",
+      "page_refs": ["p.52-54"],
+      "evidence_note": "Compulsory topic 'Chemical Equilibrium': dynamic equilibrium, Kc, temperature/concentration effects; inert species and acid-base/redox equilibrium extensions out of scope."
+    },
+    {
+      "target": "topics.chem-carbon-compounds.scope",
+      "page_refs": ["p.55-59"],
+      "evidence_note": "Compulsory topic 'Chemistry of Carbon Compounds': homologous series, isomerism, reactions of functional groups, polymers (addition/condensation)."
+    },
+    {
+      "target": "topics.chem-periodic-patterns.scope",
+      "page_refs": ["p.60-62"],
+      "evidence_note": "Compulsory topic 'Patterns in the Chemical World': periodic trends (period 3 physical properties, oxide acid-base character), transition metals."
+    },
+    {
+      "target": "topics.chem-elective-industrial.scope",
+      "page_refs": ["p.63-66"],
+      "evidence_note": "Elective topic 'Industrial Chemistry': rate equations, activation energy, catalysis, Haber process, chlor-alkali, methanol synthesis, green chemistry."
+    },
+    {
+      "target": "topics.chem-elective-materials.scope",
+      "page_refs": ["p.67-71"],
+      "evidence_note": "Elective topic 'Materials Chemistry': natural/synthetic polymers, polymer processing, metals/alloys, liquid crystals, nanomaterials, green chemistry."
+    },
+    {
+      "target": "topics.chem-elective-analytical.scope",
+      "page_refs": ["p.72-77"],
+      "evidence_note": "Elective topic 'Analytical Chemistry': chemical tests, separation/purification, volumetric analysis, colorimetry, IR spectroscopy, mass spectrometry."
+    },
+    {
+      "target": "assessment.papers.paper1.scope",
+      "page_refs": ["p.121"],
+      "evidence_note": "Paper 1 covers compulsory part, 60%, 2h30m."
+    },
+    {
+      "target": "assessment.papers.paper2.scope",
+      "page_refs": ["p.121"],
+      "evidence_note": "Paper 2 covers elective part (2 of 3 topics), 20%, 1h."
+    },
+    {
+      "target": "assessment.sba.scope",
+      "page_refs": ["p.121-124"],
+      "evidence_note": "School-based assessment (SBA) 20%; assesses practical and inquiry skills."
+    },
+    {
+      "target": "assessment.question_styles",
+      "page_refs": ["p.123"],
+      "evidence_note": "Public exam uses MCQ, short questions, structured questions, essay questions."
+    },
+    {
+      "target": "assessment.assessment_objectives",
+      "page_refs": ["p.117"],
+      "evidence_note": "Assessment objectives: recall, experimental technique, data handling, application, communication, evaluation."
+    }
+  ],
+  "draft_notes": [
+    {
+      "target": "assessment.difficulty_ladder",
+      "page_refs": [],
+      "note": "No explicit difficulty taxonomy in source; inferred from question-style descriptions on p.123."
+    },
+    {
+      "target": "topics.chem-investigative-study.scope",
+      "page_refs": ["p.78-80"],
+      "note": "Topic 16 is curriculum time for investigative study; it supports SBA but is not a public-exam content topic."
+    }
+  ]
+}

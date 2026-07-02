@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>A-Level Cover Background</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      background: #f3f5f9;
+    }
+    .canvas {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      background:
+        linear-gradient(90deg, rgba(247, 249, 252, 0.98) 0%, rgba(247, 249, 252, 0.94) 45%, rgba(247, 249, 252, 0.25) 66%, rgba(42, 58, 103, 0.94) 100%),
+        linear-gradient(135deg, #ffffff 0%, #e7edf8 45%, #2a3a67 100%);
+    }
+    .grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(42, 58, 103, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(42, 58, 103, 0.07) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: linear-gradient(90deg, transparent 0%, black 28%, black 100%);
+    }
+    .rail {
+      position: absolute;
+      left: 104px;
+      bottom: 106px;
+      width: 690px;
+      height: 2px;
+      background: #2a3a67;
+    }
+    .rail::after {
+      content: "";
+      position: absolute;
+      right: -132px;
+      top: -3px;
+      width: 118px;
+      height: 8px;
+      background: #d2a148;
+    }
+    .stamp {
+      position: absolute;
+      left: 120px;
+      bottom: 138px;
+      padding: 10px 16px;
+      border: 1px solid rgba(42, 58, 103, 0.28);
+      color: rgba(42, 58, 103, 0.68);
+      font-size: 18px;
+      letter-spacing: 0.08em;
+    }
+    .panel {
+      position: absolute;
+      right: 120px;
+      top: 126px;
+      width: 640px;
+      height: 760px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      background: rgba(42, 58, 103, 0.9);
+      box-shadow: 0 28px 80px rgba(30, 43, 80, 0.32);
+      padding: 44px 42px;
+    }
+    .panel h2 {
+      margin: 0 0 24px;
+      color: #ffffff;
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    .path {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 42px;
+    }
+    .node {
+      height: 92px;
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .node:nth-child(2) { background: rgba(255, 255, 255, 0.15); }
+    .node:nth-child(3) { background: rgba(210, 161, 72, 0.22); color: #f3cf7a; }
+    .node:nth-child(4) { background: #ffffff; color: #2a3a67; }
+    .meta {
+      display: grid;
+      gap: 14px;
+      margin-bottom: 42px;
+    }
+    .row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 18px;
+      align-items: baseline;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+      padding-bottom: 12px;
+    }
+    .label {
+      color: rgba(255, 255, 255, 0.58);
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .value {
+      color: #ffffff;
+      font-size: 22px;
+      line-height: 1.35;
+    }
+    .destinations {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .tag {
+      padding: 8px 14px;
+      border: 1px solid rgba(210, 161, 72, 0.55);
+      color: #f3cf7a;
+      font-size: 18px;
+      background: rgba(210, 161, 72, 0.08);
+    }
+    .big-number {
+      position: absolute;
+      right: 64px;
+      bottom: 34px;
+      color: rgba(255, 255, 255, 0.08);
+      font-size: 210px;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .mark {
+      position: absolute;
+      right: 104px;
+      bottom: 88px;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 20px;
+      letter-spacing: 0.16em;
+    }
+  </style>
+</head>
+<body>
+  <main class="canvas">
+    <div class="grid"></div>
+    <div class="rail"></div>
+    <div class="stamp">TEACHER TRAINING · INTERNATIONAL CURRICULUM</div>
+    <section class="panel">
+      <h2>Pathway Map</h2>
+      <div class="path">
+        <div class="node">IG</div>
+        <div class="node">AS</div>
+        <div class="node">A2</div>
+        <div class="node">UNI</div>
+      </div>
+      <div class="meta">
+        <div class="row">
+          <div class="label">System</div>
+          <div class="value">课程 · 考务 · 评价 · 升学</div>
+        </div>
+        <div class="row">
+          <div class="label">Evidence</div>
+          <div class="value">Syllabus / Paper / Threshold / Portfolio</div>
+        </div>
+        <div class="row">
+          <div class="label">Focus</div>
+          <div class="value">先统一体系语言，再进入学科执行</div>
+        </div>
+      </div>
+      <div class="destinations">
+        <span class="tag">UK</span>
+        <span class="tag">HK</span>
+        <span class="tag">SG</span>
+        <span class="tag">AU</span>
+        <span class="tag">US</span>
+      </div>
+    </section>
+    <div class="big-number">A*</div>
+    <div class="mark">BRIDGE · QIAOGAO</div>
+  </main>
+</body>
+</html>

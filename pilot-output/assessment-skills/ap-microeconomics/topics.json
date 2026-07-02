@@ -1,0 +1,262 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "ap-microeconomics",
+      "topic_name": "AP Microeconomics",
+      "parent_id": "",
+      "scope": [
+        "AP Microeconomics course framework (College Board).",
+        "Valid: 2025 → (ongoing).",
+        "Units 1–6 with cumulative exam weightings."
+      ],
+      "out_of_scope": [
+        "Pre-AP / general high-school level content unless explicitly cited in CED.",
+        "University-level content beyond AP expectations.",
+        "Other AP subjects."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific unit fits.",
+        "Prefer specific Unit N nodes for content questions."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-microeconomics-unit01",
+      "topic_name": "Unit 1: Basic Economic Concepts",
+      "parent_id": "ap-microeconomics",
+      "scope": [
+        "Unit 1 content as defined in AP Microeconomics CED.",
+        "Exam weighting: 12–15%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Basic Economic Concepts."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_1.1",
+          "text": "THIS PAGE IS INTENTIONALLY LEFT BLANK"
+        },
+        {
+          "ek_id": "EK_1.2",
+          "text": "Curriculum Development and Assessment Committee"
+        },
+        {
+          "ek_id": "EK_1.3",
+          "text": "SPECIAL THANKS Christopher Budano and John R"
+        },
+        {
+          "ek_id": "EK_1.4",
+          "text": "AP Microeconomics Course and Exam Description                                                             \u0007 V"
+        },
+        {
+          "ek_id": "EK_1.5",
+          "text": "THIS PAGE IS INTENTIONALLY LEFT BLANK"
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-microeconomics-unit02",
+      "topic_name": "Unit 2: Supply and Demand",
+      "parent_id": "ap-microeconomics",
+      "scope": [
+        "Unit 2 content as defined in AP Microeconomics CED.",
+        "Exam weighting: 20–25%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Supply and Demand."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_2.1",
+          "text": "Core content and concepts for Unit 2: Supply and Demand."
+        },
+        {
+          "ek_id": "EK_2.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 2: Supply and Demand."
+        },
+        {
+          "ek_id": "EK_2.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 2: Supply and Demand."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-microeconomics-unit03",
+      "topic_name": "Unit 3: Production, Cost, and the Perfect Competition Model",
+      "parent_id": "ap-microeconomics",
+      "scope": [
+        "Unit 3 content as defined in AP Microeconomics CED.",
+        "Exam weighting: 22–25%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Production, Cost, and the Perfect Competition Model."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_3.1",
+          "text": "Core content and concepts for Unit 3: Production, Cost, and the Perfect Competition Model."
+        },
+        {
+          "ek_id": "EK_3.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 3: Production, Cost, and the Perfect Competition Model."
+        },
+        {
+          "ek_id": "EK_3.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 3: Production, Cost, and the Perfect Competition Model."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-microeconomics-unit04",
+      "topic_name": "Unit 4: Imperfect Competition",
+      "parent_id": "ap-microeconomics",
+      "scope": [
+        "Unit 4 content as defined in AP Microeconomics CED.",
+        "Exam weighting: 15–22%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Imperfect Competition."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_4.1",
+          "text": "THIS PAGE IS INTENTIONALLY LEFT BLANK"
+        },
+        {
+          "ek_id": "EK_4.2",
+          "text": "Curriculum Development and Assessment Committee"
+        },
+        {
+          "ek_id": "EK_4.3",
+          "text": "SPECIAL THANKS Christopher Budano and John R"
+        },
+        {
+          "ek_id": "EK_4.4",
+          "text": "AP Microeconomics Course and Exam Description                                                             \u0007 V"
+        },
+        {
+          "ek_id": "EK_4.5",
+          "text": "THIS PAGE IS INTENTIONALLY LEFT BLANK"
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-microeconomics-unit05",
+      "topic_name": "Unit 5: Factor Markets",
+      "parent_id": "ap-microeconomics",
+      "scope": [
+        "Unit 5 content as defined in AP Microeconomics CED.",
+        "Exam weighting: 10–13%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Factor Markets."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_5.1",
+          "text": "Core content and concepts for Unit 5: Factor Markets."
+        },
+        {
+          "ek_id": "EK_5.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 5: Factor Markets."
+        },
+        {
+          "ek_id": "EK_5.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 5: Factor Markets."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-microeconomics-unit06",
+      "topic_name": "Unit 6: Market Failure and the Role of Government",
+      "parent_id": "ap-microeconomics",
+      "scope": [
+        "Unit 6 content as defined in AP Microeconomics CED.",
+        "Exam weighting: 8–13%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Market Failure and the Role of Government."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_6.1",
+          "text": "THIS PAGE IS INTENTIONALLY LEFT BLANK"
+        },
+        {
+          "ek_id": "EK_6.2",
+          "text": "Curriculum Development and Assessment Committee"
+        },
+        {
+          "ek_id": "EK_6.3",
+          "text": "SPECIAL THANKS Christopher Budano and John R"
+        },
+        {
+          "ek_id": "EK_6.4",
+          "text": "AP Microeconomics Course and Exam Description                                                             \u0007 V"
+        },
+        {
+          "ek_id": "EK_6.5",
+          "text": "THIS PAGE IS INTENTIONALLY LEFT BLANK"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,383 @@
+{
+  "schema_version": "1",
+  "subject": "mathematics",
+  "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/02-A-Level知识库/03-考试局/CAIE/Mathematics (9709)/02-课本与考纲/考纲/CAIE_Mathematics_9709_Syllabus_2025-2026.pdf",
+  "file_checksum_sha256": "3a7a37692399f47ff5e0d94cc41f9dd33d3b99467ce83aa4bad28c6136f96256",
+  "pdfinfo": {
+    "Creator": "Adobe InDesign 15.0 (Windows)",
+    "Producer": "Adobe PDF Library 15.0",
+    "CreationDate": "Thu Sep 10 19:52:39 2020 CST",
+    "ModDate": "Thu Sep 10 20:01:18 2020 CST",
+    "Custom Metadata": "no",
+    "Metadata Stream": "yes",
+    "Tagged": "no",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "none",
+    "JavaScript": "no",
+    "Pages": "59",
+    "Encrypted": "no",
+    "Page size": "595.276 x 841.89 pts (A4)",
+    "Page rot": "0",
+    "File size": "952594 bytes",
+    "Optimized": "yes",
+    "PDF version": "1.7"
+  },
+  "total_pages": 59,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": 1,
+      "chars": 3063,
+      "first_200": "Syllabus Cambridge International AS & A Level Mathematics 9709 For examination in June and November 2023, 2024 and 2025. Also available for examination in March 2023, 2024 and 2025 for"
+    },
+    {
+      "physical_page": 2,
+      "printed_page": 2,
+      "chars": 3063,
+      "first_200": "centres are permitted to copy material from this booklet for their own internal use. However, we cannot give permission to centres to photocopy any material that is acknowledged to a"
+    },
+    {
+      "physical_page": 3,
+      "printed_page": 3,
+      "chars": 3063,
+      "first_200": "ou need to know . ....................................................................................................... 52 Before you start 52 Making entries 53 After the exam 54 How students, teach"
+    },
+    {
+      "physical_page": 4,
+      "printed_page": 4,
+      "chars": 3063,
+      "first_200": "learners to be: confident, using and sharing information and ideas, and using mathematical techniques to solve problems. These skills build confidence and support work in other subject areas as well"
+    },
+    {
+      "physical_page": 5,
+      "printed_page": 5,
+      "chars": 3063,
+      "first_200": "namic situations and underlines the links between functions and graphs. – Mechanical models: these explain and predict how particles and objects move or remain stable under the influence of forces."
+    },
+    {
+      "physical_page": 6,
+      "printed_page": 6,
+      "chars": 3063,
+      "first_200": "versity courses in mathematics or some other subjects. It is also suitable as part of a course of general education. Cambridge International A Level Mathematics provides a foundation for the"
+    },
+    {
+      "physical_page": 7,
+      "printed_page": 7,
+      "chars": 3063,
+      "first_200": "• Specimen papers • Support for coursework and speaking tests • Syllabuses • Teacher guides Support for Cambridge International Learning and revision AS & A Level Results • Example candidate"
+    },
+    {
+      "physical_page": 8,
+      "printed_page": 8,
+      "chars": 3063,
+      "first_200": "rther study in mathematics or related subjects. Cambridge Assessment International Education is an education organisation and politically neutral. The contents of this syllabus, examination papers and"
+    },
+    {
+      "physical_page": 9,
+      "printed_page": 9,
+      "chars": 3063,
+      "first_200": "straight line 4.3 Momentum 4.4 Newton’s laws of motion 4.5 Energy, work and power 5 Probability & Statistics 1 Paper 5 5.1 Representation of data 5.2 Permutations and combinations 5.3"
+    },
+    {
+      "physical_page": 10,
+      "printed_page": 10,
+      "chars": 3063,
+      "first_200": "(No progression to A Level) Pure Mathematics only Paper 1 and Paper 4 Paper 1, 3, 4 and 5 Pure Mathematics and Pure Mathematics, Mechanics Mechanics and Probability & Statistics"
+    },
+    {
+      "physical_page": 11,
+      "printed_page": 11,
+      "chars": 3063,
+      "first_200": "el Mathematics Candidates take four components for Cambridge International A Level Mathematics. All candidates take: Paper 1: Pure Mathematics 1 and Paper 3: Pure Mathematics 3. Then, candidates take "
+    },
+    {
+      "physical_page": 12,
+      "printed_page": 12,
+      "chars": 3063,
+      "first_200": "1 Cambridge International AS & A Level Mathematics 9709 syllabus for 2023, 2024 and 2025. Syllabus overview Assessment overview Pure Mathematics components Paper 1 Paper 2 Pure Mathematics 1 1"
+    },
+    {
+      "physical_page": 13,
+      "printed_page": 13,
+      "chars": 3063,
+      "first_200": "20% of the A Level only 20% of the A Level Offered only as part of A Level Compulsory for A Level ‘Cambridge International AS & A Levels prepare students"
+    },
+    {
+      "physical_page": 14,
+      "printed_page": 14,
+      "chars": 3063,
+      "first_200": "ailed below. You can teach the topics in any order you find appropriate. Information about calculator use and information about the relationships between syllabus components can be found in 4"
+    },
+    {
+      "physical_page": 15,
+      "printed_page": 15,
+      "chars": 3063,
+      "first_200": "Mathematics 9709 syllabus for 2023, 2024 and 2025. Subject content 1 Pure Mathematics 1 1.2 Functions Candidates should be able to: Notes and examples • understand the terms function, domain,"
+    },
+    {
+      "physical_page": 16,
+      "printed_page": 16,
+      "chars": 3063,
+      "first_200": "Including use of the expanded form (x – a)2 + (y – b)2 = r 2 represents the circle x 2 + y 2 + 2gx + 2fy + c"
+    },
+    {
+      "physical_page": 17,
+      "printed_page": 17,
+      "chars": 3063,
+      "first_200": ", tan–1x to denote No specialised knowledge of these functions is the principal values of the inverse trigonometric required, but understanding of them as examples of relations inverse functions is"
+    },
+    {
+      "physical_page": 18,
+      "printed_page": 18,
+      "chars": 3063,
+      "first_200": "the limit of the gradients of a suitable sequence is expected. of chords, and use the notations e.g. includes consideration of the gradient of the dy d2y chord joining the"
+    },
+    {
+      "physical_page": 19,
+      "printed_page": 19,
+      "chars": 3063,
+      "first_200": "dy for which = 2x + 1 . dx • evaluate definite integrals Including simple cases of ‘improper’ integrals, such as ; x 2 dx and ; x 2 dx"
+    },
+    {
+      "physical_page": 20,
+      "printed_page": 20,
+      "chars": 3063,
+      "first_200": "ding calculation of remainders. 2.2 Logarithmic and exponential functions Candidates should be able to: Notes and examples • understand the relationship between logarithms and indices, and use the law"
+    },
+    {
+      "physical_page": 21,
+      "printed_page": 21,
+      "chars": 3063,
+      "first_200": "tan(A ± B) – the formulae for sin 2A, cos 2A and tan 2A – the expression of a sin i + b cos i in the forms R sin"
+    },
+    {
+      "physical_page": 22,
+      "printed_page": 22,
+      "chars": 3063,
+      "first_200": "e.g. finding a pair of consecutive integers between by means of graphical considerations and/or which a root lies. searching for a sign change • understand the idea of, and use"
+    },
+    {
+      "physical_page": 23,
+      "printed_page": 23,
+      "chars": 3063,
+      "first_200": "is no more complicated than – (ax + b)(cx + d)(ex + f ) – (ax + b)(cx + d)2 – (ax + b)(cx2 + d) • use the expansion"
+    },
+    {
+      "physical_page": 24,
+      "printed_page": 24,
+      "chars": 3063,
+      "first_200": "cant and cotangent functions to cosine, sine and tangent, and use properties and graphs of all six trigonometric functions for angles of any magnitude • use trigonometrical identities for the"
+    },
+    {
+      "physical_page": 25,
+      "printed_page": 25,
+      "chars": 3063,
+      "first_200": "2 + 3x 2 include the integration of eax + b, , ax + b sin(ax + b), cos(ax + b), sec2(ax + b) 1 and 2 x a2 +"
+    },
+    {
+      "physical_page": 26,
+      "printed_page": 26,
+      "chars": 3063,
+      "first_200": "iteration based on a given rearrangement of an equation, to determine a root to a prescribed degree of accuracy. 3.7 Vectors Candidates should be able to: Notes and examples •"
+    },
+    {
+      "physical_page": 27,
+      "printed_page": 27,
+      "chars": 3063,
+      "first_200": "idge International AS & A Level Mathematics 9709 syllabus for 2023, 2024 and 2025. Subject content 3 Pure Mathematics 3 3.8 Differential equations Candidates should be able to: Notes and"
+    },
+    {
+      "physical_page": 28,
+      "printed_page": 28,
+      "chars": 3063,
+      "first_200": "xpressed in polar form r ^cos i + i sin ih / re ii results for division. • find the two square roots of a complex number e.g. the square"
+    },
+    {
+      "physical_page": 29,
+      "printed_page": 29,
+      "chars": 3063,
+      "first_200": "ed knowledge, and will not be referred to in questions. • understand that a contact force between two surfaces can be represented by two components, the normal component and the"
+    },
+    {
+      "physical_page": 30,
+      "printed_page": 30,
+      "chars": 3063,
+      "first_200": "4.3 Momentum Candidates should be able to: Notes and examples • use the definition of linear momentum and show For motion in one dimension only. understanding of its vector nature"
+    },
+    {
+      "physical_page": 31,
+      "printed_page": 31,
+      "chars": 3063,
+      "first_200": "understand the concept of the work done by a W = Fd cos i ; force, and calculate the work done by a constant Use of the scalar product is"
+    },
+    {
+      "physical_page": 32,
+      "printed_page": 32,
+      "chars": 3063,
+      "first_200": "requency graph e.g. to estimate medians, quartiles, percentiles, the proportion of a distribution above (or below) a given value, or between two values. • calculate and use the mean and"
+    },
+    {
+      "physical_page": 33,
+      "printed_page": 33,
+      "chars": 3063,
+      "first_200": "babilities in e.g. situations that can be represented by a sample simple cases. space of equiprobable elementary events, or a tree P ^A + Bh diagram. The use of P"
+    },
+    {
+      "physical_page": 34,
+      "printed_page": 34,
+      "chars": 3063,
+      "first_200": "nq > 5. to the binomial distribution, and use this approximation, with a continuity correction, in solving problems. 32 www.cambridgeinternational.org/alevel Back to contents page Cambridge Internatio"
+    },
+    {
+      "physical_page": 35,
+      "printed_page": 35,
+      "chars": 3063,
+      "first_200": "Continuous random variables Candidates should be able to: Notes and examples • understand the concept of a continuous random For density functions defined over a single interval variable, and recall"
+    },
+    {
+      "physical_page": 36,
+      "printed_page": 36,
+      "chars": 3063,
+      "first_200": "idual estimates will raw or summarised data vary the process gives an accurate result ‘on average’. • determine and interpret a confidence interval for a population mean in cases where"
+    },
+    {
+      "physical_page": 37,
+      "printed_page": 37,
+      "chars": 3063,
+      "first_200": "Pure Mathematics 3 build on the subject content for Paper 1: Pure Mathematics 1. Paper 4: Mechanics and Paper 5: Probability & Statistics 1 components assume prior knowledge of the"
+    },
+    {
+      "physical_page": 38,
+      "printed_page": 38,
+      "chars": 3063,
+      "first_200": "rent level of accuracy is specified in the question. To earn accuracy marks, candidates should avoid rounding figures until they have their final answer. Additional materials for examinations Candidat"
+    },
+    {
+      "physical_page": 39,
+      "printed_page": 39,
+      "chars": 3063,
+      "first_200": "support a case with evidence/argument Show (that) provide structured evidence that leads to a given result Sketch make a simple freehand drawing showing the key features State express in clear"
+    },
+    {
+      "physical_page": 40,
+      "printed_page": 40,
+      "chars": 3063,
+      "first_200": "(a + b) n = a n +   a n −1b +   a n − 2b 2 +   a n −3b3 + K +"
+    },
+    {
+      "physical_page": 41,
+      "printed_page": 41,
+      "chars": 3063,
+      "first_200": "sin x cos x cos x − sin x tan x sec 2 x sec x sec x tan x cosec x − cosec x cot x cot x −"
+    },
+    {
+      "physical_page": 42,
+      "printed_page": 42,
+      "chars": 3063,
+      "first_200": "cos x cos x sin x sec 2 x tan x 1 1 x tan −1   x + a2 2 a a 1 1 x−a ln ( x"
+    },
+    {
+      "physical_page": 43,
+      "printed_page": 43,
+      "chars": 3063,
+      "first_200": "3 1 4 2 2 Maclaurin’s series: x2 xr f( x) = f(0) + x f ′(0) + f ′′(0) + K + f ( r ) (0) + K"
+    },
+    {
+      "physical_page": 44,
+      "printed_page": 44,
+      "chars": 3063,
+      "first_200": "x3 x5 x 2 r +1 tanh −1 x =x + + +K + +K (–1 < x < 1) 3 5 2r + 1 Trigonometry If t = tan"
+    },
+    {
+      "physical_page": 45,
+      "printed_page": 45,
+      "chars": 3063,
+      "first_200": "1 cosh −1 x x2 − 1 1 tanh −1 x 1 − x2 Integration (Arbitrary constants are omitted; a denotes a positive constant.) f( x ) ∫ f( x"
+    },
+    {
+      "physical_page": 46,
+      "printed_page": 46,
+      "chars": 3063,
+      "first_200": "2 v= u + at , =s 1 2 (u + v)t , s= ut + 12 at 2 , v= u 2 + 2as FURTHER MECHANICS Motion of a"
+    },
+    {
+      "physical_page": 47,
+      "printed_page": 47,
+      "chars": 3063,
+      "first_200": "x= , standard= deviation = − x2 n n n For grouped data: Σxf Σ( x − x ) 2 f Σx 2 f x= , standard = deviation ="
+    },
+    {
+      "physical_page": 48,
+      "printed_page": 48,
+      "chars": 3063,
+      "first_200": " n  Back to contents page www.cambridgeinternational.org/alevel 45 8 Cambridge International AS & A Level Mathematics 9709 syllabus for 2023, 2024 and 2025. List of formulae and statistical tables"
+    },
+    {
+      "physical_page": 49,
+      "printed_page": 49,
+      "chars": 3063,
+      "first_200": "5 0.7019 0.7054 0.7088 0.7123 0.7157 0.7190 0.7224 3 7 10 14 17 20 24 27 31 0.6 0.7257 0.7291 0.7324 0.7357 0.7389 0.7422 0.7454 0.7486 0.7517 0.7549 3 7"
+    },
+    {
+      "physical_page": 50,
+      "printed_page": 50,
+      "chars": 3063,
+      "first_200": "0.9946 0.9948 0.9949 0.9951 0.9952 0 0 0 1 1 1 1 1 1 2.6 0.9953 0.9955 0.9956 0.9957 0.9959 0.9960 0.9961 0.9962 0.9963 0.9964 0 0 0 0 1"
+    },
+    {
+      "physical_page": 51,
+      "printed_page": 51,
+      "chars": 3063,
+      "first_200": "2.306 2.896 3.355 3.833 4.501 5.041 9 0.703 1.383 1.833 2.262 2.821 3.250 3.690 4.297 4.781 10 0.700 1.372 1.812 2.228 2.764 3.169 3.581 4.144 4.587 11 0.697 1.363 1.796"
+    },
+    {
+      "physical_page": 52,
+      "printed_page": 52,
+      "chars": 3063,
+      "first_200": "3.030 3.385 3.646 40 0.681 1.303 1.684 2.021 2.423 2.704 2.971 3.307 3.551 60 0.679 1.296 1.671 2.000 2.390 2.660 2.915 3.232 3.460 120 0.677 1.289 1.658 1.980 2.358 2.617"
+    },
+    {
+      "physical_page": 53,
+      "printed_page": 53,
+      "chars": 3063,
+      "first_200": "27.69 29.82 34.53 14 4.660 5.629 6.571 21.06 23.68 26.12 29.14 31.32 36.12 15 5.229 6.262 7.261 22.31 25.00 27.49 30.58 32.80 37.70 16 5.812 6.908 7.962 23.54 26.30 28.85"
+    },
+    {
+      "physical_page": 54,
+      "printed_page": 54,
+      "chars": 3063,
+      "first_200": "WILCOXON SIGNED-RANK TEST The sample has size n. P is the sum of the ranks corresponding to the positive differences. Q is the sum of the ranks corresponding to the"
+    },
+    {
+      "physical_page": 55,
+      "printed_page": 55,
+      "chars": 3063,
+      "first_200": "-SUM TEST The two samples have sizes m and n, where m ⩽ n. Rm is the sum of the ranks of the items in the sample of size m."
+    },
+    {
+      "physical_page": 56,
+      "printed_page": 56,
+      "chars": 3063,
+      "first_200": "al.org/alevel 51 14 Cambridge International AS & A Level Mathematics 9709 syllabus for 2023, 2024 and 2025. 6 What else you need to know This section is an overview of"
+    },
+    {
+      "physical_page": 57,
+      "printed_page": 57,
+      "chars": 3063,
+      "first_200": "2025. What else you need to know Making entries Exams officers are responsible for submitting entries to Cambridge International. We encourage them to work closely with you to make sure"
+    },
+    {
+      "physical_page": 58,
+      "printed_page": 58,
+      "chars": 3063,
+      "first_200": "Grades A*, A, B, C, D or E indicate the standard a candidate achieved at Cambridge International A Level. A* is the highest and E is the lowest grade. Grades"
+    },
+    {
+      "physical_page": 59,
+      "printed_page": 59,
+      "chars": 3063,
+      "first_200": "Assessment at Cambridge International AS Level has two purposes: • to measure learning and achievement The assessment: – confirms achievement and performance in relation to the knowledge, understandin"
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "aqa-ial-english-literature-7717",
+      "topic_name": "CAIE IGCSE English Literature",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE English Literature (7717) syllabus scope.",
+        "Valid: 2025 → 2026."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "aqa-ial-english-literature-7717-unit01",
+      "topic_name": "Topic 1: Aspects of tragedy",
+      "parent_id": "aqa-ial-english-literature-7717",
+      "scope": [
+        "Topic 1 content as defined in AQA IAL aqa-ial-english-literature-7717."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Aspects of tragedy."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "aqa-ial-english-literature-7717-unit02",
+      "topic_name": "Topic 2: Aspects of comedy",
+      "parent_id": "aqa-ial-english-literature-7717",
+      "scope": [
+        "Topic 2 content as defined in AQA IAL aqa-ial-english-literature-7717."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Aspects of comedy."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "aqa-ial-english-literature-7717-unit03",
+      "topic_name": "Topic 3: Aspects of crime writing",
+      "parent_id": "aqa-ial-english-literature-7717",
+      "scope": [
+        "Topic 3 content as defined in AQA IAL aqa-ial-english-literature-7717."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Aspects of crime writing."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    },
+    {
+      "topic_id": "aqa-ial-english-literature-7717-unit04",
+      "topic_name": "Topic 4: Aspects of political and social protest writing",
+      "parent_id": "aqa-ial-english-literature-7717",
+      "scope": [
+        "Topic 4 content as defined in AQA IAL aqa-ial-english-literature-7717."
+      ],
+      "out_of_scope": [
+        "Content belonging to other topics."
+      ],
+      "classification_hints": [
+        "Look for keywords: Aspects of political and social protest writing."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": []
+    }
+  ]
+}

@@ -1,0 +1,243 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Comparison</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    .slide {
+      width: 1920px;
+      height: 1080px;
+      background-color: #FFFFFF;
+      font-family: 'PingFang SC', 'Microsoft YaHei', 'PingFang TC', 'Hiragino Sans GB', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+    .title-block {
+      position: absolute;
+      left: 80px;
+      top: 100px;
+      width: 1680px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .title-block [data-slot="title"] {
+      font-weight: 600;
+      font-size: 64px;
+      line-height: 1.25;
+      color: #20283A;
+    }
+    .title-block [data-slot="subtitle"] {
+      font-weight: 400;
+      font-size: 40px;
+      line-height: 1.4;
+      color: #17495C;
+    }
+    .comparison-row {
+      position: absolute;
+      left: 80px;
+      top: 304px;
+      width: 1760px;
+      display: flex;
+      flex-direction: row;
+      gap: 32px;
+      height: 676px;
+      align-items: stretch;
+    }
+    .comparison-col {
+      flex: 1;
+      border-radius: 16px;
+      padding: 48px 56px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .col-left {
+      background-color: #E6F5FA;
+    }
+    .col-right {
+      background-color: #F2FAFD;
+    }
+    .col-header {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-bottom: 36px;
+      border-bottom: 2px solid rgba(0,0,0,0.08);
+      margin-bottom: 36px;
+      flex-shrink: 0;
+    }
+    .col-left .col-header { border-bottom-color: rgba(0,0,0,0.1); }
+    .col-header [data-slot$="Label"] {
+      font-weight: 600;
+      font-size: 44px;
+      line-height: 1.22;
+      color: #20283A;
+    }
+    .col-items {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      flex: 1;
+    }
+    .col-items [data-slot$="Item1"],
+    .col-items [data-slot$="Item2"],
+    .col-items [data-slot$="Item3"],
+    .col-items [data-slot$="Item4"] {
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 1.43;
+      color: #20283A;
+      padding-left: 24px;
+      position: relative;
+    }
+    .col-items [data-slot$="Item1"]::before,
+    .col-items [data-slot$="Item2"]::before,
+    .col-items [data-slot$="Item3"]::before,
+    .col-items [data-slot$="Item4"]::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #D2A148;
+    }
+    .col-right .col-items [data-slot$="Item1"]::before,
+    .col-right .col-items [data-slot$="Item2"]::before,
+    .col-right .col-items [data-slot$="Item3"]::before,
+    .col-right .col-items [data-slot$="Item4"]::before {
+      background-color: #8CCFE2;
+    }
+  </style>
+<style id="qoderwork-sea-blue-base">
+    .slide {
+      color: #20283A !important;
+      letter-spacing: 0 !important;
+    }
+    .title-block [data-slot="title"] {
+      color: #123A4A !important;
+      font-weight: 700 !important;
+      letter-spacing: 0 !important;
+    }
+    .title-block [data-slot="subtitle"] {
+      color: #17495C !important;
+      font-weight: 500 !important;
+    }
+    .content-card,
+    .comparison-col,
+    .timeline-step {
+      border: 1px solid rgba(45,156,196,0.18) !important;
+      box-shadow: none !important;
+    }
+    .content-card,
+    .col-right {
+      background-color: #F2FAFD !important;
+    }
+    .col-left {
+      background-color: #E6F5FA !important;
+    }
+    .card-image {
+      background-color: #FFFFFF !important;
+      border: 1px solid rgba(210,161,72,0.35) !important;
+    }
+    .card-image img {
+      color: #2D9CC4 !important;
+    }
+    [data-slot$="Heading"],
+    [data-slot$="Label"] {
+      color: #123A4A !important;
+      font-weight: 700 !important;
+    }
+    [data-slot$="Copy"],
+    [data-slot$="Item1"],
+    [data-slot$="Item2"],
+    [data-slot$="Item3"],
+    [data-slot$="Item4"] {
+      color: #20283A !important;
+    }
+    .col-items [data-slot$="Item1"]::before,
+    .col-items [data-slot$="Item2"]::before,
+    .col-items [data-slot$="Item3"]::before,
+    .col-items [data-slot$="Item4"]::before {
+      background-color: #D2A148 !important;
+    }
+  </style><style id="qoderwork-sea-blue-comparison">
+      .col-header {
+        display: block !important;
+        border-bottom: 0 !important;
+        background: transparent !important;
+      }
+      .col-header [data-slot$="Label"] {
+        color: #20283A !important;
+        font-weight: 800 !important;
+        background: transparent !important;
+      }
+      .col-items [data-slot$="Item1"],
+      .col-items [data-slot$="Item2"],
+      .col-items [data-slot$="Item3"],
+      .col-items [data-slot$="Item4"] {
+        color: #20283A !important;
+      }
+    </style>
+<style id="eduflow-sea-theme">
+  .slide { color: #20283A !important; }
+  .title-block [data-slot="title"] { color: #123A4A !important; font-weight: 750 !important; letter-spacing: 0 !important; }
+  .title-block [data-slot="subtitle"] { color: #17495C !important; font-weight: 500 !important; }
+  .content-card, .comparison-col, .timeline-step { border: 1px solid rgba(45,156,196,0.18) !important; box-shadow: none !important; }
+  .card-image { background-color: #FFFFFF !important; border: 1px solid rgba(210,161,72,0.35) !important; }
+  .card-image img { color: #2D9CC4 !important; }
+  [data-slot$="Heading"], [data-slot$="Label"] { color: #123A4A !important; font-weight: 750 !important; }
+  [data-slot$="Copy"], [data-slot$="Item1"], [data-slot$="Item2"], [data-slot$="Item3"], [data-slot$="Item4"] { color: #20283A !important; }
+</style>
+
+<style id="comparison-fix">
+  .title-block { top: 80px !important; gap: 10px !important; }
+  .title-block [data-slot="title"] { font-size: 52px !important; line-height: 1.14 !important; color: #123A4A !important; }
+  .title-block [data-slot="subtitle"] { font-size: 28px !important; line-height: 1.28 !important; color: #17495C !important; }
+  .comparison-row { top: 250px !important; height: 742px !important; }
+  .comparison-col { padding: 32px 42px !important; overflow: visible !important; }
+  .col-left { background-color: #E6F5FA !important; }
+  .col-right { background-color: #F2FAFD !important; }
+  .col-header { display: block !important; border-bottom: 0 !important; padding-bottom: 0 !important; margin-bottom: 24px !important; }
+  .col-header [data-slot$="Label"] { color: #000000 !important; font-weight: 800 !important; font-size: 35px !important; line-height: 1.14 !important; background: transparent !important; }
+  .col-items { gap: 14px !important; }
+  .col-items [data-slot$="Item1"], .col-items [data-slot$="Item2"], .col-items [data-slot$="Item3"], .col-items [data-slot$="Item4"] { color: #000000 !important; font-size: 21.5px !important; line-height: 1.28 !important; padding-left: 20px !important; }
+  .col-items [data-slot$="Item1"]::before, .col-items [data-slot$="Item2"]::before, .col-items [data-slot$="Item3"]::before, .col-items [data-slot$="Item4"]::before { background-color: #D2A148 !important; top: 10px !important; }
+</style>
+</head>
+<body>
+  <div class="slide" data-template="comparison">
+    <div class="title-block">
+      <h1 data-slot="title">背景提升常见误区：别把经历做空</h1>
+      <p data-slot="subtitle">科研、夏校和阅读都要服务主线：科目成绩、专业匹配、学术证据和申请表达。</p>
+    </div>
+    <div class="comparison-row">
+      <div class="comparison-col col-left">
+        <div class="col-header">
+          <h2 data-slot="leftLabel">常见误区</h2>
+        </div>
+        <div class="col-items">
+          <p data-slot="leftItem1">科研只追求导师头衔或挂名项目，没有真实过程</p>
+          <p data-slot="leftItem2">把名校夏校等同于名校录取保障</p>
+          <p data-slot="leftItem3">阅读只列书单，不做笔记、不形成观点</p>
+          <p data-slot="leftItem4">活动碎片化堆叠，无法服务同一个专业方向问题</p>
+        </div>
+      </div>
+      <div class="comparison-col col-right">
+        <div class="col-header">
+          <h2 data-slot="rightLabel">有效做法</h2>
+        </div>
+        <div class="col-items">
+          <p data-slot="rightItem1">科研产出研究报告、展示海报、口头汇报和推荐素材</p>
+          <p data-slot="rightItem2">夏校沉淀课程作业、课堂反馈、反思记录和选课判断</p>
+          <p data-slot="rightItem3">阅读形成概念卡片、问题清单、书评和 seminar 分享</p>
+          <p data-slot="rightItem4">建立证据档案：竞赛、阅读、项目、夏校、课堂表现</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body></html>

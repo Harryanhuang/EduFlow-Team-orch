@@ -1,0 +1,314 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Cover</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    .slide {
+      width: 1920px;
+      height: 1080px;
+      background-color: #E6F5FA;
+      font-family: 'PingFang SC', 'Microsoft YaHei', 'PingFang TC', 'Hiragino Sans GB', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+    /* 底色层：保证导出 PPT 背景色稳定 */
+    .bg-color {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      background-color: #E6F5FA;
+      z-index: 0;
+      pointer-events: none;
+      user-select: none;
+    }
+    /* 背景图：用真实 <img> 作为底图，确保 HTML→PPTX 可抓取 */
+    .bg-image {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      object-fit: cover;
+      object-position: center;
+      z-index: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+    /* 内容层置顶 */
+    .title-block,
+    .desc-block {
+      z-index: 2;
+    }
+    .title-block {
+      position: absolute;
+      left: 120px;
+      top: 100px;
+      width: 872px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .title-block [data-slot="title"] {
+      font-weight: 600;
+      font-size: 80px;
+      line-height: 1.22;
+      color: #20283A;
+    }
+    .title-block [data-slot="subtitle"] {
+      font-weight: 400;
+      font-size: 40px;
+      line-height: 1.22;
+      color: #20283A;
+    }
+    .desc-block {
+      position: absolute;
+      left: 120px;
+      top: 360px;
+      width: 1360px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .desc-block [data-slot="description"] {
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 1.33;
+      color: #20283A;
+      /* PPT 导出不稳定支持 opacity，改为等效灰色 */
+      color: #8CCFE2; /* black @ 40% on white */
+    }
+    .desc-block [data-slot="footer"] {
+      font-weight: 400;
+      font-size: 32px;
+      line-height: 1.22;
+      color: #20283A;
+      opacity: 0.99;
+    }
+  </style>
+<style id="qoderwork-sea-blue-base">
+    .slide {
+      color: #20283A !important;
+      letter-spacing: 0 !important;
+    }
+    .title-block [data-slot="title"] {
+      color: #123A4A !important;
+      font-weight: 700 !important;
+      letter-spacing: 0 !important;
+    }
+    .title-block [data-slot="subtitle"] {
+      color: #17495C !important;
+      font-weight: 500 !important;
+    }
+    .content-card,
+    .comparison-col,
+    .timeline-step {
+      border: 1px solid rgba(45,156,196,0.18) !important;
+      box-shadow: none !important;
+    }
+    .content-card,
+    .col-right {
+      background-color: #F2FAFD !important;
+    }
+    .col-left {
+      background-color: #E6F5FA !important;
+    }
+    .card-image {
+      background-color: #FFFFFF !important;
+      border: 1px solid rgba(210,161,72,0.35) !important;
+    }
+    .card-image img {
+      color: #2D9CC4 !important;
+    }
+    [data-slot$="Heading"],
+    [data-slot$="Label"] {
+      color: #123A4A !important;
+      font-weight: 700 !important;
+    }
+    [data-slot$="Copy"],
+    [data-slot$="Item1"],
+    [data-slot$="Item2"],
+    [data-slot$="Item3"],
+    [data-slot$="Item4"] {
+      color: #20283A !important;
+    }
+    .col-items [data-slot$="Item1"]::before,
+    .col-items [data-slot$="Item2"]::before,
+    .col-items [data-slot$="Item3"]::before,
+    .col-items [data-slot$="Item4"]::before {
+      background-color: #D2A148 !important;
+    }
+  </style><style id="qoderwork-sea-blue-cover">
+      .slide[data-template="cover"] {
+        background-color: #E6F5FA !important;
+        background: #E6F5FA !important;
+      }
+      .slide[data-template="cover"] .bg-color {
+        background: transparent !important;
+      }
+      .slide[data-template="cover"] .bg-image {
+        display: none !important;
+      }
+      .sea-cover-sidewash {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 720px;
+        height: 1080px;
+        background-color: #BFE8F2;
+        z-index: 1;
+      }
+      .slide[data-template="cover"] .title-block,
+      .slide[data-template="cover"] .desc-block,
+      .sea-cover-sidewash,
+      .sea-cover-panel,
+      .sea-cover-stamp,
+      .sea-cover-rail {
+        z-index: 2;
+      }
+      .sea-cover-panel {
+        position: absolute;
+        right: 120px;
+        top: 126px;
+        width: 640px;
+        height: 760px;
+        padding: 44px 42px;
+        background: rgba(45,156,196,0.92);
+        border: 1px solid rgba(255,255,255,0.28);
+        box-shadow: 0 28px 80px rgba(32,118,150,0.24);
+        color: #FFFFFF;
+      }
+      .sea-cover-panel h2 {
+        margin: 0 0 24px;
+        color: #FFFFFF;
+        font-size: 30px;
+        font-weight: 700;
+      }
+      .sea-path {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-bottom: 42px;
+      }
+      .sea-path div {
+        height: 92px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(255,255,255,0.34);
+        background: rgba(255,255,255,0.10);
+        font-size: 24px;
+        font-weight: 700;
+      }
+      .sea-path div:nth-child(3) {
+        background: rgba(210,161,72,0.22);
+        color: #F3CF7A;
+      }
+      .sea-path div:nth-child(4) {
+        background: #FFFFFF;
+        color: #123A4A;
+      }
+      .sea-meta {
+        display: grid;
+        gap: 14px;
+        margin-bottom: 42px;
+      }
+      .sea-meta div {
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        gap: 18px;
+        align-items: baseline;
+        border-bottom: 1px solid rgba(255,255,255,0.16);
+        padding-bottom: 12px;
+      }
+      .sea-meta span {
+        color: rgba(255,255,255,0.68);
+        font-size: 18px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      .sea-meta strong {
+        color: #FFFFFF;
+        font-size: 22px;
+        line-height: 1.35;
+        font-weight: 500;
+      }
+      .sea-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .sea-tags span {
+        padding: 8px 14px;
+        border: 1px solid rgba(210,161,72,0.55);
+        color: #F3CF7A;
+        font-size: 18px;
+        background: rgba(210,161,72,0.08);
+      }
+      .sea-cover-stamp {
+        position: absolute;
+        left: 120px;
+        bottom: 138px;
+        padding: 10px 16px;
+        border: 1px solid rgba(45,156,196,0.28);
+        color: rgba(18,58,74,0.68);
+        font-size: 18px;
+        letter-spacing: 0.08em;
+      }
+      .sea-cover-rail {
+        position: absolute;
+        left: 104px;
+        bottom: 106px;
+        width: 690px;
+        height: 2px;
+        background: #2D9CC4;
+      }
+      .sea-cover-rail::after {
+        content: '';
+        position: absolute;
+        right: -132px;
+        top: -3px;
+        width: 118px;
+        height: 8px;
+        background: #D2A148;
+      }
+    </style>
+<style id="eduflow-sea-theme">
+  .slide { color: #20283A !important; }
+  .title-block [data-slot="title"] { color: #123A4A !important; font-weight: 750 !important; letter-spacing: 0 !important; }
+  .title-block [data-slot="subtitle"] { color: #17495C !important; font-weight: 500 !important; }
+  .content-card, .comparison-col, .timeline-step { border: 1px solid rgba(45,156,196,0.18) !important; box-shadow: none !important; }
+  .card-image { background-color: #FFFFFF !important; border: 1px solid rgba(210,161,72,0.35) !important; }
+  .card-image img { color: #2D9CC4 !important; }
+  [data-slot$="Heading"], [data-slot$="Label"] { color: #123A4A !important; font-weight: 750 !important; }
+  [data-slot$="Copy"], [data-slot$="Item1"], [data-slot$="Item2"], [data-slot$="Item3"], [data-slot$="Item4"] { color: #20283A !important; }
+</style>
+</head>
+<body>
+  <div class="slide" data-template="cover">
+    <div class="bg-color" aria-hidden="true"></div>
+    
+    <div class="title-block">
+      <h1 data-slot="title">A-Level
+课程体系</h1>
+      <p data-slot="subtitle">与升学｜首期教师专题研修</p>
+    </div>
+    <div class="desc-block">
+      <p data-slot="description">统一体系语言 · 对齐 CAIE 规则 · 连接选课与升学 · 落到教学运行 · 建立可复用资料库</p>
+      <p data-slot="footer">聚力启新程 研思向国际｜侨高国际部｜教师培训首期</p>
+    </div>
+  <div class="sea-cover-sidewash"></div><section class="sea-cover-panel">
+    <h2>Pathway Map</h2>
+    <div class="sea-path">
+      <div>IG</div><div>AS</div><div>A2</div><div>UNI</div>
+    </div>
+    <div class="sea-meta">
+      <div><span>System</span><strong>课程 · 考务 · 评价 · 升学</strong></div>
+      <div><span>Evidence</span><strong>Syllabus / Paper / Threshold / Portfolio</strong></div>
+      <div><span>Focus</span><strong>先统一体系语言，再进入学科执行</strong></div>
+    </div>
+    <div class="sea-tags"><span>UK</span><span>HK</span><span>SG</span><span>AU</span><span>US</span></div>
+  </section><div class="sea-cover-stamp">TEACHER TRAINING · INTERNATIONAL CURRICULUM</div><div class="sea-cover-rail"></div></div>
+
+
+</body></html>

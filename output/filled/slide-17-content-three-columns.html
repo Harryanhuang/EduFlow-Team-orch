@@ -1,0 +1,210 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Content-Three-Columns</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    .slide {
+      width: 1920px;
+      height: 1080px;
+      background-color: #FFFFFF;
+      font-family: 'PingFang SC', 'Microsoft YaHei', 'PingFang TC', 'Hiragino Sans GB', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+    .title-block {
+      position: absolute;
+      left: 80px;
+      top: 100px;
+      width: 1680px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .title-block [data-slot="title"] {
+      font-weight: 600;
+      font-size: 64px;
+      line-height: 1.25;
+      color: #20283A;
+    }
+    .title-block [data-slot="subtitle"] {
+      font-weight: 400;
+      font-size: 40px;
+      line-height: 1.4;
+      color: #20283A;
+      /* 等效灰色（避免 opacity 导出丢失） */
+      color: #17495C; /* black @ 60% on white */
+    }
+    .content-row {
+      position: absolute;
+      left: 80px;
+      top: 304px;
+      width: 1760px;
+      height: 676px;
+      display: flex;
+      flex-direction: row;
+      gap: 32px;
+      align-items: stretch;
+    }
+    .content-card {
+      flex: 1;
+      background-color: #F2FAFD;
+      border-radius: 16px;
+      padding: 56px;
+      display: flex;
+      flex-direction: column;
+      gap: 84px;
+    }
+    .card-image {
+      width: 140px;
+      height: 140px;
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: #FFFFFF;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-image img {
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+    }
+    .card-text {
+      display: flex;
+      flex-direction: column;
+      gap: 27px;
+      flex: 1;
+    }
+    .content-card [data-slot$="Heading"] {
+      font-weight: 500;
+      font-size: 40px;
+      line-height: 1.22;
+      color: #20283A;
+    }
+    .content-card [data-slot$="Copy"] {
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 1.22;
+      color: #20283A;
+      /* 等效灰色（避免 opacity 导出丢失） */
+      color: #20283A; /* black @ 70% on white */
+    }
+  </style>
+<style id="qoderwork-sea-blue-base">
+    .slide {
+      color: #20283A !important;
+      letter-spacing: 0 !important;
+    }
+    .title-block [data-slot="title"] {
+      color: #123A4A !important;
+      font-weight: 700 !important;
+      letter-spacing: 0 !important;
+    }
+    .title-block [data-slot="subtitle"] {
+      color: #17495C !important;
+      font-weight: 500 !important;
+    }
+    .content-card,
+    .comparison-col,
+    .timeline-step {
+      border: 1px solid rgba(45,156,196,0.18) !important;
+      box-shadow: none !important;
+    }
+    .content-card,
+    .col-right {
+      background-color: #F2FAFD !important;
+    }
+    .col-left {
+      background-color: #E6F5FA !important;
+    }
+    .card-image {
+      background-color: #FFFFFF !important;
+      border: 1px solid rgba(210,161,72,0.35) !important;
+    }
+    .card-image img {
+      color: #2D9CC4 !important;
+    }
+    [data-slot$="Heading"],
+    [data-slot$="Label"] {
+      color: #123A4A !important;
+      font-weight: 700 !important;
+    }
+    [data-slot$="Copy"],
+    [data-slot$="Item1"],
+    [data-slot$="Item2"],
+    [data-slot$="Item3"],
+    [data-slot$="Item4"] {
+      color: #20283A !important;
+    }
+    .col-items [data-slot$="Item1"]::before,
+    .col-items [data-slot$="Item2"]::before,
+    .col-items [data-slot$="Item3"]::before,
+    .col-items [data-slot$="Item4"]::before {
+      background-color: #D2A148 !important;
+    }
+  </style>
+<style id="eduflow-sea-theme">
+  .slide { color: #20283A !important; }
+  .title-block [data-slot="title"] { color: #123A4A !important; font-weight: 750 !important; letter-spacing: 0 !important; }
+  .title-block [data-slot="subtitle"] { color: #17495C !important; font-weight: 500 !important; }
+  .content-card, .comparison-col, .timeline-step { border: 1px solid rgba(45,156,196,0.18) !important; box-shadow: none !important; }
+  .card-image { background-color: #FFFFFF !important; border: 1px solid rgba(210,161,72,0.35) !important; }
+  .card-image img { color: #2D9CC4 !important; }
+  [data-slot$="Heading"], [data-slot$="Label"] { color: #123A4A !important; font-weight: 750 !important; }
+  [data-slot$="Copy"], [data-slot$="Item1"], [data-slot$="Item2"], [data-slot$="Item3"], [data-slot$="Item4"] { color: #20283A !important; }
+</style>
+
+<style id="compact-three">
+  .title-block { top: 86px !important; gap: 12px !important; }
+  .title-block [data-slot="title"] { font-size: 56px !important; line-height: 1.16 !important; }
+  .title-block [data-slot="subtitle"] { font-size: 30px !important; line-height: 1.32 !important; }
+  .content-row { top: 284px !important; height: 710px !important; }
+  .content-card { padding: 38px !important; gap: 30px !important; }
+  .card-image { width: 88px !important; height: 88px !important; border-radius: 8px !important; }
+  .card-image img { width: 48px !important; height: 48px !important; }
+  .card-text { gap: 16px !important; }
+  .content-card [data-slot$="Heading"] { font-size: 31px !important; line-height: 1.18 !important; }
+  .content-card [data-slot$="Copy"] { font-size: 22px !important; line-height: 1.30 !important; }
+</style>
+</head>
+<body>
+  <div class="slide" data-template="content-three-columns">
+    <div class="title-block">
+      <h1 data-slot="title">IG 学科功能地图</h1>
+      <p data-slot="subtitle">每门学科都承担升学铺垫功能；老师要能说清本学科给未来路径提供什么证据。</p>
+    </div>
+    <div class="content-row">
+      <div class="content-card">
+        <div class="card-image">
+          <img data-slot="block1Image" src="data:image/svg+xml;base64,PCEtLSBAbGljZW5zZSBsdWNpZGUtc3RhdGljIHYwLjQ2OC4wIC0gSVNDIC0tPgo8c3ZnCiAgY2xhc3M9Imx1Y2lkZSBsdWNpZGUtY2FsY3VsYXRvciIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgd2lkdGg9IjI0IgogIGhlaWdodD0iMjQiCiAgdmlld0JveD0iMCAwIDI0IDI0IgogIGZpbGw9Im5vbmUiCiAgc3Ryb2tlPSJjdXJyZW50Q29sb3IiCiAgc3Ryb2tlLXdpZHRoPSIyIgogIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIKICBzdHJva2UtbGluZWpvaW49InJvdW5kIgo+CiAgPHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjIwIiB4PSI0IiB5PSIyIiByeD0iMiIgLz4KICA8bGluZSB4MT0iOCIgeDI9IjE2IiB5MT0iNiIgeTI9IjYiIC8+CiAgPGxpbmUgeDE9IjE2IiB4Mj0iMTYiIHkxPSIxNCIgeTI9IjE4IiAvPgogIDxwYXRoIGQ9Ik0xNiAxMGguMDEiIC8+CiAgPHBhdGggZD0iTTEyIDEwaC4wMSIgLz4KICA8cGF0aCBkPSJNOCAxMGguMDEiIC8+CiAgPHBhdGggZD0iTTEyIDE0aC4wMSIgLz4KICA8cGF0aCBkPSJNOCAxNGguMDEiIC8+CiAgPHBhdGggZD0iTTEyIDE4aC4wMSIgLz4KICA8cGF0aCBkPSJNOCAxOGguMDEiIC8+Cjwvc3ZnPgo=" alt="">
+        </div>
+        <div class="card-text">
+          <h2 data-slot="block1Heading">数学与英语</h2>
+          <p data-slot="block1Copy">数学是理工商科底层基础；英语是题干理解、课堂表达、essay 写作和申请材料的共同工具。</p>
+        </div>
+      </div>
+      <div class="content-card">
+        <div class="card-image">
+          <img data-slot="block2Image" src="data:image/svg+xml;base64,PCEtLSBAbGljZW5zZSBsdWNpZGUtc3RhdGljIHYwLjQ2OC4wIC0gSVNDIC0tPgo8c3ZnCiAgY2xhc3M9Imx1Y2lkZSBsdWNpZGUtYXRvbSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgd2lkdGg9IjI0IgogIGhlaWdodD0iMjQiCiAgdmlld0JveD0iMCAwIDI0IDI0IgogIGZpbGw9Im5vbmUiCiAgc3Ryb2tlPSJjdXJyZW50Q29sb3IiCiAgc3Ryb2tlLXdpZHRoPSIyIgogIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIKICBzdHJva2UtbGluZWpvaW49InJvdW5kIgo+CiAgPGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMSIgLz4KICA8cGF0aCBkPSJNMjAuMiAyMC4yYzIuMDQtMi4wMy4wMi03LjM2LTQuNS0xMS45LTQuNTQtNC41Mi05Ljg3LTYuNTQtMTEuOS00LjUtMi4wNCAyLjAzLS4wMiA3LjM2IDQuNSAxMS45IDQuNTQgNC41MiA5Ljg3IDYuNTQgMTEuOSA0LjVaIiAvPgogIDxwYXRoIGQ9Ik0xNS43IDE1LjdjNC41Mi00LjU0IDYuNTQtOS44NyA0LjUtMTEuOS0yLjAzLTIuMDQtNy4zNi0uMDItMTEuOSA0LjUtNC41MiA0LjU0LTYuNTQgOS44Ny00LjUgMTEuOSAyLjAzIDIuMDQgNy4zNi4wMiAxMS45LTQuNVoiIC8+Cjwvc3ZnPgo=" alt="">
+        </div>
+        <div class="card-text">
+          <h2 data-slot="block2Heading">理科方向</h2>
+          <p data-slot="block2Copy">物理支撑工程与计算机，化学支撑医学药学，生物支撑生命科学与医学；实验和数据要提前训练。</p>
+        </div>
+      </div>
+      <div class="content-card">
+        <div class="card-image">
+          <img data-slot="block3Image" src="data:image/svg+xml;base64,PCEtLSBAbGljZW5zZSBsdWNpZGUtc3RhdGljIHYwLjQ2OC4wIC0gSVNDIC0tPgo8c3ZnCiAgY2xhc3M9Imx1Y2lkZSBsdWNpZGUtbGFuZG1hcmsiCiAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iY3VycmVudENvbG9yIgogIHN0cm9rZS13aWR0aD0iMiIKICBzdHJva2UtbGluZWNhcD0icm91bmQiCiAgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIKPgogIDxsaW5lIHgxPSIzIiB4Mj0iMjEiIHkxPSIyMiIgeTI9IjIyIiAvPgogIDxsaW5lIHgxPSI2IiB4Mj0iNiIgeTE9IjE4IiB5Mj0iMTEiIC8+CiAgPGxpbmUgeDE9IjEwIiB4Mj0iMTAiIHkxPSIxOCIgeTI9IjExIiAvPgogIDxsaW5lIHgxPSIxNCIgeDI9IjE0IiB5MT0iMTgiIHkyPSIxMSIgLz4KICA8bGluZSB4MT0iMTgiIHgyPSIxOCIgeTE9IjE4IiB5Mj0iMTEiIC8+CiAgPHBvbHlnb24gcG9pbnRzPSIxMiAyIDIwIDcgNCA3IiAvPgo8L3N2Zz4K" alt="">
+        </div>
+        <div class="card-text">
+          <h2 data-slot="block3Heading">人文社科</h2>
+          <p data-slot="block3Copy">中文、经济、历史等支撑表达、文化理解、商科和社会科学方向；重点看阅读、论证和写作质量。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body></html>

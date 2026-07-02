@@ -1,0 +1,159 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "caie-alevel-economics-9708",
+      "topic_name": "CAIE IGCSE Economics",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Economics (9708) syllabus scope.",
+        "Valid: 2025 → 2026."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-economics-9708-t001",
+      "topic_name": "1. Why choose this syllabus?",
+      "parent_id": "caie-alevel-economics-9708",
+      "scope": [
+        "Why choose this syllabus?",
+        "Economic methodology",
+        "Factors of production",
+        "Resource allocation in different",
+        "Production possibility curves",
+        "Classification of goods and services",
+        "Scarcity, choice and opportunity cost",
+        "Economic methodology",
+        "Factors of production",
+        "Resource allocation in different economic systems",
+        "Production possibility curves",
+        "Classification of goods and services"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Why choose this syllabus?."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-economics-9708-t002",
+      "topic_name": "2. Syllabus overview",
+      "parent_id": "caie-alevel-economics-9708",
+      "scope": [
+        "Syllabus overview",
+        "Price elasticity of supply                 7.4 Private costs and benefits,",
+        "The interaction of demand and                  externalities and social costs and",
+        "Consumer and producer surplus              7.5 Types of cost, revenue and profit,",
+        "Demand and supply curves",
+        "Price elasticity, income elasticity and cross elasticity of demand",
+        "Price elasticity of supply",
+        "The interaction of demand and supply",
+        "Consumer and producer surplus"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Syllabus overview."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-economics-9708-t003",
+      "topic_name": "3. Government microeconomic intervention (AS Level)",
+      "parent_id": "caie-alevel-economics-9708",
+      "scope": [
+        "Government microeconomic intervention (AS Level)",
+        "Addressing income and wealth                   and wealth",
+        "Reasons for government intervention in markets",
+        "Methods and effects of government intervention in markets",
+        "Addressing income and wealth inequality"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Government microeconomic intervention (AS Level)."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-economics-9708-t005",
+      "topic_name": "5. Government macroeconomic intervention (AS Level)",
+      "parent_id": "caie-alevel-economics-9708",
+      "scope": [
+        "Government macroeconomic intervention (AS Level)",
+        "Monetary policy                                 problems and their interrelatedness",
+        "Supply-side policy                         10.3 \u0007Effectiveness of policy options to",
+        "Government macroeconomic policy objectives",
+        "Fiscal policy",
+        "Monetary policy",
+        "Supply-side policy"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Government macroeconomic intervention (AS Level)."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-economics-9708-t006",
+      "topic_name": "6. International economic issues (AS Level)",
+      "parent_id": "caie-alevel-economics-9708",
+      "scope": [
+        "International economic issues (AS Level)",
+        "Current account of the balance of          11.2 Exchange rates",
+        "Exchange rates                             11.4 \u0007Characteristics of countries at",
+        "Policies to correct imbalances in the           different levels of development",
+        "The reasons for international trade",
+        "Protectionism",
+        "Current account of the balance of payments",
+        "Exchange rates",
+        "Policies to correct imbalances in the current account of the balance of payments"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: International economic issues (AS Level)."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    }
+  ]
+}

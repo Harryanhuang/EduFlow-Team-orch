@@ -1,0 +1,21 @@
+{
+  "schema_version": "1",
+  "source_id": "dse-physics-ca-guide",
+  "file_locked": true,
+  "identity_status": "verified",
+  "coverage_status": "complete_for_this_source",
+  "traceability_status": "complete_with_offset",
+  "page_ref_status": "verified",
+  "rendered_pages_status": "not_created",
+  "dual_pass_checked": false,
+  "independent_reviewer_required": true,
+  "review_status": "not_reviewed",
+  "extraction_confidence": "medium",
+  "blocking_risks": [],
+  "identity_risks": [],
+  "page_ref_risks": [
+    "Rendered pages not produced; reviewer should verify printed/physical offset on a sample of high-impact pages.",
+    "Custom font encoding severely degrades Chinese text extraction; scope statements rely on structural/domain reconstruction."
+  ],
+  "reuse_status": "reusable_if_checksum_unchanged"
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": "1",
+  "source_id": "primary_ced",
+  "page_ref_convention": "printed_page",
+  "physical_page_offset_note": "AP CED pages are typically labeled with printed_page numbers.",
+  "mappings": [
+    {
+      "target": "assessment_identity.system",
+      "page_refs": [
+        "title page"
+      ],
+      "evidence_note": "College Board AP CED."
+    },
+    {
+      "target": "topics.course_framework",
+      "page_refs": [
+        "Section 1"
+      ],
+      "evidence_note": "Course framework overview."
+    },
+    {
+      "target": "topics.ap-physics-c-electricity-and-magnetism-unit08",
+      "page_refs": [
+        "Unit 8"
+      ],
+      "evidence_note": "Unit 8: Electric Charges, Fields, and Gauss’s Law (15–25%)."
+    },
+    {
+      "target": "topics.ap-physics-c-electricity-and-magnetism-unit09",
+      "page_refs": [
+        "Unit 9"
+      ],
+      "evidence_note": "Unit 9: Electric Potential (10–20%)."
+    },
+    {
+      "target": "topics.ap-physics-c-electricity-and-magnetism-unit10",
+      "page_refs": [
+        "Unit 10"
+      ],
+      "evidence_note": "Unit 10: Conductors and Capacitors (10–15%)."
+    },
+    {
+      "target": "topics.ap-physics-c-electricity-and-magnetism-unit11",
+      "page_refs": [
+        "Unit 11"
+      ],
+      "evidence_note": "Unit 11: Electric Circuits (15–25%)."
+    },
+    {
+      "target": "topics.ap-physics-c-electricity-and-magnetism-unit12",
+      "page_refs": [
+        "Unit 12"
+      ],
+      "evidence_note": "Unit 12: Magnetic Fields and Electromagnetism (10–20%)."
+    },
+    {
+      "target": "topics.ap-physics-c-electricity-and-magnetism-unit13",
+      "page_refs": [
+        "Unit 13"
+      ],
+      "evidence_note": "Unit 13: Electromagnetic Induction (10–20%)."
+    }
+  ],
+  "draft_notes": []
+}

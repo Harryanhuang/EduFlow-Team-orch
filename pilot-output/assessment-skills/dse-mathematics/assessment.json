@@ -1,0 +1,119 @@
+{
+  "schema_version": "1",
+  "papers": [
+    {
+      "paper_id": "paper1",
+      "name": "Paper 1 Compulsory",
+      "question_styles": [
+        "short_answer",
+        "structured",
+        "essay"
+      ],
+      "duration_minutes": 135,
+      "total_marks": 100,
+      "weighting_percent": 65,
+      "coverage_notes": "Compulsory part. 2h 15min.",
+      "calculator_allowed": true,
+      "formula_sheet_allowed": false
+    },
+    {
+      "paper_id": "paper2",
+      "name": "Paper 2 Module 1",
+      "question_styles": [
+        "short_answer",
+        "structured"
+      ],
+      "duration_minutes": 75,
+      "total_marks": 50,
+      "weighting_percent": 35,
+      "coverage_notes": "Module 1 (Calculus and Statistics). 1h 15min.",
+      "calculator_allowed": true,
+      "formula_sheet_allowed": false
+    }
+  ],
+  "assessment_objectives": [
+    {
+      "ao_id": "AO1",
+      "name": "Knowledge and understanding",
+      "description": "Recall and demonstrate understanding of mathematical facts and principles.",
+      "weighting_qualification_percent": null,
+      "weighting_by_paper": {},
+      "classification_hints": [
+        "Definitions, terminology, recall."
+      ]
+    },
+    {
+      "ao_id": "AO2",
+      "name": "Application",
+      "description": "Apply mathematical knowledge and understanding to solve problems.",
+      "weighting_qualification_percent": null,
+      "weighting_by_paper": {},
+      "classification_hints": [
+        "Multi-step application, selection of techniques."
+      ]
+    },
+    {
+      "ao_id": "AO3",
+      "name": "Communication and reasoning",
+      "description": "Communicate mathematical ideas and reason logically.",
+      "weighting_qualification_percent": null,
+      "weighting_by_paper": {},
+      "classification_hints": [
+        "Justification, communication, proof."
+      ]
+    }
+  ],
+  "question_styles": [
+    {
+      "style_id": "short_answer",
+      "name": "Short answer",
+      "description": "Concise responses."
+    },
+    {
+      "style_id": "structured",
+      "name": "Structured question",
+      "description": "Multi-part questions."
+    },
+    {
+      "style_id": "essay",
+      "name": "Essay",
+      "description": "Extended written argument."
+    }
+  ],
+  "difficulty_ladder": [
+    {
+      "level": "foundation",
+      "description": "Recall of facts, definitions or single-step application."
+    },
+    {
+      "level": "standard",
+      "description": "Multi-step application; interpret simple data."
+    },
+    {
+      "level": "challenge",
+      "description": "Cross-topic synthesis; unfamiliar contexts; evaluation."
+    }
+  ],
+  "difficulty_scale": "ordinal_3",
+  "confidence_thresholds": {
+    "route_minimum": 0.8,
+    "classification_minimum": 0.75,
+    "review_required_below": 0.75
+  },
+  "lesson_use": {
+    "supported": false,
+    "modes": [],
+    "teacher_use_contract_ref": "",
+    "student_use_contract_ref": "",
+    "parent_use_contract_ref": "",
+    "notes": "Set supported=true only when a teacher/student/parent mode is declared and validated."
+  },
+  "generation_constraints": {
+    "must_match_scope": true,
+    "mark_out_of_scope_as_extension": true
+  },
+  "marking_guidance": {
+    "command_words_ref": "DSE Mathematics command terms defined in the Curriculum and Assessment Guide.",
+    "notes": "DSE 5** is highest grade. Category A senior secondary elective. Calculator required for both papers."
+  }
+}

@@ -1,0 +1,614 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "dse-biology-ca",
+      "topic_name": "DSE Biology",
+      "parent_id": "",
+      "scope": [
+        "Hong Kong DSE Biology curriculum (S4-S6)",
+        "Compulsory part (4 topics) and elective part (choose 2 of 4 topics)",
+        "Public exam: Paper 1 (compulsory), Paper 2 (elective), SBA (practical/inquiry skills)"
+      ],
+      "out_of_scope": [
+        "Non-DSE biology curricula unless explicitly compared",
+        "University-level biology",
+        "Teacher pedagogy, school administration, resource selection"
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits",
+        "Prefer compulsory/elective subdivision nodes for broad queries"
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "dse-biology-compulsory",
+      "topic_name": "Compulsory Part",
+      "parent_id": "dse-biology-ca",
+      "scope": [
+        "Four compulsory topics assessed in Paper 1",
+        "Approximately 200 curriculum hours"
+      ],
+      "out_of_scope": [
+        "Elective topics (Paper 2 only)",
+        "School-based assessment practical instructions as standalone content"
+      ],
+      "classification_hints": [
+        "Route ordinary biology content here unless it clearly matches an elective",
+        "Use the specific topic node, not this parent, for final classification"
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "cells_molecules",
+      "topic_name": "I. Cells and Molecules",
+      "parent_id": "dse-biology-compulsory",
+      "scope": [
+        "Life molecules: water, inorganic ions, carbohydrates, lipids, proteins, nucleic acids",
+        "Cell organisation: discovery of cells, cell membrane, subcellular structures, prokaryotic vs eukaryotic cells",
+        "Membrane transport: diffusion, osmosis, active transport, endocytosis, plasmolysis, haemolysis",
+        "Cell cycle and division: mitosis and meiosis",
+        "Cell energetics: metabolism, enzymes, photosynthesis, respiration (aerobic and anaerobic)"
+      ],
+      "out_of_scope": [
+        "Detailed molecular mechanisms beyond syllabus statements",
+        "Plant/animal whole-organism physiology (covered in Organisms and Environment)"
+      ],
+      "classification_hints": [
+        "Look for keywords: cell membrane, chloroplast, mitochondria, enzyme, photosynthesis, respiration, mitosis, meiosis",
+        "Items about biochemical pathways at cellular level belong here"
+      ],
+      "common_misconceptions": [
+        "Confusing osmosis with diffusion",
+        "Thinking photosynthesis and respiration are reverse processes in every detail"
+      ],
+      "common_misclassifications": [
+        {
+          "confused_with": "plant_life_processes",
+          "reason": "Photosynthesis may be mentioned, but whole-plant gas exchange and transpiration are in Organisms and Environment."
+        }
+      ],
+      "prerequisite_topics": [],
+      "overlap_links": [
+        {
+          "target_skill_id": "dse-biology-ca",
+          "target_topic_id": "plant_life_processes",
+          "relation": "later_extension",
+          "notes": "Cellular photosynthesis underpins plant gas exchange and transpiration."
+        },
+        {
+          "target_skill_id": "dse-biology-ca",
+          "target_topic_id": "animal_life_processes",
+          "relation": "later_extension",
+          "notes": "Cellular respiration underpins digestion and gas exchange."
+        }
+      ],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "heredity_evolution",
+      "topic_name": "II. Heredity and Evolution",
+      "parent_id": "dse-biology-compulsory",
+      "scope": [
+        "Basic genetics: Mendelian laws, human inheritance, pedigree analysis, variation",
+        "Molecular genetics: chromosomes, genes, DNA, protein synthesis, mutations, recombinant DNA, DNA fingerprinting, Human Genome Project",
+        "Biodiversity and evolution: diversity of life forms, classification (six kingdoms, three domains), origin of life, evolution, speciation, evidence"
+      ],
+      "out_of_scope": [
+        "Population genetics mathematics beyond syllabus",
+        "Detailed bioengineering protocols (covered in elective Bioengineering)"
+      ],
+      "classification_hints": [
+        "Look for keywords: gene, allele, chromosome, DNA, RNA, mutation, pedigree, natural selection, speciation, classification",
+        "Items about inheritance patterns or molecular genetics belong here"
+      ],
+      "common_misconceptions": [
+        "Confusing dominant/recessive with common/rare",
+        "Thinking all mutations are harmful"
+      ],
+      "common_misclassifications": [
+        {
+          "confused_with": "bioengineering",
+          "reason": "Recombinant DNA and DNA fingerprinting appear here in compulsory molecular genetics, but detailed biotech processes and ethics are in the elective."
+        }
+      ],
+      "prerequisite_topics": [
+        "cells_molecules"
+      ],
+      "overlap_links": [
+        {
+          "target_skill_id": "dse-biology-ca",
+          "target_topic_id": "bioengineering",
+          "relation": "later_extension",
+          "notes": "Molecular genetics techniques lead into elective bioengineering."
+        }
+      ],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "organisms_environment",
+      "topic_name": "III. Organisms and Environment",
+      "parent_id": "dse-biology-compulsory",
+      "scope": [
+        "Plant life processes: nutrition, gas exchange, transpiration, transport, support",
+        "Animal life processes: human nutrition, digestion, gas exchange, transport (circulatory and lymphatic)",
+        "Reproduction, growth and development: asexual and sexual reproduction in plants and humans, growth curves",
+        "Coordination and response: nervous coordination, hormonal coordination, musculoskeletal movement",
+        "Homeostasis: temperature regulation, osmoregulation, blood glucose regulation",
+        "Ecosystems: energy flow, nutrient cycling, food chains/webs, ecological succession, human impact"
+      ],
+      "out_of_scope": [
+        "Elective-level physiology (Human Physiology elective)",
+        "Elective-level applied ecology (Applied Ecology elective)"
+      ],
+      "classification_hints": [
+        "Look for keywords: transpiration, digestion, gas exchange, circulation, nervous system, hormone, homeostasis, food chain, ecosystem",
+        "Whole-organism physiology and ecology belong here"
+      ],
+      "common_misconceptions": [
+        "Confusing transpiration with guttation",
+        "Thinking all hormones act slowly and all nerve impulses act fast in every situation"
+      ],
+      "common_misclassifications": [
+        {
+          "confused_with": "human_physiology_regulation",
+          "reason": "Basic human coordination and homeostasis are compulsory; detailed renal, thermoregulatory and cardiovascular control are elective."
+        },
+        {
+          "confused_with": "applied_ecology",
+          "reason": "Basic ecosystems and human impact are compulsory; pollution control, conservation strategies and global issues are elective."
+        }
+      ],
+      "prerequisite_topics": [
+        "cells_molecules"
+      ],
+      "overlap_links": [
+        {
+          "target_skill_id": "dse-biology-ca",
+          "target_topic_id": "human_physiology_regulation",
+          "relation": "later_extension",
+          "notes": "Compulsory coordination/homeostasis extends into elective human physiology."
+        },
+        {
+          "target_skill_id": "dse-biology-ca",
+          "target_topic_id": "applied_ecology",
+          "relation": "later_extension",
+          "notes": "Compulsory ecosystems extend into elective applied ecology."
+        }
+      ],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "plant_life_processes",
+      "topic_name": "III.a Plant Life Processes",
+      "parent_id": "organisms_environment",
+      "scope": [
+        "Plant nutrition and mineral requirements",
+        "Photosynthesis at organism level",
+        "Gas exchange in plants",
+        "Transpiration and factors affecting rate",
+        "Transport of water, minerals and organic nutrients",
+        "Plant support: turgor and xylem mechanics"
+      ],
+      "out_of_scope": [
+        "Cellular photosynthesis details (Cells and Molecules)"
+      ],
+      "classification_hints": [
+        "Keywords: root hair, xylem, phloem, stomata, transpiration, translocation, support"
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [
+        {
+          "confused_with": "cells_molecules",
+          "reason": "Photosynthesis light reactions and Calvin cycle are cellular; leaf gas exchange and transpiration are organism-level."
+        }
+      ],
+      "prerequisite_topics": [
+        "cells_molecules"
+      ],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "animal_life_processes",
+      "topic_name": "III.b Animal Life Processes",
+      "parent_id": "organisms_environment",
+      "scope": [
+        "Human nutrition: food substances, balanced diet, ingestion, digestion, absorption, assimilation, egestion",
+        "Human gas exchange: respiratory system, alveoli, ventilation, gas transport",
+        "Transport: circulatory system, lymphatic system, tissue fluid, blood components"
+      ],
+      "out_of_scope": [
+        "Cellular respiration details (Cells and Molecules)"
+      ],
+      "classification_hints": [
+        "Keywords: digestion, alveoli, ventilation, heart, blood, lymph, tissue fluid"
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [
+        {
+          "confused_with": "cells_molecules",
+          "reason": "Respiration pathways are cellular; breathing and circulation are organism-level."
+        }
+      ],
+      "prerequisite_topics": [
+        "cells_molecules"
+      ],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "reproduction_growth_development",
+      "topic_name": "III.c Reproduction, Growth and Development",
+      "parent_id": "organisms_environment",
+      "scope": [
+        "Asexual reproduction: binary fission, vegetative propagation",
+        "Sexual reproduction in flowering plants: flower structure, pollination, fertilisation, seed/fruit dispersal",
+        "Human reproduction: male/female systems, menstrual cycle, fertilisation, placenta, birth, parental care",
+        "Growth and development: parameters, growth curves, seed germination"
+      ],
+      "out_of_scope": [
+        "Hormonal control of menstrual cycle (elective Human Physiology)"
+      ],
+      "classification_hints": [
+        "Keywords: pollination, fertilisation, placenta, menstrual cycle, growth curve, germination"
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [
+        {
+          "confused_with": "human_physiology_regulation",
+          "reason": "Reproductive hormones as control of menstrual cycle is elective; basic reproductive structures and cycles are compulsory."
+        }
+      ],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "coordination_response",
+      "topic_name": "III.d Coordination and Response",
+      "parent_id": "organisms_environment",
+      "scope": [
+        "Nervous coordination: neurones, reflex arc, reflex and voluntary actions",
+        "Hormonal coordination: endocrine system, examples of hormonal regulation",
+        "Musculoskeletal system: bones, muscles, joints, movement"
+      ],
+      "out_of_scope": [
+        "Detailed feedback mechanisms of temperature/osmoregulation (elective)"
+      ],
+      "classification_hints": [
+        "Keywords: neurone, synapse, reflex arc, endocrine, hormone, joint, muscle"
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [
+        {
+          "confused_with": "human_physiology_regulation",
+          "reason": "Basic nervous/hormonal coordination is compulsory; detailed homeostatic control mechanisms are elective."
+        }
+      ],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "homeostasis",
+      "topic_name": "III.e Homeostasis",
+      "parent_id": "organisms_environment",
+      "scope": [
+        "Temperature regulation",
+        "Osmoregulation (basic)",
+        "Blood glucose regulation"
+      ],
+      "out_of_scope": [
+        "Detailed renal physiology and ADH mechanism (elective Human Physiology)"
+      ],
+      "classification_hints": [
+        "Keywords: negative feedback, thermoregulation, osmoregulation, blood glucose"
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [
+        {
+          "confused_with": "human_physiology_regulation",
+          "reason": "Basic homeostasis is compulsory; detailed kidney nephron and ADH are elective."
+        }
+      ],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "ecosystems",
+      "topic_name": "III.f Ecosystems",
+      "parent_id": "organisms_environment",
+      "scope": [
+        "Ecological surveying: quadrats, transects, sampling",
+        "Energy flow: food chains, food webs, pyramids of numbers and biomass, energy transfer efficiency",
+        "Nutrient cycling",
+        "Ecological succession: primary and secondary, climax community",
+        "Human impact on ecosystems (introductory)"
+      ],
+      "out_of_scope": [
+        "Detailed pollution control and conservation strategies (elective Applied Ecology)"
+      ],
+      "classification_hints": [
+        "Keywords: food chain, food web, pyramid, succession, ecosystem, population, community"
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [
+        {
+          "confused_with": "applied_ecology",
+          "reason": "Basic ecology is compulsory; pollution control, resource management and global issues are elective."
+        }
+      ],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "health_disease",
+      "topic_name": "IV. Health and Disease",
+      "parent_id": "dse-biology-compulsory",
+      "scope": [
+        "Personal health: meaning of health",
+        "Disease: infectious vs non-infectious diseases, examples, transmission routes, treatment, antibiotics, vaccination",
+        "Body defence mechanisms: non-specific and specific immunity, antigen-antibody reactions, primary and secondary responses, active and passive immunity"
+      ],
+      "out_of_scope": [
+        "Detailed immunology beyond syllabus statements",
+        "Medical diagnosis protocols"
+      ],
+      "classification_hints": [
+        "Look for keywords: infectious disease, non-infectious disease, immunity, antibody, antigen, vaccination, antibiotic"
+      ],
+      "common_misconceptions": [
+        "Confusing antibiotics with antivirals",
+        "Thinking vaccination gives passive immunity"
+      ],
+      "common_misclassifications": [
+        {
+          "confused_with": "microbes_humans",
+          "reason": "Microbes as pathogens are compulsory; microbial growth, food microbiology and genetic engineering are elective."
+        }
+      ],
+      "prerequisite_topics": [],
+      "overlap_links": [
+        {
+          "target_skill_id": "dse-biology-ca",
+          "target_topic_id": "microbes_humans",
+          "relation": "later_extension",
+          "notes": "Pathogens introduced here; elective extends to microbial techniques and applications."
+        }
+      ],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "dse-biology-elective",
+      "topic_name": "Elective Part",
+      "parent_id": "dse-biology-ca",
+      "scope": [
+        "Four elective topics; students choose 2",
+        "Assessed in Paper 2 only"
+      ],
+      "out_of_scope": [
+        "Compulsory part content (Paper 1)"
+      ],
+      "classification_hints": [
+        "Route items here only if they match one of the four electives",
+        "If a topic could be compulsory or elective, prefer the elective only when the depth matches Paper 2 scope"
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "human_physiology_regulation",
+      "topic_name": "V. Human Physiology: Regulation and Control",
+      "parent_id": "dse-biology-elective",
+      "scope": [
+        "Osmoregulation: kidney structure, nephron, urine formation, ADH, dialysis",
+        "Thermoregulation: skin, hypothalamus, circulation, thyroid hormone, muscle, behaviour",
+        "Blood gas regulation: respiratory centre, chemoreceptors, CO2, cardiac output control",
+        "Reproductive hormone control: menstrual cycle hormones, contraception, infertility treatment"
+      ],
+      "out_of_scope": [
+        "Basic compulsory coordination and homeostasis unless applied at elective depth"
+      ],
+      "classification_hints": [
+        "Keywords: nephron, ADH, dialysis, hypothalamus, thermoregulation, chemoreceptor, cardiac output, menstrual cycle, contraception"
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [
+        {
+          "confused_with": "homeostasis",
+          "reason": "Both cover temperature and osmoregulation, but this elective treats renal and cardiovascular control in depth."
+        }
+      ],
+      "prerequisite_topics": [
+        "organisms_environment"
+      ],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "applied_ecology",
+      "topic_name": "VI. Applied Ecology",
+      "parent_id": "dse-biology-elective",
+      "scope": [
+        "Human impact on environment: population growth, resource use, urbanisation, industrialisation",
+        "Pollution control: 3Rs, sewage treatment",
+        "Conservation: biodiversity, endangered species, habitats, ecological restoration",
+        "Global issues: sustainable development, resource management, global warming, acid rain, eutrophication"
+      ],
+      "out_of_scope": [
+        "Basic ecosystems content unless applied to human impact"
+      ],
+      "classification_hints": [
+        "Keywords: pollution, conservation, sustainable development, global warming, acid rain, eutrophication, sewage treatment"
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [
+        {
+          "confused_with": "ecosystems",
+          "reason": "Both involve ecology; Applied Ecology focuses on human impacts and management strategies."
+        }
+      ],
+      "prerequisite_topics": [
+        "ecosystems"
+      ],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "microbes_humans",
+      "topic_name": "VII. Microbes and Humans",
+      "parent_id": "dse-biology-elective",
+      "scope": [
+        "Microbiology: viruses, microbial diversity, microbial growth, aseptic technique",
+        "Use of microbes: food processing, vaccines, antibiotics, industrial enzymes, sewage treatment, biogas",
+        "Microbial genetics: genetically modified microbes",
+        "Harmful microbes: disease, food poisoning, biodeterioration, microbial growth control"
+      ],
+      "out_of_scope": [
+        "Compulsory disease/immunity content unless at microbial technique depth"
+      ],
+      "classification_hints": [
+        "Keywords: bacteria, virus, yeast, aseptic technique, fermentation, antibiotic, GM microbe, food poisoning"
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [
+        {
+          "confused_with": "health_disease",
+          "reason": "Both discuss pathogens and antibiotics; this elective adds microbial cultivation and industrial applications."
+        }
+      ],
+      "prerequisite_topics": [
+        "health_disease"
+      ],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "bioengineering",
+      "topic_name": "VIII. Bioengineering",
+      "parent_id": "dse-biology-elective",
+      "scope": [
+        "Modern biotech techniques: recombinant DNA, PCR, DNA fingerprinting, GMOs, animal cloning, plant tissue culture",
+        "Applications: pharmaceuticals, gene therapy, stem cells, transgenic organisms",
+        "Bioethics: moral, legal, social, economic and environmental issues"
+      ],
+      "out_of_scope": [
+        "Compulsory molecular genetics basics unless applied as biotech technique"
+      ],
+      "classification_hints": [
+        "Keywords: recombinant DNA, PCR, gel electrophoresis, GMO, clone, gene therapy, stem cell, bioethics"
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [
+        {
+          "confused_with": "heredity_evolution",
+          "reason": "Both involve DNA; Bioengineering focuses on techniques and applications at elective depth."
+        }
+      ],
+      "prerequisite_topics": [
+        "heredity_evolution"
+      ],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    }
+  ]
+}

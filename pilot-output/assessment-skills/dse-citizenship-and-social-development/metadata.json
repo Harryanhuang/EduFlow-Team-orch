@@ -1,0 +1,48 @@
+{
+  "schema_version": "1",
+  "id": "dse-citizenship-and-social-development",
+  "assessment_type": "syllabus",
+  "system": "DSE",
+  "board_or_owner": "HKEAA / Curriculum Development Council",
+  "subject": "Citizenship and Social Development",
+  "level": "DSE Senior Secondary (S4-S6)",
+  "assessment_code": "DSE Citizenship and Social Development",
+  "valid_from": "2024",
+  "valid_to": "(ongoing)",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_syllabus",
+      "title": "DSE Citizenship and Social Development Syllabus",
+      "url": "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html",
+      "source_document_type": "syllabus",
+      "source_layout_profile": "caie_igcse_syllabus",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/05-DSE知识库/03-学科知识/DSE Citizenship and Social Development/02-課本與考綱/考綱/公民與社會發展 -2028.pdf",
+      "file_checksum_sha256": "33b4d897722f84a61eeb61e7e0e73a882375000bf0859905599ce98192a25199",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "2028 syllabus (Category A)",
+      "retrieved_at": "2026-07-02",
+      "page_refs": [
+        "p.1-2"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "printed_page ≈ physical_page for CAIE IGCSE syllabi.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text.",
+      "notes": "Source bundle lives at pilot-output/source-bundles/dse-citizenship-and-social-development-guide/."
+    }
+  ],
+  "aliases": [
+    "dse citizenship and social development",
+    "hkdse"
+  ],
+  "canonical_id": "dse-citizenship-and-social-development",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "HKDSE Citizenship and Social Development (Category A)."
+}

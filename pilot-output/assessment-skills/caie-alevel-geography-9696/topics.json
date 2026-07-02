@@ -1,0 +1,99 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "caie-alevel-geography-9696",
+      "topic_name": "CAIE IGCSE Geography",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Geography (9696) syllabus scope.",
+        "Valid: 2025 → 2026."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-geography-9696-t001",
+      "topic_name": "1. Why choose this syllabus?",
+      "parent_id": "caie-alevel-geography-9696",
+      "scope": [
+        "Why choose this syllabus?",
+        "Principles and sources of English law",
+        "Principles and sources of English law continued",
+        "Machinery of justice",
+        "Machinery of justice continued",
+        "Legal personnel",
+        "Legal personnel continued"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Why choose this syllabus?."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-geography-9696-t002",
+      "topic_name": "2. Syllabus overview",
+      "parent_id": "caie-alevel-geography-9696",
+      "scope": [
+        "Syllabus overview",
+        "Elements of a crime",
+        "Offences against property",
+        "Offences against property continued",
+        "Sentencing in England and Wales"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Syllabus overview."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-geography-9696-t004",
+      "topic_name": "4. Details of the assessment",
+      "parent_id": "caie-alevel-geography-9696",
+      "scope": [
+        "Details of the assessment",
+        "The tort of negligence",
+        "Torts affecting land",
+        "Torts affecting the person",
+        "Torts affecting the person continued",
+        "General defences and remedies"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Details of the assessment."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    }
+  ]
+}

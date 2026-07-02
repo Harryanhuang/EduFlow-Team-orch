@@ -1,0 +1,106 @@
+{
+  "schema_version": "1",
+  "papers": [
+    {
+      "paper_id": "paper1",
+      "name": "Paper 1",
+      "question_styles": [
+        "short_answer",
+        "structured"
+      ],
+      "duration_minutes": 120,
+      "total_marks": 100,
+      "weighting_percent": 50,
+      "coverage_notes": "Paper 1 of Chinese History.",
+      "calculator_allowed": true,
+      "formula_sheet_allowed": false
+    },
+    {
+      "paper_id": "paper2",
+      "name": "Paper 2",
+      "question_styles": [
+        "short_answer",
+        "structured"
+      ],
+      "duration_minutes": 90,
+      "total_marks": 100,
+      "weighting_percent": 50,
+      "coverage_notes": "Paper 2 of Chinese History.",
+      "calculator_allowed": true,
+      "formula_sheet_allowed": false
+    }
+  ],
+  "assessment_objectives": [
+    {
+      "ao_id": "AO1",
+      "name": "Knowledge and understanding",
+      "description": "Recall and understand Chinese History concepts.",
+      "weighting_qualification_percent": null,
+      "weighting_by_paper": {},
+      "classification_hints": [
+        "Definitions, terminology, recall."
+      ]
+    },
+    {
+      "ao_id": "AO2",
+      "name": "Application / Analysis",
+      "description": "Apply Chinese History knowledge.",
+      "weighting_qualification_percent": null,
+      "weighting_by_paper": {},
+      "classification_hints": [
+        "Application, calculation, analysis."
+      ]
+    }
+  ],
+  "question_styles": [
+    {
+      "style_id": "short_answer",
+      "name": "Short answer",
+      "description": "Concise responses."
+    },
+    {
+      "style_id": "structured",
+      "name": "Structured question",
+      "description": "Multi-part questions."
+    }
+  ],
+  "difficulty_ladder": [
+    {
+      "level": "foundation",
+      "description": "Recall of facts, definitions or single-step application."
+    },
+    {
+      "level": "standard",
+      "description": "Multi-step application; interpret simple data."
+    },
+    {
+      "level": "challenge",
+      "description": "Cross-topic synthesis; unfamiliar contexts; evaluation."
+    }
+  ],
+  "difficulty_scale": "ordinal_3",
+  "confidence_thresholds": {
+    "route_minimum": 0.8,
+    "classification_minimum": 0.75,
+    "review_required_below": 0.75
+  },
+  "lesson_use": {
+    "supported": false,
+    "modes": [],
+    "teacher_use_contract_ref": "",
+    "student_use_contract_ref": "",
+    "parent_use_contract_ref": "",
+    "notes": "Set supported=true only when a teacher/student/parent mode is declared and validated."
+  },
+  "generation_constraints": {
+    "must_match_scope": true,
+    "mark_out_of_scope_as_extension": true
+  },
+  "marking_guidance": {
+    "command_words_ref": "DSE Chinese History command terms defined in the Curriculum and Assessment Guide.",
+    "notes": "Category A DSE subject."
+  },
+  "duration_hours": 3.5,
+  "mcq_count": 0,
+  "frq_count": 0
+}

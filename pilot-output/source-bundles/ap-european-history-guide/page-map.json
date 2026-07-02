@@ -1,0 +1,86 @@
+{
+  "schema_version": "1",
+  "source_id": "primary_ced",
+  "page_ref_convention": "printed_page",
+  "physical_page_offset_note": "AP CED pages are typically labeled with printed_page numbers.",
+  "mappings": [
+    {
+      "target": "assessment_identity.system",
+      "page_refs": [
+        "title page"
+      ],
+      "evidence_note": "College Board AP CED."
+    },
+    {
+      "target": "topics.course_framework",
+      "page_refs": [
+        "Section 1"
+      ],
+      "evidence_note": "Course framework overview."
+    },
+    {
+      "target": "topics.ap-european-history-unit01",
+      "page_refs": [
+        "Unit 1"
+      ],
+      "evidence_note": "Unit 1: Renaissance and Exploration (10–15%)."
+    },
+    {
+      "target": "topics.ap-european-history-unit02",
+      "page_refs": [
+        "Unit 2"
+      ],
+      "evidence_note": "Unit 2: Age of Reformation (10–15%)."
+    },
+    {
+      "target": "topics.ap-european-history-unit03",
+      "page_refs": [
+        "Unit 3"
+      ],
+      "evidence_note": "Unit 3: Absolutism and Constitutionalism (10–15%)."
+    },
+    {
+      "target": "topics.ap-european-history-unit04",
+      "page_refs": [
+        "Unit 4"
+      ],
+      "evidence_note": "Unit 4: Scientific, Philosophical, and (10–15%)."
+    },
+    {
+      "target": "topics.ap-european-history-unit05",
+      "page_refs": [
+        "Unit 5"
+      ],
+      "evidence_note": "Unit 5: Conflict, Crisis, and Reaction in the (10–15%)."
+    },
+    {
+      "target": "topics.ap-european-history-unit06",
+      "page_refs": [
+        "Unit 6"
+      ],
+      "evidence_note": "Unit 6: Industrialization and Its Effects (10–15%)."
+    },
+    {
+      "target": "topics.ap-european-history-unit09",
+      "page_refs": [
+        "Unit 9"
+      ],
+      "evidence_note": "Unit 9: Cold War and Contemporary Europe (10–15%)."
+    },
+    {
+      "target": "topics.ap-european-history-unit07",
+      "page_refs": [
+        "Unit 7"
+      ],
+      "evidence_note": "Unit 7: Learning Objective A         KC-3.4 (weighting n/a)."
+    },
+    {
+      "target": "topics.ap-european-history-unit08",
+      "page_refs": [
+        "Unit 8"
+      ],
+      "evidence_note": "Unit 8: Learning Objective A          KC-4.1 (weighting n/a)."
+    }
+  ],
+  "draft_notes": []
+}

@@ -1,0 +1,114 @@
+{
+  "schema_version": "1",
+  "source_id": "primary_syllabus",
+  "page_ref_convention": "printed_page",
+  "physical_page_offset_note": "printed_page ≈ physical_page for CAIE IGCSE syllabi.",
+  "mappings": [
+    {
+      "target": "assessment_identity.system",
+      "page_refs": [
+        "title page (physical 1)"
+      ],
+      "evidence_note": "Cambridge IGCSE syllabus publication."
+    },
+    {
+      "target": "assessment_identity.valid_from",
+      "page_refs": [
+        "title page (physical 1)"
+      ],
+      "evidence_note": "Syllabus valid 2024 → (ongoing)."
+    },
+    {
+      "target": "topics.dse-english-literature.scope",
+      "page_refs": [
+        "p.5-9"
+      ],
+      "evidence_note": "Aims, content overview, assessment overview."
+    },
+    {
+      "target": "topics.dse-english-literature-t003.scope",
+      "page_refs": [
+        "p.10-12"
+      ],
+      "evidence_note": "Topic 3: Chapter 2 Curriculum Framework."
+    },
+    {
+      "target": "topics.dse-english-literature-t020.scope",
+      "page_refs": [
+        "p.12-14"
+      ],
+      "evidence_note": "Topic 20: Chapter 4 Learning and Teaching."
+    },
+    {
+      "target": "topics.dse-english-literature-t023.scope",
+      "page_refs": [
+        "p.14-16"
+      ],
+      "evidence_note": "Topic 23: Building on strengths in learning and teaching."
+    },
+    {
+      "target": "topics.dse-english-literature-t059.scope",
+      "page_refs": [
+        "p.16-18"
+      ],
+      "evidence_note": "Topic 59: Post-reading activity."
+    },
+    {
+      "target": "topics.dse-english-literature-t009.scope",
+      "page_refs": [
+        "p.18-20"
+      ],
+      "evidence_note": "Topic 9: Why did the writer write the story?."
+    },
+    {
+      "target": "topics.dse-english-literature-t002.scope",
+      "page_refs": [
+        "p.20-22"
+      ],
+      "evidence_note": "Topic 2: How important were the costumes/make-up to the success of the."
+    },
+    {
+      "target": "topics.dse-english-literature-t004.scope",
+      "page_refs": [
+        "p.22-24"
+      ],
+      "evidence_note": "Topic 4: How did the actors use their voice or body movement to achieve."
+    },
+    {
+      "target": "topics.dse-english-literature-t001.scope",
+      "page_refs": [
+        "p.24-26"
+      ],
+      "evidence_note": "Topic 1: Does George Orwell see any hope for humanity in Nineteen Eighty-Four?."
+    },
+    {
+      "target": "topics.dse-english-literature-t006.scope",
+      "page_refs": [
+        "p.26-28"
+      ],
+      "evidence_note": "Topic 6: Do you think Shakespeare’s King Lear has anything to say of relevance to modern."
+    },
+    {
+      "target": "assessment.papers",
+      "page_refs": [
+        "p.45-49"
+      ],
+      "evidence_note": "Paper structure, durations, weighting."
+    },
+    {
+      "target": "assessment.assessment_objectives",
+      "page_refs": [
+        "p.8-9"
+      ],
+      "evidence_note": "AO definitions in Section 2."
+    },
+    {
+      "target": "assessment.question_styles",
+      "page_refs": [
+        "p.46-47"
+      ],
+      "evidence_note": "Question styles and command words."
+    }
+  ],
+  "draft_notes": []
+}

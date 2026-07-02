@@ -1,0 +1,1203 @@
+{
+  "schema_version": "1",
+  "subject": "precalculus",
+  "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/03-AP知识库/03-学科知识/AP Precalculus/02-课本与考纲/考纲/ap-precalculus-course-and-exam-description.pdf",
+  "file_checksum_sha256": "f47fa4ab21793043a3c62fd736aca8cb9293ca6c935a1d10b8eb6f31adcd062c",
+  "pdfinfo": {
+    "Title": "AP® Precalculus Course and Exam Description",
+    "Subject": "AP® Precalculus; Advanced Placement",
+    "Keywords": "AP® Precalculus; Course and Exam Description; CED; Effective Fall 2023; Advanced Placement; version = Oct. 2025; front matter; teacher resources; course resources; exam resources; course content; exam format; exam content; professional resources; scoring resources; instructional support; instructional resources; AP Classroom information; sample exam questions; ADA",
+    "Author": "College Board",
+    "Creator": "Adobe InDesign 14.0 (Macintosh)",
+    "Producer": "Adobe PDF Library 15.0",
+    "CreationDate": "Fri Jun  2 15:28:37 2023 CST",
+    "ModDate": "Wed Oct 15 04:19:03 2025 CST",
+    "Custom Metadata": "no",
+    "Metadata Stream": "yes",
+    "Tagged": "yes",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "AcroForm",
+    "JavaScript": "no",
+    "Pages": "195",
+    "Encrypted": "yes (print:yes copy:yes change:no addNotes:no algorithm:AES-256)",
+    "Page size": "603 x 783 pts",
+    "Page rot": "0",
+    "File size": "9500652 bytes",
+    "Optimized": "no",
+    "PDF version": "1.7"
+  },
+  "total_pages": 195,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": 1,
+      "chars": 3349,
+      "first_200": "INCLUDES Course framework Instructional section Sample Multiple- choice questions Sample Free- response questions with Scoring Guidelines AP Precalculus ® COURSE AND EXAM DESCRIPTION Effective Fall 20"
+    },
+    {
+      "physical_page": 2,
+      "printed_page": 2,
+      "chars": 3349,
+      "first_200": "ourses ground such studies in primary sources so that students can evaluate experiences and evidence for themselves. 6. Every AP student who engages with evidence is listened to and respected."
+    },
+    {
+      "physical_page": 3,
+      "printed_page": 3,
+      "chars": 3349,
+      "first_200": "tment to the development of this course. All individuals’ affiliations were current at the time of contribution. Michael Boardman, Pacific University, Forest Grove, OR David Bressoud, Macalester Colle"
+    },
+    {
+      "physical_page": 4,
+      "printed_page": 4,
+      "chars": 3349,
+      "first_200": "3 College Board College Board Staff Jason VanBilliard, Senior Director, AP Math and Computer Science Department Head Craig Wright, Senior Director, AP Precalculus Assessment Specialist Laura Burden, D"
+    },
+    {
+      "physical_page": 5,
+      "printed_page": 5,
+      "chars": 3349,
+      "first_200": "pports the principle that each school implements its own curriculum In an ongoing effort to maintain alignment with best that will enable students to develop the content practices in college-level"
+    },
+    {
+      "physical_page": 6,
+      "printed_page": 6,
+      "chars": 3349,
+      "first_200": "﻿ V.1 | 1 Return to Table of Contents © 2023 College Board The AP Course Audit form is submitted by response questions and through-course performance the AP teacher and"
+    },
+    {
+      "physical_page": 7,
+      "printed_page": 7,
+      "chars": 3349,
+      "first_200": "nsible earn when their professors administer AP Exam for developing each AP Exam, ensuring the exam questions to them. questions are aligned to the course framework. The AP ■ The"
+    },
+    {
+      "physical_page": 8,
+      "printed_page": 8,
+      "chars": 3349,
+      "first_200": "own credit and placement policies, most AP Reading. private colleges and universities award credit and/ § Gain in-depth understanding of AP Exam and AP or advanced placement for AP scores"
+    },
+    {
+      "physical_page": 9,
+      "printed_page": 9,
+      "chars": 3349,
+      "first_200": "get meaningful feedback on student progress. UNIT GUIDES Appearing in this publication and on AP Classroom, these planning guides outline all required course content and skills, organized into commonl"
+    },
+    {
+      "physical_page": 10,
+      "printed_page": 10,
+      "chars": 3349,
+      "first_200": "© 2023 College Board Instructional Model Integrating AP resources throughout the course can help students develop skills and conceptual understandings. The instructional model outlined below shows pos"
+    },
+    {
+      "physical_page": 11,
+      "printed_page": 11,
+      "chars": 3349,
+      "first_200": "or other mathematics and science courses. In this course, students study a broad spectrum of function types that are foundational for careers in mathematics, physics, biology, health science, business"
+    },
+    {
+      "physical_page": 12,
+      "printed_page": 12,
+      "chars": 3349,
+      "first_200": "applications—polynomial, rational, exponential, logarithmic, trigonometric, polar, parametric, vector-valued, implicitly defined, and linear transformation functions using matrices. Throughout the cou"
+    },
+    {
+      "physical_page": 13,
+      "printed_page": 13,
+      "chars": 3349,
+      "first_200": "- response questions will require students to use a graphing calculator to complete the tasks delineated above. Accessible technology that has the capabilities expected for AP Precalculus is available"
+    },
+    {
+      "physical_page": 14,
+      "printed_page": 14,
+      "chars": 3349,
+      "first_200": "Units 1, 2, and 3 topics comprise the content and conceptual understandings that colleges and universities typically expect students to be proficient in in order to qualify for college credit"
+    },
+    {
+      "physical_page": 15,
+      "printed_page": 15,
+      "chars": 3349,
+      "first_200": "A Identify information from 3.A Describe the characteristics inequalities represented analytically, graphical, numerical, analytical, and of a function with varying levels of with and without technolo"
+    },
+    {
+      "physical_page": 16,
+      "printed_page": 16,
+      "chars": 3349,
+      "first_200": "eek for 45 minutes each day, for a full school year. Many topics within Units 1, 2, and 3 list a range of recommended days. When a range is listed,"
+    },
+    {
+      "physical_page": 17,
+      "printed_page": 17,
+      "chars": 3349,
+      "first_200": "nce UNIT UNIT and Rational Logarithmic 1 Functions 2 Functions 6–8 weeks 30–40% AP Exam Weighting 6–9 weeks 27–40% AP Exam Weighting 2 1.1 Change in Tandem 2.1 Change in"
+    },
+    {
+      "physical_page": 18,
+      "printed_page": 18,
+      "chars": 3349,
+      "first_200": "2 2.8 Inverse Functions 1.9 Rational Functions and 2 MATHEMATICAL PRACTICES Vertical Asymptotes 2.9 Logarithmic 1 Expressions 1 Procedural and 3 Communication 1.10 Rational Functions and 3 Symbolic Fl"
+    },
+    {
+      "physical_page": 19,
+      "printed_page": 19,
+      "chars": 3349,
+      "first_200": "tiple-choice: 18 Multiple-choice: 24 Free-response: 2 Free-response: 2 Progress Check Unit 1 Part 2: Progress Check Unit 2 Part 2: Topics 1.7–1.14 Topics 2.9–2.15 Multiple-choice: 24 Multiple-choice: "
+    },
+    {
+      "physical_page": 20,
+      "printed_page": 20,
+      "chars": 3349,
+      "first_200": "and Matrices Representations 1 of Trigonometric 4.13 Matrices as Functions 2 3 Functions 3 1 3.13 Trigonometry and 1 4.14 Matrices Modeling 2 Polar Coordinates 3 Contexts 2 3 3.14"
+    },
+    {
+      "physical_page": 21,
+      "printed_page": 21,
+      "chars": 3349,
+      "first_200": "UNIT OPENERS UNIT Developing Understanding provides an overview that 1 30–40% AP EXAM WEIGHTING 30–40 CLASS PERIODS contextualizes and situates the key content of the unit within Polynomial and the"
+    },
+    {
+      "physical_page": 22,
+      "printed_page": 22,
+      "chars": 3349,
+      "first_200": "a decreasing rate or the efficacy of a medicine graphs to figure out the decreasing but at an increasing rate are important understandings that inform critical decisions. best time to"
+    },
+    {
+      "physical_page": 23,
+      "printed_page": 23,
+      "chars": 3349,
+      "first_200": "le to calculate linear, quadratic, cubic, and vs. time. In these contexts, students should quartic regressions to model a data set. In the use clear language when referring to variables"
+    },
+    {
+      "physical_page": 24,
+      "printed_page": 24,
+      "chars": 3349,
+      "first_200": "individual skills have been thoughtfully chosen in a way that verbal representations of functions that are useful in a given mathematical or applied context, with and without technology. scaffolds the"
+    },
+    {
+      "physical_page": 25,
+      "printed_page": 25,
+      "chars": 3349,
+      "first_200": "depending on the function representation and available mathematical tools. 1.5 Polynomial Functions and 2–3 1.B Express functions, equations, or expressions in analytically Complex Zeros equivalent fo"
+    },
+    {
+      "physical_page": 26,
+      "printed_page": 26,
+      "chars": 3349,
+      "first_200": "© 2023 College Board Using the Unit Guides The Sample Instructional Activities page includes optional UNIT activities that can help teachers tie together the content and 1 Polynomial and Rational"
+    },
+    {
+      "physical_page": 27,
+      "printed_page": 27,
+      "chars": 3349,
+      "first_200": "lim f ( x ) = − , lim f ( x ) 2). In pairs, students take turns reading their limit x 3+ x statements to each other. Without"
+    },
+    {
+      "physical_page": 28,
+      "printed_page": 28,
+      "chars": 3349,
+      "first_200": "The suggested skill offers a possible skill to pair with the topic. Polynomial and Rational Functions 1 TOPIC 1.1 INSTRUCTIONAL PERIODS: 2 Learning objectives define what a student needs to"
+    },
+    {
+      "physical_page": 29,
+      "printed_page": 29,
+      "chars": 3349,
+      "first_200": "Describe the Required Course Content characteristics of a function with varying levels of precision, depending on the function representation and available mathematical LEARNING OBJECTIVE ESSENTIAL KN"
+    },
+    {
+      "physical_page": 30,
+      "printed_page": 30,
+      "chars": 3349,
+      "first_200": "ver an interval of its domain if, as the input values increase, the output values always decrease. That is, for all a and b in the interval, if a <"
+    },
+    {
+      "physical_page": 31,
+      "printed_page": 31,
+      "chars": 3349,
+      "first_200": "Part 1: Topics 1.1–1.6 Multiple-choice: 18 Free-response: 2 Progress Check Unit 1 Part 2: Topics 1.7–1.14 Multiple-choice: 24 Free-response: 2 AP Precalculus Course and Exam Description Course Framewo"
+    },
+    {
+      "physical_page": 32,
+      "printed_page": 32,
+      "chars": 3349,
+      "first_200": "use precise language such as, “On to describe, represent, and model polynomial the closed interval 0 to 1, as the value of and rational functions and their additive and x"
+    },
+    {
+      "physical_page": 33,
+      "printed_page": 33,
+      "chars": 3349,
+      "first_200": "ith varying levels of precision, depending on the function representation and available mathematical tools. 1.2 Rates of Change 2 2.A Identify information from graphical, numerical, analytical, and ve"
+    },
+    {
+      "physical_page": 34,
+      "printed_page": 34,
+      "chars": 3349,
+      "first_200": "applied context. 3.A Describe the characteristics of a function with varying levels of precision, depending on the function representation and available mathematical tools. 1.8 Rational Functions and "
+    },
+    {
+      "physical_page": 35,
+      "printed_page": 35,
+      "chars": 3349,
+      "first_200": "al tools. 1.13 Function Model Selection 2–3 2.A Identify information from graphical, numerical, analytical, and Assumption and verbal representations to answer a question or construct a Articulation m"
+    },
+    {
+      "physical_page": 36,
+      "printed_page": 36,
+      "chars": 3349,
+      "first_200": "would be consistent with each phrase and compare their results. 3 1.7 Each student is given cards containing different rational functions in analytical representations. Have students use a calculator "
+    },
+    {
+      "physical_page": 37,
+      "printed_page": 37,
+      "chars": 3349,
+      "first_200": "UNIT Polynomial and Rational Functions 1 TOPIC 1.1 INSTRUCTIONAL PERIODS: 2 Change in Tandem SKILLS FOCUS 2.B Construct equivalent graphical, numerical, analytical, and verbal representations of funct"
+    },
+    {
+      "physical_page": 38,
+      "printed_page": 38,
+      "chars": 3349,
+      "first_200": "is called the independent variable, and the variable representing output values is called the dependent variable. 1.1.A.2 The input and output values of a function vary in tandem according to"
+    },
+    {
+      "physical_page": 39,
+      "printed_page": 39,
+      "chars": 3349,
+      "first_200": "increasing. 1.1.B.4 The graph of a function is concave down on intervals in which the rate of change is decreasing. 1.1.B.5 The graph intersects the x-axis when the output value"
+    },
+    {
+      "physical_page": 40,
+      "printed_page": 40,
+      "chars": 3349,
+      "first_200": "available mathematical tools. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 1.2.A 1.2.A.1 Compare the rates of change The average rate of change of a function over at two points using average an interval"
+    },
+    {
+      "physical_page": 41,
+      "printed_page": 41,
+      "chars": 3349,
+      "first_200": "Apply numerical results in a given mathematical or applied context. Linear and Quadratic Functions 3.C Support conclusions or choices with a logical rationale or appropriate data. Required Course Cont"
+    },
+    {
+      "physical_page": 42,
+      "printed_page": 42,
+      "chars": 3349,
+      "first_200": "small-length intervals, the graph of the function is concave up. When the average rate of change over equal-length input-value intervals is decreasing for all small-length intervals, the graph of the"
+    },
+    {
+      "physical_page": 43,
+      "printed_page": 43,
+      "chars": 3349,
+      "first_200": "tools. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 1.4.A 1.4.A.1 Identify key characteristics of A nonconstant polynomial function of polynomial functions related x is any function representation that to r"
+    },
+    {
+      "physical_page": 44,
+      "printed_page": 44,
+      "chars": 3349,
+      "first_200": "y characteristics of Points of inflection of a polynomial function polynomial functions related occur at input values where the rate of change to rates of change. of the function changes"
+    },
+    {
+      "physical_page": 45,
+      "printed_page": 45,
+      "chars": 3349,
+      "first_200": "in a given mathematical or applied context, with and without technology. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 1.5.A 1.5.A.1 Identify key characteristics of If a is a complex number and p(a )"
+    },
+    {
+      "physical_page": 46,
+      "printed_page": 46,
+      "chars": 3349,
+      "first_200": "1.5.A.6 Identify key characteristics of The degree of a polynomial function can be a polynomial function related found by examining the successive differences to its zeros when suitable of the"
+    },
+    {
+      "physical_page": 47,
+      "printed_page": 47,
+      "chars": 3349,
+      "first_200": "Describe the and End Behavior characteristics of a function with varying levels of precision, depending on the function representation and available mathematical tools. Required Course Content LEARNIN"
+    },
+    {
+      "physical_page": 48,
+      "printed_page": 48,
+      "chars": 3349,
+      "first_200": "Required Course Content function representation and available mathematical tools. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 1.7.A 1.7.A.1 Describe end behaviors of A rational function is analytically rep"
+    },
+    {
+      "physical_page": 49,
+      "printed_page": 49,
+      "chars": 3349,
+      "first_200": "Course Framework V.1 | 40 Return to Table of Contents © 2023 College Board UNIT Polynomial and Rational Functions 1 LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 1.7.A 1.7.A.4 Describe end behaviors of"
+    },
+    {
+      "physical_page": 50,
+      "printed_page": 50,
+      "chars": 3349,
+      "first_200": "without technology. and Zeros Required Course Content LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 1.8.A 1.8.A.1 Determine the zeros of The real zeros of a rational function correspond rational functions. t"
+    },
+    {
+      "physical_page": 51,
+      "printed_page": 51,
+      "chars": 3349,
+      "first_200": "polynomial function in the numerator, then the graph of the rational function has a vertical asymptote at x = a. Furthermore, a vertical asymptote also occurs at x = a"
+    },
+    {
+      "physical_page": 52,
+      "printed_page": 52,
+      "chars": 3349,
+      "first_200": "function r has a hole at x = c, then the location of the hole can be determined by examining the output values corresponding to input values sufficiently close to"
+    },
+    {
+      "physical_page": 53,
+      "printed_page": 53,
+      "chars": 3349,
+      "first_200": "Apply numerical results in a given mathematical or applied context. Required Course Content LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 1.11.A 1.11.A.1 Rewrite polynomial and Because the factored form of a"
+    },
+    {
+      "physical_page": 54,
+      "printed_page": 54,
+      "chars": 3349,
+      "first_200": "of binomials using the single row of Pascal’s Triangle to more easily binomial theorem. expand expressions of the form (a + b )n, including polynomial functions of the form p(x"
+    },
+    {
+      "physical_page": 55,
+      "printed_page": 55,
+      "chars": 3349,
+      "first_200": "SSENTIAL KNOWLEDGE 1.12.A 1.12.A.1 Construct a function The function g (x ) = f ( x ) + k is an additive that is an additive and/or transformation of the"
+    },
+    {
+      "physical_page": 56,
+      "printed_page": 56,
+      "chars": 3349,
+      "first_200": "Assumption Articulation question or construct a model, with and without technology. 3.C Support conclusions or choices with a logical rationale or appropriate Required Course Content data. LEARNING OB"
+    },
+    {
+      "physical_page": 57,
+      "printed_page": 57,
+      "chars": 3349,
+      "first_200": "Course Framework V.1 | 48 Return to Table of Contents © 2023 College Board UNIT Polynomial and Rational Functions 1 LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 1.13.A 1.13.A.7 Identify an appropriate A"
+    },
+    {
+      "physical_page": 58,
+      "printed_page": 58,
+      "chars": 3349,
+      "first_200": "Construct a linear, quadratic, A model can be constructed based on cubic, quartic, polynomial restrictions identified in a mathematical or of degree n, or related contextual scenario. piecewise-define"
+    },
+    {
+      "physical_page": 59,
+      "printed_page": 59,
+      "chars": 3349,
+      "first_200": "AP Precalculus Course and Exam Description Course Framework V.1 | 50 Return to Table of Contents © 2023 College Board AP PRECALCULUS UNIT 2 Exponential and Logarithmic Functions AP Precalculus"
+    },
+    {
+      "physical_page": 60,
+      "printed_page": 60,
+      "chars": 3349,
+      "first_200": "xponential and logarithmic functions. QUESTIONS Exponential and logarithmic function models are widespread in the natural and social ■ How can I make a single sciences. When an aspect of a"
+    },
+    {
+      "physical_page": 61,
+      "printed_page": 61,
+      "chars": 3349,
+      "first_200": "n this unit, multiple and justify the choice of a function model representations should be used to explore based on analysis of the residuals. Students the inverse relationship between exponential"
+    },
+    {
+      "physical_page": 62,
+      "printed_page": 62,
+      "chars": 3349,
+      "first_200": "tical or applied context. 3.A Describe the characteristics of a function with varying levels of precision, depending on the function representation and available mathematical tools. 2.5 Exponential Fu"
+    },
+    {
+      "physical_page": 63,
+      "printed_page": 63,
+      "chars": 3349,
+      "first_200": "© 2023 College Board UNIT Exponential and Logarithmic Functions 2 UNIT AT A GLANCE (cont'd) Instructional Topic Periods Suggested Skill Focus 2.9 Logarithmic Expressions 1–2 1.B Express functions, equ"
+    },
+    {
+      "physical_page": 64,
+      "printed_page": 64,
+      "chars": 3349,
+      "first_200": "modeling contexts, criteria, or data, with and without technology. 2.14 Logarithmic Function 2–3 1.C Construct new functions, using transformations, Context and Data Modeling compositions, inverses, o"
+    },
+    {
+      "physical_page": 65,
+      "printed_page": 65,
+      "chars": 3349,
+      "first_200": "of change of 2 feet per second based on the model d = 2t ; ii) at an increasing rate of change based on t the model d = 2"
+    },
+    {
+      "physical_page": 66,
+      "printed_page": 66,
+      "chars": 3349,
+      "first_200": "PERIODS: 2 Change in Arithmetic SKILLS FOCUS 1.B Express functions, and Geometric equations, or expressions in analytically equivalent forms that are useful in Sequences a given mathematical or applie"
+    },
+    {
+      "physical_page": 67,
+      "printed_page": 67,
+      "chars": 3349,
+      "first_200": "sequence sequences found in have a common ratio, or constant proportional mathematical and contextual change. scenarios as functions of the 2.1.B.2 whole numbers. The general term of a geometric seque"
+    },
+    {
+      "physical_page": 68,
+      "printed_page": 68,
+      "chars": 3349,
+      "first_200": "f ( x ) = yi + m ( x − xi ) based on a known slope, m , and a point, ( xi , yi ). 2.2.A.3 x"
+    },
+    {
+      "physical_page": 69,
+      "printed_page": 69,
+      "chars": 3349,
+      "first_200": "form f ( x ) = b + mx and exponential functions of the form f ( x ) = ab x can both be expressed analytically in terms of"
+    },
+    {
+      "physical_page": 70,
+      "printed_page": 70,
+      "chars": 3349,
+      "first_200": "domain of an exponential function is all real numbers. 2.3.A.3 Because the output values of exponential functions in general form are proportional over equal-length input-value intervals, exponential "
+    },
+    {
+      "physical_page": 71,
+      "printed_page": 71,
+      "chars": 3349,
+      "first_200": "xam Description Course Framework V.1 | 61 Return to Table of Contents © 2023 College Board UNIT 2 Exponential and Logarithmic Functions INSTRUCTIONAL PERIODS: 2 TOPIC 2.4 Exponential Function SKILLS"
+    },
+    {
+      "physical_page": 72,
+      "printed_page": 72,
+      "chars": 3349,
+      "first_200": "b −n = . bn 2.4.A.4 The value of an exponential expression involving an exponential unit fraction, such as b(1/k ) where k is a natural number, is the kth"
+    },
+    {
+      "physical_page": 73,
+      "printed_page": 73,
+      "chars": 3349,
+      "first_200": ". over equal-length input-value When the input values are whole numbers, intervals. exponential functions model situations of repeated multiplication of a constant to an initial value. 2.5.A.2 A const"
+    },
+    {
+      "physical_page": 74,
+      "printed_page": 74,
+      "chars": 3349,
+      "first_200": "For example, if d represents number of days, d then the base of f ( d ) = 2 indicates that the quantity increases by a factor of 2 every"
+    },
+    {
+      "physical_page": 75,
+      "printed_page": 75,
+      "chars": 3349,
+      "first_200": "3.C Support conclusions or choices with a logical Required Course Content rationale or appropriate data. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 2.6.A 2.6.A.1 Construct linear, quadratic, Two variables"
+    },
+    {
+      "physical_page": 76,
+      "printed_page": 76,
+      "chars": 3349,
+      "first_200": "aps a set of input values to given values. a set of output values such that the output values of g are used as input values of f . For"
+    },
+    {
+      "physical_page": 77,
+      "printed_page": 77,
+      "chars": 3349,
+      "first_200": "Return to Table of Contents © 2023 College Board UNIT Exponential and Logarithmic Functions 2 LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 2.7.B 2.7.B.1 Construct a representation Function composition is us"
+    },
+    {
+      "physical_page": 78,
+      "printed_page": 78,
+      "chars": 3349,
+      "first_200": "ILLS FOCUS 1.A Solve equations and inequalities represented analytically, with and without technology. 2.B Construct equivalent graphical, numerical, analytical, and verbal representations of function"
+    },
+    {
+      "physical_page": 79,
+      "printed_page": 79,
+      "chars": 3349,
+      "first_200": "range and domain are the inverse function’s domain and range, respectively. The inverse of the table of values of y = f (x ) can be found by reversing the"
+    },
+    {
+      "physical_page": 80,
+      "printed_page": 80,
+      "chars": 3349,
+      "first_200": "PIC 2.9 Logarithmic SKILLS FOCUS 1.B Express functions, equations, or expressions in analytically equivalent forms that are useful in Expressions a given mathematical or applied context. Required Cour"
+    },
+    {
+      "physical_page": 81,
+      "printed_page": 81,
+      "chars": 3349,
+      "first_200": "PERIODS: 2 Inverses of Exponential SKILLS FOCUS 1.C Construct new functions, Functions using transformations, compositions, inverses, or regressions, that may be useful in modeling contexts, criteria,"
+    },
+    {
+      "physical_page": 82,
+      "printed_page": 82,
+      "chars": 3349,
+      "first_200": "rease in equal-length intervals. Alternately, exponential growth is characterized by output values changing multiplicatively as input values change additively, whereas logarithmic growth is characteri"
+    },
+    {
+      "physical_page": 83,
+      "printed_page": 83,
+      "chars": 3349,
+      "first_200": "s of exponential functions, logarithmic functions are also always increasing or always decreasing, and their graphs are either always concave up or always concave down. Consequently, logarithmic funct"
+    },
+    {
+      "physical_page": 84,
+      "printed_page": 84,
+      "chars": 3349,
+      "first_200": "2 TOPIC 2.12 INSTRUCTIONAL PERIODS: 2–3 Logarithmic Function SKILLS FOCUS 1.B Express functions, Manipulation equations, or expressions in analytically equivalent forms that are useful in a given math"
+    },
+    {
+      "physical_page": 85,
+      "printed_page": 85,
+      "chars": 3349,
+      "first_200": "k function to a power, f ( x ) = logb x , results in a k vertical dilation, f ( x ) = logb x = klogb x ."
+    },
+    {
+      "physical_page": 86,
+      "printed_page": 86,
+      "chars": 3349,
+      "first_200": "for extraneous solutions precluded by the mathematical or contextual limitations. 2.13.A.3 Logarithms can be used to rewrite expressions involving exponential functions in different ways that may reve"
+    },
+    {
+      "physical_page": 87,
+      "printed_page": 87,
+      "chars": 3349,
+      "first_200": "Construct new functions, Context and Data using transformations, compositions, inverses, or regressions, that may be Modeling useful in modeling contexts, criteria, or data, with and without technolog"
+    },
+    {
+      "physical_page": 88,
+      "printed_page": 88,
+      "chars": 3349,
+      "first_200": "2.14.A.6 Logarithmic function models can be used to predict values for the dependent variable. AP Precalculus Course and Exam Description Course Framework V.1 | 75 Return to Table of Contents"
+    },
+    {
+      "physical_page": 89,
+      "printed_page": 89,
+      "chars": 3349,
+      "first_200": "is logn b , and the initial linear value is logn a. AP Precalculus Course and Exam Description Course Framework V.1 | 76 Return to Table of Contents © 2023"
+    },
+    {
+      "physical_page": 90,
+      "printed_page": 90,
+      "chars": 3349,
+      "first_200": "ric functions and their relation to the angles and QUESTIONS arcs of a circle. Since their output values repeat with every full revolution around the circle, ■ Since energy usage"
+    },
+    {
+      "physical_page": 91,
+      "printed_page": 91,
+      "chars": 3349,
+      "first_200": "ric equations and finding phase shift, give reasons for why chosen equivalent trigonometric expressions, values are consistent with information students build sinusoidal models with provided, calculat"
+    },
+    {
+      "physical_page": 92,
+      "printed_page": 92,
+      "chars": 3349,
+      "first_200": "ytical, and verbal representations to answer a question or construct a model, with and without technology. 3.A Describe the characteristics of a function with varying levels of precision, depending on"
+    },
+    {
+      "physical_page": 93,
+      "printed_page": 93,
+      "chars": 3349,
+      "first_200": "compositions, inverses, or regressions, that may be useful in modeling contexts, criteria, or data, with and without technology. 3.C Support conclusions or choices with a logical rationale or appropri"
+    },
+    {
+      "physical_page": 94,
+      "printed_page": 94,
+      "chars": 3349,
+      "first_200": "t technology. 3.B Apply numerical results in a given mathematical or applied context. 3.11 The Secant, Cosecant, and 2 2.B Construct equivalent graphical, numerical, analytical, and Cotangent Function"
+    },
+    {
+      "physical_page": 95,
+      "printed_page": 95,
+      "chars": 3349,
+      "first_200": "e mathematical tools. 3.C Support conclusions or choices with a logical rationale or appropriate data. Go to AP Classroom to assign the Progress Checks for Unit 3. Review the results"
+    },
+    {
+      "physical_page": 96,
+      "printed_page": 96,
+      "chars": 3349,
+      "first_200": "uch as: “Determine the midline,” “Determine the period,” “Determine the zeros on [ ] 0, 2 ,” “On what intervals is the function increasing?” The size of the group is"
+    },
+    {
+      "physical_page": 97,
+      "printed_page": 97,
+      "chars": 3349,
+      "first_200": "determine intervals on which the function is positive and increasing, positive and decreasing, negative and increasing, and negative and decreasing. Students compare their answers and verify their res"
+    },
+    {
+      "physical_page": 98,
+      "printed_page": 98,
+      "chars": 3349,
+      "first_200": "y investigating successive equal-length output values and finding where the pattern begins to repeat. 3.1.B.3 Periodic functions take on characteristics of other functions, such as intervals of increa"
+    },
+    {
+      "physical_page": 99,
+      "printed_page": 99,
+      "chars": 3349,
+      "first_200": "characteristics of a function Required Course Content with varying levels of precision, depending on the function representation and available mathematical tools. LEARNING OBJECTIVE ESSENTIAL KNOWLEDG"
+    },
+    {
+      "physical_page": 100,
+      "printed_page": 100,
+      "chars": 3349,
+      "first_200": "© 2023 College Board UNIT 3 Trigonometric and Polar Functions LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 3.2.A 3.2.A.4 Determine the sine, cosine, Given an angle in standard position and a and tangent"
+    },
+    {
+      "physical_page": 101,
+      "printed_page": 101,
+      "chars": 3349,
+      "first_200": "SKILLS FOCUS 2.A Identify information from Function Values graphical, numerical, analytical, and verbal representations to answer a question or construct a model, with and without technology. 3.B Appl"
+    },
+    {
+      "physical_page": 102,
+      "printed_page": 102,
+      "chars": 3349,
+      "first_200": "tion from graphical, numerical, analytical, and verbal representations to answer a Function Graphs question or construct a model, with and without technology. 3.A Describe the characteristics of a fun"
+    },
+    {
+      "physical_page": 103,
+      "printed_page": 103,
+      "chars": 3349,
+      "first_200": "in between and tracking the horizontal distance of points on the unit circle from the y-axis. AP Precalculus Course and Exam Description Course Framework V.1 | 88 Return to Table"
+    },
+    {
+      "physical_page": 104,
+      "printed_page": 104,
+      "chars": 3349,
+      "first_200": "sine and cosine functions are both sinusoidal functions, with cos = sin ( + 2) . 3.5.A.2 The period and frequency of a sinusoidal function are reciprocals. The period of"
+    },
+    {
+      "physical_page": 105,
+      "printed_page": 105,
+      "chars": 3349,
+      "first_200": ".A 3.6.A.1 Identify the amplitude, Functions that can be written in the vertical shift, period, and form f ( ) = asin(b( + c )) + d or phase shift"
+    },
+    {
+      "physical_page": 106,
+      "printed_page": 106,
+      "chars": 3349,
+      "first_200": "continued on next page AP Precalculus Course and Exam Description Course Framework V.1 | 90 Return to Table of Contents © 2023 College Board UNIT Trigonometric and Polar Functions 3"
+    },
+    {
+      "physical_page": 107,
+      "printed_page": 107,
+      "chars": 3349,
+      "first_200": "over function models of periodic which the maximum or minimum output values phenomena. start to repeat, that is, the input-value interval between consecutive maxima or consecutive minima, can be used"
+    },
+    {
+      "physical_page": 108,
+      "printed_page": 108,
+      "chars": 3349,
+      "first_200": "INSTRUCTIONAL PERIODS: 2 The Tangent Function SKILLS FOCUS 2.A Identify information from graphical, numerical, analytical, and verbal representations to answer a question or construct a model, with an"
+    },
+    {
+      "physical_page": 109,
+      "printed_page": 109,
+      "chars": 3349,
+      "first_200": "Therefore, tan = , where cos 0. cos 3.8.B 3.8.B.1 Describe key characteristics Because the slope values of the terminal ray of the tangent function. repeat every one-half revolution of"
+    },
+    {
+      "physical_page": 110,
+      "printed_page": 110,
+      "chars": 3349,
+      "first_200": ", the transformation involves a reflection over the x-axis. 3.8.C.4 The graph of the multiplicative transformation g ( ) = tan (b ) of the tangent function f ( )"
+    },
+    {
+      "physical_page": 111,
+      "printed_page": 111,
+      "chars": 3349,
+      "first_200": "using transformations, compositions, inverses, or regressions, that may be useful in modeling contexts, criteria, or data, with and without technology. 2.B Construct equivalent graphical, numerical, R"
+    },
+    {
+      "physical_page": 112,
+      "printed_page": 112,
+      "chars": 3349,
+      "first_200": "restricted to − , , the cosine function to 2 2 [ 0, ], and the tangent function to − , ( 2 2) . AP Precalculus Course and Exam"
+    },
+    {
+      "physical_page": 113,
+      "printed_page": 113,
+      "chars": 3349,
+      "first_200": "3 TOPIC 3.11 INSTRUCTIONAL PERIODS: 2 The Secant, Cosecant, SKILLS FOCUS 2.B Construct equivalent and Cotangent Functions graphical, numerical, analytical, and verbal representations of functions that"
+    },
+    {
+      "physical_page": 114,
+      "printed_page": 114,
+      "chars": 3349,
+      "first_200": "3.11.A.4 The cotangent function, f ( ) = cot , is the reciprocal of the tangent function, where cos tan 0. Equivalently, cot = , where sin 0. sin 3.11.A.5"
+    },
+    {
+      "physical_page": 115,
+      "printed_page": 115,
+      "chars": 3349,
+      "first_200": "ps, such as arcsin x = arccos ( 1 − x 2 ), with appropriate domain restrictions. 3.12.B 3.12.B.1 Rewrite trigonometric The sum identity for sine is expressions in equivalent"
+    },
+    {
+      "physical_page": 116,
+      "printed_page": 116,
+      "chars": 3349,
+      "first_200": "© 2023 College Board UNIT 3 Trigonometric and Polar Functions INSTRUCTIONAL PERIODS: 2–3 TOPIC 3.13 Trigonometry and SKILLS FOCUS 1.B Express functions, equations, or expressions in analytically equiv"
+    },
+    {
+      "physical_page": 117,
+      "printed_page": 117,
+      "chars": 3349,
+      "first_200": "ood as a point in the complex plane and can be determined by its corresponding rectangular or polar coordinates. When the complex number has the rectangular coordinates ( a, b"
+    },
+    {
+      "physical_page": 118,
+      "printed_page": 118,
+      "chars": 3349,
+      "first_200": "precision, depending on the function representation and available mathematical LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE tools. 3.14.A 3.14.A.1 Construct graphs of polar The graph of the function r = f ("
+    },
+    {
+      "physical_page": 119,
+      "printed_page": 119,
+      "chars": 3349,
+      "first_200": "ar function, r = f ( ), is positive and decreasing or negative and increasing, then the distance between f ( ) and the origin is decreasing. 3.15.A.3 For a"
+    },
+    {
+      "physical_page": 120,
+      "printed_page": 120,
+      "chars": 3349,
+      "first_200": "G 35 CLASS PERIODS AP Precalculus Course and Exam Description Course Framework V.1 | 103 Return to Table of Contents © 2023 College Board Remember to go to AP Classroom"
+    },
+    {
+      "physical_page": 121,
+      "printed_page": 121,
+      "chars": 3349,
+      "first_200": "rs instantaneously is the basis vertical and horizontal for vector-based computer graphics. While students may see their favorite video game aspects of motion character trip and fall or seemingly move"
+    },
+    {
+      "physical_page": 122,
+      "printed_page": 122,
+      "chars": 3349,
+      "first_200": "inverse of a matrix, where defined, with precise language used with particle motion graphing calculators. Topic Questions and in the plane and refer specifically to position, Progress Checks found in"
+    },
+    {
+      "physical_page": 123,
+      "printed_page": 123,
+      "chars": 3349,
+      "first_200": ". 4.3 Parametric Functions and 2 3.B Apply numerical results in a given mathematical or applied Rates of Change context. 3.C Support conclusions or choices with a logical rationale or"
+    },
+    {
+      "physical_page": 124,
+      "printed_page": 124,
+      "chars": 3349,
+      "first_200": "verbal representations to answer a question or construct a model, with and without technology. continued on next page AP Precalculus Course and Exam Description Course Framework V.1 | 106 Return"
+    },
+    {
+      "physical_page": 125,
+      "printed_page": 125,
+      "chars": 3349,
+      "first_200": "equations, or expressions in analytically and Matrices equivalent forms that are useful in a given mathematical or applied context. 4.13 Matrices as Functions 3 1.B Express functions, equations, or ex"
+    },
+    {
+      "physical_page": 126,
+      "printed_page": 126,
+      "chars": 3349,
+      "first_200": ", students discuss why the graphs of parametric functions can fail the “vertical line test” (and yet they are functions), but the graphs of many other previously studied function types"
+    },
+    {
+      "physical_page": 127,
+      "printed_page": 127,
+      "chars": 3349,
+      "first_200": "Course Framework V.1 | 108 Return to Table of Contents © 2023 College Board UNIT Functions Involving Parameters, Vectors, and Matrices 4 TOPIC 4.1 INSTRUCTIONAL PERIODS: 2 Parametric Functions SKILLS"
+    },
+    {
+      "physical_page": 128,
+      "printed_page": 128,
+      "chars": 3349,
+      "first_200": "parameter. 4.1.A.2 Because variables x and y are dependent on the independent variable, t , the coordinates ( xi , yi ) at time ti can be written as functions"
+    },
+    {
+      "physical_page": 129,
+      "printed_page": 129,
+      "chars": 3349,
+      "first_200": "4.2.A.2 The horizontal and vertical extrema of a particle’s motion can be determined by identifying the maximum and minimum values of the functions x(t ) and y (t ), respectively."
+    },
+    {
+      "physical_page": 130,
+      "printed_page": 130,
+      "chars": 3349,
+      "first_200": "alyzed function that are related to in terms of x and y independently. If x(t ) is direction and rate of change. increasing or decreasing, the direction of motion is"
+    },
+    {
+      "physical_page": 131,
+      "printed_page": 131,
+      "chars": 3349,
+      "first_200": "gin can be modeled by ( x (t ) , y (t )) = ( cos t, sin t ) with domain 0 t 2 . 4.4.A.2 Transformations of the"
+    },
+    {
+      "physical_page": 132,
+      "printed_page": 132,
+      "chars": 3349,
+      "first_200": "3.A Describe the Additional Topic Available to Schools characteristics of a function with varying levels of precision, depending on the function representation and available mathematical LEARNING OBJE"
+    },
+    {
+      "physical_page": 133,
+      "printed_page": 133,
+      "chars": 3349,
+      "first_200": "forms that are useful in a given mathematical or applied context. 2.A Identify information from graphical, numerical, analytical, and verbal representations to answer a Additional Topic Available to S"
+    },
+    {
+      "physical_page": 134,
+      "printed_page": 134,
+      "chars": 3349,
+      "first_200": "). a AP Precalculus Course and Exam Description Course Framework V.1 | 114 Return to Table of Contents © 2023 College Board UNIT Functions Involving Parameters, Vectors, and Matrices 4"
+    },
+    {
+      "physical_page": 135,
+      "printed_page": 135,
+      "chars": 3349,
+      "first_200": "substituted for x and y , respectively, satisfy the corresponding equation for every value of t in the domain. 4.7.A.2 If f is a function of x , then y"
+    },
+    {
+      "physical_page": 136,
+      "printed_page": 136,
+      "chars": 3349,
+      "first_200": "esentation and available mathematical tools. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 3.B 4.8.A 4.8.A.1 Apply numerical results in a given mathematical or Identify characteristics of a A vector is a dir"
+    },
+    {
+      "physical_page": 137,
+      "printed_page": 137,
+      "chars": 3349,
+      "first_200": "vector is parallel to the original vector. AP Precalculus Course and Exam Description Course Framework V.1 | 116 Return to Table of Contents © 2023 College Board UNIT Functions Involving"
+    },
+    {
+      "physical_page": 138,
+      "printed_page": 138,
+      "chars": 3349,
+      "first_200": "dition. them. Therefore, if the dot product of two nonzero vectors is zero, then the vectors are perpendicular. 4.8.D.2 The Law of Sines and Law of Cosines can be used"
+    },
+    {
+      "physical_page": 139,
+      "printed_page": 139,
+      "chars": 3349,
+      "first_200": "us Course and Exam Description Course Framework V.1 | 118 Return to Table of Contents © 2023 College Board UNIT Functions Involving Parameters, Vectors, and Matrices 4 TOPIC 4.10 INSTRUCTIONAL"
+    },
+    {
+      "physical_page": 140,
+      "printed_page": 140,
+      "chars": 3349,
+      "first_200": "Return to Table of Contents © 2023 College Board UNIT 4 Functions Involving Parameters, Vectors, and Matrices INSTRUCTIONAL PERIODS: 2 TOPIC 4.11 The Inverse and SKILLS FOCUS 1.B Express functions,"
+    },
+    {
+      "physical_page": 141,
+      "printed_page": 141,
+      "chars": 3349,
+      "first_200": "2 vectors from R , then the nonzero absolute value of the determinant of the matrix is the area of the parallelogram spanned by the vectors represented in the columns"
+    },
+    {
+      "physical_page": 142,
+      "printed_page": 142,
+      "chars": 3349,
+      "first_200": "components. 4.12.A.2 A linear transformation will map the zero vector to the zero vector. 4.12.A.3 2 A single vector in R can be expressed as a 2 × 1 matrix."
+    },
+    {
+      "physical_page": 143,
+      "printed_page": 143,
+      "chars": 3349,
+      "first_200": "hematical the matrix . tools. a21 a22 4.13.A.2 The mapping of the unit vectors in a linear transformation provides valuable information for determining the associated matrix. 4.13.A.3 cos − sin"
+    },
+    {
+      "physical_page": 144,
+      "printed_page": 144,
+      "chars": 3349,
+      "first_200": "4 LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE 4.13.C 4.13.C.1 Determine the inverse of a Two linear transformations are inverses if their linear transformation. composition maps any vector to itself. 4.13."
+    },
+    {
+      "physical_page": 145,
+      "printed_page": 145,
+      "chars": 3349,
+      "first_200": "resultant state vectors can predict the steady state, a distribution between states that does not change from one step to the next. 4.14.B.3 The product of the inverse of a"
+    },
+    {
+      "physical_page": 146,
+      "printed_page": 146,
+      "chars": 3349,
+      "first_200": "tput-values change with respect to each other. ■ Finding the real zeros of functions or points of intersection of the graphs of two functions to answer questions in context. ■"
+    },
+    {
+      "physical_page": 147,
+      "printed_page": 147,
+      "chars": 3349,
+      "first_200": "certain introductory topics ■ Alternate ways to sequence instruction for certain topics ■ Clarification on subtopics excluded from the framework Unit 1 ■ 1.1 Change in Tandem: Since this topic"
+    },
+    {
+      "physical_page": 148,
+      "printed_page": 148,
+      "chars": 3349,
+      "first_200": "of study will likely be related to an “action view” of AP Precalculus Course and Exam Description Instructional Approaches V.1 | 129 Return to Table of Contents © 2023 College"
+    },
+    {
+      "physical_page": 149,
+      "printed_page": 149,
+      "chars": 3349,
+      "first_200": "d horizontal lines of symmetry. ■ 4.8 Vectors: The course framework limits matrices, vectors, and linear 2 n transformations to R , but R can be explored if desired. ■"
+    },
+    {
+      "physical_page": 150,
+      "printed_page": 150,
+      "chars": 3349,
+      "first_200": "can be solved without technology vs. those for which the use ■ Are there any of technology is best. Finally, have students pick one or two from domain restrictions each"
+    },
+    {
+      "physical_page": 151,
+      "printed_page": 151,
+      "chars": 3349,
+      "first_200": "ents Sample Activities 1.B: Express ■ How could analytical Give each student a paper with two columns that have functions, skills be used to exponential and logarithmic expressions in the"
+    },
+    {
+      "physical_page": 152,
+      "printed_page": 152,
+      "chars": 3349,
+      "first_200": "© 2023 College Board Mathematical Practice 1: Procedural and Symbolic Fluency (cont'd) Questions to Skill Ask Students Sample Activities 1.C: Construct new ■ What contextual Randomly assign students i"
+    },
+    {
+      "physical_page": 153,
+      "printed_page": 153,
+      "chars": 3349,
+      "first_200": "transformations appear to be inverses. could be applied to an existing model Give students the graph of an exponential or logarithmic function to model a new with transformations. Have students"
+    },
+    {
+      "physical_page": 154,
+      "printed_page": 154,
+      "chars": 3349,
+      "first_200": "ch question. Have students switch function type of the model, with and representation? papers with a partner so that their partner can check their work. As without technology. an extension,"
+    },
+    {
+      "physical_page": 155,
+      "printed_page": 155,
+      "chars": 3349,
+      "first_200": "■ Analytical representation—What is our domain and range of the function? What other features are “easy” to see from this representation? ■ Verbal representation—What key words/phrases do we see that"
+    },
+    {
+      "physical_page": 156,
+      "printed_page": 156,
+      "chars": 3349,
+      "first_200": "representations are function in the center. If possible, each student should get a equivalent? unique function. Ask students to express that trigonometric function graphically in one corner, numerical"
+    },
+    {
+      "physical_page": 157,
+      "printed_page": 157,
+      "chars": 3349,
+      "first_200": "f the a “secret” polynomial or rational function. Other students ask function? yes/no questions (e.g., Does your function’s graph have a vertical asymptote?) to try to guess the “secret function.”"
+    },
+    {
+      "physical_page": 158,
+      "printed_page": 158,
+      "chars": 3349,
+      "first_200": "values? 3.C: Support ■ What conclusion needs Put students in groups of 3 and assign one group to be the conclusions or to be supported? “judges.” Then give all of"
+    },
+    {
+      "physical_page": 159,
+      "printed_page": 159,
+      "chars": 3349,
+      "first_200": "variety of instructional approaches and best practices into daily lessons and activities. The following table presents strategies that can help students apply their understanding of course concepts. S"
+    },
+    {
+      "physical_page": 160,
+      "printed_page": 160,
+      "chars": 3349,
+      "first_200": "dents determine which law can be used in the problem, communicate the scenario, and then calculate the missing measurement, the results, and verify making sense of their answer and interpreting"
+    },
+    {
+      "physical_page": 161,
+      "printed_page": 161,
+      "chars": 3349,
+      "first_200": "discuss the domain and range of each function and address how to restrict the domain so that the function is invertible. This discussion will clarify misconceptions around domain and range"
+    },
+    {
+      "physical_page": 162,
+      "printed_page": 162,
+      "chars": 3349,
+      "first_200": "Description Instructional Approaches V.1 | 138 Return to Table of Contents © 2023 College Board Strategy Definition Examples Error Analysis Students analyze an existing When students are working with "
+    },
+    {
+      "physical_page": 163,
+      "printed_page": 163,
+      "chars": 3349,
+      "first_200": "ruct a table defining Venn diagrams, flowcharts, appropriate test values in intervals defined by boundary etc.). points. Then, students will mark the correct intervals and incorrect intervals. Identif"
+    },
+    {
+      "physical_page": 164,
+      "printed_page": 164,
+      "chars": 3349,
+      "first_200": "Students then share their reveal the answer and explain what the three similar graphs responses within their had in common, and why the other was the odd one out. groups."
+    },
+    {
+      "physical_page": 165,
+      "printed_page": 165,
+      "chars": 3349,
+      "first_200": "with—and find a new partner. Have the process repeat for a number of rounds you determine. continued on next page AP Precalculus Course and Exam Description Instructional Approaches V.1 |"
+    },
+    {
+      "physical_page": 166,
+      "printed_page": 166,
+      "chars": 3349,
+      "first_200": "identities before other angles. Think Aloud Students talk through In order to determine which transformations occurred to a a difficult problem by given function, have students ask themselves a series"
+    },
+    {
+      "physical_page": 167,
+      "printed_page": 167,
+      "chars": 3349,
+      "first_200": "ormation V.1 | 145 Return to Table of Contents © 2023 College Board Exam Weighting for Skills Exam Weighting Practice 1: Procedural and Symbolic Fluency 1.A: Solve equations and inequalities"
+    },
+    {
+      "physical_page": 168,
+      "printed_page": 168,
+      "chars": 3349,
+      "first_200": "Calculators should be in radian mode for the AP Exam. Refer to the “Technology Needs” section on page 7 for a list of calculator capabilities that are necessary for the"
+    },
+    {
+      "physical_page": 169,
+      "printed_page": 169,
+      "chars": 3349,
+      "first_200": "nstructional video on FRQ 2 can be found here. FRQ 3: Modeling a Periodic Context (No Calculator)\u0007presents\u0007a\u0007real-life\u0007context\u0007that\u0007 is modeled by a sinusoidal function. In Part (A), students use the "
+    },
+    {
+      "physical_page": 170,
+      "printed_page": 170,
+      "chars": 3349,
+      "first_200": "with the graphing calculator that use the stored information help to maintain as much precision as possible and ensure the desired accuracy\u0007in\u0007final\u0007answers. § During Part B, no calculator is allowed."
+    },
+    {
+      "physical_page": 171,
+      "printed_page": 171,
+      "chars": 3349,
+      "first_200": "owing statements about the end behavior of p is true? (A) The sign of the leading term of p is positive, and the degree of the leading term of p"
+    },
+    {
+      "physical_page": 172,
+      "printed_page": 172,
+      "chars": 3349,
+      "first_200": "5, x 7 (C) all real numbers x where x 3, x 0, x 6 (D) all real numbers x where x 5, x 3, x 0, x 6, x"
+    },
+    {
+      "physical_page": 173,
+      "printed_page": 173,
+      "chars": 3349,
+      "first_200": "ime. A linear regression was used to develop a model for the sales over time. The figure shows a graph of the residuals of the linear regression. Which of the"
+    },
+    {
+      "physical_page": 174,
+      "printed_page": 174,
+      "chars": 3349,
+      "first_200": "6 2 4 (C) x = and x = 3 3 7 11 (D) x = and x = 6 6 16. The figure shows the graph of a sinusoidal"
+    },
+    {
+      "physical_page": 175,
+      "printed_page": 175,
+      "chars": 3349,
+      "first_200": "led by the function T defined by T (t ) = , 14t 2 + 10t − 35 where t is measured in hours from 12 p.m. for 2 t"
+    },
+    {
+      "physical_page": 176,
+      "printed_page": 176,
+      "chars": 3349,
+      "first_200": "© 2023 College Board 24. A theme park thrill ride involves a tower and a carriage that rapidly moves passengers up and down along a vertical axis, as shown in"
+    },
+    {
+      "physical_page": 177,
+      "printed_page": 177,
+      "chars": 3349,
+      "first_200": "Exam Information V.1 | 166 Return to Table of Contents © 2023 College Board 2. Students who completed a class participated in a year-long study to see how much content"
+    },
+    {
+      "physical_page": 178,
+      "printed_page": 178,
+      "chars": 3349,
+      "first_200": "lockwise direction and complete 5 rotations every second. Point B is on the tip of one of the fan blades and is located directly above the center of the fan"
+    },
+    {
+      "physical_page": 179,
+      "printed_page": 179,
+      "chars": 3349,
+      "first_200": "ession. Your result should be of the form ln( expression ). ii. Rewrite h ( x ) as an expression in which cos x appears once and no other trigonometric"
+    },
+    {
+      "physical_page": 180,
+      "printed_page": 180,
+      "chars": 3349,
+      "first_200": "1.14.C 1.14.C.1 21 A 3.B 2.5.A 2.5.A.5 22 A 3.B 3.5.A 3.5.A.5 23 B 3.C 3.9.A 3.9.A.2 24 B 1.C 3.7.A 3.7.A.1 Free-Response Skills Learning Objectives Question 1.A, 1.C, 2.A,"
+    },
+    {
+      "physical_page": 181,
+      "printed_page": 181,
+      "chars": 3349,
+      "first_200": "ii. Determine the end behavior of g as x decreases without bound. Express your answer using the mathematical notation of a limit. x 3 − 14 x − 27 i."
+    },
+    {
+      "physical_page": 182,
+      "printed_page": 182,
+      "chars": 3349,
+      "first_200": "d a class participated in a year-long study to see how much content from the class they retained over the following year. At the end of the class, students completed"
+    },
+    {
+      "physical_page": 183,
+      "printed_page": 183,
+      "chars": 3349,
+      "first_200": "3.C R is logarithmic and decreasing, its graph is concave up. These secant lines are above the graph of R, and the slopes of the lines are increasing as t"
+    },
+    {
+      "physical_page": 184,
+      "printed_page": 184,
+      "chars": 3349,
+      "first_200": "nd the surface of the table periodically decreases and increases. The sinusoidal function h models the distance between B and the surface of the table, in inches, as a function"
+    },
+    {
+      "physical_page": 185,
+      "printed_page": 185,
+      "chars": 3349,
+      "first_200": "positive and decreasing. c. h is negative and increasing. d. h is negative and decreasing. ii. On the interval (t1 , t 2 ), describe the concavity of the graph"
+    },
+    {
+      "physical_page": 186,
+      "printed_page": 186,
+      "chars": 3349,
+      "first_200": "any part of the expression. Your result should be of the form ln( expression ). ii. Rewrite h ( x ) as an expression in which cos x appears once"
+    },
+    {
+      "physical_page": 187,
+      "printed_page": 187,
+      "chars": 3349,
+      "first_200": "Solution to k(x) = 3e 1 point 1.A \u0007 Total for part (B) 2 points C. The function m is given by m( x ) = cos ( 2 x"
+    },
+    {
+      "physical_page": 188,
+      "printed_page": 188,
+      "chars": 3349,
+      "first_200": "s students develop polynomial and rational to include a deeper introduction to the relationship function models for contextual scenarios, they should between zero and infinity. When investigating the "
+    },
+    {
+      "physical_page": 189,
+      "printed_page": 189,
+      "chars": 3349,
+      "first_200": "phical and transformations applied to parent functions and numerical representations are related to analytical technology-based regressions. Students will evaluate representations. Polynomials provide"
+    },
+    {
+      "physical_page": 190,
+      "printed_page": 190,
+      "chars": 3349,
+      "first_200": "be highlighted in this unit. Students procedural knowledge helps students to develop a should practice composing functions with the identity deeper understanding of exponential and logarithmic functio"
+    },
+    {
+      "physical_page": 191,
+      "printed_page": 191,
+      "chars": 3349,
+      "first_200": "nnections among the and its inverse, and errors in thinking about and graphical, numerical, analytical, and verbal function labeling the axes when graphing a function and its representations allows fo"
+    },
+    {
+      "physical_page": 192,
+      "printed_page": 192,
+      "chars": 3349,
+      "first_200": "thms can manage Students will also experience comparing competing numerical data that tends towards large values. As function models for bivariate data sets and choosing the inverse relationship betwe"
+    },
+    {
+      "physical_page": 193,
+      "printed_page": 193,
+      "chars": 3349,
+      "first_200": "relating the familiar rectangular coordinate system set, students should be able to estimate the amplitude, to the polar coordinate system. While studying vertical shift, and period of a sinusoidal fu"
+    },
+    {
+      "physical_page": 194,
+      "printed_page": 194,
+      "chars": 3349,
+      "first_200": "build students to understand that graphs of parametric their understandings. When someone throws a ball to functions may not pass the “vertical line test.” This someone else, the ball’s path"
+    },
+    {
+      "physical_page": 195,
+      "printed_page": 195,
+      "chars": 3349,
+      "first_200": "transformations via matrices and vectors in concrete up and to the left from time t equals 1 to t equals 2 ways. Students may begin with vectors representing the seconds"
+    }
+  ]
+}

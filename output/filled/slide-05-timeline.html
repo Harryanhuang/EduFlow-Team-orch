@@ -1,0 +1,211 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Timeline</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    .slide {
+      width: 1920px;
+      height: 1080px;
+      background-color: #FFFFFF;
+      font-family: 'PingFang SC', 'Microsoft YaHei', 'PingFang TC', 'Hiragino Sans GB', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+    .title-block {
+      position: absolute;
+      left: 80px;
+      top: 100px;
+      width: 1680px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .title-block [data-slot="title"] {
+      font-weight: 600;
+      font-size: 64px;
+      line-height: 1.25;
+      color: #20283A;
+    }
+    .title-block [data-slot="subtitle"] {
+      font-weight: 400;
+      font-size: 40px;
+      line-height: 1.4;
+      color: #17495C;
+    }
+    .timeline-row {
+      position: absolute;
+      left: 80px;
+      top: 380px;
+      width: 1760px;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+    }
+    .timeline-step {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-right: 48px;
+    }
+    .timeline-step:last-child { padding-right: 0; }
+    .step-number {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background-color: #D2A148;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 32px;
+      color: #20283A;
+      flex-shrink: 0;
+    }
+    .step-header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
+      gap: 0;
+    }
+    .step-connector {
+      height: 3px;
+      background-color: #D2A148;
+      flex: 1;
+      min-width: 40px;
+    }
+    .step-content {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .step-content [data-slot$="Heading"] {
+      font-weight: 500;
+      font-size: 40px;
+      line-height: 1.22;
+      color: #20283A;
+    }
+    .step-content [data-slot$="Copy"] {
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 1.43;
+      color: #20283A;
+    }
+  </style>
+<style id="qoderwork-sea-blue-base">
+    .slide {
+      color: #20283A !important;
+      letter-spacing: 0 !important;
+    }
+    .title-block [data-slot="title"] {
+      color: #123A4A !important;
+      font-weight: 700 !important;
+      letter-spacing: 0 !important;
+    }
+    .title-block [data-slot="subtitle"] {
+      color: #17495C !important;
+      font-weight: 500 !important;
+    }
+    .content-card,
+    .comparison-col,
+    .timeline-step {
+      border: 1px solid rgba(45,156,196,0.18) !important;
+      box-shadow: none !important;
+    }
+    .content-card,
+    .col-right {
+      background-color: #F2FAFD !important;
+    }
+    .col-left {
+      background-color: #E6F5FA !important;
+    }
+    .card-image {
+      background-color: #FFFFFF !important;
+      border: 1px solid rgba(210,161,72,0.35) !important;
+    }
+    .card-image img {
+      color: #2D9CC4 !important;
+    }
+    [data-slot$="Heading"],
+    [data-slot$="Label"] {
+      color: #123A4A !important;
+      font-weight: 700 !important;
+    }
+    [data-slot$="Copy"],
+    [data-slot$="Item1"],
+    [data-slot$="Item2"],
+    [data-slot$="Item3"],
+    [data-slot$="Item4"] {
+      color: #20283A !important;
+    }
+    .col-items [data-slot$="Item1"]::before,
+    .col-items [data-slot$="Item2"]::before,
+    .col-items [data-slot$="Item3"]::before,
+    .col-items [data-slot$="Item4"]::before {
+      background-color: #D2A148 !important;
+    }
+  </style>
+<style id="eduflow-sea-theme">
+  .slide { color: #20283A !important; }
+  .title-block [data-slot="title"] { color: #123A4A !important; font-weight: 750 !important; letter-spacing: 0 !important; }
+  .title-block [data-slot="subtitle"] { color: #17495C !important; font-weight: 500 !important; }
+  .content-card, .comparison-col, .timeline-step { border: 1px solid rgba(45,156,196,0.18) !important; box-shadow: none !important; }
+  .card-image { background-color: #FFFFFF !important; border: 1px solid rgba(210,161,72,0.35) !important; }
+  .card-image img { color: #2D9CC4 !important; }
+  [data-slot$="Heading"], [data-slot$="Label"] { color: #123A4A !important; font-weight: 750 !important; }
+  [data-slot$="Copy"], [data-slot$="Item1"], [data-slot$="Item2"], [data-slot$="Item3"], [data-slot$="Item4"] { color: #20283A !important; }
+</style>
+
+<style id="compact-timeline">
+  .title-block { top: 86px !important; }
+  .title-block [data-slot="title"] { font-size: 56px !important; }
+  .title-block [data-slot="subtitle"] { font-size: 30px !important; }
+  .timeline-row { top: 306px !important; height: 670px !important; }
+  .timeline-step [data-slot$="Heading"] { font-size: 31px !important; line-height: 1.16 !important; }
+  .timeline-step [data-slot$="Copy"] { font-size: 22px !important; line-height: 1.30 !important; }
+</style>
+</head>
+<body>
+  <div class="slide" data-template="timeline">
+    <div class="title-block">
+      <h1 data-slot="title">IG、AS、A2 与完整 A-Level</h1>
+      <p data-slot="subtitle">桥梁、阶段、完整资格；老师要知道每个阶段解决什么问题、留下什么证据。</p>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-step">
+        <div class="step-header">
+          <div class="step-number" data-slot="step1Number">IG</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-content">
+          <h2 data-slot="step1Heading">国际课程适应</h2>
+          <p data-slot="step1Copy">完成语言、评价方式、实验习惯和学习方式切换；建立术语表、错题本、阅读记录和基础诊断。</p>
+        </div>
+      </div>
+      <div class="timeline-step">
+        <div class="step-header">
+          <div class="step-number" data-slot="step2Number">AS</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-content">
+          <h2 data-slot="step2Heading">第一阶段成绩</h2>
+          <p data-slot="step2Copy">形成学科深度和阶段成绩；mock、topic test 与课堂表现会支撑预估分和申请材料。</p>
+        </div>
+      </div>
+      <div class="timeline-step">
+        <div class="step-header">
+          <div class="step-number" data-slot="step3Number">A2</div>
+        </div>
+        <div class="step-content">
+          <h2 data-slot="step3Heading">完整资格收束</h2>
+          <p data-slot="step3Copy">进一步提升学科深度，与 AS 合并形成完整 A-Level 资格；重点转向真题、弱项补救和 offer 条件达成。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body></html>

@@ -1,0 +1,1569 @@
+{
+  "schema_version": "1",
+  "subject": "calculus-ab",
+  "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/03-AP知识库/03-学科知识/AP Calculus AB/02-课本与考纲/考纲/ap-calculus-ab-and-bc-course-and-exam-description.pdf",
+  "file_checksum_sha256": "71a4c458a9fc84e1c513b6d382d9b77215d5263d03fa94a0cab83e159ba44e43",
+  "pdfinfo": {
+    "Title": "AP® Calculus AB and BC Course and Exam Description",
+    "Subject": "AP® Calculus AB; AP® Calculus BC; Advanced Placement",
+    "Keywords": "AP® Calculus AB; AP® Calculus BC; Advanced Placement; Course and Exam Description; CED; Effective Fall 2020; 09/2025; course resources; exam resources; exam information; teacher resources; sample exam questions; curriculum resources; course framework; course content; unit guides; AP resources and support; instructional model; ADA",
+    "Author": "College Board",
+    "Creator": "Adobe InDesign CC 14.0 (Macintosh)",
+    "Producer": "Adobe PDF Library 15.0",
+    "CreationDate": "Tue Jul  1 18:22:08 2025 CST",
+    "ModDate": "Thu Sep 11 22:08:03 2025 CST",
+    "Custom Metadata": "no",
+    "Metadata Stream": "yes",
+    "Tagged": "yes",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "AcroForm",
+    "JavaScript": "no",
+    "Pages": "256",
+    "Encrypted": "yes (print:yes copy:yes change:no addNotes:no algorithm:AES-256)",
+    "Page size": "612 x 792 pts (letter)",
+    "Page rot": "0",
+    "File size": "6265723 bytes",
+    "Optimized": "no",
+    "PDF version": "1.7"
+  },
+  "total_pages": 256,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": 1,
+      "chars": 2845,
+      "first_200": "INCLUDES Course framework \u0007 Sample exam questions AP Calculus ® AB and BC COURSE AND EXAM DESCRIPTION Effective Fall 2020 AP Calculus ® AB and BC COURSE AND EXAM DESCRIPTION"
+    },
+    {
+      "physical_page": 2,
+      "printed_page": 2,
+      "chars": 2845,
+      "first_200": "work as a whole.” 5. AP courses foster an open-minded approach to the histories and cultures of different peoples. The study of different nationalities, cultures, religions, races, and ethnicities is"
+    },
+    {
+      "physical_page": 3,
+      "printed_page": 3,
+      "chars": 2845,
+      "first_200": "sing, MI Stephen Davis, Davidson College, Davidson, NC Theresa Horvath, McKinney High School, McKinney, TX Karen Hyers, Tartan High School, Oakdale, MN Jon Kawamura, West Salem High School, Salem, OR"
+    },
+    {
+      "physical_page": 4,
+      "printed_page": 4,
+      "chars": 2845,
+      "first_200": "Enrolling Students: Access, that prepare them for college and beyond. Taking AP Opportunity, and Readiness courses demonstrates to college admission officers The AP Program welcomes all students willi"
+    },
+    {
+      "physical_page": 5,
+      "printed_page": 5,
+      "chars": 2845,
+      "first_200": "urses must participate in the AP Course Audit, a college course and that appear on the AP Exam. It also process through which AP teachers’ course materials organizes the content"
+    },
+    {
+      "physical_page": 6,
+      "printed_page": 6,
+      "chars": 2845,
+      "first_200": "the scoring standards. Scores on the free-response How the AP Program questions and performance assessments are weighted Is Developed and combined with the results of the computer-scored multiple-choi"
+    },
+    {
+      "physical_page": 7,
+      "printed_page": 7,
+      "chars": 2845,
+      "first_200": ", and a range of AP teachers in the development of the course and gender, racial/ethnic, and regional groups. A list of each exam and throughout the scoring process ensures"
+    },
+    {
+      "physical_page": 8,
+      "printed_page": 8,
+      "chars": 2845,
+      "first_200": "§§ Receive compensation: AP Readers are policy, use the search engine available on the AP Credit compensated for their work during the Reading. Policy Search page. Expenses, lodging, and meals"
+    },
+    {
+      "physical_page": 9,
+      "printed_page": 9,
+      "chars": 2845,
+      "first_200": "ired course content and skills, organized into commonly taught units. Each unit guide suggests a sequence and pacing of content, scaffolds skill instruction across units, organizes content into topics"
+    },
+    {
+      "physical_page": 10,
+      "printed_page": 10,
+      "chars": 2845,
+      "first_200": ". AP teachers and students begin by signing in to My AP and completing a simple activation process at the start of the school year, which provides access to all"
+    },
+    {
+      "physical_page": 11,
+      "printed_page": 11,
+      "chars": 2845,
+      "first_200": "tional model outlined below shows possible ways to incorporate AP resources into the classroom. Plan Teachers may consider the following approaches as they plan their instruction before teaching each "
+    },
+    {
+      "physical_page": 12,
+      "printed_page": 12,
+      "chars": 2845,
+      "first_200": "d analysis of functions), each course becomes a cohesive whole, rather than a collection of unrelated topics. Both courses require students to use definitions and theorems to build arguments and"
+    },
+    {
+      "physical_page": 13,
+      "printed_page": 13,
+      "chars": 2845,
+      "first_200": "﻿ V.1 | 7 Return to Table of Contents © 2020 College Board THIS PAGE IS INTENTIONALLY LEFT BLANK. AP CALCULUS AB AND BC Course Framework Introduction The course frameworks"
+    },
+    {
+      "physical_page": 14,
+      "printed_page": 14,
+      "chars": 2845,
+      "first_200": "Course Framework V.1 | 12 Return to Table of Contents © 2020 College Board 1 AP CALCULUS AB AND BC Mathematical Practices The AP Calculus AB and BC mathematical practices"
+    },
+    {
+      "physical_page": 15,
+      "printed_page": 15,
+      "chars": 2845,
+      "first_200": "and mathematical conventions to using mathematical procedures multiple representations. communicate results or solutions. and rules. SKILLS 1.A Identify the question to 2.A Identify common 3.A Apply t"
+    },
+    {
+      "physical_page": 16,
+      "printed_page": 16,
+      "chars": 2845,
+      "first_200": "lationship between 2.E Describe the relationships among different 3.F Explain the meaning concepts (e.g., rate of change and accumulation) representations of functions of mathematical solutions or pro"
+    },
+    {
+      "physical_page": 17,
+      "printed_page": 17,
+      "chars": 2845,
+      "first_200": "ual understanding. Below are the big ideas of the course and a brief description of each. BIG IDEA 1: CHANGE (CHA) Using derivatives to describe rates of change of one"
+    },
+    {
+      "physical_page": 18,
+      "printed_page": 18,
+      "chars": 2845,
+      "first_200": "the multiple- choice section of the AP Exam, are listed on the TOPICS following page. Each unit is broken down into teachable segments called topics. The topic pages (starting on"
+    },
+    {
+      "physical_page": 19,
+      "printed_page": 19,
+      "chars": 2845,
+      "first_200": "ing the Big Ideas The following table shows how the big ideas spiral across units. Big Ideas Unit 1 Unit 2 Unit 3 Unit 4 Unit 5 Limits and Differentiation:"
+    },
+    {
+      "physical_page": 20,
+      "printed_page": 20,
+      "chars": 2845,
+      "first_200": "WEIGHTING 10 –12% AB 4–7% BC WEIGHTING 10–12% AB 4–7% BC CLASS PERIODS ~22–23 AB ~13–14 BC CLASS PERIODS ~13–14 AB ~9–10 BC Plan CHA CHA 2.1 Defining Average and"
+    },
+    {
+      "physical_page": 21,
+      "printed_page": 21,
+      "chars": 2845,
+      "first_200": "LIM Do Not Exist each unit. FUN 2.5 Applying the Power §§ Spiraling of the big ideas LIM Rule and mathematical practices 1 across units. FUN 2.6 Derivative Rules: LIM"
+    },
+    {
+      "physical_page": 22,
+      "printed_page": 22,
+      "chars": 2845,
+      "first_200": "1 Big ideas spiral across topics and units. 1 FUN 2.10 Finding the Derivatives CHA Change FUN Analysis of LIM of Tangent, Cotangent, Functions LIM Limits 1 Secant, and/or LIM"
+    },
+    {
+      "physical_page": 23,
+      "printed_page": 23,
+      "chars": 2845,
+      "first_200": "ing the Mean Value Meaning of the 3 Theorem 1 1 Derivative in Context FUN 5.2 Extreme Value Theorem, FUN 3.2 Implicit Differentiation CHA 4.2 Straight-Line Global Versus Local 1"
+    },
+    {
+      "physical_page": 24,
+      "printed_page": 24,
+      "chars": 2845,
+      "first_200": "n Using FUN 5.6 Determining Concavity 1 Local Linearity and of Functions over Their Linearization 2 Domains LIM 4.7 Using L’Hospital’s Rule FUN 5.7 Using the Second for Determining Limits"
+    },
+    {
+      "physical_page": 25,
+      "printed_page": 25,
+      "chars": 2845,
+      "first_200": "questions Free-response: 3 questions Free-response: 3 questions (partial/full) Integration and UNIT UNIT Differential UNIT Applications Accumulation 6 of Change 7 Equations 8 of Integration AP EXAM AP"
+    },
+    {
+      "physical_page": 26,
+      "printed_page": 26,
+      "chars": 2845,
+      "first_200": "Accumulation FUN 7.5 Approximating Between Curves Functions Solutions Using Euler’s 4 Expressed as 1 Method bc only Functions of x FUN 6.5 Interpreting CHA 8.5 Finding the Area the Behavior"
+    },
+    {
+      "physical_page": 27,
+      "printed_page": 27,
+      "chars": 2845,
+      "first_200": "Method: Revolving 3 Around the x- or y-Axis FUN 6.10 Integrating Functions Using Long Division CHA 8.10 Volume with Disc 1 and Completing the Method: Revolving Square 2 Around Other"
+    },
+    {
+      "physical_page": 28,
+      "printed_page": 28,
+      "chars": 2845,
+      "first_200": "AB 17–18% BC CLASS PERIODS N/A AB ~10–11 BC CLASS PERIODS N/A AB ~17–18 BC CHA 9.1 Defining and LIM 10.1 Defining Convergent 2 Differentiating and Divergent Infinite 3 Parametric"
+    },
+    {
+      "physical_page": 29,
+      "printed_page": 29,
+      "chars": 2845,
+      "first_200": "of Convergence of 2 Power Series LIM 10.14 Finding Taylor or Maclaurin Series for 2 a Function LIM 10.15 Representing Functions as 3 Power Series Personal Progress Check 9 Personal"
+    },
+    {
+      "physical_page": 30,
+      "printed_page": 30,
+      "chars": 2845,
+      "first_200": "Course Framework V.1 | 25 Return to Table of Contents © 2020 College Board REQUIRED COURSE CONTENT LABELING SYSTEM BIG IDEA ENDURING LEARNING ESSENTIAL UNDERSTANDING OBJECTIVE KNOWLEDGE LIM LIM-1 LIM-"
+    },
+    {
+      "physical_page": 31,
+      "printed_page": 31,
+      "chars": 2845,
+      "first_200": "loping Understanding provides an overview that 1 ~22–23 AB ~13–14 BC contextualizes and situates the key content of the unit within CLASS PERIODS Limits and the scope of the course."
+    },
+    {
+      "physical_page": 32,
+      "printed_page": 32,
+      "chars": 2845,
+      "first_200": "rems that are used to solve realistic problems involving change and to justify conclusions. within the practices that are appropriate to focus on in that unit. In Unit 1, students"
+    },
+    {
+      "physical_page": 33,
+      "printed_page": 33,
+      "chars": 2845,
+      "first_200": "he groundwork for students’ ongoing specific content and skills related to each unit loopholes so that development of skills associated with taking and to build a coherent understanding of the"
+    },
+    {
+      "physical_page": 34,
+      "printed_page": 34,
+      "chars": 2845,
+      "first_200": "establish the practice of explicitly verifying that to write relevant given information before a theorem’s hypotheses are satisfied before drawing the conclusion of a theorem. applying the theorem. AP"
+    },
+    {
+      "physical_page": 35,
+      "printed_page": 35,
+      "chars": 2845,
+      "first_200": "Class Periods Understanding Topic Suggested Skills ~10–11 CLASS PERIODS (AB) The suggested skills for each topic show possible ways to ~8–9 CLASS PERIODS (BC) 3.1 The Chain Rule 1.C Identify"
+    },
+    {
+      "physical_page": 36,
+      "printed_page": 36,
+      "chars": 2845,
+      "first_200": "any of the skills. 3.4 Differentiating Inverse 1.E Apply appropriate mathematical rules or Trigonometric Functions procedures, with and without technology. 3.5 Selecting Procedures for 1.C Identify an"
+    },
+    {
+      "physical_page": 37,
+      "printed_page": 37,
+      "chars": 2845,
+      "first_200": "or edit them. The examples below were developed in partnership with teachers from the AP community to share ways that they approach teaching some of the topics in this unit."
+    },
+    {
+      "physical_page": 38,
+      "printed_page": 38,
+      "chars": 2845,
+      "first_200": "oblems, each requiring one of the listed strategies. Then have them swap problems with another pair of students to complete each other’s problems. 4 1.11 Discussion Groups Give each group"
+    },
+    {
+      "physical_page": 39,
+      "printed_page": 39,
+      "chars": 2845,
+      "first_200": "The suggested skill offers a possible skill to pair with the topic. 1 Limits and Continuity SUGGESTED SKILL TOPIC 1.2 Where possible, available resources are provided that might help address"
+    },
+    {
+      "physical_page": 40,
+      "printed_page": 40,
+      "chars": 2845,
+      "first_200": "about limits. notation LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE Essential knowledge statements describe the knowledge LIM-1.A Represent limits analytically LIM-1.A.1 Given a function f, the limit of f ("
+    },
+    {
+      "physical_page": 41,
+      "printed_page": 41,
+      "chars": 2845,
+      "first_200": "However, teachers may include this topic in the course if time permits. LIM-1.B LIM-1.B.1 Exclusion statements identify topics that may be covered in Interpret limits expressed in A limit can"
+    },
+    {
+      "physical_page": 42,
+      "printed_page": 42,
+      "chars": 2845,
+      "first_200": "Apply an appropriate Working with Calculus BC only are shaded and labeled bc only. Note that all of Geometric Series mathematical definition, theorem, or test. Units 9 and 10 apply"
+    },
+    {
+      "physical_page": 43,
+      "printed_page": 43,
+      "chars": 2845,
+      "first_200": "Return to Table of Contents © 2020 College Board AP CALCULUS AB AND BC UNIT 1 Limits and Continuity AP EXAM 10–12% AB WEIGHTING 4–7% BC CLASS ~22–23 AB PERIODS"
+    },
+    {
+      "physical_page": 44,
+      "printed_page": 44,
+      "chars": 2845,
+      "first_200": "Continuity Developing Understanding BIG IDEA 1 Limits introduce the subtle distinction between evaluating a function at a point and considering Change CHA what value the function is approaching, if an"
+    },
+    {
+      "physical_page": 45,
+      "printed_page": 45,
+      "chars": 2845,
+      "first_200": "a graph (or vice versa). Help students explicitly presented graphically, numerically, analytically, practice matching different representations or verbally. To avoid missed opportunities that show the"
+    },
+    {
+      "physical_page": 46,
+      "printed_page": 46,
+      "chars": 2845,
+      "first_200": "0 College Board UNIT 1 Limits and Continuity UNIT AT A GLANCE Enduring Class Periods Understanding ~22–23 CLASS PERIODS (AB) Topic Suggested Skills ~13–14 CLASS PERIODS (BC) 1.1 Introducing Calculus:"
+    },
+    {
+      "physical_page": 47,
+      "printed_page": 47,
+      "chars": 2845,
+      "first_200": "1.9 Connecting Multiple 2.C Identify a re-expression of mathematical Representations of Limits information presented in a given representation. continued on next page AP Calculus AB and BC Course and "
+    },
+    {
+      "physical_page": 48,
+      "printed_page": 48,
+      "chars": 2845,
+      "first_200": "FUN-1 Intermediate Value solutions or conclusions. Theorem (IVT) Go to AP Classroom to assign the Personal Progress Check for Unit 1. Review the results in class to identify and address"
+    },
+    {
+      "physical_page": 49,
+      "printed_page": 49,
+      "chars": 2845,
+      "first_200": "1.7 Work Backward Present students with a set of limit problems. Rather than determining the given limits, have them make a list of the various strategies that would be used"
+    },
+    {
+      "physical_page": 50,
+      "printed_page": 50,
+      "chars": 2845,
+      "first_200": "2.B Identify mathematical Can Change Occur information from graphical, numerical, analytical, and/or verbal representations. at an Instant? Required Course Content ENDURING UNDERSTANDING CHA-1 Calculu"
+    },
+    {
+      "physical_page": 51,
+      "printed_page": 51,
+      "chars": 2845,
+      "first_200": "> How to Reasoning with definitions, theorems, and properties can be used to justify claims “say” some of the about limits. notation LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE LIM-1.A LIM-1.A.1 Represent "
+    },
+    {
+      "physical_page": 52,
+      "printed_page": 52,
+      "chars": 2845,
+      "first_200": "GESTED SKILL Connecting Estimating Limit Representations 2.B Identify mathematical Values from Graphs information from graphical, numerical, analytical, and/or verbal representations. Required Course "
+    },
+    {
+      "physical_page": 53,
+      "printed_page": 53,
+      "chars": 2845,
+      "first_200": "The concept of a limit includes one sided limits. §§ Classroom Resource > LIM-1.C.2 AP Calculus Use of Graphical information about a function can be Graphing Calculators used to estimate"
+    },
+    {
+      "physical_page": 54,
+      "printed_page": 54,
+      "chars": 2845,
+      "first_200": "proximating Values Reasoning with definitions, theorems, and properties can be used to justify claims and Functions about limits. § Classroom Resource > Approximation LEARNING OBJECTIVE ESSENTIAL KNOW"
+    },
+    {
+      "physical_page": 55,
+      "printed_page": 55,
+      "chars": 2845,
+      "first_200": "quotients, and composite functions can be found using limit theorems. AP Calculus AB and BC Course and Exam Description Course Framework V.1 | 39 Return to Table of Contents ©"
+    },
+    {
+      "physical_page": 56,
+      "printed_page": 56,
+      "chars": 2845,
+      "first_200": "res Mathematical Processes for Determining Limits 1.C Identify an appropriate mathematical rule or procedure based on the classification of a given expression. AVAILABLE RESOURCE This topic is intende"
+    },
+    {
+      "physical_page": 57,
+      "printed_page": 57,
+      "chars": 2845,
+      "first_200": "y Discussion > Limits Questions LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE LIM-1.E LIM-1.E.2 Determine the limits of The limit of a function may be found by using functions using equivalent the squeeze"
+    },
+    {
+      "physical_page": 58,
+      "printed_page": 58,
+      "chars": 2845,
+      "first_200": "le representations. Calculators §§ Professional Development > Limits: Approximating Values and Functions AP Calculus AB and BC Course and Exam Description Course Framework V.1 | 43 Return to Table of"
+    },
+    {
+      "physical_page": 59,
+      "printed_page": 59,
+      "chars": 2845,
+      "first_200": "1 TOPIC 1.11 SUGGESTED SKILL Justification Defining Continuity 3.C Confirm whether hypotheses or conditions at a Point of a selected definition, theorem, or test have been satisfied. Required Course C"
+    },
+    {
+      "physical_page": 60,
+      "printed_page": 60,
+      "chars": 2845,
+      "first_200": "VAILABLE RESOURCE Required Course Content §§ AP Online Teacher Community Discussion > Video on Continuity ENDURING UNDERSTANDING LIM-2 Reasoning with definitions, theorems, and properties can be used "
+    },
+    {
+      "physical_page": 61,
+      "printed_page": 61,
+      "chars": 2845,
+      "first_200": "procedures, with and without technology. Required Course Content AVAILABLE RESOURCE §§ The Exam > 2012 Exam, MCQ #9 ENDURING UNDERSTANDING LIM-2 Reasoning with definitions, theorems, and properties ca"
+    },
+    {
+      "physical_page": 62,
+      "printed_page": 62,
+      "chars": 2845,
+      "first_200": "LIM-2 Reasoning with definitions, theorems, and properties can be used to justify claims about continuity. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE LIM-2.D LIM-2.D.1 Interpret the behavior The concept o"
+    },
+    {
+      "physical_page": 63,
+      "printed_page": 63,
+      "chars": 2845,
+      "first_200": "JECTIVE ESSENTIAL KNOWLEDGE LIM-2.D LIM-2.D.3 Interpret the behavior The concept of a limit can be extended to of functions using limits include limits at infinity. involving infinity. LIM-2.D.4 Limit"
+    },
+    {
+      "physical_page": 64,
+      "printed_page": 64,
+      "chars": 2845,
+      "first_200": "Return to Table of Contents © 2020 College Board AP CALCULUS AB AND BC UNIT 2 Differentiation: Definition and Fundamental Properties AP EXAM 10–12% AB WEIGHTING 4–7% BC CLASS ~13–14"
+    },
+    {
+      "physical_page": 65,
+      "printed_page": 65,
+      "chars": 2845,
+      "first_200": "amental Properties Developing Understanding BIG IDEA 1 Derivatives allow us to determine instantaneous rates of change. To develop understanding of Change CHA how the definition of the derivative appl"
+    },
+    {
+      "physical_page": 66,
+      "printed_page": 66,
+      "chars": 2845,
+      "first_200": "2.8 −11.2 important notation, such as a parenthesis, C ( 3.5 ) . 4−3 1 BIG IDEA 3 or misapply the product rule by taking the Failure to present this"
+    },
+    {
+      "physical_page": 67,
+      "printed_page": 67,
+      "chars": 2845,
+      "first_200": "© 2020 College Board UNIT 2 Differentiation: Definition and Fundamental Properties UNIT AT A GLANCE Enduring Class Periods Understanding ~13–14 CLASS PERIODS (AB) Topic Suggested Skills ~9–10 CLASS PE"
+    },
+    {
+      "physical_page": 68,
+      "printed_page": 68,
+      "chars": 2845,
+      "first_200": "s x, 1.E Apply appropriate mathematical rules or LIM-3 sin x, e , and ln x x procedures, with and without technology. AP Calculus AB and BC Course and Exam"
+    },
+    {
+      "physical_page": 69,
+      "printed_page": 69,
+      "chars": 2845,
+      "first_200": "UNIT 2 Differentiation: Definition and Fundamental Properties SAMPLE INSTRUCTIONAL ACTIVITIES The sample activities on this page are optional and are offered to provide possible ways to incorporate va"
+    },
+    {
+      "physical_page": 70,
+      "printed_page": 70,
+      "chars": 2845,
+      "first_200": "hey should explain what error was made, and find the correct answer. 4 2.5 Graphic Organizer 2.6 Provide students with colored paper, pens, and markers. Ask them to create a"
+    },
+    {
+      "physical_page": 71,
+      "printed_page": 71,
+      "chars": 2845,
+      "first_200": "numerical, analytical, and/or verbal representations. of Change at a Point Required Course Content ENDURING UNDERSTANDING CHA-2 Derivatives allow us to determine rates of change at an instant by apply"
+    },
+    {
+      "physical_page": 72,
+      "printed_page": 72,
+      "chars": 2845,
+      "first_200": ". ENDURING UNDERSTANDING CHA-2 Derivatives allow us to determine rates of change at an instant by applying limits to AVAILABLE RESOURCES knowledge about rates of change over intervals. § Professional"
+    },
+    {
+      "physical_page": 73,
+      "printed_page": 73,
+      "chars": 2845,
+      "first_200": "© 2020 College Board UNIT Differentiation: Definition and Fundamental Properties 2 TOPIC 2.3 SUGGESTED SKILL Implementing Estimating Derivatives Mathematical Processes of a Function at a Point 1.E App"
+    },
+    {
+      "physical_page": 74,
+      "printed_page": 74,
+      "chars": 2845,
+      "first_200": "at a point. AP Calculus AB and BC Course and Exam Description Course Framework V.1 | 59 Return to Table of Contents © 2020 College Board UNIT 2 Differentiation: Definition"
+    },
+    {
+      "physical_page": 75,
+      "printed_page": 75,
+      "chars": 2845,
+      "first_200": "UNIT Differentiation: Definition and Fundamental Properties 2 TOPIC 2.5 SUGGESTED SKILL Implementing Applying the Mathematical Processes Power Rule 1.E Apply appropriate mathematical rules or procedur"
+    },
+    {
+      "physical_page": 76,
+      "printed_page": 76,
+      "chars": 2845,
+      "first_200": "nting TOPIC 2.6 Derivative Rules: Constant, Mathematical Processes Sum, Difference, and 1.E Apply appropriate mathematical rules or procedures, with and without technology. Constant Multiple AVAILABLE"
+    },
+    {
+      "physical_page": 77,
+      "printed_page": 77,
+      "chars": 2845,
+      "first_200": "1.E Apply appropriate mathematical rules or procedures, with and without technology. Required Course Content ENDURING UNDERSTANDING FUN-3 Recognizing opportunities to apply derivative rules can simpli"
+    },
+    {
+      "physical_page": 78,
+      "printed_page": 78,
+      "chars": 2845,
+      "first_200": "tives of Derivatives of products of differentiable products and quotients of functions can be found using the product rule. differentiable functions. AP Calculus AB and BC Course and Exam Description"
+    },
+    {
+      "physical_page": 79,
+      "printed_page": 79,
+      "chars": 2845,
+      "first_200": "Simplifying the Quotient Rule LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE FUN-3.B FUN-3.B.2 Calculate derivatives of Derivatives of quotients of differentiable products and quotients of functions can be fo"
+    },
+    {
+      "physical_page": 80,
+      "printed_page": 80,
+      "chars": 2845,
+      "first_200": "posite, Implicit, and Inverse Functions AP EXAM 9–13% AB WEIGHTING 4–7% BC CLASS ~10–11 AB PERIODS ~8–9 BC AP Calculus AB and BC Course and Exam Description Course Framework V.1"
+    },
+    {
+      "physical_page": 81,
+      "printed_page": 81,
+      "chars": 2845,
+      "first_200": "site functions, y is a function of u while u is a function §§ If pressure experienced of x. Leibniz notation for the chain rule, dy = dy du ,"
+    },
+    {
+      "physical_page": 82,
+      "printed_page": 82,
+      "chars": 2845,
+      "first_200": "help students be mindful of them in their own y , students must recognize that the work. Reinforcing the chain rule structure 3y2 − x sets the stage for Unit"
+    },
+    {
+      "physical_page": 83,
+      "printed_page": 83,
+      "chars": 2845,
+      "first_200": "rule or procedure based on the classification of a given expression (e.g., Use the chain rule to find the derivative of a composite function). 3.2 \u0007Implicit Differentiation 1.E Apply appropriate"
+    },
+    {
+      "physical_page": 84,
+      "printed_page": 84,
+      "chars": 2845,
+      "first_200": "om the AP community to share ways that they approach teaching some of the topics in this unit. Please refer to the Instructional Approaches section beginning on p. 199 for"
+    },
+    {
+      "physical_page": 85,
+      "printed_page": 85,
+      "chars": 2845,
+      "first_200": "ion on it, and then they reverse roles. They swap cards, find a new partner, quiz each other, and the process continues. AP Calculus AB and BC Course and Exam"
+    },
+    {
+      "physical_page": 86,
+      "printed_page": 86,
+      "chars": 2845,
+      "first_200": "Processes 1.E Apply appropriate mathematical rules or procedures, with and without technology. Required Course Content ENDURING UNDERSTANDING FUN-3 Recognizing opportunities to apply derivative rules "
+    },
+    {
+      "physical_page": 87,
+      "printed_page": 87,
+      "chars": 2845,
+      "first_200": "© 2020 College Board UNIT Differentiation: Composite, Implicit, and Inverse Functions 3 TOPIC 3.4 SUGGESTED SKILL Implementing Differentiating Mathematical Processes Inverse Trigonometric 1.E Apply ap"
+    },
+    {
+      "physical_page": 88,
+      "printed_page": 88,
+      "chars": 2845,
+      "first_200": "topic is intended to focus on the skill of selecting an appropriate procedure for §§ Professional Development > calculating derivatives. Students should be given opportunities to practice when and Sel"
+    },
+    {
+      "physical_page": 89,
+      "printed_page": 89,
+      "chars": 2845,
+      "first_200": "variety of notations. For y = f (x), notations for d2 y the second derivative include , f ″(x), and dx 2 y ″. Higher-order derivatives can be denoted dn"
+    },
+    {
+      "physical_page": 90,
+      "printed_page": 90,
+      "chars": 2845,
+      "first_200": "Course Framework V.1 | 80 Return to Table of Contents © 2020 College Board UNIT AP EXAM WEIGHTING 10–15% AB 6–9% BC 4 CLASS PERIODS ~10–11 AB ~6–7 BC Contextual"
+    },
+    {
+      "physical_page": 91,
+      "printed_page": 91,
+      "chars": 2845,
+      "first_200": "time? these verbal scenarios into the mathematical use words like “velocity” when they mean the procedures necessary to answer the question. rate of change in income, for example, even BIG"
+    },
+    {
+      "physical_page": 92,
+      "printed_page": 92,
+      "chars": 2845,
+      "first_200": "f (x ) x a f (x ) lim understand why they would use a tangent line lim when lim g ( x ) = 0. Also x a g"
+    },
+    {
+      "physical_page": 93,
+      "printed_page": 93,
+      "chars": 2845,
+      "first_200": "tes of Change in Applied 2.A Identify common underlying structures CHA-3 Contexts Other Than in problems involving different contextual Motion situations. 4.4 Introduction to Related 1.E Apply appropr"
+    },
+    {
+      "physical_page": 94,
+      "printed_page": 94,
+      "chars": 2845,
+      "first_200": "few minutes, listing things that are changing in that particular context. 2 4.2 Create Representations Provide verbal descriptions of a roller coaster ride: at time 0, velocity is 0 but"
+    },
+    {
+      "physical_page": 95,
+      "printed_page": 95,
+      "chars": 2845,
+      "first_200": "© 2020 College Board UNIT 4 Contextual Applications of Dif ferentiation SUGGESTED SKILL Implementing TOPIC 4.1 Interpreting the Mathematical Processes Meaning of the 1.D Identify an appropriate mathem"
+    },
+    {
+      "physical_page": 96,
+      "printed_page": 96,
+      "chars": 2845,
+      "first_200": "SUGGESTED SKILL Implementing Straight-Line Motion: Mathematical Processes Connecting Position, 1.E Apply appropriate mathematical rules or procedures, with and Velocity, and Acceleration without techn"
+    },
+    {
+      "physical_page": 97,
+      "printed_page": 97,
+      "chars": 2845,
+      "first_200": "applied contexts. involving rates of change in applied contexts. AP Calculus AB and BC Course and Exam Description Course Framework V.1 | 86 Return to Table of Contents © 2020"
+    },
+    {
+      "physical_page": 98,
+      "printed_page": 98,
+      "chars": 2845,
+      "first_200": "Rates in FRQ LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE CHA-3.D CHA-3.D.1 Calculate related rates in The chain rule is the basis for differentiating applied contexts. variables in a related rates problem "
+    },
+    {
+      "physical_page": 99,
+      "printed_page": 99,
+      "chars": 2845,
+      "first_200": "© 2020 College Board UNIT Contextual Applications of Dif ferentiation 4 TOPIC 4.6 SUGGESTED SKILL Implementing Approximating Values of Mathematical Processes a Function Using Local 1.F Explain how an "
+    },
+    {
+      "physical_page": 100,
+      "printed_page": 100,
+      "chars": 2845,
+      "first_200": "Using L’Hospital’s Rule theorem, or test. for Determining Limits of Indeterminate Forms AVAILABLE RESOURCES Required Course Content § AP Online Teacher Community Discussion > L’Hospital’s Rule ENDURIN"
+    },
+    {
+      "physical_page": 101,
+      "printed_page": 101,
+      "chars": 2845,
+      "first_200": "Return to Table of Contents © 2020 College Board AP CALCULUS AB AND BC UNIT 5 Analytical Applications of Differentiation AP EXAM 15–18% AB WEIGHTING 8–11% BC CLASS ~15–16 AB"
+    },
+    {
+      "physical_page": 102,
+      "printed_page": 102,
+      "chars": 2845,
+      "first_200": "the superficial details of contextual applications of differentiation are stripped away Analysis of to focus on abstract structures and formal conclusions. Reasoning with definitions and theorems Func"
+    },
+    {
+      "physical_page": 103,
+      "printed_page": 103,
+      "chars": 2845,
+      "first_200": "ks, “Does g have a relative derivative as though they are characteristics minimum, a relative maximum, or neither at of the original function. Or, they use x =10? Justify your"
+    },
+    {
+      "physical_page": 104,
+      "printed_page": 104,
+      "chars": 2845,
+      "first_200": "Class Periods Understanding ~15–16 CLASS PERIODS (AB) Topic Suggested Skills ~10–11 CLASS PERIODS (BC) 5.1 Using the Mean Value Theorem 3.E Provide reasons or rationales for solutions and conclusions."
+    },
+    {
+      "physical_page": 105,
+      "printed_page": 105,
+      "chars": 2845,
+      "first_200": "Exploring Behaviors of Implicit 1.E Apply appropriate mathematical rules or Relations procedures, with and without technology. 3.E Provide reasons or rationales for solutions and conclusions. Go to AP"
+    },
+    {
+      "physical_page": 106,
+      "printed_page": 106,
+      "chars": 2845,
+      "first_200": "written their justification, ask them to pair with a partner and share their justifications. Students can then discuss similarities or differences in their justification wording. 3 5.5 Create a Plan"
+    },
+    {
+      "physical_page": 107,
+      "printed_page": 107,
+      "chars": 2845,
+      "first_200": "FUN-1.B.1 Definitions and Justify conclusions about If a function f is continuous over the interval Theorems functions by applying the [a, b] and differentiable over the interval Mean Value Theorem"
+    },
+    {
+      "physical_page": 108,
+      "printed_page": 108,
+      "chars": 2845,
+      "first_200": "§§ Professional FUN-1 Development > Existence theorems allow us to draw conclusions about a function’s behavior on an Continuity and interval without precisely locating that behavior. Differentiabilit"
+    },
+    {
+      "physical_page": 109,
+      "printed_page": 109,
+      "chars": 2845,
+      "first_200": "© 2020 College Board UNIT 5 Analytical Applications of Differentiation SUGGESTED SKILL Connecting TOPIC 5.3 Determining Intervals Representations 2.E Describe the relationships among different represe"
+    },
+    {
+      "physical_page": 110,
+      "printed_page": 110,
+      "chars": 2845,
+      "first_200": "theorem, or test. (Local) Extrema Required Course Content AVAILABLE RESOURCE §§ The Exam > Commentary on the Instructions for the Free Response Section ENDURING UNDERSTANDING of the AP Calculus FUN-4"
+    },
+    {
+      "physical_page": 111,
+      "printed_page": 111,
+      "chars": 2845,
+      "first_200": "LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE FUN-4.A FUN-4.A.3 Justify conclusions about Absolute (global) extrema of a function on a the behavior of a function closed interval can only occur at critical po"
+    },
+    {
+      "physical_page": 112,
+      "printed_page": 112,
+      "chars": 2845,
+      "first_200": "Wording and Justifying FUN-4 Concavity Intervals A function’s derivative can be used to understand some behaviors of the function. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE FUN-4.A FUN-4.A.4 Justify conc"
+    },
+    {
+      "physical_page": 113,
+      "printed_page": 113,
+      "chars": 2845,
+      "first_200": "the behavior of a function determine whether a critical point is the based on the behavior of its location of a relative (local) maximum or derivatives. minimum. FUN-4.A.8 When a"
+    },
+    {
+      "physical_page": 114,
+      "printed_page": 114,
+      "chars": 2845,
+      "first_200": "ions. Required Course Content ENDURING UNDERSTANDING FUN-4 A function’s derivative can be used to understand some behaviors of the function. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE FUN-4.A FUN-4.A.9 Ju"
+    },
+    {
+      "physical_page": 115,
+      "printed_page": 115,
+      "chars": 2845,
+      "first_200": "© 2020 College Board UNIT Analytical Applications of Differentiation 5 TOPIC 5.10 SUGGESTED SKILL Connecting Introduction to Representations 2.A Identify common Optimization Problems underlying struct"
+    },
+    {
+      "physical_page": 116,
+      "printed_page": 116,
+      "chars": 2845,
+      "first_200": "ESSENTIAL KNOWLEDGE FUN-4.C FUN-4.C.1 Interpret minimum and Minimum and maximum values of a function maximum values calculated take on specific meanings in applied contexts. in applied contexts. AP Ca"
+    },
+    {
+      "physical_page": 117,
+      "printed_page": 117,
+      "chars": 2845,
+      "first_200": "of the function. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE FUN-4.D FUN-4.D.1 Determine critical points of A point on an implicit relation where the first implicit relations. derivative equals zero or doe"
+    },
+    {
+      "physical_page": 118,
+      "printed_page": 118,
+      "chars": 2845,
+      "first_200": "eck provides each student with immediate feedback related to this unit’s topics and skills. Personal Progress Check 6 Multiple-choice: ~25 questions (AB) ~35 questions (BC) Free-response: 3 questions "
+    },
+    {
+      "physical_page": 119,
+      "printed_page": 119,
+      "chars": 2845,
+      "first_200": "integrating using u-substitution. Students between differentiation and integration. They amount in an account will need to recognize integrands that are think that integration is simply differentiatio"
+    },
+    {
+      "physical_page": 120,
+      "printed_page": 120,
+      "chars": 2845,
+      "first_200": "nts also struggle with relating a antiderivative; they should include a symbolic limit of a Riemann sum to that limit constant of integration with indefinite expressed as a definite integral,"
+    },
+    {
+      "physical_page": 121,
+      "printed_page": 121,
+      "chars": 2845,
+      "first_200": "information presented in a given Definite Integral Notation representation. 6.4 The Fundamental 1.D Identify an appropriate mathematical Theorem of Calculus and rule or procedure based on the relation"
+    },
+    {
+      "physical_page": 122,
+      "printed_page": 122,
+      "chars": 2845,
+      "first_200": "6 UNIT AT A GLANCE (cont'd) Enduring Class Periods Understanding ~18–20 CLASS PERIODS (AB) Topic Suggested Skills ~15–16 CLASS PERIODS (BC) 6.11 Integrating Using 1.E Apply appropriate mathematical ru"
+    },
+    {
+      "physical_page": 123,
+      "printed_page": 123,
+      "chars": 2845,
+      "first_200": "Topic Sample Activity 1 6.3 Quickwrite Present the class with several examples of definite integrals set equal to Riemann sums 5 2  7   n 7  in"
+    },
+    {
+      "physical_page": 124,
+      "printed_page": 124,
+      "chars": 2845,
+      "first_200": "integrand form to the appropriate strategy. AP Calculus AB and BC Course and Exam Description Course Framework V.1 | 114 Return to Table of Contents © 2020 College Board UNIT"
+    },
+    {
+      "physical_page": 125,
+      "printed_page": 125,
+      "chars": 2845,
+      "first_200": "AP Calculus AB and BC Course and Exam Description Course Framework V.1 | 115 Return to Table of Contents © 2020 College Board UNIT 6 Integration and Accumulation of Change"
+    },
+    {
+      "physical_page": 126,
+      "printed_page": 126,
+      "chars": 2845,
+      "first_200": "er an approximation for a definite integral is an underestimate or overestimate for the value of the definite integral. AP Calculus AB and BC Course and Exam Description Course Framework"
+    },
+    {
+      "physical_page": 127,
+      "printed_page": 127,
+      "chars": 2845,
+      "first_200": "metric and numerical methods. Community Discussion > How to “Say” Some of the Notation LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE § AP Online Teacher LIM-5.B LIM-5.B.1 Community Discussion > Definite Inte"
+    },
+    {
+      "physical_page": 128,
+      "printed_page": 128,
+      "chars": 2845,
+      "first_200": "LIM-5.C.2 A definite integral can be translated into the limit of a related Riemann sum, and the limit of a Riemann sum can be written as a definite integral. AP"
+    },
+    {
+      "physical_page": 129,
+      "printed_page": 129,
+      "chars": 2845,
+      "first_200": " x is in the interval. AP Calculus AB and BC Course and Exam Description Course Framework V.1 | 118 Return to Table of Contents © 2020 College Board UNIT"
+    },
+    {
+      "physical_page": 130,
+      "printed_page": 130,
+      "chars": 2845,
+      "first_200": "© 2020 College Board UNIT 6 Integration and Accumulation of Change SUGGESTED SKILL Justification TOPIC 6.6 3.D Apply an appropriate Applying Properties of Definite Integrals mathematical definition, t"
+    },
+    {
+      "physical_page": 131,
+      "printed_page": 131,
+      "chars": 2845,
+      "first_200": "UNIT Integration and Accumulation of Change 6 TOPIC 6.7 SUGGESTED SKILL Justification The Fundamental 3.D Apply an appropriate mathematical definition, Theorem of Calculus theorem, or test. and Defini"
+    },
+    {
+      "physical_page": 132,
+      "printed_page": 132,
+      "chars": 2845,
+      "first_200": "a AP Calculus AB and BC Course and Exam Description Course Framework V.1 | 121 Return to Table of Contents © 2020 College Board UNIT 6 Integration and Accumulation of"
+    },
+    {
+      "physical_page": 133,
+      "printed_page": 133,
+      "chars": 2845,
+      "first_200": "ration and Accumulation of Change 6 TOPIC 6.9 SUGGESTED SKILL Implementing Integrating Using Mathematical Processes Substitution 1.E Apply appropriate mathematical rules or procedures, with and withou"
+    },
+    {
+      "physical_page": 134,
+      "printed_page": 134,
+      "chars": 2845,
+      "first_200": ".D.2 equivalent forms: For a definite integral, substitution of variables (a) Determine indefinite requires corresponding changes to the limits of integrals. integration. (b) Evaluate definite integra"
+    },
+    {
+      "physical_page": 135,
+      "printed_page": 135,
+      "chars": 2845,
+      "first_200": "6 TOPIC 6.11 SUGGESTED SKILL Implementing Integrating Using Mathematical Processes Integration by 1.E Apply appropriate mathematical rules or Parts bc only procedures, with and without technology. Req"
+    },
+    {
+      "physical_page": 136,
+      "printed_page": 136,
+      "chars": 2845,
+      "first_200": "LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE FUN-6.F FUN-6.F.1 For integrands requiring Some rational functions can be decomposed integration by linear partial into sums of ratios of linear, nonrepeating fr"
+    },
+    {
+      "physical_page": 137,
+      "printed_page": 137,
+      "chars": 2845,
+      "first_200": "Discussion > ENDURING UNDERSTANDING U-Substitution with Improper Integrals LIM-6 The use of limits allows us to show that the areas of unbounded regions may be finite. LEARNING OBJECTIVE ESSENTIAL KNO"
+    },
+    {
+      "physical_page": 138,
+      "printed_page": 138,
+      "chars": 2845,
+      "first_200": "AP EXAM 6–12% AB WEIGHTING 6–9 % BC CLASS ~8–9 AB PERIODS ~9–10 BC AP Calculus AB and BC Course and Exam Description Course Framework V.1 | 129 Return to"
+    },
+    {
+      "physical_page": 139,
+      "printed_page": 139,
+      "chars": 2845,
+      "first_200": "relevant to a particular model for the number of situation, provided they can locate a point on the solution curve. By writing and solving computers, C, infected differential equations leading"
+    },
+    {
+      "physical_page": 140,
+      "printed_page": 140,
+      "chars": 2845,
+      "first_200": "earn on the AP Exam. A common error them to transfer skills using tangent in antidifferentiation is to assume that all line approximations, rather than simply differential equations involving fraction"
+    },
+    {
+      "physical_page": 141,
+      "printed_page": 141,
+      "chars": 2845,
+      "first_200": "Return to Table of Contents © 2020 College Board UNIT 7 Differential Equations UNIT AT A GLANCE Enduring Class Periods Understanding ~8–9 CLASS PERIODS (AB) Topic Suggested Skills ~9–10 CLASS"
+    },
+    {
+      "physical_page": 142,
+      "printed_page": 142,
+      "chars": 2845,
+      "first_200": "Course Framework V.1 | 132 Return to Table of Contents © 2020 College Board UNIT Differential Equations 7 SAMPLE INSTRUCTIONAL ACTIVITIES The sample activities on this page are optional and"
+    },
+    {
+      "physical_page": 143,
+      "printed_page": 143,
+      "chars": 2845,
+      "first_200": "response question to each group and have them work on their assigned roles to solve the problem together. Examples include the following: • 2002 Form B #5(b) (not transcendental) •"
+    },
+    {
+      "physical_page": 144,
+      "printed_page": 144,
+      "chars": 2845,
+      "first_200": "SUGGESTED SKILL Justification Verifying Solutions for 3.G Confirm that solutions are accurate and appropriate. Differential Equations Required Course Content AVAILABLE RESOURCE § Classroom Resource > "
+    },
+    {
+      "physical_page": 145,
+      "printed_page": 145,
+      "chars": 2845,
+      "first_200": "f a differential equations. differential equation on a finite set of points in the plane. FUN-7.C.2 Slope fields provide information about the behavior of solutions to first-order differential equatio"
+    },
+    {
+      "physical_page": 146,
+      "printed_page": 146,
+      "chars": 2845,
+      "first_200": "ial equations. or families of functions. AP Calculus AB and BC Course and Exam Description Course Framework V.1 | 137 Return to Table of Contents © 2020 College Board UNIT"
+    },
+    {
+      "physical_page": 147,
+      "printed_page": 147,
+      "chars": 2845,
+      "first_200": "1.E Apply appropriate mathematical rules or procedures, with and Separation of Variables without technology. Required Course Content AVAILABLE RESOURCE § Classroom Resource > Differential Equations EN"
+    },
+    {
+      "physical_page": 148,
+      "printed_page": 148,
+      "chars": 2845,
+      "first_200": "Determine particular A general solution may describe infinitely many solutions to differential solutions to a differential equation. There is equations. only one particular solution passing through a "
+    },
+    {
+      "physical_page": 149,
+      "printed_page": 149,
+      "chars": 2845,
+      "first_200": "red Course Content ENDURING UNDERSTANDING FUN-7 Solving differential equations allows us to determine functions and develop models. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE FUN-7.F FUN-7.F.1 Interpret t"
+    },
+    {
+      "physical_page": 150,
+      "printed_page": 150,
+      "chars": 2845,
+      "first_200": "g of The model for logistic growth that arises from the logistic growth model in the statement “The rate of change of a quantity context. bc only is jointly proportional"
+    },
+    {
+      "physical_page": 151,
+      "printed_page": 151,
+      "chars": 2845,
+      "first_200": "AP CALCULUS AB AND BC UNIT 8 Applications of Integration AP EXAM 10–15% AB WEIGHTING 6–9 % BC CLASS ~19–20 AB PERIODS ~13–14 BC AP Calculus AB and BC Course"
+    },
+    {
+      "physical_page": 152,
+      "printed_page": 152,
+      "chars": 2845,
+      "first_200": "of integration that can number of visitors to be transferred across these and many other applications. Understanding that the area, volume, a museum over an and length bc only problems"
+    },
+    {
+      "physical_page": 153,
+      "printed_page": 153,
+      "chars": 2845,
+      "first_200": "nit 2 and present students with free- This unit also involves geometric applications response questions that will allow them to of integration. When using the disc and practice distinguishing between"
+    },
+    {
+      "physical_page": 154,
+      "printed_page": 154,
+      "chars": 2845,
+      "first_200": "1.E Apply appropriate mathematical rules or Value of a Function on an procedures, with and without technology. Interval 8.2 Connecting Position, 1.D Identify an appropriate mathematical rule Velocity,"
+    },
+    {
+      "physical_page": 155,
+      "printed_page": 155,
+      "chars": 2845,
+      "first_200": "© 2020 College Board UNIT Applications of Integration 8 UNIT AT A GLANCE (cont'd) Enduring Class Periods Understanding ~19–20 CLASS PERIODS (AB) Topic Suggested Skills ~13–14 CLASS PERIODS (BC) 8.10"
+    },
+    {
+      "physical_page": 156,
+      "printed_page": 156,
+      "chars": 2845,
+      "first_200": "rtnership with teachers from the AP community to share ways that they approach teaching some of the topics in this unit. Please refer to the Instructional Approaches section beginning on"
+    },
+    {
+      "physical_page": 157,
+      "printed_page": 157,
+      "chars": 2845,
+      "first_200": "the first round, concentrate on just setting up the integrals (e.g., 2009 AB Form B #4(c), 2010 AB/BC #4(b), 2011 AB #3(c), and 2013 AB #5(b)). In the second round,"
+    },
+    {
+      "physical_page": 158,
+      "printed_page": 158,
+      "chars": 2845,
+      "first_200": "ECTIVE ESSENTIAL KNOWLEDGE CHA-4.B CHA-4.B.1 Determine the average The average value of a continuous function value of a function using 1 b definite integrals. f over an interval [a, b]"
+    },
+    {
+      "physical_page": 159,
+      "printed_page": 159,
+      "chars": 2845,
+      "first_200": "© 2020 College Board UNIT Applications of Integration 8 TOPIC 8.3 SUGGESTED SKILL Justification Using Accumulation 3.D Apply an appropriate mathematical definition, Functions and Definite theorem, or "
+    },
+    {
+      "physical_page": 160,
+      "printed_page": 160,
+      "chars": 2845,
+      "first_200": "Return to Table of Contents © 2020 College Board UNIT 8 Applications of Integration SUGGESTED SKILL Communication TOPIC 8.4 Finding the Area Between and Notation 4.C Use appropriate Curves Expressed"
+    },
+    {
+      "physical_page": 161,
+      "printed_page": 161,
+      "chars": 2845,
+      "first_200": "procedures, with and without technology. Required Course Content ENDURING UNDERSTANDING CHA-5 Definite integrals allow us to solve problems involving the accumulation of change in area or volume over "
+    },
+    {
+      "physical_page": 162,
+      "printed_page": 162,
+      "chars": 2845,
+      "first_200": "© 2020 College Board UNIT Applications of Integration 8 TOPIC 8.7 SUGGESTED SKILL Justification Volumes with 3.D Apply an appropriate mathematical definition, Cross Sections: Squares theorem, or test."
+    },
+    {
+      "physical_page": 163,
+      "printed_page": 163,
+      "chars": 2845,
+      "first_200": "tegrals (see 2016 AB Exam FRQ #5(b)). § * The volume of a solid whose cross sectional LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE area is defined using a CHA-5.B CHA-5.B.2 function can"
+    },
+    {
+      "physical_page": 164,
+      "printed_page": 164,
+      "chars": 2845,
+      "first_200": "of solids Volumes of solids of revolution around the of revolution using definite x- or y-axis may be found by using definite integrals. integrals with the disc method. AP Calculus"
+    },
+    {
+      "physical_page": 165,
+      "printed_page": 165,
+      "chars": 2845,
+      "first_200": "ion Volume with Washer and Notation 4.E Apply appropriate rounding Method: Revolving procedures. Around the x- or y-Axis Required Course Content ENDURING UNDERSTANDING CHA-5 Definite integrals allow u"
+    },
+    {
+      "physical_page": 166,
+      "printed_page": 166,
+      "chars": 2845,
+      "first_200": "d may be found using definite integrals with the washer method. AP Calculus AB and BC Course and Exam Description Course Framework V.1 | 160 Return to Table of Contents"
+    },
+    {
+      "physical_page": 167,
+      "printed_page": 167,
+      "chars": 2845,
+      "first_200": "AP EXAM WEIGHTING 11–12% BC ONLY CLASS PERIODS ~10–11 AP Calculus AB and BC Course and Exam Description Course Framework V.1 | 163 Return to Table of Contents © 2020"
+    },
+    {
+      "physical_page": 168,
+      "printed_page": 168,
+      "chars": 2845,
+      "first_200": "path? will apply calculus to analyze graphs and determine lengths and areas. This unit should be treated as an opportunity to reinforce past learning and transfer knowledge and skills to"
+    },
+    {
+      "physical_page": 169,
+      "printed_page": 169,
+      "chars": 2845,
+      "first_200": "students to remember how to find charts can be useful tools for identifying the derivative of y with respect to x for answers to questions about the direction coordinates defined"
+    },
+    {
+      "physical_page": 170,
+      "printed_page": 170,
+      "chars": 2845,
+      "first_200": "2.D Identify how mathematical Differentiating Parametric characteristics or properties of functions are Equations related in different representations. CHA-3 9.2 Second Derivatives of 1.E Apply approp"
+    },
+    {
+      "physical_page": 171,
+      "printed_page": 171,
+      "chars": 2845,
+      "first_200": "Go to AP Classroom to assign the Personal Progress Check for Unit 9. Review the results in class to identify and address any student misunderstandings. AP Calculus AB and BC"
+    },
+    {
+      "physical_page": 172,
+      "printed_page": 172,
+      "chars": 2845,
+      "first_200": "5π y (′ t) = cos(t), and position is (2, 0) at t = π. Find position at t = .). 6 3 9.8 Create Representations Give students polar equations"
+    },
+    {
+      "physical_page": 173,
+      "printed_page": 173,
+      "chars": 2845,
+      "first_200": "TANDING CHA-3 Derivatives allow us to solve real-world problems involving rates of change. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE CHA-3.G CHA-3.G.1 Calculate derivatives of Methods for calculating der"
+    },
+    {
+      "physical_page": 174,
+      "printed_page": 174,
+      "chars": 2845,
+      "first_200": "9.2 SUGGESTED SKILL Implementing Second Derivatives of Mathematical Processes Parametric Equations 1.E Apply appropriate mathematical rules or procedures, with and without technology. Required Course "
+    },
+    {
+      "physical_page": 175,
+      "printed_page": 175,
+      "chars": 2845,
+      "first_200": "Finding Arc Lengths Mathematical Processes of Curves Given by 1.D Identify an appropriate mathematical rule or Parametric Equations procedure based on the relationship between concepts or processes to"
+    },
+    {
+      "physical_page": 176,
+      "printed_page": 176,
+      "chars": 2845,
+      "first_200": "procedure based on the relationship between concepts or processes to solve problems. Required Course Content AVAILABLE RESOURCES § Classroom Resource > ENDURING UNDERSTANDING Vectors § External Resour"
+    },
+    {
+      "physical_page": 177,
+      "printed_page": 177,
+      "chars": 2845,
+      "first_200": "Determine a particular Methods for calculating integrals of real-valued solution given a rate vector functions can be extended to parametric or and initial conditions. vector-valued functions. bc only"
+    },
+    {
+      "physical_page": 178,
+      "printed_page": 178,
+      "chars": 2845,
+      "first_200": "ESSENTIAL KNOWLEDGE FUN-8.B FUN-8.B.1 Determine values for Derivatives can be used to determine velocity, positions and rates of change speed, and acceleration for a particle moving in problems involv"
+    },
+    {
+      "physical_page": 179,
+      "printed_page": 179,
+      "chars": 2845,
+      "first_200": "s. bc only FUN-3.G.2 For a curve given by a polar equation r = f(θ), derivatives of r, x, and y with respect to θ, and first and second derivatives"
+    },
+    {
+      "physical_page": 180,
+      "printed_page": 180,
+      "chars": 2845,
+      "first_200": "lar definite integrals. bc only coordinates. bc only AP Calculus AB and BC Course and Exam Description Course Framework V.1 | 175 Return to Table of Contents © 2020 College"
+    },
+    {
+      "physical_page": 181,
+      "printed_page": 181,
+      "chars": 2845,
+      "first_200": "Return to Table of Contents © 2020 College Board Remember to go to AP Classroom to assign students the online Personal Progress Check for this unit. Whether assigned as homework"
+    },
+    {
+      "physical_page": 182,
+      "printed_page": 182,
+      "chars": 2845,
+      "first_200": "es Students are more likely to demonstrate 1.E 1.F 2.C 3.D an incomplete understanding of series or to struggle with communicating their In Unit 10, students will need to develop"
+    },
+    {
+      "physical_page": 183,
+      "printed_page": 183,
+      "chars": 2845,
+      "first_200": "certain infinite series) and then Intentional focus on the recurrent theme of applying associated procedures accurately. using limiting cases to move from discrete Students will also need to practice "
+    },
+    {
+      "physical_page": 184,
+      "printed_page": 184,
+      "chars": 2845,
+      "first_200": "nvergent and 3.D Apply an appropriate mathematical Divergent Infinite Series definition, theorem, or test. 10.2 Working with Geometric 3.D Apply an appropriate mathematical Series definition, theorem,"
+    },
+    {
+      "physical_page": 185,
+      "printed_page": 185,
+      "chars": 2845,
+      "first_200": "~17–18 CLASS PERIODS 10.11 Finding Taylor 3.D Apply an appropriate mathematical Polynomial definition, theorem, or test. Approximations 2.C Identify a re-expression of mathematical of Functions inform"
+    },
+    {
+      "physical_page": 186,
+      "printed_page": 186,
+      "chars": 2845,
+      "first_200": "ting pieces of a donut, pizza, or licorice. Ask the class to predict how much the student(s) will eventually receive in total. For instance, give three students each one-fourth, then"
+    },
+    {
+      "physical_page": 187,
+      "printed_page": 187,
+      "chars": 2845,
+      "first_200": "es (i.e., differentiate, integrate, and find interval of convergence). AP Calculus AB and BC Course and Exam Description Course Framework V.1 | 182 Return to Table of Contents © 2020"
+    },
+    {
+      "physical_page": 188,
+      "printed_page": 188,
+      "chars": 2845,
+      "first_200": "Calculus AB and BC Course and Exam Description Course Framework V.1 | 183 Return to Table of Contents © 2020 College Board UNIT 10 Infinite Sequences and Series SUGGESTED SKILL"
+    },
+    {
+      "physical_page": 189,
+      "printed_page": 189,
+      "chars": 2845,
+      "first_200": "10 TOPIC 10.3 SUGGESTED SKILL Justification The nth Term Test 3.D Apply an appropriate for Divergence mathematical definition, theorem, or test. Required Course Content AVAILABLE RESOURCES § Classroom"
+    },
+    {
+      "physical_page": 190,
+      "printed_page": 190,
+      "chars": 2845,
+      "first_200": "GE LIM-7.A LIM-7.A.6 Determine whether a series The integral test is a method to determine converges or diverges. whether a series converges or diverges. bc only bc only AP Calculus"
+    },
+    {
+      "physical_page": 191,
+      "printed_page": 191,
+      "chars": 2845,
+      "first_200": "C Course and Exam Description Course Framework V.1 | 187 Return to Table of Contents © 2020 College Board UNIT 10 Infinite Sequences and Series SUGGESTED SKILL Justification TOPIC 10.6"
+    },
+    {
+      "physical_page": 192,
+      "printed_page": 192,
+      "chars": 2845,
+      "first_200": "Apply an appropriate Test for Convergence mathematical definition, theorem, or test. Required Course Content AVAILABLE RESOURCES § Classroom Resource > Infinite Series § The Exam > ENDURING UNDERSTAND"
+    },
+    {
+      "physical_page": 193,
+      "printed_page": 193,
+      "chars": 2845,
+      "first_200": "ying limits may allow us to determine the finite sum of infinitely many terms. LEARNING OBJECTIVE ESSENTIAL KNOWLEDGE LIM-7.A LIM-7.A.11 Determine whether a series The ratio test is a method"
+    },
+    {
+      "physical_page": 194,
+      "printed_page": 194,
+      "chars": 2845,
+      "first_200": "theorem, or test. Convergence Required Course Content AVAILABLE RESOURCES § Classroom Resource > Infinite Series §§ External Resource > ENDURING UNDERSTANDING Davidson Next LIM-7 Applying limits may a"
+    },
+    {
+      "physical_page": 195,
+      "printed_page": 195,
+      "chars": 2845,
+      "first_200": "LIM-7.B.1 Approximate the sum of a If an alternating series converges by the series. bc only alternating series test, then the alternating series error bound can be used to bound"
+    },
+    {
+      "physical_page": 196,
+      "printed_page": 196,
+      "chars": 2845,
+      "first_200": "ES Power series allow us to represent associated functions on an appropriate interval. § Classroom Resource > Infinite Series §§ External Resource > Davidson Next LEARNING OBJECTIVE ESSENTIAL KNOWLEDG"
+    },
+    {
+      "physical_page": 197,
+      "printed_page": 197,
+      "chars": 2845,
+      "first_200": "NING OBJECTIVE ESSENTIAL KNOWLEDGE LIM-8.C LIM-8.C.1 Determine the error bound The Lagrange error bound can be used to associated with a Taylor determine a maximum interval for the error of"
+    },
+    {
+      "physical_page": 198,
+      "printed_page": 198,
+      "chars": 2845,
+      "first_200": "ABLE RESOURCES § Classroom Resource > Infinite Series § External Resource > ENDURING UNDERSTANDING Davidson Next LIM-8 Power series allow us to represent associated functions on an appropriate interva"
+    },
+    {
+      "physical_page": 199,
+      "printed_page": 199,
+      "chars": 2845,
+      "first_200": "the same as the radius of convergence of the original power series. bc only AP Calculus AB and BC Course and Exam Description Course Framework V.1 | 195 Return to"
+    },
+    {
+      "physical_page": 200,
+      "printed_page": 200,
+      "chars": 2845,
+      "first_200": "of Contents © 2020 College Board UNIT Infinite Sequences and Series 10 TOPIC 10.15 SUGGESTED SKILL Justification Representing 3.D Apply an appropriate Functions as mathematical definition, theorem, or"
+    },
+    {
+      "physical_page": 201,
+      "printed_page": 201,
+      "chars": 2845,
+      "first_200": "LUS AB AND BC Instructional Approaches Selecting and Using Course Materials Textbooks While College Board provides examples of textbooks to help determine whether a text is considered appropriate in m"
+    },
+    {
+      "physical_page": 202,
+      "printed_page": 202,
+      "chars": 2845,
+      "first_200": "Instructional Approaches V.1 | 201 Return to Table of Contents © 2020 College Board § Geogebra § Hewlett Packard Educational Resources § Math Open Reference § Texas Instruments Education §"
+    },
+    {
+      "physical_page": 203,
+      "printed_page": 203,
+      "chars": 2845,
+      "first_200": "Never determine whether their justifications by with a list of statements such as that line of reasoning is having them determine the following (assuming f ( x ) is always"
+    },
+    {
+      "physical_page": 204,
+      "printed_page": 204,
+      "chars": 2845,
+      "first_200": "rts” on product rule, quotient mastered; groups rotate learn from one another. rule, chain rule, and derivatives of through the expert transcendental functions. Students stations to learn about rotate"
+    },
+    {
+      "physical_page": 205,
+      "printed_page": 205,
+      "chars": 2845,
+      "first_200": "yellow sticky notes to leave positive comments and pink sticky notes for recommended corrections. Concepts with Students use colored Useful for illustrating, At the end of the course, have Color"
+    },
+    {
+      "physical_page": 206,
+      "printed_page": 206,
+      "chars": 2845,
+      "first_200": "and accurate data, supporting conjectures towns on a map and ask students to and provide a logical and conclusions. construct a mathematical argument progression of ideas either in defense of"
+    },
+    {
+      "physical_page": 207,
+      "printed_page": 207,
+      "chars": 2845,
+      "first_200": "nt constructing a graph, creating a models, and/or verbal data and to answer table, directly substituting a given expressions to interpret a question or show a value into the function,"
+    },
+    {
+      "physical_page": 208,
+      "printed_page": 208,
+      "chars": 2845,
+      "first_200": "lotting the points and sketching a curve of best fit, have students discuss how they might determine the average velocity of the ball over the five seconds and then the"
+    },
+    {
+      "physical_page": 209,
+      "printed_page": 209,
+      "chars": 2845,
+      "first_200": "specific method should be used over another. Distractor Students examine Allows students to To help students practice applying Analysis answers to a multiple- become familiar with derivative rules, pr"
+    },
+    {
+      "physical_page": 210,
+      "printed_page": 210,
+      "chars": 2845,
+      "first_200": "to its corresponding description in the list. Error Analysis Students analyze an Allows students to When students begin to evaluate existing solution to troubleshoot existing definite integrals, have "
+    },
+    {
+      "physical_page": 211,
+      "printed_page": 211,
+      "chars": 2845,
+      "first_200": "reating different have them use calculators to shade certain function, and representations of in the appropriate area between then switch calculators functions, and then give lower and upper limits wh"
+    },
+    {
+      "physical_page": 212,
+      "printed_page": 212,
+      "chars": 2845,
+      "first_200": "solving are not or limit notation. For example, given problem and is an obvious. a statement describing the graph of accurate solution. a particular function, have students sketch the graph"
+    },
+    {
+      "physical_page": 213,
+      "printed_page": 213,
+      "chars": 2845,
+      "first_200": "Return to Table of Contents © 2020 College Board Strategy Definition Purpose Example Look for a Students observe Helps to identify Patterns can be detected when Pattern information or create"
+    },
+    {
+      "physical_page": 214,
+      "printed_page": 214,
+      "chars": 2845,
+      "first_200": "students depicting concepts related to limits/ board, without being to practice accurate continuity. Pair up students and able to see each other’s communication insert a folder between the partners bo"
+    },
+    {
+      "physical_page": 215,
+      "printed_page": 215,
+      "chars": 2845,
+      "first_200": "ble of Contents © 2020 College Board Strategy Definition Purpose Example Notation Read Students read symbols Helps students This strategy can be used to Aloud and notational to accurately introduce"
+    },
+    {
+      "physical_page": 216,
+      "printed_page": 216,
+      "chars": 2845,
+      "first_200": "nt with that up to share the group’s answer. number answers for the group. Odd One Out In groups of four, Allows students to Begin by modeling an example, such"
+    },
+    {
+      "physical_page": 217,
+      "printed_page": 217,
+      "chars": 2845,
+      "first_200": "aches V.1 | 209 Return to Table of Contents © 2020 College Board Strategy Definition Purpose Example Paraphrasing Students restate in their Assists with After reading a mathematical own words"
+    },
+    {
+      "physical_page": 218,
+      "printed_page": 218,
+      "chars": 2845,
+      "first_200": "Stimulates thinking by Given two sets of cards with Confirm conjectures about what making, checking, and functions and the graphs of results will develop in an correcting predictions their derivatives"
+    },
+    {
+      "physical_page": 219,
+      "printed_page": 219,
+      "chars": 2845,
+      "first_200": "peers and question and have them write the and then quiz a partner solve many problems answer on the back. Students then on the same question. while coaching each stand"
+    },
+    {
+      "physical_page": 220,
+      "printed_page": 220,
+      "chars": 2845,
+      "first_200": "the problem. get full credit on the AP Exam (use prior knowledge). Then have students work through the problem one part at a time (including the question stem), rotating roles"
+    },
+    {
+      "physical_page": 221,
+      "printed_page": 221,
+      "chars": 2845,
+      "first_200": "avenger Provide students with a Allows students to When practicing the chain rule, Hunt “starter” question. Then self-correct and analyze place a card with a starter question place solution cards"
+    },
+    {
+      "physical_page": 222,
+      "printed_page": 222,
+      "chars": 2845,
+      "first_200": "kills conclusions based on the missing parts of a given by providing a starting Intermediate Value Theorem (IVT), sentence template. point and modeling provide a function or table of values,"
+    },
+    {
+      "physical_page": 223,
+      "printed_page": 223,
+      "chars": 2845,
+      "first_200": "represent the tax rate schedule for single taxpayers for the specific year. continued on next page AP Calculus AB and BC Course and Exam Description Instructional Approaches V.1 | 212"
+    },
+    {
+      "physical_page": 224,
+      "printed_page": 224,
+      "chars": 2845,
+      "first_200": "paper. a new problem. Step 4: Students reverse roles. Step 5: Students stand up, put their hand up, then they pair up with a new partner and continue. Think Aloud"
+    },
+    {
+      "physical_page": 225,
+      "printed_page": 225,
+      "chars": 2845,
+      "first_200": "relationships comprehension to find the volume of a solid with a between the information by providing a known cross-section, have students given. visual or hands-on build a physical model on"
+    },
+    {
+      "physical_page": 226,
+      "printed_page": 226,
+      "chars": 2845,
+      "first_200": "§ Marking the Text to be answered or asking us to find? a set of free-response § Model Questions problem to be solved. § Does this answer the questions that"
+    },
+    {
+      "physical_page": 227,
+      "printed_page": 227,
+      "chars": 2845,
+      "first_200": "Examine a function § Discussion Groups an appropriate direct substitution to whose graph is somewhat § Sharing and mathematical rule or find a limit? misleading and find its limit Responding"
+    },
+    {
+      "physical_page": 228,
+      "printed_page": 228,
+      "chars": 2845,
+      "first_200": "mathematical rules or problem similar to this? discontinuities in piecewise- Poster procedures, with and § What steps are needed? defined functions by § Distractor Analysis defining or redefining the "
+    },
+    {
+      "physical_page": 229,
+      "printed_page": 229,
+      "chars": 2845,
+      "first_200": "Return to Table of Contents © 2020 College Board Mathematical Practice 2: Translate mathematical information from a single representation or across multiple representations The table that follows prov"
+    },
+    {
+      "physical_page": 230,
+      "printed_page": 230,
+      "chars": 2845,
+      "first_200": "ow would you read this Have students sketch the § Create re-expression of expression aloud? graph of a limit represented Representations mathematical § Which of these limit analytically, and then"
+    },
+    {
+      "physical_page": 231,
+      "printed_page": 231,
+      "chars": 2845,
+      "first_200": "ication. Note that on the AP Exam, sign charts can be useful tools for understanding a problem, but they are not sufficient as justifications for conclusions about the behaviors of"
+    },
+    {
+      "physical_page": 232,
+      "printed_page": 232,
+      "chars": 2845,
+      "first_200": "C: Confirm whether § What conditions have Have students examine § Distractor Analysis hypotheses or conditions been given? sample responses for IVT, § Error Analysis of a selected definition, §"
+    },
+    {
+      "physical_page": 233,
+      "printed_page": 233,
+      "chars": 2845,
+      "first_200": "Sample Instructional Skills Key Questions Sample Activities Strategies 3.E: Provide reasons or § How do you know . . . ? Have students complete a § Construct an rationales for"
+    },
+    {
+      "physical_page": 234,
+      "printed_page": 234,
+      "chars": 2845,
+      "first_200": "a function of x), and then § Quiz-Quiz-Trade have them write the general formula for derivatives of inverses. AP Calculus AB and BC Course and Exam Description Instructional Approaches V.1"
+    },
+    {
+      "physical_page": 235,
+      "printed_page": 235,
+      "chars": 2845,
+      "first_200": "cific? correct the errors in sample § Match Mine § Does the solution responses justifying the § Model Questions clarify which graph, behavior of f based on the graph of"
+    },
+    {
+      "physical_page": 236,
+      "printed_page": 236,
+      "chars": 2845,
+      "first_200": "function and the time axis between t = 0 and t = 1, and then interpret the meaning of the area, including units. continued on next page AP Calculus AB"
+    },
+    {
+      "physical_page": 237,
+      "printed_page": 237,
+      "chars": 2845,
+      "first_200": "§ Scavenger Hunt § Has this question method to determine specified a particular whether appropriate number of decimal rounding procedures places to round to? were used. § Does my solution"
+    },
+    {
+      "physical_page": 238,
+      "printed_page": 238,
+      "chars": 2845,
+      "first_200": "AB BC Unit 1: Limits and Continuity 10–12% 4–7% Unit 2: Differentiation: Definition and Basic Derivative Rules 10–12% 4–7% Unit 3: Differentiation: Composite, Implicit, and Inverse Functions 9–13% 4–7"
+    },
+    {
+      "physical_page": 239,
+      "printed_page": 239,
+      "chars": 2845,
+      "first_200": ".1 | 225 Return to Table of Contents © 2020 College Board Section II: Free-Response The six free-response questions on the AP Calculus AB and BC Exams include a variety"
+    },
+    {
+      "physical_page": 240,
+      "printed_page": 240,
+      "chars": 2845,
+      "first_200": "models or representations to find approximate values for functions. § Evaluate: Apply mathematical processes, including the use of appropriate rounding procedures, to find the value of an expression a"
+    },
+    {
+      "physical_page": 241,
+      "printed_page": 241,
+      "chars": 2845,
+      "first_200": "ifferentiable for all values of x. AP Calculus AB and BC Course and Exam Description Exam Information V.1 | 228 Return to Table of Contents © 2020 College Board x"
+    },
+    {
+      "physical_page": 242,
+      "printed_page": 242,
+      "chars": 2845,
+      "first_200": "18 1 (C) arcsin(3x ) + C 3 x (D) arcsin(3x ) + C 3 AP Calculus AB and BC Course and Exam Description Exam Information V.1 | 230 Return"
+    },
+    {
+      "physical_page": 243,
+      "printed_page": 243,
+      "chars": 2845,
+      "first_200": "nd BC Course and Exam Description Exam Information V.1 | 232 Return to Table of Contents © 2020 College Board x -1 0 2 4 5 fʹ(x) 11 9 8"
+    },
+    {
+      "physical_page": 244,
+      "printed_page": 244,
+      "chars": 2845,
+      "first_200": "hich of the following series is conditionally convergent? (A) (B) (C) (D) 20. Let f be the function defined by f(x) = e2x. Which of the following is the Maclaurin"
+    },
+    {
+      "physical_page": 245,
+      "printed_page": 245,
+      "chars": 2845,
+      "first_200": "1986 2201 1. On a certain weekday, the rate at which vehicles cross a bridge is modeled by the differentiable function R for 0 ≤ t ≤ 12, where R(t)"
+    },
+    {
+      "physical_page": 246,
+      "printed_page": 246,
+      "chars": 2845,
+      "first_200": "]. Justify your answer. (c) Evaluate (d) The function g is defined by g(x) = x3 f(x). Find gʹ (2). Show the work that leads to your answer. PART A"
+    },
+    {
+      "physical_page": 247,
+      "printed_page": 247,
+      "chars": 2845,
+      "first_200": "Choice Learning Question Answer Skill Objective Unit 1 D 1.E LIM-1.E 1 2 B 3.D FUN-2.A 2 3 A 1.E FUN-3.B 2 4 B 1.E FUN-3.D 3 5 C 1.E"
+    },
+    {
+      "physical_page": 248,
+      "printed_page": 248,
+      "chars": 2845,
+      "first_200": "cription Exam Information V.1 | 239 Return to Table of Contents © 2020 College Board The scoring information for the questions within this course and exam description, along with further"
+    },
+    {
+      "physical_page": 249,
+      "printed_page": 249,
+      "chars": 2845,
+      "first_200": "Scoring Guidelines V.1 | 241 Return to Table of Contents © 2020 College Board Part A (AB or BC): Graphing calculator required Scoring Guidelines for Question 1\b9 points Learning Objectives:"
+    },
+    {
+      "physical_page": 250,
+      "printed_page": 250,
+      "chars": 2845,
+      "first_200": "1.D 4.C 12 − 0 Definite Answer Answer with supporting work 1 point integral 1.E Total for part (c) 2 points (d) Use L(t) to find the time t, for"
+    },
+    {
+      "physical_page": 251,
+      "printed_page": 251,
+      "chars": 2845,
+      "first_200": "he closed interval [0, 4]. The areas of the regions bounded by the graph of fʹ and the x-axis on the intervals [0, 1], [1, 2], [2, 3], and [3,"
+    },
+    {
+      "physical_page": 252,
+      "printed_page": 252,
+      "chars": 2845,
+      "first_200": "the interval [0, 4], the absolute minimum value of f is f ( 4) = 1. Total for part (b) 2 points (c) Evaluate Antiderivative of the 1 point 2"
+    },
+    {
+      "physical_page": 253,
+      "printed_page": 253,
+      "chars": 2845,
+      "first_200": "© 2020 College Board PART A (BC ONLY): Graphing Calculator Required 3. For 0 ≤ t ≤ 5, a particle is moving along a curve so that its position at"
+    },
+    {
+      "physical_page": 254,
+      "printed_page": 254,
+      "chars": 2845,
+      "first_200": "5.007 (or -5.006). 2.B Total for part (b) 2 points (c) Find the total distance traveled by the particle from time t = 1 to time t = 4. Definite"
+    },
+    {
+      "physical_page": 255,
+      "printed_page": 255,
+      "chars": 2845,
+      "first_200": "ermitted 4. The Maclaurin series for the function is given by on its interval of convergence. (a) Use the ratio test to determine the interval of convergence of the Maclaurin"
+    },
+    {
+      "physical_page": 256,
+      "printed_page": 256,
+      "chars": 2845,
+      "first_200": "Considers both 1 point When x = −1, This is a convergent p-series. endpoints 1.D When x = 1, the series is This series converges by the Analysis and interval"
+    }
+  ]
+}

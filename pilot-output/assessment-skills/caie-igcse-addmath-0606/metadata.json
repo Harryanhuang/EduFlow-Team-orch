@@ -1,0 +1,49 @@
+{
+  "schema_version": "1",
+  "id": "caie-igcse-addmath-0606",
+  "assessment_type": "syllabus",
+  "system": "CAIE IGCSE",
+  "board_or_owner": "Cambridge Assessment International Education",
+  "subject": "Additional Mathematics",
+  "level": "IGCSE (14-16 years)",
+  "assessment_code": "0606",
+  "valid_from": "2028",
+  "valid_to": "2030",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_syllabus",
+      "title": "Cambridge IGCSE Additional Mathematics 0606 syllabus (2028-2030)",
+      "url": "https://www.cambridgeinternational.org/Images/0606-2028-2030-syllabus.pdf",
+      "source_document_type": "syllabus",
+      "source_layout_profile": "caie_igcse_syllabus",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/01-IGCSE知识库/03-学科知识/CAIE/Additional Mathematics (0606)/02-课本与考纲/考纲/CAIE_AdditionalMathematics_0606_Syllabus_2028-2030.pdf",
+      "file_checksum_sha256": "a2cc6095cce5e1ba45a4d461535808479f53246367a24dd63a3eee4238cf265c",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "2028-2030 syllabus",
+      "retrieved_at": "2026-06-30",
+      "page_refs": [
+        "p.1-31"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "printed_page ≈ physical_page for CAIE IGCSE syllabi.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text.",
+      "notes": "Source bundle lives at pilot-output/source-bundles/caie-igcse-addmath-0606-guide/."
+    }
+  ],
+  "aliases": [
+    "igcse add maths",
+    "cambridge additional maths 0606",
+    "caie addmath"
+  ],
+  "canonical_id": "caie-igcse-addmath-0606",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "Cambridge IGCSE Additional Mathematics 0606. Single-tier (no Core/Extended split); two papers both at A*-E standard."
+}

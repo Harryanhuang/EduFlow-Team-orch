@@ -1,0 +1,49 @@
+{
+  "schema_version": "1",
+  "id": "caie-igcse-chinese-firstlang-0509",
+  "assessment_type": "syllabus",
+  "system": "CAIE IGCSE",
+  "board_or_owner": "Cambridge Assessment International Education",
+  "subject": "Chinese - First Language",
+  "level": "IGCSE (14-16 years)",
+  "assessment_code": "0509",
+  "valid_from": "2026",
+  "valid_to": "2027",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_syllabus",
+      "title": "Cambridge IGCSE Chinese - First Language 0509 syllabus (2026-2027)",
+      "url": "https://www.cambridgeinternational.org/Images/0509-2026-2027-syllabus.pdf",
+      "source_document_type": "syllabus",
+      "source_layout_profile": "caie_igcse_syllabus",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/01-IGCSE知识库/03-学科知识/CAIE/Chinese - First Language (0509)/02-课本与考纲/考纲/CAIE_Chinese_First_Language_0509_Syllabus_2026-2027.pdf",
+      "file_checksum_sha256": "3381bbf7afc154576d8ffd6b9aaf334a082d2018c9c7d2d2c6daf2f07850eba6",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "2026-2027 syllabus",
+      "retrieved_at": "2026-06-30",
+      "page_refs": [
+        "p.1-20"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "printed_page ≈ physical_page for CAIE IGCSE syllabi.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text.",
+      "notes": "Source bundle lives at pilot-output/source-bundles/caie-igcse-chinese-firstlang-0509-guide/."
+    }
+  ],
+  "aliases": [
+    "igcse chinese first language",
+    "cambridge chinese 0509",
+    "caie chinese first language"
+  ],
+  "canonical_id": "caie-igcse-chinese-firstlang-0509",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "Cambridge IGCSE Chinese - First Language 0509. Single-tier; three papers covering reading, writing, and speaking/listening."
+}

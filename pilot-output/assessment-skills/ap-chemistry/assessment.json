@@ -1,0 +1,56 @@
+{
+  "schema_version": "1",
+  "papers": [],
+  "assessment_objectives": [],
+  "question_styles": [
+    {
+      "style_id": "multiple_choice",
+      "name": "Multiple Choice",
+      "description": "Section I questions."
+    },
+    {
+      "style_id": "free_response",
+      "name": "Free Response",
+      "description": "Section II written answers."
+    }
+  ],
+  "difficulty_ladder": [
+    {
+      "level": "foundation",
+      "description": "Recall of facts, definitions, basic application."
+    },
+    {
+      "level": "standard",
+      "description": "Multi-step application within one unit."
+    },
+    {
+      "level": "challenge",
+      "description": "Cross-unit synthesis, unfamiliar contexts."
+    }
+  ],
+  "difficulty_scale": "ordinal_3",
+  "confidence_thresholds": {
+    "route_minimum": 0.8,
+    "classification_minimum": 0.75,
+    "review_required_below": 0.75
+  },
+  "lesson_use": {
+    "supported": false,
+    "modes": [],
+    "teacher_use_contract_ref": "",
+    "student_use_contract_ref": "",
+    "parent_use_contract_ref": "",
+    "notes": "Set supported=true only when teacher/student/parent mode is declared and validated."
+  },
+  "generation_constraints": {
+    "must_match_scope": true,
+    "mark_out_of_scope_as_extension": true
+  },
+  "marking_guidance": {
+    "command_words_ref": "AP command words defined in the CED Section 2 'Exam Instructions'.",
+    "notes": "AP exams use a 5-point scoring scale (1-5). College credit typically awarded at 3+."
+  },
+  "mcq_count": 60,
+  "frq_count": 7,
+  "duration_hours": 3
+}

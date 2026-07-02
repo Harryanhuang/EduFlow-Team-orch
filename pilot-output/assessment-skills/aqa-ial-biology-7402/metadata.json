@@ -1,0 +1,48 @@
+{
+  "schema_version": "1",
+  "id": "aqa-ial-biology-7402",
+  "assessment_type": "syllabus",
+  "system": "AQA International A-Level",
+  "board_or_owner": "AQA / Oxford Cambridge and RSA",
+  "subject": "Biology",
+  "level": "International A-Level (IAL)",
+  "assessment_code": "7402",
+  "valid_from": "2025",
+  "valid_to": "2026",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_syllabus",
+      "title": "AQA International A-Level Biology (7402) specification",
+      "url": "https://www.aqa.org.uk/subjects/biology/7402",
+      "source_document_type": "syllabus",
+      "source_layout_profile": "caie_igcse_syllabus",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/02-A-Level知识库/03-考试局/AQA/Biology (7402)/02-课本与考纲/考纲/oxfordaqa-a-level-biology-specification.pdf",
+      "file_checksum_sha256": "6532052ad7302d168ed1a4313964ea4e65ea67ea812f4a0eb4a0913a496dc225",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "2025-2026 specification",
+      "retrieved_at": "2026-07-02",
+      "page_refs": [
+        "p.1-49"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "printed_page ≈ physical_page for CAIE IGCSE syllabi.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text.",
+      "notes": "Source bundle lives at pilot-output/source-bundles/aqa-ial-biology-7402-guide/."
+    }
+  ],
+  "aliases": [
+    "aqa ial biology",
+    "oxford aqa biology"
+  ],
+  "canonical_id": "aqa-ial-biology-7402",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "AQA International A-Level Biology (7402)."
+}

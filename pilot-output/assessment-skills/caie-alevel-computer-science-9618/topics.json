@@ -1,0 +1,116 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "caie-alevel-computer-science-9618",
+      "topic_name": "CAIE IGCSE Computer Science",
+      "parent_id": "",
+      "scope": [
+        "Cambridge IGCSE Computer Science (9618) syllabus scope.",
+        "Valid: 2025 → 2026."
+      ],
+      "out_of_scope": [
+        "Non-CAIE curricula unless explicitly compared.",
+        "University-level content beyond IGCSE.",
+        "Teacher pedagogy, school administration, resource selection."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific topic fits.",
+        "Prefer Core/Extended subdivision nodes for broad queries."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-computer-science-9618-t001",
+      "topic_name": "1. Why choose this syllabus?",
+      "parent_id": "caie-alevel-computer-science-9618",
+      "scope": [
+        "Why choose this syllabus?",
+        "Multimedia – Graphics, Sound",
+        "Compression",
+        "Data Representation",
+        "Multimedia",
+        "Compression"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Why choose this syllabus?."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-computer-science-9618-t002",
+      "topic_name": "2. Syllabus overview",
+      "parent_id": "caie-alevel-computer-science-9618",
+      "scope": [
+        "Syllabus overview",
+        "Networks including the internet",
+        "Networks including the internet continued"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Syllabus overview."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-computer-science-9618-t003",
+      "topic_name": "3. Hardware",
+      "parent_id": "caie-alevel-computer-science-9618",
+      "scope": [
+        "Hardware",
+        "Logic Gates and Logic Circuits",
+        "Computers and their components",
+        "Logic Gates and Logic Circuits"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: Hardware."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    },
+    {
+      "topic_id": "caie-alevel-computer-science-9618-t005",
+      "topic_name": "5. System Software",
+      "parent_id": "caie-alevel-computer-science-9618",
+      "scope": [
+        "System Software",
+        "Language Translators",
+        "Operating Systems",
+        "Language Translators"
+      ],
+      "out_of_scope": [
+        "Detailed treatment beyond CAIE IGCSE syllabus statements.",
+        "Content belonging to other numbered topics."
+      ],
+      "classification_hints": [
+        "Look for keywords from the topic title: System Software."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": []
+    }
+  ]
+}

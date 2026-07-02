@@ -1,0 +1,86 @@
+{
+  "schema_version": "1",
+  "source_id": "primary_ced",
+  "page_ref_convention": "printed_page",
+  "physical_page_offset_note": "AP CED pages are typically labeled with printed_page numbers.",
+  "mappings": [
+    {
+      "target": "assessment_identity.system",
+      "page_refs": [
+        "title page"
+      ],
+      "evidence_note": "College Board AP CED."
+    },
+    {
+      "target": "topics.course_framework",
+      "page_refs": [
+        "Section 1"
+      ],
+      "evidence_note": "Course framework overview."
+    },
+    {
+      "target": "topics.ap-chemistry-unit01",
+      "page_refs": [
+        "Unit 1"
+      ],
+      "evidence_note": "Unit 1: Atomic Structure and Properties (7–9%)."
+    },
+    {
+      "target": "topics.ap-chemistry-unit02",
+      "page_refs": [
+        "Unit 2"
+      ],
+      "evidence_note": "Unit 2: Compound Structure and Properties (7–9%)."
+    },
+    {
+      "target": "topics.ap-chemistry-unit03",
+      "page_refs": [
+        "Unit 3"
+      ],
+      "evidence_note": "Unit 3: Properties of Substances and Mixtures (18–22%)."
+    },
+    {
+      "target": "topics.ap-chemistry-unit04",
+      "page_refs": [
+        "Unit 4"
+      ],
+      "evidence_note": "Unit 4: Chemical Reactions (7–9%)."
+    },
+    {
+      "target": "topics.ap-chemistry-unit05",
+      "page_refs": [
+        "Unit 5"
+      ],
+      "evidence_note": "Unit 5: Kinetics (7–9%)."
+    },
+    {
+      "target": "topics.ap-chemistry-unit06",
+      "page_refs": [
+        "Unit 6"
+      ],
+      "evidence_note": "Unit 6: Thermochemistry (7–9%)."
+    },
+    {
+      "target": "topics.ap-chemistry-unit07",
+      "page_refs": [
+        "Unit 7"
+      ],
+      "evidence_note": "Unit 7: Equilibrium (7–9%)."
+    },
+    {
+      "target": "topics.ap-chemistry-unit08",
+      "page_refs": [
+        "Unit 8"
+      ],
+      "evidence_note": "Unit 8: Acids and Bases (11–15%)."
+    },
+    {
+      "target": "topics.ap-chemistry-unit09",
+      "page_refs": [
+        "Unit 9"
+      ],
+      "evidence_note": "Unit 9: Thermodynamics and Electrochemistry (7–9%)."
+    }
+  ],
+  "draft_notes": []
+}

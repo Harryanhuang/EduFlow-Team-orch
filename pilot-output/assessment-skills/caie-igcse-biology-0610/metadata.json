@@ -1,0 +1,49 @@
+{
+  "schema_version": "1",
+  "id": "caie-igcse-biology-0610",
+  "assessment_type": "syllabus",
+  "system": "CAIE IGCSE",
+  "board_or_owner": "Cambridge Assessment International Education",
+  "subject": "Biology",
+  "level": "IGCSE (14-16 years)",
+  "assessment_code": "0610",
+  "valid_from": "2023",
+  "valid_to": "2025",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_syllabus",
+      "title": "Cambridge IGCSE Biology 0610 syllabus (2023-2025)",
+      "url": "https://www.cambridgeinternational.org/Images/595964-2023-2025-syllabus.pdf",
+      "source_document_type": "syllabus",
+      "source_layout_profile": "caie_igcse_syllabus",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/01-IGCSE知识库/03-学科知识/CAIE/Biology (0610)/02-课本与考纲/考纲/CAIE_Biology_0610_Syllabus_2025-2026.pdf",
+      "file_checksum_sha256": "299740532668d119c65216449b1dd9bf71b8b15156d1f5be36316f777c822eaa",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "2025-2026 reprint of 2023-2025 syllabus",
+      "retrieved_at": "2026-06-30",
+      "page_refs": [
+        "p.1-61"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "printed_page ≈ physical_page for CAIE IGCSE syllabi.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text.",
+      "notes": "Source bundle lives at pilot-output/source-bundles/caie-igcse-biology-0610-guide/."
+    }
+  ],
+  "aliases": [
+    "igcse biology",
+    "cambridge biology 0610",
+    "caie biology"
+  ],
+  "canonical_id": "caie-igcse-biology-0610",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "Cambridge IGCSE Biology 0610. Two-tier (Core / Extended); practical assessment via Paper 5 or Paper 6."
+}

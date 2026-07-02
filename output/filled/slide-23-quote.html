@@ -1,0 +1,155 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Quote</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    .slide {
+      width: 1920px;
+      height: 1080px;
+      background-color: #2D9CC4;
+      font-family: 'PingFang SC', 'Microsoft YaHei', 'PingFang TC', 'Hiragino Sans GB', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+    .quote-block {
+      position: absolute;
+      left: 80px;
+      top: 100px;
+      width: 1760px;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+    .quote-block [data-slot="quote"] {
+      font-weight: 700;
+      font-size: 100px;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      color: #D2A148;
+      /* 固定可视区域，避免金句过长把下方 subtitle 挤没 */
+      height: 730px; /* Figma 为固定高度 730 */
+      overflow: hidden;
+      flex-shrink: 0;
+      /* 行数截断（浏览器渲染会裁剪高度，dom-to-pptx 抓取也更稳定） */
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 6;
+    }
+    .quote-block [data-slot="subtitle"] {
+      font-weight: 400;
+      font-size: 40px;
+      line-height: 1.4;
+      color: #FFFFFF;
+      /* 等效灰色（避免 opacity 导出丢失） */
+      color: #17495C; /* white @ 40% on black */
+      max-width: 1197px;
+      flex-shrink: 0;
+    }
+  </style>
+<style id="qoderwork-sea-blue-base">
+    .slide {
+      color: #20283A !important;
+      letter-spacing: 0 !important;
+    }
+    .title-block [data-slot="title"] {
+      color: #123A4A !important;
+      font-weight: 700 !important;
+      letter-spacing: 0 !important;
+    }
+    .title-block [data-slot="subtitle"] {
+      color: #17495C !important;
+      font-weight: 500 !important;
+    }
+    .content-card,
+    .comparison-col,
+    .timeline-step {
+      border: 1px solid rgba(45,156,196,0.18) !important;
+      box-shadow: none !important;
+    }
+    .content-card,
+    .col-right {
+      background-color: #F2FAFD !important;
+    }
+    .col-left {
+      background-color: #E6F5FA !important;
+    }
+    .card-image {
+      background-color: #FFFFFF !important;
+      border: 1px solid rgba(210,161,72,0.35) !important;
+    }
+    .card-image img {
+      color: #2D9CC4 !important;
+    }
+    [data-slot$="Heading"],
+    [data-slot$="Label"] {
+      color: #123A4A !important;
+      font-weight: 700 !important;
+    }
+    [data-slot$="Copy"],
+    [data-slot$="Item1"],
+    [data-slot$="Item2"],
+    [data-slot$="Item3"],
+    [data-slot$="Item4"] {
+      color: #20283A !important;
+    }
+    .col-items [data-slot$="Item1"]::before,
+    .col-items [data-slot$="Item2"]::before,
+    .col-items [data-slot$="Item3"]::before,
+    .col-items [data-slot$="Item4"]::before {
+      background-color: #D2A148 !important;
+    }
+  </style><style id="qoderwork-sea-blue-dark-page">
+      .slide {
+        background-color: #2D9CC4 !important;
+        color: #FFFFFF !important;
+      }
+      .title-block [data-slot="title"],
+      [data-slot="quote"],
+      .thank-you-title {
+        color: #FFFFFF !important;
+        font-weight: 800 !important;
+      }
+      .title-block [data-slot="subtitle"],
+      [data-slot="subtitle"],
+      .data-block [data-slot$="Desc"],
+      .description-block [data-slot="description"] {
+        color: #EAF9FC !important;
+      }
+      .data-block [data-slot$="Num"] {
+        color: #FFE2A3 !important;
+      }
+      .slogan-block [data-slot="slogan"] {
+        color: #F4FCFE !important;
+      }
+    </style>
+<style id="eduflow-sea-theme">
+  .slide { color: #20283A !important; }
+  .title-block [data-slot="title"] { color: #123A4A !important; font-weight: 750 !important; letter-spacing: 0 !important; }
+  .title-block [data-slot="subtitle"] { color: #17495C !important; font-weight: 500 !important; }
+  .content-card, .comparison-col, .timeline-step { border: 1px solid rgba(45,156,196,0.18) !important; box-shadow: none !important; }
+  .card-image { background-color: #FFFFFF !important; border: 1px solid rgba(210,161,72,0.35) !important; }
+  .card-image img { color: #2D9CC4 !important; }
+  [data-slot$="Heading"], [data-slot$="Label"] { color: #123A4A !important; font-weight: 750 !important; }
+  [data-slot$="Copy"], [data-slot$="Item1"], [data-slot$="Item2"], [data-slot$="Item3"], [data-slot$="Item4"] { color: #20283A !important; }
+</style>
+
+<style id="sea-dark-page">
+  .slide { background-color: #2D9CC4 !important; color: #FFFFFF !important; }
+  .title-block [data-slot="title"], [data-slot="quote"], [data-slot="title"] { color: #FFFFFF !important; font-weight: 800 !important; }
+  .title-block [data-slot="subtitle"], [data-slot="subtitle"], .data-block [data-slot$="Desc"] { color: #EAF9FC !important; }
+  .data-block [data-slot$="Num"] { color: #FFE2A3 !important; }
+  .slogan-block [data-slot="slogan"] { color: #F4FCFE !important; font-size: 34px !important; line-height: 1.38 !important; width: 1500px !important; }
+  .data-block [data-slot$="Desc"] { font-size: 23px !important; line-height: 1.30 !important; }
+</style>
+</head>
+<body>
+  <div class="slide" data-template="quote">
+    <div class="quote-block">
+      <blockquote data-slot="quote">同一套 A-Level 成绩，<br>在五个目的地里<br>会被五种申请逻辑解释。</blockquote>
+      <p data-slot="subtitle">英国看专业匹配，香港看综合竞争，新加坡看高门槛，澳洲看资格换算，美国看整体画像。</p>
+    </div>
+  </div>
+
+
+</body></html>

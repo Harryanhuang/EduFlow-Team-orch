@@ -1,0 +1,62 @@
+{
+  "schema_version": "2",
+  "skill_id": "edexcel-ial-accounting",
+  "reviewer": "review-syllabus-skill/strict_v2",
+  "reviewed_at": "2026-07-02",
+  "verdict": "warn",
+  "axes": {
+    "A_pdf_identity": {
+      "verdict": "pass",
+      "notes": "ok"
+    },
+    "B_topic_match": {
+      "verdict": "pass",
+      "notes": "ok",
+      "expected_units": 2,
+      "actual_units": 2,
+      "generic_topic_count": 0,
+      "empty_shell_count": 0
+    },
+    "C_ek_truth": {
+      "verdict": "warn",
+      "notes": "generic_ek=0 real_ek=0 empty_ek=3 pdf_mentions=1",
+      "generic_ek_count": 0,
+      "real_ek_count": 0,
+      "empty_ek_count": 3
+    },
+    "D_assessment": {
+      "verdict": "pass",
+      "notes": "ok",
+      "pdf_mcq": null,
+      "skill_mcq": 0,
+      "pdf_frq": null,
+      "skill_frq": 0,
+      "pdf_has_pt": false
+    },
+    "E_contamination": {
+      "verdict": "warn",
+      "notes": "family=edexcel but text mentions 'igcse'"
+    }
+  },
+  "field_completeness": {
+    "metadata": true,
+    "topics": true,
+    "assessment": true,
+    "skill_md": true,
+    "examples": true
+  },
+  "deviations": [
+    {
+      "severity": "P1",
+      "field": "C",
+      "issue": "generic_ek=0 real_ek=0 empty_ek=3 pdf_mentions=1",
+      "fix": "(see notes)"
+    },
+    {
+      "severity": "P1",
+      "field": "E",
+      "issue": "family=edexcel but text mentions 'igcse'",
+      "fix": "(see notes)"
+    }
+  ]
+}

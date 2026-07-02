@@ -1,0 +1,213 @@
+{
+  "schema_version": "1",
+  "source_id": "dse-mathematics-ca-guide",
+  "mappings": [
+    {
+      "target": "topics.dse-mathematics-compulsory.scope",
+      "page_refs": ["p.12-32"],
+      "evidence_note": "Compulsory part: three strands (Number and Algebra; Measures, Shapes and Space; Data Handling) plus advanced learning units. Foundation and non-foundation topics distinguished."
+    },
+    {
+      "target": "topics.math-number-and-algebra.scope",
+      "page_refs": ["p.15-29"],
+      "evidence_note": "Number and Algebra strand: quadratic equations, functions and graphs, exponential and logarithmic functions, polynomials, more equations, variation, sequences, inequalities and linear programming, more functions and graphs."
+    },
+    {
+      "target": "topics.math-quadratic-equations.scope",
+      "page_refs": ["p.15-16"],
+      "evidence_note": "Learning unit 1: quadratic equations, discriminant, complex numbers."
+    },
+    {
+      "target": "topics.math-functions-and-graphs.scope",
+      "page_refs": ["p.17"],
+      "evidence_note": "Learning unit 2: functions, domain, co-domain, quadratic function graphs, max/min."
+    },
+    {
+      "target": "topics.math-exponential-logarithmic-functions.scope",
+      "page_refs": ["p.18-19"],
+      "evidence_note": "Learning unit 3: rational indices, laws of logarithms, exponential/logarithmic functions and equations."
+    },
+    {
+      "target": "topics.math-polynomials.scope",
+      "page_refs": ["p.20"],
+      "evidence_note": "Learning unit 4: polynomial division, remainder and factor theorems, HCF, LCM, rational functions."
+    },
+    {
+      "target": "topics.math-more-equations.scope",
+      "page_refs": ["p.20"],
+      "evidence_note": "Learning unit 5: simultaneous equations, equations reducible to quadratics, applications."
+    },
+    {
+      "target": "topics.math-variation.scope",
+      "page_refs": ["p.21"],
+      "evidence_note": "Learning unit 6: direct, inverse, joint and partial variation."
+    },
+    {
+      "target": "topics.math-sequences.scope",
+      "page_refs": ["p.21-22"],
+      "evidence_note": "Learning unit 7: arithmetic and geometric sequences and summation, infinite geometric series."
+    },
+    {
+      "target": "topics.math-inequalities-linear-programming.scope",
+      "page_refs": ["p.22-23"],
+      "evidence_note": "Learning unit 8: linear and quadratic inequalities, linear programming."
+    },
+    {
+      "target": "topics.math-more-functions-and-graphs.scope",
+      "page_refs": ["p.23-24"],
+      "evidence_note": "Learning unit 9: graphs of various functions, transformations."
+    },
+    {
+      "target": "topics.math-measures-shapes-and-space.scope",
+      "page_refs": ["p.24-29"],
+      "evidence_note": "Measures, Shapes and Space strand: straight lines, properties of circles, locus, equations of circles, more trigonometry."
+    },
+    {
+      "target": "topics.math-straight-lines.scope",
+      "page_refs": ["p.24-25"],
+      "evidence_note": "Learning unit 10: equations of straight lines, intersection of two lines."
+    },
+    {
+      "target": "topics.math-properties-of-circles.scope",
+      "page_refs": ["p.25-27"],
+      "evidence_note": "Learning unit 11: chords, arcs, angles, cyclic quadrilaterals, tangents, circle proofs."
+    },
+    {
+      "target": "topics.math-locus.scope",
+      "page_refs": ["p.27"],
+      "evidence_note": "Learning unit 12: locus concepts, equations of loci."
+    },
+    {
+      "target": "topics.math-equations-of-circles.scope",
+      "page_refs": ["p.27-28"],
+      "evidence_note": "Learning unit 13: equation of a circle, intersection of line and circle, tangent."
+    },
+    {
+      "target": "topics.math-more-trigonometry.scope",
+      "page_refs": ["p.28-29"],
+      "evidence_note": "Learning unit 14: trigonometric functions and graphs, sine/cosine formulae, 3-D geometry."
+    },
+    {
+      "target": "topics.math-data-handling.scope",
+      "page_refs": ["p.29-32"],
+      "evidence_note": "Data Handling strand: permutations and combinations, more probability, measures of dispersion, uses and abuses of statistics."
+    },
+    {
+      "target": "topics.math-permutations-and-combinations.scope",
+      "page_refs": ["p.29-30"],
+      "evidence_note": "Learning unit 15: addition and multiplication principles, permutations, combinations."
+    },
+    {
+      "target": "topics.math-more-probability.scope",
+      "page_refs": ["p.30"],
+      "evidence_note": "Learning unit 16: set notation, laws of probability, conditional probability."
+    },
+    {
+      "target": "topics.math-measures-of-dispersion.scope",
+      "page_refs": ["p.31"],
+      "evidence_note": "Learning unit 17: range, inter-quartile range, box plots, standard deviation, standard scores."
+    },
+    {
+      "target": "topics.math-uses-and-abuses-of-statistics.scope",
+      "page_refs": ["p.31-32"],
+      "evidence_note": "Learning unit 18: sampling techniques, questionnaire design, uses and misuses of statistics."
+    },
+    {
+      "target": "topics.math-advanced-learning-unit.scope",
+      "page_refs": ["p.32"],
+      "evidence_note": "Advanced learning units: advanced applications and exploration/research. Not standard public-exam content topics."
+    },
+    {
+      "target": "topics.dse-mathematics-module1.scope",
+      "page_refs": ["p.33-61"],
+      "evidence_note": "Module 1 (Calculus and Statistics): foundation knowledge, calculus, statistics, advanced learning unit."
+    },
+    {
+      "target": "topics.m1-foundation.scope",
+      "page_refs": ["p.36-38"],
+      "evidence_note": "Module 1 foundation: binomial expansion, exponential and logarithmic functions."
+    },
+    {
+      "target": "topics.m1-binomial-expansion.scope",
+      "page_refs": ["p.36"],
+      "evidence_note": "Module 1 learning unit 1: binomial expansion for positive integer index."
+    },
+    {
+      "target": "topics.m1-exponential-logarithmic-functions.scope",
+      "page_refs": ["p.36-38"],
+      "evidence_note": "Module 1 learning unit 2: e, exponential/logarithmic functions, linearisation of non-linear relations."
+    },
+    {
+      "target": "topics.m1-calculus.scope",
+      "page_refs": ["p.38-49"],
+      "evidence_note": "Module 1 calculus: limits, derivatives, differentiation, second derivatives, applications, indefinite and definite integration, trapezoidal rule."
+    },
+    {
+      "target": "topics.m1-statistics.scope",
+      "page_refs": ["p.49-55"],
+      "evidence_note": "Module 1 statistics: conditional probability and Bayes' theorem, random variables, probability distributions, binomial, Poisson, normal, sampling distributions, confidence intervals."
+    },
+    {
+      "target": "topics.dse-mathematics-module2.scope",
+      "page_refs": ["p.53-61"],
+      "evidence_note": "Module 2 (Algebra and Calculus): foundation knowledge, algebra, calculus, advanced learning unit."
+    },
+    {
+      "target": "topics.m2-foundation.scope",
+      "page_refs": ["p.47-51"],
+      "evidence_note": "Module 2 foundation: odd/even functions, mathematical induction, binomial theorem, trigonometric functions, introduction to e."
+    },
+    {
+      "target": "topics.m2-algebra.scope",
+      "page_refs": ["p.57-61"],
+      "evidence_note": "Module 2 algebra: determinants, matrices, systems of linear equations, vectors, scalar and vector products, applications of vectors."
+    },
+    {
+      "target": "topics.m2-calculus.scope",
+      "page_refs": ["p.51-57"],
+      "evidence_note": "Module 2 calculus: limits, differentiation, second derivatives, applications, indefinite and definite integration, applications of definite integration."
+    },
+    {
+      "target": "assessment.papers.paper1.scope",
+      "page_refs": ["p.93"],
+      "evidence_note": "Compulsory Paper 1: conventional questions, 65%, 2 hours 15 minutes."
+    },
+    {
+      "target": "assessment.papers.paper2.scope",
+      "page_refs": ["p.93"],
+      "evidence_note": "Compulsory Paper 2: multiple-choice questions, 35%, 1 hour 15 minutes."
+    },
+    {
+      "target": "assessment.papers.module1.scope",
+      "page_refs": ["p.93"],
+      "evidence_note": "Module 1 (Calculus and Statistics) paper: conventional questions, 100%, 2 hours 30 minutes."
+    },
+    {
+      "target": "assessment.papers.module2.scope",
+      "page_refs": ["p.93"],
+      "evidence_note": "Module 2 (Algebra and Calculus) paper: conventional questions, 100%, 2 hours 30 minutes."
+    },
+    {
+      "target": "assessment.assessment_objectives",
+      "page_refs": ["p.88"],
+      "evidence_note": "Assessment objectives: knowledge of mathematical content/concepts/techniques; familiar use of symbols; problem solving; mathematical communication."
+    },
+    {
+      "target": "assessment.question_styles",
+      "page_refs": ["p.93"],
+      "evidence_note": "Public exam uses multiple-choice questions, short questions and long questions."
+    }
+  ],
+  "draft_notes": [
+    {
+      "target": "assessment.difficulty_ladder",
+      "page_refs": [],
+      "note": "No explicit difficulty taxonomy in source; inferred from question-style descriptions on p.93."
+    },
+    {
+      "target": "topics.math-advanced-learning-unit.scope",
+      "page_refs": ["p.32", "p.49", "p.61"],
+      "note": "Advanced learning units (advanced applications / exploration and research) are curriculum components but are not standard public-exam content topics."
+    }
+  ]
+}

@@ -1,0 +1,264 @@
+{
+  "schema_version": "1",
+  "topics": [
+    {
+      "topic_id": "ap-physics-2",
+      "topic_name": "AP Physics 2: Algebra-Based",
+      "parent_id": "",
+      "scope": [
+        "AP Physics 2: Algebra-Based course framework (College Board).",
+        "Valid: 2025 → (ongoing).",
+        "Units 9–15 with cumulative exam weightings."
+      ],
+      "out_of_scope": [
+        "Pre-AP / general high-school level content unless explicitly cited in CED.",
+        "University-level content beyond AP expectations.",
+        "Other AP subjects."
+      ],
+      "classification_hints": [
+        "Use this root only when no more specific unit fits.",
+        "Prefer specific Unit N nodes for content questions."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_root",
+          "text": "Subject-wide overview and framework."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-physics-2-unit01",
+      "topic_name": "Unit 1: Fluids",
+      "parent_id": "ap-physics-2",
+      "scope": [
+        "Unit 9 content as defined in AP Physics 2: Algebra-Based CED.",
+        "Exam weighting: 15–18%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Thermodynamics."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_1.1",
+          "text": "Core content and concepts for Unit 1: Fluids."
+        },
+        {
+          "ek_id": "EK_1.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 1: Fluids."
+        },
+        {
+          "ek_id": "EK_1.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 1: Fluids."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-physics-2-unit02",
+      "topic_name": "Unit 2: Thermodynamics",
+      "parent_id": "ap-physics-2",
+      "scope": [
+        "Unit 10 content as defined in AP Physics 2: Algebra-Based CED.",
+        "Exam weighting: 15–18%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Electric Force, Field, and Potential."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_2.1",
+          "text": "Then ask students to justify the following claims"
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-physics-2-unit03",
+      "topic_name": "Unit 3: Electric Force, Field, and Potential",
+      "parent_id": "ap-physics-2",
+      "scope": [
+        "Unit 11 content as defined in AP Physics 2: Algebra-Based CED.",
+        "Exam weighting: 15–18%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Electric Circuits."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_3.1",
+          "text": "Core content and concepts for Unit 3: Electric Force, Field, and Potential."
+        },
+        {
+          "ek_id": "EK_3.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 3: Electric Force, Field, and Potential."
+        },
+        {
+          "ek_id": "EK_3.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 3: Electric Force, Field, and Potential."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-physics-2-unit04",
+      "topic_name": "Unit 4: Electric Circuits",
+      "parent_id": "ap-physics-2",
+      "scope": [
+        "Unit 12 content as defined in AP Physics 2: Algebra-Based CED.",
+        "Exam weighting: 12–15%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Magnetism and Electromagnetism."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_4.1",
+          "text": "Core content and concepts for Unit 4: Electric Circuits."
+        },
+        {
+          "ek_id": "EK_4.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 4: Electric Circuits."
+        },
+        {
+          "ek_id": "EK_4.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 4: Electric Circuits."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-physics-2-unit05",
+      "topic_name": "Unit 5: Magnetism and Electromagnetism",
+      "parent_id": "ap-physics-2",
+      "scope": [
+        "Unit 13 content as defined in AP Physics 2: Algebra-Based CED.",
+        "Exam weighting: 12–15%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Geometric Optics."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_5.1",
+          "text": "Core content and concepts for Unit 5: Magnetism and Electromagnetism."
+        },
+        {
+          "ek_id": "EK_5.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 5: Magnetism and Electromagnetism."
+        },
+        {
+          "ek_id": "EK_5.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 5: Magnetism and Electromagnetism."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-physics-2-unit06",
+      "topic_name": "Unit 6: Geometric Optics",
+      "parent_id": "ap-physics-2",
+      "scope": [
+        "Unit 14 content as defined in AP Physics 2: Algebra-Based CED.",
+        "Exam weighting: 12–15%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Waves, Sound, and Physical Optics."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_6.1",
+          "text": "Core content and concepts for Unit 6: Geometric Optics."
+        },
+        {
+          "ek_id": "EK_6.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 6: Geometric Optics."
+        },
+        {
+          "ek_id": "EK_6.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 6: Geometric Optics."
+        }
+      ]
+    },
+    {
+      "topic_id": "ap-physics-2-unit07",
+      "topic_name": "Unit 7: Modern Physics",
+      "parent_id": "ap-physics-2",
+      "scope": [
+        "Unit 15 content as defined in AP Physics 2: Algebra-Based CED.",
+        "Exam weighting: 12–15%"
+      ],
+      "out_of_scope": [
+        "Content belonging to other AP units.",
+        "Pre-AP / honors level content not cited in this unit."
+      ],
+      "classification_hints": [
+        "Look for keywords from the unit title: Modern Physics."
+      ],
+      "common_misconceptions": [],
+      "common_misclassifications": [],
+      "prerequisite_topics": [],
+      "overlap_links": [],
+      "essential_knowledge": [
+        {
+          "ek_id": "EK_7.1",
+          "text": "Core content and concepts for Unit 7: Modern Physics."
+        },
+        {
+          "ek_id": "EK_7.2",
+          "text": "Essential knowledge statements and learning objectives for Unit 7: Modern Physics."
+        },
+        {
+          "ek_id": "EK_7.3",
+          "text": "Assessment-relevant facts, definitions, and applications for Unit 7: Modern Physics."
+        }
+      ]
+    }
+  ]
+}

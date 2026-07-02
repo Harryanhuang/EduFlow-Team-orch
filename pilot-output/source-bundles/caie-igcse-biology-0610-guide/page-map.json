@@ -1,0 +1,198 @@
+{
+  "schema_version": "1",
+  "source_id": "primary_syllabus",
+  "page_ref_convention": "printed_page",
+  "physical_page_offset_note": "printed_page ≈ physical_page for CAIE IGCSE syllabi.",
+  "mappings": [
+    {
+      "target": "assessment_identity.system",
+      "page_refs": [
+        "title page (physical 1)"
+      ],
+      "evidence_note": "Cambridge IGCSE syllabus publication."
+    },
+    {
+      "target": "assessment_identity.valid_from",
+      "page_refs": [
+        "title page (physical 1)"
+      ],
+      "evidence_note": "Syllabus valid 2023 → 2025."
+    },
+    {
+      "target": "topics.caie-igcse-biology-0610.scope",
+      "page_refs": [
+        "p.5-9"
+      ],
+      "evidence_note": "Aims, content overview, assessment overview."
+    },
+    {
+      "target": "topics.caie-igcse-biology-0610-t001.scope",
+      "page_refs": [
+        "p.10-12"
+      ],
+      "evidence_note": "Topic 1: Why choose this syllabus?."
+    },
+    {
+      "target": "topics.caie-igcse-biology-0610-t002.scope",
+      "page_refs": [
+        "p.12-14"
+      ],
+      "evidence_note": "Topic 2: Syllabus overview."
+    },
+    {
+      "target": "topics.caie-igcse-biology-0610-t003.scope",
+      "page_refs": [
+        "p.14-16"
+      ],
+      "evidence_note": "Topic 3: Movement into and out of cells."
+    },
+    {
+      "target": "topics.caie-igcse-biology-0610-t004.scope",
+      "page_refs": [
+        "p.16-18"
+      ],
+      "evidence_note": "Topic 4: Biological molecules."
+    },
+    {
+      "target": "topics.caie-igcse-biology-0610-t005.scope",
+      "page_refs": [
+        "p.18-20"
+      ],
+      "evidence_note": "Topic 5: Enzymes."
+    },
+    {
+      "target": "topics.caie-igcse-biology-0610-t006.scope",
+      "page_refs": [
+        "p.20-22"
+      ],
+      "evidence_note": "Topic 6: Plant nutrition."
+    },
+    {
+      "target": "topics.caie-igcse-biology-0610-t007.scope",
+      "page_refs": [
+        "p.22-24"
+      ],
+      "evidence_note": "Topic 7: Human nutrition."
+    },
+    {
+      "target": "topics.caie-igcse-biology-0610-t008.scope",
+      "page_refs": [
+        "p.24-26"
+      ],
+      "evidence_note": "Topic 8: Transport in plants."
+    },
+    {
+      "target": "topics.caie-igcse-biology-0610-t009.scope",
+      "page_refs": [
+        "p.26-28"
+      ],
+      "evidence_note": "Topic 9: Transport in animals."
+    },
+    {
+      "target": "topics.caie-igcse-biology-0610-t010.scope",
+      "page_refs": [
+        "p.28-30"
+      ],
+      "evidence_note": "Topic 10: Diseases and immunity."
+    },
+    {
+      "target": "topics.caie-igcse-biology-0610-t011.scope",
+      "page_refs": [
+        "p.30-32"
+      ],
+      "evidence_note": "Topic 11: Gas exchange in humans."
+    },
+    {
+      "target": "topics.caie-igcse-biology-0610-t012.scope",
+      "page_refs": [
+        "p.32-34"
+      ],
+      "evidence_note": "Topic 12: Respiration."
+    },
+    {
+      "target": "topics.caie-igcse-biology-0610-t013.scope",
+      "page_refs": [
+        "p.34-36"
+      ],
+      "evidence_note": "Topic 13: Excretion in humans."
+    },
+    {
+      "target": "topics.caie-igcse-biology-0610-t014.scope",
+      "page_refs": [
+        "p.36-38"
+      ],
+      "evidence_note": "Topic 14: Coordination and response."
+    },
+    {
+      "target": "topics.caie-igcse-biology-0610-t015.scope",
+      "page_refs": [
+        "p.38-40"
+      ],
+      "evidence_note": "Topic 15: Drugs."
+    },
+    {
+      "target": "topics.caie-igcse-biology-0610-t016.scope",
+      "page_refs": [
+        "p.40-42"
+      ],
+      "evidence_note": "Topic 16: Reproduction."
+    },
+    {
+      "target": "topics.caie-igcse-biology-0610-t017.scope",
+      "page_refs": [
+        "p.42-44"
+      ],
+      "evidence_note": "Topic 17: Inheritance."
+    },
+    {
+      "target": "topics.caie-igcse-biology-0610-t018.scope",
+      "page_refs": [
+        "p.44-46"
+      ],
+      "evidence_note": "Topic 18: Variation and selection."
+    },
+    {
+      "target": "topics.caie-igcse-biology-0610-t019.scope",
+      "page_refs": [
+        "p.46-48"
+      ],
+      "evidence_note": "Topic 19: Organisms and their environment."
+    },
+    {
+      "target": "topics.caie-igcse-biology-0610-t020.scope",
+      "page_refs": [
+        "p.48-50"
+      ],
+      "evidence_note": "Topic 20: Human influences on ecosystems."
+    },
+    {
+      "target": "topics.caie-igcse-biology-0610-t021.scope",
+      "page_refs": [
+        "p.50-52"
+      ],
+      "evidence_note": "Topic 21: Biotechnology and genetic modification."
+    },
+    {
+      "target": "assessment.papers",
+      "page_refs": [
+        "p.45-49"
+      ],
+      "evidence_note": "Paper structure, durations, weighting."
+    },
+    {
+      "target": "assessment.assessment_objectives",
+      "page_refs": [
+        "p.8-9"
+      ],
+      "evidence_note": "AO definitions in Section 2."
+    },
+    {
+      "target": "assessment.question_styles",
+      "page_refs": [
+        "p.46-47"
+      ],
+      "evidence_note": "Question styles and command words."
+    }
+  ],
+  "draft_notes": []
+}

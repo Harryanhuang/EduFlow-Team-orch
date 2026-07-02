@@ -1,0 +1,437 @@
+{
+  "schema_version": "1",
+  "subject": "computer-science",
+  "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/02-A-Level知识库/03-考试局/AQA/Computer Science (9645)/02-课本与考纲/考纲/oxfordaqa-a-level-computer-science-specification.pdf",
+  "file_checksum_sha256": "ed89f0ce9a2777594b85cd82a89d4aeec1d01f4754485656d6486038fae9be36",
+  "pdfinfo": {
+    "Creator": "Adobe InDesign 19.4 (Windows)",
+    "Producer": "Adobe PDF Library 17.0",
+    "CreationDate": "Wed Jan 29 16:53:01 2025 CST",
+    "ModDate": "Fri Feb 14 23:34:52 2025 CST",
+    "Custom Metadata": "no",
+    "Metadata Stream": "yes",
+    "Tagged": "no",
+    "UserProperties": "no",
+    "Suspects": "no",
+    "Form": "AcroForm",
+    "JavaScript": "no",
+    "Pages": "68",
+    "Encrypted": "no",
+    "Page size": "595.276 x 841.89 pts (A4)",
+    "Page rot": "0",
+    "File size": "1771431 bytes",
+    "Optimized": "yes",
+    "PDF version": "1.7"
+  },
+  "total_pages": 68,
+  "pages": [
+    {
+      "physical_page": 1,
+      "printed_page": 1,
+      "chars": 2763,
+      "first_200": "International AS and A-level Computer Science (9645) Specification For teaching from September 2024 onwards For International AS exams May/June 2025 onwards For International A-level exams May/June 20"
+    },
+    {
+      "physical_page": 2,
+      "printed_page": 2,
+      "chars": 2763,
+      "first_200": "40 3.11 Advanced algorithms 42 3.12 Functional programming 43 3.13 Theory of computation 48 3.14 Networking and cyber security 52 3.15 Databases 57 Visit oxfordaqa.com/9645 for the most up-to-date spe"
+    },
+    {
+      "physical_page": 3,
+      "printed_page": 3,
+      "chars": 2763,
+      "first_200": "to assessment: equality and inclusion 66 5.7 Working with OxfordAQA for the first time 66 5.8 Private candidates 66 6 Appendix: Standard OxfordAQA assembly language instruction set 67 Are you"
+    },
+    {
+      "physical_page": 4,
+      "printed_page": 4,
+      "chars": 2763,
+      "first_200": "ts these changes. This flexible, accessible and rigorous qualification, is backed by top quality support, resources and professional development. This up-to-date specification focuses on the knowledge"
+    },
+    {
+      "physical_page": 5,
+      "printed_page": 5,
+      "chars": 2763,
+      "first_200": "l for your teaching and that you have limited time to find or develop good quality materials. That’s why we’ve worked with experienced teachers to provide resources that will help"
+    },
+    {
+      "physical_page": 6,
+      "printed_page": 6,
+      "chars": 2763,
+      "first_200": "on, resources, support and administration OxfordAQA International AS and A-level Computer Science (9645). For International AS exams May/June 2025 onwards. For International A-level exams May/June 202"
+    },
+    {
+      "physical_page": 7,
+      "printed_page": 7,
+      "chars": 2763,
+      "first_200": "computer science What’s assessed What’s assessed This paper tests a student’s ability to program using both This paper tests a student’s knowledge, skills and procedural and object-oriented programmin"
+    },
+    {
+      "physical_page": 8,
+      "printed_page": 8,
+      "chars": 2763,
+      "first_200": "but this is not a requirement. • real/float • Boolean • character • string • date/time. 3.1.2 Programming concepts Content Additional information Use, understand and know how the following statement"
+    },
+    {
+      "physical_page": 9,
+      "printed_page": 9,
+      "chars": 2763,
+      "first_200": "t • AND • OR – lowest. 12 Visit oxfordaqa.com/9645 for the most up-to-date specification, resources, support and administration OxfordAQA International AS and A-level Computer Science (9645). For Inte"
+    },
+    {
+      "physical_page": 10,
+      "printed_page": 10,
+      "chars": 2763,
+      "first_200": "from a subroutine. In C# and VB.Net this can be achieved using tuples. Know that variables that are accessible throughout an entire program are known as global variables. Know that"
+    },
+    {
+      "physical_page": 11,
+      "printed_page": 11,
+      "chars": 2763,
+      "first_200": "array (currently does not support string elements or multi- dimensional arrays) or numpy modules. In programming exams, it will be acceptable to use either lists or arrays to solve a"
+    },
+    {
+      "physical_page": 12,
+      "printed_page": 12,
+      "chars": 2763,
+      "first_200": "and Structure can be used to create records. Visit oxfordaqa.com/9645 for the most up-to-date specification, resources, support and administration 15 OxfordAQA International AS and A-level Computer Sc"
+    },
+    {
+      "physical_page": 13,
+      "printed_page": 13,
+      "chars": 2763,
+      "first_200": "including: • modularised programming • the use of parameters and return values • the use of local or (if supported by language) block scope variables. Be able to explain the"
+    },
+    {
+      "physical_page": 14,
+      "printed_page": 14,
+      "chars": 2763,
+      "first_200": "ternational AS and A-level Computer Science (9645). For International AS exams May/June 2025 onwards. For International A-level exams May/June 2026 onwards. Version 1.1 3.3.4 Aspects of software devel"
+    },
+    {
+      "physical_page": 15,
+      "printed_page": 15,
+      "chars": 2763,
+      "first_200": "Be aware that the implementation must be tested for the presence of errors, using selected test data covering normal (typical), boundary and erroneous data. Students should have practical experience o"
+    },
+    {
+      "physical_page": 16,
+      "printed_page": 16,
+      "chars": 2763,
+      "first_200": "• their time efficiency. • the conditions under which they can be used (if the array/list has to be ordered or not). Formal comparisons using big-O notation will not be"
+    },
+    {
+      "physical_page": 17,
+      "printed_page": 17,
+      "chars": 2763,
+      "first_200": "may be required at A-level. Understand that the time-efficiency of the bubble sort algorithm depends upon the extent to which Students should be able to explain that an efficient version"
+    },
+    {
+      "physical_page": 18,
+      "printed_page": 18,
+      "chars": 2763,
+      "first_200": "ecimal prefixes: • kilo, k - 103 • mega, M - 106 • giga, G - 109 • tera, T - 1012 20 Visit oxfordaqa.com/9645 for the most up-to-date specification,"
+    },
+    {
+      "physical_page": 19,
+      "printed_page": 19,
+      "chars": 2763,
+      "first_200": "to know, understand and be able to use a simplified floating • fixed point form in binary in a given number of bits and representation consisting of a mantissa and"
+    },
+    {
+      "physical_page": 20,
+      "printed_page": 20,
+      "chars": 2763,
+      "first_200": "zero that, in a given number of bits, its closest representation is zero. 22 Visit oxfordaqa.com/9645 for the most up-to-date specification, resources, support and administration OxfordAQA Internation"
+    },
+    {
+      "physical_page": 21,
+      "printed_page": 21,
+      "chars": 2763,
+      "first_200": "character G. • English lowercase letters start at code 97. Understand the difference between the character code For example, the pure binary representation of the digit 6 representation of a"
+    },
+    {
+      "physical_page": 22,
+      "printed_page": 22,
+      "chars": 2763,
+      "first_200": "• x and y coordinates of top left corner of object • colour of object outline • line width of object outline • colour of object fill. 3.5.5.3 Comparing bitmapped"
+    },
+    {
+      "physical_page": 23,
+      "printed_page": 23,
+      "chars": 2763,
+      "first_200": "sample resolution secs = number of seconds. Be able to describe Nyquist’s theorem and use it to calculate the minimum sampling rate that should be used to sample a sound"
+    },
+    {
+      "physical_page": 24,
+      "printed_page": 24,
+      "chars": 2763,
+      "first_200": "uency of letters in the plaintext, making it susceptible to frequency analysis • once the shift applied to one letter is identified, the shift applied to all letters is known."
+    },
+    {
+      "physical_page": 25,
+      "printed_page": 25,
+      "chars": 2763,
+      "first_200": "n success. computational security. 26 Visit oxfordaqa.com/9645 for the most up-to-date specification, resources, support and administration OxfordAQA International AS and A-level Computer Science (964"
+    },
+    {
+      "physical_page": 26,
+      "printed_page": 26,
+      "chars": 2763,
+      "first_200": "ware Software is the sequences of instructions that are executed using the hardware. • software. 3.6.2 Software Content Additional information Explain what is meant by: • system software • application"
+    },
+    {
+      "physical_page": 27,
+      "printed_page": 27,
+      "chars": 2763,
+      "first_200": "he commands describe the process that should be followed to carry out a task. 3.6.3.2 Types of program translator Content Additional information Understand the role of each of the following:"
+    },
+    {
+      "physical_page": 28,
+      "printed_page": 28,
+      "chars": 2763,
+      "first_200": "puter Content Additional information Have an understanding and knowledge of the basic internal components of a computer system. Understand the role of the following components and how they relate to"
+    },
+    {
+      "physical_page": 29,
+      "printed_page": 29,
+      "chars": 2763,
+      "first_200": "save the volatile environment while the interrupt is being might be altered by the ISR. serviced. Students will not be required to explain how interrupts with different priorities are dealt"
+    },
+    {
+      "physical_page": 30,
+      "printed_page": 30,
+      "chars": 2763,
+      "first_200": "• AND NOT • OR • XOR AND • NAND • NOR OR XOR NAND NOR Be familiar with drawing and interpreting logic circuit diagrams involving one or more of"
+    },
+    {
+      "physical_page": 31,
+      "printed_page": 31,
+      "chars": 2763,
+      "first_200": "rcuit that includes D-type flip-flops. Visit oxfordaqa.com/9645 for the most up-to-date specification, resources, support and administration 33 OxfordAQA International AS and A-level Computer Science "
+    },
+    {
+      "physical_page": 32,
+      "printed_page": 32,
+      "chars": 2763,
+      "first_200": "A⋅0=0 A+0=A A⋅1=A A+1=1 A⋅(A+B)=A A+A⋅B=A A+ ⋅B=A+B A⨁B= A⋅ + ⋅B 34 Visit oxfordaqa.com/9645 for the most up-to-date specification, resources, support and administration OxfordAQA International AS and"
+    },
+    {
+      "physical_page": 33,
+      "printed_page": 33,
+      "chars": 2763,
+      "first_200": "instruction should be executed. • Up to three operands are stored in 20 bits: • 2 x 4 bits are allocated to storing two register numbers • 12 bits are"
+    },
+    {
+      "physical_page": 34,
+      "printed_page": 34,
+      "chars": 2763,
+      "first_200": "instruction set, which is based on the ARM processor • load instruction set. A copy of the instruction set will be included • add in any exam paper that includes"
+    },
+    {
+      "physical_page": 35,
+      "printed_page": 35,
+      "chars": 2763,
+      "first_200": "ation. implicit constructor. Know that a constructor is called when an object is instantiated from a class and be able to create constructor functions. Know that a constructor initialises an"
+    },
+    {
+      "physical_page": 36,
+      "printed_page": 36,
+      "chars": 2763,
+      "first_200": "ine which methods and properties of a base class can be Properties and methods that are common to the base class accessed in subclasses without being accessible to objects in"
+    },
+    {
+      "physical_page": 37,
+      "printed_page": 37,
+      "chars": 2763,
+      "first_200": "on, resources, support and administration OxfordAQA International AS and A-level Computer Science (9645). For International AS exams May/June 2025 onwards. For International A-level exams May/June 202"
+    },
+    {
+      "physical_page": 38,
+      "printed_page": 38,
+      "chars": 2763,
+      "first_200": "use of an adjacency used to represent a graph. matrix to represent both weighted and unweighted graphs. Be able to compare the use of adjacency matrices and Adjacency matrices are"
+    },
+    {
+      "physical_page": 39,
+      "printed_page": 39,
+      "chars": 2763,
+      "first_200": "the position that the record is stored at in a hash Be able to apply simple hash functions. table. Understand the properties of a good hash function. Hash functions often"
+    },
+    {
+      "physical_page": 40,
+      "printed_page": 40,
+      "chars": 2763,
+      "first_200": "rience of using a programming language library that implements the dictionary data structure. Visit oxfordaqa.com/9645 for the most up-to-date specification, resources, support and administration 41 O"
+    },
+    {
+      "physical_page": 41,
+      "printed_page": 41,
+      "chars": 2763,
+      "first_200": "OxfordAQA International AS and A-level Computer Science (9645). For International AS exams May/June 2025 onwards. For International A-level exams May/June 2026 onwards. Version 1.1 3.12 Functional pro"
+    },
+    {
+      "physical_page": 42,
+      "printed_page": 42,
+      "chars": 2763,
+      "first_200": "this set includes the integers. Be familiar with the concept of a real number and the set ℝ of real numbers. Know that a function is a first-class object in"
+    },
+    {
+      "physical_page": 43,
+      "printed_page": 43,
+      "chars": 2763,
+      "first_200": "co-domain is C and so has the type A → C. If the domain and co-domains of f and g are ℝ, and f(x) = (x + 2) and g(y)"
+    },
+    {
+      "physical_page": 44,
+      "printed_page": 44,
+      "chars": 2763,
+      "first_200": "ecursive function to fact n = n * fact n - 1 apply. Have experience of using the map higher-order function. map is the name of a higher-order function that"
+    },
+    {
+      "physical_page": 45,
+      "printed_page": 45,
+      "chars": 2763,
+      "first_200": "applying a combining function, together with an initial value, Know that there are two fold functions in Haskell: foldl to a list of values. starts with the leftmost item of"
+    },
+    {
+      "physical_page": 46,
+      "printed_page": 46,
+      "chars": 2763,
+      "first_200": "listTwo = [\"Adam\", \"Ananya\"] Be familiar with representing a list as a concatenation of a For example, in Haskell the list [4, 3, 5] can be written head and a"
+    },
+    {
+      "physical_page": 47,
+      "printed_page": 47,
+      "chars": 2763,
+      "first_200": "the most up-to-date specification, resources, support and administration 47 OxfordAQA International AS and A-level Computer Science (9645). For International AS exams May/June 2025 onwards. For Intern"
+    },
+    {
+      "physical_page": 48,
+      "printed_page": 48,
+      "chars": 2763,
+      "first_200": "regular expression. Know that any regular language can be recognised by an FSM. Know that a regular expression can be written to describe the language recognised by any FSM. 48"
+    },
+    {
+      "physical_page": 49,
+      "printed_page": 49,
+      "chars": 2763,
+      "first_200": "anguages that regular For example, BNF can represent the following languages that expressions cannot represent. cannot be represented by regular expressions: • palindromes • a language where strings m"
+    },
+    {
+      "physical_page": 50,
+      "printed_page": 50,
+      "chars": 2763,
+      "first_200": "merge sort • Dijkstra’s shortest path algorithm • searching a binary search tree. 50 Visit oxfordaqa.com/9645 for the most up-to-date specification, resources, support and administration OxfordAQA Int"
+    },
+    {
+      "physical_page": 51,
+      "printed_page": 51,
+      "chars": 2763,
+      "first_200": "QA International AS and A-level Computer Science (9645). For International AS exams May/June 2025 onwards. For International A-level exams May/June 2026 onwards. Version 1.1 3.14 Networking and cyber "
+    },
+    {
+      "physical_page": 52,
+      "printed_page": 52,
+      "chars": 2763,
+      "first_200": "June 2026 onwards. Version 1.1 3.14.2.2 Thin-client versus thick-client computing Content Additional information Compare and contrast thin-client computing with thick-client computing. Understand the "
+    },
+    {
+      "physical_page": 53,
+      "printed_page": 53,
+      "chars": 2763,
+      "first_200": "advantages and disadvantages of wireless networking compared to wired networking. Visit oxfordaqa.com/9645 for the most up-to-date specification, resources, support and administration 53 OxfordAQA Int"
+    },
+    {
+      "physical_page": 54,
+      "printed_page": 54,
+      "chars": 2763,
+      "first_200": "er protocols Content Additional information Be familiar with the following protocols: • FTP (File Transfer Protocol) • HTTP (Hypertext Transfer Protocol) • HTTPS (Hypertext Transfer Protocol Secure) •"
+    },
+    {
+      "physical_page": 55,
+      "printed_page": 55,
+      "chars": 2763,
+      "first_200": "tained and used. Discuss worms, trojans and viruses, and the vulnerabilities that they exploit 56 Visit oxfordaqa.com/9645 for the most up-to-date specification, resources, support and administration "
+    },
+    {
+      "physical_page": 56,
+      "printed_page": 56,
+      "chars": 2763,
+      "first_200": "Students will not be expected to differentiate between first, second and third normal forms. Understand why databases are normalised. Visit oxfordaqa.com/9645 for the most up-to-date specification, re"
+    },
+    {
+      "physical_page": 57,
+      "printed_page": 57,
+      "chars": 2763,
+      "first_200": "can result If two clients edit a record simultaneously, the first saved in the lost update problem. update can be lost when it is overwritten by the second one. Know"
+    },
+    {
+      "physical_page": 58,
+      "printed_page": 58,
+      "chars": 2763,
+      "first_200": "ure of the dataset • nodes, edges and properties in graph schema. • An individual entity about which data are stored is represented as an oval node. • The properties"
+    },
+    {
+      "physical_page": 59,
+      "printed_page": 59,
+      "chars": 2763,
+      "first_200": "• using a similar method to that which a human might follow, or • that is at least as good as a human might arrive at. The problems solved by"
+    },
+    {
+      "physical_page": 60,
+      "printed_page": 60,
+      "chars": 2763,
+      "first_200": "Visit oxfordaqa.com/9645 for the most up-to-date specification, resources, support and administration OxfordAQA International AS and A-level Computer Science (9645). For International AS exams May/Jun"
+    },
+    {
+      "physical_page": 61,
+      "printed_page": 61,
+      "chars": 2763,
+      "first_200": "• plagiarism • use in surveillance systems. • risk to human existence from superintelligent systems. Visit oxfordaqa.com/9645 for the most up-to-date specification, resources, support and administrati"
+    },
+    {
+      "physical_page": 62,
+      "printed_page": 62,
+      "chars": 2763,
+      "first_200": " 4.2 Aims and learning outcomes This specification encourages students to develop a broad range of the knowledge, understanding and skills of Computer Science, as a basis for progression into"
+    },
+    {
+      "physical_page": 63,
+      "printed_page": 63,
+      "chars": 2763,
+      "first_200": "Unit weightings (approx %) Overall weighting of AOs (approx %) Unit 1 Unit 2 Unit 3 Unit 4 AO1 0 11 0 16 27 AO2 0 7 0 9 16"
+    },
+    {
+      "physical_page": 64,
+      "printed_page": 64,
+      "chars": 2763,
+      "first_200": "For International AS exams May/June 2025 onwards. For International A-level exams May/June 2026 onwards. Version 1.1 5 General administration We are committed to delivering assessments of the highest "
+    },
+    {
+      "physical_page": 65,
+      "printed_page": 65,
+      "chars": 2763,
+      "first_200": "ull A-level qualification and 90% of the maximum uniform mark on the aggregate of the A2 units. Students who fail to reach the minimum standard for grade E will be"
+    },
+    {
+      "physical_page": 66,
+      "printed_page": 66,
+      "chars": 2763,
+      "first_200": "be submitted. 5.5 Previous learning and prerequisites There are no previous learning requirements. Any requirements for entry to a course based on this specification are at the discretion of schools."
+    },
+    {
+      "physical_page": 67,
+      "printed_page": 67,
+      "chars": 2763,
+      "first_200": "f> Store the value that is in register d into the memory location specified by <memory ref> STR Rd, [Rn] Store the value that is in register d into the"
+    },
+    {
+      "physical_page": 68,
+      "printed_page": 68,
+      "chars": 2763,
+      "first_200": "and store the result in register d LSL Rd, Rn, <operand2> Logically shift left the value stored in register n by the number of bits specified by <operand2> and store"
+    }
+  ]
+}

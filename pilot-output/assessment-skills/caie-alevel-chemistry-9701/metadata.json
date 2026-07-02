@@ -1,0 +1,49 @@
+{
+  "schema_version": "1",
+  "id": "caie-alevel-chemistry-9701",
+  "assessment_type": "syllabus",
+  "system": "CAIE A-Level",
+  "board_or_owner": "Cambridge Assessment International Education",
+  "subject": "Chemistry",
+  "level": "A-Level (16-19 years)",
+  "assessment_code": "9701",
+  "valid_from": "2025",
+  "valid_to": "2026",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_syllabus",
+      "title": "Cambridge A-Level Chemistry 9701 syllabus (2025-2026)",
+      "url": "https://www.cambridgeinternational.org/Images/9701-2025-2026-syllabus.pdf",
+      "source_document_type": "syllabus",
+      "source_layout_profile": "caie_igcse_syllabus",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/02-A-Level知识库/03-考试局/CAIE/Chemistry (9701)/02-课本与考纲/考纲/CAIE_Chemistry_9701_Syllabus_2025-2026.pdf",
+      "file_checksum_sha256": "bc40af1d0789b3217524f380337d3a36e49264f5f28ab991e3e85c9102d53ad2",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "2025-2026 syllabus",
+      "retrieved_at": "2026-07-02",
+      "page_refs": [
+        "p.1-98"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "printed_page ≈ physical_page for CAIE IGCSE syllabi.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text.",
+      "notes": "Source bundle lives at pilot-output/source-bundles/caie-alevel-chemistry-9701-guide/."
+    }
+  ],
+  "aliases": [
+    "alevel chemistry",
+    "cambridge a-level Chemistry",
+    "caie a-level Chemistry"
+  ],
+  "canonical_id": "caie-alevel-chemistry-9701",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "Cambridge A-Level Chemistry 9701. 5 papers."
+}

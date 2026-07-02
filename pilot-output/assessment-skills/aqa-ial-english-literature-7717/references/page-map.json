@@ -1,0 +1,79 @@
+{
+  "schema_version": "1",
+  "source_id": "primary_syllabus",
+  "page_ref_convention": "printed_page",
+  "physical_page_offset_note": "printed_page ≈ physical_page for CAIE IGCSE syllabi.",
+  "mappings": [
+    {
+      "target": "assessment_identity.system",
+      "page_refs": [
+        "title page (physical 1)"
+      ],
+      "evidence_note": "Cambridge IGCSE syllabus publication."
+    },
+    {
+      "target": "assessment_identity.valid_from",
+      "page_refs": [
+        "title page (physical 1)"
+      ],
+      "evidence_note": "Syllabus valid 2025 → 2026."
+    },
+    {
+      "target": "topics.aqa-ial-english-literature-7717.scope",
+      "page_refs": [
+        "p.5-9"
+      ],
+      "evidence_note": "Aims, content overview, assessment overview."
+    },
+    {
+      "target": "topics.aqa-ial-english-literature-7717-t003.scope",
+      "page_refs": [
+        "p.10-12"
+      ],
+      "evidence_note": "Topic 3: Subject content – International AS."
+    },
+    {
+      "target": "topics.aqa-ial-english-literature-7717-t004.scope",
+      "page_refs": [
+        "p.12-14"
+      ],
+      "evidence_note": "Topic 4: Subject content – International A-level."
+    },
+    {
+      "target": "topics.aqa-ial-english-literature-7717-t001.scope",
+      "page_refs": [
+        "p.14-16"
+      ],
+      "evidence_note": "Topic 1: Unit 1: Aspects of dramatic tragedy."
+    },
+    {
+      "target": "topics.aqa-ial-english-literature-7717-t002.scope",
+      "page_refs": [
+        "p.16-18"
+      ],
+      "evidence_note": "Topic 2: Unit 2: Place in literary texts."
+    },
+    {
+      "target": "assessment.papers",
+      "page_refs": [
+        "p.45-49"
+      ],
+      "evidence_note": "Paper structure, durations, weighting."
+    },
+    {
+      "target": "assessment.assessment_objectives",
+      "page_refs": [
+        "p.8-9"
+      ],
+      "evidence_note": "AO definitions in Section 2."
+    },
+    {
+      "target": "assessment.question_styles",
+      "page_refs": [
+        "p.46-47"
+      ],
+      "evidence_note": "Question styles and command words."
+    }
+  ],
+  "draft_notes": []
+}

@@ -86,3 +86,76 @@ def deactivate_alias(alias: str) -> bool:
     )
     conn.commit()
     return True
+
+
+# ── V3 P0-3: Subject hierarchy ─────────────────────────────────────
+
+# Static subject parent map (loaded at import). Format: child -> [parents...]
+# Example: ap-calculus-bc -> [ap-math, ap-stem]
+# In V3 production this should be configurable via CLI/DB, but v0.1 ships
+# with a minimal default for AP curriculum subjects.
+_SUBJECT_PARENTS: dict[str, list[str]] = {
+    "ap-calculus-bc": ["ap-math", "ap-stem"],
+    "ap-calculus-ab": ["ap-math", "ap-stem"],
+    "ap-physics-1": ["ap-physics", "ap-stem"],
+    "ap-physics-2": ["ap-physics", "ap-stem"],
+    "ap-physics-c-mechanics": ["ap-physics", "ap-stem"],
+    "ap-chemistry": ["ap-stem"],
+    "ap-biology": ["ap-stem"],
+    "ap-computer-science-a": ["ap-cs", "ap-stem"],
+    "igcse-biology": ["igcse-science"],
+    "igcse-chemistry": ["igcse-science"],
+    "igcse-physics": ["igcse-science"],
+    "igcse-mathematics": ["igcse-math"],
+    "a-level-biology": ["a-level-science"],
+    "a-level-chemistry": ["a-level-science"],
+    "a-level-physics": ["a-level-science"],
+    "a-level-mathematics": ["a-level-math"],
+}
+
+
+def get_subject_parents(subject: str) -> list[str]:
+    """Return parent subjects for a given child subject (hierarchical inheritance).
+
+    Example: get_subject_parents("ap-calculus-bc") -> ["ap-math", "ap-stem"]
+    """
+    return _SUBJECT_PARENTS.get(subject, [])
+
+
+def get_subject_hierarchy(subject: str) -> list[str]:
+    """Return full hierarchy from immediate to root: [child, parent1, parent2, ...].
+
+    Example: get_subject_hierarchy("ap-calculus-bc") -> ["ap-calculus-bc", "ap-math", "ap-stem"]
+    """
+    hierarchy = [subject]
+    visited = {subject}
+    queue = [subject]
+    while queue:
+        current = queue.pop(0)
+        for parent in _SUBJECT_PARENTS.get(current, []):
+            if parent not in visited:
+                visited.add(parent)
+                hierarchy.append(parent)
+                queue.append(parent)
+    return hierarchy
+
+
+def resolve_subject_scopes(subject: str) -> list[str]:
+    """Return all scope strings that should match memories for a given subject.
+
+    Returns ["subject:ap-calculus-bc", "subject:ap-math", "subject:ap-stem"] etc.
+    Useful for cross-agent subject recall.
+    """
+    return [f"subject:{s}" for s in get_subject_hierarchy(subject)]
+
+
+def add_subject_parent(child: str, parent: str) -> None:
+    """Add a parent-child relationship at runtime."""
+    parents = _SUBJECT_PARENTS.setdefault(child, [])
+    if parent not in parents:
+        parents.append(parent)
+
+
+def list_subject_hierarchy() -> dict[str, list[str]]:
+    """Return the full subject parent map."""
+    return {k: list(v) for k, v in _SUBJECT_PARENTS.items()}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1",
+  "id": "dse-information-and-communication-technology",
+  "assessment_type": "syllabus",
+  "system": "DSE",
+  "board_or_owner": "HKEAA / Curriculum Development Council",
+  "subject": "Information and Communication Technology",
+  "level": "DSE Senior Secondary (S4-S6)",
+  "assessment_code": "DSE Information and Communication Technology",
+  "valid_from": "2024",
+  "valid_to": "(ongoing)",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_syllabus",
+      "title": "DSE Information and Communication Technology Syllabus",
+      "url": "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html",
+      "source_document_type": "syllabus",
+      "source_layout_profile": "caie_igcse_syllabus",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/05-DSE知识库/03-学科知识/DSE Information and Communication Technology/02-課本與考綱/考綱/Information_and_Communication_Technology_DSE_Syllabus_2021.pdf",
+      "file_checksum_sha256": "4474f6f00340a8dfc05d67a87458cb937cbc5b095510632cedc08812c3a7ebd2",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "2028 syllabus (Category A)",
+      "retrieved_at": "2026-07-02",
+      "page_refs": [
+        "p.1-120"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "printed_page ≈ physical_page for CAIE IGCSE syllabi.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text.",
+      "notes": "Source bundle lives at pilot-output/source-bundles/dse-information-and-communication-technology-guide/."
+    }
+  ],
+  "aliases": [
+    "dse information and communication technology",
+    "hkdse"
+  ],
+  "canonical_id": "dse-information-and-communication-technology",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "HKDSE Information and Communication Technology (Category A)."
+}

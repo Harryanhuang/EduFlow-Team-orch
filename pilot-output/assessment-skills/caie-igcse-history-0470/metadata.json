@@ -1,0 +1,49 @@
+{
+  "schema_version": "1",
+  "id": "caie-igcse-history-0470",
+  "assessment_type": "syllabus",
+  "system": "CAIE IGCSE",
+  "board_or_owner": "Cambridge Assessment International Education",
+  "subject": "History",
+  "level": "IGCSE (14-16 years)",
+  "assessment_code": "0470",
+  "valid_from": "2027",
+  "valid_to": "2028",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_syllabus",
+      "title": "Cambridge IGCSE History 0470 syllabus (2027-2028)",
+      "url": "https://www.cambridgeinternational.org/Images/721327-2027-2028-syllabus.pdf",
+      "source_document_type": "syllabus",
+      "source_layout_profile": "caie_igcse_syllabus",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/01-IGCSE知识库/03-学科知识/CAIE/History (0470)/02-课本与考纲/考纲/CAIE_History_0470_Syllabus_2027-2028.pdf",
+      "file_checksum_sha256": "d5592566b8f3bcdc502675d39f6d987b1100e77f26ed35c6a2bebdbe12e3b925",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "2027-2028 syllabus",
+      "retrieved_at": "2026-07-01",
+      "page_refs": [
+        "p.1-42"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "printed_page ≈ physical_page for CAIE IGCSE syllabi.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text.",
+      "notes": "Source bundle lives at pilot-output/source-bundles/caie-igcse-history-0470-guide/."
+    }
+  ],
+  "aliases": [
+    "igcse history",
+    "cambridge history 0470",
+    "caie history"
+  ],
+  "canonical_id": "caie-igcse-history-0470",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "Cambridge IGCSE History 0470. Single-tier; core content + depth studies + coursework or alternative."
+}

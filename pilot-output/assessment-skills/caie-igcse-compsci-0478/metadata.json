@@ -1,0 +1,49 @@
+{
+  "schema_version": "1",
+  "id": "caie-igcse-compsci-0478",
+  "assessment_type": "syllabus",
+  "system": "CAIE IGCSE",
+  "board_or_owner": "Cambridge Assessment International Education",
+  "subject": "Computer Science",
+  "level": "IGCSE (14-16 years)",
+  "assessment_code": "0478",
+  "valid_from": "2023",
+  "valid_to": "2025",
+  "package_version": "1.0.0",
+  "source_provenance": [
+    {
+      "role": "primary_syllabus",
+      "title": "Cambridge IGCSE Computer Science 0478 syllabus (2023-2025)",
+      "url": "https://www.cambridgeinternational.org/Images/596138-2023-2025-syllabus.pdf",
+      "source_document_type": "syllabus",
+      "source_layout_profile": "caie_igcse_syllabus",
+      "source_format": "pdf",
+      "local_archive_ref": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/01-留学课程通用知识/01-国际课程体系/01-IGCSE知识库/03-学科知识/CAIE/Computer Science (0478)/02-课本与考纲/考纲/CAIE_ComputerScience_0478_Syllabus_2025-2026.pdf",
+      "file_checksum_sha256": "48cd6cf03e2a29cdf6c106aee2677919a6b17b4b50a7ab6ddded1ca7633cbdb4",
+      "is_official": true,
+      "license_status": "reference_only",
+      "document_version": "2025-2026 reprint of 2023-2025 syllabus",
+      "retrieved_at": "2026-06-30",
+      "page_refs": [
+        "p.1-55"
+      ],
+      "page_ref_convention": "printed_page",
+      "physical_page_ref_note": "printed_page ≈ physical_page for CAIE IGCSE syllabi.",
+      "extraction_tool": "pdftotext",
+      "extraction_method": "structured_extract",
+      "extraction_verified": false,
+      "extraction_note": "Structured extraction only; no full official text copied.",
+      "redistribution_note": "Do not redistribute official text.",
+      "notes": "Source bundle lives at pilot-output/source-bundles/caie-igcse-compsci-0478-guide/."
+    }
+  ],
+  "aliases": [
+    "igcse computer science",
+    "cambridge computer science 0478",
+    "caie compsci"
+  ],
+  "canonical_id": "caie-igcse-compsci-0478",
+  "supersedes": [],
+  "breaking_changes": false,
+  "notes": "Cambridge IGCSE Computer Science 0478. Single-tier; two papers (theory + problem-solving/programming)."
+}
