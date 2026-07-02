@@ -8,8 +8,8 @@ import json
 from helpers import attr_patch, env_patch, isolated_env, run_cli
 from eduflow.commands import say as say_cmd
 from eduflow.commands import task as task_cmd
-from eduflow.runtime import paths
-from eduflow.store import local_facts, task_event_scanner, task_publish_gate, tasks
+from eduflow.runtime import paths, tunables
+from eduflow.store import employee_read_model, local_facts, task_event_scanner, task_publish_gate, tasks
 
 
 def _healthy_watchdog_rows():
@@ -3749,3 +3749,141 @@ def test_task_dispatch_ap_title_without_workflow_flag_auto_routes():
         assert "auto_mounted=true" in out
         t = tasks.get("T-1")
         assert t["workflow_id"] == "ap-knowledge-base-optimization"
+
+
+# ── M2: ops-dashboard ─────────────────────────────────────────────
+
+
+def test_task_ops_dashboard_json_outputs_valid_json():
+    with isolated_env():
+        rc, out, err = run_cli(["task", "ops-dashboard", "--json"])
+        assert rc == 0, err
+        data = json.loads(out)
+        assert "generated_at_ms" in data
+        assert "summary" in data
+        assert "top_actions" in data
+        assert "employees" in data
+        assert "review_queue" in data
+        assert "manager_actions" in data
+        assert "degraded" in data
+        assert "notes" in data
+
+
+def test_task_ops_dashboard_stale_display_in_summary_and_top_actions():
+    with isolated_env():
+        now = employee_read_model.now_ms()
+        status_at = now - employee_read_model.STATUS_STALE_MS - 60_000
+        heartbeat_at = now - 60_000
+
+        with attr_patch(local_facts, now_ms=lambda: status_at):
+            local_facts.upsert_status("worker_course", "进行中", "old task")
+        with attr_patch(local_facts, now_ms=lambda: heartbeat_at):
+            local_facts.touch_heartbeat("worker_course")
+
+        with attr_patch(employee_read_model, now_ms=lambda: now):
+            rc, out, err = run_cli(["task", "ops-dashboard", "--json"])
+        assert rc == 0, err
+        data = json.loads(out)
+        assert data["summary"]["stale_display"] == 1
+        reasons = [a["reason"] for a in data["top_actions"]]
+        assert any("stale" in r.lower() for r in reasons)
+
+
+def test_task_ops_dashboard_high_priority_unread_higher_priority_than_stale():
+    with isolated_env():
+        now = employee_read_model.now_ms()
+        status_at = now - employee_read_model.STATUS_STALE_MS - 60_000
+        heartbeat_at = now - 60_000
+
+        # worker_course: stale_display
+        with attr_patch(local_facts, now_ms=lambda: status_at):
+            local_facts.upsert_status("worker_course", "进行中", "old task")
+        with attr_patch(local_facts, now_ms=lambda: heartbeat_at):
+            local_facts.touch_heartbeat("worker_course")
+
+        # worker_builder: high-priority unread
+        local_facts.upsert_status("worker_builder", "待命", "ready")
+        local_facts.append_message(
+            "worker_builder", "manager", "urgent builder request", priority="高"
+        )
+
+        with attr_patch(employee_read_model, now_ms=lambda: now):
+            rc, out, err = run_cli(["task", "ops-dashboard", "--json"])
+        assert rc == 0, err
+        data = json.loads(out)
+        actions = data["top_actions"]
+        assert len(actions) >= 2
+        assert actions[0]["priority"] < actions[1]["priority"]
+        assert "unread" in actions[0]["reason"].lower()
+        assert any("stale" in a["reason"].lower() for a in actions[1:])
+
+
+def test_task_ops_dashboard_degraded_mode_keeps_rc_zero():
+    with isolated_env():
+        local_facts.upsert_status("worker_course", "待命", "ready")
+        local_facts.touch_heartbeat("worker_course")
+
+        def boom():
+            raise RuntimeError("review queue exploded")
+
+        with attr_patch(tasks, list_review_queue=boom):
+            rc, out, err = run_cli(["task", "ops-dashboard", "--json"])
+        assert rc == 0, err
+        data = json.loads(out)
+        assert data["degraded"]
+        assert any(
+            d["source"] == "tasks.list_review_queue" and d["error_type"] == "RuntimeError"
+            for d in data["degraded"]
+        )
+        assert data["summary"]["agents_total"] == 1
+
+
+def test_task_ops_dashboard_text_contains_summary_top_actions_employees():
+    with isolated_env():
+        local_facts.upsert_status("worker_course", "待命", "ready")
+        local_facts.touch_heartbeat("worker_course")
+
+        rc, out, err = run_cli(["task", "ops-dashboard"])
+        assert rc == 0, err
+        assert "ops dashboard" in out
+        assert "summary:" in out
+        assert "top_actions:" in out
+        assert "employees:" in out
+
+
+def test_task_ops_dashboard_warm_idle_in_summary():
+    team_toml = """
+chat_id = "oc_demo"
+lark_profile = "eduflow-team"
+
+[team]
+session = "EduFlow"
+
+[team.residency]
+default_mode = "warm"
+resident_agents = ["manager"]
+warm_idle_timeout_s = 600
+handoff_buffer_s = 300
+wake_timeout_s = 60
+
+[team.agents.manager]
+cli = "claude-code"
+role = "manager"
+
+[team.agents.worker_course]
+cli = "claude-code"
+role = "course"
+"""
+    with isolated_env() as tmp:
+        (tmp / "eduflow.toml").write_text(team_toml, encoding="utf-8")
+        tunables.reset_cache()
+
+        local_facts.upsert_status("worker_course", "待命", "ready")
+        local_facts.touch_heartbeat("worker_course")
+
+        rc, out, err = run_cli(["task", "ops-dashboard", "--json"])
+        assert rc == 0, err
+        data = json.loads(out)
+        assert data["summary"]["warm_idle"] == 1
+        assert data["summary"]["agents_total"] == 1
+        assert data["employees"][0]["residency_label"] == "温备"

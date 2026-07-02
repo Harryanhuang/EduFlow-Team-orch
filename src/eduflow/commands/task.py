@@ -18,6 +18,7 @@
   task manager-actions
   task manager-action-apply <action_code> --subject-id <id> [--confirm] [--skip-verifier]
   task manager-panel
+  task ops-dashboard [--json] [--text]
   task evidence-account [--task-id T] [--workflow W] [--json]
   task supervisor-check [--advance] [--send] [--json]
   # downstream helpers (Phase 2/3 skeletons; not Phase 1 core)
@@ -38,12 +39,12 @@ from eduflow.commands import say as say_cmd
 from eduflow.commands import workflow as workflow_cmd
 from eduflow.runtime import config, paths, tunables
 from eduflow.store import (
-    task_event_scanner, task_publish_gate, task_publish_render, tasks,
-    subject_verifier,
+    employee_read_model, task_event_scanner, task_publish_gate,
+    task_publish_render, tasks, subject_verifier,
 )
 from eduflow.util import (
     error_exit, fmt_time_ms, maybe_print_help, pop_flag, usage_error,
-    pop_bool_flag, print_json,
+    pop_bool_flag, print_json, now_ms,
 )
 
 _AUTO_STAGE_REASSURANCE_REASONS = frozenset({
@@ -90,6 +91,7 @@ USAGE = (
     "  eduflow task manager-actions\n"
     "  eduflow task manager-action-apply <action_code> --subject-id <id> [--confirm] [--skip-verifier]\n"
     "  eduflow task manager-panel\n"
+    "  eduflow task ops-dashboard [--json] [--text]\n"
     "  eduflow task evidence-account [--task-id T] [--workflow W] [--json]\n"
     "  eduflow task supervisor-check [--advance] [--send] [--json]\n"
     "  # downstream helpers (Phase 2/3 skeletons; not Phase 1 core)\n"
@@ -1712,6 +1714,341 @@ def _cmd_manager_panel(rest: list[str]) -> int:
     return 0
 
 
+# ── Ops Dashboard (M2) ───────────────────────────────────────────
+#
+# Lightweight operator snapshot: team status, top actions, review queue,
+# manager actions, and degraded-mode aggregation.  Designed to return in
+# ~5 seconds and never crash the whole command when one sub-aggregation
+# fails.
+
+
+_OPS_DASHBOARD_SUMMARY_KEYS = (
+    "active",
+    "stale_display",
+    "waiting_inbox",
+    "blocked",
+    "idle",
+    "warm_idle",
+    "unknown",
+)
+
+
+def _degraded_note(source: str, exc: Exception) -> dict:
+    return {
+        "source": source,
+        "error_type": type(exc).__name__,
+        "message": str(exc),
+    }
+
+
+def _safe_aggregate(label: str, fn):
+    """Call ``fn`` and return (result, degraded_note)."""
+    try:
+        return fn(), None
+    except Exception as exc:  # noqa: BLE001
+        return [], _degraded_note(label, exc)
+
+
+def _ops_dashboard_summary(employees: list[dict]) -> dict:
+    summary = {key: 0 for key in _OPS_DASHBOARD_SUMMARY_KEYS}
+    summary["agents_total"] = len(employees)
+    for emp in employees:
+        verdict = str(emp.get("display_verdict") or "unknown")
+        if verdict in summary:
+            summary[verdict] += 1
+        else:
+            summary["unknown"] += 1
+    return summary
+
+
+def _ops_dashboard_top_actions(
+    employees: list[dict],
+    manager_packets: list[dict],
+    review_queue_rows: list[dict],
+) -> list[dict]:
+    """Generate prioritized operator actions.
+
+    Priority order (lower number = higher priority):
+      1. high-priority unread (including warm-agent wake-or-route)
+      2. blocked / wake failure
+      3. stale_display
+      4. manager_action packets + residency policy mismatch
+      5. review_queue
+      6. warm_idle wake/sleep issues
+    """
+    actions: list[dict] = []
+
+    for emp in employees:
+        agent = str(emp.get("agent") or "")
+        verdict = str(emp.get("display_verdict") or "")
+        residency_mode = str(emp.get("residency_mode") or "")
+        residency_label = str(emp.get("residency_label") or "")
+        unread_high = int(emp.get("unread_high_priority_count") or 0)
+        wake_status = str(emp.get("wake_status") or "")
+        sleep_decision = str(emp.get("sleep_decision") or "")
+        blocker = str(emp.get("blocker") or "")
+
+        # 1. High-priority unread (highest)
+        if unread_high > 0:
+            if residency_mode == "warm" or residency_label == "温备":
+                actions.append({
+                    "priority": 1,
+                    "agent": agent,
+                    "reason": f"warm agent has {unread_high} high-priority unread message(s)",
+                    "recommended_next_action": (
+                        "Wake or route inbox; verify wake path if CLI is sleeping."
+                    ),
+                })
+            else:
+                actions.append({
+                    "priority": 1,
+                    "agent": agent,
+                    "reason": f"{unread_high} high-priority unread message(s)",
+                    "recommended_next_action": (
+                        emp.get("recommended_next_action")
+                        or "Consume high-priority inbox."
+                    ),
+                })
+            continue
+
+        # 2. Wake failure / blocked
+        if wake_status == "wake_failed":
+            actions.append({
+                "priority": 2,
+                "agent": agent,
+                "reason": "wake failure evidence detected",
+                "recommended_next_action": (
+                    "Repair wake path; check runtime/CLI readiness."
+                ),
+            })
+            continue
+        if verdict == "blocked" or blocker:
+            actions.append({
+                "priority": 2,
+                "agent": agent,
+                "reason": blocker or "agent is blocked",
+                "recommended_next_action": (
+                    emp.get("recommended_next_action") or "Resolve block."
+                ),
+            })
+            continue
+
+        # 3. Stale display
+        if verdict == "stale_display":
+            actions.append({
+                "priority": 3,
+                "agent": agent,
+                "reason": str(emp.get("staleness_reason") or "display stale"),
+                "recommended_next_action": (
+                    emp.get("recommended_next_action")
+                    or "Refresh status/heartbeat/log surface."
+                ),
+            })
+            continue
+
+        # 4. Residency policy mismatch (resident agent should never sleep)
+        if residency_mode == "resident" and sleep_decision == "sleep_ok":
+            actions.append({
+                "priority": 4,
+                "agent": agent,
+                "reason": "residency policy mismatch: resident agent flagged as sleep candidate",
+                "recommended_next_action": (
+                    "Review residency policy; resident agents should never sleep."
+                ),
+            })
+            continue
+
+    # 4. Manager action packets
+    for packet in manager_packets:
+        actions.append({
+            "priority": 4,
+            "agent": str(packet.get("assignee") or ""),
+            "reason": str(packet.get("reason") or "manager action"),
+            "recommended_next_action": (
+                str(packet.get("suggested_brief") or "")
+                or str(packet.get("action_code") or "")
+            ),
+        })
+
+    # 5. Review queue
+    for t in review_queue_rows:
+        actions.append({
+            "priority": 5,
+            "agent": str(t.get("assignee") or t.get("reviewer") or ""),
+            "reason": f"task awaiting review: {t.get('title', '')}",
+            "recommended_next_action": "Review or assign reviewer.",
+        })
+
+    # 6. Warm idle wake/sleep issues
+    for emp in employees:
+        if str(emp.get("display_verdict") or "") != "warm_idle":
+            continue
+        agent = str(emp.get("agent") or "")
+        sleep_decision = str(emp.get("sleep_decision") or "")
+        if sleep_decision == "sleep_ok":
+            actions.append({
+                "priority": 6,
+                "agent": agent,
+                "reason": "sleep candidate (warm idle beyond threshold)",
+                "recommended_next_action": (
+                    "Review sleep candidate; run residency-sleep dry-run if appropriate."
+                ),
+            })
+        else:
+            actions.append({
+                "priority": 6,
+                "agent": agent,
+                "reason": "warm idle; no active task or unread",
+                "recommended_next_action": (
+                    emp.get("recommended_next_action")
+                    or "Warm standby; wake on assignment."
+                ),
+            })
+
+    actions.sort(key=lambda a: a["priority"])
+    return actions
+
+
+def _build_ops_dashboard() -> dict:
+    """Aggregate the ops dashboard payload with degraded-mode isolation."""
+    degraded: list[dict] = []
+    generated_at_ms = now_ms()
+
+    employees, note = _safe_aggregate(
+        "employee_read_model.build_team_snapshot",
+        employee_read_model.build_team_snapshot,
+    )
+    if note:
+        degraded.append(note)
+
+    summary = _ops_dashboard_summary(employees)
+
+    review_queue_rows, note = _safe_aggregate(
+        "tasks.list_review_queue",
+        tasks.list_review_queue,
+    )
+    if note:
+        degraded.append(note)
+
+    manager_packets: list[dict] = []
+    try:
+        manager_packets = _manager_action_packets()
+    except Exception as exc:  # noqa: BLE001
+        degraded.append(_degraded_note("task_event_scanner.scan_manager_anomalies", exc))
+
+    top_actions = _ops_dashboard_top_actions(employees, manager_packets, review_queue_rows)
+
+    review_queue = [
+        {
+            "id": t["id"],
+            "title": t["title"],
+            "stage": t.get("stage", ""),
+            "assignee": t.get("assignee", ""),
+            "reviewer": t.get("reviewer", ""),
+        }
+        for t in review_queue_rows
+    ]
+    manager_actions = [
+        {
+            "action_code": p.get("action_code", ""),
+            "assignee": p.get("assignee", ""),
+            "subject_id": p.get("subject_id", ""),
+            "subject_name": p.get("subject_name", ""),
+            "apply_allowed": bool(p.get("apply_allowed")),
+            "suggested_brief": p.get("suggested_brief", ""),
+        }
+        for p in manager_packets
+    ]
+
+    return {
+        "generated_at_ms": generated_at_ms,
+        "summary": summary,
+        "top_actions": top_actions,
+        "employees": employees,
+        "review_queue": review_queue,
+        "manager_actions": manager_actions,
+        "degraded": degraded,
+        "notes": [],
+    }
+
+
+def _emit_ops_dashboard_text(dashboard: dict) -> None:
+    summary = dashboard["summary"]
+    print("ops dashboard")
+    print(
+        f"summary: agents={summary['agents_total']} "
+        f"active={summary['active']} "
+        f"stale_display={summary['stale_display']} "
+        f"waiting_inbox={summary['waiting_inbox']} "
+        f"blocked={summary['blocked']} "
+        f"warm_idle={summary['warm_idle']} "
+        f"idle={summary['idle']} "
+        f"unknown={summary['unknown']}"
+    )
+
+    print("top_actions:")
+    if dashboard["top_actions"]:
+        for i, action in enumerate(dashboard["top_actions"][:10], 1):
+            print(
+                f"  {i}. [p{action['priority']}] {action['agent']}: "
+                f"{action['reason']} -> {action['recommended_next_action']}"
+            )
+    else:
+        print("  none")
+
+    print("employees:")
+    if dashboard["employees"]:
+        for emp in dashboard["employees"]:
+            task = emp.get("current_task_title") or emp.get("declared_task") or "-"
+            print(
+                f"  - {emp.get('agent', '')} "
+                f"verdict={emp.get('display_verdict', '')} "
+                f"residency={emp.get('residency_label', '')} "
+                f"task={task} "
+                f"next={emp.get('recommended_next_action', '')}"
+            )
+    else:
+        print("  none")
+
+    if dashboard["review_queue"]:
+        print("review_queue:")
+        for t in dashboard["review_queue"]:
+            print(
+                f"  - {t['id']} [{t['stage']}] {t['title']} "
+                f"assignee={t['assignee']} reviewer={t['reviewer']}"
+            )
+
+    if dashboard["manager_actions"]:
+        print("manager_actions:")
+        for a in dashboard["manager_actions"]:
+            print(
+                f"  - {a['action_code']} assignee={a['assignee']} "
+                f"apply_allowed={str(a['apply_allowed']).lower()} "
+                f"subject={a['subject_name'] or a['subject_id']}"
+            )
+
+    degraded = dashboard["degraded"]
+    print(f"degraded: {len(degraded)}")
+    if degraded:
+        for d in degraded:
+            print(f"  - {d['source']}: {d['error_type']}: {d['message']}")
+
+
+def _cmd_ops_dashboard(rest: list[str]) -> int:
+    as_json = pop_bool_flag(rest, "--json")
+    as_text = pop_bool_flag(rest, "--text")
+    if rest:
+        return usage_error(USAGE)
+    if not as_json and not as_text:
+        as_text = True
+    dashboard = _build_ops_dashboard()
+    if as_json:
+        print_json(dashboard)
+    else:
+        _emit_ops_dashboard_text(dashboard)
+    return 0
+
+
 def _cmd_supervisor_check(rest: list[str]) -> int:
     advance = pop_bool_flag(rest, "--advance")
     do_send = pop_bool_flag(rest, "--send")
@@ -2548,6 +2885,7 @@ SUBCOMMANDS = {
     "manager-actions": _cmd_manager_actions,
     "manager-action-apply": _cmd_manager_action_apply,
     "manager-panel": _cmd_manager_panel,
+    "ops-dashboard": _cmd_ops_dashboard,
     "evidence-account": _cmd_evidence_account,
     "subject-inventory": _cmd_subject_inventory,
     "batch-closeout": _cmd_batch_closeout,
