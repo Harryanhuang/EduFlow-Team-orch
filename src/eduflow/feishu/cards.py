@@ -33,6 +33,28 @@ def _normalised_color(color: str) -> str:
     return color if color in _VALID_COLORS else "blue"
 
 
+_MD_ESCAPE_TRANS = str.maketrans({
+    "*": "\\*",
+    "_": "\\_",
+    "`": "\\`",
+    "[": "\\[",
+    "]": "\\]",
+    "<": "\\<",
+    ">": "\\>",
+})
+
+
+def _escape_md(text: str) -> str:
+    """Escape Lark markdown metacharacters in dynamic card content.
+
+    Interpolating raw task titles, agent names, blocker text, workflow IDs,
+    or recommended actions into card markdown can accidentally start bold /
+    italic / code / link / HTML spans. Escaping keeps the rendered card
+    faithful to the source value.
+    """
+    return str(text).translate(_MD_ESCAPE_TRANS)
+
+
 def simple_card(title: str, body: str, *, color: str = "blue") -> dict:
     """Single-section card v2: header + one markdown body element.
 
@@ -162,53 +184,53 @@ def employee_snapshot_card(snapshot: dict, *, title_suffix: str = "") -> dict:
     workflow_id/gate/next_action, staleness_reason,
     recommended_next_action, and residency_label/mode.
     """
-    agent = str(snapshot.get("agent") or "unknown")
-    verdict = str(snapshot.get("display_verdict") or "unknown")
+    agent = _escape_md(snapshot.get("agent") or "unknown")
+    verdict = _escape_md(snapshot.get("display_verdict") or "unknown")
 
     title = f"👤 {agent}"
     if title_suffix:
-        title = f"{title} {title_suffix}"
+        title = f"{title} {_escape_md(title_suffix)}"
 
     lines: list[str] = [f"**状态**: {verdict}"]
 
-    residency_label = str(snapshot.get("residency_label") or "")
-    residency_mode = str(snapshot.get("residency_mode") or "")
+    residency_label = _escape_md(snapshot.get("residency_label") or "")
+    residency_mode = _escape_md(snapshot.get("residency_mode") or "")
     if residency_label or residency_mode:
         mode_part = f" ({residency_mode})" if residency_mode else ""
         lines.append(f"**驻留**: {residency_label}{mode_part}")
 
-    declared_status = str(snapshot.get("declared_status") or "")
+    declared_status = _escape_md(snapshot.get("declared_status") or "")
     if declared_status:
         lines.append(f"**声明状态**: {declared_status}")
 
-    current_task = str(snapshot.get("current_task_title") or "")
+    current_task = _escape_md(snapshot.get("current_task_title") or "")
     if not current_task:
-        current_task = str(snapshot.get("declared_task") or "")
+        current_task = _escape_md(snapshot.get("declared_task") or "")
     if current_task:
         lines.append(f"**当前任务**: {current_task}")
 
-    workflow_id = str(snapshot.get("workflow_id") or "")
+    workflow_id = _escape_md(snapshot.get("workflow_id") or "")
     if workflow_id:
         lines.append(f"**工作流**: `{workflow_id}`")
-    workflow_gate = str(snapshot.get("workflow_gate") or "")
-    workflow_gate_status = str(snapshot.get("workflow_gate_status") or "")
+    workflow_gate = _escape_md(snapshot.get("workflow_gate") or "")
+    workflow_gate_status = _escape_md(snapshot.get("workflow_gate_status") or "")
     if workflow_gate:
         lines.append(
             f"**关口**: {workflow_gate} / {workflow_gate_status or '-'}"
         )
-    workflow_next_action = str(snapshot.get("workflow_next_action") or "")
+    workflow_next_action = _escape_md(snapshot.get("workflow_next_action") or "")
     if workflow_next_action:
         lines.append(f"**下一步**: {workflow_next_action}")
 
-    staleness_reason = str(snapshot.get("staleness_reason") or "")
+    staleness_reason = _escape_md(snapshot.get("staleness_reason") or "")
     if staleness_reason:
         lines.append(f"**陈旧原因**: {staleness_reason}")
 
-    recommended_next_action = str(snapshot.get("recommended_next_action") or "")
+    recommended_next_action = _escape_md(snapshot.get("recommended_next_action") or "")
     if recommended_next_action:
         lines.append(f"**建议动作**: {recommended_next_action}")
 
-    degraded = str(snapshot.get("degraded") or "")
+    degraded = _escape_md(snapshot.get("degraded") or "")
     if degraded:
         lines.append(f"<font color='grey'>degraded: {degraded}</font>")
 
@@ -229,7 +251,7 @@ def team_snapshot_card(dashboard: dict, *, title_suffix: str = "") -> dict:
 
     title = "👥 团队状态快照"
     if title_suffix:
-        title = f"{title} {title_suffix}"
+        title = f"{title} {_escape_md(title_suffix)}"
 
     elements: list = []
 
@@ -258,9 +280,9 @@ def team_snapshot_card(dashboard: dict, *, title_suffix: str = "") -> dict:
     elements.append({"tag": "markdown", "content": "**🔥 Top 3 动作**"})
     if top_actions:
         for i, action in enumerate(top_actions[:3], 1):
-            agent = str(action.get("agent") or "-")
-            reason = str(action.get("reason") or "")
-            recommended_next_action = str(
+            agent = _escape_md(action.get("agent") or "-")
+            reason = _escape_md(action.get("reason") or "")
+            recommended_next_action = _escape_md(
                 action.get("recommended_next_action") or ""
             )
             elements.append({
@@ -290,16 +312,16 @@ def team_snapshot_card(dashboard: dict, *, title_suffix: str = "") -> dict:
             "waiting_inbox": "📬",
         }
         for emp in flagged[:10]:
-            verdict = str(emp.get("display_verdict") or "")
-            emoji = emoji_map.get(verdict, "⚠️")
-            task = (
+            verdict = _escape_md(emp.get("display_verdict") or "")
+            emoji = emoji_map.get(str(emp.get("display_verdict") or ""), "⚠️")
+            task = _escape_md(
                 emp.get("current_task_title")
                 or emp.get("declared_task")
                 or "-"
             )
             elements.append({
                 "tag": "markdown",
-                "content": f"{emoji} **{emp.get('agent')}** [{verdict}] {task}",
+                "content": f"{emoji} **{_escape_md(emp.get('agent'))}** [{verdict}] {task}",
             })
     else:
         elements.append({
@@ -315,14 +337,14 @@ def team_snapshot_card(dashboard: dict, *, title_suffix: str = "") -> dict:
                 elements.append({
                     "tag": "markdown",
                     "content": (
-                        f"- `{item.get('source')}`: "
-                        f"{item.get('error_type')}: {item.get('message')}"
+                        f"- `{_escape_md(item.get('source'))}`: "
+                        f"{_escape_md(item.get('error_type'))}: {_escape_md(item.get('message'))}"
                     ),
                 })
             else:
                 elements.append({
                     "tag": "markdown",
-                    "content": f"- {item}",
+                    "content": f"- {_escape_md(item)}",
                 })
 
     # Header color: red if anyone is blocked or has high-priority unread,

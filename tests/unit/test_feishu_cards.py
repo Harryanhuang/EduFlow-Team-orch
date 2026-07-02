@@ -226,7 +226,7 @@ def test_employee_snapshot_card_emits_v2_schema_and_fields():
     }
     card = employee_snapshot_card(snapshot)
     assert card["schema"] == "2.0"
-    assert "worker_course" in card["header"]["title"]["content"]
+    assert "worker\\_course" in card["header"]["title"]["content"]
     assert card["header"]["template"] == "green"
     body = card["body"]["elements"][0]["content"]
     assert "active" in body
@@ -234,9 +234,28 @@ def test_employee_snapshot_card_emits_v2_schema_and_fields():
     assert "resident" in body
     assert "IGCSE Physics 0625" in body
     assert "igcse-subject-launch" in body
-    assert "review_handoff_gate" in body
+    assert "review\\_handoff\\_gate" in body
     assert "worker submits for review" in body
     assert "Continue current task." in body
+
+
+def test_employee_snapshot_card_escapes_markdown_metacharacters():
+    """Dynamic values containing markdown metacharacters must be escaped so
+    they render literally rather than accidentally starting bold / italic /
+    code / link / HTML spans."""
+    from eduflow.feishu.cards import employee_snapshot_card
+    card = employee_snapshot_card({
+        "agent": "agent_*bold`_test",
+        "display_verdict": "blocked",
+        "declared_status": "status _italic_",
+        "current_task_title": "task [link](x) <html>",
+        "recommended_next_action": "retry `cmd` now",
+    })
+    body = card["body"]["elements"][0]["content"]
+    assert "agent\\_\\*bold\\`\\_test" in card["header"]["title"]["content"]
+    assert "task \\[link\\](x) \\<html\\>" in body
+    assert "status \\_italic\\_" in body
+    assert "retry \\`cmd\\` now" in body
 
 
 def test_employee_snapshot_card_red_for_blocked():
@@ -323,10 +342,10 @@ def test_team_snapshot_card_emits_v2_schema_and_sections():
     assert "常驻 1" in body
     assert "温备 1" in body
     assert "API key missing" in body
-    assert "worker_cc" in body
-    assert "worker_course" in body
+    assert "worker\\_cc" in body
+    assert "worker\\_course" in body
     assert "blocked" in body
-    assert "stale_display" in body
+    assert "stale\\_display" in body
 
 
 def test_team_snapshot_card_renders_degraded_sources():
@@ -350,7 +369,7 @@ def test_team_snapshot_card_renders_degraded_sources():
         if e.get("tag") == "markdown"
     )
     assert "降级来源" in body
-    assert "employee_read_model.build_team_snapshot" in body
+    assert "employee\\_read\\_model.build\\_team\\_snapshot" in body
     assert "status store unreachable" in body
 
 

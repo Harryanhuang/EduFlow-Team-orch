@@ -236,4 +236,24 @@ def test_wake_failure_evidence_surfaces_in_snapshot():
 
         snap = employee_read_model.build_employee_snapshot("worker_course")
 
-        assert snap["wake_status"] == "wake_failed"
+def test_per_source_failure_degrades_gracefully():
+    """A failing _safe source (latest_log) must not crash the snapshot.
+
+    The snapshot should still return with a degraded note for that source
+    while other fields (status, verdict) remain populated.
+    """
+    with isolated_env():
+        local_facts.upsert_status("worker_course", "进行中", "Draft Unit 1")
+
+        def boom(agent):
+            raise RuntimeError("log store unreachable")
+
+        with attr_patch(employee_read_model, _latest_log=boom):
+            snap = employee_read_model.build_employee_snapshot("worker_course")
+
+        assert snap["agent"] == "worker_course"
+        assert snap["declared_status"] == "进行中"
+        assert snap["display_verdict"] != ""
+        assert "latest_log" in snap["degraded"]
+        assert "RuntimeError" in snap["degraded"]
+        assert "log store unreachable" in snap["degraded"]

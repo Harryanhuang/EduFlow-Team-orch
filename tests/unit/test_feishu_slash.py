@@ -1112,7 +1112,7 @@ def test_employees_slash_returns_team_snapshot_card():
     assert reply["schema"] == "2.0"
     body = _all_markdown(reply)
     assert "2 agents" in body
-    assert "worker_cc" in body
+    assert "worker\\_cc" in body
     assert "API key missing" in body
     assert "常驻 1" in body
 
@@ -1153,7 +1153,7 @@ def test_ops_slash_returns_ops_dashboard_card():
         assert isinstance(reply, dict), f"{cmd} should return card dict"
         assert reply["schema"] == "2.0"
         body = _all_markdown(reply)
-        assert "worker_course" in body
+        assert "worker\\_course" in body
         assert "API key missing" in body
         assert "Resolve blocker." in body
 
@@ -1179,7 +1179,7 @@ def test_employee_slash_returns_single_employee_card():
         )
     assert isinstance(reply, dict), f"/employee should return card dict, got {type(reply)}"
     assert reply["schema"] == "2.0"
-    assert "worker_course" in reply["header"]["title"]["content"]
+    assert "worker\\_course" in reply["header"]["title"]["content"]
     body = _all_markdown(reply)
     assert "进行中" in body
     assert "Draft Unit 1" in body

@@ -1991,7 +1991,13 @@ def _build_ops_dashboard() -> dict:
         degraded.append(note)
     manager_packets = _extract_action_packets(manager_anomaly_rows)
 
-    top_actions = _ops_dashboard_top_actions(employees, manager_packets, review_queue_rows)
+    top_actions, note = _safe_aggregate(
+        "top_actions",
+        lambda: _ops_dashboard_top_actions(employees, manager_packets, review_queue_rows),
+        default=[],
+    )
+    if note:
+        degraded.append(note)
 
     review_queue = [
         {

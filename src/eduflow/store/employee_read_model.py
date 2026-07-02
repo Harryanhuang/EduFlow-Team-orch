@@ -319,7 +319,7 @@ def classify_display_verdict(snapshot: dict) -> str:
         return "active"
 
     # Warm standby is a distinct, wakeable low-cost idle state.
-    if residency_label == "温备" and unread_high == 0 and not has_active_task:
+    if snapshot.get("residency_mode") == "warm" and unread_high == 0 and not has_active_task:
         return "warm_idle"
 
     if status in _IDLE_STATUSES and unread_high == 0:
@@ -369,6 +369,8 @@ def summarize_next_action(snapshot: dict) -> str:
     if verdict == "waiting_inbox":
         return f"Consume {unread_high} high-priority unread message(s)."
     if verdict == "blocked":
+        if snapshot.get("wake_status") == "wake_failed":
+            return "Repair wake path; check runtime/CLI readiness and retry residency-wake."
         if blocker:
             return f"Resolve blocker: {blocker}"
         return "Resolve task block."
