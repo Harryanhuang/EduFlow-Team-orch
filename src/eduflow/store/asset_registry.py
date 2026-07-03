@@ -220,6 +220,200 @@ _GATE_KEYWORDS: dict[str, list[str]] = {
 }
 
 
+# OPT-7: a SEPARATE keyword surface for the no-confident topic
+# table, organized as a stable taxonomy of drift classes. The
+# three classes capture the operator's mental model:
+#
+#   - surface: visible-but-stale display vs. functional state.
+#     The agent looks wrong in the panel/card/dashboard but
+#     the underlying task is still moving. Examples: 外显陈旧,
+#     heartbeat-fresh-but-status-stale, 二手外显, status_lag.
+#
+#   - runtime: agent / provider / runtime liveness problems.
+#     The agent's runtime itself is degraded and needs repair.
+#     Examples: 温备, wake failed, 429 fallback, cross-pool
+#     failover, pane ready but inbox not consumed.
+#
+#   - verdict: handoff / verdict-authority / task-truth-drift
+#     problems. Two different lanes (worker / reviewer / manager)
+#     disagree about the same task state. Examples: task truth
+#     drift, manager panel / supervisor-check conflict, 状态
+#     不一致.
+#
+# These keywords are not real workflow gate ids and live here
+# (not in `_GATE_KEYWORDS`) so the gate-keyword mirror check in
+# the drift-check stays meaningful for the real workflow gates.
+# The workflow-recommend no-confident path unions these keywords
+# with the real gate keywords when picking a topic.
+#
+# OPT-8: decision tree for placing a new drift keyword.
+#
+#   "agent looks wrong in the panel / dashboard / card"        -> surface
+#   "agent runtime is degraded or in fallback / wake"            -> runtime
+#   "two lanes (worker / reviewer / manager) disagree on state"  -> verdict
+#
+# If the new keyword belongs to a new class entirely (e.g. cost,
+# SLA, identity), add a new entry in `_TOPIC_CLASS_REGISTRY` AND
+# extend `_TOPIC_KEYWORDS` + `_GATE_TOPIC` in the same change.
+# The drift-check `topic_class_not_in_registry` finding will detect
+# any `_GATE_TOPIC` reference that points at a class not in
+# `_TOPIC_CLASS_REGISTRY`.
+_TOPIC_KEYWORDS: dict[str, list[str]] = {
+    "surface": [
+        # English surface-drift vocabulary
+        "stale display", "stale_display", "stale status", "stale_status",
+        "status_lag", "status lag", "status drift", "status-drift",
+        "heartbeat", "heartbeat fresh", "heartbeat stale",
+        "pane not ready", "pane_ready", "pane_not_ready",
+        # Chinese surface-drift vocabulary
+        "外显陈旧", "外显滞后", "实际功能正常", "功能正常但显示陈旧",
+        "二手外显", "二手状态",
+    ],
+    "runtime": [
+        # English runtime-drift vocabulary
+        "温备",  # surfaced via _GATE_KEYWORDS["warm_residency_drift"] too;
+        # duplicated here so the no-confident path can also match
+        # without depending on a real gate.
+        "温备 agent", "warm idle", "warm_idle",
+        "wake failed", "wake_failed", "wake failure",
+        "429", "fallback", "env drift", "env-drift",
+        "inbox not consumed", "pane ready but inbox",
+        "runtime_reality", "respawn", "cross-pool", "cross pool",
+    ],
+    "verdict": [
+        # English verdict-drift vocabulary
+        "task truth drift", "supervisor-check", "supervisor check",
+        "manager panel", "manager-panel", "状态不一致", "状态漂移",
+        "truth drift", "状态对不上",
+        "review verdict", "verdict authority", "正式 verdict",
+        "manager verdict",
+    ],
+}
+
+
+# OPT-8: canonical registry of topic classes (the "what kind of
+# drift" axis). Each class has a stable name, a short semantic, a
+# one-line decision rule, and a list of example keywords. The
+# registry is the source of truth for which classes exist; when a
+# developer adds a new class, they must add an entry here. The
+# drift-check `topic_class_not_in_registry` finding detects any
+# `_GATE_TOPIC` reference that points at a class not listed here,
+# and `topic_keyword_class_not_registered` detects any
+# `_TOPIC_KEYWORDS` class that lacks a registry entry.
+_TOPIC_CLASS_REGISTRY: dict[str, dict] = {
+    "surface": {
+        "semantic": "agent looks wrong in the panel / dashboard / card",
+        "decision_rule": "visible-but-stale display vs. functional state",
+        "examples": [
+            "stale display", "外显陈旧", "二手外显",
+            "heartbeat stale", "status_lag",
+        ],
+    },
+    "runtime": {
+        "semantic": "agent runtime is degraded or in fallback / wake",
+        "decision_rule": "agent / provider / runtime liveness problem",
+        "examples": [
+            "温备", "wake failed", "429", "fallback",
+            "pane ready but inbox",
+        ],
+    },
+    "verdict": {
+        "semantic": "two lanes (worker / reviewer / manager) disagree on state",
+        "decision_rule": "handoff / verdict-authority / task-truth-drift problem",
+        "examples": [
+            "manager panel", "状态不一致",
+            "task truth drift", "verdict authority",
+        ],
+    },
+}
+
+
+# OPT-5 / OPT-7: a single source of truth for "what should the
+# operator do when no active workflow matches a free-form query".
+# Each topic is keyed by either a real gate name (from
+# `_GATE_KEYWORDS`) or a topic-key id from the surface/runtime/verdict
+# taxonomy in `_TOPIC_KEYWORDS`. The topic adds a suggested
+# next_step and an ordered list of candidate_skills. Adding a new
+# drift concept is now a one-place change:
+#
+#   - add the keyword bucket to `_GATE_KEYWORDS` (real gate) or
+#     `_TOPIC_KEYWORDS` (surface / runtime / verdict)
+#   - add a topic entry here
+#
+# The first skill in `candidate_skills` is the primary; the rest are
+# alternatives the operator can reach for if the primary is not the
+# right fit. The drift-check `gate_keyword_mirror_drift` finding
+# keeps the real-gate mirror in sync with `eduflow.commands.workflow`;
+# the topic table is a separate concern and does not need mirroring.
+_GATE_TOPIC: dict[str, dict] = {
+    # Real-gate topics (referenced from `_GATE_KEYWORDS`).
+    "stale_state_reconciliation": {
+        "next_step": "./scripts/eduflowteam task ops-dashboard --json",
+        "candidate_skills": ["eduflow-runtime-task-drift-explainer"],
+    },
+    "runtime_reality": {
+        "next_step": "./scripts/eduflowteam task ops-dashboard --json",
+        "candidate_skills": ["eduflow-runtime-task-drift-explainer"],
+    },
+    "review_verdict_authority_gate": {
+        "next_step": "./scripts/eduflowteam task ops-dashboard --json",
+        "candidate_skills": [
+            "eduflow-harness-surface-audit",
+            "eduflow-runtime-task-drift-explainer",
+        ],
+    },
+    # Surface-drift class.
+    "surface": {
+        "next_step": "./scripts/eduflowteam task ops-dashboard --json",
+        "candidate_skills": ["eduflow-runtime-task-drift-explainer"],
+    },
+    # Runtime-drift class.
+    "runtime": {
+        "next_step": "./scripts/eduflowteam task ops-dashboard --json",
+        "candidate_skills": ["eduflow-runtime-task-drift-explainer"],
+    },
+    # Verdict-drift class. Primary is harness-surface-audit (most
+    # task-truth-drift cases are a harness / role / verdict-authority
+    # issue); alternative is the runtime drift explainer for the
+    # subset surfaced via status_lag or runtime lag.
+    "verdict": {
+        "next_step": "./scripts/eduflowteam task ops-dashboard --json",
+        "candidate_skills": [
+            "eduflow-harness-surface-audit",
+            "eduflow-runtime-task-drift-explainer",
+        ],
+    },
+}
+
+
+def derive_no_confident_topics() -> list[tuple[frozenset, str, list[str]]]:
+    """Build the no-confident topic table from the unified gate sources.
+
+    Each topic in `_GATE_TOPIC` looks up its keywords in either
+    `_GATE_KEYWORDS` (real workflow gates) or `_TOPIC_KEYWORDS`
+    (drift concepts that have no real gate id). The mirror stays
+    clean: `_GATE_KEYWORDS` is the gate-keyword surface used by the
+    asset recommend scoring and the workflow.py mirror; `_TOPIC_KEYWORDS`
+    is the no-confident-only surface for status / runtime / task-truth
+    drift concepts the operator mentions in free-form text.
+
+    Returns a list of (keyword_set, next_step, candidate_skills) tuples
+    ordered as in `_GATE_TOPIC`. Topics without any keyword surface
+    are silently skipped.
+    """
+    topics: list[tuple[frozenset, str, list[str]]] = []
+    for topic_id, topic in _GATE_TOPIC.items():
+        keywords = _GATE_KEYWORDS.get(topic_id) or _TOPIC_KEYWORDS.get(topic_id) or []
+        if not keywords:
+            continue
+        topics.append((
+            frozenset(keywords),
+            str(topic.get("next_step") or "eduflowteam workflow list"),
+            list(topic.get("candidate_skills") or []),
+        ))
+    return topics
+
+
 def _extract_workflow_gates(readme_path: Path) -> list[str]:
     """Parse `## Core Gates` from a workflow README and return gate names.
 
@@ -913,6 +1107,48 @@ def drift_check(assets: Iterable[Asset] | None = None) -> dict:
                     "recommend scoring does not silently drop gate concepts.",
                 ],
             })
+
+    # 7. OPT-8: topic-class hygiene. Every `_GATE_TOPIC` key must be
+    # either a real gate (in `_GATE_KEYWORDS`) or a registered topic
+    # class (in `_TOPIC_CLASS_REGISTRY`). Every `_TOPIC_KEYWORDS` key
+    # must also be in `_TOPIC_CLASS_REGISTRY`. These two checks
+    # together make sure adding a new drift class is a single,
+    # deterministic change with a clear semantic.
+    real_gates = set(_GATE_KEYWORDS)
+    registered_classes = set(_TOPIC_CLASS_REGISTRY)
+    gate_topic_keys = set(_GATE_TOPIC)
+    unknown_classes = sorted(
+        gate_topic_keys - real_gates - registered_classes
+    )
+    if unknown_classes:
+        findings.append({
+            "category": "topic_class_not_in_registry",
+            "unknown_classes": unknown_classes,
+            "severity": "info",
+            "remediation": [
+                "Either remove the unknown `_GATE_TOPIC` keys, or add an "
+                "entry for each in `_TOPIC_CLASS_REGISTRY` with a "
+                "semantic, decision_rule, and examples.",
+                "If the class is a brand-new drift axis (e.g. cost, "
+                "SLA, identity), document the decision tree in the "
+                "`_TOPIC_KEYWORDS` docstring before adding the entry.",
+            ],
+        })
+    topic_keyword_classes = set(_TOPIC_KEYWORDS)
+    unregistered_topic_classes = sorted(
+        topic_keyword_classes - registered_classes
+    )
+    if unregistered_topic_classes:
+        findings.append({
+            "category": "topic_keyword_class_not_registered",
+            "unregistered_classes": unregistered_topic_classes,
+            "severity": "info",
+            "remediation": [
+                "Add a `_TOPIC_CLASS_REGISTRY` entry for each class in "
+                "`_TOPIC_KEYWORDS` so the decision tree and the keyword "
+                "list stay in sync.",
+            ],
+        })
 
     return {
         "ok": not any(f.get("severity") == "error" for f in findings),

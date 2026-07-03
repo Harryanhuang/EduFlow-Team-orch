@@ -100,13 +100,80 @@ _RECOMMEND_KEYWORDS = {
     "realrun-to-workflow": [
         "realrun", "real run", "workflow", "builder", "gap", "asset",
         "maintenance", "maintainer", "case note", "沉淀", "复盘", "流程资产",
+        # M8: task-truth drift operators describe a real run that
+        # exposed a status / handoff / supervisor-check disagreement.
+        # These keywords are the manager-side entry points for turning
+        # the gap into a workflow asset, not a runtime-failover line.
+        "task truth drift", "supervisor-check", "supervisor check",
+        "manager panel", "manager-panel", "状态不一致", "状态漂移",
+        "truth drift", "状态对不上",
     ],
     "ap-knowledge-base-optimization": [
         "ap", "calculus", "computer science", "csa", "physics", "psychology", "statistics",
         "biology", "chemistry", "knowledge base", "qbank", "题库", "知识库",
         "unit", "subject", "subject sample", "advanced placement", "ap exam",
     ],
+    # M8: ops / status-drift class problems previously fell through to
+    # `no confident workflow recommendation`. This bucket routes them
+    # to `runtime-failover-hardening` (env / 429 / fallback / heart-
+    # beat / warm-residency / status_truth_lag class) before the no-
+    # confident path hands off to `task ops-dashboard` + the drift
+    # explainer skill.
+    "runtime-failover-hardening": [
+        "429", "fallback", "runtime", "runtime_reality",
+        "env drift", "env-drift", "runtime drift",
+        "respawn", "cross-pool", "cross pool", "pool",
+        "stale display", "stale_display", "stale status", "stale_status",
+        "status_lag", "status lag", "status drift", "status-drift",
+        "heartbeat", "heartbeat fresh", "heartbeat stale",
+        "inbox not consumed", "pane ready but inbox",
+        "pane not ready", "pane_ready", "pane_not_ready",
+        "warm idle", "warm_idle", "温备", "温备 agent",
+        "wake failed", "wake_failed", "wake failure",
+        "外显陈旧", "外显滞后", "实际功能正常", "功能正常但显示陈旧",
+        "二手外显", "二手状态",
+    ],
 }
+
+# M8 + OPT-5: the no-confident topic table is derived from the
+# unified `_GATE_KEYWORDS` + `_GATE_TOPIC` pair in
+# `eduflow.store.asset_registry`. Adding a new drift concept is now a
+# one-place change: extend `_GATE_KEYWORDS` for the keyword surface
+# and add a topic entry in `_GATE_TOPIC` for the action mapping.
+_NO_CONFIDENT_NEXT_STEPS_CACHE: list[tuple[frozenset, str, list[str]]] | None = None
+
+
+def _no_confident_topics() -> list[tuple[frozenset, str, list[str]]]:
+    """Lazy-resolved no-confident topic list. Cached after first call.
+
+    Imports the asset_registry module on first call to avoid a
+    circular import surface (workflow is imported by some asset
+    registration paths during bootstrap).
+    """
+    global _NO_CONFIDENT_NEXT_STEPS_CACHE
+    if _NO_CONFIDENT_NEXT_STEPS_CACHE is None:
+        try:
+            from eduflow.store import asset_registry
+            _NO_CONFIDENT_NEXT_STEPS_CACHE = asset_registry.derive_no_confident_topics()
+        except Exception:
+            _NO_CONFIDENT_NEXT_STEPS_CACHE = []
+    return _NO_CONFIDENT_NEXT_STEPS_CACHE
+
+
+def _suggest_no_confident_packet(query: str) -> tuple[str, list[str]]:
+    """Pick suggested_next_step + ordered candidate_skills for an unmatched query.
+
+    Returns (next_step, candidate_skills_list). The list is ordered:
+    the first entry is the primary skill, the rest are alternatives.
+    Falls back to the generic list handoff with no skill when no
+    topic matches.
+    """
+    lowered = (query or "").lower()
+    for keywords, next_step, skills in _no_confident_topics():
+        for token in keywords:
+            if token and token in lowered:
+                return next_step, list(skills)
+    return "eduflowteam workflow list", []
 
 _GATE_KEYWORDS = {
     "dispatch_acceptance_gate": ["dispatch", "accept", "accepted", "接单", "派工"],
@@ -821,6 +888,10 @@ def _workflow_recommendations(root: Path, query: str) -> list[dict]:
             if kw.lower() in query_lower
         ]
         doc_hits = sorted(query_tokens & _tokenize(text))[:8]
+        # M8: keyword hits still weight 3x and doc overlap up to 5, but
+        # a single keyword hit is now enough to surface the workflow as
+        # a candidate. The confidence tier labels the row but no longer
+        # gates whether it appears in the output.
         score = len(keyword_hits) * 3 + min(len(doc_hits), 5)
         if score >= 8:
             confidence = "high"
@@ -851,17 +922,47 @@ def _cmd_recommend(root: Path, args: list[str]) -> int:
     if not query:
         return usage_error(USAGE)
     rows = _workflow_recommendations(root, query)
-    confident = [row for row in rows if row["confidence"] in {"high", "medium"}]
+    # M8: a row with at least one keyword hit is a candidate
+    # recommendation, even if its overall score is "low". We only
+    # suppress rows whose only signal is one or two doc-overlap tokens
+    # (the previous "low confidence" tier that hid keyword hits).
+    confident = [row for row in rows
+                 if row["confidence"] in {"high", "medium", "low"}
+                 and row["score"] >= 2]
     if not confident:
+        next_step, candidate_skills = _suggest_no_confident_packet(query)
         print("no confident workflow recommendation")
-        print("suggested_next_step: eduflowteam workflow list")
+        print(f"suggested_next_step: {next_step}")
+        if candidate_skills:
+            print(f"candidate_skill: {candidate_skills[0]}")
+            for alt in candidate_skills[1:]:
+                print(f"also_consider_skill: {alt}")
         return 0
     print("workflow recommendations")
     for row in confident[:3]:
+        marker = " (low confidence candidate)" if row["confidence"] == "low" else ""
         print(
             f"- {row['workflow_id']} confidence={row['confidence']} "
-            f"score={row['score']} reason={row['reason']}"
+            f"score={row['score']} reason={row['reason']}{marker}"
         )
+    # Always also print a next_step hint. When we have any confident
+    # row (including low-confidence candidates), point at the top
+    # match's `workflow use` page. The candidate_skills are shown when
+    # the query is on a topic the operator skill set covers
+    # (status-drift, runtime, task-truth-drift) so they can pair the
+    # workflow with the read-only skill.
+    top = confident[0]
+    print(
+        f"suggested_next_step: ./scripts/eduflowteam workflow use "
+        f"{top['workflow_id']}"
+    )
+    topic_next_step, topic_skills = _suggest_no_confident_packet(query)
+    if topic_skills:
+        # Only attach the skill when the topic matched. A truly
+        # unrelated query keeps the workflow-only output.
+        print(f"candidate_skill: {topic_skills[0]}")
+        for alt in topic_skills[1:]:
+            print(f"also_consider_skill: {alt}")
     return 0
 
 

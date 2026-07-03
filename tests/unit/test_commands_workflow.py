@@ -132,6 +132,21 @@ def _write_three_workflows(root):
         "worker_builder maintains this workflow; reassurance must not抢 manager 正式结论.\n",
         encoding="utf-8",
     )
+
+
+def _write_runtime_failover(root):
+    """Write the runtime-failover-hardening workflow with all 5 standard files."""
+    _write_workflow(root, "runtime-failover-hardening")
+    (root / "runtime-failover-hardening" / "README.md").write_text(
+        "# workflow: runtime-failover-hardening\n\n"
+        "Runtime 容灾机制升级。\n\n"
+        "## Primary Chain\n\nmanager -> worker_builder -> auto_ops -> manager\n\n"
+        "## Core Gates\n\n- runtime_reality\n- repair_acceptance_contract\n"
+        "- file_evidence_gate\n- stale_state_reconciliation\n\n"
+        "## Forbidden Moves\n\n- worker must not bypass manager closeout.\n\n"
+        "worker_builder maintains this workflow; reassurance must not抢 manager 正式结论.\n",
+        encoding="utf-8",
+    )
     (root / "realrun-to-workflow" / "README.md").write_text(
         "# workflow: realrun-to-workflow\n\n"
         "Use for gap note and real run workflow asset maintenance.\n\n"
@@ -1080,6 +1095,209 @@ def test_workflow_recommend_no_match_suggests_list(tmp_path):
     assert err == ""
     assert "no confident workflow recommendation" in out
     assert "eduflowteam workflow list" in out
+
+
+# ── M8: ops / status-drift recommend coverage ───────────────────
+
+
+def test_workflow_recommend_status_drift_query_surfaces_runtime_fallback(tmp_path):
+    """M8: a status-drift query must surface runtime-failover-hardening
+    and attach a candidate_skill (drift explainer) so the operator has
+    a parallel read-only lane."""
+    root = tmp_path / "workflows"
+    _write_three_workflows(root)
+    _write_runtime_failover(root)
+    with env_patch(EDUFLOW_WORKFLOW_DIR=root):
+        rc, out, err = run_cli([
+            "workflow", "recommend",
+            "agent", "外显陈旧但实际功能正常", "想制定优化方案",
+        ])
+    assert rc == 0, err
+    # runtime-failover-hardening must be the top recommendation.
+    assert "runtime-failover-hardening" in out
+    assert "confidence=high" in out or "confidence=medium" in out
+    # candidate_skill surfaces the drift explainer.
+    assert "candidate_skill: eduflow-runtime-task-drift-explainer" in out
+    # next_step points at the workflow use page.
+    assert "suggested_next_step: ./scripts/eduflowteam workflow use" in out
+
+
+def test_workflow_recommend_429_fallback_env_drift(tmp_path):
+    """M8: a runtime/fallback query must recommend runtime-failover-hardening
+    with high confidence via keyword hits."""
+    root = tmp_path / "workflows"
+    _write_three_workflows(root)
+    _write_runtime_failover(root)
+    with env_patch(EDUFLOW_WORKFLOW_DIR=root):
+        rc, out, err = run_cli([
+            "workflow", "recommend", "429", "fallback", "env", "drift",
+        ])
+    assert rc == 0, err
+    lines = out.splitlines()
+    rec_line = next(l for l in lines if l.startswith("- runtime-failover-hardening"))
+    assert "confidence=high" in rec_line, rec_line
+    assert "keywords=429" in rec_line or "fallback" in rec_line
+
+
+def test_workflow_recommend_realrun_chinese_keywords_still_recommend(tmp_path):
+    """M8: 重复真实运行沉淀流程 must still recommend realrun-to-workflow
+    even when score lands in the low tier (single keyword hit)."""
+    root = tmp_path / "workflows"
+    _write_three_workflows(root)
+    with env_patch(EDUFLOW_WORKFLOW_DIR=root):
+        rc, out, err = run_cli([
+            "workflow", "recommend", "重复真实运行沉淀流程",
+        ])
+    assert rc == 0, err
+    # realrun-to-workflow is the only active workflow whose keyword
+    # bucket contains 沉淀. The recommend output must surface it.
+    assert "realrun-to-workflow" in out
+    assert "沉淀" in out
+
+
+def test_workflow_recommend_status_drift_no_active_workflow(tmp_path):
+    """M8: when no active workflow covers the query, the output must
+    still be useful: suggested_next_step points at ops-dashboard and
+    candidate_skill points at the drift explainer skill."""
+    root = tmp_path / "workflows"
+    _write_three_workflows(root)
+    with env_patch(EDUFLOW_WORKFLOW_DIR=root):
+        rc, out, err = run_cli([
+            "workflow", "recommend",
+            "agent", "外显陈旧", "heartbeat", "fresh", "但", "显示", "卡住",
+        ])
+    # The query is on the status-drift topic. The recommendation can
+    # be either a low-confidence candidate OR a no-confident path
+    # with the topic-specific next_step + skill. Both are valid.
+    assert rc == 0, err
+    has_no_confident = "no confident workflow recommendation" in out
+    has_recommendation = "runtime-failover-hardening" in out
+    assert has_no_confident or has_recommendation
+    # Either way, the drift-explainer must be mentioned as the
+    # parallel read-only skill.
+    if has_no_confident:
+        assert "candidate_skill: eduflow-runtime-task-drift-explainer" in out
+        assert "task ops-dashboard" in out
+
+
+def test_workflow_recommend_no_confident_topic_aware_fallback(tmp_path):
+    """M8: an unrelated query still falls back to eduflowteam workflow
+    list (not ops-dashboard), because no topic matched."""
+    root = tmp_path / "workflows"
+    _write_three_workflows(root)
+    with env_patch(EDUFLOW_WORKFLOW_DIR=root):
+        rc, out, err = run_cli([
+            "workflow", "recommend", "banana", "calendar", "purple",
+        ])
+    assert rc == 0, err
+    assert "no confident workflow recommendation" in out
+    assert "eduflowteam workflow list" in out
+    # No topic matched, so no candidate_skill.
+    assert "candidate_skill" not in out
+
+
+def test_workflow_recommend_task_truth_drift_routes_realrun(tmp_path):
+    """M8: supervisor-check / manager panel / 状态不一致 route to
+    realrun-to-workflow + harness-surface-audit candidate skill."""
+    root = tmp_path / "workflows"
+    _write_three_workflows(root)
+    with env_patch(EDUFLOW_WORKFLOW_DIR=root):
+        rc, out, err = run_cli([
+            "workflow", "recommend",
+            "manager", "panel", "supervisor-check", "状态不一致",
+        ])
+    assert rc == 0, err
+    assert "realrun-to-workflow" in out
+    assert "candidate_skill: eduflow-harness-surface-audit" in out
+    # OPT-6: the runtime drift explainer is the alternative.
+    assert "also_consider_skill: eduflow-runtime-task-drift-explainer" in out
+
+
+def test_workflow_recommend_warm_residency_keywords_route_drift(tmp_path):
+    """OPT-5: 温备 / wake failed keywords live in their own gate bucket
+    and route to the drift-explainer via the unified topic table."""
+    root = tmp_path / "workflows"
+    _write_three_workflows(root)
+    _write_runtime_failover(root)
+    with env_patch(EDUFLOW_WORKFLOW_DIR=root):
+        rc, out, err = run_cli([
+            "workflow", "recommend", "温备", "agent", "wake", "failed",
+        ])
+    assert rc == 0, err
+    assert "runtime-failover-hardening" in out
+    assert "candidate_skill: eduflow-runtime-task-drift-explainer" in out
+
+
+def test_workflow_recommend_status_drift_no_match_emits_topic_fallback(tmp_path):
+    """OPT-5: when no active workflow matches but the query is on a
+    drift topic, the no-confident path uses the unified topic table
+    to pick the drift-explainer and ops-dashboard next_step."""
+    root = tmp_path / "workflows"
+    # Only ship the three original workflows; no runtime-failover, so
+    # the recommendation path falls through to the no-confident path.
+    _write_three_workflows(root)
+    with env_patch(EDUFLOW_WORKFLOW_DIR=root):
+        rc, out, err = run_cli([
+            "workflow", "recommend",
+            "外显陈旧", "实际功能正常", "但", "状态", "卡住",
+        ])
+    assert rc == 0, err
+    assert "no confident workflow recommendation" in out
+    assert "candidate_skill: eduflow-runtime-task-drift-explainer" in out
+    assert "task ops-dashboard --json" in out
+
+
+def test_workflow_recommend_no_topic_match_emits_no_skill(tmp_path):
+    """OPT-5: an unrelated query (no topic keyword matches) still
+    falls back to the workflow-list handoff, with no candidate_skill."""
+    root = tmp_path / "workflows"
+    _write_three_workflows(root)
+    with env_patch(EDUFLOW_WORKFLOW_DIR=root):
+        rc, out, err = run_cli([
+            "workflow", "recommend", "purple", "banana", "calendar",
+        ])
+    assert rc == 0, err
+    assert "no confident workflow recommendation" in out
+    assert "candidate_skill" not in out
+    assert "also_consider_skill" not in out
+
+
+def test_workflow_recommend_task_truth_drift_no_active_workflow_emits_alternatives(tmp_path):
+    """OPT-5/OPT-6: the no-confident path also surfaces the
+    multi-skill candidate_skill + also_consider_skill list when the
+    query hits a topic that has multiple candidate_skills."""
+    root = tmp_path / "workflows"
+    _write_three_workflows(root)
+    with env_patch(EDUFLOW_WORKFLOW_DIR=root):
+        rc, out, err = run_cli([
+            "workflow", "recommend",
+            "manager", "panel", "supervisor-check", "状态不一致",
+            "（仅在没有 active workflow 的 fixture 下）",
+        ])
+    # The three-workflow fixture DOES include realrun-to-workflow, so
+    # the query produces a high-confidence match. The recommend path
+    # will then ALSO surface the topic skills (primary + alternative).
+    assert rc == 0, err
+    assert "realrun-to-workflow" in out
+    # The primary is harness-surface-audit; the alternative is the
+    # runtime drift explainer.
+    assert "candidate_skill: eduflow-harness-surface-audit" in out
+    assert "also_consider_skill: eduflow-runtime-task-drift-explainer" in out
+
+
+def test_workflow_recommend_old_subject_launch_does_not_regress(tmp_path):
+    """M8 regression: the original subject-launch example still
+    recommends igcse-subject-launch with high confidence."""
+    root = tmp_path / "workflows"
+    _write_three_workflows(root)
+    with env_patch(EDUFLOW_WORKFLOW_DIR=root):
+        rc, out, err = run_cli([
+            "workflow", "recommend",
+            "launch", "Physics", "0625", "after", "Accounting", "closeout",
+        ])
+    assert rc == 0, err
+    assert "igcse-subject-launch" in out
+    assert "confidence=high" in out
 
 
 def test_workflow_gates_and_closeout_print_gate_surfaces(tmp_path):
