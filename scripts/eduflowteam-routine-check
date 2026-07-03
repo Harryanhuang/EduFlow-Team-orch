@@ -1,0 +1,104 @@
+#!/usr/bin/env bash
+# eduflowteam-routine-check - operator-side routine audit for the harness.
+#
+# Runs the three read-only checks that catch drift between workflow
+# assets, skill/identity assets, and the runtime registry:
+#
+#   1. eduflow workflow validate --strict         (active workflow structural)
+#   2. eduflow asset validate --json              (skill / identity / workflow completeness)
+#   3. eduflow asset drift-check --json --show-remediation  (duplicate / clash / drift)
+#
+# This script is READ-ONLY. It does not install, copy, promote, or
+# delete any asset. The drift-check output is informational; only
+# `errors` (active workflow missing standard files, etc.) fail the
+# overall script. `info` and `warn` findings are listed but do not
+# change the exit code, on the principle that a routine check should
+# surface drift, not block routine operator work.
+#
+# Usage:
+#   ./scripts/eduflowteam-routine-check                # default
+#   REPO=/path/to/repo ./scripts/eduflowteam-routine-check
+#
+# Exit codes:
+#   0  all three checks passed (warnings/info allowed)
+#   1  one or more of the three checks reported an error
+#   2  usage / environment error
+#
+set -euo pipefail
+
+REPO="${REPO:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
+if [ ! -d "$REPO/src/eduflow" ] || [ ! -d "$REPO/scripts" ]; then
+  echo "[routine-check] ERROR: resolved REPO=$REPO does not look like EduFlow-Team-orch" >&2
+  exit 2
+fi
+
+SHIM="$REPO/scripts/eduflowteam"
+if [ ! -x "$SHIM" ]; then
+  echo "[routine-check] ERROR: $SHIM not executable" >&2
+  exit 2
+fi
+
+cd "$REPO"
+
+FAIL=0
+
+echo "=== [1/3] workflow validate --strict ==="
+if ! "$SHIM" workflow validate --strict; then
+  echo "  -> workflow validate failed"
+  FAIL=1
+fi
+echo
+
+echo "=== [2/3] asset validate --json ==="
+if ! "$SHIM" asset validate --json; then
+  echo "  -> asset validate reported errors"
+  FAIL=1
+fi
+echo
+
+echo "=== [3/3] asset drift-check --json --show-remediation ==="
+# asset drift-check returns non-zero on errors (real drift, not
+# info/warn). Capture its output and surface the summary.
+DRIFT_JSON="$("$SHIM" asset drift-check --json 2>/dev/null || true)"
+if [ -n "$DRIFT_JSON" ]; then
+  python3 -c '
+import json, sys
+try:
+    d = json.load(sys.stdin).get("drift_check", {})
+except Exception as e:
+    print("  could not parse drift-check JSON: " + str(e))
+    sys.exit(0)
+summary = d.get("summary", {})
+ok = d.get("ok", False)
+print("  ok={} errors={} warnings={} info={}".format(
+    ok, summary.get("errors", 0),
+    summary.get("warnings", 0), summary.get("info", 0),
+))
+for f in d.get("findings", []):
+    sev = str(f.get("severity") or "-")
+    if sev == "error":
+        print("  ERROR: category={} asset_id={}".format(
+            f.get("category"), f.get("asset_id", "-"),
+        ))
+        for line in f.get("remediation") or []:
+            print("    -> " + line)
+    else:
+        print("  {}: category={} asset_id={}".format(
+            sev.upper(), f.get("category"), f.get("asset_id", "-"),
+        ))
+' <<< "$DRIFT_JSON"
+  if echo "$DRIFT_JSON" | python3 -c "import json,sys; sys.exit(0 if json.load(sys.stdin).get('drift_check', {}).get('ok', True) else 1)" 2>/dev/null; then
+    :
+  else
+    FAIL=1
+  fi
+fi
+echo
+
+if [ "$FAIL" -eq 0 ]; then
+  echo "=== routine-check PASSED (no errors) ==="
+  exit 0
+else
+  echo "=== routine-check FAILED (errors above) ==="
+  exit 1
+fi

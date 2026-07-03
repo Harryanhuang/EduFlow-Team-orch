@@ -3157,6 +3157,268 @@ def test_manager_panel_shows_evidence_account_conflict_not_closeout_ready():
         assert "recommended_action=manager_formal_closeout" not in out
 
 
+def test_task_evidence_explain_json_renders_packet_for_incomplete_account():
+    """M6: evidence-explain returns the verdict packet and a NEEDS_FIX verdict."""
+    with isolated_env():
+        tid = tasks.create_flow(
+            "worker_course",
+            "IGCSE Accounting 0452 worker says done",
+            stage="curriculum",
+            owner="worker_course",
+            creator="manager",
+            workflow_id="igcse-subject-launch",
+            status="delivered",
+            verdict="approved",
+        )
+        rc, out, err = run_cli(["task", "evidence-explain", tid, "--json"])
+        assert rc == 0, err
+        payload = json.loads(out)
+        packet = payload["evidence_explain"]
+        for key in (
+            "task_id", "workflow_id", "verdict", "confidence",
+            "missing_evidence", "conflicting_evidence",
+            "latest_authoritative_review", "subject_verifier_status",
+            "subject_verifier_source", "qbank_readiness",
+            "manager_action_allowed", "required_next_owner",
+            "safe_next_action", "do_not_say_to_user_yet",
+        ):
+            assert key in packet, f"missing packet field: {key}"
+        assert packet["task_id"] == tid
+        assert packet["workflow_id"] == "igcse-subject-launch"
+        # Missing items_count / qql_count / manifest_evidence -> NEEDS_FIX
+        assert packet["verdict"] == "NEEDS_FIX"
+        assert packet["manager_action_allowed"] is False
+        assert packet["required_next_owner"] == "worker_course"
+        assert packet["safe_next_action"].startswith("request_worker_course_")
+        assert "do_not_say_to_user_yet" in packet
+
+
+def test_task_evidence_explain_text_output_is_paste_ready():
+    """Text mode prints the 12-line verdict packet block."""
+    with isolated_env():
+        tid = tasks.create_flow(
+            "worker_course",
+            "IGCSE Accounting 0452",
+            stage="curriculum",
+            owner="worker_course",
+            creator="manager",
+        )
+        rc, out, err = run_cli(["task", "evidence-explain", tid])
+        assert rc == 0, err
+        # Stable header
+        assert "## Evidence Account Verdict Packet" in out
+        # Field order: each line begins with the canonical prefix
+        for prefix in (
+            "- task_id:",
+            "- workflow_id:",
+            "- verdict:",
+            "- confidence:",
+            "- missing_evidence:",
+            "- conflicting_evidence:",
+            "- latest_authoritative_review:",
+            "- subject_verifier_status:",
+            "- qbank_readiness:",
+            "- manager_action_allowed:",
+            "- required_next_owner:",
+            "- safe_next_action:",
+            "- do_not_say_to_user_yet:",
+        ):
+            assert prefix in out, f"missing line: {prefix}"
+
+
+def test_task_evidence_explain_blocks_missing_task_id():
+    """No task_id arg -> usage error and rc != 0."""
+    with isolated_env():
+        rc, _, _ = run_cli(["task", "evidence-explain"])
+        assert rc != 0
+        rc, _, _ = run_cli(["task", "evidence-explain", "T-does-not-exist"])
+        assert rc != 0
+
+
+def test_task_evidence_explain_pass_verdict_only_when_evidence_is_complete():
+    """PASS requires closeout_ready + approved review + qbank ready/empty."""
+    with isolated_env():
+        tid = tasks.create_flow(
+            "worker_course",
+            "IGCSE Accounting 0452 done",
+            stage="curriculum",
+            owner="worker_course",
+            creator="manager",
+            workflow_id="igcse-subject-launch",
+            status="delivered",
+            verdict="approved",
+        )
+        data = tasks._load()
+        for row in data.get("tasks", []):
+            if row.get("id") == tid:
+                row["latest_authoritative_verdict"] = {
+                    "reviewer": "review_course",
+                    "verdict": "approved",
+                    "verdict_scope": "full_subject",
+                    "at_ms": 1720000000000,
+                }
+                row["evidence_packet"] = {
+                    "workflow_id": "igcse-subject-launch",
+                    "task_id": tid,
+                    "batch_range": "full_subject",
+                    "items_count": 320,
+                    "qql_count": 320,
+                    "manifest_evidence": {"rows": 320},
+                }
+                row["qbank"] = {"lifecycle_state": "qbank_ready"}
+                row["verifier_result"] = {
+                    "scope": "subject",
+                    "status": "pass",
+                    "items_count": 320,
+                    "qql_count": 320,
+                    "manifest_rows": 320,
+                    "blocking_reasons": [],
+                    "consistency": {"drifts": [], "drift_count": 0},
+                }
+        tasks._save(data)
+
+        rc, out, _ = run_cli(["task", "evidence-explain", tid, "--json"])
+        assert rc == 0
+        packet = json.loads(out)["evidence_explain"]
+        assert packet["verdict"] == "PASS"
+        assert packet["manager_action_allowed"] is True
+        assert packet["required_next_owner"] == "manager"
+
+
+def test_task_evidence_explain_blocked_verdict_on_conflicting_evidence():
+    """Items/QQL count drift -> BLOCKED, manager_action_allowed = False."""
+    with isolated_env():
+        tid = tasks.create_flow(
+            "worker_course",
+            "IGCSE Additional Mathematics 0606",
+            stage="curriculum",
+            owner="worker_course",
+            creator="manager",
+            workflow_id="igcse-subject-launch",
+            status="delivered",
+            verdict="approved",
+        )
+        data = tasks._load()
+        for row in data.get("tasks", []):
+            if row.get("id") == tid:
+                row["latest_authoritative_verdict"] = {
+                    "reviewer": "review_course",
+                    "verdict": "approved",
+                    "verdict_scope": "full_subject",
+                    "at_ms": 1720000000000,
+                }
+                row["evidence_packet"] = {
+                    "workflow_id": "igcse-subject-launch",
+                    "task_id": tid,
+                    "batch_range": "full_subject",
+                    "items_count": 378,
+                    "qql_count": 324,
+                    "manifest_evidence": {"rows": 324},
+                }
+                row["verifier_result"] = {
+                    "scope": "subject",
+                    "status": "warn",
+                    "items_count": 378,
+                    "qql_count": 324,
+                    "manifest_rows": 324,
+                    "blocking_reasons": [],
+                    "consistency": {
+                        "drifts": [
+                            {
+                                "kind": "items_vs_qql_drift",
+                                "items": 378, "qql": 324,
+                                "delta": 54, "severity": "blocking",
+                            }
+                        ],
+                        "drift_count": 1,
+                    },
+                }
+        tasks._save(data)
+
+        rc, out, _ = run_cli(["task", "evidence-explain", tid, "--json"])
+        assert rc == 0
+        packet = json.loads(out)["evidence_explain"]
+        assert packet["verdict"] == "BLOCKED"
+        assert packet["manager_action_allowed"] is False
+        assert packet["subject_verifier_status"] == "warn"
+        # Conflicts list should mention the drift
+        assert any("items_qql_count_drift" in c for c in packet["conflicting_evidence"])
+
+
+def test_task_evidence_explain_blocked_on_rejected_latest_verdict():
+    """OPT-2: rejected latest_authoritative_verdict must produce BLOCKED.
+
+    A 'rejected' verdict is an explicit closeout block; it should never
+    silently land in OBSERVE. 'manager_action' is a request-for-decision
+    that has not been answered, which is also a block.
+    """
+    with isolated_env():
+        tid = tasks.create_flow(
+            "worker_course",
+            "IGCSE Economics 0455",
+            stage="curriculum",
+            owner="worker_course",
+            creator="manager",
+            workflow_id="igcse-subject-launch",
+        )
+        data = tasks._load()
+        for row in data.get("tasks", []):
+            if row.get("id") == tid:
+                row["latest_authoritative_verdict"] = {
+                    "reviewer": "review_course",
+                    "verdict": "rejected",
+                    "verdict_scope": "full_subject",
+                    "at_ms": 1720000000000,
+                }
+                # evidence is complete (no missing, no conflicts) but the
+                # latest review verdict is rejected, so the packet should
+                # still be BLOCKED.
+                row["evidence_packet"] = {
+                    "workflow_id": "igcse-subject-launch",
+                    "task_id": tid,
+                    "batch_range": "full_subject",
+                    "items_count": 320,
+                    "qql_count": 320,
+                    "manifest_evidence": {"rows": 320},
+                }
+        tasks._save(data)
+
+        rc, out, _ = run_cli(["task", "evidence-explain", tid, "--json"])
+        assert rc == 0
+        packet = json.loads(out)["evidence_explain"]
+        assert packet["verdict"] == "BLOCKED"
+        assert packet["manager_action_allowed"] is False
+        assert packet["safe_next_action"] == "wait_for_review_approval"
+
+
+def test_task_evidence_explain_blocked_on_manager_action_latest_verdict():
+    """OPT-2: manager_action latest verdict (unanswered) -> BLOCKED."""
+    with isolated_env():
+        tid = tasks.create_flow(
+            "worker_course",
+            "IGCSE Biology 0610",
+            stage="curriculum",
+            owner="worker_course",
+            creator="manager",
+            workflow_id="igcse-subject-launch",
+        )
+        data = tasks._load()
+        for row in data.get("tasks", []):
+            if row.get("id") == tid:
+                row["latest_authoritative_verdict"] = {
+                    "reviewer": "review_course",
+                    "verdict": "manager_action",
+                    "verdict_scope": "unit",
+                    "at_ms": 1720000000000,
+                }
+        tasks._save(data)
+
+        rc, out, _ = run_cli(["task", "evidence-explain", tid, "--json"])
+        assert rc == 0
+        packet = json.loads(out)["evidence_explain"]
+        assert packet["verdict"] == "BLOCKED"
+
+
 # ── V1 workflow-first panel ──────────────────────────────────────
 
 

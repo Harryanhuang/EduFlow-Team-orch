@@ -15,7 +15,7 @@ from eduflow.commands import (
     start, hire, fire, up, down, reset, compact, reidentify, switch,
     say, router, watchdog, task, remember, recall, forget, peek,
     health, usage, install_hooks, version, task_publish, runtime_guard,
-    workflow, runtime, memory_cli, sleep_idle, residency_wake,
+    workflow, runtime, memory_cli, sleep_idle, residency_wake, asset,
 )
 from eduflow.util import error_exit
 
@@ -68,6 +68,9 @@ _COMMAND_GROUPS: list[tuple[str, list[tuple[str, CommandHandler]]]] = [
         ("task", task.main),
         ("task-publish", task_publish.main),
         ("workflow", workflow.main),
+    ]),
+    ("asset registry", [
+        ("asset", asset.main),
     ]),
     ("durable agent memory", [
         ("remember", remember.main),

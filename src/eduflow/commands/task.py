@@ -22,6 +22,7 @@
   task manager-panel
   task ops-dashboard [--json] [--text]
   task evidence-account [--task-id T] [--workflow W] [--json]
+  task evidence-explain <task_id> [--json]
   task supervisor-check [--advance] [--send] [--json]
   # downstream helpers (Phase 2/3 skeletons; not Phase 1 core)
   task publish-check <id> --sender A [--to T]
@@ -99,6 +100,7 @@ USAGE = (
     "  eduflow task manager-panel\n"
     "  eduflow task ops-dashboard [--json] [--text]\n"
     "  eduflow task evidence-account [--task-id T] [--workflow W] [--json]\n"
+    "  eduflow task evidence-explain <task_id> [--json]\n"
     "  eduflow task supervisor-check [--advance] [--send] [--json]\n"
     "  # downstream helpers (Phase 2/3 skeletons; not Phase 1 core)\n"
     "  eduflow task publish-check <id> --sender A [--to T]\n"
@@ -2597,6 +2599,320 @@ def _cmd_evidence_account(rest: list[str]) -> int:
     return 0
 
 
+_READY_QBANK_STATES_FOR_VERDICT = frozenset({
+    "qbank_ready", "ready_for_import", "needs_user_authorization",
+})
+
+
+def _classify_evidence_verdict(
+    *,
+    missing: list[str],
+    conflicts: list[str],
+    subject_verifier_status: str,
+    latest_verdict: str,
+    qbank_readiness: str,
+) -> str:
+    """Map the evidence-account raw fields into the 4-bucket verdict.
+
+    Tie-breakers (M6 spec, OPT-2 tightened):
+    1. conflicting_evidence non-empty  -> BLOCKED
+    2. subject_verifier in {fail, warn} -> BLOCKED
+    3. missing_evidence non-empty       -> NEEDS_FIX
+    4. latest verdict rejected / manager_action -> BLOCKED
+       (rejected = explicit closeout block; manager_action is a
+       request-for-decision that has not been answered)
+    5. latest verdict empty/pending     -> OBSERVE
+    6. latest verdict approved and qbank in ready set (or empty) -> PASS
+    7. else                             -> OBSERVE
+    """
+    if conflicts:
+        return "BLOCKED"
+    if subject_verifier_status in {"fail", "warn"}:
+        return "BLOCKED"
+    if missing:
+        return "NEEDS_FIX"
+    if latest_verdict in {"rejected", "manager_action"}:
+        return "BLOCKED"
+    if not latest_verdict or latest_verdict == "pending":
+        return "OBSERVE"
+    if latest_verdict == "approved":
+        if not qbank_readiness or qbank_readiness in _READY_QBANK_STATES_FOR_VERDICT:
+            return "PASS"
+        return "OBSERVE"
+    return "OBSERVE"
+
+
+def _evidence_confidence(
+    *,
+    missing: list[str],
+    latest: dict,
+    subject_verifier_status: str,
+    subject_verifier_source: str,
+    items_count: int | None,
+    qql_count: int | None,
+    manifest_rows: int | None,
+) -> str:
+    """Drive confidence from the rubric in the SKILL.md.
+
+    low  - any of {latest_authoritative_review, subject_verifier_status,
+            items_count, qql_count, manifest_rows} is missing or
+            source_missing.
+    medium - latest review verdict is present but subject_verifier_status
+            empty (or qbank_readiness empty on a task that has not yet
+            reached the qbank stage).
+    high  - all required fields present and consistent.
+    """
+    if (
+        not latest
+        or not subject_verifier_status
+        or subject_verifier_source in {"source_missing", ""}
+        or items_count is None
+        or qql_count is None
+        or manifest_rows is None
+    ):
+        return "low"
+    if missing:
+        return "medium"
+    return "high"
+
+
+def _required_next_owner(packet: dict) -> str:
+    """Pick the role that owns the next repair step. '-' when ambiguous."""
+    action = str(packet.get("safe_next_action") or "")
+    if not action:
+        return "-"
+    if action.startswith("request_worker_course") or action == "complete_closeout_evidence_account":
+        return "worker_course"
+    if action.startswith("request_review_course") or action == "request_subject_count_evidence":
+        return "review_course"
+    if action == "request_qbank_readiness_check":
+        return "worker_qbank"
+    if action in {"manager_formal_closeout", "select_next_subject_from_inventory"}:
+        return "manager"
+    if action.startswith("resolve_evidence_account_conflict"):
+        # Default conflict owner: worker_course (most common cause is QA
+        # expansion drift). Reviewer can pick a different owner; the
+        # packet only signals the default lane.
+        return "worker_course"
+    return "-"
+
+
+def _safe_next_action(
+    *,
+    missing: list[str],
+    conflicts: list[str],
+    recommended: str,
+    latest_verdict: str,
+) -> str:
+    """Map the action packet / account into a one-line imperative.
+
+    Falls back to the account's `recommended_action` so the explainer
+    stays consistent with the closeout layer. Order matters: an
+    explicit reviewer verdict is more actionable than a generic
+    "resolve conflict" line, so it wins.
+    """
+    if latest_verdict in {"rejected", "manager_action"}:
+        # Always actionable: get a fresh reviewer verdict. The
+        # BLOCKED verdict above already covers the conflict story.
+        return "wait_for_review_approval"
+    if conflicts:
+        return "resolve_evidence_account_conflict"
+    if missing:
+        # Distinguish worker-side vs reviewer-side fixes by the missing
+        # field, without changing the underlying gate.
+        if any(m in {"items_count", "qql_count", "manifest_evidence", "manifest_rows"} for m in missing):
+            return "request_worker_course_expand_qa_and_evidence_packet"
+        if "subject_verifier_status" in missing:
+            return "request_review_course_run_subject_verifier"
+        return "complete_closeout_evidence_account"
+    if recommended:
+        return recommended
+    return "manager_formal_closeout"
+
+
+def _do_not_say_to_user_yet(verdict: str, *, qbank_readiness: str,
+                            subject_verifier_status: str) -> str:
+    """One-line guard that blocks premature user-facing closeout language."""
+    if verdict == "BLOCKED":
+        if subject_verifier_status in {"fail", "warn"}:
+            return (
+                "do not yet say '正式 PASS' until subject verifier returns "
+                "pass on full subject scope"
+            )
+        return (
+            "do not yet say 'closeout' until conflicting evidence is "
+            "resolved and subject verifier status is pass"
+        )
+    if verdict == "NEEDS_FIX":
+        return (
+            "do not yet say 'closeout' until missing evidence is filled "
+            "and the next review cycle returns approved"
+        )
+    if verdict == "OBSERVE":
+        if not qbank_readiness:
+            return (
+                "do not yet say 'closeout' until qbank readiness is recorded"
+            )
+        return (
+            "do not yet say 'closeout completed' until latest authoritative "
+            "review verdict is approved and qbank is in a ready state"
+        )
+    # PASS
+    return (
+        "the gate is green, but the user-facing 'closeout completed' line "
+        "must still wait for manager formal closeout"
+    )
+
+
+def build_evidence_verdict_packet(task: dict, account: dict) -> dict:
+    """Build the M6 evidence-account verdict packet for one task.
+
+    Reuses `task_evidence_account.build_evidence_account` output and
+    the task's `latest_authoritative_verdict`. Never recomputes the
+    gate and never auto-promotes package PASS into subject PASS.
+    """
+    task = task or {}
+    account = account or {}
+    latest = task.get("latest_authoritative_verdict") or {}
+    if not isinstance(latest, dict):
+        latest = {}
+    missing = list(account.get("missing_evidence") or [])
+    conflicts = list(account.get("conflicting_evidence") or [])
+    subject_verifier_status = str(account.get("subject_verifier_status") or "")
+    subject_verifier_source = str(account.get("subject_verifier_source") or "source_missing")
+    qbank_readiness = str(account.get("qbank_readiness") or "")
+    items_count = account.get("items_count")
+    qql_count = account.get("qql_count")
+    manifest_rows = account.get("manifest_rows")
+    latest_verdict = str(latest.get("verdict") or "")
+    verdict = _classify_evidence_verdict(
+        missing=missing,
+        conflicts=conflicts,
+        subject_verifier_status=subject_verifier_status,
+        latest_verdict=latest_verdict,
+        qbank_readiness=qbank_readiness,
+    )
+    confidence = _evidence_confidence(
+        missing=missing,
+        latest=latest,
+        subject_verifier_status=subject_verifier_status,
+        subject_verifier_source=subject_verifier_source,
+        items_count=items_count,
+        qql_count=qql_count,
+        manifest_rows=manifest_rows,
+    )
+    closeout_ready = bool(account.get("closeout_ready"))
+    recommended = str(account.get("recommended_action") or "")
+    safe_next = _safe_next_action(
+        missing=missing,
+        conflicts=conflicts,
+        recommended=recommended,
+        latest_verdict=latest_verdict,
+    )
+    # manager_action_allowed is True only when both the account gate and
+    # the recommended action line up to manager_formal_closeout. We do
+    # NOT let an OBSERVE or NEEDS_FIX packet silently grant manager
+    # formal closeout.
+    manager_action_allowed = bool(
+        closeout_ready and recommended == "manager_formal_closeout"
+        and verdict == "PASS"
+    )
+    packet = {
+        "task_id": str(account.get("task_id") or task.get("id") or ""),
+        "workflow_id": str(account.get("workflow_id") or task.get("workflow_id") or ""),
+        "verdict": verdict,
+        "confidence": confidence,
+        "missing_evidence": missing,
+        "conflicting_evidence": conflicts,
+        "latest_authoritative_review": {
+            "reviewer": str(latest.get("reviewer") or ""),
+            "verdict": latest_verdict,
+            "scope": str(latest.get("verdict_scope") or ""),
+            "at_ms": int(latest.get("at_ms") or 0),
+        },
+        "subject_verifier_status": subject_verifier_status,
+        "subject_verifier_source": subject_verifier_source,
+        "qbank_readiness": qbank_readiness,
+        "qbank_readiness_source": str(account.get("qbank_readiness_source") or "source_missing"),
+        "manager_action_allowed": manager_action_allowed,
+        "required_next_owner": "-",
+        "safe_next_action": safe_next,
+        "do_not_say_to_user_yet": _do_not_say_to_user_yet(
+            verdict, qbank_readiness=qbank_readiness,
+            subject_verifier_status=subject_verifier_status,
+        ),
+        "evidence_account_closeout_ready": closeout_ready,
+        "evidence_account_recommended_action": recommended,
+        "items_count": items_count,
+        "qql_count": qql_count,
+        "manifest_rows": manifest_rows,
+    }
+    packet["required_next_owner"] = _required_next_owner(packet)
+    return packet
+
+
+def print_evidence_verdict_packet(packet: dict) -> None:
+    """Render the packet as a paste-ready markdown block for manager / reviewer."""
+    latest = packet.get("latest_authoritative_review") or {}
+    missing = packet.get("missing_evidence") or []
+    conflicts = packet.get("conflicting_evidence") or []
+    print("## Evidence Account Verdict Packet")
+    print(f"- task_id: {packet.get('task_id') or '-'}")
+    print(f"- workflow_id: {packet.get('workflow_id') or '-'}")
+    print(f"- verdict: {packet.get('verdict') or '-'}")
+    print(f"- confidence: {packet.get('confidence') or '-'}")
+    print(f"- missing_evidence: [{','.join(missing) if missing else '-'}]")
+    print(f"- conflicting_evidence: [{','.join(conflicts) if conflicts else '-'}]")
+    print(
+        f"- latest_authoritative_review: "
+        f"reviewer={latest.get('reviewer') or '-'} "
+        f"verdict={latest.get('verdict') or '-'} "
+        f"scope={latest.get('scope') or '-'} "
+        f"at_ms={int(latest.get('at_ms') or 0)}"
+    )
+    print(
+        f"- subject_verifier_status: {packet.get('subject_verifier_status') or '-'} "
+        f"(source={packet.get('subject_verifier_source') or '-'})"
+    )
+    print(
+        f"- qbank_readiness: {packet.get('qbank_readiness') or '-'} "
+        f"(source={packet.get('qbank_readiness_source') or '-'})"
+    )
+    print(f"- manager_action_allowed: {str(bool(packet.get('manager_action_allowed'))).lower()}")
+    print(f"- required_next_owner: {packet.get('required_next_owner') or '-'}")
+    print(f"- safe_next_action: {packet.get('safe_next_action') or '-'}")
+    print(f"- do_not_say_to_user_yet: {packet.get('do_not_say_to_user_yet') or '-'}")
+
+
+def _cmd_evidence_explain(rest: list[str]) -> int:
+    """Render the Evidence Account Verdict Packet for one task.
+
+    M6: read-only explainer for `review_course full verdict`,
+    `worker_course selfcheck`, `worker_qbank qbank slice`, and
+    `manager closeout-lite`. Reuses the existing
+    `task_evidence_account.build_evidence_account` output; never
+    recomputes the gate, never sends Feishu, never auto-promotes
+    package PASS into subject PASS.
+    """
+    as_json = pop_bool_flag(rest, "--json")
+    if not rest or rest[0].startswith("-"):
+        return usage_error(USAGE)
+    task_id = rest[0]
+    if len(rest) > 1:
+        return usage_error(USAGE)
+    task = tasks.get(task_id)
+    if task is None:
+        return error_exit(f"❌ no such task: {task_id}")
+    gate = tasks.subject_closeout_status(task)
+    account = gate.get("evidence_account") or {}
+    packet = build_evidence_verdict_packet(task, account)
+    if as_json:
+        print_json({"evidence_explain": packet})
+        return 0
+    print_evidence_verdict_packet(packet)
+    return 0
+
+
 def _cmd_publish_check(rest: list[str]) -> int:
     sender = pop_flag(rest, "--sender")
     to_target = pop_flag(rest, "--to") or "user"
@@ -3256,6 +3572,7 @@ SUBCOMMANDS = {
     "manager-panel": _cmd_manager_panel,
     "ops-dashboard": _cmd_ops_dashboard,
     "evidence-account": _cmd_evidence_account,
+    "evidence-explain": _cmd_evidence_explain,
     "subject-inventory": _cmd_subject_inventory,
     "batch-closeout": _cmd_batch_closeout,
     "manager-closeout": _cmd_manager_closeout,
