@@ -30,6 +30,7 @@ from dataclasses import dataclass, field
 from eduflow.feishu.cards_v2_schema import (
     CardType, REQUIRED_FIELDS, _BOSS_INTERVENTION_YES,
     _FIELD_VALUE_ALLOWED, agent_role_allowed,
+    severity_to_color,
 )
 
 
@@ -97,6 +98,7 @@ class Card:
     sender: str
     fields: dict[str, str] = field(default_factory=dict)
     color: str = "blue"
+    severity: str | None = None
 
     def title_prefix(self) -> str:
         """`[CLOSEOUT] manager` — the visible card-type tag used in
@@ -175,7 +177,7 @@ def needs_boss_intervention(card: Card) -> bool:
 
 
 def build_card(card_type: str, sender: str, body: str,
-               *, color: str = "blue") -> Card:
+               *, color: str = "blue", severity: str | None = None) -> Card:
     """Parse `body` and return a Card.  Does NOT validate — callers
     should run `validate_card()` and decide block-vs-degrade."""
     return Card(
@@ -183,6 +185,7 @@ def build_card(card_type: str, sender: str, body: str,
         sender=str(sender or "").strip(),
         fields=parse_body(body),
         color=str(color or "blue").strip() or "blue",
+        severity=str(severity).strip().lower() if severity else None,
     )
 
 
@@ -200,6 +203,13 @@ def render_to_card_dict(card: Card, *, header_title: str | None = None,
     The `需要老板介入` field gets an emoji prefix when affirmative
     so the boss can scan the bottom of the card without reading
     every body line.
+
+    Color resolution order (highest priority first):
+      1. explicit `card.color` when it is a known template name
+         (set by the caller, e.g. `color="green"`)
+      2. `severity_to_color(card.severity)` when card.severity is
+         set and maps to a canonical color
+      3. fallback to "blue"
     """
     from eduflow.feishu.cards import _normalised_color
     title = header_title if header_title else card.title_prefix()
@@ -213,11 +223,23 @@ def render_to_card_dict(card: Card, *, header_title: str | None = None,
         body_lines.append("")
         body_lines.append(footer)
     body_text = "\n".join(body_lines) if body_lines else "(无内容)"
+    # Color resolution: severity overrides only when the caller did
+    # not set an explicit color (i.e. the Card uses the default "blue").
+    # This prevents a `severity="warning"` from silently overriding a
+    # deliberate `color="green"` choice.
+    if card.severity and card.color == "blue":
+        resolved = severity_to_color(card.severity)
+        if resolved:
+            template_color = _normalised_color(resolved)
+        else:
+            template_color = _normalised_color(card.color)
+    else:
+        template_color = _normalised_color(card.color)
     return {
         "schema": "2.0",
         "header": {
             "title": {"content": title, "tag": "plain_text"},
-            "template": _normalised_color(card.color),
+            "template": template_color,
         },
         "body": {"elements": [
             {"tag": "markdown", "content": body_text},

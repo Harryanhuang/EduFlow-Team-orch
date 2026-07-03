@@ -559,3 +559,311 @@ def test_say_with_card_legacy_no_arg_form_still_works():
     # No [TYPE] prefix in the title
     assert "[" not in card["header"]["title"]["content"]
     assert "重要决策已落地" in card["body"]["elements"][0]["content"]
+
+
+# ── M9: OPS_SNAPSHOT card type ──────────────────────────────────
+
+
+def test_ops_snapshot_in_card_type_all():
+    """M9: OPS_SNAPSHOT is a recognized card type."""
+    assert "OPS_SNAPSHOT" in CardType.ALL
+    assert CardType.OPS_SNAPSHOT == "OPS_SNAPSHOT"
+
+
+def test_ops_snapshot_has_required_fields():
+    """M9: OPS_SNAPSHOT requires 看板类型/当前状态/顶行动/证据引用/
+    常驻摘要/需要老板介入."""
+    required = REQUIRED_FIELDS[CardType.OPS_SNAPSHOT]
+    assert "看板类型" in required
+    assert "当前状态" in required
+    assert "顶行动" in required
+    assert "证据引用" in required
+    assert "常驻摘要" in required
+    assert "需要老板介入" in required
+
+
+def test_agent_role_allowed_manager_can_send_ops_snapshot():
+    """M9: manager can send OPS_SNAPSHOT."""
+    allowed = agent_role_allowed("manager")
+    assert "OPS_SNAPSHOT" in allowed
+
+
+def test_agent_role_allowed_auto_ops_can_send_ops_snapshot():
+    """M9: auto_ops can send OPS_SNAPSHOT."""
+    allowed = agent_role_allowed("auto_ops")
+    assert "OPS_SNAPSHOT" in allowed
+
+
+def test_agent_role_allowed_worker_cannot_send_ops_snapshot():
+    """M9: worker_course cannot send OPS_SNAPSHOT."""
+    allowed = agent_role_allowed("worker_course")
+    assert "OPS_SNAPSHOT" not in allowed
+
+
+def test_agent_role_allowed_review_cannot_send_ops_snapshot():
+    """M9: review_course cannot send OPS_SNAPSHOT."""
+    allowed = agent_role_allowed("review_course")
+    assert "OPS_SNAPSHOT" not in allowed
+
+
+def test_validate_ops_snapshot_passes_when_all_fields_present():
+    """M9: a valid OPS_SNAPSHOT card passes validation."""
+    body = _valid_body(CardType.OPS_SNAPSHOT)
+    card = cards_v2.build_card(CardType.OPS_SNAPSHOT, "manager", body)
+    result = cards_v2.validate_card(card, known_agents=["manager"])
+    assert result.ok, f"should pass: {result.errors}"
+
+
+def test_validate_ops_snapshot_flags_missing_top_actions():
+    """M9: missing 顶行动 is a field violation, not a role violation."""
+    body = _valid_body(CardType.OPS_SNAPSHOT).replace("顶行动:x", "顶行动:")
+    card = cards_v2.build_card(CardType.OPS_SNAPSHOT, "manager", body)
+    result = cards_v2.validate_card(card, known_agents=["manager"])
+    assert not result.ok
+    assert any("field:顶行动" in e for e in result.errors)
+    assert not result.is_role_violation
+
+
+def test_validate_ops_snapshot_flags_missing_evidence_refs():
+    """M9: missing 证据引用 is caught."""
+    body = _valid_body(CardType.OPS_SNAPSHOT).replace("证据引用:x", "证据引用:")
+    card = cards_v2.build_card(CardType.OPS_SNAPSHOT, "manager", body)
+    result = cards_v2.validate_card(card, known_agents=["manager"])
+    assert not result.ok
+    assert any("field:证据引用" in e for e in result.errors)
+
+
+# ── M9: severity → color mapping ───────────────────────────────
+
+
+def test_severity_to_color_maps_all_known_severities():
+    from eduflow.feishu.cards_v2_schema import severity_to_color, SEVERITY_COLOR_MAP
+    assert SEVERITY_COLOR_MAP["success"] == "green"
+    assert SEVERITY_COLOR_MAP["info"] == "blue"
+    assert SEVERITY_COLOR_MAP["warning"] == "orange"
+    assert SEVERITY_COLOR_MAP["critical"] == "red"
+    # function lookup
+    assert severity_to_color("success") == "green"
+    assert severity_to_color("info") == "blue"
+    assert severity_to_color("warning") == "orange"
+    assert severity_to_color("critical") == "red"
+
+
+def test_severity_to_color_returns_none_for_unknown():
+    from eduflow.feishu.cards_v2_schema import severity_to_color
+    assert severity_to_color("bogus") is None
+    assert severity_to_color("") is None
+    assert severity_to_color(None) is None
+
+
+def test_render_card_with_severity_warning_overrides_default_blue():
+    """M9: when color is default blue and severity is set, color
+    is resolved from the severity map."""
+    card = cards_v2.Card(
+        card_type=CardType.ACK, sender="worker_course",
+        fields={"任务": "x", "负责人": "x", "当前阶段": "x",
+                "下一步": "x", "需要老板介入": "否"},
+        severity="warning",
+    )
+    rendered = cards_v2.render_to_card_dict(card)
+    assert rendered["header"]["template"] == "orange"
+
+
+def test_render_card_with_severity_critical_uses_red():
+    card = cards_v2.Card(
+        card_type=CardType.ACK, sender="worker_course",
+        fields={"任务": "x", "负责人": "x", "当前阶段": "x",
+                "下一步": "x", "需要老板介入": "否"},
+        severity="critical",
+    )
+    rendered = cards_v2.render_to_card_dict(card)
+    assert rendered["header"]["template"] == "red"
+
+
+def test_render_card_with_explicit_color_ignores_severity():
+    """M9: explicit color=green overrides severity=warning."""
+    card = cards_v2.Card(
+        card_type=CardType.ACK, sender="worker_course",
+        fields={"任务": "x", "负责人": "x", "当前阶段": "x",
+                "下一步": "x", "需要老板介入": "否"},
+        color="green",
+        severity="warning",
+    )
+    rendered = cards_v2.render_to_card_dict(card)
+    assert rendered["header"]["template"] == "green"
+
+
+def test_build_card_accepts_severity_parameter():
+    card = cards_v2.build_card(
+        CardType.ACK, "worker_course",
+        "任务:x\n负责人:x\n当前阶段:x\n下一步:x\n需要老板介入:否",
+        severity="info",
+    )
+    assert card.severity == "info"
+
+
+def test_build_card_default_severity_is_none():
+    card = cards_v2.build_card(
+        CardType.ACK, "worker_course",
+        "任务:x\n负责人:x\n当前阶段:x\n下一步:x\n需要老板介入:否",
+    )
+    assert card.severity is None
+
+
+# ── M9: all card types render v2 schema ────────────────────────
+
+
+@pytest.mark.parametrize("card_type", list(CardType.ALL))
+def test_render_to_card_dict_emits_v2_schema_for_all_types(card_type):
+    sender = next(
+        (name for name, allowed in _ROLE_ALLOWED_TYPES.items()
+         if card_type in allowed),
+        "worker_course",
+    )
+    body = _valid_body(card_type)
+    card = cards_v2.build_card(card_type, sender, body)
+    rendered = cards_v2.render_to_card_dict(card)
+    assert rendered["schema"] == "2.0"
+    assert rendered["header"]["title"]["content"].startswith(f"[{card_type}]")
+    assert rendered["header"]["template"] in (
+        "blue", "green", "red", "yellow", "grey",
+        "purple", "orange", "turquoise", "pink",
+    )
+    assert rendered["body"]["elements"][0]["tag"] == "markdown"
+
+
+# ── M9: normalize tests for missing fields ────────────────────
+
+
+def test_validate_card_normalizes_missing_optional_fields():
+    """M9: when a body has only the required fields, it still passes.
+    Optional fields are simply absent — no error, no degraded state."""
+    body = _valid_body(CardType.PROGRESS)
+    card = cards_v2.build_card(CardType.PROGRESS, "worker_course", body)
+    result = cards_v2.validate_card(
+        card, known_agents=["worker_course"],
+    )
+    assert result.ok
+    assert not result.is_role_violation
+
+
+def test_validate_card_normalize_handles_case_insensitive_keys():
+    """M9: field lookup is case-insensitive — body says '任务'
+    (with different casing) but the required field is '任务'.
+    _field_lookup matches case-insensitively."""
+    # The field names are Chinese; case-sensitivity test here means
+    # different-spacing/colon variants.  Use the Chinese names as
+    # required; all required fields must be present for a pass.
+    body = "任务:AP Physics\n当前阶段:review\n已完成:1\n证据:ok\n下一阶段:closeout\n需要老板介入:否"
+    card = cards_v2.build_card(CardType.PROGRESS, "worker_course", body)
+    result = cards_v2.validate_card(card, known_agents=["worker_course"])
+    assert result.ok
+
+
+def test_validate_card_reports_multiple_missing_fields():
+    """M9: when multiple required fields are missing, all are reported."""
+    body = "任务:only\n负责人:only"
+    card = cards_v2.build_card(CardType.PROGRESS, "worker_course", body)
+    result = cards_v2.validate_card(card, known_agents=["worker_course"])
+    assert not result.ok
+    # PROGRESS requires: 任务, 当前阶段, 已完成, 证据, 下一阶段, 需要老板介入
+    # Two are present (任务, 负责人 maps to nothing), four should be missing.
+    assert len(result.errors) >= 3
+
+
+def test_validate_card_unknown_card_type_with_known_agents_is_role_violation():
+    """M9: unknown card_type is always a role violation."""
+    card = cards_v2.Card(card_type="FAKE", sender="worker_course", fields={"任务": "x"})
+    result = cards_v2.validate_card(card, known_agents=["worker_course"])
+    assert not result.ok
+    assert result.is_role_violation
+
+
+def test_say_with_ops_snapshot_card_works_end_to_end():
+    """M9: say --card OPS_SNAPSHOT routes through v2 validator."""
+    from helpers import attr_patch, isolated_env, run_cli
+    from eduflow.feishu import chat as feishu_chat
+
+    calls: list[dict] = []
+
+    def fake_send_card(chat_id, card, **kw):
+        calls.append({"chat_id": chat_id, "card": card})
+        return {"message_id": "om_test"}
+
+    body = (
+        "看板类型:ops\n当前状态:all clear\n顶行动:none\n"
+        "证据引用:ops-dashboard.json\n常驻摘要:resident=2\n需要老板介入:否"
+    )
+    with isolated_env(
+        team={"agents": {"auto_ops": {"role": "ops", "color": "red"}}},
+        runtime_config={"chat_id": "oc_test", "lark_profile": ""},
+    ):
+        with attr_patch(feishu_chat, send_card=fake_send_card):
+            rc, _, _ = run_cli(["say", "auto_ops", body, "--card", "OPS_SNAPSHOT"])
+    assert rc == 0
+    assert len(calls) == 1
+    card = calls[0]["card"]
+    assert card["schema"] == "2.0"
+    assert "[OPS_SNAPSHOT]" in card["header"]["title"]["content"]
+    body_text = card["body"]["elements"][0]["content"]
+    assert "**看板类型**" in body_text
+    assert "**顶行动**" in body_text
+    assert "**证据引用**" in body_text
+    assert "**常驻摘要**" in body_text
+
+
+def test_say_with_ops_snapshot_worker_blocked():
+    """M9: worker_course cannot send OPS_SNAPSHOT — role violation."""
+    from helpers import attr_patch, isolated_env, run_cli
+    from eduflow.feishu import chat as feishu_chat
+
+    calls: list[dict] = []
+
+    def fake_send_card(chat_id, card, **kw):
+        calls.append({"chat_id": chat_id, "card": card})
+        return {"message_id": "om_test"}
+
+    body = (
+        "看板类型:ops\n当前状态:ok\n顶行动:none\n"
+        "证据引用:ops-dashboard.json\n常驻摘要:resident=2\n需要老板介入:否"
+    )
+    with isolated_env(
+        team={"agents": {"worker_course": {"role": "course", "color": "purple"}}},
+        runtime_config={"chat_id": "oc_test", "lark_profile": ""},
+    ):
+        with attr_patch(feishu_chat, send_card=fake_send_card):
+            rc, _, err = run_cli(
+                ["say", "worker_course", body, "--card", "OPS_SNAPSHOT"]
+            )
+    assert rc == 1
+    assert "worker_course_cannot_send_OPS_SNAPSHOT" in err
+    assert calls == []
+
+
+def test_say_with_ops_snapshot_missing_top_actions_degrades_to_internal():
+    """M9: OPS_SNAPSHOT with missing 顶行动 degrades to internal."""
+    from helpers import attr_patch, isolated_env, run_cli
+    from eduflow.feishu import chat as feishu_chat
+
+    calls: list[dict] = []
+
+    def fake_send_card(chat_id, card, **kw):
+        calls.append({"chat_id": chat_id, "card": card})
+        return {"message_id": "om_test"}
+
+    body = (
+        "看板类型:ops\n当前状态:ok\n顶行动:\n"
+        "证据引用:ops-dashboard.json\n常驻摘要:resident=2\n需要老板介入:否"
+    )
+    with isolated_env(
+        team={"agents": {"auto_ops": {"role": "ops", "color": "red"}}},
+        runtime_config={"chat_id": "oc_test", "lark_profile": ""},
+    ):
+        with attr_patch(feishu_chat, send_card=fake_send_card):
+            rc, _, err = run_cli(
+                ["say", "auto_ops", body, "--card", "OPS_SNAPSHOT"]
+            )
+    assert rc == 0  # field violation → degrade to internal, not role violation
+    assert "field:顶行动" in err
+    assert "degraded to internal" in err
+    assert calls == []

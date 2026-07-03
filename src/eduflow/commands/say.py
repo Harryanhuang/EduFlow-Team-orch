@@ -30,7 +30,7 @@ USAGE = (
     "usage: eduflow say <agent> <message> "
     "[--body <message>] [--reply <message_id>] [--as user|bot] [--no-local] "
     "[--to user|manager|worker_<name>] [--channel main|supervisor] "
-    "[--card ACK|START|PROGRESS|HANDOFF|BLOCKED|REVIEW|CLOSEOUT|ALERT|RECORDED]"
+    "[--card ACK|START|PROGRESS|HANDOFF|BLOCKED|REVIEW|CLOSEOUT|ALERT|RECORDED|OPS_SNAPSHOT]"
 )
 
 

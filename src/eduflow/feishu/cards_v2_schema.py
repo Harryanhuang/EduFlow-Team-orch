@@ -7,15 +7,29 @@ pulling in the full validator.
 
 Per plan 2026-07-01 §设计一:
 
-    ACK       worker / review / 功能型 agent     已接单
-    START     worker / review / 功能型 agent     正式开工
-    PROGRESS  worker / review / 功能型 agent     阶段完成 / 阶段切换
-    HANDOFF   worker / review / 功能型 agent     交接下游
-    BLOCKED   worker / review / manager          卡点 / 缺材料 / 缺决策
-    REVIEW    review                              复核 verdict
-    CLOSEOUT  manager                             唯一正式业务收口
-    ALERT     auto_ops / manager                  运行时 / 质量异常
-    RECORDED  Luke_recorder                       已记录关键发言
+    ACK           worker / review / 功能型 agent     已接单
+    START         worker / review / 功能型 agent     正式开工
+    PROGRESS      worker / review / 功能型 agent     阶段完成 / 阶段切换
+    HANDOFF       worker / review / 功能型 agent     交接下游
+    BLOCKED       worker / review / manager          卡点 / 缺材料 / 缺决策
+    REVIEW        review                              复核 verdict
+    CLOSEOUT      manager                             唯一正式业务收口
+    ALERT         auto_ops / manager                  运行时 / 质量异常
+    RECORDED      Luke_recorder                       已记录关键发言
+    OPS_SNAPSHOT  manager / auto_ops                  运营看板快照
+
+M9 note on OPS_SNAPSHOT:
+    M3 already has `employee_snapshot_card` and `team_snapshot_card` in
+    `feishu/cards.py`; those functions build raw Feishu card dicts
+    directly (bypassing the v2 protocol) because they predate
+    cards_v2.py. OPS_SNAPSHOT is the v2-protocol bridge for those
+    snapshot surfaces: it lets `say --card OPS_SNAPSHOT` route through
+    `validate_card` + `render_to_card_dict` so the snapshot cards get
+    the same role gate and field validation as every other card type.
+    If a snapshot surface does not yet exist (e.g. a future M2/M3
+    dashboard card), using PROGRESS or ALERT as a temporary adapter is
+    acceptable — but OPS_SNAPSHOT should be preferred once the surface
+    is ready.
 """
 from __future__ import annotations
 
@@ -35,9 +49,11 @@ class CardType:
     CLOSEOUT = "CLOSEOUT"
     ALERT = "ALERT"
     RECORDED = "RECORDED"
+    OPS_SNAPSHOT = "OPS_SNAPSHOT"
 
     ALL = ("ACK", "START", "PROGRESS", "HANDOFF", "BLOCKED",
-           "REVIEW", "CLOSEOUT", "ALERT", "RECORDED")
+           "REVIEW", "CLOSEOUT", "ALERT", "RECORDED",
+           "OPS_SNAPSHOT")
 
 
 # ── role → allowed card types ──────────────────────────────────
@@ -52,6 +68,7 @@ _ROLE_ALLOWED_TYPES: dict[str, frozenset[str]] = {
         CardType.ACK, CardType.START, CardType.PROGRESS,
         CardType.HANDOFF, CardType.BLOCKED,
         CardType.CLOSEOUT, CardType.ALERT,
+        CardType.OPS_SNAPSHOT,
     }),
     "review_course": frozenset({
         CardType.ACK, CardType.START, CardType.PROGRESS,
@@ -62,6 +79,7 @@ _ROLE_ALLOWED_TYPES: dict[str, frozenset[str]] = {
         CardType.ACK, CardType.START, CardType.PROGRESS,
         CardType.HANDOFF, CardType.BLOCKED,
         CardType.ALERT,
+        CardType.OPS_SNAPSHOT,
     }),
     "Luke_recorder": frozenset({
         CardType.ACK, CardType.START, CardType.PROGRESS,
@@ -127,6 +145,10 @@ REQUIRED_FIELDS: dict[str, tuple[str, ...]] = {
     CardType.RECORDED: (
         "已记录内容一句话摘要", "来源", "去向",
     ),
+    CardType.OPS_SNAPSHOT: (
+        "看板类型", "当前状态", "顶行动", "证据引用",
+        "常驻摘要", "需要老板介入",
+    ),
 }
 
 # Controlled-vocabulary per (card_type, field).  Empty = accept any
@@ -136,8 +158,40 @@ _FIELD_VALUE_ALLOWED: dict[tuple[str, str], frozenset[str]] = {
     (CardType.REVIEW, "verdict"): frozenset({"通过", "打回", "需补充"}),
     (CardType.BLOCKED, "需要老板介入"): frozenset({"是", "否"}),
     (CardType.ALERT, "需要老板介入"): frozenset({"是", "否"}),
+    (CardType.OPS_SNAPSHOT, "需要老板介入"): frozenset({"是", "否"}),
 }
 
 # "需要老板介入" affirmative values, used by `needs_boss_intervention`
 # in cards_v2.py and by the publish filter / ALERT priority hints.
 _BOSS_INTERVENTION_YES = frozenset({"是", "yes", "true", "y", "1"})
+
+
+# ── severity → color mapping (M9) ─────────────────────────────
+#
+# Used by `render_to_card_dict` when the caller specifies a severity
+# rather than an explicit color.  The mapping is intentionally
+# conservative: "info" and "success" are the common light-weight
+# cards; "warning" uses orange (more attention than yellow but less
+# alarming than red); "critical" is reserved for ALERT / BLOCKED
+# where the boss must act.
+#
+# The mapping only covers severity values.  When the caller passes
+# an explicit color (e.g. `color="green"`), it is not overridden
+# by severity — the color takes precedence.
+
+SEVERITY_COLOR_MAP: dict[str, str] = {
+    "success": "green",
+    "info": "blue",
+    "warning": "orange",
+    "critical": "red",
+}
+
+
+def severity_to_color(severity: str | None) -> str | None:
+    """Map a severity string to the canonical Feishu template color.
+
+    Returns the color name or None when the severity is not in the
+    map (caller should fall back to the card's own `color` field).
+    Returns None for empty/None input.
+    """
+    return SEVERITY_COLOR_MAP.get(str(severity or "").lower())
