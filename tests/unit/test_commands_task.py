@@ -5,6 +5,8 @@ import contextlib
 import io
 import json
 
+import pytest
+
 from helpers import attr_patch, env_patch, isolated_env, run_cli, tmux_patch
 from eduflow.commands import say as say_cmd
 from eduflow.commands import task as task_cmd
@@ -3417,6 +3419,124 @@ def test_task_evidence_explain_blocked_on_manager_action_latest_verdict():
         assert rc == 0
         packet = json.loads(out)["evidence_explain"]
         assert packet["verdict"] == "BLOCKED"
+
+
+# ── M10: workspace policy skeleton ─────────────────────────────────
+
+
+def test_task_create_flow_saves_workspace_fields():
+    """M10: create_flow stores workspace_mode/path/branch/base_commit."""
+    with isolated_env():
+        tid = tasks.create_flow(
+            "worker_course",
+            "IGCSE Physics 0625 worktree isolation",
+            stage="curriculum",
+            owner="worker_course",
+            creator="manager",
+            workspace_mode="worktree",
+            workspace_path="/tmp/igcse-physics-worktree",
+            workspace_branch="feat/physics-0625",
+            workspace_base_commit="abc123",
+        )
+        row = tasks.get(tid)
+        assert row is not None
+        assert row["workspace_mode"] == "worktree"
+        assert row["workspace_path"] == "/tmp/igcse-physics-worktree"
+        assert row["workspace_branch"] == "feat/physics-0625"
+        assert row["workspace_base_commit"] == "abc123"
+        assert row["workspace_evidence_ref"] == ""  # default
+
+
+def test_task_create_flow_default_workspace_fields_are_empty():
+    """M10: unpassed workspace args default to empty string (backward compat)."""
+    with isolated_env():
+        tid = tasks.create_flow(
+            "worker_course",
+            "IGCSE Accounting 0452",
+            stage="curriculum",
+            owner="worker_course",
+            creator="manager",
+        )
+        row = tasks.get(tid)
+        assert row["workspace_mode"] == ""
+        assert row["workspace_path"] == ""
+        assert row["workspace_branch"] == ""
+        assert row["workspace_base_commit"] == ""
+        assert row["workspace_evidence_ref"] == ""
+
+
+def test_task_create_flow_rejects_invalid_workspace_mode():
+    """M10: invalid workspace_mode raises ValueError."""
+    with isolated_env():
+        with pytest.raises(ValueError, match="invalid workspace_mode"):
+            tasks.create_flow(
+                "worker_course",
+                "IGCSE Accounting 0452",
+                stage="curriculum",
+                owner="worker_course",
+                creator="manager",
+                workspace_mode="sandbox",  # not in VALID_WORKSPACE_MODES
+            )
+
+
+def test_task_dispatch_accepts_workspace_flags():
+    """M10: `task dispatch --workspace-mode worktree` stores the field."""
+    with isolated_env() as tmp:
+        with _workflow_env(tmp):
+            rc, out, _ = run_cli([
+                "task", "dispatch",
+                "worker_course", "IGCSE Physics 0625 Batch 1",
+                "--stage", "curriculum",
+                "--owner", "worker_course",
+                "--by", "manager",
+                "--workspace-mode", "worktree",
+                "--workspace-path", "/tmp/physics",
+                "--workspace-branch", "feat/physics",
+                "--workspace-base-commit", "deadbeef",
+            ])
+        assert rc == 0
+        # Extract task id from the output line: "✅ dispatched T-N: ..."
+        tid = next(w for w in out.split() if w.startswith("T-") and w.endswith(":"))
+        tid = tid.rstrip(":")
+        row = tasks.get(tid)
+        assert row is not None, f"task {tid} not found"
+        assert row["workspace_mode"] == "worktree"
+        assert row["workspace_path"] == "/tmp/physics"
+        assert row["workspace_branch"] == "feat/physics"
+        assert row["workspace_base_commit"] == "deadbeef"
+
+
+def test_task_get_shows_workspace_mode_in_text_output():
+    """M10: `task get <id>` text output includes workspace_mode when set."""
+    with isolated_env():
+        tid = tasks.create_flow(
+            "worker_course",
+            "IGCSE Chemistry 0620",
+            stage="curriculum",
+            owner="worker_course",
+            creator="manager",
+            workspace_mode="container",
+            workspace_branch="feat/chem",
+        )
+        rc, out, _ = run_cli(["task", "get", tid])
+        assert rc == 0
+        assert "workspace_mode: container" in out
+        assert "workspace_branch: feat/chem" in out
+
+
+def test_task_get_omits_workspace_when_unset():
+    """M10: workspace fields are not shown when unset (backward compat)."""
+    with isolated_env():
+        tid = tasks.create_flow(
+            "worker_course",
+            "IGCSE Biology 0610",
+            stage="curriculum",
+            owner="worker_course",
+            creator="manager",
+        )
+        rc, out, _ = run_cli(["task", "get", tid])
+        assert rc == 0
+        assert "workspace_mode" not in out
 
 
 # ── V1 workflow-first panel ──────────────────────────────────────

@@ -31,6 +31,10 @@ from eduflow.util import flock, now_ms, read_json, read_jsonl, write_json
 
 
 VALID_STATUSES = {"待处理", "进行中", "已完成", "已取消"}
+
+VALID_WORKSPACE_MODES = frozenset({
+    "shared", "worktree", "container", "external_artifact",
+})
 DEFAULT_STATUS = "待处理"
 TERMINAL_STATUSES = {"已完成", "已取消"}
 
@@ -2621,7 +2625,11 @@ def create(assignee: str, title: str, *,
 def create_flow(assignee: str, title: str, *, stage: str, owner: str,
                 creator: str = "", description: str = "",
                 status: str = "queued", verdict: str = "pending",
-                workflow_id: str = "", emit_event: bool = True) -> str:
+                workflow_id: str = "", emit_event: bool = True,
+                workspace_mode: str = "",
+                workspace_path: str = "",
+                workspace_branch: str = "",
+                workspace_base_commit: str = "") -> str:
     """Create a schema_version=2 flow task with state-machine fields."""
     if not title.strip():
         raise ValueError("title cannot be empty")
@@ -2634,6 +2642,14 @@ def create_flow(assignee: str, title: str, *, stage: str, owner: str,
         stage=stage,
         workflow_id=workflow_id,
     )
+    # M10: workspace policy metadata.  Defaults to "" (unset) so every
+    # existing task is still valid.  When the caller passes an explicit
+    # mode, validate it; an unknown mode is a ValueError.
+    if workspace_mode and workspace_mode not in VALID_WORKSPACE_MODES:
+        raise ValueError(
+            f"invalid workspace_mode: {workspace_mode!r} "
+            f"(valid: {sorted(VALID_WORKSPACE_MODES)})"
+        )
     with _locked():
         data = _load()
         tid = _next_task_id(data)
@@ -2671,6 +2687,13 @@ def create_flow(assignee: str, title: str, *, stage: str, owner: str,
             "batch_closed_out_at": None,
             "manager_closed_out_at": None,
             "revision_priority": "",
+            # M10: workspace policy fields.  All default to "" (unset)
+            # so every existing task remains valid without migration.
+            "workspace_mode": workspace_mode,
+            "workspace_path": workspace_path,
+            "workspace_branch": workspace_branch,
+            "workspace_base_commit": workspace_base_commit,
+            "workspace_evidence_ref": "",
             "created_at": now,
             "updated_at": now,
             "last_meaningful_update_at": now,

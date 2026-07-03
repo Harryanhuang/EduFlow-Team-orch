@@ -81,6 +81,7 @@ USAGE = (
     "  eduflow task create <assignee> <title> [--by <agent>] [--desc <text>]\n"
     "  eduflow task flow-create <assignee> <title> --stage S --owner O [--by <agent>] [--desc <text>] [--workflow W]\n"
     "  eduflow task dispatch <assignee> <title> --stage S --owner O [--by manager] [--desc <text>] [--workflow W] [--hermes-can-promote]\n"
+    "    [--workspace-mode <shared|worktree|container|external_artifact>] [--workspace-path <path>] [--workspace-branch <branch>] [--workspace-base-commit <sha>]\n"
     "  eduflow task correct <agent> \"<correction_content>\" [--severity high|medium|critical] [--context \"<ctx>\"]\n"
     "  eduflow task flow-transition <id> --to S --actor A\n"
     "  eduflow task submit-review <id> --actor A\n"
@@ -133,6 +134,14 @@ def _fmt_task(t: dict) -> list[str]:
         body.append(f"  reviewer: {t['reviewer']}")
     if t.get("verdict"):
         body.append(f"  verdict: {t['verdict']}")
+    # M10: workspace policy display.  Show workspace_mode and
+    # workspace_branch when set; workspace_path and base_commit are
+    # only shown in the JSON output of task get to keep the text
+    # format concise.
+    if t.get("workspace_mode"):
+        body.append(f"  workspace_mode: {t['workspace_mode']}")
+    if t.get("workspace_branch"):
+        body.append(f"  workspace_branch: {t['workspace_branch']}")
     if t.get("failure_reason"):
         # Show the worker's reported failure reason so reviewers see
         # why this task is in `failed` status.
@@ -243,6 +252,12 @@ def _cmd_dispatch(rest: list[str]) -> int:
     owner = pop_flag(rest, "--owner")
     workflow_id = pop_flag(rest, "--workflow") or ""
     hermes_can_promote = pop_bool_flag(rest, "--hermes-can-promote")
+    # M10: workspace policy flags.  All optional; unpassed flags
+    # remain "" so the task store defaults to unset.
+    workspace_mode = pop_flag(rest, "--workspace-mode") or ""
+    workspace_path = pop_flag(rest, "--workspace-path") or ""
+    workspace_branch = pop_flag(rest, "--workspace-branch") or ""
+    workspace_base_commit = pop_flag(rest, "--workspace-base-commit") or ""
     if len(rest) < 2 or not stage or not owner:
         return usage_error(USAGE)
     if by != "manager":
@@ -279,6 +294,10 @@ def _cmd_dispatch(rest: list[str]) -> int:
             creator=by,
             description=desc,
             workflow_id=effective_workflow_id,
+            workspace_mode=workspace_mode,
+            workspace_path=workspace_path,
+            workspace_branch=workspace_branch,
+            workspace_base_commit=workspace_base_commit,
         )
         tasks.transition_flow(tid, to_status="assigned", actor="manager")
     except ValueError as e:
