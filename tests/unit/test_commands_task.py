@@ -3539,6 +3539,94 @@ def test_task_get_omits_workspace_when_unset():
         assert "workspace_mode" not in out
 
 
+# ── INV-2: workspace fields are immutable through update/transition ─
+
+
+def test_workspace_fields_preserved_through_transition_flow():
+    """INV-2: workspace fields set at create_flow are preserved when
+    the task moves through status transitions (assigned → in_progress
+    → submitted_for_review → delivered)."""
+    with isolated_env():
+        tid = tasks.create_flow(
+            "worker_course",
+            "IGCSE Physics 0625 worktree",
+            stage="curriculum",
+            owner="worker_course",
+            creator="manager",
+            workspace_mode="worktree",
+            workspace_path="/tmp/igcse",
+            workspace_branch="feat/physics",
+            workspace_base_commit="abc123",
+        )
+        tasks.transition_flow(tid, to_status="assigned", actor="manager")
+        tasks.transition_flow(tid, to_status="in_progress", actor="worker_course")
+        row = tasks.get(tid)
+        assert row["workspace_mode"] == "worktree"
+        assert row["workspace_path"] == "/tmp/igcse"
+        assert row["workspace_branch"] == "feat/physics"
+        assert row["workspace_base_commit"] == "abc123"
+
+
+def test_workspace_fields_preserved_through_submit_and_review():
+    """INV-2: workspace fields survive submit_for_review + review."""
+    with isolated_env() as tmp:
+        with _workflow_env(tmp):
+            tid = tasks.create_flow(
+                "worker_course",
+                "IGCSE Chemistry 0620",
+                stage="curriculum",
+                owner="worker_course",
+                creator="manager",
+                workspace_mode="container",
+                workspace_branch="feat/chem",
+            )
+            tasks.assign_reviewer(tid, reviewer="review_course", actor="manager")
+            tasks.transition_flow(tid, to_status="assigned", actor="manager")
+            tasks.transition_flow(tid, to_status="in_progress", actor="worker_course")
+            tasks.submit_for_review(tid, actor="worker_course")
+            tasks.review_flow(
+                tid, outcome="approve", actor="review_course",
+                review_reason="approved_for_delivery",
+            )
+            row = tasks.get(tid)
+            assert row["workspace_mode"] == "container"
+            assert row["workspace_branch"] == "feat/chem"
+
+
+def test_legacy_update_rejects_flow_task_with_workspace_fields():
+    """INV-2: legacy v1 `update` still rejects flow tasks, even when
+    the task has workspace fields.  The rejection message must be
+    the same as for flow tasks without workspace fields."""
+    with isolated_env():
+        tid = tasks.create_flow(
+            "worker_course",
+            "IGCSE Biology 0610 worktree",
+            stage="curriculum",
+            owner="worker_course",
+            creator="manager",
+            workspace_mode="worktree",
+        )
+        with pytest.raises(ValueError, match="flow tasks cannot use legacy update"):
+            tasks.update(tid, title="renamed")
+
+
+def test_workspace_evidence_ref_defaults_to_empty_string():
+    """INV-2: workspace_evidence_ref is always set to "" (never absent)
+    so downstream consumers can rely on the field's presence."""
+    with isolated_env():
+        tid = tasks.create_flow(
+            "worker_course",
+            "IGCSE Accounting 0452",
+            stage="curriculum",
+            owner="worker_course",
+            creator="manager",
+            workspace_mode="worktree",
+        )
+        row = tasks.get(tid)
+        assert "workspace_evidence_ref" in row
+        assert row["workspace_evidence_ref"] == ""
+
+
 # ── V1 workflow-first panel ──────────────────────────────────────
 
 

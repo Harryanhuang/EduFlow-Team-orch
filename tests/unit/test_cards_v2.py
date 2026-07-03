@@ -867,3 +867,176 @@ def test_say_with_ops_snapshot_missing_top_actions_degrades_to_internal():
     assert "field:顶行动" in err
     assert "degraded to internal" in err
     assert calls == []
+
+
+# ── INV-1: pin coexistence of M3 snapshot path + M9 v2 path ──
+
+
+def test_employee_snapshot_card_produces_v2_schema():
+    """INV-1: the legacy M3 employee_snapshot_card still emits
+    schema=2.0; v1 fields (`config.wide_screen_mode`) are gone.
+    """
+    from eduflow.feishu.cards import employee_snapshot_card
+    card = employee_snapshot_card(
+        {"agent": "worker_course", "display_verdict": "active"},
+    )
+    assert card["schema"] == "2.0"
+    assert "header" in card
+    assert "body" in card
+    # The M3 path uses display verdict → color (not severity).
+    assert card["header"]["template"] in {
+        "blue", "green", "red", "yellow", "grey",
+        "purple", "orange", "turquoise", "pink",
+    }
+
+
+def test_team_snapshot_card_produces_v2_schema():
+    """INV-1: the legacy M3 team_snapshot_card still emits schema=2.0."""
+    from eduflow.feishu.cards import team_snapshot_card
+    card = team_snapshot_card({
+        "summary": {"agents_total": 3, "active": 2, "blocked": 0,
+                     "stale_display": 0, "waiting_inbox": 0, "idle": 1,
+                     "warm_idle": 0, "unknown": 0},
+        "top_actions": [],
+        "employees": [],
+        "degraded": [],
+    })
+    assert card["schema"] == "2.0"
+    assert "header" in card
+    body_text = card["body"]["elements"][0]["content"]
+    assert "总计" in body_text
+
+
+def test_employee_snapshot_card_field_names_differ_from_ops_snapshot():
+    """INV-1: M3 path uses 状态/驻留/下一步/建议动作; M9 v2 path
+    uses 看板类型/当前状态/顶行动/证据引用/常驻摘要.  This pins the
+    two paths as distinct so future readers don't accidentally
+    collapse them."""
+    from eduflow.feishu.cards import employee_snapshot_card
+    snapshot_card = employee_snapshot_card(
+        {"agent": "worker_course", "display_verdict": "active",
+         "residency_label": "常驻", "residency_mode": "resident",
+         "current_task_title": "AP Physics 0625",
+         "workflow_id": "igcse-subject-launch",
+         "workflow_next_action": "review_handoff",
+         "recommended_next_action": "continue dispatch"},
+    )
+    body_text = snapshot_card["body"]["elements"][0]["content"]
+    # M3 field names
+    assert "**状态**" in body_text
+    assert "**驻留**" in body_text
+    assert "**下一步**" in body_text
+    assert "**建议动作**" in body_text
+    # M9 OPS_SNAPSHOT field names are NOT in M3 path
+    assert "**看板类型**" not in body_text
+    assert "**顶行动**" not in body_text
+    assert "**证据引用**" not in body_text
+    assert "**常驻摘要**" not in body_text
+
+
+def test_ops_snapshot_field_names_differ_from_employee_snapshot():
+    """INV-1: M9 v2 OPS_SNAPSHOT uses 看板类型/顶行动/证据引用/
+    常驻摘要; M3 employee_snapshot uses 状态/驻留/下一步/建议动作.
+    """
+    from eduflow.feishu.cards_v2 import build_card
+    from eduflow.feishu.cards_v2_schema import CardType
+
+    body = (
+        "看板类型:ops\n当前状态:all clear\n顶行动:none\n"
+        "证据引用:ops-dashboard.json\n常驻摘要:resident=2\n需要老板介入:否"
+    )
+    card = build_card(CardType.OPS_SNAPSHOT, "manager", body)
+    rendered = cards_v2.render_to_card_dict(card)
+    body_text = rendered["body"]["elements"][0]["content"]
+    # M9 field names
+    assert "**看板类型**" in body_text
+    assert "**顶行动**" in body_text
+    assert "**证据引用**" in body_text
+    assert "**常驻摘要**" in body_text
+    # M3 field names are NOT in M9 path
+    assert "**状态**" not in body_text
+    assert "**驻留**" not in body_text
+    assert "**下一步**" not in body_text
+    assert "**建议动作**" not in body_text
+
+
+# ── INV-3: pin severity color design ─────────────────────────
+
+
+def test_severity_resolution_priority_documented_in_render():
+    """INV-3: render_to_card_dict uses the documented resolution
+    order — explicit color wins over severity.  This test pins the
+    design so a future refactor cannot silently flip the priority."""
+    # severity=warning, color=green → color wins (green)
+    card = cards_v2.Card(
+        card_type=CardType.ACK, sender="worker_course",
+        fields={"任务": "x", "负责人": "x", "当前阶段": "x",
+                "下一步": "x", "需要老板介入": "否"},
+        color="green", severity="warning",
+    )
+    rendered = cards_v2.render_to_card_dict(card)
+    assert rendered["header"]["template"] == "green"
+
+    # severity=critical, color=red → color wins (red)
+    card = cards_v2.Card(
+        card_type=CardType.ACK, sender="worker_course",
+        fields={"任务": "x", "负责人": "x", "当前阶段": "x",
+                "下一步": "x", "需要老板介入": "否"},
+        color="red", severity="critical",
+    )
+    rendered = cards_v2.render_to_card_dict(card)
+    assert rendered["header"]["template"] == "red"
+
+    # severity=info, color=blue (default) → severity wins (blue)
+    card = cards_v2.Card(
+        card_type=CardType.ACK, sender="worker_course",
+        fields={"任务": "x", "负责人": "x", "当前阶段": "x",
+                "下一步": "x", "需要老板介入": "否"},
+        severity="info",
+    )
+    rendered = cards_v2.render_to_card_dict(card)
+    assert rendered["header"]["template"] == "blue"
+
+
+def test_severity_unknown_does_not_change_default_blue():
+    """INV-3: when severity is unknown to the map and color is the
+    default blue, the card stays blue.  No accidental orange/red."""
+    card = cards_v2.Card(
+        card_type=CardType.ACK, sender="worker_course",
+        fields={"任务": "x", "负责人": "x", "当前阶段": "x",
+                "下一步": "x", "需要老板介入": "否"},
+        severity="fictional",
+    )
+    rendered = cards_v2.render_to_card_dict(card)
+    assert rendered["header"]["template"] == "blue"
+
+
+def test_severity_color_map_is_stable():
+    """INV-3: SEVERITY_COLOR_MAP is the canonical severity-to-color
+    mapping.  Adding a new severity requires a test update — this
+    test pins the existing 4 entries."""
+    from eduflow.feishu.cards_v2_schema import SEVERITY_COLOR_MAP
+    assert set(SEVERITY_COLOR_MAP) == {"success", "info", "warning", "critical"}
+    # Each value must be a Feishu template color.
+    valid = {"blue", "green", "red", "yellow", "grey",
+             "purple", "orange", "turquoise", "pink"}
+    for sev, color in SEVERITY_COLOR_MAP.items():
+        assert color in valid, \
+            f"severity {sev!r} maps to invalid color {color!r}"
+
+
+def test_verdict_color_is_separate_from_severity_color():
+    """INV-3: _verdict_color in feishu/cards.py is a separate
+    mapping from SEVERITY_COLOR_MAP.  blocked→red in verdict
+    space corresponds to critical→red in severity space, but
+    stale_display→yellow has no severity equivalent.  The two
+    mappings are intentionally separate."""
+    from eduflow.feishu.cards import _verdict_color
+    from eduflow.feishu.cards_v2_schema import SEVERITY_COLOR_MAP
+    # Same color for the most-urgent bucket:
+    assert _verdict_color("blocked") == "red"
+    assert SEVERITY_COLOR_MAP["critical"] == "red"
+    # Divergence: verdict has yellow (stale_display), severity has
+    # orange (warning) — they are NOT the same mapping.
+    assert _verdict_color("stale_display") == "yellow"
+    assert SEVERITY_COLOR_MAP["warning"] == "orange"

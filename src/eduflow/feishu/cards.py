@@ -163,6 +163,27 @@ def rich_card(title: str, elements: list, *, color: str = "blue") -> dict:
 
 
 # ── M3: employee / team snapshot cards ────────────────────────────
+#
+# These two functions predate cards_v2.py and build v2-schema cards
+# directly via `simple_card()`.  M9 (Card Protocol v2) added an
+# `OPS_SNAPSHOT` card type so `say --card OPS_SNAPSHOT` can route
+# through `validate_card` + `render_to_card_dict` for snapshot-like
+# content, but the two paths intentionally coexist:
+#
+#   - /employees, /employee <agent> → employee_snapshot_card /
+#     team_snapshot_card (this file, legacy M3 path)
+#   - say --card OPS_SNAPSHOT      → cards_v2.build_card(...)
+#     → validate_card + render_to_card_dict (M9 v2 path)
+#
+# The legacy M3 path uses a display-verdict → color mapping
+# (`_verdict_color`); the v2 path uses severity → color
+# (`SEVERITY_COLOR_MAP`).  Field names also differ: M3 uses
+# `状态` `驻留` `下一步` `建议动作`; M9 OPS_SNAPSHOT uses
+# `看板类型` `当前状态` `顶行动` `证据引用` `常驻摘要`.  Both
+# produce schema=2.0 markdown cards.  Slash commands keep using
+# the M3 path; explicit `say --card` calls keep using the M9 path.
+# A future M3.5 could rewrite the M3 helpers to delegate to
+# cards_v2 once the field set stabilises.
 
 
 def _verdict_color(verdict: str) -> str:

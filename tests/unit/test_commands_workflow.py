@@ -1285,6 +1285,97 @@ def test_workflow_recommend_task_truth_drift_no_active_workflow_emits_alternativ
     assert "also_consider_skill: eduflow-runtime-task-drift-explainer" in out
 
 
+# ── INV-5: pin surface → runtime-failover, verdict → realrun ──
+
+
+def test_workflow_recommend_surface_queries_route_to_runtime_failover(tmp_path):
+    """INV-5: all surface-class queries route to runtime-failover-hardening.
+    Surface = "agent looks wrong but is functioning" → fix runtime/status
+    truth gate.  The two paths must NOT collapse into one recommendation."""
+    root = tmp_path / "workflows"
+    _write_three_workflows(root)
+    _write_runtime_failover(root)
+    with env_patch(EDUFLOW_WORKFLOW_DIR=root):
+        for query in [
+            "agent 外显陈旧但实际功能正常",
+            "外显陈旧",
+            "二手外显",
+            "stale display",
+            "heartbeat 看起来不对但实际在岗",
+        ]:
+            rc, out, _ = run_cli(["workflow", "recommend", *query.split()])
+            assert rc == 0
+            assert "runtime-failover-hardening" in out, (
+                f"surface query {query!r} did not recommend "
+                f"runtime-failover-hardening:\n{out}"
+            )
+
+
+def test_workflow_recommend_verdict_queries_route_to_realrun(tmp_path):
+    """INV-5: all verdict-class queries route to realrun-to-workflow.
+    Verdict = "two lanes disagree on state" → turn the gap into a
+    workflow asset."""
+    root = tmp_path / "workflows"
+    _write_three_workflows(root)
+    with env_patch(EDUFLOW_WORKFLOW_DIR=root):
+        for query in [
+            "manager panel 状态不一致",
+            "状态不一致",
+            "task truth drift",
+            "supervisor-check 状态漂移",
+        ]:
+            rc, out, _ = run_cli(["workflow", "recommend", *query.split()])
+            assert rc == 0
+            assert "realrun-to-workflow" in out, (
+                f"verdict query {query!r} did not recommend "
+                f"realrun-to-workflow:\n{out}"
+            )
+
+
+def test_workflow_recommend_runtime_queries_route_to_runtime_failover(tmp_path):
+    """INV-5: runtime-class queries (warm residency, 429, fallback)
+    route to runtime-failover-hardening."""
+    root = tmp_path / "workflows"
+    _write_three_workflows(root)
+    _write_runtime_failover(root)
+    with env_patch(EDUFLOW_WORKFLOW_DIR=root):
+        for query in [
+            "温备 agent wake failed",
+            "429 fallback env drift",
+            "warm idle 状态不在线",
+        ]:
+            rc, out, _ = run_cli(["workflow", "recommend", *query.split()])
+            assert rc == 0
+            assert "runtime-failover-hardening" in out, (
+                f"runtime query {query!r} did not recommend "
+                f"runtime-failover-hardening:\n{out}"
+            )
+
+
+def test_workflow_recommend_two_classes_do_not_collapse(tmp_path):
+    """INV-5: surface and verdict queries must NOT recommend the
+    same workflow.  If they did, the operator would have no way to
+    tell whether the fix is a runtime repair (runtime-failover) or
+    a workflow asset (realrun-to-workflow)."""
+    root = tmp_path / "workflows"
+    _write_three_workflows(root)
+    _write_runtime_failover(root)
+    with env_patch(EDUFLOW_WORKFLOW_DIR=root):
+        rc1, out1, _ = run_cli([
+            "workflow", "recommend", "agent", "外显陈旧",
+        ])
+        rc2, out2, _ = run_cli([
+            "workflow", "recommend", "manager", "panel", "状态不一致",
+        ])
+    assert rc1 == 0 and rc2 == 0
+    # surface → runtime-failover
+    assert "runtime-failover-hardening" in out1
+    assert "realrun-to-workflow" not in out1
+    # verdict → realrun
+    assert "realrun-to-workflow" in out2
+    assert "runtime-failover-hardening" not in out2
+
+
 def test_workflow_recommend_old_subject_launch_does_not_regress(tmp_path):
     """M8 regression: the original subject-launch example still
     recommends igcse-subject-launch with high confidence."""
