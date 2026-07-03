@@ -7,16 +7,23 @@ from __future__ import annotations
 
 from eduflow.runtime import config, tmux
 from eduflow.store import local_facts
-from eduflow.util import error_exit, usage_error
+from eduflow.util import error_exit, maybe_print_help, usage_error
 
 
 USAGE = "usage: eduflow fire <agent>"
 
 
 def main(argv: list[str]) -> int:
+    if maybe_print_help(argv, USAGE):
+        return 0
     if len(argv) < 1:
         return usage_error(USAGE)
     agent = argv[0]
+
+    try:
+        config.agent_config(agent)
+    except KeyError:
+        return error_exit(f"❌ unknown agent: {agent} (not in team.json)")
 
     if agent == "manager":
         return error_exit(

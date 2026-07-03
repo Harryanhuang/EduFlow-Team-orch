@@ -54,13 +54,24 @@ _SLEEP_REASONS = {
 }
 
 
+_ACTIVE_STATUS_BLOCKLIST = {
+    "进行中",
+    "已接单",
+    "待接单",
+    "已读待确认",
+}
+
+
 def _has_active_task(agent: str) -> bool:
-    """True iff `agent` has an open task. Conservative: we use
-    `status == "进行中"` to mean "doing real work right now".  A
-    `待命` / `空闲` / `已交付` agent is NOT considered active.
+    """True iff `agent` has an open task or pending acceptance.
+
+    Conservative for warm standby: a stale `已接单` row is safer to
+    keep running than to retire, because it usually means the task
+    truth has not been closed out yet.  A `待命` / `空闲` / `已交付`
+    agent is NOT considered active.
     """
     snap = local_facts.get_status(agent) or {}
-    return str(snap.get("status") or "") == "进行中"
+    return str(snap.get("status") or "") in _ACTIVE_STATUS_BLOCKLIST
 
 
 def _has_unread_inbox(agent: str) -> bool:

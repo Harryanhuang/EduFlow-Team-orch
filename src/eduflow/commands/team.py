@@ -1,4 +1,4 @@
-"""`eduflow team [--json]`
+"""`eduflow team [--json] [--all] [--current]`
 
 Show the latest status for every agent that has reported one. Default:
 human-readable single-line per agent:
@@ -16,7 +16,7 @@ from __future__ import annotations
 
 from eduflow.runtime import config, residency
 from eduflow.store import local_facts
-from eduflow.util import ago_ms, pop_bool_flag, print_json
+from eduflow.util import ago_ms, pop_bool_flag, print_json, reject_extra_args
 
 
 def _residency_label(agent: str) -> str:
@@ -100,7 +100,16 @@ def _emit_json(rows: list[dict], heartbeats: dict[str, int]) -> None:
 def main(argv: list[str]) -> int:
     rest = list(argv)
     as_json = pop_bool_flag(rest, "--json")
+    include_all = pop_bool_flag(rest, "--all")
+    current_only = pop_bool_flag(rest, "--current")
+    if reject_extra_args(rest, "usage: eduflow team [--json] [--all] [--current]"):
+        return 1
     rows = local_facts.list_all_statuses()
+    if current_only:
+        known = set(config.agent_names())
+        rows = [r for r in rows if r.get("agent") in known]
+    elif not include_all:
+        rows = [r for r in rows if not str(r.get("agent") or "").startswith("-")]
     heartbeats = local_facts.all_heartbeats()
     if as_json:
         _emit_json(rows, heartbeats)

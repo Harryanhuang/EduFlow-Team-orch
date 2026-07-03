@@ -222,6 +222,14 @@ def test_sleep_if_idle_dry_run_keeps_active_task_agent_running():
         assert result["decision"] == residency.KEEP_ACTIVE_TASK
 
 
+@pytest.mark.parametrize("status", ["已接单", "待接单", "已读待确认"])
+def test_sleep_if_idle_keeps_pending_acceptance_statuses_running(status):
+    with isolated_env():
+        local_facts.upsert_status("worker_course", status, "pending work")
+        result = sleep_idle.sleep_if_idle("worker_course", dry_run=True)
+        assert result["decision"] == residency.KEEP_ACTIVE_TASK
+
+
 def test_sleep_if_idle_dry_run_keeps_unread_inbox_agent_running():
     with isolated_env():
         local_facts.append_message(

@@ -142,6 +142,40 @@ def test_team_json_empty_returns_empty_list_not_message():
         assert json.loads(out) == []
 
 
+def test_team_filters_flag_shaped_status_rows_by_default():
+    team = {"session": "S", "agents": {"worker": {}}}
+    with isolated_env(team=team):
+        local_facts.upsert_status("worker", "待命", "ready")
+        local_facts.upsert_status("--help", "已停止", "fired")
+        rc, out, _ = run_cli(["team", "--json"])
+        assert rc == 0
+        data = json.loads(out)
+        assert [r["agent"] for r in data] == ["worker"]
+
+
+def test_team_current_filters_status_rows_not_in_current_team():
+    team = {"session": "S", "agents": {"worker": {}}}
+    with isolated_env(team=team):
+        local_facts.upsert_status("worker", "待命", "ready")
+        local_facts.upsert_status("retired_worker", "已停止", "retired")
+        rc, out, _ = run_cli(["team", "--json", "--current"])
+        assert rc == 0
+        data = json.loads(out)
+        assert [r["agent"] for r in data] == ["worker"]
+
+
+def test_team_all_includes_legacy_status_rows_for_audit():
+    team = {"session": "S", "agents": {"worker": {}}}
+    with isolated_env(team=team):
+        local_facts.upsert_status("worker", "待命", "ready")
+        local_facts.upsert_status("--help", "已停止", "fired")
+        local_facts.upsert_status("retired_worker", "已停止", "retired")
+        rc, out, _ = run_cli(["team", "--json", "--all"])
+        assert rc == 0
+        data = json.loads(out)
+        assert [r["agent"] for r in data] == ["--help", "retired_worker", "worker"]
+
+
 # ── workspace ─────────────────────────────────────────────────────
 
 

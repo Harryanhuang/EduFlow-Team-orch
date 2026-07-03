@@ -59,6 +59,22 @@ def test_status_zero_args_returns_one_with_usage():
     assert "usage:" in err
 
 
+def test_status_help_does_not_touch_heartbeat():
+    with isolated_env():
+        rc, out, err = run_cli(["status", "--help"])
+        assert rc == 0, err
+        assert "usage:" in out
+        assert local_facts.all_heartbeats() == {}
+
+
+def test_status_set_rejects_flag_shaped_agent_name():
+    with isolated_env():
+        rc, _, err = run_cli(["status", "--not-an-agent", "进行中", "fake"])
+        assert rc == 1
+        assert "invalid agent name" in err
+        assert local_facts.get_status("--not-an-agent") is None
+
+
 def test_status_set_missing_state_or_task_returns_one():
     with isolated_env():
         rc, _, err = run_cli(["status", "agent", "进行中"])
@@ -102,3 +118,19 @@ def test_log_missing_args_returns_one():
     rc, _, err = run_cli(["log", "agent", "info"])
     assert rc == 1
     assert "usage: eduflow log" in err
+
+
+def test_log_help_does_not_touch_heartbeat():
+    with isolated_env():
+        rc, out, err = run_cli(["log", "--help"])
+        assert rc == 0, err
+        assert "usage: eduflow log" in out
+        assert local_facts.all_heartbeats() == {}
+
+
+def test_log_rejects_flag_shaped_agent_name():
+    with isolated_env():
+        rc, _, err = run_cli(["log", "--not-an-agent", "info", "fake"])
+        assert rc == 1
+        assert "invalid agent name" in err
+        assert local_facts.list_logs("--not-an-agent") == []

@@ -259,6 +259,27 @@ def test_hire_creates_window_spawns_and_writes_status():
         assert identity.identity_path("new").exists()
 
 
+# ── fire ──────────────────────────────────────────────────────────
+
+
+def test_fire_help_does_not_write_fake_agent_status():
+    team = {"session": "S", "agents": {"manager": {}}}
+    with _isolated_team(team), _fake_tmux():
+        rc, out, err = run_cli(["fire", "--help"])
+        assert rc == 0, err
+        assert "usage: eduflow fire <agent>" in out
+        assert local_facts.get_status("--help") is None
+
+
+def test_fire_unknown_agent_returns_one_without_status_write():
+    team = {"session": "S", "agents": {"manager": {}}}
+    with _isolated_team(team), _fake_tmux():
+        rc, _, err = run_cli(["fire", "ghost"])
+        assert rc == 1
+        assert "unknown agent" in err
+        assert local_facts.get_status("ghost") is None
+
+
 def test_hire_prints_resolved_runtime_cli():
     with _isolated_team({"session": "S", "agents": {"new": {"runtime": "primary"}}}) as tmp:
         (tmp / "eduflow.toml").write_text("""

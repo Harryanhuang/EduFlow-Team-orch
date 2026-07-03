@@ -7,7 +7,7 @@ with no further args.
 from __future__ import annotations
 
 from eduflow.store import local_facts
-from eduflow.util import usage_error
+from eduflow.util import error_exit, maybe_print_help, usage_error
 
 
 USAGE = (
@@ -18,14 +18,16 @@ USAGE = (
 
 
 def main(argv: list[str]) -> int:
+    if maybe_print_help(argv, USAGE):
+        return 0
     if len(argv) < 1:
         return usage_error(USAGE)
 
     agent = argv[0]
-    local_facts.touch_heartbeat(agent)
 
     # show mode
     if len(argv) == 1:
+        local_facts.touch_heartbeat(agent)
         snap = local_facts.get_status(agent)
         if snap is None:
             print(f"❓ {agent}: no status recorded")
@@ -39,6 +41,9 @@ def main(argv: list[str]) -> int:
     # set mode
     if len(argv) < 3:
         return usage_error(USAGE)
+    if agent.startswith("-"):
+        return error_exit(f"❌ invalid agent name: {agent}")
+    local_facts.touch_heartbeat(agent)
     state = argv[1]
     task = argv[2]
     blocker = argv[3] if len(argv) > 3 else ""
