@@ -124,8 +124,8 @@ Audit the following surfaces. If a file does not exist in the current worktree, 
 ### Visual narrative
 
 - `docs/media/README.md` — asset registry and export notes.
-- `docs/media/runtime-architecture.svg` — runtime architecture diagram.
-- `docs/media/workflow-guided-delivery.svg` — workflow delivery diagram.
+- `docs/media/readme-runtime-map.svg` — runtime architecture diagram.
+- `docs/media/readme-delivery-loop.svg` — workflow delivery diagram.
 - Any other SVG/PNG referenced by `README.md`.
 
 ## Output template

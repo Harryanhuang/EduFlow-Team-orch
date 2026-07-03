@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="420" viewBox="0 0 760 420" role="img" aria-labelledby="title desc">
+  <title id="title">Messaging control panel</title>
+  <desc id="desc">A feature diagram showing external messages routed through manager, inbox, read marks, dispatch, and visible replies.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff8f0"/>
+      <stop offset="1" stop-color="#eef7fb"/>
+    </linearGradient>
+    <filter id="shadow" x="-12%" y="-12%" width="124%" height="124%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#153245" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+  <rect width="760" height="420" rx="28" fill="url(#bg)"/>
+  <rect x="34" y="34" width="692" height="352" rx="24" fill="#ffffff" stroke="#e7dfd3" filter="url(#shadow)"/>
+  <text x="62" y="80" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="700" fill="#25313a">Messaging Control</text>
+  <text x="62" y="108" font-family="Inter, Arial, sans-serif" font-size="14" fill="#68757c">Feishu/Lark, CLI, inbox, read marks, visible user replies</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="62" y="154" width="150" height="88" rx="18" fill="#f7ecdc" stroke="#deb77c"/>
+    <text x="137" y="184" text-anchor="middle" font-size="15" font-weight="700" fill="#5a3c16">Feishu / CLI</text>
+    <text x="137" y="207" text-anchor="middle" font-size="12" fill="#78654a">operator input</text>
+
+    <rect x="306" y="130" width="148" height="136" rx="20" fill="#203746"/>
+    <text x="380" y="166" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">manager</text>
+    <text x="380" y="194" text-anchor="middle" font-size="12" fill="#cad9e2">routing owner</text>
+    <text x="380" y="218" text-anchor="middle" font-size="12" fill="#cad9e2">scope + closeout</text>
+    <text x="380" y="242" text-anchor="middle" font-size="12" fill="#cad9e2">public narrative</text>
+
+    <rect x="548" y="154" width="150" height="88" rx="18" fill="#e9f4ff" stroke="#9fc5e8"/>
+    <text x="623" y="184" text-anchor="middle" font-size="15" font-weight="700" fill="#214a6b">say --to user</text>
+    <text x="623" y="207" text-anchor="middle" font-size="12" fill="#54718a">visible card</text>
+
+    <path d="M212 198 H306" stroke="#80929a" stroke-width="4" stroke-linecap="round"/>
+    <path d="M454 198 H548" stroke="#80929a" stroke-width="4" stroke-linecap="round"/>
+
+    <rect x="90" y="292" width="128" height="50" rx="13" fill="#eef8f0" stroke="#aad3af"/>
+    <text x="154" y="322" text-anchor="middle" font-size="13" font-weight="700" fill="#2b5635">inbox row</text>
+
+    <rect x="246" y="292" width="128" height="50" rx="13" fill="#f1efff" stroke="#c1b7ee"/>
+    <text x="310" y="322" text-anchor="middle" font-size="13" font-weight="700" fill="#44346f">read mark</text>
+
+    <rect x="402" y="292" width="128" height="50" rx="13" fill="#fff3df" stroke="#e9c37a"/>
+    <text x="466" y="322" text-anchor="middle" font-size="13" font-weight="700" fill="#694214">dispatch</text>
+
+    <rect x="558" y="292" width="128" height="50" rx="13" fill="#edf5f8" stroke="#aac8d3"/>
+    <text x="622" y="322" text-anchor="middle" font-size="13" font-weight="700" fill="#315565">closeout</text>
+
+    <path d="M218 317 H246 M374 317 H402 M530 317 H558" stroke="#b3c0c4" stroke-width="3" stroke-linecap="round"/>
+  </g>
+</svg>

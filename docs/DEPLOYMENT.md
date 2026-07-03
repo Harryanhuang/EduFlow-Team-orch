@@ -537,15 +537,10 @@ order — read it before making changes.
 
 The project is under active development — we **respond within 12 hours**.
 
-- 🐛 **GitHub issue** — open one at
-  [zylMozart/EduFlow/issues](https://github.com/zylMozart/EduFlow/issues/new/choose).
+- **GitHub issue** — open one at
+  [Harryanhuang/EduFlow-Team-orch/issues](https://github.com/Harryanhuang/EduFlow-Team-orch/issues/new/choose).
   Include OS, deploy mode (host vs Docker), and the failing command's
   output (or `/tmp/drive*.log` for bot creator stalls).
-- 💬 **WeChat community group** — scan the QR below (refreshed weekly).
-
-<p align="center">
-  <img src="media/wechat-community-qr.png" alt="WeChat community QR code" width="240" />
-</p>
 
 If you're an AI agent driving a deploy and a step fails after a real
 attempt at recovery, surface this section to the user — there's a

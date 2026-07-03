@@ -37,6 +37,59 @@ The result: long tasks stay recoverable across context loss, provider switching,
 | Education production / 教育生产 | IGCSE subject launch, item-level prototype, 9-subject sprint, AP knowledge-base optimization |
 | Ops recovery / 运维恢复 | watchdog, runtime guard, provider failover, CLI shim, Feishu bot setup, deployment docs |
 
+## Capability Panels / 功能分区
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <img src="docs/media/readme-feature-runtime.svg" alt="Runtime lifecycle panel" />
+      <br />
+      <strong>Runtime Lifecycle / 运行时生命周期</strong>
+      <br />
+      Agent panes are created, verified, restarted, reidentified, and retired through one command surface. Warm agents can release provider sessions when idle without losing accepted work.
+    </td>
+    <td width="50%" valign="top">
+      <img src="docs/media/readme-feature-messaging.svg" alt="Messaging and control panel" />
+      <br />
+      <strong>Messaging Control / 消息与指挥</strong>
+      <br />
+      Feishu/Lark and local CLI messages flow into inbox rows, visible replies, read marks, and role-bound dispatches so manager keeps the external narrative clean.
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <img src="docs/media/readme-feature-workflow.svg" alt="Workflow registry panel" />
+      <br />
+      <strong>Workflow Registry / 工作流注册表</strong>
+      <br />
+      Repeated execution patterns are promoted into workflow contracts with triggers, owners, checklists, forbidden moves, review gates, and closeout evidence.
+    </td>
+    <td width="50%" valign="top">
+      <img src="docs/media/readme-feature-trust.svg" alt="Runtime trust panel" />
+      <br />
+      <strong>Runtime Trust / 运行可信度</strong>
+      <br />
+      Health is judged by pane state, live env, provider smoke, task status, runtime events, stale drift checks, and accepted-work protection instead of pane existence alone.
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <img src="docs/media/readme-feature-memory.svg" alt="Durable memory panel" />
+      <br />
+      <strong>Durable Memory / 长期记忆</strong>
+      <br />
+      Useful lessons, decisions, corrections, and reusable recovery moves become recallable knowledge instead of disappearing with a single agent context window.
+    </td>
+    <td width="50%" valign="top">
+      <img src="docs/media/readme-feature-education.svg" alt="Education production panel" />
+      <br />
+      <strong>Education Production / 教育生产</strong>
+      <br />
+      Course, syllabus, qbank, review, and knowledge-base work run through bounded owner roles, evidence files, formal verdicts, and reusable quality gates.
+    </td>
+  </tr>
+</table>
+
 ## Runtime Architecture / 运行架构
 
 <p align="center">

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="420" viewBox="0 0 760 420" role="img" aria-labelledby="title desc">
+  <title id="title">Durable memory panel</title>
+  <desc id="desc">A feature diagram showing lessons, decisions, corrections, and recovery moves becoming recallable durable memory.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f4f8ff"/>
+      <stop offset="1" stop-color="#f9f5ef"/>
+    </linearGradient>
+    <filter id="shadow" x="-12%" y="-12%" width="124%" height="124%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#283342" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+  <rect width="760" height="420" rx="28" fill="url(#bg)"/>
+  <rect x="34" y="34" width="692" height="352" rx="24" fill="#ffffff" stroke="#dde3eb" filter="url(#shadow)"/>
+  <text x="62" y="80" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="700" fill="#25313a">Durable Memory</text>
+  <text x="62" y="108" font-family="Inter, Arial, sans-serif" font-size="14" fill="#657178">lessons survive context loss and repeated cycles</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="70" y="150" width="144" height="70" rx="15" fill="#eaf3ff" stroke="#9fc5e8"/>
+    <text x="142" y="179" text-anchor="middle" font-size="14" font-weight="700" fill="#214a6b">decisions</text>
+    <text x="142" y="200" text-anchor="middle" font-size="12" fill="#54718a">what changed</text>
+
+    <rect x="70" y="260" width="144" height="70" rx="15" fill="#fff3df" stroke="#e9c37a"/>
+    <text x="142" y="289" text-anchor="middle" font-size="14" font-weight="700" fill="#694214">corrections</text>
+    <text x="142" y="310" text-anchor="middle" font-size="12" fill="#7a633d">what failed</text>
+
+    <rect x="308" y="132" width="144" height="216" rx="22" fill="#263845"/>
+    <text x="380" y="172" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">memory store</text>
+    <text x="380" y="204" text-anchor="middle" font-size="12" fill="#d0dbe2">remember</text>
+    <text x="380" y="232" text-anchor="middle" font-size="12" fill="#d0dbe2">recall</text>
+    <text x="380" y="260" text-anchor="middle" font-size="12" fill="#d0dbe2">forget</text>
+    <text x="380" y="288" text-anchor="middle" font-size="12" fill="#d0dbe2">export</text>
+
+    <rect x="546" y="150" width="144" height="70" rx="15" fill="#eef8f0" stroke="#aad3af"/>
+    <text x="618" y="179" text-anchor="middle" font-size="14" font-weight="700" fill="#2b5635">playbooks</text>
+    <text x="618" y="200" text-anchor="middle" font-size="12" fill="#55755c">next action</text>
+
+    <rect x="546" y="260" width="144" height="70" rx="15" fill="#f1efff" stroke="#c1b7ee"/>
+    <text x="618" y="289" text-anchor="middle" font-size="14" font-weight="700" fill="#44346f">handoffs</text>
+    <text x="618" y="310" text-anchor="middle" font-size="12" fill="#6a5d8d">less rework</text>
+
+    <path d="M214 185 H308 M214 295 H308 M452 185 H546 M452 295 H546" stroke="#9aaab1" stroke-width="3" stroke-linecap="round"/>
+  </g>
+</svg>

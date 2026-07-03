@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="420" viewBox="0 0 760 420" role="img" aria-labelledby="title desc">
+  <title id="title">Runtime trust panel</title>
+  <desc id="desc">A feature diagram showing multiple evidence checks that determine whether an agent is truly healthy.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f9faf4"/>
+      <stop offset="1" stop-color="#eef6fb"/>
+    </linearGradient>
+    <filter id="shadow" x="-12%" y="-12%" width="124%" height="124%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#2b3640" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+  <rect width="760" height="420" rx="28" fill="url(#bg)"/>
+  <rect x="34" y="34" width="692" height="352" rx="24" fill="#ffffff" stroke="#e1e4d9" filter="url(#shadow)"/>
+  <text x="62" y="80" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="700" fill="#26323a">Runtime Trust</text>
+  <text x="62" y="108" font-family="Inter, Arial, sans-serif" font-size="14" fill="#657178">health means evidence, not just an open pane</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <circle cx="380" cy="224" r="76" fill="#203746"/>
+    <text x="380" y="214" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">trusted</text>
+    <text x="380" y="241" text-anchor="middle" font-size="13" fill="#d3e0e7">agent state</text>
+
+    <g fill="#ffffff" stroke="#cbd8d6">
+      <rect x="76" y="142" width="160" height="54" rx="14"/>
+      <rect x="76" y="252" width="160" height="54" rx="14"/>
+      <rect x="300" y="322" width="160" height="54" rx="14"/>
+      <rect x="524" y="142" width="160" height="54" rx="14"/>
+      <rect x="524" y="252" width="160" height="54" rx="14"/>
+    </g>
+    <g font-size="13" font-weight="700" fill="#314955">
+      <text x="156" y="174" text-anchor="middle">pane exists</text>
+      <text x="156" y="284" text-anchor="middle">live env match</text>
+      <text x="380" y="354" text-anchor="middle">provider smoke</text>
+      <text x="604" y="174" text-anchor="middle">fresh inbox</text>
+      <text x="604" y="284" text-anchor="middle">no stale drift</text>
+    </g>
+    <path d="M236 169 C284 170 302 188 316 203" stroke="#8aa0a8" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M236 279 C284 276 303 257 319 244" stroke="#8aa0a8" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M380 322 V300" stroke="#8aa0a8" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M524 169 C476 170 458 188 444 203" stroke="#8aa0a8" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M524 279 C476 276 457 257 441 244" stroke="#8aa0a8" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </g>
+</svg>

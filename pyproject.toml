@@ -28,9 +28,9 @@ classifiers = [
 vector = ["lancedb>=0.4", "sentence-transformers>=2.2"]
 
 [project.urls]
-Homepage = "https://github.com/zylMozart/EduFlow"
-Repository = "https://github.com/zylMozart/EduFlow"
-Issues = "https://github.com/zylMozart/EduFlow/issues"
+Homepage = "https://github.com/Harryanhuang/EduFlow-Team-orch"
+Repository = "https://github.com/Harryanhuang/EduFlow-Team-orch"
+Issues = "https://github.com/Harryanhuang/EduFlow-Team-orch/issues"
 
 [project.scripts]
 eduflow = "eduflow.cli:main"

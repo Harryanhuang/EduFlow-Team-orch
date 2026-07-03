@@ -25,12 +25,9 @@ tags:
 ```text
 M README.md
 A docs/media/README.md
-A docs/media/eduflow-team-orch-hero.png
-A docs/media/eduflow-team-orch-hero.svg
-A docs/media/runtime-architecture.png
-A docs/media/runtime-architecture.svg
-A docs/media/workflow-guided-delivery.png
-A docs/media/workflow-guided-delivery.svg
+A docs/media/readme-command-center.svg
+A docs/media/readme-runtime-map.svg
+A docs/media/readme-delivery-loop.svg
 ```
 
 ## 对原规划的影响

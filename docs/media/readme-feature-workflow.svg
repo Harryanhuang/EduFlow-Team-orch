@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="420" viewBox="0 0 760 420" role="img" aria-labelledby="title desc">
+  <title id="title">Workflow registry panel</title>
+  <desc id="desc">A feature diagram showing real execution becoming workflow contracts with roles, gates, and reusable evidence.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7fbf8"/>
+      <stop offset="1" stop-color="#fbf3f8"/>
+    </linearGradient>
+    <filter id="shadow" x="-12%" y="-12%" width="124%" height="124%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#29313f" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+  <rect width="760" height="420" rx="28" fill="url(#bg)"/>
+  <rect x="34" y="34" width="692" height="352" rx="24" fill="#ffffff" stroke="#dfe7df" filter="url(#shadow)"/>
+  <text x="62" y="80" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="700" fill="#24313a">Workflow Registry</text>
+  <text x="62" y="108" font-family="Inter, Arial, sans-serif" font-size="14" fill="#657178">real run to reusable operating contract</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="70" y="148" width="150" height="202" rx="18" fill="#263845"/>
+    <text x="145" y="182" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">real run</text>
+    <text x="145" y="212" text-anchor="middle" font-size="12" fill="#d0dbe2">messy context</text>
+    <text x="145" y="237" text-anchor="middle" font-size="12" fill="#d0dbe2">actual files</text>
+    <text x="145" y="262" text-anchor="middle" font-size="12" fill="#d0dbe2">repair notes</text>
+    <text x="145" y="287" text-anchor="middle" font-size="12" fill="#d0dbe2">review signals</text>
+
+    <rect x="304" y="118" width="152" height="260" rx="20" fill="#f2f6f4" stroke="#bdd0c5"/>
+    <text x="380" y="152" text-anchor="middle" font-size="16" font-weight="700" fill="#20313a">registry entry</text>
+    <rect x="326" y="180" width="108" height="34" rx="9" fill="#ffffff" stroke="#cfdcd4"/>
+    <text x="380" y="202" text-anchor="middle" font-size="12" fill="#36515d">trigger</text>
+    <rect x="326" y="224" width="108" height="34" rx="9" fill="#ffffff" stroke="#cfdcd4"/>
+    <text x="380" y="246" text-anchor="middle" font-size="12" fill="#36515d">owners</text>
+    <rect x="326" y="268" width="108" height="34" rx="9" fill="#ffffff" stroke="#cfdcd4"/>
+    <text x="380" y="290" text-anchor="middle" font-size="12" fill="#36515d">review gate</text>
+    <rect x="326" y="312" width="108" height="34" rx="9" fill="#ffffff" stroke="#cfdcd4"/>
+    <text x="380" y="334" text-anchor="middle" font-size="12" fill="#36515d">closeout</text>
+
+    <rect x="540" y="148" width="150" height="202" rx="18" fill="#eaf3ff" stroke="#9fc5e8"/>
+    <text x="615" y="182" text-anchor="middle" font-size="16" font-weight="700" fill="#214a6b">next run</text>
+    <text x="615" y="212" text-anchor="middle" font-size="12" fill="#54718a">known lanes</text>
+    <text x="615" y="237" text-anchor="middle" font-size="12" fill="#54718a">clear gates</text>
+    <text x="615" y="262" text-anchor="middle" font-size="12" fill="#54718a">less drift</text>
+    <text x="615" y="287" text-anchor="middle" font-size="12" fill="#54718a">repeatable proof</text>
+
+    <path d="M220 249 H304" stroke="#8a9ba2" stroke-width="4" stroke-linecap="round"/>
+    <path d="M456 249 H540" stroke="#8a9ba2" stroke-width="4" stroke-linecap="round"/>
+  </g>
+</svg>

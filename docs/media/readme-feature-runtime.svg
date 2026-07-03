@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="420" viewBox="0 0 760 420" role="img" aria-labelledby="title desc">
+  <title id="title">Runtime lifecycle panel</title>
+  <desc id="desc">A feature diagram showing agent lifecycle commands, tmux panes, warm residency, and health verification.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fbff"/>
+      <stop offset="1" stop-color="#f1f7f4"/>
+    </linearGradient>
+    <filter id="shadow" x="-12%" y="-12%" width="124%" height="124%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#123044" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+  <rect width="760" height="420" rx="28" fill="url(#bg)"/>
+  <rect x="34" y="34" width="692" height="352" rx="24" fill="#ffffff" stroke="#d9e5df" filter="url(#shadow)"/>
+  <text x="62" y="80" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="700" fill="#1d2b34">Runtime Lifecycle</text>
+  <text x="62" y="108" font-family="Inter, Arial, sans-serif" font-size="14" fill="#5c6d76">spawn, verify, restart, sleep, wake, close</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="62" y="150" width="138" height="64" rx="14" fill="#eaf3ff" stroke="#9bc4ef"/>
+    <text x="131" y="176" text-anchor="middle" font-size="14" font-weight="700" fill="#183654">hire / up</text>
+    <text x="131" y="197" text-anchor="middle" font-size="12" fill="#47677f">create pane</text>
+
+    <rect x="230" y="150" width="138" height="64" rx="14" fill="#eef8f0" stroke="#9bd0a5"/>
+    <text x="299" y="176" text-anchor="middle" font-size="14" font-weight="700" fill="#1f4a2b">verify</text>
+    <text x="299" y="197" text-anchor="middle" font-size="12" fill="#4d7555">env + smoke</text>
+
+    <rect x="398" y="150" width="138" height="64" rx="14" fill="#fff3df" stroke="#edc579"/>
+    <text x="467" y="176" text-anchor="middle" font-size="14" font-weight="700" fill="#694214">warm sleep</text>
+    <text x="467" y="197" text-anchor="middle" font-size="12" fill="#7a633d">release idle CLI</text>
+
+    <rect x="566" y="150" width="108" height="64" rx="14" fill="#f1edff" stroke="#c3b3ea"/>
+    <text x="620" y="176" text-anchor="middle" font-size="14" font-weight="700" fill="#392b62">wake</text>
+    <text x="620" y="197" text-anchor="middle" font-size="12" fill="#66568a">resume work</text>
+
+    <path d="M200 182 H230" stroke="#78909c" stroke-width="3" stroke-linecap="round"/>
+    <path d="M368 182 H398" stroke="#78909c" stroke-width="3" stroke-linecap="round"/>
+    <path d="M536 182 H566" stroke="#78909c" stroke-width="3" stroke-linecap="round"/>
+
+    <rect x="78" y="260" width="170" height="62" rx="16" fill="#263845"/>
+    <text x="163" y="287" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">tmux pane</text>
+    <text x="163" y="308" text-anchor="middle" font-size="12" fill="#c7d6df">agent process seat</text>
+
+    <rect x="292" y="260" width="170" height="62" rx="16" fill="#2d5b47"/>
+    <text x="377" y="287" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">task protection</text>
+    <text x="377" y="308" text-anchor="middle" font-size="12" fill="#d3e7dd">pending work stays alive</text>
+
+    <rect x="506" y="260" width="170" height="62" rx="16" fill="#604b2a"/>
+    <text x="591" y="287" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">runtime events</text>
+    <text x="591" y="308" text-anchor="middle" font-size="12" fill="#eedec4">auditable lifecycle</text>
+
+    <path d="M248 291 H292" stroke="#b7c4c0" stroke-width="3" stroke-linecap="round"/>
+    <path d="M462 291 H506" stroke="#b7c4c0" stroke-width="3" stroke-linecap="round"/>
+  </g>
+</svg>

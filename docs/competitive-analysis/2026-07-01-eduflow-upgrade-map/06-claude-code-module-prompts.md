@@ -726,8 +726,8 @@ EduFlow 当前已有 status、heartbeat、logs、inbox、runtime-status、task t
    - .claude/skills/
    - docs/workflows/
    - docs/media/README.md
-   - docs/media/runtime-architecture.svg
-   - docs/media/workflow-guided-delivery.svg
+   - docs/media/readme-runtime-map.svg
+   - docs/media/readme-delivery-loop.svg
    - .eduflow-team-state/agents/*/identity.md
    - .eduflow-team-state/facts/runtime-status.json
    - .eduflow-team-state/facts/runtime-switch-events.jsonl
