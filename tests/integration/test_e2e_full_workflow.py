@@ -30,8 +30,17 @@ from __future__ import annotations
 
 import json
 import sys
+from pathlib import Path
 
-from helpers import attr_patch, isolated_env, run_cli
+# Allow running as a bare script (`python tests/integration/...`) — under
+# pytest the root conftest already puts src/ and tests/ on sys.path, so
+# these inserts are idempotent no-ops there.
+_ROOT = Path(__file__).resolve().parents[2]
+for _p in (_ROOT / "src", _ROOT / "tests"):
+    if str(_p) not in sys.path:
+        sys.path.insert(0, str(_p))
+
+from helpers import attr_patch, env_patch, isolated_env, run_cli
 from eduflow.feishu import chat as feishu_chat
 from eduflow.runtime import paths
 from eduflow.store import (
@@ -80,7 +89,7 @@ def main() -> int:
             _step("1. Manager dispatches IGCSE Accounting 0452 task")
             rc, out, err = run_cli([
                 "task", "dispatch",
-                "worker_course", "IGCSE Accounting 0452 Batch 1",
+                "worker_course", "IGCSE Accounting 0452 全学科正式完成",
                 "--stage", "curriculum",
                 "--owner", "worker_course",
                 "--by", "manager",
@@ -109,7 +118,27 @@ def main() -> int:
                         "task_id": tid,
                         "batch_range": "full_subject",
                         "items_count": 320,
+                        # _subject_counts reads item_count from
+                        # evidence_packet["items_count"] and
+                        # evidence_packet["item_count"]; qa_count from
+                        # evidence_packet["qa_count"].  Both are
+                        # required for the strict-account gate
+                        # (_qa_standard_status) to return
+                        # "qa_standard_met".  Missing either causes
+                        # "qa_standard_missing_counts" →
+                        # "evidence_account_incomplete".
+                        "item_count": 320,
                         "qql_count": 320,
+                        "qa_count": 320,
+                        # The manifest_evidence dict is the canonical
+                        # format.  task_evidence_account reads
+                        # manifest_rows from the dict keys (rows,
+                        # manifest_rows, count, items_count).  Top-
+                        # level manifest_rows is NOT preserved by
+                        # _normalize_evidence_packet (it only copies
+                        # _REQUIRED_EVIDENCE_PACKET_FIELDS and
+                        # REVIEW_EVIDENCE_FIELDS), so we MUST put the
+                        # row count inside the manifest_evidence dict.
                         "manifest_evidence": {"rows": 320},
                         "files_sampled": ["Q-1.md", "Q-50.md"],
                         "q_ids_checked": ["Q-1", "Q-50", "Q-100"],
@@ -160,21 +189,21 @@ def main() -> int:
                 )
 
             # ── Step 4: Reviewer approves.
+            # CRITICAL: `review_flow` takes a `verdict_target` parameter
+            # that the reviewer uses to declare the scope they reviewed
+            # (e.g. "full_subject" / "QQL + items" / "Unit 1"). The
+            # closeout gate later checks that the derived `verdict_scope`
+            # covers the closeout target. A `verdict_target` of "全学科"
+            # or "full_subject" makes the approval authoritative for
+            # full-subject closeout. Without it, the gate says
+            # "closeout_blocked_review_not_approved" because it cannot
+            # verify the reviewer covered the full scope.
             _step("4. Reviewer approves with full evidence")
-            data = tasks._load()
-            for row in data.get("tasks", []):
-                if row.get("id") == tid:
-                    row["latest_authoritative_verdict"] = {
-                        "reviewer": "review_course",
-                        "verdict": "approved",
-                        "verdict_scope": "full_subject",
-                        "at_ms": 1720000000000,
-                    }
-            tasks._save(data)
             tasks.review_flow(
                 tid, outcome="approve", actor="review_course",
                 review_reason="approved_for_delivery",
                 latest_turn_summary="all 320 QA items verified",
+                verdict_target="IGCSE Accounting 0452 全学科正式完成",
             )
             row = tasks.get(tid)
             assert row["verdict"] == "approved"
@@ -208,15 +237,36 @@ def main() -> int:
                 failures.append("post-review latest_authoritative_review missing reviewer")
 
             # ── Step 5: Manager closes out.
+            # The E2E has no real content directory, so the subject
+            # verifier cannot re-check artifacts. We use --skip-verifier
+            # under EDUFLOW_VERIFIER_BYPASS_ALLOWED=1 (the documented
+            # test-only escape hatch) so the closeout can complete from
+            # the evidence packet. In production a real content dir makes
+            # this unnecessary.
+            #
+            # CRITICAL: the CLI returns rc=0 whether the apply succeeded
+            # or was blocked by a precondition. We must NOT trust rc alone
+            # — we assert on the `applied=` / `apply_reason=` fields in the
+            # output. This is the exact blind spot that a naive
+            # `assert rc == 0` would miss.
             _step("5. Manager invokes manager-action-apply manager_formal_closeout")
-            rc, out, err = run_cli([
-                "task", "manager-action-apply",
-                "manager_formal_closeout",
-                "--subject-id", tid,
-                "--confirm",
-            ])
-            assert rc == 0, f"closeout failed: {err}\nstdout={out}"
-            print(f"  closeout rc={rc} stdout_len={len(out)}")
+            with env_patch(EDUFLOW_VERIFIER_BYPASS_ALLOWED="1"):
+                rc, out, err = run_cli([
+                    "task", "manager-action-apply",
+                    "manager_formal_closeout",
+                    "--subject-id", tid,
+                    "--confirm",
+                    "--skip-verifier",
+                ])
+            print(f"  closeout rc={rc}")
+            print(f"  {out.splitlines()[0] if out else '(no output)'}")
+            # rc alone is not enough — the apply is only real when
+            # applied=true.  A blocked apply also returns rc=0.
+            if "applied=true" not in out:
+                failures.append(
+                    "closeout apply did not report applied=true — the "
+                    f"apply was blocked or failed:\n{out}"
+                )
 
             # ── Step 6: Verify final state.
             _step("6. Verify final task state")
@@ -229,6 +279,14 @@ def main() -> int:
                 failures.append(f"status={row['status']} (expected delivered)")
             if row["verdict"] != "approved":
                 failures.append(f"verdict={row['verdict']} (expected approved)")
+            # Now that the apply actually completed, closeout_status must
+            # be stamped.  This is the assertion that was MISSING in the
+            # first E2E draft — it green-lit a silent closeout failure.
+            if row.get("closeout_status") != "closeout_completed":
+                failures.append(
+                    f"closeout_status={row.get('closeout_status')!r} "
+                    "(expected closeout_completed)"
+                )
             if row["workspace_mode"] != "worktree":
                 failures.append(
                     f"workspace_mode={row['workspace_mode']} (expected worktree)"
