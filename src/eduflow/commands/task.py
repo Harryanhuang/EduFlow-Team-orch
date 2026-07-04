@@ -23,6 +23,9 @@
   task ops-dashboard [--json] [--text]
   task evidence-account [--task-id T] [--workflow W] [--json]
   task evidence-explain <task_id> [--json]
+  task loop-check <task_id> [--spec code-repair] [--max-cycles N] [--new-run] [--allow-unscoped-workspace] [--background]
+  task loop-status <task_id|loop_id>
+  task loop-list [--task-id T] [--status S]
   task supervisor-check [--advance] [--send] [--json]
   # downstream helpers (Phase 2/3 skeletons; not Phase 1 core)
   task publish-check <id> --sender A [--to T]
@@ -36,16 +39,21 @@
 from __future__ import annotations
 
 import json
+import subprocess
 import sys
+from pathlib import Path
 
 from eduflow.commands import say as say_cmd
 from eduflow.commands import send as send_cmd
 from eduflow.commands import workflow as workflow_cmd
-from eduflow.runtime import config, context_monitor, paths, tmux, tunables
+from eduflow.runtime import (
+    config, context_monitor, loop_preflight, loop_runner, loop_specs,
+    paths, tmux, tunables,
+)
 from eduflow.store import (
     employee_read_model, local_facts,
-    task_event_scanner, task_publish_gate, task_publish_render, tasks,
-    subject_verifier,
+    loop_runs, task_event_scanner, task_publish_gate, task_publish_render,
+    tasks, team_loop_account, subject_verifier,
 )
 from eduflow.util import (
     error_exit, fmt_time_ms, maybe_print_help, pop_flag, usage_error,
@@ -102,6 +110,9 @@ USAGE = (
     "  eduflow task ops-dashboard [--json] [--text]\n"
     "  eduflow task evidence-account [--task-id T] [--workflow W] [--json]\n"
     "  eduflow task evidence-explain <task_id> [--json]\n"
+    "  eduflow task loop-check <task_id> [--spec code-repair] [--max-cycles N] [--new-run] [--allow-unscoped-workspace] [--background]\n"
+    "  eduflow task loop-status <task_id|loop_id>\n"
+    "  eduflow task loop-list [--task-id T] [--status S]\n"
     "  eduflow task supervisor-check [--advance] [--send] [--json]\n"
     "  # downstream helpers (Phase 2/3 skeletons; not Phase 1 core)\n"
     "  eduflow task publish-check <id> --sender A [--to T]\n"
@@ -150,6 +161,22 @@ def _fmt_task(t: dict) -> list[str]:
         body.append(f"  manager_action_type: {t['manager_action_type']}")
     if t.get("review_reason"):
         body.append(f"  review_reason: {t['review_reason']}")
+    if t.get("loop_run_id"):
+        for key in (
+            "loop_run_id",
+            "loop_status",
+            "loop_cycle_count",
+            "loop_stop_reason",
+            "loop_recommended_action",
+            "loop_evidence_ref",
+            "loop_updated_by",
+            "self_check_status",
+            "review_check_status",
+            "manager_closeout_status",
+        ):
+            value = t.get(key)
+            if value not in ("", None):
+                body.append(f"  {key}: {value}")
     if t.get("latest_turn_summary"):
         body.append(f"  latest_turn_summary: {t['latest_turn_summary']}")
     if t.get("scope_topic"):
@@ -2865,7 +2892,17 @@ def build_evidence_verdict_packet(task: dict, account: dict) -> dict:
         "items_count": items_count,
         "qql_count": qql_count,
         "manifest_rows": manifest_rows,
+        "supporting_evidence": {},
     }
+    if task.get("loop_run_id"):
+        packet["supporting_evidence"]["loop"] = {
+            "run_id": str(task.get("loop_run_id") or ""),
+            "status": str(task.get("loop_status") or ""),
+            "cycle_count": int(task.get("loop_cycle_count") or 0),
+            "stop_reason": str(task.get("loop_stop_reason") or ""),
+            "recommended_action": str(task.get("loop_recommended_action") or ""),
+            "evidence_ref": str(task.get("loop_evidence_ref") or ""),
+        }
     packet["required_next_owner"] = _required_next_owner(packet)
     return packet
 
@@ -3136,6 +3173,229 @@ def _cmd_get(rest: list[str]) -> int:
         return error_exit(f"❌ no such task: {rest[0]}")
     for line in _fmt_task(t):
         print(line)
+    return 0
+
+
+def _cmd_loop_check(rest: list[str]) -> int:
+    spec_name = pop_flag(rest, "--spec") or "code-repair"
+    max_cycles = int(pop_flag(rest, "--max-cycles") or "3")
+    new_run = pop_bool_flag(rest, "--new-run")
+    allow_unscoped = pop_bool_flag(rest, "--allow-unscoped-workspace")
+    background = pop_bool_flag(rest, "--background")
+    if len(rest) < 1:
+        return usage_error(USAGE)
+    tid = rest[0]
+    task = tasks.get(tid)
+    if task is None:
+        return error_exit(f"❌ no such task: {tid}")
+    if task.get("schema_version") != 2:
+        return error_exit(f"❌ task {tid} is not a flow task")
+    try:
+        spec = loop_specs.resolve(spec_name)
+        run = (
+            loop_runs.create_new(task_id=tid, spec=spec["name"], max_cycles=max_cycles)
+            if new_run
+            else loop_runs.create_or_get_active(
+                task_id=tid,
+                spec=spec["name"],
+                max_cycles=max_cycles,
+            )
+        )
+    except ValueError as e:
+        return error_exit(f"❌ {e}")
+
+    if background:
+        try:
+            tasks.set_loop_evidence(
+                tid,
+                loop_run_id=run["id"],
+                loop_status="running",
+                loop_cycle_count=int(run.get("cycle_count") or 0),
+                loop_evidence_ref=loop_runs.evidence_ref(run["id"]),
+                actor="manager",
+            )
+            cmd = [
+                sys.executable,
+                "-m",
+                "eduflow.cli",
+                "task",
+                "loop-check",
+                tid,
+                "--spec",
+                spec["name"],
+                "--max-cycles",
+                str(max_cycles),
+            ]
+            if allow_unscoped:
+                cmd.append("--allow-unscoped-workspace")
+            loop_runs.attach_background_log(run["id"])
+            with loop_runs.artifact_path(run["id"], "background.log").open("a", encoding="utf-8") as log_fh:
+                log_fh.write(f"$ {' '.join(cmd)}\n")
+                log_fh.flush()
+                subprocess.Popen(
+                    cmd,
+                    cwd=str(Path.cwd()),
+                    stdout=log_fh,
+                    stderr=log_fh,
+                )
+        except Exception as e:
+            return error_exit(f"❌ failed to start background loop-check: {e}")
+        print(f"✅ loop-check scheduled {tid} loop_id={run['id']} background=true")
+        return 0
+
+    cwd = Path(task.get("workspace_path") or Path.cwd())
+    preflight = loop_preflight.check_workspace(
+        workspace_mode=str(task.get("workspace_mode") or ""),
+        workspace_path=str(task.get("workspace_path") or ""),
+        allow_unscoped=allow_unscoped,
+        cwd=cwd,
+    )
+    previous = (run.get("cycles") or [])[-1] if run.get("cycles") else None
+    cycle = int(run.get("cycle_count") or 0) + 1
+    if not preflight.get("ok"):
+        check = {
+            "passed": False,
+            "checker_unavailable": False,
+            "check_mode": "self_check",
+            "passed_commands": [],
+            "failed_commands": ["workspace preflight"],
+            "checker_output": f"workspace preflight blocked: {preflight.get('reason')}",
+            "failure_fingerprint": str(preflight.get("reason") or "workspace_policy_blocked"),
+        }
+        decision = {"status": "failed", "stop_reason": "workspace_policy_blocked"}
+    else:
+        check = loop_runner.run_checker_cycle(
+            commands=spec["commands"],
+            cwd=cwd,
+            check_mode="self_check",
+        )
+        decision = loop_runner.decide_stop(
+            check,
+            previous,
+            cycle=cycle,
+            max_cycles=max_cycles,
+        )
+
+    updated = loop_runs.append_cycle(
+        run["id"],
+        checker_output=check.get("checker_output", ""),
+        diff_text="",
+        preflight=preflight,
+        failed_commands=check.get("failed_commands") or [],
+        passed_commands=check.get("passed_commands") or [],
+        failure_fingerprint=check.get("failure_fingerprint", ""),
+        status=decision["status"],
+        stop_reason=decision.get("stop_reason", ""),
+    )
+    self_check_status = "passed" if decision["status"] == "passed" else "failed"
+    recommended_action = (
+        "send_builder_handoff"
+        if decision["status"] in {"repair_needed", "stopped", "failed"}
+        else ""
+    )
+    try:
+        tasks.set_loop_evidence(
+            tid,
+            loop_run_id=run["id"],
+            loop_status=decision["status"],
+            loop_cycle_count=updated["cycle_count"],
+            loop_stop_reason=decision.get("stop_reason", ""),
+            loop_recommended_action=recommended_action,
+            loop_evidence_ref=loop_runs.evidence_ref(run["id"]),
+            self_check_status=self_check_status,
+            review_check_status="pending",
+            manager_closeout_status="blocked",
+            actor="manager",
+        )
+    except ValueError as e:
+        return error_exit(f"❌ {e}")
+
+    bg = " background=true" if background else ""
+    print(
+        f"✅ loop-check {tid} loop_id={run['id']} "
+        f"loop_status={decision['status']} cycle_count={updated['cycle_count']}{bg}"
+    )
+    if recommended_action:
+        print(f"recommended_action={recommended_action}")
+        print(_builder_handoff_packet(tid, run["id"], check, loop_runs.evidence_ref(run["id"])))
+    return 0
+
+
+def _builder_handoff_packet(task_id: str, loop_id: str, check: dict, evidence_ref: str) -> str:
+    failed = ", ".join(check.get("failed_commands") or []) or "-"
+    output = str(check.get("checker_output") or "").strip().splitlines()
+    summary = "\n".join(output[-8:]) if output else "-"
+    return "\n".join([
+        "Builder handoff",
+        f"task_id: {task_id}",
+        f"loop_id: {loop_id}",
+        f"failed_commands: {failed}",
+        f"failure_summary: {summary}",
+        f"evidence_ref: {evidence_ref}",
+        "red_lines: Do not weaken tests; do not delete tests; do not skip tests; do not edit unrelated files.",
+        f"please re-run: eduflow task loop-check {task_id} --background",
+    ])
+
+
+def _cmd_loop_status(rest: list[str]) -> int:
+    if len(rest) < 1:
+        return usage_error(USAGE)
+    ref = rest[0]
+    task = tasks.get(ref)
+    run = loop_runs.get(ref) if task is None else None
+    if task is None and run is None:
+        return error_exit(f"❌ no such task or loop: {ref}")
+    if task is not None:
+        print("agent_loop:")
+        print(f"  loop_run_id: {task.get('loop_run_id') or ''}")
+        print(f"  loop_status: {task.get('loop_status') or ''}")
+        print(f"  cycle_count: {task.get('loop_cycle_count') or 0}")
+        print(f"  evidence_ref: {task.get('loop_evidence_ref') or ''}")
+        print(f"  recommended_action: {task.get('loop_recommended_action') or ''}")
+        team_loop = team_loop_account.build(ref)
+        if team_loop:
+            print("team_loop:")
+            for key in (
+                "workflow_id",
+                "phase",
+                "cycle_count",
+                "current_owner",
+                "next_owner",
+                "last_gate",
+                "loop_health",
+                "stuck_reason",
+                "recommended_action",
+                "self_check_status",
+                "review_check_status",
+                "manager_closeout_status",
+            ):
+                print(f"  {key}: {team_loop.get(key) or ''}")
+        return 0
+    print("agent_loop:")
+    print(f"  loop_run_id: {run.get('id')}")
+    print(f"  task_id: {run.get('task_id')}")
+    print(f"  loop_status: {run.get('status')}")
+    print(f"  cycle_count: {run.get('cycle_count')}")
+    print(f"  evidence_ref: {run.get('evidence_ref')}")
+    return 0
+
+
+def _cmd_loop_list(rest: list[str]) -> int:
+    task_id = pop_flag(rest, "--task-id") or ""
+    status = pop_flag(rest, "--status") or ""
+    if rest:
+        return usage_error(USAGE)
+    rows = loop_runs.list_runs(task_id=task_id, status=status)
+    if not rows:
+        print("📋 no matching loop runs")
+        return 0
+    print(f"📋 {len(rows)} loop runs")
+    for row in rows:
+        print(
+            f"{row.get('id')} task_id={row.get('task_id')} "
+            f"status={row.get('status')} cycle_count={row.get('cycle_count')} "
+            f"evidence_ref={row.get('evidence_ref')}"
+        )
     return 0
 
 
@@ -3592,6 +3852,9 @@ SUBCOMMANDS = {
     "ops-dashboard": _cmd_ops_dashboard,
     "evidence-account": _cmd_evidence_account,
     "evidence-explain": _cmd_evidence_explain,
+    "loop-check": _cmd_loop_check,
+    "loop-status": _cmd_loop_status,
+    "loop-list": _cmd_loop_list,
     "subject-inventory": _cmd_subject_inventory,
     "batch-closeout": _cmd_batch_closeout,
     "manager-closeout": _cmd_manager_closeout,

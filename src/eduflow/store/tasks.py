@@ -66,6 +66,15 @@ FLOW_STATUSES = frozenset({
 })
 FLOW_TERMINAL_STATUSES = frozenset({"delivered", "cancelled", "failed"})
 FLOW_VERDICTS = frozenset({"pending", "approved", "rejected", "manager_action"})
+LOOP_STATUSES = frozenset({
+    "running",
+    "checking",
+    "repair_needed",
+    "passed",
+    "stopped",
+    "failed",
+})
+CHECK_SUMMARY_STATUSES = frozenset({"", "pending", "passed", "failed", "blocked"})
 CLOSEOUT_TIER_STATUSES = frozenset({
     "unit_seed_ready",
     "unit_package_ready",
@@ -176,6 +185,16 @@ _MEANINGFUL_EVENT_FIELDS = (
     "required_fix",
     "blocking_files",
     "closeout_status",
+    "loop_run_id",
+    "loop_status",
+    "loop_cycle_count",
+    "loop_stop_reason",
+    "loop_recommended_action",
+    "loop_evidence_ref",
+    "loop_updated_by",
+    "self_check_status",
+    "review_check_status",
+    "manager_closeout_status",
     "batch_closed_out_at",
     "manager_closed_out_at",
     "revision_priority",
@@ -195,6 +214,16 @@ _FLOW_SEMANTIC_DEFAULTS = {
     "required_fix": [],
     "blocking_files": [],
     "closeout_status": "",
+    "loop_run_id": "",
+    "loop_status": "",
+    "loop_cycle_count": 0,
+    "loop_stop_reason": "",
+    "loop_recommended_action": "",
+    "loop_evidence_ref": "",
+    "loop_updated_by": "",
+    "self_check_status": "",
+    "review_check_status": "",
+    "manager_closeout_status": "",
     "tier_status": "",
     "batch_closed_out_at": None,
     "manager_closed_out_at": None,
@@ -2684,6 +2713,16 @@ def create_flow(assignee: str, title: str, *, stage: str, owner: str,
             "required_fix": [],
             "blocking_files": [],
             "closeout_status": "",
+            "loop_run_id": "",
+            "loop_status": "",
+            "loop_cycle_count": 0,
+            "loop_stop_reason": "",
+            "loop_recommended_action": "",
+            "loop_evidence_ref": "",
+            "loop_updated_by": "",
+            "self_check_status": "",
+            "review_check_status": "",
+            "manager_closeout_status": "",
             "batch_closed_out_at": None,
             "manager_closed_out_at": None,
             "revision_priority": "",
@@ -2744,6 +2783,68 @@ def update(task_id: str, *, status: str | None = None,
         _save(data)
         return True
     return False
+
+
+def set_loop_evidence(
+    task_id: str,
+    *,
+    loop_run_id: str,
+    loop_status: str,
+    loop_cycle_count: int = 0,
+    loop_stop_reason: str = "",
+    loop_recommended_action: str = "",
+    loop_evidence_ref: str = "",
+    self_check_status: str = "",
+    review_check_status: str = "",
+    manager_closeout_status: str = "",
+    actor: str = "",
+    emit_event: bool = True,
+) -> bool:
+    """Attach compact loop evidence to a flow task without changing delivery truth."""
+    if loop_status not in LOOP_STATUSES:
+        raise ValueError(f"invalid loop_status: {loop_status} (valid: {sorted(LOOP_STATUSES)})")
+    checks = {
+        "self_check_status": self_check_status,
+        "review_check_status": review_check_status,
+        "manager_closeout_status": manager_closeout_status,
+    }
+    for key, value in checks.items():
+        if value not in CHECK_SUMMARY_STATUSES:
+            raise ValueError(
+                f"invalid {key}: {value} (valid: {sorted(CHECK_SUMMARY_STATUSES)})"
+            )
+    with _locked():
+        data = _load()
+        task = _find_task(data, task_id)
+        if task is None:
+            return False
+        if task.get("schema_version") != 2:
+            raise ValueError(f"task {task_id} is not a flow task")
+        before = _task_snapshot(task)
+        task.update({
+            "loop_run_id": str(loop_run_id or ""),
+            "loop_status": loop_status,
+            "loop_cycle_count": max(0, int(loop_cycle_count or 0)),
+            "loop_stop_reason": str(loop_stop_reason or ""),
+            "loop_recommended_action": str(loop_recommended_action or ""),
+            "loop_evidence_ref": str(loop_evidence_ref or ""),
+            "loop_updated_by": str(actor or ""),
+            "self_check_status": str(self_check_status or ""),
+            "review_check_status": str(review_check_status or ""),
+            "manager_closeout_status": str(manager_closeout_status or ""),
+            "updated_at": now_ms(),
+            "last_meaningful_update_at": now_ms(),
+        })
+        if emit_event:
+            _append_task_event(
+                task_id=task_id,
+                kind="transition",
+                actor=actor,
+                before=before,
+                after=_task_snapshot(task),
+            )
+        _save(data)
+        return True
 
 
 def transition_flow(task_id: str, *, to_status: str, actor: str) -> bool:

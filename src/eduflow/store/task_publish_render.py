@@ -339,6 +339,15 @@ def render_visible_truth_snapshot(task: dict) -> dict:
     if not verifier_summary:
         verifier_summary = None  # explicitly absent, not hand-written
 
+    loop_summary = None
+    if task.get("loop_run_id"):
+        loop_summary = {
+            "run_id": str(task.get("loop_run_id") or ""),
+            "status": str(task.get("loop_status") or ""),
+            "cycle_count": int(task.get("loop_cycle_count") or 0),
+            "evidence_ref": str(task.get("loop_evidence_ref") or ""),
+        }
+
     # Health / runtime status — only include if relevant
     runtime_status = str(task.get("runtime_status") or task.get("health_status") or "")
     health_runtime_status = runtime_status if runtime_status else None
@@ -349,6 +358,7 @@ def render_visible_truth_snapshot(task: dict) -> dict:
         "qbank_report_path": qbank_report_path if qbank_report_path else None,
         "qbank_status": qbank_status,
         "verifier_summary": verifier_summary,
+        "loop_summary": loop_summary,
         "health_runtime_status": health_runtime_status,
         "generated_at_ms": now_ms(),
     }
@@ -391,6 +401,8 @@ def compose_visible_sources(task: dict) -> dict:
     if not verifier_report_path:
         verifier_report_path = None
 
+    loop_evidence_ref = str(task.get("loop_evidence_ref") or "")
+
     # Assemble presence / absence lists
     sources_present: list[str] = ["task_id"]
     sources_missing: list[str] = []
@@ -415,11 +427,15 @@ def compose_visible_sources(task: dict) -> dict:
     else:
         sources_missing.append("verifier")
 
+    if loop_evidence_ref:
+        sources_present.append("loop_evidence")
+
     return {
         "task_id": task_id,
         "subject_inventory_source": subject_inventory_source,
         "qbank_report_path": qbank_report_path,
         "verifier_report_path": verifier_report_path,
+        "loop_evidence_ref": loop_evidence_ref,
         "sources_present": sources_present,
         "sources_missing": sources_missing,
     }

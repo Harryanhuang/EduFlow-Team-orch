@@ -2385,6 +2385,212 @@ def test_task_get_flow_task_renders_stage_owner_and_verdict():
         assert "current_summary: Task created and queued." in out
 
 
+def test_task_get_shows_loop_summary_fields():
+    with isolated_env():
+        tid = tasks.create_flow(
+            "worker_builder",
+            "Repair runtime",
+            stage="builder",
+            owner="worker_builder",
+        )
+        tasks.set_loop_evidence(
+            tid,
+            loop_run_id="L-000001",
+            loop_status="passed",
+            loop_cycle_count=1,
+            loop_stop_reason="all_green",
+            loop_evidence_ref="loop_runs/L-000001/meta.json",
+            actor="manager",
+        )
+        rc, out, err = run_cli(["task", "get", tid])
+        assert rc == 0, err
+        assert "loop_run_id: L-000001" in out
+        assert "loop_status: passed" in out
+        assert "loop_evidence_ref: loop_runs/L-000001/meta.json" in out
+
+
+def test_task_loop_check_writes_latest_loop_summary():
+    with isolated_env():
+        tid = tasks.create_flow(
+            "worker_builder",
+            "Repair runtime",
+            stage="builder",
+            owner="worker_builder",
+            workspace_mode="shared",
+        )
+        with attr_patch(
+            task_cmd.loop_runner,
+            run_checker_cycle=lambda **kwargs: {
+                "passed": True,
+                "checker_unavailable": False,
+                "check_mode": "self_check",
+                "passed_commands": ["pytest -q"],
+                "failed_commands": [],
+                "checker_output": "ok",
+                "failure_fingerprint": "",
+            },
+            decide_stop=lambda current, previous, cycle, max_cycles: {
+                "status": "passed",
+                "stop_reason": "all_green",
+            },
+        ):
+            rc, out, err = run_cli(["task", "loop-check", tid])
+        assert rc == 0, err
+        assert "loop_status=passed" in out
+        row = tasks.get(tid)
+        assert row["loop_status"] == "passed"
+        assert row["status"] == "queued"
+        assert row["verdict"] == "pending"
+        assert row["closeout_status"] == ""
+
+
+def test_task_loop_check_background_schedules_process_without_running_checks():
+    with isolated_env():
+        tid = tasks.create_flow(
+            "worker_builder",
+            "Repair runtime",
+            stage="builder",
+            owner="worker_builder",
+            workspace_mode="shared",
+        )
+        calls = []
+
+        class FakePopen:
+            def __init__(self, args, **kwargs):
+                calls.append({"args": args, "kwargs": kwargs})
+
+        with attr_patch(task_cmd.subprocess, Popen=FakePopen):
+            rc, out, err = run_cli(["task", "loop-check", tid, "--background"])
+        assert rc == 0, err
+        assert "background=true" in out
+        assert calls
+        assert "--background" not in calls[0]["args"]
+        stdout = calls[0]["kwargs"]["stdout"]
+        assert stdout is calls[0]["kwargs"]["stderr"]
+        assert stdout.name.endswith("background.log")
+        assert task_cmd.loop_runs.artifact_path("L-000001", "background.log").exists()
+        assert task_cmd.loop_runs.get("L-000001")["background_log_ref"] == "loop_runs/L-000001/background.log"
+        row = tasks.get(tid)
+        assert row["loop_status"] == "running"
+
+
+def test_task_loop_status_shows_agent_loop():
+    with isolated_env():
+        tid = tasks.create_flow(
+            "worker_builder",
+            "Repair runtime",
+            stage="builder",
+            owner="worker_builder",
+            workspace_mode="shared",
+        )
+        tasks.set_loop_evidence(
+            tid,
+            loop_run_id="L-000001",
+            loop_status="repair_needed",
+            loop_cycle_count=2,
+            loop_evidence_ref="loop_runs/L-000001/meta.json",
+            actor="manager",
+        )
+
+        rc, out, err = run_cli(["task", "loop-status", tid])
+        assert rc == 0, err
+        assert "agent_loop:" in out
+        assert "loop_status: repair_needed" in out
+        assert "cycle_count: 2" in out
+
+
+def test_task_loop_status_shows_team_loop_for_workflow_task():
+    with isolated_env():
+        tid = tasks.create_flow(
+            "worker_course",
+            "IGCSE Accounting 0452 sample",
+            stage="curriculum",
+            owner="worker_course",
+            workflow_id="igcse-subject-launch",
+        )
+        tasks.transition_flow(tid, to_status="assigned", actor="manager")
+        tasks.transition_flow(tid, to_status="in_progress", actor="worker_course")
+        tasks.assign_reviewer(tid, reviewer="review_course", actor="manager")
+        tasks.submit_for_review(tid, actor="worker_course")
+        tasks.review_flow(tid, outcome="reject", actor="review_course")
+
+        rc, out, err = run_cli(["task", "loop-status", tid])
+        assert rc == 0, err
+        assert "team_loop:" in out
+        assert "phase: team_repair_needed" in out
+        assert "next_owner: worker_course" in out
+
+
+def test_task_loop_list_filters_by_task_and_status():
+    with isolated_env():
+        tid = tasks.create_flow(
+            "worker_builder",
+            "Repair runtime",
+            stage="builder",
+            owner="worker_builder",
+            workspace_mode="shared",
+        )
+        with attr_patch(
+            task_cmd.loop_runner,
+            run_checker_cycle=lambda **kwargs: {
+                "passed": True,
+                "checker_unavailable": False,
+                "check_mode": "self_check",
+                "passed_commands": ["pytest -q"],
+                "failed_commands": [],
+                "checker_output": "ok",
+                "failure_fingerprint": "",
+            },
+            decide_stop=lambda current, previous, cycle, max_cycles: {
+                "status": "passed",
+                "stop_reason": "all_green",
+            },
+        ):
+            rc, _, err = run_cli(["task", "loop-check", tid])
+        assert rc == 0, err
+
+        rc, out, err = run_cli(["task", "loop-list", "--task-id", tid, "--status", "passed"])
+        assert rc == 0, err
+        assert tid in out
+        assert "passed" in out
+
+
+def test_task_loop_check_prints_builder_handoff_on_repair_needed():
+    with isolated_env():
+        tid = tasks.create_flow(
+            "worker_builder",
+            "Repair runtime",
+            stage="builder",
+            owner="worker_builder",
+            workspace_mode="shared",
+        )
+        with attr_patch(
+            task_cmd.loop_runner,
+            run_checker_cycle=lambda **kwargs: {
+                "passed": False,
+                "checker_unavailable": False,
+                "check_mode": "self_check",
+                "passed_commands": [],
+                "failed_commands": ["pytest -q"],
+                "checker_output": "FAILED test_runtime.py",
+                "failure_fingerprint": "abc123",
+            },
+            decide_stop=lambda current, previous, cycle, max_cycles: {
+                "status": "repair_needed",
+                "stop_reason": "",
+            },
+        ):
+            rc, out, err = run_cli(["task", "loop-check", tid])
+        assert rc == 0, err
+        assert "Builder handoff" in out
+        assert f"task_id: {tid}" in out
+        assert "loop_id: L-000001" in out
+        assert "failed_commands: pytest -q" in out
+        assert "evidence_ref: loop_runs/L-000001/meta.json" in out
+        assert "Do not weaken tests" in out
+        assert f"eduflow task loop-check {tid} --background" in out
+
+
 def test_task_list_flow_task_renders_stage_and_verdict():
     with isolated_env():
         tasks.create_flow(
@@ -3193,6 +3399,33 @@ def test_task_evidence_explain_json_renders_packet_for_incomplete_account():
         assert packet["required_next_owner"] == "worker_course"
         assert packet["safe_next_action"].startswith("request_worker_course_")
         assert "do_not_say_to_user_yet" in packet
+
+
+def test_task_evidence_explain_includes_loop_supporting_evidence_without_pass():
+    with isolated_env():
+        tid = tasks.create_flow(
+            "worker_course",
+            "IGCSE Accounting 0452 sample",
+            stage="curriculum",
+            owner="worker_course",
+        )
+        tasks.set_loop_evidence(
+            tid,
+            loop_run_id="L-000001",
+            loop_status="passed",
+            loop_cycle_count=1,
+            loop_stop_reason="all_green",
+            loop_evidence_ref="loop_runs/L-000001/meta.json",
+            actor="manager",
+        )
+
+        rc, out, err = run_cli(["task", "evidence-explain", tid, "--json"])
+        assert rc == 0, err
+        packet = json.loads(out)["evidence_explain"]
+        assert packet["verdict"] != "PASS"
+        assert packet["manager_action_allowed"] is False
+        assert packet["supporting_evidence"]["loop"]["status"] == "passed"
+        assert packet["supporting_evidence"]["loop"]["evidence_ref"] == "loop_runs/L-000001/meta.json"
 
 
 def test_task_evidence_explain_text_output_is_paste_ready():

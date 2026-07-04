@@ -359,3 +359,25 @@ def test_visible_sources_shows_warning_for_missing_source():
     assert "qbank_report" in sources["sources_missing"]
     assert "verifier" in sources["sources_missing"]
     assert "task_id" in sources["sources_present"]
+
+
+def test_visible_truth_snapshot_includes_loop_summary_when_present():
+    snapshot = task_publish_render.render_visible_truth_snapshot({
+        "id": "T-SNAP-LOOP",
+        "loop_run_id": "L-000001",
+        "loop_status": "repair_needed",
+        "loop_cycle_count": 2,
+        "loop_evidence_ref": "loop_runs/L-000001/meta.json",
+    })
+    assert snapshot["loop_summary"]["run_id"] == "L-000001"
+    assert snapshot["loop_summary"]["status"] == "repair_needed"
+    assert snapshot["loop_summary"]["cycle_count"] == 2
+
+
+def test_visible_sources_marks_loop_evidence_present():
+    sources = task_publish_render.compose_visible_sources({
+        "id": "T-SRC-LOOP",
+        "loop_evidence_ref": "loop_runs/L-000001/meta.json",
+    })
+    assert "loop_evidence" in sources["sources_present"]
+    assert sources["loop_evidence_ref"] == "loop_runs/L-000001/meta.json"

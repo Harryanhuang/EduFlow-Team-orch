@@ -39,6 +39,21 @@ def test_render_manager_includes_eduflow_team_dispatch_entry():
     assert "汇报" in text and "不派工" in text
 
 
+def test_manager_identity_mentions_loop_check_for_builder_tasks():
+    text = identity.render("manager")
+    assert "task loop-check" in text
+    assert "task dispatch" in text
+    assert "--background" in text
+    assert "worker_builder" in text
+
+
+def test_worker_builder_identity_mentions_loop_builder_handoff():
+    text = identity.render("worker_builder")
+    assert "Builder handoff" in text
+    assert "Do not weaken tests" in text
+    assert "please re-run: eduflow task loop-check" in text
+
+
 def test_render_worker_uses_worker_template():
     text = identity.render("worker_cc", role="frontend",
                            cli="claude-code", model="sonnet")

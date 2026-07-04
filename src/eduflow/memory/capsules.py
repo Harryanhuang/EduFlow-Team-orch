@@ -112,6 +112,9 @@ def refresh_from_task_store(task_id: str) -> dict | None:
         blockers.append(f"revision_priority={revision}")
     if closeout and closeout not in ("", "closeout_completed"):
         blockers.append(f"closeout_status={closeout}")
+    loop_status = str(task.get("loop_status") or "")
+    if loop_status and loop_status not in {"passed"}:
+        blockers.append(f"loop_status={loop_status}")
 
     # Determine next action
     status = task.get("status") or ""
@@ -124,6 +127,8 @@ def refresh_from_task_store(task_id: str) -> dict | None:
         next_action = "pending_closeout"
     elif revision:
         next_action = "address_revision"
+    if task.get("loop_recommended_action"):
+        next_action = str(task.get("loop_recommended_action") or "")
 
     # Build goal from title + scope
     title = task.get("title") or ""
@@ -142,7 +147,9 @@ def refresh_from_task_store(task_id: str) -> dict | None:
     # Evidence ref
     evidence = task.get("evidence_packet") or {}
     last_evidence = ""
-    if evidence:
+    if task.get("loop_evidence_ref"):
+        last_evidence = str(task.get("loop_evidence_ref") or "")
+    elif evidence:
         last_evidence = f"evidence_snapshot:{task.get('evidence_snapshot_hash', '')}"
 
     upsert_capsule(

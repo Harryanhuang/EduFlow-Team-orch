@@ -27,6 +27,82 @@ def test_create_flow_task_defaults_to_queued_pending_verdict():
         assert row["completed_at"] is None
 
 
+def test_set_loop_evidence_updates_only_loop_fields():
+    with isolated_env():
+        tid = tasks.create_flow(
+            "worker_builder",
+            "Repair runtime verifier",
+            stage="builder",
+            owner="worker_builder",
+        )
+
+        assert tasks.set_loop_evidence(
+            tid,
+            loop_run_id="L-000001",
+            loop_status="repair_needed",
+            loop_cycle_count=1,
+            loop_stop_reason="",
+            loop_recommended_action="send_builder_handoff",
+            loop_evidence_ref="loop_runs/L-000001/meta.json",
+            actor="manager",
+        )
+
+        row = tasks.get(tid)
+        assert row["loop_run_id"] == "L-000001"
+        assert row["loop_status"] == "repair_needed"
+        assert row["loop_cycle_count"] == 1
+        assert row["loop_recommended_action"] == "send_builder_handoff"
+        assert row["status"] == "queued"
+        assert row["verdict"] == "pending"
+
+
+def test_set_loop_evidence_rejects_unknown_status():
+    with isolated_env():
+        tid = tasks.create_flow(
+            "worker_builder",
+            "Repair",
+            stage="builder",
+            owner="worker_builder",
+        )
+        try:
+            tasks.set_loop_evidence(
+                tid,
+                loop_run_id="L-1",
+                loop_status="magic",
+                actor="manager",
+            )
+        except ValueError as e:
+            assert "invalid loop_status" in str(e)
+        else:
+            raise AssertionError("expected ValueError")
+
+
+def test_loop_evidence_self_check_pass_does_not_count_as_review_or_closeout():
+    with isolated_env():
+        tid = tasks.create_flow(
+            "worker_builder",
+            "Repair",
+            stage="builder",
+            owner="worker_builder",
+        )
+        tasks.set_loop_evidence(
+            tid,
+            loop_run_id="L-000001",
+            loop_status="passed",
+            self_check_status="passed",
+            review_check_status="pending",
+            manager_closeout_status="blocked",
+            actor="worker_builder",
+        )
+
+        row = tasks.get(tid)
+        assert row["self_check_status"] == "passed"
+        assert row["review_check_status"] == "pending"
+        assert row["manager_closeout_status"] == "blocked"
+        assert row["verdict"] == "pending"
+        assert row["closeout_status"] == ""
+
+
 def test_create_flow_task_rejects_invalid_stage_status_combo():
     with isolated_env():
         try:
