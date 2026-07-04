@@ -537,6 +537,19 @@ def _failback_tunables() -> dict:
         "min_fallback_s": float(tunables.tunable("runtime_guard.failback.min_fallback_s", 300)),
         "min_healthy_streak": int(tunables.tunable("runtime_guard.failback.min_healthy_streak", 3)),
         "probe_interval_s": float(tunables.tunable("runtime_guard.failback.probe_interval_s", 30)),
+        "rate_limit_reasons": set(tunables.tunable(
+            "runtime_guard.failback.rate_limit_reasons",
+            ["rate_limit", "429", "token_plan_exhausted"],
+        )),
+        "rate_limit_min_healthy_streak": int(tunables.tunable(
+            "runtime_guard.failback.rate_limit_min_healthy_streak", 5
+        )),
+        "rate_limit_min_fallback_s": float(tunables.tunable(
+            "runtime_guard.failback.rate_limit_min_fallback_s", 900
+        )),
+        "rate_limit_require_real_smoke": bool(tunables.tunable(
+            "runtime_guard.failback.rate_limit_require_real_smoke", True
+        )),
     }
 
 
@@ -550,6 +563,12 @@ def _maybe_failback(agent: str, target, current: str, primary: str,
     default 30s) AND the agent must have been on fallback for at least
     `min_fallback_s` (default 300s) before the canary switch is attempted.
 
+    If the original failure reason was rate-limit / token-plan exhaustion,
+    the required streak and fallback duration are raised to
+    `rate_limit_min_healthy_streak` (default 5) and
+    `rate_limit_min_fallback_s` (default 900s), and a real "ok" smoke is
+    required ("skipped" does not count).
+
     The canary switch uses `lifecycle.restart_with_runtime` with
     `prove_ready=True` (same safety as failover).  On success the failback
     state is cleared; on failure the streak resets and we wait for the next
@@ -558,8 +577,6 @@ def _maybe_failback(agent: str, target, current: str, primary: str,
     """
     from eduflow.runtime import verify
     t = _failback_tunables()
-    min_fallback_s = t["min_fallback_s"]
-    min_healthy_streak = t["min_healthy_streak"]
     probe_interval_s = t["probe_interval_s"]
 
     data = _guard_state()
@@ -588,7 +605,19 @@ def _maybe_failback(agent: str, target, current: str, primary: str,
     })
 
     verdict, _detail = verify.api_smoke_runtime(primary_resolved)
-    healthy = verdict in {"ok", "skipped"}
+
+    # Be conservative when the original failure was rate-limit / token-plan
+    # related: small 1-token smoke probes may pass while real requests still
+    # hit 429, so we require a longer streak and a real "ok" smoke.
+    primary_failure_reason = str(fb.get("primary_failure_reason") or "")
+    is_rate_limit = primary_failure_reason in t["rate_limit_reasons"]
+    if is_rate_limit and t["rate_limit_require_real_smoke"]:
+        healthy = verdict == "ok"
+    else:
+        healthy = verdict in {"ok", "skipped"}
+
+    required_streak = t["rate_limit_min_healthy_streak"] if is_rate_limit else t["min_healthy_streak"]
+    required_fallback_s = t["rate_limit_min_fallback_s"] if is_rate_limit else t["min_fallback_s"]
 
     streak = int(fb.get("primary_healthy_streak", 0) or 0)
     in_fallback_since = float(fb.get("in_fallback_since", 0) or 0)
@@ -601,6 +630,7 @@ def _maybe_failback(agent: str, target, current: str, primary: str,
         agent,
         failback={
             "primary_runtime": primary_name,
+            "primary_failure_reason": primary_failure_reason,
             "primary_healthy_streak": streak,
             "last_primary_smoke_at": now_s,
             "in_fallback_since": in_fallback_since,
@@ -610,9 +640,9 @@ def _maybe_failback(agent: str, target, current: str, primary: str,
     if not healthy:
         return
 
-    if streak < min_healthy_streak:
+    if streak < required_streak:
         return
-    if in_fallback_since and (now_s - in_fallback_since) < min_fallback_s:
+    if in_fallback_since and (now_s - in_fallback_since) < required_fallback_s:
         return
 
     # ── Canary failback: switch agent back to primary ──────────────
@@ -756,6 +786,7 @@ def _guard_agent_runtimes() -> None:
                 last_alert_level="auto_switched_recovered",
                 failback={
                     "primary_runtime": str(current),
+                    "primary_failure_reason": reason,
                     "primary_healthy_streak": 0,
                     "last_primary_smoke_at": 0.0,
                     "in_fallback_since": existing_fb.get("in_fallback_since") or now_s,

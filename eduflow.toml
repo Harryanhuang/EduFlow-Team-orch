@@ -697,6 +697,15 @@ max_switches = 3
 window_s = 600
 cooldown_s = 900
 
+[runtime_guard.failback]
+min_fallback_s = 300
+min_healthy_streak = 3
+probe_interval_s = 30
+rate_limit_reasons = ["rate_limit", "429", "token_plan_exhausted"]
+rate_limit_min_healthy_streak = 5
+rate_limit_min_fallback_s = 900
+rate_limit_require_real_smoke = true
+
 # ── [feishu]  飞书桥接 ─────────────────────────────────────
 [feishu]
 send_as          = "bot"
