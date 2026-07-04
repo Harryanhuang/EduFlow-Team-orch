@@ -1040,3 +1040,46 @@ def test_verdict_color_is_separate_from_severity_color():
     # orange (warning) — they are NOT the same mapping.
     assert _verdict_color("stale_display") == "yellow"
     assert SEVERITY_COLOR_MAP["warning"] == "orange"
+
+
+def test_render_to_card_dict_escapes_body_field_values():
+    """Audit-4: card body values are markdown-escaped.  Field KEYS
+    (from REQUIRED_FIELDS) are trusted, field VALUES (from user
+    input via `say --card BODY`) are not.  Without escape, a
+    worker could inject `[click](http://evil)` or `**bold**` and
+    change the card's appearance / links."""
+    card = cards_v2.build_card(
+        CardType.ACK, "worker_course",
+        "任务:[click](http://evil)\n"
+        "负责人:**bold**\n"
+        "当前阶段:`code`\n"
+        "下一步:[x]\n"
+        "需要老板介入:否",
+    )
+    rendered = cards_v2.render_to_card_dict(card)
+    body_text = rendered["body"]["elements"][0]["content"]
+    # Field values are escaped: brackets, asterisks, backticks are
+    # all escaped by _escape_md.  The KEY is still rendered as **key**.
+    assert "\\[click\\](http://evil)" in body_text
+    assert "\\*\\*bold\\*\\*" in body_text
+    assert "\\`code\\`" in body_text
+    assert "\\[x\\]" in body_text
+    # The key wrapping `**...**` is still present (NOT escaped).
+    assert "**任务**" in body_text
+    assert "**负责人**" in body_text
+
+
+def test_render_to_card_dict_escapes_footer():
+    """Audit-4: footer is escaped too.  Footer is set by the caller
+    (not the user), but defense-in-depth: a future caller passing
+    untrusted text as footer should not bypass the escape."""
+    card = cards_v2.build_card(
+        CardType.ACK, "worker_course",
+        "任务:x\n负责人:x\n当前阶段:x\n下一步:x\n需要老板介入:否",
+    )
+    rendered = cards_v2.render_to_card_dict(
+        card, footer="**unsafe** [link](http://evil)",
+    )
+    body_text = rendered["body"]["elements"][0]["content"]
+    assert "\\*\\*unsafe\\*\\*" in body_text
+    assert "\\[link\\](http://evil)" in body_text

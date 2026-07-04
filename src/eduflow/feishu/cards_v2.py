@@ -211,17 +211,21 @@ def render_to_card_dict(card: Card, *, header_title: str | None = None,
          set and maps to a canonical color
       3. fallback to "blue"
     """
-    from eduflow.feishu.cards import _normalised_color
+    from eduflow.feishu.cards import _normalised_color, _escape_md
     title = header_title if header_title else card.title_prefix()
     body_lines: list[str] = []
     for key, value in card.fields.items():
         if not value.strip():
             continue
+        # Security: escape markdown metacharacters in field VALUES so a
+        # worker that puts `**bold**` or `[link](url)` in a field cannot
+        # silently inject formatting or clickable links. The KEY is
+        # trusted (it comes from REQUIRED_FIELDS) so it stays unescaped.
         prefix = "🚨 " if key == "需要老板介入" and needs_boss_intervention(card) else ""
-        body_lines.append(f"**{key}**：{prefix}{value}")
+        body_lines.append(f"**{key}**：{prefix}{_escape_md(str(value))}")
     if footer:
         body_lines.append("")
-        body_lines.append(footer)
+        body_lines.append(_escape_md(str(footer)))
     body_text = "\n".join(body_lines) if body_lines else "(无内容)"
     # Color resolution: severity overrides only when the caller did
     # not set an explicit color (i.e. the Card uses the default "blue").
