@@ -751,6 +751,60 @@ def mark_all_read(agent: str, *, keep_last_unread: int = 0) -> int:
         return changed
 
 
+def prune_orphan_messages(valid_agents: set[str]) -> dict:
+    """Mark messages to unknown agents as read+archived.
+
+    `valid_agents` should be the canonical set of active agent names
+    (case-sensitive).  Comparison is case-insensitive so that ``Hermes``
+    and ``hermes`` are treated as the same agent.
+
+    Returns ``{"pruned": int, "agents_affected": [str]}``.
+    """
+    canonical = {a.lower() for a in valid_agents}
+    with _locked():
+        path = _inbox_file()
+        data = read_json(path, {"messages": []})
+        now = now_ms()
+        pruned = 0
+        affected: set[str] = set()
+        for msg in data.get("messages", []):
+            to = str(msg.get("to") or "")
+            if not to:
+                continue
+            if to.lower() in canonical:
+                continue
+            if msg.get("archived"):
+                continue
+            msg["read"] = True
+            msg["read_at"] = now
+            msg["archived"] = True
+            msg["archived_at"] = now
+            msg["archive_reason"] = "orphan_prune"
+            pruned += 1
+            affected.add(to)
+        if pruned:
+            write_json(path, data)
+    return {"pruned": pruned, "agents_affected": sorted(affected)}
+
+
+def inbox_stats() -> dict:
+    """Return per-agent inbox statistics.
+
+    Returns ``{"total": int, "agents": {name: {"total": N, "unread": N}}}``.
+    """
+    data = read_json(_inbox_file(), {"messages": []})
+    agents: dict[str, dict] = {}
+    for msg in data.get("messages", []):
+        to = str(msg.get("to") or "")
+        if not to:
+            continue
+        entry = agents.setdefault(to, {"total": 0, "unread": 0})
+        entry["total"] += 1
+        if not msg.get("read"):
+            entry["unread"] += 1
+    return {"total": len(data.get("messages", [])), "agents": agents}
+
+
 def record_auto_ops_min_ack(agent: str, local_id: str, content: str) -> None:
     """Persist the smallest visible ACK footprint for auto_ops-like watchers.
 

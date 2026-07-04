@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import re
+import time
 
 from eduflow.runtime import context_monitor, paths, watchdog as runtime_watchdog
 from eduflow.store import (
@@ -1408,11 +1409,33 @@ def _explanation_state_has_reason(task_id: str, reason: str, state: dict | None 
     return f"{task_id}::{reason}" in sent
 
 
-def _apply_explanation_dedupe(rows: list[dict], *, advance: bool) -> list[dict]:
+def _apply_explanation_dedupe(
+    rows: list[dict],
+    *,
+    advance: bool,
+    max_age_days: int = 7,
+) -> list[dict]:
     state = read_explanation_state()
     sent = state.setdefault("sent", {})
     kept: list[dict] = []
     changed = False
+
+    # Prune entries older than max_age_days to prevent permanent deadlock.
+    # Old format: {key: event_id_str}; new format: {key: {"event_id": ..., "sent_at": ...}}
+    if max_age_days > 0:
+        cutoff = time.time() - max_age_days * 86400
+        expired_keys = []
+        for key, val in sent.items():
+            ts = 0
+            if isinstance(val, dict):
+                ts = float(val.get("sent_at") or 0)
+            # Old-format entries (str) have no timestamp — treat as expired
+            if ts < cutoff:
+                expired_keys.append(key)
+        if expired_keys:
+            for key in expired_keys:
+                del sent[key]
+            changed = True
 
     for row in rows:
         reason = str(row.get("reason") or "")
@@ -1427,10 +1450,13 @@ def _apply_explanation_dedupe(rows: list[dict], *, advance: bool) -> list[dict]:
             continue
         kept.append(row)
         if advance:
-            sent[key] = str(row.get("event_id") or "")
+            sent[key] = {
+                "event_id": str(row.get("event_id") or ""),
+                "sent_at": time.time(),
+            }
             changed = True
 
-    if advance and changed:
+    if changed:
         write_explanation_state(state)
     return kept
 

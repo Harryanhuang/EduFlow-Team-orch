@@ -5,6 +5,8 @@ Inspect and clear runtime guard state:
   - `eduflow runtime-guard --json`
   - `eduflow runtime-guard clear <agent>`
   - `eduflow runtime-guard clear --all`
+  - `eduflow runtime-guard reset-flags <agent>`
+  - `eduflow runtime-guard reset-flags --all`
   - `eduflow runtime-guard watch`
 """
 from __future__ import annotations
@@ -19,6 +21,8 @@ USAGE = (
     "usage: eduflow runtime-guard [--json]\n"
     "   or: eduflow runtime-guard clear <agent>\n"
     "   or: eduflow runtime-guard clear --all\n"
+    "   or: eduflow runtime-guard reset-flags <agent>\n"
+    "   or: eduflow runtime-guard reset-flags --all\n"
     "   or: eduflow runtime-guard watch"
 )
 
@@ -78,6 +82,56 @@ def _clear_agent(agent: str) -> int:
 def _clear_all() -> int:
     _save({"agents": {}})
     print("runtime-guard: cleared all")
+    return 0
+
+
+# ── reset-flags: clear escalation flags only, keep failback tracking ──
+
+_ESCALATION_FLAGS = {
+    "escalation_needed",
+    "needs_manager_action",
+    "escalation_reason",
+    "cooldown_until",
+    "last_alert_level",
+}
+
+
+def _reset_flags(agent: str) -> int:
+    """Clear escalation flags for *agent*, preserving failback/switch tracking."""
+    path = paths.runtime_guard_state_file()
+    with file_lock(path):
+        data = _state()
+        agents = data.setdefault("agents", {})
+        if agent not in agents:
+            print(f"runtime-guard: {agent} not found")
+            return 1
+        row = agents[agent]
+        cleared = [k for k in _ESCALATION_FLAGS if k in row]
+        for key in cleared:
+            del row[key]
+        _save(data)
+    if cleared:
+        print(f"runtime-guard: reset flags for {agent} (cleared: {', '.join(cleared)})")
+    else:
+        print(f"runtime-guard: {agent} had no escalation flags to reset")
+    return 0
+
+
+def _reset_flags_all() -> int:
+    """Clear escalation flags for all agents."""
+    path = paths.runtime_guard_state_file()
+    with file_lock(path):
+        data = _state()
+        agents = data.setdefault("agents", {})
+        total_cleared = 0
+        for agent, row in agents.items():
+            cleared = [k for k in _ESCALATION_FLAGS if k in row]
+            for key in cleared:
+                del row[key]
+            total_cleared += len(cleared)
+        _save(data)
+    agent_count = len(agents)
+    print(f"runtime-guard: reset flags for {agent_count} agents ({total_cleared} flags cleared)")
     return 0
 
 
@@ -218,6 +272,13 @@ def main(argv: list[str]) -> int:
         return 0
     if rest[0] == "watch":
         return _watch()
+    if rest[0] == "reset-flags":
+        if len(rest) == 2 and rest[1] == "--all":
+            return _reset_flags_all()
+        if len(rest) == 2:
+            return _reset_flags(rest[1])
+        print(USAGE)
+        return 1
     if rest[0] != "clear":
         print(USAGE)
         return 1
