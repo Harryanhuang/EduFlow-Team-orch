@@ -453,7 +453,14 @@ def main(argv: list[str]) -> int:
     # pre-Step-3 behavior). Audit log was already written above
     # regardless of publish state, so silenced messages still leave a
     # trail.
-    if not _publish_allowed(args.agent, args.to):
+    #
+    # Structured v2 cards (validated by cards_v2.validate_card) bypass
+    # this filter: the role allow-list already enforces who can send
+    # which card_type, and the required-fields validator catches empty
+    # bodies. The `worker_to_user` suppression was designed to filter
+    # low-value text reassurances ("still alive", "no news"), not
+    # structured business cards that went through full validation.
+    if not args.card_type and not _publish_allowed(args.agent, args.to):
         if _worker_reason_override(args.agent, args.to, args.message):
             pass
         else:

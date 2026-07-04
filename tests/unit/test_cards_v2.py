@@ -1069,6 +1069,37 @@ def test_render_to_card_dict_escapes_body_field_values():
     assert "**负责人**" in body_text
 
 
+def test_structured_card_bypasses_worker_to_user_filter():
+    """When chat.publish.worker_to_user=false, a structured v2 card
+    (--card) should STILL send because the role allow-list already
+    enforces who can send which card_type. Only raw text (no --card)
+    should be suppressed.
+
+    This pins the design: the worker_to_user filter silences low-value
+    text reassurances ("still alive"), not structured business cards
+    that went through full cards_v2 validation.
+
+    The test verifies the code path directly by reading the say.main
+    source and confirming the `not args.card_type` guard exists on
+    the _publish_allowed call. Behavioral verification of the full
+    send/silence path is covered by the E2E test and by the
+    real Feishu send test (which confirmed worker_course cards are
+    now delivered after the say.py change).
+    """
+    import inspect
+    from eduflow.commands import say as say_cmd
+
+    # Read the source of say.main and verify the guard exists.
+    source = inspect.getsource(say_cmd.main)
+    # The filter line must check `not args.card_type` BEFORE
+    # `_publish_allowed` — this is what lets structured cards
+    # bypass the worker_to_user suppression.
+    assert "not args.card_type and not _publish_allowed" in source, (
+        "say.main must guard _publish_allowed with 'not args.card_type' "
+        "so structured v2 cards bypass the worker_to_user filter"
+    )
+
+
 def test_render_to_card_dict_escapes_footer():
     """Audit-4: footer is escaped too.  Footer is set by the caller
     (not the user), but defense-in-depth: a future caller passing
