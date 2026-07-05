@@ -122,6 +122,34 @@ def test_record_message_ack_supports_completed_and_reconciled_terminal_states():
         assert snap["status"] == "已对账"
 
 
+def test_manager_user_ack_without_say_projects_pending_group_reply():
+    with isolated_env():
+        mid = local_facts.append_message(
+            "manager",
+            "user",
+            "我想知道现在每个智能体都配着什么模型",
+            priority="高",
+        )
+
+        assert local_facts.mark_read(mid) is True
+        assert local_facts.record_message_ack(mid, "reconciled") is True
+
+        debt = local_facts.latest_manager_user_reply_debt()
+        assert debt is not None
+        assert debt["local_id"] == mid
+        snap = local_facts.get_status("manager")
+        assert snap is not None
+        assert snap["status"] == "待回群"
+        assert "未外显回复" in snap["task"]
+
+        local_facts.append_log("manager", "say", "当前模型配置如下：manager 使用 codex-cli")
+
+        assert local_facts.latest_manager_user_reply_debt() is None
+        snap = local_facts.get_status("manager")
+        assert snap is not None
+        assert snap["status"] != "待回群"
+
+
 def test_high_priority_status_packet_nudges_collapse_previous_unread():
     with isolated_env():
         first = local_facts.append_message(

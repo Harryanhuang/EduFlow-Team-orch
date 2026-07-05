@@ -180,8 +180,12 @@ def _compose_inject_text(agent: str, decision: Decision,
     # 关键指示：哪个频道回 + 怎么 mark read（如果 local_id 已知）+ 是否需
     # 要 send manager 让其汇总。具体命令格式 / --to 选择交给 identity 教。
     if sender == "user" or not sender:
+        reply_order = (
+            "必须先真正发出可见回复，再标记 ACK；不要只 `read --ack`，"
+            "不要停在草稿或反问“要不要我发”。"
+        )
         hint = (f"[群聊·老板] 用 `eduflow say {agent} \"...\" --to user` "
-                f"回群。{summary_hint}{read_hint}")
+                f"回群。{reply_order}{summary_hint}{read_hint}")
     else:
         hint = (f"[同事·{sender}] 回 `eduflow send {sender} {agent} "
                 f"\"...\"`；要公告到群用 `eduflow say {agent} "

@@ -635,6 +635,8 @@ def test_compose_inject_text_user_message_says_use_eduflow_say():
     assert "eduflow say worker_cc" in out
     assert "hello there" in out
     assert "[群聊·老板]" in out
+    assert "不要只 `read --ack`" in out
+    assert "不要停在草稿" in out
 
 
 def test_compose_inject_text_peer_message_uses_send_back_to_sender():

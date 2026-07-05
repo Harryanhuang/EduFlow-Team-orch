@@ -1423,6 +1423,64 @@ def _project_manager_from_team_blockers(row: dict) -> dict | None:
     }
 
 
+_MANAGER_USER_REPLY_ACK_STATES = {
+    "agent_acknowledged",
+    "action_started",
+    "completed",
+    "reconciled",
+}
+
+
+def latest_manager_user_reply_debt() -> dict | None:
+    """Return newest user-origin manager inbox row that was ACKed but not said.
+
+    `read --ack` proves manager consumed the inbox row; it does not prove the
+    boss saw a response in chat. This guard catches the exact failure mode where
+    manager drafts in-pane, marks the row reconciled, and never runs `say`.
+    """
+    manager_says = [
+        int(row.get("created_at") or 0)
+        for row in list_logs("manager", limit=100)
+        if str(row.get("type") or "") == "say"
+    ]
+    for msg in reversed(list_messages("manager")):
+        if str(msg.get("from") or "") != "user":
+            continue
+        if not bool(msg.get("read")):
+            continue
+        if str(msg.get("ack_state") or "") not in _MANAGER_USER_REPLY_ACK_STATES:
+            continue
+        created_at = int(msg.get("created_at") or 0)
+        if any(ts >= created_at for ts in manager_says):
+            continue
+        return dict(msg)
+    return None
+
+
+def _project_manager_pending_user_reply(row: dict) -> dict | None:
+    if str(row.get("agent") or "") != "manager":
+        return None
+    debt = latest_manager_user_reply_debt()
+    if debt is None:
+        return None
+    content = " ".join(str(debt.get("content") or "").split())
+    updated_at = max(
+        int(debt.get("ack_at") or 0),
+        int(debt.get("read_at") or 0),
+        int(debt.get("created_at") or 0),
+    )
+    return {
+        **row,
+        "status": "待回群",
+        "task": (
+            f"待回群：用户消息已 ACK 但未外显回复。{content[:120]}"
+            if content
+            else "待回群：用户消息已 ACK 但未外显回复"
+        ),
+        "updated_at": updated_at,
+    }
+
+
 def _project_status_row(row: dict) -> dict:
     projected = dict(row or {})
     agent = str(projected.get("agent") or "")
@@ -1519,6 +1577,14 @@ def _project_status_row(row: dict) -> dict:
         updated_at = int(projected.get("updated_at") or updated_at)
         status = str(projected.get("status") or status)
         task = str(projected.get("task") or task)
+
+    manager_pending_reply = _project_manager_pending_user_reply(projected)
+    if manager_pending_reply is not None:
+        projected = manager_pending_reply
+        updated_at = int(projected.get("updated_at") or updated_at)
+        status = str(projected.get("status") or status)
+        task = str(projected.get("task") or task)
+        return projected
 
     latest_rows = list_logs(agent, limit=6)
     if not latest_rows:
