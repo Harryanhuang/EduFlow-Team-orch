@@ -137,12 +137,29 @@ def test_verify_live_env_still_flags_anthropic_token_for_anthropic_provider(monk
         assert any("ANTHROPIC_AUTH_TOKEN" in m for m in mismatches)
 
 
+def test_verify_live_env_skips_openai_api_key_for_codex_provider(monkeypatch):
+    with isolated_env():
+        monkeypatch.setattr(verify.config, "env_profile_config",
+                            lambda name: ({"provider_family": "openai_codex",
+                                           "OPENAI_API_KEY": "sk-real-token"}
+                                          if name == "p" else {}))
+        monkeypatch.setattr(verify, "pane_live_env",
+                            lambda *a, **kw: {"OPENAI_BASE_URL": "https://api.openai.com/v1"})
+        ok, mismatches = verify.verify_live_env_matches_profile("X:0", "p")
+        assert ok is True
+        assert mismatches == []
+
+
 def test_api_smoke_runtime_skipped_for_codex():
     assert verify.api_smoke_runtime({"cli": "codex-cli", "provider": "openai"})[0] == "skipped"
 
 
 def test_api_smoke_runtime_skipped_for_qoder():
     assert verify.api_smoke_runtime({"cli": "qoderclicn", "provider": "qoder"})[0] == "skipped"
+
+
+def test_api_smoke_runtime_skipped_for_mimo():
+    assert verify.api_smoke_runtime({"cli": "mimo-code", "provider": "mimo"})[0] == "skipped"
 
 
 def test_api_smoke_runtime_unknown_cli():

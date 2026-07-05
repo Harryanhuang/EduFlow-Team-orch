@@ -3,11 +3,31 @@ from __future__ import annotations
 
 import contextlib
 import os
+from pathlib import Path
+import shutil
 import subprocess
 import sys
 
 from helpers import attr_patch, isolated_env, run_cli, tmux_patch
 from eduflow.runtime import paths, watchdog
+
+
+def test_env_script_resolves_repo_root_when_sourced_from_zsh():
+    if shutil.which("zsh") is None:
+        return
+    repo = Path(__file__).resolve().parents[2]
+    script = repo / "scripts" / "eduflow-team-env.sh"
+    r = subprocess.run(
+        [
+            "zsh", "-lc",
+            f". {str(script)!r} >/dev/null; printf '%s\\n' \"$EDUFLOW_ROOT\"",
+        ],
+        capture_output=True,
+        text=True,
+        timeout=5,
+    )
+    assert r.returncode == 0, r.stderr
+    assert r.stdout.strip() == str(repo)
 
 
 @contextlib.contextmanager
@@ -263,6 +283,57 @@ def test_down_handles_already_dead_pid():
         assert rc == 0
         assert "already dead" in out
         assert not paths.router_pid_file().exists()
+
+
+def test_down_reaps_same_cwd_duplicate_daemon():
+    import signal as _signal
+    from pathlib import Path
+    from eduflow.commands import down as down_mod
+
+    team = {"session": "S", "agents": {"manager": {}}}
+    with isolated_env(team=team), _fake_tmux(session_alive=False):
+        paths.ensure_state_dir()
+        main_pid = 11111
+        dup_pid = 22222
+        paths.watchdog_pid_file().write_text(str(main_pid), encoding="utf-8")
+
+        kill_calls = []
+        alive = {main_pid, dup_pid}
+
+        def fake_kill(pid, sig):
+            if sig == 0:
+                if pid in alive:
+                    return None
+                raise ProcessLookupError()
+            kill_calls.append((pid, sig))
+            if sig in {_signal.SIGTERM, _signal.SIGKILL}:
+                alive.discard(pid)
+            return None
+
+        class _Proc:
+            def __init__(self, stdout="", returncode=0):
+                self.stdout = stdout
+                self.returncode = returncode
+
+        def fake_run(args, **_kw):
+            if args[:2] == ["pgrep", "-f"]:
+                return _Proc(stdout=f"{main_pid}\n{dup_pid}\n")
+            if args[:4] == ["lsof", "-a", "-p", str(main_pid)]:
+                return _Proc(stdout=f"p{main_pid}\nn{Path.cwd()}\n")
+            if args[:4] == ["lsof", "-a", "-p", str(dup_pid)]:
+                return _Proc(stdout=f"p{dup_pid}\nn{Path.cwd()}\n")
+            return _Proc(stdout="")
+
+        from eduflow.runtime import watchdog as _wd
+        with attr_patch(os, kill=fake_kill), \
+             attr_patch(down_mod.subprocess, run=fake_run), \
+             attr_patch(_wd, _read_cmdline=lambda pid: "eduflow.cli watchdog"):
+            rc, out, _ = run_cli(["down", "--force", "watchdog"])
+
+        assert rc == 0
+        assert (main_pid, _signal.SIGTERM) in kill_calls
+        assert (dup_pid, _signal.SIGTERM) in kill_calls
+        assert "watchdog duplicate" in out
 
 
 def test_down_help():

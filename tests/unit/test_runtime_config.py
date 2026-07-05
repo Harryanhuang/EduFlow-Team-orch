@@ -113,6 +113,34 @@ switch_on = ["spawn_failed"]
         assert resolved["cli"] == "claude-code"
 
 
+def test_runtime_registry_can_resolve_a_specific_live_runtime_by_name():
+    team = {"session": "T", "agents": {"worker": {"runtime": "primary"}}}
+    with isolated_env(team=team) as tmp:
+        _write_toml(tmp, """
+[team]
+session = "T"
+
+[team.agents.worker]
+runtime = "primary"
+role = "worker"
+
+[runtime_registry.primary]
+cli = "claude-code"
+model = "sonnet"
+fallback_to = "backup"
+switch_on = ["auth_failure"]
+
+[runtime_registry.backup]
+cli = "codex-cli"
+model = "gpt-5.5"
+switch_on = ["auth_failure"]
+""")
+        resolved = config.resolved_agent_config("worker", runtime_name="backup")
+        assert resolved["selected_runtime"] == "backup"
+        assert resolved["cli"] == "codex-cli"
+        assert resolved["model"] == "gpt-5.5"
+
+
 def test_env_profile_config_reads_named_profile_from_toml():
     team = {"session": "T", "agents": {"worker": {"cli": "claude-code"}}}
     with isolated_env(team=team) as tmp:

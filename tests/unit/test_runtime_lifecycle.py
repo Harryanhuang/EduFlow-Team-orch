@@ -709,6 +709,36 @@ def test_verify_no_failure_markers_flags_repetitive_tool_call_history():
     assert found == ["conversation_history_corrupt:Repetitive tool calls detected"]
 
 
+def test_verify_no_failure_markers_ignores_codex_unauthorized_transcript():
+    class _Adapter:
+        def ready_markers(self):
+            return ["OpenAI Codex", "permissions: YOLO"]
+
+        def rate_limit_markers(self):
+            return []
+
+        def process_name(self):
+            return "codex"
+
+    target = tmux.Target("S", "manager")
+    text = (
+        "╭─────────────────────────────────────────────────────╮\n"
+        "│ >_ OpenAI Codex (v0.142.0)                          │\n"
+        "│ permissions: YOLO mode                              │\n"
+        "╰─────────────────────────────────────────────────────╯\n"
+        "上一轮 route probe 返回 Unauthorized，我继续排查。\n"
+        "› 下一步\n"
+    )
+    clean, found = lifecycle._verify_no_failure_markers(
+        target,
+        _Adapter(),
+        wait_s=0,
+        capture_fn=lambda _target, _lines: text,
+    )
+    assert clean is True
+    assert found == []
+
+
 def test_restart_with_runtime_prove_ready_returns_ready_when_all_pass(monkeypatch):
     team = {"agents": {"manager": {"cli": "claude-code", "runtime": "primary"}}}
     with isolated_env(team=team) as tmp:

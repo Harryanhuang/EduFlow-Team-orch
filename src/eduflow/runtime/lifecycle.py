@@ -623,11 +623,8 @@ def _verify_no_failure_markers(target: tmux.Target, adapter, *, wait_s: float = 
     reachable, but if 429/auth-error/quota strings immediately reappear
     we know it isn't.
     """
-    from eduflow.commands.watchdog import (
-        _AUTH_FAILURE_MARKERS, _CONVERSATION_HISTORY_CORRUPT_MARKERS,
-        _PROVIDER_UNAVAILABLE_MARKERS,
-    )
-    from eduflow.runtime import wake as _wake
+    from eduflow.runtime import failure_detector
+    from eduflow.runtime.failure_detector import _CONVERSATION_HISTORY_CORRUPT_MARKERS
     capture_fn = capture_fn or (lambda t, lines: tmux.capture_pane(t, lines=lines))
     if wait_s > 0:
         time.sleep(wait_s)
@@ -635,22 +632,20 @@ def _verify_no_failure_markers(target: tmux.Target, adapter, *, wait_s: float = 
     ready_markers = list(adapter.ready_markers())
     ready_at = max((text.rfind(m) for m in ready_markers), default=-1)
     current_text = text[ready_at:] if ready_at >= 0 else text
+    reason = failure_detector.detect_failure(target, adapter, pane_text=text, lines=120)
     found: list[str] = []
-    if _wake.is_rate_limited(target, adapter, capture=lambda *_a, **_kw: current_text):
+    if reason == "rate_limit":
         found.append("rate_limit")
-    for marker in _AUTH_FAILURE_MARKERS:
-        if marker.lower() in current_text.lower():
-            found.append(f"auth:{marker}")
-            break
-    low = current_text.lower()
-    for marker in _CONVERSATION_HISTORY_CORRUPT_MARKERS:
-        if marker.lower() in low:
-            found.append(f"conversation_history_corrupt:{marker}")
-            break
-    for marker in _PROVIDER_UNAVAILABLE_MARKERS:
-        if marker.lower() in low:
-            found.append(f"provider:{marker}")
-            break
+    elif reason == "conversation_history_corrupt":
+        low = current_text.lower()
+        for marker in _CONVERSATION_HISTORY_CORRUPT_MARKERS:
+            if marker.lower() in low:
+                found.append(f"conversation_history_corrupt:{marker}")
+                break
+    elif reason == "auth_failure":
+        found.append("auth_failure")
+    elif reason == "provider_unavailable":
+        found.append("provider_unavailable")
     return (not found), found
 
 
@@ -669,7 +664,13 @@ def _nudge_latest_high_priority_inbox(agent: str, target: tmux.Target) -> None:
         local_id = str(latest.get("local_id") or "")
         if not local_id:
             return
-        adapter = get_adapter(config.resolved_agent_config(agent).get("cli", "claude-code"))
+        runtime_name = (
+            current_runtime_status(agent).get("runtime")
+            or config.resolved_agent_config(agent).get("selected_runtime", "inline")
+        )
+        adapter = get_adapter(
+            config.resolved_agent_config(agent, runtime_name=runtime_name).get("cli", "claude-code")
+        )
         nudge = (
             f"恢复后先处理最新 inbox。`eduflow inbox {agent}` → "
             f"`eduflow read {local_id}` → 必要时 "
@@ -714,7 +715,11 @@ def _spawn_once(agent: str, target: tmux.Target, resolved: dict, *,
         _write_runtime_status(agent, resolved)
         return LAZY, ""
     if cli == "codex-cli":
-        ensure_workdir_trusted(Path.cwd())
+        from eduflow.agents.claude_code import agent_home as _agent_home
+        ensure_workdir_trusted(
+            Path.cwd(),
+            Path(_agent_home(agent)) / ".codex" / "config.toml",
+        )
     if cli == "claude-code":
         _ensure_claude_agent_home(agent)
     try:

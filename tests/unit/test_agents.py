@@ -7,6 +7,7 @@ from eduflow.agents.claude_code import ClaudeCodeAdapter
 from eduflow.agents.codex_cli import CodexCliAdapter
 from eduflow.agents.hermes_agent import HermesAgentAdapter
 from eduflow.agents.kimi_code import KimiCodeAdapter
+from eduflow.agents.mimo_code import MimoCodeAdapter
 from eduflow.agents.qoder_cli_cn import QoderCliCnAdapter
 
 
@@ -22,6 +23,7 @@ def test_registry_lists_known_clis_plus_kimi_and_qwen_aliases():
         "claude-code", "codex-cli", "gemini-cli",
         "hermes-agent", "hermes-cli",
         "kimi-code", "kimi-cli",
+        "mimo-code", "mimo-cli",
         "qoderclicn", "qoder-cli-cn",
         "qwen-code", "qwen-cli",
     }
@@ -32,6 +34,7 @@ def test_get_adapter_returns_matching_concrete_type():
     assert isinstance(get_adapter("codex-cli"), CodexCliAdapter)
     assert isinstance(get_adapter("hermes-agent"), HermesAgentAdapter)
     assert isinstance(get_adapter("kimi-code"), KimiCodeAdapter)
+    assert isinstance(get_adapter("mimo-code"), MimoCodeAdapter)
     assert isinstance(get_adapter("qoderclicn"), QoderCliCnAdapter)
 
 
@@ -41,6 +44,10 @@ def test_kimi_alias_returns_same_instance():
 
 def test_qoder_cn_alias_returns_same_instance():
     assert get_adapter("qoderclicn") is get_adapter("qoder-cli-cn")
+
+
+def test_mimo_alias_returns_same_instance():
+    assert get_adapter("mimo-code") is get_adapter("mimo-cli")
 
 
 def test_hermes_alias_returns_same_instance():
@@ -124,6 +131,8 @@ def test_codex_spawn_passes_openai_model_through():
     assert "codex" in cmd
     assert "--dangerously-bypass-approvals-and-sandbox" in cmd
     assert "--model gpt-5.5" in cmd
+    assert "HOME=" in cmd
+    assert "CODEX_HOME=" in cmd
     assert "CODEX_AGENT=worker_codex" in cmd
 
 
@@ -143,6 +152,15 @@ def test_kimi_spawn_uses_yolo_flag_and_disable_update():
     assert "kimi --yolo" in cmd
     assert "DISABLE_UPDATE_CHECK=1" in cmd
     assert "KIMI_AGENT=worker_kimi" in cmd
+
+
+def test_mimo_spawn_uses_trust_never_ask_and_model():
+    cmd = MimoCodeAdapter().spawn_cmd("worker_mimo", "openai/gpt-5.5")
+    assert "mimo" in cmd
+    assert "--trust" in cmd
+    assert "--never-ask" in cmd
+    assert "--model openai/gpt-5.5" in cmd
+    assert "MIMO_AGENT=worker_mimo" in cmd
 
 
 def test_hermes_spawn_uses_fixed_cli_and_model():
@@ -171,6 +189,11 @@ def test_codex_busy_markers_include_boot_phase():
     assert "Booting MCP server" in CodexCliAdapter().busy_markers()
 
 
+def test_codex_ready_markers_cover_current_footer():
+    markers = CodexCliAdapter().ready_markers()
+    assert "bypass permissions on" in markers
+
+
 def test_kimi_busy_markers_include_using_shell():
     assert "Using Shell" in KimiCodeAdapter().busy_markers()
     assert "Booting" in KimiCodeAdapter().busy_markers()
@@ -181,6 +204,7 @@ def test_process_names_match_expected_binaries():
     assert CodexCliAdapter().process_name() == "codex"
     assert HermesAgentAdapter().process_name() == "hermes"
     assert KimiCodeAdapter().process_name() == "kimi"
+    assert MimoCodeAdapter().process_name() == "mimo"
 
 
 # ── codex_cli.ensure_workdir_trusted ─────────────────────────────

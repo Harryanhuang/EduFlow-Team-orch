@@ -46,6 +46,17 @@ _CODEX_IDLE_STATUS_RE = re.compile(
     r"\b(?:gpt-\d\S*|o1\S*|o3\S*|o4\S*|codex\S*)\s+"
     r"(?:default|low|medium|high)\s+·\s+"
 )
+
+
+def _codex_text_looks_ready(text: str) -> bool:
+    return (
+        bool(_CODEX_IDLE_STATUS_RE.search(text))
+        or "OpenAI Codex" in text
+        or "permissions: YOLO" in text
+        or "bypass permissions on" in text
+    )
+
+
 @dataclass
 class HealthReport:
     """Accumulator handed to every `_check_*`. Emission and counting
@@ -193,14 +204,13 @@ def _check_runtime_env_drift(rep: HealthReport, agent: str, target: tmux.Target,
     rep.yellow(f"runtime_status_env_drift: {agent} " + "; ".join(mismatches))
 
 
-def _is_live_codex_idle(target: tmux.Target, text: str) -> bool:
+def _is_live_codex_ready(target: tmux.Target, text: str) -> bool:
     """Codex 0.141+ can scroll its banner out of the health capture window.
 
-    The idle footer remains visible (`gpt-5.5 medium · <cwd>`), but text alone
-    is unsafe because tmux scrollback may outlive the CLI. Require a live
-    non-HUD Node/Codex pane as well.
+    Text alone is unsafe because tmux scrollback may outlive the CLI. Require
+    a live non-HUD Node/Codex pane as well.
     """
-    if not _CODEX_IDLE_STATUS_RE.search(text):
+    if not _codex_text_looks_ready(text):
         return False
     try:
         panes = tmux.list_panes(target)
@@ -276,9 +286,9 @@ def _check_agents(rep: HealthReport, session: str, agents: list[str],
             # config inside the loop.
             adapter = get_adapter(cli)
             text = tmux.capture_pane(target, lines=80)
-            if any(m in text for m in adapter.ready_markers()):
+            if cli == "codex-cli" and _is_live_codex_ready(target, text):
                 rep.ok(f"  {agent}: pane ready ({cli}){hb_suffix}{runtime_suffix}")
-            elif cli == "codex-cli" and _is_live_codex_idle(target, text):
+            elif cli != "codex-cli" and any(m in text for m in adapter.ready_markers()):
                 rep.ok(f"  {agent}: pane ready ({cli}){hb_suffix}{runtime_suffix}")
             elif cfg.get("lazy") and wake.is_clean_dormant_pane(text):
                 rep.ok(f"  {agent}: lazy pane (CLI starts on first message){hb_suffix}{runtime_suffix}")

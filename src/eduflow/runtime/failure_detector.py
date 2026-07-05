@@ -22,8 +22,6 @@ _AUTH_FAILURE_MARKERS = (
     "Invalid auth credentials",
     "auth required",
     "Unauthorized",
-    "401",
-    "/login",
     # Quota / billing / subscription expired — access denied even though
     # credentials are valid.  Treat as auth_failure so the runtime guard /
     # deliver can switch to a fallback.
@@ -158,9 +156,19 @@ def detect_failure(
                             capture=lambda *_a, **_kw: current_text):
         return "rate_limit"
 
+    # Codex panes are conversational and often discuss provider HTTP errors
+    # in normal reasoning ("401", "Unauthorized", etc.). Transcript heuristics
+    # are too noisy there, so only keep the signals that are unambiguously
+    # pane-health related.
+    try:
+        is_codex = adapter.process_name() == "codex"
+    except AttributeError:
+        is_codex = False
+
     # 2. auth_failure — case-insensitive to catch mixed-case provider errors
-    if _has_marker_after_ready(current_text, _AUTH_FAILURE_MARKERS,
-                               ready_markers, case_insensitive=True):
+    if (not is_codex
+            and _has_marker_after_ready(current_text, _AUTH_FAILURE_MARKERS,
+                                        ready_markers, case_insensitive=True)):
         return "auth_failure"
 
     # 3. conversation_history_corrupt
@@ -169,8 +177,9 @@ def detect_failure(
         return "conversation_history_corrupt"
 
     # 4. provider_unavailable
-    if _has_marker_after_ready(current_text, _PROVIDER_UNAVAILABLE_MARKERS,
-                               ready_markers, case_insensitive=True):
+    if (not is_codex
+            and _has_marker_after_ready(current_text, _PROVIDER_UNAVAILABLE_MARKERS,
+                                        ready_markers, case_insensitive=True)):
         return "provider_unavailable"
 
     return ""

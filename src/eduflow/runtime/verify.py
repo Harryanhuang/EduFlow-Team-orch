@@ -185,6 +185,7 @@ def verify_live_env_matches_profile(
     # fall through to the existing check.
     provider_family = str(profile.get("provider_family") or "")
     skip_anthropic_token = bool(provider_family) and "anthropic" not in provider_family.lower()
+    skip_openai_api_key = provider_family == "openai_codex"
     live = pane_live_env(target, run=run, read_environ=read_environ, tmux_display=tmux_display)
     if not live:
         return False, [f"env_profile={env_profile_name} live_env_unavailable"]
@@ -201,6 +202,11 @@ def verify_live_env_matches_profile(
         # never set ANTHROPIC_AUTH_TOKEN in the pane env, so missing live
         # is expected. See the skip_anthropic_token note above.
         if skip_anthropic_token and key == "ANTHROPIC_AUTH_TOKEN":
+            continue
+        # Codex can authenticate via CODEX_HOME/auth.json after a
+        # non-interactive `codex login --with-api-key`, so the pane may
+        # intentionally blank OPENAI_API_KEY while still being healthy.
+        if skip_openai_api_key and key == "OPENAI_API_KEY":
             continue
         if live_value != value:
             shown = live_value if live_value else "<missing>"
@@ -282,7 +288,7 @@ def api_smoke_runtime(resolved_runtime: dict, *, run=None, timeout_s: float = 15
 
     if cli == "codex-cli":
         return "skipped", "codex-cli smoke not implemented in v1"
-    if cli in {"qoderclicn", "qwen-code", "kimi-code"}:
+    if cli in {"qoderclicn", "qwen-code", "kimi-code", "mimo-code", "mimo-cli"}:
         return "skipped", f"{cli} smoke not implemented in v1"
     return "skipped", f"unknown cli {cli!r}"
 

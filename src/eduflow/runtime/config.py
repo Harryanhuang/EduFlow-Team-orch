@@ -282,17 +282,32 @@ def resolve_runtime_chain(agent: str) -> list[dict]:
     return chain
 
 
-def resolved_agent_config(agent: str, *, reason: str | None = None) -> dict[str, Any]:
+def resolved_agent_config(
+    agent: str,
+    *,
+    reason: str | None = None,
+    runtime_name: str | None = None,
+) -> dict[str, Any]:
     """Return the effective runtime config for an agent.
 
     `reason` is one of the switch signals such as `spawn_failed` or
     `ready_timeout`. The first runtime whose `switch_on` contains that reason
     is selected after the primary entry.
+
+    `runtime_name`, when provided, pins selection to that concrete runtime in
+    the agent's resolved chain. This is used by live-pane consumers such as
+    watchdog / deliver, which must inspect the adapter for the runtime that is
+    actually running now rather than the chain primary.
     """
     cfg = agent_config(agent)
     chain = resolve_runtime_chain(agent)
     selected = chain[0]
-    if reason:
+    if runtime_name:
+        for item in chain:
+            if item.get("name") == runtime_name:
+                selected = item
+                break
+    elif reason:
         for idx, item in enumerate(chain):
             if idx == 0:
                 continue

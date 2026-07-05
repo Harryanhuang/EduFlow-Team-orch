@@ -410,7 +410,16 @@ def _query_kimi_usage(home: Path | None = None,
 
 _NO_TOOL = "no upstream usage tool — track via the provider dashboard"
 _UNKNOWN = "unknown — no usage adapter"
-_KNOWN_NO_TOOL = ("codex-cli", "kimi-cli", "qwen-code", "qwen-cli", "gemini-cli")
+_KNOWN_NO_TOOL = (
+    "codex-cli",
+    "kimi-cli",
+    "kimi-code",
+    "mimo-cli",
+    "mimo-code",
+    "qwen-code",
+    "qwen-cli",
+    "gemini-cli",
+)
 
 
 def _note_for(cli: str) -> str:

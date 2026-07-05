@@ -174,6 +174,29 @@ def test_detect_runtime_failure_flags_repetitive_tool_calls_after_ready_prompt()
     assert reason == "conversation_history_corrupt"
 
 
+def test_detect_runtime_failure_ignores_plain_401_in_codex_transcript():
+    class _Adapter:
+        def ready_markers(self):
+            return ["OpenAI Codex", "permissions: YOLO"]
+
+        def rate_limit_markers(self):
+            return []
+
+    target = tmux.Target("S", "manager")
+    text = (
+        "╭─────────────────────────────────────────────────────╮\n"
+        "│ >_ OpenAI Codex (v0.142.0)                          │\n"
+        "│ permissions: YOLO mode                              │\n"
+        "╰─────────────────────────────────────────────────────╯\n"
+        "我刚才看到 route probe 返回 401，所以继续排查。\n"
+        "› 下一步\n"
+    )
+    with attr_patch(cmd_watchdog.tmux, capture_pane=lambda *a, **kw: text), \
+            attr_patch(cmd_watchdog.wake, is_rate_limited=lambda *a, **kw: False):
+        reason = cmd_watchdog._detect_runtime_failure_reason(target, _Adapter())
+    assert reason == ""
+
+
 def test_context_guard_starts_real_compact_at_ninety_percent():
     calls = []
     updates = []
@@ -296,6 +319,70 @@ switch_on = ["auth_failure"]
     assert current == "primary"
     assert reason == "auth_failure"
     assert trigger == "watchdog"
+
+
+def test_guard_agent_runtimes_uses_current_runtime_adapter_for_codex_pane():
+    failover_calls = []
+
+    class ClaudeAdapter:
+        def ready_markers(self):
+            return ["bypass permissions on"]
+
+        def rate_limit_markers(self):
+            return []
+
+        def process_name(self):
+            return "claude"
+
+    class CodexAdapter(ClaudeAdapter):
+        def ready_markers(self):
+            return ["OpenAI Codex", "permissions: YOLO"]
+
+        def process_name(self):
+            return "codex"
+
+    pane_text = (
+        "╭─────────────────────────────────────────────────────╮\n"
+        "│ >_ OpenAI Codex (v0.142.0)                          │\n"
+        "│ permissions: YOLO mode                              │\n"
+        "╰─────────────────────────────────────────────────────╯\n"
+        "我刚才看到 route probe 返回 401，所以继续排查。\n"
+        "› 下一步\n"
+    )
+
+    with isolated_env(team={"session": "S", "agents": {"manager": {"runtime": "primary"}}}) as tmp:
+        (tmp / "eduflow.toml").write_text("""
+[team]
+session = "S"
+
+[team.agents.manager]
+runtime = "primary"
+role = "manager"
+
+[runtime_registry.primary]
+cli = "claude-code"
+model = "sonnet"
+fallback_to = "backup"
+switch_on = ["auth_failure"]
+
+[runtime_registry.backup]
+cli = "codex-cli"
+model = "gpt-5.5"
+switch_on = ["auth_failure"]
+""", encoding="utf-8")
+        from eduflow.runtime import failover as failover_mod
+        with attr_patch(cmd_watchdog.tmux,
+                        has_session=lambda s: True,
+                        has_window=lambda t: True,
+                        capture_pane=lambda t, lines=120: pane_text), \
+                attr_patch(cmd_watchdog.lifecycle,
+                           current_runtime_status=lambda agent: {"runtime": "backup"}), \
+                attr_patch(cmd_watchdog, get_adapter=lambda cli: CodexAdapter() if cli == "codex-cli" else ClaudeAdapter(),
+                           _maybe_failback=lambda *a, **kw: None), \
+                attr_patch(cmd_watchdog.wake, is_rate_limited=lambda *a, **kw: False), \
+                attr_patch(failover_mod, execute_fallback_loop=lambda *a, **kw: failover_calls.append((a, kw))):
+            cmd_watchdog._guard_agent_runtimes()
+    assert failover_calls == []
 
 
 def test_notify_runtime_switch_sends_text_when_enabled():

@@ -406,6 +406,118 @@ switch_on = ["auth_failure"]
     assert "恢复后先处理最新 inbox" in inject_calls[0][1]
 
 
+def test_plain_401_in_codex_transcript_does_not_trigger_failover():
+    decision = Decision(action=Action.ROUTE, targets=["worker_a"], text="x", msg_id="om")
+    inject_calls = []
+    respawn_calls = []
+
+    class FakeAdapter:
+        def submit_keys(self):
+            return ["Enter"]
+
+        def spawn_cmd(self, agent, model):
+            return f"fake {agent} {model}"
+
+        def ready_markers(self):
+            return ["OpenAI Codex", "permissions: YOLO"]
+
+        def rate_limit_markers(self):
+            return []
+
+    pane_text = (
+        "╭─────────────────────────────────────────────────────╮\n"
+        "│ >_ OpenAI Codex (v0.142.0)                          │\n"
+        "│ permissions: YOLO mode                              │\n"
+        "╰─────────────────────────────────────────────────────╯\n"
+        "我刚才看到 route probe 返回 401，所以继续排查。\n"
+        "› 下一步\n"
+    )
+    with tmux_patch(
+            capture_pane=lambda t, lines=80: pane_text,
+            respawn_agent=lambda target, cmd: respawn_calls.append((str(target), cmd)) or True,
+            inject=lambda target, text, submit_keys=None: inject_calls.append((str(target), text, submit_keys)) or True), \
+            isolated_env(team=_WAKE_TEAM):
+        report = apply(
+            decision,
+            adapter_for_agent=lambda _a: FakeAdapter(),
+            session="S",
+        )
+    assert report.injected == ["worker_a"]
+    assert respawn_calls == []
+
+
+def test_deliver_uses_current_runtime_adapter_not_primary_chain_adapter():
+    decision = Decision(action=Action.ROUTE, targets=["worker_a"], text="x", msg_id="om")
+    failover_calls = []
+    pane_text = (
+        "╭─────────────────────────────────────────────────────╮\n"
+        "│ >_ OpenAI Codex (v0.142.0)                          │\n"
+        "│ permissions: YOLO mode                              │\n"
+        "╰─────────────────────────────────────────────────────╯\n"
+        "我刚才看到 route probe 返回 401，所以继续排查。\n"
+        "› 下一步\n"
+    )
+
+    class ClaudeAdapter:
+        def submit_keys(self):
+            return ["Enter"]
+
+        def ready_markers(self):
+            return ["bypass permissions on"]
+
+        def rate_limit_markers(self):
+            return []
+
+    class CodexAdapter(ClaudeAdapter):
+        def ready_markers(self):
+            return ["OpenAI Codex", "permissions: YOLO"]
+
+    def adapter_lookup(_agent, runtime_name=None):
+        if runtime_name == "backup":
+            return CodexAdapter()
+        return ClaudeAdapter()
+
+    with isolated_env(team={"agents": {"worker_a": {"runtime": "primary"}}}) as tmp:
+        (tmp / "eduflow.toml").write_text("""
+[team]
+session = "S"
+
+[team.agents.worker_a]
+runtime = "primary"
+role = "worker"
+
+[runtime_registry.primary]
+cli = "claude-code"
+model = "sonnet"
+fallback_to = "backup"
+switch_on = ["auth_failure"]
+
+[runtime_registry.backup]
+cli = "codex-cli"
+model = "gpt-5.5"
+switch_on = ["auth_failure"]
+""", encoding="utf-8")
+        runtime_path = paths.runtime_status_file()
+        runtime_path.parent.mkdir(parents=True, exist_ok=True)
+        runtime_path.write_text(json.dumps({
+            "agents": {
+                "worker_a": {"runtime": "backup", "cli": "codex-cli", "model": "gpt-5.5"}
+            }
+        }), encoding="utf-8")
+        from eduflow.runtime import failover as failover_mod
+        with tmux_patch(capture_pane=lambda t, lines=80: pane_text,
+                        inject=lambda target, text, submit_keys=None: True), \
+                attr_patch(deliver_mod.wake, is_rate_limited=lambda *a, **kw: False), \
+                attr_patch(failover_mod, execute_fallback_loop=lambda *a, **kw: failover_calls.append((a, kw))):
+            report = apply(
+                decision,
+                adapter_for_agent=adapter_lookup,
+                session="S",
+            )
+    assert report.injected == ["worker_a"]
+    assert failover_calls == []
+
+
 def test_route_prefers_non_hud_pane_when_window_has_multiple_panes():
     decision = Decision(action=Action.ROUTE, targets=["worker_a"], text="x", msg_id="om")
     inject_calls = []

@@ -35,7 +35,7 @@ cli = "codex-cli"
 model = "gpt-5.5"
 provider = "openai"
 env_profile = "codex_primary"
-fallback_to = "course_backup_minimax"
+fallback_to = "course_backup_glm_5_2"
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
 
 [runtime_registry.course_backup_glm_5_2]
@@ -83,7 +83,15 @@ cli = "codex-cli"
 model = "gpt-5.5"
 provider = "openai"
 env_profile = "codex_primary"
-fallback_to = "manager_backup_minimax"
+fallback_to = "manager_backup_qoder_qwen_max"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.manager_backup_qoder_qwen_max]
+cli = "qoderclicn"
+model = "Qwen3.7-Max"
+provider = "qoder"
+env_profile = ""
+fallback_to = "manager_backup_glm_5_2"
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
 
 [runtime_registry.manager_backup_glm_5_2]
@@ -107,6 +115,22 @@ cli = "claude-code"
 model = "sonnet"
 provider = "anthropic-proxy"
 env_profile = "claude_proxy_mimo_backup"
+fallback_to = "manager_backup_kimi_cli"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.manager_backup_kimi_cli]
+cli = "kimi-code"
+model = ""
+provider = "kimi"
+env_profile = ""
+fallback_to = "manager_backup_mimo_code"
+switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+
+[runtime_registry.manager_backup_mimo_code]
+cli = "mimo-code"
+model = ""
+provider = "mimo"
+env_profile = ""
 fallback_to = "manager_backup_kimi"
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
 
@@ -131,7 +155,7 @@ cli = "codex-cli"
 model = "gpt-5.5"
 provider = "openai"
 env_profile = "codex_primary"
-fallback_to = "review_backup_minimax"
+fallback_to = "review_backup_glm_5_2"
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
 
 [runtime_registry.review_backup_glm_5_2]
@@ -275,7 +299,7 @@ cli = "codex-cli"
 model = "gpt-5.5"
 provider = "openai"
 env_profile = "codex_primary"
-fallback_to = "ops_backup_minimax"
+fallback_to = "ops_backup_glm_5_2"
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
 
 [runtime_registry.ops_backup_glm_5_2]
@@ -450,6 +474,7 @@ provider_family = "mimo"
 
 [env_profiles.codex_primary]
 # OPENAI_BASE_URL = ""
+OPENAI_API_KEY = "${OPENAI_API_KEY}"
 pool_id = "codex_openai"
 provider_family = "openai_codex"
 
@@ -495,7 +520,7 @@ session = "EduFlowTeam"
 default_model = "opus"
 
 # 每个 agent 一个 [team.agents.<name>]
-#   cli         必填  claude-code | codex-cli | gemini-cli | kimi-code | qwen-code
+#   cli         必填  claude-code | codex-cli | gemini-cli | kimi-code | mimo-code | qwen-code | qoderclicn
 #   role        必填  渲染进 identity.md
 #   model       可选  缺省走 default_model
 #   specialty   可选  list of strings, manager 派单时参考
@@ -504,7 +529,7 @@ default_model = "opus"
 #   card_color  可选  飞书 v2 色: blue/green/red/yellow/purple/orange/grey/pink
 #   lazy        可选  true=首消息触发起 CLI; 默认 false
 [team.agents.manager]
-runtime = "manager_backup_minimax"
+runtime = "manager_backup_codex"
 role  = "唯一业务入口、唯一正式派工口、唯一业务正式对外口。负责接单、判断归属、拆单、派工、阶段切换、升级处理与正式业务汇总，不承担内容生产、系统维修、长期盯盘或正式复核。"
 specialty = ["任务拆解", "派工分发", "组织调度", "升级处理", "学科切换"]
 tone = "直接、克制、判断优先、像技术合伙人"

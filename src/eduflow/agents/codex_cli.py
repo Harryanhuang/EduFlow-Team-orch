@@ -9,6 +9,7 @@ from __future__ import annotations
 import shlex
 from pathlib import Path
 
+from .claude_code import agent_home
 from .base import AuthSlot, CliAdapter, MULTILINE_SUBMIT_KEYS, SPINNER_CHARS
 
 
@@ -41,13 +42,18 @@ class CodexCliAdapter(CliAdapter):
         if model and any(model.startswith(p) for p in _OPENAI_PREFIXES):
             args += ["--model", model]
         quoted = " ".join(shlex.quote(a) for a in args)
-        return f"CODEX_AGENT={shlex.quote(agent)} codex {quoted}"
+        home = Path(agent_home(agent))
+        return (
+            f"HOME={shlex.quote(str(home))} "
+            f"CODEX_HOME={shlex.quote(str(home / '.codex'))} "
+            f"CODEX_AGENT={shlex.quote(agent)} codex {quoted}"
+        )
 
     def ready_markers(self) -> list[str]:
         # Banner lines after CLI 0.124+ becomes interactive. Health has an
         # extra process-backed Codex footer check for scrolled panes; wake
         # keeps these stricter markers to avoid trusting stale scrollback.
-        return ["OpenAI Codex", "permissions: YOLO"]
+        return ["OpenAI Codex", "permissions: YOLO", "bypass permissions on"]
 
     def busy_markers(self) -> list[str]:
         return ["esc to interrupt", "Booting MCP server", *SPINNER_CHARS]

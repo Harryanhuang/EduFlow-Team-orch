@@ -152,42 +152,6 @@ def main(argv: list[str]) -> int:
         pidlock.release(pid_file)
 
 
-_AUTH_FAILURE_MARKERS = (
-    "Invalid auth credentials",
-    "auth required",
-    "Unauthorized",
-    "401",
-    "/login",
-    # Quota / billing / subscription expired — access denied even though
-    # credentials are valid. Treat as auth_failure so the runtime guard
-    # can switch to a fallback.
-    "FORBIDDEN",
-    "quota exceeded",
-    "billing required",
-    "subscription expired",
-    "code\":\"112",
-)
-
-
-_PROVIDER_UNAVAILABLE_MARKERS = (
-    "provider unavailable",
-    "service unavailable",
-    "temporarily unavailable",
-    "502",
-    "503",
-    "504",
-    "gateway timeout",
-    "connection refused",
-    # 403 with rate-limit connotation — distinct from auth/quota.
-    "403",
-)
-
-
-_CONVERSATION_HISTORY_CORRUPT_MARKERS = (
-    "Repetitive tool calls detected",
-    "InternalError.Algo.InvalidParameter",
-)
-
 _CONTEXT_ACTION_COOLDOWN_S = 600.0
 
 
@@ -431,23 +395,8 @@ def _agent_in_cooldown(agent: str, now_s: float) -> bool:
 
 
 def _detect_runtime_failure_reason(target: tmux.Target, adapter) -> str:
-    text = tmux.capture_pane(target, lines=120)
-    ready_markers = list(adapter.ready_markers())
-    ready_at = max((text.rfind(m) for m in ready_markers), default=-1)
-    current_text = text[ready_at:] if ready_at >= 0 else text
-    if wake.is_rate_limited(target, adapter, capture=lambda *_a, **_kw: current_text):
-        return "rate_limit"
-    auth_at = max((current_text.rfind(m) for m in _AUTH_FAILURE_MARKERS), default=-1)
-    if auth_at >= 0:
-        return "auth_failure"
-    low = current_text.lower()
-    corrupt_at = max((low.rfind(m.lower()) for m in _CONVERSATION_HISTORY_CORRUPT_MARKERS), default=-1)
-    if corrupt_at >= 0:
-        return "conversation_history_corrupt"
-    provider_at = max((low.rfind(m.lower()) for m in _PROVIDER_UNAVAILABLE_MARKERS), default=-1)
-    if provider_at >= 0:
-        return "provider_unavailable"
-    return ""
+    from eduflow.runtime import failure_detector
+    return failure_detector.detect_failure(target, adapter, lines=120)
 
 
 def _maybe_recover_context_pressure(agent: str, target: tmux.Target,
@@ -724,12 +673,20 @@ def _guard_agent_runtimes() -> None:
         if not tmux.has_window(target):
             continue
         resolved = config.resolved_agent_config(agent)
-        cli = resolved.get("cli", "claude-code")
+        current = (
+            lifecycle.current_runtime_status(agent).get("runtime")
+            or resolved.get("selected_runtime", "inline")
+        )
+        current_resolved = config.resolved_agent_config(
+            agent,
+            runtime_name=str(current),
+        )
+        cli = current_resolved.get("cli", resolved.get("cli", "claude-code"))
         try:
             adapter = get_adapter(cli)
         except KeyError:
             continue
-        if _maybe_recover_context_pressure(agent, target, adapter, resolved, now_s):
+        if _maybe_recover_context_pressure(agent, target, adapter, current_resolved, now_s):
             continue
         reason = _detect_runtime_failure_reason(target, adapter)
         if not reason:
@@ -737,11 +694,9 @@ def _guard_agent_runtimes() -> None:
             # fallback and primary might have recovered.
             chain = resolved.get("runtime_chain", [])
             primary_name = str(chain[0].get("name", "inline")) if chain else "inline"
-            current = lifecycle.current_runtime_status(agent).get("runtime") or resolved.get("selected_runtime", "inline")
             if str(current) != primary_name:
                 _maybe_failback(agent, target, str(current), primary_name, now_s)
             continue
-        current = lifecycle.current_runtime_status(agent).get("runtime") or resolved.get("selected_runtime", "inline")
         _update_guard_agent(
             agent,
             last_failure_reason=reason,

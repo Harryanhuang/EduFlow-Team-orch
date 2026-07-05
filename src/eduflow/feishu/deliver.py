@@ -65,6 +65,25 @@ def _resolve_deps(adapter_lookup, tmux_inject, append_message, session) -> _Deps
     )
 
 
+def _runtime_adapter_for_agent(adapter_lookup: Callable, agent: str,
+                               runtime_name: str = ""):
+    """Best-effort runtime-aware adapter lookup.
+
+    Production uses `agents.adapter_for_agent(agent, runtime_name=...)`, but
+    tests and older call sites may still pass a one-arg stub. Accept both.
+    """
+    if runtime_name:
+        try:
+            sig = inspect.signature(adapter_lookup)
+            if "runtime_name" in sig.parameters:
+                return adapter_lookup(agent, runtime_name=runtime_name)
+            if len(sig.parameters) >= 2:
+                return adapter_lookup(agent, runtime_name)
+        except (TypeError, ValueError):
+            pass
+    return adapter_lookup(agent)
+
+
 def _write_inbox(agent: str, sender: str, decision: Decision,
                  deps: _Deps, report: DeliveryReport) -> str:
     """Returns the local_id on success, "" on failure (failure is
@@ -120,60 +139,6 @@ _SUMMARY_CUE_TOKENS = (
     "summarize", "summary", "report back",
     "manager 跟进", "manager 综合",
 )
-
-
-_AUTH_FAILURE_MARKERS = (
-    "Invalid auth credentials",
-    "auth required",
-    "Unauthorized",
-    "401",
-    "/login",
-    # Quota / billing / subscription expired — access denied even though
-    # credentials are valid. Treat as auth_failure so deliver can switch to
-    # a fallback (mirrors the watchdog marker set).
-    "FORBIDDEN",
-    "quota exceeded",
-    "billing required",
-    "subscription expired",
-    "code\":\"112",
-)
-
-
-_PROVIDER_UNAVAILABLE_MARKERS = (
-    "provider unavailable",
-    "service unavailable",
-    "temporarily unavailable",
-    "502",
-    "503",
-    "504",
-    "gateway timeout",
-    "connection refused",
-)
-
-
-def _marker_after_ready(text: str, markers: tuple[str, ...], ready_markers: list[str]) -> bool:
-    ready_at = max((text.rfind(m) for m in ready_markers), default=-1)
-    marker_at = max((text.rfind(m) for m in markers), default=-1)
-    return marker_at >= 0 and marker_at > ready_at
-
-
-def _lower_marker_after_ready(text: str, markers: tuple[str, ...], ready_markers: list[str]) -> bool:
-    low = text.lower()
-    ready_at = max((low.rfind(m.lower()) for m in ready_markers), default=-1)
-    marker_at = max((low.rfind(m.lower()) for m in markers), default=-1)
-    return marker_at >= 0 and marker_at > ready_at
-
-
-def _adapter_ready_markers(adapter) -> list[str]:
-    try:
-        return list(adapter.ready_markers())
-    except AttributeError:
-        return []
-
-
-def _current_pane_text(text: str, ready_markers: list[str]) -> str:
-    ready_at = max((text.rfind(m) for m in ready_markers), default=-1)
-    return text[ready_at:] if ready_at >= 0 else text
 
 
 def _wants_manager_summary(text: str) -> bool:
@@ -238,22 +203,21 @@ def _inject_to_pane(agent: str, decision: Decision,
     window_target = tmux.Target(deps.session, agent)
     target = tmux.preferred_pane_target(window_target)
     try:
-        adapter = deps.adapter_for_agent(agent)
         runtime_snap = lifecycle.current_runtime_status(agent)
         try:
             current_runtime = runtime_snap.get("runtime") or config.resolved_agent_config(agent).get("selected_runtime", "inline")
         except KeyError:
             current_runtime = runtime_snap.get("runtime") or "inline"
+        adapter = _runtime_adapter_for_agent(
+            deps.adapter_for_agent,
+            agent,
+            str(current_runtime),
+        )
         pane_text = tmux.capture_pane(target, lines=80)
-        ready_markers = _adapter_ready_markers(adapter)
-        current_pane_text = _current_pane_text(pane_text, ready_markers)
-        switch_reason = ""
-        if wake.is_rate_limited(target, adapter, capture=lambda *_a, **_kw: current_pane_text):
-            switch_reason = "rate_limit"
-        elif _marker_after_ready(pane_text, _AUTH_FAILURE_MARKERS, ready_markers):
-            switch_reason = "auth_failure"
-        elif _lower_marker_after_ready(pane_text, _PROVIDER_UNAVAILABLE_MARKERS, ready_markers):
-            switch_reason = "provider_unavailable"
+        from eduflow.runtime import failure_detector
+        switch_reason = failure_detector.detect_failure(
+            target, adapter, pane_text=pane_text,
+        )
         if switch_reason:
             from eduflow.runtime import failover
             result = failover.execute_fallback_loop(
@@ -266,12 +230,20 @@ def _inject_to_pane(agent: str, decision: Decision,
             outcome = result["outcome"]
             to_runtime = result["to_runtime"]
             if outcome in {lifecycle.READY, lifecycle.READY_NO_INIT}:
-                adapter = deps.adapter_for_agent(agent)
+                adapter = _runtime_adapter_for_agent(
+                    deps.adapter_for_agent,
+                    agent,
+                    str(to_runtime),
+                )
             elif outcome in {lifecycle.ENV_DRIFT, lifecycle.SMOKE_FAILED,
                              lifecycle.READY_UNPROVEN}:
                 # Partial success — message still needs to land. The
                 # runtime guard will re-probe next tick.
-                adapter = deps.adapter_for_agent(agent)
+                adapter = _runtime_adapter_for_agent(
+                    deps.adapter_for_agent,
+                    agent,
+                    str(to_runtime),
+                )
                 print(f"  ⚠️ {agent} switched {current_runtime} -> {to_runtime} "
                       f"on {switch_reason} but outcome={outcome}; injecting anyway")
             else:

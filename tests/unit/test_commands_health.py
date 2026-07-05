@@ -322,6 +322,40 @@ def test_health_treats_live_codex_idle_footer_as_ready():
     assert "CLI not ready yet" not in out
 
 
+def test_health_treats_codex_bypass_footer_as_ready():
+    team = {"session": "S", "agents": {"manager": {"cli": "codex-cli", "lazy": False}}}
+    text = (
+        "──────────────────────────────────────────────── manager ──\n"
+        "❯\n\n"
+        "────────────────────────────────────────────────────────────\n"
+        "  ⏵⏵ bypass permissions on (shift+tab to cycle)\n"
+    )
+    panes = [tmux_mod.PaneInfo(index="0", active=True, current_command="node", start_command="")]
+    with isolated_env(team=team, runtime_config={"chat_id": "oc_x"}), _stub_tmux(
+            session_alive=True,
+            panes_with_cli=["manager"],
+            pane_text={"manager": text}), _stub_which({"codex"}), \
+            attr_patch(tmux_mod, list_panes=lambda target: panes):
+        rc, out, _ = run_cli(["health"])
+    assert rc == 0
+    assert "manager: pane ready (codex-cli)" in out
+    assert "CLI not ready yet" not in out
+
+
+def test_health_does_not_trust_stale_codex_bypass_footer_without_live_codex_process():
+    team = {"session": "S", "agents": {"manager": {"cli": "codex-cli", "lazy": False}}}
+    stale = "old Codex scrollback\n  ⏵⏵ bypass permissions on (shift+tab to cycle)\n$ "
+    panes = [tmux_mod.PaneInfo(index="0", active=True, current_command="zsh", start_command="")]
+    with isolated_env(team=team, runtime_config={"chat_id": "oc_x"}), _stub_tmux(
+            session_alive=True,
+            panes_without_cli=["manager"],
+            pane_text={"manager": stale}), _stub_which({"codex"}), \
+            attr_patch(tmux_mod, list_panes=lambda target: panes):
+        rc, out, _ = run_cli(["health"])
+    assert rc == 0
+    assert "manager: pane up but CLI not ready yet" in out
+
+
 def test_health_distinguishes_pane_ready_from_context_guard_risk():
     from eduflow.store import local_facts
 

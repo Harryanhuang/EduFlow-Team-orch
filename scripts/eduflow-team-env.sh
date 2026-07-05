@@ -3,7 +3,15 @@
 # Resolve repo root from this script's location. Honor $ROOT override so a
 # caller (test harness, redirect harness) can still point at a different
 # checkout without editing this file.
-ROOT="${ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
+if [ -n "${BASH_SOURCE:-}" ]; then
+  _EDUFLOW_ENV_SCRIPT="${BASH_SOURCE[0]}"
+elif [ -n "${ZSH_VERSION:-}" ]; then
+  _EDUFLOW_ENV_SCRIPT="$(eval 'printf "%s" "${(%):-%x}"')"
+else
+  _EDUFLOW_ENV_SCRIPT="$0"
+fi
+ROOT="${ROOT:-$(cd "$(dirname "$_EDUFLOW_ENV_SCRIPT")/.." && pwd)}"
+unset _EDUFLOW_ENV_SCRIPT
 
 export EDUFLOW_ROOT="$ROOT"
 export EDUFLOW_CONFIG_FILE="${EDUFLOW_CONFIG_FILE:-$ROOT/eduflow.toml}"

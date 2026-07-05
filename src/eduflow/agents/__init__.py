@@ -1,7 +1,7 @@
 """CLI adapter registry — maps a `cli` identifier to its CliAdapter."""
 from __future__ import annotations
 
-from eduflow.runtime.config import agent_cli
+from eduflow.runtime.config import resolved_agent_config
 
 from .base import CliAdapter
 from .claude_code import ClaudeCodeAdapter
@@ -9,11 +9,13 @@ from .codex_cli import CodexCliAdapter
 from .gemini_cli import GeminiCliAdapter
 from .hermes_agent import HermesAgentAdapter
 from .kimi_code import KimiCodeAdapter
+from .mimo_code import MimoCodeAdapter
 from .qoder_cli_cn import QoderCliCnAdapter
 from .qwen_code import QwenCodeAdapter
 
 
 _kimi = KimiCodeAdapter()
+_mimo = MimoCodeAdapter()
 _qoder_cn = QoderCliCnAdapter()
 _qwen = QwenCodeAdapter()
 _hermes = HermesAgentAdapter()
@@ -25,6 +27,8 @@ _REGISTRY: dict[str, CliAdapter] = {
     "hermes-cli": _hermes,
     "kimi-code": _kimi,
     "kimi-cli": _kimi,  # alias: upstream package name
+    "mimo-code": _mimo,
+    "mimo-cli": _mimo,
     "qoderclicn": _qoder_cn,
     "qoder-cli-cn": _qoder_cn,
     "qwen-code": _qwen,
@@ -44,10 +48,11 @@ def get_adapter(cli_name: str) -> CliAdapter:
     return _REGISTRY[cli_name]
 
 
-def adapter_for_agent(agent: str) -> CliAdapter:
-    """Look up the agent's `cli` from team.json and return its adapter.
+def adapter_for_agent(agent: str, runtime_name: str | None = None) -> CliAdapter:
+    """Look up the agent's effective CLI and return its adapter.
 
-    Convenience over `get_adapter(config.agent_cli(agent))`; the routing
-    layer reaches for this whenever it needs to spawn or inspect a pane.
+    `runtime_name` lets callers resolve the adapter for the runtime that is
+    actually live in the pane, not just the chain primary.
     """
-    return get_adapter(agent_cli(agent))
+    cli = resolved_agent_config(agent, runtime_name=runtime_name).get("cli", "claude-code")
+    return get_adapter(cli)

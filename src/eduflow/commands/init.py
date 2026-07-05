@@ -43,7 +43,7 @@ default_model = "opus"                    # team.json agent 没指定 model 时�
 session = "{session}"
 
 # 每个 agent 一个 [team.agents.<name>]
-#   cli         必填  claude-code | codex-cli | gemini-cli | kimi-code | qwen-code
+#   cli         必填  claude-code | codex-cli | gemini-cli | kimi-code | mimo-code | qwen-code | qoderclicn
 #   role        必填  渲染进 identity.md
 #   model       可选  缺省走 default_model
 #   specialty   可选  list of strings, manager 派单时参考
