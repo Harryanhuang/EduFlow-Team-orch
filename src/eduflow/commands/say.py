@@ -192,6 +192,15 @@ def _worker_reason_override(sender: str, to_target: str, message: str) -> bool:
         "发现异常",
         "已收到当前高优监督任务",
     )
+    # T-116 fix: free-form task replies like T-115 4-问 / T-110 方案 / T-107
+    # doc etc. contain a "T-<n>" task-id reference. The Phase-5
+    # whitelist above only covers stage-marker keywords; without this
+    # any structured task reply without a stage marker gets silently
+    # dropped. Treat any "T-<digits>" reference as evidence this is a
+    # genuine task deliverable, not a low-value reassurance.
+    import re as _re
+    if _re.search(r"\bT-\d+\b", text):
+        return True
     return any(marker in text for marker in allowed_markers)
 
 
@@ -432,12 +441,31 @@ def main(argv: list[str]) -> int:
                     file=sys.stderr,
                 )
                 return 1
+            # T-144: when the card body is missing required fields
+            # (e.g. worker_review's REVIEW verdict missing the
+            # `verdict:` line), the old code returned 0 without calling
+            # send_card — the verdict silently disappeared from
+            # Feishu even though the audit log captured intent. That's
+            # wrong: a verdict MUST reach the recipient. Fall back to
+            # plain text (preserves the structured body verbatim) so
+            # the message actually lands, and surface the validation
+            # errors in stderr so the operator sees the schema gap.
+            err_summary = "; ".join(validation.errors)
             print(
-                f"📝 {args.agent} --card {args.card_type} validation failed, "
-                f"degraded to internal: {'; '.join(validation.errors)}",
+                f"⚠️  {args.agent} --card {args.card_type} validation "
+                f"failed ({err_summary}); falling back to plain text so "
+                f"the message still reaches {args.to}.",
                 file=sys.stderr,
             )
-            return 0
+            # Reset to the no-card path below by re-using the original
+            # body as plain text, prefixed with a single line telling
+            # the recipient the structured form was incomplete.
+            args.card_type = None
+            args.message = (
+                f"[⚠️ {args.card_type}-card validation failed: "
+                f"{err_summary}]\n\n{args.message}"
+            )
+            card = simple_card(title, args.message, color=card_color)
         # Render the validated card with `[TYPE]` prepended to the
         # existing identity title so the chat header carries both the
         # type tag and the agent identity.

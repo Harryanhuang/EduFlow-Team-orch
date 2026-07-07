@@ -24,6 +24,23 @@ def test_write_then_read_roundtrip():
         cur = catchup.read_cursor()
         assert cur["message_id"] == "om_42"
         assert cur["create_time"] == "1719000000000"
+        assert cur["create_time_ms"] == 1719000000000
+
+
+def test_pending_lines_prefers_epoch_ms_when_string_tz_shifted():
+    minute_07 = "1778047620000"
+    minute_09 = "1778047740000"
+    history = [_msg("om_m7", minute_07), _msg("om_m9", minute_09)]
+    with isolated_env():
+        paths.router_cursor_file().parent.mkdir(parents=True, exist_ok=True)
+        paths.router_cursor_file().write_text(json.dumps({
+            "message_id": "om_b2",
+            "create_time": "2026-05-06 22:08",
+            "create_time_ms": 1778047712000,
+        }), encoding="utf-8")
+        lines = catchup.pending_lines("oc_x", list_fn=lambda: history)
+    ids = sorted(json.loads(l)["event"]["message"]["message_id"] for l in lines)
+    assert ids == ["om_m7", "om_m9"]
 
 
 def test_write_cursor_skips_when_either_field_blank():
@@ -79,16 +96,16 @@ def _msg(msg_id, create_time, *, text="hi", chat_id="oc_x", sender="ou_user"):
     }
 
 
-def test_pending_lines_returns_only_messages_at_or_after_cursor_minute():
-    """`>=` minute-floor semantics. Cutoff is floored to the minute so
-    REST minute-precision messages aligned with the cursor's minute are
-    included. Documented in feishu/catchup._newer_than."""
+def test_pending_lines_keeps_recent_earlier_minutes_within_lookback():
+    """Cutoff is cursor minute minus lookback, so near out-of-order misses survive."""
     # Use real minute-aligned epoch ms so the floor doesn't collapse to 0
+    minute_old = "1778047500000"  # 14:05:00, outside 120s lookback
     minute_a = "1778047620000"   # 2026-05-06 14:07:00
     minute_b = "1778047680000"   # 2026-05-06 14:08:00
     minute_c = "1778047740000"   # 2026-05-06 14:09:00
     history = [
-        _msg("om_a1", minute_a),                 # before cursor minute → drop
+        _msg("om_old", minute_old),
+        _msg("om_a1", minute_a),                 # within lookback → keep
         _msg("om_b1", minute_b),                 # at cursor minute → keep
         _msg("om_b2", "1778047712000"),          # cursor itself, sub-minute → keep
         _msg("om_c1", minute_c),                 # after cursor → keep
@@ -98,8 +115,8 @@ def test_pending_lines_returns_only_messages_at_or_after_cursor_minute():
         lines = catchup.pending_lines("oc_x", list_fn=lambda: history)
     import json
     ids = sorted(json.loads(l)["event"]["message"]["message_id"] for l in lines)
-    # om_a1 (14:07) drops; om_b1, om_b2 (both 14:08), om_c1 (14:09) keep
-    assert ids == ["om_b1", "om_b2", "om_c1"]
+    assert ids == ["om_a1", "om_b1", "om_b2", "om_c1"]
+    assert "om_old" not in ids
 
 
 def test_pending_lines_recovers_messages_when_cursor_has_subminute_precision():
@@ -173,6 +190,40 @@ def test_pending_lines_sorts_oldest_first_even_when_history_newest_first():
     parsed = [json.loads(l) for l in lines]
     cts = [p["event"]["message"]["create_time"] for p in parsed]
     assert cts == ["100", "200", "300"]
+
+
+def test_pending_lines_same_minute_newest_first_replays_oldest_first():
+    history = [
+        _msg("om_3", "1778047680000"),
+        _msg("om_2", "1778047680000"),
+        _msg("om_1", "1778047680000"),
+    ]
+    with isolated_env():
+        catchup.write_cursor("om_seed", "1778047680000")
+        lines = catchup.pending_lines("oc_x", list_fn=lambda: history)
+    ids = [json.loads(l)["event"]["message"]["message_id"] for l in lines]
+    assert ids == ["om_1", "om_2", "om_3"]
+
+
+def test_pending_lines_caps_large_backlog_and_seeds_cursor():
+    history = [_msg(f"om_{i}", str(1778047000000 + i * 1000)) for i in range(35)]
+    meta = {}
+    with isolated_env() as tmp:
+        (tmp / "eduflow.toml").write_text(
+            "[router]\ncatchup_max_messages = 3\ncatchup_lookback_ms = 999999\n",
+            encoding="utf-8",
+        )
+        from helpers import env_patch
+        from eduflow.runtime import tunables
+        tunables.reset_cache()
+        with env_patch(EDUFLOW_CONFIG_FILE=str(tmp / "eduflow.toml")):
+            catchup.write_cursor("seed", "1778047000000")
+            lines = catchup.pending_lines("oc_x", list_fn=lambda: history, meta=meta)
+            cur = catchup.read_cursor()
+    ids = [json.loads(l)["event"]["message"]["message_id"] for l in lines]
+    assert ids == ["om_32", "om_33", "om_34"]
+    assert meta["dropped_stale"] == 32
+    assert cur["message_id"] == "om_34"
 
 
 def test_pending_lines_emits_subscribe_compatible_shape():

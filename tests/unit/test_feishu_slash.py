@@ -58,12 +58,13 @@ def test_help_returns_card_listing_all_commands():
     assert isinstance(reply, dict), f"/help should return a card dict, got {type(reply)}"
     assert reply["header"]["title"]["content"] == "🆘 EduFlow 自定义斜杠命令"
     body = reply["body"]["elements"][0]["content"]
-    for c in ("/help", "/team", "/health", "/usage", "/tmux",
-              "/send", "/dispatch", "/compact", "/stop", "/clear"):
+    for c in ("/help", "/team", "/home", "/sophon", "/health", "/usage", "/tmux",
+              "/send", "/dispatch", "/task", "/compact", "/stop", "/clear"):
         assert c in body
     # Dropped commands stay dropped
     assert "/recall" not in body
     assert "/forget" not in body
+    assert "/ops" not in body
 
 
 # ── /team ────────────────────────────────────────────────────────
@@ -1059,7 +1060,7 @@ def test_unknown_slash_returns_help_hint():
     assert "/help" in reply
 
 
-# ── M3: /employees /employee /ops ─────────────────────────────────
+# ── M3: /employees /employee /home /sophon ─────────────────────────
 
 
 def _ops_run(json_payload: str):
@@ -1117,8 +1118,8 @@ def test_employees_slash_returns_team_snapshot_card():
     assert "常驻 1" in body
 
 
-def test_ops_slash_returns_ops_dashboard_card():
-    """M3: /ops (and /ops-dashboard alias) renders the ops dashboard card."""
+def test_home_and_sophon_slash_return_ops_dashboard_card():
+    """M3: /home and /sophon render the ops dashboard card."""
     payload = json.dumps({
         "summary": {
             "agents_total": 1,
@@ -1148,7 +1149,7 @@ def test_ops_slash_returns_ops_dashboard_card():
         "employees": [{"agent": "worker_course", "display_verdict": "active"}],
         "degraded": [],
     })
-    for cmd in ("/ops", "/ops-dashboard"):
+    for cmd in ("/home", "/sophon"):
         reply = slash.dispatch(cmd, _ctx(run=_ops_run(payload)))
         assert isinstance(reply, dict), f"{cmd} should return card dict"
         assert reply["schema"] == "2.0"
@@ -1156,6 +1157,36 @@ def test_ops_slash_returns_ops_dashboard_card():
         assert "worker\\_course" in body
         assert "API key missing" in body
         assert "Resolve blocker." in body
+
+
+def test_ops_slash_remains_back_compat_alias():
+    """Legacy /ops and /ops-dashboard still work while help promotes /sophon."""
+    payload = json.dumps({
+        "summary": {
+            "agents_total": 1,
+            "active": 1,
+            "stale_display": 0,
+            "waiting_inbox": 0,
+            "blocked": 0,
+            "warm_idle": 0,
+            "idle": 0,
+            "unknown": 0,
+        },
+        "residency": {
+            "resident": 1,
+            "warm": 0,
+            "cold": 0,
+            "wake_failed": 0,
+            "sleep_candidates": 0,
+        },
+        "top_actions": [],
+        "employees": [{"agent": "Sophon", "display_verdict": "active"}],
+        "degraded": [],
+    })
+    for cmd in ("/ops", "/ops-dashboard"):
+        reply = slash.dispatch(cmd, _ctx(run=_ops_run(payload)))
+        assert isinstance(reply, dict), f"{cmd} should return card dict"
+        assert "Sophon" in reply["header"]["title"]["content"]
 
 
 def test_employee_slash_returns_single_employee_card():
@@ -1183,6 +1214,76 @@ def test_employee_slash_returns_single_employee_card():
     body = _all_markdown(reply)
     assert "进行中" in body
     assert "Draft Unit 1" in body
+
+
+def test_task_window_groups_flow_tasks_and_folds_terminal_by_default():
+    from helpers import isolated_env
+    from eduflow.store import tasks
+
+    team = {"session": "EduFlow", "agents": {
+        "manager": {"cli": "claude-code"},
+        "worker_cc": {"cli": "claude-code"},
+        "worker_review": {"cli": "claude-code"},
+    }}
+    with isolated_env(team=team):
+        active = tasks.create_flow(
+            "worker_cc", "Draft Unit 1",
+            stage="curriculum", owner="worker_cc", creator="manager",
+        )
+        tasks.transition_flow(active, to_status="assigned", actor="manager")
+        tasks.transition_flow(active, to_status="in_progress", actor="worker")
+        review = tasks.create_flow(
+            "worker_cc", "Review Unit 1",
+            stage="curriculum", owner="worker_cc", creator="manager",
+        )
+        tasks.transition_flow(review, to_status="assigned", actor="manager")
+        tasks.transition_flow(review, to_status="in_progress", actor="worker")
+        tasks.submit_for_review(review, actor="worker")
+        tasks.assign_reviewer(review, reviewer="worker_review", actor="manager")
+        done = tasks.create_flow(
+            "worker_cc", "Old delivery",
+            stage="qbank", owner="worker_cc", creator="manager",
+        )
+        tasks.transition_flow(done, to_status="assigned", actor="manager")
+        tasks.transition_flow(done, to_status="in_progress", actor="worker")
+        tasks.transition_flow(done, to_status="delivered", actor="worker")
+
+        reply = slash.dispatch("/task", _ctx(
+            agents=("manager", "worker_cc", "worker_review"),
+        ))
+
+    assert isinstance(reply, dict)
+    assert reply["header"]["template"] == "yellow"
+    body = _all_markdown(reply)
+    assert "任务窗口" in reply["header"]["title"]["content"]
+    assert "进行中" in body and "Draft Unit 1" in body
+    assert "待审核" in body and "Review Unit 1" in body
+    assert "已交付**（1）▸ 已折叠" in body
+    assert "Old delivery" not in body
+    assert "/task all" in body
+
+
+def test_task_window_all_expands_terminal_tasks():
+    from helpers import isolated_env
+    from eduflow.store import tasks
+
+    with isolated_env(team={"session": "EduFlow", "agents": {
+        "manager": {"cli": "claude-code"},
+        "worker_cc": {"cli": "claude-code"},
+    }}):
+        tid = tasks.create_flow(
+            "worker_cc", "Old delivery",
+            stage="qbank", owner="worker_cc", creator="manager",
+        )
+        tasks.transition_flow(tid, to_status="assigned", actor="manager")
+        tasks.transition_flow(tid, to_status="in_progress", actor="worker")
+        tasks.transition_flow(tid, to_status="delivered", actor="worker")
+
+        reply = slash.dispatch("/task all", _ctx(agents=("manager", "worker_cc")))
+
+    body = _all_markdown(reply)
+    assert "Old delivery" in body
+    assert "已折叠" not in body
 
 
 def test_employee_slash_unknown_agent_returns_warning():

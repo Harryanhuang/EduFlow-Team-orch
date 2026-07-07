@@ -32,7 +32,7 @@ from typing import Callable, Iterable
 from eduflow.feishu import chat as _chat
 from eduflow.feishu.router import Decision
 from eduflow.runtime import paths
-from eduflow.util import env_str, read_json, write_json
+from eduflow.util import env_str, read_json, warn, write_json
 
 
 # ── cursor persistence ─────────────────────────────────────────
@@ -47,11 +47,17 @@ def read_cursor() -> dict:
 
 
 def write_cursor(message_id: str, create_time: str) -> None:
-    """Persist the last-seen message marker. No-op if either field is empty."""
+    """Persist the last-seen message marker. No-op if either field is empty.
+
+    Also stores `create_time_ms`, the epoch-ms reading of `create_time`
+    taken now. lark-cli can render minute strings in process-local time,
+    so the string alone is ambiguous across TZ changes.
+    """
     if not message_id or not create_time:
         return
     write_json(paths.router_cursor_file(),
-               {"message_id": message_id, "create_time": str(create_time)})
+               {"message_id": message_id, "create_time": str(create_time),
+                "create_time_ms": _to_epoch_ms(create_time)})
 
 
 def record_decision(decision: Decision) -> None:
@@ -124,8 +130,13 @@ def _to_epoch_ms(create_time: object) -> int:
     return 0
 
 
-def _newer_than(messages: Iterable[dict], cursor_create_time: str) -> list[dict]:
-    """Filter `messages` to those at-or-after the cursor minute.
+_DEFAULT_CATCHUP_LOOKBACK_MS = 120_000
+
+
+def _newer_than(messages: Iterable[dict], cursor_create_time: str, *,
+                cursor_ms: int = 0,
+                lookback_ms: int = _DEFAULT_CATCHUP_LOOKBACK_MS) -> list[dict]:
+    """Filter `messages` to those at-or-after `cursor minute - lookback`.
 
     Two precision realms collide here. Cursor is set from the LIVE event
     `create_time` (lark-cli WebSocket → millisecond precision string).
@@ -135,22 +146,24 @@ def _newer_than(messages: Iterable[dict], cursor_create_time: str) -> list[dict]
     cursor is in: cursor 14:08:32.107 vs REST 14:08:00 → REST < cursor
     → every message that shares the cursor's minute is dropped.
 
-    Floor the cutoff to the minute boundary so REST messages in the
-    same minute as the cursor are kept. Same-minute messages already
-    handled by the live stream get re-applied; in-process `seen_msg_ids`
-    dedups within one router run. Across restarts, the cursor message
-    itself is re-applied — acceptable, lark WebSocket misses are far
-    more common in observed host_smoke runs (2026-05-06).
+    Floor the cutoff to the minute boundary so REST messages in the same
+    minute as the cursor are kept, then step back by `lookback_ms` so an
+    out-of-order message slightly older than the high-water cursor is not
+    filtered out forever. Re-applied messages are harmless: persisted
+    router.seen and process-level dedup drop them later.
 
     Bad/missing create_time (parses to 0) gets dropped — never include
     rows we can't timestamp, even when there's no cursor.
     """
-    raw_cutoff = _to_epoch_ms(cursor_create_time)
-    cutoff = (raw_cutoff // 60_000) * 60_000  # floor to minute
+    raw_cutoff = cursor_ms or _to_epoch_ms(cursor_create_time)
+    minute_floor = (raw_cutoff // 60_000) * 60_000
+    cutoff = minute_floor - max(0, lookback_ms)
     def keep(m: dict) -> bool:
         ts = _to_epoch_ms(m.get("create_time"))
         return ts > 0 and ts >= cutoff
-    fresh = [m for m in messages if keep(m)]
+    ordered = list(messages)
+    ordered.reverse()
+    fresh = [m for m in ordered if keep(m)]
     fresh.sort(key=lambda m: _to_epoch_ms(m.get("create_time")))
     return fresh
 
@@ -158,15 +171,21 @@ def _newer_than(messages: Iterable[dict], cursor_create_time: str) -> list[dict]
 def pending_lines(chat_id: str, *,
                   profile: str = "",
                   page_size: int = 50,
-                  list_fn: Callable | None = None) -> list[str]:
+                  list_fn: Callable | None = None,
+                  meta: dict | None = None) -> list[str]:
     """Return NDJSON lines for messages newer than the saved cursor.
 
     Oldest-first so process_lines applies them in chronological order.
     `list_fn` is injectable for tests; in production it goes through
-    `feishu.chat.list_recent`.
+    `feishu.chat.list_recent`. `meta` gets `dropped_stale` when backlog
+    is capped.
     """
     cursor = read_cursor()
     cursor_ct = str(cursor.get("create_time") or "")
+    try:
+        cursor_ms = int(cursor.get("create_time_ms") or 0)
+    except (TypeError, ValueError):
+        cursor_ms = 0
     # Fresh deploy (no cursor): don't replay arbitrary chat history.
     # Otherwise a fresh `eduflow up` would re-fire every message in
     # the recent 50 — including dispatches from a previous team that
@@ -193,6 +212,83 @@ def pending_lines(chat_id: str, *,
         def list_fn():
             return _chat.list_recent(chat_id, profile=profile,
                                      page_size=page_size, as_user=as_user)
+    raw = list_fn()
+    if raw is None:
+        warn("⚠️ catchup: 拉历史消息失败（鉴权/代理？）—— 本次补漏跳过；"
+             "bot-only 部署请确认 send_as=bot 或用户 OAuth 就绪")
+        return []
+    fresh = _newer_than(raw, cursor_ct, cursor_ms=cursor_ms,
+                        lookback_ms=_catchup_lookback_ms())
+    cap = _catchup_max_messages()
+    if cap > 0 and len(fresh) > cap:
+        dropped = len(fresh) - cap
+        fresh = fresh[-cap:]
+        newest = fresh[-1]
+        write_cursor(newest.get("message_id", ""),
+                     str(newest.get("create_time", "")))
+        warn(f"⚠️ catchup backlog exceeded cap {cap}: skipping {dropped} "
+             f"stale message(s), replaying most recent {cap}, cursor seeded forward")
+        if meta is not None:
+            meta["dropped_stale"] = dropped
+    return [_msg_to_event_line(m) for m in fresh]
+
+
+def _catchup_lookback_ms() -> int:
+    try:
+        from eduflow.runtime import tunables
+        return int(tunables.tunable("router.catchup_lookback_ms",
+                                    _DEFAULT_CATCHUP_LOOKBACK_MS))
+    except Exception:
+        return _DEFAULT_CATCHUP_LOOKBACK_MS
+
+
+_DEFAULT_CATCHUP_MAX_MESSAGES = 30
+
+
+def _catchup_max_messages() -> int:
+    try:
+        from eduflow.runtime import tunables
+        return int(tunables.tunable("router.catchup_max_messages",
+                                    _DEFAULT_CATCHUP_MAX_MESSAGES))
+    except Exception:
+        return _DEFAULT_CATCHUP_MAX_MESSAGES
+
+
+def recent_window_lines(chat_id: str, *, window_seconds: int = 30,
+                       profile: str = "",
+                       list_fn: Callable | None = None) -> list[str]:
+    """T-137: backfill the last N seconds of chat history, ignoring cursor.
+
+    Used by router to close the 5s respawn window where events can be
+    dropped. The regular `pending_lines` only returns messages newer
+    than the cursor, but if the router died right after writing a
+    cursor and a new message arrived during the gap, the cursor
+    advance silently swallowed it. This function pulls the last
+    window_seconds of history regardless of cursor, so respawn cycles
+    can recover events that arrived during downtime.
+    """
+    if list_fn is None:
+        from eduflow.feishu import chat as _chat
+        legacy = env_str("EDUFLOW_LARK_SEND_AS").lower()
+        if legacy:
+            as_value = legacy
+        else:
+            from eduflow.runtime import tunables
+            as_value = str(tunables.tunable("feishu.send_as", "user")).lower()
+        as_user = as_value != "bot"
+        def list_fn():
+            return _chat.list_recent(chat_id, profile=profile,
+                                     page_size=50, as_user=as_user)
     msgs = list_fn() or []
-    fresh = _newer_than(msgs, cursor_ct)
+    import time as _time
+    cutoff_ms = int(_time.time() * 1000) - int(window_seconds) * 1000
+    fresh = []
+    for m in msgs:
+        ct = m.get("create_time") or ""
+        try:
+            ct_ms = int(ct)
+        except (TypeError, ValueError):
+            continue
+        if ct_ms >= cutoff_ms:
+            fresh.append(m)
     return [_msg_to_event_line(m) for m in fresh]

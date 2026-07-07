@@ -75,6 +75,17 @@ _ROLE_ALLOWED_TYPES: dict[str, frozenset[str]] = {
         CardType.HANDOFF, CardType.BLOCKED,
         CardType.REVIEW,
     }),
+    # T-144: review_course was renamed to worker_review (T-139) but
+    # the role allow-list wasn't updated, so worker_review fell
+    # through to _WORKER_DEFAULT_ALLOWED (no REVIEW). Add the
+    # worker_review entry mirroring the old review_course perms.
+    # Keep the stale review_course entry as an alias so historical
+    # cards sent under the old name still validate.
+    "worker_review": frozenset({
+        CardType.ACK, CardType.START, CardType.PROGRESS,
+        CardType.HANDOFF, CardType.BLOCKED,
+        CardType.REVIEW,
+    }),
     "auto_ops": frozenset({
         CardType.ACK, CardType.START, CardType.PROGRESS,
         CardType.HANDOFF, CardType.BLOCKED,
