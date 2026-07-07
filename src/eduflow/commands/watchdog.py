@@ -54,7 +54,7 @@ from eduflow.runtime import (
     watchdog, wake,
 )
 from eduflow.agents import get_adapter
-from eduflow.util import maybe_print_help, read_json, write_json
+from eduflow.util import maybe_print_help, read_json, write_json, now_ms as _now_ms, ago_ms, pop_bool_flag, reject_extra_args
 
 
 _CRED_PATH = Path.home() / ".claude" / ".credentials.json"
@@ -63,6 +63,16 @@ _CRED_PATH = Path.home() / ".claude" / ".credentials.json"
 # Hardcoding /root broke host non-root deploys: Path("/root/...").exists()
 # raised PermissionError (Linux /root is 700) instead of returning False
 # under Python 3.10–3.12, killing `eduflow up`. Caught 2026-05-08.
+
+
+def _run_watchdog_step(label: str, fn) -> bool:
+    """Run one watchdog sub-step without letting it kill the daemon."""
+    try:
+        fn()
+        return True
+    except Exception as e:
+        print(f"  ⚠️ watchdog step failed ({label}): {e}")
+        return False
 
 
 def _make_alert_fn():
@@ -109,9 +119,99 @@ def _make_alert_fn():
     return alert
 
 
+# ── T-104: daily archive machinery ───────────────────────────────────
+# Reads facts/archive-schedule.json (set by `eduflow task archive-schedule`)
+# and once per local day at the configured hour (~03:00 default) runs
+# store.tasks.archive_tasks(older_than_days, dry_run=False). Idempotent: a
+# last_run_date marker file in facts/ gates double-runs on the same day.
+
+def _archive_schedule_file() -> Path:
+    return paths.facts_dir() / "archive-schedule.json"
+
+
+def _archive_last_run_file() -> Path:
+    return paths.facts_dir() / "archive-last-run.json"
+
+
+def _load_archive_schedule() -> dict:
+    return read_json(_archive_schedule_file(), {
+        "interval": "daily",
+        "older_than_days": 90,
+        "enabled": False,
+        "local_hour": 3,
+    })
+
+
+def _load_archive_last_run() -> dict:
+    return read_json(_archive_last_run_file(), {})
+
+
+def _write_archive_last_run(payload: dict) -> None:
+    write_json(_archive_last_run_file(), payload)
+
+
+def _append_auto_ops_log(line: str) -> None:
+    """Best-effort append to facts/logs.jsonl; no throw on missing dir."""
+    log_path = paths.facts_dir() / "logs.jsonl"
+    try:
+        log_path.parent.mkdir(parents=True, exist_ok=True)
+        with log_path.open("a", encoding="utf-8") as fh:
+            fh.write(line.rstrip("\n") + "\n")
+    except OSError:
+        pass  # never let logging break the watchdog
+
+
+def _maybe_daily_archive(now_s: float | None = None) -> bool:
+    """Once-per-day, only when past configured local_hour. Returns True iff
+    it actually ran an archive (so the watchdog tick can log a step result).
+    """
+    from datetime import datetime
+    from eduflow.store import tasks as task_store
+
+    schedule = _load_archive_schedule()
+    if not schedule.get("enabled", False):
+        return False
+    if schedule.get("interval", "daily") != "daily":
+        return False
+    target_hour = int(schedule.get("local_hour", 3))
+    older_than = int(schedule.get("older_than_days", 90))
+
+    now_s = float(now_s if now_s is not None else time.time())
+    local_now = datetime.fromtimestamp(now_s)
+    today_str = local_now.strftime("%Y-%m-%d")
+
+    last = _load_archive_last_run()
+    if last.get("last_run_date") == today_str:
+        return False  # already ran today
+    if local_now.hour < target_hour:
+        return False  # not yet at the local hour
+
+    summary = task_store.archive_tasks(older_than_days=older_than, dry_run=False)
+    moved = int(summary.get("archived_count", 0))
+    payload = {
+        "last_run_date": today_str,
+        "last_run_at": now_s,
+        "older_than_days": older_than,
+        "archived_count": moved,
+        "by_month": summary.get("by_month", {}),
+    }
+    _write_archive_last_run(payload)
+    _append_auto_ops_log(
+        f"auto_ops daily_archive archived {moved} tasks "
+        f"to archive/tasks-{local_now.strftime('%Y-%m')}.jsonl "
+        f"(older_than={older_than}d)"
+    )
+    return True
+
+
 def main(argv: list[str]) -> int:
     if maybe_print_help(argv, "usage: eduflow watchdog"):
         return 0
+    # T-102: subcommand dispatch — `eduflow watchdog presence [--include-stopped]`
+    # 排查用, 把当前 presence 文本打到 stdout (默认行为同 watchdog tick).
+    rest = list(argv)
+    if rest and str(rest[0]) == "presence":
+        return presence_main(rest[1:])
     pid_file = paths.watchdog_pid_file()
     if not pidlock.acquire(pid_file, name="watchdog"):
         return 1
@@ -124,26 +224,45 @@ def main(argv: list[str]) -> int:
     check_interval_s = int(tunables.tunable("watchdog.check_interval_s", 30))
     cred_check_interval_s = int(tunables.tunable("watchdog.cred_check_interval_s", 300))
     runtime_guard_interval_s = int(tunables.tunable("watchdog.runtime_guard_interval_s", 30))
+    daily_archive_check_interval_s = 1800.0  # 30 min — cheap, just reads schedule
     print(f"🐕 watchdog supervising {[s.name for s in specs]} every {check_interval_s}s ({alert_msg})")
 
     last_cred_check = 0.0
     last_runtime_guard = 0.0
     last_pid_repair = 0.0
+    last_daily_archive = 0.0
     pid_repair_interval_s = 300.0  # every 5 min — catch unlinked pid files
     try:
         while True:
-            watchdog.supervise(specs, states, alert_fn=alert_fn)
+            _run_watchdog_step(
+                "supervise",
+                lambda: watchdog.supervise(specs, states, alert_fn=alert_fn),
+            )
             now = time.time()
             if now - last_cred_check >= cred_check_interval_s:
-                _maybe_refresh_claude_oauth(now)
+                _run_watchdog_step(
+                    "claude_oauth_refresh",
+                    lambda: _maybe_refresh_claude_oauth(now),
+                )
                 last_cred_check = now
             if now - last_runtime_guard >= runtime_guard_interval_s:
-                _guard_agent_runtimes()
-                _maybe_emit_auto_ops_presence(now)
+                _run_watchdog_step("runtime_guard", _guard_agent_runtimes)
+                _run_watchdog_step(
+                    "auto_ops_presence",
+                    lambda: _maybe_emit_auto_ops_presence(now),
+                )
                 last_runtime_guard = now
             if now - last_pid_repair >= pid_repair_interval_s:
-                pidlock.repair_pid_file(pid_file, name="watchdog")
+                _run_watchdog_step(
+                    "pid_repair",
+                    lambda: pidlock.repair_pid_file(pid_file, name="watchdog"),
+                )
                 last_pid_repair = now
+            # T-104: daily archive tick — fire once per day at ~03:00 local
+            # when the schedule says so. Cheap no-op between checks.
+            if now - last_daily_archive >= daily_archive_check_interval_s:
+                _run_watchdog_step("daily_archive", _maybe_daily_archive)
+                last_daily_archive = now
             time.sleep(check_interval_s)
     except KeyboardInterrupt:
         print("watchdog stopped")
@@ -207,6 +326,9 @@ def _latest_auto_ops_surface_s() -> float:
 
 
 def _presence_agent_summary(agent: str, row: dict | None) -> str:
+    """Phase 6 — kept for backward compat. T-101 (Phase 7) replaced this
+    with the numbered all-agent layout in `_build_auto_ops_presence_message`.
+    This shim is only used if a legacy caller still imports the helper."""
     if not row:
         return f"{agent} 无状态"
     status = str(row.get("status") or "未知").strip() or "未知"
@@ -222,15 +344,169 @@ def _presence_agent_summary(agent: str, row: dict | None) -> str:
     return f"{agent} {status}"
 
 
-def _build_auto_ops_presence_message() -> str:
-    agents = ["manager", "worker_course", "review_course", "worker_builder", "worker_qbank"]
+def _presence_pane_emoji(status: str, agent: str, heartbeat_ms: int, now_ms: int) -> str:
+    """Phase 7 (T-101, rev-2 2026-07-06) pane-state emoji.
+
+    Returns one of:
+      ❌ — 已停止 / 解雇 / 残留条目 (agent starts with `-`)
+      ⚠️ — 受阻 / 异常 / 心跳超过 24 小时未更新 (truly stale, not warm-idle)
+      ✅ — pane live process in (待命/进行中/已接单/待接单/已读待确认/已交付) +
+           心跳 < 24h (warm-idle agents sleep by design — that's not "down")
+      ❓ — 状态未知
+
+    Round-2 fix (manager msg_1783298223920): 30min threshold was too tight.
+    Warm-residency agents (Hermes/Luke_recorder/review_course/worker_qbank/
+    worker_syllabus) idle by design and don't heartbeat on a 30min cadence;
+    treating them as ⚠️ contradicted `eduflow health`'s 9/9 pane-ready
+    reading. Per manager hint: "pane live 进程 in" = first-order ✅;
+    only idle > 24h downgrades.
+    """
+    if agent.startswith("-") or status in {"已停止", "解雇", "已解雇"}:
+        return "❌"
+    if status in {"受阻", "异常", "阻塞"}:
+        return "⚠️"
+    active = {"待命", "待接单", "已接单", "进行中", "已读待确认", "已交付", "温备"}
+    if status in active:
+        if heartbeat_ms and (now_ms - heartbeat_ms) <= 24 * 3600 * 1000:
+            return "✅"
+        # 心跳缺失 / 24h+ 不更新 → 进程 in 但 stale, 降级 ⚠️
+        return "⚠️"
+    return "❓"
+
+
+_STOPPED_STATUSES = {"已停止", "解雇", "已解雇"}
+
+
+def _split_rows_by_stopped(rows: list[dict]) -> tuple[list[dict], list[dict]]:
+    """T-102: split into (active, stopped). Stopped = status ∈ 已停止/解雇/已解雇
+    or agent name starts with '-' (residency markers)."""
+    active, stopped = [], []
+    for r in rows:
+        agent = str(r.get("agent") or "")
+        status = str(r.get("status") or "")
+        if agent.startswith("-") or status in _STOPPED_STATUSES:
+            stopped.append(r)
+        else:
+            active.append(r)
+    return active, stopped
+
+
+def _presence_tail_note(stopped: list[dict]) -> str:
+    """T-102: 残留条目提示. 单行, 仅在存在 stopped 时输出."""
+    if not stopped:
+        return ""
+    names = " / ".join(sorted(str(r.get("agent") or "?") for r in stopped))
+    return (
+        f"已停止 {len(stopped)} 个 agent（{names}）— 残留 store 条目, "
+        f"不参与运行, 可清理时单开任务"
+    )
+
+
+def _build_auto_ops_presence_message(include_stopped: bool = False) -> str:
+    """Phase 7 (T-101 + T-102, 2026-07-06): 全量 agent + 数字编号 + pane emoji.
+
+    Layout per manager spec (msg_1783269030604_d113e82cdf):
+      1. **agent**  ✅  status  task  (Nm ago)
+      2. **agent**  ⚠️  status  task  (Nm ago)
+      ...
+      健康摘要：N/M pane ready
+
+    T-102 (msg_1783298400895):
+      默认: 不列 status ∈ {已停止/解雇/已解雇} 的 agent; 末尾 1 行尾注提示残留。
+      健康摘要分母 = 活跃 agent 数 (排除已停止)。
+      --include-stopped: 排查残留时扩展用, 把已停止也列入正文。
+
+    T-101 数据源: `local_facts.list_all_statuses()` + heartbeats (合并 7 天内心跳残留)
+    """
     try:
         from eduflow.store import local_facts
-        rows = {str(r.get("agent") or ""): r for r in local_facts.list_all_statuses()}
+        rows = list(local_facts.list_all_statuses())
+        heartbeats = local_facts.all_heartbeats()
     except Exception:
-        rows = {}
-    parts = [_presence_agent_summary(agent, rows.get(agent)) for agent in agents]
-    return "运行态简报：auto_ops 盯盘中；" + "；".join(parts) + "。"
+        rows, heartbeats = [], {}
+
+    # T-101: 合并 heartbeats — 已解雇/已停用 agent（如 anna、hermes lowercase）
+    # 不再写 status.json 但心跳文件仍残留, 一起列出, 标"已停止 — 不参与运行"
+    seen = {str(r.get("agent") or "") for r in rows}
+    now_ms = int(_now_ms())
+    for agent, hb in heartbeats.items():
+        if agent in seen:
+            continue
+        if not agent or agent.startswith("-"):
+            continue
+        # 仅保留近 7 天心跳的"残留" agent, 避免拉到远古条目
+        if hb and (now_ms - int(hb)) <= 7 * 24 * 3600 * 1000:
+            rows.append({
+                "agent": agent,
+                "status": "已停止",
+                "task": "",
+                "updated_at": int(hb),
+            })
+            seen.add(agent)
+    rows.sort(key=lambda r: str(r.get("agent") or ""))
+
+    if not rows:
+        return "运行态简报：auto_ops 盯盘中；暂无 agent 状态。"
+
+    active_rows, stopped_rows = _split_rows_by_stopped(rows)
+    visible = rows if include_stopped else active_rows
+
+    if not visible:
+        return "运行态简报：auto_ops 盯盘中；暂无活跃 agent 状态。"
+
+    ready = 0
+    lines = []
+    for idx, r in enumerate(visible, 1):
+        agent = str(r.get("agent") or "?").strip() or "?"
+        status = str(r.get("status") or "未知").strip() or "未知"
+        task = " ".join(str(r.get("task") or "").split())
+        if task.startswith("外显陈旧："):
+            task = "外显陈旧"
+        if task and len(task) > 36:
+            task = task[:36] + "..."
+        updated_at = int(r.get("updated_at") or 0)
+        hb = int(heartbeats.get(agent) or 0)
+        pane = _presence_pane_emoji(status, agent, hb, now_ms)
+        if pane == "✅":
+            ready += 1
+        ago = ago_ms(updated_at) if updated_at else "—"
+        hb_ago = ago_ms(hb) if hb else "—"
+        tail = ""
+        if status in _STOPPED_STATUSES or agent.startswith("-"):
+            tail = "（已停止 — 不参与运行）"
+        bullet = f"{idx}. **{agent}**  {pane}  {status}  {task}".rstrip()
+        if tail:
+            bullet += f"  {tail}"
+        bullet += f"  ({ago})  ♥ {hb_ago}"
+        lines.append(bullet)
+
+    header = "运行态简报：auto_ops 盯盘中"
+    # T-102: 健康摘要分母只算活跃 agent
+    summary = f"健康摘要：{ready}/{len(active_rows)} pane ready"
+    parts = [f"{header}\n" + "\n".join(lines), summary]
+    # 默认模式: 末尾单行尾注提示残留 (仅当存在 stopped 时)
+    if not include_stopped:
+        note = _presence_tail_note(stopped_rows)
+        if note:
+            parts.insert(1, note)
+    return "\n".join(parts)
+
+
+def presence_main(argv: list[str]) -> int:
+    """`eduflow watchdog presence [--include-stopped]`
+
+    排查用 — 把当前会发到主群的 presence 文本打到 stdout。
+    默认行为与 watchdog tick 一致 (过滤已停止); 加 --include-stopped
+    可展开残留条目用于 store 健康检查。
+    """
+    rest = list(argv)
+    if maybe_print_help(rest, "usage: eduflow watchdog presence [--include-stopped]"):
+        return 0
+    include_stopped = pop_bool_flag(rest, "--include-stopped")
+    if reject_extra_args(rest, "usage: eduflow watchdog presence [--include-stopped]"):
+        return 1
+    print(_build_auto_ops_presence_message(include_stopped=include_stopped))
+    return 0
 
 
 def _maybe_emit_auto_ops_presence(now_s: float | None = None) -> bool:

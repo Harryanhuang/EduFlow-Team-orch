@@ -13,6 +13,21 @@ from eduflow.runtime import tmux, paths
 import json
 
 
+def test_run_watchdog_step_logs_exception_and_continues(capsys):
+    called = []
+
+    assert cmd_watchdog._run_watchdog_step("ok", lambda: called.append("ok")) is True
+
+    def boom():
+        raise RuntimeError("network hiccup")
+
+    assert cmd_watchdog._run_watchdog_step("router", boom) is False
+
+    out = capsys.readouterr().out
+    assert called == ["ok"]
+    assert "watchdog step failed (router): network hiccup" in out
+
+
 def test_make_alert_fn_returns_none_when_chat_id_unset():
     """No chat target → no alert fn → supervise gets None default
     (which it tolerates; cooldowns happen but no chat delivery)."""
@@ -448,6 +463,151 @@ presence_interval_s = 1800
             assert cmd_watchdog._maybe_emit_auto_ops_presence(2000.0) is True
             assert cmd_watchdog._maybe_emit_auto_ops_presence(2100.0) is False
     assert len(sent) == 1
+
+
+def test_auto_ops_presence_message_T101_numbered_all_agents():
+    """T-101: presence 简报 升级 — 全量 agent + 数字编号 + pane emoji + 健康摘要.
+
+    数据源应覆盖 status.json + heartbeats.json (含已停止/已解雇残留条目).
+    排版: 1./2./3. 编号, markdown bold agent 名, pane emoji (✅/⚠️/❌/❓),
+    末尾"健康摘要: N/M pane ready".
+    """
+    with isolated_env() as tmp:
+        from eduflow.store import local_facts
+        # 活跃 agent
+        local_facts.upsert_status("manager", "进行中", "T-101 验证测试")
+        local_facts.upsert_status("worker_course", "待命", "等派工")
+        local_facts.touch_heartbeat("manager")
+        local_facts.touch_heartbeat("worker_course")
+        # 已停止 agent (anna) — 不写 status.json, 只写 heartbeat
+        local_facts.touch_heartbeat("anna")
+        local_facts.touch_heartbeat("hermes")
+        # T-101 测全量: 用 include_stopped=True 强制展开
+        body = cmd_watchdog._build_auto_ops_presence_message(include_stopped=True)
+
+    # 数字编号 + 标题
+    assert body.startswith("运行态简报：auto_ops 盯盘中\n")
+    lines = body.split("\n")
+    # 跳过 header 和 summary
+    assert lines[-1].startswith("健康摘要：")
+    assert "/" in lines[-1] and "pane ready" in lines[-1]
+
+    # 每个 agent 行格式: "1. **name**  emoji  status  task  (ago)  ♥ hb_ago"
+    numbered = [ln for ln in lines if ln and ln[0].isdigit() and ". " in ln[:4]]
+    assert len(numbered) >= 3, f"expected ≥3 numbered rows, got {numbered!r}"
+
+    # anna/hermes (heartbeat-only 已停止) 也应被列出
+    assert "**anna**" in body
+    assert "**hermes**" in body
+    assert "已停止" in body
+    assert "（已停止 — 不参与运行）" in body
+    # pane ❌ 给已停止 agent
+    for line in numbered:
+        if "**anna**" in line or "**hermes**" in line:
+            assert "❌" in line, f"stopped agent must show ❌, got: {line}"
+
+    # manager 应为 ✅ (有 status + heartbeat)
+    for line in numbered:
+        if "**manager**" in line:
+            assert "✅" in line, f"manager expected ✅, got: {line}"
+
+    # markdown bold
+    assert "**worker_course**" in body
+
+
+def test_auto_ops_presence_pane_emoji_states():
+    """T-101 rev-2: pane emoji 状态映射 (24h 阈值, warm-idle ✅)."""
+    now = 1_000_000_000
+    # 已停止 → ❌
+    assert cmd_watchdog._presence_pane_emoji("已停止", "anna", 0, now) == "❌"
+    assert cmd_watchdog._presence_pane_emoji("待命", "-residency_entry", 0, now) == "❌"
+    # 受阻 → ⚠️
+    assert cmd_watchdog._presence_pane_emoji("受阻", "x", now, now) == "⚠️"
+    assert cmd_watchdog._presence_pane_emoji("异常", "x", now, now) == "⚠️"
+    # 正常 + 心跳新鲜 (<24h) → ✅
+    assert cmd_watchdog._presence_pane_emoji("待命", "x", now - 60_000, now) == "✅"
+    assert cmd_watchdog._presence_pane_emoji("进行中", "x", now - 60_000, now) == "✅"
+    # 正常 + warm-idle 7h 心跳 → ✅ (rev-2: 24h 阈值, warm 常态)
+    assert cmd_watchdog._presence_pane_emoji("待命", "x", now - 7 * 3600 * 1000, now) == "✅"
+    # 正常 + 已交付 6h → ✅
+    assert cmd_watchdog._presence_pane_emoji("已交付", "x", now - 6 * 3600 * 1000, now) == "✅"
+    # T-136: 温备 (老板指令降级, pane live 但设计 idle) + 新鲜心跳 → ✅
+    assert cmd_watchdog._presence_pane_emoji("温备", "x", now - 60_000, now) == "✅"
+    # T-136: 温备 + stale 25h → ⚠️
+    assert cmd_watchdog._presence_pane_emoji("温备", "x", now - 25 * 3600 * 1000, now) == "⚠️"
+    # 正常 + 24h+ 陈旧心跳 → ⚠️ (truly stale)
+    assert cmd_watchdog._presence_pane_emoji("待命", "x", now - 25 * 3600 * 1000, now) == "⚠️"
+    # 未知 → ❓
+    assert cmd_watchdog._presence_pane_emoji("幽灵态", "x", now, now) == "❓"
+
+
+def test_auto_ops_presence_filter_stopped_default():
+    """T-102: 默认 presence 过滤 已停止/解雇/已解雇 agent, 尾注提示残留."""
+    with isolated_env() as tmp:
+        from eduflow.store import local_facts
+        local_facts.upsert_status("manager", "进行中", "T-102 验证")
+        local_facts.upsert_status("worker_qbank", "待命", "OK")
+        local_facts.upsert_status("anna", "已停止", "解雇")
+        local_facts.upsert_status("codex", "解雇", "")
+        local_facts.touch_heartbeat("hermes")  # 心跳残留
+        local_facts.touch_heartbeat("manager")
+        local_facts.touch_heartbeat("worker_qbank")
+        body = cmd_watchdog._build_auto_ops_presence_message()
+
+    # 默认模式: 活跃 agent 编号, 已停止不进编号
+    assert "**manager**" in body
+    assert "**worker_qbank**" in body
+    numbered = [ln for ln in body.split("\n") if ln and ln[0].isdigit() and ". " in ln[:4]]
+    agent_names_in_numbered = [ln for ln in numbered if "**manager**" in ln or "**worker_qbank**" in ln]
+    assert len(agent_names_in_numbered) == 2, f"expected 2 active numbered, got {numbered!r}"
+    # anna/codex 不在编号
+    assert not any("**anna**" in ln for ln in numbered)
+    assert not any("**codex**" in ln for ln in numbered)
+    assert not any("**hermes**" in ln for ln in numbered)
+    # 尾注 1 行: 列出残留
+    assert "已停止 3 个 agent" in body
+    assert "anna" in body and "codex" in body and "hermes" in body
+    assert "残留 store 条目" in body
+    # 健康摘要分母 = 活跃 agent 数 (2)
+    assert body.rstrip().endswith("健康摘要：2/2 pane ready")
+
+
+def test_auto_ops_presence_include_stopped_flag():
+    """T-102: --include-stopped 把已停止也列入正文, 健康摘要分母仍只算活跃."""
+    with isolated_env() as tmp:
+        from eduflow.store import local_facts
+        local_facts.upsert_status("manager", "进行中", "T-102 验证")
+        local_facts.upsert_status("worker_qbank", "待命", "OK")
+        local_facts.upsert_status("anna", "已停止", "解雇")
+        local_facts.touch_heartbeat("manager")
+        local_facts.touch_heartbeat("worker_qbank")
+        body = cmd_watchdog._build_auto_ops_presence_message(include_stopped=True)
+
+    # include_stopped: 已停止也编号
+    numbered = [ln for ln in body.split("\n") if ln and ln[0].isdigit() and ". " in ln[:4]]
+    assert any("**anna**" in ln for ln in numbered)
+    # 不输出尾注 (全部已展开)
+    assert "残留 store 条目" not in body
+    # 健康摘要分母仍只算活跃 (2)
+    assert body.rstrip().endswith("健康摘要：2/2 pane ready")
+
+
+def test_watchdog_presence_cli_dispatch():
+    """T-102: `eduflow watchdog presence [--include-stopped]` 子命令分发."""
+    with isolated_env() as tmp:
+        from eduflow.store import local_facts
+        local_facts.upsert_status("manager", "进行中", "dispatch test")
+        local_facts.upsert_status("anna", "已停止", "")
+        local_facts.touch_heartbeat("manager")
+        # 默认子命令
+        rc = cmd_watchdog.main(["presence"])
+        assert rc == 0
+        # include-stopped 子命令
+        rc = cmd_watchdog.main(["presence", "--include-stopped"])
+        assert rc == 0
+        # 错误参数
+        rc = cmd_watchdog.main(["presence", "bogus"])
+        assert rc == 1
 
 
 def test_record_switch_enters_cooldown_after_threshold():

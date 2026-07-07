@@ -32,6 +32,7 @@ processes left by a SIGKILL'd predecessor before respawning.
 """
 from __future__ import annotations
 
+import json
 import os
 import signal
 import subprocess
@@ -242,6 +243,14 @@ def _stale_event_threshold_s() -> float:
     Legacy `EDUFLOW_ROUTER_STALE_S` env (without `_EVENT_THRESHOLD`) is
     still honored as a backwards-compat alias since it shipped first.
 
+    T-130 BUG GUARD: when the legacy env var is set, it SILENTLY wins
+    over eduflow.toml's `router.stale_event_threshold_s`. This caused
+    real boss messages to be dropped when a stale env var lingered
+    across shells (e.g. `EDUFLOW_ROUTER_STALE_S=1200` from a previous
+    session). Print a warning so the operator knows toml is being
+    ignored. Prefer unsetting the env var or migrating to
+    `EDUFLOW_ROUTER_STALE_EVENT_THRESHOLD_S` (modern env override).
+
     Per-process ±jitter is applied once at module import so multiple
     router instances don't all expire on the same wall-clock tick
     (which previously caused 'thundering herd' respawn storms on quiet
@@ -251,6 +260,16 @@ def _stale_event_threshold_s() -> float:
     # Legacy env-var alias (shipped before the tunables framework).
     legacy = os.environ.get("EDUFLOW_ROUTER_STALE_S", "").strip()
     if legacy:
+        # T-130: explicit warning when env overrides toml (common footgun)
+        toml_val = tunables.tunable("router.stale_event_threshold_s", None)
+        if toml_val is not None:
+            print(
+                f"⚠️  EDUFLOW_ROUTER_STALE_S={legacy} overrides "
+                f"eduflow.toml router.stale_event_threshold_s={toml_val}. "
+                f"Unset the env var to use the toml value, or migrate to "
+                f"EDUFLOW_ROUTER_STALE_EVENT_THRESHOLD_S.",
+                file=sys.stderr,
+            )
         try:
             v = float(legacy)
             if v >= 60:
@@ -272,6 +291,10 @@ def _stale_event_threshold_s() -> float:
 # `if idle > threshold` in a tight loop, jitter noise makes the value
 # flapping enough to matter for tests.
 _JITTER_CACHE: dict[float, float] = {}
+# T-130: invalidation key — if the toml file mtime changes, drop the
+# cache so a router process picks up new threshold values across respawns
+# (without needing a full restart when the operator only edits toml).
+_TOML_MTIME: float = 0.0
 
 
 def _jittered_threshold(base: float) -> float:
@@ -281,6 +304,17 @@ def _jittered_threshold(base: float) -> float:
         "router.stale_event_threshold_jitter_pct", 0.10))  # ±10% default
     if jitter_pct <= 0:
         return base
+    # T-130: drop cache if toml mtime advanced (operator edited config).
+    import os as _os
+    try:
+        import eduflow.runtime.paths as _paths
+        mtime = _os.path.getmtime(_paths.state_dir() / "eduflow.toml")
+    except OSError:
+        mtime = 0.0
+    global _TOML_MTIME
+    if _TOML_MTIME and mtime and mtime > _TOML_MTIME:
+        _JITTER_CACHE.clear()
+    _TOML_MTIME = mtime or _TOML_MTIME
     if base in _JITTER_CACHE:
         return _JITTER_CACHE[base]
     import random as _random
@@ -375,6 +409,24 @@ def main(argv: list[str]) -> int:
     except OSError:
         pass
 
+    # T-137 #1: rotate router.log on each clean startup. The respawn
+    # loop pattern (failed-keychain → exit → watchdog → respawn) leaves
+    # a long tail of "⚠️ ... respawning" lines that visually pollute
+    # the new router's healthy log. Rotate the old tail to
+    # router.log.archived-<ts> so the new run starts on a clean page
+    # and an operator scanning `tail router.log` only sees the current
+    # process's behavior. Keep the rotation conditional on the log
+    # being non-trivial (>1KB) to avoid noise on every probe.
+    import datetime as _dt
+    log_path = paths.router_log_file()
+    if log_path and log_path.exists() and log_path.stat().st_size > 1024:
+        ts = _dt.datetime.now().strftime("%Y%m%dT%H%M%S")
+        archive = log_path.with_name(f"{log_path.name}.archived-{ts}")
+        try:
+            log_path.rename(archive)
+        except OSError as e:
+            print(f"  ⚠️ router.log rotation failed: {e}", file=sys.stderr)
+
     profile = config.lark_profile()
     cmd = _build_subscribe_cmd(profile)
     print(f"🚀 router subscribing on chat {chat} (profile={profile or '<default>'})")
@@ -467,6 +519,31 @@ def main(argv: list[str]) -> int:
         except Exception as e:
             warn(f"⚠️  catchup fetch failed: {e}")
             pending = []
+        # T-137 #2: also pull the last 30s of chat history to close the
+        # respawn window. Cursor may have been written right before the
+        # last respawn, so messages arriving during the 2-5s gap would
+        # otherwise be silently swallowed.
+        try:
+            backfill = catchup.recent_window_lines(
+                chat, window_seconds=30, profile=profile)
+        except Exception as e:
+            warn(f"⚠️  recent-window backfill failed: {e}")
+            backfill = []
+        # Merge + dedupe by message_id, preserving order
+        seen_ids: set[str] = set()
+        merged: list[str] = []
+        for line in backfill + pending:
+            # quick parse for id; lines are JSON NDJSON
+            try:
+                mid = json.loads(line).get("message_id", "")
+            except Exception:
+                mid = ""
+            if mid and mid in seen_ids:
+                continue
+            if mid:
+                seen_ids.add(mid)
+            merged.append(line)
+        pending = merged
         if pending:
             print(f"📥 catching up {len(pending)} missed message(s)")
             process_lines(iter(pending), **loop_kwargs)
@@ -487,9 +564,9 @@ def main(argv: list[str]) -> int:
                 and _subscribe_alive_secs < 15):
             print(f"  ⚠️ subscribe child exited rc={rc} in "
                   f"{_subscribe_alive_secs:.1f}s with 0 handled; "
-                  f"retrying once after 5s settle")
+                  f"retrying once after 2s settle")
             _terminate_subscribe_group(proc)
-            time.sleep(5)
+            time.sleep(2)
             try:
                 proc = subprocess.Popen(
                     cmd,

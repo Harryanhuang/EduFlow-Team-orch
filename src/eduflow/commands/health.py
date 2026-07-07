@@ -335,6 +335,21 @@ def _check_daemon(rep: HealthReport, spec: watchdog.ProcessSpec) -> None:
     rep.yellow(f"{spec.name}: pid file present but process dead (watchdog will respawn)")
 
 
+# T-105: critical-daeamon-set — when ALL of these are dead, messages
+# cannot be delivered. Print a red alert so the operator sees it as
+# a user-visible outage, not a routine yellow.
+_CRITICAL_DAEMONS = frozenset({"router", "task-publish", "watchdog"})
+
+
+def _check_all_daemons_dead_red(rep: HealthReport, dead: list[str]) -> None:
+    dead_set = set(dead)
+    if _CRITICAL_DAEMONS.issubset(dead_set):
+        rep.fail(
+            f"❌ ALL critical daemons dead (router, task-publish, watchdog) — "
+            f"messages cannot be delivered. Run `eduflow daemon restart --all`."
+        )
+
+
 def _check_stall_reason(rep: HealthReport) -> None:
     """Report the last router stall reason if the sentinel file exists.
 
@@ -698,8 +713,17 @@ def _build_report() -> HealthReport:
     rep.blank()
 
     rep.section("daemons:")
+    # T-105: collect dead-state per daemon so we can escalate to red when
+    # all 3 critical daemons (router + task-publish + watchdog) are dead
+    # simultaneously — that state is user-visible (boss messages lost) and
+    # should not look like a routine yellow warning.
+    dead_daemons: list[str] = []
     for spec in watchdog.all_known_specs():
+        before_bad = rep.bad
         _check_daemon(rep, spec)
+        if rep.bad > before_bad:
+            dead_daemons.append(spec.name)
+    _check_all_daemons_dead_red(rep, dead_daemons)
     rep.blank()
 
     rep.section("daemon stability:")

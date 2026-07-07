@@ -60,5 +60,8 @@ def main(argv: list[str]) -> int:
     if sub == "events":
         from eduflow.commands import runtime_events
         return runtime_events.main(args)
+    if sub == "env-clean":
+        from eduflow.commands import runtime_env_clean
+        return runtime_env_clean.main(args)
     print(f"unknown runtime subcommand: {sub!r}\n{USAGE}")
     return 1
