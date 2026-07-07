@@ -20,7 +20,7 @@
   task manager-actions
   task manager-action-apply <action_code> --subject-id <id> [--confirm] [--skip-verifier]
   task manager-panel
-  task ops-dashboard [--json] [--text]
+  task ops-dashboard [--json] [--text] [--deep-manager-actions]
   task evidence-account [--task-id T] [--workflow W] [--json]
   task evidence-explain <task_id> [--json]
   task loop-check <task_id> [--spec code-repair] [--max-cycles N] [--new-run] [--allow-unscoped-workspace] [--background]
@@ -107,7 +107,7 @@ USAGE = (
     "  eduflow task manager-actions\n"
     "  eduflow task manager-action-apply <action_code> --subject-id <id> [--confirm] [--skip-verifier]\n"
     "  eduflow task manager-panel\n"
-    "  eduflow task ops-dashboard [--json] [--text]\n"
+    "  eduflow task ops-dashboard [--json] [--text] [--deep-manager-actions]\n"
     "  eduflow task evidence-account [--task-id T] [--workflow W] [--json]\n"
     "  eduflow task evidence-explain <task_id> [--json]\n"
     "  eduflow task loop-check <task_id> [--spec code-repair] [--max-cycles N] [--new-run] [--allow-unscoped-workspace] [--background]\n"
@@ -2352,9 +2352,10 @@ def _ops_dashboard_top_actions(
     return actions
 
 
-def _build_ops_dashboard() -> dict:
+def _build_ops_dashboard(*, include_manager_actions: bool = False) -> dict:
     """Aggregate the ops dashboard payload with degraded-mode isolation."""
     degraded: list[dict] = []
+    notes: list[str] = []
     generated_at_ms = now_ms()
 
     employees, note = _safe_aggregate(
@@ -2387,12 +2388,18 @@ def _build_ops_dashboard() -> dict:
     if note:
         degraded.append(note)
 
-    manager_anomaly_rows, note = _safe_aggregate(
-        "task_event_scanner.scan_manager_anomalies",
-        task_event_scanner.scan_manager_anomalies,
-    )
-    if note:
-        degraded.append(note)
+    manager_anomaly_rows = []
+    if include_manager_actions:
+        manager_anomaly_rows, note = _safe_aggregate(
+            "task_event_scanner.scan_manager_anomalies",
+            task_event_scanner.scan_manager_anomalies,
+        )
+        if note:
+            degraded.append(note)
+    else:
+        notes.append(
+            "manager_actions skipped for fast dashboard; use --deep-manager-actions"
+        )
     manager_packets = _extract_action_packets(manager_anomaly_rows)
 
     top_actions, note = _safe_aggregate(
@@ -2434,7 +2441,7 @@ def _build_ops_dashboard() -> dict:
         "review_queue": review_queue,
         "manager_actions": manager_actions,
         "degraded": degraded,
-        "notes": [],
+        "notes": notes,
     }
 
 
@@ -2511,11 +2518,12 @@ def _emit_ops_dashboard_text(dashboard: dict) -> None:
 def _cmd_ops_dashboard(rest: list[str]) -> int:
     as_json = pop_bool_flag(rest, "--json")
     as_text = pop_bool_flag(rest, "--text")
+    deep_manager_actions = pop_bool_flag(rest, "--deep-manager-actions")
     if rest:
         return usage_error(USAGE)
     if not as_json and not as_text:
         as_text = True
-    dashboard = _build_ops_dashboard()
+    dashboard = _build_ops_dashboard(include_manager_actions=deep_manager_actions)
     if as_json:
         print_json(dashboard)
     else:

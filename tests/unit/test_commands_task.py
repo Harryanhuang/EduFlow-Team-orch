@@ -4658,6 +4658,23 @@ def test_task_ops_dashboard_degraded_mode_keeps_rc_zero():
         assert data["summary"]["agents_total"] == 1
 
 
+def test_task_ops_dashboard_skips_manager_anomaly_scan_by_default():
+    with isolated_env():
+        local_facts.upsert_status("worker_course", "待命", "ready")
+        local_facts.touch_heartbeat("worker_course")
+
+        def boom():
+            raise AssertionError("default ops-dashboard should not deep scan")
+
+        with attr_patch(task_event_scanner, scan_manager_anomalies=boom):
+            rc, out, err = run_cli(["task", "ops-dashboard", "--json"])
+        assert rc == 0, err
+        data = json.loads(out)
+        assert data["degraded"] == []
+        assert data["manager_actions"] == []
+        assert any("--deep-manager-actions" in note for note in data["notes"])
+
+
 def test_task_ops_dashboard_manager_anomaly_scanner_failure_is_degraded():
     with isolated_env():
         local_facts.upsert_status("worker_course", "待命", "ready")
@@ -4667,7 +4684,9 @@ def test_task_ops_dashboard_manager_anomaly_scanner_failure_is_degraded():
             raise RuntimeError("manager anomaly scanner failed")
 
         with attr_patch(task_event_scanner, scan_manager_anomalies=boom):
-            rc, out, err = run_cli(["task", "ops-dashboard", "--json"])
+            rc, out, err = run_cli([
+                "task", "ops-dashboard", "--json", "--deep-manager-actions"
+            ])
         assert rc == 0, err
         data = json.loads(out)
         assert data["degraded"]
