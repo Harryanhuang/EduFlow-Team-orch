@@ -58,6 +58,25 @@ switch_on = ["spawn_failed", "ready_timeout"]
         assert len(resolved["runtime_chain"]) == 2
 
 
+def test_load_team_filters_archived_agents_from_toml():
+    with isolated_env() as tmp:
+        _write_toml(tmp, """
+[team]
+session = "T"
+
+[team.agents.Sophon]
+runtime = "sophon_primary"
+role = "ops"
+
+[team.agents.auto_ops]
+archived = "renamed to Sophon"
+enabled_for_dispatch = false
+""")
+        team = config.load_team()
+        assert sorted(team["agents"]) == ["Sophon"]
+        assert config.agent_names() == ["Sophon"]
+
+
 def test_runtime_registry_selects_fallback_when_reason_matches():
     team = {"session": "T", "agents": {"worker": {"runtime": "primary"}}}
     with isolated_env(team=team) as tmp:

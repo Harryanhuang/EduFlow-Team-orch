@@ -216,6 +216,30 @@ def test_team_snapshot_includes_all_agents_with_status_or_heartbeat():
         assert agents == {"alice", "bob"}
 
 
+def test_team_snapshot_filters_archived_agents_when_team_config_exists():
+    team_toml = """
+[team]
+session = "EduFlow"
+
+[team.agents.Sophon]
+cli = "claude-code"
+role = "ops"
+
+[team.agents.auto_ops]
+archived = "renamed to Sophon"
+enabled_for_dispatch = false
+"""
+    with isolated_env() as tmp:
+        (tmp / "eduflow.toml").write_text(team_toml, encoding="utf-8")
+        tunables.reset_cache()
+
+        local_facts.upsert_status("Sophon", "进行中", "watching")
+        local_facts.upsert_status("auto_ops", "已交付", "legacy watch")
+
+        rows = employee_read_model.build_team_snapshot()
+        assert [r["agent"] for r in rows] == ["Sophon"]
+
+
 # ── wake failure evidence ──────────────────────────────────────────
 
 

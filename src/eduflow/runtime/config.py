@@ -50,6 +50,19 @@ def runtime_config_file() -> Path:
 _DEFAULT_TEAM: dict = {"session": "EduFlow", "agents": {}, "default_model": "opus"}
 
 
+def _active_agents(agents: dict) -> dict:
+    """Return configured agents that are not archived.
+
+    Archived agent blocks are kept in config for audit/grep continuity during
+    renames, but must not appear as live roster entries.
+    """
+    return {
+        str(name): dict(cfg)
+        for name, cfg in agents.items()
+        if isinstance(cfg, dict) and not cfg.get("archived")
+    }
+
+
 def _read_json_lenient(path: Path, default: dict, label: str) -> dict:
     """Like util.read_json but degrades gracefully on parse / I/O errors —
     prints a stderr warning and returns the default dict instead of
@@ -83,12 +96,16 @@ def load_team() -> dict:
     from eduflow.runtime import tunables
     toml_team = tunables.load().get("team")
     if isinstance(toml_team, dict) and toml_team:
+        agents = _active_agents(dict(toml_team.get("agents", {})))
         return {
             "session": toml_team.get("session", "EduFlow"),
-            "agents": dict(toml_team.get("agents", {})),
+            "agents": agents,
             "default_model": toml_team.get("default_model", "opus"),
         }
-    return _read_json_lenient(team_file(), _DEFAULT_TEAM, "team.json")
+    team = _read_json_lenient(team_file(), _DEFAULT_TEAM, "team.json")
+    team = dict(team)
+    team["agents"] = _active_agents(dict(team.get("agents", {})))
+    return team
 
 
 def session_name() -> str:

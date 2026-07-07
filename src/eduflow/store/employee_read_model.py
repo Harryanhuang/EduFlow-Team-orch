@@ -515,6 +515,12 @@ def build_team_snapshot() -> list[dict]:
     except Exception as exc:  # noqa: BLE001
         team_notes.append(f"heartbeat listing: {type(exc).__name__}: {exc}")
     agents.discard("")
+    try:
+        configured_agents = set(config.agent_names())
+    except Exception:
+        configured_agents = set()
+    if configured_agents:
+        agents &= configured_agents
 
     result: list[dict] = []
     for agent in sorted(agents):
