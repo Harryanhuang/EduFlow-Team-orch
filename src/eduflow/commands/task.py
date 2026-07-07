@@ -51,9 +51,9 @@ from eduflow.runtime import (
     paths, tmux, tunables,
 )
 from eduflow.store import (
-    employee_read_model, local_facts,
-    loop_runs, task_event_scanner, task_publish_gate, task_publish_render,
-    tasks, team_loop_account, subject_verifier,
+    employee_read_model, evolution_packet, local_facts,
+    loop_runs, operational_readiness, task_event_scanner, task_publish_gate, task_publish_render,
+    task_loop_contract, tasks, team_loop_account, tool_risk, subject_verifier,
 )
 from eduflow.util import (
     error_exit, fmt_time_ms, maybe_print_help, pop_flag, usage_error,
@@ -94,7 +94,7 @@ USAGE = (
     "  eduflow task flow-transition <id> --to S --actor A\n"
     "  eduflow task submit-review <id> --actor A\n"
     "  eduflow task assign-reviewer <id> --reviewer R [--by manager]\n"
-    "  eduflow task review <id> --actor reviewer (--approve | --reject | --manager-action)\n"
+    "  eduflow task review <id> --actor reviewer (--approve | --reject | --manager-action) [--reason R] [--scope-topic S] [--scope-file F] [--verdict-target T] [--required-fix R1] [--blocking-file F1] [--evidence-json JSON]\n"
     "  eduflow task review-queue [--stage S] [--reviewer R]\n"
     "  eduflow task workflow-status <id>\n"
     "  eduflow task subject-inventory\n"
@@ -112,6 +112,10 @@ USAGE = (
     "  eduflow task evidence-explain <task_id> [--json]\n"
     "  eduflow task loop-check <task_id> [--spec code-repair] [--max-cycles N] [--new-run] [--allow-unscoped-workspace] [--background]\n"
     "  eduflow task loop-status <task_id|loop_id>\n"
+    "  eduflow task loop-contract <task_id> [--json]\n"
+    "  eduflow task tool-risk --command \"<cmd>\" [--json]\n"
+    "  eduflow task evolution-packet <task_id> [--json]\n"
+    "  eduflow task readiness-check <task_id> [--json] [--diagnostics]\n"
     "  eduflow task loop-list [--task-id T] [--status S]\n"
     "  eduflow task supervisor-check [--advance] [--send] [--json]\n"
     "  # downstream helpers (Phase 2/3 skeletons; not Phase 1 core)\n"
@@ -119,8 +123,10 @@ USAGE = (
     "  eduflow task publish-scan [--to T] [--include-silent] [--advance]\n"
     "  eduflow task publish-run [--to T] [--send] [--advance]\n"
     "  eduflow task update <id>  [--status S] [--assignee A] [--title T] [--desc D]\n"
-    "  eduflow task list  [--status S] [--assignee A]\n"
+    "  eduflow task list  [--status S] [--assignee A] [--include-archived]\n"
     "  eduflow task get <id>\n"
+    "  eduflow task archive [--older-than 90d] [--dry-run]\n"
+    "  eduflow task archive-schedule [--interval daily] [--older-than 90d] [--enable <true|false>]\n"
     "  eduflow task done <id>\n"
     "  eduflow task report-failure <id> --actor <worker|reviewer> [--reason <text>]\n"
     "  eduflow task update-verdict <id> --actor <reviewer|manager> --verdict <approved|rejected|manager_action|pending> [--reason <text>]"
@@ -392,6 +398,18 @@ def _cmd_review(rest: list[str]) -> int:
         if value is None:
             break
         scope_files.append(value)
+    required_fix = []
+    while True:
+        value = pop_flag(rest, "--required-fix")
+        if value is None:
+            break
+        required_fix.append(value)
+    blocking_files = []
+    while True:
+        value = pop_flag(rest, "--blocking-file")
+        if value is None:
+            break
+        blocking_files.append(value)
     approve = pop_bool_flag(rest, "--approve")
     reject = pop_bool_flag(rest, "--reject")
     manager_action = pop_bool_flag(rest, "--manager-action")
@@ -425,6 +443,8 @@ def _cmd_review(rest: list[str]) -> int:
             scope_files=scope_files,
             verdict_target=verdict_target,
             evidence_packet=evidence_packet,
+            required_fix=required_fix or None,
+            blocking_files=blocking_files or None,
         )
     except ValueError as e:
         return error_exit(f"❌ {e}")
@@ -1658,6 +1678,40 @@ def _load_qbank_verification() -> dict | None:
         return None
 
 
+def _contract_line(task_id: str) -> str:
+    """Return one compact line: ``contract: phase=<...> failed=<n> ...``.
+
+    Read-only. If either read-model raises, the line degrades to a
+    one-word warning so the panel must still render.
+    """
+    try:
+        contract = task_loop_contract.build(task_id)
+    except Exception as exc:  # pragma: no cover — defensive only
+        return f"contract: read-model unavailable ({type(exc).__name__})"
+    if contract is None:
+        return ""
+    phase = str(contract.get("current_phase") or "")
+    failed = len(contract.get("failed_checks") or [])
+    delivery = "n/a"
+    productivity = "n/a"
+    source = "n/a"
+    try:
+        readiness = operational_readiness.build(task_id)
+    except Exception as exc:  # pragma: no cover
+        return (
+            f"contract: phase={phase} failed={failed} "
+            f"readiness=read-model unavailable ({type(exc).__name__})"
+        )
+    if readiness is not None:
+        delivery = str(readiness.get("delivery", {}).get("status") or "n/a")
+        productivity = str(readiness.get("productivity", {}).get("status") or "n/a")
+        source = str(readiness.get("source", {}).get("status") or "n/a")
+    return (
+        f"contract: phase={phase} failed={failed} "
+        f"delivery={delivery} productivity={productivity} source={source}"
+    )
+
+
 def _cmd_manager_panel(rest: list[str]) -> int:
     if rest:
         return usage_error(USAGE)
@@ -1691,6 +1745,11 @@ def _cmd_manager_panel(rest: list[str]) -> int:
         print(f"{label}: {len(rows)}")
         for row in rows[:5]:
             print(f"  - {_task_brief(row)}")
+            # Package 6: append one compact contract line per workflow task.
+            # Defensive: read-model errors must not crash the panel.
+            contract_line = _contract_line(str(row.get("id") or ""))
+            if contract_line:
+                print(f"    {contract_line}")
             if row.get("latest_turn_summary"):
                 print(f"    latest_turn_summary={row['latest_turn_summary']}")
 
@@ -3153,7 +3212,9 @@ def _cmd_done(rest: list[str]) -> int:
 def _cmd_list(rest: list[str]) -> int:
     status = pop_flag(rest, "--status")
     assignee = pop_flag(rest, "--assignee")
-    rows = tasks.list_tasks(status=status, assignee=assignee)
+    include_archived = pop_bool_flag(rest, "--include-archived")
+    rows = tasks.list_tasks(status=status, assignee=assignee,
+                            include_archived=include_archived)
     if not rows:
         print("📋 no matching tasks")
         return 0
@@ -3163,6 +3224,71 @@ def _cmd_list(rest: list[str]) -> int:
             print(line)
         print()
     return 0
+
+
+def _cmd_archive(rest: list[str]) -> int:
+    """T-104: physically move terminal tasks older than N days into
+    monthly archive slices. Soft-marks them `archived=true` first (B),
+    then drops them from tasks.json (A). Dry-run by default for safety.
+    """
+    older_than = pop_flag(rest, "--older-than") or "90d"
+    dry_run = pop_bool_flag(rest, "--dry-run")
+    if rest:
+        return error_exit(f"❌ unexpected args: {rest}\n"
+                          f"usage: eduflow task archive [--older-than 90d] [--dry-run]")
+    days = _parse_older_than_days(older_than)
+    summary = tasks.archive_tasks(older_than_days=days, dry_run=dry_run)
+    summary["older_than"] = older_than
+    print_json(summary)
+    return 0
+
+
+def _cmd_archive_schedule(rest: list[str]) -> int:
+    """T-104: configure the watchdog's daily archive run.
+    Persists into facts/archive-schedule.json (read by watchdog daily tick).
+    """
+    import time as _t
+    from eduflow.runtime import paths
+    from eduflow.util import write_json
+    interval = pop_flag(rest, "--interval") or "daily"
+    older_than = pop_flag(rest, "--older-than") or "90d"
+    enable_arg = pop_flag(rest, "--enable")
+    enable = (enable_arg or "").lower() not in ("false", "0", "no") if enable_arg else True
+    if rest:
+        return error_exit(f"❌ unexpected args: {rest}\n"
+                          f"usage: eduflow task archive-schedule [--interval daily] "
+                          f"[--older-than 90d] [--enable <true|false>]")
+    if interval != "daily":
+        return error_exit(f"❌ only --interval daily is supported (got {interval!r})")
+    days = _parse_older_than_days(older_than)
+    schedule = {
+        "interval": interval,
+        "older_than_days": days,
+        "enabled": enable,
+        "local_hour": 3,
+        "updated_at": _t.time(),
+    }
+    path = paths.facts_dir() / "archive-schedule.json"
+    paths.facts_dir().mkdir(parents=True, exist_ok=True)
+    write_json(path, schedule)
+    print_json(schedule)
+    return 0
+
+
+def _parse_older_than_days(value: str) -> int:
+    """Accept '90d' / '90' / '30d' etc. Reject garbage; return int days."""
+    text = str(value or "").strip().lower()
+    if not text:
+        return 90
+    if text.endswith("d"):
+        text = text[:-1]
+    try:
+        n = int(text)
+    except ValueError:
+        return error_exit(f"❌ invalid --older-than value: {value!r} (want e.g. 90d / 30)")
+    if n < 0:
+        return error_exit(f"❌ --older-than must be >= 0 (got {n})")
+    return n
 
 
 def _cmd_get(rest: list[str]) -> int:
@@ -3377,6 +3503,168 @@ def _cmd_loop_status(rest: list[str]) -> int:
     print(f"  loop_status: {run.get('status')}")
     print(f"  cycle_count: {run.get('cycle_count')}")
     print(f"  evidence_ref: {run.get('evidence_ref')}")
+    return 0
+
+
+def _cmd_loop_contract(rest: list[str]) -> int:
+    """Render the Loop Contract (Package 2 read model) for one task.
+
+    Strictly read-only. Reuses existing task/evidence/loop/delivery state;
+    does not write to the task or inbox.
+    """
+    as_json = pop_bool_flag(rest, "--json")
+    if not rest or rest[0].startswith("-"):
+        return usage_error(USAGE)
+    if len(rest) > 1:
+        return usage_error(USAGE)
+    task_id = rest[0]
+    contract = task_loop_contract.build(task_id)
+    if contract is None:
+        return error_exit(f"❌ no such task: {task_id}")
+    if as_json:
+        print_json({"loop_contract": contract})
+        return 0
+    print("- task_id: " + str(contract.get("task_id") or ""))
+    print("- workflow_id: " + str(contract.get("workflow_id") or ""))
+    print("- current_phase: " + str(contract.get("current_phase") or ""))
+    print("- owner: " + str(contract.get("owner") or ""))
+    print("- iteration: " + str(contract.get("iteration") or 0))
+    delivery = contract.get("delivery") or {}
+    print("- delivery_state: " + str(delivery.get("state") or ""))
+    print("- delivery_inbox_local_id: " + str(delivery.get("inbox_local_id") or ""))
+    print("- delivery_ack_required: " + str(bool(delivery.get("ack_required"))))
+    print("- delivery_ack_state: " + str(delivery.get("ack_state") or ""))
+    print("- delivery_ack_deadline: " + str(delivery.get("ack_deadline") or ""))
+    failed = contract.get("failed_checks") or []
+    print("- failed_checks:")
+    if failed:
+        for entry in failed:
+            print(f"    - {entry}")
+    else:
+        print("    - (none)")
+    allowed = contract.get("allowed_actions") or []
+    print("- allowed_actions:")
+    if allowed:
+        for entry in allowed:
+            print(f"    - {entry}")
+    else:
+        print("    - (none)")
+    forbidden = contract.get("forbidden_actions") or []
+    if forbidden:
+        print("- forbidden_actions:")
+        for entry in forbidden:
+            print(f"    - {entry}")
+    print("- next_required_output: " + str(contract.get("next_required_output") or ""))
+    refs = contract.get("evidence_refs") or []
+    print("- evidence_refs:")
+    if refs:
+        for entry in refs:
+            print(f"    - {entry}")
+    else:
+        print("    - (none)")
+    return 0
+
+
+def _cmd_tool_risk(rest: list[str]) -> int:
+    """Render the Tool Risk verdict (Package 3 read model) for one command.
+
+    Strictly read-only. Never mutates command behavior. Caller passes a
+    command string via `--command "..."`; we classify it and print the
+    risk_level / access_mode / reason / advisory flags.
+    """
+    as_json = pop_bool_flag(rest, "--json")
+    command = pop_flag(rest, "--command")
+    if not command:
+        return usage_error(USAGE)
+    verdict = tool_risk.classify(command)
+    if as_json:
+        print_json({"tool_risk": verdict})
+        return 0
+    print(f"- risk_level: {verdict['risk_level']}")
+    print(f"- access_mode: {verdict['access_mode']}")
+    print(f"- reason: {verdict['reason']}")
+    print(f"- requires_preflight: {verdict['requires_preflight']}")
+    print(f"- requires_human_confirm: {verdict['requires_human_confirm']}")
+    return 0
+
+
+def _cmd_readiness_check(rest: list[str]) -> int:
+    """Render the Operational Readiness verdict (Package 5 read model).
+
+    Strictly read-only. NEVER auto-fixes, sends, archives, or touches
+    runtime. Returns structured pass / warn / fail across
+    delivery / productivity / source.
+
+    Use `--diagnostics` to also print the raw signal values behind the
+    verdict (for threshold tuning).
+    """
+    as_json = pop_bool_flag(rest, "--json")
+    diagnostics = pop_bool_flag(rest, "--diagnostics")
+    if not rest or rest[0].startswith("-"):
+        return usage_error(USAGE)
+    if len(rest) > 1:
+        return usage_error(USAGE)
+    task_id = rest[0]
+    verdict = operational_readiness.build(task_id)
+    if verdict is None:
+        return error_exit(f"❌ no such task: {task_id}")
+    signals = operational_readiness.diagnostics(task_id)
+    if as_json:
+        payload = {"readiness": verdict}
+        if diagnostics and signals is not None:
+            payload["readiness_diagnostics"] = signals
+        print_json(payload)
+        return 0
+    print(f"- task_id: {verdict['task_id']}")
+    for key in ("delivery", "productivity", "source"):
+        section = verdict.get(key) or {}
+        print(f"- {key}:")
+        print(f"    status: {section.get('status', '')}")
+        print(f"    reason: {section.get('reason', '')}")
+    print(f"- overall: {verdict['overall']}")
+    if diagnostics and signals is not None:
+        print("- diagnostics:")
+        print(f"    thresholds: {signals.get('thresholds')}")
+        for key in ("delivery_signals", "productivity_signals", "source_signals"):
+            print(f"    {key}: {signals.get(key)}")
+    return 0
+
+
+def _cmd_evolution_packet(rest: list[str]) -> int:
+    """Render the Evolution Packet candidate (Package 4 read model).
+
+    Strictly read-only. NEVER writes to memory / flow-memory / skills.
+    Returns `{"candidates": []}` when no trigger fires.
+    """
+    as_json = pop_bool_flag(rest, "--json")
+    if not rest or rest[0].startswith("-"):
+        return usage_error(USAGE)
+    if len(rest) > 1:
+        return usage_error(USAGE)
+    task_id = rest[0]
+    payload = evolution_packet.build(task_id)
+    if as_json:
+        print_json(payload)
+        return 0
+    candidates = payload.get("candidates") or []
+    print(f"- task_id: {task_id}")
+    print(f"- candidate_count: {len(candidates)}")
+    for i, c in enumerate(candidates, start=1):
+        print(f"- candidate[{i}]:")
+        for key in (
+            "source_event", "trigger_reason", "scope", "kind",
+            "confidence", "recommended_action",
+        ):
+            print(f"    {key}: {c.get(key) or ''}")
+        refs = c.get("evidence_refs") or []
+        print(f"    evidence_refs:")
+        if refs:
+            for r in refs:
+                print(f"      - {r}")
+        else:
+            print("      - (none)")
+        content = str(c.get("content") or "")
+        print(f"    content: {content[:280]}")
     return 0
 
 
@@ -3854,6 +4142,10 @@ SUBCOMMANDS = {
     "evidence-explain": _cmd_evidence_explain,
     "loop-check": _cmd_loop_check,
     "loop-status": _cmd_loop_status,
+    "loop-contract": _cmd_loop_contract,
+    "tool-risk": _cmd_tool_risk,
+    "evolution-packet": _cmd_evolution_packet,
+    "readiness-check": _cmd_readiness_check,
     "loop-list": _cmd_loop_list,
     "subject-inventory": _cmd_subject_inventory,
     "batch-closeout": _cmd_batch_closeout,
@@ -3866,6 +4158,8 @@ SUBCOMMANDS = {
     "done":   _cmd_done,
     "list":   _cmd_list,
     "get":    _cmd_get,
+    "archive": _cmd_archive,
+    "archive-schedule": _cmd_archive_schedule,
 }
 
 

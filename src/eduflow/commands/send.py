@@ -23,12 +23,12 @@ import sys
 from eduflow.agents import get_adapter, identity as _identity
 from eduflow.runtime import config, lifecycle, tmux, wake
 from eduflow.store import local_facts
-from eduflow.util import pop_bool_flag, usage_error
+from eduflow.util import pop_bool_flag, pop_flag, usage_error
 
 
 USAGE = (
     "usage: eduflow send <to> <from> <message|--stdin> [priority] "
-    "[--no-inject] [--no-memory]"
+    "[--no-inject] [--no-memory] [--task-id <T-id>]"
 )
 
 
@@ -71,6 +71,7 @@ def main(argv: list[str]) -> int:
     rest = list(argv)
     no_inject = pop_bool_flag(rest, "--no-inject")
     no_memory = pop_bool_flag(rest, "--no-memory")
+    task_id_arg = pop_flag(rest, "--task-id") or ""
     if len(rest) < 3:
         return usage_error(USAGE)
     to, frm = rest[0], rest[1]
@@ -83,7 +84,7 @@ def main(argv: list[str]) -> int:
     if not no_memory:
         try:
             from eduflow.memory import assemble_memory_packet, extract_task_id_from_message
-            _task_id = extract_task_id_from_message(message)
+            _task_id = extract_task_id_from_message(message) or task_id_arg
             _packet = assemble_memory_packet(to, task_id=_task_id)
             if _packet:
                 message = f"{_packet}\n\n---\n\n{message}"
@@ -97,6 +98,7 @@ def main(argv: list[str]) -> int:
         message,
         priority=priority,
         delivery_state=delivery_state,
+        task_id=task_id_arg,
     )
     # Phase 4 (2026-07-01, P4-B 调后): stamp last_active_at ONLY for
     # warm recipients.  Resident agents never sleep so writing their
