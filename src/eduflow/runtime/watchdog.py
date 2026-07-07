@@ -303,6 +303,23 @@ def respawn(spec: ProcessSpec, *,
     # smoke caught this 2026-05-07: router PID alive, fd points at
     # router.log, but file size 0 indefinitely.
     env = os.environ.copy()
+    # T-133: validate $HOME before spawning. macOS lark-cli reads
+    # `~/Library/Keychains/login.keychain-db` for app secret storage.
+    # If $HOME points to a non-existent or non-keychain-bearing path
+    # (e.g. agent-home subdirs like `.eduflow-team-state/agent-home/
+    # worker_builder`), lark-cli errors "keychain not initialized"
+    # and the router respawn-loops forever dropping every inbound
+    # event. Reset HOME to the real user home when the current value
+    # doesn't have a Library/Keychains directory underneath it.
+    home = env.get("HOME", "")
+    if not home or not os.path.isdir(os.path.join(home, "Library", "Keychains")):
+        try:
+            import pwd as _pwd
+            real_home = _pwd.getpwuid(os.getuid()).pw_dir
+            if real_home and os.path.isdir(real_home):
+                env["HOME"] = real_home
+        except (KeyError, OSError):
+            pass
     env["PYTHONUNBUFFERED"] = "1"
     src_dir = Path(__file__).resolve().parents[2]
     existing_pythonpath = env.get("PYTHONPATH")
