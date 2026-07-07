@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 
 from helpers import attr_patch, isolated_env, run_cli
+from eduflow.runtime import tunables
 from eduflow.store import local_facts
 
 
@@ -147,10 +148,34 @@ def test_team_filters_flag_shaped_status_rows_by_default():
     with isolated_env(team=team):
         local_facts.upsert_status("worker", "待命", "ready")
         local_facts.upsert_status("--help", "已停止", "fired")
+        local_facts.upsert_status("retired_worker", "已停止", "retired")
         rc, out, _ = run_cli(["team", "--json"])
         assert rc == 0
         data = json.loads(out)
         assert [r["agent"] for r in data] == ["worker"]
+
+
+def test_team_filters_archived_agent_from_default_view():
+    with isolated_env() as tmp:
+        (tmp / "eduflow.toml").write_text("""
+[team]
+session = "S"
+
+[team.agents.Sophon]
+cli = "claude-code"
+
+[team.agents.auto_ops]
+archived = "renamed to Sophon"
+""", encoding="utf-8")
+        tunables.reset_cache()
+        local_facts.upsert_status("Sophon", "进行中", "watching")
+        local_facts.upsert_status("auto_ops", "已交付", "legacy")
+
+        rc, out, _ = run_cli(["team", "--json"])
+
+        assert rc == 0
+        data = json.loads(out)
+        assert [r["agent"] for r in data] == ["Sophon"]
 
 
 def test_team_current_filters_status_rows_not_in_current_team():

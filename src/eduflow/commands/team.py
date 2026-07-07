@@ -1,6 +1,6 @@
 """`eduflow team [--json] [--all] [--current]`
 
-Show the latest status for every agent that has reported one. Default:
+Show the latest status for every current configured agent that has reported one. Default:
 human-readable single-line per agent:
   `name  [residency]  status  task  [⛔ blocker]  (Nm ago)  ♥ Nm ago`.
 
@@ -105,8 +105,8 @@ def main(argv: list[str]) -> int:
     if reject_extra_args(rest, "usage: eduflow team [--json] [--all] [--current]"):
         return 1
     rows = local_facts.list_all_statuses()
-    if current_only:
-        known = set(config.agent_names())
+    known = set(config.agent_names())
+    if current_only or (known and not include_all):
         rows = [r for r in rows if r.get("agent") in known]
     elif not include_all:
         rows = [r for r in rows if not str(r.get("agent") or "").startswith("-")]

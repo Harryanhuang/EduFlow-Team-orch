@@ -27,7 +27,7 @@ from pathlib import Path
 
 from eduflow.runtime import paths
 from eduflow.store import task_evidence_account
-from eduflow.util import flock, now_ms, read_json, read_jsonl, write_json
+from eduflow.util import atomic_write_text, flock, now_ms, read_json, read_jsonl, write_json
 
 
 VALID_STATUSES = {"待处理", "进行中", "已完成", "已取消"}
@@ -66,6 +66,11 @@ FLOW_STATUSES = frozenset({
 })
 FLOW_TERMINAL_STATUSES = frozenset({"delivered", "cancelled", "failed"})
 FLOW_VERDICTS = frozenset({"pending", "approved", "rejected", "manager_action"})
+# T-104: statuses eligible for physical archive. Terminal, boss-visible
+# "done" states only — `failed` is deliberately excluded (it usually still
+# wants manager attention, not silent filing). Covers both flow (delivered/
+# cancelled) and legacy (已完成/已取消) task vocabularies.
+ARCHIVABLE_STATUSES = frozenset({"delivered", "cancelled", "已完成", "已取消"})
 LOOP_STATUSES = frozenset({
     "running",
     "checking",
@@ -3467,9 +3472,19 @@ def get(task_id: str) -> dict | None:
 
 
 def list_tasks(*, status: str | None = None,
-               assignee: str | None = None) -> list[dict]:
-    """Return tasks filtered by status / assignee, sorted by id."""
+               assignee: str | None = None,
+               include_archived: bool = False) -> list[dict]:
+    """Return tasks filtered by status / assignee, sorted by id.
+
+    T-104: archived tasks are hidden by default. Soft-marked
+    (`archived=true`) tasks still resident in tasks.json are filtered out
+    unless `include_archived=True`; physically-moved tasks are no longer in
+    tasks.json at all. `include_archived` is keyword-only with a default, so
+    existing call sites are unaffected — only the default result set shrinks.
+    """
     rows = list(_load().get("tasks", []))
+    if not include_archived:
+        rows = [t for t in rows if not is_archived(t)]
     if status is not None:
         rows = [t for t in rows if t.get("status") == status]
     if assignee is not None:
@@ -3556,3 +3571,126 @@ def has_hermes_can_promote_marker(task_id: str) -> bool:
         return False
     desc = str(task.get("description") or "")
     return "[hermes-can-promote: true]" in desc
+
+
+# ── T-104: task archival (A physical move + B soft mark) ──────────────
+# Combo design: `archived=true` is the soft marker (B); `archive_tasks()`
+# physically moves matured terminal tasks out of tasks.json into monthly
+# JSONL slices under archive/ (A). Keeping the boss's live query set small
+#压 token; the archive/ slices stay readable for explicit look-back.
+
+def is_archived(task: dict) -> bool:
+    """Soft-mark reader. Missing field on legacy tasks → false (b-compat)."""
+    return bool(task.get("archived", False))
+
+
+def _archive_dir() -> Path:
+    return paths.state_dir() / "archive"
+
+
+def _archive_slice_file(month: str) -> Path:
+    return _archive_dir() / f"tasks-{month}.jsonl"
+
+
+def _archive_reference_ts(task: dict) -> int:
+    """The timestamp used to decide a task's age + archive month slice.
+
+    Prefer the moment it reached a terminal state; fall back through the
+    other stamps so legacy rows without `completed_at` still resolve.
+    """
+    for key in ("completed_at", "last_meaningful_update_at",
+                "updated_at", "created_at"):
+        val = task.get(key)
+        if val:
+            try:
+                return int(val)
+            except (TypeError, ValueError):
+                continue
+    return 0
+
+
+def _archive_month(ts_ms: int) -> str:
+    if ts_ms <= 0:
+        return "unknown"
+    from datetime import datetime
+    return datetime.fromtimestamp(ts_ms / 1000).strftime("%Y-%m")
+
+
+def archive_candidates(older_than_days: int = 90, *,
+                       now: int | None = None) -> list[dict]:
+    """Non-mutating: which resident tasks would archive_tasks() move now."""
+    now_ts = int(now if now is not None else now_ms())
+    cutoff = now_ts - int(older_than_days) * 86_400_000
+    out = []
+    for task in _load().get("tasks", []):
+        if is_archived(task):
+            continue
+        if str(task.get("status") or "") not in ARCHIVABLE_STATUSES:
+            continue
+        ref = _archive_reference_ts(task)
+        if ref and ref <= cutoff:
+            out.append(task)
+    return out
+
+
+def archive_tasks(older_than_days: int = 90, *,
+                  dry_run: bool = False, now: int | None = None) -> dict:
+    """Physically move terminal tasks older than N days out of tasks.json
+    into monthly archive slices (`archive/tasks-YYYY-MM.jsonl`).
+
+    Each moved record is soft-marked `archived=true` + `archived_at` as it
+    is written to its slice (B), then dropped from tasks.json (A). A missing
+    `archived` field reads as false, so the pass is idempotent and
+    backward-compatible. `dry_run=True` computes the plan without writing.
+    Returns a summary dict (safe to log / print / json).
+    """
+    with _locked():
+        data = _load()
+        now_ts = int(now if now is not None else now_ms())
+        cutoff = now_ts - int(older_than_days) * 86_400_000
+        move: list[dict] = []
+        keep: list[dict] = []
+        for task in data.get("tasks", []):
+            ref = _archive_reference_ts(task)
+            if (not is_archived(task)
+                    and str(task.get("status") or "") in ARCHIVABLE_STATUSES
+                    and ref and ref <= cutoff):
+                move.append(task)
+            else:
+                keep.append(task)
+
+        by_month: dict[str, int] = {}
+        for task in move:
+            month = _archive_month(_archive_reference_ts(task))
+            by_month[month] = by_month.get(month, 0) + 1
+
+        summary = {
+            "dry_run": dry_run,
+            "older_than_days": int(older_than_days),
+            "cutoff_ms": cutoff,
+            "archived_count": len(move),
+            "by_month": by_month,
+            "task_ids": [t["id"] for t in move],
+            "files": sorted(str(_archive_slice_file(m)) for m in by_month),
+        }
+        if dry_run or not move:
+            return summary
+
+        grouped: dict[str, list[dict]] = {}
+        for task in move:
+            month = _archive_month(_archive_reference_ts(task))
+            rec = dict(task)
+            rec["archived"] = True
+            rec["archived_at"] = now_ts
+            grouped.setdefault(month, []).append(rec)
+
+        _archive_dir().mkdir(parents=True, exist_ok=True)
+        for month, recs in grouped.items():
+            path = _archive_slice_file(month)
+            existing = path.read_text(encoding="utf-8") if path.exists() else ""
+            lines = "\n".join(json.dumps(r, ensure_ascii=False) for r in recs)
+            atomic_write_text(path, existing + lines + "\n")
+
+        data["tasks"] = keep
+        _save(data)
+        return summary
