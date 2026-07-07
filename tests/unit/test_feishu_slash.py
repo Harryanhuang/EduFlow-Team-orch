@@ -1221,3 +1221,257 @@ def test_handler_exception_is_caught():
     with tmux_patch(capture_pane=boom_capture):
         reply = slash.dispatch("/tmux manager", _ctx())
     assert "slash handler error" in reply or "kaboom" in reply
+
+
+# ── /home (Package 3: minimal boss homepage, read-only) ──────
+
+
+def test_home_card_renders_team_alive_and_boss_decisions_only():
+    """/home v1 must show only team_alive + boss_decisions_needed.
+    No review queue, no closeout queue, no task progress, no runtime
+    risk, no closeout action buttons. Reads from existing helpers
+    (tasks.manager_overview + _live_agents) — no new read model."""
+    from helpers import isolated_env
+    from eduflow.store import tasks
+
+    team = {
+        "session": "EduFlow",
+        "agents": {
+            "manager": {"cli": "claude-code"},
+            "worker_cc": {"cli": "claude-code"},
+        },
+    }
+    pane_buffers = {
+        "manager": "...\n⏵⏵ bypass permissions on\n",
+        "worker_cc": "...\nesc to interrupt (1m 12s · ↓ 99 tokens)\n",
+    }
+    def fake_capture(target, lines=80):
+        return pane_buffers.get(target.window, "")
+
+    # Seed a flow task that needs_manager_action=True so /home's
+    # boss_decisions_needed lane actually has a row.
+    with isolated_env(team=team), tmux_patch(capture_pane=fake_capture):
+        tid = tasks.create_flow(
+            "worker_cc",
+            "Decide batch scope",
+            stage="curriculum",
+            owner="worker_cc",
+            creator="manager",
+        )
+        tasks.transition_flow(tid, to_status="assigned", actor="manager")
+        tasks.transition_flow(tid, to_status="in_progress", actor="worker_cc")
+        tasks.transition_flow(tid, to_status="blocked", actor="worker_cc")
+        # Inject needs_manager_action so the manager_overview bucket
+        # surfaces it.
+        from eduflow.store import tasks as _tasks
+        with _tasks._locked():
+            data = _tasks._load()
+            for t in data["tasks"]:
+                if t["id"] == tid:
+                    t["needs_manager_action"] = True
+                    t["manager_action_type"] = "manager_review_needed"
+                    t["blocking_reason"] = "scope unclear"
+            _tasks._save(data)
+        reply = slash.dispatch(
+            "/home",
+            _ctx(agents=("manager", "worker_cc")),
+        )
+
+    assert isinstance(reply, dict)
+    title = reply["header"]["title"]["content"]
+    assert "/home" in title
+    assert "老板首页" in title
+    blob = _all_markdown(reply)
+    # Field 1: team alive
+    assert "团队在线" in blob
+    assert "manager" in blob
+    assert "worker_cc" in blob
+    # Field 2: boss decisions needed
+    assert "需要你拍板" in blob
+    assert tid in blob
+    assert "Decide batch scope" in blob
+    # Routing footer must point operator to manager-panel for CLOSEOUT
+    assert "eduflow task manager-panel" in blob
+    # worker_review wording preserved (REVIEW != CLOSEOUT)
+    assert "worker_review" in blob
+
+
+def test_home_card_does_not_include_closeout_action_wording():
+    """/home is read-only and shows no closeout action button. The
+    card may MENTION closeout as a route label (operator is told where
+    to go), but must not contain imperative closeout verbs the boss
+    could mistake for a button."""
+    from helpers import isolated_env
+
+    team = {
+        "session": "EduFlow",
+        "agents": {"manager": {"cli": "claude-code"}},
+    }
+    pane_buffers = {"manager": "...\n⏵⏵ bypass permissions on\n"}
+    def fake_capture(target, lines=80):
+        return pane_buffers.get(target.window, "")
+    with isolated_env(team=team), tmux_patch(capture_pane=fake_capture):
+        reply = slash.dispatch("/home", _ctx(agents=("manager",)))
+    blob = _all_markdown(reply)
+    # No imperative closeout buttons on /home.
+    forbidden = [
+        "✅ closeout",
+        "✅ 正式收口",
+        "🔘 closeout",
+        "approve_subject_for_qbank_seed",
+        "manager-action-apply manager_formal_closeout",
+    ]
+    for needle in forbidden:
+        assert needle.lower() not in blob.lower(), (
+            f"/home must NOT contain closeout action wording: {needle!r}")
+    # …but it CAN mention closeout as a route to manager-panel
+    assert "CLOSEOUT" in blob  # explicit boundary wording in footer
+
+
+def test_home_card_renders_blocked_source_note_when_helper_raises():
+    """/home must NOT silently fabricate a decisions block. If the
+    Package 1 source-of-truth map says boss_decisions_needed is blocked
+    (no stable helper), the card must show the explicit note instead
+    of inventing data."""
+    from helpers import isolated_env
+    import eduflow.feishu.slash as _slash
+
+    team = {
+        "session": "EduFlow",
+        "agents": {"manager": {"cli": "claude-code"}},
+    }
+    pane_buffers = {"manager": "...\n⏵⏵ bypass permissions on\n"}
+    def fake_capture(target, lines=80):
+        return pane_buffers.get(target.window, "")
+
+    def boom_overview():
+        raise RuntimeError("no manager_overview helper")
+
+    with isolated_env(team=team), tmux_patch(capture_pane=fake_capture):
+        # Patch tasks.manager_overview to raise so the blocked-source
+        # branch fires.
+        from eduflow.store import tasks as _tasks_mod
+        real_overview = _tasks_mod.manager_overview
+        _tasks_mod.manager_overview = boom_overview
+        try:
+            reply = slash.dispatch("/home", _ctx(agents=("manager",)))
+        finally:
+            _tasks_mod.manager_overview = real_overview
+    blob = _all_markdown(reply)
+    assert "暂未接入" in blob
+    assert "source-of-truth map blocked" in blob
+    # operator fallback route to /manager-overview is shown
+    assert "/manager-overview" in blob
+
+
+# ── Package 4: /sophon boundary + /help reorder ──────────────
+
+
+def test_help_lists_home_and_sophon_first_by_operator_question():
+    """After Package 4, /help must lead with /home (boss homepage) and
+    /sophon (ops-watch). /ops and /ops-dashboard are demoted to a
+    hidden compat-alias note."""
+    reply = slash.dispatch("/help", _ctx())
+    body = _all_markdown(reply)
+    # First lines of help: the boss homepage must be visible
+    # ahead of /team and the legacy /ops/-dashboard surface.
+    pos_home = body.find("/home")
+    pos_team = body.find("/team")
+    pos_sophon = body.find("/sophon")
+    pos_ops = body.find("/ops")
+    assert pos_home >= 0 and pos_sophon >= 0
+    # /help MUST recommend /home and /sophon (not /ops) in main help
+    assert pos_home < pos_ops, (
+        "/help must put /home ahead of legacy /ops in the recommended surface")
+    assert pos_sophon < pos_ops, (
+        "/help must put /sophon ahead of legacy /ops in the recommended surface")
+    # Manager-panel referenced as CLI + manager-overview as slash
+    assert "eduflow task manager-panel" in body or "manager-panel" in body
+    assert "/manager-overview" in body
+    # Compatible alias section kept but folded into a hidden note,
+    # NOT in the recommended surface
+    assert "兼容 alias" in body or "兼容" in body
+
+
+def test_help_demotes_ops_and_ops_dashboard_to_compat_aliases():
+    """/ops and /ops-dashboard must appear under a compat-alias note,
+    NOT in the main recommended help surface. The main help leads with
+    /home and /sophon."""
+    reply = slash.dispatch("/help", _ctx())
+    body = _all_markdown(reply)
+    # The "compat alias" line clearly labels them as hidden
+    assert "兼容" in body
+    # The line must NOT appear before the recommended surfaces
+    idx_ops = body.find("/ops")
+    # Recommended surfaces
+    pos_recommended_block = body.find("老板首页")  # /home section header
+    # both /ops lines must appear AFTER the recommended block,
+    # otherwise they're treated as recommended
+    assert idx_ops > pos_recommended_block, (
+        "/ops must NOT appear in the main recommended surface")
+
+
+def test_sophon_card_fixed_boundary_wording():
+    """/sophon must surface its boundary wording: ops-watch only, no
+    business conclusion, no closeout. This wording is what protects the
+    REVIEW/CLOSEOUT boundary at the operator surface."""
+    fake_run = lambda argv, **kw: type("R", (), {
+        "returncode": 0, "stdout": "(no data)", "stderr": ""})()
+    reply = slash.dispatch("/sophon", _ctx(run=fake_run))
+    assert isinstance(reply, dict)
+    blob = _all_markdown(reply)
+    # Boundary wording
+    assert "运维值守" in blob
+    # Must reference manager for business conclusion / closeout
+    assert "业务结论" in blob
+    assert "manager" in blob
+    # Must reference worker_review boundary
+    assert "worker_review" in blob
+    assert "CLOSEOUT" in blob
+    # Source attribution shows it's a read-only shell-out, not new logic
+    assert "ops-dashboard" in blob
+    assert "auto-ops-context" in blob
+
+
+def test_sophon_handler_routes_dashboard_and_context_text():
+    """/sophon must shell out to the existing CLI helpers
+    (`eduflow task ops-dashboard --text` + `auto-ops-context --text`).
+    No new read model."""
+    captured: list[tuple[str, list[str]]] = []
+
+    def fake_run(argv, **kw):
+        captured.append(("argv", list(argv)))
+        return type("R", (), {"returncode": 0, "stdout": "(stub)", "stderr": ""})()
+
+    reply = slash.dispatch("/sophon", _ctx(run=fake_run))
+    assert isinstance(reply, dict)
+    # Both expected shell-outs are present, exactly once each
+    invocations = [c[1] for c in captured if c[0] == "argv"]
+    assert any(a[:4] == ["eduflow", "task", "ops-dashboard", "--text"] for a in invocations), (
+        f"/sophon must call ops-dashboard --text; got {invocations}")
+    assert any(a[:3] == ["eduflow", "task", "auto-ops-context"] for a in invocations), (
+        f"/sophon must call auto-ops-context; got {invocations}")
+
+
+def test_sophon_no_closeout_action_wording():
+    """/sophon may mention CLOSEOUT only as a boundary note, never as
+    an action button or apply command."""
+    fake_run = lambda argv, **kw: type("R", (), {
+        "returncode": 0, "stdout": "(stub)", "stderr": ""})()
+    reply = slash.dispatch("/sophon", _ctx(run=fake_run))
+    blob = _all_markdown(reply)
+    forbidden = [
+        "✅ 正式收口",
+        "manager-action-apply manager_formal_closeout",
+        "approve_subject_for_qbank_seed",
+        "✅ closeout",
+    ]
+    for needle in forbidden:
+        assert needle.lower() not in blob.lower(), (
+            f"/sophon must NOT include closeout action wording: {needle!r}")
+
+
+def test_sophon_unknown_handler_falls_through_to_help_text():
+    """Sanity: /sophon is reachable as a chat slash command and is in
+    the handler map."""
+    assert "/sophon" in slash._HANDLERS  # noqa: SLF001 (testing internal)

@@ -18,7 +18,7 @@ EduFlow Team Orch solves a very practical problem: when AI agents are used for l
 - `manager` owns routing, scope, workflow choice, escalation, and formal closeout.
 - Workers execute bounded slices only. worker 只做自己的任务切片。
 - Reviewers issue evidence-based verdicts. reviewer 必须给出文件证据驱动的 formal verdict。
-- `auto_ops` watches runtime and process anomalies, not business conclusions.
+- `Sophon` watches runtime and process anomalies, not business conclusions.
 - Important state is written to local facts, tasks, workflow evidence, memory, or runtime events.
 
 The result: long tasks stay recoverable across context loss, provider switching, stale status, pane crashes, and repeated production cycles.
@@ -100,7 +100,7 @@ EduFlow is organized as five layers:
 
 1. **Operator surfaces / 操作入口**：Feishu/Lark group、本地 shell、tmux attach、README/文档。
 2. **Command surface / 命令面**：`send`、`inbox`、`read`、`say`、`team`、`task`、`workflow`、`health`、`runtime`。
-3. **Agent runtime / Agent 运行层**：manager、auto_ops、recorder、course、review、qbank、builder、syllabus、Hermes。
+3. **Agent runtime / Agent 运行层**：manager、Sophon、recorder、course、review、qbank、builder、syllabus、Hermes。
 4. **Local truth / 本地事实层**：facts、inbox、status、logs、tasks、runtime events、memory。
 5. **Reusable operations / 复用资产层**：workflow registry、gates、templates、scenarios、closeout evidence。
 
@@ -108,18 +108,21 @@ This structure makes the important questions inspectable: Is the runtime healthy
 
 ## Team Shape / 当前团队形态
 
-The production roster in this checkout is centered on 9 core agents:
+The production roster in this checkout is centered on these active agents:
 
 | Agent | Residency / 驻留 | Responsibility / 职责 |
 | --- | --- | --- |
 | `manager` | resident / 常驻 | business entry, dispatch, escalation, formal closeout |
-| `auto_ops` | resident / 常驻 | internal patrol, anomaly detection, cadence tracking |
+| `Sophon` | resident / 常驻 | internal patrol, anomaly detection, cadence tracking |
 | `Luke_recorder` | resident / 常驻 | records decisions, corrections, and reusable lessons |
 | `worker_course` | warm / 温备 | course assets, topic structure, syllabus alignment, base content |
-| `review_course` | warm / 温备 | formal review, verdicts, quality gates |
+| `worker_review` | warm / 温备 | formal REVIEW verdicts, quality gates, evidence-based return/pass decisions |
 | `worker_builder` | warm / 温备 | platform repair, workflow assets, runtime hardening |
 | `worker_qbank` | warm / 温备 | QA schema, manifest, qbank validation, import readiness |
 | `worker_syllabus` | warm / 温备 | syllabus skill generation and structured syllabus analysis |
+| `worker_school` | warm / 温备 | school records, admissions policy, campus/cooperation status |
+| `worker_teacher` | warm / 温备 | teacher records, scheduling state, teacher lifecycle tracking |
+| `Monica` | warm / 温备 | manager-assistant fallback for urgent ACK and dispatch triage |
 | `Hermes` | warm / 温备 | knowledge stewardship, Recall/Distill, Wiki proposals, memory backlog |
 
 Resident agents stay online. Warm agents keep their tmux pane but may release the CLI when idle. 下一次派工或 preheat 会自动唤醒；`已接单`、`待接单`、`已读待确认`、`进行中` 不会被 warm sleep 误关。

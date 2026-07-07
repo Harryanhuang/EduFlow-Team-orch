@@ -1,0 +1,4 @@
+interface:
+  display_name: "EduFlow Manager Troubleshoot"
+  short_description: "Trace manager replies end to end"
+  default_prompt: "Use $eduflow-manager-troubleshoot to check whether my latest EduFlow manager message was delivered, read, dispatched, and visibly replied to."

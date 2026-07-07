@@ -413,3 +413,170 @@ def test_pending_lines_round_trip_with_live_shape_through_process_lines():
     assert stats.handled == 1, (
         f"live-shape replay should produce 1 handled, got {dict(stats.drops_by_reason)}")
     assert applies[0].text == "catch this live"
+
+
+# ── Package 2: Catchup mini-proof for /home boss-decision lane ──
+#
+# Three replay cases that prove /home's "boss decisions needed" lane
+# will not silently lose or duplicate a manager/boss decision message
+# after router restart. Each test pins one replay path so future
+# regressions in catchup or subscribe show up here, not in production.
+
+
+def test_mini_proof_router_restart_keeps_same_minute_boss_decision():
+    """Case 1: router restart + same-minute REST history.
+
+    The cursor (epoch-ms 14:08:32) is in the same minute as the REST
+    history's only row (14:08:00). The boss decision message MUST come
+    back via catchup and route through to manager. Without the minute-
+    floor cutoff this row would be dropped (caught 2026-05-06 host
+    smoke)."""
+    cursor_ms = "1778047712107"  # 14:08:32.107 — sub-minute cursor
+    history = [
+        # Same minute as cursor; minute-floor must keep it.
+        _msg_live("om_boss_decision", "2026-05-06 14:08",
+                  text="approve and dispatch next batch",
+                  chat_id="oc_team"),
+    ]
+    with isolated_env():
+        catchup.write_cursor("om_prior_event", cursor_ms)
+        lines = catchup.pending_lines("oc_team", list_fn=lambda: history)
+        applies = []
+        stats = process_lines(
+            lines,
+            team_agents=["manager"],
+            chat_id="oc_team",
+            apply_fn=lambda d: applies.append(d),
+        )
+    # The boss decision survives catchup AND routes to manager
+    assert stats.handled == 1, (
+        f"boss decision must be handled after router restart; "
+        f"got handled={stats.handled} drops={dict(stats.drops_by_reason)}")
+    assert len(applies) == 1
+    assert applies[0].msg_id == "om_boss_decision"
+    assert applies[0].text == "approve and dispatch next batch"
+    assert applies[0].targets == ["manager"]
+
+
+def test_mini_proof_websocket_miss_recovered_by_catchup():
+    """Case 2: websocket miss + catchup replay.
+
+    The live WebSocket missed `om_missed_boss_decision` (it never
+    reached the router's in-memory stream). The cursor is on the prior
+    event's minute; REST history includes the missed row. Catchup must
+    return the missed row so it gets a second chance to route to
+    manager — never silently dropped."""
+    cursor_iso = "2026-05-06 14:07"  # cursor at 14:07 (REST shape)
+    history = [
+        _msg_live("om_missed_boss_decision", "2026-05-06 14:08",
+                  text="revert that closeout decision",
+                  chat_id="oc_team"),
+    ]
+    with isolated_env():
+        catchup.write_cursor("om_prior_event", cursor_iso)
+        lines = catchup.pending_lines("oc_team", list_fn=lambda: history)
+        assert len(lines) >= 1, (
+            "missed websocket row must surface in catchup; "
+            "if lines==[] the boss decision was silently dropped")
+        # Round-trip through the router: missed row must apply once.
+        applies = []
+        stats = process_lines(
+            lines,
+            team_agents=["manager"],
+            chat_id="oc_team",
+            apply_fn=lambda d: applies.append(d),
+        )
+    assert stats.handled >= 1
+    handled_ids = [a.msg_id for a in applies]
+    assert "om_missed_boss_decision" in handled_ids, (
+        f"missed boss decision must apply via catchup; got {handled_ids}")
+    assert applies[handled_ids.index("om_missed_boss_decision")].text \
+        == "revert that closeout decision"
+
+
+def test_mini_proof_duplicate_live_and_catchup_apply_once():
+    """Case 3: duplicate live + catchup — same msg_id applies once.
+
+    Simulate the production cross-restart path: a boss decision
+    message_id was applied live before the router died, persisted to
+    `seen_msg_ids`, and the same row also returns via catchup after
+    restart. The router MUST apply it exactly once — the catchup-side
+    duplicate is dropped by `seen_msg_ids`."""
+    shared_msg_id = "om_dup_boss_decision"
+    same_minute = "1778047200000"  # 14:00:00.000
+    history = [_msg_live(shared_msg_id, "2026-05-06 14:00",
+                         text="ship the closeout",
+                         chat_id="oc_team")]
+    # Pre-seed the seen-set as if the live path already applied it.
+    pre_seen = {shared_msg_id}
+    with isolated_env():
+        catchup.write_cursor("om_prior", "1778047199000")  # 13:59:59
+        lines = catchup.pending_lines("oc_team", list_fn=lambda: history)
+        applies = []
+        stats = process_lines(
+            lines,
+            team_agents=["manager"],
+            chat_id="oc_team",
+            seen_msg_ids=pre_seen,
+            apply_fn=lambda d: applies.append(d),
+        )
+    # Catchup should still surface the row (it is in the history and
+    # newer than the cursor) — visibility is required so the router
+    # gets a chance to dedup. But apply_fn must NOT be called for it.
+    assert any(shared_msg_id in l for l in lines), (
+        "catchup must still surface the row; "
+        "visibility is what enables dedup, not the other way round")
+    assert len(applies) == 0, (
+        f"duplicate msg_id must NOT be re-applied; got {len(applies)} "
+        f"applies: {[a.msg_id for a in applies]}")
+    assert stats.dropped == 1
+    assert stats.drops_by_reason.get("dedup", 0) == 1
+
+
+
+def test_mini_proof_boss_decision_wires_into_manager_action_bucket():
+    """Case 4 (end-to-end wiring): a blocked task with
+    needs_manager_action=True must appear in the manager_action bucket
+    (the /home data source). Without this wiring /home's
+    boss_decisions_needed card would be empty even though the manager
+    actually received a decision message. The 3 catchup mini-proofs above
+    prove the router path; this one pins the source-of-truth map
+    connection to the card."""
+    from helpers import isolated_env
+    from eduflow.store import tasks as _tasks_mod
+
+    team = {
+        "session": "EduFlow",
+        "agents": {
+            "manager": {"cli": "claude-code"},
+            "worker_cc": {"cli": "claude-code"},
+        },
+    }
+    with isolated_env(team=team):
+        tid = _tasks_mod.create_flow(
+            "worker_cc",
+            "Approve batch scope",
+            stage="curriculum",
+            owner="worker_cc",
+            creator="manager",
+        )
+        _tasks_mod.transition_flow(tid, to_status="assigned", actor="manager")
+        _tasks_mod.transition_flow(tid, to_status="in_progress", actor="worker_cc")
+        _tasks_mod.transition_flow(tid, to_status="blocked", actor="worker_cc")
+        # Mark needs_manager_action — production router path.
+        with _tasks_mod._locked():
+            data = _tasks_mod._load()
+            for t in data["tasks"]:
+                if t["id"] == tid:
+                    t["needs_manager_action"] = True
+                    t["manager_action_type"] = "manager_review_needed"
+            _tasks_mod._save(data)
+
+        # Assert: the task shows up in manager_action bucket (the /home
+        # boss_decisions_needed data source).
+        overview = _tasks_mod.manager_overview()
+        manager_action_ids = [t["id"] for t in overview["manager_action"]]
+        assert tid in manager_action_ids, (
+            f"blocked task must be in manager_action bucket — this is "
+            f"the /home boss_decisions_needed source; "
+            f"got {manager_action_ids}")

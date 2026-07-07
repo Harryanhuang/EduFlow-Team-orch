@@ -97,6 +97,24 @@ def test_health_returns_one_when_pane_window_missing():
         assert "missing_w: no tmux window" in out
 
 
+def test_health_ignores_archived_agent_window_missing():
+    team = {
+        "session": "S",
+        "agents": {
+            "Sophon": {"cli": "claude-code"},
+            "auto_ops": {"archived": "renamed to Sophon"},
+        },
+    }
+    with isolated_env(team=team, runtime_config={"chat_id": "oc_x"}), _stub_tmux(
+            session_alive=True, panes_with_cli=["Sophon"]):
+        rc, out, _ = run_cli(["health"])
+
+    assert rc == 0
+    assert "team config: 1 agent(s)" in out
+    assert "Sophon: pane ready" in out
+    assert "auto_ops: no tmux window" not in out
+
+
 # ── warnings (non-fatal) ────────────────────────────────────────
 
 
