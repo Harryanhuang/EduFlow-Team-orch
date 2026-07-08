@@ -233,6 +233,37 @@ def test_resident_agents_list_filters_unknown_names():
         assert "ghost_agent" not in resident  # not a real team member
 
 
+def test_archived_agents_are_not_active_team_members():
+    team = """
+chat_id = "oc_demo"
+lark_profile = "eduflow-team"
+
+[team]
+session = "EduFlow"
+
+[team.residency]
+default_mode = "warm"
+resident_agents = ["manager", "auto_ops", "Sophon"]
+
+[team.agents.manager]
+cli = "claude-code"
+role = "manager"
+
+[team.agents.Sophon]
+cli = "claude-code"
+role = "ops"
+
+[team.agents.auto_ops]
+archived = "renamed to Sophon"
+enabled_for_dispatch = false
+"""
+    with isolated_env() as tmp:
+        (tmp / "eduflow.toml").write_text(team, encoding="utf-8")
+        assert "auto_ops" not in config.agent_names()
+        assert "Sophon" in config.load_resident_agents()
+        assert "auto_ops" not in config.load_resident_agents()
+
+
 def test_per_agent_override_can_promote_to_resident():
     """A per-agent `mode = "resident"` override wins even when the
     agent is not in `resident_agents`."""
