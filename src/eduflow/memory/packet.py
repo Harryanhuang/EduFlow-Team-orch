@@ -103,11 +103,25 @@ def _render_memories(agent: str, task_id: str | None) -> tuple[list[str], set[st
     if not resolved_scope:
         return [], set()
 
+    # Team-scoped memories are global and should be recalled for every agent.
+    scopes = [resolved_scope]
+    if resolved_scope != "team":
+        scopes.append("team")
+
     # V3 P0-2: pinned memories get a separate "curated core" segment.
-    pinned_items = list_pinned_memories(scope=resolved_scope, limit=20)
+    pinned_items = []
+    for scope in scopes:
+        pinned_items.extend(list_pinned_memories(scope=scope, limit=20))
 
     # Non-pinned memories for the "relevant" segment
-    memories = list_memories(scope=resolved_scope, status="confirmed", limit=MAX_MEMORIES)
+    memories = []
+    seen_ids: set[str] = set()
+    for scope in scopes:
+        for m in list_memories(scope=scope, status="confirmed", limit=MAX_MEMORIES):
+            mid = m.get("id", "")
+            if mid not in seen_ids:
+                seen_ids.add(mid)
+                memories.append(m)
 
     # V3 P0-1: compute effective_confidence, sort by it descending
     now = __import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat()
@@ -351,11 +365,22 @@ def assemble_memory_packet(
     # Section 3: Confirmed Memories (first to be truncated in budget)
     memory_lines, recalled_ids = _render_memories(agent, task_id)
 
-    if not constraints and not capsule and not memory_lines:
-        return ""
-
     sections: list[str] = []
     budget_remaining = max_chars
+
+    # Section 0: User Preferences (high priority, small budget)
+    try:
+        from eduflow.memory import user_profile
+
+        profile_block = user_profile.render_profile_block(max_chars=300)
+        if profile_block:
+            sections.append(profile_block + "\n")
+            budget_remaining -= _char_len(profile_block) + 1
+    except Exception:
+        pass
+
+    if not constraints and not capsule and not memory_lines and not sections:
+        return ""
 
     # Section 1: Active Constraints (never truncated)
     if constraints:
