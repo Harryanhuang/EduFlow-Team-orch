@@ -7,16 +7,16 @@ pulling in the full validator.
 
 Per plan 2026-07-01 §设计一:
 
-    ACK           worker / review / 功能型 agent     已接单
-    START         worker / review / 功能型 agent     正式开工
-    PROGRESS      worker / review / 功能型 agent     阶段完成 / 阶段切换
-    HANDOFF       worker / review / 功能型 agent     交接下游
-    BLOCKED       worker / review / manager          卡点 / 缺材料 / 缺决策
-    REVIEW        review                              复核 verdict
-    CLOSEOUT      manager                             唯一正式业务收口
-    ALERT         auto_ops / manager                  运行时 / 质量异常
-    RECORDED      Luke_recorder                       已记录关键发言
-    OPS_SNAPSHOT  manager / auto_ops                  运营看板快照
+    ACK           worker / review / watch / 功能型 agent     已接单
+    START         worker / review / watch / 功能型 agent     正式开工
+    PROGRESS      worker / review / watch / 功能型 agent     阶段完成 / 阶段切换
+    HANDOFF       worker / review / watch / 功能型 agent     交接下游
+    BLOCKED       worker / review / watch / manager          卡点 / 缺材料 / 缺决策
+    REVIEW        worker_review / review_course               复核 verdict
+    CLOSEOUT      manager                                    唯一正式业务收口
+    ALERT         Sophon / auto_ops / manager                运行时 / 质量异常
+    RECORDED      Luke_recorder                              已记录关键发言
+    OPS_SNAPSHOT  manager / auto_ops                         运营看板快照
 
 M9 note on OPS_SNAPSHOT:
     M3 already has `employee_snapshot_card` and `team_snapshot_card` in
@@ -70,6 +70,17 @@ _ROLE_ALLOWED_TYPES: dict[str, frozenset[str]] = {
         CardType.CLOSEOUT, CardType.ALERT,
         CardType.OPS_SNAPSHOT,
     }),
+    "worker_review": frozenset({
+        CardType.ACK, CardType.START, CardType.PROGRESS,
+        CardType.HANDOFF, CardType.BLOCKED,
+        CardType.REVIEW,
+    }),
+    "Sophon": frozenset({
+        CardType.ACK, CardType.START, CardType.PROGRESS,
+        CardType.HANDOFF, CardType.BLOCKED,
+        CardType.ALERT,
+    }),
+    # Historical aliases kept for backwards compatibility with old logs/fixtures.
     "review_course": frozenset({
         CardType.ACK, CardType.START, CardType.PROGRESS,
         CardType.HANDOFF, CardType.BLOCKED,

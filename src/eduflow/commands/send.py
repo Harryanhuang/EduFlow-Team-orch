@@ -112,7 +112,8 @@ def main(argv: list[str]) -> int:
     except Exception:
         pass
     is_high_priority = local_facts.is_high_priority(priority)
-    if to == "auto_ops" and is_high_priority:
+    # Watch owner: current = Sophon; auto_ops kept as historical alias.
+    if to in {"Sophon", "auto_ops"} and is_high_priority:
         local_facts.mark_all_read(to, keep_last_unread=1)
         latest = local_facts.latest_unread_message(to)
         if latest and str(latest.get("local_id") or "") == local_id:
@@ -126,9 +127,10 @@ def main(argv: list[str]) -> int:
             local_facts.record_worker_stage_ack(
                 to, local_id, str(latest.get("content") or message or "")
             )
+    # Review owner: current = worker_review; review_course kept as alias.
     # worker_course excluded: auto-ack "接单" footprint was misread as
     # task completion, causing the agent to skip inbox processing entirely.
-    if to in {"review_course", "worker_builder"} and is_high_priority:
+    if to in {"worker_review", "review_course", "worker_builder"} and is_high_priority:
         local_facts.mark_all_read(to, keep_last_unread=1)
         latest = local_facts.latest_unread_message(to)
         if latest and str(latest.get("local_id") or "") == local_id:

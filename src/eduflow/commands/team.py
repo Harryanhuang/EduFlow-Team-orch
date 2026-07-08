@@ -19,6 +19,14 @@ from eduflow.store import local_facts
 from eduflow.util import ago_ms, pop_bool_flag, print_json, reject_extra_args
 
 
+# Phase 4 (2026-07-08 control-plane repair): cap the long fact / log
+# tail inside a `/team` line so one fat entry does not blow the panel
+# into a multi-screen wall. The same cap applies to the JSON `task`
+# field for parity; consumers that need the full text can read
+# `workspace <agent>` instead.
+_TEAM_LINE_TASK_CAP = 240
+
+
 def _active_agent_names() -> set[str]:
     agents = config.load_team().get("agents", {}) or {}
     return {

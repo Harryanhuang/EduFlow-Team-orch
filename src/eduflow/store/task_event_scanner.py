@@ -40,6 +40,7 @@ REQUIRED_EVIDENCE_PACKET_FIELDS = (
 )
 WORKER_CONTEXT_GUARD_AGENTS = frozenset({
     "worker_course",
+    "worker_review",
     "review_course",
     "worker_builder",
     "worker_qbank",
@@ -96,9 +97,11 @@ def validate_evidence_packet(packet: dict) -> list[str]:
 
 DIRECT_VISIBILITY_AGENTS = frozenset({
     "worker_course",
+    "worker_review",
     "review_course",
     "worker_builder",
     "worker_qbank",
+    "Sophon",
     "auto_ops",
 })
 CONTINUING_WATCH_MARKERS = (
@@ -175,7 +178,11 @@ def _surface_stage_state(task: dict) -> str:
             return "producing_current_subject"
         if status == "submitted_for_review":
             return "delivered_to_review"
-    if assignee == "review_course":
+    if assignee in {"worker_review", "review_course"}:
+        # Phase-7 (2026-07-08 control-plane repair): worker_review is the
+        # current review owner; review_course remains a historical alias
+        # so IGCSE subject production flows keep their historical action
+        # codes / fixture strings readable.
         if status == "assigned":
             return "review_pending_current_subject"
         if status == "in_progress":
@@ -487,7 +494,10 @@ def _message_superseded_by_projected_status(agent: str, content: str, created_at
     if str(projected.get("status") or "") not in {"空闲", "待命", "已交付", "已完成"}:
         return False
     projected_text = f"{projected.get('task') or ''} {projected.get('blocker') or ''}"
-    if any(marker in projected_text for marker in ("closeout", "等待审批", "待审批", "review_course 已 PASS")):
+    if any(marker in projected_text for marker in (
+        "closeout", "等待审批", "待审批",
+        "review_course 已 PASS", "worker_review 已 PASS",
+    )):
         return True
     expected = _visibility_keywords(content)
     expected_tokens = _visibility_tokens(content)
@@ -506,7 +516,7 @@ def _message_superseded_by_manager_closeout(agent: str, content: str, created_at
     if not expected_tokens and not expected_keywords:
         return False
     since = max(created_at - 1000, 0)
-    for surface_agent in ("manager", "review_course"):
+    for surface_agent in ("manager", "worker_review", "review_course"):
         for row in local_facts.list_logs(surface_agent, limit=30):
             if int(row.get("created_at") or 0) < since:
                 continue
@@ -1129,7 +1139,7 @@ def _surface_state_status(task: dict, *, now: int) -> dict | None:
     age_ms = max(now - max(updated_at, task_last), 0)
     threshold = (
         REVIEW_STATUS_TRUTH_LAG_THRESHOLD_MS
-        if agent == "review_course"
+        if agent in {"worker_review", "review_course"}
         else STATUS_TRUTH_LAG_THRESHOLD_MS
     )
 
@@ -1176,7 +1186,7 @@ def _surface_truth_finding(task: dict, *, now: int) -> dict | None:
     category = str(surface.get("category") or "status_truth_lag_detected")
     recommended_action = (
         "refresh_review_surface"
-        if str(task.get("assignee") or "") == "review_course"
+        if str(task.get("assignee") or "") in {"worker_review", "review_course"}
         else "refresh_worker_surface"
     )
     if str(task.get("assignee") or "") == "worker_builder":
@@ -3665,7 +3675,7 @@ _MANAGER_NEXT_SUBJECT_MARKERS = (
     "下一学科",
     "next subject",
 )
-_PRODUCTION_ROLES = ("worker_course", "worker_builder", "review_course", "worker_qbank")
+_PRODUCTION_ROLES = ("worker_course", "worker_builder", "worker_review", "review_course", "worker_qbank")
 
 
 def _recent_manager_action_logs(*, now: int) -> list[dict]:
@@ -4341,7 +4351,10 @@ def _high_priority_inbox_blocking_findings(*, now: int) -> list[dict]:
             if (
                 ack_state == "agent_acknowledged"
                 and ack_at > 0
-                and agent in {"worker_course", "review_course", "worker_builder", "worker_qbank"}
+                and agent in {
+                    "worker_course", "worker_review", "review_course",
+                    "worker_builder", "worker_qbank",
+                }
                 and not _agent_has_progress_signal_after_ack(agent, local_id, ack_at)
                 and max(now - ack_at, 0) >= 2 * 60 * 1000
             ):
@@ -4514,7 +4527,7 @@ def _runtime_repair_message_resolved_by_watchdog_recovery(msg: dict) -> bool:
 
 def _runtime_repair_message_resolved_by_later_closeout(msg: dict) -> bool:
     created_at = int(msg.get("created_at") or 0)
-    for agent in ("auto_ops", "manager", "worker_builder"):
+    for agent in ("Sophon", "auto_ops", "manager", "worker_builder"):
         for row in local_facts.list_logs(agent, limit=50):
             if int(row.get("created_at") or 0) < created_at:
                 continue
@@ -4540,7 +4553,7 @@ def _builder_runtime_course_message_resolved_by_later_closeout(msg: dict) -> boo
     if not any(marker in content for marker in ("纠偏", "排查", "阻断", "验证", "修复", "respawn")):
         return False
     created_at = int(msg.get("created_at") or 0)
-    for agent in ("manager", "worker_course", "review_course"):
+    for agent in ("manager", "worker_course", "worker_review", "review_course"):
         for row in local_facts.list_logs(agent, limit=50):
             if int(row.get("created_at") or 0) < created_at:
                 continue
@@ -4636,7 +4649,7 @@ def _collapse_redundant_unread_blockers(rows: list[dict]) -> list[dict]:
 
 
 def _verdict_exists_for_review_handoff_message(msg: dict) -> bool:
-    if str(msg.get("to") or "") != "review_course":
+    if str(msg.get("to") or "") not in {"worker_review", "review_course"}:
         return False
     task_id = str(msg.get("task_id") or "")
     created_at = int(msg.get("created_at") or 0)
@@ -4645,7 +4658,7 @@ def _verdict_exists_for_review_handoff_message(msg: dict) -> bool:
         tokens = _visibility_tokens(content)
         if not tokens:
             return False
-        for agent in ("review_course", "manager"):
+        for agent in ("worker_review", "review_course", "manager"):
             for row in local_facts.list_logs(agent, limit=30):
                 if int(row.get("created_at") or 0) < created_at:
                     continue

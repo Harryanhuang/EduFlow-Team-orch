@@ -70,9 +70,11 @@ _IDLE_STATUSES = {
 
 _DIRECT_VISIBILITY_AGENTS = {
     "worker_course",
+    "worker_review",
     "review_course",
     "worker_builder",
     "worker_qbank",
+    "Sophon",
     "auto_ops",
 }
 
@@ -666,7 +668,8 @@ def _sync_explicit_ack_visibility(msg: dict, kind: str, now: int) -> None:
     if not agent or not local_id:
         return
     touch_heartbeat(agent)
-    if agent == "auto_ops":
+    # Current watch owner = Sophon; auto_ops kept as historical alias.
+    if agent in {"Sophon", "auto_ops"}:
         record_auto_ops_min_ack(agent, local_id, content)
         return
     if agent == "worker_qbank":
@@ -677,7 +680,8 @@ def _sync_explicit_ack_visibility(msg: dict, kind: str, now: int) -> None:
             started=kind in {"started_task", "action_started"},
         )
         return
-    if agent in {"worker_course", "review_course", "worker_builder"}:
+    # Current review owner = worker_review; review_course kept as alias.
+    if agent in {"worker_course", "worker_review", "review_course", "worker_builder"}:
         record_worker_stage_ack(
             agent,
             local_id,
@@ -890,6 +894,10 @@ def record_worker_stage_ack(
         kind = "worker_course_started" if started else "worker_course_stage_ack"
         prefix = "课程主线开始处理" if started else "课程主线已接单"
         detail = "当前学科/批次任务开始推进" if started else "已收到当前学科/批次任务"
+    elif agent == "worker_review":
+        kind = "worker_review_started" if started else "worker_review_stage_ack"
+        prefix = "review 开始处理" if started else "review 已接单"
+        detail = "当前 review 任务开始推进" if started else "已收到当前 review 任务"
     elif agent == "review_course":
         kind = "review_course_started" if started else "review_course_stage_ack"
         prefix = "课程 review 开始处理" if started else "课程 review 已接单"
@@ -952,9 +960,19 @@ def _derive_status_from_log(row: dict, *, fallback_status: str) -> tuple[str, st
     if not content:
         return None
     lowered = content.lower()
-    if kind in {"worker_course_stage_ack", "review_course_stage_ack", "worker_builder_stage_ack"}:
+    if kind in {
+        "worker_course_stage_ack",
+        "worker_review_stage_ack",
+        "review_course_stage_ack",
+        "worker_builder_stage_ack",
+    }:
         return ("已接单", content)
-    if kind in {"worker_course_started", "review_course_started", "worker_builder_started"}:
+    if kind in {
+        "worker_course_started",
+        "worker_review_started",
+        "review_course_started",
+        "worker_builder_started",
+    }:
         return ("进行中", content)
     if kind == "qbank_followup":
         if "已接单" in content:
@@ -986,7 +1004,10 @@ def _derive_status_from_log(row: dict, *, fallback_status: str) -> tuple[str, st
     if any(token in content for token in ("开始复核", "已开始复核", "开始生产", "已开始生产", "正在分析", "正在处理中", "当前卡在", "处理中但卡在")):
         return ("进行中", content)
     if (
-        agent in {"worker_course", "review_course", "worker_builder", "worker_qbank", "auto_ops"}
+        agent in {
+            "worker_course", "worker_review", "review_course",
+            "worker_builder", "worker_qbank", "Sophon", "auto_ops",
+        }
         and (
             "已接单" in content
             or "收到最新指令" in content
@@ -1160,7 +1181,7 @@ def _project_qbank_delivered_waiting_next(row: dict) -> dict | None:
 
 def _project_auto_ops_runtime_recovered(row: dict) -> dict | None:
     agent = str(row.get("agent") or "")
-    if agent != "auto_ops":
+    if agent not in {"Sophon", "auto_ops"}:
         return None
     task = " ".join(str(row.get("task") or "").split())
     if not task:
@@ -1187,7 +1208,7 @@ def _project_facts_process_visibility_stale(row: dict) -> dict | None:
     if status not in {"已接单", "进行中"}:
         return None
     task = " ".join(str(row.get("task") or "").split())
-    if agent == "auto_ops" and any(marker in task for marker in ("继续盯盘", "盯盘待命", "持续盯盘", "值守")):
+    if agent in {"Sophon", "auto_ops"} and any(marker in task for marker in ("继续盯盘", "盯盘待命", "持续盯盘", "值守")):
         return None
     updated_at = int(row.get("updated_at") or 0)
     latest_log_at = 0
@@ -1195,6 +1216,7 @@ def _project_facts_process_visibility_stale(row: dict) -> dict | None:
         if str(latest.get("type") or "") not in {
             "say",
             "worker_course_started",
+            "worker_review_started",
             "review_course_started",
             "worker_builder_started",
             "worker_started",
@@ -1217,7 +1239,7 @@ def _project_facts_process_visibility_stale(row: dict) -> dict | None:
     age_ms = max(now_ms() - last_signal, 0)
     stale_after_ms = (
         _AUTO_OPS_VISIBILITY_STALE_MS
-        if agent == "auto_ops"
+        if agent in {"Sophon", "auto_ops"}
         else _PROCESS_VISIBILITY_STALE_MS
     )
     if age_ms < stale_after_ms:
@@ -1313,7 +1335,7 @@ def _project_manager_from_newer_worker_visibility(row: dict) -> dict | None:
             allow_process_projection = False
     manager_updated_at = int(row.get("updated_at") or 0)
     candidates: list[dict] = []
-    for worker in ("worker_course", "worker_qbank", "review_course", "worker_builder"):
+    for worker in ("worker_course", "worker_qbank", "worker_review", "review_course", "worker_builder"):
         worker_status = get_status(worker) or {}
         if not worker_status:
             worker_status = _project_status_row({
@@ -1336,7 +1358,7 @@ def _project_manager_from_newer_worker_visibility(row: dict) -> dict | None:
         if not worker_task or worker_task in _WEAK_STATUS_TASKS:
             continue
         if is_delivery and not (
-            worker == "review_course"
+            worker in {"worker_review", "review_course"}
             or "VERDICT" in worker_task
             or "PASS" in worker_task
             or "pass" in worker_task.lower()
@@ -1385,7 +1407,7 @@ def _project_manager_from_team_blockers(row: dict) -> dict | None:
         if not any(marker in task for marker in ("等老板", "等待老板", "等老板新指令", "等待新指令", "待新任务")):
             return None
     blockers: list[dict] = []
-    for worker in ("anna", "worker_builder", "worker_qbank", "worker_course"):
+    for worker in ("anna", "worker_builder", "worker_qbank", "worker_course", "worker_review"):
         worker_status = get_status(worker) or {}
         if str(worker_status.get("status") or "") != "受阻":
             continue
