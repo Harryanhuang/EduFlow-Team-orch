@@ -3467,9 +3467,20 @@ def get(task_id: str) -> dict | None:
 
 
 def list_tasks(*, status: str | None = None,
-               assignee: str | None = None) -> list[dict]:
-    """Return tasks filtered by status / assignee, sorted by id."""
+               assignee: str | None = None,
+               include_archived: bool = False) -> list[dict]:
+    """Return tasks filtered by status / assignee, sorted by id.
+
+    Compatibility shim (2026-07-07): the `include_archived` keyword is
+    accepted but minimally honored — until T-104 (task archival) lands in
+    master via feat/task-archival-t104, archived tasks are not yet
+    physically filtered because there are no soft marks to filter on. The
+    flag is here so callers (e.g. `_cmd_list`) can pass it without
+    TypeError while master lacks the T-104 branch's enhancements.
+    """
     rows = list(_load().get("tasks", []))
+    # Pre-T-104 master has no `is_archived` / `archived` field. No filter
+    # applied — just accept the parameter so _cmd_list doesn't crash.
     if status is not None:
         rows = [t for t in rows if t.get("status") == status]
     if assignee is not None:
