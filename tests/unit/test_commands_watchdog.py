@@ -431,6 +431,49 @@ presence_interval_s = 1800
     assert "worker_course" in body
 
 
+def test_runtime_presence_uses_sophon_when_auto_ops_is_archived():
+    sent = []
+
+    def fake_send_card(chat_id, card, **kw):
+        sent.append({"chat_id": chat_id, "card": card, **kw})
+        return {"message_id": "om_presence"}
+
+    with isolated_env(runtime_config={"chat_id": "oc_x", "lark_profile": "p"}) as tmp:
+        (tmp / "eduflow.toml").write_text("""
+[team]
+session = "EduFlow"
+
+[team.agents.manager]
+cli = "codex-cli"
+
+[team.agents.Sophon]
+cli = "claude-code"
+
+[team.agents.worker_review]
+cli = "claude-code"
+
+[team.agents.auto_ops]
+archived = "renamed to Sophon"
+enabled_for_dispatch = false
+
+[auto_ops]
+presence_enabled = true
+presence_interval_s = 1800
+""", encoding="utf-8")
+        from eduflow.store import local_facts
+        local_facts.upsert_status("worker_review", "待命", "ready")
+        with attr_patch(feishu_chat, send_card=fake_send_card):
+            assert cmd_watchdog._maybe_emit_auto_ops_presence(2000.0) is True
+    assert len(sent) == 1
+    title = sent[0]["card"]["header"]["title"]["content"]
+    body = sent[0]["card"]["body"]["elements"][0]["content"]
+    assert title == "Sophon · 运行态值守"
+    assert "运行态简报：Sophon 盯盘中" in body
+    assert "worker_review" in body
+    assert "auto_ops" not in title
+    assert "review_course" not in body
+
+
 def test_auto_ops_presence_is_throttled_by_interval():
     sent = []
 
@@ -965,3 +1008,25 @@ def test_failback_skipped_when_already_on_primary():
             cmd_watchdog._guard_agent_runtimes()
 
     assert len(smoke_calls) == 0
+
+
+def test_failback_skips_agent_missing_from_live_team():
+    with isolated_env() as tmp:
+        (tmp / "eduflow.toml").write_text("""
+[team]
+session = "S"
+
+[team.agents.manager]
+runtime = "primary"
+
+[runtime_registry.primary]
+cli = "codex-cli"
+model = "gpt-5.5"
+""", encoding="utf-8")
+        cmd_watchdog._maybe_failback(
+            "review_course",
+            tmux.Target("S", "review_course"),
+            "backup",
+            "primary",
+            1000.0,
+        )

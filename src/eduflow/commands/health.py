@@ -527,6 +527,16 @@ def _check_runtime_guard(rep: HealthReport) -> None:
     from eduflow.util import read_json
     data = read_json(paths.runtime_guard_state_file(), {"agents": {}})
     agents = data.get("agents", {})
+    try:
+        active_agents = set(config.agent_names())
+    except Exception:
+        active_agents = set()
+    if active_agents:
+        agents = {
+            agent: row
+            for agent, row in agents.items()
+            if agent in active_agents
+        }
     if not agents:
         rep.info("runtime guard: no agent guard state")
         return
