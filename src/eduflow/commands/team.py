@@ -19,6 +19,23 @@ from eduflow.store import local_facts
 from eduflow.util import ago_ms, pop_bool_flag, print_json, reject_extra_args
 
 
+# Phase 4 (2026-07-08 control-plane repair): cap the long fact / log
+# tail inside a `/team` line so one fat entry does not blow the panel
+# into a multi-screen wall. The same cap applies to the JSON `task`
+# field for parity; consumers that need the full text can read
+# `workspace <agent>` instead.
+_TEAM_LINE_TASK_CAP = 240
+
+
+def _active_agent_names() -> set[str]:
+    agents = config.load_team().get("agents", {}) or {}
+    return {
+        name
+        for name, cfg in agents.items()
+        if not (isinstance(cfg, dict) and cfg.get("archived"))
+    }
+
+
 def _residency_label(agent: str) -> str:
     """Return the display label ('常驻' / '温备' / …) for an agent's
     configured residency mode. Best-effort: any config error degrades
@@ -105,11 +122,15 @@ def main(argv: list[str]) -> int:
     if reject_extra_args(rest, "usage: eduflow team [--json] [--all] [--current]"):
         return 1
     rows = local_facts.list_all_statuses()
+    known = _active_agent_names()
     if current_only:
-        known = set(config.agent_names())
         rows = [r for r in rows if r.get("agent") in known]
     elif not include_all:
-        rows = [r for r in rows if not str(r.get("agent") or "").startswith("-")]
+        rows = [
+            r for r in rows
+            if not str(r.get("agent") or "").startswith("-")
+            and (not known or r.get("agent") in known)
+        ]
     heartbeats = local_facts.all_heartbeats()
     if as_json:
         _emit_json(rows, heartbeats)

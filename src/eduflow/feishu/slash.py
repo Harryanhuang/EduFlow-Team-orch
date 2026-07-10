@@ -168,31 +168,60 @@ def _shell(ctx: SlashContext, argv: list[str], timeout: int = 30) -> str:
     return (r.stdout or "").rstrip() or "(empty)"
 
 
+def _md_esc(value: str) -> str:
+    """Backtick-wrap a value for Feishu v2 card markdown so it cannot
+    trigger bold/italic/link rendering. A title like `*todo*` stays
+    literal. Used by /home and /sophon for task fields inserted into
+    markdown body — NOT used for card titles (those go through
+    simple_card/rich_card which handle their own formatting)."""
+    return f"`{value}`"
+
+
 # ── individual handlers ───────────────────────────────────────────
 
 
 _HELP_TEXT = """🆘 EduFlow 自定义斜杠命令（零 LLM，router/hook 直拦）
 
-/help                    → 本帮助
+按操作者问题排：
+
+📍 老板首页
+/home                    → 团队在线 + 需要你拍板（只读；不做事）
+
+🛰️ 运维值守
+/sophon                  → 运维值守（runtime 健康 + context 巡检；不做业务结论，不做收口）
+
+📋 任务与复审
 /team                    → 所有员工实时 tmux 状态（卡片）
+/tmux [agent] [lines]    → capture-pane 窗口（默认 manager/10 行）
 /employees               → 团队状态快照卡片（ops dashboard 数据）
 /employee <agent>        → 单个员工状态快照卡片
-/ops 或 /ops-dashboard    → 运营仪表盘卡片
-/usage                   → claude-code 用量（ccusage 包装，卡片）
-/health                  → 主机 + 员工资源占用（卡片）
-/tmux [agent] [lines]    → capture-pane 窗口（默认 manager/10 行）
-/send <agent> <msg>      → 直接注入消息到 agent 窗口
+/review-queue            → 查看当前待审核队列
+
+🧭 决策与证据（manager 流程）
+/manager-overview        → 经理任务总览（按状态分组）
+                         （正式收口/证据面走 CLI：`eduflow task manager-panel`）
 /dispatch <agent> <stage> <title>
                          → 正式派单：创建并指派 flow-task
 /submit <task_id> <agent>
                          → 员工正式提交审核
 /assign-reviewer <task_id> <reviewer>
                          → 指派审核人
-/review-queue            → 查看当前待审核队列
-/manager-overview        → 查看经理任务总览
+
+🛠 资源与运维
+/health                  → 主机 + 员工资源占用（卡片）
+/usage                   → claude-code 用量（ccusage 包装，卡片）
+
+⚙️ Agent 控制（默认开启）
+/send <agent> <msg>      → 直接注入消息到 agent 窗口
 /compact [agent]         → 群聊无参=压缩 manager；带参压缩指定 agent
 /stop <agent>            → 送 C-c 到 agent 窗口（中断当前动作）
-/clear <agent>           → 送 /clear + 重新入职 init_msg（相当于 rehire）"""
+/clear <agent>           → 送 /clear + 重新入职 init_msg（相当于 rehire）
+
+/help                    → 本帮助
+
+———
+兼容 alias（不推荐使用，已被 /sophon / /home 取代）：
+/ops, /ops-dashboard     → 旧版 ops dashboard 卡片（同 /sophon 数据源，但文案不同）"""
 
 
 def _handle_help(args: str, ctx: SlashContext) -> dict:
@@ -780,6 +809,254 @@ def _handle_employees(args: str, ctx: SlashContext) -> dict:
     )
 
 
+# ── /home: minimal boss homepage (Package 3) ─────────────────────
+#
+# First-version /home shows ONLY two fields per Package 1 source-of-truth map:
+#   - team_alive (reuse `_live_agents` + `local_facts.get_status`; same
+#     path as `/team`)
+#   - boss_decisions_needed (reuse `tasks.manager_overview` `manager_action`
+#     bucket — the same helper that powers `/manager-overview`)
+#
+# NOT shown in v1: review queue, closeout queue, task progress, runtime
+# risk, action buttons. Closeout routing lives on `/manager-panel`. The
+# card explicitly tells the operator which surface to use for apply.
+#
+# If `tasks.manager_overview` raises (e.g. read-model not initialized
+# in test fixtures), render the explicit "source-of-truth map blocked"
+# note — DO NOT parse inbox ad hoc from slash code, DO NOT silently
+# render an empty decisions block.
+
+
+def _boss_decision_rows(ctx: SlashContext) -> tuple[list[dict], str | None]:
+    """Return (rows, blocked_reason).
+
+    `rows` is the list of decision-needed tasks; `blocked_reason` is set
+    when the existing helper is unavailable so the card can surface the
+    Package 1 source-map blocked note instead of inventing data.
+    """
+    try:
+        overview = tasks.manager_overview()
+    except Exception as exc:
+        return ([], f"manager_overview unavailable: {type(exc).__name__}")
+    return (list(overview.get("manager_action") or []), None)
+
+
+def _team_alive_rows(ctx: SlashContext) -> tuple[list[tuple[str, str, str]], str | None]:
+    """Return (rows, blocked_reason).
+
+    Each row is (agent, glyph, brief). `glyph` is one of 💤/🔄/⏸/🚫/⚠️
+    matching the /team color rules so the boss recognizes it. Falls back
+    to the `_live_agents()` path the existing `/team` handler uses — no
+    new snapshot helper."""
+    team_agents, _, lazy_agents, _ = _live_agents(ctx)
+    rows: list[tuple[str, str, str]] = []
+    for agent in team_agents:
+        try:
+            status = local_facts.get_status(agent)
+        except Exception as exc:
+            return ([], f"local_facts.get_status unavailable: {type(exc).__name__}")
+        if status and status.get("status") == "已停止":
+            note = (status.get("task") or status.get("note")
+                    or status.get("blocker") or "已停止")
+            rows.append((agent, "🚫", f"已停止 ({note})"))
+            continue
+        try:
+            target = tmux.Target(ctx.session, agent)
+            buf = tmux.capture_pane(target, lines=80)
+        except Exception as exc:
+            return ([], f"tmux.capture_pane unavailable: {type(exc).__name__}")
+        emoji, brief = pane_state.parse(buf)
+        if emoji in ("🛑", "🔘") and agent in lazy_agents:
+            emoji = "⏸"
+            brief = "lazy (waiting for first message)"
+        rows.append((agent, emoji, brief))
+    return (rows, None)
+
+
+def _handle_home(args: str, ctx: SlashContext) -> dict:
+    """/home → minimal boss homepage (Package 3, read-only).
+
+    Two fields only:
+      1. team_alive  — fast alive/not-alive signal from `_live_agents`
+                      + `local_facts` + `pane_state.parse`. Same data
+                      source as `/team`; no new read model.
+      2. boss_decisions_needed  — tasks where `needs_manager_action=True`
+                      from `tasks.manager_overview()` `manager_action`
+                      bucket. Same data source as `/manager-overview` and
+                      `manager-panel`.
+
+    No review queue, no closeout queue, no task progress, no runtime
+    risk, no action buttons. Closeout goes through manager flow.
+    """
+    alive_rows, alive_blocked = _team_alive_rows(ctx)
+    decision_rows, decision_blocked = _boss_decision_rows(ctx)
+
+    title = f"🏠 /home — 老板首页 [{ctx.session}] {beijing_stamp(ctx.now)}"
+
+    lines: list[str] = []
+
+    # ── Field 1: team_alive ───────────────────────────────────────
+    lines.append("**🟢 团队在线**")
+    if alive_blocked:
+        lines.append(
+            f"<font color='red'>暂未接入：{alive_blocked}</font>"
+        )
+        lines.append(
+            "<font color='grey'>source-of-truth map blocked — "
+            "见 `/sophon` 排查 runtime</font>"
+        )
+    elif not alive_rows:
+        lines.append("_(没有配置 agent)_")
+    else:
+        for agent, emoji, brief in alive_rows:
+            lines.append(f"{emoji} **{agent}**: {brief}")
+        tally = Counter(g for _, g, _ in alive_rows)
+        unhealthy = sum(
+            n for g, n in tally.items()
+            if g not in ("💤", "🔄", "⏸", "🚫")
+        )
+        total = len(alive_rows)
+        glyph_summary = " / ".join(f"{g} {n}" for g, n in tally.most_common())
+        lines.append("")
+        lines.append(
+            f"<font color='grey'>{total} agents · {glyph_summary}"
+            + (" · ⚠️ need attention" if unhealthy else "")
+            + "</font>"
+        )
+
+    lines.append("")
+
+    # ── Field 2: boss_decisions_needed ────────────────────────────
+    lines.append("**🧭 需要你拍板**")
+    if decision_blocked:
+        lines.append(
+            f"<font color='red'>暂未接入：{decision_blocked}</font>"
+        )
+        lines.append(
+            "<font color='grey'>source-of-truth map blocked — "
+            "boss decisions 暂时没有 stable source; "
+            "请用 `/manager-overview` 兜底</font>"
+        )
+    elif not decision_rows:
+        lines.append("_(当前没有待拍板的 manager_action 任务)_")
+    else:
+        lines.append(
+            f"<font color='grey'>{len(decision_rows)} 项待处理 "
+            "(来自 tasks.manager_overview manager_action 桶)</font>"
+        )
+        for row in decision_rows[:5]:
+            tid = str(row.get("id") or "")
+            stage = _md_esc(str(row.get("stage") or "-"))
+            title_text = _md_esc(str(row.get("title") or "-"))
+            owner = _md_esc(str(row.get("owner") or row.get("assignee") or "-"))
+            reviewer = _md_esc(str(row.get("reviewer") or "-"))
+            lines.append(
+                f"- `{tid}` [{stage}] {title_text} · "
+                f"owner={owner} · reviewer={reviewer}"
+            )
+        if len(decision_rows) > 5:
+            lines.append(
+                f"<font color='grey'>… 另有 {len(decision_rows) - 5} 项 "
+                "未显示，使用 `/manager-overview` 查看全部</font>"
+            )
+    lines.append("")
+
+    # ── routing footer (READ-ONLY: no action buttons) ─────────────
+    lines.append(
+        "<font color='grey'>操作入口：</font>"
+    )
+    lines.append(
+        "<font color='grey'>"
+        "· 拍板/证据 → CLI `eduflow task manager-panel`（CLOSEOUT 仅 manager 流程）\n"
+        "· 任务全貌 → `/manager-overview`\n"
+        "· 运维值守 → `/sophon`\n"
+        "· 复审权威 → `worker_review`（REVIEW 不等于 CLOSEOUT）"
+        "</font>"
+    )
+
+    color = "yellow" if any(
+        g for _, g, _ in alive_rows if g not in ("💤", "🔄", "⏸", "🚫")
+    ) or (decision_rows and not decision_blocked) else "green"
+    return simple_card(title, "\n".join(lines), color=color)
+
+
+# ── /sophon: ops-watch entrypoint (Package 4) ────────────────────
+#
+# /sophon is ops-watch only. It MUST NOT:
+#   - make business conclusions ("ship this subject", "approve this batch")
+#   - closeout work (that goes through manager flow)
+#
+# /sophon reads from existing stable helpers:
+#   - `eduflow task ops-dashboard --text` (the same path /ops uses)
+#   - `eduflow task auto-ops-context --text` (per-agent context guard
+#     built from `runtime.context_monitor` + `local_facts` + tmux state)
+# No new read model — these are already wired into manager-panel /
+# ops-dashboard and are read-only themselves.
+
+
+def _load_sophon_dashboard(ctx: SlashContext) -> str:
+    """Best-effort ops-dashboard text via existing CLI. Returns the
+    raw text or a one-line degraded fallback. Used by /sophon; the
+    underlying `eduflow task ops-dashboard` already degrades per
+    sub-aggregation, so we just forward whatever the CLI produced."""
+    return _shell(ctx, ["eduflow", "task", "ops-dashboard", "--text"], timeout=60)
+
+
+def _load_sophon_context(ctx: SlashContext) -> str:
+    """Per-agent context guard snapshot — `eduflow task auto-ops-context`.
+    This is the live runtime-watch surface: tmux state + context usage
+    + high-priority unread + runtime-guard block evidence."""
+    return _shell(ctx, ["eduflow", "task", "auto-ops-context", "--text"], timeout=60)
+
+
+def _handle_sophon(args: str, ctx: SlashContext) -> dict:
+    """/sophon → ops-watch only.
+
+    Boundaries:
+      - runtime health: ops-watch surface
+      - per-agent context guard: ops-watch surface
+      - business conclusion: NOT here → manager flow
+      - closeout: NOT here → manager flow (worker_review emits REVIEW;
+        manager owns CLOSEOUT)
+
+    Reads only existing CLI surfaces; never parses inbox ad hoc from
+    slash code. Color: purple when clean, yellow on any guard alarm."""
+    dashboard_text = _load_sophon_dashboard(ctx)
+    context_text = _load_sophon_context(ctx)
+
+    title = f"🛰️ /sophon — 运维值守 [{ctx.session}] {beijing_stamp(ctx.now)}"
+
+    elements: list = [
+        {"tag": "markdown",
+         "content": "**🛰️ /sophon 边界**\n"
+                    "<font color='grey'>"
+                    "· 仅运维值守 · 业务结论 → manager · "
+                    "正式收口（CLOSEOUT） → manager 流程 · "
+                    "复审权威 → worker_review（REVIEW 不等于 CLOSEOUT）"
+                    "</font>"},
+        {"tag": "hr"},
+        {"tag": "markdown",
+         "content": "**📊 ops-dashboard**\n"
+                    "<font color='grey'>来源：`eduflow task ops-dashboard --text`</font>"},
+        {"tag": "markdown",
+         "content": fenced_block(dashboard_text or "(无数据)")},
+        {"tag": "hr"},
+        {"tag": "markdown",
+         "content": "**🧯 auto-ops context guard**\n"
+                    "<font color='grey'>来源：`eduflow task auto-ops-context --text` "
+                    "· 检测 context 压力 / runtime guard block</font>"},
+        {"tag": "markdown",
+         "content": fenced_block(context_text or "(无数据)")},
+    ]
+    # Yellow if context guard reports anything other than `ok`
+    color = "yellow" if (
+        ("level=" in context_text and "level=ok" not in context_text)
+        or "wake_failed" in dashboard_text
+        or "blocked" in dashboard_text.lower()
+    ) else "purple"
+    return rich_card(title, elements, color=color)
+
+
 def _handle_employee(args: str, ctx: SlashContext) -> str | dict:
     """/employee <agent> → single employee snapshot card."""
     agent = args.strip().split()[0] if args.strip() else _default_agent(ctx)
@@ -881,6 +1158,8 @@ def _handle_clear(args: str, ctx: SlashContext) -> str:
 
 _HANDLERS: dict[str, Callable[[str, SlashContext], str]] = {
     "/help": _handle_help,
+    "/home": _handle_home,
+    "/sophon": _handle_sophon,
     "/team": _handle_team,
     "/employees": _handle_employees,
     "/employee": _handle_employee,

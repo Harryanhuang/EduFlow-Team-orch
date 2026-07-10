@@ -46,6 +46,8 @@ USAGE = (
 _AGENT_CARD_COLORS = {
     "manager": "blue",
     "Anna": "yellow",
+    "worker_review": "green",
+    "Sophon": "red",
     "auto_ops": "red",
 }
 _WORKER_PALETTE = ("green", "purple", "orange", "yellow")
@@ -55,7 +57,9 @@ _WORKER_PALETTE = ("green", "purple", "orange", "yellow")
 _AGENT_COLOR_MAP = {
     "manager": "blue",
     "worker_course": "purple",
+    "worker_review": "green",
     "review_course": "green",
+    "Sophon": "red",
     "auto_ops": "red",
     "worker_builder": "orange",
     "Anna": "yellow",
@@ -79,14 +83,16 @@ _DEFAULT_AGENT_EMOJI = {
 
 def _role_of(name: str) -> str:
     """Map agent name → role bucket used by chat.publish keys.
-    Convention: 'manager' → manager; 'worker_*' → worker; 'user' → user;
-    anything else → user (safe default; "对老板说" is the most common
-    intent when receiver is unrecognized)."""
+    Convention: 'manager' → manager; 'worker_*' → worker; Sophon / watch
+    agents → worker; 'user' → user; anything else → user (safe default).
+    """
     if name == "manager":
         return "manager"
     if name == "user" or not name:
         return "user"
-    if name.startswith("worker") or name in {"auto_ops", "review_course", "Hermes"}:
+    if name.startswith("worker") or name in {
+        "Sophon", "auto_ops", "review_course", "Hermes",
+    }:
         return "worker"
     return "user"
 

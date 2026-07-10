@@ -196,9 +196,10 @@ def _write_auto_ops_presence_state(data: dict) -> None:
 def _latest_auto_ops_surface_s() -> float:
     """Return the latest user-visible auto_ops signal timestamp in seconds."""
     last = float(_auto_ops_presence_state().get("last_sent_at", 0) or 0)
+    presence_agent = _runtime_presence_agent()
     try:
         from eduflow.store import local_facts
-        for row in local_facts.list_logs("auto_ops", limit=50):
+        for row in local_facts.list_logs(presence_agent, limit=50):
             if str(row.get("type") or "") in {"say", "auto_ops_presence"}:
                 last = max(last, int(row.get("created_at") or 0) / 1000)
     except Exception:
@@ -222,15 +223,42 @@ def _presence_agent_summary(agent: str, row: dict | None) -> str:
     return f"{agent} {status}"
 
 
+def _runtime_presence_agent() -> str:
+    try:
+        names = set(config.agent_names())
+    except Exception:
+        names = set()
+    return "Sophon" if "Sophon" in names else "auto_ops"
+
+
+def _runtime_presence_tracked_agents() -> list[str]:
+    candidates = [
+        "manager",
+        "worker_course",
+        "worker_review",
+        "review_course",
+        "worker_builder",
+        "worker_qbank",
+    ]
+    try:
+        names = set(config.agent_names())
+    except Exception:
+        names = set()
+    if not names:
+        return candidates
+    return [agent for agent in candidates if agent in names]
+
+
 def _build_auto_ops_presence_message() -> str:
-    agents = ["manager", "worker_course", "review_course", "worker_builder", "worker_qbank"]
+    presence_agent = _runtime_presence_agent()
+    agents = _runtime_presence_tracked_agents()
     try:
         from eduflow.store import local_facts
         rows = {str(r.get("agent") or ""): r for r in local_facts.list_all_statuses()}
     except Exception:
         rows = {}
     parts = [_presence_agent_summary(agent, rows.get(agent)) for agent in agents]
-    return "运行态简报：auto_ops 盯盘中；" + "；".join(parts) + "。"
+    return f"运行态简报：{presence_agent} 盯盘中；" + "；".join(parts) + "。"
 
 
 def _maybe_emit_auto_ops_presence(now_s: float | None = None) -> bool:
@@ -276,8 +304,9 @@ def _maybe_emit_auto_ops_presence(now_s: float | None = None) -> bool:
     chat_id = config.chat_id()
     if not chat_id:
         return False
+    presence_agent = _runtime_presence_agent()
     message = _build_auto_ops_presence_message()
-    card = simple_card("auto_ops · 运行态值守", message, color="red")
+    card = simple_card(f"{presence_agent} · 运行态值守", message, color="red")
     try:
         _chat.send_card(
             chat_id,
@@ -290,9 +319,9 @@ def _maybe_emit_auto_ops_presence(now_s: float | None = None) -> bool:
         return False
     try:
         from eduflow.store import local_facts
-        local_facts.touch_heartbeat("auto_ops")
-        local_facts.upsert_status("auto_ops", "进行中", message)
-        local_facts.append_log("auto_ops", "auto_ops_presence", message)
+        local_facts.touch_heartbeat(presence_agent)
+        local_facts.upsert_status(presence_agent, "进行中", message)
+        local_facts.append_log(presence_agent, "auto_ops_presence", message)
     except Exception as e:
         print(f"  ⚠️ auto_ops presence local record failed: {e}")
     _write_auto_ops_presence_state({"last_sent_at": now_s, "message": message})
@@ -534,7 +563,10 @@ def _maybe_failback(agent: str, target, current: str, primary: str,
     if now_s - last_probe < probe_interval_s:
         return  # too soon to probe again
 
-    resolved = config.resolved_agent_config(agent)
+    try:
+        resolved = config.resolved_agent_config(agent)
+    except KeyError:
+        return
     chain = resolved.get("runtime_chain", [])
     if not chain:
         return

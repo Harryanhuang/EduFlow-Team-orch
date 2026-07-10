@@ -800,6 +800,107 @@ worker_to_user = false
     assert calls == []
 
 
+def test_say_worker_review_can_send_review_card():
+    from helpers import attr_patch, isolated_env, run_cli
+    from eduflow.feishu import chat as feishu_chat
+
+    calls = []
+
+    def fake_send_card(chat_id, card, **kwargs):
+        calls.append({"chat_id": chat_id, "card": card})
+        return {"message_id": "om_test"}
+
+    body = (
+        "任务:T-1\n"
+        "verdict:通过\n"
+        "证据:local\n"
+        "问题项:无\n"
+        "下一步:manager 收口\n"
+        "需要老板介入:否"
+    )
+    with isolated_env(
+        team={"agents": {"worker_review": {"role": "review worker", "color": "green"}}},
+        runtime_config={"chat_id": "oc_test", "lark_profile": ""},
+    ):
+        with attr_patch(feishu_chat, send_card=fake_send_card):
+            rc, _, err = run_cli([
+                "say", "worker_review", body, "--card", "REVIEW",
+            ])
+    assert rc == 0, err
+    assert len(calls) == 1
+    assert "[REVIEW]" in calls[0]["card"]["header"]["title"]["content"]
+
+
+def test_say_sophon_can_send_alert_card():
+    from helpers import attr_patch, isolated_env, run_cli
+    from eduflow.feishu import chat as feishu_chat
+
+    calls = []
+
+    def fake_send_card(chat_id, card, **kwargs):
+        calls.append({"chat_id": chat_id, "card": card})
+        return {"message_id": "om_test"}
+
+    body = (
+        "异常类型:runtime\n"
+        "影响范围:manager\n"
+        "已自动处理:已切换\n"
+        "当前状态:恢复中\n"
+        "需要谁处理:manager\n"
+        "需要老板介入:否"
+    )
+    with isolated_env(
+        team={"agents": {"Sophon": {"role": "watch", "color": "red"}}},
+        runtime_config={"chat_id": "oc_test", "lark_profile": ""},
+    ):
+        with attr_patch(feishu_chat, send_card=fake_send_card):
+            rc, _, err = run_cli([
+                "say", "Sophon", body, "--card", "ALERT",
+            ])
+    assert rc == 0, err
+    assert len(calls) == 1
+    assert "[ALERT]" in calls[0]["card"]["header"]["title"]["content"]
+
+
+def test_say_silences_sophon_noisy_text_when_worker_to_user_disabled():
+    """Structured ALERT cards bypass worker_to_user, but ordinary Sophon
+    text still follows the worker_to_user suppression whitelist."""
+    from helpers import attr_patch, isolated_env, run_cli
+    from eduflow.feishu import chat as feishu_chat
+
+    calls = []
+
+    def fake_send_card(chat_id, card, **kwargs):
+        calls.append({"chat_id": chat_id, "card": card})
+        return {"message_id": "om_test"}
+
+    team_toml = """
+chat_id = "oc_demo"
+lark_profile = "eduflow-team"
+
+[team]
+session = "EduFlowTeam"
+
+[team.agents.Sophon]
+cli = "claude-code"
+role = "watch"
+
+[chat.publish]
+worker_to_user = false
+"""
+    with isolated_env() as tmp:
+        (tmp / "eduflow.toml").write_text(team_toml, encoding="utf-8")
+        with attr_patch(feishu_chat, send_card=fake_send_card):
+            rc, out, _ = run_cli([
+                "say", "Sophon",
+                "运行态简报：manager 在线；worker_course 进行中；review_course 待命。",
+                "--to", "user",
+            ])
+    assert rc == 0
+    assert "silenced" in out
+    assert calls == []
+
+
 def test_say_allows_review_blocker_reassurance_when_worker_to_user_disabled():
     from helpers import attr_patch
     calls = []

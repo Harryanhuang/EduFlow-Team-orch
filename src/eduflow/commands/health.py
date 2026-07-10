@@ -57,6 +57,14 @@ def _codex_text_looks_ready(text: str) -> bool:
     )
 
 
+def _active_agents(team: dict) -> dict:
+    return {
+        name: cfg
+        for name, cfg in (team.get("agents", {}) or {}).items()
+        if not (isinstance(cfg, dict) and cfg.get("archived"))
+    }
+
+
 @dataclass
 class HealthReport:
     """Accumulator handed to every `_check_*`. Emission and counting
@@ -118,7 +126,7 @@ def _check_team(rep: HealthReport) -> None:
     except Exception as e:
         rep.fail(f"team config parse error: {e}")
         return
-    agents = team.get("agents", {})
+    agents = _active_agents(team)
     if agents:
         rep.ok(f"team config: {len(agents)} agent(s)")
     else:
@@ -259,7 +267,7 @@ def _check_agents(rep: HealthReport, session: str, agents: list[str],
     # the team config (2-3 disk reads per agent). One read here, dict
     # probes inside the loop with `agents_dict.get(agent, {})` for
     # unknown-agent defaults.
-    agents_dict = config.load_team().get("agents", {})
+    agents_dict = _active_agents(config.load_team())
     for agent in agents:
         target = tmux.Target(session, agent)
         hb = heartbeats.get(agent)
@@ -448,7 +456,7 @@ def _check_binaries(rep: HealthReport, agents: list[str]) -> None:
     # each agent's `cli` from the cached dict, get_adapter(cli)
     # skips the per-agent config bounce.
     from eduflow.agents import get_adapter
-    agents_dict = config.load_team().get("agents", {})
+    agents_dict = _active_agents(config.load_team())
     from eduflow.util import read_json
     runtime_status = read_json(paths.runtime_status_file(), {"agents": {}}).get("agents", {})
     seen: dict[str, list[str]] = {}
@@ -519,6 +527,16 @@ def _check_runtime_guard(rep: HealthReport) -> None:
     from eduflow.util import read_json
     data = read_json(paths.runtime_guard_state_file(), {"agents": {}})
     agents = data.get("agents", {})
+    try:
+        active_agents = set(config.agent_names())
+    except Exception:
+        active_agents = set()
+    if active_agents:
+        agents = {
+            agent: row
+            for agent, row in agents.items()
+            if agent in active_agents
+        }
     if not agents:
         rep.info("runtime guard: no agent guard state")
         return
@@ -678,7 +696,7 @@ def _build_report() -> HealthReport:
     try:
         team = config.load_team()
         session = team.get("session", "EduFlow")
-        agents = sorted(team.get("agents", {}))
+        agents = sorted(_active_agents(team))
     except Exception:
         session, agents = "EduFlow", []
 

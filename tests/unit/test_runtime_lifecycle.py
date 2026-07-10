@@ -466,10 +466,12 @@ def test_ensure_claude_agent_home_seeds_local_claude_shim():
 
 
 def test_ensure_claude_agent_home_copies_host_settings_when_present():
-    """Host Claude may rely on settings.json `env` entries such as the
-    local proxy-managed auth bridge. Agent homes should inherit the full
-    host settings file, then add the bypass-confirmation key required for
-    non-interactive Claude Code startup."""
+    """Host Claude may rely on settings.json entries such as the local proxy-
+    managed auth bridge, but eduflow's env_profile/model are the sole runtime
+    authority. Agent homes should inherit host settings, then strip runtime
+    authority keys (env/model/apiKeyHelper/forceLoginMethod) and add the
+    bypass-confirmation key required for non-interactive Claude Code startup.
+    """
     host_settings = Path.home() / ".claude" / "settings.json"
     if not host_settings.exists():
         return
@@ -480,8 +482,12 @@ def test_ensure_claude_agent_home_copies_host_settings_when_present():
         assert copied.exists(), "expected agent settings.json"
         copied_data = json.loads(copied.read_text())
         host_data = json.loads(host_settings.read_text())
+        runtime_authority_keys = {"env", "model", "apiKeyHelper", "forceLoginMethod"}
         for key, value in host_data.items():
-            assert copied_data[key] == value
+            if key in runtime_authority_keys:
+                assert key not in copied_data
+            else:
+                assert copied_data[key] == value
         assert copied_data["skipDangerousModePermissionPrompt"] is True
 
 

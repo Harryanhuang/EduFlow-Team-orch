@@ -97,6 +97,24 @@ def test_health_returns_one_when_pane_window_missing():
         assert "missing_w: no tmux window" in out
 
 
+def test_health_ignores_archived_agent_window_missing():
+    team = {
+        "session": "S",
+        "agents": {
+            "Sophon": {"cli": "claude-code"},
+            "auto_ops": {"archived": "renamed to Sophon"},
+        },
+    }
+    with isolated_env(team=team, runtime_config={"chat_id": "oc_x"}), _stub_tmux(
+            session_alive=True, panes_with_cli=["Sophon"]):
+        rc, out, _ = run_cli(["health"])
+
+    assert rc == 0
+    assert "team config: 1 agent(s)" in out
+    assert "Sophon: pane ready" in out
+    assert "auto_ops: no tmux window" not in out
+
+
 # ── warnings (non-fatal) ────────────────────────────────────────
 
 
@@ -576,9 +594,9 @@ def test_health_memory_section_lists_agents_with_entries():
 
 
 def test_health_shows_runtime_guard_needs_manager_action():
-    team = {"session": "S", "agents": {"manager": {}}}
+    team = {"session": "S", "agents": {"manager": {}, "worker_a": {}}}
     with isolated_env(team=team, runtime_config={"chat_id": "oc_x"}), \
-            _stub_tmux(session_alive=True, panes_with_cli=["manager"]):
+            _stub_tmux(session_alive=True, panes_with_cli=["manager", "worker_a"]):
         path = paths.runtime_guard_state_file()
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(json.dumps({
@@ -597,9 +615,9 @@ def test_health_shows_runtime_guard_needs_manager_action():
 
 
 def test_health_shows_runtime_guard_escalation_details():
-    team = {"session": "S", "agents": {"manager": {}}}
+    team = {"session": "S", "agents": {"manager": {}, "worker_a": {}}}
     with isolated_env(team=team, runtime_config={"chat_id": "oc_x"}), \
-            _stub_tmux(session_alive=True, panes_with_cli=["manager"]):
+            _stub_tmux(session_alive=True, panes_with_cli=["manager", "worker_a"]):
         path = paths.runtime_guard_state_file()
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(json.dumps({
@@ -622,6 +640,43 @@ def test_health_shows_runtime_guard_escalation_details():
         assert "outcome=fallback_exhausted" in out
         assert "route=primary->backup" in out
         assert "escalation=fallback_chain_exhausted" in out
+
+
+def test_health_runtime_guard_filters_archived_agents():
+    with isolated_env(runtime_config={"chat_id": "oc_x"}) as tmp, \
+            _stub_tmux(session_alive=True, panes_with_cli=["manager", "Sophon"]):
+        (tmp / "eduflow.toml").write_text("""
+[team]
+session = "S"
+
+[team.agents.manager]
+cli = "codex-cli"
+
+[team.agents.Sophon]
+cli = "claude-code"
+
+[team.agents.auto_ops]
+archived = "renamed to Sophon"
+enabled_for_dispatch = false
+""", encoding="utf-8")
+        path = paths.runtime_guard_state_file()
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps({
+            "agents": {
+                "auto_ops": {
+                    "last_switch_reason": "failback",
+                    "last_switch_outcome": "ready",
+                },
+                "manager": {
+                    "last_switch_reason": "failback",
+                    "last_switch_outcome": "ready",
+                },
+            }
+        }), encoding="utf-8")
+        rc, out, _ = run_cli(["health"])
+        assert rc == 0
+        assert "manager: switch_reason=failback outcome=ready" in out
+        assert "auto_ops: switch_reason=failback" not in out
 
 
 # ── binaries / env ──────────────────────────────────────────────

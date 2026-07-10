@@ -74,7 +74,28 @@ def test_agent_role_allowed_manager_has_closout_and_alert():
     assert "REVIEW" not in allowed  # manager does not send REVIEW
 
 
+def test_agent_role_allowed_worker_review_has_review_only():
+    """Current review owner is worker_review; it can send REVIEW cards
+    but cannot send CLOSEOUT or ALERT."""
+    allowed = agent_role_allowed("worker_review")
+    assert "REVIEW" in allowed
+    assert "CLOSEOUT" not in allowed
+    assert "ALERT" not in allowed
+    assert "RECORDED" not in allowed
+
+
+def test_agent_role_allowed_sophon_has_alert_only():
+    """Current watch owner is Sophon; it can send ALERT cards but cannot
+    send CLOSEOUT, REVIEW, or RECORDED."""
+    allowed = agent_role_allowed("Sophon")
+    assert "ALERT" in allowed
+    assert "CLOSEOUT" not in allowed
+    assert "REVIEW" not in allowed
+    assert "RECORDED" not in allowed
+
+
 def test_agent_role_allowed_review_course_has_review_only():
+    """Historical alias: review_course remains compatible for old logs."""
     allowed = agent_role_allowed("review_course")
     assert "REVIEW" in allowed
     assert "CLOSEOUT" not in allowed
@@ -82,6 +103,7 @@ def test_agent_role_allowed_review_course_has_review_only():
 
 
 def test_agent_role_allowed_auto_ops_has_alert_only():
+    """Historical alias: auto_ops remains compatible for old logs."""
     allowed = agent_role_allowed("auto_ops")
     assert "ALERT" in allowed
     assert "CLOSEOUT" not in allowed

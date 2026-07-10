@@ -153,6 +153,23 @@ def test_team_filters_flag_shaped_status_rows_by_default():
         assert [r["agent"] for r in data] == ["worker"]
 
 
+def test_team_filters_archived_agent_from_default_view():
+    team = {
+        "session": "S",
+        "agents": {
+            "Sophon": {},
+            "auto_ops": {"archived": "renamed to Sophon"},
+        },
+    }
+    with isolated_env(team=team):
+        local_facts.upsert_status("Sophon", "进行中", "watching")
+        local_facts.upsert_status("auto_ops", "已停止", "legacy")
+        rc, out, _ = run_cli(["team", "--json"])
+        assert rc == 0
+        data = json.loads(out)
+        assert [r["agent"] for r in data] == ["Sophon"]
+
+
 def test_team_current_filters_status_rows_not_in_current_team():
     team = {"session": "S", "agents": {"worker": {}}}
     with isolated_env(team=team):

@@ -94,6 +94,13 @@ _PROFILE_ENV_KEYS = (
     "HERMES_PROVIDER",
 )
 
+_CLAUDE_RUNTIME_SETTINGS_KEYS = {
+    "env",
+    "model",
+    "apiKeyHelper",
+    "forceLoginMethod",
+}
+
 
 def _dotenv_values() -> dict[str, str]:
     """Best-effort load of `<config_dir>/.env` without mutating os.environ.
@@ -275,6 +282,27 @@ def _ensure_claude_agent_home(agent: str) -> None:
         try:
             settings.write_bytes(host_settings.read_bytes())
         except OSError:
+            pass
+    # Strip runtime-authority keys from agent settings.json — eduflow's
+    # env_profile/model are the sole authorities for provider credentials
+    # and model choice. Host settings may carry proxy/model choices
+    # injected by CC Switch or similar tools; if left in place they can
+    # silently override eduflow and cause auth failures or model drift.
+    # Caught 2026-06-26/27: all agents inherited PROXY_MANAGED token → 401.
+    if settings.exists():
+        try:
+            import json as _json
+            from eduflow.util import write_json as _write_json
+            _d = _json.loads(settings.read_text(encoding="utf-8"))
+            removed = False
+            if isinstance(_d, dict):
+                for key in _CLAUDE_RUNTIME_SETTINGS_KEYS:
+                    if key in _d:
+                        del _d[key]
+                        removed = True
+            if removed:
+                _write_json(settings, _d)
+        except (OSError, _json.JSONDecodeError, ValueError):
             pass
     host_local_settings = Path.home() / ".claude" / "settings.local.json"
     local_settings = claude_dir / "settings.local.json"
@@ -769,11 +797,20 @@ def _post_spawn_ready_retry(agent: str, target: tmux.Target, adapter, *,
     if cli != "claude-code":
         return False
     time.sleep(1.5)
+    _accept_claude_startup_gate(target)
     if not wake.wait_until_ready(target, adapter, timeout_s=max(8.0, timeout_s / 3)):
         return False
     tmux.inject(target, identity.init_prompt(agent),
                 submit_keys=adapter.submit_keys())
     return True
+
+
+def _accept_claude_startup_gate(target: tmux.Target) -> bool:
+    """Advance Claude Code's first-run safety screen when it blocks startup."""
+    text = tmux.capture_pane(target, lines=120)
+    if "Press Enter to continue" not in text:
+        return False
+    return tmux.send_keys(target, "Enter")
 
 
 def provision_pane(agent: str, target: tmux.Target) -> str:
