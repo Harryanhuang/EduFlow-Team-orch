@@ -25,6 +25,7 @@ import pwd
 import shutil
 import subprocess
 import time
+from pathlib import Path
 from typing import Callable
 
 from eduflow.util import env_str
@@ -42,8 +43,12 @@ _PROXY_KEYS = ("HTTPS_PROXY", "HTTP_PROXY", "https_proxy", "http_proxy")
 # without an entrypoint script.
 _TENANT_TOKEN_URL = (
     "https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal")
-_TENANT_TOKEN_CACHE = "/tmp/eduflow_tenant_token.json"
 _TENANT_TOKEN_REFRESH_BUFFER_S = 60   # refetch when within 60s of expiry
+
+
+def _tenant_token_cache_path() -> Path:
+    from eduflow.runtime.paths import state_file
+    return state_file(".tenant_token.json")
 
 
 def _fetch_tenant_token(app_id: str, app_secret: str) -> dict | None:
@@ -78,7 +83,7 @@ def _fetch_tenant_token(app_id: str, app_secret: str) -> dict | None:
 
 def _ensure_tenant_token(*, fetch: Callable | None = None,
                          now: Callable | None = None,
-                         cache_path: str | None = None) -> str | None:
+                         cache_path: str | Path | None = None) -> str | None:
     """Return a usable tenant_access_token from env / cache / live fetch.
 
     Resolution order:
@@ -94,12 +99,12 @@ def _ensure_tenant_token(*, fetch: Callable | None = None,
     """
     import json as _json
     import time as _time
-    # Resolve cache_path at call time so test patches of the
-    # module-level _TENANT_TOKEN_CACHE constant take effect; default
-    # args bind at function-definition time and would freeze the
-    # original /tmp path before any patch could land.
+    # Resolve cache_path at call time so tests that patch the module-level
+    # `_tenant_token_cache_path` or override `EDUFLOW_STATE_DIR` take effect.
     if cache_path is None:
-        cache_path = _TENANT_TOKEN_CACHE
+        cache_path = _tenant_token_cache_path()
+    else:
+        cache_path = Path(cache_path)
     existing = env_str("LARKSUITE_CLI_TENANT_ACCESS_TOKEN")
     if existing:
         return existing
@@ -121,8 +126,8 @@ def _ensure_tenant_token(*, fetch: Callable | None = None,
     if not fresh or not fresh.get("token"):
         return None
     try:
-        with open(cache_path, "w", encoding="utf-8") as fh:
-            fh.write(_json.dumps(fresh))
+        cache_path.write_text(_json.dumps(fresh), encoding="utf-8")
+        os.chmod(cache_path, 0o600)
     except OSError:
         pass  # cache write best-effort; the in-memory return is the load-bearing path
     return str(fresh["token"])
