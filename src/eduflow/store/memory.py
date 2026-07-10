@@ -38,6 +38,7 @@ import json
 from typing import Iterable
 
 from eduflow.runtime import paths
+from eduflow.runtime.names import validate_agent_name
 from eduflow.util import flock, now_ms, read_jsonl
 
 
@@ -96,6 +97,7 @@ def warn_unknown_kind(kind: str) -> None:
 
 
 def _agent_dir(agent: str):
+    agent = validate_agent_name(agent)
     return paths.facts_dir() / agent
 
 

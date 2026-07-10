@@ -220,6 +220,7 @@ def _ensure_claude_agent_home(agent: str) -> None:
     doesn't exist), silently skip and let claude fall back to its
     default `$HOME` discovery.
     """
+    agent = validate_agent_name(agent)
     from eduflow.agents.claude_code import agent_home as _agent_home
     home = Path(_agent_home(agent))
     claude_dir = home / ".claude"
