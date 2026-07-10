@@ -4,6 +4,9 @@ from __future__ import annotations
 import re
 
 VALID_AGENT_NAME_RE = re.compile(r"^[A-Za-z0-9_\-]+$")
+# Model names are constrained to characters that are safe in shell and path
+# contexts.  '/' and ':' are intentionally excluded to prevent path-traversal
+# patterns such as '../etc' from ever being accepted.
 VALID_MODEL_NAME_RE = re.compile(r"^[A-Za-z0-9_\-.]+$")
 
 
