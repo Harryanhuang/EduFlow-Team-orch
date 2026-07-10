@@ -1,0 +1,6 @@
+repos:
+  - repo: https://github.com/trufflesecurity/trufflehog.git
+    rev: v3.88.0
+    hooks:
+      - id: trufflehog
+        args: ["--only-verified", "--fail"]
