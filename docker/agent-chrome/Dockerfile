@@ -7,9 +7,6 @@ RUN apt-get update \
     fluxbox \
     fonts-liberation \
     fonts-noto-cjk \
-    novnc \
-    websockify \
-    x11vnc \
     xvfb \
   && rm -rf /var/lib/apt/lists/*
 
