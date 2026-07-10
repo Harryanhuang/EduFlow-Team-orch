@@ -71,8 +71,13 @@ class ResidencyPolicy:
 #   warm_idle_timeout_s = 600
 #   handoff_buffer_s = 300
 #   wake_timeout_s = 60
-#   resident_agents = ["manager", "auto_ops", "Luke_recorder"]
+#   resident_agents = ["manager", "Sophon", "Luke_recorder"]
 #   warm_agents = (everything else, listed for audit clarity)
+# Phase-7 (2026-07-08): resident default swapped from historical
+# `auto_ops` to current `Sophon`.  `auto_ops` is demoted to WARM
+# alias-readable so existing fixtures / logs still resolve; `worker_review`
+# joins warm agents (current review owner) alongside its alias
+# `review_course`.
 
 DEFAULT_IDLE_TIMEOUT_S = 600
 DEFAULT_HANDOFF_BUFFER_S = 300
@@ -80,12 +85,12 @@ DEFAULT_WAKE_TIMEOUT_S = 60
 DEFAULT_MODE = ResidencyMode.WARM
 
 DEFAULT_RESIDENT_AGENTS: tuple[str, ...] = (
-    "manager", "auto_ops", "Luke_recorder",
+    "manager", "Sophon", "Luke_recorder",
 )
 
 DEFAULT_WARM_AGENTS: tuple[str, ...] = (
-    "worker_course", "review_course", "worker_builder",
-    "worker_qbank", "Hermes", "worker_syllabus",
+    "worker_course", "worker_review", "review_course", "worker_builder",
+    "worker_qbank", "Hermes", "worker_syllabus", "auto_ops",
 )
 
 

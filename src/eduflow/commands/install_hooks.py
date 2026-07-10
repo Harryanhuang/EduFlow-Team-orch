@@ -24,7 +24,7 @@ from eduflow.runtime import config, tmux
 from eduflow.util import atomic_write_text, maybe_print_help, usage_error, warn
 
 
-USAGE = "usage: eduflow install-hooks [path]   (default: $PWD)"
+USAGE = "usage: eduflow install-hooks [path]   (default: $PWD)\n\nWrites the following /-slash commands under <path>/.claude/commands:\n  /inbox /team /status /say /task /health /remember /recall /peek /voice"
 
 
 _HEAD = """\
@@ -106,6 +106,28 @@ _COMMANDS: dict[str, str] = {
         "Run `eduflow recall <your-name>` to print your most recent memory "
         "entries (default last 20, oldest-first). Add `<other-agent>` instead "
         "of <your-name> to peek at another agent's memory (manager 巡视 use).\n"
+    ),
+    # Round-118 (2026-07-09): TTS voice hook. Routes through the MiniMax
+    # t2a_v2 endpoint + Feishu audio send, looking up voice/pitch/speed
+    # from eduflow.toml [tts.voice.<agent>]. Boss-directed 2h build.
+    "voice": (
+        "Send a voice message to the team chat as you.\n"
+        "\n"
+        "Two forms:\n"
+        "  /voice <text>                        → use your own voice mapping\n"
+        "  /voice <agent> <text>               → use another agent's voice mapping\n"
+        "\n"
+        "Voice / pitch / speed come from eduflow.toml [tts.voice.<agent>] —\n"
+        "do NOT pass --voice / --pitch / --speed yourself unless you intend\n"
+        "to override the team config.\n"
+        "\n"
+        "Implementation: invokes `eduflow tts say <text> --agent <agent> --to user`\n"
+        "under the hood. The text is sent as a Feishu Opus \"red dot voice\"\n"
+        "message in the team main chat.\n"
+        "\n"
+        "Use it sparingly: voice is for checkpoints / 汇报 / sign-off, not\n"
+        "routine chatter. A 30s+ voice note burns more attention than 6 text\n"
+        "messages — keep replies ≤10s unless the boss asked for a stand-up.\n"
     ),
 }
 

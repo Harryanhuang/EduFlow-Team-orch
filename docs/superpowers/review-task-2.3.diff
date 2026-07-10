@@ -1,0 +1,46 @@
+diff --git a/src/eduflow/agents/claude_code.py b/src/eduflow/agents/claude_code.py
+index a5e91d24..1bc382ee 100644
+--- a/src/eduflow/agents/claude_code.py
++++ b/src/eduflow/agents/claude_code.py
+@@ -90,21 +90,21 @@ class ClaudeCodeAdapter(CliAdapter):
+         #   file-only auth mode for the lifetime of the pane.
+         oauth_token = _read_oauth_token(agent)
+         token_prefix = (f"CLAUDE_CODE_OAUTH_TOKEN={shlex.quote(oauth_token)} "
+                         if oauth_token else "")
+         claude_bin = shutil.which("claude") or "claude"
+         return (
+             f"HOME={shlex.quote(agent_home(agent))} "
+             f"{token_prefix}"
+             f"CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY=1 DISABLE_AUTOUPDATER=1 "
+             f"IS_SANDBOX=1 {shlex.quote(claude_bin)} --dangerously-skip-permissions "
+-            f"--model {model} --name {agent}"
++            f"--model {shlex.quote(model)} --name {shlex.quote(agent)}"
+         )
+ 
+     def ready_markers(self) -> list[str]:
+         return ["bypass permissions on", "? for shortcuts"]
+ 
+     def busy_markers(self) -> list[str]:
+         return [
+             *SPINNER_CHARS,
+             "◐", "◑", "◒", "◓",
+             "Thinking", "Running tool",
+diff --git a/tests/unit/test_agents_claude_code.py b/tests/unit/test_agents_claude_code.py
+new file mode 100644
+index 00000000..43b48e8a
+--- /dev/null
++++ b/tests/unit/test_agents_claude_code.py
+@@ -0,0 +1,13 @@
++"""Tests for agents/claude_code.py — Claude Code adapter shape."""
++from __future__ import annotations
++
++import shlex
++
++from eduflow.agents.claude_code import ClaudeCodeAdapter
++
++
++def test_spawn_cmd_quotes_model_and_agent():
++    adapter = ClaudeCodeAdapter()
++    cmd = adapter.spawn_cmd(agent="a; echo pwned", model="claude-sonnet-5; echo pwned")
++    assert shlex.quote("a; echo pwned") in cmd
++    assert shlex.quote("claude-sonnet-5; echo pwned") in cmd

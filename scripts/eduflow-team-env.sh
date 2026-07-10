@@ -42,4 +42,9 @@ fi
 export LARK_CLI_NO_PROXY="${LARK_CLI_NO_PROXY:-1}"
 export EDUFLOW_LARK_SEND_AS="${EDUFLOW_LARK_SEND_AS:-bot}"
 
+# minimax-cli reads MINIMAX_API_KEY/MINIMAX_MODEL; this project already keeps
+# the same credential as MINIMAX_AUTH_TOKEN for the Anthropic-compatible runtime.
+export MINIMAX_API_KEY="${MINIMAX_API_KEY:-${MINIMAX_AUTH_TOKEN:-}}"
+export MINIMAX_MODEL="${MINIMAX_MODEL:-MiniMax-M3}"
+
 export PATH="$ROOT/.venv/bin:/Users/huanganan/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"

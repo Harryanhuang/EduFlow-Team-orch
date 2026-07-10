@@ -385,6 +385,28 @@ switch_on = ["auth_failure"]
     assert failover_calls == []
 
 
+def test_guard_agent_runtimes_skips_bad_agent_and_continues(capsys):
+    seen = []
+
+    def fake_guard_one(agent, failover):
+        seen.append(agent)
+        if agent == "review_course":
+            raise KeyError("agent 'review_course' not in team.json")
+
+    with isolated_env(team={
+        "session": "S",
+        "agents": {
+            "review_course": {"runtime": "old"},
+            "worker_review": {"runtime": "current"},
+        },
+    }), attr_patch(cmd_watchdog.tmux, has_session=lambda s: True), \
+            attr_patch(cmd_watchdog, _guard_one_agent_runtime=fake_guard_one):
+        cmd_watchdog._guard_agent_runtimes()
+
+    assert seen == ["review_course", "worker_review"]
+    assert "skipping review_course" in capsys.readouterr().out
+
+
 def test_notify_runtime_switch_sends_text_when_enabled():
     sent = []
 

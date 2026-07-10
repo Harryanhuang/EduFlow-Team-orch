@@ -1,0 +1,43 @@
+diff --git a/src/eduflow/agents/kimi_code.py b/src/eduflow/agents/kimi_code.py
+index 25335859..990548e3 100644
+--- a/src/eduflow/agents/kimi_code.py
++++ b/src/eduflow/agents/kimi_code.py
+@@ -1,20 +1,21 @@
+ """Moonshot Kimi Code adapter."""
+ from __future__ import annotations
+ 
++import shlex
++
+ from .base import CliAdapter, MULTILINE_SUBMIT_KEYS, SPINNER_CHARS
+ 
+ 
+ class KimiCodeAdapter(CliAdapter):
+     def spawn_cmd(self, agent: str, model: str) -> str:
+-        # model is currently a no-op for kimi; CLI picks per its config
+-        return f"DISABLE_UPDATE_CHECK=1 KIMI_AGENT={agent} kimi --yolo"
++        return f"DISABLE_UPDATE_CHECK=1 KIMI_AGENT={shlex.quote(agent)} kimi --yolo"
+ 
+     def ready_markers(self) -> list[str]:
+         return [
+             "Welcome to Kimi Code CLI",
+             "Send /help for help information",
+             "── input",
+             "context:",
+         ]
+ 
+     def busy_markers(self) -> list[str]:
+diff --git a/tests/unit/test_agents_kimi_code.py b/tests/unit/test_agents_kimi_code.py
+new file mode 100644
+index 00000000..39c2adbc
+--- /dev/null
++++ b/tests/unit/test_agents_kimi_code.py
+@@ -0,0 +1,9 @@
++import shlex
++from eduflow.agents.kimi_code import KimiCodeAdapter
++
++
++def test_spawn_cmd_quotes_agent_name():
++    adapter = KimiCodeAdapter()
++    cmd = adapter.spawn_cmd(agent="worker; echo pwned", model="kimi")
++    assert shlex.quote("worker; echo pwned") in cmd
++    assert "KIMI_AGENT=worker; echo pwned" not in cmd

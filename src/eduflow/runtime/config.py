@@ -543,10 +543,12 @@ def supervisor_sender_config() -> dict[str, str]:
 # Per plan 2026-07-01 §设计二:
 #   [team.residency]
 #   default_mode = "warm"
-#   resident_agents = ["manager", "auto_ops", "Luke_recorder"]
+#   resident_agents = ["manager", "Sophon", "Luke_recorder"]
 #   warm_idle_timeout_s = 600
 #   handoff_buffer_s = 300
 #   wake_timeout_s = 60
+# Phase-7 (2026-07-08): resident default swapped from historical
+# `auto_ops` to current `Sophon`. See runtime/residency.py.
 #
 #   [team.agents.<name>.residency]
 #   mode = "warm"        # resident | warm | cold

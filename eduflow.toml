@@ -83,8 +83,17 @@ cli = "codex-cli"
 model = "gpt-5.5"
 provider = "openai"
 env_profile = "codex_primary"
-fallback_to = "manager_backup_qoder_qwen_max"
+fallback_to = "manager_backup_minimax"
 switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "provider_unavailable", "conversation_history_corrupt"]
+# Phase 3 (2026-07-08 control-plane repair): the manager automatic
+# fallback chain is intentionally short — manager_backup_codex →
+# manager_backup_minimax → "".  The longer chain
+# (manager_backup_qoder_qwen_max / manager_backup_glm_5_2 /
+# manager_backup_mimo / manager_backup_kimi_cli /
+# manager_backup_mimo_code / manager_backup_kimi) remains defined
+# below for manual recovery (`eduflow runtime switch manager <runtime>`)
+# but is removed from the auto-fallback path so manager behavior after
+# recovery stays predictable.
 
 [runtime_registry.manager_backup_qoder_qwen_max]
 cli = "qoderclicn"
@@ -583,11 +592,11 @@ default_model = "opus"
 #   card_color  可选  飞书 v2 色: blue/green/red/yellow/purple/orange/grey/pink
 #   lazy        可选  true=首消息触发起 CLI; 默认 false
 [team.agents.manager]
-runtime = "manager_backup_codex"
+runtime = "manager_backup_minimax"
 role  = "唯一业务入口、唯一正式派工口、唯一业务正式对外口。负责接单、判断归属、拆单、派工、阶段切换、升级处理与正式业务汇总，不承担内容生产、系统维修、长期盯盘或正式复核。"
 specialty = ["任务拆解", "派工分发", "组织调度", "升级处理", "学科切换"]
 tone = "直接、克制、判断优先、像技术合伙人"
-notes = "你是 EduFlow Team 的 manager。只要 user 发来新消息，就优先处理 user 的这条消息。对外只输出三类内容：已收到、已派给谁、正式业务结论/正式同步/需user决策。其他角色的状态消息默认只做内部判断，不向 user 重复转述。v2 协议 (2026-07-01): manager 是唯一可发 CLOSEOUT 的角色；正式业务收口用 `eduflow say manager --card CLOSEOUT --body \"任务:…\\n正式结论:…\\n产物:…\\n证据:…\\n剩余风险:…\\n下一步:…\\n需要老板介入:否\" --to user`。review 的正式 verdict 由 worker_review 发,manager 收到后做 CLOSEOUT。Loop Engineering builder rule: for worker_builder work that needs deterministic verification, first create a formal task with `eduflow task dispatch worker_builder \"<title>\" --stage builder --owner worker_builder --workspace-mode shared --by manager`, then notify worker_builder with `eduflow send worker_builder manager \"T-<id>: <title>\" 高`. Run `eduflow task loop-check T-<id> --background`; if it prints a Builder handoff, forward that handoff verbatim to worker_builder. After worker_builder reports a fix, run loop-check again. Do not use loop pass as CLOSEOUT."
+notes = "你是 EduFlow Team 的 manager。只要 user 发来新消息，就优先处理 user 的这条消息。硬规则：老板消息先可见回群再做长任务；收到后 60 秒内必须 `eduflow say manager \"收到，正在处理：<一句话>\" --to user`，然后再 `eduflow read <local_id> --ack accepted_task|started_task`；超过 2 分钟的任务每个关键阶段都要 `say --to user`，不能只 ACK/read/in-pane 思考。对外只输出三类内容：已收到、已派给谁、正式业务结论/正式同步/需user决策。其他角色的状态消息默认只做内部判断，不向 user 重复转述。v2 协议 (2026-07-01): manager 是唯一可发 CLOSEOUT 的角色；正式业务收口用 `eduflow say manager --card CLOSEOUT --body \"任务:…\\n正式结论:…\\n产物:…\\n证据:…\\n剩余风险:…\\n下一步:…\\n需要老板介入:否\" --to user`。review 的正式 verdict 由 worker_review 发,manager 收到后做 CLOSEOUT。Loop Engineering builder rule: for worker_builder work that needs deterministic verification, first create a formal task with `eduflow task dispatch worker_builder \"<title>\" --stage builder --owner worker_builder --workspace-mode shared --by manager`, then notify worker_builder with `eduflow send worker_builder manager \"T-<id>: <title>\" 高`. Run `eduflow task loop-check T-<id> --background`; if it prints a Builder handoff, forward that handoff verbatim to worker_builder. After worker_builder reports a fix, run loop-check again. Do not use loop pass as CLOSEOUT."
 card_color = "blue"
 lazy = false
 
@@ -638,10 +647,13 @@ card_color = "red"
 # 不承担：长期生产 / 系统建设 / 复核
 [team.agents.Monica]
 runtime = "monica_backup_minimax"
-role  = "manager 助理型 fallback worker：当 manager 派工链路失能（dispatcher 失联/全员温备/无 manager 回复）时，Monica 临时接管派工接收、任务优先级重排、紧急 ACK，确保老板消息不丢。仅在 manager 显式 unlock 时接活，温备默认 enabled_for_dispatch=false。"
-specialty = ["fallback 派工", "任务优先级排序", "紧急 ACK", "manager 链路失能兜底"]
+# Round 2026-07-10 boss decision (msg_1783615200087_e7759c903e):
+# Monica = 杂事助理 (catch-all helper) + fallback worker 二合一
+# 老板定位: 其他 agent 消化不了的活, 派 Monica
+role  = "杂事助理 + fallback worker。其他 agent 消化不了的杂活（跨域调研/政策编写/文档汇总/T-140 voice 政策这种其他 worker 不愿做的活）由 manager 或老板直接派给 Monica；保留 fallback 兜底职责（manager 派工链路失能时临时接管派工接收 + 任务优先级重排 + 紧急 ACK）。"
+specialty = ["catch-all 杂事", "跨域调研", "政策/文档编写", "fallback 派工", "任务优先级排序", "紧急 ACK"]
 tone = "冷静、应急、有限度"
-notes = "T-145 Monica 30 天试运行。30 天到期 manager 拍板续期/调整/取消。你只在 manager 显式 'eduflow agent unlock Monica' 后才接活，温备默认只回测试消息 + 紧急 ACK。接单用 eduflow say Monica \"Monica 已接单：<一句话任务>\" --to user；卡住用 \"Monica 当前卡在：<阻塞点>，已回报 manager\"。v2 协议 (2026-07-01): Monica 是 worker, 限发 ACK/START/PROGRESS/HANDOFF/BLOCKED, 不能发 CLOSEOUT/REVIEW/ALERT/RECORDED。"
+notes = "T-145 Monica 30 天试运行，到期 manager 拍板续期/调整/取消。\n# 触发条件 (2026-07-10 简化):\n# - (a) 老板或 manager 显式派工 → 直接接活 (不再要求 manager unlock)\n# - (b) manager 派工链路失能 (dispatcher 失联/全员温备/无 manager 回复) → 自动 fallback\n# 默认 enabled_for_dispatch=true (温备状态保留, 但响应派工而非仅紧急 ACK)\n# 接单用 eduflow say Monica \"Monica 已接单：<一句话任务>\" --to user\n# 卡住用 eduflow say Monica \"Monica 当前卡在：<阻塞点>，已回报 manager\" --to user\n# v2 协议 (2026-07-01): Monica 是 worker, 限发 ACK/START/PROGRESS/HANDOFF/BLOCKED, 不能发 CLOSEOUT/REVIEW/ALERT/RECORDED"
 card_color = "blue"
 lazy = false
 enabled_for_dispatch = false
@@ -848,3 +860,32 @@ send_as          = "bot"
 no_proxy         = true
 cli_bin          = ""
 broadcast_tokens = ["@team", "@all", "@everyone"]
+
+# ── [tts]  MiniMax text-to-speech ─────────────────────────────
+# Per-agent voice mapping for `eduflow tts say --agent <name> <text>`
+# model: speech-01-hd (MiniMax t2a_v2)
+# Voice IDs from MiniMax voice library. pitch: -10..+10, speed: 0.5..2.0.
+# Set a custom voice_id once MiniMax voice_clone returns one (replace
+# `voice_id` and drop `pitch`/`speed`).
+[tts]
+model         = "speech-01-hd"
+sample_rate   = 32000
+default_voice = "female-yujie"
+
+[tts.voice]
+# Round 2026-07-09 boss decision (msg_1783593289429_72b74cb8e6):
+# only manager is currently active for /voice dispatch. Other agents
+# are frozen pending explicit boss enable; mappings are kept so the
+# config does not need to be rewritten when scope expands.
+manager        = { voice = "male-qn-daxuesheng", pitch = 3,  speed = 1.25, label = "海绵宝宝·大学生调高音", active = true }
+worker_builder = { voice = "male-qn-jingying",    pitch = -1, speed = 1.00, label = "黄渤·草根工程师", active = false }
+worker_course  = { voice = "calm_female",         pitch = 0,  speed = 1.00, label = "林青霞·东方不败", active = false }
+worker_qbank   = { voice = "female-yujie",        pitch = 0,  speed = 1.00, label = "题库严谨女学者", active = false }
+worker_school  = { voice = "calm_female",         pitch = 0,  speed = 1.00, label = "招生亲和女", active = false }
+worker_syllabus = { voice = "presenter_male",     pitch = -1, speed = 1.00, label = "陈道明·康熙", active = false }
+worker_teacher = { voice = "calm_female",         pitch = 1,  speed = 1.00, label = "巩俐·归来", active = false }
+worker_review  = { voice = "cantonese_male",      pitch = -2, speed = 1.00, label = "张涵予·集结号", active = false }
+Hermes         = { voice = "calm_female",         pitch = 1,  speed = 1.00, label = "知识库学术女", active = false }
+Sophon         = { voice = "presenter_male",      pitch = -1, speed = 1.00, label = "刘德华·无间道", active = false }
+Monica         = { voice = "female-shaonv",       pitch = 1,  speed = 1.00, label = "朱茵·紫霞", active = false }
+Luke_recorder  = { voice = "female-shaonv",       pitch = 1,  speed = 1.10, label = "记录员·嘴快活泼女", active = false }

@@ -1,0 +1,2247 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FindClass 2.0 Prototype</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f7fb;
+      --panel: #ffffff;
+      --ink: #172033;
+      --muted: #667085;
+      --line: #e7eaf1;
+      --brand: #f6c847;
+      --brand-strong: #e9a900;
+      --action: #276ef1;
+      --good: #1a9c72;
+      --warm: #f47b3f;
+      --soft-blue: #eaf2ff;
+      --soft-green: #eaf8f2;
+      --soft-yellow: #fff7da;
+      --shadow: 0 18px 50px rgba(25, 35, 60, .12);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #dde3ee;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      display: grid;
+      place-items: center;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+    }
+
+    .phone {
+      width: min(100vw, 430px);
+      height: min(100vh, 920px);
+      background: var(--bg);
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow);
+    }
+
+    .screen {
+      height: 100%;
+      overflow-y: auto;
+      padding: 18px 16px 92px;
+      scroll-behavior: smooth;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      background: var(--brand);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      color: #172033;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 21px;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .brand p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 32px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: var(--panel);
+      color: var(--muted);
+      border: 1px solid var(--line);
+      white-space: nowrap;
+    }
+
+    .search {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-bottom: 14px;
+    }
+
+    .search input {
+      border: 0;
+      outline: 0;
+      flex: 1;
+      min-width: 0;
+      color: var(--ink);
+      background: transparent;
+    }
+
+    .hero {
+      min-height: 172px;
+      border-radius: 8px;
+      background:
+        linear-gradient(115deg, rgba(246, 200, 71, .92), rgba(255,255,255,.74)),
+        url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1000&q=80") center / cover;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      margin-bottom: 14px;
+      overflow: hidden;
+    }
+
+    .hero h2 {
+      width: 70%;
+      margin: 0 0 8px;
+      font-size: 26px;
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      width: 78%;
+      margin: 0 0 14px;
+      color: #344054;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .poster-strip {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+    }
+
+    .poster {
+      position: relative;
+      flex: 0 0 86%;
+      min-height: 180px;
+      border-radius: 8px;
+      overflow: hidden;
+      text-align: left;
+      color: #fff;
+      background: #243047;
+      scroll-snap-align: start;
+    }
+
+    .poster img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .poster::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(12, 18, 32, .08), rgba(12, 18, 32, .74));
+    }
+
+    .poster-copy {
+      position: absolute;
+      z-index: 1;
+      left: 16px;
+      right: 16px;
+      bottom: 15px;
+    }
+
+    .poster-copy h2 {
+      margin: 8px 0 6px;
+      font-size: 23px;
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .poster-copy p {
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.45;
+      color: rgba(255, 255, 255, .86);
+    }
+
+    .primary {
+      width: fit-content;
+      min-height: 40px;
+      padding: 0 16px;
+      border-radius: 8px;
+      background: var(--ink);
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .section {
+      margin-top: 18px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      gap: 12px;
+    }
+
+    .section h3 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    .link-btn {
+      background: transparent;
+      color: var(--action);
+      font-weight: 700;
+      padding: 6px 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .tile,
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .tile {
+      min-height: 90px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: left;
+    }
+
+    .tile strong {
+      font-size: 16px;
+    }
+
+    .tile span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .card {
+      padding: 14px;
+      margin-bottom: 10px;
+    }
+
+    .teacher {
+      display: grid;
+      grid-template-columns: 74px 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .avatar {
+      width: 74px;
+      height: 88px;
+      border-radius: 8px;
+      object-fit: cover;
+      background: #eef1f5;
+    }
+
+    .teacher h4,
+    .resource h4,
+    .activity h4 {
+      margin: 0 0 6px;
+      font-size: 16px;
+      letter-spacing: 0;
+    }
+
+    .meta,
+    .teacher p,
+    .activity p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .teacher-hero {
+      padding: 16px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #fff7da, #eaf2ff);
+      border: 1px solid var(--line);
+      margin-bottom: 12px;
+    }
+
+    .teacher-hero h3 {
+      margin: 0 0 7px;
+      font-size: 20px;
+      letter-spacing: 0;
+    }
+
+    .teacher-hero p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .teacher-score {
+      color: var(--brand-strong);
+      font-size: 13px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .teacher-facts {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 6px;
+      margin: 8px 0;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .teacher-facts div {
+      padding: 8px;
+      border-radius: 8px;
+      background: #f7f9fc;
+    }
+
+    .teacher-facts span {
+      display: block;
+      margin-bottom: 2px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .detail-hero {
+      position: relative;
+      padding: 16px;
+      background: linear-gradient(135deg, #fff7da, #f7f9fc);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .detail-hero .teacher {
+      border: 0;
+      padding: 0;
+      margin: 0;
+    }
+
+    .detail-lines {
+      display: grid;
+      gap: 5px;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .detail-name {
+      margin: 0 0 6px;
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .detail-score {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: #fff;
+      box-shadow: 0 6px 18px rgba(23, 32, 51, .08);
+    }
+
+    .detail-fav {
+      position: absolute;
+      right: 19px;
+      bottom: 76px;
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: #fff;
+      color: #ef6a7a;
+      font-size: 17px;
+      box-shadow: 0 6px 18px rgba(23, 32, 51, .08);
+    }
+
+    .detail-lines div {
+      color: var(--ink);
+    }
+
+    .detail-lines span {
+      color: var(--muted);
+    }
+
+    .detail-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .detail-stats div {
+      padding: 9px 8px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .72);
+      text-align: center;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .detail-stats span {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .detail-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      margin-bottom: 10px;
+    }
+
+    .detail-card h4 {
+      margin: 0 0 8px;
+      font-size: 15px;
+      letter-spacing: 0;
+    }
+
+    .teacher-reason {
+      margin-top: 8px;
+      padding: 9px 10px;
+      border-radius: 8px;
+      background: var(--soft-green);
+      color: #15735a;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 9px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 0 8px;
+      border-radius: 999px;
+      background: var(--soft-blue);
+      color: #2456a6;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .tag.green {
+      background: var(--soft-green);
+      color: #15735a;
+    }
+
+    .tag.yellow {
+      background: var(--soft-yellow);
+      color: #8a5b00;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      margin-bottom: 8px;
+    }
+
+    .tab {
+      min-height: 36px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      white-space: nowrap;
+      flex: 0 0 auto;
+    }
+
+    .tab.active {
+      background: var(--brand);
+      color: var(--ink);
+      border-color: var(--brand);
+      font-weight: 800;
+    }
+
+    .teacher-filter {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin: 12px 0;
+    }
+
+    .teacher-filter button,
+    .teacher-filter select {
+      width: 100%;
+      min-height: 36px;
+      padding: 0 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--panel);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .teacher-filter .active {
+      background: var(--brand);
+      border-color: var(--brand);
+      color: var(--ink);
+    }
+
+    .resource-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .resource {
+      padding: 14px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .resource-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr 42px;
+      gap: 8px;
+      margin-top: 12px;
+      align-items: center;
+    }
+
+    .outline {
+      min-height: 38px;
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      font-weight: 700;
+    }
+
+    .icon-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-weight: 900;
+    }
+
+    .downloaded {
+      color: var(--good);
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    .masonry {
+      columns: 2;
+      column-gap: 10px;
+      margin-top: 4px;
+    }
+
+    .activity-note {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .activity-module-title {
+      margin: 12px 0 8px;
+      font-size: 15px;
+      letter-spacing: 0;
+    }
+
+    .activity-hot {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      margin-bottom: 8px;
+    }
+
+    .activity-hot-card {
+      flex: 0 0 64%;
+      min-height: 78px;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #fff;
+      text-align: left;
+    }
+
+    .activity-hot-card h4 {
+      margin: 6px 0 4px;
+      font-size: 14px;
+      line-height: 1.25;
+    }
+
+    .activity-filter {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .activity-filter .tab {
+      min-height: 32px;
+      min-width: 0;
+      padding: 0 6px;
+      font-size: 12px;
+      white-space: normal;
+      line-height: 1.15;
+    }
+
+    .activity-card {
+      width: 100%;
+      display: inline-block;
+      break-inside: avoid;
+      margin: 0 0 10px;
+      padding: 0;
+      overflow: hidden;
+      text-align: left;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .activity-card img {
+      display: block;
+      width: 100%;
+      height: var(--image-height, 150px);
+      object-fit: cover;
+      background: #eef1f5;
+    }
+
+    .activity-body {
+      padding: 10px;
+    }
+
+    .activity-body h4 {
+      margin: 0 0 7px;
+      font-size: 14px;
+      line-height: 1.32;
+      letter-spacing: 0;
+    }
+
+    .activity-body p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .activity-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .activity-type {
+      display: inline-flex;
+      align-items: center;
+      min-height: 22px;
+      max-width: 100%;
+      padding: 0 7px;
+      border-radius: 999px;
+      background: var(--soft-yellow);
+      color: #8a5b00;
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    .activity-type.class {
+      background: var(--soft-blue);
+      color: #2456a6;
+    }
+
+    .activity-type.background {
+      background: var(--soft-green);
+      color: #15735a;
+    }
+
+    .activity-type.competition {
+      background: #efe7ff;
+      color: #6041a6;
+    }
+
+    .activity-type.open {
+      background: var(--soft-yellow);
+      color: #8a5b00;
+    }
+
+    .activity-cover {
+      position: relative;
+      aspect-ratio: 3 / 4;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 10px;
+      background: #243047;
+    }
+
+    .activity-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .activity-cover .activity-type {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+    }
+
+    .attachment-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+    }
+
+    .attachment-row:last-child {
+      border-bottom: 0;
+    }
+
+    .mark-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .mark {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: #f7f9fc;
+      color: #344054;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .bottom-nav {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 76px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      background: rgba(255,255,255,.96);
+      border-top: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-item {
+      background: transparent;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      min-width: 0;
+    }
+
+    .nav-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      border: 2px solid currentColor;
+      display: block;
+    }
+
+    .nav-item.active {
+      color: var(--brand-strong);
+      font-weight: 800;
+    }
+
+    .page-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .page-title h2 {
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: 0;
+    }
+
+    .back {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--panel);
+      color: var(--ink);
+      border: 1px solid var(--line);
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .profile-card {
+      padding: 18px;
+      background: linear-gradient(120deg, var(--brand), #fff0b6);
+      border-radius: 8px;
+      margin-bottom: 14px;
+    }
+
+    .profile-card h3 {
+      margin: 0 0 6px;
+      font-size: 20px;
+    }
+
+    .profile-card p {
+      margin: 0;
+      color: #5c4a12;
+      font-size: 13px;
+    }
+
+    .profile-head {
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .profile-avatar {
+      width: 58px;
+      height: 58px;
+      border-radius: 999px;
+      background: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      color: #8a5b00;
+    }
+
+    .profile-stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .profile-stats div {
+      padding: 10px 8px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .62);
+      text-align: center;
+      font-weight: 900;
+    }
+
+    .profile-stats span {
+      display: block;
+      margin-top: 2px;
+      color: #5c4a12;
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    .kv {
+      display: grid;
+      gap: 10px;
+    }
+
+    .kv div {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .kv span {
+      color: var(--muted);
+    }
+
+    .modal {
+      position: absolute;
+      inset: 0;
+      background: rgba(23, 32, 51, .42);
+      display: none;
+      align-items: flex-end;
+      z-index: 10;
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .sheet {
+      width: 100%;
+      background: var(--panel);
+      border-radius: 8px 8px 0 0;
+      padding: 18px 16px 22px;
+      box-shadow: 0 -16px 40px rgba(23, 32, 51, .18);
+    }
+
+    .sheet h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .sheet p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 13px;
+    }
+
+    .full {
+      width: 100%;
+      min-height: 44px;
+      border-radius: 8px;
+      background: var(--good);
+      color: #fff;
+      font-weight: 800;
+      margin-top: 8px;
+    }
+
+    .detail-actions {
+      display: grid;
+      grid-template-columns: 72px 1fr 1.25fr;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .detail-actions button {
+      min-height: 44px;
+      border-radius: 8px;
+      font-weight: 800;
+    }
+
+    .detail-actions .save {
+      background: #fff;
+      border: 1px solid var(--line);
+      color: #ef6a7a;
+    }
+
+    .detail-actions .consult {
+      background: var(--soft-green);
+      color: #15735a;
+    }
+
+    .detail-actions .book {
+      background: var(--good);
+      color: #fff;
+    }
+
+    .ghost {
+      width: 100%;
+      min-height: 42px;
+      border-radius: 8px;
+      background: transparent;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    .success {
+      border-left: 4px solid var(--good);
+      background: var(--soft-green);
+    }
+
+    .empty {
+      padding: 28px;
+      text-align: center;
+      color: var(--muted);
+      background: var(--panel);
+      border: 1px dashed var(--line);
+      border-radius: 8px;
+    }
+
+    .map-card {
+      padding: 14px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .map-card h4 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      letter-spacing: 0;
+    }
+
+    .map-card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .flow {
+      display: grid;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .flow-step {
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: var(--soft-blue);
+      color: #2456a6;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    @media (min-width: 431px) {
+      .phone {
+        border-radius: 24px;
+        height: 880px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="phone" aria-label="FindClass prototype">
+    <div class="screen" id="screen"></div>
+    <nav class="bottom-nav" id="bottomNav" aria-label="主导航"></nav>
+    <div class="modal" id="modal" role="dialog" aria-modal="true"></div>
+  </main>
+
+  <script>
+    const state = {
+      page: "home",
+      system: "IGCSE",
+      examBoard: "CAIE",
+      subject: "Mathematics (0580)",
+      paper: "Paper1 (Core)",
+      resourceYear: "全部年份",
+      resourceSeason: "全部季节",
+      phoneVerified: false,
+      pendingDownload: null,
+      downloads: [],
+      selectedTeacher: null,
+      selectedActivity: null,
+      activityType: "推荐",
+      teacherSystem: "全部",
+      teacherSubject: "全部",
+      teacherStage: "全部",
+      teacherPrice: "全部",
+      teacherOther: "全部"
+    };
+
+    const systems = ["IGCSE", "A-Level", "AP", "IBDP", "HKDSE"];
+    const examBoards = {
+      IGCSE: ["CAIE", "Edexcel", "AQA"],
+      "A-Level": ["CAIE", "Edexcel", "AQA", "OCR"]
+    };
+    const subjects = {
+      IGCSE: [
+        "Mathematics (0580)",
+        "Physics (0625)",
+        "Chemistry (0620)",
+        "Biology (0610)",
+        "Economics (0455)",
+        "Computer Science (0478)"
+      ],
+      "A-Level": ["Mathematics", "Further Mathematics", "Physics", "Economics", "Chemistry"],
+      AP: ["Calculus AB", "Calculus BC", "Physics 1", "Chemistry", "Microeconomics"],
+      IBDP: ["Math AA", "Math AI", "Physics", "English A", "Economics"],
+      HKDSE: ["Mathematics", "English", "Physics", "Chemistry"]
+    };
+    const papers = ["Paper1 (Core)", "Paper2 (Extended)", "Paper3 (Core)", "Paper4 (Extended)"];
+    const resources = [
+      { id: "r1", year: "2025", season: "Winter", title: "0580_w25_paper_1" },
+      { id: "r2", year: "2025", season: "Summer", title: "0580_s25_paper_1" },
+      { id: "r3", year: "2024", season: "Winter", title: "0580_w24_paper_1" },
+      { id: "r4", year: "2024", season: "Summer", title: "0580_s24_paper_1" },
+      { id: "r5", year: "2023", season: "Winter", title: "0580_w23_paper_1" }
+    ];
+    const teachers = [
+      {
+        id: "t1",
+        name: "张老师",
+        price: "900/h",
+        title: "A-Level / IGCSE 数学冲分导师",
+        fit: "适合基础中上、目标 A/A*，但应用题和步骤表达容易丢分的学生。",
+        strong: "建模题、步骤得分、考前冲刺",
+        notFit: "不适合基础断层严重、需要从零补课的学生。",
+        reason: "你关注 IGCSE / A-Level 数学资料时，优先推荐这类冲分型老师。",
+        score: "4.9",
+        systems: ["IGCSE", "A-Level"],
+        subjects: ["Mathematics", "Further Mathematics"],
+        stages: ["冲分型", "考前救火"],
+        priceRange: "800+",
+        language: "中文授课",
+        education: "硕士及以上",
+        experience: "5 年教学经验",
+        educationLine: "剑桥大学数学硕士",
+        teachingHours: "1200+",
+        studentCount: "86",
+        years: "5 年",
+        classMode: "线上、深圳线下",
+        city: "深圳南山",
+        styleTags: ["结构化讲解", "步骤控分", "考前规划"],
+        teachingMethod: "结构化讲解 + 真题拆解",
+        classFocus: "步骤分、建模题、考前刷题规划",
+        parentVisible: "错题归因表 + 同类题训练清单",
+        gradeRange: "G10-G12",
+        learningGoal: "冲 A / A*",
+        learnerType: "基础中上冲分型",
+        commonIssues: "应用题读题慢、步骤分丢失、冲刺阶段不知道刷什么。",
+        outcome: "课后提供错题归因、同类题训练清单和下次课目标。",
+        case: { student: "A 学生", school: "深圳国际交流学院", course: "A-Level Mathematics", result: "3 个月从 B 提升到 A*" },
+        linkedActivities: ["a1", "a4"],
+        tags: ["推荐", "冲分型", "IGCSE", "A-Level", "数学建模", "考前冲刺"],
+        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80"
+      },
+      {
+        id: "t2",
+        name: "柯老师",
+        price: "800/h",
+        title: "托雅 / HKDSE 英语专项导师",
+        fit: "适合写作结构混乱、口语表达展开不足、需要短期提分路径的学生。",
+        strong: "写作结构、口语展开、短期诊断",
+        notFit: "不适合只想要刷题监督、暂时不愿意开口练习的学生。",
+        reason: "适合从资料下载转向语言类诊断课的学生。",
+        score: "4.8",
+        systems: ["HKDSE"],
+        subjects: ["English"],
+        stages: ["补基础", "写作口语"],
+        priceRange: "600-800",
+        language: "双语授课",
+        education: "硕士及以上",
+        experience: "4 年教学经验",
+        educationLine: "香港大学教育学硕士",
+        teachingHours: "900+",
+        studentCount: "64",
+        years: "4 年",
+        classMode: "线上、深圳线下",
+        city: "深圳南山",
+        styleTags: ["表达诊断", "温和纠错", "结构模板"],
+        teachingMethod: "表达诊断 + 模板训练",
+        classFocus: "写作结构、口语展开、表达自然度",
+        parentVisible: "作文批改记录 + 口语录音反馈",
+        gradeRange: "G8-G12",
+        learningGoal: "英语写作口语提分",
+        learnerType: "语言表达诊断型",
+        commonIssues: "写作结构散、口语展开短、知道答案但表达不自然。",
+        outcome: "课后提供作文修改建议、口语表达句型和练习录音反馈。",
+        case: { student: "B 学生", school: "香港国际学校", course: "HKDSE English", result: "写作从 Level 4 提升到 Level 5*" },
+        linkedActivities: ["a6", "a3"],
+        tags: ["推荐", "写作口语", "英语写作", "口语", "HKDSE", "诊断课"],
+        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80"
+      },
+      {
+        id: "t3",
+        name: "左老师",
+        price: "800/h",
+        title: "雅思 / 托福口语写作导师",
+        fit: "适合想从 5.5-6.5 冲 7，表达有内容但不够高分化的学生。",
+        strong: "高分表达、素材组织、口语写作联动",
+        notFit: "不适合零基础词汇语法长期打底。",
+        reason: "适合目标明确、需要把表达升级到高分标准的学生。",
+        score: "4.9",
+        systems: ["IBDP", "AP"],
+        subjects: ["English A", "English"],
+        stages: ["冲分型", "写作口语"],
+        priceRange: "600-800",
+        language: "英文授课",
+        education: "本科及以上",
+        experience: "3 年教学经验",
+        educationLine: "藤校语言学方向本科",
+        teachingHours: "760+",
+        studentCount: "52",
+        years: "3 年",
+        classMode: "线上、深圳线下",
+        city: "深圳南山",
+        styleTags: ["高分表达", "素材打磨", "英文沉浸"],
+        teachingMethod: "英文沉浸 + 高分表达替换",
+        classFocus: "素材组织、表达升级、口写联动",
+        parentVisible: "高分表达替换表 + 话题复盘",
+        gradeRange: "G9-G12",
+        learningGoal: "雅思 / 托福冲分",
+        learnerType: "高分表达提升型",
+        commonIssues: "表达有内容但不够高级，写作和口语缺少高分表达。",
+        outcome: "课后提供高分表达替换表、素材库和口语话题复盘。",
+        case: { student: "C 学生", school: "深圳贝赛思", course: "IELTS Speaking", result: "口语从 6.0 提升到 7.0" },
+        linkedActivities: ["a6", "a2"],
+        tags: ["推荐", "冲分型", "写作口语", "雅思", "托福", "口语写作", "藤校背景"],
+        image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80"
+      },
+      {
+        id: "t4",
+        name: "陈老师",
+        price: "650/h",
+        title: "IGCSE 理科补基础导师",
+        fit: "适合物理/化学基础概念不稳、需要把课内知识重新串起来的学生。",
+        strong: "概念梳理、错题归因、低压陪跑",
+        notFit: "不适合考前两周才开始的极限冲刺。",
+        reason: "如果学生频繁下载基础 paper 和答案，适合先推荐补基础型老师。",
+        score: "4.7",
+        systems: ["IGCSE"],
+        subjects: ["Physics", "Chemistry"],
+        stages: ["补基础", "长期陪跑"],
+        priceRange: "600以下",
+        language: "中文授课",
+        education: "本科及以上",
+        experience: "3 年教学经验",
+        educationLine: "多伦多大学理科本科",
+        teachingHours: "680+",
+        studentCount: "48",
+        years: "3 年",
+        classMode: "线上、深圳线下",
+        city: "深圳南山",
+        styleTags: ["耐心陪跑", "概念拆解", "错题复盘"],
+        teachingMethod: "概念拆解 + 低压陪跑",
+        classFocus: "基础概念、错题归因、每周复习",
+        parentVisible: "知识点清单 + 错题分类表",
+        gradeRange: "G8-G10",
+        learningGoal: "补基础并稳定成绩",
+        learnerType: "基础薄弱陪跑型",
+        commonIssues: "基础概念不稳、听课能懂但做题不会、缺少复盘习惯。",
+        outcome: "课后提供知识点清单、错题分类和每周复习任务。",
+        case: { student: "D 学生", school: "蛇口国际学校", course: "IGCSE Physics", result: "10 周内从不及格提升到 B" },
+        linkedActivities: ["a2", "a5"],
+        tags: ["推荐", "补基础", "IGCSE", "物理", "化学", "陪跑"],
+        image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80"
+      }
+    ];
+    const activityTypes = ["推荐", "留学资讯", "学科笔记", "课程组班", "竞赛背题", "科研实践", "国际学校", "寒暑活动", "大学资讯", "AI与教育", "其他相关", "Findclass"];
+    const activities = [
+      {
+        id: "a1",
+        type: "课程组班",
+        title: "IGCSE 数学 0580 冲刺小班",
+        meta: "6 人小班 | 4 周 | Paper 2/4 重点",
+        heat: "238",
+        height: 142,
+        teacherIds: ["t1"],
+        image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=500&q=80"
+      },
+      {
+        id: "a2",
+        type: "科研实践",
+        title: "国际学生公益科研营：城市气候观察",
+        meta: "适合 G9-G11 | 可产出项目记录",
+        heat: "412",
+        height: 190,
+        teacherIds: ["t4"],
+        image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=500&q=80"
+      },
+      {
+        id: "a3",
+        type: "留学资讯",
+        title: "IBDP 选课避坑直播",
+        meta: "家长专场 | 45 分钟",
+        heat: "186",
+        height: 132,
+        teacherIds: ["t2"],
+        image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=500&q=80"
+      },
+      {
+        id: "a4",
+        type: "竞赛背题",
+        title: "AMC8/10 数学思维训练营",
+        meta: "周末班 | 诊断后分层",
+        heat: "329",
+        height: 172,
+        teacherIds: ["t1"],
+        image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=500&q=80"
+      },
+      {
+        id: "a5",
+        type: "国际学校",
+        title: "商科案例挑战：从校园项目到文书素材",
+        meta: "适合申请商科方向学生",
+        heat: "275",
+        height: 210,
+        teacherIds: [],
+        image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=500&q=80"
+      },
+      {
+        id: "a6",
+        type: "学科笔记",
+        title: "雅思写作 7 分结构笔记",
+        meta: "高分结构 | 范文拆解 | 附批改",
+        heat: "301",
+        height: 156,
+        teacherIds: ["t2", "t3"],
+        image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=500&q=80"
+      },
+      {
+        id: "a7",
+        type: "寒暑活动",
+        title: "寒假国际课程预习营",
+        meta: "适合 G8-G10 | 数理化分层",
+        heat: "268",
+        height: 168,
+        teacherIds: ["t1", "t4"],
+        image: "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=500&q=80"
+      },
+      {
+        id: "a8",
+        type: "Findclass",
+        title: "FindClass 老师匹配开放日",
+        meta: "家长专场 | 了解老师筛选机制",
+        heat: "356",
+        height: 146,
+        teacherIds: [],
+        image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=500&q=80"
+      },
+      {
+        id: "a9",
+        type: "大学资讯",
+        title: "英美本科申请时间线拆解",
+        meta: "适合 G10-G12 | 规划关键节点",
+        heat: "244",
+        height: 150,
+        teacherIds: [],
+        image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=500&q=80"
+      },
+      {
+        id: "a10",
+        type: "AI与教育",
+        title: "AI 工具如何辅助国际课程学习",
+        meta: "家长学生共听 | 方法与边界",
+        heat: "318",
+        height: 166,
+        teacherIds: [],
+        image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=500&q=80"
+      },
+      {
+        id: "a11",
+        type: "其他相关",
+        title: "国际学生时间管理工作坊",
+        meta: "学习习惯 | 任务拆解 | 周计划",
+        heat: "192",
+        height: 142,
+        teacherIds: [],
+        image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=500&q=80"
+      }
+    ];
+    const productMap = [
+      {
+        name: "首页",
+        children: ["搜索", "资料库入口", "精选导师入口", "活动入口", "推荐导师"]
+      },
+      {
+        name: "资料库",
+        children: ["课程体系", "学科", "Paper / Topic", "试卷 / 答案 / 解析", "手机号授权下载"]
+      },
+      {
+        name: "导师",
+        children: ["导师筛选", "老师卡片", "老师详情", "匹配理由", "预约咨询"]
+      },
+      {
+        name: "活动",
+        children: ["课程组班", "背景提升", "竞赛科研", "公开课", "活动详情 / 咨询"]
+      },
+      {
+        name: "我的",
+        children: ["个人信息", "我的资料", "收藏", "咨询订单", "优惠券"]
+      }
+    ];
+
+    const screen = document.getElementById("screen");
+    const bottomNav = document.getElementById("bottomNav");
+    const modal = document.getElementById("modal");
+
+    function navItems() {
+      return [
+        ["home", "首页"],
+        ["teachers", "导师"],
+        ["activities", "活动"],
+        ["resources", "资料"],
+        ["me", "我的"]
+      ];
+    }
+
+    function setPage(page) {
+      state.page = page;
+      state.selectedTeacher = null;
+      state.selectedActivity = null;
+      render();
+    }
+
+    function renderNav() {
+      bottomNav.innerHTML = navItems().map(([page, label]) => `
+        <button class="nav-item ${state.page === page ? "active" : ""}" onclick="setPage('${page}')">
+          <span class="nav-icon" aria-hidden="true"></span>
+          <span>${label}</span>
+        </button>
+      `).join("");
+    }
+
+    function topbar() {
+      return `
+        <div class="topbar">
+          <div class="brand">
+            <div class="mark">FC</div>
+            <div>
+              <h1>FindClass</h1>
+              <p>高品质国际课程导师匹配</p>
+            </div>
+          </div>
+          <span class="pill">${state.phoneVerified ? "已绑定" : "未登录"}</span>
+        </div>
+      `;
+    }
+
+    function teacherCard(t, compact = false) {
+      return `
+        <article class="card teacher">
+          <img class="avatar" alt="${t.name}" src="${t.image}">
+          <div>
+            <div class="row">
+              <h4>${t.name}</h4>
+              <span class="teacher-score">★ ${t.score}</span>
+            </div>
+            <div class="teacher-facts">
+              <div><span>学历</span>${t.educationLine}</div>
+              <div><span>教学经验</span>${t.experience}</div>
+              <div><span>课程体系</span>${t.systems.join(" / ")}</div>
+              <div><span>教学学科</span>${t.subjects.slice(0, 2).join(" / ")}</div>
+            </div>
+            <p>${t.fit}</p>
+            <div class="row" style="margin-top:8px">
+              <strong>${t.price}</strong>
+              <button class="link-btn" onclick="openTeacher('${t.id}')">查看详情</button>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderHome() {
+      const hotActivities = activities.slice(0, 4);
+      screen.innerHTML = `
+        ${topbar()}
+        <label class="search">
+          <span>搜索</span>
+          <input placeholder="输入课程、学科或老师" aria-label="搜索">
+        </label>
+        <section class="poster-strip" aria-label="热门活动">
+          ${hotActivities.map(a => `
+            <button class="poster" onclick="openActivity('${a.id}')">
+              <img alt="${a.title}" src="${a.image}">
+              <div class="poster-copy">
+                <span class="activity-type ${activityTypeClass(a.type)}">${a.type}</span>
+                <h2>${a.title}</h2>
+                <p>${a.meta}</p>
+              </div>
+            </button>
+          `).join("")}
+        </section>
+        <section class="section">
+          <div class="grid">
+            <button class="tile" onclick="setPage('resources')"><strong>免费资料库</strong><span>Past paper / 答案 / 解析资料</span></button>
+            <button class="tile" onclick="setPage('teachers')"><strong>精选导师</strong><span>按学生问题匹配老师经验</span></button>
+            <button class="tile" onclick="setPage('activities')"><strong>活动公开课</strong><span>低门槛建立信任</span></button>
+            <button class="tile" onclick="showLeadSheet()"><strong>60 秒匹配</strong><span>快速生成推荐方向</span></button>
+          </div>
+        </section>
+        <section class="section">
+          <div class="section-head">
+            <h3>推荐导师</h3>
+            <button class="link-btn" onclick="setPage('teachers')">查看更多</button>
+          </div>
+          ${teachers.slice(0, 2).map(t => teacherCard(t, true)).join("")}
+        </section>
+        <section class="section">
+          <div class="section-head">
+            <h3>推荐活动</h3>
+            <button class="link-btn" onclick="setPage('activities')">查看更多</button>
+          </div>
+          <div class="masonry">
+            ${activities.slice(0, 4).map(a => `
+              <button class="activity-card" onclick="openActivity('${a.id}')">
+                <img alt="${a.title}" src="${a.image}" style="--image-height:${Math.max(126, a.height - 36)}px">
+                <div class="activity-body">
+                  <span class="activity-type ${activityTypeClass(a.type)}">${a.type}</span>
+                  <h4>${a.title}</h4>
+                  <p>${a.meta}</p>
+                </div>
+              </button>
+            `).join("")}
+          </div>
+        </section>
+      `;
+    }
+
+    function renderResources() {
+      const boards = examBoards[state.system] || ["无考试局"];
+      const years = [...new Set(resources.map(r => r.year))];
+      const seasons = [...new Set(resources.map(r => r.season))];
+      const visible = resources.filter(r =>
+        (state.resourceYear === "全部年份" || r.year === state.resourceYear) &&
+        (state.resourceSeason === "全部季节" || r.season === state.resourceSeason)
+      );
+      screen.innerHTML = `
+        <div class="page-title">
+          <h2>Past Paper</h2>
+          <span class="pill">${state.paper}</span>
+        </div>
+        <p class="activity-note">按课程体系、考试局、学科和 Paper 查找历年真题与答案。</p>
+        <div class="teacher-filter">
+          <select onchange="selectSystem(this.value)">
+            ${systems.map(system => `<option value="${system}" ${state.system === system ? "selected" : ""}>${system}</option>`).join("")}
+          </select>
+          <select onchange="selectExamBoard(this.value)" ${examBoards[state.system] ? "" : "disabled"}>
+            ${boards.map(board => `<option value="${board}" ${state.examBoard === board ? "selected" : ""}>${board}</option>`).join("")}
+          </select>
+          <select onchange="selectSubject(this.value)">
+            ${subjects[state.system].map(subject => `<option value="${subject}" ${state.subject === subject ? "selected" : ""}>${subject}</option>`).join("")}
+          </select>
+          <select onchange="selectPaper(this.value)">
+            ${papers.map(paper => `<option value="${paper}" ${state.paper === paper ? "selected" : ""}>${paper}</option>`).join("")}
+          </select>
+          <select onchange="selectResourceYear(this.value)">
+            <option value="全部年份" ${state.resourceYear === "全部年份" ? "selected" : ""}>全部年份</option>
+            ${years.map(year => `<option value="${year}" ${state.resourceYear === year ? "selected" : ""}>${year}</option>`).join("")}
+          </select>
+          <select onchange="selectResourceSeason(this.value)">
+            <option value="全部季节" ${state.resourceSeason === "全部季节" ? "selected" : ""}>全部季节</option>
+            ${seasons.map(season => `<option value="${season}" ${state.resourceSeason === season ? "selected" : ""}>${season}</option>`).join("")}
+          </select>
+          <button class="active" onclick="resetResource()">重置</button>
+        </div>
+        <section class="section">
+          <div class="section-head"><h3>${state.subject}</h3><span class="meta">${state.system} / ${state.examBoard}</span></div>
+          <div class="resource-list">${visible.map(resourceCard).join("")}</div>
+          ${visible.length ? "" : `<div class="empty">当前筛选下没有资料</div>`}
+        </section>
+      `;
+    }
+
+    function resourceCard(r) {
+      const done = state.downloads.some(d => d.title === r.title);
+      return `
+        <article class="resource">
+          <div class="row"><strong>${r.year} ${r.season}</strong><span class="meta">${r.title}</span></div>
+          <div class="resource-actions">
+            <button class="outline" onclick="downloadResource('${r.id}', '原卷')">原卷</button>
+            <button class="outline" onclick="downloadResource('${r.id}', '答案')">答案</button>
+            <button class="icon-btn" title="收藏">♡</button>
+          </div>
+          ${done ? `<div class="downloaded">已保存到我的资料</div>` : ""}
+        </article>
+      `;
+    }
+
+    function renderTeachers() {
+      const stages = ["全部", "补基础", "冲分型", "考前救火", "长期陪跑", "写作口语"];
+      const priceRanges = ["全部", "600以下", "600-800", "800+"];
+      const otherFilters = ["全部", "中文授课", "英文授课", "双语授课", "本科及以上", "硕士及以上"];
+      const subjectOptions = state.teacherSystem === "全部"
+        ? [...new Set(Object.values(subjects).flat())]
+        : subjects[state.teacherSystem];
+      const visible = teachers.filter(t =>
+        (state.teacherSystem === "全部" || t.systems.includes(state.teacherSystem)) &&
+        (state.teacherSubject === "全部" || t.subjects.some(subject => state.teacherSubject.includes(subject) || subject.includes(state.teacherSubject))) &&
+        (state.teacherStage === "全部" || t.stages.includes(state.teacherStage)) &&
+        (state.teacherPrice === "全部" || t.priceRange === state.teacherPrice) &&
+        (state.teacherOther === "全部" || t.language === state.teacherOther || t.education === state.teacherOther)
+      );
+      screen.innerHTML = `
+        <div class="page-title"><h2>精选导师</h2><span class="pill">人工筛选</span></div>
+        <div class="teacher-filter">
+          <button class="active" onclick="resetTeacherFilters()">全部</button>
+          <select onchange="selectTeacherSystem(this.value)">
+            <option value="全部" ${state.teacherSystem === "全部" ? "selected" : ""}>体系</option>
+            ${systems.map(system => `<option value="${system}" ${state.teacherSystem === system ? "selected" : ""}>${system}</option>`).join("")}
+          </select>
+          <select onchange="selectTeacherSubject(this.value)">
+            <option value="全部" ${state.teacherSubject === "全部" ? "selected" : ""}>学科</option>
+            ${subjectOptions.map(subject => `<option value="${subject}" ${state.teacherSubject === subject ? "selected" : ""}>${subject}</option>`).join("")}
+          </select>
+          <select onchange="selectTeacherStage(this.value)">
+            <option value="全部" ${state.teacherStage === "全部" ? "selected" : ""}>类型</option>
+            ${stages.filter(stage => stage !== "全部").map(stage => `<option value="${stage}" ${state.teacherStage === stage ? "selected" : ""}>${stage}</option>`).join("")}
+          </select>
+          <select onchange="selectTeacherPrice(this.value)">
+            <option value="全部" ${state.teacherPrice === "全部" ? "selected" : ""}>价格</option>
+            ${priceRanges.filter(price => price !== "全部").map(price => `<option value="${price}" ${state.teacherPrice === price ? "selected" : ""}>${price}</option>`).join("")}
+          </select>
+          <select onchange="selectTeacherOther(this.value)">
+            <option value="全部" ${state.teacherOther === "全部" ? "selected" : ""}>其他</option>
+            ${otherFilters.filter(item => item !== "全部").map(item => `<option value="${item}" ${state.teacherOther === item ? "selected" : ""}>${item}</option>`).join("")}
+          </select>
+        </div>
+        <section class="section">
+          <div class="section-head"><h3>匹配结果</h3><span class="meta">${visible.length} 位导师</span></div>
+          ${visible.map(t => teacherCard(t)).join("")}
+          ${visible.length ? "" : `<div class="empty">这个组合暂时没有导师，可以先提交需求让顾问人工匹配</div>`}
+        </section>
+      `;
+    }
+
+    function selectTeacherSystem(system) {
+      state.teacherSystem = system;
+      state.teacherSubject = "全部";
+      render();
+    }
+
+    function selectTeacherSubject(subject) {
+      state.teacherSubject = subject;
+      render();
+    }
+
+    function selectTeacherStage(stage) {
+      state.teacherStage = stage;
+      render();
+    }
+
+    function selectTeacherPrice(price) {
+      state.teacherPrice = price;
+      render();
+    }
+
+    function selectTeacherOther(other) {
+      state.teacherOther = other;
+      render();
+    }
+
+    function resetTeacherFilters() {
+      state.teacherSystem = "全部";
+      state.teacherSubject = "全部";
+      state.teacherStage = "全部";
+      state.teacherPrice = "全部";
+      state.teacherOther = "全部";
+      render();
+    }
+
+    function renderProductMap() {
+      screen.innerHTML = `
+        <div class="page-title">
+          <button class="back" onclick="setPage('home')">‹</button>
+          <h2>产品地图</h2>
+          <span class="pill">一级 / 二级</span>
+        </div>
+        <section class="card">
+          <h4>主闭环</h4>
+          <div class="flow">
+            <div class="flow-step">1. 浏览资料</div>
+            <div class="flow-step">2. 授权手机号下载</div>
+            <div class="flow-step">3. 沉淀兴趣标签</div>
+            <div class="flow-step">4. 推荐老师 / 活动</div>
+            <div class="flow-step">5. 咨询或试听转化</div>
+          </div>
+        </section>
+        ${productMap.map(item => `
+          <section class="map-card">
+            <h4>${item.name}</h4>
+            <ul>${item.children.map(child => `<li>${child}</li>`).join("")}</ul>
+          </section>
+        `).join("")}
+      `;
+    }
+
+    function renderActivities() {
+      const visible = state.activityType === "推荐"
+        ? activities
+        : activities.filter(a => a.type === state.activityType);
+      const hotActivities = activities.slice(0, 3);
+      screen.innerHTML = `
+        <div class="page-title"><h2>活动</h2><span class="pill">像刷内容一样找机会</span></div>
+        <h3 class="activity-module-title">热门推荐</h3>
+        <section class="activity-hot" aria-label="热门活动推荐">
+          ${hotActivities.map(a => `
+            <button class="activity-hot-card" onclick="openActivity('${a.id}')">
+              <span class="activity-type ${activityTypeClass(a.type)}">${a.type}</span>
+              <h4>${a.title}</h4>
+              <p class="meta">${a.meta}</p>
+            </button>
+          `).join("")}
+        </section>
+        <h3 class="activity-module-title">活动分类</h3>
+        <div class="activity-filter">
+          ${activityTypes.map(type => `<button class="tab ${state.activityType === type ? "active" : ""}" onclick="selectActivityType('${type}')">${type}</button>`).join("")}
+        </div>
+        <h3 class="activity-module-title">内容流</h3>
+        <div class="masonry">
+          ${visible.map(a => `
+            <button class="activity-card" onclick="openActivity('${a.id}')">
+              <img alt="${a.title}" src="${a.image}" style="--image-height:${a.height}px">
+              <div class="activity-body">
+                <span class="activity-type ${activityTypeClass(a.type)}">${a.type}</span>
+                <h4>${a.title}</h4>
+                <p>${a.meta}</p>
+                ${activityTeachers(a).length ? `<p>${activityTeachers(a).map(t => t.name).join(" / ")} 关联</p>` : ""}
+                <div class="activity-foot"><span>适合国际学生</span><span>♡ ${a.heat}</span></div>
+              </div>
+            </button>
+          `).join("")}
+        </div>
+        ${visible.length ? "" : `<div class="empty">这个分类暂时没有活动</div>`}
+      `;
+    }
+
+    function selectActivityType(type) {
+      state.activityType = type;
+      render();
+    }
+
+    function activityTypeClass(type) {
+      return {
+        "课程组班": "class",
+        "学科笔记": "class",
+        "科研实践": "background",
+        "国际学校": "background",
+        "竞赛背题": "competition",
+        "留学资讯": "open",
+        "寒暑活动": "open",
+        "大学资讯": "open",
+        "AI与教育": "competition",
+        "其他相关": "background",
+        "Findclass": "competition"
+      }[type] || "";
+    }
+
+    function activityTeachers(a) {
+      return teachers.filter(t => (a.teacherIds || []).includes(t.id));
+    }
+
+    function activityInfo(a) {
+      return {
+        time: a.type === "寒暑活动" ? "寒假 / 暑假滚动开营" : "报名后确认时间",
+        mode: a.type === "国际学校" ? "线下活动" : "线上 / 线下可选",
+        place: a.type === "国际学校" ? "深圳南山" : "线上会议室 / 深圳南山",
+        grade: a.meta.split("|")[0].trim(),
+        price: a.type === "学科笔记" ? "免费领取" : "咨询后确认",
+        status: "报名中",
+        intro: `${a.title} 是 FindClass 活动内容流中的 ${a.type} 项目，适合先了解机会，再根据需求进入咨询或报名。`,
+        highlights: ["可咨询", "可收藏", "可关联老师", a.type],
+        audience: "适合希望提前了解课程、活动价值或升学路径的国际学生家庭。",
+        notFit: "如果目标不明确，建议先咨询顾问再报名。",
+        agenda: ["活动介绍与目标确认", "核心内容讲解或任务安排", "资料/成果说明", "后续咨询与报名建议"],
+        attachments: ["活动介绍 PDF", "课前阅读资料"],
+        links: ["网盘资料包", "报名表链接"]
+      };
+    }
+
+    function renderActivityDetail() {
+      const a = activities.find(x => x.id === state.selectedActivity);
+      if (!a) return renderActivities();
+      const info = activityInfo(a);
+      const linkedTeachers = activityTeachers(a);
+      screen.innerHTML = `
+        <div class="page-title">
+          <button class="back" onclick="setPage('activities')">‹</button>
+          <h2>活动详情</h2>
+          <span class="pill">${info.status}</span>
+        </div>
+        <section class="activity-cover">
+          <img alt="${a.title}" src="${a.image}">
+          <span class="activity-type ${activityTypeClass(a.type)}">${a.type}</span>
+        </section>
+        <section class="detail-card">
+          <div class="row">
+            <h4>${a.title}</h4>
+            <span class="teacher-score">♡ ${a.heat}</span>
+          </div>
+        </section>
+        <section class="detail-card">
+          <h4>基础信息</h4>
+          <p class="meta">${info.time}；${info.mode}；${info.grade}；${info.place}；${info.price}；${info.status}。</p>
+        </section>
+        <section class="detail-card">
+          <h4>活动亮点</h4>
+          <div class="tags">${info.highlights.map(x => `<span class="tag green">${x}</span>`).join("")}</div>
+        </section>
+        <section class="detail-card">
+          <h4>适合人群</h4>
+          <div class="teacher-facts">
+            <div><span>适合需求</span>${info.audience}</div>
+            <div><span>适配提醒</span>${info.notFit}</div>
+          </div>
+        </section>
+        <section class="detail-card">
+          <h4>内容安排</h4>
+          <div class="flow">${info.agenda.map((x, i) => `<div class="flow-step">${i + 1}. ${x}</div>`).join("")}</div>
+        </section>
+        <section class="detail-card">
+          <h4>关联老师 / 顾问</h4>
+          <div class="resource-list">
+            ${linkedTeachers.length ? linkedTeachers.map(t => `
+              <button class="resource row" onclick="openTeacher('${t.id}')">
+                <strong>${t.name}</strong>
+                <span>${t.title}</span>
+              </button>
+            `).join("") : `<div class="empty">FindClass 官方活动</div>`}
+          </div>
+        </section>
+        <section class="detail-card">
+          <h4>附件与链接</h4>
+          ${info.attachments.map(x => `<div class="attachment-row"><span>${x}</span><button class="link-btn">上传附件</button></div>`).join("")}
+          ${info.links.map(x => `<div class="attachment-row"><span>${x}</span><button class="link-btn" onclick="copyActivityLink('${x}')">复制链接</button></div>`).join("")}
+        </section>
+        <div class="detail-actions">
+          <button class="save">♡ 收藏</button>
+          <button class="consult" onclick="showActivitySheet('${a.id}')">咨询</button>
+          <button class="book" onclick="showActivitySheet('${a.id}')">立即报名</button>
+        </div>
+      `;
+    }
+
+    function showActivitySheet(id) {
+      const a = activities.find(x => x.id === id);
+      const linkedTeachers = activityTeachers(a);
+      modal.className = "modal open";
+      modal.innerHTML = `
+        <section class="sheet">
+          <h3>${a.title}</h3>
+          <p>${a.type} · ${a.meta}</p>
+          <div class="tags">
+            ${linkedTeachers.map(t => `<span class="tag yellow">${t.name}关联</span>`).join("")}
+            <span class="tag">活动模块联动</span>
+          </div>
+          ${linkedTeachers.map(t => `<button class="outline full" onclick="openTeacherFromModal('${t.id}')">查看 ${t.name}</button>`).join("")}
+          <button class="full" onclick="closeModal()">我感兴趣</button>
+          <button class="ghost" onclick="closeModal()">继续浏览</button>
+        </section>
+      `;
+    }
+
+    function renderMe() {
+      screen.innerHTML = `
+        <div class="profile-card">
+          <div class="profile-head">
+            <div class="profile-avatar">FC</div>
+            <div>
+              <h3>${state.phoneVerified ? "FindClass 用户" : "未登录用户"}</h3>
+              <p>手机号：${state.phoneVerified ? "已授权" : "未绑定"}</p>
+              <p>ID：FC20260708</p>
+            </div>
+          </div>
+          <div class="profile-stats">
+            <div>0<span>收藏老师</span></div>
+            <div>0<span>收藏活动</span></div>
+            <div>${state.downloads.length}<span>收藏试卷</span></div>
+            <div>0<span>咨询订单</span></div>
+          </div>
+        </div>
+        <section class="detail-card">
+          <h4>学习档案</h4>
+          <div class="teacher-facts">
+            <div><span>身份角色</span>学生</div>
+            <div><span>年级</span>G10</div>
+            <div><span>学习的体系</span>${state.system}</div>
+            <div><span>所在城市</span>深圳南山</div>
+            <div><span>留学方向</span>英美本科</div>
+          </div>
+        </section>
+        <section class="detail-card">
+          <h4>快捷入口</h4>
+          <div class="grid">
+            <button class="tile" onclick="setPage('teachers')"><strong>导师</strong><span>查看导师与收藏</span></button>
+            <button class="tile" onclick="setPage('resources')"><strong>题库</strong><span>Past Paper 与答案</span></button>
+            <button class="tile" onclick="setPage('activities')"><strong>活动</strong><span>课程组班与资讯</span></button>
+            <button class="tile" onclick="showLeadSheet()"><strong>咨询</strong><span>匹配老师和规划</span></button>
+          </div>
+        </section>
+        <section class="detail-card">
+          <h4>平台服务</h4>
+          <div class="resource-list">
+            <button class="resource row"><strong>成为导师</strong><span>申请入驻</span></button>
+            <button class="resource row"><strong>活动上传</strong><span>提交后后台审核</span></button>
+            <button class="resource row"><strong>关于我们</strong><span>了解 FindClass</span></button>
+            <button class="resource row"><strong>帮助中心</strong><span>常见问题</span></button>
+            <button class="resource row"><strong>联系客服</strong><span>微信咨询</span></button>
+          </div>
+        </section>
+        <section class="detail-card">
+          <h4>推荐中心</h4>
+          <button class="resource row">
+            <strong>推荐同学及家长</strong>
+            <span>获取积分奖励</span>
+          </button>
+        </section>
+      `;
+    }
+
+    function renderTeacherDetail() {
+      const t = teachers.find(x => x.id === state.selectedTeacher);
+      if (!t) return renderTeachers();
+      const linkedActivities = activities.filter(a => t.linkedActivities.includes(a.id));
+      screen.innerHTML = `
+        <div class="page-title">
+          <button class="back" onclick="setPage('teachers')">‹</button>
+          <h2>导师详情</h2>
+          <span class="pill">${t.price}</span>
+        </div>
+        <section class="detail-hero">
+          <div class="detail-score teacher-score">★ ${t.score}</div>
+          <button class="detail-fav" title="收藏老师">♡</button>
+          <article class="teacher">
+            <img class="avatar" alt="${t.name}" src="${t.image}">
+            <div>
+              <h3 class="detail-name">${t.name}</h3>
+              <div class="detail-lines">
+                <div><span>学历：</span>${t.educationLine}</div>
+              </div>
+            </div>
+          </article>
+          <div class="detail-stats">
+            <div><span>授课时长</span>${t.teachingHours} h</div>
+            <div><span>学员数量</span>${t.studentCount} 人</div>
+            <div><span>从业年限</span>${t.years}</div>
+          </div>
+        </section>
+        <section class="detail-card">
+          <h4>基础信息</h4>
+          <div class="teacher-facts">
+            <div><span>课程体系</span>${t.systems.join(" / ")}</div>
+            <div><span>教学学科</span>${t.subjects.join(" / ")}</div>
+            <div><span>授课语言</span>${t.language}</div>
+            <div><span>课时价格</span>${t.price}</div>
+            <div><span>上课形式</span>${t.classMode}</div>
+            <div><span>所在城市</span>${t.city}</div>
+          </div>
+        </section>
+        <section class="detail-card">
+          <h4>辅导案例</h4>
+          <div class="teacher-facts">
+            <div><span>学生</span>${t.case.student}</div>
+            <div><span>学校</span>${t.case.school}</div>
+            <div><span>课程</span>${t.case.course}</div>
+            <div><span>成就</span>${t.case.result}</div>
+          </div>
+        </section>
+        <section class="detail-card">
+          <h4>适合类型</h4>
+          <div class="teacher-facts">
+            <div><span>年级阶段</span>${t.gradeRange}</div>
+            <div><span>学习目标</span>${t.learningGoal}</div>
+            <div><span>当前问题</span>${t.commonIssues}</div>
+            <div><span>学生类型</span>${t.learnerType}</div>
+          </div>
+        </section>
+        <section class="detail-card">
+          <h4>教学特点</h4>
+          <div class="teacher-facts">
+            <div><span>教学方式</span>${t.teachingMethod}</div>
+            <div><span>课堂重点</span>${t.classFocus}</div>
+            <div><span>课后反馈</span>${t.outcome}</div>
+            <div><span>家长可见产出</span>${t.parentVisible}</div>
+          </div>
+          <div class="tags">${t.styleTags.map(tag => `<span class="tag green">${tag}</span>`).join("")}</div>
+        </section>
+        <section class="detail-card">
+          <h4>平台评估</h4>
+          <div class="teacher-facts">
+            <div><span>一句总结</span>${t.fit}</div>
+            <div><span>推荐理由</span>${t.reason}</div>
+            <div><span>适配提醒</span>${t.notFit}</div>
+          </div>
+        </section>
+        <section class="detail-card">
+          <div class="section-head">
+            <h4>关联活动</h4>
+            <button class="link-btn" onclick="setPage('activities')">活动页</button>
+          </div>
+          <div class="resource-list">
+            ${linkedActivities.map(a => `
+              <button class="resource row" onclick="openActivity('${a.id}')">
+                <strong>${a.title}</strong>
+                <span>${a.type}</span>
+              </button>
+            `).join("")}
+          </div>
+        </section>
+        <div class="detail-actions">
+          <button class="save">♡ 收藏</button>
+          <button class="consult" onclick="showConsultSheet('${t.id}')">咨询</button>
+          <button class="book" onclick="showConsultSheet('${t.id}')">立即预约</button>
+        </div>
+      `;
+    }
+
+    function renderSuccess() {
+      const recommended = teachers.filter(t => t.tags.some(tag => state.subject.includes("Math") ? tag.includes("数学") || tag === "IGCSE" : true)).slice(0, 2);
+      screen.innerHTML = `
+        <div class="page-title"><h2>领取成功</h2><button class="link-btn" onclick="setPage('resources')">返回资料库</button></div>
+        <section class="card success">
+          <h4>${state.pendingDownload ? state.pendingDownload.title : "资料"} 已保存</h4>
+          ${state.pendingDownload ? `<p class="meta">${state.pendingDownload.meta}</p>` : ""}
+          <p class="meta">系统已记录你的课程体系、学科和资料类型，用于后续推荐更合适的老师与活动。</p>
+        </section>
+        <section class="section">
+          <div class="section-head"><h3>相关导师</h3><span class="meta">按下载标签推荐</span></div>
+          ${recommended.map(t => teacherCard(t)).join("")}
+        </section>
+      `;
+    }
+
+    function selectSystem(system) {
+      state.system = system;
+      state.examBoard = (examBoards[system] || ["无考试局"])[0];
+      state.subject = subjects[system][0];
+      state.paper = papers[0];
+      render();
+    }
+
+    function selectExamBoard(board) {
+      state.examBoard = board;
+      render();
+    }
+
+    function selectSubject(subject) {
+      state.subject = subject;
+      render();
+    }
+
+    function selectPaper(paper) {
+      state.paper = paper;
+      render();
+    }
+
+    function selectResourceYear(year) {
+      state.resourceYear = year;
+      render();
+    }
+
+    function selectResourceSeason(season) {
+      state.resourceSeason = season;
+      render();
+    }
+
+    function resetResource() {
+      state.system = "IGCSE";
+      state.examBoard = "CAIE";
+      state.subject = "Mathematics (0580)";
+      state.paper = "Paper1 (Core)";
+      state.resourceYear = "全部年份";
+      state.resourceSeason = "全部季节";
+      render();
+    }
+
+    function downloadResource(id, type) {
+      const r = resources.find(x => x.id === id);
+      state.pendingDownload = {
+        ...r,
+        type,
+        meta: `${state.system} / ${state.examBoard} / ${state.subject} / ${state.paper} / ${r.year} ${r.season} / ${type}`
+      };
+      if (!state.phoneVerified) {
+        showPhoneSheet();
+        return;
+      }
+      saveDownload();
+    }
+
+    function saveDownload() {
+      if (state.pendingDownload && !state.downloads.some(d => d.title === state.pendingDownload.title && d.type === state.pendingDownload.type)) {
+        state.downloads.unshift(state.pendingDownload);
+      }
+      closeModal();
+      state.page = "success";
+      render();
+    }
+
+    function showPhoneSheet() {
+      modal.className = "modal open";
+      modal.innerHTML = `
+        <section class="sheet">
+          <h3>领取完整资料</h3>
+          <p>授权微信手机号后，可下载试卷和答案，并在“我的资料”中继续查看。</p>
+          <button class="full" onclick="authorizePhone()">授权手机号并领取</button>
+          <button class="ghost" onclick="closeModal()">暂不领取</button>
+        </section>
+      `;
+    }
+
+    function copyActivityLink(label) {
+      if (!state.phoneVerified) {
+        modal.className = "modal open";
+        modal.innerHTML = `
+          <section class="sheet">
+            <h3>登录后复制链接</h3>
+            <p>授权手机号后，可复制活动网盘、报名表等外部链接。</p>
+            <button class="full" onclick="authorizeLinkCopy('${label}')">授权手机号并复制</button>
+            <button class="ghost" onclick="closeModal()">暂不复制</button>
+          </section>
+        `;
+        return;
+      }
+      showCopiedSheet(label);
+    }
+
+    function authorizeLinkCopy(label) {
+      state.phoneVerified = true;
+      showCopiedSheet(label);
+    }
+
+    function showCopiedSheet(label) {
+      modal.className = "modal open";
+      modal.innerHTML = `
+        <section class="sheet">
+          <h3>链接已复制</h3>
+          <p>${label} 已复制到剪贴板。原型里先用提示模拟复制动作。</p>
+          <button class="full" onclick="closeModal()">知道了</button>
+        </section>
+      `;
+    }
+
+    function showLeadSheet() {
+      modal.className = "modal open";
+      modal.innerHTML = `
+        <section class="sheet">
+          <h3>60 秒匹配</h3>
+          <p>当前原型先用资料下载行为生成推荐。正式版可加入年级、目标分和预算。</p>
+          <button class="full" onclick="setPageFromModal('resources')">先去领取资料</button>
+          <button class="ghost" onclick="closeModal()">关闭</button>
+        </section>
+      `;
+    }
+
+    function showConsultSheet(id) {
+      const t = teachers.find(x => x.id === id);
+      modal.className = "modal open";
+      modal.innerHTML = `
+        <section class="sheet">
+          <h3>预约 ${t.name}</h3>
+          <p>原型里不提交订单。正式版这里进入咨询单，记录老师、学科和资料来源。</p>
+          <button class="full" onclick="closeModal()">知道了</button>
+        </section>
+      `;
+    }
+
+    function authorizePhone() {
+      state.phoneVerified = true;
+      saveDownload();
+    }
+
+    function setPageFromModal(page) {
+      closeModal();
+      setPage(page);
+    }
+
+    function closeModal() {
+      modal.className = "modal";
+      modal.innerHTML = "";
+    }
+
+    function openTeacher(id) {
+      state.selectedTeacher = id;
+      state.page = "teacherDetail";
+      render();
+    }
+
+    function openActivity(id) {
+      state.selectedActivity = id;
+      state.page = "activityDetail";
+      render();
+    }
+
+    function openTeacherFromModal(id) {
+      closeModal();
+      openTeacher(id);
+    }
+
+    function render() {
+      renderNav();
+      if (state.page === "home") renderHome();
+      else if (state.page === "resources") renderResources();
+      else if (state.page === "teachers") renderTeachers();
+      else if (state.page === "activities") renderActivities();
+      else if (state.page === "me") renderMe();
+      else if (state.page === "success") renderSuccess();
+      else if (state.page === "teacherDetail") renderTeacherDetail();
+      else if (state.page === "activityDetail") renderActivityDetail();
+      else if (state.page === "map") renderProductMap();
+      screen.scrollTop = 0;
+    }
+
+    render();
+  </script>
+</body>
+</html>

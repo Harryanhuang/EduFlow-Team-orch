@@ -138,8 +138,13 @@ def main(argv: list[str]) -> int:
                 _maybe_refresh_claude_oauth(now)
                 last_cred_check = now
             if now - last_runtime_guard >= runtime_guard_interval_s:
-                _guard_agent_runtimes()
-                _maybe_emit_auto_ops_presence(now)
+                try:
+                    _guard_agent_runtimes()
+                    _maybe_emit_auto_ops_presence(now)
+                except Exception as e:
+                    # ponytail: one bad historical alias/status must not kill
+                    # the daemon supervisor; fix the bad row separately.
+                    print(f"  ⚠️ watchdog guard tick skipped after error: {type(e).__name__}: {e}")
                 last_runtime_guard = now
             if now - last_pid_repair >= pid_repair_interval_s:
                 pidlock.repair_pid_file(pid_file, name="watchdog")
@@ -698,118 +703,128 @@ def _guard_agent_runtimes() -> None:
     if not tmux.has_session(session):
         return
     for agent in sorted(team.get("agents", {})):
-        now_s = time.time()
-        if _agent_in_cooldown(agent, now_s):
-            continue
-        target = tmux.Target(session, agent)
-        if not tmux.has_window(target):
-            continue
-        resolved = config.resolved_agent_config(agent)
-        current = (
-            lifecycle.current_runtime_status(agent).get("runtime")
-            or resolved.get("selected_runtime", "inline")
-        )
-        current_resolved = config.resolved_agent_config(
-            agent,
-            runtime_name=str(current),
-        )
-        cli = current_resolved.get("cli", resolved.get("cli", "claude-code"))
         try:
-            adapter = get_adapter(cli)
-        except KeyError:
-            continue
-        if _maybe_recover_context_pressure(agent, target, adapter, current_resolved, now_s):
-            continue
-        reason = _detect_runtime_failure_reason(target, adapter)
-        if not reason:
-            # No failure on current runtime — check if agent is on
-            # fallback and primary might have recovered.
-            chain = resolved.get("runtime_chain", [])
-            primary_name = str(chain[0].get("name", "inline")) if chain else "inline"
-            if str(current) != primary_name:
-                _maybe_failback(agent, target, str(current), primary_name, now_s)
-            continue
+            _guard_one_agent_runtime(agent, failover)
+        except KeyError as e:
+            print(f"  ⚠️ agent-runtime-guard: skipping {agent}: {e}")
+        except Exception as e:
+            print(f"  ⚠️ agent-runtime-guard: {agent} skipped after {type(e).__name__}: {e}")
+
+
+def _guard_one_agent_runtime(agent: str, failover) -> None:
+    now_s = time.time()
+    if _agent_in_cooldown(agent, now_s):
+        return
+    team = config.load_team()
+    target = tmux.Target(team.get("session", "EduFlow"), agent)
+    if not tmux.has_window(target):
+        return
+    resolved = config.resolved_agent_config(agent)
+    current = (
+        lifecycle.current_runtime_status(agent).get("runtime")
+        or resolved.get("selected_runtime", "inline")
+    )
+    current_resolved = config.resolved_agent_config(
+        agent,
+        runtime_name=str(current),
+    )
+    cli = current_resolved.get("cli", resolved.get("cli", "claude-code"))
+    try:
+        adapter = get_adapter(cli)
+    except KeyError:
+        return
+    if _maybe_recover_context_pressure(agent, target, adapter, current_resolved, now_s):
+        return
+    reason = _detect_runtime_failure_reason(target, adapter)
+    if not reason:
+        # No failure on current runtime — check if agent is on
+        # fallback and primary might have recovered.
+        chain = resolved.get("runtime_chain", [])
+        primary_name = str(chain[0].get("name", "inline")) if chain else "inline"
+        if str(current) != primary_name:
+            _maybe_failback(agent, target, str(current), primary_name, now_s)
+        return
+    _update_guard_agent(
+        agent,
+        last_failure_reason=reason,
+        last_runtime=current,
+        last_checked_at=now_s,
+    )
+    result = failover.execute_fallback_loop(
+        agent,
+        target,
+        str(current),
+        reason,
+        trigger="watchdog",
+    )
+    outcome = result["outcome"]
+    to_runtime = result["to_runtime"]
+    attempts = len(result["attempts"])
+    best = result["best_outcome"]
+    pool_switched = result["pool_switched"]
+    exhausted = result["exhausted"]
+    _update_guard_agent(
+        agent,
+        from_runtime=str(current),
+        to_runtime=str(to_runtime),
+        last_switch_reason=reason,
+        last_switch_outcome=outcome,
+        last_best_outcome=best,
+        last_attempts=attempts,
+        last_pool_switched=pool_switched,
+    )
+    if outcome == lifecycle.READY:
+        hit_cooldown, _ = _record_switch_and_check_cooldown(agent, now_s)
+        _notify_runtime_switch(agent, str(current), str(to_runtime),
+                               f"{reason} (best={best}, attempts={attempts}, cross_pool={pool_switched})")
+        # Record failback state so the guard can probe the original
+        # primary for recovery.  Preserve existing in_fallback_since
+        # if the agent was already on a fallback chain.
+        existing_fb = _guard_state().get("agents", {}).get(agent, {}).get("failback", {})
         _update_guard_agent(
             agent,
-            last_failure_reason=reason,
-            last_runtime=current,
-            last_checked_at=now_s,
+            escalation_needed=False,
+            escalation_reason="",
+            last_alert_level="auto_switched_recovered",
+            failback={
+                "primary_runtime": str(current),
+                "primary_failure_reason": reason,
+                "primary_healthy_streak": 0,
+                "last_primary_smoke_at": 0.0,
+                "in_fallback_since": existing_fb.get("in_fallback_since") or now_s,
+            },
         )
-        result = failover.execute_fallback_loop(
-            agent,
-            target,
-            str(current),
-            reason,
-            trigger="watchdog",
-        )
-        outcome = result["outcome"]
-        to_runtime = result["to_runtime"]
-        attempts = len(result["attempts"])
-        best = result["best_outcome"]
-        pool_switched = result["pool_switched"]
-        exhausted = result["exhausted"]
+        print(f"  🔀 agent-runtime-guard: {agent} switched {current} -> {to_runtime} "
+              f"({reason}, attempts={attempts}, cross_pool={pool_switched})")
+        if hit_cooldown:
+            _apply_manager_policy(agent)
+            print(f"  ⛔ agent-runtime-guard: {agent} entered cooldown after repeated runtime switches")
+    elif exhausted:
         _update_guard_agent(
             agent,
-            from_runtime=str(current),
-            to_runtime=str(to_runtime),
-            last_switch_reason=reason,
-            last_switch_outcome=outcome,
-            last_best_outcome=best,
-            last_attempts=attempts,
-            last_pool_switched=pool_switched,
+            needs_manager_action=True,
+            escalation_needed=True,
+            escalation_reason="fallback_chain_exhausted",
+            last_alert_level="escalation_repair_in_progress",
         )
-        if outcome == lifecycle.READY:
-            hit_cooldown, _ = _record_switch_and_check_cooldown(agent, now_s)
-            _notify_runtime_switch(agent, str(current), str(to_runtime),
-                                   f"{reason} (best={best}, attempts={attempts}, cross_pool={pool_switched})")
-            # Record failback state so the guard can probe the original
-            # primary for recovery.  Preserve existing in_fallback_since
-            # if the agent was already on a fallback chain.
-            existing_fb = _guard_state().get("agents", {}).get(agent, {}).get("failback", {})
-            _update_guard_agent(
-                agent,
-                escalation_needed=False,
-                escalation_reason="",
-                last_alert_level="auto_switched_recovered",
-                failback={
-                    "primary_runtime": str(current),
-                    "primary_failure_reason": reason,
-                    "primary_healthy_streak": 0,
-                    "last_primary_smoke_at": 0.0,
-                    "in_fallback_since": existing_fb.get("in_fallback_since") or now_s,
-                },
-            )
-            print(f"  🔀 agent-runtime-guard: {agent} switched {current} -> {to_runtime} "
-                  f"({reason}, attempts={attempts}, cross_pool={pool_switched})")
-            if hit_cooldown:
-                _apply_manager_policy(agent)
-                print(f"  ⛔ agent-runtime-guard: {agent} entered cooldown after repeated runtime switches")
-        elif exhausted:
-            _update_guard_agent(
-                agent,
-                needs_manager_action=True,
-                escalation_needed=True,
-                escalation_reason="fallback_chain_exhausted",
-                last_alert_level="escalation_repair_in_progress",
-            )
-            print(f"  ⏸ agent-runtime-guard: {agent} hit {reason} but all fallback runtimes failed "
-                  f"(best={best}, attempts={attempts})")
-        else:
-            # Non-READY but not exhausted — one of the intermediate
-            # outcomes (env_drift, smoke_failed, ready_unproven). Still
-            # counts as a switch for cooldown purposes.
-            hit_cooldown, _ = _record_switch_and_check_cooldown(agent, now_s)
-            _update_guard_agent(
-                agent,
-                needs_manager_action=True,
-                escalation_needed=True,
-                escalation_reason=f"switch_unverified:{outcome}",
-                last_alert_level="escalation_repair_in_progress",
-            )
-            print(f"  ⚠️ agent-runtime-guard: {agent} switched {current} -> {to_runtime} "
-                  f"but outcome={outcome} (best={best}); needs repair")
-            if hit_cooldown:
-                _apply_manager_policy(agent)
+        print(f"  ⏸ agent-runtime-guard: {agent} hit {reason} but all fallback runtimes failed "
+              f"(best={best}, attempts={attempts})")
+    else:
+        # Non-READY but not exhausted — one of the intermediate
+        # outcomes (env_drift, smoke_failed, ready_unproven). Still
+        # counts as a switch for cooldown purposes.
+        hit_cooldown, _ = _record_switch_and_check_cooldown(agent, now_s)
+        _update_guard_agent(
+            agent,
+            needs_manager_action=True,
+            escalation_needed=True,
+            escalation_reason=f"switch_unverified:{outcome}",
+            last_alert_level="escalation_repair_in_progress",
+        )
+        print(f"  ⚠️ agent-runtime-guard: {agent} switched {current} -> {to_runtime} "
+              f"but outcome={outcome} (best={best}); needs repair")
+        if hit_cooldown:
+            _apply_manager_policy(agent)
 
 
 def _maybe_refresh_claude_oauth(now: float) -> None:

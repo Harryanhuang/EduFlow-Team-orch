@@ -16,6 +16,7 @@ from eduflow.commands import (
     say, router, watchdog, task, remember, recall, forget, peek,
     health, usage, install_hooks, version, task_publish, runtime_guard,
     workflow, runtime, memory_cli, sleep_idle, residency_wake, asset,
+    tts,
 )
 from eduflow.util import error_exit
 
@@ -83,6 +84,9 @@ _COMMAND_GROUPS: list[tuple[str, list[tuple[str, CommandHandler]]]] = [
         ("usage", usage.main),
         ("install-hooks", install_hooks.main),
         ("version", version.main),
+    ]),
+    ("voice tts", [
+        ("tts", tts.main),
     ]),
 ]
 
