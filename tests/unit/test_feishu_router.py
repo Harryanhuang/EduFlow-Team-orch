@@ -5,7 +5,7 @@ since this is the heart of "who sees what message".
 """
 from __future__ import annotations
 
-from eduflow.feishu.router import Action, classify_event
+from eduflow.feishu.router import Action, classify_event, _reset_rate_limit
 
 
 _AGENTS = ["manager", "worker_cc", "worker_codex"]
@@ -17,6 +17,7 @@ _EV_COUNTER = 0
 def _ev(**overrides) -> dict:
     global _EV_COUNTER
     _EV_COUNTER += 1
+    _reset_rate_limit()
     base = {
         "message_id": f"om_{_EV_COUNTER}",
         "chat_id": "oc_team",

@@ -25,6 +25,8 @@ can grep for them: `no_msg_id` / `dedup` / `cross_team` / `bot_self`
 from __future__ import annotations
 
 import re
+import time
+from collections import deque
 from dataclasses import dataclass, field
 from enum import Enum
 
@@ -66,6 +68,26 @@ _BROADCAST_TOKENS = ("@team", "@all", "@everyone")
 
 _MAX_MESSAGE_LEN = 4000
 _SEEN_MESSAGE_IDS: set[str] = set()
+
+_RATE_LIMIT_MAX = 10          # messages
+_RATE_LIMIT_WINDOW_S = 60     # seconds
+_SENDER_TIMESTAMPS = {}
+
+
+def _rate_limit_ok(sender_id: str) -> bool:
+    now = time.monotonic()
+    window = _SENDER_TIMESTAMPS.setdefault(sender_id, deque())
+    while window and window[0] < now - _RATE_LIMIT_WINDOW_S:
+        window.popleft()
+    if len(window) >= _RATE_LIMIT_MAX:
+        return False
+    window.append(now)
+    return True
+
+
+def _reset_rate_limit() -> None:
+    """Clear sender rate-limit state. Exported for test isolation only."""
+    _SENDER_TIMESTAMPS.clear()
 
 
 def _max_message_len() -> int:
@@ -184,6 +206,9 @@ def classify_event(event: dict, *,
         return Decision(Action.DROP, reason="duplicate message_id", **common)
     if chat_id and event.get("chat_id") and event["chat_id"] != chat_id:
         return Decision(Action.DROP, reason="cross_team", **common)
+
+    if not _rate_limit_ok(event.get("sender_id", "")):
+        return Decision(Action.DROP, reason="rate limit exceeded", **common)
 
     raw_text = (event.get("text") or "").strip()
 

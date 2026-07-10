@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import json
 
-from eduflow.feishu.router import Decision
+from eduflow.feishu.router import Decision, _reset_rate_limit
 from eduflow.feishu.subscribe import process_lines
 
 
@@ -17,6 +17,7 @@ def _ndjson(*events: dict) -> list[str]:
 def _wrapped(message_id: str, chat_id: str, sender_open_id: str,
              content_text: str, *, msg_type: str = "text") -> dict:
     """Mirror lark-cli --compact event payload shape."""
+    _reset_rate_limit()
     return {
         "event": {
             "message": {
@@ -31,6 +32,7 @@ def _wrapped(message_id: str, chat_id: str, sender_open_id: str,
 
 
 def test_empty_iterable_returns_zero_stats():
+    _reset_rate_limit()
     apply_calls = []
     stats = process_lines(
         iter([]),
@@ -43,6 +45,7 @@ def test_empty_iterable_returns_zero_stats():
 
 
 def test_single_human_message_routes_to_manager_via_apply():
+    _reset_rate_limit()
     line = _ndjson(_wrapped("om_1", "oc_team", "ou_user", "please help"))
     applied = []
     stats = process_lines(
@@ -61,6 +64,7 @@ def test_single_human_message_routes_to_manager_via_apply():
 
 
 def test_dedup_drops_repeated_message_ids():
+    _reset_rate_limit()
     same = _wrapped("om_1", "oc_team", "ou_user", "x")
     applied = []
     stats = process_lines(
@@ -75,6 +79,7 @@ def test_dedup_drops_repeated_message_ids():
 
 
 def test_invalid_json_is_dropped_with_bad_json_reason():
+    _reset_rate_limit()
     stats = process_lines(
         ["not-json", json.dumps(_wrapped("om_1", "oc_team", "ou", "hi"))],
         team_agents=_AGENTS,
@@ -87,6 +92,7 @@ def test_invalid_json_is_dropped_with_bad_json_reason():
 
 
 def test_blank_lines_are_skipped_silently():
+    _reset_rate_limit()
     stats = process_lines(
         ["", "  ", "\n", json.dumps(_wrapped("om_1", "oc_team", "ou", "hi"))],
         team_agents=_AGENTS,
@@ -98,6 +104,7 @@ def test_blank_lines_are_skipped_silently():
 
 
 def test_cross_team_chat_id_is_dropped():
+    _reset_rate_limit()
     stats = process_lines(
         _ndjson(_wrapped("om_1", "oc_other", "ou", "hi")),
         team_agents=_AGENTS,
@@ -109,6 +116,7 @@ def test_cross_team_chat_id_is_dropped():
 
 
 def test_bot_self_messages_are_dropped():
+    _reset_rate_limit()
     stats = process_lines(
         _ndjson(_wrapped("om_1", "oc_team", "ou_bot", "hi")),
         team_agents=_AGENTS,
@@ -125,6 +133,7 @@ def test_human_message_routes_to_manager_r174():
     those with `@worker_X` text. Manager parses intent and dispatches
     via `eduflow send`. Verifies the subscribe→classify→apply
     chain emits a Decision targeting only manager."""
+    _reset_rate_limit()
     applied = []
     stats = process_lines(
         _ndjson(_wrapped("om_1", "oc_team", "ou_user", "@worker_codex review")),
@@ -142,6 +151,7 @@ def test_progress_callback_failure_does_not_kill_loop():
     denied / tmp-replace race could raise — that must NOT kill the
     daemon. Cursor staleness recovers on next event; daemon death does
     not. Verifies the try/except inside process_lines."""
+    _reset_rate_limit()
     applied = []
     progress_calls = []
 
@@ -176,6 +186,7 @@ def test_apply_fn_failure_does_not_kill_loop_and_does_not_dedup_msg():
     silently dedup the failed-to-apply message. Now: apply_fn errors
     are caught + counted as 'apply_error' drops; msg_id is NOT marked
     seen so retry can re-process."""
+    _reset_rate_limit()
     apply_calls = []
 
     def flaky_apply(decision):
@@ -209,6 +220,7 @@ def test_apply_fn_failure_does_not_kill_loop_and_does_not_dedup_msg():
 
 
 def test_progress_callback_invoked_per_handled_event():
+    _reset_rate_limit()
     applied = []
     progress = []
 
@@ -231,6 +243,7 @@ def test_progress_callback_invoked_per_handled_event():
 
 
 def test_seen_msg_ids_grows_only_with_handled_events():
+    _reset_rate_limit()
     stats = process_lines(
         _ndjson(
             _wrapped("om_1", "oc_team", "ou_user", "hi"),
@@ -246,6 +259,7 @@ def test_seen_msg_ids_grows_only_with_handled_events():
 
 def test_normalises_flat_event_with_top_level_fields():
     """Some upstream variants emit flat events without the .event wrapper."""
+    _reset_rate_limit()
     flat = json.dumps({
         "message_id": "om_x",
         "chat_id": "oc_team",
@@ -270,6 +284,7 @@ def test_normalises_real_lark_cli_compact_wire_format():
     Top-level fields, content as a plain string (NOT JSON-encoded), and
     message_type rather than msg_type. The pre-fix _normalise dropped
     these as text="" → reason="empty"."""
+    _reset_rate_limit()
     real = json.dumps({
         "chat_id": "oc_989e33567a4be168c7e7a286287a3965",
         "chat_type": "group",
@@ -299,6 +314,7 @@ def test_normalises_real_lark_cli_compact_wire_format():
 def test_normalises_real_lark_cli_compact_with_json_encoded_content():
     """Same wire format but content is JSON-encoded {"text": "..."} —
     the older Feishu-webhook style some lark-cli versions still emit."""
+    _reset_rate_limit()
     real = json.dumps({
         "chat_id": "oc_team",
         "content": '{"text": "@worker_codex hi"}',
@@ -319,6 +335,7 @@ def test_normalises_real_lark_cli_compact_with_json_encoded_content():
 
 
 def test_default_target_param_routes_human_messages_elsewhere():
+    _reset_rate_limit()
     applied = []
     process_lines(
         _ndjson(_wrapped("om_1", "oc_team", "ou_user", "anything")),
@@ -338,6 +355,7 @@ def test_normalises_image_message_to_placeholder_text():
     because content didn't include a 'text' field. Now produces a
     placeholder so the router can route the message and the worker
     knows something arrived."""
+    _reset_rate_limit()
     line = json.dumps({
         "message_id": "om_img1",
         "chat_id": "oc_team",
@@ -354,6 +372,7 @@ def test_normalises_image_message_to_placeholder_text():
 
 
 def test_normalises_image_message_no_key_falls_back_to_bracket():
+    _reset_rate_limit()
     line = json.dumps({
         "message_id": "om_img2",
         "chat_id": "oc_team",
@@ -369,6 +388,7 @@ def test_normalises_image_message_no_key_falls_back_to_bracket():
 
 
 def test_normalises_file_message_with_filename():
+    _reset_rate_limit()
     line = json.dumps({
         "message_id": "om_file1",
         "chat_id": "oc_team",
@@ -388,6 +408,7 @@ def test_normalises_file_message_with_filename():
 
 
 def test_normalises_file_message_filename_only():
+    _reset_rate_limit()
     line = json.dumps({
         "message_id": "om_file2",
         "chat_id": "oc_team",
@@ -403,6 +424,7 @@ def test_normalises_file_message_filename_only():
 
 
 def test_normalises_audio_message():
+    _reset_rate_limit()
     line = json.dumps({
         "message_id": "om_audio1",
         "chat_id": "oc_team",
@@ -419,6 +441,7 @@ def test_normalises_audio_message():
 
 
 def test_normalises_sticker_message():
+    _reset_rate_limit()
     line = json.dumps({
         "message_id": "om_stk1",
         "chat_id": "oc_team",
@@ -436,6 +459,7 @@ def test_normalises_sticker_message():
 def test_normalises_post_text_only_message():
     """Boss-flagged 2026-05-06: 飞书富文本 (post) 消息要被路由到 manager
     inbox, 不能丢. 纯文字段落场景."""
+    _reset_rate_limit()
     line = json.dumps({
         "message_id": "om_post1",
         "chat_id": "oc_team",
@@ -461,6 +485,7 @@ def test_normalises_post_text_only_message():
 
 def test_normalises_post_text_plus_image_message():
     """图 + 文混合: 老板典型场景 (发个截图 + 说 "看这个 bug")."""
+    _reset_rate_limit()
     line = json.dumps({
         "message_id": "om_post2",
         "chat_id": "oc_team",
@@ -487,6 +512,7 @@ def test_normalises_post_text_plus_image_message():
 
 def test_normalises_post_text_plus_file_message():
     """文件 + 文字混合."""
+    _reset_rate_limit()
     line = json.dumps({
         "message_id": "om_post3",
         "chat_id": "oc_team",
@@ -515,6 +541,7 @@ def test_normalises_post_text_plus_file_message():
 
 def test_normalises_post_with_link_and_at_mention():
     """post 里的超链接 + @人 也要可见."""
+    _reset_rate_limit()
     line = json.dumps({
         "message_id": "om_post4",
         "chat_id": "oc_team",
@@ -544,6 +571,7 @@ def test_normalises_post_with_link_and_at_mention():
 def test_text_message_extraction_unchanged_after_b1():
     """Regression: text-message extraction still works after _extract_text
     refactor."""
+    _reset_rate_limit()
     line = json.dumps({
         "message_id": "om_t",
         "chat_id": "oc_team",
@@ -564,6 +592,7 @@ def test_on_line_received_fires_for_every_non_empty_line_including_drops():
     bump the watchdog's stall timer. Without this, chats with mostly
     self-talk/dedup traffic trip the 600s stall threshold even though
     subscribe is alive (caught 2026-05-08 host smoke)."""
+    _reset_rate_limit()
     fires = []
     bot_self_line = json.dumps({
         "event": {
@@ -596,6 +625,7 @@ def test_on_line_received_callback_failure_does_not_kill_loop():
     """The aliveness callback runs first, before parse. A buggy callback
     must not kill subscribe — subscribe stalling is a worse outcome
     than missing one heartbeat. Verifies the try/except wrapper."""
+    _reset_rate_limit()
     fires = []
     def flaky():
         fires.append(1)
