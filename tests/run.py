@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import importlib
 import inspect
+import os
 import sys
 import tempfile
 import traceback
@@ -30,16 +31,39 @@ class _MiniMonkeyPatch:
     """Tiny pytest-monkeypatch subset for the stdlib runner."""
 
     def __init__(self) -> None:
-        self._undo: list[tuple[object, str, object]] = []
+        self._undo: list[tuple[object | None, str, object | None]] = []
 
     def setattr(self, obj: object, name: str, value: object) -> None:
         self._undo.append((obj, name, getattr(obj, name)))
         setattr(obj, name, value)
 
+    def setenv(self, name: str, value: str, prepend: str | None = None) -> None:
+        original = os.environ.get(name)
+        self._undo.append((None, name, original))
+        if prepend is not None:
+            value = prepend + value
+        os.environ[name] = value
+
+    def delenv(self, name: str, raising: bool = True) -> None:
+        original = os.environ.get(name)
+        if name not in os.environ:
+            if raising:
+                raise KeyError(name)
+            return
+        self._undo.append((None, name, original))
+        del os.environ[name]
+
     def undo(self) -> None:
         while self._undo:
             obj, name, original = self._undo.pop()
-            setattr(obj, name, original)
+            if obj is None:
+                # environment variable
+                if original is None:
+                    os.environ.pop(name, None)
+                else:
+                    os.environ[name] = original
+            else:
+                setattr(obj, name, original)
 
 
 def _discover(filt: str = "") -> list[tuple[str, str]]:
