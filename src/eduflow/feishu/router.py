@@ -49,6 +49,7 @@ class Decision:
     msg_id: str = ""
     reason: str = ""                                    # drop reason or "" on route
     create_time: str = ""                               # epoch ms (for catchup cursor)
+    sender_id: str = ""                                 # Feishu open_id of the message sender
 
     def is_drop(self) -> bool:
         return self.action is Action.DROP
@@ -195,7 +196,11 @@ def classify_event(event: dict, *,
     agents = set(team_agents)
     msg_id = event.get("message_id", "")
     text = event.get("text") or ""
-    common = {"msg_id": msg_id, "create_time": str(event.get("create_time", ""))}
+    common = {
+        "msg_id": msg_id,
+        "create_time": str(event.get("create_time", "")),
+        "sender_id": event.get("sender_id", ""),
+    }
     if len(text) > _max_message_len():
         return Decision(Action.DROP, reason="message too long", **common)
     if not msg_id:

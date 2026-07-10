@@ -28,8 +28,13 @@ def _all_markdown(reply) -> str:
 
 def _ctx(*, agents=("manager", "worker_cc", "worker_codex"),
          session="EduFlow", run=None, sleep=None, background=None,
-         lazy_agents=()):
-    """Build a SlashContext for tests with sane stubs by default."""
+         lazy_agents=(), sender_id=None):
+    """Build a SlashContext for tests with sane stubs by default.
+
+    `sender_id` defaults to the first configured operator so privileged
+    slash commands like /send stay authorized under the project toml.
+    Tests that want to exercise rejection pass an explicit sender_id or
+    monkeypatch _operator_ids."""
     fake_run = run or (lambda *a, **kw: type("R", (), {
         "returncode": 0, "stdout": "ok\n", "stderr": ""})())
     fake_sleep = sleep or (lambda _s: None)
@@ -37,6 +42,8 @@ def _ctx(*, agents=("manager", "worker_cc", "worker_codex"),
     # execution) so test inject capture isn't polluted by post-compact
     # reidentify firing inline.
     fake_background = background or (lambda _fn: None)
+    if sender_id is None:
+        sender_id = next(iter(slash._operator_ids()), "")
     return slash.SlashContext(
         team_agents=list(agents),
         session=session,
@@ -44,6 +51,7 @@ def _ctx(*, agents=("manager", "worker_cc", "worker_codex"),
         run=fake_run,
         sleep=fake_sleep,
         background=fake_background,
+        sender_id=sender_id,
     )
 
 
