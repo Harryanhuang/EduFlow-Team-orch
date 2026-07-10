@@ -11,10 +11,12 @@
 #
 # Network:
 #   lark-cli's event +subscribe long-poll needs to reach
-#   open.larksuite.com / open.feishu.cn. Run the container with
-#   --network host (or compose `network_mode: host`) on Linux to avoid
-#   NAT timeouts; on macOS/Windows Docker Desktop, default bridge
-#   works but lark-cli round-trips are slower.
+#   open.larksuite.com / open.feishu.cn. The default bridge network is
+#   recommended. If you see WebSocket stalls behind NAT (common on
+#   Linux bridge networks) or on Docker Desktop, tune
+#   EDUFLOW_ROUTER_STALE_S (e.g. 300) so the router respawns faster.
+#   Avoid `network_mode: host`; it provides no benefit for outbound
+#   long-poll and breaks cross-container DNS on Linux.
 
 # kimi-cli ≥1.0 requires Python ≥3.12; pyproject's
 # requires-python = ">=3.10" stays compatible.

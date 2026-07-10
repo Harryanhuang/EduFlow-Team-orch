@@ -1,7 +1,8 @@
 # Minimum-viable compose for EduFlow.
 #
-# Mounts a host `./team-data/` directory into /data so team.json,
-# runtime_config.json, and the state dir survive `docker compose down`.
+# Mounts a host `./team-data/` directory into /home/eduflow/.eduflow
+# so team.json, runtime_config.json, and the state dir survive
+# `docker compose down`.
 # Mounts the host's lark-cli OAuth profile so `eduflow say`/`router`
 # don't need a fresh authentication round inside the container.
 #
@@ -46,7 +47,7 @@ services:
       # changes. RW (not :ro) because pip's `*.egg-info` writes into
       # src/ on first install.
       - ./src:/app/src
-      - ./team-data:/data
+      - ./team-data:/home/eduflow/.eduflow
       # Share the host's lark-cli OAuth profile (config.json + cache)
       # but keep the per-app fcntl lock dir container-private. Sharing
       # the lock dir would let a host router + container router race
@@ -87,10 +88,11 @@ services:
       # say / slash all use bot identity. Override with `user` only
       # if you've run `lark-cli auth login` inside the container.
       - EDUFLOW_LARK_SEND_AS=${EDUFLOW_LARK_SEND_AS:-bot}
-      # On constrained Docker Desktop networks, lark-cli's long-poll
-      # WebSocket may go quiet. Set EDUFLOW_ROUTER_STALE_S in .env
-      # (suggested 300) to make the router respawn faster when that
-      # happens.
+      # On constrained Docker Desktop or bridge networks, lark-cli's
+      # long-poll WebSocket may go quiet. On Linux the default bridge
+      # can also hit NAT timeout for long-lived idle connections. Set
+      # EDUFLOW_ROUTER_STALE_S in .env (suggested 300) to make the
+      # router respawn faster when either happens.
       - EDUFLOW_ROUTER_STALE_S=${EDUFLOW_ROUTER_STALE_S:-}
     tty: true
     stdin_open: true

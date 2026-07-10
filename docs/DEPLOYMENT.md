@@ -214,7 +214,7 @@ docker compose build
 docker compose up -d
 
 # 4. bootstrap config inside the container (output lands in ./team-data/)
-docker compose exec --workdir /data eduflow eduflow init
+docker compose exec --workdir /home/eduflow/.eduflow eduflow eduflow init
 $EDITOR team-data/eduflow.toml    # set chat_id + agents
 
 # 5. launch the team + verify
@@ -242,13 +242,16 @@ docker compose exec eduflow tmux attach -t EduFlow   # see panes; Ctrl+B d to le
 
 **Compose mounts (read `docker-compose.yml` for the full list):**
 
-| Host path                              | Container path                          | Purpose |
-| -------------------------------------- | --------------------------------------- | ------- |
-| `./src/`                               | `/app/src/`                             | Hot-reload: edit on host, container picks up next invocation |
-| `./team-data/`                         | `/data/`                                | `eduflow.toml` + state survives `docker compose down` |
-| `~/.lark-cli/config.json`              | `/root/.lark-cli/config.json`           | OAuth profile reused (file mount only — locks/ stays container-private to avoid host/container fcntl contention) |
-| `~/.claude/.credentials.json`          | `/root/.claude/.credentials.json`       | Claude OAuth (RW so token refreshes persist back) |
-| `~/.codex` / `~/.kimi`                 | `/root/.codex` / `/root/.kimi`          | Per-CLI credentials |
+| Host path                              | Container path                              | Purpose |
+| -------------------------------------- | ------------------------------------------- | ------- |
+| `./src/`                               | `/app/src/`                                 | Hot-reload: edit on host, container picks up next invocation |
+| `./team-data/`                         | `/home/eduflow/.eduflow/`                   | `eduflow.toml` + state survives `docker compose down` |
+| `~/.lark-cli/config.json`              | `/home/eduflow/.lark-cli/config.json`       | OAuth profile reused (**read-only**; locks/ stays container-private to avoid host/container fcntl contention) |
+| `~/.claude/.credentials.json`          | `/home/eduflow/.claude/.credentials.json`   | Claude OAuth (RW so token refreshes persist back) |
+| `~/.claude.json`                       | `/home/eduflow/host-claude.json`            | Per-agent copy source (**read-only**) |
+| `~/.claude/projects`                   | `/home/eduflow/.claude/projects`            | Claude projects/usage logs |
+| `~/.codex/auth.json`                   | `/home/eduflow/.codex/auth.json`            | Codex OAuth (**read-only**) |
+| `~/.kimi/config.json`                  | `/home/eduflow/.kimi/config.json`           | Kimi OAuth (**read-only**) |
 
 The base image deliberately does **not** bake in `claude` / `codex` /
 `kimi` — each has its own auth and license. Derive from `eduflow:dev`
