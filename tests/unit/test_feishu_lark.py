@@ -666,3 +666,36 @@ def test_subprocess_env_skips_token_when_no_app_id_resolvable():
             env = lark.subprocess_env()
         assert "LARKSUITE_CLI_TENANT_ACCESS_TOKEN" not in env
         assert "LARKSUITE_CLI_APP_ID" not in env
+
+
+def test_ensure_tenant_token_cache_created_with_restrictive_permissions():
+    """REGRESSION (Task 4.2): cache file must be created with 0o600 so
+    the tenant token is never world-readable, even briefly."""
+    import os
+    import tempfile
+    with tempfile.TemporaryDirectory() as td:
+        cache = _cache_path(td)
+        fetch = _FetchRec(result={"token": "t-secure", "expire_at": 9999999999})
+        with env_patch(LARKSUITE_CLI_TENANT_ACCESS_TOKEN=None,
+                       FEISHU_APP_ID="cli_x", FEISHU_APP_SECRET="s"):
+            token = lark._ensure_tenant_token(fetch=fetch, now=lambda: 1,
+                                              cache_path=cache)
+        assert token == "t-secure"
+        assert os.path.exists(cache)
+        mode = os.stat(cache).st_mode & 0o777
+        assert mode == 0o600, f"expected 0o600, got 0o{mode:o}"
+
+
+def test_subprocess_env_does_not_create_state_dir_when_env_token_present():
+    """REGRESSION (Task 4.2): when LARKSUITE_CLI_TENANT_ACCESS_TOKEN is
+    already set, subprocess_env must not touch the cache path (and
+    therefore must not create the state directory)."""
+    import os
+    import tempfile
+    with tempfile.TemporaryDirectory() as td:
+        bad_state = os.path.join(td, "does", "not", "exist")
+        with env_patch(LARKSUITE_CLI_TENANT_ACCESS_TOKEN="t-preset",
+                       EDUFLOW_STATE_DIR=bad_state):
+            env = lark.subprocess_env()
+        assert env.get("LARKSUITE_CLI_TENANT_ACCESS_TOKEN") == "t-preset"
+        assert not os.path.exists(bad_state)

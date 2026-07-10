@@ -99,19 +99,19 @@ def _ensure_tenant_token(*, fetch: Callable | None = None,
     """
     import json as _json
     import time as _time
-    # Resolve cache_path at call time so tests that patch the module-level
-    # `_tenant_token_cache_path` or override `EDUFLOW_STATE_DIR` take effect.
-    if cache_path is None:
-        cache_path = _tenant_token_cache_path()
-    else:
+    # Don't resolve the default cache path until we actually need to touch
+    # disk. If `LARKSUITE_CLI_TENANT_ACCESS_TOKEN` is already set we can
+    # return early without creating the state directory.
+    if cache_path is not None:
         cache_path = Path(cache_path)
     existing = env_str("LARKSUITE_CLI_TENANT_ACCESS_TOKEN")
     if existing:
         return existing
     now_fn = now or _time.time
     now_t = int(now_fn())
+    path = cache_path or _tenant_token_cache_path()
     try:
-        with open(cache_path, "r", encoding="utf-8") as fh:
+        with open(path, "r", encoding="utf-8") as fh:
             cached = _json.loads(fh.read())
         if int(cached.get("expire_at", 0)) > now_t and cached.get("token"):
             return str(cached["token"])
@@ -125,9 +125,13 @@ def _ensure_tenant_token(*, fetch: Callable | None = None,
     fresh = (fetch or _fetch_tenant_token)(app_id, app_secret)
     if not fresh or not fresh.get("token"):
         return None
+    path = cache_path or _tenant_token_cache_path()
     try:
-        cache_path.write_text(_json.dumps(fresh), encoding="utf-8")
-        os.chmod(cache_path, 0o600)
+        # Create the cache file atomically with restrictive permissions so
+        # a world-readable file is never exposed, even briefly.
+        fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)
+        with os.fdopen(fd, "w", encoding="utf-8") as fh:
+            fh.write(_json.dumps(fresh))
     except OSError:
         pass  # cache write best-effort; the in-memory return is the load-bearing path
     return str(fresh["token"])
