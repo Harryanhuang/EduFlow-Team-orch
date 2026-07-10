@@ -11,9 +11,14 @@ from eduflow.feishu.router import Action, classify_event
 _AGENTS = ["manager", "worker_cc", "worker_codex"]
 
 
+_EV_COUNTER = 0
+
+
 def _ev(**overrides) -> dict:
+    global _EV_COUNTER
+    _EV_COUNTER += 1
     base = {
-        "message_id": "om_1",
+        "message_id": f"om_{_EV_COUNTER}",
         "chat_id": "oc_team",
         "sender_id": "ou_user",
         "text": "hello",
@@ -32,7 +37,7 @@ def test_drop_when_message_id_missing():
 
 
 def test_drop_when_already_seen():
-    d = classify_event(_ev(), team_agents=_AGENTS, seen_msg_ids={"om_1"})
+    d = classify_event(_ev(message_id="om_1"), team_agents=_AGENTS, seen_msg_ids={"om_1"})
     assert d.is_drop() and d.reason == "dedup"
 
 
