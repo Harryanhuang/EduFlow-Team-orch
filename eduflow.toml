@@ -80,7 +80,7 @@ switch_on = ["spawn_failed", "ready_timeout", "rate_limit", "auth_failure", "pro
 
 [runtime_registry.manager_backup_codex]
 cli = "codex-cli"
-model = "gpt-5.6"
+model = "gpt-5.6-terra"
 provider = "openai"
 env_profile = "codex_primary"
 fallback_to = "manager_backup_qoder_qwen_max"
