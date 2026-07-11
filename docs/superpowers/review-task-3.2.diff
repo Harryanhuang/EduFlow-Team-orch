@@ -1,0 +1,93 @@
+diff --git a/src/eduflow/runtime/lifecycle.py b/src/eduflow/runtime/lifecycle.py
+index 0e9926dd..9db362e2 100644
+--- a/src/eduflow/runtime/lifecycle.py
++++ b/src/eduflow/runtime/lifecycle.py
+@@ -28,20 +28,21 @@ from __future__ import annotations
+ import json
+ import os
+ import shlex
+ import shutil
+ import time
+ from pathlib import Path
+ 
+ from eduflow.agents import get_adapter, identity
+ from eduflow.agents.codex_cli import ensure_workdir_trusted
+ from eduflow.runtime import config, paths, tmux, wake
++from eduflow.runtime.names import validate_agent_name, validate_model_name
+ from eduflow.store import local_facts
+ from eduflow.util import env_str
+ 
+ 
+ # env vars to propagate from the operator's shell into every spawned pane
+ # so worker agents' shell-out calls (via Bash tool) see the deployment's
+ # state dir instead of falling back to ~/.eduflow.
+ #
+ # FEISHU_APP_*/LARKSUITE_CLI_APP_* added 2026-05-08 (bringup B5): when
+ # tmux server was started by an earlier checkout's `eduflow up`, new
+@@ -730,20 +731,24 @@ def _wait_for_pid_exit(pid: int, *, timeout_s: float = 3.0) -> None:
+ def _spawn_once(agent: str, target: tmux.Target, resolved: dict, *,
+                 respawn: bool = False) -> tuple[str, str]:
+     """Try to provision the pane with one resolved runtime.
+ 
+     Returns `(outcome, switch_reason)` where `switch_reason` is the signal that
+     may justify moving to the next runtime in the fallback chain.
+     """
+     resolved.setdefault("agent", agent)
+     cli = resolved.get("cli", "claude-code")
+     model = resolved.get("model", "opus")
++    agent = validate_agent_name(agent)
++    model = validate_model_name(model)
++    resolved["agent"] = agent
++    resolved["model"] = model
+     identity.write(agent, role=resolved.get("role") or agent, cli=cli, model=model)
+     if resolved.get("lazy"):
+         local_facts.upsert_status(agent, "待命", "lazy: CLI starts on first message")
+         _write_runtime_status(agent, resolved)
+         return LAZY, ""
+     if cli == "codex-cli":
+         from eduflow.agents.claude_code import agent_home as _agent_home
+         ensure_workdir_trusted(
+             Path.cwd(),
+             Path(_agent_home(agent)) / ".codex" / "config.toml",
+diff --git a/tests/unit/test_runtime_lifecycle_spawn_validation.py b/tests/unit/test_runtime_lifecycle_spawn_validation.py
+new file mode 100644
+index 00000000..ae8c3350
+--- /dev/null
++++ b/tests/unit/test_runtime_lifecycle_spawn_validation.py
+@@ -0,0 +1,36 @@
++"""Tests for name validation enforced before adapter spawn commands.
++
++Task 3.2: agent/model names must be validated before any pane spawn
++side-effect so malformed names can never reach adapter.spawn_cmd().
++"""
++from __future__ import annotations
++
++import pytest
++
++from eduflow.runtime import lifecycle, tmux
++from eduflow.runtime.names import InvalidNameError
++from helpers import isolated_env, tmux_patch
++
++
++def test_spawn_rejects_bad_agent_name():
++    """A semicolon in the agent name must be rejected before tmux.spawn_agent
++    is invoked."""
++    team = {"agents": {"bad;agent": {"cli": "claude-code", "model": "opus"}}}
++    spawn_calls = []
++    with isolated_env(team=team), tmux_patch(
++            spawn_agent=lambda target, cmd: spawn_calls.append((str(target), cmd)) or True):
++        with pytest.raises(InvalidNameError):
++            lifecycle.provision_pane("bad;agent", tmux.Target("S", "bad;agent"))
++    assert not spawn_calls
++
++
++def test_spawn_rejects_bad_model_name():
++    """A slash in the model name must be rejected before tmux.spawn_agent
++    is invoked."""
++    team = {"agents": {"alice": {"cli": "claude-code", "model": "evil/model"}}}
++    spawn_calls = []
++    with isolated_env(team=team), tmux_patch(
++            spawn_agent=lambda target, cmd: spawn_calls.append((str(target), cmd)) or True):
++        with pytest.raises(InvalidNameError):
++            lifecycle.provision_pane("alice", tmux.Target("S", "alice"))
++    assert not spawn_calls

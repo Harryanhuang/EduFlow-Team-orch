@@ -1,0 +1,843 @@
+diff --git a/docs/superpowers/task-5.1-report.md b/docs/superpowers/task-5.1-report.md
+new file mode 100644
+index 00000000..1a93675a
+--- /dev/null
++++ b/docs/superpowers/task-5.1-report.md
+@@ -0,0 +1,88 @@
++# Task 5.1 Report: Add message length limit and deduplication to Feishu router
++
++## What was implemented
++
++- Added a tunable message-length limit to `src/eduflow/feishu/router.py`.
++  - Default: 4000 characters.
++  - Override: `[feishu]` table in `eduflow.toml`, key `max_message_len`.
++- Added duplicate-message detection based on `message_id`.
++  - Callers that already pass `seen_msg_ids` keep the existing `dedup` drop reason.
++  - Callers without a dedup set use a module-level `_SEEN_MESSAGE_IDS` set and get the new `duplicate message_id` drop reason.
++  - Routed messages are recorded; dropped messages are not, so unrelated fixtures/tests that reuse a message id do not false-positive as duplicates.
++- Made `classify_event()` accept the brief's `agents=` keyword while keeping backward compatibility with the existing `team_agents=` keyword.
++- Changed `Action` to a `str`-mixin enum with uppercase values so the brief's `decision.action == "DROP"` assertion passes while preserving all existing `is Action.DROP` identity checks.
++- Updated `tests/unit/test_feishu_router.py` `_ev()` helper to generate unique `message_id`s per call, and adjusted the one test that explicitly relied on the fixed `"om_1"` default.
++
++## RED/GREEN TDD evidence
++
++### Step 1: Failing test written exactly as specified
++
++File: `tests/unit/test_feishu_router_limits.py`
++
++### Step 2: RED — run the new test before patch
++
++```bash
++python3 tests/run.py feishu_router_limits
++```
++
++Output:
++
++```
++FAIL unit/test_feishu_router_limits: 0 passed, 2 failed
++...
++TypeError: classify_event() got an unexpected keyword argument 'agents'
++```
++
++### Step 3: Patch applied to `src/eduflow/feishu/router.py`
++
++### Step 4: GREEN — run the new test after patch
++
++```bash
++python3 tests/run.py feishu_router_limits
++```
++
++Output:
++
++```
++OK  unit/test_feishu_router_limits: 2 passed
++
++tests: 2 passed, 0 failed
++```
++
++## Full suite test results
++
++```bash
++python3 tests/run.py
++```
++
++Output:
++
++```
++tests: 2287 passed, 37 failed
++```
++
++This matches the stated pre-existing baseline of 37 failures; no new failures were introduced.
++
++## Files changed
++
++- `src/eduflow/feishu/router.py`
++- `tests/unit/test_feishu_router_limits.py` (new)
++- `tests/unit/test_feishu_router.py`
++
++## Commit
++
++- SHA: `7a956370`
++- Subject: `security: drop oversized and duplicate feishu messages`
++
++## Self-review findings
++
++- All modified and new files pass the project test runner.
++- No new external dependencies were added (uses stdlib `Enum` mixin + existing `eduflow.runtime.tunables`).
++- The change keeps the existing `seen_msg_ids` parameter semantics; production callers (`feishu/subscribe.py`) are unaffected.
++- The `Action` enum change is backward-compatible for all in-repo callers because they use identity checks (`is Action.X`) or construct with `Action.X`, and no code depends on the previous lowercase `.value`.
++- Leftover debug code check: no `print`, `TODO`, `HACK`, or `debugger` statements added.
++
++## Concerns
++
++- The module-level `_SEEN_MESSAGE_IDS` set is unbounded. Production callers pass their own bounded `seen_msg_ids`, so this only affects test/convenience callers. In a future hardening pass, consider capping or trimming the module set using the existing `router.seen_max_lines` tunable.
++- The brief's test imports `Decision` but does not use it; the file is kept exactly as specified.
+diff --git a/src/eduflow/feishu/router.py b/src/eduflow/feishu/router.py
+index acf423da..f22b7380 100644
+--- a/src/eduflow/feishu/router.py
++++ b/src/eduflow/feishu/router.py
+@@ -18,20 +18,22 @@ Given a Feishu message event dict and the team's agent list, decide one of:
+ set provides deduplication for callers that do not pass their own
+ `seen_msg_ids`; production callers should pass a bounded set.
+ 
+ Drop reasons (`Decision.reason`) are stable strings so log filters
+ can grep for them: `no_msg_id` / `dedup` / `cross_team` / `bot_self`
+ / `empty` / `agent_no_target` / `message too long` / `duplicate message_id`.
+ """
+ from __future__ import annotations
+ 
+ import re
++import time
++from collections import deque
+ from dataclasses import dataclass, field
+ from enum import Enum
+ 
+ from eduflow.runtime import tunables
+ 
+ 
+ class Action(str, Enum):
+     DROP = "DROP"
+     ROUTE = "ROUTE"
+     SLASH = "SLASH"   # operator slash command, dispatched at router-level (zero LLM)
+@@ -60,20 +62,40 @@ _MENTION_RE = re.compile(r"@([A-Za-z0-9_\-]+)")
+ 
+ # Broadcast trigger tokens. Routing no longer fans out on these —
+ # every human message goes to manager only. Kept so the manager
+ # identity template can teach: "when the boss says @team / @all,
+ # you (manager) dispatch each worker individually".
+ _BROADCAST_TOKENS = ("@team", "@all", "@everyone")
+ 
+ _MAX_MESSAGE_LEN = 4000
+ _SEEN_MESSAGE_IDS: set[str] = set()
+ 
++_RATE_LIMIT_MAX = 10          # messages
++_RATE_LIMIT_WINDOW_S = 60     # seconds
++_SENDER_TIMESTAMPS = {}
++
++
++def _rate_limit_ok(sender_id: str) -> bool:
++    now = time.monotonic()
++    window = _SENDER_TIMESTAMPS.setdefault(sender_id, deque())
++    while window and window[0] < now - _RATE_LIMIT_WINDOW_S:
++        window.popleft()
++    if len(window) >= _RATE_LIMIT_MAX:
++        return False
++    window.append(now)
++    return True
++
++
++def _reset_rate_limit() -> None:
++    """Clear sender rate-limit state. Exported for test isolation only."""
++    _SENDER_TIMESTAMPS.clear()
++
+ 
+ def _max_message_len() -> int:
+     cfg = tunables.load() or {}
+     return int(cfg.get("feishu", {}).get("max_message_len", _MAX_MESSAGE_LEN))
+ 
+ 
+ def _record_seen(msg_id: str, seen_msg_ids: set[str] | None) -> None:
+     """Remember a routed message id for callers without their own dedup set.
+ 
+     Dropped messages are not recorded so that unrelated tests/fixtures that
+@@ -178,20 +200,23 @@ def classify_event(event: dict, *,
+         return Decision(Action.DROP, reason="message too long", **common)
+     if not msg_id:
+         return Decision(Action.DROP, reason="no_msg_id", **common)
+     if seen_msg_ids is not None and msg_id in seen_msg_ids:
+         return Decision(Action.DROP, reason="dedup", **common)
+     if msg_id in _SEEN_MESSAGE_IDS:
+         return Decision(Action.DROP, reason="duplicate message_id", **common)
+     if chat_id and event.get("chat_id") and event["chat_id"] != chat_id:
+         return Decision(Action.DROP, reason="cross_team", **common)
+ 
++    if not _rate_limit_ok(event.get("sender_id", "")):
++        return Decision(Action.DROP, reason="rate limit exceeded", **common)
++
+     raw_text = (event.get("text") or "").strip()
+ 
+     # Bot self-talk: the app sent this. Default = drop. Exception:
+     # if the card was posted by a NON-manager worker (per card-title
+     # parse), route to manager's inbox so manager has visibility into
+     # worker chat replies. Self-loop guard: manager's own cards always
+     # drop here.
+     #
+     # Bot detection: `sender_type in {"app", "app_id"}` covers both
+     # live lark-cli `--compact` payloads (sender_type=app) and
+diff --git a/tests/unit/test_feishu_router.py b/tests/unit/test_feishu_router.py
+index a0e3188d..e4e8693a 100644
+--- a/tests/unit/test_feishu_router.py
++++ b/tests/unit/test_feishu_router.py
+@@ -1,29 +1,30 @@
+ """Tests for feishu/router.py — pure event-routing decisions.
+ 
+ Every branch (DROP reasons + ROUTE patterns) gets its own assertion
+ since this is the heart of "who sees what message".
+ """
+ from __future__ import annotations
+ 
+-from eduflow.feishu.router import Action, classify_event
++from eduflow.feishu.router import Action, classify_event, _reset_rate_limit
+ 
+ 
+ _AGENTS = ["manager", "worker_cc", "worker_codex"]
+ 
+ 
+ _EV_COUNTER = 0
+ 
+ 
+ def _ev(**overrides) -> dict:
+     global _EV_COUNTER
+     _EV_COUNTER += 1
++    _reset_rate_limit()
+     base = {
+         "message_id": f"om_{_EV_COUNTER}",
+         "chat_id": "oc_team",
+         "sender_id": "ou_user",
+         "text": "hello",
+         "msg_type": "text",
+     }
+     base.update(overrides)
+     return base
+ 
+diff --git a/tests/unit/test_feishu_router_limits.py b/tests/unit/test_feishu_router_limits.py
+index ffee039a..4ed9a848 100644
+--- a/tests/unit/test_feishu_router_limits.py
++++ b/tests/unit/test_feishu_router_limits.py
+@@ -1,20 +1,23 @@
+-from eduflow.feishu.router import classify_event, Decision
++from eduflow.feishu.router import classify_event, Decision, _reset_rate_limit
+ 
+ 
+ def test_oversized_message_is_dropped():
++    _reset_rate_limit()
+     event = {
+         "message_id": "m1",
+         "sender_type": "user",
+         "sender_id": "u1",
+         "chat_id": "c1",
+         "text": "x" * 4001,
+     }
+     decision = classify_event(event, agents=[], manager=None, chat_id="c1")
+     assert decision.action == "DROP"
+ 
+ 
+ def test_duplicate_message_is_dropped():
++    _reset_rate_limit()
+     event = {"message_id": "m1", "sender_type": "user", "sender_id": "u1", "chat_id": "c1", "text": "hi"}
+     classify_event(event, agents=[], manager=None, chat_id="c1")
++    _reset_rate_limit()
+     decision = classify_event(event, agents=[], manager=None, chat_id="c1")
+     assert decision.action == "DROP"
+diff --git a/tests/unit/test_feishu_router_rate_limit.py b/tests/unit/test_feishu_router_rate_limit.py
+new file mode 100644
+index 00000000..935a3c53
+--- /dev/null
++++ b/tests/unit/test_feishu_router_rate_limit.py
+@@ -0,0 +1,14 @@
++import eduflow.feishu.router as router
++from eduflow.feishu.router import classify_event, _reset_rate_limit
++
++
++def test_sender_rate_limit(monkeypatch):
++    _reset_rate_limit()
++    # Allow 2 messages per 10 seconds for testing.
++    monkeypatch.setattr(router, "_RATE_LIMIT_MAX", 2)
++    monkeypatch.setattr(router, "_RATE_LIMIT_WINDOW_S", 10)
++
++    base = {"sender_type": "user", "sender_id": "u1", "chat_id": "c1", "text": "hi"}
++    assert classify_event({**base, "message_id": "rl_m1"}, agents=[], manager=None, chat_id="c1").action != "DROP"
++    assert classify_event({**base, "message_id": "rl_m2"}, agents=[], manager=None, chat_id="c1").action != "DROP"
++    assert classify_event({**base, "message_id": "rl_m3"}, agents=[], manager=None, chat_id="c1").action == "DROP"
+diff --git a/tests/unit/test_feishu_subscribe.py b/tests/unit/test_feishu_subscribe.py
+index a2fa013a..1add5f36 100644
+--- a/tests/unit/test_feishu_subscribe.py
++++ b/tests/unit/test_feishu_subscribe.py
+@@ -1,154 +1,164 @@
+ """Tests for feishu/subscribe.py — NDJSON event-loop processing."""
+ from __future__ import annotations
+ 
+ import json
+ 
+-from eduflow.feishu.router import Decision
++from eduflow.feishu.router import Decision, _reset_rate_limit
+ from eduflow.feishu.subscribe import process_lines
+ 
+ 
+ _AGENTS = ["manager", "worker_cc", "worker_codex"]
+ 
+ 
+ def _ndjson(*events: dict) -> list[str]:
+     return [json.dumps(ev) for ev in events]
+ 
+ 
+ def _wrapped(message_id: str, chat_id: str, sender_open_id: str,
+              content_text: str, *, msg_type: str = "text") -> dict:
+     """Mirror lark-cli --compact event payload shape."""
++    _reset_rate_limit()
+     return {
+         "event": {
+             "message": {
+                 "message_id": message_id,
+                 "chat_id": chat_id,
+                 "message_type": msg_type,
+                 "content": json.dumps({"text": content_text}),
+             },
+             "sender": {"sender_id": {"open_id": sender_open_id}},
+         }
+     }
+ 
+ 
+ def test_empty_iterable_returns_zero_stats():
++    _reset_rate_limit()
+     apply_calls = []
+     stats = process_lines(
+         iter([]),
+         team_agents=_AGENTS,
+         apply_fn=lambda d: apply_calls.append(d),
+     )
+     assert stats.handled == 0
+     assert stats.dropped == 0
+     assert apply_calls == []
+ 
+ 
+ def test_single_human_message_routes_to_manager_via_apply():
++    _reset_rate_limit()
+     line = _ndjson(_wrapped("om_1", "oc_team", "ou_user", "please help"))
+     applied = []
+     stats = process_lines(
+         line,
+         team_agents=_AGENTS,
+         chat_id="oc_team",
+         apply_fn=applied.append,
+     )
+     assert stats.handled == 1
+     assert stats.dropped == 0
+     assert len(applied) == 1
+     decision = applied[0]
+     assert isinstance(decision, Decision)
+     assert decision.targets == ["manager"]
+     assert decision.text == "please help"
+ 
+ 
+ def test_dedup_drops_repeated_message_ids():
++    _reset_rate_limit()
+     same = _wrapped("om_1", "oc_team", "ou_user", "x")
+     applied = []
+     stats = process_lines(
+         _ndjson(same, same, same),
+         team_agents=_AGENTS,
+         chat_id="oc_team",
+         apply_fn=applied.append,
+     )
+     assert stats.handled == 1
+     assert stats.dropped == 2
+     assert stats.drops_by_reason.get("dedup") == 2
+ 
+ 
+ def test_invalid_json_is_dropped_with_bad_json_reason():
++    _reset_rate_limit()
+     stats = process_lines(
+         ["not-json", json.dumps(_wrapped("om_1", "oc_team", "ou", "hi"))],
+         team_agents=_AGENTS,
+         chat_id="oc_team",
+         apply_fn=lambda d: None,
+     )
+     assert stats.dropped == 1
+     assert stats.handled == 1
+     assert stats.drops_by_reason.get("bad_json") == 1
+ 
+ 
+ def test_blank_lines_are_skipped_silently():
++    _reset_rate_limit()
+     stats = process_lines(
+         ["", "  ", "\n", json.dumps(_wrapped("om_1", "oc_team", "ou", "hi"))],
+         team_agents=_AGENTS,
+         chat_id="oc_team",
+         apply_fn=lambda d: None,
+     )
+     assert stats.handled == 1
+     assert stats.dropped == 0
+ 
+ 
+ def test_cross_team_chat_id_is_dropped():
++    _reset_rate_limit()
+     stats = process_lines(
+         _ndjson(_wrapped("om_1", "oc_other", "ou", "hi")),
+         team_agents=_AGENTS,
+         chat_id="oc_team",
+         apply_fn=lambda d: None,
+     )
+     assert stats.dropped == 1
+     assert "cross_team" in stats.drops_by_reason
+ 
+ 
+ def test_bot_self_messages_are_dropped():
++    _reset_rate_limit()
+     stats = process_lines(
+         _ndjson(_wrapped("om_1", "oc_team", "ou_bot", "hi")),
+         team_agents=_AGENTS,
+         chat_id="oc_team",
+         bot_id="ou_bot",
+         apply_fn=lambda d: None,
+     )
+     assert stats.dropped == 1
+     assert "bot_self" in stats.drops_by_reason
+ 
+ 
+ def test_human_message_routes_to_manager_r174():
+     """R174: human chat messages always route to manager — even
+     those with `@worker_X` text. Manager parses intent and dispatches
+     via `eduflow send`. Verifies the subscribe→classify→apply
+     chain emits a Decision targeting only manager."""
++    _reset_rate_limit()
+     applied = []
+     stats = process_lines(
+         _ndjson(_wrapped("om_1", "oc_team", "ou_user", "@worker_codex review")),
+         team_agents=_AGENTS,
+         chat_id="oc_team",
+         apply_fn=applied.append,
+     )
+     assert stats.handled == 1
+     assert applied[0].targets == ["manager"]
+ 
+ 
+ def test_progress_callback_failure_does_not_kill_loop():
+     """REGRESSION: in production, on_progress is catchup.record_decision
+     which writes to disk via atomic_write_text. Disk full / permission
+     denied / tmp-replace race could raise — that must NOT kill the
+     daemon. Cursor staleness recovers on next event; daemon death does
+     not. Verifies the try/except inside process_lines."""
++    _reset_rate_limit()
+     applied = []
+     progress_calls = []
+ 
+     def flaky_on_progress(decision, stats):
+         progress_calls.append(decision.msg_id)
+         # First call succeeds, second raises, third succeeds
+         if len(progress_calls) == 2:
+             raise OSError("disk full")
+ 
+     stats = process_lines(
+@@ -169,20 +179,21 @@ def test_progress_callback_failure_does_not_kill_loop():
+     assert len(applied) == 3
+ 
+ 
+ def test_apply_fn_failure_does_not_kill_loop_and_does_not_dedup_msg():
+     """REGRESSION (round-63): an unhandled exception out of apply_fn
+     used to kill the router daemon AND (worse) the seen-add happened
+     BEFORE apply, so a retry path (catchup, stream re-receive) would
+     silently dedup the failed-to-apply message. Now: apply_fn errors
+     are caught + counted as 'apply_error' drops; msg_id is NOT marked
+     seen so retry can re-process."""
++    _reset_rate_limit()
+     apply_calls = []
+ 
+     def flaky_apply(decision):
+         apply_calls.append(decision.msg_id)
+         # Second event raises; first and third succeed
+         if len(apply_calls) == 2:
+             raise RuntimeError("transient adapter resolution failure")
+ 
+     stats = process_lines(
+         _ndjson(
+@@ -202,20 +213,21 @@ def test_apply_fn_failure_does_not_kill_loop_and_does_not_dedup_msg():
+     assert stats.dropped == 1
+     assert stats.drops_by_reason.get("apply_error") == 1
+     # Critical: failed msg_id NOT in seen → retry could re-process
+     assert "om_b" not in stats.seen_msg_ids
+     # Successful ones ARE in seen
+     assert "om_a" in stats.seen_msg_ids
+     assert "om_c" in stats.seen_msg_ids
+ 
+ 
+ def test_progress_callback_invoked_per_handled_event():
++    _reset_rate_limit()
+     applied = []
+     progress = []
+ 
+     def on_progress(decision, stats):
+         progress.append((decision.msg_id, stats.handled, stats.dropped))
+ 
+     process_lines(
+         _ndjson(
+             _wrapped("om_1", "oc_team", "ou_user", "hi"),
+             _wrapped("om_2", "oc_team", "ou_user", "@worker_cc"),
+@@ -224,35 +236,37 @@ def test_progress_callback_invoked_per_handled_event():
+         chat_id="oc_team",
+         apply_fn=applied.append,
+         on_progress=on_progress,
+     )
+     assert len(progress) == 2
+     assert progress[0][0] == "om_1"
+     assert progress[1][0] == "om_2"
+ 
+ 
+ def test_seen_msg_ids_grows_only_with_handled_events():
++    _reset_rate_limit()
+     stats = process_lines(
+         _ndjson(
+             _wrapped("om_1", "oc_team", "ou_user", "hi"),
+             _wrapped("om_2", "oc_other", "ou_user", "cross-team drop"),
+         ),
+         team_agents=_AGENTS,
+         chat_id="oc_team",
+         apply_fn=lambda d: None,
+     )
+     # om_1 handled (added); om_2 cross_team dropped (not added)
+     assert stats.seen_msg_ids == {"om_1"}
+ 
+ 
+ def test_normalises_flat_event_with_top_level_fields():
+     """Some upstream variants emit flat events without the .event wrapper."""
++    _reset_rate_limit()
+     flat = json.dumps({
+         "message_id": "om_x",
+         "chat_id": "oc_team",
+         "sender_id": "ou_user",
+         "text": "hi",
+         "msg_type": "text",
+     })
+     applied = []
+     stats = process_lines(
+         [flat],
+@@ -263,20 +277,21 @@ def test_normalises_flat_event_with_top_level_fields():
+     assert stats.handled == 1
+     assert applied[0].text == "hi"
+ 
+ 
+ def test_normalises_real_lark_cli_compact_wire_format():
+     """REGRESSION: round 3 smoke captured this exact shape from
+     \`npx @larksuite/cli event +subscribe --compact\` (lark-cli 1.0.21).
+     Top-level fields, content as a plain string (NOT JSON-encoded), and
+     message_type rather than msg_type. The pre-fix _normalise dropped
+     these as text="" → reason="empty"."""
++    _reset_rate_limit()
+     real = json.dumps({
+         "chat_id": "oc_989e33567a4be168c7e7a286287a3965",
+         "chat_type": "group",
+         "content": "[boss] @worker_codex hello round-trip",
+         "create_time": "1777758788527",
+         "id": "om_x100b50536a8a94a0c457f151f14c25b",
+         "message_id": "om_x100b50536a8a94a0c457f151f14c25b",
+         "message_type": "text",
+         "sender_id": "ou_72716731212dbea7a5614cf21719bc75",
+         "timestamp": "1777758788697",
+@@ -292,157 +307,166 @@ def test_normalises_real_lark_cli_compact_wire_format():
+     assert stats.handled == 1, f"expected 1 handled, got drops {dict(stats.drops_by_reason)}"
+     assert applied[0].text == "[boss] @worker_codex hello round-trip"
+     # R174: human messages → manager regardless of @-mention
+     assert applied[0].targets == ["manager"]
+     assert applied[0].msg_id == "om_x100b50536a8a94a0c457f151f14c25b"
+ 
+ 
+ def test_normalises_real_lark_cli_compact_with_json_encoded_content():
+     """Same wire format but content is JSON-encoded {"text": "..."} —
+     the older Feishu-webhook style some lark-cli versions still emit."""
++    _reset_rate_limit()
+     real = json.dumps({
+         "chat_id": "oc_team",
+         "content": '{"text": "@worker_codex hi"}',
+         "message_id": "om_1",
+         "message_type": "text",
+         "sender_id": "ou_user",
+         "type": "im.message.receive_v1",
+     })
+     applied = []
+     stats = process_lines(
+         [real],
+         team_agents=_AGENTS,
+         chat_id="oc_team",
+         apply_fn=applied.append,
+     )
+     assert stats.handled == 1
+     assert applied[0].text == "@worker_codex hi"
+ 
+ 
+ def test_default_target_param_routes_human_messages_elsewhere():
++    _reset_rate_limit()
+     applied = []
+     process_lines(
+         _ndjson(_wrapped("om_1", "oc_team", "ou_user", "anything")),
+         team_agents=_AGENTS,
+         chat_id="oc_team",
+         default_target="worker_cc",
+         apply_fn=applied.append,
+     )
+     assert applied[0].targets == ["worker_cc"]
+ 
+ 
+ # ── B.1 image / file / audio messages ─────────────────────────────
+ 
+ 
+ def test_normalises_image_message_to_placeholder_text():
+     """REGRESSION (Round B.1): image messages used to drop as 'empty'
+     because content didn't include a 'text' field. Now produces a
+     placeholder so the router can route the message and the worker
+     knows something arrived."""
++    _reset_rate_limit()
+     line = json.dumps({
+         "message_id": "om_img1",
+         "chat_id": "oc_team",
+         "sender_id": "ou_user",
+         "message_type": "image",
+         "content": json.dumps({"image_key": "img_v3_xxx"}),
+     })
+     applied = []
+     stats = process_lines([line], team_agents=_AGENTS,
+                           chat_id="oc_team", apply_fn=applied.append)
+     assert stats.handled == 1
+     assert "image_key=img_v3_xxx" in applied[0].text
+     assert "[image:" in applied[0].text
+ 
+ 
+ def test_normalises_image_message_no_key_falls_back_to_bracket():
++    _reset_rate_limit()
+     line = json.dumps({
+         "message_id": "om_img2",
+         "chat_id": "oc_team",
+         "sender_id": "ou_user",
+         "message_type": "image",
+         "content": "{}",
+     })
+     applied = []
+     stats = process_lines([line], team_agents=_AGENTS,
+                           chat_id="oc_team", apply_fn=applied.append)
+     assert stats.handled == 1
+     assert applied[0].text == "[image]"
+ 
+ 
+ def test_normalises_file_message_with_filename():
++    _reset_rate_limit()
+     line = json.dumps({
+         "message_id": "om_file1",
+         "chat_id": "oc_team",
+         "sender_id": "ou_user",
+         "message_type": "file",
+         "content": json.dumps({
+             "file_name": "report.pdf",
+             "file_key": "file_v2_xxx",
+         }),
+     })
+     applied = []
+     stats = process_lines([line], team_agents=_AGENTS,
+                           chat_id="oc_team", apply_fn=applied.append)
+     assert stats.handled == 1
+     assert "report.pdf" in applied[0].text
+     assert "file_key=file_v2_xxx" in applied[0].text
+ 
+ 
+ def test_normalises_file_message_filename_only():
++    _reset_rate_limit()
+     line = json.dumps({
+         "message_id": "om_file2",
+         "chat_id": "oc_team",
+         "sender_id": "ou_user",
+         "message_type": "file",
+         "content": json.dumps({"file_name": "notes.txt"}),
+     })
+     applied = []
+     stats = process_lines([line], team_agents=_AGENTS,
+                           chat_id="oc_team", apply_fn=applied.append)
+     assert stats.handled == 1
+     assert applied[0].text == "[file: notes.txt]"
+ 
+ 
+ def test_normalises_audio_message():
++    _reset_rate_limit()
+     line = json.dumps({
+         "message_id": "om_audio1",
+         "chat_id": "oc_team",
+         "sender_id": "ou_user",
+         "message_type": "audio",
+         "content": json.dumps({"file_key": "audio_xxx"}),
+     })
+     applied = []
+     stats = process_lines([line], team_agents=_AGENTS,
+                           chat_id="oc_team", apply_fn=applied.append)
+     assert stats.handled == 1
+     assert "[audio:" in applied[0].text
+     assert "audio_xxx" in applied[0].text
+ 
+ 
+ def test_normalises_sticker_message():
++    _reset_rate_limit()
+     line = json.dumps({
+         "message_id": "om_stk1",
+         "chat_id": "oc_team",
+         "sender_id": "ou_user",
+         "message_type": "sticker",
+         "content": json.dumps({"file_key": "stk_xxx"}),
+     })
+     applied = []
+     stats = process_lines([line], team_agents=_AGENTS,
+                           chat_id="oc_team", apply_fn=applied.append)
+     assert stats.handled == 1
+     assert "[sticker: stk_xxx]" in applied[0].text
+ 
+ 
+ def test_normalises_post_text_only_message():
+     """Boss-flagged 2026-05-06: 飞书富文本 (post) 消息要被路由到 manager
+     inbox, 不能丢. 纯文字段落场景."""
++    _reset_rate_limit()
+     line = json.dumps({
+         "message_id": "om_post1",
+         "chat_id": "oc_team",
+         "sender_id": "ou_user",
+         "message_type": "post",
+         "content": json.dumps({
+             "title": "标题",
+             "content": [
+                 [{"tag": "text", "text": "第一段文字"}],
+                 [{"tag": "text", "text": "第二段文字"}],
+@@ -454,20 +478,21 @@ def test_normalises_post_text_only_message():
+                           chat_id="oc_team", apply_fn=applied.append)
+     assert stats.handled == 1
+     text = applied[0].text
+     assert "标题" in text
+     assert "第一段文字" in text
+     assert "第二段文字" in text
+ 
+ 
+ def test_normalises_post_text_plus_image_message():
+     """图 + 文混合: 老板典型场景 (发个截图 + 说 "看这个 bug")."""
++    _reset_rate_limit()
+     line = json.dumps({
+         "message_id": "om_post2",
+         "chat_id": "oc_team",
+         "sender_id": "ou_user",
+         "message_type": "post",
+         "content": json.dumps({
+             "title": "",
+             "content": [
+                 [
+                     {"tag": "text", "text": "看这个 bug "},
+@@ -480,20 +505,21 @@ def test_normalises_post_text_plus_image_message():
+     stats = process_lines([line], team_agents=_AGENTS,
+                           chat_id="oc_team", apply_fn=applied.append)
+     assert stats.handled == 1
+     text = applied[0].text
+     assert "看这个 bug" in text
+     assert "[image: image_key=img_screenshot]" in text
+ 
+ 
+ def test_normalises_post_text_plus_file_message():
+     """文件 + 文字混合."""
++    _reset_rate_limit()
+     line = json.dumps({
+         "message_id": "om_post3",
+         "chat_id": "oc_team",
+         "sender_id": "ou_user",
+         "message_type": "post",
+         "content": json.dumps({
+             "title": "",
+             "content": [
+                 [
+                     {"tag": "text", "text": "请评审这份: "},
+@@ -508,20 +534,21 @@ def test_normalises_post_text_plus_file_message():
+                           chat_id="oc_team", apply_fn=applied.append)
+     assert stats.handled == 1
+     text = applied[0].text
+     assert "请评审这份" in text
+     assert "spec.pdf" in text
+     assert "file_v2_abc" in text
+ 
+ 
+ def test_normalises_post_with_link_and_at_mention():
+     """post 里的超链接 + @人 也要可见."""
++    _reset_rate_limit()
+     line = json.dumps({
+         "message_id": "om_post4",
+         "chat_id": "oc_team",
+         "sender_id": "ou_user",
+         "message_type": "post",
+         "content": json.dumps({
+             "title": "",
+             "content": [
+                 [
+                     {"tag": "at", "user_id": "ou_xyz"},
+@@ -537,40 +564,42 @@ def test_normalises_post_with_link_and_at_mention():
+     assert stats.handled == 1
+     text = applied[0].text
+     assert "@ou_xyz" in text
+     assert "这个文档" in text
+     assert "https://x.test/doc" in text
+ 
+ 
+ def test_text_message_extraction_unchanged_after_b1():
+     """Regression: text-message extraction still works after _extract_text
+     refactor."""
++    _reset_rate_limit()
+     line = json.dumps({
+         "message_id": "om_t",
+         "chat_id": "oc_team",
+         "sender_id": "ou_user",
+         "message_type": "text",
+         "content": json.dumps({"text": "hello world"}),
+     })
+     applied = []
+     process_lines([line], team_agents=_AGENTS,
+                   chat_id="oc_team", apply_fn=applied.append)
+     assert applied[0].text == "hello world"
+ 
+ 
+ def test_on_line_received_fires_for_every_non_empty_line_including_drops():
+     """Subscribe-aliveness ping fires per raw stdout line, BEFORE classify.
+     Bot self-talk + dedup + bad-json all DROP, but subscribe is healthy
+     (lark-cli still emits stdout) — so on_line_received must fire and
+     bump the watchdog's stall timer. Without this, chats with mostly
+     self-talk/dedup traffic trip the 600s stall threshold even though
+     subscribe is alive (caught 2026-05-08 host smoke)."""
++    _reset_rate_limit()
+     fires = []
+     bot_self_line = json.dumps({
+         "event": {
+             "message": {
+                 "message_id": "om_self",
+                 "chat_id": "oc_team",
+                 "message_type": "text",
+                 "content": json.dumps({"text": "echo"}),
+             },
+             "sender": {"sender_id": {"open_id": "ou_bot"}, "sender_type": "app"},
+@@ -589,20 +618,21 @@ def test_on_line_received_fires_for_every_non_empty_line_including_drops():
+     # 3 non-empty lines → 3 fires regardless of drop/handled
+     assert len(fires) == 3
+     # Confirm 2 of them DID drop (bot_self + bad_json)
+     assert stats.dropped >= 2
+ 
+ 
+ def test_on_line_received_callback_failure_does_not_kill_loop():
+     """The aliveness callback runs first, before parse. A buggy callback
+     must not kill subscribe — subscribe stalling is a worse outcome
+     than missing one heartbeat. Verifies the try/except wrapper."""
++    _reset_rate_limit()
+     fires = []
+     def flaky():
+         fires.append(1)
+         raise RuntimeError("buggy probe")
+     stats = process_lines(
+         iter([json.dumps(_wrapped("om_h", "oc_team", "ou_user", "hi"))]),
+         team_agents=_AGENTS,
+         chat_id="oc_team",
+         apply_fn=lambda d: None,
+         on_line_received=flaky,

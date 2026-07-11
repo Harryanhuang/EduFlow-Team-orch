@@ -1,0 +1,294 @@
+diff --git a/eduflow.toml b/eduflow.toml
+index 36a37ff2..5752699d 100644
+--- a/eduflow.toml
++++ b/eduflow.toml
+@@ -565,20 +565,22 @@ pool_id = "hermes_glm_5_2"
+ provider_family = "glm"
+ 
+ [env_profiles.hermes_backup_model]
+ pool_id = "hermes_backup_model"
+ provider_family = "hermes_agent"
+ 
+ # ── [team]  团队成员 ──────────────────────────────────────
+ [team]
+ session = "EduFlowTeam"
+ default_model = "opus"
++operators = ["u_<admin_feishu_id>"]   # 可执行 /send 等特权斜杠命令的飞书用户 open_id
++
+ 
+ # 每个 agent 一个 [team.agents.<name>]
+ #   cli         必填  claude-code | codex-cli | gemini-cli | kimi-code | mimo-code | qwen-code | qoderclicn
+ #   role        必填  渲染进 identity.md
+ #   model       可选  缺省走 default_model
+ #   specialty   可选  list of strings, manager 派单时参考
+ #   tone        可选  字符串, 渲染进 identity 影响 LLM 输出风格
+ #   notes       可选  字符串, 任意 prompt 加料
+ #   card_color  可选  飞书 v2 色: blue/green/red/yellow/purple/orange/grey/pink
+ #   lazy        可选  true=首消息触发起 CLI; 默认 false
+diff --git a/src/eduflow/feishu/deliver.py b/src/eduflow/feishu/deliver.py
+index 0d159721..35998bf5 100644
+--- a/src/eduflow/feishu/deliver.py
++++ b/src/eduflow/feishu/deliver.py
+@@ -338,20 +338,21 @@ def _apply_slash(decision: Decision, deps: _Deps, *,
+ 
+     Round-79: dispatch may now return a dict (Feishu card schema) — branch
+     on type to call chat.send_card instead of chat.send_text. `reply_to`
+     only applies to the text path; cards don't support thread-reply.
+     """
+     dispatch = slash_dispatch or _slash.dispatch
+     ctx = _slash.SlashContext(
+         team_agents=team_agents or config.agent_names(),
+         session=deps.session,
+         lazy_agents=lazy_agents if lazy_agents is not None else frozenset(),
++        sender_id=decision.sender_id,
+     )
+     reply = dispatch(decision.text, ctx)
+ 
+     report = DeliveryReport(slash_reply=reply if isinstance(reply, str) else "")
+     chat = chat_id if chat_id is not None else config.chat_id()
+     if not chat:
+         preview = (reply[:200] if isinstance(reply, str)
+                    else str(reply)[:200])
+         print(f"  ⚠️ slash reply ready but chat_id unset; reply suppressed:\n{preview}")
+         return report
+diff --git a/src/eduflow/feishu/router.py b/src/eduflow/feishu/router.py
+index f22b7380..926edc78 100644
+--- a/src/eduflow/feishu/router.py
++++ b/src/eduflow/feishu/router.py
+@@ -42,20 +42,21 @@ class Action(str, Enum):
+ 
+ @dataclass(frozen=True)
+ class Decision:
+     action: Action
+     targets: list[str] = field(default_factory=list)   # agents to deliver to
+     sender: str = ""                                    # parsed agent sender, if recognised
+     text: str = ""                                      # cleaned message text
+     msg_id: str = ""
+     reason: str = ""                                    # drop reason or "" on route
+     create_time: str = ""                               # epoch ms (for catchup cursor)
++    sender_id: str = ""                                 # Feishu open_id of the message sender
+ 
+     def is_drop(self) -> bool:
+         return self.action is Action.DROP
+ 
+ 
+ # Sender prefix is the bracketed form `[agent]` only.  `@agent` is treated
+ # as a mention regardless of position (so a human typing `@worker_cc do X`
+ # routes to worker_cc rather than being misread as worker_cc-as-sender).
+ _SENDER_RE = re.compile(r"^\s*\[([A-Za-z0-9_\-]+)\]\s*")
+ _MENTION_RE = re.compile(r"@([A-Za-z0-9_\-]+)")
+@@ -188,21 +189,25 @@ def classify_event(event: dict, *,
+     if agents is not None:
+         team_agents = agents
+     if team_agents is None:
+         team_agents = []
+ 
+     _ = manager  # legacy/ignored parameter
+ 
+     agents = set(team_agents)
+     msg_id = event.get("message_id", "")
+     text = event.get("text") or ""
+-    common = {"msg_id": msg_id, "create_time": str(event.get("create_time", ""))}
++    common = {
++        "msg_id": msg_id,
++        "create_time": str(event.get("create_time", "")),
++        "sender_id": event.get("sender_id", ""),
++    }
+     if len(text) > _max_message_len():
+         return Decision(Action.DROP, reason="message too long", **common)
+     if not msg_id:
+         return Decision(Action.DROP, reason="no_msg_id", **common)
+     if seen_msg_ids is not None and msg_id in seen_msg_ids:
+         return Decision(Action.DROP, reason="dedup", **common)
+     if msg_id in _SEEN_MESSAGE_IDS:
+         return Decision(Action.DROP, reason="duplicate message_id", **common)
+     if chat_id and event.get("chat_id") and event["chat_id"] != chat_id:
+         return Decision(Action.DROP, reason="cross_team", **common)
+diff --git a/src/eduflow/feishu/slash.py b/src/eduflow/feishu/slash.py
+index 1dd2aa49..a0d63057 100644
+--- a/src/eduflow/feishu/slash.py
++++ b/src/eduflow/feishu/slash.py
+@@ -48,21 +48,21 @@ from typing import Callable
+ 
+ import json
+ 
+ from eduflow.agents import identity
+ from eduflow.feishu import pane_state
+ from eduflow.feishu.cards import (
+     beijing_stamp, column_set_2, column_set_3, employee_snapshot_card,
+     fenced_block, load_color, remaining_color, rich_card, simple_card,
+     team_snapshot_card,
+ )
+-from eduflow.runtime import tmux
++from eduflow.runtime import tmux, tunables
+ from eduflow.store import employee_read_model, local_facts, tasks
+ from eduflow.util import fmt_bytes
+ 
+ 
+ def _spawn_daemon_thread(fn: Callable[[], None]) -> None:
+     """Default ctx.background — fire-and-forget a daemon thread.
+ 
+     Used by /compact to schedule a delayed re-identify after the agent
+     finishes its self-compact. Tests override this with a no-op so
+     they don't block on the 45-second timer.
+@@ -81,20 +81,21 @@ class SlashContext:
+     session: str
+     # Deprecated: handlers now pull live data via `_live_agents()` so
+     # eduflow.toml edits take effect without restarting the
+     # router. These two fields are kept for back-compat with tests
+     # constructing SlashContext directly.
+     lazy_agents: frozenset[str] = frozenset()
+     run: Callable = subprocess.run         # for shell-out (`eduflow <cmd>`)
+     sleep: Callable = time.sleep           # for /clear's settle delay
+     now: Callable = datetime.now           # injectable clock for header timestamps
+     background: Callable[[Callable[[], None]], None] = _spawn_daemon_thread
++    sender_id: str = ""                    # Feishu open_id of the slash caller
+ 
+     @property
+     def agent_set(self) -> frozenset[str]:
+         return frozenset(self.team_agents)
+ 
+ 
+ _AGENT_NAME_RE = re.compile(r"[A-Za-z0-9_\-]+")
+ _REIDENTIFY_DELAY_S = 45.0   # rough upper bound for claude-code /compact
+ 
+ 
+@@ -629,26 +630,60 @@ def _handle_tmux(args: str, ctx: SlashContext) -> str | dict:
+         return f"⚠️ 未知 agent: `{agent}`（合法名: {sorted(agent_set)}）"
+     target = tmux.Target(ctx.session, agent)
+     raw = tmux.capture_pane(target, lines=n_lines).rstrip() or "(窗口为空)"
+     return simple_card(
+         f"📺 /tmux {agent} — 最近 {n_lines} 行 [{ctx.session}]",
+         fenced_block(raw),
+         color="blue",
+     )
+ 
+ 
+-def _handle_send(args: str, ctx: SlashContext) -> str:
++def _operator_ids() -> set[str]:
++    """Configured Feishu operator open_ids allowed to use privileged
++    slash commands like /send.
++
++    Reads from eduflow.toml `[team.operators]`; empty list means the
++    restriction is disabled for backward compatibility / fresh installs.
++    """
++    cfg = tunables.load() or {}
++    operators = cfg.get("team", {}).get("operators") or []
++    return set(operators)
++
++
++def _send_operator_error() -> dict:
++    """Rejection card returned when a non-operator tries /send."""
++    return {"allowed": False, "message": "只有操作员可以执行 /send"}
++
++
++def handle_send(sender_id: str, argv: list[str]) -> dict:
++    """Public /send authorization probe (used by tests).
++
++    Returns a dict so callers can distinguish authorized from rejected
++    without parsing a human-readable string. The full slash dispatch path
++    uses `_handle_send`, which performs the same check and then injects
++    into the target pane.
++    """
++    operators = _operator_ids()
++    if operators and sender_id not in operators:
++        return _send_operator_error()
++    return {"allowed": True}
++
++
++def _handle_send(args: str, ctx: SlashContext) -> str | dict:
+     if not args.strip():
+         return "用法: /send <agent> <message>\n例: /send worker_cc \"看一下 README\""
+     parts = args.split(None, 1)
+     if len(parts) < 2 or not parts[1].strip():
+         return "用法: /send <agent> <message>（缺少消息内容）"
++    operators = _operator_ids()
++    if operators and getattr(ctx, "sender_id", "") not in operators:
++        return _send_operator_error()
+     agent, msg = parts[0].strip(), parts[1].strip()
+     if (warn := _bad_agent(agent, ctx)):
+         return warn
+     target = tmux.Target(ctx.session, agent)
+     ok = tmux.inject(target, msg)
+     glyph = "✅" if ok else "❌"
+     return f"{glyph} /send → {ctx.session}:{agent}\n内容: {msg}"
+ 
+ 
+ def _handle_dispatch(args: str, ctx: SlashContext) -> str:
+diff --git a/tests/unit/test_feishu_slash.py b/tests/unit/test_feishu_slash.py
+index a90f0bcd..f9b7654d 100644
+--- a/tests/unit/test_feishu_slash.py
++++ b/tests/unit/test_feishu_slash.py
+@@ -21,36 +21,44 @@ def _all_markdown(reply) -> str:
+     """Concatenate every `tag: markdown` element's content. R172.b:
+     column_set was dropped, so all card body content lives in plain
+     markdown elements — this helper lets tests assert on text
+     substrings without caring about element ordering or layout."""
+     return "\n".join(e.get("content", "") for e in _elements(reply)
+                      if e.get("tag") == "markdown")
+ 
+ 
+ def _ctx(*, agents=("manager", "worker_cc", "worker_codex"),
+          session="EduFlow", run=None, sleep=None, background=None,
+-         lazy_agents=()):
+-    """Build a SlashContext for tests with sane stubs by default."""
++         lazy_agents=(), sender_id=None):
++    """Build a SlashContext for tests with sane stubs by default.
++
++    `sender_id` defaults to the first configured operator so privileged
++    slash commands like /send stay authorized under the project toml.
++    Tests that want to exercise rejection pass an explicit sender_id or
++    monkeypatch _operator_ids."""
+     fake_run = run or (lambda *a, **kw: type("R", (), {
+         "returncode": 0, "stdout": "ok\n", "stderr": ""})())
+     fake_sleep = sleep or (lambda _s: None)
+     # Default: drop background callbacks (no real thread, no eager
+     # execution) so test inject capture isn't polluted by post-compact
+     # reidentify firing inline.
+     fake_background = background or (lambda _fn: None)
++    if sender_id is None:
++        sender_id = next(iter(slash._operator_ids()), "")
+     return slash.SlashContext(
+         team_agents=list(agents),
+         session=session,
+         lazy_agents=frozenset(lazy_agents),
+         run=fake_run,
+         sleep=fake_sleep,
+         background=fake_background,
++        sender_id=sender_id,
+     )
+ 
+ 
+ # ── /help ────────────────────────────────────────────────────────
+ 
+ 
+ def test_help_returns_card_listing_all_commands():
+     """R172.b: /help lists main's exact 9-command surface — `/recall`
+     and `/forget` were dropped per boss feedback (not in main, not
+     requested)."""
+diff --git a/tests/unit/test_feishu_slash_authorization.py b/tests/unit/test_feishu_slash_authorization.py
+new file mode 100644
+index 00000000..4805913b
+--- /dev/null
++++ b/tests/unit/test_feishu_slash_authorization.py
+@@ -0,0 +1,20 @@
++"""Authorization tests for slash commands.
++
++Task 5.3: /send is restricted to configured operators.
++"""
++from __future__ import annotations
++
++from eduflow.feishu import slash
++
++
++def test_send_rejected_for_unauthorized_user(monkeypatch):
++    monkeypatch.setattr(slash, "_operator_ids", lambda: {"u_admin"})
++    result = slash.handle_send(sender_id="u_attacker", argv=["worker_cc", "hello"])
++    assert isinstance(result, dict)
++    assert result.get("allowed") is False
++
++
++def test_send_allowed_for_operator(monkeypatch):
++    monkeypatch.setattr(slash, "_operator_ids", lambda: {"u_admin"})
++    result = slash.handle_send(sender_id="u_admin", argv=["worker_cc", "hello"])
++    assert result.get("allowed") is True

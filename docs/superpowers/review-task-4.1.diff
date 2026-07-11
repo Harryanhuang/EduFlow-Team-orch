@@ -1,0 +1,184 @@
+diff --git a/src/eduflow/runtime/paths.py b/src/eduflow/runtime/paths.py
+index b2c192d4..d39d828e 100644
+--- a/src/eduflow/runtime/paths.py
++++ b/src/eduflow/runtime/paths.py
+@@ -14,26 +14,32 @@ Layout:
+ """
+ from __future__ import annotations
+ 
+ from pathlib import Path
+ 
+ from eduflow.util import env_path
+ 
+ 
+ def state_dir() -> Path:
+     """Top-level directory for all runtime state."""
+-    return env_path("EDUFLOW_STATE_DIR") or Path.home() / ".eduflow"
++    path = env_path("EDUFLOW_STATE_DIR") or Path.home() / ".eduflow"
++    if not path.exists():
++        path.mkdir(parents=True, mode=0o700)
++    return path
+ 
+ 
+ def facts_dir() -> Path:
+     """Where local_facts stores inbox / status / log / heartbeats."""
+-    return state_dir() / "facts"
++    path = state_dir() / "facts"
++    if not path.exists():
++        path.mkdir(parents=True, mode=0o700)
++    return path
+ 
+ 
+ def state_file(name: str) -> Path:
+     """A file under state_dir. Caller is responsible for mkdir before writing
+     — pure path resolution, no I/O side effects."""
+     return state_dir() / name
+ 
+ 
+ def router_pid_file() -> Path:
+     return state_file("router.pid")
+diff --git a/tests/run.py b/tests/run.py
+index ab597634..32472717 100644
+--- a/tests/run.py
++++ b/tests/run.py
+@@ -5,48 +5,72 @@ Discovers `test_*` functions in `tests/unit/test_*.py` and runs them in
+ order.  Prints a one-line summary; exits non-zero on any failure.
+ 
+ We avoid pytest as a hard dep so contributors can run the gate from a
+ fresh virtualenv without installing anything.  When pytest is available
+ locally `python3 -m pytest` also works (pyproject.toml is configured).
+ """
+ from __future__ import annotations
+ 
+ import importlib
+ import inspect
++import os
+ import sys
+ import tempfile
+ import traceback
+ from pathlib import Path
+ 
+ 
+ ROOT = Path(__file__).resolve().parents[1]
+ SRC = ROOT / "src"
+ TESTS = ROOT / "tests"
+ for _p in (ROOT, SRC, TESTS):
+     if str(_p) not in sys.path:
+         sys.path.insert(0, str(_p))
+ 
+ 
+ class _MiniMonkeyPatch:
+     """Tiny pytest-monkeypatch subset for the stdlib runner."""
+ 
+     def __init__(self) -> None:
+-        self._undo: list[tuple[object, str, object]] = []
++        self._undo: list[tuple[object | None, str, object | None]] = []
+ 
+     def setattr(self, obj: object, name: str, value: object) -> None:
+         self._undo.append((obj, name, getattr(obj, name)))
+         setattr(obj, name, value)
+ 
++    def setenv(self, name: str, value: str, prepend: str | None = None) -> None:
++        original = os.environ.get(name)
++        self._undo.append((None, name, original))
++        if prepend is not None:
++            value = prepend + value
++        os.environ[name] = value
++
++    def delenv(self, name: str, raising: bool = True) -> None:
++        original = os.environ.get(name)
++        if name not in os.environ:
++            if raising:
++                raise KeyError(name)
++            return
++        self._undo.append((None, name, original))
++        del os.environ[name]
++
+     def undo(self) -> None:
+         while self._undo:
+             obj, name, original = self._undo.pop()
+-            setattr(obj, name, original)
++            if obj is None:
++                # environment variable
++                if original is None:
++                    os.environ.pop(name, None)
++                else:
++                    os.environ[name] = original
++            else:
++                setattr(obj, name, original)
+ 
+ 
+ def _discover(filt: str = "") -> list[tuple[str, str]]:
+     """Return [(stem, sub), ...]. If `filt` given, keep modules whose
+     stem contains the substring (so `python3 tests/run.py usage` runs
+     only test_commands_usage / test_*usage*). Boss-flagged 2026-05-05:
+     full suite is too slow during dev — let me filter."""
+     out = []
+     for sub in ("unit", "integration"):
+         for path in sorted((ROOT / "tests" / sub).glob("test_*.py")):
+diff --git a/tests/unit/test_commands_reset.py b/tests/unit/test_commands_reset.py
+index 6a4df551..f40556bb 100644
+--- a/tests/unit/test_commands_reset.py
++++ b/tests/unit/test_commands_reset.py
+@@ -34,28 +34,29 @@ def test_reset_preserves_config_files():
+     rc_cfg = {"chat_id": "oc_x"}
+     with isolated_env(team=team, runtime_config=rc_cfg), _fake_tmux_no_session():
+         team_path = config.team_file()
+         rt_path = config.runtime_config_file()
+         assert team_path.exists() and rt_path.exists()
+ 
+         run_cli(["reset", "--yes"])
+         assert team_path.exists() and rt_path.exists()
+ 
+ 
+-def test_reset_when_state_dir_does_not_exist_still_returns_zero():
++def test_reset_when_state_dir_is_empty_still_returns_zero():
+     team = {"agents": {"manager": {}}}
+     with isolated_env(team=team), _fake_tmux_no_session():
+         sd = paths.state_dir()
+-        assert not sd.exists()  # never created
++        assert sd.exists()  # state_dir now creates on access
+         rc, out, _ = run_cli(["reset", "--yes"])
+         assert rc == 0
+-        assert "did not exist" in out
++        assert "wiped" in out
++        assert not sd.exists()
+ 
+ 
+ # ── safety ──────────────────────────────────────────────────────
+ 
+ 
+ def test_reset_without_yes_in_non_tty_aborts():
+     team = {"agents": {"manager": {}}}
+     with isolated_env(team=team), _fake_tmux_no_session():
+         local_facts.append_message("a", "b", "x")
+         sd = paths.state_dir()
+diff --git a/tests/unit/test_runtime_paths_permissions.py b/tests/unit/test_runtime_paths_permissions.py
+new file mode 100644
+index 00000000..a7030b17
+--- /dev/null
++++ b/tests/unit/test_runtime_paths_permissions.py
+@@ -0,0 +1,23 @@
++import os
++import stat
++from pathlib import Path
++
++
++def test_state_dir_is_created_with_700(tmp_path, monkeypatch):
++    monkeypatch.setenv("EDUFLOW_STATE_DIR", str(tmp_path / "state"))
++    from eduflow.runtime import paths
++
++    p = paths.state_dir()
++    assert p.exists()
++    mode = stat.S_IMODE(p.stat().st_mode)
++    assert mode == 0o700
++
++
++def test_facts_dir_is_created_with_700(tmp_path, monkeypatch):
++    monkeypatch.setenv("EDUFLOW_STATE_DIR", str(tmp_path / "state"))
++    from eduflow.runtime import paths
++
++    p = paths.facts_dir()
++    assert p.exists()
++    mode = stat.S_IMODE(p.stat().st_mode)
++    assert mode == 0o700

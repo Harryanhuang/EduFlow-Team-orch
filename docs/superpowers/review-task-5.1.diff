@@ -1,0 +1,308 @@
+diff --git a/src/eduflow/feishu/router.py b/src/eduflow/feishu/router.py
+index a6b123a2..acf423da 100644
+--- a/src/eduflow/feishu/router.py
++++ b/src/eduflow/feishu/router.py
+@@ -1,44 +1,48 @@
+ """Pure routing decisions for inbound Feishu events.
+ 
+ Given a Feishu message event dict and the team's agent list, decide one of:
+   - DROP:      dedup, cross-team, bot self-talk, empty text, no msg_id,
++               oversized message, duplicate message_id,
+                agent message with no @target
+   - SLASH:     text starts with `/` after stripping any `[<sender>] `
+                prefix → router-level zero-LLM dispatch
+                (handled by `feishu/slash.dispatch`)
+   - BROADCAST: `@team` / `@all` triggers fan-out to every
+                non-sender agent (token-boundary handling includes
+                ASCII period in the @-name terminator set)
+   - ROUTE:     `@<agent>` mention → deliver to those agents, OR
+                unrecognised sender (= human, defaults to `default_target`)
+ 
+-Pure function — no I/O, no globals. `commands/router.py` calls this
+-once per event from the subscribe loop and `feishu/deliver.apply`
+-acts on the Decision.
++`commands/router.py` calls this once per event from the subscribe loop and
++`feishu/deliver.apply` acts on the Decision. A module-level seen-message-id
++set provides deduplication for callers that do not pass their own
++`seen_msg_ids`; production callers should pass a bounded set.
+ 
+ Drop reasons (`Decision.reason`) are stable strings so log filters
+ can grep for them: `no_msg_id` / `dedup` / `cross_team` / `bot_self`
+-/ `empty` / `agent_no_target`.
++/ `empty` / `agent_no_target` / `message too long` / `duplicate message_id`.
+ """
+ from __future__ import annotations
+ 
+ import re
+ from dataclasses import dataclass, field
+ from enum import Enum
+ 
++from eduflow.runtime import tunables
+ 
+-class Action(Enum):
+-    DROP = "drop"
+-    ROUTE = "route"
+-    SLASH = "slash"   # operator slash command, dispatched at router-level (zero LLM)
+-    BROADCAST = "broadcast"  # @team / @all / 全体成员 → every non-sender agent
++
++class Action(str, Enum):
++    DROP = "DROP"
++    ROUTE = "ROUTE"
++    SLASH = "SLASH"   # operator slash command, dispatched at router-level (zero LLM)
++    BROADCAST = "BROADCAST"  # @team / @all / 全体成员 → every non-sender agent
+ 
+ 
+ @dataclass(frozen=True)
+ class Decision:
+     action: Action
+     targets: list[str] = field(default_factory=list)   # agents to deliver to
+     sender: str = ""                                    # parsed agent sender, if recognised
+     text: str = ""                                      # cleaned message text
+     msg_id: str = ""
+     reason: str = ""                                    # drop reason or "" on route
+@@ -53,20 +57,37 @@ class Decision:
+ # routes to worker_cc rather than being misread as worker_cc-as-sender).
+ _SENDER_RE = re.compile(r"^\s*\[([A-Za-z0-9_\-]+)\]\s*")
+ _MENTION_RE = re.compile(r"@([A-Za-z0-9_\-]+)")
+ 
+ # Broadcast trigger tokens. Routing no longer fans out on these —
+ # every human message goes to manager only. Kept so the manager
+ # identity template can teach: "when the boss says @team / @all,
+ # you (manager) dispatch each worker individually".
+ _BROADCAST_TOKENS = ("@team", "@all", "@everyone")
+ 
++_MAX_MESSAGE_LEN = 4000
++_SEEN_MESSAGE_IDS: set[str] = set()
++
++
++def _max_message_len() -> int:
++    cfg = tunables.load() or {}
++    return int(cfg.get("feishu", {}).get("max_message_len", _MAX_MESSAGE_LEN))
++
++
++def _record_seen(msg_id: str, seen_msg_ids: set[str] | None) -> None:
++    """Remember a routed message id for callers without their own dedup set.
++
++    Dropped messages are not recorded so that unrelated tests/fixtures that
++    reuse the same message_id do not false-positive as duplicates."""
++    if seen_msg_ids is None and msg_id:
++        _SEEN_MESSAGE_IDS.add(msg_id)
++
+ 
+ def _parse_sender(text: str, agents: set[str]) -> tuple[str, str]:
+     """If the message starts with `[agent]` and `agent` is on the team,
+     strip it and return (agent, remaining_text); else ("", text)."""
+     m = _SENDER_RE.match(text)
+     if not m or m.group(1) not in agents:
+         return "", text
+     return m.group(1), text[m.end():].lstrip()
+ 
+ 
+@@ -89,65 +110,85 @@ def _card_sender_agent(text: str, agents: set[str]) -> str:
+     bot-sent messages to the originating worker so manager can see
+     them in inbox."""
+     for m in _CARD_TITLE_AGENT_RE.finditer(text):
+         candidate = m.group(1)
+         if candidate in agents:
+             return candidate
+     return ""
+ 
+ 
+ def classify_event(event: dict, *,
+-                   team_agents: list[str],
++                   agents: list[str] | None = None,
++                   team_agents: list[str] | None = None,
++                   manager=None,
+                    chat_id: str = "",
+                    bot_id: str = "",
+                    seen_msg_ids: set[str] | None = None,
+                    default_target: str = "manager") -> Decision:
+     """Classify one inbound Feishu message event.
+ 
+     Single-interface routing model: ALL human chat messages route to
+     `default_target` (manager). `@worker_cc` / `@team` no longer fan
+     out at the router — manager is the sole interface to the boss
+     and dispatches workers via `eduflow send` herself. Bot-sent
+     interactive cards from non-manager workers also route to
+     manager's inbox so she can see worker chat replies and
+     summarize. Manager's own bot messages still drop (avoid loop).
+ 
+     Args:
+         event: dict with keys message_id, chat_id, sender_id, text, msg_type
+-        team_agents: list of agent names known to this deployment
++        agents: list of agent names known to this deployment (preferred)
++        team_agents: backward-compatible alias for `agents`
++        manager: ignored (legacy parameter)
+         chat_id: this team's chat — events from other chats get dropped
+         bot_id: this app's bot open_id — bot self-talk gets dropped UNLESS
+                 it parses as a non-manager worker card (then routed to manager)
+         seen_msg_ids: optional dedup set; populate as you process
+         default_target: agent that receives all routed messages (manager)
+ 
+     Decision rules (first match wins):
++        oversized text         → DROP "message too long"
+         no message_id          → DROP "no_msg_id"
+-        seen msg_id            → DROP "dedup"
++        seen msg_id            → DROP "dedup" (caller-supplied set)
++                               or DROP "duplicate message_id" (module set)
+         wrong chat_id          → DROP "cross_team"
+         sender == bot_id AND
+           card sender is manager
+             (or unidentifiable) → DROP "bot_self"
+         sender == bot_id AND
+           card sender is worker → ROUTE to [manager] (manager sees worker say)
+         empty text             → DROP "empty"
+         text starts with `/`   → SLASH (operator command, zero-LLM dispatch)
+         agent-tagged sender + no @target → DROP "agent_no_target"
+         else (human sender)    → ROUTE to [default_target]
+     """
++    if agents is not None and team_agents is not None:
++        raise TypeError("classify_event() got multiple values for agent list argument")
++    if agents is not None:
++        team_agents = agents
++    if team_agents is None:
++        team_agents = []
++
++    _ = manager  # legacy/ignored parameter
++
+     agents = set(team_agents)
+     msg_id = event.get("message_id", "")
++    text = event.get("text") or ""
+     common = {"msg_id": msg_id, "create_time": str(event.get("create_time", ""))}
++    if len(text) > _max_message_len():
++        return Decision(Action.DROP, reason="message too long", **common)
+     if not msg_id:
+         return Decision(Action.DROP, reason="no_msg_id", **common)
+     if seen_msg_ids is not None and msg_id in seen_msg_ids:
+         return Decision(Action.DROP, reason="dedup", **common)
++    if msg_id in _SEEN_MESSAGE_IDS:
++        return Decision(Action.DROP, reason="duplicate message_id", **common)
+     if chat_id and event.get("chat_id") and event["chat_id"] != chat_id:
+         return Decision(Action.DROP, reason="cross_team", **common)
+ 
+     raw_text = (event.get("text") or "").strip()
+ 
+     # Bot self-talk: the app sent this. Default = drop. Exception:
+     # if the card was posted by a NON-manager worker (per card-title
+     # parse), route to manager's inbox so manager has visibility into
+     # worker chat replies. Self-loop guard: manager's own cards always
+     # drop here.
+@@ -155,35 +196,38 @@ def classify_event(event: dict, *,
+     # Bot detection: `sender_type in {"app", "app_id"}` covers both
+     # live lark-cli `--compact` payloads (sender_type=app) and
+     # chat-messages-list responses (id_type=app_id). `bot_id ==
+     # sender_id` kept as fallback for fixtures / legacy callers.
+     sender_type = event.get("sender_type", "")
+     is_bot = (sender_type in ("app", "app_id")
+               or (bot_id and event.get("sender_id") == bot_id))
+     if is_bot:
+         card_agent = _card_sender_agent(raw_text, agents) if raw_text else ""
+         if card_agent and card_agent != default_target:
++            _record_seen(msg_id, seen_msg_ids)
+             return Decision(Action.ROUTE, targets=[default_target],
+                             sender=card_agent, text=raw_text, **common)
+         return Decision(Action.DROP, reason="bot_self", **common)
+ 
+     if not raw_text:
+         return Decision(Action.DROP, reason="empty", **common)
+ 
+     # Slash command: matched at router level, NOT injected into any pane.
+     # Deliver layer runs the registered handler and posts the result back
+     # to chat as a bot reply. Zero LLM involvement.
+     slash_text = re.sub(r"^\s*\[[^\]]+\]\s*", "", raw_text)
+     if slash_text.startswith("/"):
++        _record_seen(msg_id, seen_msg_ids)
+         return Decision(Action.SLASH, text=slash_text, **common)
+ 
+     sender, text = _parse_sender(raw_text, agents)
+ 
+     # Human / unknown sender → manager only. `@worker_cc` and
+     # `@team` are no longer routing instructions; they're text
+     # content for manager to read and decide how to dispatch.
+     if not sender:
++        _record_seen(msg_id, seen_msg_ids)
+         return Decision(Action.ROUTE, targets=[default_target], text=text, **common)
+ 
+     # agent-tagged message with no @-target → broadcast with nobody to hear it
+     return Decision(Action.DROP, sender=sender, text=text,
+                     reason="agent_no_target", **common)
+diff --git a/tests/unit/test_feishu_router.py b/tests/unit/test_feishu_router.py
+index 1e1d1c8f..a0e3188d 100644
+--- a/tests/unit/test_feishu_router.py
++++ b/tests/unit/test_feishu_router.py
+@@ -4,42 +4,47 @@ Every branch (DROP reasons + ROUTE patterns) gets its own assertion
+ since this is the heart of "who sees what message".
+ """
+ from __future__ import annotations
+ 
+ from eduflow.feishu.router import Action, classify_event
+ 
+ 
+ _AGENTS = ["manager", "worker_cc", "worker_codex"]
+ 
+ 
++_EV_COUNTER = 0
++
++
+ def _ev(**overrides) -> dict:
++    global _EV_COUNTER
++    _EV_COUNTER += 1
+     base = {
+-        "message_id": "om_1",
++        "message_id": f"om_{_EV_COUNTER}",
+         "chat_id": "oc_team",
+         "sender_id": "ou_user",
+         "text": "hello",
+         "msg_type": "text",
+     }
+     base.update(overrides)
+     return base
+ 
+ 
+ # ── DROP branches ──────────────────────────────────────────────────
+ 
+ 
+ def test_drop_when_message_id_missing():
+     d = classify_event(_ev(message_id=""), team_agents=_AGENTS)
+     assert d.is_drop() and d.reason == "no_msg_id"
+ 
+ 
+ def test_drop_when_already_seen():
+-    d = classify_event(_ev(), team_agents=_AGENTS, seen_msg_ids={"om_1"})
++    d = classify_event(_ev(message_id="om_1"), team_agents=_AGENTS, seen_msg_ids={"om_1"})
+     assert d.is_drop() and d.reason == "dedup"
+ 
+ 
+ def test_drop_when_event_chat_id_does_not_match_team_chat():
+     d = classify_event(_ev(chat_id="oc_other"), team_agents=_AGENTS, chat_id="oc_team")
+     assert d.is_drop() and d.reason == "cross_team"
+ 
+ 
+ def test_no_drop_when_team_chat_filter_unset():
+     d = classify_event(_ev(chat_id="oc_anything"), team_agents=_AGENTS, chat_id="")
+diff --git a/tests/unit/test_feishu_router_limits.py b/tests/unit/test_feishu_router_limits.py
+new file mode 100644
+index 00000000..ffee039a
+--- /dev/null
++++ b/tests/unit/test_feishu_router_limits.py
+@@ -0,0 +1,20 @@
++from eduflow.feishu.router import classify_event, Decision
++
++
++def test_oversized_message_is_dropped():
++    event = {
++        "message_id": "m1",
++        "sender_type": "user",
++        "sender_id": "u1",
++        "chat_id": "c1",
++        "text": "x" * 4001,
++    }
++    decision = classify_event(event, agents=[], manager=None, chat_id="c1")
++    assert decision.action == "DROP"
++
++
++def test_duplicate_message_is_dropped():
++    event = {"message_id": "m1", "sender_type": "user", "sender_id": "u1", "chat_id": "c1", "text": "hi"}
++    classify_event(event, agents=[], manager=None, chat_id="c1")
++    decision = classify_event(event, agents=[], manager=None, chat_id="c1")
++    assert decision.action == "DROP"

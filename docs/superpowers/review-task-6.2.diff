@@ -1,0 +1,246 @@
+diff --git a/Dockerfile b/Dockerfile
+index f989121d..316a4e2e 100644
+--- a/Dockerfile
++++ b/Dockerfile
+@@ -4,24 +4,26 @@
+ # + the eduflow package itself. Does NOT include the agent CLIs
+ # (claude / codex / kimi) — each has its own auth and licence
+ # requirement; derive from this image and add whichever you need.
+ #
+ # Volumes:
+ #   /home/eduflow/.eduflow  - team config + runtime state (mount a host dir)
+ #   /home/eduflow/.lark-cli - lark-cli OAuth profile (mount your existing one)
+ #
+ # Network:
+ #   lark-cli's event +subscribe long-poll needs to reach
+-#   open.larksuite.com / open.feishu.cn. Run the container with
+-#   --network host (or compose `network_mode: host`) on Linux to avoid
+-#   NAT timeouts; on macOS/Windows Docker Desktop, default bridge
+-#   works but lark-cli round-trips are slower.
++#   open.larksuite.com / open.feishu.cn. The default bridge network is
++#   recommended. If you see WebSocket stalls behind NAT (common on
++#   Linux bridge networks) or on Docker Desktop, tune
++#   EDUFLOW_ROUTER_STALE_S (e.g. 300) so the router respawns faster.
++#   Avoid `network_mode: host`; it provides no benefit for outbound
++#   long-poll and breaks cross-container DNS on Linux.
+ 
+ # kimi-cli ≥1.0 requires Python ≥3.12; pyproject's
+ # requires-python = ">=3.10" stays compatible.
+ FROM python:3.12-slim
+ 
+ # Pinned dependency versions — verify before upgrading.
+ ARG LARK_CLI_VERSION=1.0.64
+ ARG CLAUDE_CODE_VERSION=2.1.206
+ ARG OPENAI_CODEX_VERSION=0.144.1
+ ARG KIMI_CLI_VERSION=1.48.0
+diff --git a/docker-compose.yml b/docker-compose.yml
+index 6dd5c257..29ee6869 100644
+--- a/docker-compose.yml
++++ b/docker-compose.yml
+@@ -1,14 +1,15 @@
+ # Minimum-viable compose for EduFlow.
+ #
+-# Mounts a host `./team-data/` directory into /data so team.json,
+-# runtime_config.json, and the state dir survive `docker compose down`.
++# Mounts a host `./team-data/` directory into /home/eduflow/.eduflow
++# so team.json, runtime_config.json, and the state dir survive
++# `docker compose down`.
+ # Mounts the host's lark-cli OAuth profile so `eduflow say`/`router`
+ # don't need a fresh authentication round inside the container.
+ #
+ # Usage:
+ #   mkdir -p team-data && cd team-data && eduflow init   # bootstrap once
+ #   docker compose up -d
+ #   docker compose exec eduflow eduflow up
+ #   docker compose exec eduflow eduflow health
+ #
+ # The base image runs as the `eduflow` non-root user with HOME=/home/eduflow.
+@@ -39,21 +40,21 @@ services:
+ 
+   eduflow:
+     build: .
+     image: eduflow:dev
+     volumes:
+       # Bind-mount source RW so Python edits hot-reload without
+       # `docker compose build`. Only rebuild for Dockerfile / deps
+       # changes. RW (not :ro) because pip's `*.egg-info` writes into
+       # src/ on first install.
+       - ./src:/app/src
+-      - ./team-data:/data
++      - ./team-data:/home/eduflow/.eduflow
+       # Share the host's lark-cli OAuth profile (config.json + cache)
+       # but keep the per-app fcntl lock dir container-private. Sharing
+       # the lock dir would let a host router + container router race
+       # for the same lock and one would misreport "another instance
+       # running"; keeping locks/ inside the container avoids that.
+       - ${HOME}/.lark-cli/config.json:/home/eduflow/.lark-cli/config.json:ro
+       - ${HOME}/.lark-cli/cache:/home/eduflow/.lark-cli/cache
+       # Bind-mount host's claude OAuth so the container reuses it
+       # without an interactive login. On macOS the .credentials.json
+       # file actually lives in keychain — extract once with:
+@@ -80,24 +81,25 @@ services:
+       - FEISHU_APP_SECRET=${FEISHU_APP_SECRET:-}
+       - LARKSUITE_CLI_APP_SECRET=${LARKSUITE_CLI_APP_SECRET:-}
+       - FEISHU_APP_ID=${FEISHU_APP_ID:-}
+       - LARKSUITE_CLI_APP_ID=${LARKSUITE_CLI_APP_ID:-}
+       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+       # Container deploys typically only have bot OAuth (via app_secret
+       # → tenant_token), not user OAuth. Pin send_as=bot so catchup /
+       # say / slash all use bot identity. Override with `user` only
+       # if you've run `lark-cli auth login` inside the container.
+       - EDUFLOW_LARK_SEND_AS=${EDUFLOW_LARK_SEND_AS:-bot}
+-      # On constrained Docker Desktop networks, lark-cli's long-poll
+-      # WebSocket may go quiet. Set EDUFLOW_ROUTER_STALE_S in .env
+-      # (suggested 300) to make the router respawn faster when that
+-      # happens.
++      # On constrained Docker Desktop or bridge networks, lark-cli's
++      # long-poll WebSocket may go quiet. On Linux the default bridge
++      # can also hit NAT timeout for long-lived idle connections. Set
++      # EDUFLOW_ROUTER_STALE_S in .env (suggested 300) to make the
++      # router respawn faster when either happens.
+       - EDUFLOW_ROUTER_STALE_S=${EDUFLOW_ROUTER_STALE_S:-}
+     tty: true
+     stdin_open: true
+     deploy:
+       resources:
+         limits:
+           cpus: '2.0'
+           memory: 4G
+     # Keep the container alive so `docker compose exec` works without
+     # auto-restart loops. Operator-driven lifecycle: `eduflow up`
+diff --git a/docs/DEPLOYMENT.md b/docs/DEPLOYMENT.md
+index 8f395550..b3357118 100644
+--- a/docs/DEPLOYMENT.md
++++ b/docs/DEPLOYMENT.md
+@@ -207,21 +207,21 @@ $EDITOR .env                    # FEISHU_APP_ID + FEISHU_APP_SECRET
+ #    the container can bind-mount. Skip on Linux (file is already there).
+ mkdir -p ~/.claude
+ security find-generic-password -s "Claude Code-credentials" -w \
+   > ~/.claude/.credentials.json
+ 
+ # 3. build the image and start the container
+ docker compose build
+ docker compose up -d
+ 
+ # 4. bootstrap config inside the container (output lands in ./team-data/)
+-docker compose exec --workdir /data eduflow eduflow init
++docker compose exec --workdir /home/eduflow/.eduflow eduflow eduflow init
+ $EDITOR team-data/eduflow.toml    # set chat_id + agents
+ 
+ # 5. launch the team + verify
+ docker compose exec eduflow eduflow install-hooks
+ docker compose exec eduflow eduflow up
+ docker compose exec eduflow eduflow health
+ docker compose exec eduflow tmux attach -t EduFlow   # see panes; Ctrl+B d to leave
+ ```
+ 
+ > **macOS subscribe stalls (handled automatically since 2026-05-09):**
+@@ -235,27 +235,30 @@ docker compose exec eduflow tmux attach -t EduFlow   # see panes; Ctrl+B d to le
+ >
+ > The default threshold is **platform-aware**: Darwin → 120 s, Linux →
+ > 600 s. Linux WebSocket is stable so the looser default avoids
+ > respawning quiet chats; macOS gets a tighter default so the recovery
+ > loop completes in ~2 min instead of ~10. Override via toml
+ > (`router.stale_event_threshold_s = N`) or env (`EDUFLOW_ROUTER_STALE_S=N`)
+ > if your network warrants it.
+ 
+ **Compose mounts (read `docker-compose.yml` for the full list):**
+ 
+-| Host path                              | Container path                          | Purpose |
+-| -------------------------------------- | --------------------------------------- | ------- |
+-| `./src/`                               | `/app/src/`                             | Hot-reload: edit on host, container picks up next invocation |
+-| `./team-data/`                         | `/data/`                                | `eduflow.toml` + state survives `docker compose down` |
+-| `~/.lark-cli/config.json`              | `/root/.lark-cli/config.json`           | OAuth profile reused (file mount only — locks/ stays container-private to avoid host/container fcntl contention) |
+-| `~/.claude/.credentials.json`          | `/root/.claude/.credentials.json`       | Claude OAuth (RW so token refreshes persist back) |
+-| `~/.codex` / `~/.kimi`                 | `/root/.codex` / `/root/.kimi`          | Per-CLI credentials |
++| Host path                              | Container path                              | Purpose |
++| -------------------------------------- | ------------------------------------------- | ------- |
++| `./src/`                               | `/app/src/`                                 | Hot-reload: edit on host, container picks up next invocation |
++| `./team-data/`                         | `/home/eduflow/.eduflow/`                   | `eduflow.toml` + state survives `docker compose down` |
++| `~/.lark-cli/config.json`              | `/home/eduflow/.lark-cli/config.json`       | OAuth profile reused (**read-only**; locks/ stays container-private to avoid host/container fcntl contention) |
++| `~/.claude/.credentials.json`          | `/home/eduflow/.claude/.credentials.json`   | Claude OAuth (RW so token refreshes persist back) |
++| `~/.claude.json`                       | `/home/eduflow/host-claude.json`            | Per-agent copy source (**read-only**) |
++| `~/.claude/projects`                   | `/home/eduflow/.claude/projects`            | Claude projects/usage logs |
++| `~/.codex/auth.json`                   | `/home/eduflow/.codex/auth.json`            | Codex OAuth (**read-only**) |
++| `~/.kimi/config.json`                  | `/home/eduflow/.kimi/config.json`           | Kimi OAuth (**read-only**) |
+ 
+ The base image deliberately does **not** bake in `claude` / `codex` /
+ `kimi` — each has its own auth and license. Derive from `eduflow:dev`
+ and `RUN` the install you actually need, or bind-mount the host binary
+ into the container's `$PATH`.
+ 
+ ---
+ 
+ ## Configuration: `eduflow.toml`
+ 
+diff --git a/docs/superpowers/task-6.2-report.md b/docs/superpowers/task-6.2-report.md
+new file mode 100644
+index 00000000..a5146185
+--- /dev/null
++++ b/docs/superpowers/task-6.2-report.md
+@@ -0,0 +1,65 @@
++# Task 6.2 Report: Docker Compose hardening
++
++## What changed
++
++Modified `docker-compose.yml` to align with the Task 6.1 Dockerfile (non-root `eduflow` user, `HOME=/home/eduflow`) and reduce the container's attack surface:
++
++1. **Removed `network_mode: host`** from the `eduflow` service. The service now uses the default Docker bridge network.
++2. **Restricted credential mounts**:
++   - Moved all credential binds from `/root/...` to `/home/eduflow/...`.
++   - Replaced directory mounts for `.codex` and `.kimi` with file-level mounts:
++     - `${HOME}/.codex/auth.json` → `/home/eduflow/.codex/auth.json:ro`
++     - `${HOME}/.kimi/config.json` → `/home/eduflow/.kimi/config.json:ro`
++   - Marked read-only (`:ro`) for files that do not need to write token refreshes back to the host (`lark-cli/config.json`, `codex/auth.json`, `kimi/config.json`, `host-claude.json`).
++   - Left `.claude/.credentials.json` read-write so Claude OAuth token refreshes persist back to the host, matching the original behavior.
++   - Left `.lark-cli/cache` and `.claude/projects` as narrowly-scoped directory mounts because they contain runtime cache / usage-log files that are not single-file credentials.
++3. **Replaced the host Downloads bind** with a named volume:
++   - Removed `/Users/huanganan/Downloads/agent-chrome:/downloads`
++   - Added `agent-chrome-downloads:/downloads`
++   - Declared `agent-chrome-downloads:` in the top-level `volumes:` section.
++4. **Added resource limits** to the `eduflow` service:
++   ```yaml
++   deploy:
++     resources:
++       limits:
++         cpus: '2.0'
++         memory: 4G
++   ```
++5. **Updated comments** to describe the non-root user layout and remove the obsolete host-network justification.
++
++## Validation
++
++Ran:
++
++```bash
++docker compose config
++```
++
++Result: **passed** (exit code 0). The resolved Compose file shows:
++
++- `eduflow` service is on the default bridge network (`networks: default`).
++- Credential bind targets are all under `/home/eduflow/`.
++- `.codex/auth.json` and `.kimi/config.json` mounts are `read_only: true`.
++- `agent-chrome-downloads` is a named volume mounted at `/downloads`.
++- Resource limits are present (`cpus: 2`, `memory: 4294967296`).
++
++> Note: `docker compose config` interpolates values from `.env`, so the emitted config contained live credential values on this workstation. Operators should avoid sharing the raw output.
++
++## Commit
++
++```
++7bced0ff security: remove host network, restrict mounts, add resource limits
++```
++
++## Self-review findings
++
++- Task 6.2 brief steps 1–5 are complete.
++- The existing `docker compose up` workflow is preserved; no new build-time requirements were introduced.
++- No secrets were committed; the change is limited to `docker-compose.yml`.
++
++## Concerns
++
++1. **Stale deployment docs**: `docs/DEPLOYMENT.md` still documents the old `/root/.codex` and `/root/.kimi` mount paths. It should be updated to match `/home/eduflow/...`.
++2. **Missing host credential files on this workstation**: `~/.claude/.credentials.json` and `~/.kimi/config.json` do not exist here. `docker compose config` still passes, but `docker compose up` would cause Docker to create empty directories at those host paths. This is pre-existing behavior for the `.credentials.json` mount and acceptable on hosts where the files are present; on this host an operator would need to create/extract them before running the container.
++3. **Long-poll behavior without host networking**: The original comment noted that `network_mode: host` helped avoid NAT timeouts on Linux for `lark-cli event +subscribe`. With the default bridge, the operator may need to tune `EDUFLOW_ROUTER_STALE_S` (suggested 300 s) if the WebSocket goes quiet.
++4. **Source bind mount permissions**: `./src:/app/src` remains RW for hot reload. Because the Dockerfile now runs as `eduflow`, file ownership on Linux hosts may need adjustment so the container user can write the editable-install metadata.

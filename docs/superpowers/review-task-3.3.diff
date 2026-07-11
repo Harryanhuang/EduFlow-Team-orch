@@ -1,0 +1,160 @@
+diff --git a/src/eduflow/agents/identity.py b/src/eduflow/agents/identity.py
+index 6527d4dd..0dff6909 100644
+--- a/src/eduflow/agents/identity.py
++++ b/src/eduflow/agents/identity.py
+@@ -23,20 +23,21 @@ cleared pane. It also appends the agent's recent durable memory (via
+ context. Empty memory → no extra section.
+ 
+ Manager 巡视 cadence uses `eduflow peek <agent>` rather than raw
+ `tmux capture-pane`.
+ """
+ from __future__ import annotations
+ 
+ from pathlib import Path
+ 
+ from eduflow.runtime import config, paths
++from eduflow.runtime.names import validate_agent_name
+ from eduflow.store import memory
+ from eduflow.util import atomic_write_text
+ 
+ 
+ # Shared section: every role's identity needs this guardrail. Keeping it
+ # in one constant means any tweak (new env vars, more failure modes) only
+ # happens once and both bodies stay in sync automatically.
+ _WORKDIR_RULE = """\
+ ## Working directory rule (CRITICAL)
+ 
+@@ -537,20 +538,21 @@ def init_prompt(agent: str) -> str:
+         if constraint_packet:
+             return f"{base}\n\n{constraint_packet}\n\n继续之前未完成的工作；如已完成则确认并待命。"
+         return base
+     if constraint_packet:
+         return f"{base}\n\n{constraint_packet}\n\n{recall}\n\n继续之前未完成的工作；如已完成则确认并待命。"
+     return f"{base}\n\n{recall}\n\n继续之前未完成的工作；如已完成则确认并待命。"
+ 
+ 
+ def identity_path(agent: str) -> Path:
+     """Where the rendered identity for `agent` lives on disk."""
++    agent = validate_agent_name(agent)
+     return paths.state_dir() / "agents" / agent / "identity.md"
+ 
+ 
+ def write(agent: str, *, role: str | None = None,
+           cli: str | None = None, model: str | None = None,
+           specialty: list[str] | None = None,
+           tone: str | None = None,
+           notes: str | None = None) -> Path:
+     """Render and persist the identity file; return its path."""
+     target = identity_path(agent)
+diff --git a/src/eduflow/runtime/lifecycle.py b/src/eduflow/runtime/lifecycle.py
+index 9db362e2..e8f178f3 100644
+--- a/src/eduflow/runtime/lifecycle.py
++++ b/src/eduflow/runtime/lifecycle.py
+@@ -213,20 +213,21 @@ def _ensure_claude_agent_home(agent: str) -> None:
+     contains:
+       .claude/settings.json     — silent-launch flags (theme, perms)
+       .claude/.credentials.json — symlink to /root/.claude/.credentials.json
+                                   so OAuth tokens stay bind-mount shared
+       .claude/projects          — symlink to /root/.claude/projects
+                                   so ccusage in /usage finds session logs
+     Best-effort: if /data isn't writable (host tests where the path
+     doesn't exist), silently skip and let claude fall back to its
+     default `$HOME` discovery.
+     """
++    agent = validate_agent_name(agent)
+     from eduflow.agents.claude_code import agent_home as _agent_home
+     home = Path(_agent_home(agent))
+     claude_dir = home / ".claude"
+     try:
+         claude_dir.mkdir(parents=True, exist_ok=True)
+     except OSError:
+         return
+     # Host fallback: claude on macOS keys keychain lookup by $HOME, so a
+     # per-agent HOME with no .credentials.json gets "Not logged in" even
+     # though the keychain entry exists for the user. Export it to a file
+diff --git a/src/eduflow/store/memory.py b/src/eduflow/store/memory.py
+index 8980b7b1..19d28212 100644
+--- a/src/eduflow/store/memory.py
++++ b/src/eduflow/store/memory.py
+@@ -31,20 +31,21 @@ API surface:
+   `render_for_prompt(agent, *, limit=20)`     → markdown for init prompt
+   `all_agents_with_memory()`                  → iterator for /health audit
+   `kinds_summary()` / `kinds_sorted()`        → KNOWN_KINDS pretty-prints
+ """
+ from __future__ import annotations
+ 
+ import json
+ from typing import Iterable
+ 
+ from eduflow.runtime import paths
++from eduflow.runtime.names import validate_agent_name
+ from eduflow.util import flock, now_ms, read_jsonl
+ 
+ 
+ _MAX_PER_AGENT = 200  # cap retained entries; oldest get dropped on overflow
+ 
+ # Convention vocabulary for memory entry `kind`. Not enforced — `append`
+ # accepts any string so future kinds can land without a code change —
+ # but unknown kinds get a soft stderr warning so boss `recall` reading
+ # doesn't get a long-tail of free-form labels (`fyi`, `important!!!`,
+ # `mood-of-day`) that fragment the schema. Round-106 added the warn.
+@@ -89,20 +90,21 @@ def warn_unknown_kind(kind: str) -> None:
+     with different formatting per command, so they keep their
+     inline branches.
+     """
+     if kind and kind not in KNOWN_KINDS:
+         from eduflow.util import warn
+         warn(f"⚠️  --kind {kind!r} not in known kinds "
+              f"({sorted(KNOWN_KINDS)}); proceeding anyway")
+ 
+ 
+ def _agent_dir(agent: str):
++    agent = validate_agent_name(agent)
+     return paths.facts_dir() / agent
+ 
+ 
+ def _memory_file(agent: str):
+     return _agent_dir(agent) / "memory.jsonl"
+ 
+ 
+ def _locked(agent: str):
+     return flock(_agent_dir(agent) / ".memory.lock")
+ 
+diff --git a/tests/unit/test_paths_agent_validation.py b/tests/unit/test_paths_agent_validation.py
+new file mode 100644
+index 00000000..dba28604
+--- /dev/null
++++ b/tests/unit/test_paths_agent_validation.py
+@@ -0,0 +1,32 @@
++"""Path-traversal guard: agent names are validated before filesystem paths are built."""
++from __future__ import annotations
++
++import tempfile
++from pathlib import Path
++
++import pytest
++
++from eduflow.agents import claude_code
++from eduflow.agents.identity import identity_path
++from eduflow.runtime.lifecycle import _ensure_claude_agent_home
++from eduflow.runtime.names import InvalidNameError
++from eduflow.store.memory import _agent_dir
++
++
++def test_identity_path_rejects_traversal():
++    with pytest.raises(InvalidNameError):
++        identity_path("../etc")
++
++
++def test_memory_agent_dir_rejects_traversal():
++    with pytest.raises(InvalidNameError):
++        _agent_dir("../etc")
++
++
++def test_ensure_claude_agent_home_rejects_traversal(monkeypatch):
++    with tempfile.TemporaryDirectory() as tmp:
++        monkeypatch.setattr(
++            claude_code, "agent_home", lambda _agent: str(Path(tmp) / "safe")
++        )
++        with pytest.raises(InvalidNameError):
++            _ensure_claude_agent_home("../etc")

@@ -11,6 +11,11 @@ What CAN and SHOULD be tested:
 """
 from __future__ import annotations
 
+import io
+import os
+import sys
+from pathlib import Path
+
 from helpers import attr_patch, env_patch, isolated_env, run_cli
 from eduflow.commands.router import (
     _build_subscribe_cmd,
@@ -232,7 +237,59 @@ def test_stale_threshold_jitter_disabled_when_pct_zero():
         assert _stale_event_threshold_s() == 500.0
 
 
-def test_make_on_progress_refreshes_timestamp_on_each_event():
+def test_stale_threshold_warns_when_legacy_env_overrides_toml():
+    """T-130: EDUFLOW_ROUTER_STALE_S silently overrides eduflow.toml.
+    When the values differ, the router must warn once per process so
+    operators notice the stale shell export."""
+    from eduflow.commands import router as _r
+    with isolated_env(), env_patch(
+        EDUFLOW_ROUTER_STALE_S="1200",
+        EDUFLOW_ROUTER_STALE_EVENT_THRESHOLD_JITTER_PCT="0",
+    ):
+        # Provide a toml value that differs from the legacy env var.
+        tmp_toml = Path(os.environ["EDUFLOW_STATE_DIR"]) / "router-stale.toml"
+        tmp_toml.write_text("[router]\nstale_event_threshold_s = 600\n", encoding="utf-8")
+        with env_patch(EDUFLOW_CONFIG_FILE=str(tmp_toml)):
+            _r._STALE_ENV_WARNED = False
+            stderr_capture = io.StringIO()
+            old_stderr = sys.stderr
+            sys.stderr = stderr_capture
+            try:
+                assert _stale_event_threshold_s() == 1200.0
+                msg1 = stderr_capture.getvalue()
+                assert "EDUFLOW_ROUTER_STALE_S=1200 overrides" in msg1
+                assert "router.stale_event_threshold_s=600" in msg1
+                # Second call should be silent (one-time warning).
+                stderr_capture.truncate(0)
+                stderr_capture.seek(0)
+                assert _stale_event_threshold_s() == 1200.0
+                assert stderr_capture.getvalue() == ""
+            finally:
+                sys.stderr = old_stderr
+                _r._STALE_ENV_WARNED = False
+
+
+def test_stale_threshold_no_warning_when_legacy_env_matches_toml():
+    """If the legacy env var happens to equal the toml value, don't
+    spam the operator — the effective threshold is the same."""
+    from eduflow.commands import router as _r
+    with isolated_env(), env_patch(
+        EDUFLOW_ROUTER_STALE_S="600",
+        EDUFLOW_ROUTER_STALE_EVENT_THRESHOLD_JITTER_PCT="0",
+    ):
+        tmp_toml = Path(os.environ["EDUFLOW_STATE_DIR"]) / "router-stale2.toml"
+        tmp_toml.write_text("[router]\nstale_event_threshold_s = 600\n", encoding="utf-8")
+        with env_patch(EDUFLOW_CONFIG_FILE=str(tmp_toml)):
+            _r._STALE_ENV_WARNED = False
+            stderr_capture = io.StringIO()
+            old_stderr = sys.stderr
+            sys.stderr = stderr_capture
+            try:
+                assert _stale_event_threshold_s() == 600.0
+                assert stderr_capture.getvalue() == ""
+            finally:
+                sys.stderr = old_stderr
+                _r._STALE_ENV_WARNED = False
     """Every successful (non-DROP) event should bump last_event_at[0]
     so the watchdog's stale check sees fresh activity. DROP events don't
     flow through process_lines' on_progress, so they don't refresh."""

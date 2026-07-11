@@ -242,15 +242,43 @@ def _stale_event_threshold_s() -> float:
     Legacy `EDUFLOW_ROUTER_STALE_S` env (without `_EVENT_THRESHOLD`) is
     still honored as a backwards-compat alias since it shipped first.
 
+    T-130 BUG GUARD: the legacy env var is evaluated BEFORE the toml
+    lookup, so a stale shell export (e.g. EDUFLOW_ROUTER_STALE_S=1200)
+    silently overrides eduflow.toml's router.stale_event_threshold_s.
+    This has caused real boss messages to be dropped. We print a
+    one-time warning so the operator knows toml is being ignored.
+    Prefer unsetting the env var; the modern env override is
+    EDUFLOW_ROUTER_STALE_EVENT_THRESHOLD_S.
+
     Per-process ±jitter is applied once at module import so multiple
     router instances don't all expire on the same wall-clock tick
     (which previously caused 'thundering herd' respawn storms on quiet
     chats). Set `router.stale_event_threshold_jitter_pct = 0` in
     eduflow.toml to disable for testing.
     """
+    global _STALE_ENV_WARNED
     # Legacy env-var alias (shipped before the tunables framework).
     legacy = os.environ.get("EDUFLOW_ROUTER_STALE_S", "").strip()
     if legacy:
+        # T-130: explicit warning when env overrides toml with a different
+        # value (common footgun). Same-value env exports are accepted
+        # without noise so operators can pin the value explicitly.
+        if not _STALE_ENV_WARNED:
+            try:
+                env_val = float(legacy)
+            except ValueError:
+                env_val = None
+            toml_val = tunables.tunable("router.stale_event_threshold_s", None)
+            if env_val is not None and toml_val is not None:
+                if abs(env_val - float(toml_val)) > 1e-9:
+                    print(
+                        f"⚠️  EDUFLOW_ROUTER_STALE_S={legacy} overrides "
+                        f"eduflow.toml router.stale_event_threshold_s={toml_val}. "
+                        f"Unset the env var to use the toml value, or migrate to "
+                        f"EDUFLOW_ROUTER_STALE_EVENT_THRESHOLD_S.",
+                        file=sys.stderr,
+                    )
+            _STALE_ENV_WARNED = True
         try:
             v = float(legacy)
             if v >= 60:
@@ -272,6 +300,14 @@ def _stale_event_threshold_s() -> float:
 # `if idle > threshold` in a tight loop, jitter noise makes the value
 # flapping enough to matter for tests.
 _JITTER_CACHE: dict[float, float] = {}
+
+# T-130 guard: warn once per process when the legacy env var silently
+# overrides eduflow.toml. This common footgun caused real boss messages
+# to be dropped when a stale EDUFLOW_ROUTER_STALE_S lingered across
+# shells (e.g. 1200 left over from an earlier session while toml said
+# 86400). Printing the warning on router startup makes the override
+# visible instead of silent.
+_STALE_ENV_WARNED: bool = False
 
 
 def _jittered_threshold(base: float) -> float:

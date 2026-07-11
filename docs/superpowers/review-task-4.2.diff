@@ -1,0 +1,114 @@
+diff --git a/src/eduflow/feishu/lark.py b/src/eduflow/feishu/lark.py
+index 0245a71c..94fa3637 100644
+--- a/src/eduflow/feishu/lark.py
++++ b/src/eduflow/feishu/lark.py
+@@ -92,49 +92,53 @@ def _ensure_tenant_token(*, fetch: Callable | None = None,
+       3. `FEISHU_APP_ID` + `FEISHU_APP_SECRET` (or `LARKSUITE_CLI_*`
+          aliases) in env — fetch a fresh token, write to cache, return.
+       4. None of the above — return None and let lark-cli's own auth
+          path try (works on macOS host with keychain).
+ 
+     `fetch` and `now` are injectable for tests so we don't hit the
+     network during unit tests.
+     """
+     import json as _json
+     import time as _time
+-    # Resolve cache_path at call time so tests that patch the module-level
+-    # `_tenant_token_cache_path` or override `EDUFLOW_STATE_DIR` take effect.
+-    if cache_path is None:
+-        cache_path = _tenant_token_cache_path()
+-    else:
++    # Don't resolve the default cache path until we actually need to touch
++    # disk. If `LARKSUITE_CLI_TENANT_ACCESS_TOKEN` is already set we can
++    # return early without creating the state directory.
++    if cache_path is not None:
+         cache_path = Path(cache_path)
+     existing = env_str("LARKSUITE_CLI_TENANT_ACCESS_TOKEN")
+     if existing:
+         return existing
+     now_fn = now or _time.time
+     now_t = int(now_fn())
++    path = cache_path or _tenant_token_cache_path()
+     try:
+-        with open(cache_path, "r", encoding="utf-8") as fh:
++        with open(path, "r", encoding="utf-8") as fh:
+             cached = _json.loads(fh.read())
+         if int(cached.get("expire_at", 0)) > now_t and cached.get("token"):
+             return str(cached["token"])
+     except (OSError, _json.JSONDecodeError, ValueError):
+         pass
+     app_id = env_str("FEISHU_APP_ID") or env_str("LARKSUITE_CLI_APP_ID")
+     app_secret = (env_str("FEISHU_APP_SECRET")
+                   or env_str("LARKSUITE_CLI_APP_SECRET"))
+     if not (app_id and app_secret):
+         return None
+     fresh = (fetch or _fetch_tenant_token)(app_id, app_secret)
+     if not fresh or not fresh.get("token"):
+         return None
++    path = cache_path or _tenant_token_cache_path()
+     try:
+-        cache_path.write_text(_json.dumps(fresh), encoding="utf-8")
+-        os.chmod(cache_path, 0o600)
++        # Create the cache file atomically with restrictive permissions so
++        # a world-readable file is never exposed, even briefly.
++        fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)
++        with os.fdopen(fd, "w", encoding="utf-8") as fh:
++            fh.write(_json.dumps(fresh))
+     except OSError:
+         pass  # cache write best-effort; the in-memory return is the load-bearing path
+     return str(fresh["token"])
+ 
+ 
+ def subprocess_env() -> dict[str, str]:
+     """Build the env to hand to any lark-cli subprocess (one-shot `call` or
+     long-running `event +subscribe`). Strips HTTP/HTTPS proxy vars when
+     LARK_CLI_NO_PROXY is truthy, since lark-cli doesn't honor that variable
+     itself — it's a wrapper-side flag.
+diff --git a/tests/unit/test_feishu_lark.py b/tests/unit/test_feishu_lark.py
+index 3925e8a2..175148dd 100644
+--- a/tests/unit/test_feishu_lark.py
++++ b/tests/unit/test_feishu_lark.py
+@@ -659,10 +659,43 @@ def test_subprocess_env_skips_token_when_no_app_id_resolvable():
+         cache = _cache_path(td)
+         with open(cache, "w", encoding="utf-8") as fh:
+             fh.write(json.dumps({"token": "t-orphan", "expire_at": 9999999999}))
+         with attr_patch(lark, _tenant_token_cache_path=lambda: Path(cache)), \
+              env_patch(LARKSUITE_CLI_TENANT_ACCESS_TOKEN=None,
+                        FEISHU_APP_ID=None, FEISHU_APP_SECRET=None,
+                        LARKSUITE_CLI_APP_ID=None, LARKSUITE_CLI_APP_SECRET=None):
+             env = lark.subprocess_env()
+         assert "LARKSUITE_CLI_TENANT_ACCESS_TOKEN" not in env
+         assert "LARKSUITE_CLI_APP_ID" not in env
++
++
++def test_ensure_tenant_token_cache_created_with_restrictive_permissions():
++    """REGRESSION (Task 4.2): cache file must be created with 0o600 so
++    the tenant token is never world-readable, even briefly."""
++    import os
++    import tempfile
++    with tempfile.TemporaryDirectory() as td:
++        cache = _cache_path(td)
++        fetch = _FetchRec(result={"token": "t-secure", "expire_at": 9999999999})
++        with env_patch(LARKSUITE_CLI_TENANT_ACCESS_TOKEN=None,
++                       FEISHU_APP_ID="cli_x", FEISHU_APP_SECRET="s"):
++            token = lark._ensure_tenant_token(fetch=fetch, now=lambda: 1,
++                                              cache_path=cache)
++        assert token == "t-secure"
++        assert os.path.exists(cache)
++        mode = os.stat(cache).st_mode & 0o777
++        assert mode == 0o600, f"expected 0o600, got 0o{mode:o}"
++
++
++def test_subprocess_env_does_not_create_state_dir_when_env_token_present():
++    """REGRESSION (Task 4.2): when LARKSUITE_CLI_TENANT_ACCESS_TOKEN is
++    already set, subprocess_env must not touch the cache path (and
++    therefore must not create the state directory)."""
++    import os
++    import tempfile
++    with tempfile.TemporaryDirectory() as td:
++        bad_state = os.path.join(td, "does", "not", "exist")
++        with env_patch(LARKSUITE_CLI_TENANT_ACCESS_TOKEN="t-preset",
++                       EDUFLOW_STATE_DIR=bad_state):
++            env = lark.subprocess_env()
++        assert env.get("LARKSUITE_CLI_TENANT_ACCESS_TOKEN") == "t-preset"
++        assert not os.path.exists(bad_state)

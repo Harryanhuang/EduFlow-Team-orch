@@ -1,0 +1,158 @@
+diff --git a/docker-compose.yml b/docker-compose.yml
+index 6b3d6302..8ed86e42 100644
+--- a/docker-compose.yml
++++ b/docker-compose.yml
+@@ -22,21 +22,21 @@ services:
+     container_name: agent-chrome
+     build:
+       context: ./docker/agent-chrome
+     image: eduflow-agent-chrome:dev
+     shm_size: "1gb"
+     ports:
+       - "127.0.0.1:9233:9223"
+     command:
+       - sh
+       - -lc
+-      - rm -f /data/profile/Singleton* && Xvfb :99 -screen 0 1280x900x24 -nolisten tcp & env DISPLAY=:99 fluxbox >/tmp/fluxbox.log 2>&1 & perl /opt/agent-chrome/tcp-proxy.pl 9223 127.0.0.1 9222 & perl /opt/agent-chrome/tcp-proxy.pl 10086 host.docker.internal 10086 & exec env DISPLAY=:99 /usr/lib/chromium/chromium --disable-dev-shm-usage --remote-debugging-address=127.0.0.1 --remote-debugging-port=9222 --user-data-dir=/data/profile --download-default-directory=/downloads --disable-extensions-except=/extensions/kimi-webbridge --load-extension=/extensions/kimi-webbridge about:blank
++      - rm -f /data/profile/Singleton* && Xvfb :99 -screen 0 1280x900x24 -nolisten tcp & env DISPLAY=:99 fluxbox >/tmp/fluxbox.log 2>&1 & perl /opt/agent-chrome/tcp-proxy.pl 9223 127.0.0.1 9222 127.0.0.1 & perl /opt/agent-chrome/tcp-proxy.pl 10086 host.docker.internal 10086 127.0.0.1 & exec env DISPLAY=:99 /usr/lib/chromium/chromium --disable-dev-shm-usage --remote-debugging-address=127.0.0.1 --remote-debugging-port=9222 --user-data-dir=/data/profile --download-default-directory=/downloads --disable-extensions-except=/extensions/kimi-webbridge --load-extension=/extensions/kimi-webbridge about:blank
+     volumes:
+       - agent-chrome-profile:/data/profile
+       - ./team-data/agent-chrome-extensions/kimi-webbridge:/extensions/kimi-webbridge:ro
+       - agent-chrome-downloads:/downloads
+       - ./docker/agent-chrome/tcp-proxy.pl:/opt/agent-chrome/tcp-proxy.pl:ro
+     restart: unless-stopped
+ 
+   eduflow:
+     build: .
+     image: eduflow:dev
+diff --git a/docker/agent-chrome/Dockerfile b/docker/agent-chrome/Dockerfile
+index ea665a5d..8fe7c801 100644
+--- a/docker/agent-chrome/Dockerfile
++++ b/docker/agent-chrome/Dockerfile
+@@ -1,22 +1,19 @@
+ FROM debian:bookworm-slim
+ 
+ RUN apt-get update \
+   && apt-get install -y --no-install-recommends \
+     ca-certificates \
+     chromium \
+     fluxbox \
+     fonts-liberation \
+     fonts-noto-cjk \
+-    novnc \
+-    websockify \
+-    x11vnc \
+     xvfb \
+   && rm -rf /var/lib/apt/lists/*
+ 
+ # The chrome user + Docker's default seccomp profile provide sufficient
+ # sandboxing, so --no-sandbox is intentionally omitted.
+ RUN useradd -m -u 1000 chrome \
+   && mkdir -p /data/profile /downloads \
+   && chown -R chrome:chrome /data /downloads
+ 
+ USER chrome
+diff --git a/docker/agent-chrome/tcp-proxy.pl b/docker/agent-chrome/tcp-proxy.pl
+index ac9bd23e..54f0ba52 100644
+--- a/docker/agent-chrome/tcp-proxy.pl
++++ b/docker/agent-chrome/tcp-proxy.pl
+@@ -1,27 +1,28 @@
+ #!/usr/bin/env perl
+ use strict;
+ use warnings;
+ use IO::Socket::INET;
+ use IO::Select;
+ 
+-my ($listen_port, $target_host, $target_port) = @ARGV;
+-die "usage: tcp-proxy.pl LISTEN_PORT TARGET_HOST TARGET_PORT\n"
++my ($listen_port, $target_host, $target_port, $bind_addr) = @ARGV;
++$bind_addr = '127.0.0.1' unless defined $bind_addr;
++die "usage: tcp-proxy.pl LISTEN_PORT TARGET_HOST TARGET_PORT [BIND_ADDR]\n"
+   unless $listen_port && $target_host && $target_port;
+ 
+ my $server = IO::Socket::INET->new(
+-  LocalAddr => '0.0.0.0',
++  LocalAddr => $bind_addr,
+   LocalPort => $listen_port,
+   Proto     => 'tcp',
+   Listen    => 20,
+   ReuseAddr => 1,
+-) or die "listen failed on $listen_port: $!\n";
++) or die "listen failed on $bind_addr:$listen_port: $!\n";
+ 
+ $SIG{CHLD} = 'IGNORE';
+ 
+ while (my $client = $server->accept()) {
+   my $pid = fork();
+   if (!defined $pid) {
+     close $client;
+     next;
+   }
+   if ($pid == 0) {
+diff --git a/docs/superpowers/task-6.3-report.md b/docs/superpowers/task-6.3-report.md
+new file mode 100644
+index 00000000..97e9b735
+--- /dev/null
++++ b/docs/superpowers/task-6.3-report.md
+@@ -0,0 +1,61 @@
++# Task 6.3 Report: `agent-chrome` container hardening
++
++## What changed
++
++### `docker/agent-chrome/Dockerfile`
++- Changed Chromium CDP bind address from `--remote-debugging-address=0.0.0.0` to `--remote-debugging-address=127.0.0.1`.
++- Removed `--remote-allow-origins='*'`; no cross-origin wildcard is needed when CDP is localhost-only.
++- Removed `--no-sandbox` and added a comment explaining that the container runs as the non-root `chrome` user with Docker's default seccomp profile, which provides sufficient sandboxing.
++- Removed passwordless VNC (`x11vnc -nopw`) and noVNC (`websockify`) from the default `CMD`. VNC is no longer started by default, eliminating the unauthenticated remote-desktop risk.
++- Updated `EXPOSE` from `9222 6080` to `9222` to match the new default runtime.
++
++### `docker-compose.yml`
++- Removed the `127.0.0.1:6080:6080` port publish since noVNC is disabled.
++- Updated the `agent-chrome` command override to mirror the Dockerfile hardening:
++  - CDP bound to `127.0.0.1`.
++  - No `--remote-allow-origins='*'`.
++  - No `--no-sandbox`.
++  - No `x11vnc` / `websockify`.
++- Kept the `127.0.0.1:9233:9223` host-local CDP proxy port so local debugging via `localhost:9233` still works.
++- Kept the `10086` TCP proxy for the `kimi-webbridge` extension, which connects the in-container extension to the host daemon.
++
++## `docker compose config` validation result
++
++Validation passed. Output confirms:
++- Only `agent-chrome` port `9233` is published.
++- It is bound to host IP `127.0.0.1` only.
++- No `6080` port is exposed.
++- The hardened Chromium command is present in the rendered config.
++
++```
++ports:
++  - mode: ingress
++    host_ip: 127.0.0.1
++    target: 9223
++    published: "9233"
++    protocol: tcp
++```
++
++## Commit
++
++- **SHA:** `f04fd39b`
++- **Subject:** `security: harden agent-chrome CDP/VNC exposure`
++
++## Self-review findings
++
++- CDP is no longer reachable on the container network on `0.0.0.0:9222`.
++- The wildcard CORS origin flag is gone.
++- VNC is no longer started with a blank password.
++- The `--no-sandbox` removal is documented; the runtime context (non-root + default seccomp) supports it.
++- Compose still supports `docker compose up` and keeps host-local debugging on `127.0.0.1:9233`.
++- `docker compose config` renders cleanly.
++
++## Concerns
++
++1. **Functional regression for operators who used noVNC.** The passwordless noVNC endpoint on `6080` is no longer available. If visual debugging is required, an operator can either `docker exec` into the container and start `x11vnc` manually, or we can add a password-protected VNC path behind a Docker secret / env var in a follow-up. Removing it was chosen as the smallest, safest fix for the reported remote-control risk.
++
++2. **`tcp-proxy.pl` still listens on `0.0.0.0:9223` inside the container.** The host-side publish is restricted to `127.0.0.1`, so external hosts cannot reach it. Other containers on the same default Docker network could still connect to `agent-chrome:9223`, but they can only talk to the proxy that forwards to Chromium's localhost-only CDP socket. Fully isolating this from the container network would require changing `tcp-proxy.pl` to accept a bind address, which is outside the scope of the brief (it only asked to modify `Dockerfile` and `docker-compose.yml`).
++
++3. **`--no-sandbox` removal should be runtime-tested.** The change is correct in principle (non-root user + seccomp), but Chromium's behavior can vary by version. A smoke test of `docker compose up agent-chrome` should confirm Chromium starts and the CDP endpoint responds on `localhost:9233`.
++
++4. **VNC packages remain installed.** `x11vnc`, `novnc`, and `websockify` are still in the image. They are not started, so they do not create an active network risk. Removing them from the apt install list would reduce image size and attack surface; this is a candidate for a follow-up hardening pass.

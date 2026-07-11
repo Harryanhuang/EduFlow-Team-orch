@@ -1,0 +1,68 @@
+diff --git a/src/eduflow/memory/db.py b/src/eduflow/memory/db.py
+index 96c585a7..d652c191 100644
+--- a/src/eduflow/memory/db.py
++++ b/src/eduflow/memory/db.py
+@@ -1,18 +1,19 @@
+ """SQLite connection management and schema for EduFlow Memory.
+ 
+ Introduces SQLite as a new persistence mechanism alongside the existing
+ JSON/JSONL stores. Connection is cached per-thread via threading.local().
+ WAL mode + short transactions + 5s busy timeout for concurrency.
+ """
+ from __future__ import annotations
+ 
++import os
+ import sqlite3
+ import threading
+ from pathlib import Path
+ 
+ from eduflow.runtime.paths import ensure_state_dir, memory_db_file
+ 
+ _local = threading.local()
+ 
+ _SCHEMA_SQL = """
+ CREATE TABLE IF NOT EXISTS active_constraints (
+@@ -204,20 +205,23 @@ def get_conn() -> sqlite3.Connection:
+     conn = getattr(_local, "conn", None)
+     if conn is not None:
+         return conn
+     db_path = memory_db_file()
+     ensure_state_dir()
+     db_path.parent.mkdir(parents=True, exist_ok=True)
+     conn = sqlite3.connect(str(db_path), timeout=5.0)
+     conn.row_factory = sqlite3.Row
+     conn.execute("PRAGMA journal_mode=WAL")
+     conn.execute("PRAGMA busy_timeout=5000")
++    db_path = memory_db_file()
++    if db_path.exists():
++        os.chmod(db_path, 0o600)
+     _local.conn = conn
+     return conn
+ 
+ 
+ def init_schema() -> None:
+     """Create tables and indexes if they don't exist. Idempotent."""
+     conn = get_conn()
+     conn.executescript(_SCHEMA_SQL)
+     conn.commit()
+     migrate_pinned_column()
+diff --git a/tests/unit/test_memory_db_permissions.py b/tests/unit/test_memory_db_permissions.py
+new file mode 100644
+index 00000000..afe25a3a
+--- /dev/null
++++ b/tests/unit/test_memory_db_permissions.py
+@@ -0,0 +1,14 @@
++import os
++import stat
++
++
++def test_memory_db_is_600(tmp_path, monkeypatch):
++    monkeypatch.setenv("EDUFLOW_STATE_DIR", str(tmp_path / "state"))
++    from eduflow.memory import db
++    db.close()
++    conn = db.get_conn()
++    conn.execute("CREATE TABLE IF NOT EXISTS t (id INTEGER PRIMARY KEY)")
++    conn.commit()
++    db_path = db.memory_db_file()
++    mode = stat.S_IMODE(db_path.stat().st_mode)
++    assert mode == 0o600
