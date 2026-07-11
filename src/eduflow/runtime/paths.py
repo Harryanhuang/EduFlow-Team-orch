@@ -135,3 +135,43 @@ def ensure_state_dir() -> Path:
 def memory_db_file() -> Path:
     """SQLite database for active constraints and task capsules."""
     return state_file("eduflow_memory.db")
+
+
+# ── scheduler (D-ID) domain paths ────────────────────────────────────
+
+
+def scheduler_dir() -> Path:
+    """Dedicated directory for D-ID scheduled-task state.
+
+    Kept separate from tasks.json so the scheduler domain cannot
+    accidentally consume or alter T-ID sequence / flow metadata.
+    """
+    path = state_dir() / "scheduler"
+    if not path.exists():
+        path.mkdir(parents=True, mode=0o700)
+    return path
+
+
+def scheduler_meta_file() -> Path:
+    """D-ID sequence metadata; independent from tasks.json _meta."""
+    return scheduler_dir() / "meta.json"
+
+
+def scheduler_rules_file() -> Path:
+    return scheduler_dir() / "rules.json"
+
+
+def scheduler_occurrences_file() -> Path:
+    return scheduler_dir() / "occurrences.json"
+
+
+def scheduler_lanes_file() -> Path:
+    return scheduler_dir() / "lanes.json"
+
+
+def scheduler_notifications_file() -> Path:
+    return scheduler_dir() / "notifications.jsonl"
+
+
+def scheduler_heartbeat_file() -> Path:
+    return scheduler_dir() / "heartbeat.json"
