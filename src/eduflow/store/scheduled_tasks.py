@@ -13,12 +13,14 @@ not delete records; it marks status and records cancelled_at.
 """
 from __future__ import annotations
 
+import time
+
 from eduflow.runtime import paths
 from eduflow.util import flock, now_ms, read_json, read_jsonl, write_json
 
 
 VALID_FREQUENCIES = frozenset({"once", "daily", "weekly"})
-VALID_RULE_STATUSES = frozenset({"active", "paused", "cancelled", "attention_required"})
+VALID_RULE_STATUSES = frozenset({"draft", "active", "paused", "cancelled", "attention_required"})
 VALID_OCCURRENCE_STATUSES = frozenset({
     "awaiting_manager",
     "confirmed",
@@ -27,10 +29,12 @@ VALID_OCCURRENCE_STATUSES = frozenset({
     "skipped",
     "done",
     "failed",
+    "cancelled",
 })
 
 # Allowed rule status transitions.  Empty set means terminal.
 RULE_TRANSITIONS = {
+    "draft": {"active", "cancelled"},
     "active": {"paused", "cancelled", "attention_required"},
     "paused": {"active", "cancelled"},
     "cancelled": set(),
@@ -165,6 +169,8 @@ def create_rule(
     next_due_utc: str,
     capacity: int = 1,
     workflow_state: dict | None = None,
+    created_by: str = "",
+    status: str = "active",
 ) -> str:
     """Create a new D rule and return its D-<id>."""
     rule_id = _next_d_id()
@@ -177,9 +183,10 @@ def create_rule(
         "frequency": _validate_frequency(frequency),
         "timezone": str(timezone or "").strip(),
         "next_due_utc": str(next_due_utc or "").strip(),
-        "status": "active",
+        "status": _validate_rule_status(status),
         "capacity": int(capacity or 1),
         "workflow_state": dict(workflow_state) if workflow_state else {},
+        "created_by": str(created_by or "").strip(),
         "created_at": created_at,
         "updated_at": created_at,
         "cancelled_at": None,
@@ -240,7 +247,7 @@ def update_rule(
         return dict(rule)
 
 
-def _transition_rule_status(rule_id: str, expected_version: int, new_status: str) -> dict:
+def _transition_rule_status(rule_id: str, expected_version: int, new_status: str, *, extra_context: dict | None = None) -> dict:
     new_status = _validate_rule_status(new_status)
     with _rules_lock():
         data = _load_rules()
@@ -252,6 +259,8 @@ def _transition_rule_status(rule_id: str, expected_version: int, new_status: str
             # Idempotent no-op, but still bump version for consistency.
             rule["version"] = expected_version + 1
             rule["updated_at"] = now_ms()
+            if extra_context:
+                rule.update(extra_context)
             _save_rules(data)
             return dict(rule)
         if current not in RULE_TRANSITIONS or new_status not in RULE_TRANSITIONS.get(current, set()):
@@ -267,6 +276,8 @@ def _transition_rule_status(rule_id: str, expected_version: int, new_status: str
         rule["updated_at"] = now_ms()
         if new_status == "cancelled":
             rule["cancelled_at"] = now_ms()
+        if extra_context:
+            rule.update(extra_context)
         _save_rules(data)
         return dict(rule)
 
@@ -318,6 +329,7 @@ def create_occurrence(
             "scheduled_at_utc": str(scheduled_at_utc or "").strip(),
             "status": status if status in VALID_OCCURRENCE_STATUSES else "awaiting_manager",
             "context": dict(context) if context else {},
+            "version": 1,
             "created_at": created_at,
             "updated_at": created_at,
         }
@@ -388,7 +400,7 @@ def create_lane(
     evidence: dict | None = None,
 ) -> str:
     """Persist a lane snapshot bound to an occurrence."""
-    lane_id = f"{occurrence_key}:lane:{now_ms()}"
+    lane_id = f"{occurrence_key}:lane:{now_ms()}:{time.time_ns()}"
     created_at = now_ms()
     lane = {
         "id": lane_id,
@@ -420,6 +432,33 @@ def list_lanes(*, occurrence_key: str | None = None) -> list[dict]:
     if occurrence_key is not None:
         lanes = [l for l in lanes if l.get("occurrence_key") == occurrence_key]
     return lanes
+
+
+def update_lane(
+    lane_id: str,
+    changes: dict,
+    *,
+    expected_version: int | None = None,
+) -> dict:
+    """CAS update of a lane.  `changes` may not touch id/occurrence_key/created_at."""
+    forbidden = {"id", "occurrence_key", "created_at"}
+    if forbidden & set(changes):
+        raise ValueError(f"cannot mutate protected fields: {sorted(forbidden & set(changes))}")
+    with _lanes_lock():
+        data = _load_lanes()
+        lane = _find_lane(data, lane_id)
+        if lane is None:
+            raise NotFound(f"lane {lane_id} not found")
+        if expected_version is not None and lane.get("version") != expected_version:
+            raise VersionConflict(
+                f"lane {lane_id} version {lane.get('version')} != expected {expected_version}"
+            )
+        for key_name, value in changes.items():
+            lane[key_name] = value
+        lane["version"] = (expected_version or lane.get("version", 0)) + 1
+        lane["updated_at"] = now_ms()
+        _save_lanes(data)
+        return dict(lane)
 
 
 # ── notification ledger ──────────────────────────────────────────────
