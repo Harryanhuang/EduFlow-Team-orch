@@ -115,6 +115,7 @@ USAGE = (
     "  eduflow task loop-contract <task_id> [--json]\n"
     "  eduflow task tool-risk --command \"<cmd>\" [--json]\n"
     "  eduflow task evolution-packet <task_id> [--json]\n"
+    "  eduflow task evolution-propose <task_id> [--yes]\n"
     "  eduflow task readiness-check <task_id> [--json] [--diagnostics]\n"
     "  eduflow task loop-list [--task-id T] [--status S]\n"
     "  eduflow task supervisor-check [--advance] [--send] [--json]\n"
@@ -3668,6 +3669,89 @@ def _cmd_evolution_packet(rest: list[str]) -> int:
     return 0
 
 
+def _cmd_evolution_propose(rest: list[str]) -> int:
+    """Create a proposed memory candidate from a task's evolution packet.
+
+    Explicit operator action: reads `task evolution-packet` output and,
+    if the candidate has enough evidence, writes one proposed candidate
+    with source_type=loop_repair_cycle. Does NOT promote, does NOT change
+    task status, and does NOT run loop checks.
+    """
+    auto_yes = pop_bool_flag(rest, "--yes")
+    if not rest or rest[0].startswith("-"):
+        return usage_error("usage: eduflow task evolution-propose <task_id> [--yes]")
+    if len(rest) > 1:
+        return usage_error("usage: eduflow task evolution-propose <task_id> [--yes]")
+    task_id = rest[0]
+
+    payload = evolution_packet.build(task_id)
+    candidates = payload.get("candidates") or []
+    candidate = next(
+        (c for c in candidates if c.get("source_event") == "repair_cycle_ge2"),
+        None,
+    )
+    if candidate is None:
+        print(f"No repair-cycle candidate for {task_id}; nothing proposed.")
+        return 0
+
+    loop_id = str(candidate.get("loop_id") or "").strip()
+    surface = str(candidate.get("suggested_update_surface") or "").strip()
+    confidence = str(candidate.get("confidence") or "").strip()
+    if not loop_id or surface == "no_reuse" or confidence == "low":
+        print(
+            f"Repair-cycle candidate for {task_id} lacks enough evidence "
+            f"(loop_id={loop_id or 'none'}, surface={surface or 'none'}, "
+            f"confidence={confidence or 'none'}); nothing proposed."
+        )
+        return 0
+
+    scope = candidate.get("scope") or f"workflow:{candidate.get('workflow_id', '')}"
+    if not scope or scope == "workflow:":
+        scope = "team"
+    content = candidate.get("content") or ""
+    if not content:
+        print(f"Repair-cycle candidate for {task_id} has empty content; nothing proposed.")
+        return 0
+
+    source_ref = f"loop:{loop_id}"
+    reason = (
+        f"Evolution-propose from {candidate.get('source_event')} "
+        f"(surface={surface}, confidence={confidence})"
+    )
+    evidence_refs = list(candidate.get("evidence_refs") or [])
+
+    print(f"Propose candidate for {task_id}:")
+    print(f"  scope: {scope}")
+    print(f"  kind: workflow_rule")
+    print(f"  surface: {surface}")
+    print(f"  source_ref: {source_ref}")
+    print(f"  content: {content[:200]}{'...' if len(content) > 200 else ''}")
+
+    if not auto_yes:
+        try:
+            answer = input("Proceed? [y/N] ").strip().lower()
+        except (EOFError, OSError):
+            answer = "y"
+        if answer != "y":
+            print("Aborted.")
+            return 0
+
+    from eduflow.memory.candidates import add_candidate
+    candidate_id = add_candidate(
+        scope=scope,
+        kind="workflow_rule",
+        content=content,
+        source_type="loop_repair_cycle",
+        source_ref=source_ref,
+        layer="episode",
+        reason=reason,
+        evidence_refs=evidence_refs,
+        idempotent=True,
+    )
+    print(f"✅ Proposed candidate {candidate_id}")
+    return 0
+
+
 def _cmd_loop_list(rest: list[str]) -> int:
     task_id = pop_flag(rest, "--task-id") or ""
     status = pop_flag(rest, "--status") or ""
@@ -4145,6 +4229,7 @@ SUBCOMMANDS = {
     "loop-contract": _cmd_loop_contract,
     "tool-risk": _cmd_tool_risk,
     "evolution-packet": _cmd_evolution_packet,
+    "evolution-propose": _cmd_evolution_propose,
     "readiness-check": _cmd_readiness_check,
     "loop-list": _cmd_loop_list,
     "subject-inventory": _cmd_subject_inventory,

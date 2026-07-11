@@ -129,8 +129,9 @@ def test_packet_sorts_by_effective_confidence():
     assert "low confidence" in p
 
 
-def test_packet_touch_marks_recently_used():
-    """Assembling a packet should touch the included memories."""
+def test_packet_preview_does_not_touch_memories():
+    """Assembling a packet is read-only: included memories keep their
+    updated_at timestamp."""
     mid = items.add_memory(scope="agent:worker_course", kind="note", content="x",
                           status="confirmed")
 
@@ -139,8 +140,56 @@ def test_packet_touch_marks_recently_used():
 
     packet.assemble_memory_packet("worker_course")
     refreshed = items.get_memory(mid)
-    # updated_at should have changed (touched)
-    assert refreshed["updated_at"] != original_updated
+    assert refreshed["updated_at"] == original_updated
+
+
+def test_manager_packet_includes_governance_snapshot():
+    """Manager packet includes pending review counts; worker packet does not."""
+    from eduflow.memory import candidates, db
+    from datetime import datetime, timezone, timedelta
+
+    # Seed a confirmed memory so the manager packet is non-empty.
+    items.add_memory(
+        scope="team", kind="workflow_rule",
+        content="Manager reviews all high-risk handoffs",
+        status="confirmed", importance=8,
+    )
+
+    # loop_repair_cycle candidate
+    candidates.add_candidate(
+        scope="team", kind="workflow_rule",
+        content="Retry code-repair when same test fails twice",
+        source_type="loop_repair_cycle", source_ref="loop:L-000001",
+    )
+    # high-impact candidate
+    candidates.add_candidate(
+        scope="team", kind="role_rule",
+        content="Manager must approve high-risk handoffs",
+        source_type="manual",
+    )
+    # expiring soon candidate
+    cid = candidates.add_candidate(
+        scope="team", kind="note",
+        content="Short-lived reminder",
+        source_type="manual",
+    )
+    expires_soon = (datetime.now(timezone.utc) + timedelta(days=2)).isoformat()
+    db.get_conn().execute(
+        "UPDATE memory_candidates SET expires_at = ? WHERE candidate_id = ?",
+        (expires_soon, cid),
+    )
+    db.get_conn().commit()
+
+    manager_packet = packet.assemble_memory_packet("manager")
+    assert "## Pending Memory Review" in manager_packet
+    assert "loop_repair_cycle: 1" in manager_packet
+    assert "high-impact candidates: 2" in manager_packet  # loop_repair_cycle is workflow_rule
+    assert "expiring soon: 1" in manager_packet
+    # Candidate bodies must not appear in the snapshot section
+    assert "Retry code-repair" not in manager_packet.split("## Pending Memory Review")[1]
+
+    worker_packet = packet.assemble_memory_packet("worker_course")
+    assert "## Pending Memory Review" not in worker_packet
 
 
 # ── Subject hierarchy ──────────────────────────────────────────────

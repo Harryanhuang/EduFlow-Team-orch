@@ -92,7 +92,7 @@ def _render_memories(agent: str, task_id: str | None) -> tuple[list[str], set[st
     try:
         from eduflow.memory.items import list_memories, list_pinned_memories
         from eduflow.memory.scope_aliases import resolve_alias
-        from eduflow.memory.decay import effective_confidence, touch_item
+        from eduflow.memory.decay import effective_confidence
     except ImportError:
         return [], set()
 
@@ -147,11 +147,6 @@ def _render_memories(agent: str, task_id: str | None) -> tuple[list[str], set[st
             importance = m.get("importance", 5)
             lines.append(f"- [📌][{kind}] {summary} (importance={importance})")
             ids.add(mid)
-            # V3 P0-1: touch to mark as recently used
-            try:
-                touch_item(mid)
-            except Exception:
-                pass
 
     # Relevant segment (decayed + sorted)
     if memories:
@@ -166,10 +161,6 @@ def _render_memories(agent: str, task_id: str | None) -> tuple[list[str], set[st
             eff = m.get("effective_confidence", 1.0)
             lines.append(f"- [{kind}] {summary} (eff_conf={eff:.2f}, importance={importance})")
             ids.add(mid)
-            try:
-                touch_item(mid)
-            except Exception:
-                pass
 
     return lines, ids
 
@@ -322,6 +313,50 @@ def _build_semantic_query(agent: str, task_id: str | None) -> str:
     return query.strip()
 
 
+def _manager_governance_snapshot() -> str:
+    """Manager-only pending-memory-review counts.
+
+    Shows loop-derived candidates, high-impact candidates, and candidates
+    expiring within 7 days. Never includes candidate bodies — manager sees
+    counts only so unreviewed candidates are not treated as instructions.
+    """
+    try:
+        from eduflow.memory.candidates import list_candidates
+        import datetime as _dt
+
+        now = _dt.datetime.now(_dt.timezone.utc)
+        soon = (now + _dt.timedelta(days=7)).isoformat()
+        high_impact_kinds = {
+            "workflow_rule", "role_rule", "runtime_rule",
+            "decision", "preference", "handoff",
+        }
+        proposed = list_candidates(status="proposed", limit=200)
+        if not proposed:
+            return ""
+        loop_count = sum(
+            1 for c in proposed if c.get("source_type") == "loop_repair_cycle"
+        )
+        high_count = sum(
+            1 for c in proposed
+            if c.get("proposed_kind") in high_impact_kinds
+            or "high" in (c.get("risk_flags") or [])
+        )
+        expiring_count = sum(
+            1 for c in proposed if (c.get("expires_at") or "") <= soon
+        )
+        if loop_count == 0 and high_count == 0 and expiring_count == 0:
+            return ""
+        lines = [
+            "## Pending Memory Review",
+            f"- loop_repair_cycle: {loop_count}",
+            f"- high-impact candidates: {high_count}",
+            f"- expiring soon: {expiring_count}",
+        ]
+        return "\n".join(lines) + "\n"
+    except Exception:
+        return ""
+
+
 def assemble_memory_packet(
     agent: str,
     task_id: str | None = None,
@@ -458,6 +493,13 @@ def assemble_memory_packet(
         mem_section = mem_header + mem_text + "\n"
         budget_remaining -= _char_len(mem_section)
         sections.append(mem_section)
+
+    # Manager-only governance snapshot: counts, not candidate bodies.
+    if agent == "manager" and budget_remaining > 0:
+        gov_section = _manager_governance_snapshot()
+        if gov_section and _char_len(gov_section) <= budget_remaining:
+            sections.append(gov_section)
+            budget_remaining -= _char_len(gov_section)
 
     result = "".join(sections).rstrip()
     if not result:

@@ -97,6 +97,7 @@ USAGE = (
     "  budget                    (full budget report: all tables + DB size)\n"
     "  budget check <table>      (single table row count vs limit)\n"
     "  budget enforce <table>    (evict oldest rows to bring table under budget)\n"
+    "  doctor                    (read-only memory health diagnostic)\n"
     "  expire                    (run all automatic expiry scans)\n"
     "  audit                     (full audit: row counts by status)\n"
     "  audit scope               (scope coverage report for confirmed memories)\n"
@@ -2126,6 +2127,134 @@ def _cmd_skill_evolve_clear(argv: list[str]) -> int:
     return 0
 
 
+def _cmd_doctor(argv: list[str]) -> int:
+    """Read-only diagnostic: report memory store health without mutating rows.
+
+    Shows the active runtime DB, whether the package-default flow_memory.db
+    also exists, row counts, candidate hygiene, and manager governance signal.
+    """
+    from eduflow.memory.db import memory_db_file, init_schema, get_conn
+    from eduflow.memory.packet import assemble_memory_packet
+    from flow_memory.storage.paths import get_path_provider
+
+    edu_db_path = memory_db_file()
+    fm_db_path = get_path_provider().memory_db_file()
+
+    warnings: list[str] = []
+    if edu_db_path != fm_db_path:
+        warnings.append(
+            f"⚠️  CLI/package DB path disagreement: "
+            f"eduflow={edu_db_path} flow_memory={fm_db_path}"
+        )
+
+    # Ensure schema is present so counts work on a fresh DB.
+    try:
+        init_schema()
+    except Exception as e:
+        print(f"❌ Failed to initialize schema: {e}", file=sys.stderr)
+        return 1
+
+    conn = get_conn()
+    counts: dict[str, int] = {}
+    for table in (
+        "memory_items",
+        "memory_candidates",
+        "active_constraints",
+        "task_capsules",
+        "memory_user_profile",
+    ):
+        try:
+            row = conn.execute(
+                f"SELECT COUNT(*) FROM {table}"
+            ).fetchone()
+            counts[table] = row[0] if row else 0
+        except Exception:
+            counts[table] = 0
+
+    # Proposed candidate source_type counts
+    source_counts: dict[str, int] = {}
+    try:
+        rows = conn.execute(
+            "SELECT source_type, COUNT(*) AS n FROM memory_candidates "
+            "WHERE review_status='proposed' GROUP BY source_type ORDER BY n DESC"
+        ).fetchall()
+        source_counts = {r["source_type"]: r["n"] for r in rows}
+    except Exception:
+        pass
+
+    # Obvious placeholder candidates
+    placeholder_count = 0
+    try:
+        rows = conn.execute(
+            "SELECT candidate_id, content FROM memory_candidates "
+            "WHERE review_status='proposed'"
+        ).fetchall()
+        for r in rows:
+            content = (r["content"] or "").strip()
+            if _is_placeholder_candidate(content):
+                placeholder_count += 1
+    except Exception:
+        pass
+
+    # Manager governance signal: non-empty packet with constraints section.
+    manager_packet = assemble_memory_packet("manager")
+    has_governance = bool(
+        manager_packet and "## EduFlow Active Constraints" in manager_packet
+    )
+
+    # Package-default DB existence check
+    default_flow_db = edu_db_path.parent / "flow_memory.db"
+    flow_db_exists = default_flow_db.exists() and default_flow_db != edu_db_path
+
+    print("Memory Doctor (read-only)")
+    print(f"  active EduFlow DB: {edu_db_path}")
+    print(f"  flow_memory.db also exists: {flow_db_exists}")
+    print()
+    print("Row counts:")
+    for table in (
+        "memory_items",
+        "memory_candidates",
+        "active_constraints",
+        "task_capsules",
+        "memory_user_profile",
+    ):
+        print(f"  {table}: {counts.get(table, 0)}")
+    print()
+    print("Proposed candidate source_type counts:")
+    if source_counts:
+        for src, cnt in sorted(source_counts.items(), key=lambda x: -x[1]):
+            print(f"  {src}: {cnt}")
+    else:
+        print("  (none)")
+    print()
+    print(f"Obvious placeholder candidates: {placeholder_count}")
+    print(f"Manager governance signal: {'yes' if has_governance else 'no'}")
+
+    for w in warnings:
+        print()
+        print(w)
+
+    return 0
+
+
+def _is_placeholder_candidate(content: str) -> bool:
+    """Heuristic for test-fixture-like candidate content."""
+    stripped = content.strip()
+    if len(stripped) <= 3:
+        return True
+    lowered = stripped.lower()
+    placeholder_markers = (
+        "test rule", "new rule", "high imp rule", "domain fact",
+        "pin me", "item 0", "placeholder", "lorem ipsum",
+    )
+    if any(marker in lowered for marker in placeholder_markers):
+        return True
+    # Single-word lowercase content like "x", "important"
+    if len(stripped.split()) == 1 and stripped.islower():
+        return True
+    return False
+
+
 _SUBCOMMANDS = {
     "constraints": _cmd_constraints,
     "capsule": _cmd_capsule,
@@ -2160,6 +2289,7 @@ _SUBCOMMANDS = {
     "audit": _cmd_audit,
     "cleanup": _cmd_cleanup,
     "daily": _cmd_daily,
+    "doctor": _cmd_doctor,
 }
 
 
