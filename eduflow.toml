@@ -585,7 +585,7 @@ operators = ["u_<admin_feishu_id>"]   # 可执行 /send 等特权斜杠命令的
 #   card_color  可选  飞书 v2 色: blue/green/red/yellow/purple/orange/grey/pink
 #   lazy        可选  true=首消息触发起 CLI; 默认 false
 [team.agents.manager]
-runtime = "manager_backup_codex"
+runtime = "manager_backup_minimax"
 role  = "唯一业务入口、唯一正式派工口、唯一业务正式对外口。负责接单、判断归属、拆单、派工、阶段切换、升级处理与正式业务汇总，不承担内容生产、系统维修、长期盯盘或正式复核。"
 specialty = ["任务拆解", "派工分发", "组织调度", "升级处理", "学科切换"]
 tone = "直接、克制、判断优先、像技术合伙人"
