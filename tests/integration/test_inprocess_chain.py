@@ -299,7 +299,7 @@ def test_runtime_drill_auth_failure_switches_and_delivers():
 
     decision = Decision(
         action=Action.ROUTE,
-        targets=["worker_codex"],
+        targets=["worker_kimi"],
         sender="manager",
         text="urgent",
         msg_id="om_drill_auth",
@@ -314,8 +314,8 @@ def test_runtime_drill_auth_failure_switches_and_delivers():
             attr_patch(deliver_mod.config,
                        fallback_runtime=lambda agent, current_runtime, reason, avoid_pool_id="", prefer_nonempty_pool=False: {"name": "backup_auth"}):
         report = apply(decision, session="SmokeTeam")
-    assert report.injected == ["worker_codex"]
-    assert switched == [("worker_codex", "backup_auth", "deliver:auth_failure")]
+    assert report.injected == ["worker_kimi"]
+    assert switched == [("worker_kimi", "backup_auth", "deliver:auth_failure")]
     assert len(inj["calls"]) == 1
 
 
@@ -326,7 +326,7 @@ def test_runtime_drill_provider_unavailable_switches_and_delivers():
 
     decision = Decision(
         action=Action.ROUTE,
-        targets=["worker_codex"],
+        targets=["worker_kimi"],
         sender="manager",
         text="urgent",
         msg_id="om_drill_provider",
@@ -341,8 +341,8 @@ def test_runtime_drill_provider_unavailable_switches_and_delivers():
             attr_patch(deliver_mod.config,
                        fallback_runtime=lambda agent, current_runtime, reason, avoid_pool_id="", prefer_nonempty_pool=False: {"name": "backup_provider"}):
         report = apply(decision, session="SmokeTeam")
-    assert report.injected == ["worker_codex"]
-    assert switched == [("worker_codex", "backup_provider", "deliver:provider_unavailable")]
+    assert report.injected == ["worker_kimi"]
+    assert switched == [("worker_kimi", "backup_provider", "deliver:provider_unavailable")]
     assert len(inj["calls"]) == 1
 
 

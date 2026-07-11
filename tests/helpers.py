@@ -89,6 +89,19 @@ def isolated_env(*, team: dict | None = None, runtime_config: dict | None = None
             tunables.reset_cache()
         except ImportError:
             pass
+        # Module-level routing and thread-local SQLite state outlive an
+        # individual temporary directory. Reset both before assigning this
+        # fixture a fresh state root.
+        try:
+            from eduflow.feishu import router
+            router._reset_rate_limit()
+        except ImportError:
+            pass
+        try:
+            from eduflow.memory import db as memory_db
+            memory_db.close()
+        except ImportError:
+            pass
         # Package 8: reset the dedup cache between tests so a previous
         # test's cache entries don't leak into the next isolated_env block.
         try:
@@ -110,7 +123,14 @@ def isolated_env(*, team: dict | None = None, runtime_config: dict | None = None
             # explicitly tested in test_commands_task.py.
             EDUFLOW_VERIFIER_BYPASS_ALLOWED="1",
         ):
-            yield tmp_path
+            try:
+                yield tmp_path
+            finally:
+                try:
+                    from eduflow.memory import db as memory_db
+                    memory_db.close()
+                except ImportError:
+                    pass
 
 
 def run_cli(argv: list[str]) -> tuple[int, str, str]:

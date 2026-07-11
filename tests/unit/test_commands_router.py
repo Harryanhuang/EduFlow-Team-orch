@@ -248,6 +248,7 @@ def test_stale_threshold_warns_when_legacy_env_overrides_toml():
     ):
         # Provide a toml value that differs from the legacy env var.
         tmp_toml = Path(os.environ["EDUFLOW_STATE_DIR"]) / "router-stale.toml"
+        tmp_toml.parent.mkdir(parents=True, exist_ok=True)
         tmp_toml.write_text("[router]\nstale_event_threshold_s = 600\n", encoding="utf-8")
         with env_patch(EDUFLOW_CONFIG_FILE=str(tmp_toml)):
             _r._STALE_ENV_WARNED = False
@@ -278,6 +279,7 @@ def test_stale_threshold_no_warning_when_legacy_env_matches_toml():
         EDUFLOW_ROUTER_STALE_EVENT_THRESHOLD_JITTER_PCT="0",
     ):
         tmp_toml = Path(os.environ["EDUFLOW_STATE_DIR"]) / "router-stale2.toml"
+        tmp_toml.parent.mkdir(parents=True, exist_ok=True)
         tmp_toml.write_text("[router]\nstale_event_threshold_s = 600\n", encoding="utf-8")
         with env_patch(EDUFLOW_CONFIG_FILE=str(tmp_toml)):
             _r._STALE_ENV_WARNED = False

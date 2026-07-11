@@ -850,3 +850,14 @@ send_as          = "bot"
 no_proxy         = true
 cli_bin          = ""
 broadcast_tokens = ["@team", "@all", "@everyone"]
+
+# ── [tts]  MiniMax text-to-speech ─────────────────────────────
+# Per-agent voice mapping for `eduflow tts say --agent <name> <text>`.
+[tts]
+model = "speech-01-hd"
+sample_rate = 32000
+default_voice = "female-yujie"
+
+[tts.voice]
+# Boss decision 2026-07-09: manager is the active voice-dispatch role.
+manager = { voice = "male-qn-daxuesheng", pitch = 3, speed = 1.25, active = true }
