@@ -27,6 +27,21 @@ def _init_db():
 def _reset_db():
     from eduflow.memory.db import close
     close()
+    _reset_flow_memory_singletons()
+
+
+def _reset_flow_memory_singletons():
+    """Reset Flow Memory singletons so each test gets fresh path/backend."""
+    try:
+        from flow_memory.storage import paths as _fm_paths
+        _fm_paths._provider = None
+    except Exception:
+        pass
+    try:
+        from flow_memory.storage import sql as _fm_sql
+        _fm_sql._backend = None
+    except Exception:
+        pass
 
 
 # ── init_schema ────────────────────────────────────────────────────
@@ -145,6 +160,30 @@ class TestGetConn:
             db_path = memory_db_file()
             assert db_path.exists()
             assert str(db_path).startswith(str(tmp / "state"))
+            _reset_db()
+
+    def test_flow_memory_backend_uses_eduflow_runtime_db(self):
+        """V3 P2 regression: Flow Memory singleton resolves to the same
+        SQLite file as EduFlow's local memory_db_file() so commands and
+        memory tools share one runtime store.
+        """
+        with isolated_env() as tmp:
+            _init_db()
+            from eduflow.memory.db import memory_db_file
+            from flow_memory.storage.paths import get_path_provider
+            from flow_memory.storage.sql import get_backend
+
+            edu_path = memory_db_file()
+            fm_path = get_path_provider().memory_db_file()
+            backend_path = get_backend()._db_path
+
+            assert edu_path == fm_path, f"eduflow={edu_path} flow_memory={fm_path}"
+            assert edu_path == backend_path, (
+                f"eduflow={edu_path} backend={backend_path}"
+            )
+            assert not (tmp / "state" / "flow_memory.db").exists(), (
+                "package-default flow_memory.db must not be created"
+            )
             _reset_db()
 
 

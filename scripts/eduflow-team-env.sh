@@ -18,6 +18,12 @@ export EDUFLOW_CONFIG_FILE="${EDUFLOW_CONFIG_FILE:-$ROOT/eduflow.toml}"
 export EDUFLOW_STATE_DIR="${EDUFLOW_STATE_DIR:-$ROOT/.eduflow-team-state}"
 export EDUFLOW_WORKFLOW_DIR="${EDUFLOW_WORKFLOW_DIR:-$ROOT/docs/workflows}"
 
+# V3 P2: keep Flow Memory on the EduFlow runtime DB, not the package-default
+# flow_memory.db. This makes `eduflow.memory.*` (flow-memory shim) and
+# `eduflow.memory.db` read from the same SQLite file.
+export FLOW_MEMORY_STATE_DIR="${FLOW_MEMORY_STATE_DIR:-$EDUFLOW_STATE_DIR}"
+export FLOW_MEMORY_DB="${FLOW_MEMORY_DB:-$EDUFLOW_STATE_DIR/eduflow_memory.db}"
+
 if [ -f "$ROOT/.env" ]; then
   set -a
   . "$ROOT/.env"

@@ -21,12 +21,18 @@ from eduflow.util import env_path
 
 def state_dir() -> Path:
     """Top-level directory for all runtime state."""
-    return env_path("EDUFLOW_STATE_DIR") or Path.home() / ".eduflow"
+    path = env_path("EDUFLOW_STATE_DIR") or Path.home() / ".eduflow"
+    if not path.exists():
+        path.mkdir(parents=True, mode=0o700)
+    return path
 
 
 def facts_dir() -> Path:
     """Where local_facts stores inbox / status / log / heartbeats."""
-    return state_dir() / "facts"
+    path = state_dir() / "facts"
+    if not path.exists():
+        path.mkdir(parents=True, mode=0o700)
+    return path
 
 
 def state_file(name: str) -> Path:

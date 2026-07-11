@@ -201,6 +201,12 @@ External requirements depend on deployment:
 - Feishu/Lark app credentials and `chat_id` if group control is enabled
 - provider tokens referenced by `eduflow.toml` env profiles
 
+### Secrets hygiene
+
+- Never commit `.env` or `.bak-stash*` directories.
+- Rotate platform tokens immediately if they are ever written to disk outside of `EDUFLOW_SECRETS_FILE`.
+- Install pre-commit hooks: `pip install pre-commit && pre-commit install`
+
 ## Daily Operations / 日常操作
 
 ```bash

@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import subprocess
+from pathlib import Path
 
 from helpers import CallRecorder, FakeProc, env_patch
 from eduflow.feishu import lark
@@ -332,10 +333,11 @@ def test_subprocess_env_pins_home_to_pw_dir():
     HOME and fails to locate `~/.lark-cli/config.json` (rc=2). Pin
     HOME to the OS user's pw_dir so lark-cli always reads the host
     user's profile regardless of how the caller's HOME was mangled."""
-    import os, pwd
+    import os, pwd, tempfile
     expected_home = pwd.getpwuid(os.getuid()).pw_dir
-    with env_patch(HOME="/data/agent-home/manager"):
-        env = lark.subprocess_env()
+    with tempfile.TemporaryDirectory() as td:
+        with env_patch(HOME="/data/agent-home/manager", EDUFLOW_STATE_DIR=td):
+            env = lark.subprocess_env()
     assert env["HOME"] == expected_home
     assert env["HOME"] != "/data/agent-home/manager"
 
@@ -597,7 +599,7 @@ def test_subprocess_env_injects_token_when_available():
         with open(cache, "w", encoding="utf-8") as fh:
             fh.write(json.dumps({"token": "t-via-env", "expire_at": 9999999999}))
         # Stub the cache path module-level for the duration of the test
-        with attr_patch(lark, _TENANT_TOKEN_CACHE=cache), \
+        with attr_patch(lark, _tenant_token_cache_path=lambda: Path(cache)), \
              env_patch(LARKSUITE_CLI_TENANT_ACCESS_TOKEN=None,
                        FEISHU_APP_ID="cli_x", FEISHU_APP_SECRET="s"):
             env = lark.subprocess_env()
@@ -612,7 +614,7 @@ def test_subprocess_env_skips_token_injection_when_unavailable():
     from helpers import attr_patch
     with tempfile.TemporaryDirectory() as td:
         cache = _cache_path(td)  # empty path; no cache file
-        with attr_patch(lark, _TENANT_TOKEN_CACHE=cache), \
+        with attr_patch(lark, _tenant_token_cache_path=lambda: Path(cache)), \
              env_patch(LARKSUITE_CLI_TENANT_ACCESS_TOKEN=None,
                        FEISHU_APP_ID=None, FEISHU_APP_SECRET=None,
                        LARKSUITE_CLI_APP_ID=None, LARKSUITE_CLI_APP_SECRET=None):
@@ -634,7 +636,7 @@ def test_subprocess_env_pairs_token_with_app_id_and_secret():
         cache = _cache_path(td)
         with open(cache, "w", encoding="utf-8") as fh:
             fh.write(json.dumps({"token": "t-paired", "expire_at": 9999999999}))
-        with attr_patch(lark, _TENANT_TOKEN_CACHE=cache), \
+        with attr_patch(lark, _tenant_token_cache_path=lambda: Path(cache)), \
              env_patch(LARKSUITE_CLI_TENANT_ACCESS_TOKEN=None,
                        FEISHU_APP_ID="cli_paired", FEISHU_APP_SECRET="s-x",
                        LARKSUITE_CLI_APP_ID=None,
@@ -657,10 +659,43 @@ def test_subprocess_env_skips_token_when_no_app_id_resolvable():
         cache = _cache_path(td)
         with open(cache, "w", encoding="utf-8") as fh:
             fh.write(json.dumps({"token": "t-orphan", "expire_at": 9999999999}))
-        with attr_patch(lark, _TENANT_TOKEN_CACHE=cache), \
+        with attr_patch(lark, _tenant_token_cache_path=lambda: Path(cache)), \
              env_patch(LARKSUITE_CLI_TENANT_ACCESS_TOKEN=None,
                        FEISHU_APP_ID=None, FEISHU_APP_SECRET=None,
                        LARKSUITE_CLI_APP_ID=None, LARKSUITE_CLI_APP_SECRET=None):
             env = lark.subprocess_env()
         assert "LARKSUITE_CLI_TENANT_ACCESS_TOKEN" not in env
         assert "LARKSUITE_CLI_APP_ID" not in env
+
+
+def test_ensure_tenant_token_cache_created_with_restrictive_permissions():
+    """REGRESSION (Task 4.2): cache file must be created with 0o600 so
+    the tenant token is never world-readable, even briefly."""
+    import os
+    import tempfile
+    with tempfile.TemporaryDirectory() as td:
+        cache = _cache_path(td)
+        fetch = _FetchRec(result={"token": "t-secure", "expire_at": 9999999999})
+        with env_patch(LARKSUITE_CLI_TENANT_ACCESS_TOKEN=None,
+                       FEISHU_APP_ID="cli_x", FEISHU_APP_SECRET="s"):
+            token = lark._ensure_tenant_token(fetch=fetch, now=lambda: 1,
+                                              cache_path=cache)
+        assert token == "t-secure"
+        assert os.path.exists(cache)
+        mode = os.stat(cache).st_mode & 0o777
+        assert mode == 0o600, f"expected 0o600, got 0o{mode:o}"
+
+
+def test_subprocess_env_does_not_create_state_dir_when_env_token_present():
+    """REGRESSION (Task 4.2): when LARKSUITE_CLI_TENANT_ACCESS_TOKEN is
+    already set, subprocess_env must not touch the cache path (and
+    therefore must not create the state directory)."""
+    import os
+    import tempfile
+    with tempfile.TemporaryDirectory() as td:
+        bad_state = os.path.join(td, "does", "not", "exist")
+        with env_patch(LARKSUITE_CLI_TENANT_ACCESS_TOKEN="t-preset",
+                       EDUFLOW_STATE_DIR=bad_state):
+            env = lark.subprocess_env()
+        assert env.get("LARKSUITE_CLI_TENANT_ACCESS_TOKEN") == "t-preset"
+        assert not os.path.exists(bad_state)

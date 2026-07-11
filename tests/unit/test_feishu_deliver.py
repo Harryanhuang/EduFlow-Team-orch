@@ -103,6 +103,85 @@ def test_route_passes_decision_text_into_inbox():
         assert rows[0]["content"] == "hello world"
 
 
+def test_user_to_manager_intake_includes_memory_packet():
+    """Boss-to-manager intake prepends confirmed manager/team memory packet
+    to both inbox row and pane inject text."""
+    decision = Decision(
+        action=Action.ROUTE, targets=["manager"], sender="",
+        text="what should I know before reviewing T-1?", msg_id="om_m1",
+    )
+    inject_calls = []
+    with isolated_env():
+        from eduflow.memory import db
+        from eduflow.memory.items import add_memory
+        from eduflow.memory.constraints import add_constraint
+        db.init_schema()
+        add_memory(
+            scope="team", kind="workflow_rule",
+            content="Manager reviews all high-risk handoffs",
+            status="confirmed", importance=8,
+        )
+        add_constraint(
+            scope="team", level="L0", constraint_type="must_follow",
+            content="Manager must verify review verdict authority",
+        )
+        apply(
+            decision,
+            adapter_for_agent=_adapter_factory,
+            tmux_inject=lambda target, text, submit_keys=None: (
+                inject_calls.append((str(target), text)) or True
+            ),
+            session="S",
+        )
+        rows = local_facts.list_messages("manager")
+        assert len(rows) == 1
+        assert "Manager reviews all high-risk handoffs" in rows[0]["content"]
+        assert "Manager must verify review verdict authority" in rows[0]["content"]
+        assert "what should I know" in rows[0]["content"]
+        assert len(inject_calls) == 1
+        injected_text = inject_calls[0][1]
+        assert "Manager reviews all high-risk handoffs" in injected_text
+        assert "Manager must verify review verdict authority" in injected_text
+        assert "what should I know" in injected_text
+
+
+def test_worker_route_does_not_get_manager_governance_memory():
+    """User-to-worker intake must not include manager governance packet."""
+    decision = Decision(
+        action=Action.ROUTE, targets=["worker_cc"], sender="",
+        text="do X", msg_id="om_w1",
+    )
+    inject_calls = []
+    with isolated_env():
+        from eduflow.memory import db
+        from eduflow.memory.items import add_memory
+        from eduflow.memory.constraints import add_constraint
+        db.init_schema()
+        add_memory(
+            scope="team", kind="workflow_rule",
+            content="Manager reviews all high-risk handoffs",
+            status="confirmed", importance=8,
+        )
+        add_constraint(
+            scope="team", level="L0", constraint_type="must_follow",
+            content="Manager must verify review verdict authority",
+        )
+        apply(
+            decision,
+            adapter_for_agent=_adapter_factory,
+            tmux_inject=lambda target, text, submit_keys=None: (
+                inject_calls.append((str(target), text)) or True
+            ),
+            session="S",
+        )
+        rows = local_facts.list_messages("worker_cc")
+        assert len(rows) == 1
+        assert "Manager reviews all high-risk handoffs" not in rows[0]["content"]
+        assert "Manager must verify review verdict authority" not in rows[0]["content"]
+        assert len(inject_calls) == 1
+        assert "Manager reviews all high-risk handoffs" not in inject_calls[0][1]
+
+
 # ── partial failure ──────────────────────────────────────────────
 
 

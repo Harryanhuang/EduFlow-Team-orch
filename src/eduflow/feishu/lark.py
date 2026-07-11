@@ -25,6 +25,7 @@ import pwd
 import shutil
 import subprocess
 import time
+from pathlib import Path
 from typing import Callable
 
 from eduflow.util import env_str
@@ -42,8 +43,12 @@ _PROXY_KEYS = ("HTTPS_PROXY", "HTTP_PROXY", "https_proxy", "http_proxy")
 # without an entrypoint script.
 _TENANT_TOKEN_URL = (
     "https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal")
-_TENANT_TOKEN_CACHE = "/tmp/eduflow_tenant_token.json"
 _TENANT_TOKEN_REFRESH_BUFFER_S = 60   # refetch when within 60s of expiry
+
+
+def _tenant_token_cache_path() -> Path:
+    from eduflow.runtime.paths import state_file
+    return state_file(".tenant_token.json")
 
 
 def _fetch_tenant_token(app_id: str, app_secret: str) -> dict | None:
@@ -78,7 +83,7 @@ def _fetch_tenant_token(app_id: str, app_secret: str) -> dict | None:
 
 def _ensure_tenant_token(*, fetch: Callable | None = None,
                          now: Callable | None = None,
-                         cache_path: str | None = None) -> str | None:
+                         cache_path: str | Path | None = None) -> str | None:
     """Return a usable tenant_access_token from env / cache / live fetch.
 
     Resolution order:
@@ -94,19 +99,19 @@ def _ensure_tenant_token(*, fetch: Callable | None = None,
     """
     import json as _json
     import time as _time
-    # Resolve cache_path at call time so test patches of the
-    # module-level _TENANT_TOKEN_CACHE constant take effect; default
-    # args bind at function-definition time and would freeze the
-    # original /tmp path before any patch could land.
-    if cache_path is None:
-        cache_path = _TENANT_TOKEN_CACHE
+    # Don't resolve the default cache path until we actually need to touch
+    # disk. If `LARKSUITE_CLI_TENANT_ACCESS_TOKEN` is already set we can
+    # return early without creating the state directory.
+    if cache_path is not None:
+        cache_path = Path(cache_path)
     existing = env_str("LARKSUITE_CLI_TENANT_ACCESS_TOKEN")
     if existing:
         return existing
     now_fn = now or _time.time
     now_t = int(now_fn())
+    path = cache_path or _tenant_token_cache_path()
     try:
-        with open(cache_path, "r", encoding="utf-8") as fh:
+        with open(path, "r", encoding="utf-8") as fh:
             cached = _json.loads(fh.read())
         if int(cached.get("expire_at", 0)) > now_t and cached.get("token"):
             return str(cached["token"])
@@ -120,8 +125,12 @@ def _ensure_tenant_token(*, fetch: Callable | None = None,
     fresh = (fetch or _fetch_tenant_token)(app_id, app_secret)
     if not fresh or not fresh.get("token"):
         return None
+    path = cache_path or _tenant_token_cache_path()
     try:
-        with open(cache_path, "w", encoding="utf-8") as fh:
+        # Create the cache file atomically with restrictive permissions so
+        # a world-readable file is never exposed, even briefly.
+        fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)
+        with os.fdopen(fd, "w", encoding="utf-8") as fh:
             fh.write(_json.dumps(fresh))
     except OSError:
         pass  # cache write best-effort; the in-memory return is the load-bearing path

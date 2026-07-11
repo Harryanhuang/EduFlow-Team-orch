@@ -23,7 +23,7 @@ without inspecting hand-rolled tuples. Lists in the report:
 """
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from typing import Callable
 import inspect
 
@@ -144,6 +144,22 @@ _SUMMARY_CUE_TOKENS = (
 def _wants_manager_summary(text: str) -> bool:
     low = text.lower()
     return any(tok.lower() in low for tok in _SUMMARY_CUE_TOKENS)
+
+
+def _augment_manager_text(text: str) -> str:
+    """Prepend confirmed manager/team memory packet to boss-to-manager intake.
+
+    Fail-open: if packet assembly raises or returns empty, the original
+    message is delivered unchanged.
+    """
+    try:
+        from eduflow.memory.packet import assemble_memory_packet
+        packet = assemble_memory_packet("manager")
+        if packet:
+            return f"{packet}\n\n---\n\n{text}"
+    except Exception:
+        pass
+    return text
 
 
 def _compose_inject_text(agent: str, decision: Decision,
@@ -316,10 +332,16 @@ def apply(decision: Decision, *,
     sender = decision.sender or "user"
     report = DeliveryReport()
     for agent in decision.targets:
-        local_id = _write_inbox(agent, sender, decision, deps, report)
+        routed_text = decision.text
+        if sender == "user" and agent == "manager":
+            routed_text = _augment_manager_text(routed_text)
+        agent_decision = decision if routed_text == decision.text else replace(
+            decision, text=routed_text
+        )
+        local_id = _write_inbox(agent, sender, agent_decision, deps, report)
         if not local_id:
             continue
-        outcome = _inject_to_pane(agent, decision, deps, wake_fn,
+        outcome = _inject_to_pane(agent, agent_decision, deps, wake_fn,
                                    local_id=local_id)
         getattr(report, outcome).append(agent)
     return report
@@ -345,6 +367,7 @@ def _apply_slash(decision: Decision, deps: _Deps, *,
         team_agents=team_agents or config.agent_names(),
         session=deps.session,
         lazy_agents=lazy_agents if lazy_agents is not None else frozenset(),
+        sender_id=decision.sender_id,
     )
     reply = dispatch(decision.text, ctx)
 

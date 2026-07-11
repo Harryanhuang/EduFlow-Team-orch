@@ -30,6 +30,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from eduflow.runtime import config, paths
+from eduflow.runtime.names import validate_agent_name
 from eduflow.store import memory
 from eduflow.util import atomic_write_text
 
@@ -544,6 +545,7 @@ def init_prompt(agent: str) -> str:
 
 def identity_path(agent: str) -> Path:
     """Where the rendered identity for `agent` lives on disk."""
+    agent = validate_agent_name(agent)
     return paths.state_dir() / "agents" / agent / "identity.md"
 
 

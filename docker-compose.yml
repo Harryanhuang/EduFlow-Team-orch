@@ -1,7 +1,8 @@
 # Minimum-viable compose for EduFlow.
 #
-# Mounts a host `./team-data/` directory into /data so team.json,
-# runtime_config.json, and the state dir survive `docker compose down`.
+# Mounts a host `./team-data/` directory into /home/eduflow/.eduflow
+# so team.json, runtime_config.json, and the state dir survive
+# `docker compose down`.
 # Mounts the host's lark-cli OAuth profile so `eduflow say`/`router`
 # don't need a fresh authentication round inside the container.
 #
@@ -11,9 +12,10 @@
 #   docker compose exec eduflow eduflow up
 #   docker compose exec eduflow eduflow health
 #
-# Network: host mode lets lark-cli's long-poll reach Feishu without
-# NAT timeouts. On Docker Desktop (macOS/Windows) host mode is partially
-# emulated — switch to a bridge port-publish if the long-poll dies.
+# The base image runs as the `eduflow` non-root user with HOME=/home/eduflow.
+# Credential mounts target that home directory and are file-level (or
+# narrowly-scoped directory) mounts marked read-only where the CLI does not
+# need to write token refreshes back to the host.
 
 services:
   agent-chrome:
@@ -24,15 +26,14 @@ services:
     shm_size: "1gb"
     ports:
       - "127.0.0.1:9233:9223"
-      - "127.0.0.1:6080:6080"
     command:
       - sh
       - -lc
-      - rm -f /data/profile/Singleton* && Xvfb :99 -screen 0 1280x900x24 -nolisten tcp & env DISPLAY=:99 fluxbox >/tmp/fluxbox.log 2>&1 & x11vnc -display :99 -forever -shared -nopw -listen 0.0.0.0 -rfbport 5900 >/tmp/x11vnc.log 2>&1 & websockify --web=/usr/share/novnc 6080 localhost:5900 >/tmp/novnc.log 2>&1 & perl /opt/agent-chrome/tcp-proxy.pl 9223 127.0.0.1 9222 & perl /opt/agent-chrome/tcp-proxy.pl 10086 host.docker.internal 10086 & exec env DISPLAY=:99 /usr/lib/chromium/chromium --no-sandbox --disable-dev-shm-usage --remote-debugging-port=9222 --remote-allow-origins='*' --user-data-dir=/data/profile --download-default-directory=/downloads --disable-extensions-except=/extensions/kimi-webbridge --load-extension=/extensions/kimi-webbridge about:blank
+      - rm -f /data/profile/Singleton* && Xvfb :99 -screen 0 1280x900x24 -nolisten tcp & env DISPLAY=:99 fluxbox >/tmp/fluxbox.log 2>&1 & perl /opt/agent-chrome/tcp-proxy.pl 9223 127.0.0.1 9222 127.0.0.1 & perl /opt/agent-chrome/tcp-proxy.pl 10086 host.docker.internal 10086 127.0.0.1 & exec env DISPLAY=:99 /usr/lib/chromium/chromium --disable-dev-shm-usage --remote-debugging-address=127.0.0.1 --remote-debugging-port=9222 --user-data-dir=/data/profile --download-default-directory=/downloads --disable-extensions-except=/extensions/kimi-webbridge --load-extension=/extensions/kimi-webbridge about:blank
     volumes:
       - agent-chrome-profile:/data/profile
       - ./team-data/agent-chrome-extensions/kimi-webbridge:/extensions/kimi-webbridge:ro
-      - /Users/huanganan/Downloads/agent-chrome:/downloads
+      - agent-chrome-downloads:/downloads
       - ./docker/agent-chrome/tcp-proxy.pl:/opt/agent-chrome/tcp-proxy.pl:ro
     restart: unless-stopped
 
@@ -45,33 +46,33 @@ services:
       # changes. RW (not :ro) because pip's `*.egg-info` writes into
       # src/ on first install.
       - ./src:/app/src
-      - ./team-data:/data
+      - ./team-data:/home/eduflow/.eduflow
       # Share the host's lark-cli OAuth profile (config.json + cache)
       # but keep the per-app fcntl lock dir container-private. Sharing
       # the lock dir would let a host router + container router race
       # for the same lock and one would misreport "another instance
       # running"; keeping locks/ inside the container avoids that.
-      - ${HOME}/.lark-cli/config.json:/root/.lark-cli/config.json
-      - ${HOME}/.lark-cli/cache:/root/.lark-cli/cache
+      - ${HOME}/.lark-cli/config.json:/home/eduflow/.lark-cli/config.json:ro
+      - ${HOME}/.lark-cli/cache:/home/eduflow/.lark-cli/cache
       # Bind-mount host's claude OAuth so the container reuses it
       # without an interactive login. On macOS the .credentials.json
       # file actually lives in keychain — extract once with:
       #   security find-generic-password -s "Claude Code-credentials" -w \
       #     > ~/.claude/.credentials.json
       # before `docker compose up`. RW so token refresh persists back.
-      - ${HOME}/.claude/.credentials.json:/root/.claude/.credentials.json
+      - ${HOME}/.claude/.credentials.json:/home/eduflow/.claude/.credentials.json
       # Read-only mount of host's ~/.claude.json at a side path. Each
       # agent pane seeds a per-agent copy from this so multiple panes
       # don't race on writes to the same file (which corrupts JSON).
-      - ${HOME}/.claude.json:/root/host-claude.json:ro
+      - ${HOME}/.claude.json:/home/eduflow/host-claude.json:ro
       # Claude projects/ shared so ccusage finds the usage logs that
       # the /usage card depends on.
-      - ${HOME}/.claude/projects:/root/.claude/projects
+      - ${HOME}/.claude/projects:/home/eduflow/.claude/projects
       # Codex + Kimi credentials so the agent CLIs (and /usage card)
-      # don't need to re-login inside the container. Token refreshes
-      # written in-container persist back to host.
-      - ${HOME}/.codex:/root/.codex
-      - ${HOME}/.kimi:/root/.kimi
+      # don't need to re-login inside the container. Mount the specific
+      # credential files rather than the whole home directory.
+      - ${HOME}/.codex/auth.json:/home/eduflow/.codex/auth.json:ro
+      - ${HOME}/.kimi/config.json:/home/eduflow/.kimi/config.json:ro
     # Credentials come from `.env` (gitignored). FEISHU_APP_* and
     # LARKSUITE_CLI_APP_* are aliases — set both. ANTHROPIC_API_KEY is
     # optional; without it claude uses the bind-mounted host OAuth.
@@ -86,14 +87,19 @@ services:
       # say / slash all use bot identity. Override with `user` only
       # if you've run `lark-cli auth login` inside the container.
       - EDUFLOW_LARK_SEND_AS=${EDUFLOW_LARK_SEND_AS:-bot}
-      # macOS Docker Desktop's `network_mode: host` is only partially
-      # emulated and the lark-cli WebSocket goes silent after a few
-      # minutes — set EDUFLOW_ROUTER_STALE_S in .env (suggested 300)
-      # to make the router respawn faster on this OS. Linux ignores.
+      # On constrained Docker Desktop or bridge networks, lark-cli's
+      # long-poll WebSocket may go quiet. On Linux the default bridge
+      # can also hit NAT timeout for long-lived idle connections. Set
+      # EDUFLOW_ROUTER_STALE_S in .env (suggested 300) to make the
+      # router respawn faster when either happens.
       - EDUFLOW_ROUTER_STALE_S=${EDUFLOW_ROUTER_STALE_S:-}
-    network_mode: host
     tty: true
     stdin_open: true
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 4G
     # Keep the container alive so `docker compose exec` works without
     # auto-restart loops. Operator-driven lifecycle: `eduflow up`
     # starts tmux + daemons inside; `eduflow down` stops them; the
@@ -102,3 +108,4 @@ services:
 
 volumes:
   agent-chrome-profile:
+  agent-chrome-downloads:

@@ -98,8 +98,14 @@ def isolated_env(*, team: dict | None = None, runtime_config: dict | None = None
             )(window_ms=task_publish_gate._dedup_cache._window_ms)
         except Exception:
             pass
+        # V3 P2: keep Flow Memory on the same temp DB as EduFlow runtime
+        # and reset its module-level singletons so tests don't reuse a
+        # cached connection from a previous isolated_env block.
+        state_path = tmp_path / "state"
+        db_path = state_path / "eduflow_memory.db"
+        _reset_flow_memory_singletons()
         with env_patch(
-            EDUFLOW_STATE_DIR=str(tmp_path / "state"),
+            EDUFLOW_STATE_DIR=str(state_path),
             EDUFLOW_TEAM_FILE=str(team_path),
             EDUFLOW_RUNTIME_CONFIG=str(rt_path),
             EDUFLOW_CONFIG_FILE=str(tmp_path / "eduflow.toml"),
@@ -109,8 +115,13 @@ def isolated_env(*, team: dict | None = None, runtime_config: dict | None = None
             # Tests need it on by default; the negative case (`None`) is
             # explicitly tested in test_commands_task.py.
             EDUFLOW_VERIFIER_BYPASS_ALLOWED="1",
+            FLOW_MEMORY_STATE_DIR=str(state_path),
+            FLOW_MEMORY_DB=str(db_path),
         ):
-            yield tmp_path
+            try:
+                yield tmp_path
+            finally:
+                _reset_flow_memory_singletons()
 
 
 def run_cli(argv: list[str]) -> tuple[int, str, str]:
@@ -179,6 +190,30 @@ def tmux_patch(**stubs):
             ...
     """
     return attr_patch(_tmux, **stubs)
+
+
+def _reset_flow_memory_singletons() -> None:
+    """Reset Flow Memory's module-level path/backend singletons.
+
+    Called on entry and exit of `isolated_env()` so each test gets a
+    fresh path resolution and backend connection for the temp state dir.
+    Also closes EduFlow's local db connection cache when present.
+    """
+    try:
+        from eduflow.memory import db as _eduflow_db
+        _eduflow_db.close()
+    except Exception:
+        pass
+    try:
+        from flow_memory.storage import paths as _fm_paths
+        _fm_paths._provider = None
+    except Exception:
+        pass
+    try:
+        from flow_memory.storage import sql as _fm_sql
+        _fm_sql._backend = None
+    except Exception:
+        pass
 
 
 @contextlib.contextmanager

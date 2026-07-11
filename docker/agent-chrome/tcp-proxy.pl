@@ -4,17 +4,18 @@ use warnings;
 use IO::Socket::INET;
 use IO::Select;
 
-my ($listen_port, $target_host, $target_port) = @ARGV;
-die "usage: tcp-proxy.pl LISTEN_PORT TARGET_HOST TARGET_PORT\n"
+my ($listen_port, $target_host, $target_port, $bind_addr) = @ARGV;
+$bind_addr = '127.0.0.1' unless defined $bind_addr;
+die "usage: tcp-proxy.pl LISTEN_PORT TARGET_HOST TARGET_PORT [BIND_ADDR]\n"
   unless $listen_port && $target_host && $target_port;
 
 my $server = IO::Socket::INET->new(
-  LocalAddr => '0.0.0.0',
+  LocalAddr => $bind_addr,
   LocalPort => $listen_port,
   Proto     => 'tcp',
   Listen    => 20,
   ReuseAddr => 1,
-) or die "listen failed on $listen_port: $!\n";
+) or die "listen failed on $bind_addr:$listen_port: $!\n";
 
 $SIG{CHLD} = 'IGNORE';
 

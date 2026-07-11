@@ -97,7 +97,7 @@ class ClaudeCodeAdapter(CliAdapter):
             f"{token_prefix}"
             f"CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY=1 DISABLE_AUTOUPDATER=1 "
             f"IS_SANDBOX=1 {shlex.quote(claude_bin)} --dangerously-skip-permissions "
-            f"--model {model} --name {agent}"
+            f"--model {shlex.quote(model)} --name {shlex.quote(agent)}"
         )
 
     def ready_markers(self) -> list[str]:

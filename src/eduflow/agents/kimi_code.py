@@ -1,13 +1,14 @@
 """Moonshot Kimi Code adapter."""
 from __future__ import annotations
 
+import shlex
+
 from .base import CliAdapter, MULTILINE_SUBMIT_KEYS, SPINNER_CHARS
 
 
 class KimiCodeAdapter(CliAdapter):
     def spawn_cmd(self, agent: str, model: str) -> str:
-        # model is currently a no-op for kimi; CLI picks per its config
-        return f"DISABLE_UPDATE_CHECK=1 KIMI_AGENT={agent} kimi --yolo"
+        return f"DISABLE_UPDATE_CHECK=1 KIMI_AGENT={shlex.quote(agent)} kimi --yolo"
 
     def ready_markers(self) -> list[str]:
         return [

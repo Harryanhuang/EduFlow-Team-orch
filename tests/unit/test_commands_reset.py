@@ -41,14 +41,15 @@ def test_reset_preserves_config_files():
         assert team_path.exists() and rt_path.exists()
 
 
-def test_reset_when_state_dir_does_not_exist_still_returns_zero():
+def test_reset_when_state_dir_is_empty_still_returns_zero():
     team = {"agents": {"manager": {}}}
     with isolated_env(team=team), _fake_tmux_no_session():
         sd = paths.state_dir()
-        assert not sd.exists()  # never created
+        assert sd.exists()  # state_dir now creates on access
         rc, out, _ = run_cli(["reset", "--yes"])
         assert rc == 0
-        assert "did not exist" in out
+        assert "wiped" in out
+        assert not sd.exists()
 
 
 # ── safety ──────────────────────────────────────────────────────

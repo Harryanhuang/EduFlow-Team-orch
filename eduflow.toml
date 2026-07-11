@@ -572,6 +572,8 @@ provider_family = "hermes_agent"
 [team]
 session = "EduFlowTeam"
 default_model = "opus"
+operators = ["u_<admin_feishu_id>"]   # 可执行 /send 等特权斜杠命令的飞书用户 open_id
+
 
 # 每个 agent 一个 [team.agents.<name>]
 #   cli         必填  claude-code | codex-cli | gemini-cli | kimi-code | mimo-code | qwen-code | qoderclicn

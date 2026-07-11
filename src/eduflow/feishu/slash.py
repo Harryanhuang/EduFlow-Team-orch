@@ -55,7 +55,7 @@ from eduflow.feishu.cards import (
     fenced_block, load_color, remaining_color, rich_card, simple_card,
     team_snapshot_card,
 )
-from eduflow.runtime import tmux
+from eduflow.runtime import tmux, tunables
 from eduflow.store import employee_read_model, local_facts, tasks
 from eduflow.util import fmt_bytes
 
@@ -88,6 +88,7 @@ class SlashContext:
     sleep: Callable = time.sleep           # for /clear's settle delay
     now: Callable = datetime.now           # injectable clock for header timestamps
     background: Callable[[Callable[[], None]], None] = _spawn_daemon_thread
+    sender_id: str = ""                    # Feishu open_id of the slash caller
 
     @property
     def agent_set(self) -> frozenset[str]:
@@ -636,12 +637,46 @@ def _handle_tmux(args: str, ctx: SlashContext) -> str | dict:
     )
 
 
-def _handle_send(args: str, ctx: SlashContext) -> str:
+def _operator_ids() -> set[str]:
+    """Configured Feishu operator open_ids allowed to use privileged
+    slash commands like /send.
+
+    Reads from eduflow.toml `[team.operators]`; empty list means the
+    restriction is disabled for backward compatibility / fresh installs.
+    """
+    cfg = tunables.load() or {}
+    operators = cfg.get("team", {}).get("operators") or []
+    return set(operators)
+
+
+def _send_operator_error() -> dict:
+    """Rejection card returned when a non-operator tries /send."""
+    return {"allowed": False, "message": "只有操作员可以执行 /send"}
+
+
+def handle_send(sender_id: str, argv: list[str]) -> dict:
+    """Public /send authorization probe (used by tests).
+
+    Returns a dict so callers can distinguish authorized from rejected
+    without parsing a human-readable string. The full slash dispatch path
+    uses `_handle_send`, which performs the same check and then injects
+    into the target pane.
+    """
+    operators = _operator_ids()
+    if operators and sender_id not in operators:
+        return _send_operator_error()
+    return {"allowed": True}
+
+
+def _handle_send(args: str, ctx: SlashContext) -> str | dict:
     if not args.strip():
         return "用法: /send <agent> <message>\n例: /send worker_cc \"看一下 README\""
     parts = args.split(None, 1)
     if len(parts) < 2 or not parts[1].strip():
         return "用法: /send <agent> <message>（缺少消息内容）"
+    operators = _operator_ids()
+    if operators and getattr(ctx, "sender_id", "") not in operators:
+        return _send_operator_error()
     agent, msg = parts[0].strip(), parts[1].strip()
     if (warn := _bad_agent(agent, ctx)):
         return warn

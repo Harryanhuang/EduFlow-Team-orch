@@ -83,7 +83,7 @@ def main(argv: list[str]) -> int:
     # Prepend Memory Packet so recipient retains active constraints after /compact
     if not no_memory:
         try:
-            from eduflow.memory import assemble_memory_packet, extract_task_id_from_message
+            from eduflow.memory.packet import assemble_memory_packet, extract_task_id_from_message
             _task_id = extract_task_id_from_message(message) or task_id_arg
             _packet = assemble_memory_packet(to, task_id=_task_id)
             if _packet:

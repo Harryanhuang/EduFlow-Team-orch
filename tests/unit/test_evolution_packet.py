@@ -9,7 +9,7 @@ from __future__ import annotations
 import json
 
 from helpers import isolated_env, run_cli
-from eduflow.store import evolution_packet, local_facts, tasks
+from eduflow.store import evolution_packet, local_facts, loop_runs, tasks
 
 
 # ── store: build ──────────────────────────────────────────────────
@@ -138,6 +138,97 @@ def test_repair_cycle_lt2_does_not_trigger():
         )
         result = evolution_packet.build(tid)
         assert result == {"candidates": []}
+
+
+def test_repair_cycle_ge2_reads_loop_meta():
+    """V3 P2: repair_cycle_ge2 candidate reads loop run meta for richer
+    evidence without writing memory.
+    """
+    with isolated_env():
+        tid = tasks.create_flow(
+            "worker_course",
+            "IGCSE Accounting 0452 repair-cycle-meta",
+            stage="curriculum",
+            owner="worker_course",
+            workflow_id="igcse-subject-launch",
+        )
+        run = loop_runs.create_new(
+            task_id=tid, spec="code-repair", max_cycles=5,
+        )
+        loop_runs.append_cycle(
+            run["id"],
+            checker_output="x",
+            diff_text="x",
+            preflight={},
+            failed_commands=["pytest tests/unit"],
+            passed_commands=[],
+            failure_fingerprint="same_failure_repeated",
+            status="repair_needed",
+            stop_reason="same_failure_repeated",
+        )
+        loop_runs.append_cycle(
+            run["id"],
+            checker_output="x",
+            diff_text="x",
+            preflight={},
+            failed_commands=["pytest tests/unit", "pytest tests/integration"],
+            passed_commands=[],
+            failure_fingerprint="same_failure_repeated",
+            status="repair_needed",
+            stop_reason="same_failure_repeated",
+        )
+        tasks.set_loop_evidence(
+            tid,
+            loop_run_id=run["id"],
+            loop_status="repair_needed",
+            loop_cycle_count=2,
+            loop_stop_reason="same_failure_repeated",
+            loop_recommended_action="update loop spec",
+            loop_evidence_ref=loop_runs.evidence_ref(run["id"]),
+            actor="manager",
+        )
+        result = evolution_packet.build(tid)
+        assert len(result["candidates"]) == 1
+        c = result["candidates"][0]
+        assert c["source_event"] == "repair_cycle_ge2"
+        assert c["loop_id"] == run["id"]
+        assert c["cycle_count"] == 2
+        assert c["loop_status"] == "repair_needed"
+        assert c["stop_reason"] == "same_failure_repeated"
+        assert c["latest_failure_fingerprint"] == "same_failure_repeated"
+        assert "pytest tests/unit" in c["recent_failed_commands"]
+        assert c["suggested_update_surface"] == "loop_spec"
+        assert "loop_spec" in c["reuse_reason"]
+        assert c["confidence"] == "medium"
+        assert f"loop:{run['id']}" in c["evidence_refs"]
+
+
+def test_repair_cycle_ge2_missing_loop_meta_low_confidence():
+    """Without loop meta the packet stays thin and confidence drops to low."""
+    with isolated_env():
+        tid = tasks.create_flow(
+            "worker_course",
+            "IGCSE Accounting 0452 repair-cycle-thin",
+            stage="curriculum",
+            owner="worker_course",
+            workflow_id="igcse-subject-launch",
+        )
+        tasks.set_loop_evidence(
+            tid,
+            loop_run_id="L-000099",
+            loop_status="repair_needed",
+            loop_cycle_count=2,
+            loop_stop_reason="one_off_local_failure",
+            actor="manager",
+        )
+        result = evolution_packet.build(tid)
+        assert len(result["candidates"]) == 1
+        c = result["candidates"][0]
+        assert c["source_event"] == "repair_cycle_ge2"
+        assert c["confidence"] == "low"
+        assert c["suggested_update_surface"] == "no_reuse"
+        assert c["recent_failed_commands"] == []
+        assert c["latest_failure_fingerprint"] == ""
 
 
 def test_runtime_incident_failed_triggers_candidate():
@@ -380,3 +471,109 @@ def test_cli_evolution_packet_does_not_mutate_state():
                 f"task.{key} mutated"
             )
         assert len(before_msgs) == len(after_msgs)
+
+
+def _setup_loop_repair_task():
+    """Helper: create a flow task with a 2-cycle code-repair loop run."""
+    tid = tasks.create_flow(
+        "worker_course",
+        "IGCSE Accounting 0452 propose",
+        stage="curriculum",
+        owner="worker_course",
+        workflow_id="igcse-subject-launch",
+    )
+    run = loop_runs.create_new(task_id=tid, spec="code-repair", max_cycles=5)
+    loop_runs.append_cycle(
+        run["id"],
+        checker_output="x", diff_text="x", preflight={},
+        failed_commands=["pytest tests/unit"],
+        passed_commands=[],
+        failure_fingerprint="same_failure_repeated",
+        status="repair_needed", stop_reason="same_failure_repeated",
+    )
+    loop_runs.append_cycle(
+        run["id"],
+        checker_output="x", diff_text="x", preflight={},
+        failed_commands=["pytest tests/unit"],
+        passed_commands=[],
+        failure_fingerprint="same_failure_repeated",
+        status="repair_needed", stop_reason="same_failure_repeated",
+    )
+    tasks.set_loop_evidence(
+        tid,
+        loop_run_id=run["id"],
+        loop_status="repair_needed",
+        loop_cycle_count=2,
+        loop_stop_reason="same_failure_repeated",
+        loop_evidence_ref=loop_runs.evidence_ref(run["id"]),
+        actor="manager",
+    )
+    return tid, run["id"]
+
+
+def test_cli_evolution_propose_creates_loop_repair_candidate():
+    with isolated_env():
+        from eduflow.memory import db
+        from eduflow.memory.candidates import list_candidates
+        tid, loop_id = _setup_loop_repair_task()
+        before = tasks.get(tid)
+        db.init_schema()
+
+        rc, out, err = run_cli(["task", "evolution-propose", tid, "--yes"])
+        assert rc == 0, err
+        assert "Proposed candidate" in out or "Proposed candidate" in err
+
+        after = tasks.get(tid)
+        for key in ("status", "stage", "loop_status", "loop_cycle_count"):
+            assert before.get(key) == after.get(key), f"task.{key} mutated"
+
+        cands = list_candidates(source_type="loop_repair_cycle")
+        assert len(cands) == 1
+        c = cands[0]
+        assert c["source_ref"] == f"loop:{loop_id}"
+        assert c["review_status"] == "proposed"
+        assert c["proposed_kind"] == "workflow_rule"
+
+
+def test_cli_evolution_propose_is_idempotent():
+    with isolated_env():
+        from eduflow.memory import db
+        from eduflow.memory.candidates import list_candidates
+        tid, loop_id = _setup_loop_repair_task()
+        db.init_schema()
+
+        run_cli(["task", "evolution-propose", tid, "--yes"])
+        run_cli(["task", "evolution-propose", tid, "--yes"])
+
+        cands = list_candidates(source_type="loop_repair_cycle")
+        assert len(cands) == 1
+        assert cands[0]["source_ref"] == f"loop:{loop_id}"
+
+
+def test_cli_evolution_propose_skips_low_confidence():
+    with isolated_env():
+        from eduflow.memory import db
+        from eduflow.memory.candidates import list_candidates
+        tid = tasks.create_flow(
+            "worker_course",
+            "IGCSE Accounting 0452 propose-thin",
+            stage="curriculum",
+            owner="worker_course",
+            workflow_id="igcse-subject-launch",
+        )
+        tasks.set_loop_evidence(
+            tid,
+            loop_run_id="L-000099",
+            loop_status="repair_needed",
+            loop_cycle_count=2,
+            loop_stop_reason="one_off_local_failure",
+            actor="manager",
+        )
+        db.init_schema()
+
+        rc, out, err = run_cli(["task", "evolution-propose", tid, "--yes"])
+        assert rc == 0, err
+        assert "lacks enough evidence" in out
+
+        cands = list_candidates(source_type="loop_repair_cycle")
+        assert len(cands) == 0

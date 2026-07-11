@@ -6,6 +6,7 @@ WAL mode + short transactions + 5s busy timeout for concurrency.
 """
 from __future__ import annotations
 
+import os
 import sqlite3
 import threading
 from pathlib import Path
@@ -211,6 +212,9 @@ def get_conn() -> sqlite3.Connection:
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA journal_mode=WAL")
     conn.execute("PRAGMA busy_timeout=5000")
+    db_path = memory_db_file()
+    if db_path.exists():
+        os.chmod(db_path, 0o600)
     _local.conn = conn
     return conn
 

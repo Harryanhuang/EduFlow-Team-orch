@@ -35,6 +35,7 @@ from pathlib import Path
 from eduflow.agents import get_adapter, identity
 from eduflow.agents.codex_cli import ensure_workdir_trusted
 from eduflow.runtime import config, paths, tmux, wake
+from eduflow.runtime.names import validate_agent_name, validate_model_name
 from eduflow.store import local_facts
 from eduflow.util import env_str
 
@@ -219,6 +220,7 @@ def _ensure_claude_agent_home(agent: str) -> None:
     doesn't exist), silently skip and let claude fall back to its
     default `$HOME` discovery.
     """
+    agent = validate_agent_name(agent)
     from eduflow.agents.claude_code import agent_home as _agent_home
     home = Path(_agent_home(agent))
     claude_dir = home / ".claude"
@@ -737,6 +739,10 @@ def _spawn_once(agent: str, target: tmux.Target, resolved: dict, *,
     resolved.setdefault("agent", agent)
     cli = resolved.get("cli", "claude-code")
     model = resolved.get("model", "opus")
+    agent = validate_agent_name(agent)
+    model = validate_model_name(model)
+    resolved["agent"] = agent
+    resolved["model"] = model
     identity.write(agent, role=resolved.get("role") or agent, cli=cli, model=model)
     if resolved.get("lazy"):
         local_facts.upsert_status(agent, "待命", "lazy: CLI starts on first message")
