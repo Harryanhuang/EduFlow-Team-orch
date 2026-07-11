@@ -9,6 +9,7 @@ import time
 
 from eduflow.commands import task as task_cmd
 from eduflow.runtime import paths, pidlock, tunables
+from eduflow.scheduling import engine as scheduler_engine
 from eduflow.util import (
     error_exit, maybe_print_help, pop_bool_flag, pop_flag, usage_error,
 )
@@ -21,6 +22,13 @@ USAGE = (
 
 
 def _run_once(*, to_target: str, do_send: bool, advance: bool) -> int:
+    # Scheduler tick runs in an isolated try/except so that scheduler
+    # failures never break normal task-publish flow.
+    try:
+        scheduler_engine.scheduler_tick(int(__import__("time").time() * 1000))
+    except Exception as exc:
+        print(f"⚠️ scheduler tick failed: {exc}")
+
     argv = ["publish-run", "--to", to_target]
     if do_send:
         argv.append("--send")

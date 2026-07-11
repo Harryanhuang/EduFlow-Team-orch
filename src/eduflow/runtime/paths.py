@@ -175,3 +175,8 @@ def scheduler_notifications_file() -> Path:
 
 def scheduler_heartbeat_file() -> Path:
     return scheduler_dir() / "heartbeat.json"
+
+
+def scheduler_cursor_file() -> Path:
+    """Scheduler tick cursor; independent from task-publish.cursor."""
+    return scheduler_dir() / "cursor.json"

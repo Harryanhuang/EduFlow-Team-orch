@@ -18,7 +18,7 @@ from eduflow.util import flock, now_ms, read_json, read_jsonl, write_json
 
 
 VALID_FREQUENCIES = frozenset({"once", "daily", "weekly"})
-VALID_RULE_STATUSES = frozenset({"active", "paused", "cancelled"})
+VALID_RULE_STATUSES = frozenset({"active", "paused", "cancelled", "attention_required"})
 VALID_OCCURRENCE_STATUSES = frozenset({
     "awaiting_manager",
     "confirmed",
@@ -31,9 +31,10 @@ VALID_OCCURRENCE_STATUSES = frozenset({
 
 # Allowed rule status transitions.  Empty set means terminal.
 RULE_TRANSITIONS = {
-    "active": {"paused", "cancelled"},
+    "active": {"paused", "cancelled", "attention_required"},
     "paused": {"active", "cancelled"},
     "cancelled": set(),
+    "attention_required": {"active", "cancelled"},
 }
 
 
