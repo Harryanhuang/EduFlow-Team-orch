@@ -430,7 +430,7 @@ def list_lanes(*, occurrence_key: str | None = None) -> list[dict]:
     data = _load_lanes()
     lanes = list(data.get("lanes", []))
     if occurrence_key is not None:
-        lanes = [l for l in lanes if l.get("occurrence_key") == occurrence_key]
+        lanes = [lane for lane in lanes if lane.get("occurrence_key") == occurrence_key]
     return lanes
 
 
@@ -591,8 +591,8 @@ def find_archival_candidates(*, cutoff_ms: int) -> dict:
     all_lanes = list(lane_data.get("lanes", []))
     eligible_lane_occurrence_keys = {o["id"] for o in eligible_occ}
     eligible_lanes = [
-        dict(l) for l in all_lanes
-        if l.get("occurrence_key") in eligible_lane_occurrence_keys
+        dict(lane) for lane in all_lanes
+        if lane.get("occurrence_key") in eligible_lane_occurrence_keys
     ]
 
     # Notifications: eligible when older than cutoff AND bound occurrence
@@ -717,19 +717,20 @@ def archive_old_records(
 
     # ── lane rows: remove (info summarised inside archived occurrence).
     if candidates["lanes"]:
-        eligible_lane_ids = {l["id"] for l in candidates["lanes"]}
+        eligible_lane_ids = {lane["id"] for lane in candidates["lanes"]}
         with _lanes_lock():
             data = _load_lanes()
             before = len(data.get("lanes", []))
             data["lanes"] = [
-                l for l in data.get("lanes", [])
-                if l.get("id") not in eligible_lane_ids
+                lane for lane in data.get("lanes", [])
+                if lane.get("id") not in eligible_lane_ids
             ]
             after = len(data["lanes"])
             if before != after:
                 _save_lanes(data)
                 result["removed_lanes"] = [
-                    l for l in candidates["lanes"] if l.get("id") in eligible_lane_ids
+                    lane for lane in candidates["lanes"]
+                    if lane.get("id") in eligible_lane_ids
                 ]
 
     # ── notification rows: rewrite the JSONL excluding eligible rows.

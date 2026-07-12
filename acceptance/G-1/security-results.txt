@@ -4,7 +4,7 @@ Submission target: `2296dc08c14eae9de34accdf43d4a11c6b8ba68f`
 Historical implementation revision: `cc95c5a488a8cd699dff515eadf431277669ffc6`
 Security-ledger revision: `2296dc08c14eae9de34accdf43d4a11c6b8ba68f`
 Historical capture: 2026-07-12T17:59:46+08:00 (UTC 2026-07-12T09:59:46Z; Task 7 evidence refresh)
-Current refresh: 2026-07-12T21:29:24+08:00 (UTC 2026-07-12T13:29:24Z)
+Current refresh: 2026-07-12T21:33:20+08:00 (UTC 2026-07-12T13:33:20Z)
 
 Freshness note: the configured-control clarification at the submission target
 does not claim scanner execution. The resumed local checkpoint created and
@@ -19,7 +19,7 @@ so the result remains FAIL.
 
 | Check | Command / method | Exit | Result |
 |---|---|---:|---|
-| Ruff full repository | `uvx --offline ruff==0.15.10 check src tests scripts --statistics` | 1 | FAIL — after R2d unused-binding correction, `Found 328 errors`; 119 F401, 58 F841, 37 F541, 34 E701, 26 E741, 14 E402, 14 E731, 12 E401, 8 E702, 6 F811; production F841 and F821 are zero |
+| Ruff full repository | `uvx --offline ruff==0.15.10 check src tests scripts --statistics` | 1 | FAIL — after R2e ambiguous-name correction, `Found 319 errors`; 119 F401, 58 F841, 37 F541, 34 E701, 17 E741, 14 E402, 14 E731, 12 E401, 8 E702, 6 F811; production E741, F841, and F821 are zero |
 | Node lock generation | `npm install --package-lock-only --ignore-scripts --offline --registry=https://registry.npmmirror.com` | 0 | PASS — exact `playwright==1.59.1` dependency locked without running `postinstall` |
 | Node audit (offline cache view) | `npm audit --omit=dev --audit-level=high --offline --registry=https://registry.npmmirror.com --json` | 0 | OBSERVED — local cache returned 0 vulnerabilities across 3 production dependencies (plus 1 optional entry); current advisory coverage is not proven |
 | Lockfile contract | focused trackable/complete lockfile test plus exact-pin test | 0 | PASS — candidate lockfile is present and not ignored; lockfileVersion 3+, root dependencies match, and every transitive entry has exact version, HTTPS resolved URL, and SHA-512 integrity |
@@ -51,8 +51,9 @@ all three F821 findings with runtime regression tests. R2b repaired the ignored
 explicit task selector in memory injection and cleaned the adjacent command.
 R2c removed the final production F811/E731 pair from health and usage. R2d
 removed all 12 production F841 findings and restored P0 detection for generic
-verdict/review-reason/status fields, reducing the repository baseline from 486
-to 328 findings without ignores; the remaining 328 findings remain open.
+verdict/review-reason/status fields. R2e renamed all nine ambiguous production
+loop variables, reducing the repository baseline from 486 to 319 findings
+without ignores; the remaining 319 findings remain open.
 `mypy`, `pyright`, `gitleaks`, `trufflehog`, and
 `pip-audit` are not available from PATH or the checked offline Python cache,
 and no approved type-checker scope exists. These are mandatory checks under the

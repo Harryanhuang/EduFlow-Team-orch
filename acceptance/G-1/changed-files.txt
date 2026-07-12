@@ -63,6 +63,7 @@ src/eduflow/runtime/failover.py
 src/eduflow/runtime/human_takeover.py
 src/eduflow/runtime/verify.py
 src/eduflow/store/employee_read_model.py
+src/eduflow/store/scheduled_tasks.py
 src/eduflow/store/task_event_scanner.py
 src/eduflow/store/task_publish_gate.py
 tests/integration/test_human_takeover_circuit_breaker.py

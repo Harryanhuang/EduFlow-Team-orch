@@ -411,11 +411,14 @@ def _check_one_daemon_stability(rep: HealthReport, name: str, log_path) -> None:
             lines = f.readlines()[-200:]
         if name == "watchdog":
             lines = [
-                l for l in lines
-                if not re.search(r"\brouter respawned\b", l, re.IGNORECASE)
+                line for line in lines
+                if not re.search(r"\brouter respawned\b", line, re.IGNORECASE)
             ]
-        respawn_count = sum(1 for l in lines if "respawn" in l.lower())
-        stall_count = sum(1 for l in lines if "stall" in l.lower() or "stale" in l.lower())
+        respawn_count = sum(1 for line in lines if "respawn" in line.lower())
+        stall_count = sum(
+            1 for line in lines
+            if "stall" in line.lower() or "stale" in line.lower()
+        )
         if respawn_count == 0:
             rep.ok(f"{name} stability: no respawns in recent log")
         elif respawn_count <= 2:
@@ -425,12 +428,14 @@ def _check_one_daemon_stability(rep: HealthReport, name: str, log_path) -> None:
                 name == "router"
                 and stall_count >= respawn_count
                 and all(
-                    ("no events for" in l and "threshold" in l)
-                    or "subscribing on chat" in l
-                    or "catching up" in l
-                    for l in lines
-                    if "respawn" in l.lower() or "stall" in l.lower() or "stale" in l.lower()
-                    or "no events for" in l
+                    ("no events for" in line and "threshold" in line)
+                    or "subscribing on chat" in line
+                    or "catching up" in line
+                    for line in lines
+                    if "respawn" in line.lower()
+                    or "stall" in line.lower()
+                    or "stale" in line.lower()
+                    or "no events for" in line
                 )
             )
             if benign_idle:
