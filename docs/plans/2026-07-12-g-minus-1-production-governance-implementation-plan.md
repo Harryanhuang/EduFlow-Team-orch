@@ -165,4 +165,3 @@ Record command, UTC/local timestamp, revision, exit code, complete result summar
 2. Reviewer independently reruns representative commands and returns PASS, allowed CONDITIONAL PASS, or FAIL in `review-verdict.md`.
 3. Fix every finding with TDD and refresh all affected evidence.
 4. Do not enter G0 until `review-verdict.md` is PASS (or contract-valid CONDITIONAL PASS) and the manager closeout field records the Gate decision.
-
