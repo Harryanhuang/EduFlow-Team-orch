@@ -1,7 +1,7 @@
 # G-1 scoped changed files
 
 Comparison base: `bde14c5ce94aacd99ef80f9c11b65092dcf25fc3`
-Submission target: `2296dc08c14eae9de34accdf43d4a11c6b8ba68f`
+Submission target: `73e7b3f4cd47cbc48b985ccbf261266fe38b02d2`
 Candidate/evidence-refresh path inventory: the union of baseline-to-candidate
 tracked paths and candidate-only untracked paths. The same inventory definition
 remains valid before and after the evidence refresh is committed. No user-owned
@@ -12,6 +12,8 @@ Revision lineage:
 - implementation: `cc95c5a488a8cd699dff515eadf431277669ffc6`
 - authority remediation: `d578691b8e1d3e0dc6f5221120c4a0d0e4ace6ab`
 - configured scanner ledger: `2296dc08c14eae9de34accdf43d4a11c6b8ba68f`
+- Ruff R3 tests: `af15df34de310907feff3e93681952a443fb0bfb`
+- Ruff R4 scripts / submission target: `73e7b3f4cd47cbc48b985ccbf261266fe38b02d2`
 
 ## Machine-verifiable submission paths
 
@@ -25,6 +27,7 @@ acceptance/G-1/changed-files.txt
 acceptance/G-1/fault-injection-results.txt
 acceptance/G-1/known-risks.md
 acceptance/G-1/migration-results.txt
+acceptance/G-1/owner-checkpoint-request.md
 acceptance/G-1/review-verdict.md
 acceptance/G-1/rollback-proof.md
 acceptance/G-1/security-results.txt

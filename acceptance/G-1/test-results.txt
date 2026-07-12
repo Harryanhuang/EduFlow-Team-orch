@@ -1,12 +1,29 @@
 G-1 Test Results
 
-Submission target: `2296dc08c14eae9de34accdf43d4a11c6b8ba68f`
+Submission target: `73e7b3f4cd47cbc48b985ccbf261266fe38b02d2`
 Revision lineage: implementation `cc95c5a488a8cd699dff515eadf431277669ffc6`;
 authority remediation `d578691b8e1d3e0dc6f5221120c4a0d0e4ace6ab`;
 configured scanner ledger `2296dc08c14eae9de34accdf43d4a11c6b8ba68f`.
 Freshness note: the transcript below preserves historical RED/GREEN and full
-regression evidence. This evidence-only refresh does not claim a new 3161 or
-3014 run; its focused package-test result appears immediately below.
+regression evidence. The final R5 refresh records a new 3206-node full
+regression for the submission target; the 3014 baseline rollback run remains
+historical.
+
+## Current R5 Gate verification — 2026-07-12
+
+- `uvx --offline ruff==0.15.10 check src tests scripts` -> exit 0, `All checks passed!`
+- `python3 -m compileall -q src tests scripts` -> exit 0
+- `python3 -m pytest -q` -> exit 0; pytest cache contains 3206 node IDs
+- `python3 -m pip check` -> exit 0, `No broken requirements found.`
+- `git diff --check` -> exit 0
+- `python3 -m pytest tests/unit/test_g_minus_1_acceptance_package.py -q` -> 17 passed
+- `python3 -m pytest tests/unit/test_g_minus_1_acceptance_package.py tests/unit/test_g_minus_1_governance_docs.py tests/unit/test_audit_production_topology.py -q` -> 95 focused G-1 tests passed; exit 0; run 2026-07-12 Asia/Shanghai against `73e7b3f4cd47cbc48b985ccbf261266fe38b02d2`
+- independent R3/R4 specification review -> PASS after two findings were remediated
+- independent R3/R4 quality review -> PASS after the machine path inventory was refreshed
+
+Result: PASS for regression and Ruff checks at the submission target. This does
+not satisfy the missing approved type, secret, dependency, authority, or owner
+checkpoints and does not change the overall G-1 FAIL verdict.
 
 Evidence freshness TDD refresh
 Timestamp UTC: 2026-07-12T12:02:10Z

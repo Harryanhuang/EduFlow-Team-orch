@@ -1,14 +1,16 @@
 # G-1 Independent Supporting Re-REVIEW Verdict
 
-Submission target: `2296dc08c14eae9de34accdf43d4a11c6b8ba68f`
+Submission target: `73e7b3f4cd47cbc48b985ccbf261266fe38b02d2`
 Reviewer: independent Codex reviewer (historical read-only supporting review after both Task 8 authority remediations)
 
 Historical review scope: the two authoritative 2026-07-12 Gate documents; the
 then-candidate G-1 implementation and Task 8 authority remediation later
 captured by `d578691b8e1d3e0dc6f5221120c4a0d0e4ace6ab`; all nine acceptance
 records then present; and the Task 8 source and tests. The later configured
-scanner ledger at `2296dc08c14eae9de34accdf43d4a11c6b8ba68f` is part of the current
-submission target but was not a new formal review event. This reviewer
+scanner ledger at `2296dc08c14eae9de34accdf43d4a11c6b8ba68f` and Ruff remediation
+through `73e7b3f4cd47cbc48b985ccbf261266fe38b02d2` are part of the current
+submission target but were not a formal `worker_review` event. R3/R4 received
+independent specification and quality PASS reviews. This reviewer
 performed no production takeover, config change, credential action, external
 send, approval write, or manager action.
 
@@ -24,10 +26,9 @@ event or authorize a manager CLOSEOUT.
   contract test passed independently in this historical review. The current
   `changed-files.txt` replaces the then-candidate status split with one
   machine-checked baseline-to-submission path set.
-- The current test ledger records the final full suite as **3161 passed in
-  289.02s**, plus zero-exit `compileall -q src tests scripts`, `pip check`, and
-  `git diff --check`.  These are recorded final-run evidence, rather than a
-  claim that this reviewer repeated the 289-second full suite.  This reviewer
+- The current test ledger records a **3206-node full regression** with exit 0,
+  plus zero-exit `compileall -q src tests scripts`, `pip check`, Ruff, and
+  `git diff --check`. These are recorded final-run evidence. This reviewer
   independently reran the Task 8 negative and side-effect tests plus the
   runtime CLI and package-contract tests: **24 passed**; `git diff --check`
   also exited zero.
@@ -65,7 +66,7 @@ event or authorize a manager CLOSEOUT.
    an exact Playwright pin, complete integrity metadata, and a disposable
    offline/no-scripts clean install. The local offline audit cache returned
    zero findings, but offline audit freshness is not proven and the configured
-   mirror source is not owner-approved. Ruff reports 486 findings; Pyright/mypy,
+   mirror source is not owner-approved. Ruff is clean, but Pyright/mypy,
    the required secret scanner, and `pip-audit` remain unavailable.
    AC-GLOBAL-04 therefore remains failed rather than `not_applicable`.
 4. **Process gate — formal acceptance ownership is incomplete.**  The required
@@ -85,7 +86,7 @@ pending.  Manager CLOSEOUT: prohibited.**
 
 Next actions are intentionally owner-gated: provision a real structured
 `runtime_operator`, record durable owner approval evidence, complete the
-approved Ruff/type/secret/dependency scanner checkpoint, refresh the package,
+approved type/secret/dependency scanner checkpoint, refresh the package,
 then obtain a formal independent `worker_review` REVIEW.  Do not create a
 placeholder appointment, approval, scanner result, or CLOSEOUT event.
 

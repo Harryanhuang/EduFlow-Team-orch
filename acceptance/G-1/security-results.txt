@@ -1,10 +1,10 @@
 # G-1 Security and Supply-Chain Results
 
-Submission target: `2296dc08c14eae9de34accdf43d4a11c6b8ba68f`
+Submission target: `73e7b3f4cd47cbc48b985ccbf261266fe38b02d2`
 Historical implementation revision: `cc95c5a488a8cd699dff515eadf431277669ffc6`
 Security-ledger revision: `2296dc08c14eae9de34accdf43d4a11c6b8ba68f`
 Historical capture: 2026-07-12T17:59:46+08:00 (UTC 2026-07-12T09:59:46Z; Task 7 evidence refresh)
-Current refresh: 2026-07-12T22:25:06+08:00 (UTC 2026-07-12T14:25:06Z)
+Current refresh: 2026-07-12T23:57:11+08:00 (UTC 2026-07-12T15:57:11Z)
 
 Freshness note: the configured-control clarification at the submission target
 does not claim scanner execution. The resumed local checkpoint created and
@@ -12,7 +12,7 @@ validated the Node lockfile, exercised an offline cached audit, and exposed the
 actual Ruff baseline. The offline audit advisory snapshot provenance and
 freshness are unknown, and its `registry.npmmirror.com` source is not yet
 security-owner approved. Required type-checker, secret-scanner, `pip-audit`,
-Ruff-clean, registry-approval, and fresh-advisory evidence remain incomplete,
+registry-approval and fresh-advisory evidence remain incomplete,
 so the result remains FAIL.
 
 ## Current resumed-execution checks
@@ -20,8 +20,8 @@ so the result remains FAIL.
 | Check | Command / method | Exit | Result |
 |---|---|---:|---|
 | Ruff production source | `uvx --offline ruff==0.15.10 check src` | 0 | PASS — zero findings after R2f; compatibility seams are explicit self-alias re-exports, not ignores |
-| Ruff test suite | `uvx --offline ruff==0.15.10 check tests --statistics` | 1 | FAIL — after R3d callable clarification, `Found 64 errors`; 52 F841, 12 E402; test E731, E741, and F811 are zero |
-| Ruff full repository | `uvx --offline ruff==0.15.10 check src tests scripts --statistics` | 1 | FAIL — after R3d callable clarification, `Found 118 errors`; 58 F841, 34 E701, 13 E402, 8 E702, 2 F401, 1 E401, 1 E731, 1 F541; all remaining findings are under tests/scripts |
+| Ruff test suite | `uvx --offline ruff==0.15.10 check tests` | 0 | PASS — `All checks passed!` after R3e without global or per-file ignores |
+| Ruff full repository | `uvx --offline ruff==0.15.10 check src tests scripts` | 0 | PASS — `All checks passed!`; baseline reduced from 486 to zero |
 | Node lock generation | `npm install --package-lock-only --ignore-scripts --offline --registry=https://registry.npmmirror.com` | 0 | PASS — exact `playwright==1.59.1` dependency locked without running `postinstall` |
 | Node audit (offline cache view) | `npm audit --omit=dev --audit-level=high --offline --registry=https://registry.npmmirror.com --json` | 0 | OBSERVED — local cache returned 0 vulnerabilities across 3 production dependencies (plus 1 optional entry); current advisory coverage is not proven |
 | Lockfile contract | focused trackable/complete lockfile test plus exact-pin test | 0 | PASS — candidate lockfile is present and not ignored; lockfileVersion 3+, root dependencies match, and every transitive entry has exact version, HTTPS resolved URL, and SHA-512 integrity |
@@ -59,9 +59,11 @@ preserving two tested compatibility seams. R3a removed all safe F401/F541/E401
 findings from tests while preserving 1301 affected tests. R3b recovered five
 previously shadowed tests and cleared test F811. R3c clarified all 17 ambiguous
 test binders. R3d replaced all 13 assigned test lambdas with signature-equivalent
-local functions, reducing the repository baseline from 486 to 118 findings
-without ignores. Production `src` is Ruff-clean; the remaining 118 findings
-under tests/scripts remain open.
+local functions. R3e closed the remaining test findings while preserving test
+side effects, and R4 expanded compact scripts without semantic drift. The
+repository baseline is reduced from 486 to zero without global or per-file
+ignores; line-scoped E402 annotations remain only where bootstrap order is
+required.
 `mypy`, `pyright`, `gitleaks`, `trufflehog`, and
 `pip-audit` are not available from PATH or the checked offline Python cache,
 and no approved type-checker scope exists. These are mandatory checks under the
@@ -76,6 +78,6 @@ secret scan.
 
 Result: FAIL — the Node lockfile sub-check is closed at the candidate-artifact
 level, and offline install/audit commands are reproducible. The offline audit
-freshness is not proven; mirror approval is absent; Ruff is red; and the
+freshness is not proven; mirror approval is absent; and the
 type-checker, secret-scanner, and `pip-audit` evidence is still absent. No
 missing or stale check is represented as current success.

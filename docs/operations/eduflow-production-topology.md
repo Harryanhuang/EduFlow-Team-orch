@@ -8,6 +8,18 @@ task only: JSON `ok=true`, `errors=[]`, `suspect_processes=[]`, exit code `0`.
 This is **not** a G-1 PASS or CLOSEOUT. Other G-1 tasks and the complete Gate
 review remain independently required.
 
+## Read-only freshness checkpoint — 2026-07-12T23:30:29+08:00
+
+The topology audit was rerun from the isolated implementation worktree with
+explicit production `--checkout`, `--config`, and `--state-dir` arguments.
+It returned `ok: true`, zero errors, and zero suspect processes. All three
+daemons and all eleven configured live Agent panes resolved to production
+commit `bde14c5ce94aacd99ef80f9c11b65092dcf25fc3`, config generation
+`00773fbb4eb5ed7f`, and the production state directory. The production
+`health --json` refresh returned `ok: true`, `bad: 0`, `warn: 2`; strict
+workflow validation passed for six active workflows. This is a point-in-time
+read-only observation, not authority, scanner, REVIEW, or CLOSEOUT evidence.
+
 This document is generated from a read-only correlation of git, the deployed
 TOML file, PID files, `ps`, and tmux. It is not a declaration of intended
 topology. The fresh audit proves this task's runtime topology; it does not make

@@ -10,11 +10,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 PACKAGE = ROOT / "acceptance" / "G-1"
 BASELINE_REVISION = "bde14c5ce94aacd99ef80f9c11b65092dcf25fc3"
-SUBMISSION_REVISION = "2296dc08c14eae9de34accdf43d4a11c6b8ba68f"
+SUBMISSION_REVISION = "73e7b3f4cd47cbc48b985ccbf261266fe38b02d2"
 REVISION_LINEAGE = {
     "implementation": "cc95c5a488a8cd699dff515eadf431277669ffc6",
     "remediation": "d578691b8e1d3e0dc6f5221120c4a0d0e4ace6ab",
-    "security ledger": SUBMISSION_REVISION,
+    "security ledger": "2296dc08c14eae9de34accdf43d4a11c6b8ba68f",
+    "Ruff R4 scripts / submission target": SUBMISSION_REVISION,
 }
 
 REQUIRED_FILES = {
@@ -303,12 +304,12 @@ def test_security_ledger_records_current_node_and_ruff_results() -> None:
     combined = "\n".join((security, risks, summary, review))
     security_normalized = " ".join(security.split())
 
-    assert "ruff==0.15.10 check src tests scripts --statistics" in security
+    assert "ruff==0.15.10 check src tests scripts" in security
     assert "Ruff production source" in security
     assert "zero findings after R2f" in security
-    assert "Found 118 errors" in security
-    assert "all remaining findings are under tests/scripts" in security
-    assert "baseline from 486 to 118" in security_normalized
+    assert "All checks passed" in security
+    assert "repository baseline is reduced from 486 to zero" in security
+    assert "baseline is reduced from 486 to zero" in security_normalized
     assert "npm audit --omit=dev --audit-level=high --offline" in security
     assert "0 vulnerabilities" in security
     assert "Node lockfile sub-check is closed" in review

@@ -1,9 +1,9 @@
 # G-1 Migration Results
 
-Submission target: `2296dc08c14eae9de34accdf43d4a11c6b8ba68f`
+Submission target: `73e7b3f4cd47cbc48b985ccbf261266fe38b02d2`
 Implementation lineage: `cc95c5a488a8cd699dff515eadf431277669ffc6` ->
 `d578691b8e1d3e0dc6f5221120c4a0d0e4ace6ab` ->
-`2296dc08c14eae9de34accdf43d4a11c6b8ba68f`
+`73e7b3f4cd47cbc48b985ccbf261266fe38b02d2`
 
 Result: not_applicable — G-1 did not perform a production schema migration,
 production read-source switch, credential rotation, or irreversible data
