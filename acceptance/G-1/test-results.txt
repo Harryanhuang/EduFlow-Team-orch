@@ -272,3 +272,30 @@ CAPITAL PYTHON LIVE JSON AUDIT
 Observed at: 2026-07-12T12:36:21+08:00
 Observed: router 72529, task-publish 72530, and watchdog 72531 each emit python_runtime=Python 3.14.3. Transient legacy PID 78495 has exited; scoped orphan Hermes PID 98906 remains the sole blocking finding.
 Exit code: 1 (expected fail-closed result; G-1 remains BLOCKED on orphan PID 98906)
+
+HERMES DISTRIBUTION BINDING RED
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_audit_production_topology.py -q
+Observed: 5 failed, 67 passed against commit 6d051ec5.
+Key failure: no same-environment Hermes proof existed, so an arbitrary /tmp/bin/hermes wrapper could be accepted and scripts-path/entrypoint/version components could not be validated.
+Exit code: 1
+
+HERMES DISTRIBUTION BINDING GREEN — focused
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_audit_production_topology.py -q
+Observed: 71 passed. Arbitrary same-name scripts fail; a symlink resolving to the actual venv scripts/hermes passes only with matching sysconfig scripts path, hermes console entrypoint, and valid single-line package version. Missing any proof component fails closed.
+Exit code: 0
+
+HERMES DISTRIBUTION BINDING GREEN — related runtime regression
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_audit_production_topology.py tests/unit/test_commands_health.py tests/unit/test_commands_runtime_cli.py tests/unit/test_commands_watchdog.py tests/unit/test_runtime_tmux.py tests/unit/test_runtime_watchdog.py -q
+Observed: 223 passed
+Exit code: 0
+
+HERMES DISTRIBUTION BINDING static verification
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m py_compile scripts/audit_production_topology.py tests/unit/test_audit_production_topology.py
+Exit code: 0
+Command: git diff --check
+Exit code: 0
+
+HERMES DISTRIBUTION LIVE JSON AUDIT
+Observed at: 2026-07-12T12:45:08+08:00
+Observed: configured Hermes PID 74424 proves actual venv Python 3.11.15, argv hermes resolving to the same environment scripts path, console entrypoint presence, hermes-agent 0.16.0, and EDUFLOW_ROOT. Scoped orphan Hermes PID 98906 remains the only blocking finding.
+Exit code: 1 (expected fail-closed result; G-1 remains BLOCKED on orphan PID 98906)

@@ -2,7 +2,7 @@
 
 ## Verdict
 
-**FAIL / BLOCKED** as of `2026-07-12T12:36:21+08:00`.
+**FAIL / BLOCKED** as of `2026-07-12T12:45:08+08:00`.
 
 This document is generated from a read-only correlation of git, the deployed
 TOML file, PID files, `ps`, and tmux. It is not a declaration of intended
@@ -103,7 +103,10 @@ environment proves `EDUFLOW_ROOT`, config and state all resolve to this audited
 deployment, so the duty cwd is recorded as `process_cwd` and is not treated as
 `pane_cwd_drift`. Package version is read as a single line through the actual
 venv Python's `importlib.metadata`, never by accepting Hermes's multi-line
-`--version` output.
+`--version` output. The same probe proves the venv `sysconfig` scripts path and
+the distribution's `hermes` console entrypoint; the argv path
+`/Users/huanganan/.local/bin/hermes` resolves to that exact
+`scripts/hermes`, rather than merely sharing its basename.
 
 ## Blocking findings
 

@@ -8,6 +8,11 @@ from typing import Callable, Mapping
 Run = Callable[..., subprocess.CompletedProcess]; DAEMONS = ("router", "task-publish", "watchdog")
 FIELDS = "pid executable process_cwd checkout checkout_source commit_sha python_runtime cli_runtime config_path config_sha256 config_generation state_dir lark_profile tmux_session daemon_profile startup_entry".split()
 SECRET = re.compile(r"(?i)(token|api[-_]?key|secret|password|authorization|credential)")
+HERMES_PROBE_CODE = (
+    "import importlib.metadata as m,json,sysconfig;d=m.distribution('hermes-agent');"
+    "e=next((x.value for x in d.entry_points if x.group=='console_scripts' and x.name=='hermes'),'');"
+    "print(json.dumps({'scripts':sysconfig.get_path('scripts'),'version':d.version,'entrypoint':e},separators=(',',':')))"
+)
 @dataclass(frozen=True)
 class AuditDependencies:
     checkout: Path; config_path: Path; state_dir: Path
@@ -159,11 +164,22 @@ def _version(deps, executable):
     result = _run(deps, [executable, "--version"])
     value = ((result.stdout or "") + (result.stderr or "")).strip()
     return value if result.returncode == 0 and 0 < len(value) <= 256 and "\n" not in value and "\r" not in value else None
-def _package_version(deps, python, distribution):
-    code = f"import importlib.metadata as m; print(m.version('{distribution}'))"
-    result = _run(deps, [python, "-c", code])
-    value = (result.stdout or "").strip()
-    return value if result.returncode == 0 and 0 < len(value) <= 128 and "\n" not in value and "\r" not in value else None
+def _hermes_distribution(deps, python, script):
+    result = _run(deps, [python, "-c", HERMES_PROBE_CODE])
+    raw = (result.stdout or "").strip()
+    if result.returncode or not raw or len(raw) > 1024 or "\n" in raw or "\r" in raw:
+        return None, False
+    try:
+        proof = json.loads(raw)
+    except (json.JSONDecodeError, TypeError):
+        return None, False
+    if not isinstance(proof, dict): return None, False
+    scripts, version, entrypoint = (proof.get(key) for key in ("scripts", "version", "entrypoint"))
+    valid = all(isinstance(value, str) and bool(value.strip()) for value in (scripts, version, entrypoint))
+    valid = valid and len(version) <= 128 and "\n" not in version and "\r" not in version
+    if not valid: return None, False
+    bound = Path(script).resolve() == (Path(scripts).resolve() / "hermes").resolve()
+    return (version if bound else None), not bound
 def _provenance(deps, process, processes, target, errors, subject, profile):
     if not process:
         return {field: None for field in FIELDS}
@@ -196,8 +212,11 @@ def _provenance(deps, process, processes, target, errors, subject, profile):
     if actual["sha256"] != target["sha256"]:
         _err(errors, "process_config_generation_mismatch", subject, "actual config hash differs")
     runtime = _version(deps, executable)
-    cli_version = (_package_version(deps, executable, "hermes-agent")
-                   if cli_executable and Path(cli_executable).name == "hermes" else runtime)
+    hermes = cli_executable and Path(cli_executable).name == "hermes"
+    cli_version, binding_mismatch = (_hermes_distribution(deps, executable, cli_executable)
+                                     if hermes else (runtime, False))
+    if binding_mismatch:
+        _err(errors, "hermes_distribution_mismatch", subject, "Hermes script is outside Python distribution scripts")
     if not entry: _err(errors, "process_entry_unknown", subject, "strict EduFlow entry not found")
     if not runtime or not cli_version: _err(errors, "cli_runtime_unknown", subject, "executable version unavailable")
     return {

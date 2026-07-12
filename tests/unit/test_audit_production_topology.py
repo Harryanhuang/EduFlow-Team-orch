@@ -659,8 +659,17 @@ def test_capital_python_full_provenance_records_python_runtime(tmp_path):
 
 def test_hermes_python_wrapper_uses_adjacent_absolute_script_and_package_version(tmp_path):
     module, deps, commands, config, checkout, state = _fixture(tmp_path)
-    python = "/tmp/hermes-venv/bin/python3"
-    hermes = "/tmp/bin/hermes"
+    scripts = tmp_path / "hermes venv" / "bin"
+    scripts.mkdir(parents=True)
+    python = scripts / "python3"
+    canonical_hermes = scripts / "hermes"
+    python.touch()
+    canonical_hermes.touch()
+    canonical_hermes.chmod(0o755)
+    alias_dir = tmp_path / "aliases"
+    alias_dir.mkdir()
+    hermes = alias_dir / "hermes"
+    hermes.symlink_to(canonical_hermes)
     config.write_text(
         config.read_text(encoding="utf-8")
         + '[runtime_registry.hermes_primary]\ncli = "hermes-agent"\n'
@@ -674,21 +683,80 @@ def test_hermes_python_wrapper_uses_adjacent_absolute_script_and_package_version
         f"\n300 1 EDUFLOW_ROOT={checkout} EDUFLOW_CONFIG_FILE={config} EDUFLOW_STATE_DIR={state} "
         f"{python} {hermes} chat --source eduflow-hermes"
     )
-    commands["process-exe:300"] = python
+    commands["process-exe:300"] = str(python)
     commands["process-cwd:300"] = "/tmp/hermes-duty"
     commands[f"{python} --version"] = "Python 3.11.15"
-    metadata_argv = [python, "-c", "import importlib.metadata as m; print(m.version('hermes-agent'))"]
-    commands[" ".join(metadata_argv)] = "0.16.0"
+    proof_argv = [str(python), "-c", module.HERMES_PROBE_CODE]
+    commands[" ".join(proof_argv)] = json.dumps({
+        "scripts": str(scripts), "version": "0.16.0",
+        "entrypoint": "hermes_agent.cli:app",
+    }, separators=(",", ":"))
 
     report = module.audit(deps)
     row = next(item for item in report["agent_processes"] if item["agent"] == "Hermes")
 
-    assert row["executable"] == python
+    assert row["executable"] == str(python)
     assert row["startup_entry"] == "python3 hermes chat"
     assert row["python_runtime"] == "Python 3.11.15"
     assert row["cli_runtime"] == f"{hermes} 0.16.0"
-    assert metadata_argv in commands["_calls"]
+    assert proof_argv in commands["_calls"]
     assert "pane_cwd_drift" not in {e["code"] for e in report["errors"] if e["subject"].endswith("Hermes.0")}
+
+
+def test_hermes_wrapper_outside_distribution_scripts_is_rejected(tmp_path):
+    module, deps, commands, config, checkout, state = _fixture(tmp_path)
+    python = "/tmp/hermes-venv/bin/python3"
+    hermes = "/tmp/bin/hermes"
+    commands["tmux list-panes -a"] += (
+        f"\neduflow-team\tHermes\t0\t300\tPython\t{checkout}\t{python} {hermes} chat"
+    )
+    config.write_text(config.read_text() + '[runtime_registry.hermes_primary]\ncli="hermes-agent"\n'
+                      '[team.agents.Hermes]\nruntime="hermes_primary"\n')
+    commands["ps -axo pid=,ppid=,command="] += (
+        f"\n300 1 EDUFLOW_ROOT={checkout} EDUFLOW_CONFIG_FILE={config} EDUFLOW_STATE_DIR={state} "
+        f"{python} {hermes} chat"
+    )
+    commands["process-exe:300"] = python
+    commands[f"{python} --version"] = "Python 3.11.15"
+    commands[f"{python} -c {module.HERMES_PROBE_CODE}"] = json.dumps({
+        "scripts": "/tmp/hermes-venv/bin", "version": "0.16.0",
+        "entrypoint": "hermes_agent.cli:app",
+    }, separators=(",", ":"))
+
+    report = module.audit(deps)
+
+    assert report["ok"] is False
+    assert "hermes_distribution_mismatch" in {e["code"] for e in report["errors"]}
+    row = next(item for item in report["agent_processes"] if item["agent"] == "Hermes")
+    assert row["cli_runtime"] is None
+
+
+@pytest.mark.parametrize(
+    "proof",
+    [
+        {"scripts": "", "version": "0.16.0", "entrypoint": "hermes_agent.cli:app"},
+        {"scripts": "/tmp/hermes-venv/bin", "version": "0.16.0", "entrypoint": ""},
+        {"scripts": "/tmp/hermes-venv/bin", "version": "one\ntwo", "entrypoint": "hermes_agent.cli:app"},
+    ],
+)
+def test_incomplete_hermes_distribution_proof_fails_closed(tmp_path, proof):
+    module, deps, commands, config, checkout, state = _fixture(tmp_path)
+    python = "/tmp/hermes-venv/bin/python3"
+    hermes = "/tmp/hermes-venv/bin/hermes"
+    config.write_text(config.read_text() + '[runtime_registry.hermes_primary]\ncli="hermes-agent"\n'
+                      '[team.agents.Hermes]\nruntime="hermes_primary"\n')
+    commands["tmux list-panes -a"] += f"\neduflow-team\tHermes\t0\t300\tPython\t{checkout}\t{python} {hermes} chat"
+    commands["ps -axo pid=,ppid=,command="] += (
+        f"\n300 1 EDUFLOW_ROOT={checkout} EDUFLOW_CONFIG_FILE={config} EDUFLOW_STATE_DIR={state} {python} {hermes} chat"
+    )
+    commands["process-exe:300"] = python
+    commands[f"{python} --version"] = "Python 3.11.15"
+    commands[f"{python} -c {module.HERMES_PROBE_CODE}"] = json.dumps(proof, separators=(",", ":"))
+
+    report = module.audit(deps)
+
+    assert report["ok"] is False
+    assert "cli_runtime_unknown" in {e["code"] for e in report["errors"]}
 
 
 def test_eduflow_root_allows_duty_cwd_but_is_recorded_as_checkout_source(tmp_path):
