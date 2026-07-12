@@ -2,7 +2,7 @@
 
 ## Verdict
 
-**FAIL / BLOCKED** as of `2026-07-12T11:00:03+08:00`.
+**FAIL / BLOCKED** as of `2026-07-12T11:20:35+08:00`.
 
 This document is generated from a read-only correlation of git, the deployed
 TOML file, PID files, `ps`, and tmux. It is not a declaration of intended
@@ -40,15 +40,50 @@ entries and runtimes.
 
 ## Live pane manual correlation samples
 
-The audit observed 11 panes and correlated each pane PID against `ps`. The three
+The audit observed 11 configured-session panes and attempted child-process
+correlation against `ps`. The three
 required human-review samples are below. They are evidence placeholders for the
 G-1 review record, not PASS assertions.
 
-| Pane | PID | Pane cwd | tmux current runtime | Manual review |
+| Pane | tmux PID → CLI PID | Actual cwd / Git | Actual CLI | Correlation |
 |---|---:|---|---|---|
-| `EduFlowTeam:manager.0` | `92675` | production checkout above | `2.1.207` | **PENDING** — cwd and PID correlated; exact CLI binary/version and sanitized startup entry still require review |
-| `EduFlowTeam:worker_course.0` | `92872` | production checkout above | `2.1.207` | **PENDING** — cwd and PID correlated; exact CLI binary/version and sanitized startup entry still require review |
-| `EduFlowTeam:worker_review.0` | `5260` | production checkout above | `2.1.207` | **PENDING** — cwd and PID correlated; exact CLI binary/version and sanitized startup entry still require review |
+| `EduFlowTeam:manager.0` | `92675 → 92686` | production checkout / `bde14c5c…` | `claude 2.1.181` | **PROVEN**, ancestry `92686 → 92675 → 92216 → 1` |
+| `EduFlowTeam:worker_course.0` | `92872 → 92883` | production checkout / `bde14c5c…` | `claude 2.1.181` | **PROVEN**, ancestry `92883 → 92872 → 92216 → 1` |
+| `EduFlowTeam:worker_review.0` | `5260 → 5260` | production checkout / `bde14c5c…` | `claude 2.1.181` | **PROVEN**, ancestry `5260 → 92216 → 1` |
+
+For all three, the process environment independently resolved the config and
+state paths shown above; the config content then proved generation
+`00773fbb4eb5ed7f`, Lark profile `eduflow-team`, tmux session `EduFlowTeam`,
+and configured `claude-code` runtime. Raw process environments and argv are
+never written to JSON or this document.
+
+### Independent, redacted commands and results
+
+The following commands deliberately request identifiers only; none prints
+process argv, environment values, config bodies, or credentials.
+
+```bash
+tmux list-panes -s -t EduFlowTeam \
+  -F '#{session_name}:#{window_name}.#{pane_index}|#{pane_pid}|#{pane_current_path}|#{pane_current_command}'
+# EduFlowTeam:manager.0|92675|<production-checkout>|2.1.207
+# EduFlowTeam:worker_course.0|92872|<production-checkout>|2.1.207
+# EduFlowTeam:worker_review.0|5260|<production-checkout>|2.1.207
+
+ps -p 92686,92883,5260 -o pid=,ppid=,comm=
+# 92686 92675 /Users/huanganan/.local/bin/claude
+# 92883 92872 /Users/huanganan/.local/bin/claude
+#  5260 92216 /Users/huanganan/.local/bin/claude
+
+for pid in 92686 92883 5260; do lsof -a -p "$pid" -d cwd -Fn; done
+# Each n-record: <production-checkout>
+
+git -C "<production-checkout>" rev-parse --show-toplevel HEAD
+# <production-checkout>
+# bde14c5ce94aacd99ef80f9c11b65092dcf25fc3
+
+shasum -a 256 "<production-checkout>/eduflow.toml"
+# 00773fbb4eb5ed7f7f2cd5a2b416613229eda3880ffd0e506d8643ef9b8f9b74
+```
 
 An additional live pane, `EduFlowTeam:Hermes.0` (PID `92228`), reported cwd
 `/Volumes/Halobster/Obsidian Edu`, not the audited production checkout. This is
@@ -59,7 +94,7 @@ an explicit `pane_cwd_drift` failure.
 1. `daemon_pid_not_live`: router PID `7193`.
 2. `daemon_pid_not_live`: task-publish PID `30779`.
 3. `daemon_pid_not_live`: watchdog PID `30780`.
-4. `pane_cwd_drift`: `EduFlowTeam:Hermes.0`.
+4. `pane_cwd_drift` and configured-entry mismatch: `EduFlowTeam:Hermes.0`.
 
 No missing fact is inferred. Unknown runtime, checkout, revision, command,
 config generation, or process correlation makes the machine-readable audit

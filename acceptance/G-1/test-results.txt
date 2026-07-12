@@ -38,3 +38,47 @@ LIVE READ-ONLY AUDIT
 Command: /opt/homebrew/opt/python@3.14/bin/python3.14 scripts/audit_production_topology.py --checkout <production-checkout> --config <production-checkout>/eduflow.toml --state-dir <production-checkout>/.eduflow-team-state
 Observed: ok=false; router PID 7193, task-publish PID 30779, and watchdog PID 30780 are absent from ps; EduFlowTeam:Hermes.0 cwd differs from audited checkout.
 Exit code: 1 (expected fail-closed result; G-1 remains BLOCKED)
+
+SPEC REVIEW RED — actual provenance and adversarial redaction
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_audit_production_topology.py -q
+Observed: 6 failed, 14 passed against the pre-review implementation.
+Key failures: pane PID was copied from tmux shell instead of resolved CLI child; actual checkout/config mismatch was not detected; foreign EduFlow tmux session was included instead of reported separately; duplicate daemon was not detected; missing Lark profile/session did not fail closed; emitted command fragments leaked adversarial option/env/quoted/positional secrets.
+Exit code: 1
+
+SPEC REVIEW RED — ancestry and multi-checkout evidence
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_audit_production_topology.py -q
+Observed: 2 failed, 19 passed after the first provenance implementation.
+Key failures: sanitized PID ancestry was absent; actual checkout mismatch failed closed but was not separately classified as multi_checkout.
+Exit code: 1
+
+SPEC REVIEW RED — paths containing spaces
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_audit_production_topology.py -q
+Observed: 3 failed, 18 passed after fixture checkout/state names gained spaces.
+Key failure: token parsing truncated actual EDUFLOW_CONFIG_FILE and EDUFLOW_STATE_DIR at the first space.
+Exit code: 1
+
+SPEC REVIEW RED — tmux is not a legacy daemon
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_audit_production_topology.py::test_legacy_detection_is_entry_based_not_checkout_path_substring -q
+Observed: 1 failed because a tmux server named EduFlowTeam was classified as a legacy entry.
+Exit code: 1
+
+SPEC REVIEW GREEN — focused
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_audit_production_topology.py -q
+Observed: 21 passed
+Exit code: 0
+
+SPEC REVIEW GREEN — related runtime regression
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_audit_production_topology.py tests/unit/test_commands_health.py tests/unit/test_commands_runtime_cli.py tests/unit/test_commands_watchdog.py tests/unit/test_runtime_tmux.py tests/unit/test_runtime_watchdog.py -q
+Observed: 173 passed
+Exit code: 0
+
+SPEC REVIEW static verification
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m py_compile scripts/audit_production_topology.py
+Exit code: 0
+Command: git diff --check -- <Task2 four allowed paths>
+Exit code: 0
+
+SPEC REVIEW LIVE READ-ONLY AUDIT
+Observed at: 2026-07-12T11:20:35+08:00
+Observed: ok=false; manager, worker_course, and worker_review actual CLI provenance fully correlated; three daemon PID files remain stale; Hermes has pane cwd drift and configured-entry mismatch. No false legacy tmux finding remains.
+Exit code: 1 (expected fail-closed result; G-1 remains BLOCKED)

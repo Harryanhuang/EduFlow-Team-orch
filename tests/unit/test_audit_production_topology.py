@@ -26,15 +26,18 @@ def _completed(argv: list[str], stdout: str = "", returncode: int = 0):
 
 def _fixture(tmp_path: Path):
     module = _load_module()
-    checkout = tmp_path / "checkout"
-    state = tmp_path / "state"
+    checkout = tmp_path / "checkout with spaces"
+    state = tmp_path / "state with spaces"
     checkout.mkdir()
     state.mkdir()
     config = checkout / "eduflow.toml"
     config.write_text(
         'lark_profile = "production-bot"\n'
         '[team]\nsession = "eduflow-team"\n'
-        '[team.agents.manager]\nruntime = "manager_primary"\n',
+        '[runtime_registry.agent_primary]\ncli = "python3"\n'
+        '[team.agents.manager]\nruntime = "agent_primary"\n'
+        '[team.agents.worker_course]\nruntime = "agent_primary"\n'
+        '[team.agents.worker_review]\nruntime = "agent_primary"\n',
         encoding="utf-8",
     )
     for name, pid in (("router", 101), ("task-publish", 102), ("watchdog", 103)):
@@ -51,11 +54,12 @@ def _fixture(tmp_path: Path):
         "tmux list-panes -a": pane_rows,
         "ps -axo pid=,ppid=,command=": "\n".join(
             [
-                f"101 1 python3 -m eduflow.cli router --config {config}",
-                f"102 1 python3 -m eduflow.cli task-publish --config {config}",
-                f"103 1 python3 -m eduflow.cli watchdog --config {config}",
+                f"101 1 EDUFLOW_STATE_DIR={state} python3 -m eduflow.cli router --config {config}",
+                f"102 1 EDUFLOW_STATE_DIR={state} python3 -m eduflow.cli task-publish --config {config}",
+                f"103 1 EDUFLOW_STATE_DIR={state} python3 -m eduflow.cli watchdog --config {config}",
                 *[
-                    f"{200 + i} 1 python3 -m eduflow.cli agent {name}"
+                    f"{200 + i} 1 EDUFLOW_STATE_DIR={state} EDUFLOW_CONFIG_FILE={config} "
+                    f"python3 -m eduflow.cli agent {name}"
                     for i, name in enumerate(("manager", "worker_course", "worker_review"))
                 ],
             ]
@@ -66,6 +70,19 @@ def _fixture(tmp_path: Path):
     def run(argv, **_kwargs):
         calls.append(argv)
         key = " ".join(str(item) for item in argv)
+        if argv[:2] == ["lsof", "-a"]:
+            pid = argv[argv.index("-p") + 1]
+            value = commands.get(f"process-cwd:{pid}", str(checkout))
+            return _completed(argv, f"p{pid}\nfcwd\nn{value}\n")
+        if len(argv) >= 5 and argv[:2] == ["ps", "-p"] and "comm=" in argv:
+            return _completed(argv, "python3\n")
+        if len(argv) >= 5 and argv[:2] == ["ps", "eww"]:
+            pid = argv[argv.index("-p") + 1]
+            return _completed(argv, commands.get(f"process-env:{pid}", "") + "\n")
+        if argv[:3] == ["git", "rev-parse", "--show-toplevel"]:
+            cwd = Path(_kwargs.get("cwd") or checkout)
+            value = commands["git rev-parse --show-toplevel"] if cwd == checkout else str(cwd)
+            return _completed(argv, value + "\n")
         for prefix, value in commands.items():
             if key.startswith(prefix):
                 return _completed(argv, value + "\n")
@@ -90,7 +107,7 @@ def test_audit_emits_deterministic_complete_schema_for_correlated_runtime(tmp_pa
 
     assert list(report) == [
         "ok", "generated_at", "checkout", "config", "state", "daemons",
-        "panes", "agent_processes", "errors", "redactions",
+        "panes", "agent_processes", "suspect_processes", "errors", "redactions",
     ]
     assert report["ok"] is True
     assert report["checkout"] == {"path": str(checkout.resolve()), "commit_sha": "a" * 40}
@@ -132,8 +149,9 @@ def test_audit_emits_deterministic_complete_schema_for_correlated_runtime(tmp_pa
 def test_audit_fails_closed_on_unverifiable_or_drifted_facts(tmp_path, mutation, error_code):
     module, deps, commands, config, checkout, state = _fixture(tmp_path)
     if mutation == "dead_pid":
-        commands["ps -axo pid=,ppid=,command="] = commands["ps -axo pid=,ppid=,command="].replace(
-            f"101 1 python3 -m eduflow.cli router --config {config}\n", ""
+        commands["ps -axo pid=,ppid=,command="] = "\n".join(
+            line for line in commands["ps -axo pid=,ppid=,command="].splitlines()
+            if not line.startswith("101 ")
         )
     elif mutation == "corrupt_pid":
         (state / "router.pid").write_text("not-a-pid", encoding="ascii")
@@ -208,3 +226,124 @@ def test_default_dependencies_are_read_only_when_state_directory_is_absent(tmp_p
 
     assert deps.state_dir == absent_state.resolve()
     assert not absent_state.exists()
+
+
+def test_records_each_pane_and_agent_from_actual_child_process_provenance(tmp_path):
+    module, deps, commands, config, checkout, state = _fixture(tmp_path)
+    commands["ps -axo pid=,ppid=,command="] = commands["ps -axo pid=,ppid=,command="].replace(
+        f"200 1 EDUFLOW_STATE_DIR={state} EDUFLOW_CONFIG_FILE={config} python3 -m eduflow.cli agent manager",
+        f"200 1 zsh\n250 200 EDUFLOW_STATE_DIR={state} EDUFLOW_CONFIG_FILE={config} "
+        "python3 -m eduflow.cli agent manager",
+    )
+
+    report = module.audit(deps)
+
+    pane = next(row for row in report["panes"] if row["window"] == "manager")
+    agent = next(row for row in report["agent_processes"] if row["agent"] == "manager")
+    assert pane["pid"] == 250
+    assert pane["tmux_pane_pid"] == 200
+    required = {
+        "pid", "checkout", "commit_sha", "python_runtime", "cli_runtime",
+        "config_path", "config_sha256", "config_generation", "state_dir",
+        "lark_profile", "tmux_session", "daemon_profile", "startup_entry",
+    }
+    assert required <= pane.keys()
+    assert required <= agent.keys()
+    assert pane["ancestry"] == agent["ancestry"] == [250, 200]
+    assert pane["checkout"] == agent["checkout"] == str(checkout.resolve())
+    assert pane["config_path"] == agent["config_path"] == str(config.resolve())
+    assert pane["state_dir"] == agent["state_dir"] == str(state.resolve())
+
+
+def test_actual_process_checkout_and_config_must_match_target(tmp_path):
+    module, deps, commands, config, checkout, _state = _fixture(tmp_path)
+    other = tmp_path / "other-checkout"
+    other.mkdir()
+    other_config = other / "eduflow.toml"
+    other_config.write_text(config.read_text(), encoding="utf-8")
+    commands["ps -axo pid=,ppid=,command="] = commands["ps -axo pid=,ppid=,command="].replace(
+        f"python3 -m eduflow.cli router --config {config}",
+        f"python3 -m eduflow.cli router --config {other_config}",
+    )
+    commands["process-cwd:101"] = str(other)
+
+    report = module.audit(deps)
+
+    assert report["ok"] is False
+    assert {e["code"] for e in report["errors"]} >= {"process_checkout_mismatch", "process_config_mismatch"}
+    router = next(row for row in report["daemons"] if row["name"] == "router")
+    assert router["checkout"] == str(other.resolve())
+    assert router["config_path"] == str(other_config.resolve())
+    assert any(row["kind"] == "multi_checkout" and row["pid"] == 101 for row in report["suspect_processes"])
+
+
+def test_filters_other_tmux_sessions_but_reports_eduflow_legacy_and_duplicate_processes(tmp_path):
+    module, deps, commands, config, checkout, _state = _fixture(tmp_path)
+    commands["tmux list-panes -a"] += (
+        f"\nOldEduFlow\tmanager\t0\t777\tpython3\t{checkout}\tpython3 -m eduflow.cli agent manager"
+    )
+    commands["ps -axo pid=,ppid=,command="] += (
+        f"\n777 1 python3 -m eduflow.cli agent manager --config {config}"
+        f"\n888 1 python3 -m eduflow.cli router --config {config}"
+    )
+
+    report = module.audit(deps)
+
+    assert len(report["panes"]) == 3
+    assert any(row["kind"] == "legacy_tmux_session" for row in report["suspect_processes"])
+    assert any(row["kind"] == "duplicate_daemon" and row["pid"] == 888 for row in report["suspect_processes"])
+    assert {e["code"] for e in report["errors"]} >= {"legacy_tmux_session", "duplicate_daemon"}
+
+
+@pytest.mark.parametrize(
+    ("config_text", "code"),
+    [
+        ('[team]\nsession = "eduflow-team"\n', "lark_profile_missing"),
+        ('lark_profile = "production-bot"\n', "tmux_session_missing"),
+    ],
+)
+def test_profile_and_session_are_required_facts(tmp_path, config_text, code):
+    module, deps, _commands, config, *_ = _fixture(tmp_path)
+    config.write_text(config_text, encoding="utf-8")
+
+    report = module.audit(deps)
+
+    assert report["ok"] is False
+    assert code in {e["code"] for e in report["errors"]}
+
+
+def test_redaction_covers_every_emitted_command_shape(tmp_path):
+    module, deps, commands, config, checkout, _state = _fixture(tmp_path)
+    secrets = ["option-secret", "env-secret", "quoted-secret", "positional-secret"]
+    commands["ps -axo pid=,ppid=,command="] = commands["ps -axo pid=,ppid=,command="].replace(
+        f"python3 -m eduflow.cli router --config {config}",
+        f"TOKEN=env-secret python3 -m eduflow.cli router positional-secret "
+        f"--token option-secret --label 'quoted-secret' --config {config}",
+    )
+    commands["tmux list-panes -a"] = commands["tmux list-panes -a"].replace(
+        "python3 -m eduflow.cli agent manager",
+        "python3 -m eduflow.cli agent manager positional-secret --token option-secret",
+        1,
+    )
+
+    report = module.audit(deps)
+    rendered = json.dumps(report, sort_keys=True)
+
+    assert all(secret not in rendered for secret in secrets)
+    assert report["redactions"]["count"] > 0
+
+
+def test_legacy_detection_is_entry_based_not_checkout_path_substring(tmp_path):
+    module, deps, commands, config, checkout, _state = _fixture(tmp_path)
+    commands["ps -axo pid=,ppid=,command="] += (
+        f"\n777 1 python3 -m eduflow.cli legacy-router --config {config}"
+        "\n999 1 python3 audit.py --checkout /tmp/EduFlow-Team-orch"
+        "\n998 1 tmux -L EduFlowTeam -f /tmp/tmux.conf"
+    )
+
+    report = module.audit(deps)
+    legacy_pids = {row["pid"] for row in report["suspect_processes"] if row["kind"] == "legacy_entry"}
+
+    assert 777 in legacy_pids
+    assert 999 not in legacy_pids
+    assert 998 not in legacy_pids
