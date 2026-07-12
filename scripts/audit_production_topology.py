@@ -253,14 +253,25 @@ def audit(deps):
                       "index": pane["index"], "tmux_pane_pid": pane["pid"], **proof})
         agents.append({"agent": pane["window"], "pane": subject, **proof})
     associated_agents = {row["pid"] for row in agents if row["pid"]}
+    pane_roots = {row["pid"] for row in pane_rows}
     for process in processes.values():
         entry, action, _ = _entry(process["command"], _executable(deps, process["pid"]))
         if action in DAEMONS and process["pid"] not in expected:
             suspects.append({"kind": "duplicate_daemon", "pid": process["pid"], "entry": entry})
             _err(errors, "duplicate_daemon", str(process["pid"]), "unexpected daemon process")
         elif action == "agent" and process["pid"] not in associated_agents:
-            suspects.append({"kind": "orphan_agent", "pid": process["pid"], "entry": entry})
-            _err(errors, "orphan_agent", str(process["pid"]), "agent is not linked to configured pane")
+            chain = _ancestry(processes, process["pid"])
+            env = _run(deps, ["ps", "eww", "-p", str(process["pid"]), "-o", "command="])
+            context = (env.stdout or "") + " " + " ".join(row["command"] for row in chain)
+            actual_config = _setting(context, (("EDUFLOW_CONFIG_FILE", "--config"),))
+            actual_state = _setting(context, (("EDUFLOW_STATE_DIR", "--state-dir"),))
+            scoped = ("eduflow.cli agent" in (entry or "") or _cwd(deps, process["pid"]) == target["checkout"]
+                      or bool(pane_roots & {row["pid"] for row in chain})
+                      or (actual_config and str(Path(actual_config).resolve()) == target["path"])
+                      or (actual_state and str(Path(actual_state).resolve()) == target["state_dir"]))
+            if scoped:
+                suspects.append({"kind": "orphan_agent", "pid": process["pid"], "entry": entry})
+                _err(errors, "orphan_agent", str(process["pid"]), "agent is not linked to configured pane")
         elif (Path(_tokens(process["command"])[0]).name != "tmux" and
               re.search(r"(?:eduflow\.cli|(?:^|[/\s])eduflow(?:team)?\s)",
                         process["command"].lower()) and not action):

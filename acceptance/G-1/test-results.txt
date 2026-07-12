@@ -110,3 +110,30 @@ Command: /opt/homebrew/opt/python@3.14/bin/python3.14 scripts/audit_production_t
 Observed at: 2026-07-12T11:32:25+08:00
 Observed: ok=false; all three reviewed panes resolve executable /Users/huanganan/.local/bin/claude and version 2.1.207 using that absolute path; stale daemon and Hermes failures remain; global scan additionally found unassociated Codex PID 95689 and Claude PID 51870.
 Exit code: 1 (expected fail-closed result; G-1 remains BLOCKED)
+
+ORPHAN SCOPE REGRESSION RED
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_audit_production_topology.py -q
+Observed: 1 failed, 30 passed against commit 058c501c.
+Key failure: a standalone Claude process with unrelated cwd, no target config/state, no configured tmux ancestry, and no EduFlow launch marker was still emitted as blocking orphan_agent solely from its executable basename.
+Exit code: 1
+
+ORPHAN SCOPE REGRESSION GREEN — focused
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_audit_production_topology.py -q
+Observed: 31 passed. Unrelated standalone CLI is non-blocking; target-cwd CLI, configured-pane descendant CLI, and explicit eduflow.cli agent remain blocking orphan cases.
+Exit code: 0
+
+ORPHAN SCOPE REGRESSION GREEN — related runtime regression
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_audit_production_topology.py tests/unit/test_commands_health.py tests/unit/test_commands_runtime_cli.py tests/unit/test_commands_watchdog.py tests/unit/test_runtime_tmux.py tests/unit/test_runtime_watchdog.py -q
+Observed: 183 passed
+Exit code: 0
+
+ORPHAN SCOPE static verification
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m py_compile scripts/audit_production_topology.py tests/unit/test_audit_production_topology.py
+Exit code: 0
+Command: git diff --check
+Exit code: 0
+
+ORPHAN SCOPE LIVE READ-ONLY AUDIT
+Observed at: 2026-07-12T11:39:50+08:00
+Observed: ok=false for the existing three stale daemons and Hermes drift only; suspect_processes is empty. Unrelated standalone Codex/Claude processes no longer become blocking orphans solely from basename.
+Exit code: 1 (expected fail-closed result; G-1 remains BLOCKED)

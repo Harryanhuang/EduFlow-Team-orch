@@ -407,6 +407,53 @@ def test_global_scan_rejects_unassociated_agent_processes(tmp_path, row, pid):
                for error in report["errors"])
 
 
+def test_global_scan_does_not_block_unscoped_standalone_cli(tmp_path):
+    module, deps, commands, *_ = _fixture(tmp_path)
+    unrelated = tmp_path / "unrelated checkout"
+    unrelated.mkdir()
+    commands["ps -axo pid=,ppid=,command="] += "\n779 1 /tmp/fake/claude --model unrelated"
+    commands["process-exe:779"] = "/tmp/fake/claude"
+    commands["process-cwd:779"] = str(unrelated)
+
+    report = module.audit(deps)
+
+    assert report["ok"] is True
+    assert not any(item["kind"] == "orphan_agent" and item["pid"] == 779
+                   for item in report["suspect_processes"])
+
+
+def test_configured_pane_ancestry_scopes_otherwise_external_cli_as_orphan(tmp_path):
+    module, deps, commands, *_ = _fixture(tmp_path)
+    unrelated = tmp_path / "unrelated checkout"
+    unrelated.mkdir()
+    commands["ps -axo pid=,ppid=,command="] += "\n789 200 /tmp/fake/claude --model detached-child"
+    commands["process-exe:789"] = "/tmp/fake/claude"
+    commands["process-cwd:789"] = str(unrelated)
+
+    report = module.audit(deps)
+
+    assert report["ok"] is False
+    assert any(item["kind"] == "orphan_agent" and item["pid"] == 789
+               for item in report["suspect_processes"])
+
+
+def test_explicit_eduflow_agent_is_orphan_even_outside_target_checkout(tmp_path):
+    module, deps, commands, *_ = _fixture(tmp_path)
+    unrelated = tmp_path / "unrelated checkout"
+    unrelated.mkdir()
+    commands["ps -axo pid=,ppid=,command="] += (
+        "\n790 1 /tmp/fake/python3 -m eduflow.cli agent rogue"
+    )
+    commands["process-exe:790"] = "/tmp/fake/python3"
+    commands["process-cwd:790"] = str(unrelated)
+
+    report = module.audit(deps)
+
+    assert report["ok"] is False
+    assert any(item["kind"] == "orphan_agent" and item["pid"] == 790
+               for item in report["suspect_processes"])
+
+
 def test_config_reads_only_canonical_toml_paths_not_same_named_decoys(tmp_path):
     module, deps, _commands, config, *_ = _fixture(tmp_path)
     config.write_text(

@@ -2,7 +2,7 @@
 
 ## Verdict
 
-**FAIL / BLOCKED** as of `2026-07-12T11:32:25+08:00`.
+**FAIL / BLOCKED** as of `2026-07-12T11:39:50+08:00`.
 
 This document is generated from a read-only correlation of git, the deployed
 TOML file, PID files, `ps`, and tmux. It is not a declaration of intended
@@ -95,11 +95,12 @@ an explicit `pane_cwd_drift` failure.
 2. `daemon_pid_not_live`: task-publish PID `30779`.
 3. `daemon_pid_not_live`: watchdog PID `30780`.
 4. `pane_cwd_drift` and configured-entry mismatch: `EduFlowTeam:Hermes.0`.
-5. Global strict-entry scan found unassociated CLI processes at audit time:
-   Codex PID `95689` and Claude PID `51870`. They are reported as
-   `orphan_agent`; ownership must be proven or the processes removed before
-   topology acceptance. The audit does not assume they belong to a configured
-   pane merely because their CLI name is known.
+
+The global scan also observed unrelated standalone CLI processes, but none had
+an EduFlow scope marker: their cwd/config/state did not match this deployment,
+they were outside configured pane ancestry, and they were not explicit
+`eduflow.cli agent` entries. They are therefore non-blocking and omitted from
+`suspect_processes`; basename alone is not treated as ownership evidence.
 
 No missing fact is inferred. Unknown runtime, checkout, revision, command,
 config generation, or process correlation makes the machine-readable audit
