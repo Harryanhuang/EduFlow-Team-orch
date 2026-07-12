@@ -48,9 +48,11 @@ scripts/feishu_bot_creator/.gitignore
 scripts/feishu_bot_creator/package-lock.json
 scripts/feishu_bot_creator/package.json
 src/eduflow/cli.py
+src/eduflow/commands/health.py
 src/eduflow/commands/human_takeover.py
 src/eduflow/commands/memory_cli.py
 src/eduflow/commands/runtime_switch.py
+src/eduflow/commands/usage.py
 src/eduflow/commands/watchdog.py
 src/eduflow/memory/__init__.py
 src/eduflow/memory/inject.py

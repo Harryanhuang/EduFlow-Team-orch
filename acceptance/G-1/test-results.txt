@@ -836,6 +836,28 @@ INDEPENDENT REVIEWS
   focused boundary tests and 67 combined adjacent/acceptance tests passed before
   quality re-review PASS.
 
+Task 7 Ruff remediation R2c: health/usage definition cleanup
+
+BEHAVIOR LOCK + GREEN
+Commands/results:
+- pre-change `pytest tests/unit/test_commands_health.py tests/unit/test_commands_usage.py -q` -> 59 passed
+- the same post-change command -> 59 passed
+- `uvx --offline ruff==0.15.10 check src --select F811,E731` -> passed, both production categories zero
+- `python3 -m py_compile src/eduflow/commands/health.py src/eduflow/commands/usage.py` -> passed
+- full Ruff statistics -> expected gate failure, reduced from 344 to 340 findings
+- `git diff --check` -> passed
+
+The health check now reuses its module-level `os` binding instead of redefining
+it. The default usage subprocess runner is a local function rather than an
+assigned lambda; timeout, capture, text mode, and injectable-runner behavior are
+unchanged. No ignore or automatic unsafe fix was used.
+
+INDEPENDENT REVIEWS
+- Specification review: PASS; confirmed behavior equivalence, exact inventory,
+  Ruff counts, and strict Task 7 scope.
+- Quality review: PASS; confirmed module import timing and subprocess exception,
+  timeout, injection, and closure semantics remain unchanged.
+
 Task 7 acceptance-package TDD
 
 RED

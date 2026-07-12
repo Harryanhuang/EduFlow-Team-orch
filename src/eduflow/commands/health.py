@@ -593,7 +593,6 @@ def _check_import_path(rep: HealthReport) -> None:
     edits to the new tree would silently have no effect.
     """
     import eduflow as _ct
-    import os
     mod_path = getattr(_ct, "__file__", "") or ""
     rep.note(f"eduflow.__file__: {mod_path}")
     root = os.environ.get("EDUFLOW_ROOT") or ""

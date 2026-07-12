@@ -259,8 +259,10 @@ def _query_codex_usage(home: Path | None = None,
     reset}]}` on success, `{ok: false, note}` on failure.
     """
     if runner is None:
-        runner = lambda argv: subprocess.run(
-            argv, capture_output=True, text=True, timeout=15)
+        def runner(argv):
+            return subprocess.run(
+                argv, capture_output=True, text=True, timeout=15,
+            )
     if shutil.which("codex-cli-usage") is None:
         # Fallback: at least confirm login status from ~/.codex/auth.json.
         # The id_token JWT carries chatgpt_plan_type +
