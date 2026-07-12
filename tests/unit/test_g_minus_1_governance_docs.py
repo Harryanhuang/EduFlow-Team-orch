@@ -40,6 +40,9 @@ def test_trust_model_has_complete_authority_matrix_and_separation_of_duties() ->
     assert "unknown identity" in text and "fail closed" in text
     assert "Prompt injection" in text and "maximum damage" in text
     assert "two-role confirmation" in text
+    assert "two distinct provisioned actors" in text
+    assert "same human" in text and "cannot self-confirm" in text
+    assert "missing second actor" in text and "fail closed" in text
 
 
 def test_ownership_and_exception_contracts_are_complete() -> None:
@@ -77,6 +80,10 @@ def test_slo_and_takeover_transitions_are_explicit() -> None:
         assert f"| `{threshold}` |" in slo
     assert "inactive -> active -> recovering -> inactive" in slo
     assert "stop before side effects" in slo
+    assert "consecutive failed automatic recovery attempts" in slo
+    assert "successful proved automatic recovery resets" in slo
+    assert "manual authorized override does not increment or reset" in slo
+    assert "durable switch event" in slo
     for objective in ("99.9%", "10 seconds", "5 minutes", "3 minutes", "2 inspection cycles", "100%"):
         assert objective in slo
 
@@ -93,6 +100,10 @@ def test_runbook_is_executable_and_does_not_claim_unprovisioned_authorization() 
     assert "placeholder" in runbook and "must not be used as evidence" in runbook
     assert "--actor" in runbook and "--reason" in runbook and "--generation" in runbook
     assert "do not run enter or recover" in runbook
+    assert "does not machine-verify" in runbook
+    assert "human checkpoint" in runbook
+    assert "G1-Runtime-Authority" in runbook
+    assert "test_human_takeover_recovery_requires_verified_probe_evidence" in runbook
     config = _read("eduflow.toml")
     assert 'operators = ["u_<admin_feishu_id>"]' in config
     assert "u_<admin_feishu_id>" in runbook
@@ -107,3 +118,12 @@ def test_compatibility_debt_ledger_has_bounded_entries() -> None:
         assert field in text
     assert "review_course" in text
     assert "No fail-open" in text
+    rows = [line for line in text.splitlines() if line.startswith("| `COMPAT-")]
+    assert len(rows) == 5
+    for row in rows:
+        assert len([cell for cell in row.strip("|").split("|")]) == 9
+        assert "2026-07-12T" in row
+        assert "f2bc09d8" in row
+        assert "baseline=" in row and "evidence=" in row
+        assert ("pytest " in row or "rg " in row), "removal test must be runnable"
+        assert "TBD" not in row

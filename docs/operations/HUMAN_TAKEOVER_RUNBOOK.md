@@ -50,13 +50,17 @@ Do not use cached `proved_ready`, a skipped smoke, pane label, or chat statement
 
 ## 5. Recover (only after authorization is provisioned)
 
-Copy the generation from the immediately preceding status result. Supply concrete steps, not “fixed” alone:
+**Current limitation:** `human-takeover recover` trusts the supplied `--step` text and does not machine-verify any runtime, provider, topology, or smoke probe. Moving state to `inactive` is therefore not proof that service recovered. Before invoking recover, a human checkpoint by an authorized, provisioned admin/runtime operator must inspect the Step 4 command evidence and record its paths/revision; the CLI must not be described as automatic enforcement.
+
+Copy the generation from the immediately preceding status result. Supply concrete evidence-bearing steps, not “fixed” alone:
 
 ```bash
 ./scripts/eduflowteam human-takeover recover --actor <PROVISIONED_ACTOR_ID> --reason <NON_SECRET_RECOVERY_REASON> --generation <CURRENT_GENERATION> --step <VERIFIED_STEP> --json
 ```
 
 If generation is stale, authorization is denied, persistence/audit fails, or a probe fails: stop. Do not retry with guessed values. Re-read status and escalate to `control_plane_owner` and the applicable security/runtime owner.
+
+Follow-up contract: `G1-Runtime-Authority`; owner `runtime_operator`, approval `control_plane_owner`. It must bind recovery to structured admin/runtime-operator authorization and machine-verified live probe evidence. Removal test (stable required test id): `python3 -m pytest tests/integration/test_control_plane_authorization.py -k test_human_takeover_recovery_requires_verified_probe_evidence`. The limitation remains open until that command exists and passes; absence of the test blocks removal and production-operable claims.
 
 ## 6. Post-recovery validation
 

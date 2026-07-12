@@ -506,6 +506,41 @@ provisioned and the tracked operator value is a literal placeholder. It forbids
 using that placeholder as evidence or running enter/recover until a separately
 approved authorization checkpoint. No production configuration was modified.
 
+Task 6 spec-review correction (strict TDD)
+Timestamp UTC: 2026-07-12T07:56:04Z
+Starting revision: f2bc09d828103378abfe0279ba3c7211940b9478
+
+RED
+Command: python3 -m pytest tests/unit/test_g_minus_1_governance_docs.py -q
+Result: 4 failed, 2 passed. Missing contracts were: distinct two-actor
+confirmation; precise automatic runtime failure-budget/reset/manual semantics;
+truthful non-probe-gated recovery limitation/follow-up; and per-row compatibility
+provenance, measured baseline evidence, and runnable removal tests.
+
+GREEN FOCUSED
+Command: python3 -m pytest tests/unit/test_g_minus_1_governance_docs.py -q
+Result: 6 passed. The governance test now also rejects malformed nine-column
+compatibility rows and requires the reviewed semantics/evidence.
+
+GREEN ADJACENT
+Command: python3 -m pytest tests/unit/test_g_minus_1_governance_docs.py tests/unit/test_plan_status_index.py tests/unit/test_state_config_inventory.py tests/unit/test_audit_production_topology.py --disable-warnings
+Result: 91 passed in 0.75s.
+
+STATIC / SECURITY
+Command: git diff --check
+Result: passed.
+Command: credential-value assignment pattern scan over all six governance docs
+Result: no matches.
+
+FACTUAL LIMITATIONS PRESERVED
+- Current recover persists caller-supplied steps but does not machine-verify a
+  probe; the runbook now requires a human checkpoint and names the G1 owner and
+  stable removal-test id. It makes no automatic-enforcement claim.
+- Cross-operation consecutive automatic failure/reset semantics remain a named
+  G1 implementation obligation; G-1 only enforces its existing local guard.
+- UNKNOWN production compatibility metrics explicitly block removal. Repository
+  counts and Git-origin evidence are recorded without inventing telemetry.
+
 Task 5 spec-review correction (strict TDD)
 
 RED

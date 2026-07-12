@@ -30,7 +30,7 @@ Every cell is explicit. “None” means denied, not inherited authority.
 - Formal REVIEW is owned by `worker_review`; a producer cannot formally review its own artifact.
 - CLOSEOUT is owned only by `manager`; manager is dispatch-only and does not produce code or business artifacts.
 - A runtime operator cannot modify a business verdict. A recorder cannot dispatch work or approve an evolution candidate. A builder cannot produce business content.
-- Credential rotation, production data-source switch, irreversible migration, and security-policy weakening require two-role confirmation: the accountable domain owner plus `control_plane_owner`. REVIEW and CLOSEOUT remain distinct confirmations.
+- Credential rotation, production data-source switch, irreversible migration, and security-policy weakening require two-role confirmation by two distinct provisioned actors in distinct accountable roles: the domain owner plus `control_plane_owner`. The same human cannot self-confirm even if assigned both labels; an independent second provisioned actor is mandatory. A missing second actor must fail closed. REVIEW and CLOSEOUT remain distinct confirmations and do not satisfy a domain-owner approval unless those distinct roles are explicitly required by the decision.
 - Emergency human takeover may stop automation immediately; resumption requires an authorized structured actor and recorded recovery evidence.
 
 ## Prompt-injection damage bounds
