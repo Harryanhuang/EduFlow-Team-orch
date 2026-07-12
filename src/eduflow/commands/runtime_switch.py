@@ -16,7 +16,7 @@ from __future__ import annotations
 
 import sys
 
-from eduflow.runtime import config, lifecycle, paths, tmux, verify
+from eduflow.runtime import config, human_takeover, lifecycle, paths, tmux, verify
 from eduflow.util import (
     error_exit, maybe_print_help, pop_bool_flag, pop_flag, print_json,
     reject_extra_args, write_json,
@@ -83,6 +83,7 @@ def main(argv: list[str]) -> int:
         return error_exit(f"❌ agent pane not running: {session}:{agent}")
 
     current = lifecycle.current_runtime_status(agent).get("runtime") or "inline"
+    takeover_state = human_takeover.status()
     # Record switch event (manual trigger).
     verify.record_switch_event(
         agent=agent,
@@ -90,7 +91,10 @@ def main(argv: list[str]) -> int:
         to_runtime=to_runtime,
         reason=reason,
         outcome="pending",
-        trigger="manual_cli",
+        # Manual operator switches remain available during takeover. Mark an
+        # override explicitly in the append-only runtime switch audit.
+        trigger=("manual_cli_takeover_override"
+                 if takeover_state["state"] != "inactive" else "manual_cli"),
     )
     outcome = lifecycle.restart_with_runtime(
         agent, target, to_runtime,
@@ -113,7 +117,7 @@ def main(argv: list[str]) -> int:
             if lines:
                 import json as _json
                 last = _json.loads(lines[-1])
-                if last.get("trigger") == "manual_cli" and last.get("outcome") == "pending":
+                if str(last.get("trigger", "")).startswith("manual_cli") and last.get("outcome") == "pending":
                     last["outcome"] = outcome
                     last["verdict"] = probe.get("verdict", outcome)
                     lines[-1] = _json.dumps(last, ensure_ascii=False)

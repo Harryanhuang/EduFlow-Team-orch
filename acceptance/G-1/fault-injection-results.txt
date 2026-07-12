@@ -1,0 +1,11 @@
+Task 5 controlled isolated-state fault injection
+
+- Missing state: read-only status returned inactive generation 0 without creating state/audit files.
+- Corrupt JSON containing a sentinel secret: status failed closed as active/corrupt_state; sentinel was absent from returned state; automation guard raised AutomationBlocked.
+- Concurrent entry: 16 concurrent calls converged on active generation 1 with one append-only audit event.
+- Duplicate entry: second enter was idempotent and did not increment generation or append a duplicate event.
+- Secret-bearing reason: persisted state/audit replaced the credential value with [REDACTED].
+- Recovery CAS: correct generation transitioned through recovering to inactive generation 2; stale recovery was rejected.
+- Circuit-breaker simulation: automatic switch side effect occurred while inactive, was blocked before mutation after failure-budget entry, then became eligible after explicit authorized recovery.
+- Planned-action CAS: an action holding the pre-takeover generation was rejected after takeover entry.
+- CLI authorization: unconfigured actor could not enter; configured operator could status, enter, and recover using JSON output.

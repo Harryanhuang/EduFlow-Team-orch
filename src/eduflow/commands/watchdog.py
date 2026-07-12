@@ -132,7 +132,16 @@ def main(argv: list[str]) -> int:
     pid_repair_interval_s = 300.0  # every 5 min — catch unlinked pid files
     try:
         while True:
-            watchdog.supervise(specs, states, alert_fn=alert_fn)
+            # A human takeover freezes automatic mutations but leaves this
+            # daemon alive so read-only health/status surfaces remain useful.
+            from eduflow.runtime import human_takeover
+            try:
+                generation = human_takeover.ensure_automation_allowed()
+                human_takeover.ensure_automation_allowed(expected_generation=generation)
+                watchdog.supervise(specs, states, alert_fn=alert_fn)
+            except (human_takeover.AutomationBlocked, human_takeover.StaleGeneration):
+                time.sleep(check_interval_s)
+                continue
             now = time.time()
             if now - last_cred_check >= cred_check_interval_s:
                 _maybe_refresh_claude_oauth(now)
@@ -627,6 +636,12 @@ def _maybe_failback(agent: str, target, current: str, primary: str,
         return
 
     # ── Canary failback: switch agent back to primary ──────────────
+    from eduflow.runtime import human_takeover
+    try:
+        generation = human_takeover.ensure_automation_allowed()
+        human_takeover.ensure_automation_allowed(expected_generation=generation)
+    except (human_takeover.AutomationBlocked, human_takeover.StaleGeneration):
+        return
     outcome = lifecycle.restart_with_runtime(
         agent, target, primary_name,
         reason="failback", prove_ready=True,
@@ -692,7 +707,11 @@ def _guard_agent_runtimes() -> None:
       3. records one switch event per attempt to runtime-switch-events.jsonl,
       4. retries up to 3 times before marking the agent escalated.
     """
-    from eduflow.runtime import failover
+    from eduflow.runtime import failover, human_takeover
+    try:
+        automation_generation = human_takeover.ensure_automation_allowed()
+    except human_takeover.AutomationBlocked:
+        return
     team = config.load_team()
     session = team.get("session", "EduFlow")
     if not tmux.has_session(session):
@@ -735,6 +754,12 @@ def _guard_agent_runtimes() -> None:
             last_runtime=current,
             last_checked_at=now_s,
         )
+        # Re-check the CAS immediately before the switching side effect; an
+        # operator may have entered takeover while probes were running.
+        try:
+            human_takeover.ensure_automation_allowed(expected_generation=automation_generation)
+        except (human_takeover.AutomationBlocked, human_takeover.StaleGeneration):
+            return
         result = failover.execute_fallback_loop(
             agent,
             target,
@@ -794,6 +819,10 @@ def _guard_agent_runtimes() -> None:
             )
             print(f"  ⏸ agent-runtime-guard: {agent} hit {reason} but all fallback runtimes failed "
                   f"(best={best}, attempts={attempts})")
+            # A full automatic recovery budget is the circuit-breaker trip.
+            if attempts >= 3:
+                human_takeover.enter(reason="runtime_switch_recovery_budget_exhausted",
+                                     source="watchdog", actor="system")
         else:
             # Non-READY but not exhausted — one of the intermediate
             # outcomes (env_drift, smoke_failed, ready_unproven). Still
@@ -810,6 +839,8 @@ def _guard_agent_runtimes() -> None:
                   f"but outcome={outcome} (best={best}); needs repair")
             if hit_cooldown:
                 _apply_manager_policy(agent)
+                human_takeover.enter(reason="runtime_switch_failure_budget_exhausted",
+                                     source="watchdog", actor="system")
 
 
 def _maybe_refresh_claude_oauth(now: float) -> None:

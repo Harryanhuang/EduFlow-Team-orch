@@ -16,6 +16,7 @@ from eduflow.commands import (
     say, router, watchdog, task, remember, recall, forget, peek,
     health, usage, install_hooks, version, task_publish, runtime_guard,
     workflow, runtime, memory_cli, sleep_idle, residency_wake, asset,
+    human_takeover,
 )
 from eduflow.util import error_exit
 
@@ -63,6 +64,7 @@ _COMMAND_GROUPS: list[tuple[str, list[tuple[str, CommandHandler]]]] = [
         ("watchdog", watchdog.main),
         ("runtime-guard", runtime_guard.main),
         ("runtime", runtime.main),
+        ("human-takeover", human_takeover.main),
     ]),
     ("task tracking", [
         ("task", task.main),
