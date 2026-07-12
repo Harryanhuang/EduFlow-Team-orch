@@ -1191,7 +1191,7 @@ def _handle_clear(args: str, ctx: SlashContext) -> str:
     return f"✅ /clear → {ctx.session}:{agent} · 已 /clear + 重新入职 init_msg"
 
 
-_HANDLERS: dict[str, Callable[[str, SlashContext], str]] = {
+_HANDLERS: dict[str, Callable[[str, SlashContext], str | dict]] = {
     "/help": _handle_help,
     "/home": _handle_home,
     "/sophon": _handle_sophon,

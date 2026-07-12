@@ -265,7 +265,7 @@ def resolve_runtime_chain(agent: str) -> list[dict]:
     )
     runtime_name = cfg.get("runtime")
     if not runtime_name:
-        chain = [{
+        inline_chain = [{
             "name": "inline",
             "cli": cfg.get("cli", "claude-code"),
             "model": cfg.get("model") or default_model,
@@ -274,8 +274,8 @@ def resolve_runtime_chain(agent: str) -> list[dict]:
             "switch_on": list(cfg.get("switch_on", _default_switch_on())),
             "fallback_to": "",
         }]
-        _validate_runtime_chain(chain)
-        return chain
+        _validate_runtime_chain(inline_chain)
+        return inline_chain
 
     chain: list[dict] = []
     seen: set[str] = set()
@@ -656,8 +656,6 @@ def load_residency_policy(agent: str) -> "ResidencyPolicy":
     # 1) start with list-membership-or-default mode
     resident_set = set(load_resident_agents())
     if agent in resident_set:
-        base_mode = ResidencyMode.RESIDENT if "ResidencyMode" in dir() else "resident"  # noqa
-        # Avoid forward-ref import cycle: do it the clean way.
         base_mode = _res.ResidencyMode.RESIDENT
     else:
         base_mode = default.mode

@@ -134,7 +134,7 @@ def search_memories(
 def hybrid_search(
     query: str,
     *,
-    scope: str | list[str] | None = None,
+    scope: str | None = None,
     kind: str | None = None,
     status: str = "confirmed",
     limit: int = 20,

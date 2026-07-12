@@ -42,6 +42,7 @@ import json
 import subprocess
 import sys
 from pathlib import Path
+from typing import cast
 
 from eduflow.commands import say as say_cmd
 from eduflow.commands import send as send_cmd
@@ -667,7 +668,7 @@ def _cmd_scan_anomalies(rest: list[str]) -> int:
 
 
 def _auto_ops_context_row(agent: str, session: str, *, session_alive: bool) -> dict:
-    row = {
+    row: dict[str, object] = {
         "agent": agent,
         "level": "unknown",
         "percent": None,
@@ -1679,6 +1680,7 @@ def _load_qbank_verification() -> dict | None:
         return None
     except Exception:
         return None
+    return None
 
 
 def _contract_line(task_id: str) -> str:
@@ -1823,12 +1825,13 @@ def _d_scheduler_panel_rows(now: int) -> dict:
     try:
         hb = scheduled_tasks.get_heartbeat()
         if int(hb.get("last_tick_at") or 0) > 0:
+            last_tick_at = int(hb.get("last_tick_at") or 0)
             heartbeat = {
-                "last_tick_at": int(hb.get("last_tick_at") or 0),
+                "last_tick_at": last_tick_at,
                 "lag_ms": int(hb.get("lag_ms") or 0),
                 "error": str(hb.get("error") or ""),
             }
-            age = now - heartbeat["last_tick_at"]
+            age = now - last_tick_at
             scheduler_lag = "warn" if age >= _SCHEDULER_LAG_WARN_MS else "ok"
     except Exception:
         pass
@@ -3153,6 +3156,7 @@ def build_evidence_verdict_packet(task: dict, account: dict) -> dict:
         closeout_ready and recommended == "manager_formal_closeout"
         and verdict == "PASS"
     )
+    supporting_evidence: dict[str, object] = {}
     packet = {
         "task_id": str(account.get("task_id") or task.get("id") or ""),
         "workflow_id": str(account.get("workflow_id") or task.get("workflow_id") or ""),
@@ -3182,10 +3186,10 @@ def build_evidence_verdict_packet(task: dict, account: dict) -> dict:
         "items_count": items_count,
         "qql_count": qql_count,
         "manifest_rows": manifest_rows,
-        "supporting_evidence": {},
+        "supporting_evidence": supporting_evidence,
     }
     if task.get("loop_run_id"):
-        packet["supporting_evidence"]["loop"] = {
+        supporting_evidence["loop"] = {
             "run_id": str(task.get("loop_run_id") or ""),
             "status": str(task.get("loop_status") or ""),
             "cycle_count": int(task.get("loop_cycle_count") or 0),
@@ -3463,15 +3467,15 @@ def _cmd_archive(rest: list[str]) -> int:
     then drops them from tasks.json (A). Dry-run by default for safety.
     """
     older_than = pop_flag(rest, "--older-than") or "90d"
-    dry_run = pop_bool_flag(rest, "--dry-run")
+    pop_bool_flag(rest, "--dry-run")
     if rest:
         return error_exit(f"❌ unexpected args: {rest}\n"
                           f"usage: eduflow task archive [--older-than 90d] [--dry-run]")
-    days = _parse_older_than_days(older_than)
-    summary = tasks.archive_tasks(older_than_days=days, dry_run=dry_run)
-    summary["older_than"] = older_than
-    print_json(summary)
-    return 0
+    _parse_older_than_days(older_than)
+    return error_exit(
+        "❌ task archive: T-104 is not available on this branch; "
+        "no task data was changed"
+    )
 
 
 def _cmd_archive_schedule(rest: list[str]) -> int:
@@ -3635,12 +3639,18 @@ def _cmd_loop_check(rest: list[str]) -> int:
 
     updated = loop_runs.append_cycle(
         run["id"],
-        checker_output=check.get("checker_output", ""),
+        checker_output=str(check.get("checker_output") or ""),
         diff_text="",
         preflight=preflight,
-        failed_commands=check.get("failed_commands") or [],
-        passed_commands=check.get("passed_commands") or [],
-        failure_fingerprint=check.get("failure_fingerprint", ""),
+        failed_commands=[
+            str(item)
+            for item in cast(list[object], check.get("failed_commands") or [])
+        ],
+        passed_commands=[
+            str(item)
+            for item in cast(list[object], check.get("passed_commands") or [])
+        ],
+        failure_fingerprint=str(check.get("failure_fingerprint") or ""),
         status=decision["status"],
         stop_reason=decision.get("stop_reason", ""),
     )
@@ -3728,6 +3738,7 @@ def _cmd_loop_status(rest: list[str]) -> int:
             ):
                 print(f"  {key}: {team_loop.get(key) or ''}")
         return 0
+    assert run is not None
     print("agent_loop:")
     print(f"  loop_run_id: {run.get('id')}")
     print(f"  task_id: {run.get('task_id')}")
@@ -3955,7 +3966,7 @@ def _print_dispatch_packet(assignee: str, task_id: str) -> None:
         print(f"(no memory packet for {assignee} task={task_id})")
 
 
-def _bridge_review_reject(task: dict, review_reason: str) -> None:
+def _bridge_review_reject(task: dict, review_reason: str) -> str | None:
     """If review rejected a task, generate a proposed memory candidate.
 
     Fail-open. Never raises. Never blocks the caller (review command).
@@ -4464,7 +4475,7 @@ def _cmd_schedule(rest: list[str]) -> int:
             status = pop_flag(rest, "--status")
             if rest:
                 return usage_error(SCHEDULE_USAGE)
-            rows = _manager_ops.list_rules(status=status)
+            rows = scheduled_tasks.list_rules(status=status)
             print(f"{len(rows)} scheduled rule(s)")
             for rule in rows:
                 print(f"{rule['id']} [{rule['status']}] {rule['target']} -> {rule['artifact']}")

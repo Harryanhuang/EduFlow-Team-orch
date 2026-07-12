@@ -12,7 +12,7 @@ ask the user for clarification.
 from __future__ import annotations
 
 import re
-from datetime import datetime, time, timedelta, timezone
+from datetime import date, datetime, time, timedelta, timezone
 from zoneinfo import ZoneInfo, available_timezones
 
 
@@ -121,7 +121,7 @@ def _ensure_local_now(now: datetime, tz: ZoneInfo) -> datetime:
     return now.astimezone(tz)
 
 
-def _date_for_weekday(today: datetime, weekday: int) -> datetime.date:
+def _date_for_weekday(today: datetime, weekday: int) -> date:
     """Return the date of the target weekday within the current ISO week."""
     days_ahead = (weekday - today.weekday()) % 7
     return (today.date() + timedelta(days=days_ahead))

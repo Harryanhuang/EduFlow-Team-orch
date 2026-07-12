@@ -115,14 +115,12 @@ def main(argv: list[str]) -> int:
         except PermissionError as exc:
             return error_exit(str(exc))
         switch_id = str(uuid.uuid4())
-        common_event = {
-            "agent": agent, "from_runtime": current, "to_runtime": to_runtime,
-            "reason": reason, "trigger": trigger, "switch_id": switch_id,
-            "actor": actor or "", "target": str(target),
-        }
         try:
             verify.record_switch_event(
-                **common_event, outcome="pending", phase="prepared", strict=True,
+                agent=agent, from_runtime=str(current), to_runtime=to_runtime,
+                reason=reason, trigger=trigger, switch_id=switch_id,
+                actor=actor or "", target=str(target),
+                outcome="pending", phase="prepared", strict=True,
                 result={"status": "pending"},
             )
         except OSError as exc:
@@ -173,7 +171,9 @@ def main(argv: list[str]) -> int:
         # id.  Never rewrite a possibly interleaved process's last JSONL row.
         try:
             verify.record_switch_event(
-                **common_event, outcome=outcome,
+                agent=agent, from_runtime=str(current), to_runtime=to_runtime,
+                reason=reason, trigger=trigger, switch_id=switch_id,
+                actor=actor or "", target=str(target), outcome=outcome,
                 verdict=probe.get("verdict", outcome), phase="completed",
                 strict=True, result=terminal_result,
             )

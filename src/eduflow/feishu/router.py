@@ -74,7 +74,7 @@ _SEEN_MESSAGE_IDS: set[str] = set()
 
 _RATE_LIMIT_MAX = 10          # messages
 _RATE_LIMIT_WINDOW_S = 60     # seconds
-_SENDER_TIMESTAMPS = {}
+_SENDER_TIMESTAMPS: dict[str, deque[float]] = {}
 
 # ── P5: per-sender language session state ───────────────────────────
 # Bounded dict keyed by sender_id. The first message from a sender sets
@@ -254,7 +254,7 @@ def classify_event(event: dict, *,
 
     _ = manager  # legacy/ignored parameter
 
-    agents = set(team_agents)
+    agent_set = set(team_agents)
     msg_id = event.get("message_id", "")
     text = event.get("text") or ""
     common = {
@@ -292,7 +292,7 @@ def classify_event(event: dict, *,
     is_bot = (sender_type in ("app", "app_id")
               or (bot_id and event.get("sender_id") == bot_id))
     if is_bot:
-        card_agent = _card_sender_agent(raw_text, agents) if raw_text else ""
+        card_agent = _card_sender_agent(raw_text, agent_set) if raw_text else ""
         if card_agent and card_agent != default_target:
             _record_seen(msg_id, seen_msg_ids)
             lang = _session_language(event.get("sender_id", ""), raw_text)
@@ -314,7 +314,7 @@ def classify_event(event: dict, *,
         _record_seen(msg_id, seen_msg_ids)
         return Decision(Action.SLASH, text=slash_text, **common)
 
-    sender, text = _parse_sender(raw_text, agents)
+    sender, text = _parse_sender(raw_text, agent_set)
 
     # P5: detect user language and schedule intent BEFORE the route
     # decision so the manager skill sees them in the Decision object.

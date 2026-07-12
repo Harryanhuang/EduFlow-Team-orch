@@ -1434,7 +1434,7 @@ def _apply_explanation_dedupe(
         cutoff = time.time() - max_age_days * 86400
         expired_keys = []
         for key, val in sent.items():
-            ts = 0
+            ts = 0.0
             if isinstance(val, dict):
                 ts = float(val.get("sent_at") or 0)
             # Old-format entries (str) have no timestamp — treat as expired
@@ -3708,11 +3708,6 @@ def _manager_claimed_role(content: str) -> str:
     ):
         return "worker_builder"
     return "worker_course"
-
-
-def _text_has_any(text: str, markers: tuple[str, ...]) -> bool:
-    lowered = str(text or "").lower()
-    return any(marker.lower() in lowered for marker in markers)
 
 
 def _has_task_truth_for_manager_claim(role: str, content: str, created_at: int) -> bool:

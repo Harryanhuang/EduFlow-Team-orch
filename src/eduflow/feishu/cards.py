@@ -44,7 +44,7 @@ _MD_ESCAPE_TRANS = str.maketrans({
 })
 
 
-def _escape_md(text: str) -> str:
+def _escape_md(text: object) -> str:
     """Escape Lark markdown metacharacters in dynamic card content.
 
     Interpolating raw task titles, agent names, blocker text, workflow IDs,

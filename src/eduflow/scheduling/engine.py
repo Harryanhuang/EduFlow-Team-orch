@@ -10,6 +10,7 @@ reuse the normal task-publish cursor.
 from __future__ import annotations
 
 from datetime import datetime, timedelta, timezone
+from typing import Any
 
 from eduflow.runtime import paths
 from eduflow.store import scheduled_tasks
@@ -170,7 +171,7 @@ def tick(now_ms: int) -> dict:
 
 def reconcile(now_ms: int) -> dict:
     """Handle restart mid-state, missed notifications and missed due times."""
-    result = {
+    result: dict[str, Any] = {
         "reconciled_at": now_ms,
         "missed_due_caught_up": [],
         "notifications_replayed": [],
@@ -186,9 +187,10 @@ def reconcile(now_ms: int) -> dict:
             before_key = f"{rule['id']}:{rule['next_due_utc']}"
             _handle_due_rule(rule, result)
             result["missed_due_caught_up"].append(before_key)
-            rule = scheduled_tasks.get_rule(rule["id"])
-            if rule is None:
+            refreshed_rule = scheduled_tasks.get_rule(rule["id"])
+            if refreshed_rule is None:
                 break
+            rule = refreshed_rule
 
     # Replay notifications for occurrences that should have been notified
     # but have no ledger record (e.g. after a crash between state write and

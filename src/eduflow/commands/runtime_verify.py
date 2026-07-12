@@ -21,6 +21,7 @@ Verdict values:
 from __future__ import annotations
 
 import time
+from typing import Any
 
 from eduflow.runtime import config, lifecycle, paths, tmux, verify
 from eduflow.store import local_facts
@@ -70,7 +71,7 @@ def compute_verdict(agent: str, *, live_smoke: bool = False) -> dict:
       found_markers    — list of failure markers found
       cached           — True iff verdict came from the runtime-status cache
     """
-    out = {
+    out: dict[str, Any] = {
         "verdict": "unknown",
         "declared_runtime": "unknown",
         "declared_env": "",

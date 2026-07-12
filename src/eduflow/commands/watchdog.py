@@ -661,15 +661,15 @@ def _maybe_failback(agent: str, target, current: str, primary: str,
             last_switch_outcome=outcome,
             last_switch_at=now_s,
         )
-        verify.record_switch_event(**{
-            "ts": now_s,
-            "agent": agent,
-            "from_runtime": str(current),
-            "to_runtime": primary_name,
-            "reason": "failback",
-            "outcome": outcome,
-            "trigger": "watchdog",
-        })
+        verify.record_switch_event(
+            ts=now_s,
+            agent=agent,
+            from_runtime=str(current),
+            to_runtime=primary_name,
+            reason="failback",
+            outcome=outcome,
+            trigger="watchdog",
+        )
         _notify_runtime_switch(
             agent, str(current), primary_name,
             f"failback (primary recovered, streak={streak})",
@@ -687,15 +687,15 @@ def _maybe_failback(agent: str, target, current: str, primary: str,
                 "in_fallback_since": in_fallback_since,
             },
         )
-        verify.record_switch_event(**{
-            "ts": now_s,
-            "agent": agent,
-            "from_runtime": str(current),
-            "to_runtime": primary_name,
-            "reason": "failback",
-            "outcome": outcome,
-            "trigger": "watchdog",
-        })
+        verify.record_switch_event(
+            ts=now_s,
+            agent=agent,
+            from_runtime=str(current),
+            to_runtime=primary_name,
+            reason="failback",
+            outcome=outcome,
+            trigger="watchdog",
+        )
         print(f"  ⚠️ agent-runtime-guard failback: {agent} canary "
               f"{current} -> {primary_name} failed (outcome={outcome})")
 

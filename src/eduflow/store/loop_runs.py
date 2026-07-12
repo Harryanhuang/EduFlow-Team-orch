@@ -99,7 +99,7 @@ def create_or_get_active(*, task_id: str, spec: str, max_cycles: int) -> dict:
             "updated_at": now,
             "evidence_ref": "",
         }
-        run["evidence_ref"] = evidence_ref(run["id"])
+        run["evidence_ref"] = evidence_ref(str(run["id"]))
         return _sync_run(data, run)
 
 
@@ -121,7 +121,7 @@ def create_new(*, task_id: str, spec: str, max_cycles: int) -> dict:
             "updated_at": now,
             "evidence_ref": "",
         }
-        run["evidence_ref"] = evidence_ref(run["id"])
+        run["evidence_ref"] = evidence_ref(str(run["id"]))
         return _sync_run(data, run)
 
 

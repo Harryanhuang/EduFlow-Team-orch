@@ -9,6 +9,7 @@ from __future__ import annotations
 import os
 import shutil
 from pathlib import Path
+from typing import TypedDict
 
 from eduflow.util import error_exit, maybe_print_help, usage_error
 
@@ -876,10 +877,17 @@ def _tokenize(text: str) -> set[str]:
     return {part for part in "".join(normalized).split() if len(part) >= 3}
 
 
-def _workflow_recommendations(root: Path, query: str) -> list[dict]:
+class _WorkflowRecommendation(TypedDict):
+    workflow_id: str
+    score: int
+    confidence: str
+    reason: str
+
+
+def _workflow_recommendations(root: Path, query: str) -> list[_WorkflowRecommendation]:
     query_lower = query.lower()
     query_tokens = _tokenize(query)
-    rows = []
+    rows: list[_WorkflowRecommendation] = []
     for d in _workflow_dirs(root):
         workflow_id = d.name
         text = _workflow_text(d).lower()
@@ -1018,7 +1026,7 @@ def _docs_root(root: Path) -> Path:
 
 def _cmd_gap_map(root: Path) -> int:
     docs_root = _docs_root(root)
-    candidates = []
+    candidates: list[Path] = []
     for pattern in ("*GAP*", "*REALRUN*", "*Workflow*", "workflows/*.md", "workflows/*/*.md"):
         candidates.extend(docs_root.glob(pattern))
     files = sorted({

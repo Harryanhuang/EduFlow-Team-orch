@@ -13,6 +13,13 @@ from eduflow.runtime import paths, tunables
 from eduflow.store import employee_read_model, local_facts, task_event_scanner, task_publish_gate, tasks
 
 
+def test_task_archive_fails_explicitly_until_t104_is_available():
+    rc, _, err = run_cli(["task", "archive", "--dry-run"])
+
+    assert rc == 1
+    assert "T-104" in err and "not available" in err
+
+
 def _healthy_watchdog_rows():
     return [
         {"name": "router", "pid_present": True, "alive": True},

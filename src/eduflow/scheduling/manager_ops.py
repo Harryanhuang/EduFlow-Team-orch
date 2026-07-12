@@ -234,7 +234,10 @@ def choose_lane(
         artifacts=artifacts,
         evidence=evidence,
     )
-    return scheduled_tasks.get_lane(lane_id)
+    lane = scheduled_tasks.get_lane(lane_id)
+    if lane is None:
+        raise NotFound(f"lane {lane_id} not found after creation")
+    return lane
 
 
 def choose_lanes(
@@ -270,7 +273,10 @@ def choose_lanes(
             artifacts=spec.get("artifacts"),
             evidence=spec.get("evidence"),
         )
-        created.append(scheduled_tasks.get_lane(lane_id))
+        lane = scheduled_tasks.get_lane(lane_id)
+        if lane is None:
+            raise NotFound(f"lane {lane_id} not found after creation")
+        created.append(lane)
         previous_lane_id = lane_id
     return created
 

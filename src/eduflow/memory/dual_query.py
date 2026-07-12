@@ -37,7 +37,7 @@ def dual_query_memories(
     if topic_query and topic_query.strip():
         topic_results = search_memories(
             topic_query, scope=scope or None, kind=kind or None,
-            status=status or None, limit=limit,
+            status=status, limit=limit,
         )
 
     # Path 2: workflow/project background (direct scope lookup, not FTS)
@@ -56,7 +56,7 @@ def dual_query_memories(
             scope_items = list_memories(
                 scope=bg_scope,
                 kind=kind or None,
-                status=status or None,
+                status=status,
                 limit=limit,
             )
             background_results.extend(scope_items)

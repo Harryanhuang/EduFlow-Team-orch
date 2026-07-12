@@ -228,6 +228,7 @@ def record_outcome(
     with _evolution_lock():
         state = _load_evolution()
         record = _get_record(state, rule_id, create=True)
+        assert record is not None
         signature = _stable_signature(target, artifact, role, agents)
         entry = {
             "occurrence_key": occurrence_key,
@@ -452,6 +453,7 @@ def record_deviation(rule_id: str, *, note: str = "") -> dict:
     with _evolution_lock():
         state = _load_evolution()
         record = _get_record(state, rule_id, create=True)
+        assert record is not None
         if record["phase"] != "approved":
             record["updated_at"] = now_ms()
             _save_evolution(state)

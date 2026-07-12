@@ -176,19 +176,21 @@ def main(argv: list[str]) -> int:
             spawn_prefix = lifecycle.pane_spawn_prefix_for_runtime(resolved)
             spawn_cmd = f"{spawn_prefix} {adapter.spawn_cmd(to, runtime_model)}"
             wake_timeout = float(tunables.tunable("wake.lazy_wake_timeout_s", 30.0))
+            def _on_woken() -> None:
+                local_facts.upsert_status(
+                    to, "进行中", "responding to first message",
+                )
+                _touch_wake_safely(to)
+
             woke = wake.wake_if_dormant(
                 target, adapter,
                 spawn_cmd=spawn_cmd,
                 init_msg=_identity.init_prompt(to),
                 timeout_s=wake_timeout,
-                on_woken=lambda: (
-                    local_facts.upsert_status(
-                        to, "进行中", "responding to first message"),
-                    # Phase 4 (2026-07-01): wake success also resets
-                    # the residency clock so the warm-agent sweep
-                    # treats a freshly-spawned worker as active.
-                    _touch_wake_safely(to),
-                ),
+                # Phase 4 (2026-07-01): wake success also resets the
+                # residency clock so the warm-agent sweep treats a
+                # freshly-spawned worker as active.
+                on_woken=_on_woken,
             )
             if not woke:
                 # Phase 4 (2026-07-01): warm-agent wake failed within

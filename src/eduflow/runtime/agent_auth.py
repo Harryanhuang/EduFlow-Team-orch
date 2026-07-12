@@ -159,9 +159,9 @@ def resolve(agent: str, adapter, *,
     if slot.login_credfile and (home / slot.login_credfile).exists():
         set_env: dict[str, str] = {}
         if slot.login_token_env:
-            tok = _read_login_token(home / slot.login_credfile)
-            if tok:
-                set_env[slot.login_token_env] = tok
+            login_tok = _read_login_token(home / slot.login_credfile)
+            if login_tok:
+                set_env[slot.login_token_env] = login_tok
         blank = tuple(e for e in (slot.token_env, *slot.api_key_envs)
                       if e and e not in set_env)
         return AuthResolution("login", set_env, blank)

@@ -160,7 +160,7 @@ class SiliconFlowEmbeddingProvider(EmbeddingProvider):
             with urllib.request.urlopen(req, timeout=self.timeout) as resp:
                 body = resp.read().decode("utf-8")
         except urllib.error.HTTPError as exc:
-            body = exc.read().decode("utf-8") if exc.read else ""
+            body = exc.read().decode("utf-8")
             if exc.code == 413 and len(texts) > 1:
                 _log.debug("Batch too large (413); splitting and retrying")
                 return self._split_and_retry(texts)

@@ -112,6 +112,7 @@ def acquire(pid_file: Path, *, name: str = "",
                 if time.monotonic() >= deadline:
                     os.lseek(fd, 0, os.SEEK_SET)
                     data = os.read(fd, 100).decode("utf-8", errors="ignore").strip()
+                    old_pid: int | str
                     try:
                         old_pid = int(data)
                     except ValueError:

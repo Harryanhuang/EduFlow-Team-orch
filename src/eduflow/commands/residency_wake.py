@@ -83,15 +83,16 @@ def wake_agent(agent: str) -> dict:
     spawn_prefix = lifecycle.pane_spawn_prefix_for_runtime(resolved)
     spawn_cmd = f"{spawn_prefix} {adapter.spawn_cmd(agent, model)}"
     wake_timeout = float(tunables.tunable("wake.lazy_wake_timeout_s", 30.0))
+    def _on_woken() -> None:
+        local_facts.upsert_status(agent, "进行中", "pre-heated by manager")
+        _touch_wake_safely(agent)
+
     woke = wake.wake_if_dormant(
         target, adapter,
         spawn_cmd=spawn_cmd,
         init_msg=_identity.init_prompt(agent),
         timeout_s=wake_timeout,
-        on_woken=lambda: (
-            local_facts.upsert_status(agent, "进行中", "pre-heated by manager"),
-            _touch_wake_safely(agent),
-        ),
+        on_woken=_on_woken,
     )
     result["woke"] = bool(woke)
     if not woke:

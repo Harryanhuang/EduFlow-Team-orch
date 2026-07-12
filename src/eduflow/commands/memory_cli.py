@@ -326,7 +326,7 @@ def _cmd_items_list(argv: list[str]) -> int:
 
     from eduflow.memory.items import list_memories
     memories = list_memories(
-        scope=scope or None, kind=kind or None, status=status or None,
+        scope=scope or None, kind=kind or None, status=status,
         layer=layer or None, limit=limit,
     )
     if not memories:
@@ -455,7 +455,7 @@ def _cmd_search(argv: list[str]) -> int:
         from eduflow.memory.search import search_memories
         results = search_memories(
             query, scope=scope or None, kind=kind or None,
-            status=status or None, limit=limit,
+            status=status, limit=limit,
         )
         if not results:
             print(f"No memories found matching: {query}")
@@ -474,7 +474,7 @@ def _cmd_search(argv: list[str]) -> int:
         from eduflow.memory.search import hybrid_search
         results = hybrid_search(
             query, scope=scope or None, kind=kind or None,
-            status=status or None, limit=limit,
+            status=status, limit=limit,
         )
         if not results:
             print(f"No memories found matching: {query}")
@@ -497,7 +497,7 @@ def _cmd_search(argv: list[str]) -> int:
         from eduflow.memory.search import search_memories
         results = search_memories(
             query, scope=scope or None, kind=kind or None,
-            status=status or None, limit=limit,
+            status=status, limit=limit,
         )
         if not results:
             print(f"No memories found matching: {query}")
@@ -694,7 +694,7 @@ def _cmd_candidates(argv: list[str]) -> int:
 
     from eduflow.memory.candidates import list_candidates
     candidates = list_candidates(
-        scope=scope or None, status=status or None,
+        scope=scope or None, status=status,
         source_type=source or None, limit=limit,
     )
     if not candidates:
@@ -1042,16 +1042,16 @@ def _cmd_audit(argv: list[str]) -> int:
     if sub == "retention":
         days = int(pop_flag(rest, "--days") or "90")
         from eduflow.memory.audit import retention_report
-        report = retention_report(days=days)
-        print(f"Retention report ({report['period_days']}d, from {report['window_start'][:10]}):")
-        print(f"  Items:      created={report['items']['created']}, "
-              f"confirmed={report['items']['confirmed']}, "
-              f"deprecated={report['items']['deprecated']}")
-        print(f"  Candidates: proposed={report['candidates']['proposed']}, "
-              f"promoted={report['candidates']['promoted']}, "
-              f"rejected={report['candidates']['rejected']}")
-        print(f"  Constraints: created={report['constraints']['created']}, "
-              f"inactivated={report['constraints']['inactivated']}")
+        retention = retention_report(days=days)
+        print(f"Retention report ({retention['period_days']}d, from {retention['window_start'][:10]}):")
+        print(f"  Items:      created={retention['items']['created']}, "
+              f"confirmed={retention['items']['confirmed']}, "
+              f"deprecated={retention['items']['deprecated']}")
+        print(f"  Candidates: proposed={retention['candidates']['proposed']}, "
+              f"promoted={retention['candidates']['promoted']}, "
+              f"rejected={retention['candidates']['rejected']}")
+        print(f"  Constraints: created={retention['constraints']['created']}, "
+              f"inactivated={retention['constraints']['inactivated']}")
         return 0
 
     return usage_error("usage: eduflow memory audit [scope|retention [--days <N>]]")
@@ -1961,6 +1961,7 @@ def _cmd_agents_md(argv: list[str]) -> int:
         )
         print(draft)
         return 0
+    return 1
 
 
 # ── Reflect (V3 P3-1 lightweight) ────────────────────────────────────

@@ -330,7 +330,7 @@ def render_visible_truth_snapshot(task: dict) -> dict:
 
     # Verifier evidence — from task's verifier fields
     verifier = task.get("verifier") or {}
-    verifier_summary = str(verifier.get("summary") or "")
+    verifier_summary: str | None = str(verifier.get("summary") or "")
     if not verifier_summary:
         verdict_target = str(task.get("verdict_target") or "")
         verdict = str(task.get("verdict") or "")
@@ -382,7 +382,7 @@ def compose_visible_sources(task: dict) -> dict:
 
     # QBank report path
     qbank = task.get("qbank") or {}
-    qbank_report_path = str(
+    qbank_report_path: str | None = str(
         qbank.get("report_path") or task.get("qbank_report_path") or ""
     )
     if not qbank_report_path:
@@ -390,7 +390,7 @@ def compose_visible_sources(task: dict) -> dict:
 
     # Verifier report path
     verifier = task.get("verifier") or {}
-    verifier_report_path = str(
+    verifier_report_path: str | None = str(
         verifier.get("report_path") or task.get("verifier_report_path") or ""
     )
     if not verifier_report_path:

@@ -53,6 +53,15 @@ def test_unpin_memory():
     assert m["pinned"] == 0
 
 
+def test_unpin_cli_returns_nonzero_when_memory_is_not_pinned(monkeypatch, capsys):
+    from eduflow.commands import memory_cli
+
+    monkeypatch.setattr(items, "unpin_memory", lambda memory_id: False)
+
+    assert memory_cli._cmd_pin_unpin(["MI-missing"]) == 1
+    assert "Not pinned or not found" in capsys.readouterr().out
+
+
 def test_list_pinned_memories():
     mid1 = items.add_memory(scope="team", kind="note", content="pin me", status="confirmed")
     mid2 = items.add_memory(scope="team", kind="note", content="not pinned", status="confirmed")

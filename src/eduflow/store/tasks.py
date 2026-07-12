@@ -808,7 +808,7 @@ def _normalize_evidence_packet(value) -> dict:
             packet[field] = _normalize_list(raw)
         elif field in {"items_mapping_count", "qa_count", "item_count", "sampled_topic_count", "missing_topic_count"}:
             try:
-                packet[field] = int(raw)
+                packet[field] = int(raw) if raw is not None else 0
             except (TypeError, ValueError):
                 packet[field] = 0
         elif field == "qbank_readiness":
@@ -3205,7 +3205,7 @@ def manager_closeout_subject(task_id: str, *, actor: str,
             task_for_gate["verifier_result"] = verifier_result
         gate = subject_closeout_status(task_for_gate)
         if gate["closeout_status"] != "closeout_ready":
-            blockers = []
+            blockers: list[str] = []
             blockers.extend(str(item) for item in gate.get("missing_evidence") or [])
             blockers.extend(str(item) for item in gate.get("conflicting_evidence") or [])
             if verifier_result:

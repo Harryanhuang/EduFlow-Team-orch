@@ -50,11 +50,9 @@ def _run(cmd: list[str], timeout: int = 5) -> subprocess.CompletedProcess:
         return subprocess.run(cmd, capture_output=True, text=True,
                               timeout=timeout)
     except (FileNotFoundError, subprocess.TimeoutExpired, OSError) as e:
-        class _R:
-            returncode = -1
-            stdout = ""
-            stderr = str(e)
-        return _R()
+        return subprocess.CompletedProcess(
+            args=cmd, returncode=-1, stdout="", stderr=str(e),
+        )
 
 
 def _parse_size(s: str) -> int:

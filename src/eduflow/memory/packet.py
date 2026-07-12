@@ -297,10 +297,12 @@ def _build_semantic_query(agent: str, task_id: str | None) -> str:
             cap = get_capsule(task_id)
             if cap:
                 parts: list[str] = []
-                if cap.get("goal"):
-                    parts.append(cap.get("goal"))
-                if cap.get("next_action"):
-                    parts.append(cap.get("next_action"))
+                goal = cap.get("goal")
+                if goal:
+                    parts.append(str(goal))
+                next_action = cap.get("next_action")
+                if next_action:
+                    parts.append(str(next_action))
                 if parts:
                     return " ".join(parts)
         except Exception:

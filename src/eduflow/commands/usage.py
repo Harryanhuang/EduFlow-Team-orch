@@ -104,7 +104,7 @@ def _read_claude_oauth(home: Path | None = None,
 
 
 def _query_cc_usage(home: Path | None = None,
-                    *, opener: Callable = None,
+                    *, opener: Callable | None = None,
                     keychain_runner: Callable | None = None) -> dict:
     """Hit Claude Max's `/api/oauth/usage` for real per-window
     utilization (5h / 7d / Sonnet / Opus / Extra) — boss flagged the
