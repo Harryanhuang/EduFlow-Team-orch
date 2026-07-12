@@ -1,13 +1,17 @@
 # EduFlow Production Topology Audit
 
-## Verdict
+## Task 2 verdict
 
-**FAIL / BLOCKED** as of `2026-07-12T12:45:08+08:00`.
+**PASS** as of `2026-07-12T12:52:52+08:00` for the production-topology audit
+task only: JSON `ok=true`, `errors=[]`, `suspect_processes=[]`, exit code `0`.
+
+This is **not** a G-1 PASS or CLOSEOUT. Other G-1 tasks and the complete Gate
+review remain independently required.
 
 This document is generated from a read-only correlation of git, the deployed
 TOML file, PID files, `ps`, and tmux. It is not a declaration of intended
-topology. The audit returned exit code `1`; production truth is not sufficiently
-correlated to satisfy G-1.
+topology. The fresh audit proves this task's runtime topology; it does not make
+claims about other G-1 acceptance artifacts.
 
 ## Audited deployment identity
 
@@ -29,7 +33,7 @@ environment values, credentials, tokens, or sensitive command arguments.
 
 | Daemon | PID file value | Supervision profile | Correlation result |
 |---|---:|---|---|
-| router | `72529` | watchdog-supervised | **PROVEN** — capital-`Python` kernel entry, Python `3.14.3`, root/config/state/generation and `bde14c5c…` correlate |
+| router | `85686` | watchdog-supervised | **PROVEN** — capital-`Python` kernel entry, Python `3.14.3`, root/config/state/generation and `bde14c5c…` correlate |
 | task-publish | `72530` | watchdog-supervised | **PROVEN** — capital-`Python` kernel entry, Python `3.14.3`, root/config/state/generation and `bde14c5c…` correlate |
 | watchdog | `72531` | self-supervised | **PROVEN** — capital-`Python` kernel entry, Python `3.14.3`, root/config/state/generation and `bde14c5c…` correlate |
 
@@ -77,8 +81,8 @@ ps -p 92686,92883,5260 -o pid=,ppid=,comm=
 # 92883 92872 /Users/huanganan/.local/bin/claude
 #  5260 92216 /Users/huanganan/.local/bin/claude
 
-ps -p 72529,72530,72531,74424 -o pid=,ppid=,comm=
-# 72529     1 <absolute Homebrew Python 3.14 executable>
+ps -p 85686,72530,72531,74424 -o pid=,ppid=,comm=
+# 85686     1 <absolute Homebrew Python 3.14 executable>
 # 72530     1 <absolute Homebrew Python 3.14 executable>
 # 72531     1 <absolute Homebrew Python 3.14 executable>
 # 74424 92216 /Users/huanganan/.hermes/hermes-agent/venv/bin/python3
@@ -86,8 +90,8 @@ ps -p 72529,72530,72531,74424 -o pid=,ppid=,comm=
 for pid in 92686 92883 5260; do lsof -a -p "$pid" -d cwd -Fn; done
 # Each n-record: <production-checkout>
 
-for pid in 72529 72530 72531 74424; do lsof -a -p "$pid" -d cwd -Fn; done
-# 72529/72530/72531 n-record: <production-checkout>
+for pid in 85686 72530 72531 74424; do lsof -a -p "$pid" -d cwd -Fn; done
+# 85686/72530/72531 n-record: <production-checkout>
 # 74424 n-record: /Volumes/Halobster/Obsidian Edu (recorded duty cwd)
 
 git -C "<production-checkout>" rev-parse --show-toplevel HEAD
@@ -108,14 +112,51 @@ the distribution's `hermes` console entrypoint; the argv path
 `/Users/huanganan/.local/bin/hermes` resolves to that exact
 `scripts/hermes`, rather than merely sharing its basename.
 
-## Blocking findings
+## Reconciliation and fresh result
 
-1. `orphan_agent`: PID `98906`, a strict Python/Hermes wrapper with EduFlow
-   scope evidence, is not associated with a configured tmux pane. Its exact
-   argv and environment remain redacted.
+The production reconciliation used graceful termination for the confirmed
+orphan while preserving the configured Hermes pane:
 
-The earlier transient legacy PID `78495` is no longer present in the
-`12:36:21+08:00` audit and therefore is not carried forward as a live finding.
+```bash
+kill -TERM 98906
+# orphan 98906: present -> absent
+# configured Hermes: 74424 -> 74424 (preserved)
+# router: 72529 -> 85686
+# task-publish: 72530 -> 72530
+# watchdog: 72531 -> 72531
+
+python3 scripts/audit_production_topology.py --json \
+  --checkout "<production-checkout>" \
+  --config "<production-checkout>/eduflow.toml" \
+  --state-dir "<production-checkout>/.eduflow-team-state"
+# generated_at: 2026-07-12T12:52:52+08:00
+# ok: true
+# errors: []
+# suspect_processes: []
+# exit: 0
+```
+
+The earlier transient legacy PID `78495` and orphan PID `98906` are absent from
+the fresh process scan. No topology blocking finding remains.
+
+### All configured agent correlations
+
+| Agent | Actual CLI PID | Configured pane | Runtime proof |
+|---|---:|---|---|
+| Hermes | `74424` | `EduFlowTeam:Hermes.0` | Hermes Agent `0.16.0` / Python `3.11.15` |
+| Luke_recorder | `92362` | `EduFlowTeam:Luke_recorder.0` | Claude Code `2.1.207` |
+| Monica | `92460` | `EduFlowTeam:Monica.0` | Claude Code `2.1.207` |
+| Sophon | `32292` | `EduFlowTeam:Sophon.0` | Claude Code `2.1.207` |
+| manager | `92686` | `EduFlowTeam:manager.0` | Claude Code `2.1.207` |
+| worker_builder | `92774` | `EduFlowTeam:worker_builder.0` | Claude Code `2.1.207` |
+| worker_course | `92883` | `EduFlowTeam:worker_course.0` | Claude Code `2.1.207` |
+| worker_review | `5260` | `EduFlowTeam:worker_review.0` | Claude Code `2.1.207` |
+| worker_school | `93092` | `EduFlowTeam:worker_school.0` | Claude Code `2.1.207` |
+| worker_syllabus | `93695` | `EduFlowTeam:worker_syllabus.0` | Claude Code `2.1.207` |
+| worker_teacher | `94169` | `EduFlowTeam:worker_teacher.0` | Claude Code `2.1.207` |
+
+Fresh counts: `pane_count=11`, `agent_count=11`; every configured pane has one
+strict actual CLI correlation and no extra scoped agent remains.
 
 The global scan may also observe unrelated standalone CLI processes, but they
 do not become findings unless they have
@@ -139,7 +180,6 @@ python3 scripts/audit_production_topology.py \
   --state-dir "/Volumes/Halobster/Obsidian Edu/留学公司知识库/11-Eduflow Team 多智能体项目/EduFlow-Team-orch/.eduflow-team-state"
 ```
 
-Expected current result: JSON `ok=false`, exit code `1`. Daemon and configured
-Hermes reconciliation now pass; the globally detected unassociated Hermes
-process keeps G-1 blocked. Re-run after it is owned or removed;
-do not manually change this verdict without preserving new JSON evidence.
+Expected current Task 2 result: JSON `ok=true`, exit code `0`, eleven correlated
+configured agents, and no suspects/errors. A future runtime change must be
+re-audited; this Task 2 result must not be presented as the whole G-1 verdict.

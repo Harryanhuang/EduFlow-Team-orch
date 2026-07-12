@@ -299,3 +299,26 @@ HERMES DISTRIBUTION LIVE JSON AUDIT
 Observed at: 2026-07-12T12:45:08+08:00
 Observed: configured Hermes PID 74424 proves actual venv Python 3.11.15, argv hermes resolving to the same environment scripts path, console entrypoint presence, hermes-agent 0.16.0, and EDUFLOW_ROOT. Scoped orphan Hermes PID 98906 remains the only blocking finding.
 Exit code: 1 (expected fail-closed result; G-1 remains BLOCKED on orphan PID 98906)
+
+PRODUCTION RECONCILIATION
+Command: kill -TERM 98906
+Observed: scoped orphan Hermes PID 98906 present -> absent; configured Hermes PID 74424 -> 74424 preserved. Router PID 72529 -> 85686; task-publish PID 72530 and watchdog PID 72531 unchanged.
+
+FRESH FORCED PRODUCTION JSON AUDIT
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 scripts/audit_production_topology.py --json --checkout <production-checkout> --config <production-config> --state-dir <production-state>
+Observed at: 2026-07-12T12:52:52+08:00
+Observed: ok=true; errors=[]; suspect_processes=[]; router=85686, task-publish=72530, watchdog=72531; configured Hermes=74424; pane_count=11; agent_count=11; all eleven configured panes map to strict actual CLI processes.
+Exit code: 0
+Scope note: this is Task 2 PASS evidence only; it is not the complete G-1 verdict.
+
+FRESH FOCUSED VERIFICATION
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_audit_production_topology.py -q
+Observed: 71 passed
+Exit code: 0
+
+UNCHANGED RELATED REGRESSION REFERENCE
+The immediately preceding code commit recorded 223 passed across focused plus health/runtime/tmux/watchdog tests. This reconciliation changes only the topology document and this evidence ledger; no script or test code changed.
+
+FRESH DOCUMENT DIFF CHECK
+Command: git diff --check
+Exit code: 0
