@@ -43,6 +43,9 @@ docs/plans/2026-07-12-eduflow-upgrade-acceptance-standard.md
 docs/plans/2026-07-12-g-minus-1-production-governance-implementation-plan.md
 docs/plans/PLAN_STATUS_INDEX.md
 scripts/audit_production_topology.py
+scripts/feishu_bot_creator/.gitignore
+scripts/feishu_bot_creator/package-lock.json
+scripts/feishu_bot_creator/package.json
 src/eduflow/cli.py
 src/eduflow/commands/human_takeover.py
 src/eduflow/commands/runtime_switch.py

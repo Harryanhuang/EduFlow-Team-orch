@@ -3,27 +3,54 @@
 Submission target: `2296dc08c14eae9de34accdf43d4a11c6b8ba68f`
 Historical implementation revision: `cc95c5a488a8cd699dff515eadf431277669ffc6`
 Security-ledger revision: `2296dc08c14eae9de34accdf43d4a11c6b8ba68f`
-Captured: 2026-07-12T17:59:46+08:00 (UTC 2026-07-12T09:59:46Z; Task 7 evidence refresh)
+Historical capture: 2026-07-12T17:59:46+08:00 (UTC 2026-07-12T09:59:46Z; Task 7 evidence refresh)
+Current refresh: 2026-07-12T20:38:36+08:00 (UTC 2026-07-12T12:38:36Z)
 
 Freshness note: the configured-control clarification at the submission target
-does not claim scanner execution. Required executable scanner and Node-policy
-checkpoints remain absent, so the result remains FAIL.
+does not claim scanner execution. The resumed local checkpoint created and
+validated the Node lockfile, exercised an offline cached audit, and exposed the
+actual Ruff baseline. The offline audit advisory snapshot provenance and
+freshness are unknown, and its `registry.npmmirror.com` source is not yet
+security-owner approved. Required type-checker, secret-scanner, `pip-audit`,
+Ruff-clean, registry-approval, and fresh-advisory evidence remain incomplete,
+so the result remains FAIL.
 
-## Completed checks
+## Current resumed-execution checks
+
+| Check | Command / method | Exit | Result |
+|---|---|---:|---|
+| Ruff full repository | `uvx --offline ruff==0.15.10 check src tests scripts --statistics` | 1 | FAIL — `Found 486 errors`; 254 F401, 71 F841, 41 F541, 34 E701, 26 E741, 15 E402, 15 E731, 12 E401, 8 E702, 7 F811, 3 F821 |
+| Node lock generation | `npm install --package-lock-only --ignore-scripts --offline --registry=https://registry.npmmirror.com` | 0 | PASS — exact `playwright==1.59.1` dependency locked without running `postinstall` |
+| Node audit (offline cache view) | `npm audit --omit=dev --audit-level=high --offline --registry=https://registry.npmmirror.com --json` | 0 | OBSERVED — local cache returned 0 vulnerabilities across 3 production dependencies (plus 1 optional entry); current advisory coverage is not proven |
+| Lockfile contract | focused trackable/complete lockfile test plus exact-pin test | 0 | PASS — candidate lockfile is present and not ignored; lockfileVersion 3+, root dependencies match, and every transitive entry has exact version, HTTPS resolved URL, and SHA-512 integrity |
+| Disposable clean install | copy manifest/lock into a private temporary directory; run `npm ci --ignore-scripts --offline --registry=https://registry.npmmirror.com` from that directory | 0 | PASS — added 3 packages; installed Playwright 1.59.1; no lifecycle scripts executed |
+
+The first offline lock attempt with floating `^1.59.1` failed `ETARGET` because
+it resolved to uncached `playwright-core@1.60.0`. TDD then required exact
+production pins; the manifest was fixed to `1.59.1`, matching the available
+cached package metadata, before the successful lock and audit commands.
+
+The first disposable clean-install attempt used npm `--prefix` and failed
+`EUSAGE` because npm interpreted the random directory name as the root package.
+Running the same offline/no-scripts `npm ci` from inside the copied project
+directory reproduced the lock successfully. Neither run touched production.
+
+## Historical Task 7 checks
 
 | Check | Command / method | Exit | Result |
 |---|---|---:|---|
 | High-confidence tracked-secret pattern scan | `git grep -Il -E` for AWS/GitHub/Slack/OpenAI token signatures, reporting filenames only | 0 wrapper / grep 1 | PASS — 0 matching tracked files; this is a limited fallback, not a replacement for a secret scanner |
 | Python dependency consistency | `python3 -m pip check` | 0 | PASS — no broken requirements |
-| Node audit | `npm audit --omit=dev --audit-level=high` in `scripts/feishu_bot_creator` | 1 | FAIL — `ENOLOCK`; package has no lockfile |
+| Node audit | `npm audit --omit=dev --audit-level=high` in `scripts/feishu_bot_creator` | 1 | HISTORICAL FAIL — `ENOLOCK`; superseded by the current candidate lockfile and explicit offline audit above |
 
 ## Mandatory evidence gaps
 
-`ruff`, `mypy`, `pyright`, `gitleaks`, `trufflehog`, and `pip-audit` were not
-installed, and no configured type-checker scope exists. These are mandatory
-security/static checks under the acceptance contract; they are **not**
-`not_applicable`. The limited tracked-file pattern scan above cannot certify
-the missing secret-scan requirement.
+Ruff is now reproducibly executable from the local offline `uv` cache, but its
+486 findings remain open. `mypy`, `pyright`, `gitleaks`, `trufflehog`, and
+`pip-audit` are not available from PATH or the checked offline Python cache,
+and no approved type-checker scope exists. These are mandatory checks under the
+acceptance contract; they are **not** `not_applicable`. The limited tracked-file
+pattern scan above cannot certify the missing secret-scan requirement.
 
 The repository declares a TruffleHog v3.88.0 hook in
 `.pre-commit-config.yaml`, but this machine has neither the `pre-commit`
@@ -31,6 +58,8 @@ launcher nor a TruffleHog executable/module available. A declared but
 non-runnable hook is evidence of intended control, not evidence of a completed
 secret scan.
 
-Result: FAIL — security/supply-chain gate evidence is incomplete. No dependency
-was installed or repository lockfile generated solely to make this evidence
-appear green.
+Result: FAIL — the Node lockfile sub-check is closed at the candidate-artifact
+level, and offline install/audit commands are reproducible. The offline audit
+freshness is not proven; mirror approval is absent; Ruff is red; and the
+type-checker, secret-scanner, and `pip-audit` evidence is still absent. No
+missing or stale check is represented as current success.

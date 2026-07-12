@@ -61,6 +61,66 @@ directory, and left no matching or prunable registry entry.
 Result: PASS — cleanup preserves the original exit status and is limited to the
 canonical private directory and its exact registered child worktree.
 
+Resumed tooling and Node supply-chain TDD — 2026-07-12T12:38:36Z
+
+Ruff command: `uvx --offline ruff==0.15.10 check src tests scripts --statistics`
+Ruff observed: exit code 1; 486 findings. This is real executable failure
+evidence, not a scanner-availability failure and not a PASS.
+
+LOCKFILE RED command: focused
+`test_feishu_bot_creator_lockfile_is_trackable_and_complete`
+LOCKFILE RED observed: 1 failed; `package-lock.json` was absent.
+
+PIN RED command: focused
+`test_feishu_bot_creator_production_dependencies_are_exactly_pinned`
+PIN RED observed: 1 failed; the manifest used floating `^1.59.1`.
+
+First offline lock command:
+`npm install --package-lock-only --ignore-scripts --offline --registry=https://registry.npmmirror.com`
+Observed: exit code 1, `ETARGET`; the floating range selected uncached
+`playwright-core@1.60.0`. No lockfile was accepted from this attempt.
+
+GREEN change: pin `playwright` exactly to `1.59.1`, stop ignoring the lockfile,
+and regenerate with the same offline/no-scripts command.
+GREEN observed: exit code 0; lockfile generated without `postinstall`.
+
+Audit command:
+`npm audit --omit=dev --audit-level=high --offline --registry=https://registry.npmmirror.com --json`
+Audit observed: exit code 0; the available local cache returned 0
+info/low/moderate/high/critical findings. Advisory snapshot provenance and
+freshness were not available, so this is not a current-online coverage claim.
+
+Test-edit correction: the first combined focused run exposed a misplaced
+rollback assertion as `NameError: script is not defined` (1 passed, 1 failed).
+The assertion was restored to its original rollback test before GREEN.
+
+Review-ledger freshness RED: the security contract rejected the supporting
+review's stale Node `ENOLOCK` blocker (1 failed). The review remains supporting
+and `FAIL`, but now records the lockfile result and remaining Ruff/tooling
+failures.
+
+Quality-review RED: 1 of 2 focused checks failed because the evidence called an
+uncommitted candidate "tracked" and treated the offline audit as fresh/current.
+The contract now requires trackable candidate semantics, exact version/HTTPS
+resolved/SHA-512 integrity for every transitive lock entry, and explicit audit
+freshness limitations.
+
+Disposable clean-install attempt 1 used `npm ci --prefix <random-dir>` and
+failed `EUSAGE` because npm interpreted the random directory name as the root
+package. The directory was removed and no result was accepted.
+
+Disposable clean-install GREEN copied only `package.json` and
+`package-lock.json` into a new private directory, changed into that directory,
+then ran `npm ci --ignore-scripts --offline
+--registry=https://registry.npmmirror.com`. Exit code 0; 3 packages added;
+Playwright 1.59.1 verified; temporary directory removed. The mirror remains an
+unapproved provenance/freshness risk rather than a trusted-source claim.
+
+Final focused command:
+`/opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_g_minus_1_acceptance_package.py -q`
+Final focused observed: 16 passed; exit code 0.
+Static command: `git diff --check`; exit code 0.
+
 G-1 Task 2 — production topology audit TDD evidence
 
 RED

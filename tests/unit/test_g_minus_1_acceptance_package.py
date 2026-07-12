@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import re
 import subprocess
 from collections import Counter
@@ -249,6 +250,69 @@ def test_rollback_procedure_uses_private_tempdir_and_status_preserving_cleanup()
         'rm -rf -- "$TMP_DIR"'
     )
     assert not re.search(r"(?m)^(?:WT|PATCH)=/", script)
+
+
+def test_feishu_bot_creator_lockfile_is_trackable_and_complete() -> None:
+    package_dir = ROOT / "scripts" / "feishu_bot_creator"
+    manifest = json.loads((package_dir / "package.json").read_text(encoding="utf-8"))
+    lock_path = package_dir / "package-lock.json"
+
+    assert lock_path.is_file(), "Node package exists but its lockfile is missing"
+    ignored = subprocess.run(
+        ["git", "check-ignore", "--quiet", str(lock_path.relative_to(ROOT))],
+        cwd=ROOT,
+        check=False,
+    )
+    assert ignored.returncode == 1, "package-lock.json must be eligible for tracking"
+    candidate_paths = subprocess.run(
+        ["git", "ls-files", "--cached", "--others", "--exclude-standard"],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+        text=True,
+    ).stdout.splitlines()
+    assert str(lock_path.relative_to(ROOT)) in candidate_paths
+
+    lock = json.loads(lock_path.read_text(encoding="utf-8"))
+    assert lock["lockfileVersion"] >= 3
+    assert lock["packages"][""]["dependencies"] == manifest["dependencies"]
+    for name, entry in lock["packages"].items():
+        if not name:
+            continue
+        assert re.fullmatch(r"\d+\.\d+\.\d+", entry["version"])
+        assert entry["resolved"].startswith("https://")
+        assert entry["integrity"].startswith("sha512-")
+
+
+def test_feishu_bot_creator_production_dependencies_are_exactly_pinned() -> None:
+    package_dir = ROOT / "scripts" / "feishu_bot_creator"
+    manifest = json.loads((package_dir / "package.json").read_text(encoding="utf-8"))
+
+    assert manifest["dependencies"]
+    assert all(
+        re.fullmatch(r"\d+\.\d+\.\d+", version)
+        for version in manifest["dependencies"].values()
+    ), "production dependencies must not float across clean installs"
+
+
+def test_security_ledger_records_current_node_and_ruff_results() -> None:
+    security = _read("security-results.txt")
+    risks = _read("known-risks.md")
+    summary = _read("summary.md")
+    review = _read("review-verdict.md")
+    combined = "\n".join((security, risks, summary, review))
+    security_normalized = " ".join(security.split())
+
+    assert "ruff==0.15.10 check src tests scripts --statistics" in security
+    assert "Found 486 errors" in security
+    assert "npm audit --omit=dev --audit-level=high --offline" in security
+    assert "0 vulnerabilities" in security
+    assert "Node lockfile sub-check is closed" in review
+    assert "offline audit freshness is not proven" in review
+    assert "advisory snapshot provenance and freshness are unknown" in security_normalized
+    assert "Node audit fails because no approved lockfile exists" not in combined
+    assert "Node audit has no approved lockfile" not in combined
+    assert "genuinely closed" not in combined
 
 
 def test_results_record_specification_correction_red_and_green() -> None:

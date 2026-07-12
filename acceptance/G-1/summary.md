@@ -29,7 +29,7 @@ exist.
 | AC-GLOBAL-01 workspace protection | PASS | isolated scoped worktree and baseline inventory |
 | AC-GLOBAL-02 regression tests | PASS | recorded 3161-test submission run, compileall, pip check, and diff check |
 | AC-GLOBAL-03 behavior tests | PASS | RED/GREEN and adjacent negative-path records |
-| AC-GLOBAL-04 static and supply chain | FAIL | required scanners unavailable and Node audit has no approved lockfile |
+| AC-GLOBAL-04 static and supply chain | FAIL | Node lock and offline install pass, but mirror/advisory freshness is unapproved; Ruff has 486 findings and required type/secret/dependency scanners remain unavailable |
 | AC-GLOBAL-05 unresolved risks | FAIL | two High and one Medium open Gate risk remain |
 | AC-GLOBAL-06 rollback | PASS | exact reverse-patch tree proof and forward recovery boundaries |
 | AC-GLOBAL-07 observable state | PASS | CLI JSON and append-only audit evidence |

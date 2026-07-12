@@ -61,10 +61,13 @@ event or authorize a manager CLOSEOUT.
    approve an actor.  Required owner authorization must be recorded by the
    authorized owner, not manufactured in this acceptance package.
 3. **Medium — security/supply-chain evidence remains incomplete.**
-   `security-results.txt` records unavailable Ruff, Pyright/mypy, secret
-   scanner, and `pip-audit`, and an `npm audit` `ENOLOCK` result.  They are not
-   `not_applicable`; AC-GLOBAL-04 cannot pass until the authorized security
-   checkpoint supplies the scanners and handles the Node lockfile.
+   The Node lockfile sub-check is closed at the candidate-artifact level with
+   an exact Playwright pin, complete integrity metadata, and a disposable
+   offline/no-scripts clean install. The local offline audit cache returned
+   zero findings, but offline audit freshness is not proven and the configured
+   mirror source is not owner-approved. Ruff reports 486 findings; Pyright/mypy,
+   the required secret scanner, and `pip-audit` remain unavailable.
+   AC-GLOBAL-04 therefore remains failed rather than `not_applicable`.
 4. **Process gate — formal acceptance ownership is incomplete.**  The required
    `worker_review` REVIEW is still pending.  Even a future PASS review cannot
    substitute for the real appointment, owner evidence, or security evidence;
@@ -82,7 +85,7 @@ pending.  Manager CLOSEOUT: prohibited.**
 
 Next actions are intentionally owner-gated: provision a real structured
 `runtime_operator`, record durable owner approval evidence, complete the
-approved security-scanner and Node-lockfile checkpoint, refresh the package,
+approved Ruff/type/secret/dependency scanner checkpoint, refresh the package,
 then obtain a formal independent `worker_review` REVIEW.  Do not create a
 placeholder appointment, approval, scanner result, or CLOSEOUT event.
 
