@@ -775,6 +775,38 @@ INDEPENDENT REVIEWS
   claim actor appointment, scanner completion, formal REVIEW/CLOSEOUT, G-1
   PASS, or authority to enter G0.
 
+Task 7 Ruff remediation R2a: undefined-name correctness (strict TDD)
+
+RED
+Commands:
+- `pytest tests/unit/test_memory_sensitive.py -k iso_timestamp -q`
+- `pytest tests/unit/test_residency.py -k return_annotations -q`
+Results: both failed. Sensitive export raised `NameError: _now_iso` after
+writing its encrypted payload but before its README; both residency loader
+annotations raised `NameError: ResidencyPolicy` under `typing.get_type_hints`.
+
+GREEN FOCUSED + ADJACENT
+Commands/results:
+- the same two focused commands -> 1 passed each
+- `pytest tests/unit/test_memory_sensitive.py tests/unit/test_residency.py -q` -> 41 passed
+- `uvx --offline ruff==0.15.10 check src --select F821 --output-format=full` -> passed, zero findings
+- `python3 -m py_compile src/eduflow/commands/memory_cli.py src/eduflow/runtime/config.py` -> passed
+- `pytest tests/unit/test_g_minus_1_acceptance_package.py -q` -> 16 passed after inventory refresh
+- full Ruff statistics -> expected gate failure, reduced from 353 to 350; F821 from 3 to 0
+- `git diff --check` -> passed
+
+The timestamp is now generated directly in UTC at the write site, retains its
+`+00:00` offset at second precision, and is checked under a fixed clock. The pure
+`ResidencyPolicy` type is imported at module scope so annotations remain valid
+for runtime introspection; no ignore or postponed unresolved name was added.
+
+INDEPENDENT REVIEWS
+- Specification review: PASS; confirmed all three F821 findings have behavioral
+  coverage, inventory and ledgers match, and the batch stays within Task 7.
+- Quality review: initial FAIL because the first timestamp assertion discarded
+  and did not test the UTC offset. A fixed-clock RED test was added, production
+  output now retains `+00:00`, and quality re-review PASS.
+
 Task 7 acceptance-package TDD
 
 RED

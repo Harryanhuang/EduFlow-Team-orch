@@ -1,9 +1,13 @@
 """Tests for sensitive data encryption and session management."""
 from __future__ import annotations
 
+from datetime import datetime, timezone
+
 import pytest
 
+from eduflow.commands import memory_cli
 from eduflow.memory import db, sensitive
+from eduflow.memory import obsidian_export
 
 
 @pytest.fixture(autouse=True)
@@ -217,3 +221,28 @@ def test_password_complexity():
 def test_questions_count():
     with pytest.raises(ValueError, match="At least 3"):
         sensitive.setup_password("longpassword", [{"question": "q", "answer": "a"}])
+
+
+def test_sensitive_export_readme_records_an_iso_timestamp(tmp_path, monkeypatch):
+    class FixedDateTime(datetime):
+        @classmethod
+        def now(cls, tz=None):
+            assert tz is timezone.utc
+            return cls(2026, 7, 12, 13, 10, 35, tzinfo=timezone.utc)
+
+    export_root = tmp_path / "obsidian"
+    export_root.mkdir()
+    monkeypatch.setattr(sensitive, "is_unlocked", lambda: True)
+    monkeypatch.setattr(
+        sensitive,
+        "export_sensitive_json",
+        lambda: [{"memory_id": "SM-1", "content": "encrypted payload"}],
+    )
+    monkeypatch.setattr(sensitive, "_derived_key", b"session-key")
+    monkeypatch.setattr(obsidian_export, "export_root", lambda: export_root)
+    monkeypatch.setattr(memory_cli, "datetime", FixedDateTime)
+
+    assert memory_cli._cmd_sensitive_export([]) == 0
+    readme = (export_root / "sensitive" / "README.md").read_text(encoding="utf-8")
+    assert "导出时间: 2026-07-12T13:10:35+00:00" in readme
+    assert "条目数: 1" in readme

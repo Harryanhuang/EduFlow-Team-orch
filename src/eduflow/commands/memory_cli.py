@@ -32,6 +32,7 @@ from __future__ import annotations
 
 import json
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 from eduflow.util import pop_flag, pop_bool_flag, usage_error
@@ -1549,7 +1550,7 @@ def _cmd_sensitive_export(argv: list[str]) -> int:
             "eduflow memory sensitive unlock\n"
             "# 然后使用 Python Fernet 解密\n"
             "```\n\n"
-            f"导出时间: {_now_iso()[:19]}\n"
+            f"导出时间: {datetime.now(timezone.utc).isoformat(timespec='seconds')}\n"
             f"条目数: {len(items)}\n",
             encoding="utf-8",
         )

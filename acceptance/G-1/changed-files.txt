@@ -49,9 +49,11 @@ scripts/feishu_bot_creator/package-lock.json
 scripts/feishu_bot_creator/package.json
 src/eduflow/cli.py
 src/eduflow/commands/human_takeover.py
+src/eduflow/commands/memory_cli.py
 src/eduflow/commands/runtime_switch.py
 src/eduflow/commands/watchdog.py
 src/eduflow/memory/__init__.py
+src/eduflow/runtime/config.py
 src/eduflow/runtime/failover.py
 src/eduflow/runtime/human_takeover.py
 src/eduflow/runtime/verify.py
@@ -62,8 +64,10 @@ tests/unit/test_commands_watchdog.py
 tests/unit/test_g_minus_1_acceptance_package.py
 tests/unit/test_g_minus_1_governance_docs.py
 tests/unit/test_human_takeover.py
+tests/unit/test_memory_sensitive.py
 tests/unit/test_memory_shim_exports.py
 tests/unit/test_plan_status_index.py
+tests/unit/test_residency.py
 tests/unit/test_runtime_failover.py
 tests/unit/test_runtime_verify.py
 tests/unit/test_state_config_inventory.py

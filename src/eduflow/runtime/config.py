@@ -30,6 +30,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
+from eduflow.runtime.residency import ResidencyPolicy
 from eduflow.util import env_path, env_str, read_json, write_json
 
 

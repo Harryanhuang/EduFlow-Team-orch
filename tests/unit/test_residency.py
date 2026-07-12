@@ -11,6 +11,8 @@ the mode-resolution precedence:
 """
 from __future__ import annotations
 
+import typing
+
 import pytest
 
 from helpers import isolated_env, run_cli
@@ -19,6 +21,11 @@ from eduflow.runtime.residency import ResidencyMode, ResidencyPolicy
 
 
 # ── ResidencyPolicy dataclass ─────────────────────────────────
+
+
+def test_residency_loader_return_annotations_resolve_at_runtime():
+    assert typing.get_type_hints(config._load_residency_default)["return"] is ResidencyPolicy
+    assert typing.get_type_hints(config.load_residency_policy)["return"] is ResidencyPolicy
 
 
 def test_policy_accepts_valid_modes():
