@@ -54,7 +54,7 @@ Fallback/source facts, distinct from the selected rows above:
 - Claude Code login fallback is `$STATE/agent-home/<agent>/.claude/.credentials.json`, materialized from macOS Keychain service `Claude Code-credentials`; no such per-agent file was present, so its current mode is absent.
 - Codex fallback uses the `codex_primary` env_profile when configured; the operator login source `~/.codex/auth.json` exists at 0600. No live selected agent above was using Codex at probe time.
 - Kimi Code's adapter has no auth_slots and uses the operator's shared home. `~/.kimi/credentials/kimi-code.json` was absent at probe time; Kimi CLI is a configured manager fallback, not the selected manager runtime.
-- Hermes is selected through `hermes_minimax_m3_primary` and `$STATE/.env` at 0600; its fallbacks remain Hermes CLI env_profiles, never Claude/Codex/Kimi CLI.
+- Hermes is selected through `hermes_minimax_m3_primary` and `$ROOT/.env` at 0600; its fallbacks remain Hermes CLI env_profiles, never Claude/Codex/Kimi CLI.
 - Lark is not an agent runtime. The selected host path is lark-cli profile `eduflow-team` with `~/.lark-cli/config.json` at 0600 and macOS Keychain service `lark-cli-credentials`; container fallback is app env plus the short-lived `$STATE/.tenant_token.json` cache.
 
 ## Production-source proof and safety checks

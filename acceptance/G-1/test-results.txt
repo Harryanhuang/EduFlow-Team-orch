@@ -419,3 +419,23 @@ GREEN CLEAN ROOT: `env -i HOME=/tmp/eduflow-inventory-clean-home PATH=/opt/homeb
 GREEN EXPLICIT LIVE: `python3 tests/unit/test_state_config_inventory.py --live-root /Volumes/Halobster/Codex相关/EduFlow-Team-orch` -> exit 0. It correlated 11/11 persisted `current_runtime_status` runtimes with explicit `resolved_agent_config(..., runtime_name=...)`, proved selected `$ROOT/.env` references/mode without values, and validated active/legacy DB modes, schema fingerprint/key metadata, editable flow-memory source HEAD/dirty/hash, and eight runtime file modes.
 REGRESSION: memory/path/auth suite -> 680 tests collected, exit 0, 100% passed.
 HYGIENE: final `git diff --check` -> exit 0; scoped three-file secret-value scan -> 0 hits. Explicit probe emitted reference variable names and metadata only, never environment values or memory rows.
+TASK 4 FINAL CREDENTIAL-SOURCE RED
+Command: python3 -m pytest tests/unit/test_state_config_inventory.py::test_hermes_selected_env_source_is_root_not_state -q
+Observed: 1 failed because the Hermes fallback note contradicted live runtime evidence by naming `$STATE/.env` instead of wrapper-selected `$ROOT/.env`.
+Exit code: 1
+
+TASK 4 FINAL CREDENTIAL-SOURCE GREEN
+Command: python3 -m pytest tests/unit/test_state_config_inventory.py -q
+Observed: 3 passed using portable fixture-based unit tests.
+Exit code: 0
+
+Command: env -i HOME=/tmp/eduflow-inventory-clean-home PATH=/opt/homebrew/bin:/usr/bin:/bin PYTHONPATH=src python3 -m pytest tests/unit/test_state_config_inventory.py -q
+Observed: 3 passed without production paths or host credentials.
+Exit code: 0
+
+Command: python3 tests/unit/test_state_config_inventory.py --live-root /Volumes/Halobster/Codex相关/EduFlow-Team-orch
+Observed: exit 0; backend flow_memory.storage.sql.SqliteBackend; 11 live credentials correlated; schema fingerprint prefix 66293588bd5f0525. Output contained metadata/reference names only, no values or memory rows.
+Exit code: 0
+
+Command: git diff --check
+Exit code: 0

@@ -160,6 +160,17 @@ def test_inventory_contract_with_fixture_probe(tmp_path: Path):
     _validate_document("\n".join(out), probe)
 
 
+def test_hermes_selected_env_source_is_root_not_state() -> None:
+    text = DOC.read_text(encoding="utf-8")
+    hermes_lines = [
+        line for line in text.splitlines()
+        if line.startswith("- Hermes is selected through")
+    ]
+    assert len(hermes_lines) == 1
+    assert "`$ROOT/.env`" in hermes_lines[0]
+    assert "`$STATE/.env`" not in hermes_lines[0]
+
+
 def test_live_probe_wrapper_parsing_uses_mocked_subprocess(monkeypatch, capsys, tmp_path: Path):
     payload = _fixture_probe()
     monkeypatch.setattr(subprocess, "run", lambda *args, **kwargs: SimpleNamespace(
@@ -239,7 +250,7 @@ def _collect_live(root: Path) -> dict:
             match.group(1) for value in profile.values() if isinstance(value, str)
             for match in [re.fullmatch(r"\$\{([A-Z0-9_]+)\}", value)] if match
         })
-        if not references or not all(os.environ.get(name) for name in references):
+        if not references or not all(name in os.environ for name in references):
             raise RuntimeError(f"{agent}: selected env_profile reference source unresolved")
         credentials.append({
             "agent": agent, "runtime": runtime_name, "env_profile": profile_name,
