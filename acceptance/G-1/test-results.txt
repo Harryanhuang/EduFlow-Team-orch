@@ -858,6 +858,38 @@ INDEPENDENT REVIEWS
 - Quality review: PASS; confirmed module import timing and subprocess exception,
   timeout, injection, and closure semantics remain unchanged.
 
+Task 7 Ruff remediation R2d: unused production bindings and P0 detection (strict TDD)
+
+BEHAVIOR BASELINE
+Command: `pytest tests/unit/test_memory_phase1a.py tests/unit/test_memory_v3_p3.py tests/unit/test_employee_read_model.py tests/unit/test_task_event_scanner.py tests/unit/test_task_publish_gate.py -q`
+Result before change: 218 passed.
+
+RED
+Command: `pytest tests/unit/test_task_publish_gate.py -k generic_task_fields -q`
+Result: 3 failed. P0 markers in the already-read `verdict`, `review_reason`, and
+`status` fields did not bypass dedup, despite the detector loading those values.
+
+GREEN + ADJACENT
+Commands/results:
+- P0 focused tests -> 4 passed (three generic fields plus existing anomaly path)
+- the five-suite behavior baseline after change -> 221 passed
+- `uvx --offline ruff==0.15.10 check src --select F841` -> passed, production F841 zero
+- py_compile for all five changed production modules -> passed
+- full Ruff statistics -> expected gate failure, reduced from 340 to 328 findings
+- `git diff --check` -> passed
+
+The anomaly detector now applies the existing P0 taxonomy to generic verdict,
+review-reason, and status fields. Nine other assignments were pure dead local
+bindings: their source expressions were side-effect-free task/dict reads or
+already represented in returned structures. No unsafe fix or ignore was used.
+
+INDEPENDENT REVIEWS
+- Specification review: PASS; confirmed the exact existing P0 taxonomy and
+  never-dedup contract, all dead-binding classifications, evidence, and scope.
+- Quality review: PASS; confirmed exact membership is not over-broad, changes
+  only dedup eligibility (not publish authority/content), and removed bindings
+  contain no calls or state writes.
+
 Task 7 acceptance-package TDD
 
 RED

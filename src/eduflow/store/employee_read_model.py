@@ -277,7 +277,6 @@ def classify_display_verdict(snapshot: dict) -> str:
     status = str(snapshot.get("declared_status") or "")
     blocker = str(snapshot.get("blocker") or "")
     task_status = str(snapshot.get("current_task_status") or "")
-    residency_label = str(snapshot.get("residency_label") or "")
     unread_high = int(snapshot.get("unread_high_priority_count") or 0)
     heartbeat_age_ms = int(snapshot.get("heartbeat_age_ms") or 0)
     heartbeat_ms = int(snapshot.get("heartbeat_ms") or 0)

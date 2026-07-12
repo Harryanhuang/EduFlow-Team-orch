@@ -1,6 +1,8 @@
 """Tests for business-level task publish decisions."""
 from __future__ import annotations
 
+import pytest
+
 from helpers import isolated_env
 from eduflow.store import task_publish_gate, tasks
 
@@ -561,6 +563,24 @@ def test_dedup_never_suppresses_P0_anomaly_events():
                                        delivery_lane="manager_result")
         assert should_dedup_check(decision) is False, \
             f"P0 anomaly '{reason}' must bypass dedup check"
+
+
+@pytest.mark.parametrize(
+    ("field", "marker"),
+    [
+        ("verdict", "subject_closeout_verifier_fail"),
+        ("review_reason", "task_truth_drift"),
+        ("status", "runtime_fallback_failure"),
+    ],
+)
+def test_dedup_detects_P0_markers_in_generic_task_fields(field, marker):
+    """Generic task fields already read by the anomaly detector must carry
+    the same never-dedup P0 semantics as dedicated anomaly fields."""
+    from eduflow.store.task_publish_gate import should_dedup_check
+
+    decision = _make_test_decision(delivery_lane="manager_result")
+    event = {"after": {field: marker}}
+    assert should_dedup_check(decision, event=event) is False
 
 
 def test_dedup_cache_prunes_expired_entries():

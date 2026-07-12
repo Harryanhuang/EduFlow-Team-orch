@@ -165,11 +165,9 @@ def _normalize_text(value: str) -> str:
 
 
 def _surface_stage_state(task: dict) -> str:
-    stage = str(task.get("stage") or "")
     status = str(task.get("status") or "")
     verdict = str(task.get("verdict") or "")
     assignee = str(task.get("assignee") or "")
-    review_reason = str(task.get("review_reason") or "")
 
     if assignee == "worker_course":
         if status in {"queued", "assigned"}:
@@ -1493,7 +1491,6 @@ def _apply_close_loop(rows: list[dict], *, advance: bool) -> list[dict]:
         task_id = str(row.get("task_id") or "")
         status = _close_loop_status(task_id, state)
         current_state = str(status.get("state") or "open")
-        reason = str(row.get("reason") or "")
         manager_response_type = str(row.get("manager_response_type") or "")
         row["close_loop_state"] = current_state
         row["close_loop_reason"] = str(status.get("reason") or "")
@@ -2656,7 +2653,6 @@ def _subject_closeout_finding(task: dict) -> dict | None:
     latest_blocks, latest_block_reasons = tasks.latest_verdict_blocks_closeout(task)
     latest = task.get("latest_authoritative_verdict") or {}
     latest_scope = str(latest.get("verdict_scope") or "")
-    review_authority_ok = bool(gate.get("closeout_gate_review_approved"))
     visible_verdict = _visible_review_pass_for_task(task)
     if status == "closeout_blocked_review_not_approved" and visible_verdict:
         evidence_summary = (

@@ -55,11 +55,16 @@ src/eduflow/commands/runtime_switch.py
 src/eduflow/commands/usage.py
 src/eduflow/commands/watchdog.py
 src/eduflow/memory/__init__.py
+src/eduflow/memory/constraints.py
 src/eduflow/memory/inject.py
+src/eduflow/memory/reflect.py
 src/eduflow/runtime/config.py
 src/eduflow/runtime/failover.py
 src/eduflow/runtime/human_takeover.py
 src/eduflow/runtime/verify.py
+src/eduflow/store/employee_read_model.py
+src/eduflow/store/task_event_scanner.py
+src/eduflow/store/task_publish_gate.py
 tests/integration/test_human_takeover_circuit_breaker.py
 tests/unit/test_audit_production_topology.py
 tests/unit/test_commands_runtime_cli.py
@@ -75,6 +80,7 @@ tests/unit/test_residency.py
 tests/unit/test_runtime_failover.py
 tests/unit/test_runtime_verify.py
 tests/unit/test_state_config_inventory.py
+tests/unit/test_task_publish_gate.py
 ```
 
 Result: PASS — this machine section is compared by the acceptance-package test

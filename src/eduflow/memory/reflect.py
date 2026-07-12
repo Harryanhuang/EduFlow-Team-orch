@@ -106,8 +106,6 @@ def reflection_stats(days: int = 30) -> dict:
     total = sum(row["cnt"] for row in rows)
     by_status = {row["review_status"]: row["cnt"] for row in rows}
     promoted = by_status.get("promoted", 0)
-    rejected = by_status.get("rejected", 0)
-    proposed = by_status.get("proposed", 0)
     promote_rate = promoted / total if total > 0 else 0.0
     return {
         "total": total,

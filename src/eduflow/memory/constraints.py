@@ -199,13 +199,11 @@ def query_for_agent(
     level_priority = {"L0": 0, "L1": 1, "L2": 2, "L3": 3}
 
     # Match scopes: team, lane:<agent>, workflow:<agent>, task:<task_id>
-    matched_scopes = {"team"}
     # We don't know lane mapping yet — match any lane scope
     # In practice, lane resolution would come from config; for now
     # we include all L0 team constraints + any L1/L2 that match
     for row in rows:
         scope = row["scope"]
-        level = row["constraint_level"]
         content = row["content"]
 
         scope_match = False

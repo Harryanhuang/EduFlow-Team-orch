@@ -246,6 +246,12 @@ def _is_P0_anomaly(event: dict, after: dict | None = None) -> bool:
     review_reason = str(after.get("review_reason") or "").strip()
     status = str(after.get("status") or "")
 
+    if any(
+        marker in _P0_ANOMALY_REASONS
+        for marker in (verdict, review_reason, status)
+    ):
+        return True
+
     # Direct anomaly markers on the task
     anomaly_field = str(after.get("anomaly_kind") or after.get("anomaly") or "")
     if anomaly_field in _P0_ANOMALY_REASONS:
