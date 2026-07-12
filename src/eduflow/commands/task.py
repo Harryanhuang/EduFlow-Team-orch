@@ -53,7 +53,8 @@ from eduflow.runtime import (
 from eduflow.scheduling import manager_ops as _manager_ops
 from eduflow.store import (
     employee_read_model, evolution_packet, local_facts,
-    loop_runs, operational_readiness, task_event_scanner, task_publish_gate, task_publish_render,
+    loop_runs, operational_readiness, scheduled_tasks, task_event_scanner,
+    task_publish_gate, task_publish_render,
     task_loop_contract, tasks, team_loop_account, tool_risk, subject_verifier,
 )
 from eduflow.util import (
@@ -1714,6 +1715,226 @@ def _contract_line(task_id: str) -> str:
     )
 
 
+# ── D scheduler read-only panel section ─────────────────────────────
+
+
+_DUE_SOON_WINDOW_MS = 15 * 60 * 1000  # 15 minutes
+_SCHEDULER_LAG_WARN_MS = 30 * 60 * 1000  # 30 minutes
+
+
+def _d_scheduler_panel_rows(now: int) -> dict:
+    """Gather read-only D scheduler observations for the manager panel.
+
+    Returns a dict with:
+      - counters: dict of status -> count (all zeros on empty store)
+      - awaiting: list of dicts (one per awaiting_manager occurrence)
+      - running: list of dicts (one per running occurrence)
+      - blocked: list of dicts (one per blocked occurrence)
+      - recent_failures: list of dicts (one per failed occurrence, newest first)
+      - attention_required: list of dicts (one per rule in attention_required)
+      - due_soon: list of dicts (rules with next_due_utc within 15m of now)
+      - heartbeat: dict with last_tick_at/lag_ms/error (or None when missing)
+      - scheduler_lag: str "ok" / "warn" / "missing"
+    """
+    from eduflow.scheduling import engine as _engine
+    counters = {
+        "awaiting_manager": 0,
+        "running": 0,
+        "blocked": 0,
+        "skipped": 0,
+        "failed": 0,
+        "confirmed": 0,
+    }
+    awaiting: list[dict] = []
+    running: list[dict] = []
+    blocked: list[dict] = []
+    recent_failures: list[dict] = []
+    try:
+        occurrences = scheduled_tasks.list_occurrences()
+    except Exception:
+        occurrences = []
+    for occ in occurrences:
+        status = str(occ.get("status") or "")
+        if status in counters:
+            counters[status] += 1
+        ctx = occ.get("context") or {}
+        reason = str(ctx.get("reason") or "")
+        row = {
+            "key": str(occ.get("id") or ""),
+            "rule_id": str(occ.get("rule_id") or ""),
+            "scheduled_at_utc": str(occ.get("scheduled_at_utc") or ""),
+            "reason": reason,
+            "updated_at": int(occ.get("updated_at") or 0),
+            "status": status,
+            "context": ctx,
+        }
+        if status == "awaiting_manager":
+            awaiting.append(row)
+        elif status == "running":
+            running.append(row)
+        elif status == "blocked":
+            blocked.append(row)
+        elif status == "failed":
+            row["failure_reason"] = str(occ.get("failure_reason") or reason or "")
+            recent_failures.append(row)
+        elif status == "skipped":
+            row["skipped_reason"] = str(occ.get("skipped_reason") or reason or "")
+
+    recent_failures.sort(key=lambda r: r.get("updated_at") or 0, reverse=True)
+
+    attention_required: list[dict] = []
+    due_soon: list[dict] = []
+    try:
+        rules = scheduled_tasks.list_rules()
+    except Exception:
+        rules = []
+    for rule in rules:
+        rule_id = str(rule.get("id") or "")
+        rule_status = str(rule.get("status") or "")
+        if rule_status == "attention_required":
+            attention_required.append({
+                "rule_id": rule_id,
+                "status": rule_status,
+                "target": str(rule.get("target") or ""),
+                "next_due_utc": str(rule.get("next_due_utc") or ""),
+                "reason": "capacity_full_or_unhandled_state",
+            })
+        if rule_status != "active":
+            continue
+        next_due_utc = str(rule.get("next_due_utc") or "")
+        if not next_due_utc:
+            continue
+        try:
+            due_ms = _engine._utc_to_ms(next_due_utc)
+        except Exception:
+            continue
+        delta = due_ms - now
+        if 0 <= delta <= _DUE_SOON_WINDOW_MS:
+            due_soon.append({
+                "rule_id": rule_id,
+                "target": str(rule.get("target") or ""),
+                "next_due_utc": next_due_utc,
+                "reason": f"due_in_{delta // 60000}m",
+                "next_action": f"task schedule confirm-occurrence will fire on tick",
+            })
+
+    heartbeat = None
+    scheduler_lag = "missing"
+    try:
+        hb = scheduled_tasks.get_heartbeat()
+        if int(hb.get("last_tick_at") or 0) > 0:
+            heartbeat = {
+                "last_tick_at": int(hb.get("last_tick_at") or 0),
+                "lag_ms": int(hb.get("lag_ms") or 0),
+                "error": str(hb.get("error") or ""),
+            }
+            age = now - heartbeat["last_tick_at"]
+            scheduler_lag = "warn" if age >= _SCHEDULER_LAG_WARN_MS else "ok"
+    except Exception:
+        pass
+
+    return {
+        "counters": counters,
+        "awaiting": awaiting,
+        "running": running,
+        "blocked": blocked,
+        "recent_failures": recent_failures,
+        "attention_required": attention_required,
+        "due_soon": due_soon,
+        "heartbeat": heartbeat,
+        "scheduler_lag": scheduler_lag,
+    }
+
+
+def _print_d_scheduler_panel_section(rows: dict) -> None:
+    """Render the manager-panel D Scheduler section (read-only)."""
+    print("\n== D Scheduler ==")
+    counters = rows.get("counters") or {}
+    summary_bits = " ".join(
+        f"{key}={counters.get(key, 0)}"
+        for key in ("awaiting_manager", "running", "blocked", "skipped", "failed")
+    )
+    print(summary_bits or "no scheduler state")
+    heartbeat = rows.get("heartbeat")
+    if heartbeat is None:
+        print("heartbeat=missing scheduler_lag=missing")
+    else:
+        hb_status = "ok" if not heartbeat.get("error") else "error"
+        print(
+            f"heartbeat={hb_status} scheduler_lag={rows.get('scheduler_lag', 'missing')}"
+        )
+    # awaiting manager / user (occurrence is awaiting both manager confirm
+    # and user notification per P5 cadence).
+    awaiting = rows.get("awaiting") or []
+    if awaiting:
+        for row in awaiting[:8]:
+            print(
+                f"- awaiting_manager: {row['key']} scheduled_at_utc={row['scheduled_at_utc'] or '-'} "
+                f"reason={row['reason'] or 'occurrence_due'} "
+                f"next_action=task schedule confirm-occurrence {row['key']} --as manager"
+            )
+    else:
+        print("- awaiting_manager: none")
+    running = rows.get("running") or []
+    if running:
+        for row in running[:8]:
+            print(
+                f"- running: {row['key']} scheduled_at_utc={row['scheduled_at_utc'] or '-'} "
+                f"reason=dispatched "
+                f"next_action=await_worker_report"
+            )
+    else:
+        print("- running: none")
+    blocked = rows.get("blocked") or []
+    if blocked:
+        for row in blocked[:8]:
+            print(
+                f"- blocked: {row['key']} scheduled_at_utc={row['scheduled_at_utc'] or '-'} "
+                f"reason={row['reason'] or '-'} "
+                f"next_action=task schedule skip-occurrence {row['key']} --as manager --reason clear"
+            )
+    else:
+        print("- blocked: none")
+    failures = rows.get("recent_failures") or []
+    if failures:
+        for row in failures[:8]:
+            print(
+                f"- recent_failure: {row['key']} scheduled_at_utc={row['scheduled_at_utc'] or '-'} "
+                f"reason={row.get('failure_reason') or row['reason'] or '-'} "
+                f"next_action=task schedule fail-pause {row['key']} --as manager --reason triage"
+            )
+    else:
+        print("- recent_failure: none")
+    attention = rows.get("attention_required") or []
+    if attention:
+        for row in attention[:8]:
+            print(
+                f"- attention_required: {row['rule_id']} status={row['status']} "
+                f"target={row['target'] or '-'} reason={row['reason']} "
+                f"next_action=task schedule resume {row['rule_id']} --as manager"
+            )
+    else:
+        print("- attention_required: none")
+    due_soon = rows.get("due_soon") or []
+    if due_soon:
+        for row in due_soon[:8]:
+            print(
+                f"- due_soon: {row['rule_id']} scheduled_at_utc={row['next_due_utc'] or '-'} "
+                f"target={row['target'] or '-'} reason={row['reason']} "
+                f"next_action=await_next_tick"
+            )
+    else:
+        print("- due_soon: none")
+    if rows.get("scheduler_lag") == "warn":
+        print(
+            "- scheduler_lag: stale "
+            "reason=last_tick_older_than_30m "
+            "next_action=run_scheduler_tick_or_restart_watchdog"
+        )
+    elif rows.get("scheduler_lag") == "ok":
+        print("- scheduler_lag: ok")
+
+
 def _cmd_manager_panel(rest: list[str]) -> int:
     if rest:
         return usage_error(USAGE)
@@ -2083,6 +2304,14 @@ def _cmd_manager_panel(rest: list[str]) -> int:
             if not status:
                 status = task_event_scanner.action_packet_preview_status(packet)
             _print_apply_result(status, indent="  ", label="apply_status")
+
+    # D scheduler observations (read-only). Sources state from
+    # `scheduled_tasks` / engine — never writes.
+    try:
+        d_scheduler_rows = _d_scheduler_panel_rows(now_ms())
+        _print_d_scheduler_panel_section(d_scheduler_rows)
+    except Exception as exc:  # noqa: BLE001 — panel must keep rendering
+        print(f"\n== D Scheduler ==\n  degraded ({type(exc).__name__}: {exc})")
 
     print("\n== User-Ready Updates ==")
     if not publishable:
