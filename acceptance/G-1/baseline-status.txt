@@ -3,7 +3,9 @@ Captured: 2026-07-12 (Asia/Shanghai)
 
 Source production baseline
 - checkout: /Volumes/Halobster/Codex相关/EduFlow-Team-orch
-- commit: e37c647e5fe79348bb70154e44f254af25c37df4
+- initial snapshot commit: e37c647e5fe79348bb70154e44f254af25c37df4
+- current production baseline commit: bde14c5ce94aacd99ef80f9c11b65092dcf25fc3
+- baseline advance: 11 scheduled commits were merged into the user branch after the initial snapshot and before this evidence refresh
 - user worktree state at isolation: dirty (9 paths); the original dirty worktree itself was not modified
 - seven user-owned dirty paths were not imported into this worktree:
   - eduflow.toml
@@ -13,15 +15,16 @@ Source production baseline
   - tests/unit/test_feishu_chat.py
   - tests/scenarios/2026-07-12-router-respawn-catchup.md
   - n证据:runtime
-- two plan files were copied into the isolated worktree with user authorization and committed in 0400fb90:
+- two plan files were copied into the isolated worktree with user authorization; after rebase their governing commit is ac78756a:
   - docs/plans/2026-07-12-eduflow-governed-team-operating-system-master-plan.md
   - docs/plans/2026-07-12-eduflow-upgrade-acceptance-standard.md
 
 Isolated implementation worktree
 - checkout: /Users/huanganan/.config/superpowers/worktrees/EduFlow-Team-orch/eduflow-upgrade-gates
 - branch: codex/eduflow-upgrade-gates
-- pre-Task-G-1.1 implementation HEAD: 263a1af5
-- Task 1 baseline-evidence commit: 2f023f22
+- branch position after this evidence-refresh commit: 14 commits ahead of current production baseline bde14c5c
+- rebased pre-Task-G-1.1 implementation HEAD: b3016e6e
+- rebased Task 1 evidence commits: aa8f6e01, cf775939, 15034042
 
 Runtime/config/state facts (read-only inspection)
 - Python executable: /opt/homebrew/opt/python@3.14/bin/python3.14
@@ -32,11 +35,11 @@ Runtime/config/state facts (read-only inspection)
 - capture policy: paths and versions only; no configuration, environment, credential, or stored data values are captured.
 
 Baseline validation evidence
-- pytest: 2768 passed, 5 warnings in 239.64s
-- compileall: exit 0; 5 pre-existing SyntaxWarning diagnostics
-- pip check: exit 0
-- git diff --check: exit 0
+- fresh pytest: 3028 passed in 248.30s
+- fresh `python3 -m compileall -q src`: exit 0
+- fresh `python3 -m pip check`: exit 0 (`No broken requirements found.`)
+- fresh `git diff --check`: exit 0
 
 Interpretation
 - These results establish the pre-upgrade code baseline only. They do not by themselves prove AC-G-1-01 through AC-G-1-05.
-- The seven non-plan user-owned dirty paths remain outside this isolated worktree and must not be overwritten, staged, or treated as upgrade evidence. The two authorized plan copies are governed inputs committed in 0400fb90; copying them did not modify the original dirty worktree.
+- The seven non-plan user-owned dirty paths remain outside this isolated worktree and must not be overwritten, staged, or treated as upgrade evidence. The two authorized plan copies are governed inputs whose rebased commit is ac78756a; copying and rebasing them did not modify the original dirty worktree.
