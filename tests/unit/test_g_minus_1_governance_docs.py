@@ -1,4 +1,5 @@
 from pathlib import Path
+import subprocess
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -123,7 +124,43 @@ def test_compatibility_debt_ledger_has_bounded_entries() -> None:
     for row in rows:
         assert len([cell for cell in row.strip("|").split("|")]) == 9
         assert "2026-07-12T" in row
-        assert "f2bc09d8" in row
+        assert "438fa806" in row
         assert "baseline=" in row and "evidence=" in row
         assert ("pytest " in row or "rg " in row), "removal test must be runnable"
         assert "TBD" not in row
+
+
+def test_compatibility_repository_baselines_are_reproducible_and_exclude_ledger() -> None:
+    text = _read("docs/governance/COMPATIBILITY_DEBT.md")
+    revision = "438fa806ab8112d415a4e159e03a9884e5983dbe"
+    assert str(ROOT) in text
+    assert "git diff --quiet" in text and "returned 0 at measurement time" in text
+    cases = {
+        "COMPAT-ROLE-001": (["review_course"], ["."]),
+        "COMPAT-CARDS-001": (
+            ["legacy.*card", "cards_legacy", "from eduflow.feishu.cards import", "import eduflow.feishu.cards"],
+            ["src", "tests", "docs"],
+        ),
+        "COMPAT-STATE-001": (["dual.?write"], ["src", "tests", "docs"]),
+        "COMPAT-WORKFLOW-001": (["alias", "aliases"], ["src", "tests", "docs"]),
+        "COMPAT-MEMORY-001": (
+            ["eduflow_memory", r"eduflow\.memory", "legacy.*memory", "memory import"],
+            ["src", "tests", "docs"],
+        ),
+    }
+    for compatibility_id, (patterns, roots) in cases.items():
+        command = ["rg", "-l"]
+        for pattern in patterns:
+            command.extend(["-e", pattern])
+        command.extend(roots)
+        command.extend(["--glob", "!docs/governance/COMPATIBILITY_DEBT.md"])
+        command.extend(["--glob", "!tests/unit/test_g_minus_1_governance_docs.py"])
+        result = subprocess.run(command, cwd=ROOT, text=True, capture_output=True, check=False)
+        assert result.returncode in {0, 1}, result.stderr
+        count = len([line for line in result.stdout.splitlines() if line])
+        row = next(line for line in text.splitlines() if line.startswith(f"| `{compatibility_id}` |"))
+        assert f"baseline_repo_files={count}" in row
+        assert f"measurement_revision=`{revision}`" in row
+        assert "measurement_utc=`2026-07-12T" in row
+        assert "--glob '!docs/governance/COMPATIBILITY_DEBT.md'" in row
+        assert "--glob '!tests/unit/test_g_minus_1_governance_docs.py'" in row

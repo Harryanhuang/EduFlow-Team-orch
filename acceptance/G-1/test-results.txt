@@ -541,6 +541,34 @@ FACTUAL LIMITATIONS PRESERVED
 - UNKNOWN production compatibility metrics explicitly block removal. Repository
   counts and Git-origin evidence are recorded without inventing telemetry.
 
+Task 6 compatibility-baseline reproducibility correction (strict TDD)
+Timestamp UTC: 2026-07-12T08:03:06Z
+Starting revision: 438fa806ab8112d415a4e159e03a9884e5983dbe
+
+RED
+Command: python3 -m pytest tests/unit/test_g_minus_1_governance_docs.py -q
+Result: 1 failed, 6 passed. The new executable verifier found that ledger rows
+did not encode reproducible baseline_repo_files, exact measurement revision/UTC,
+or explicit self-reference exclusions.
+
+GREEN FOCUSED / ADJACENT
+Command: python3 -m pytest tests/unit/test_g_minus_1_governance_docs.py tests/unit/test_plan_status_index.py tests/unit/test_state_config_inventory.py tests/unit/test_audit_production_topology.py --disable-warnings
+Result: 92 passed in 1.00s. The compatibility test executes all five recorded
+rg pattern/root sets, excludes both the ledger and its literal-bearing verifier,
+counts returned files, and compares each count/provenance field with its row.
+
+MEASUREMENT PROOF
+Reference worktree: /Users/huanganan/.config/superpowers/worktrees/EduFlow-Team-orch/eduflow-upgrade-gates
+Reference revision: 438fa806ab8112d415a4e159e03a9884e5983dbe
+Measurement UTC: 2026-07-12T08:00:38Z
+Measured repository-file counts: role=146; cards=8; state/source references=2;
+workflow alias inventory=49; memory inventory=79.
+Command: git diff --quiet 438fa806ab8112d415a4e159e03a9884e5983dbe -- . ':(exclude)docs/governance/COMPATIBILITY_DEBT.md' ':(exclude)tests/unit/test_g_minus_1_governance_docs.py'
+Result: exit 0. All scanned paths matched the named revision; only the two
+self-referential Task6 files were excluded.
+Command: git diff --check
+Result: passed.
+
 Task 5 spec-review correction (strict TDD)
 
 RED
