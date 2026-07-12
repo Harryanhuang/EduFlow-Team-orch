@@ -17,6 +17,7 @@ from __future__ import annotations
 import sys
 import uuid
 
+from eduflow.commands.human_takeover import is_provisioned_actor_id
 from eduflow.runtime import config, human_takeover, lifecycle, paths, tmux, tunables, verify
 from eduflow.util import (
     error_exit, maybe_print_help, pop_bool_flag, pop_flag, print_json,
@@ -34,16 +35,25 @@ def _authorized_actors() -> set[str]:
     team = tunables.load().get("team", {})
     if not isinstance(team, dict):
         return set()
-    def identities(key: str) -> list[str]:
-        value = team.get(key, [])
+    def identities(key: str) -> tuple[list[str], bool]:
+        if key not in team:
+            return [], True
+        value = team[key]
         if isinstance(value, str):
-            return [value] if value else []
+            return [value], True
         if isinstance(value, list) and all(isinstance(item, str) for item in value):
-            return [item for item in value if item]
-        return []  # malformed authorization configuration fails closed
+            return list(value), True
+        return [], False
 
-    values = [*identities("admins"), *identities("runtime_operators"),
-              *identities("runtime_operator")]
+    resolved = [
+        identities("admins"), identities("runtime_operators"),
+        identities("runtime_operator"),
+    ]
+    if any(not valid for _, valid in resolved):
+        return set()
+    values = [actor for actors, _ in resolved for actor in actors]
+    if any(not is_provisioned_actor_id(actor) for actor in values):
+        return set()
     return set(values)
 
 

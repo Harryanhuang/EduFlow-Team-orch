@@ -23,6 +23,140 @@ Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_
 Observed: 14 passed
 Exit code: 0
 
+Task 7 final regression and static verification
+
+Captured: 2026-07-12T17:59:46+08:00 (UTC 2026-07-12T09:59:46Z)
+Revision: `cc95c5a488a8cd699dff515eadf431277669ffc6` plus uncommitted Task 7 evidence/test changes
+
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest
+Observed: 3153 passed in 259.49s
+Exit code: 0
+Result: PASS — exceeds the disposable rollback baseline of 3014 tests.
+
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m compileall -q src tests scripts
+Exit code: 0
+Result: PASS
+
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pip check
+Observed: No broken requirements found.
+Exit code: 0
+Result: PASS
+
+Command: git diff --check
+Exit code: 0
+Result: PASS
+
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_g_minus_1_acceptance_package.py tests/unit/test_audit_production_topology.py tests/unit/test_plan_status_index.py tests/unit/test_state_config_inventory.py tests/unit/test_g_minus_1_governance_docs.py tests/unit/test_human_takeover.py tests/integration/test_human_takeover_circuit_breaker.py tests/unit/test_runtime_verify.py tests/unit/test_runtime_failover.py tests/unit/test_commands_watchdog.py -q
+Observed: 201 selected tests passed.
+Exit code: 0
+Result: PASS
+
+Production read-only verification (deployed checkout, not the isolated worktree)
+
+Command: `<production>/scripts/eduflowteam health --json`
+Observed: `ok=true`, `bad=0`, `warn=3`; all 11 configured runtimes reported `proved_ready`.
+Exit code: 0
+Result: PASS
+
+Command: `<production>/scripts/eduflowteam runtime list --json`
+Observed: 11 configured agents returned a selected current runtime.
+Exit code: 0
+Result: PASS
+
+Command: `<production>/scripts/eduflowteam workflow validate --strict`
+Observed: 6 active workflows valid.
+Exit code: 0
+Result: PASS
+
+Command: `scripts/audit_production_topology.py --json --checkout <production> --config <production>/eduflow.toml --state-dir <production>/.eduflow-team-state`
+Observed: first sample returned 1 for transient `legacy_entry` PID 96062; PID was absent on immediate read-only recheck. The next sample at `2026-07-12T17:58:46+08:00` returned `ok=true`, `errors=[]`, `suspect_processes=[]`.
+Exit code: 1 then 0
+Result: PASS only for the final point-in-time sample; the transient failure remains recorded for reviewer assessment.
+
+Task 8 REVIEW remediation — placeholder runtime-switch authorization
+
+RED
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_human_takeover.py::test_runtime_switch_rejects_unprovisioned_authority_config -q
+Observed: 4 failed. Placeholder-shaped, your_-prefixed, and mixed valid/empty
+runtime-switch authorization config values were returned as authorized actors.
+Exit code: 1
+
+Root cause: runtime_switch._authorized_actors() independently normalized actor
+lists and removed empty strings before any provisioned-identity check. It
+therefore diverged from the human-takeover CLI fail-closed validator.
+
+GREEN
+Change: runtime switch imports the same is_provisioned_actor_id validator as
+human takeover and preserves configured strings for validation; any malformed,
+empty, or placeholder member invalidates the complete authorization set.
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_human_takeover.py tests/unit/test_commands_runtime_cli.py tests/unit/test_runtime_failover.py tests/unit/test_runtime_verify.py tests/unit/test_commands_watchdog.py tests/integration/test_human_takeover_circuit_breaker.py -q
+Observed: 121 selected tests passed.
+Exit code: 0
+
+Result: PASS — manual runtime switch rejects unprovisioned authority config
+before audit or restart side effects.
+
+Task 8 remediation final verification
+
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest
+Observed: 3157 passed in 256.31s
+Exit code: 0
+Result: PASS
+
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m compileall -q src tests scripts
+Exit code: 0
+Result: PASS
+
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pip check
+Observed: No broken requirements found.
+Exit code: 0
+Result: PASS
+
+Command: git diff --check
+Exit code: 0
+Result: PASS
+
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_g_minus_1_acceptance_package.py -q
+Observed: 4 passed.
+Exit code: 0
+Result: PASS — evidence-package contract remains valid after remediation.
+
+Task 8 re-review remediation — malformed authority configuration
+
+RED
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_human_takeover.py::test_runtime_switch_rejects_unprovisioned_authority_config tests/unit/test_human_takeover.py::test_runtime_switch_malformed_authority_stops_before_audit_or_restart -q
+Observed: 4 failed. A malformed authority field was converted to an empty actor
+list, so a valid actor in a separate field reached manual switch audit/restart.
+Exit code: 1
+
+GREEN
+Change: every configured authority field now carries an explicit validity
+result. A missing field is valid-and-empty; an explicitly present malformed
+field invalidates the entire runtime-switch authorization set before actor,
+prepared-audit, or restart handling.
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_human_takeover.py::test_runtime_switch_rejects_unprovisioned_authority_config tests/unit/test_human_takeover.py::test_runtime_switch_malformed_authority_stops_before_audit_or_restart tests/unit/test_commands_runtime_cli.py -q
+Observed: 20 passed.
+Exit code: 0
+
+Final verification
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest
+Observed: 3161 passed in 289.02s
+Exit code: 0
+Result: PASS
+
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m compileall -q src tests scripts
+Exit code: 0
+Result: PASS
+
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pip check
+Observed: No broken requirements found.
+Exit code: 0
+Result: PASS
+
+Command: git diff --check
+Exit code: 0
+Result: PASS
+
 GREEN — related runtime regression
 Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_audit_production_topology.py tests/unit/test_commands_health.py tests/unit/test_commands_runtime_cli.py tests/unit/test_commands_watchdog.py tests/unit/test_runtime_tmux.py tests/unit/test_runtime_watchdog.py -q
 Observed: 166 passed
@@ -470,6 +604,46 @@ Command: python3.14 -m py_compile src/eduflow/runtime/human_takeover.py src/eduf
 Result: passed
 Command: git diff --check
 Result: passed
+
+Task 7 acceptance-package TDD
+
+RED
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_g_minus_1_acceptance_package.py -q
+Observed: 4 failed because seven required acceptance files were absent and the
+summary, risk, and review records could not contain their required fields.
+Exit code: 1
+
+GREEN will be recorded after the complete nine-file package is materialized.
+
+Rollback baseline verification
+
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest
+Worktree: disposable reverse-applied G-1 baseline at `bde14c5ce94aacd99ef80f9c11b65092dcf25fc3`
+Observed: 3014 passed in 252.77s
+Exit code: 0
+Result: PASS — baseline remains testable after aggregate G-1 rollback.
+
+Task 7 full-suite regression repair — runtime-switch authorization fixture
+
+Observed full-suite failure
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest
+Observed: `tests/unit/test_commands_runtime_cli.py::test_runtime_switch_json_emits_outcome` returned rc=1 instead of 0; 3152 passed and 1 failed in 258.22s.
+Root cause: the legacy success-path fixture had no configured admin/runtime_operator
+and passed no `--actor`, while the completed G-1 runtime-switch contract now
+rejects manual switches before audit/restart without both. The implementation
+was correct; the test had not adopted the new authorization precondition.
+
+GREEN
+Change: the isolated TOML fixture now declares only `u_test_admin`, and the
+manual switch invocation passes `--actor u_test_admin`.
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_commands_runtime_cli.py::test_runtime_switch_json_emits_outcome tests/unit/test_human_takeover.py tests/unit/test_runtime_failover.py tests/unit/test_runtime_verify.py tests/unit/test_commands_watchdog.py tests/integration/test_human_takeover_circuit_breaker.py -q
+Observed: 106 passed.
+Exit code: 0
+
+Adjacent verification
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_commands_runtime_cli.py -q
+Observed: 12 passed.
+Exit code: 0
 
 Task 6 governance documents (strict TDD)
 Timestamp UTC: 2026-07-12T07:48:03Z

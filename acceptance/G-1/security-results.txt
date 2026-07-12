@@ -1,0 +1,24 @@
+# G-1 Security and Supply-Chain Results
+
+Revision: `cc95c5a488a8cd699dff515eadf431277669ffc6` plus uncommitted Task 7 evidence/test changes
+Captured: 2026-07-12T17:59:46+08:00 (UTC 2026-07-12T09:59:46Z; Task 7 evidence refresh)
+
+## Completed checks
+
+| Check | Command / method | Exit | Result |
+|---|---|---:|---|
+| High-confidence tracked-secret pattern scan | `git grep -Il -E` for AWS/GitHub/Slack/OpenAI token signatures, reporting filenames only | 0 wrapper / grep 1 | PASS — 0 matching tracked files; this is a limited fallback, not a replacement for a secret scanner |
+| Python dependency consistency | `python3 -m pip check` | 0 | PASS — no broken requirements |
+| Node audit | `npm audit --omit=dev --audit-level=high` in `scripts/feishu_bot_creator` | 1 | FAIL — `ENOLOCK`; package has no lockfile |
+
+## Mandatory evidence gaps
+
+`ruff`, `mypy`, `pyright`, `gitleaks`, `trufflehog`, and `pip-audit` were not
+installed, and no configured type-checker scope exists. These are mandatory
+security/static checks under the acceptance contract; they are **not**
+`not_applicable`. The limited tracked-file pattern scan above cannot certify
+the missing secret-scan requirement.
+
+Result: FAIL — security/supply-chain gate evidence is incomplete. No dependency
+was installed or repository lockfile generated solely to make this evidence
+appear green.

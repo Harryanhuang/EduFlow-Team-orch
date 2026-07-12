@@ -8,7 +8,7 @@ from eduflow.util import error_exit, pop_bool_flag, pop_flag, print_json
 USAGE = "usage: eduflow human-takeover status|enter|recover [--json]"
 
 
-def _is_provisioned_actor_id(value: object) -> bool:
+def is_provisioned_actor_id(value: object) -> bool:
     if not isinstance(value, str) or not value or value != value.strip():
         return False
     lowered = value.casefold()
@@ -29,13 +29,13 @@ def _authorized_actors() -> set[str]:
     if not isinstance(operators, list) or not isinstance(admins, list):
         return set()
     configured = [*operators, *admins]
-    if any(not _is_provisioned_actor_id(actor) for actor in configured):
+    if any(not is_provisioned_actor_id(actor) for actor in configured):
         return set()
     return set(configured)
 
 
 def _authorize(actor: str | None) -> bool:
-    return bool(_is_provisioned_actor_id(actor) and actor in _authorized_actors())
+    return bool(is_provisioned_actor_id(actor) and actor in _authorized_actors())
 
 
 def main(argv: list[str]) -> int:

@@ -46,6 +46,7 @@ def test_runtime_switch_json_emits_outcome(monkeypatch):
         (tmp / "eduflow.toml").write_text("""
 [team]
 session = "S"
+admins = ["u_test_admin"]
 
 [team.agents.worker_a]
 runtime = "primary"
@@ -80,7 +81,7 @@ ANTHROPIC_MODEL = "deepseek-v4-pro"
         monkeypatch.setattr(rv, "compute_verdict",
                             lambda agent, **kw: {"verdict": "proved_ready"})
         rc, out, _ = run_cli(["runtime", "switch", "worker_a", "backup",
-                              "--reason", "manual_test", "--json"])
+                              "--actor", "u_test_admin", "--reason", "manual_test", "--json"])
         assert rc == 0
         data = json.loads(out)
         assert data["agent"] == "worker_a"

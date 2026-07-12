@@ -222,6 +222,56 @@ def test_runtime_switch_override_excludes_general_operators(monkeypatch):
         runtime_switch._manual_trigger({"state": "active"}, "u_general")
 
 
+@pytest.mark.parametrize(
+    "team_config, actor",
+    [
+        ({"admins": ["u_<admin_feishu_id>"]}, "u_<admin_feishu_id>"),
+        ({"runtime_operators": ["placeholder"]}, "placeholder"),
+        ({"runtime_operator": "your_runtime_operator"}, "your_runtime_operator"),
+        ({"admins": ["u_admin", ""]}, "u_admin"),
+        ({"admins": ["u_admin"], "runtime_operator": {"id": "malformed"}}, "u_admin"),
+        ({"admins": {"id": "malformed"}, "runtime_operators": ["u_runtime"]}, "u_runtime"),
+    ],
+)
+def test_runtime_switch_rejects_unprovisioned_authority_config(monkeypatch, team_config, actor):
+    monkeypatch.setattr(runtime_switch.tunables, "load", lambda: {"team": team_config})
+
+    assert runtime_switch._authorized_actors() == set()
+    with pytest.raises(PermissionError):
+        runtime_switch._manual_trigger({"state": "inactive"}, actor)
+
+
+@pytest.mark.parametrize(
+    "team_config, actor",
+    [
+        ({"admins": ["u_admin"], "runtime_operator": {"id": "malformed"}}, "u_admin"),
+        ({"admins": {"id": "malformed"}, "runtime_operators": ["u_runtime"]}, "u_runtime"),
+    ],
+)
+def test_runtime_switch_malformed_authority_stops_before_audit_or_restart(
+    monkeypatch, team_config, actor,
+):
+    effects: list[str] = []
+    monkeypatch.setattr(runtime_switch.config, "load_team", lambda: {
+        "session": "S", "agents": {"manager": {}},
+    })
+    monkeypatch.setattr(runtime_switch.config, "runtime_config", lambda runtime: {})
+    monkeypatch.setattr(runtime_switch.tmux, "has_session", lambda session: True)
+    monkeypatch.setattr(runtime_switch.tmux, "has_window", lambda target: True)
+    monkeypatch.setattr(runtime_switch.tunables, "load", lambda: {"team": team_config})
+    monkeypatch.setattr(
+        runtime_switch.verify, "record_switch_event",
+        lambda **event: effects.append("audit"),
+    )
+    monkeypatch.setattr(
+        runtime_switch.lifecycle, "restart_with_runtime",
+        lambda *args, **kwargs: effects.append("restart") or "ready",
+    )
+
+    assert runtime_switch.main(["manager", "backup", "--actor", actor]) == 1
+    assert effects == []
+
+
 def _install_runtime_switch_mocks(monkeypatch, *, restart):
     monkeypatch.setattr(runtime_switch.config, "load_team", lambda: {
         "session": "S", "agents": {"manager": {}}})

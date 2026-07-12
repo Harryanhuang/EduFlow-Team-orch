@@ -32,3 +32,15 @@ Spec-review correction fault injections
 - Restart exception safety: injected exception before any simulated mutation and after a simulated pane mutation; both produced a sanitized failed terminal row with the prepared switch id, `side_effect=unknown`, active human takeover, and no exception secret leakage.
 - Probe exception safety: injected verification exception after a successful restart; terminal result recorded `stage=probe`, `side_effect=restart_completed`, the restart outcome, and then entered takeover without leaking the exception message.
 - Compound failure: injected takeover persistence failure with terminal audit both recorded and failed; both paths returned explicit redacted nonzero errors identifying terminal-audit status and takeover exception class, with no unhandled exception.
+
+Task 7 evidence-refresh verdict
+
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_human_takeover.py tests/integration/test_human_takeover_circuit_breaker.py -q
+Observed: 37 passed (35 unit + 2 integration).
+Exit code: 0
+Result: PASS — controlled isolated-state circuit breaker, authorization,
+redaction, CAS recovery, audit failure, and before-side-effect blocking paths
+remain covered at the final Task 7 revision.
+Scope: controlled isolated state only; no production takeover enter/recover,
+external message, credential rotation, or production data-source change was
+performed.

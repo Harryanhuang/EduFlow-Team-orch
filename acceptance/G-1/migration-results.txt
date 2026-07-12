@@ -1,0 +1,12 @@
+# G-1 Migration Results
+
+Revision: `cc95c5a488a8cd699dff515eadf431277669ffc6`
+
+Result: not_applicable — G-1 did not perform a production schema migration,
+production read-source switch, credential rotation, or irreversible data
+migration. Those actions remain explicitly outside this Task 7 scope.
+
+The new human-takeover state is additive and is covered by isolated-state
+fault injection: missing state is read-only, corrupt state fails closed,
+generation/CAS recovery is tested, and automatic actions stop before side
+effects. It is not a substitute for a future data-migration proof.
