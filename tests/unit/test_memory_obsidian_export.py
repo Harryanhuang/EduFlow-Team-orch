@@ -38,7 +38,7 @@ def _reset_db():
 
 def test_export_empty_db_creates_structure(tmp_path):
     """export_all on empty DB should create all directories and empty index files."""
-    with isolated_env() as env:
+    with isolated_env():
         os.environ["EDUFLOW_OBSIDIAN_ROOT"] = str(tmp_path)
         _init_db()
 
@@ -65,14 +65,14 @@ def test_export_empty_db_creates_structure(tmp_path):
 
 def test_export_active_constraints(tmp_path):
     """Active constraints should appear in active-constraints.md."""
-    with isolated_env() as env:
+    with isolated_env():
         os.environ["EDUFLOW_OBSIDIAN_ROOT"] = str(tmp_path)
         _init_db()
 
         from eduflow.memory.constraints import add_constraint
         from eduflow.memory.obsidian_export import export_all
 
-        cid = add_constraint(
+        add_constraint(
             scope="team", level="L0", constraint_type="must_follow",
             content="manager is the only dispatch point",
             source_ref="team-rule:2026",
@@ -91,7 +91,7 @@ def test_export_active_constraints(tmp_path):
 
 def test_export_confirmed_memory_items(tmp_path):
     """Confirmed memory items should appear in decisions/ as individual files."""
-    with isolated_env() as env:
+    with isolated_env():
         os.environ["EDUFLOW_OBSIDIAN_ROOT"] = str(tmp_path)
         _init_db()
 
@@ -123,7 +123,7 @@ def test_export_confirmed_memory_items(tmp_path):
 
 def test_export_mistake_kind(tmp_path):
     """Mistake-type memories should go to mistakes/ directory."""
-    with isolated_env() as env:
+    with isolated_env():
         os.environ["EDUFLOW_OBSIDIAN_ROOT"] = str(tmp_path)
         _init_db()
 
@@ -149,7 +149,7 @@ def test_export_mistake_kind(tmp_path):
 
 def test_export_handoff_kind(tmp_path):
     """Handoff-type memories should go to handoffs/ directory."""
-    with isolated_env() as env:
+    with isolated_env():
         os.environ["EDUFLOW_OBSIDIAN_ROOT"] = str(tmp_path)
         _init_db()
 
@@ -174,7 +174,7 @@ def test_export_handoff_kind(tmp_path):
 
 def test_export_deprecated_to_archive(tmp_path):
     """Deprecated memories should go to archive/ directory."""
-    with isolated_env() as env:
+    with isolated_env():
         os.environ["EDUFLOW_OBSIDIAN_ROOT"] = str(tmp_path)
         _init_db()
 
@@ -202,7 +202,7 @@ def test_export_deprecated_to_archive(tmp_path):
 
 def test_export_cleans_stale_files(tmp_path):
     """Re-exporting should remove files that no longer exist in DB."""
-    with isolated_env() as env:
+    with isolated_env():
         os.environ["EDUFLOW_OBSIDIAN_ROOT"] = str(tmp_path)
         _init_db()
 
@@ -236,7 +236,7 @@ def test_export_cleans_stale_files(tmp_path):
 
 def test_export_task_capsules(tmp_path):
     """Task capsules should appear in task-capsules.md."""
-    with isolated_env() as env:
+    with isolated_env():
         os.environ["EDUFLOW_OBSIDIAN_ROOT"] = str(tmp_path)
         _init_db()
 
@@ -264,7 +264,7 @@ def test_export_task_capsules(tmp_path):
 
 def test_export_status(tmp_path):
     """export_status should return last export time and file counts."""
-    with isolated_env() as env:
+    with isolated_env():
         os.environ["EDUFLOW_OBSIDIAN_ROOT"] = str(tmp_path)
         _init_db()
 
@@ -284,7 +284,7 @@ def test_export_status(tmp_path):
 
 def test_export_scope_filter(tmp_path):
     """export_all with scope filter should only export matching items."""
-    with isolated_env() as env:
+    with isolated_env():
         os.environ["EDUFLOW_OBSIDIAN_ROOT"] = str(tmp_path)
         _init_db()
 
@@ -308,7 +308,7 @@ def test_export_scope_filter(tmp_path):
 
 def test_export_does_not_crash_on_db_error(tmp_path, monkeypatch):
     """Export failure should not crash core memory operations."""
-    with isolated_env() as env:
+    with isolated_env():
         os.environ["EDUFLOW_OBSIDIAN_ROOT"] = str(tmp_path)
         _init_db()
 
@@ -345,7 +345,7 @@ def test_export_does_not_crash_on_db_error(tmp_path, monkeypatch):
 
 def test_cli_export_all(tmp_path):
     """CLI export command should produce files and print summary."""
-    with isolated_env() as env:
+    with isolated_env():
         os.environ["EDUFLOW_OBSIDIAN_ROOT"] = str(tmp_path)
         _init_db()
 
@@ -367,7 +367,7 @@ def test_cli_export_all(tmp_path):
 
 def test_cli_export_status(tmp_path):
     """CLI export status should print status."""
-    with isolated_env() as env:
+    with isolated_env():
         os.environ["EDUFLOW_OBSIDIAN_ROOT"] = str(tmp_path)
         _init_db()
 

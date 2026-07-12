@@ -1,8 +1,11 @@
 """Tests for `eduflow usage` — token-spend snapshot."""
 from __future__ import annotations
 
+import contextlib
 import shutil
 import subprocess
+import tempfile
+from pathlib import Path
 
 from helpers import attr_patch, isolated_env, run_cli
 from eduflow.commands import usage as _usage_mod
@@ -129,11 +132,6 @@ def test_usage_json_records_cc_failure_without_aborting():
 
 
 # ── R170: codex + kimi probes ───────────────────────────────────
-
-
-import contextlib
-import tempfile
-from pathlib import Path
 
 
 @contextlib.contextmanager
@@ -432,4 +430,3 @@ def test_usage_text_renders_codex_and_kimi_sections():
         assert "Plan: Pro" in out
         assert "kimi-code (api.kimi.com)" in out
         assert "Weekly limit" in out
-

@@ -213,7 +213,7 @@ def test_candidate_blocks_on_repeat_failure_pattern():
 def test_candidate_does_not_promote_when_phase_is_approved():
     with isolated_env():
         rid = _new_rule()
-        payload = _promote_through_candidate(rid)
+        _promote_through_candidate(rid)
         # After approval, candidate_payload should NOT re-emit
         # (the rule is past candidate phase).
         assert workflow_evolution.candidate_payload(rid) is None

@@ -338,7 +338,7 @@ def test_select_next_subject_excludes_closeout_completed():
 def test_select_next_subject_prefers_subjects_with_assets():
     """Subjects with existing evidence should be preferred over empty ones."""
     with isolated_env():
-        empty_tid = tasks.create_flow(
+        tasks.create_flow(
             "worker_course", "IGCSE Biology 0610",
             stage="curriculum", owner="worker_course", creator="manager",
         )
@@ -424,7 +424,7 @@ def test_select_next_subject_auditable_explanation():
             },
         )
         _closeout_subject_for_test(done_tid)
-        next_tid = tasks.create_flow(
+        tasks.create_flow(
             "worker_course", "IGCSE Chemistry 0620",
             stage="curriculum", owner="worker_course", creator="manager",
         )

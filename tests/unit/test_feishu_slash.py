@@ -1388,7 +1388,6 @@ def test_help_lists_home_and_sophon_first_by_operator_question():
     # First lines of help: the boss homepage must be visible
     # ahead of /team and the legacy /ops/-dashboard surface.
     pos_home = body.find("/home")
-    pos_team = body.find("/team")
     pos_sophon = body.find("/sophon")
     pos_ops = body.find("/ops")
     assert pos_home >= 0 and pos_sophon >= 0

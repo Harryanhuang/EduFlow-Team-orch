@@ -37,15 +37,15 @@ for _p in (_ROOT / "src", _ROOT / "tests"):
     if str(_p) not in sys.path:
         sys.path.insert(0, str(_p))
 
-import pytest
+import pytest  # noqa: E402
 
-from helpers import attr_patch, isolated_env, run_cli
-from eduflow.commands import task as task_cmd
-from eduflow.runtime import paths
-from eduflow.scheduling import (
+from helpers import attr_patch, isolated_env, run_cli  # noqa: E402
+from eduflow.commands import task as task_cmd  # noqa: E402
+from eduflow.runtime import paths  # noqa: E402
+from eduflow.scheduling import (  # noqa: E402
     engine, manager_ops, notifications, workflow_evolution,
 )
-from eduflow.store import scheduled_tasks
+from eduflow.store import scheduled_tasks  # noqa: E402
 
 
 # ── helpers ──────────────────────────────────────────────────────────

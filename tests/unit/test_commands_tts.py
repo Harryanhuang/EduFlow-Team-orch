@@ -165,7 +165,7 @@ def test_say_no_text_returns_usage_error(capsys):
 
 def test_say_rejects_extra_args(capsys):
     rc = tts_mod._say(["hi", "extra1"])
-    captured = capsys.readouterr()
+    capsys.readouterr()
     assert rc != 0
 
 

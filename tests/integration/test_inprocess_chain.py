@@ -181,7 +181,7 @@ def test_mention_now_routes_to_manager_only_r174():
 
 
 def test_repeated_message_id_only_delivered_once():
-    with _isolated(), _fake_inject() as inj:
+    with _isolated(), _fake_inject():
         same_line = _ndjson_event("om_dup", "ou_user", "ping")
         stats = _run_lines([same_line, same_line, same_line], team_agents=["manager"])
         assert stats.handled == 1
@@ -212,7 +212,7 @@ def test_message_from_other_chat_is_ignored():
 def test_mixed_traffic_classifies_each_event_correctly():
     """R174: ALL human messages → manager (`@worker_X` is now content,
     not routing). 3 handled events all land in manager's inbox."""
-    with _isolated(), _fake_inject() as inj:
+    with _isolated(), _fake_inject():
         events = [
             _ndjson_event("om_1", "ou_user", "task A"),                  # → manager
             _ndjson_event("om_2", "ou_user", "@worker_kimi handle B"),    # → manager (was kimi)
@@ -257,7 +257,7 @@ def test_at_team_routes_to_manager_only_r174():
 def test_chinese_quanti_prefix_routes_to_manager_only_r174():
     """`全体X` from boss → manager only (was BROADCAST in R172.b,
     now ROUTE per R174)."""
-    with _isolated(), _fake_inject() as inj:
+    with _isolated(), _fake_inject():
         line = _ndjson_event("om_bcast_2", "ou_user", "全体注意：今晚封版")
         _run_lines([line])
         assert len(local_facts.list_messages("manager")) == 1
@@ -425,7 +425,7 @@ def test_file_message_routes_with_filename_in_placeholder():
     """File messages render as `[file: <name> (file_key=...)]` so the
     worker can read the filename in chat scrollback and decide whether
     to fetch the binary."""
-    with _isolated(), _fake_inject() as inj:
+    with _isolated(), _fake_inject():
         line = _ndjson_media("om_file_1", "ou_user", "file", {
             "file_name": "report.pdf",
             "file_key": "file_v2_xxx",
@@ -440,7 +440,7 @@ def test_file_message_routes_with_filename_in_placeholder():
 def test_audio_and_sticker_messages_route_with_their_own_placeholders():
     """Audio / sticker placeholders are simpler — file_key only. Confirms
     the same routing path handles all four media types end-to-end."""
-    with _isolated(), _fake_inject() as inj:
+    with _isolated(), _fake_inject():
         lines = [
             _ndjson_media("om_audio_1", "ou_user", "audio",
                           {"file_key": "audio_xxx"}),
@@ -460,7 +460,7 @@ def test_image_with_at_mention_caption_routes_to_mentioned_worker():
     """When an image's payload includes @-mention text (some Feishu
     clients embed text in image content), classify_event should still
     route to the mentioned worker rather than the default target."""
-    with _isolated(), _fake_inject() as inj:
+    with _isolated(), _fake_inject():
         # Feishu doesn't actually embed text in image payloads, but the
         # router should at least handle the placeholder being routed
         # to manager (default target) when no mention is present.

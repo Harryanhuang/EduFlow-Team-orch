@@ -248,7 +248,7 @@ def test_sleep_if_idle_keeps_resident_running():
 
 
 def test_sleep_if_idle_apply_sends_ctrl_c_and_stamps_warm():
-    with isolated_env() as tmp:
+    with isolated_env():
         # 1) Seed a recent-but-past-idle activity stamp.
         # idle_timeout_s=600 (default), so idle_age_s=601 makes us sleep.
         # 2) Make sure no active task / unread inbox.

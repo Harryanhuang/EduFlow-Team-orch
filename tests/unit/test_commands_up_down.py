@@ -229,7 +229,7 @@ def test_down_skips_when_no_pid_files_and_no_session():
 def test_down_kills_alive_pid_then_tmux():
     """When pid files point to a fake process, down should SIGTERM and clean up."""
     team = {"session": "S", "agents": {"manager": {}}}
-    with isolated_env(team=team) as tmp, _fake_tmux(session_alive=True) as tx:
+    with isolated_env(team=team), _fake_tmux(session_alive=True) as tx:
         # Use *our* pid as the pid in the file — we know we're alive,
         # and we'll intercept os.kill so we don't actually die.
         my_pid = os.getpid()
@@ -394,7 +394,7 @@ def test_down_with_force_flag_skips_drift_check():
     """When --force is passed, even a cmdline-mismatched pid should be killed."""
     import signal as _signal
     team = {"session": "S", "agents": {"manager": {}}}
-    with isolated_env(team=team) as tmp, _fake_tmux(session_alive=False):
+    with isolated_env(team=team), _fake_tmux(session_alive=False):
         paths.ensure_state_dir()
         my_pid = os.getpid()
         paths.router_pid_file().write_text(str(my_pid), encoding="utf-8")
@@ -420,7 +420,7 @@ def test_down_with_force_flag_skips_drift_check():
 def test_down_with_named_daemon_only_kills_that_daemon():
     """`down router` should only kill router, not task-publish/watchdog."""
     team = {"session": "S", "agents": {"manager": {}}}
-    with isolated_env(team=team) as tmp, _fake_tmux(session_alive=False):
+    with isolated_env(team=team), _fake_tmux(session_alive=False):
         paths.ensure_state_dir()
         my_pid = os.getpid()
         paths.router_pid_file().write_text(str(my_pid), encoding="utf-8")
@@ -452,7 +452,7 @@ def test_down_with_named_daemon_only_kills_that_daemon():
 def test_down_with_named_daemon_leaves_tmux_session_running():
     """`down watchdog` is a daemon restart primitive; it must not stop agents."""
     team = {"session": "S", "agents": {"manager": {}}}
-    with isolated_env(team=team) as tmp, _fake_tmux(session_alive=True) as tmux_state:
+    with isolated_env(team=team), _fake_tmux(session_alive=True) as tmux_state:
         paths.ensure_state_dir()
         my_pid = os.getpid()
         paths.watchdog_pid_file().write_text(str(my_pid), encoding="utf-8")
@@ -489,7 +489,7 @@ def test_down_with_unknown_daemon_name_warns():
 def test_down_refuses_kill_on_entrypoint_drift():
     """When cmdline doesn't match, refuses to kill with error message."""
     team = {"session": "S", "agents": {"manager": {}}}
-    with isolated_env(team=team) as tmp, _fake_tmux(session_alive=False):
+    with isolated_env(team=team), _fake_tmux(session_alive=False):
         paths.ensure_state_dir()
         my_pid = os.getpid()
         paths.router_pid_file().write_text(str(my_pid), encoding="utf-8")

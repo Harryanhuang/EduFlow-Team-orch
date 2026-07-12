@@ -554,7 +554,6 @@ def test_asset_registry_topic_taxonomy_is_surface_runtime_verdict():
     taxonomy: surface / runtime / verdict. Each class has a clear
     semantic and its own keyword surface."""
     from eduflow.store import asset_registry as reg
-    topics = reg.derive_no_confident_topics()
     # Group topic_ids by their keywords' presence in the topic table.
     surfaced = []
     for topic_id, topic in reg._GATE_TOPIC.items():

@@ -234,7 +234,7 @@ def test_wake_failure_evidence_surfaces_in_snapshot():
             send_card=lambda *a, **kw: {"message_id": "om_test"},
         )
 
-        snap = employee_read_model.build_employee_snapshot("worker_course")
+        employee_read_model.build_employee_snapshot("worker_course")
 
 def test_per_source_failure_degrades_gracefully():
     """A failing _safe source (latest_log) must not crash the snapshot.

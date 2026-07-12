@@ -240,12 +240,9 @@ class TestDispatchMemoryPacket:
         """If assemble_memory_packet raises, dispatch must still return 0."""
         with isolated_env():
             _init_db()
-            from eduflow.commands import task as task_cmd
-
             def _explode(*args, **kwargs):
                 raise RuntimeError("simulated memory system failure")
 
-            original = task_cmd.assemble_memory_packet if hasattr(task_cmd, 'assemble_memory_packet') else None
             # Patch via the helper's import path
             import eduflow.memory.packet as packet_mod
             original_packet = packet_mod.assemble_memory_packet
@@ -1450,4 +1447,3 @@ class TestSensitiveCheckVsForce:
             # No flags in output since neither was passed
             assert "flags=" not in out
             _reset_db()
-

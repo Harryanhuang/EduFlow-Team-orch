@@ -4333,7 +4333,7 @@ def test_task_manager_closeout_rejects_skip_verifier_without_env():
     """Production CLI must reject `--skip-verifier` unless the test-only
     env var EDUFLOW_VERIFIER_BYPASS_ALLOWED is explicitly set.
     """
-    with isolated_env() as tmp:
+    with isolated_env():
         with env_patch(EDUFLOW_VERIFIER_BYPASS_ALLOWED=None):
             tid = tasks.create_flow(
                 "worker_course",
@@ -4378,7 +4378,7 @@ def test_task_manager_closeout_allows_skip_verifier_with_env():
     """When EDUFLOW_VERIFIER_BYPASS_ALLOWED=1 is set, the CLI accepts
     `--skip-verifier` so tests/fixtures can exercise closeout logic.
     """
-    with isolated_env() as tmp:
+    with isolated_env():
         with env_patch(EDUFLOW_VERIFIER_BYPASS_ALLOWED="1"):
             tid = tasks.create_flow(
                 "worker_course",
@@ -4423,7 +4423,7 @@ def test_task_manager_action_apply_rejects_skip_verifier_without_env():
     """`manager-action-apply --skip-verifier` must also be gated by the
     same env var. Without it the production CLI returns non-zero.
     """
-    with isolated_env() as tmp:
+    with isolated_env():
         with env_patch(EDUFLOW_VERIFIER_BYPASS_ALLOWED=None):
             tid = tasks.create_flow(
                 "worker_course",

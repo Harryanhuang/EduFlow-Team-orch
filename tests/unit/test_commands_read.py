@@ -44,7 +44,7 @@ def _append_inbox_row(local_id: str, to: str, frm: str, content: str) -> None:
 
 
 def test_read_existing_message_succeeds():
-    with isolated_env() as tmp:
+    with isolated_env():
         _append_inbox_row(
             "msg_1782000000001_aaaaaaaaaa",
             "manager", "user", "hi"

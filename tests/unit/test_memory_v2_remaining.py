@@ -43,7 +43,7 @@ def test_hybrid_search_fallback_when_no_vector():
 
 def test_hybrid_search_rrf_fusion():
     """RRF scores combine FTS and vector ranks."""
-    mid = items.add_memory(
+    items.add_memory(
         scope="team", kind="note", content="alpha beta gamma",
         status="confirmed",
     )

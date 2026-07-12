@@ -605,7 +605,7 @@ def test_slash_logs_warning_when_chat_send_returns_none():
     with isolated_env(team={"agents": {"manager": {}}},
                       runtime_config={"chat_id": "oc_x"}), \
             contextlib.redirect_stdout(out):
-        report = apply(decision,
+        apply(decision,
                        chat_send_card=failing_chat_send_card,
                        team_agents=["manager"],
                        chat_id="oc_x",

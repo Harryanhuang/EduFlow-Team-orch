@@ -62,7 +62,7 @@ class TestAnnaFiredScopeResolution:
             )
 
             # 3. Create memory: scope=lane:course_caie, closeout 约束
-            mi_lane = add_memory(
+            add_memory(
                 scope="lane:course_caie", kind="workflow_rule",
                 content="CAIE closeout 必须 items/QQL/manifest 一致",
                 layer="decision", status="confirmed",
@@ -251,7 +251,7 @@ class TestVerdictFailBlocksCloseout:
             #    L2 constraints inform but don't block structural gates;
             #    L0/L1 gate_required constraints DO block.
             #    Add an L0 must_not to verify blocking behavior.
-            ac_l0 = add_constraint(
+            add_constraint(
                 scope="team", level="L0", constraint_type="must_not",
                 content="verdict=FAIL 全局禁止 closeout",
                 enforcement="gate_required",

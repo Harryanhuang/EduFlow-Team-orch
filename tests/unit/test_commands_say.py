@@ -283,7 +283,7 @@ def test_say_card_color_reflects_live_toml_edit():
     config.agent_config goes through the lenient JSON / mtime-cached
     TOML path, so a live edit takes effect on the next call."""
     from eduflow.runtime import paths, tunables as _tun
-    with _isolated() as tmp, _fake_send_card() as st:
+    with _isolated(), _fake_send_card() as st:
         # First call: default fixture has worker_cc card_color=purple
         rc, _, _ = run_cli(["say", "worker_cc", "first"])
         assert rc == 0
@@ -437,7 +437,7 @@ def _toml_with_publish(tmp_path, **kv):
 def test_say_default_to_is_user_when_unset():
     """No --to flag → default 'user' (老板)。chat.publish.manager_to_user
     默认 True → send_card 被调。"""
-    with _isolated() as tmp, _fake_send() as send:
+    with _isolated(), _fake_send() as send:
         rc, _, _ = run_cli(["say", "manager", "hi 老板"])
     assert rc == 0
     assert len(send["calls"]) == 1
@@ -477,7 +477,7 @@ def test_say_passes_through_when_publish_always():
 
 def test_say_worker_to_user_default_true():
     """worker → user (worker 完工卡) — 默认 True (preserve current behavior)."""
-    with _isolated() as tmp, _fake_send() as send:
+    with _isolated(), _fake_send() as send:
         rc, _, _ = run_cli(["say", "worker_cc", "完工 ✅", "--to", "user"])
     assert rc == 0
     assert len(send["calls"]) == 1
@@ -572,7 +572,7 @@ def _isolated_with_overrides(agent: str, overrides: dict, **other_agent_cfg):
 def test_say_overrides_force_silence_when_global_default_true():
     """Even if chat.publish is unset (default True), agent override
     can still silence its own channel."""
-    with _isolated_with_overrides("worker_cc", {"worker_to_user": False}) as tmp, \
+    with _isolated_with_overrides("worker_cc", {"worker_to_user": False}), \
             _fake_send() as send:
         rc, out, _ = run_cli(["say", "worker_cc", "完工", "--to", "user"])
         assert rc == 0
@@ -635,7 +635,7 @@ def test_say_overrides_other_agents_unaffected():
         "manager": {"role": "主管"},
         "worker_cc": {"role": "策划", "publish_overrides": {"worker_to_user": False}},
         "worker_codex": other,
-    }}, runtime_config={"chat_id": "oc_test", "lark_profile": ""}) as tmp, \
+    }}, runtime_config={"chat_id": "oc_test", "lark_profile": ""}), \
             _fake_send() as send:
         # worker_cc → 静默
         rc1, _, _ = run_cli(["say", "worker_cc", "完工 cc", "--to", "user"])

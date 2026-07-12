@@ -197,7 +197,6 @@ presence_fallback_after_s = 7200
     with isolated_env() as tmp:
         (tmp / "eduflow.toml").write_text(team_toml, encoding="utf-8")
         # Seed an old auto_ops surface (3h ago), then check "now".
-        old = time.time() - 3 * 3600
         local_facts.append_log("auto_ops", "say", "旧信号")
         # Force the log timestamp into the past by rewriting.
         with attr_patch(feishu_chat, send_card=fake_send_card):

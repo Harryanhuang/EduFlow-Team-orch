@@ -503,7 +503,6 @@ def test_mini_proof_duplicate_live_and_catchup_apply_once():
     restart. The router MUST apply it exactly once — the catchup-side
     duplicate is dropped by `seen_msg_ids`."""
     shared_msg_id = "om_dup_boss_decision"
-    same_minute = "1778047200000"  # 14:00:00.000
     history = [_msg_live(shared_msg_id, "2026-05-06 14:00",
                          text="ship the closeout",
                          chat_id="oc_team")]

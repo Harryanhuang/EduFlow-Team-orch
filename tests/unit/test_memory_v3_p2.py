@@ -206,7 +206,7 @@ def test_dashboard_top_injected():
 
 def test_dashboard_candidate_quality():
     from eduflow.memory.candidates import add_candidate, reject_candidate
-    cid1 = add_candidate(scope="team", kind="note", content="proposed candidate")
+    add_candidate(scope="team", kind="note", content="proposed candidate")
     cid2 = add_candidate(scope="team", kind="note", content="to be rejected")
     reject_candidate(cid2)
 

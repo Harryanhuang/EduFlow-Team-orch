@@ -40,9 +40,9 @@ for _p in (_ROOT / "src", _ROOT / "tests"):
     if str(_p) not in sys.path:
         sys.path.insert(0, str(_p))
 
-from helpers import attr_patch, env_patch, isolated_env, run_cli
-from eduflow.feishu import chat as feishu_chat
-from eduflow.store import (
+from helpers import attr_patch, env_patch, isolated_env, run_cli  # noqa: E402
+from eduflow.feishu import chat as feishu_chat  # noqa: E402
+from eduflow.store import (  # noqa: E402
     asset_registry, tasks,
 )
 
@@ -80,7 +80,7 @@ def main() -> int:
             }
         },
         runtime_config={"chat_id": "oc_test_e2e", "lark_profile": ""},
-    ) as tmp:
+    ):
         with attr_patch(feishu_chat, send_card=_fake_send_card), \
              attr_patch(feishu_chat, send_text=_fake_send_text):
 
@@ -346,4 +346,3 @@ def test_e2e_full_workflow():
     """
     rc = main()
     assert rc == 0, "E2E workflow simulation reported failures (see stdout)"
-

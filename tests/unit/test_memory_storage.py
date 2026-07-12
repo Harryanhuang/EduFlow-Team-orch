@@ -464,7 +464,7 @@ class TestCLICommands:
             buf = io.StringIO()
             # Use --yes to avoid blocking on input()
             with redirect_stdout(buf):
-                rc = _cmd_promote([cid, "--yes"])
+                _cmd_promote([cid, "--yes"])
             output = buf.getvalue()
             assert "scope=team" in output
             assert "kind=note" in output
