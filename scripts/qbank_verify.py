@@ -17,7 +17,7 @@ import json
 import re
 import sys
 from collections import Counter, defaultdict
-from dataclasses import dataclass, field, asdict
+from dataclasses import dataclass, field
 from pathlib import Path
 
 VALID_DIFFICULTIES = {"Foundation", "Standard", "Challenge"}
@@ -100,13 +100,17 @@ def discover_igcse_subjects(content_dir: Path) -> dict[str, dict]:
         code_match = re.search(r"-(\d{4})$", slug)
         code = code_match.group(1) if code_match else ""
         # Extract a human-readable name
-        name_part = slug[len("igcse-"):].rsplit("-", 1)[0]
-        name = " ".join(word.capitalize() for word in name_part.replace("-", " ").split())
+        name_part = slug[len("igcse-") :].rsplit("-", 1)[0]
+        name = " ".join(
+            word.capitalize() for word in name_part.replace("-", " ").split()
+        )
         subjects[slug] = {"code": code, "name": name}
     return subjects
 
 
-def parse_question_entities(text: str, source_file: str, layer: str, subject_slug: str) -> list:
+def parse_question_entities(
+    text: str, source_file: str, layer: str, subject_slug: str
+) -> list:
     questions = []
     for m in QUESTION_ENTITY_RE.finditer(text):
         qid = m.group(1).rstrip("`")
@@ -115,17 +119,19 @@ def parse_question_entities(text: str, source_file: str, layer: str, subject_slu
         for fname, pat in FIELD_RE.items():
             fm = pat.search(body)
             fields[fname] = fm.group(1).strip().rstrip("`") if fm else ""
-        questions.append(Question(
-            question_id=qid,
-            difficulty=fields.get("difficulty", ""),
-            question=fields.get("question", ""),
-            answer=fields.get("answer", ""),
-            explanation=fields.get("explanation", ""),
-            tags=fields.get("tags", ""),
-            source_file=source_file,
-            source_layer=layer,
-            subject_slug=subject_slug,
-        ))
+        questions.append(
+            Question(
+                question_id=qid,
+                difficulty=fields.get("difficulty", ""),
+                question=fields.get("question", ""),
+                answer=fields.get("answer", ""),
+                explanation=fields.get("explanation", ""),
+                tags=fields.get("tags", ""),
+                source_file=source_file,
+                source_layer=layer,
+                subject_slug=subject_slug,
+            )
+        )
     return questions
 
 
@@ -144,37 +150,67 @@ def parse_topic_outline(path: Path) -> dict:
 def validate_question(q: Question) -> list:
     issues = []
     if q.difficulty not in VALID_DIFFICULTIES:
-        issues.append(Issue(
-            "error", "schema", q.subject_slug, q.source_file,
-            f"Invalid difficulty '{q.difficulty}' for {q.question_id} "
-            f"(expected one of {VALID_DIFFICULTIES})",
-        ))
+        issues.append(
+            Issue(
+                "error",
+                "schema",
+                q.subject_slug,
+                q.source_file,
+                f"Invalid difficulty '{q.difficulty}' for {q.question_id} "
+                f"(expected one of {VALID_DIFFICULTIES})",
+            )
+        )
     if not q.question:
-        issues.append(Issue(
-            "error", "schema", q.subject_slug, q.source_file,
-            f"Missing Question field for {q.question_id}",
-        ))
+        issues.append(
+            Issue(
+                "error",
+                "schema",
+                q.subject_slug,
+                q.source_file,
+                f"Missing Question field for {q.question_id}",
+            )
+        )
     if not q.answer:
-        issues.append(Issue(
-            "error", "schema", q.subject_slug, q.source_file,
-            f"Missing Answer field for {q.question_id}",
-        ))
+        issues.append(
+            Issue(
+                "error",
+                "schema",
+                q.subject_slug,
+                q.source_file,
+                f"Missing Answer field for {q.question_id}",
+            )
+        )
     if not q.explanation:
-        issues.append(Issue(
-            "warning", "schema", q.subject_slug, q.source_file,
-            f"Missing Explanation field for {q.question_id}",
-        ))
+        issues.append(
+            Issue(
+                "warning",
+                "schema",
+                q.subject_slug,
+                q.source_file,
+                f"Missing Explanation field for {q.question_id}",
+            )
+        )
     if not q.tags:
-        issues.append(Issue(
-            "warning", "schema", q.subject_slug, q.source_file,
-            f"Missing Tags field for {q.question_id}",
-        ))
+        issues.append(
+            Issue(
+                "warning",
+                "schema",
+                q.subject_slug,
+                q.source_file,
+                f"Missing Tags field for {q.question_id}",
+            )
+        )
     qid_pat = re.compile(r"^Q-[A-Z]?\d+(?:\.\d+)?-\d+$")
     if not qid_pat.match(q.question_id):
-        issues.append(Issue(
-            "warning", "schema", q.subject_slug, q.source_file,
-            f"Non-standard Question ID format: '{q.question_id}'",
-        ))
+        issues.append(
+            Issue(
+                "warning",
+                "schema",
+                q.subject_slug,
+                q.source_file,
+                f"Non-standard Question ID format: '{q.question_id}'",
+            )
+        )
     return issues
 
 
@@ -188,31 +224,52 @@ def check_duplicates(all_questions: list) -> list:
             continue
         layers = set(q.source_layer for q in qs)
         within_layer = [
-            (layer, [q for q in qs if q.source_layer == layer])
-            for layer in layers
+            (layer, [q for q in qs if q.source_layer == layer]) for layer in layers
         ]
         has_within_dup = any(len(qs_in_layer) > 1 for _, qs_in_layer in within_layer)
         if has_within_dup:
             for layer, qs_in_layer in within_layer:
                 if len(qs_in_layer) > 1:
                     files = [f"{q.subject_slug}/{q.source_file}" for q in qs_in_layer]
-                    issues.append(Issue(
-                        "error", "duplicate", slug, "",
-                        f"Within-layer duplicate '{qid}' in layer '{layer}': {', '.join(files)}",
-                    ))
+                    issues.append(
+                        Issue(
+                            "error",
+                            "duplicate",
+                            slug,
+                            "",
+                            f"Within-layer duplicate '{qid}' in layer '{layer}': {', '.join(files)}",
+                        )
+                    )
         elif len(layers) > 1:
             files = [f"{q.subject_slug}/{q.source_file}({q.source_layer})" for q in qs]
-            issues.append(Issue(
-                "info", "cross-layer", slug, "",
-                f"Cross-layer overlap '{qid}' across {', '.join(sorted(layers))}: {', '.join(files)}",
-            ))
+            issues.append(
+                Issue(
+                    "info",
+                    "cross-layer",
+                    slug,
+                    "",
+                    f"Cross-layer overlap '{qid}' across {', '.join(sorted(layers))}: {', '.join(files)}",
+                )
+            )
     return issues
 
 
 def scan_subject(content_dir: Path, slug: str, meta: dict) -> tuple:
     subject_dir = content_dir / slug
     if not subject_dir.exists():
-        return None, [], [Issue("error", "missing", slug, "", f"Subject directory not found: {subject_dir}")]
+        return (
+            None,
+            [],
+            [
+                Issue(
+                    "error",
+                    "missing",
+                    slug,
+                    "",
+                    f"Subject directory not found: {subject_dir}",
+                )
+            ],
+        )
 
     report = SubjectReport(slug=slug, name=meta["name"], code=meta["code"])
     all_questions = []
@@ -224,7 +281,9 @@ def scan_subject(content_dir: Path, slug: str, meta: dict) -> tuple:
         report.qa_topic_files = len(qa_files)
         for f in qa_files:
             text = f.read_text(encoding="utf-8")
-            qs = parse_question_entities(text, str(f.relative_to(subject_dir)), "qa", slug)
+            qs = parse_question_entities(
+                text, str(f.relative_to(subject_dir)), "qa", slug
+            )
             all_questions.extend(qs)
 
     qql_dir = subject_dir / "qa-question-level"
@@ -233,7 +292,9 @@ def scan_subject(content_dir: Path, slug: str, meta: dict) -> tuple:
         report.qa_question_level_files = len(qql_files)
         for f in qql_files:
             text = f.read_text(encoding="utf-8")
-            qs = parse_question_entities(text, str(f.relative_to(subject_dir)), "qa-question-level", slug)
+            qs = parse_question_entities(
+                text, str(f.relative_to(subject_dir)), "qa-question-level", slug
+            )
             all_questions.extend(qs)
 
     items_dir = subject_dir / "items"
@@ -242,7 +303,9 @@ def scan_subject(content_dir: Path, slug: str, meta: dict) -> tuple:
         report.items_files = len(items_files)
         for f in items_files:
             text = f.read_text(encoding="utf-8")
-            qs = parse_question_entities(text, str(f.relative_to(subject_dir)), "items", slug)
+            qs = parse_question_entities(
+                text, str(f.relative_to(subject_dir)), "items", slug
+            )
             all_questions.extend(qs)
 
     outline_path = subject_dir / "topic-outline.md"
@@ -267,15 +330,22 @@ def scan_subject(content_dir: Path, slug: str, meta: dict) -> tuple:
     return report, all_questions, issues
 
 
-def check_manifest_consistency(content_dir: Path, slug: str, subject_dir_name: str) -> list:
+def check_manifest_consistency(
+    content_dir: Path, slug: str, subject_dir_name: str
+) -> list:
     issues = []
     subject_dir = content_dir / subject_dir_name
     manifest_path = subject_dir / "qa-manifest.csv"
     if not manifest_path.exists():
-        issues.append(Issue(
-            "warning", "manifest", slug, "",
-            "No qa-manifest.csv found — cannot verify manifest consistency",
-        ))
+        issues.append(
+            Issue(
+                "warning",
+                "manifest",
+                slug,
+                "",
+                "No qa-manifest.csv found — cannot verify manifest consistency",
+            )
+        )
         return issues
 
     with open(manifest_path, encoding="utf-8") as fh:
@@ -285,10 +355,15 @@ def check_manifest_consistency(content_dir: Path, slug: str, subject_dir_name: s
             if qa_file:
                 full_path = subject_dir / qa_file
                 if not full_path.exists():
-                    issues.append(Issue(
-                        "error", "manifest", slug, qa_file,
-                        f"Manifest references missing file: {qa_file}",
-                    ))
+                    issues.append(
+                        Issue(
+                            "error",
+                            "manifest",
+                            slug,
+                            qa_file,
+                            f"Manifest references missing file: {qa_file}",
+                        )
+                    )
             claimed_count = row.get("question_count", "")
             if claimed_count and qa_file:
                 full_path = subject_dir / qa_file
@@ -296,10 +371,15 @@ def check_manifest_consistency(content_dir: Path, slug: str, subject_dir_name: s
                     text = full_path.read_text(encoding="utf-8")
                     actual = len(QUESTION_ENTITY_RE.findall(text))
                     if actual > 0 and actual != int(claimed_count):
-                        issues.append(Issue(
-                            "warning", "manifest", slug, qa_file,
-                            f"Manifest claims {claimed_count} questions but file has {actual} Question entities",
-                        ))
+                        issues.append(
+                            Issue(
+                                "warning",
+                                "manifest",
+                                slug,
+                                qa_file,
+                                f"Manifest claims {claimed_count} questions but file has {actual} Question entities",
+                            )
+                        )
     return issues
 
 
@@ -314,18 +394,21 @@ def generate_unified_manifest(all_questions: list, content_dir: Path) -> list:
     for (slug, topic_id), qs in sorted(by_subject_topic.items()):
         diff_dist = Counter(q.difficulty for q in qs)
         diff_mix = "|".join(
-            f"{k[0]}:{v}" for k, v in sorted(diff_dist.items())
+            f"{k[0]}:{v}"
+            for k, v in sorted(diff_dist.items())
             if k in VALID_DIFFICULTIES
         )
         source_files = sorted(set(q.source_file for q in qs))
-        rows.append({
-            "subject_slug": slug,
-            "topic_id": topic_id,
-            "question_count": len(qs),
-            "difficulty_mix": diff_mix,
-            "source_layers": ",".join(sorted(set(q.source_layer for q in qs))),
-            "source_files": ";".join(source_files),
-        })
+        rows.append(
+            {
+                "subject_slug": slug,
+                "topic_id": topic_id,
+                "question_count": len(qs),
+                "difficulty_mix": diff_mix,
+                "source_layers": ",".join(sorted(set(q.source_layer for q in qs))),
+                "source_files": ";".join(source_files),
+            }
+        )
     return rows
 
 
@@ -366,22 +449,24 @@ def build_compact_summary(reports: list, all_issues: list, all_questions: list) 
         warning_count = len([i for i in subject_issues if i.severity == "warning"])
         info_count = len([i for i in subject_issues if i.severity == "info"])
         report_path = f"content/{r.slug}/qbank-verification-report.json"
-        subject_summaries.append({
-            "subject": r.slug,
-            "name": r.name,
-            "code": r.code,
-            "status": status,
-            "total_questions": r.total_questions,
-            "topic_count": r.topic_count,
-            "error_count": error_count,
-            "warning_count": warning_count,
-            "issue_count": error_count + warning_count + info_count,
-            "has_manifest": r.has_manifest,
-            "manifest_rows": r.manifest_rows,
-            "difficulty_distribution": r.difficulty_dist,
-            "report_path": report_path,
-            "next_action": derive_next_action(status),
-        })
+        subject_summaries.append(
+            {
+                "subject": r.slug,
+                "name": r.name,
+                "code": r.code,
+                "status": status,
+                "total_questions": r.total_questions,
+                "topic_count": r.topic_count,
+                "error_count": error_count,
+                "warning_count": warning_count,
+                "issue_count": error_count + warning_count + info_count,
+                "has_manifest": r.has_manifest,
+                "manifest_rows": r.manifest_rows,
+                "difficulty_distribution": r.difficulty_dist,
+                "report_path": report_path,
+                "next_action": derive_next_action(status),
+            }
+        )
 
     total_errors = len([i for i in all_issues if i.severity == "error"])
     overall_status = "PASS" if total_errors == 0 else "FAIL"
@@ -393,8 +478,12 @@ def build_compact_summary(reports: list, all_issues: list, all_questions: list) 
         "total_errors": total_errors,
         "total_warnings": len([i for i in all_issues if i.severity == "warning"]),
         "total_infos": len([i for i in all_issues if i.severity == "info"]),
-        "within_layer_duplicates": len([i for i in all_issues if i.category == "duplicate"]),
-        "cross_layer_overlaps": len([i for i in all_issues if i.category == "cross-layer"]),
+        "within_layer_duplicates": len(
+            [i for i in all_issues if i.category == "duplicate"]
+        ),
+        "cross_layer_overlaps": len(
+            [i for i in all_issues if i.category == "cross-layer"]
+        ),
         "schema_violations": len([i for i in all_issues if i.category == "schema"]),
         "manifest_issues": len([i for i in all_issues if i.category == "manifest"]),
         "subjects": subject_summaries,
@@ -422,12 +511,16 @@ def print_report(reports: list, all_issues: list, all_questions: list):
     print()
 
     print("--- Subject Inventory ---")
-    print(f"{'Subject':<30} {'Topics':>7} {'QA(q)':>7} {'QA(qql)':>8} {'Items':>7} {'Total Q':>8}")
+    print(
+        f"{'Subject':<30} {'Topics':>7} {'QA(q)':>7} {'QA(qql)':>8} {'Items':>7} {'Total Q':>8}"
+    )
     print("-" * 72)
     total_q = 0
     for r in reports:
-        print(f"{r.slug:<30} {r.topic_count:>7} {r.qa_topic_files:>7} "
-              f"{r.qa_question_level_files:>8} {r.items_files:>7} {r.total_questions:>8}")
+        print(
+            f"{r.slug:<30} {r.topic_count:>7} {r.qa_topic_files:>7} "
+            f"{r.qa_question_level_files:>8} {r.items_files:>7} {r.total_questions:>8}"
+        )
         total_q += r.total_questions
     print("-" * 72)
     print(f"{'TOTAL':<30} {'':>7} {'':>7} {'':>8} {'':>7} {total_q:>8}")
@@ -452,7 +545,9 @@ def print_report(reports: list, all_issues: list, all_questions: list):
     warnings = [i for i in all_issues if i.severity == "warning"]
     infos = [i for i in all_issues if i.severity == "info"]
 
-    print(f"--- Issues: {len(errors)} errors, {len(warnings)} warnings, {len(infos)} info ---")
+    print(
+        f"--- Issues: {len(errors)} errors, {len(warnings)} warnings, {len(infos)} info ---"
+    )
     for issue in all_issues:
         marker = {"error": "ERR", "warning": "WRN", "info": "INF"}[issue.severity]
         loc = f" [{issue.file}]" if issue.file else ""
@@ -478,10 +573,22 @@ def print_report(reports: list, all_issues: list, all_questions: list):
 
 def main():
     parser = argparse.ArgumentParser(description="QBank verification toolkit")
-    parser.add_argument("--content-dir", default="content", help="Path to content directory")
-    parser.add_argument("--json", action="store_true", help="Output compact JSON summary instead of text")
-    parser.add_argument("--json-full", action="store_true", help="Output full JSON with all issue details")
-    parser.add_argument("--manifest-out", default=None, help="Write unified manifest CSV to this path")
+    parser.add_argument(
+        "--content-dir", default="content", help="Path to content directory"
+    )
+    parser.add_argument(
+        "--json",
+        action="store_true",
+        help="Output compact JSON summary instead of text",
+    )
+    parser.add_argument(
+        "--json-full",
+        action="store_true",
+        help="Output full JSON with all issue details",
+    )
+    parser.add_argument(
+        "--manifest-out", default=None, help="Write unified manifest CSV to this path"
+    )
     args = parser.parse_args()
 
     content_dir = Path(args.content_dir)
@@ -510,10 +617,17 @@ def main():
     if args.manifest_out:
         out_path = Path(args.manifest_out)
         with open(out_path, "w", newline="", encoding="utf-8") as fh:
-            writer = csv.DictWriter(fh, fieldnames=[
-                "subject_slug", "topic_id", "question_count",
-                "difficulty_mix", "source_layers", "source_files",
-            ])
+            writer = csv.DictWriter(
+                fh,
+                fieldnames=[
+                    "subject_slug",
+                    "topic_id",
+                    "question_count",
+                    "difficulty_mix",
+                    "source_layers",
+                    "source_files",
+                ],
+            )
             writer.writeheader()
             writer.writerows(manifest_rows)
 

@@ -17,6 +17,7 @@ Dual-mode:
     pytest scripts/verify_memory_cases.py          # pytest integration
     python3 scripts/verify_memory_cases.py          # standalone report
 """
+
 from __future__ import annotations
 
 import os
@@ -46,21 +47,25 @@ from helpers import isolated_env  # noqa: E402
 # DB helpers — follow the pattern from tests/unit/test_memory_*.py
 # ---------------------------------------------------------------------------
 
+
 def _init_db():
     """Reset the thread-local SQLite connection and (re-)create schema."""
     from eduflow.memory.db import close, init_schema
+
     close()  # clear any stale connection from a prior test
     init_schema()
 
 
 def _reset_db():
     from eduflow.memory.db import close
+
     close()
 
 
 # ===================================================================
 # Case 1 — Anna Fire: Departed agent memory isolation
 # ===================================================================
+
 
 def _run_case1(tmp_dir: Path) -> list[tuple[str, bool, str]]:
     """Execute all Case 1 verification points.
@@ -97,9 +102,9 @@ def _run_case1(tmp_dir: Path) -> list[tuple[str, bool, str]]:
             )
             anna_mems = list_memories(scope="agent:anna", status="confirmed")
             assert len(anna_mems) >= 1, f"expected >=1, got {len(anna_mems)}"
-            assert any(
-                m["id"] == anna_mid for m in anna_mems
-            ), f"anna_mid={anna_mid} not in results"
+            assert any(m["id"] == anna_mid for m in anna_mems), (
+                f"anna_mid={anna_mid} not in results"
+            )
             results.append(("1.1", True, "anna memories scoped correctly"))
         except Exception as exc:
             results.append(("1.1", False, str(exc)))
@@ -184,6 +189,7 @@ def _run_case1(tmp_dir: Path) -> list[tuple[str, bool, str]]:
 # Case 2 — 0606 Inconsistency: Active Constraint + Gate + Re-injection
 # ===================================================================
 
+
 def _run_case2(tmp_dir: Path) -> list[tuple[str, bool, str]]:
     """Execute all Case 2 verification points."""
     results: list[tuple[str, bool, str]] = []
@@ -225,10 +231,7 @@ def _run_case2(tmp_dir: Path) -> list[tuple[str, bool, str]]:
         # ── 2.2 — query_for_agent finds workflow-scope constraint ──
         try:
             qr = query_for_agent("worker_course", task_id="T-29")
-            matching = [
-                c for c in qr
-                if c["scope"] == "workflow:igcse-subject-launch"
-            ]
+            matching = [c for c in qr if c["scope"] == "workflow:igcse-subject-launch"]
             assert len(matching) >= 1, (
                 f"workflow constraint not found (got {len(qr)} total)"
             )
@@ -248,13 +251,11 @@ def _run_case2(tmp_dir: Path) -> list[tuple[str, bool, str]]:
             wrong = query_for_agent("worker_course", task_id="T-99")
             t29_wrong = [c for c in wrong if c["scope"] == "task:T-29"]
             assert len(t29_wrong) == 0, (
-                f"task scope LEAK: T-29 constraint visible for T-99"
+                "task scope LEAK: T-29 constraint visible for T-99"
             )
             right = query_for_agent("worker_course", task_id="T-29")
             t29_right = [c for c in right if c["scope"] == "task:T-29"]
-            assert len(t29_right) >= 1, (
-                "task constraint missing for correct task_id"
-            )
+            assert len(t29_right) >= 1, "task constraint missing for correct task_id"
             results.append(("2.3", True, "task scope isolation verified"))
         except Exception as exc:
             results.append(("2.3", False, str(exc)))
@@ -272,7 +273,8 @@ def _run_case2(tmp_dir: Path) -> list[tuple[str, bool, str]]:
             )
             assert mid.startswith("MI-"), f"bad memory id: {mid}"
             wmem = list_memories(
-                scope="workflow:igcse-subject-launch", status="confirmed",
+                scope="workflow:igcse-subject-launch",
+                status="confirmed",
             )
             assert len(wmem) >= 1
             results.append(("2.4", True, f"memory {mid} added"))
@@ -286,7 +288,7 @@ def _run_case2(tmp_dir: Path) -> list[tuple[str, bool, str]]:
         # this IS the scope isolation we want to verify.
         try:
             # Add an agent-scope memory so it shows up in worker_course's packet
-            worker_mid = add_memory(
+            add_memory(
                 scope="agent:worker_course",
                 kind="note",
                 content="worker_course: always verify items/QQL/manifest triple",
@@ -295,14 +297,11 @@ def _run_case2(tmp_dir: Path) -> list[tuple[str, bool, str]]:
                 importance=8,
             )
             pkt = assemble_memory_packet(
-                "worker_course", task_id="T-29",
+                "worker_course",
+                task_id="T-29",
             )
-            assert "items/QQL/manifest" in pkt, (
-                "constraint content missing from packet"
-            )
-            assert "gate_required" in pkt, (
-                "gate_required enforcement label missing"
-            )
+            assert "items/QQL/manifest" in pkt, "constraint content missing from packet"
+            assert "gate_required" in pkt, "gate_required enforcement label missing"
             assert "verify items/QQL/manifest triple" in pkt, (
                 "agent-scope memory content missing from packet"
             )
@@ -329,7 +328,8 @@ def _run_case2(tmp_dir: Path) -> list[tuple[str, bool, str]]:
             assert cap is not None, "capsule not found"
             assert cap["workflow_id"] == "igcse-subject-launch"
             pkt2 = assemble_memory_packet(
-                "worker_course", task_id="T-29",
+                "worker_course",
+                task_id="T-29",
             )
             assert "T-29" in pkt2, "capsule task_id missing from packet"
             assert "worker_course" in pkt2, "capsule owner missing from packet"
@@ -343,10 +343,9 @@ def _run_case2(tmp_dir: Path) -> list[tuple[str, bool, str]]:
             ac_file = tmp_dir / "_memory-exports" / "active-constraints.md"
             assert ac_file.exists(), "active-constraints.md not created"
             ac_text = ac_file.read_text()
-            assert (
-                "items/QQL/manifest must be consistent before closeout"
-                in ac_text
-            ), "constraint content missing from active-constraints.md"
+            assert "items/QQL/manifest must be consistent before closeout" in ac_text, (
+                "constraint content missing from active-constraints.md"
+            )
             assert "gate_required" in ac_text
             results.append(("2.7", True, "active-constraints.md has content"))
         except Exception as exc:
@@ -355,9 +354,7 @@ def _run_case2(tmp_dir: Path) -> list[tuple[str, bool, str]]:
         # ── 2.8 — Obsidian export: memory item .md file ──
         try:
             item_file = tmp_dir / "_memory-exports" / "decisions" / f"{mid}.md"
-            assert item_file.exists(), (
-                f"memory item file not found at {item_file}"
-            )
+            assert item_file.exists(), f"memory item file not found at {item_file}"
             item_text = item_file.read_text()
             assert "triple consistency check" in item_text
             results.append(("2.8", True, "memory item .md exported"))
@@ -367,7 +364,8 @@ def _run_case2(tmp_dir: Path) -> list[tuple[str, bool, str]]:
         # ── 2.9 — reidentify: re-assembled packet still has constraint ──
         try:
             pkt3 = assemble_memory_packet(
-                "worker_course", task_id="T-29",
+                "worker_course",
+                task_id="T-29",
             )
             assert "items/QQL/manifest" in pkt3, (
                 "constraint not re-injected after reidentify"
@@ -391,7 +389,8 @@ def _run_case2(tmp_dir: Path) -> list[tuple[str, bool, str]]:
             assert cap2 is not None
             assert "FAIL" in (cap2.get("current_status") or "")
             pkt4 = assemble_memory_packet(
-                "worker_course", task_id="T-29",
+                "worker_course",
+                task_id="T-29",
             )
             assert "gate_required" in pkt4, (
                 "gate_required lost after FAIL verdict (Package 3 regression)"
@@ -399,10 +398,13 @@ def _run_case2(tmp_dir: Path) -> list[tuple[str, bool, str]]:
             assert "items/QQL/manifest" in pkt4, (
                 "constraint content lost after FAIL verdict"
             )
-            results.append((
-                "2.10", True,
-                "gate_required persists despite FAIL verdict",
-            ))
+            results.append(
+                (
+                    "2.10",
+                    True,
+                    "gate_required persists despite FAIL verdict",
+                )
+            )
         except Exception as exc:
             results.append(("2.10", False, str(exc)))
 
@@ -414,6 +416,7 @@ def _run_case2(tmp_dir: Path) -> list[tuple[str, bool, str]]:
 # ===================================================================
 # Standalone runner
 # ===================================================================
+
 
 def _print_report(
     case_name: str,
@@ -443,9 +446,7 @@ def main() -> int:
             case1 = _run_case1(Path(td))
         except Exception as exc:
             print(f"\nCase 1 FATAL: {exc}")
-            case1 = [
-                (f"1.{i}", False, "case crashed") for i in range(1, 7)
-            ]
+            case1 = [(f"1.{i}", False, "case crashed") for i in range(1, 7)]
         total_failures += _print_report(
             "Case 1: Anna Fire — Agent Memory Isolation (6 checks)",
             case1,
@@ -458,12 +459,9 @@ def main() -> int:
             case2 = _run_case2(Path(td))
         except Exception as exc:
             print(f"\nCase 2 FATAL: {exc}")
-            case2 = [
-                (f"2.{i}", False, "case crashed") for i in range(1, 11)
-            ]
+            case2 = [(f"2.{i}", False, "case crashed") for i in range(1, 11)]
         total_failures += _print_report(
-            "Case 2: 0606 Inconsistency — Constraint + Gate + Re-injection"
-            " (10 checks)",
+            "Case 2: 0606 Inconsistency — Constraint + Gate + Re-injection (10 checks)",
             case2,
         )
         total_points += len(case2)
@@ -481,18 +479,14 @@ def main() -> int:
 # pytest interface
 # ===================================================================
 
+
 class TestCase1AnnaFire:
     """Case 1 — Anna Fire: departed agent memory isolation."""
 
     def test_full_case(self, tmp_path):
         results = _run_case1(tmp_path)
-        failures = [
-            f"  {pid}: {detail}"
-            for pid, ok, detail in results if not ok
-        ]
-        assert not failures, (
-            f"{len(failures)} check(s) failed:\n" + "\n".join(failures)
-        )
+        failures = [f"  {pid}: {detail}" for pid, ok, detail in results if not ok]
+        assert not failures, f"{len(failures)} check(s) failed:\n" + "\n".join(failures)
 
 
 class TestCase20606Inconsistency:
@@ -500,13 +494,8 @@ class TestCase20606Inconsistency:
 
     def test_full_case(self, tmp_path):
         results = _run_case2(tmp_path)
-        failures = [
-            f"  {pid}: {detail}"
-            for pid, ok, detail in results if not ok
-        ]
-        assert not failures, (
-            f"{len(failures)} check(s) failed:\n" + "\n".join(failures)
-        )
+        failures = [f"  {pid}: {detail}" for pid, ok, detail in results if not ok]
+        assert not failures, f"{len(failures)} check(s) failed:\n" + "\n".join(failures)
 
 
 # ===================================================================

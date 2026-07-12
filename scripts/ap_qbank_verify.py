@@ -5,6 +5,7 @@ Usage:
     python scripts/ap_qbank_verify.py --subject-dir "/path/to/AP Computer Science A"
     python scripts/ap_qbank_verify.py --subject-dir "/path/to/AP Computer Science A" --json
 """
+
 from __future__ import annotations
 
 import argparse
@@ -17,12 +18,17 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from eduflow.store.ap_subject_verifier import compact_summary, verify_ap_subject
+from eduflow.store.ap_subject_verifier import (  # noqa: E402
+    compact_summary,
+    verify_ap_subject,
+)
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Verify AP qbank artifacts")
-    parser.add_argument("--subject-dir", required=True, help="Path to AP subject directory")
+    parser.add_argument(
+        "--subject-dir", required=True, help="Path to AP subject directory"
+    )
     parser.add_argument("--json", action="store_true", help="Output JSON summary")
     args = parser.parse_args(argv)
 

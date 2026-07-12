@@ -43,7 +43,6 @@ def check_contamination(pkg_path: Path, meta: dict) -> list[dict]:
     """Axis 0: Cross-system contamination check."""
     findings = []
     system = meta.get("system", "")
-    subject = meta.get("subject", "")
 
     # Check SKILL.md
     skill_md = pkg_path / "SKILL.md"
@@ -51,41 +50,47 @@ def check_contamination(pkg_path: Path, meta: dict) -> list[dict]:
         content = skill_md.read_text(encoding="utf-8")
 
         # Check System: line
-        sys_match = re.search(r'^- System:\s*(.+)$', content, re.MULTILINE)
+        sys_match = re.search(r"^- System:\s*(.+)$", content, re.MULTILINE)
         if sys_match:
             skill_system = sys_match.group(1).strip()
             if skill_system != system:
-                findings.append({
-                    "severity": "P0",
-                    "axis": "contamination",
-                    "file": "SKILL.md",
-                    "message": f"System mismatch: SKILL.md says '{skill_system}', metadata says '{system}'",
-                })
+                findings.append(
+                    {
+                        "severity": "P0",
+                        "axis": "contamination",
+                        "file": "SKILL.md",
+                        "message": f"System mismatch: SKILL.md says '{skill_system}', metadata says '{system}'",
+                    }
+                )
 
         # Check for hardcoded "CAIE IGCSE" in non-IGCSE packages
         if "igcse" not in system.lower():
             if "CAIE IGCSE" in content or "Cambridge IGCSE" in content:
-                findings.append({
-                    "severity": "P0",
-                    "axis": "contamination",
-                    "file": "SKILL.md",
-                    "message": f"CAIE IGCSE contamination found in non-IGCSE package (system={system})",
-                })
+                findings.append(
+                    {
+                        "severity": "P0",
+                        "axis": "contamination",
+                        "file": "SKILL.md",
+                        "message": f"CAIE IGCSE contamination found in non-IGCSE package (system={system})",
+                    }
+                )
 
     # Check source-index.md
     si = pkg_path / "references" / "source-index.md"
     if si.exists():
         si_content = si.read_text(encoding="utf-8")
-        si_sys = re.search(r'- system:\s*`?([^`\n]+)`?', si_content)
+        si_sys = re.search(r"- system:\s*`?([^`\n]+)`?", si_content)
         if si_sys:
             si_system = si_sys.group(1).strip()
             if si_system != system:
-                findings.append({
-                    "severity": "P0",
-                    "axis": "contamination",
-                    "file": "references/source-index.md",
-                    "message": f"System mismatch: source-index says '{si_system}', metadata says '{system}'",
-                })
+                findings.append(
+                    {
+                        "severity": "P0",
+                        "axis": "contamination",
+                        "file": "references/source-index.md",
+                        "message": f"System mismatch: source-index says '{si_system}', metadata says '{system}'",
+                    }
+                )
 
     return findings
 
@@ -103,12 +108,14 @@ def check_profile_routing(meta: dict) -> list[dict]:
         if system == "DSE" and profile == "dse_curriculum_assessment_guide":
             pass  # This is valid for C&A Guide packages
         else:
-            findings.append({
-                "severity": "P0",
-                "axis": "profile_routing",
-                "file": "metadata.json",
-                "message": f"Profile mismatch: system='{system}' requires '{expected}', got '{profile}'",
-            })
+            findings.append(
+                {
+                    "severity": "P0",
+                    "axis": "profile_routing",
+                    "file": "metadata.json",
+                    "message": f"Profile mismatch: system='{system}' requires '{expected}', got '{profile}'",
+                }
+            )
 
     return findings
 
@@ -118,19 +125,37 @@ def check_ek_quality(pkg_path: Path, meta: dict) -> list[dict]:
     findings = []
     tj = pkg_path / "topics.json"
     if not tj.exists():
-        return [{"severity": "P0", "axis": "ek_quality", "file": "topics.json",
-                 "message": "topics.json not found"}]
+        return [
+            {
+                "severity": "P0",
+                "axis": "ek_quality",
+                "file": "topics.json",
+                "message": "topics.json not found",
+            }
+        ]
 
     try:
         data = json.loads(tj.read_text(encoding="utf-8"))
     except json.JSONDecodeError:
-        return [{"severity": "P0", "axis": "ek_quality", "file": "topics.json",
-                 "message": "topics.json parse error"}]
+        return [
+            {
+                "severity": "P0",
+                "axis": "ek_quality",
+                "file": "topics.json",
+                "message": "topics.json parse error",
+            }
+        ]
 
     topics = data.get("topics", [])
     if not topics:
-        return [{"severity": "P0", "axis": "ek_quality", "file": "topics.json",
-                 "message": "topics array is empty"}]
+        return [
+            {
+                "severity": "P0",
+                "axis": "ek_quality",
+                "file": "topics.json",
+                "message": "topics array is empty",
+            }
+        ]
 
     empty_ek_count = 0
     placeholder_ek_count = 0
@@ -161,42 +186,52 @@ def check_ek_quality(pkg_path: Path, meta: dict) -> list[dict]:
 
     if total_discipline_topics > 0:
         if empty_ek_count == total_discipline_topics:
-            findings.append({
-                "severity": "P1",
-                "axis": "ek_quality",
-                "file": "topics.json",
-                "message": f"All {total_discipline_topics} discipline topics have empty EK arrays",
-            })
+            findings.append(
+                {
+                    "severity": "P1",
+                    "axis": "ek_quality",
+                    "file": "topics.json",
+                    "message": f"All {total_discipline_topics} discipline topics have empty EK arrays",
+                }
+            )
         elif empty_ek_count > 0:
-            findings.append({
-                "severity": "P1",
-                "axis": "ek_quality",
-                "file": "topics.json",
-                "message": f"{empty_ek_count}/{total_discipline_topics} discipline topics have empty EK",
-            })
+            findings.append(
+                {
+                    "severity": "P1",
+                    "axis": "ek_quality",
+                    "file": "topics.json",
+                    "message": f"{empty_ek_count}/{total_discipline_topics} discipline topics have empty EK",
+                }
+            )
 
         if placeholder_ek_count > 0:
-            findings.append({
-                "severity": "P1",
-                "axis": "ek_quality",
-                "file": "topics.json",
-                "message": f"{placeholder_ek_count}/{total_discipline_topics} topics have placeholder EK "
-                          f"(e.g. 'Subject-wide overview and framework.')",
-            })
+            findings.append(
+                {
+                    "severity": "P1",
+                    "axis": "ek_quality",
+                    "file": "topics.json",
+                    "message": f"{placeholder_ek_count}/{total_discipline_topics} topics have placeholder EK "
+                    f"(e.g. 'Subject-wide overview and framework.')",
+                }
+            )
 
     # Check for non-discipline placeholder topics that should be removed
     placeholder_names = []
     for topic in topics:
         name = topic.get("topic_name", "")
-        if name.startswith(("Why choose", "Syllabus overview", "What else you need to know")):
+        if name.startswith(
+            ("Why choose", "Syllabus overview", "What else you need to know")
+        ):
             placeholder_names.append(name)
     if placeholder_names:
-        findings.append({
-            "severity": "P2",
-            "axis": "ek_quality",
-            "file": "topics.json",
-            "message": f"Non-discipline placeholder topics present: {placeholder_names}",
-        })
+        findings.append(
+            {
+                "severity": "P2",
+                "axis": "ek_quality",
+                "file": "topics.json",
+                "message": f"Non-discipline placeholder topics present: {placeholder_names}",
+            }
+        )
 
     return findings
 
@@ -205,68 +240,92 @@ def check_assessment_structure(pkg_path: Path, meta: dict) -> list[dict]:
     """Axis 3: Assessment structure validation."""
     findings = []
     system = meta.get("system", "")
-    subject = meta.get("subject", "")
 
     aj = pkg_path / "assessment.json"
     if not aj.exists():
-        return [{"severity": "P1", "axis": "assessment", "file": "assessment.json",
-                 "message": "assessment.json not found"}]
+        return [
+            {
+                "severity": "P1",
+                "axis": "assessment",
+                "file": "assessment.json",
+                "message": "assessment.json not found",
+            }
+        ]
 
     try:
         data = json.loads(aj.read_text(encoding="utf-8"))
     except json.JSONDecodeError:
-        return [{"severity": "P0", "axis": "assessment", "file": "assessment.json",
-                 "message": "assessment.json parse error"}]
+        return [
+            {
+                "severity": "P0",
+                "axis": "assessment",
+                "file": "assessment.json",
+                "message": "assessment.json parse error",
+            }
+        ]
 
     papers = data.get("papers", [])
     if not papers:
-        findings.append({
-            "severity": "P1",
-            "axis": "assessment",
-            "file": "assessment.json",
-            "message": "No papers defined",
-        })
+        findings.append(
+            {
+                "severity": "P1",
+                "axis": "assessment",
+                "file": "assessment.json",
+                "message": "No papers defined",
+            }
+        )
         return findings
 
     # Check for 3-paper template contamination (120min/100marks/33.33%)
     template_count = sum(
-        1 for p in papers
+        1
+        for p in papers
         if p.get("duration_minutes") == 120
         and p.get("total_marks") == 100
         and abs(p.get("weighting_percent", 0) - 33.33) < 0.5
     )
     if template_count >= 3 and system not in ["CAIE IGCSE", "CAIE A-Level"]:
-        findings.append({
-            "severity": "P0",
-            "axis": "assessment",
-            "file": "assessment.json",
-            "message": f"Suspicious 3-paper template detected: {template_count} papers "
-                      f"with identical 120min/100marks/33.33% structure (system={system})",
-        })
+        findings.append(
+            {
+                "severity": "P0",
+                "axis": "assessment",
+                "file": "assessment.json",
+                "message": f"Suspicious 3-paper template detected: {template_count} papers "
+                f"with identical 120min/100marks/33.33% structure (system={system})",
+            }
+        )
 
     # Check weighting sanity
     total_weight = sum(p.get("weighting_percent", 0) for p in papers)
     if total_weight > 0 and abs(total_weight - 100) > 5:
-        findings.append({
-            "severity": "P0",
-            "axis": "assessment",
-            "file": "assessment.json",
-            "message": f"Weighting total is {total_weight:.1f}%, expected ~100%",
-        })
+        findings.append(
+            {
+                "severity": "P0",
+                "axis": "assessment",
+                "file": "assessment.json",
+                "message": f"Weighting total is {total_weight:.1f}%, expected ~100%",
+            }
+        )
 
     # Check for duplicate paper structures
     paper_sigs = []
     for p in papers:
-        sig = (p.get("duration_minutes"), p.get("total_marks"), p.get("weighting_percent"))
+        sig = (
+            p.get("duration_minutes"),
+            p.get("total_marks"),
+            p.get("weighting_percent"),
+        )
         paper_sigs.append(sig)
     if len(set(paper_sigs)) == 1 and len(papers) > 2:
-        findings.append({
-            "severity": "P1",
-            "axis": "assessment",
-            "file": "assessment.json",
-            "message": f"All {len(papers)} papers have identical structure "
-                      f"({paper_sigs[0][0]}min/{paper_sigs[0][1]}marks/{paper_sigs[0][2]}%)",
-        })
+        findings.append(
+            {
+                "severity": "P1",
+                "axis": "assessment",
+                "file": "assessment.json",
+                "message": f"All {len(papers)} papers have identical structure "
+                f"({paper_sigs[0][0]}min/{paper_sigs[0][1]}marks/{paper_sigs[0][2]}%)",
+            }
+        )
 
     return findings
 
@@ -274,9 +333,6 @@ def check_assessment_structure(pkg_path: Path, meta: dict) -> list[dict]:
 def check_topic_completeness(pkg_path: Path, meta: dict) -> list[dict]:
     """Axis 4: Topic tree completeness (basic sanity check)."""
     findings = []
-    system = meta.get("system", "")
-    subject = meta.get("subject", "")
-
     tj = pkg_path / "topics.json"
     if not tj.exists():
         return []
@@ -289,43 +345,53 @@ def check_topic_completeness(pkg_path: Path, meta: dict) -> list[dict]:
     topics = data.get("topics", [])
     # Count discipline topics (excluding root and placeholders)
     discipline = [
-        t for t in topics
+        t
+        for t in topics
         if t.get("parent_id", "") != ""
-        and not t.get("topic_name", "").startswith(("Why choose", "Syllabus overview", "What else"))
+        and not t.get("topic_name", "").startswith(
+            ("Why choose", "Syllabus overview", "What else")
+        )
     ]
 
     if len(discipline) < 3:
-        findings.append({
-            "severity": "P1",
-            "axis": "topic_completeness",
-            "file": "topics.json",
-            "message": f"Only {len(discipline)} discipline topics found (expected 5+ for most syllabi)",
-        })
+        findings.append(
+            {
+                "severity": "P1",
+                "axis": "topic_completeness",
+                "file": "topics.json",
+                "message": f"Only {len(discipline)} discipline topics found (expected 5+ for most syllabi)",
+            }
+        )
 
     # Check for empty-shell unit names
     shell_names = [
-        t["topic_name"] for t in discipline
-        if re.match(r'^Unit\s+\d+$', t.get("topic_name", ""))
-        or re.match(r'^Topic\s+\d+$', t.get("topic_name", ""))
+        t["topic_name"]
+        for t in discipline
+        if re.match(r"^Unit\s+\d+$", t.get("topic_name", ""))
+        or re.match(r"^Topic\s+\d+$", t.get("topic_name", ""))
     ]
     if shell_names:
-        findings.append({
-            "severity": "P1",
-            "axis": "topic_completeness",
-            "file": "topics.json",
-            "message": f"Empty-shell topic names without descriptive titles: {shell_names[:5]}",
-        })
+        findings.append(
+            {
+                "severity": "P1",
+                "axis": "topic_completeness",
+                "file": "topics.json",
+                "message": f"Empty-shell topic names without descriptive titles: {shell_names[:5]}",
+            }
+        )
 
     # Check for duplicate topic names
     names = [t.get("topic_name", "") for t in discipline]
     dupes = [n for n in names if names.count(n) > 1]
     if dupes:
-        findings.append({
-            "severity": "P1",
-            "axis": "topic_completeness",
-            "file": "topics.json",
-            "message": f"Duplicate topic names: {list(set(dupes))[:5]}",
-        })
+        findings.append(
+            {
+                "severity": "P1",
+                "axis": "topic_completeness",
+                "file": "topics.json",
+                "message": f"Duplicate topic names: {list(set(dupes))[:5]}",
+            }
+        )
 
     return findings
 
@@ -339,9 +405,17 @@ def validate_package(pkg_path: Path) -> dict:
     try:
         meta = json.loads(mj.read_text(encoding="utf-8"))
     except json.JSONDecodeError:
-        return {"package": pkg_path.name, "status": "error",
-                "findings": [{"severity": "P0", "axis": "metadata",
-                             "message": "metadata.json parse error"}]}
+        return {
+            "package": pkg_path.name,
+            "status": "error",
+            "findings": [
+                {
+                    "severity": "P0",
+                    "axis": "metadata",
+                    "message": "metadata.json parse error",
+                }
+            ],
+        }
 
     all_findings = []
     all_findings.extend(check_contamination(pkg_path, meta))
@@ -381,7 +455,9 @@ def validate_package(pkg_path: Path) -> dict:
 def main():
     parser = argparse.ArgumentParser(description="Validate assessment skill packages")
     parser.add_argument("--pkg-dir", type=str, default=None)
-    parser.add_argument("--pkg", type=str, default=None, help="Validate a single package by name")
+    parser.add_argument(
+        "--pkg", type=str, default=None, help="Validate a single package by name"
+    )
     parser.add_argument("--json", action="store_true", help="Output as JSON")
     args = parser.parse_args()
 
@@ -405,9 +481,9 @@ def main():
 
     results = []
     for pkg_path in sorted(pkg_dir.iterdir()):
-        if not pkg_path.is_dir() or pkg_path.name.startswith('.'):
+        if not pkg_path.is_dir() or pkg_path.name.startswith("."):
             continue
-        if pkg_path.name.startswith('ap-'):
+        if pkg_path.name.startswith("ap-"):
             continue
         results.append(validate_package(pkg_path))
 
@@ -429,15 +505,21 @@ def print_report(results: list[dict]):
     fail_count = sum(1 for r in results if r["status"] == "fail")
     skip_count = sum(1 for r in results if r["status"] == "skip")
 
-    print(f"Total: {len(results)} | Pass: {pass_count} | Warn: {warn_count} | Fail: {fail_count} | Skip: {skip_count}")
+    print(
+        f"Total: {len(results)} | Pass: {pass_count} | Warn: {warn_count} | Fail: {fail_count} | Skip: {skip_count}"
+    )
     print()
 
     for r in results:
         if r["status"] == "skip":
             continue
 
-        status_icon = {"pass": "PASS", "warn": "WARN", "fail": "FAIL"}.get(r["status"], "?")
-        print(f"[{status_icon}] {r['package']} ({r.get('system', '?')} {r.get('subject', '?')})")
+        status_icon = {"pass": "PASS", "warn": "WARN", "fail": "FAIL"}.get(
+            r["status"], "?"
+        )
+        print(
+            f"[{status_icon}] {r['package']} ({r.get('system', '?')} {r.get('subject', '?')})"
+        )
 
         for f in r.get("findings", []):
             print(f"  [{f['severity']}] {f['axis']}: {f['message']}")

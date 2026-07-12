@@ -14,7 +14,6 @@ Usage:
 
 import argparse
 import json
-import os
 import re
 import shutil
 import sys
@@ -60,11 +59,20 @@ def get_correct_profile(system: str) -> str | None:
 
 def is_igcse_package(system: str) -> bool:
     """Check if the system is actually CAIE IGCSE (no fix needed)."""
-    return "igcse" in system.lower() and ("caie" in system.lower() or "cambridge" in system.lower())
+    return "igcse" in system.lower() and (
+        "caie" in system.lower() or "cambridge" in system.lower()
+    )
 
 
-def fix_skill_md(pkg_path: Path, system: str, subject: str, board: str, level: str,
-                 assessment_code: str, dry_run: bool) -> list[str]:
+def fix_skill_md(
+    pkg_path: Path,
+    system: str,
+    subject: str,
+    board: str,
+    level: str,
+    assessment_code: str,
+    dry_run: bool,
+) -> list[str]:
     """Fix contaminated SKILL.md."""
     skill_md = pkg_path / "SKILL.md"
     if not skill_md.exists():
@@ -77,47 +85,59 @@ def fix_skill_md(pkg_path: Path, system: str, subject: str, board: str, level: s
     # Fix frontmatter description
     # Pattern: "Scope and assessment model for Cambridge IGCSE {Subject} ({code})."
     old_desc_pattern = re.compile(
-        r'(description:\s*)Scope and assessment model for (?:Cambridge |CAIE )IGCSE (\w[\w\s]*?)(\s*\()',
-        re.MULTILINE
+        r"(description:\s*)Scope and assessment model for (?:Cambridge |CAIE )IGCSE (\w[\w\s]*?)(\s*\()",
+        re.MULTILINE,
     )
     m = old_desc_pattern.search(content)
     if m:
         new_desc = f"{m.group(1)}Scope and assessment model for {system} {subject} ("
-        content = content[:m.start()] + new_desc + content[m.end():]
-        changes.append(f"frontmatter description: 'Cambridge IGCSE {m.group(2)}' -> '{system} {subject}'")
+        content = content[: m.start()] + new_desc + content[m.end() :]
+        changes.append(
+            f"frontmatter description: 'Cambridge IGCSE {m.group(2)}' -> '{system} {subject}'"
+        )
 
     # Fix body: "Assessment skill for the Cambridge IGCSE {Subject} syllabus."
     body_fix = re.sub(
-        r'Assessment skill for the (?:Cambridge |CAIE )IGCSE (\w+) syllabus\.',
-        f'Assessment skill for the {system} {subject} specification.',
+        r"Assessment skill for the (?:Cambridge |CAIE )IGCSE (\w+) syllabus\.",
+        f"Assessment skill for the {system} {subject} specification.",
         content,
         count=1,
     )
     if body_fix != content:
         content = body_fix
-        changes.append(f"body overview: 'Cambridge IGCSE syllabus' -> '{system} specification'")
+        changes.append(
+            f"body overview: 'Cambridge IGCSE syllabus' -> '{system} specification'"
+        )
 
     # Fix body: "classify, route, or scope {subject} content against the CAIE IGCSE syllabus"
     route_fix = re.sub(
-        r'against the (?:CAIE IGCSE|Cambridge IGCSE) syllabus',
-        f'against the {system} specification',
+        r"against the (?:CAIE IGCSE|Cambridge IGCSE) syllabus",
+        f"against the {system} specification",
         content,
     )
     if route_fix != content:
         content = route_fix
-        changes.append(f"body route: 'against CAIE IGCSE syllabus' -> 'against {system} specification'")
+        changes.append(
+            f"body route: 'against CAIE IGCSE syllabus' -> 'against {system} specification'"
+        )
 
     # Fix "- System: CAIE IGCSE"
-    old_system_line = re.search(r'^- System:\s*(?:CAIE IGCSE|Cambridge IGCSE)\s*$', content, re.MULTILINE)
+    old_system_line = re.search(
+        r"^- System:\s*(?:CAIE IGCSE|Cambridge IGCSE)\s*$", content, re.MULTILINE
+    )
     if old_system_line:
         new_system_line = f"- System: {system}"
-        content = content[:old_system_line.start()] + new_system_line + content[old_system_line.end():]
+        content = (
+            content[: old_system_line.start()]
+            + new_system_line
+            + content[old_system_line.end() :]
+        )
         changes.append(f"System field: 'CAIE IGCSE' -> '{system}'")
 
     # Fix "route {subject} items to CAIE IGCSE topics"
     topic_fix = re.sub(
-        r'to (?:CAIE IGCSE|Cambridge IGCSE) topics',
-        f'to {system} topics',
+        r"to (?:CAIE IGCSE|Cambridge IGCSE) topics",
+        f"to {system} topics",
         content,
     )
     if topic_fix != content:
@@ -126,30 +146,30 @@ def fix_skill_md(pkg_path: Path, system: str, subject: str, board: str, level: s
     # Fix inline source-index section if present
     # "- system: `CAIE IGCSE`"
     content = re.sub(
-        r'(- system:\s*`)(?:CAIE IGCSE|Cambridge IGCSE)(`)',
-        f'\\g<1>{system}\\g<2>',
+        r"(- system:\s*`)(?:CAIE IGCSE|Cambridge IGCSE)(`)",
+        f"\\g<1>{system}\\g<2>",
         content,
     )
     # "- source_layout_profile: `caie_igcse_syllabus`"
     correct_profile = get_correct_profile(system)
     if correct_profile:
         content = re.sub(
-            r'(- source_layout_profile:\s*`)caie_igcse_syllabus(`)',
-            f'\\g<1>{correct_profile}\\g<2>',
+            r"(- source_layout_profile:\s*`)caie_igcse_syllabus(`)",
+            f"\\g<1>{correct_profile}\\g<2>",
             content,
         )
 
     # Fix "Source evidence bundle for the CAIE IGCSE {Subject} syllabus"
     content = re.sub(
-        r'Source evidence bundle for the (?:CAIE IGCSE|Cambridge IGCSE) (\w+) syllabus',
-        f'Source evidence bundle for the {system} \\1 specification',
+        r"Source evidence bundle for the (?:CAIE IGCSE|Cambridge IGCSE) (\w+) syllabus",
+        f"Source evidence bundle for the {system} \\1 specification",
         content,
     )
 
     if content != original:
         if not dry_run:
             # Backup
-            bak = skill_md.with_suffix('.md.bak')
+            bak = skill_md.with_suffix(".md.bak")
             if not bak.exists():
                 shutil.copy2(skill_md, bak)
             skill_md.write_text(content, encoding="utf-8")
@@ -157,7 +177,9 @@ def fix_skill_md(pkg_path: Path, system: str, subject: str, board: str, level: s
     return []
 
 
-def fix_source_index(pkg_path: Path, system: str, subject: str, dry_run: bool) -> list[str]:
+def fix_source_index(
+    pkg_path: Path, system: str, subject: str, dry_run: bool
+) -> list[str]:
     """Fix contaminated references/source-index.md."""
     si = pkg_path / "references" / "source-index.md"
     if not si.exists():
@@ -171,29 +193,29 @@ def fix_source_index(pkg_path: Path, system: str, subject: str, dry_run: bool) -
 
     # Fix "Source evidence bundle for the CAIE IGCSE {Subject} syllabus"
     new_content = re.sub(
-        r'Source evidence bundle for the (?:CAIE IGCSE|Cambridge IGCSE) (\w+) syllabus',
-        f'Source evidence bundle for the {system} \\1 specification',
+        r"Source evidence bundle for the (?:CAIE IGCSE|Cambridge IGCSE) (\w+) syllabus",
+        f"Source evidence bundle for the {system} \\1 specification",
         content,
     )
 
     # Fix "- system: `CAIE IGCSE`" or "- system: CAIE IGCSE"
     new_content = re.sub(
-        r'(- system:\s*`?)(?:CAIE IGCSE|Cambridge IGCSE)(`?)',
-        f'\\g<1>{system}\\g<2>',
+        r"(- system:\s*`?)(?:CAIE IGCSE|Cambridge IGCSE)(`?)",
+        f"\\g<1>{system}\\g<2>",
         new_content,
     )
 
     # Fix "- source_layout_profile: `caie_igcse_syllabus`"
     if correct_profile:
         new_content = re.sub(
-            r'(- source_layout_profile:\s*`?)caie_igcse_syllabus(`?)',
-            f'\\g<1>{correct_profile}\\g<2>',
+            r"(- source_layout_profile:\s*`?)caie_igcse_syllabus(`?)",
+            f"\\g<1>{correct_profile}\\g<2>",
             new_content,
         )
 
     if new_content != original:
         if not dry_run:
-            bak = si.with_suffix('.md.bak')
+            bak = si.with_suffix(".md.bak")
             if not bak.exists():
                 shutil.copy2(si, bak)
             si.write_text(new_content, encoding="utf-8")
@@ -201,7 +223,9 @@ def fix_source_index(pkg_path: Path, system: str, subject: str, dry_run: bool) -
     return changes
 
 
-def fix_topics_json(pkg_path: Path, system: str, subject: str, dry_run: bool) -> list[str]:
+def fix_topics_json(
+    pkg_path: Path, system: str, subject: str, dry_run: bool
+) -> list[str]:
     """Fix contaminated topics.json root node."""
     tj = pkg_path / "topics.json"
     if not tj.exists():
@@ -225,10 +249,12 @@ def fix_topics_json(pkg_path: Path, system: str, subject: str, dry_run: bool) ->
             changes.append(f"topics.json root: '{old_name}' -> '{correct_root}'")
 
     if changes and not dry_run:
-        bak = tj.with_suffix('.json.bak')
+        bak = tj.with_suffix(".json.bak")
         if not bak.exists():
             shutil.copy2(tj, bak)
-        tj.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        tj.write_text(
+            json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+        )
 
     return changes
 
@@ -252,16 +278,23 @@ def fix_metadata_json(pkg_path: Path, system: str, dry_run: bool) -> list[str]:
     sp_list = data.get("source_provenance", [])
     for i, sp in enumerate(sp_list):
         old_profile = sp.get("source_layout_profile", "")
-        if old_profile == "caie_igcse_syllabus" and correct_profile != "caie_igcse_syllabus":
+        if (
+            old_profile == "caie_igcse_syllabus"
+            and correct_profile != "caie_igcse_syllabus"
+        ):
             sp["source_layout_profile"] = correct_profile
-            changes.append(f"metadata.json source_provenance[{i}].source_layout_profile: "
-                          f"'{old_profile}' -> '{correct_profile}'")
+            changes.append(
+                f"metadata.json source_provenance[{i}].source_layout_profile: "
+                f"'{old_profile}' -> '{correct_profile}'"
+            )
 
     if changes and not dry_run:
-        bak = mj.with_suffix('.json.bak')
+        bak = mj.with_suffix(".json.bak")
         if not bak.exists():
             shutil.copy2(mj, bak)
-        mj.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        mj.write_text(
+            json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+        )
 
     return changes
 
@@ -294,7 +327,6 @@ def remediate_package(pkg_path: Path, dry_run: bool) -> dict:
         return {"status": "partial", "system": system, "changes": changes}
 
     # Check if contamination exists
-    current_profile = meta.get("source_provenance", [{}])[0].get("source_layout_profile", "")
     correct_profile = get_correct_profile(system)
 
     if not correct_profile:
@@ -303,7 +335,9 @@ def remediate_package(pkg_path: Path, dry_run: bool) -> dict:
     all_changes = []
 
     # Fix SKILL.md
-    all_changes.extend(fix_skill_md(pkg_path, system, subject, board, level, assessment_code, dry_run))
+    all_changes.extend(
+        fix_skill_md(pkg_path, system, subject, board, level, assessment_code, dry_run)
+    )
 
     # Fix source-index.md
     all_changes.extend(fix_source_index(pkg_path, system, subject, dry_run))
@@ -327,10 +361,17 @@ def remediate_package(pkg_path: Path, dry_run: bool) -> dict:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Remediate CAIE IGCSE template contamination")
-    parser.add_argument("--dry-run", action="store_true", help="Show what would be fixed without changing files")
-    parser.add_argument("--pkg-dir", type=str, default=None,
-                        help="Path to assessment-skills directory")
+    parser = argparse.ArgumentParser(
+        description="Remediate CAIE IGCSE template contamination"
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Show what would be fixed without changing files",
+    )
+    parser.add_argument(
+        "--pkg-dir", type=str, default=None, help="Path to assessment-skills directory"
+    )
     args = parser.parse_args()
 
     if args.pkg_dir:
@@ -355,9 +396,9 @@ def main():
     skip_count = 0
 
     for pkg_path in sorted(pkg_dir.iterdir()):
-        if not pkg_path.is_dir() or pkg_path.name.startswith('.'):
+        if not pkg_path.is_dir() or pkg_path.name.startswith("."):
             continue
-        if pkg_path.name.startswith('ap-'):
+        if pkg_path.name.startswith("ap-"):
             continue  # Skip AP packages (different pipeline)
 
         result = remediate_package(pkg_path, args.dry_run)
@@ -383,7 +424,9 @@ def main():
     # Write report
     report_path = pkg_dir.parent / "remediation-report.json"
     if not args.dry_run:
-        report_path.write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
+        report_path.write_text(
+            json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8"
+        )
         print(f"[remediate] report written to {report_path}")
     else:
         print(json.dumps(report, indent=2, ensure_ascii=False))
