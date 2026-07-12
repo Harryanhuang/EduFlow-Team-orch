@@ -1018,6 +1018,29 @@ INDEPENDENT REVIEWS
   from five to zero, test bodies were preserved apart from the corrected stale
   watchdog assertion, and manifest/inventory/counts are accurate.
 
+Task 7 Ruff remediation R3c: unambiguous test binders
+
+BEHAVIOR LOCK + GREEN
+Manifest: `tests/ruff_r3c_e741_tests.txt` contains eight affected test files.
+Command: `pytest $(< tests/ruff_r3c_e741_tests.txt) -q`
+Results: 238 passed before and after the rename-only change.
+Commands/results:
+- `uvx --offline ruff==0.15.10 check tests --select E741` -> passed, test E741 zero
+- test Ruff statistics -> expected failure, reduced from 94 to 77 findings
+- full Ruff statistics -> expected gate failure, reduced from 148 to 131 findings
+- `git diff --check` -> passed
+
+Seventeen comprehension, generator, and lambda binders named `l` were renamed
+to domain names (`line`, `lane`, `link`, or `log`). Predicates, iteration order,
+assertions, returned objects, and test scenarios are unchanged; no unsafe fix or
+production edit was used.
+
+INDEPENDENT REVIEWS
+- Specification review: PASS; confirmed all 17 synchronized renames, behavior
+  equivalence, evidence, and Task 7 scope.
+- Quality review: PASS; checked every binder/predicate/order/outer assertion and
+  independently reproduced the manifest, Ruff, acceptance, and inventory results.
+
 Task 7 acceptance-package TDD
 
 RED

@@ -106,7 +106,10 @@ def test_fire_wake_failure_alert_writes_audit_log():
         # the audit log still lands.  `delivered` may be False in
         # isolated_env because send_card falls through.
         logs = local_facts.list_logs("auto_ops")
-        assert any(l["type"] == "alert" and "worker_course" in l["content"] for l in logs), (sent, logs)
+        assert any(
+            log["type"] == "alert" and "worker_course" in log["content"]
+            for log in logs
+        ), (sent, logs)
 
 
 def test_fire_wake_failure_alert_sends_card_when_chat_id_set():
@@ -147,7 +150,7 @@ def test_fire_wake_failure_alert_when_no_chat_id_returns_errno():
     assert sent["errno"] == wake_alert.ERR_NO_CHAT_ID
     # Audit log still lands
     logs = local_facts.list_logs("auto_ops")
-    assert any("worker_qbank" in l["content"] for l in logs)
+    assert any("worker_qbank" in log["content"] for log in logs)
 
 
 def test_fire_wake_failure_alert_returns_send_failure_errno():
@@ -245,7 +248,10 @@ def test_fire_wake_failure_alert_30min_dedup_skips_second_send():
         assert second["deduped"] is True
         assert len(calls) == 1  # second was deduped
         # Both attempts in audit log so history is grep-able.
-        alert_rows = [l for l in local_facts.list_logs("auto_ops") if l["type"] == "alert"]
+        alert_rows = [
+            log for log in local_facts.list_logs("auto_ops")
+            if log["type"] == "alert"
+        ]
         assert len(alert_rows) >= 2
 
 

@@ -24,7 +24,7 @@ def test_team_lists_all_agents_sorted_by_name():
         run_cli(["status", "worker_c", "阻塞", "stuck", "no api key"])
         rc, out, _ = run_cli(["team"])
         assert rc == 0
-        lines = [l for l in out.splitlines() if l.strip()]
+        lines = [line for line in out.splitlines() if line.strip()]
         assert len(lines) == 3
         # alphabetical
         assert lines[0].startswith("worker_a")

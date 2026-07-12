@@ -1134,7 +1134,10 @@ def test_workflow_recommend_429_fallback_env_drift(tmp_path):
         ])
     assert rc == 0, err
     lines = out.splitlines()
-    rec_line = next(l for l in lines if l.startswith("- runtime-failover-hardening"))
+    rec_line = next(
+        line for line in lines
+        if line.startswith("- runtime-failover-hardening")
+    )
     assert "confidence=high" in rec_line, rec_line
     assert "keywords=429" in rec_line or "fallback" in rec_line
 

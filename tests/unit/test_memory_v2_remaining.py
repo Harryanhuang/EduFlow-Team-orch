@@ -216,7 +216,10 @@ def test_merge_memories_creates_supersedes_link():
     # Verify supersedes link exists
     from eduflow.memory.links import get_links_from
     links = get_links_from(keep_id)
-    supersedes_links = [l for l in links if l["relation"] == "supersedes" and l["to_id"] == drop_id]
+    supersedes_links = [
+        link for link in links
+        if link["relation"] == "supersedes" and link["to_id"] == drop_id
+    ]
     assert len(supersedes_links) == 1
 
 

@@ -1,0 +1,8 @@
+tests/integration/test_scheduled_tasks_e2e.py
+tests/unit/test_commands_team_workspace.py
+tests/unit/test_commands_workflow.py
+tests/unit/test_feishu_catchup.py
+tests/unit/test_memory_packet_focused.py
+tests/unit/test_memory_v2_remaining.py
+tests/unit/test_residency_convergence.py
+tests/unit/test_residency_wake.py

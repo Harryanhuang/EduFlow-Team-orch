@@ -147,7 +147,7 @@ def test_e2e_draft_to_lane_dispatch_round_trip_creates_zero_user_visible_t_tasks
             actor_role="manager",
         )
         assert len(lanes) == 2
-        first, second = sorted(lanes, key=lambda l: l["id"])
+        first, second = sorted(lanes, key=lambda lane: lane["id"])
 
         result = manager_ops.re_dispatch(
             occ_key, actor="manager", actor_role="manager",

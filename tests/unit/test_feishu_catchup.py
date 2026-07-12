@@ -97,7 +97,7 @@ def test_pending_lines_returns_only_messages_at_or_after_cursor_minute():
         catchup.write_cursor("om_b2", "1778047712000")  # 14:08:32
         lines = catchup.pending_lines("oc_x", list_fn=lambda: history)
     import json
-    ids = sorted(json.loads(l)["event"]["message"]["message_id"] for l in lines)
+    ids = sorted(json.loads(line)["event"]["message"]["message_id"] for line in lines)
     # om_a1 (14:07) drops; om_b1, om_b2 (both 14:08), om_c1 (14:09) keep
     assert ids == ["om_b1", "om_b2", "om_c1"]
 
@@ -118,7 +118,7 @@ def test_pending_lines_recovers_messages_when_cursor_has_subminute_precision():
     with isolated_env():
         catchup.write_cursor("om_processed_via_live", cursor_ms)
         lines = catchup.pending_lines("oc_x", list_fn=lambda: history)
-    parsed = [json.loads(l) for l in lines]
+    parsed = [json.loads(line) for line in lines]
     ids = sorted(p["event"]["message"]["message_id"] for p in parsed)
     # Both REST-precision missed messages must be returned despite REST
     # parsing to 14:08:00 < cursor's 14:08:32.107
@@ -170,7 +170,7 @@ def test_pending_lines_sorts_oldest_first_even_when_history_newest_first():
     with isolated_env():
         catchup.write_cursor("om_seed", "50")
         lines = catchup.pending_lines("oc_x", list_fn=lambda: history)
-    parsed = [json.loads(l) for l in lines]
+    parsed = [json.loads(line) for line in lines]
     cts = [p["event"]["message"]["create_time"] for p in parsed]
     assert cts == ["100", "200", "300"]
 
@@ -305,7 +305,7 @@ def test_pending_lines_skips_messages_with_bad_create_time():
     with isolated_env():
         catchup.write_cursor("seed", "1")
         lines = catchup.pending_lines("oc_x", list_fn=lambda: history)
-    parsed = [json.loads(l) for l in lines]
+    parsed = [json.loads(line) for line in lines]
     ids = [p["event"]["message"]["message_id"] for p in parsed]
     assert ids == ["om_ok"]
 
@@ -388,7 +388,7 @@ def test_pending_lines_iso_time_compared_correctly_against_epoch_cursor():
         # 2026-05-03 18:00 local = ~1777801200000
         catchup.write_cursor("om_cursor", "1777801200000")
         lines = catchup.pending_lines("oc_x", list_fn=lambda: history)
-    parsed = [json.loads(l) for l in lines]
+    parsed = [json.loads(line) for line in lines]
     ids = [p["event"]["message"]["message_id"] for p in parsed]
     # only om_after should survive (newer than cursor's epoch)
     assert ids == ["om_after"], f"expected only om_after, got {ids}"
@@ -523,7 +523,7 @@ def test_mini_proof_duplicate_live_and_catchup_apply_once():
     # Catchup should still surface the row (it is in the history and
     # newer than the cursor) — visibility is required so the router
     # gets a chance to dedup. But apply_fn must NOT be called for it.
-    assert any(shared_msg_id in l for l in lines), (
+    assert any(shared_msg_id in line for line in lines), (
         "catchup must still surface the row; "
         "visibility is what enables dedup, not the other way round")
     assert len(applies) == 0, (

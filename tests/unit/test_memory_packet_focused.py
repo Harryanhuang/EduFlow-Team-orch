@@ -113,7 +113,7 @@ class TestConstraintsSection:
                 _add_constraint(scope="team", content=f"rule {i}")
             result = assemble_memory_packet("alice")
             # Count constraint bullets (lines starting with "- [")
-            lines = [l for l in result.split("\n") if l.startswith("- [")]
+            lines = [line for line in result.split("\n") if line.startswith("- [")]
             assert len(lines) <= 8
             _reset_db()
 
@@ -200,7 +200,7 @@ class TestMemorySection:
                     scope="agent:alice", content=f"memory item {i}",
                 )
             result = assemble_memory_packet("alice")
-            mem_lines = [l for l in result.split("\n") if l.startswith("- [")]
+            mem_lines = [line for line in result.split("\n") if line.startswith("- [")]
             assert len(mem_lines) <= 5
             _reset_db()
 

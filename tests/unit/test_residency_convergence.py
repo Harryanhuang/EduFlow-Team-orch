@@ -59,7 +59,10 @@ def test_wake_agent_no_pane_returns_errno_and_fires_alert():
         assert result["errno"] == "no_pane"
         # ALERT fired → auto_ops audit log has an alert row
         logs = local_facts.list_logs("auto_ops")
-        assert any(l["type"] == "alert" and "worker_course" in l["content"] for l in logs)
+        assert any(
+            log["type"] == "alert" and "worker_course" in log["content"]
+            for log in logs
+        )
 
 
 def test_wake_agent_already_ready_resets_clock():
@@ -109,7 +112,7 @@ def test_wake_agent_wake_failure_fires_alert():
         assert result["woke"] is False
         assert result["errno"] == "wake_failed"
         logs = local_facts.list_logs("auto_ops")
-        assert any(l["type"] == "alert" for l in logs)
+        assert any(log["type"] == "alert" for log in logs)
 
 
 def test_residency_wake_cli_unknown_agent_exits_one():
