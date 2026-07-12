@@ -179,8 +179,9 @@ def test_runtime_switch_takeover_override_requires_configured_identity(monkeypat
     with pytest.raises(PermissionError):
         runtime_switch._manual_trigger(active, "stranger")
     assert runtime_switch._manual_trigger(active, "u_admin") == "manual_cli_takeover_override:u_admin"
-    # Compatibility: ordinary manual switches do not suddenly require actor.
-    assert runtime_switch._manual_trigger({"state": "inactive"}, None) == "manual_cli"
+    with pytest.raises(PermissionError):
+        runtime_switch._manual_trigger({"state": "inactive"}, None)
+    assert runtime_switch._manual_trigger({"state": "inactive"}, "u_admin") == "manual_cli:u_admin"
 
 
 def test_runtime_switch_override_excludes_general_operators(monkeypatch):
@@ -202,6 +203,7 @@ def _install_runtime_switch_mocks(monkeypatch, *, restart):
     monkeypatch.setattr(runtime_switch.lifecycle, "current_runtime_status",
                         lambda agent: {"runtime": "old"})
     monkeypatch.setattr(runtime_switch.lifecycle, "restart_with_runtime", restart)
+    monkeypatch.setattr(runtime_switch, "_authorized_actors", lambda: {"u_admin"})
     monkeypatch.setattr("eduflow.commands.runtime_verify.compute_verdict",
                         lambda agent: {"verdict": "ready"})
 
@@ -219,7 +221,7 @@ def test_manual_switch_serializes_against_takeover_entry(monkeypatch):
     _install_runtime_switch_mocks(monkeypatch, restart=restart)
     monkeypatch.setattr(runtime_switch.verify, "record_switch_event", lambda **event: None)
     switch_thread = threading.Thread(target=lambda: runtime_switch.main([
-        "manager", "backup", "--reason", "manual-test"]))
+        "manager", "backup", "--actor", "u_admin", "--reason", "manual-test"]))
     switch_thread.start()
     assert restart_started.wait(1)
 
@@ -251,10 +253,70 @@ def test_manual_switch_events_are_append_only_under_interleaving(monkeypatch):
 
     _install_runtime_switch_mocks(monkeypatch, restart=restart)
     monkeypatch.setattr(runtime_switch.verify, "record_switch_event", record)
-    assert runtime_switch.main(["manager", "backup", "--reason", "manual-test"]) == 0
+    assert runtime_switch.main(["manager", "backup", "--actor", "u_admin",
+                                "--reason", "manual-test"]) == 0
     assert [event["outcome"] for event in events] == ["pending", "ready", "ready"]
     manual = [event for event in events if event["agent"] == "manager"]
     assert len(manual) == 2
     assert [event["phase"] for event in manual] == ["prepared", "completed"]
     assert manual[0]["switch_id"] == manual[1]["switch_id"]
     assert manual[0]["switch_id"] != "external"
+
+
+@pytest.mark.parametrize("actor_args", [[], ["--actor", "u_general"]])
+def test_manual_switch_requires_actor_before_audit_or_restart(monkeypatch, capsys, actor_args):
+    effects = []
+    _install_runtime_switch_mocks(monkeypatch,
+                                  restart=lambda *a, **kw: effects.append("restart") or "ready")
+    monkeypatch.setattr(runtime_switch.verify, "record_switch_event",
+                        lambda **event: effects.append("audit"))
+    assert runtime_switch.main(["manager", "backup", *actor_args,
+                                "--reason", "manual-test"]) == 1
+    assert effects == []
+    assert "configured admin/runtime_operator" in capsys.readouterr().err
+
+
+def test_manual_switch_prepared_audit_failure_aborts_restart(monkeypatch, capsys):
+    restarts = []
+    _install_runtime_switch_mocks(monkeypatch,
+                                  restart=lambda *a, **kw: restarts.append(1) or "ready")
+    monkeypatch.setattr(runtime_switch.verify, "record_switch_event",
+                        lambda **event: (_ for _ in ()).throw(OSError("audit disk full")))
+    rc = runtime_switch.main(["manager", "backup", "--actor", "u_admin",
+                              "--reason", "manual-test"])
+    assert rc != 0
+    assert restarts == []
+    assert "before restart" in capsys.readouterr().err
+
+
+def test_manual_switch_completion_audit_failure_enters_takeover(monkeypatch, capsys):
+    calls = 0
+
+    def record(**event):
+        nonlocal calls
+        calls += 1
+        if calls == 2:
+            raise OSError("completion audit failed")
+
+    _install_runtime_switch_mocks(monkeypatch, restart=lambda *a, **kw: "ready")
+    monkeypatch.setattr(runtime_switch.verify, "record_switch_event", record)
+    rc = runtime_switch.main(["manager", "backup", "--actor", "u_admin",
+                              "--reason", "manual-test"])
+    assert rc != 0
+    state = human_takeover.status()
+    assert state["state"] == "active"
+    assert "completion_audit_failed" in state["reason"]
+    assert "human takeover" in capsys.readouterr().err.lower()
+
+
+def test_human_takeover_cli_persistence_failure_is_actionable(monkeypatch, capsys):
+    monkeypatch.setattr("eduflow.commands.human_takeover._authorized_actors", lambda: {"u_admin"})
+    monkeypatch.setattr(human_takeover, "enter",
+                        lambda **kw: (_ for _ in ()).throw(OSError("disk unavailable")))
+    rc = cli.main(["human-takeover", "enter", "--actor", "u_admin",
+                   "--reason", "incident"])
+    assert rc == 1
+    error = capsys.readouterr().err
+    assert "persistence failure" in error
+    assert "state=inactive" in error and "generation=0" in error
+    assert "human-takeover status" in error and "retry" in error

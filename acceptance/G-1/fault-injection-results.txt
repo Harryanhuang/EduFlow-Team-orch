@@ -24,3 +24,7 @@ Spec-review correction fault injections
 - Concurrent audit interleaving: a watchdog switch event was appended between a manual prepared event and its completion; both manual rows survived with one unique correlation id and the external row was untouched.
 - Transition failure consistency: injected prepared-audit failure left state inactive; injected atomic state failure left a durable prepared trace; injected second recovery state failure left `recovering`, and a retry with its generation completed recovery.
 - Short writes: injected repeated partial `os.write` results; the audit writer looped multiple times and produced one fully parseable JSONL event.
+- Universal switch authorization: both missing actor and configured general operator were rejected before the prepared audit and restart side effects; configured admin/runtime operator remained authorized.
+- Strict switch audit: injected prepared append failure aborted before restart; injected completion append failure after a successful restart entered active human takeover with a correlation-rich reason and returned rc=2.
+- Locked concurrent appends: 20 threads were forced through repeated short writes while one per-event lock covered the entire append+fsync; all 20 JSON lines remained independently parseable with distinct switch ids.
+- Human-takeover CLI persistence fault: injected OSError returned rc=1 with current state/generation plus explicit status, storage repair, and retry guidance instead of a traceback.

@@ -552,3 +552,28 @@ Command: python3 -m py_compile src/eduflow/runtime/human_takeover.py src/eduflow
 Result: passed
 Command: git diff --check
 Result: passed
+
+Task 5 quality re-review strict-audit correction (strict TDD)
+
+RED
+Command: pytest -q tests/unit/test_human_takeover.py tests/unit/test_runtime_verify.py -x
+Result: failed at unconditional authorization first; the added suite also
+covered strict prepared/completion audit failures, concurrent forced-short
+writes, and actionable human-takeover CLI persistence errors.
+
+GREEN FOCUSED
+Command: pytest -q tests/unit/test_human_takeover.py tests/unit/test_runtime_verify.py tests/unit/test_runtime_failover.py tests/unit/test_commands_watchdog.py tests/integration/test_human_takeover_circuit_breaker.py tests/unit/test_cli.py tests/unit/test_cli_flag_gaps.py --disable-warnings
+Result: 112 passed. Missing and general-operator actors are rejected before
+audit/restart even while takeover is inactive. Strict prepared audit failure
+prevents restart; strict completion failure enters human takeover and returns
+actionable nonzero. Concurrent short writes produced 20 distinct valid lines.
+
+GREEN ADJACENT
+- pytest -q tests/unit/test_runtime_watchdog.py --disable-warnings -> 48 passed
+- pytest -q tests/unit/test_feishu_deliver.py --disable-warnings -> 28 passed; exit 0
+
+STATIC
+Command: python3 -m py_compile src/eduflow/runtime/human_takeover.py src/eduflow/runtime/failover.py src/eduflow/runtime/verify.py src/eduflow/commands/human_takeover.py src/eduflow/commands/watchdog.py src/eduflow/commands/runtime_switch.py src/eduflow/cli.py
+Result: passed
+Command: git diff --check
+Result: passed

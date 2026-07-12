@@ -31,6 +31,7 @@ import uuid
 from pathlib import Path
 
 from eduflow.runtime import config, paths
+from eduflow.util import file_lock
 
 
 # Env vars that identify a provider runtime. Health, verify, and lifecycle
@@ -319,6 +320,7 @@ def record_switch_event(
     pool_id: str = "",
     phase: str = "",
     verdict: str = "",
+    strict: bool = False,
     ts: float | None = None,
     **_extra: object,
 ) -> None:
@@ -360,21 +362,25 @@ def record_switch_event(
     path.parent.mkdir(parents=True, exist_ok=True)
     try:
         payload = (json.dumps(row, ensure_ascii=False) + "\n").encode("utf-8")
-        fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_APPEND, 0o600)
-        try:
-            remaining = memoryview(payload)
-            while remaining:
-                written = os.write(fd, remaining)
-                if written <= 0:
-                    raise OSError("switch event append made no progress")
-                remaining = remaining[written:]
-            os.fsync(fd)
-        finally:
-            os.close(fd)
-    except OSError:
+        # Hold one inter-process lock across the complete short-write loop and
+        # fsync so concurrent appenders cannot interleave fragments.
+        with file_lock(path, timeout=0):
+            fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_APPEND, 0o600)
+            try:
+                remaining = memoryview(payload)
+                while remaining:
+                    written = os.write(fd, remaining)
+                    if written <= 0:
+                        raise OSError("switch event append made no progress")
+                    remaining = remaining[written:]
+                os.fsync(fd)
+            finally:
+                os.close(fd)
+    except (OSError, TimeoutError):
         # Event log is best-effort observability — a write failure must
         # not kill the switch path that just succeeded.
-        pass
+        if strict:
+            raise
 
 
 def read_switch_events(last_n: int = 20) -> list[dict]:

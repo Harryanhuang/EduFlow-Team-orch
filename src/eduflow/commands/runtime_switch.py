@@ -48,12 +48,12 @@ def _authorized_actors() -> set[str]:
 
 
 def _manual_trigger(takeover_state: dict, actor: str | None) -> str:
-    if takeover_state.get("state") == "inactive":
-        return "manual_cli"
     if not actor or actor not in _authorized_actors():
         raise PermissionError(
-            "human takeover active: configured operator/admin --actor required"
+            "configured admin/runtime_operator --actor required"
         )
+    if takeover_state.get("state") == "inactive":
+        return f"manual_cli:{actor}"
     # record_switch_event currently persists trigger but intentionally ignores
     # unknown extension fields, so bind the authorized identity into the
     # persisted trigger rather than pretending an ``actor`` kwarg is stored.
@@ -118,6 +118,7 @@ def main(argv: list[str]) -> int:
     # entry.  `enter()` uses the same blocking lock, so either takeover wins
     # first and this switch is rejected, or it is durably entered immediately
     # after this in-flight switch completes; it is never lost in a TOCTOU gap.
+    completion_audit_error: OSError | None = None
     with human_takeover.transition_lock():
         current = lifecycle.current_runtime_status(agent).get("runtime") or "inline"
         takeover_state = human_takeover.status()
@@ -130,7 +131,15 @@ def main(argv: list[str]) -> int:
             "agent": agent, "from_runtime": current, "to_runtime": to_runtime,
             "reason": reason, "trigger": trigger, "switch_id": switch_id,
         }
-        verify.record_switch_event(**common_event, outcome="pending", phase="prepared")
+        try:
+            verify.record_switch_event(
+                **common_event, outcome="pending", phase="prepared", strict=True,
+            )
+        except OSError as exc:
+            return error_exit(
+                f"runtime switch audit failed before restart ({type(exc).__name__}); "
+                "restart was not attempted; fix audit storage and retry"
+            )
         outcome = lifecycle.restart_with_runtime(
             agent, target, to_runtime,
             reason=f"manual_cli:{reason}",
@@ -146,9 +155,36 @@ def main(argv: list[str]) -> int:
         } else {"verdict": outcome}
         # Completion is a second append-only event with the same correlation
         # id.  Never rewrite a possibly interleaved process's last JSONL row.
-        verify.record_switch_event(
-            **common_event, outcome=outcome,
-            verdict=probe.get("verdict", outcome), phase="completed",
+        try:
+            verify.record_switch_event(
+                **common_event, outcome=outcome,
+                verdict=probe.get("verdict", outcome), phase="completed",
+                strict=True,
+            )
+        except OSError as exc:
+            completion_audit_error = exc
+    if completion_audit_error is not None:
+        attention_reason = (
+            f"completion_audit_failed switch_id={switch_id} agent={agent} "
+            f"outcome={outcome}"
+        )
+        try:
+            attention = human_takeover.enter(
+                reason=attention_reason, source="manual_runtime_switch_audit",
+                actor=actor or "system",
+            )
+        except (OSError, TimeoutError) as takeover_exc:
+            current_state = human_takeover.status()
+            return error_exit(
+                "runtime switched but completion audit and human-takeover persistence failed; "
+                f"state={current_state['state']} generation={current_state['generation']}; "
+                "stop automation, inspect audit storage, run `eduflow human-takeover status`, and retry"
+            )
+        return error_exit(
+            "runtime switched but completion audit failed; human takeover entered "
+            f"state={attention['state']} generation={attention['generation']}; "
+            "inspect audit storage, verify live runtime, then recover explicitly",
+            rc=2,
         )
     return _emit(outcome, agent, to_runtime, reason, as_json,
                  {"verdict": probe.get("verdict", outcome),

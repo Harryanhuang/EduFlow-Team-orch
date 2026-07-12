@@ -59,5 +59,12 @@ def main(argv: list[str]) -> int:
             return error_exit(f"unknown human-takeover action: {action}\n{USAGE}")
     except (takeover.InvalidTransition, takeover.StaleGeneration, ValueError) as exc:
         return error_exit(str(exc))
+    except (OSError, TimeoutError) as exc:
+        current = takeover.status()
+        return error_exit(
+            f"human-takeover persistence failure ({type(exc).__name__}); "
+            f"state={current['state']} generation={current['generation']}; "
+            "run `eduflow human-takeover status`, repair storage/locking, then retry"
+        )
     print_json(state) if as_json else print(f"human-takeover: {state['state']} generation={state['generation']}")
     return 0

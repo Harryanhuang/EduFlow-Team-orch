@@ -3,6 +3,9 @@ from __future__ import annotations
 
 import json
 import os
+from concurrent.futures import ThreadPoolExecutor
+
+import pytest
 
 from helpers import FakeProc, isolated_env
 from eduflow.runtime import verify
@@ -247,3 +250,34 @@ def test_record_switch_event_auto_generates_switch_id():
         sid = events[0]["switch_id"]
         assert isinstance(sid, str)
         assert len(sid) == 8  # uuid4()[:8]
+
+
+def test_strict_switch_event_raises_on_persistence_failure(monkeypatch):
+    with isolated_env():
+        with monkeypatch.context() as patch:
+            patch.setattr(verify.os, "open",
+                          lambda *a, **kw: (_ for _ in ()).throw(OSError("disk full")))
+            with pytest.raises(OSError, match="disk full"):
+                verify.record_switch_event(agent="a", from_runtime="x", to_runtime="y",
+                                           reason="manual", outcome="pending", strict=True)
+
+
+def test_concurrent_short_writes_remain_distinct_valid_json_lines(monkeypatch):
+    with isolated_env():
+        path = verify._switch_events_path()
+        if path.exists():
+            path.unlink()
+        real_write = verify.os.write
+
+        def short_write(fd, payload):
+            return real_write(fd, bytes(payload[:max(1, len(payload) // 4)]))
+
+        monkeypatch.setattr(verify.os, "write", short_write)
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            list(pool.map(lambda i: verify.record_switch_event(
+                agent=f"a{i}", from_runtime="x", to_runtime="y", reason="race",
+                outcome="ready", switch_id=f"id-{i}", strict=True), range(20)))
+        lines = path.read_text(encoding="utf-8").splitlines()
+        assert len(lines) == 20
+        rows = [json.loads(line) for line in lines]
+        assert {row["switch_id"] for row in rows} == {f"id-{i}" for i in range(20)}
