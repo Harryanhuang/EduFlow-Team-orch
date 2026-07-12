@@ -53,11 +53,11 @@ def _manual_trigger(takeover_state: dict, actor: str | None) -> str:
             "configured admin/runtime_operator --actor required"
         )
     if takeover_state.get("state") == "inactive":
-        return f"manual_cli:{actor}"
+        return "manual_cli"
     # record_switch_event currently persists trigger but intentionally ignores
     # unknown extension fields, so bind the authorized identity into the
     # persisted trigger rather than pretending an ``actor`` kwarg is stored.
-    return f"manual_cli_takeover_override:{actor}"
+    return "manual_cli_takeover_override"
 
 
 def _emit(outcome: str, agent: str, to_runtime: str, reason: str,
@@ -118,7 +118,8 @@ def main(argv: list[str]) -> int:
     # entry.  `enter()` uses the same blocking lock, so either takeover wins
     # first and this switch is rejected, or it is durably entered immediately
     # after this in-flight switch completes; it is never lost in a TOCTOU gap.
-    completion_audit_error: OSError | None = None
+    terminal_audit_error: OSError | None = None
+    failure_result: dict | None = None
     with human_takeover.transition_lock():
         current = lifecycle.current_runtime_status(agent).get("runtime") or "inline"
         takeover_state = human_takeover.status()
@@ -130,43 +131,73 @@ def main(argv: list[str]) -> int:
         common_event = {
             "agent": agent, "from_runtime": current, "to_runtime": to_runtime,
             "reason": reason, "trigger": trigger, "switch_id": switch_id,
+            "actor": actor or "", "target": str(target),
         }
         try:
             verify.record_switch_event(
                 **common_event, outcome="pending", phase="prepared", strict=True,
+                result={"status": "pending"},
             )
         except OSError as exc:
             return error_exit(
                 f"runtime switch audit failed before restart ({type(exc).__name__}); "
                 "restart was not attempted; fix audit storage and retry"
             )
-        outcome = lifecycle.restart_with_runtime(
-            agent, target, to_runtime,
-            reason=f"manual_cli:{reason}",
-            prove_ready=not no_smoke,
-        )
-        # Post-switch live probe so the operator sees the actual verdict,
-        # not just the lifecycle outcome.
-        from eduflow.commands import runtime_verify
-        probe = runtime_verify.compute_verdict(agent) if outcome in {
-            lifecycle.READY, lifecycle.READY_NO_INIT,
-            lifecycle.ENV_DRIFT, lifecycle.SMOKE_FAILED,
-            lifecycle.READY_UNPROVEN,
-        } else {"verdict": outcome}
+        outcome = "exception"
+        probe = {"verdict": "unknown"}
+        try:
+            outcome = lifecycle.restart_with_runtime(
+                agent, target, to_runtime,
+                reason=f"manual_cli:{reason}",
+                prove_ready=not no_smoke,
+            )
+        except Exception as exc:
+            failure_result = {
+                "status": "failed", "stage": "restart",
+                "exception_class": type(exc).__name__,
+                "detail": f"runtime restart raised {type(exc).__name__}",
+                # A raised lifecycle call cannot prove whether tmux/provider
+                # mutation occurred before the exception.
+                "side_effect": "unknown",
+            }
+        if failure_result is None:
+            # Post-switch live probe so the operator sees the actual verdict,
+            # not just the lifecycle outcome.
+            from eduflow.commands import runtime_verify
+            try:
+                probe = runtime_verify.compute_verdict(agent) if outcome in {
+                    lifecycle.READY, lifecycle.READY_NO_INIT,
+                    lifecycle.ENV_DRIFT, lifecycle.SMOKE_FAILED,
+                    lifecycle.READY_UNPROVEN,
+                } else {"verdict": outcome}
+            except Exception as exc:
+                failure_result = {
+                    "status": "failed", "stage": "probe",
+                    "exception_class": type(exc).__name__,
+                    "detail": f"runtime verification raised {type(exc).__name__}",
+                    "side_effect": "restart_completed",
+                    "restart_outcome": outcome,
+                }
+        terminal_result = failure_result or {
+            "status": "completed", "outcome": outcome,
+            "verdict": probe.get("verdict", outcome),
+        }
         # Completion is a second append-only event with the same correlation
         # id.  Never rewrite a possibly interleaved process's last JSONL row.
         try:
             verify.record_switch_event(
                 **common_event, outcome=outcome,
                 verdict=probe.get("verdict", outcome), phase="completed",
-                strict=True,
+                strict=True, result=terminal_result,
             )
         except OSError as exc:
-            completion_audit_error = exc
-    if completion_audit_error is not None:
+            terminal_audit_error = exc
+    if failure_result is not None or terminal_audit_error is not None:
+        stage = failure_result.get("stage", "completion_audit") if failure_result else "completion_audit"
         attention_reason = (
-            f"completion_audit_failed switch_id={switch_id} agent={agent} "
-            f"outcome={outcome}"
+            f"runtime_switch_attention stage={stage} switch_id={switch_id} "
+            f"agent={agent} outcome={outcome} "
+            f"terminal_audit={'failed' if terminal_audit_error else 'recorded'}"
         )
         try:
             attention = human_takeover.enter(
@@ -176,12 +207,15 @@ def main(argv: list[str]) -> int:
         except (OSError, TimeoutError) as takeover_exc:
             current_state = human_takeover.status()
             return error_exit(
-                "runtime switched but completion audit and human-takeover persistence failed; "
+                "runtime switch encountered a controlled failure and human-takeover persistence failed; "
+                f"stage={stage} terminal_audit={'failed' if terminal_audit_error else 'recorded'} "
+                f"takeover_error={type(takeover_exc).__name__}; "
                 f"state={current_state['state']} generation={current_state['generation']}; "
                 "stop automation, inspect audit storage, run `eduflow human-takeover status`, and retry"
             )
         return error_exit(
-            "runtime switched but completion audit failed; human takeover entered "
+            "runtime switch requires human attention; human takeover entered "
+            f"stage={stage} terminal_audit={'failed' if terminal_audit_error else 'recorded'} "
             f"state={attention['state']} generation={attention['generation']}; "
             "inspect audit storage, verify live runtime, then recover explicitly",
             rc=2,

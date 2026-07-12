@@ -320,6 +320,9 @@ def record_switch_event(
     pool_id: str = "",
     phase: str = "",
     verdict: str = "",
+    actor: str = "",
+    target: str = "",
+    result: dict | None = None,
     strict: bool = False,
     ts: float | None = None,
     **_extra: object,
@@ -349,6 +352,12 @@ def record_switch_event(
         row["phase"] = phase
     if verdict:
         row["verdict"] = verdict
+    if actor:
+        row["actor"] = actor
+    if target:
+        row["target"] = target
+    if result is not None:
+        row["result"] = dict(result)
     # Carry optional booleans only when set (keeps event compact).
     if env_ok is not None:
         row["env_ok"] = env_ok
