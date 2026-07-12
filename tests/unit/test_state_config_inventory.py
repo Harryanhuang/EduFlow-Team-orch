@@ -35,7 +35,8 @@ REQUIRED_ASSETS = {
 def _table(text: str, marker: str) -> tuple[list[str], dict[str, list[str]]]:
     lines = [line for line in text.splitlines() if line.startswith("|")]
     start = next(i for i, line in enumerate(lines) if marker.lower() in line.lower())
-    cells = lambda line: [cell.strip() for cell in line.strip("|").split("|")]
+    def cells(line):
+        return [cell.strip() for cell in line.strip("|").split("|")]
     header = [cell.lower() for cell in cells(lines[start])]
     rows = {}
     for line in lines[start + 2:]:

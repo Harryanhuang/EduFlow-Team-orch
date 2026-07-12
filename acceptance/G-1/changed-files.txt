@@ -101,6 +101,7 @@ tests/ruff_r2f_affected_unit_tests.txt
 tests/ruff_r3a_affected_tests.txt
 tests/ruff_r3b_f811_tests.txt
 tests/ruff_r3c_e741_tests.txt
+tests/ruff_r3d_e731_tests.txt
 tests/unit/test_ap_qbank_verify.py
 tests/unit/test_audit_production_topology.py
 tests/unit/test_commands_asset.py
@@ -156,6 +157,7 @@ tests/unit/test_runtime_lifecycle.py
 tests/unit/test_runtime_paths_permissions.py
 tests/unit/test_runtime_tunables.py
 tests/unit/test_runtime_verify.py
+tests/unit/test_runtime_wake.py
 tests/unit/test_runtime_watchdog.py
 tests/unit/test_scheduled_engine.py
 tests/unit/test_scheduled_manager_panel.py

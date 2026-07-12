@@ -1,0 +1,4 @@
+tests/unit/test_commands_router.py
+tests/unit/test_feishu_slash.py
+tests/unit/test_runtime_wake.py
+tests/unit/test_state_config_inventory.py

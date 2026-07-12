@@ -668,18 +668,20 @@ def test_usage_no_view_shells_eduflow_usage_json():
     """R167: handler shells out with `--json` so the card builder gets
     structured data, not raw text."""
     captured = {}
-    fake_run = lambda argv, **kw: (captured.setdefault("argv", list(argv))
-                                   or type("R", (), {"returncode": 0,
-                                                     "stdout": '{}', "stderr": ""})())
+    def fake_run(argv, **kw):
+        return captured.setdefault("argv", list(argv)) or type(
+            "R", (), {"returncode": 0, "stdout": '{}', "stderr": ""}
+        )()
     slash.dispatch("/usage", _ctx(run=fake_run))
     assert captured["argv"][:3] == ["eduflow", "usage", "--json"]
 
 
 def test_usage_view_threads_through_view_flag():
     captured = {}
-    fake_run = lambda argv, **kw: (captured.setdefault("argv", list(argv))
-                                   or type("R", (), {"returncode": 0,
-                                                     "stdout": '{}', "stderr": ""})())
+    def fake_run(argv, **kw):
+        return captured.setdefault("argv", list(argv)) or type(
+            "R", (), {"returncode": 0, "stdout": '{}', "stderr": ""}
+        )()
     slash.dispatch("/usage daily", _ctx(run=fake_run))
     assert captured["argv"] == ["eduflow", "usage", "--json",
                                  "--view", "daily"]
@@ -823,8 +825,10 @@ def test_usage_card_handles_invalid_json_gracefully():
     """Shell-out returned non-JSON (e.g. eduflow usage crashed) →
     fall back to empty data; render the no-data placeholder + footer
     instead of crashing."""
-    bad_run = lambda argv, **kw: type("R", (), {
-        "returncode": 0, "stdout": "not json {[", "stderr": ""})()
+    def bad_run(argv, **kw):
+        return type("R", (), {
+            "returncode": 0, "stdout": "not json {[", "stderr": "",
+        })()
     reply = slash.dispatch("/usage", _ctx(run=bad_run))
     assert isinstance(reply, dict)
     contents = " ".join(e.get("content", "") for e in _elements(reply)
@@ -1202,8 +1206,10 @@ def test_employee_slash_unknown_agent_returns_warning():
 def test_employees_slash_degrades_on_bad_json():
     """M3: if ops-dashboard returns non-JSON, /employees still returns a
     card with a degraded source entry instead of crashing."""
-    bad_run = lambda argv, **kw: type("R", (), {
-        "returncode": 0, "stdout": "not json {[", "stderr": ""})()
+    def bad_run(argv, **kw):
+        return type("R", (), {
+            "returncode": 0, "stdout": "not json {[", "stderr": "",
+        })()
     reply = slash.dispatch("/employees", _ctx(run=bad_run))
     assert isinstance(reply, dict)
     body = _all_markdown(reply)
@@ -1421,8 +1427,10 @@ def test_sophon_card_fixed_boundary_wording():
     """/sophon must surface its boundary wording: ops-watch only, no
     business conclusion, no closeout. This wording is what protects the
     REVIEW/CLOSEOUT boundary at the operator surface."""
-    fake_run = lambda argv, **kw: type("R", (), {
-        "returncode": 0, "stdout": "(no data)", "stderr": ""})()
+    def fake_run(argv, **kw):
+        return type("R", (), {
+            "returncode": 0, "stdout": "(no data)", "stderr": "",
+        })()
     reply = slash.dispatch("/sophon", _ctx(run=fake_run))
     assert isinstance(reply, dict)
     blob = _all_markdown(reply)
@@ -1462,8 +1470,10 @@ def test_sophon_handler_routes_dashboard_and_context_text():
 def test_sophon_no_closeout_action_wording():
     """/sophon may mention CLOSEOUT only as a boundary note, never as
     an action button or apply command."""
-    fake_run = lambda argv, **kw: type("R", (), {
-        "returncode": 0, "stdout": "(stub)", "stderr": ""})()
+    def fake_run(argv, **kw):
+        return type("R", (), {
+            "returncode": 0, "stdout": "(stub)", "stderr": "",
+        })()
     reply = slash.dispatch("/sophon", _ctx(run=fake_run))
     blob = _all_markdown(reply)
     forbidden = [

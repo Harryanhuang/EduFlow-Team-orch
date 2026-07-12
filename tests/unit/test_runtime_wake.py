@@ -117,7 +117,8 @@ def test_is_rate_limited_returns_false_when_marker_list_empty():
         def rate_limit_markers(self):
             return []
 
-    capture = lambda t, lines=80: "Approaching usage limit"
+    def capture(t, lines=80):
+        return "Approaching usage limit"
     assert wake.is_rate_limited(target, NoMarkers(), capture=capture) is False
 
 
@@ -128,7 +129,8 @@ def test_is_rate_limited_true_when_pane_shows_marker():
         def rate_limit_markers(self):
             return ["Approaching usage limit"]
 
-    capture = lambda t, lines=80: "...Approaching usage limit\n"
+    def capture(t, lines=80):
+        return "...Approaching usage limit\n"
     assert wake.is_rate_limited(target, WithMarkers(), capture=capture) is True
 
 
@@ -139,7 +141,8 @@ def test_is_rate_limited_false_when_pane_clean():
         def rate_limit_markers(self):
             return ["rate limit"]
 
-    capture = lambda t, lines=80: "all good\n>"
+    def capture(t, lines=80):
+        return "all good\n>"
     assert wake.is_rate_limited(target, WithMarkers(), capture=capture) is False
 
 
@@ -242,7 +245,8 @@ def test_wait_until_ready_returns_false_on_timeout():
     """Marker never appears — function returns False after the deadline.
     Uses a fake clock so the test doesn't actually sleep through 20s."""
     target = tmux.Target("S", "manager")
-    capture = lambda t, lines=80: "$ "  # always dormant
+    def capture(t, lines=80):
+        return "$ "  # always dormant
     clock = {"t": 0.0}
 
     def now():
@@ -260,7 +264,8 @@ def test_wait_until_ready_returns_false_on_timeout():
 def test_wake_returns_false_on_timeout():
     target = tmux.Target("S", "worker")
     # always dormant
-    capture = lambda t, lines=80: "$ "
+    def capture(t, lines=80):
+        return "$ "
     # fake clock: each call advances by 0.5s; deadline is 1.0s.
     clock = {"t": 0.0}
 

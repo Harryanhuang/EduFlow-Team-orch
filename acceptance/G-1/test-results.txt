@@ -1041,6 +1041,29 @@ INDEPENDENT REVIEWS
 - Quality review: PASS; checked every binder/predicate/order/outer assertion and
   independently reproduced the manifest, Ruff, acceptance, and inventory results.
 
+Task 7 Ruff remediation R3d: named test callables
+
+BEHAVIOR LOCK + GREEN
+Manifest: `tests/ruff_r3d_e731_tests.txt` contains four affected test files.
+Command: `pytest $(< tests/ruff_r3d_e731_tests.txt) -q`
+Results: 112 passed before and after the callable-only change.
+Commands/results:
+- `uvx --offline ruff==0.15.10 check tests --select E731` -> passed, test E731 zero
+- test Ruff statistics -> expected failure, reduced from 77 to 64 findings
+- full Ruff statistics -> expected gate failure, reduced from 131 to 118 findings
+- `git diff --check` -> passed
+
+Thirteen assigned lambdas became local or module-level functions with the same
+parameters, defaults, return expressions, captured dictionaries, and injected
+call sites. No assertion, fixture, production behavior, or simulated subprocess
+result changed; no unsafe fix was used.
+
+INDEPENDENT REVIEWS
+- Specification review: PASS; confirmed all signatures/defaults/closures/return
+  expressions, evidence, and Task 7 scope.
+- Quality review: PASS; checked all 13 callables, short-circuit behavior, mock
+  objects and call semantics, manifest, counts, and inventory.
+
 Task 7 acceptance-package TDD
 
 RED

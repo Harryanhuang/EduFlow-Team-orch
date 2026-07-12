@@ -4,7 +4,7 @@ Submission target: `2296dc08c14eae9de34accdf43d4a11c6b8ba68f`
 Historical implementation revision: `cc95c5a488a8cd699dff515eadf431277669ffc6`
 Security-ledger revision: `2296dc08c14eae9de34accdf43d4a11c6b8ba68f`
 Historical capture: 2026-07-12T17:59:46+08:00 (UTC 2026-07-12T09:59:46Z; Task 7 evidence refresh)
-Current refresh: 2026-07-12T22:17:15+08:00 (UTC 2026-07-12T14:17:15Z)
+Current refresh: 2026-07-12T22:25:06+08:00 (UTC 2026-07-12T14:25:06Z)
 
 Freshness note: the configured-control clarification at the submission target
 does not claim scanner execution. The resumed local checkpoint created and
@@ -20,8 +20,8 @@ so the result remains FAIL.
 | Check | Command / method | Exit | Result |
 |---|---|---:|---|
 | Ruff production source | `uvx --offline ruff==0.15.10 check src` | 0 | PASS — zero findings after R2f; compatibility seams are explicit self-alias re-exports, not ignores |
-| Ruff test suite | `uvx --offline ruff==0.15.10 check tests --statistics` | 1 | FAIL — after R3c binder clarification, `Found 77 errors`; 52 F841, 13 E731, 12 E402; test E741 and F811 are zero |
-| Ruff full repository | `uvx --offline ruff==0.15.10 check src tests scripts --statistics` | 1 | FAIL — after R3c binder clarification, `Found 131 errors`; 58 F841, 34 E701, 14 E731, 13 E402, 8 E702, 2 F401, 1 E401, 1 F541; all remaining findings are under tests/scripts |
+| Ruff test suite | `uvx --offline ruff==0.15.10 check tests --statistics` | 1 | FAIL — after R3d callable clarification, `Found 64 errors`; 52 F841, 12 E402; test E731, E741, and F811 are zero |
+| Ruff full repository | `uvx --offline ruff==0.15.10 check src tests scripts --statistics` | 1 | FAIL — after R3d callable clarification, `Found 118 errors`; 58 F841, 34 E701, 13 E402, 8 E702, 2 F401, 1 E401, 1 E731, 1 F541; all remaining findings are under tests/scripts |
 | Node lock generation | `npm install --package-lock-only --ignore-scripts --offline --registry=https://registry.npmmirror.com` | 0 | PASS — exact `playwright==1.59.1` dependency locked without running `postinstall` |
 | Node audit (offline cache view) | `npm audit --omit=dev --audit-level=high --offline --registry=https://registry.npmmirror.com --json` | 0 | OBSERVED — local cache returned 0 vulnerabilities across 3 production dependencies (plus 1 optional entry); current advisory coverage is not proven |
 | Lockfile contract | focused trackable/complete lockfile test plus exact-pin test | 0 | PASS — candidate lockfile is present and not ignored; lockfileVersion 3+, root dependencies match, and every transitive entry has exact version, HTTPS resolved URL, and SHA-512 integrity |
@@ -58,9 +58,10 @@ loop variables. R2f removed the final production F401/F541 findings while
 preserving two tested compatibility seams. R3a removed all safe F401/F541/E401
 findings from tests while preserving 1301 affected tests. R3b recovered five
 previously shadowed tests and cleared test F811. R3c clarified all 17 ambiguous
-test binders, reducing the repository baseline from 486 to 131 findings without
-ignores. Production `src` is Ruff-clean; the remaining 131 findings under
-tests/scripts remain open.
+test binders. R3d replaced all 13 assigned test lambdas with signature-equivalent
+local functions, reducing the repository baseline from 486 to 118 findings
+without ignores. Production `src` is Ruff-clean; the remaining 118 findings
+under tests/scripts remain open.
 `mypy`, `pyright`, `gitleaks`, `trufflehog`, and
 `pip-audit` are not available from PATH or the checked offline Python cache,
 and no approved type-checker scope exists. These are mandatory checks under the

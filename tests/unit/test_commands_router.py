@@ -29,7 +29,8 @@ from eduflow.commands.router import (
 # Stub `resolve_prefix` so test argv doesn't depend on whether lark-cli
 # is on the test runner's PATH. Real production resolution is tested in
 # tests/unit/test_feishu_lark.py.
-_STUB_PREFIX = lambda: ["FAKE-LARK-CLI"]
+def _STUB_PREFIX():
+    return ["FAKE-LARK-CLI"]
 
 
 # ── _build_subscribe_cmd ──────────────────────────────────────────
