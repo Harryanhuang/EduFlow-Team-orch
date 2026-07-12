@@ -322,3 +322,30 @@ The immediately preceding code commit recorded 223 passed across focused plus he
 FRESH DOCUMENT DIFF CHECK
 Command: git diff --check
 Exit code: 0
+
+G-1 Task 3 — historical-plan ledger TDD evidence
+
+RED
+Command: python3 -m pytest tests/unit/test_plan_status_index.py -q
+Observed: 5 failed because docs/plans/PLAN_STATUS_INDEX.md did not exist.
+Key failure: AssertionError: historical-plan ledger is missing
+Exit code: 1
+
+GREEN — focused
+Command: python3 -m pytest tests/unit/test_plan_status_index.py -q
+Observed: 5 passed
+Exit code: 0
+
+GREEN — related workflow and asset regression
+Command: python3 -m pytest tests/unit/test_plan_status_index.py tests/unit/test_commands_asset.py tests/unit/test_commands_workflow.py tests/unit/test_scheduled_workflow_evolution.py -q
+Observed: 157 passed
+Exit code: 0
+
+STATIC VERIFICATION
+Command: python3 -m py_compile tests/unit/test_plan_status_index.py
+Exit code: 0
+Command: git diff --check
+Exit code: 0
+Command: scoped secret-pattern scan of tests/unit/test_plan_status_index.py, docs/plans/PLAN_STATUS_INDEX.md, and acceptance/G-1/test-results.txt
+Observed: no credential assignments, private-key markers, bearer tokens, Slack tokens, or OpenAI-style secret tokens
+Exit code: 0
