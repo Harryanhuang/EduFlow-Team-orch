@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import re
+import subprocess
 from collections import Counter
 from pathlib import Path
 
@@ -120,6 +121,35 @@ def test_each_master_done_assertion_has_its_own_claim_evidence() -> None:
         assert re.search(r"`src/[^`]+`", claim["code"])
         assert re.search(r"`[0-9a-f]{8,40}`", claim["commit"])
         assert "pytest" in claim["test"] and "tests/" in claim["test"]
+
+
+def test_claim_commits_are_decision_grade_and_touch_claimed_code() -> None:
+    claims = {claim["claim_id"]: claim for claim in _claim_rows()}
+    expected = {
+        "CLM-MASTER-001": {"e904eee4", "617e298f", "78fb55ab"},
+        "CLM-MASTER-002": {"6dc59418", "95d72a8d"},
+        "CLM-MASTER-003A": {"425c1a2a"},
+        "CLM-MASTER-003B": {"425c1a2a"},
+        "CLM-MASTER-004": {"7f6ed420", "17760e7c", "4e6b977e"},
+    }
+    for claim_id, required in expected.items():
+        cited = set(re.findall(r"[0-9a-f]{8,40}", claims[claim_id]["commit"]))
+        assert required <= cited, f"{claim_id}: missing decision-grade provenance"
+        code_paths = re.findall(r"`(src/[^`]+)`", claims[claim_id]["code"])
+        assert code_paths
+        for sha in cited:
+            result = subprocess.run(
+                ["git", "diff-tree", "--root", "--no-commit-id", "--name-only", "-r", sha],
+                cwd=ROOT,
+                capture_output=True,
+                text=True,
+                check=True,
+            )
+            touched = set(result.stdout.splitlines())
+            assert any(
+                path in touched or any(item.startswith(path.rstrip("/") + "/") for item in touched)
+                for path in code_paths
+            ), f"{claim_id}: {sha} does not touch claimed code surface"
 
 
 def test_document_level_unverified_cannot_cover_multiple_done_claims() -> None:
