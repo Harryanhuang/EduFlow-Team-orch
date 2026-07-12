@@ -16,7 +16,7 @@ from __future__ import annotations
 
 import sys
 
-from eduflow.runtime import config, human_takeover, lifecycle, paths, tmux, verify
+from eduflow.runtime import config, human_takeover, lifecycle, paths, tmux, tunables, verify
 from eduflow.util import (
     error_exit, maybe_print_help, pop_bool_flag, pop_flag, print_json,
     reject_extra_args, write_json,
@@ -25,8 +25,29 @@ from eduflow.util import (
 
 USAGE = (
     "usage: eduflow runtime switch <agent> <runtime>\n"
-    "              [--reason <r>] [--no-smoke] [--json]"
+    "              [--reason <r>] [--actor <operator-id>] [--no-smoke] [--json]"
 )
+
+
+def _authorized_actors() -> set[str]:
+    team = tunables.load().get("team", {})
+    if not isinstance(team, dict):
+        return set()
+    values = [*(team.get("operators", []) or []), *(team.get("admins", []) or [])]
+    return {str(value) for value in values if value}
+
+
+def _manual_trigger(takeover_state: dict, actor: str | None) -> str:
+    if takeover_state.get("state") == "inactive":
+        return "manual_cli"
+    if not actor or actor not in _authorized_actors():
+        raise PermissionError(
+            "human takeover active: configured operator/admin --actor required"
+        )
+    # record_switch_event currently persists trigger but intentionally ignores
+    # unknown extension fields, so bind the authorized identity into the
+    # persisted trigger rather than pretending an ``actor`` kwarg is stored.
+    return f"manual_cli_takeover_override:{actor}"
 
 
 def _emit(outcome: str, agent: str, to_runtime: str, reason: str,
@@ -57,6 +78,7 @@ def main(argv: list[str]) -> int:
     as_json = pop_bool_flag(rest, "--json")
     no_smoke = pop_bool_flag(rest, "--no-smoke")
     reason = pop_flag(rest, "--reason") or "manual_cli"
+    actor = pop_flag(rest, "--actor")
     if len(rest) < 2:
         print(USAGE)
         return 1
@@ -84,6 +106,10 @@ def main(argv: list[str]) -> int:
 
     current = lifecycle.current_runtime_status(agent).get("runtime") or "inline"
     takeover_state = human_takeover.status()
+    try:
+        trigger = _manual_trigger(takeover_state, actor)
+    except PermissionError as exc:
+        return error_exit(str(exc))
     # Record switch event (manual trigger).
     verify.record_switch_event(
         agent=agent,
@@ -93,8 +119,7 @@ def main(argv: list[str]) -> int:
         outcome="pending",
         # Manual operator switches remain available during takeover. Mark an
         # override explicitly in the append-only runtime switch audit.
-        trigger=("manual_cli_takeover_override"
-                 if takeover_state["state"] != "inactive" else "manual_cli"),
+        trigger=trigger,
     )
     outcome = lifecycle.restart_with_runtime(
         agent, target, to_runtime,

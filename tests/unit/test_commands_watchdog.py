@@ -9,7 +9,7 @@ from __future__ import annotations
 from helpers import attr_patch, isolated_env
 from eduflow.commands import watchdog as cmd_watchdog
 from eduflow.feishu import chat as feishu_chat
-from eduflow.runtime import tmux, paths
+from eduflow.runtime import human_takeover, tmux, paths
 import json
 
 
@@ -256,6 +256,23 @@ def test_context_guard_restarts_when_context_is_exhausted():
     ]
     assert updates[-1][1]["last_context_action"] == "restart"
     assert updates[-1][1]["last_context_outcome"] == "ready"
+
+
+def test_context_guard_does_not_restart_during_human_takeover():
+    restarts = []
+    target = tmux.Target("S", "manager")
+    with isolated_env(team={"session": "S", "agents": {"manager": {}}}), \
+            attr_patch(cmd_watchdog.tmux, capture_pane=lambda t, lines=120: "100% context used"), \
+            attr_patch(cmd_watchdog.lifecycle,
+                       current_runtime_status=lambda agent: {"runtime": "manager_backup_mimo"},
+                       restart_with_runtime=lambda *a, **kw: restarts.append((a, kw))):
+        human_takeover.enter(reason="operator intervention", source="test", actor="system")
+        acted = cmd_watchdog._maybe_recover_context_pressure(
+            "manager", target, object(),
+            {"selected_runtime": "manager_backup_mimo"}, 1000.0,
+        )
+    assert acted is True
+    assert restarts == []
 
 
 def test_guard_agent_runtimes_switches_fallback_when_marker_detected():

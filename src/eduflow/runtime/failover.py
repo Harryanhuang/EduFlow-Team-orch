@@ -26,7 +26,7 @@ from __future__ import annotations
 import time
 import uuid
 
-from eduflow.runtime import config, coordinator, lifecycle, verify
+from eduflow.runtime import config, coordinator, human_takeover, lifecycle, verify
 
 
 # Sentinel for "no fallback matched" — distinct from any lifecycle outcome.
@@ -92,6 +92,7 @@ def execute_fallback_loop(
     can_switch_fn=None,
     record_switch_fn=None,
     trigger: str = "auto",
+    automation_guard_fn=None,
 ) -> dict:
     """Run the failover loop for one agent and return a structured report.
 
@@ -117,6 +118,7 @@ def execute_fallback_loop(
     now_fn = now_fn or time.time
     can_switch_fn = can_switch_fn or coordinator.can_switch_to_pool
     record_switch_fn = record_switch_fn or coordinator.record_pool_switch
+    automation_guard_fn = automation_guard_fn or human_takeover.ensure_automation_allowed
 
     initial_pool = runtime_pool_id(current_runtime)
     outcomes: list[str] = []
@@ -195,6 +197,10 @@ def execute_fallback_loop(
             prefer_nonempty = False
             continue
 
+        # Shared last-moment circuit breaker.  This lives in the common loop,
+        # not in a caller, so watchdog and deliver (and every retry) are
+        # protected from a takeover race before the restart side effect.
+        automation_guard_fn()
         now = now_fn()
         outcome = restart_fn(
             agent,

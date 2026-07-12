@@ -1,6 +1,8 @@
 """Tests for `eduflow.runtime.failover`."""
 from __future__ import annotations
 
+import pytest
+
 from helpers import isolated_env
 from eduflow.runtime import failover, config
 
@@ -80,6 +82,30 @@ def test_execute_fallback_loop_first_attempt_ready(monkeypatch):
     assert len(recorded) == 1
     assert recorded[0]["trigger"] == "test"
     assert recorded[0]["cross_pool"] is True
+
+
+def test_takeover_guard_runs_immediately_before_every_restart(monkeypatch):
+    order = []
+    fallbacks = iter([{"name": "r2"}, {"name": "r3"}])
+    monkeypatch.setattr(failover.config, "fallback_runtime", lambda *a, **k: next(fallbacks, None))
+    monkeypatch.setattr(failover, "runtime_pool_id", lambda name: name)
+
+    def guard():
+        order.append("guard")
+        if order.count("guard") == 2:
+            raise failover.human_takeover.AutomationBlocked("takeover")
+
+    def restart(*args, **kwargs):
+        order.append("restart")
+        return "env_drift"
+
+    with pytest.raises(failover.human_takeover.AutomationBlocked):
+        failover.execute_fallback_loop(
+            "manager", object(), "r1", "failed", restart_fn=restart,
+            record_fn=lambda **event: None, can_switch_fn=lambda pool: True,
+            record_switch_fn=lambda pool, agent: None, automation_guard_fn=guard,
+        )
+    assert order == ["guard", "restart", "guard"]
 
 
 def test_execute_fallback_loop_avoids_initial_pool(monkeypatch):

@@ -470,3 +470,35 @@ Command: python3.14 -m py_compile src/eduflow/runtime/human_takeover.py src/eduf
 Result: passed
 Command: git diff --check
 Result: passed
+
+Task 5 spec-review correction (strict TDD)
+
+RED
+Command: pytest -q tests/unit/test_human_takeover.py tests/unit/test_runtime_failover.py
+Result: 6 failed. Exact-schema/type tampering (bool generation, unknown key,
+non-string field, empty active recovery steps), missing operator-visible entry
+steps, and a takeover between fallback attempts were not rejected/blocked.
+
+RED (redaction hardening)
+Command: pytest -q tests/unit/test_human_takeover.py -x
+Result: 1 failed after adding an exact-schema, secret-bearing tampered state;
+status returned the raw token-bearing reason instead of failing closed.
+
+GREEN FOCUSED
+Command: pytest -q tests/unit/test_human_takeover.py tests/unit/test_runtime_failover.py tests/unit/test_commands_watchdog.py tests/integration/test_human_takeover_circuit_breaker.py
+Result: 58 passed. This covers strict state validation/redaction, nonempty
+recovery instructions, per-attempt shared failover guards, recovery CAS, CLI
+authorization, and context-exhaustion restart blocking.
+
+GREEN ADJACENT
+Commands/results:
+- pytest -q tests/unit/test_runtime_watchdog.py --disable-warnings -> 48 passed
+- pytest -q tests/unit/test_feishu_deliver.py --disable-warnings -> 28 passed
+- pytest -q tests/unit/test_cli.py tests/unit/test_cli_flag_gaps.py --disable-warnings -> 17 passed
+The deliver suite completed normally in 60 seconds; exit code 0.
+
+STATIC
+Command: python3 -m py_compile src/eduflow/runtime/human_takeover.py src/eduflow/runtime/failover.py src/eduflow/commands/human_takeover.py src/eduflow/commands/watchdog.py src/eduflow/commands/runtime_switch.py src/eduflow/cli.py
+Result: passed
+Command: git diff --check
+Result: passed

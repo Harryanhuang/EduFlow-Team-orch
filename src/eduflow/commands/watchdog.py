@@ -465,6 +465,11 @@ def _maybe_recover_context_pressure(agent: str, target: tmux.Target,
         or "inline"
     )
     if signal.exhausted:
+        from eduflow.runtime import human_takeover
+        try:
+            human_takeover.ensure_automation_allowed()
+        except human_takeover.AutomationBlocked:
+            return True
         outcome = lifecycle.restart_with_runtime(
             agent, target, str(current),
             reason=f"context_exhausted:{signal.marker}",

@@ -9,3 +9,12 @@ Task 5 controlled isolated-state fault injection
 - Circuit-breaker simulation: automatic switch side effect occurred while inactive, was blocked before mutation after failure-budget entry, then became eligible after explicit authorized recovery.
 - Planned-action CAS: an action holding the pre-takeover generation was rejected after takeover entry.
 - CLI authorization: unconfigured actor could not enter; configured operator could status, enter, and recover using JSON output.
+
+Spec-review correction fault injections
+
+- Well-formed tampering: exact-key enforcement rejected unknown keys, bool-as-int generation, non-string fields, empty active recovery instructions, and secret-bearing canonical-looking JSON; every case returned the sanitized active/corrupt_state fail-closed sentinel.
+- Retry race: a controlled fallback loop allowed attempt 1, entered takeover before attempt 2, then raised AutomationBlocked before the second restart; observed order was guard, restart, guard.
+- Deliver coverage: the common failover loop now owns the last-moment guard, so delivery-triggered failover and watchdog-triggered failover share the same protection on every attempt.
+- Context recovery: an exhausted-context signal during active takeover returned as handled without invoking restart_with_runtime.
+- Manual override authorization: an inactive manual switch remains actor-optional for compatibility; while takeover is active, missing and unconfigured actors are rejected, a configured operator/admin is accepted, and the actor identity is included in the switch audit event.
+- Entry usability: automatic and manual takeover entry persists three nonempty operator-visible recovery steps; recovery with no replacement steps retains those instructions.
