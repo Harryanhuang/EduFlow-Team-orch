@@ -6,9 +6,9 @@
 
 ## Current production authorization fact
 
-As of the G-1 baseline, production `team.admins` / dedicated `runtime_operator` authorization is not provisioned. The only `team.operators` row is a literal placeholder, `u_<admin_feishu_id>`; a placeholder is not an identity and must not be used as evidence. The current CLI implementation reads `team.operators` and `team.admins`, so it does not yet encode the final admin-versus-runtime-operator distinction in the trust model.
+As of the G-1 baseline, production `team.admins` / dedicated `runtime_operator` authorization is not provisioned. The only `team.operators` row is a literal placeholder, `u_<admin_feishu_id>`; a placeholder is not an identity and must not be used as evidence. The CLI implementation reads `team.admins`, `team.runtime_operators`, and `team.runtime_operator`, and rejects the whole configured authority set when any of those fields is malformed or contains an unprovisioned identity. General `team.operators` have no enter/recover authority.
 
-Therefore status may be inspected now, but do not run enter or recover in production until a separately approved checkpoint provisions a real structured actor and the RBAC gap is closed. Never substitute a display name, shell username, placeholder, or invented ID. This runbook does not authorize editing production config.
+Therefore status may be inspected now, but do not run enter or recover in production until a separately approved checkpoint provisions a real structured actor in an accepted runtime-authority field. Production mutation remains fail closed. Never substitute a display name, shell username, placeholder, or invented ID. This runbook does not authorize editing production config.
 
 ## 1. Observe without mutation
 

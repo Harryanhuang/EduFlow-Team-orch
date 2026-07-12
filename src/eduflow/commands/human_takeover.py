@@ -20,18 +20,37 @@ def is_provisioned_actor_id(value: object) -> bool:
     )
 
 
-def _authorized_actors() -> set[str]:
-    team = tunables.load().get("team", {})
+def runtime_authorized_actor_ids(team: object) -> set[str]:
     if not isinstance(team, dict):
         return set()
-    operators = team.get("operators", [])
-    admins = team.get("admins", [])
-    if not isinstance(operators, list) or not isinstance(admins, list):
+
+    def identities(key: str) -> tuple[list[str], bool]:
+        if key not in team:
+            return [], True
+        value = team[key]
+        if isinstance(value, str):
+            return [value], True
+        if isinstance(value, list) and all(isinstance(item, str) for item in value):
+            return list(value), True
+        return [], False
+
+    resolved = [
+        identities("admins"),
+        identities("runtime_operators"),
+        identities("runtime_operator"),
+    ]
+    if any(not valid for _, valid in resolved):
         return set()
-    configured = [*operators, *admins]
-    if any(not is_provisioned_actor_id(actor) for actor in configured):
+    values = [actor for actors, _ in resolved for actor in actors]
+    if any(not is_provisioned_actor_id(actor) for actor in values):
         return set()
-    return set(configured)
+    return set(values)
+
+
+def _authorized_actors() -> set[str]:
+    configured = tunables.load()
+    team = configured.get("team", {}) if isinstance(configured, dict) else {}
+    return runtime_authorized_actor_ids(team)
 
 
 def _authorize(actor: str | None) -> bool:
@@ -55,7 +74,7 @@ def main(argv: list[str]) -> int:
     actor = pop_flag(rest, "--actor")
     reason = pop_flag(rest, "--reason")
     if not _authorize(actor):
-        return error_exit("unauthorized: configured operator/admin --actor required")
+        return error_exit("unauthorized: configured admin/runtime_operator --actor required")
     if not reason:
         return error_exit("--reason is required")
     try:

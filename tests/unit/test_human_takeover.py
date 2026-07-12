@@ -7,6 +7,7 @@ from concurrent.futures import ThreadPoolExecutor
 import pytest
 
 from eduflow import cli
+from eduflow.commands import human_takeover as human_takeover_command
 from eduflow.commands import runtime_switch
 from eduflow.runtime import human_takeover
 
@@ -220,6 +221,27 @@ def test_runtime_switch_override_excludes_general_operators(monkeypatch):
     assert runtime_switch._authorized_actors() == {"u_admin", "u_runtime", "u_single"}
     with pytest.raises(PermissionError):
         runtime_switch._manual_trigger({"state": "active"}, "u_general")
+
+
+def test_human_takeover_uses_the_same_runtime_authority_fields(monkeypatch):
+    monkeypatch.setattr(human_takeover_command.tunables, "load", lambda: {"team": {
+        "operators": ["u_general"], "admins": ["u_admin"],
+        "runtime_operators": ["u_runtime"], "runtime_operator": "u_single",
+    }})
+
+    assert human_takeover_command._authorized_actors() == {
+        "u_admin", "u_runtime", "u_single",
+    }
+    assert not human_takeover_command._authorize("u_general")
+
+
+@pytest.mark.parametrize("command", [human_takeover_command, runtime_switch])
+def test_runtime_authority_fails_closed_for_malformed_top_level_config(
+    monkeypatch, command,
+):
+    monkeypatch.setattr(command.tunables, "load", lambda: ["not", "a", "mapping"])
+
+    assert command._authorized_actors() == set()
 
 
 @pytest.mark.parametrize(

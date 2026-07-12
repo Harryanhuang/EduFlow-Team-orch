@@ -16,7 +16,7 @@ from __future__ import annotations
 
 import uuid
 
-from eduflow.commands.human_takeover import is_provisioned_actor_id
+from eduflow.commands.human_takeover import runtime_authorized_actor_ids
 from eduflow.runtime import config, human_takeover, lifecycle, tmux, tunables, verify
 from eduflow.util import (
     error_exit, maybe_print_help, pop_bool_flag, pop_flag, print_json,
@@ -30,29 +30,9 @@ USAGE = (
 
 
 def _authorized_actors() -> set[str]:
-    team = tunables.load().get("team", {})
-    if not isinstance(team, dict):
-        return set()
-    def identities(key: str) -> tuple[list[str], bool]:
-        if key not in team:
-            return [], True
-        value = team[key]
-        if isinstance(value, str):
-            return [value], True
-        if isinstance(value, list) and all(isinstance(item, str) for item in value):
-            return list(value), True
-        return [], False
-
-    resolved = [
-        identities("admins"), identities("runtime_operators"),
-        identities("runtime_operator"),
-    ]
-    if any(not valid for _, valid in resolved):
-        return set()
-    values = [actor for actors, _ in resolved for actor in actors]
-    if any(not is_provisioned_actor_id(actor) for actor in values):
-        return set()
-    return set(values)
+    configured = tunables.load()
+    team = configured.get("team", {}) if isinstance(configured, dict) else {}
+    return runtime_authorized_actor_ids(team)
 
 
 def _manual_trigger(takeover_state: dict, actor: str | None) -> str:

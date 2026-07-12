@@ -109,6 +109,8 @@ def test_runbook_is_executable_and_does_not_claim_unprovisioned_authorization() 
         assert command in runbook
     assert "not provisioned" in runbook
     assert "placeholder" in runbook and "must not be used as evidence" in runbook
+    assert "`team.admins`, `team.runtime_operators`, and `team.runtime_operator`" in runbook
+    assert "General `team.operators` have no enter/recover authority" in runbook
     assert "--actor" in runbook and "--reason" in runbook and "--generation" in runbook
     assert "do not run enter or recover" in runbook
     assert "does not machine-verify" in runbook
