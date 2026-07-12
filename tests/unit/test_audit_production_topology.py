@@ -478,3 +478,65 @@ def test_json_flag_is_accepted_and_preserves_nonzero_cli_result(tmp_path, monkey
 
     assert exit_code == 1
     assert json.loads(capsys.readouterr().out)["ok"] is False
+
+
+@pytest.mark.parametrize("failure", ["missing", "permission", "timeout", "nonzero"])
+def test_runtime_version_failures_are_unknown_and_never_render_exception_text(tmp_path, failure):
+    module, deps, _commands, *_ = _fixture(tmp_path)
+    original_run = deps.run
+
+    def failing_run(argv, **kwargs):
+        if argv == ["/tmp/fake/python3", "--version"]:
+            if failure == "missing":
+                raise FileNotFoundError("sensitive missing path")
+            if failure == "permission":
+                raise PermissionError("sensitive permission detail")
+            if failure == "timeout":
+                raise subprocess.TimeoutExpired(argv, 5, stderr="sensitive timeout detail")
+            return subprocess.CompletedProcess(argv, 9, "", "sensitive nonzero detail")
+        return original_run(argv, **kwargs)
+
+    deps = module.AuditDependencies(**{**deps.__dict__, "run": failing_run})
+    report = module.audit(deps)
+    rendered = json.dumps(report, sort_keys=True)
+
+    assert report["ok"] is False
+    assert "cli_runtime_unknown" in {error["code"] for error in report["errors"]}
+    assert all(row["cli_runtime"] is None for row in report["daemons"])
+    assert "sensitive" not in rendered
+    assert failure not in rendered
+
+
+@pytest.mark.parametrize("version", ["line one\nline two", "V" * 300])
+def test_runtime_version_must_be_single_line_and_bounded(tmp_path, version):
+    module, deps, commands, *_ = _fixture(tmp_path)
+    commands["/tmp/fake/python3 --version"] = version
+
+    report = module.audit(deps)
+
+    assert report["ok"] is False
+    assert "cli_runtime_unknown" in {error["code"] for error in report["errors"]}
+    assert all(row["cli_runtime"] is None for row in report["daemons"])
+
+
+@pytest.mark.parametrize(
+    "invalid_toml",
+    [
+        'lark_profile = "p"\nteam = "not-a-table"\n',
+        'lark_profile = "p"\n[team]\nsession = "eduflow-team"\nagents = "not-a-table"\n',
+        'lark_profile = "p"\n[team]\nsession = "eduflow-team"\n'
+        '[runtime_registry]\nagent_primary = "not-a-table"\n'
+        '[team.agents.manager]\nruntime = "agent_primary"\n',
+        'lark_profile = "p"\n[team]\nsession = "eduflow-team"\n'
+        '[team.agents]\nmanager = "not-a-table"\n',
+    ],
+)
+def test_legal_toml_with_invalid_config_types_fails_closed_as_json(tmp_path, invalid_toml):
+    module, deps, _commands, config, *_ = _fixture(tmp_path)
+    config.write_text(invalid_toml, encoding="utf-8")
+
+    report = module.audit(deps)
+
+    assert report["ok"] is False
+    assert "config_schema_invalid" in {error["code"] for error in report["errors"]}
+    assert json.loads(json.dumps(report))["ok"] is False

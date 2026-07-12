@@ -137,3 +137,30 @@ ORPHAN SCOPE LIVE READ-ONLY AUDIT
 Observed at: 2026-07-12T11:39:50+08:00
 Observed: ok=false for the existing three stale daemons and Hermes drift only; suspect_processes is empty. Unrelated standalone Codex/Claude processes no longer become blocking orphans solely from basename.
 Exit code: 1 (expected fail-closed result; G-1 remains BLOCKED)
+
+FINAL QUALITY RED — version validity and typed TOML schema
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_audit_production_topology.py -q
+Observed: 10 failed, 31 passed against commit 81917581.
+Key failures: missing/permission/timeout/nonzero version probes could turn exception stderr into a version; multiline and 300-character output was accepted; legal TOML with team/agents/registry/spec type errors either raised AttributeError or lacked config_schema_invalid.
+Exit code: 1
+
+FINAL QUALITY GREEN — focused
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_audit_production_topology.py -q
+Observed: 41 passed. Version output must be rc=0, nonempty, single-line, and at most 256 characters; missing, permission, timeout, nonzero, multiline, and oversized probes all fail closed without rendering exception detail. Four legal-TOML schema type failures return config_schema_invalid JSON.
+Exit code: 0
+
+FINAL QUALITY GREEN — related runtime regression
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_audit_production_topology.py tests/unit/test_commands_health.py tests/unit/test_commands_runtime_cli.py tests/unit/test_commands_watchdog.py tests/unit/test_runtime_tmux.py tests/unit/test_runtime_watchdog.py -q
+Observed: 193 passed
+Exit code: 0
+
+FINAL QUALITY static verification
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m py_compile scripts/audit_production_topology.py tests/unit/test_audit_production_topology.py
+Exit code: 0
+Command: git diff --check
+Exit code: 0
+
+FINAL QUALITY LIVE JSON AUDIT
+Observed at: 2026-07-12T11:47:35+08:00
+Observed: ok=false for the same stale daemon and Hermes findings; three reviewed Claude versions remain valid absolute-executable evidence; no new cli_runtime_unknown or config_schema_invalid appeared in the valid production configuration.
+Exit code: 1 (expected fail-closed result; G-1 remains BLOCKED)

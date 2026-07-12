@@ -38,13 +38,20 @@ def _config(path, errors=None, subject="config"):
     except tomllib.TOMLDecodeError:
         data = {}
         if errors is not None: _err(errors, "config_corrupt", subject, "TOML cannot be parsed")
-    registry = data.get("runtime_registry", {})
-    agents = data.get("team", {}).get("agents", {})
+    team, registry, invalid = data.get("team", {}), data.get("runtime_registry", {}), False
+    if not isinstance(team, dict): team, invalid = {}, True
+    if not isinstance(registry, dict): registry, invalid = {}, True
+    agents = team.get("agents", {})
+    if not isinstance(agents, dict): agents, invalid = {}, True
+    if any(not isinstance(value, dict) for value in registry.values()): invalid = True
+    if any(not isinstance(value, dict) for value in agents.values()): invalid = True
+    if invalid and errors is not None: _err(errors, "config_schema_invalid", subject, "config tables have invalid types")
     agent_clis = {name: registry.get(spec.get("runtime"), {}).get("cli")
-                  for name, spec in agents.items() if isinstance(spec, dict)}
+                  for name, spec in agents.items() if isinstance(spec, dict)
+                  and isinstance(registry.get(spec.get("runtime"), {}), dict)}
     return {"path": str(path), "sha256": digest, "generation": digest[:16],
             "lark_profile": data.get("lark_profile"),
-            "tmux_session": data.get("team", {}).get("session"),
+            "tmux_session": team.get("session"),
             "agent_clis": agent_clis}
 def _git(deps, cwd, errors, subject):
     if not cwd:
@@ -134,6 +141,11 @@ def _cwd(deps, pid):
         if line.startswith("n/"):
             return str(Path(line[1:]).resolve())
     return None
+def _version(deps, executable):
+    if not executable: return None
+    result = _run(deps, [executable, "--version"])
+    value = ((result.stdout or "") + (result.stderr or "")).strip()
+    return value if result.returncode == 0 and 0 < len(value) <= 256 and "\n" not in value and "\r" not in value else None
 def _provenance(deps, process, processes, target, errors, subject, profile):
     if not process:
         return {field: None for field in FIELDS}
@@ -158,8 +170,7 @@ def _provenance(deps, process, processes, target, errors, subject, profile):
         _err(errors, "process_state_mismatch", subject, "actual state differs from target")
     if actual["sha256"] != target["sha256"]:
         _err(errors, "process_config_generation_mismatch", subject, "actual config hash differs")
-    version = _run(deps, [executable, "--version"]) if executable else None
-    runtime = ((version.stdout or "") + (version.stderr or "")).strip() if version else ""
+    runtime = _version(deps, executable)
     if not entry: _err(errors, "process_entry_unknown", subject, "strict EduFlow entry not found")
     if not runtime: _err(errors, "cli_runtime_unknown", subject, "executable version unavailable")
     return {
