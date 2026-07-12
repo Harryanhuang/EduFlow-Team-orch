@@ -1,83 +1,76 @@
 # G-1 Security and Supply-Chain Results
 
-Submission target: `73e7b3f4cd47cbc48b985ccbf261266fe38b02d2`
-Historical implementation revision: `cc95c5a488a8cd699dff515eadf431277669ffc6`
-Security-ledger revision: `2296dc08c14eae9de34accdf43d4a11c6b8ba68f`
-Historical capture: 2026-07-12T17:59:46+08:00 (UTC 2026-07-12T09:59:46Z; Task 7 evidence refresh)
-Current refresh: 2026-07-12T23:57:11+08:00 (UTC 2026-07-12T15:57:11Z)
+Submission target: `21d000e5eca28c1ad5a91ad3485c548f8ce1c389`
+Result: FAIL
+Refresh: exact local/UTC timestamps, commands, cwd, exit status, output digest,
+and structured summaries are persisted in `scanner-refresh.json`; all runs cover
+submission revision `21d000e5eca28c1ad5a91ad3485c548f8ce1c389`.
 
-Freshness note: the configured-control clarification at the submission target
-does not claim scanner execution. The resumed local checkpoint created and
-validated the Node lockfile, exercised an offline cached audit, and exposed the
-actual Ruff baseline. The offline audit advisory snapshot provenance and
-freshness are unknown, and its `registry.npmmirror.com` source is not yet
-security-owner approved. Required type-checker, secret-scanner, `pip-audit`,
-registry-approval and fresh-advisory evidence remain incomplete,
-so the result remains FAIL.
+The runnable scanners are no longer missing. Current read-only checks are clean
+for the scopes stated below. AC-GLOBAL-04 remains FAIL because the passing
+runtime-authority scope is narrower than the Gate/repository surface and a
+broader mypy run still contains pre-existing findings.
+The actual `flow-memory` runtime dependency also remains undeclared in
+`pyproject.toml` and its first PyPI publication is pending authenticated Trusted
+Publisher setup. No clean sub-check is represented as approval of those gaps.
 
-## Current resumed-execution checks
+## Current checks
 
-| Check | Command / method | Exit | Result |
+| Check | Tool / command | Exit | Result |
 |---|---|---:|---|
-| Ruff production source | `uvx --offline ruff==0.15.10 check src` | 0 | PASS — zero findings after R2f; compatibility seams are explicit self-alias re-exports, not ignores |
-| Ruff test suite | `uvx --offline ruff==0.15.10 check tests` | 0 | PASS — `All checks passed!` after R3e without global or per-file ignores |
-| Ruff full repository | `uvx --offline ruff==0.15.10 check src tests scripts` | 0 | PASS — `All checks passed!`; baseline reduced from 486 to zero |
-| Node lock generation | `npm install --package-lock-only --ignore-scripts --offline --registry=https://registry.npmmirror.com` | 0 | PASS — exact `playwright==1.59.1` dependency locked without running `postinstall` |
-| Node audit (offline cache view) | `npm audit --omit=dev --audit-level=high --offline --registry=https://registry.npmmirror.com --json` | 0 | OBSERVED — local cache returned 0 vulnerabilities across 3 production dependencies (plus 1 optional entry); current advisory coverage is not proven |
-| Lockfile contract | focused trackable/complete lockfile test plus exact-pin test | 0 | PASS — candidate lockfile is present and not ignored; lockfileVersion 3+, root dependencies match, and every transitive entry has exact version, HTTPS resolved URL, and SHA-512 integrity |
-| Disposable clean install | copy manifest/lock into a private temporary directory; run `npm ci --ignore-scripts --offline --registry=https://registry.npmmirror.com` from that directory | 0 | PASS — added 3 packages; installed Playwright 1.59.1; no lifecycle scripts executed |
+| Ruff full repository | `uvx --offline ruff==0.15.10 check src tests scripts acceptance` | 0 | PASS - `All checks passed!`; repository baseline is reduced from 486 to zero |
+| Ruff production source | `ruff==0.15.10 check src` | 0 | PASS - zero findings after R2f; no global or per-file ignore was added |
+| Scoped type check | `mypy 2.2.0 --follow-imports=skip --ignore-missing-imports src/eduflow/commands/human_takeover.py src/eduflow/commands/runtime_switch.py src/eduflow/runtime/human_takeover.py` | 0 | PASS for the stated authority scope; this narrow result is insufficient for a Gate-wide type claim |
+| Git secret scan | `trufflehog 3.95.9 git file://<candidate> --json --no-update --fail --fail-on-scan-errors --results verified,unverified,unknown` | 0 | PASS - 9270 chunks and 18069931 bytes; `verified_secrets=0`, `unverified_secrets=0`, scan error logs 0 |
+| Python base dependencies, minimum Python | `pip-audit 2.10.1 --strict --format json .` under Python 3.10 | 0 | PASS - resolved declared base dependency `tomli==2.4.1`; 0 known vulnerabilities |
+| Python optional vector dependencies | `pip-audit 2.10.1 --strict -r /tmp/eduflow-vector-requirements.XXXXXX.txt` under Python 3.10; exact input is `lancedb>=0.4` plus `sentence-transformers>=2.2` | 0 | PASS - 51 resolved dependencies; 0 known vulnerabilities |
+| Node production dependencies | `npm audit --omit=dev --audit-level=high --registry=https://registry.npmjs.org --json` | 0 | PASS - 0 vulnerabilities (0 info/low/moderate/high/critical) across 3 production dependencies and 1 optional entry |
+| Node lockfile | exact-pin and complete-lock acceptance tests plus disposable `npm ci --ignore-scripts` | 0 | PASS - Playwright `1.59.1`, lockfile v3, HTTPS resolution and SHA-512 integrity metadata |
 
-The first offline lock attempt with floating `^1.59.1` failed `ETARGET` because
-it resolved to uncached `playwright-core@1.60.0`. TDD then required exact
-production pins; the manifest was fixed to `1.59.1`, matching the available
-cached package metadata, before the successful lock and audit commands.
+## Secret-scanner provenance
 
-The first disposable clean-install attempt used npm `--prefix` and failed
-`EUSAGE` because npm interpreted the random directory name as the root package.
-Running the same offline/no-scripts `npm ci` from inside the copied project
-directory reproduced the lock successfully. Neither run touched production.
+The TruffleHog archive and checksum manifest came from the official
+`trufflesecurity/trufflehog` GitHub release `v3.95.9`. The darwin-arm64 archive
+SHA-256 matched the published value:
 
-## Historical Task 7 checks
+`944c6ea3a2993a9f808d08107b40e03ba92bc75972876a1ee47d567bfd6fa1b5`
 
-| Check | Command / method | Exit | Result |
-|---|---|---:|---|
-| High-confidence tracked-secret pattern scan | `git grep -Il -E` for AWS/GitHub/Slack/OpenAI token signatures, reporting filenames only | 0 wrapper / grep 1 | PASS — 0 matching tracked files; this is a limited fallback, not a replacement for a secret scanner |
-| Python dependency consistency | `python3 -m pip check` | 0 | PASS — no broken requirements |
-| Node audit | `npm audit --omit=dev --audit-level=high` in `scripts/feishu_bot_creator` | 1 | HISTORICAL FAIL — `ENOLOCK`; superseded by the current candidate lockfile and explicit offline audit above |
+An earlier filesystem-mode attempt also found zero results but logged four
+decode errors against generated `__pycache__/*.pyc` files. It is not accepted
+as evidence. The recorded Git-source run scanned committed content/history,
+reported zero error logs, and is the authoritative secret-scan result.
 
-## Mandatory evidence gaps
+`scanner-refresh.json` is the machine-readable provenance record. It binds each
+accepted run to an exact command, working directory, local and UTC time, exit
+code, output SHA-256/size, and complete result summary. The raw temporary output
+files are not treated as durable evidence; their digests protect the recorded
+summaries from accidental substitution, while the commands and exact optional
+input make each run reproducible.
 
-Ruff is now reproducibly executable from the local offline `uv` cache. R1 made
-all 135 explicit compatibility imports unambiguous re-exports. R2 then removed
-all three F821 findings with runtime regression tests. R2b repaired the ignored
-explicit task selector in memory injection and cleaned the adjacent command.
-R2c removed the final production F811/E731 pair from health and usage. R2d
-removed all 12 production F841 findings and restored P0 detection for generic
-verdict/review-reason/status fields. R2e renamed all nine ambiguous production
-loop variables. R2f removed the final production F401/F541 findings while
-preserving two tested compatibility seams. R3a removed all safe F401/F541/E401
-findings from tests while preserving 1301 affected tests. R3b recovered five
-previously shadowed tests and cleared test F811. R3c clarified all 17 ambiguous
-test binders. R3d replaced all 13 assigned test lambdas with signature-equivalent
-local functions. R3e closed the remaining test findings while preserving test
-side effects, and R4 expanded compact scripts without semantic drift. The
-repository baseline is reduced from 486 to zero without global or per-file
-ignores; line-scoped E402 annotations remain only where bootstrap order is
-required.
-`mypy`, `pyright`, `gitleaks`, `trufflehog`, and
-`pip-audit` are not available from PATH or the checked offline Python cache,
-and no approved type-checker scope exists. These are mandatory checks under the
-acceptance contract; they are **not** `not_applicable`. The limited tracked-file
-pattern scan above cannot certify the missing secret-scan requirement.
+## Type-checker boundary
 
-The repository declares a TruffleHog v3.88.0 hook in
-`.pre-commit-config.yaml`, but this machine has neither the `pre-commit`
-launcher nor a TruffleHog executable/module available. A declared but
-non-runnable hook is evidence of intended control, not evidence of a completed
-secret scan.
+The scoped authority run is clean. A broader import-following mypy diagnostic
+previously exposed existing findings in other Gate/repository modules and
+undeclared local dependencies. This is engineering remediation, not an owner
+checkpoint: expand the progressive Gate to the applicable modules and fix or
+explicitly bound every remaining finding before claiming AC-GLOBAL-04 PASS.
 
-Result: FAIL — the Node lockfile sub-check is closed at the candidate-artifact
-level, and offline install/audit commands are reproducible. The offline audit
-freshness is not proven; mirror approval is absent; and the
-type-checker, secret-scanner, and `pip-audit` evidence is still absent. No
-missing or stale check is represented as current success.
+## Dependency boundary
+
+The Python audit is attributable to declared EduFlow dependencies, rather than
+the shared Homebrew environment. The base project resolves one dependency on
+Python 3.10 and none on Python 3.14 because `tomli` is conditional. The optional
+vector audit separately covers the currently declared extra. It does not cover
+the undeclared editable `flow-memory` installation; publication and dependency
+declaration remain required before that package can be audited as a locked
+EduFlow dependency.
+
+The current official npm registry result supersedes the historical offline
+mirror audit for freshness. The lockfile still contains resolved artifact URLs
+from `registry.npmmirror.com`; changing those artifact sources requires an
+explicit dependency/lockfile remediation rather than relabeling the official
+advisory query.
+
+Result: FAIL - secret scanning, pip-audit, npm audit, Ruff, and the scoped mypy
+run are current and clean. Accepted type coverage and the undeclared/unpublished
+Flow Memory dependency remain incomplete, so AC-GLOBAL-04 does not pass.

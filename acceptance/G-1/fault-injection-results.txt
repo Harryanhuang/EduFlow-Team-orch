@@ -1,6 +1,6 @@
 G-1 Fault-Injection Results
 
-Submission target: `73e7b3f4cd47cbc48b985ccbf261266fe38b02d2`
+Submission target: `21d000e5eca28c1ad5a91ad3485c548f8ce1c389`
 The fault transcript is historical execution evidence carried forward through
 the `d578691b8e1d3e0dc6f5221120c4a0d0e4ace6ab` authority remediation. No fault
 injection was rerun solely for this evidence refresh.
@@ -15,7 +15,7 @@ Task 5 controlled isolated-state fault injection
 - Recovery CAS: correct generation transitioned through recovering to inactive generation 2; stale recovery was rejected.
 - Circuit-breaker simulation: automatic switch side effect occurred while inactive, was blocked before mutation after failure-budget entry, then became eligible after explicit authorized recovery.
 - Planned-action CAS: an action holding the pre-takeover generation was rejected after takeover entry.
-- CLI authorization: unconfigured actor could not enter; configured operator could status, enter, and recover using JSON output.
+- CLI authorization: unconfigured/general operator could not enter; a configured provisioned admin/runtime operator could status, enter, and recover using JSON output in isolated state.
 
 Spec-review correction fault injections
 
@@ -51,3 +51,15 @@ remain covered at the final Task 7 revision.
 Scope: controlled isolated state only; no production takeover enter/recover,
 external message, credential rotation, or production data-source change was
 performed.
+
+Current R6 authority refresh
+
+- Both runtime switch and human takeover use the same provisioned authority
+  fields and reject general operators.
+- Malformed top-level tunables and malformed/placeholder authority fields fail
+  closed before mutation.
+- The complete 3209-node suite reran these isolated fault paths at the current
+  submission target; no production fault injection was performed.
+
+Result: PASS for isolated authority fault coverage; production mutation remains
+prohibited until the identity and owner checkpoints exist.

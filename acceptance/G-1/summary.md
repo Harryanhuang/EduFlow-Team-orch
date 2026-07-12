@@ -1,7 +1,7 @@
 # G-1 Acceptance Summary
 
 Gate: G-1
-Revision: 73e7b3f4cd47cbc48b985ccbf261266fe38b02d2
+Revision: 21d000e5eca28c1ad5a91ad3485c548f8ce1c389
 Config generation: production `00773fbb4eb5ed7f`; isolated implementation config is intentionally distinct
 Environment: isolated `codex/eduflow-upgrade-gates` worktree plus read-only production probes against the deployed checkout
 Acceptance result: FAIL
@@ -17,7 +17,8 @@ Manager closeout: blocked — manager must not CLOSEOUT before a valid REVIEW an
 - remediation: `d578691b8e1d3e0dc6f5221120c4a0d0e4ace6ab`
 - security ledger: `2296dc08c14eae9de34accdf43d4a11c6b8ba68f`
 - Ruff R3 tests: `af15df34de310907feff3e93681952a443fb0bfb` (Lore carried forward by `6b4ec55a`)
-- Ruff R4 scripts / submission target: `73e7b3f4cd47cbc48b985ccbf261266fe38b02d2`
+- Ruff R4 scripts: `73e7b3f4cd47cbc48b985ccbf261266fe38b02d2`
+- runtime authority consolidation / submission target: `21d000e5eca28c1ad5a91ad3485c548f8ce1c389`
 
 `Revision` is the immutable submission target. This evidence-only freshness
 delta is intentionally not assigned a self-referential revision; the formal
@@ -29,9 +30,9 @@ exist.
 | Criterion | Result | Evidence / blocker |
 |---|---|---|
 | AC-GLOBAL-01 workspace protection | PASS | isolated scoped worktree and baseline inventory |
-| AC-GLOBAL-02 regression tests | PASS | current 3206-node full regression, compileall, pip check, and diff check |
+| AC-GLOBAL-02 regression tests | PASS | current 3212-node full regression, compileall, pip check, and diff check |
 | AC-GLOBAL-03 behavior tests | PASS | RED/GREEN and adjacent negative-path records |
-| AC-GLOBAL-04 static and supply chain | FAIL | Ruff is clean and Node lock/offline install pass, but mirror/advisory freshness is unapproved and required type/secret/dependency scanners remain unavailable |
+| AC-GLOBAL-04 static and supply chain | FAIL | Ruff, TruffleHog, official npm audit, pip-audit, and scoped mypy are clean; accepted type coverage and the undeclared/unpublished Flow Memory dependency remain incomplete |
 | AC-GLOBAL-05 unresolved risks | FAIL | two High and one Medium open Gate risk remain |
 | AC-GLOBAL-06 rollback | PASS | exact reverse-patch tree proof and forward recovery boundaries |
 | AC-GLOBAL-07 observable state | PASS | CLI JSON and append-only audit evidence |
@@ -53,6 +54,12 @@ mandatory security/tooling checkpoint is incomplete. The tracked placeholder
 is explicitly not an actor and cannot be used as approval or authorization
 evidence. No G0 work is authorized.
 
-The current submission passed the complete 3206-node regression. The historical
+The current submission passed the complete 3212-node regression. A read-only
+production refresh at 2026-07-13T00:58:28+08:00 remained `ok=true` with three
+daemons, eleven panes, eleven agent processes, zero suspects, and no audit
+errors. The exact command, raw redacted JSON, output digest, production revision,
+and config generation are persisted in `production-topology-refresh.json`.
+Production still has only the placeholder general-operator row, so no
+runtime authority appointment is inferred. The historical
 3014-test baseline rollback run was not repeated; the current exact rollback
 content proof and focused acceptance-package tests are recorded separately.

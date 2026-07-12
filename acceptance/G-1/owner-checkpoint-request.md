@@ -1,9 +1,9 @@
 # G-1 Project Owner Checkpoint Request
 
-Submission target: `73e7b3f4cd47cbc48b985ccbf261266fe38b02d2`
+Submission target: `21d000e5eca28c1ad5a91ad3485c548f8ce1c389`
 Result: PENDING
 
-Please provide or confirm these three checkpoints with a durable reference
+Please provide or confirm these two checkpoints with a durable reference
 (approval record ID, or signed document path plus identity, time, and applicable
 revision). Do not include credential values.
 
@@ -17,12 +17,6 @@ revision). Do not include credential values.
    `docs/operations/CONTROL_PLANE_SLO.md`, and
    `docs/operations/HUMAN_TAKEOVER_RUNBOOK.md`, including the
    `control_plane_owner` and escalation path.
-3. **Tool/source approval:** approve the exact type checker and module scope,
-   TruffleHog or Gitleaks, `pip-audit`, and the Node registry/advisory source
-   (approve `registry.npmmirror.com` or name an alternative). Authorize
-   read-only scans whose evidence records tool version, command, exit status,
-   time, and covered revision.
-
 After these checkpoints, G-1 still requires a final evidence refresh, a formal
 `worker_review` REVIEW bound to the final committed HEAD, and only after PASS a
 manager CLOSEOUT. This request does not authorize external sends, credential

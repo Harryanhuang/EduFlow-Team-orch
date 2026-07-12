@@ -1,7 +1,7 @@
 # G-1 scoped changed files
 
 Comparison base: `bde14c5ce94aacd99ef80f9c11b65092dcf25fc3`
-Submission target: `73e7b3f4cd47cbc48b985ccbf261266fe38b02d2`
+Submission target: `21d000e5eca28c1ad5a91ad3485c548f8ce1c389`
 Candidate/evidence-refresh path inventory: the union of baseline-to-candidate
 tracked paths and candidate-only untracked paths. The same inventory definition
 remains valid before and after the evidence refresh is committed. No user-owned
@@ -13,9 +13,39 @@ Revision lineage:
 - authority remediation: `d578691b8e1d3e0dc6f5221120c4a0d0e4ace6ab`
 - configured scanner ledger: `2296dc08c14eae9de34accdf43d4a11c6b8ba68f`
 - Ruff R3 tests: `af15df34de310907feff3e93681952a443fb0bfb`
-- Ruff R4 scripts / submission target: `73e7b3f4cd47cbc48b985ccbf261266fe38b02d2`
+- Ruff R4 scripts: `73e7b3f4cd47cbc48b985ccbf261266fe38b02d2`
+- runtime authority consolidation / submission target: `21d000e5eca28c1ad5a91ad3485c548f8ce1c389`
 
-## Machine-verifiable submission paths
+## Immutable submission inventory
+
+Command: `git diff --name-only bde14c5ce94aacd99ef80f9c11b65092dcf25fc3 21d000e5eca28c1ad5a91ad3485c548f8ce1c389 -- | LC_ALL=C sort -u`
+
+Immutable submission path count: 165
+Immutable submission path SHA-256: `cadc4366a46d635057869623f247dbc626c5710c510b25ec024f3ed2f2c26b9d`
+
+## Evidence-refresh inventory
+
+Commands: `git diff --name-only 21d000e5eca28c1ad5a91ad3485c548f8ce1c389 --`
+plus `git ls-files --others --exclude-standard`; sort the union.
+
+Evidence-refresh path count: 13
+Evidence-refresh path SHA-256: `c246fc0b7ff1bc9445b25aeb44f9b23d01d4a53db809cc82c6f7de18de4af0b2`
+
+- `acceptance/G-1/changed-files.txt`
+- `acceptance/G-1/fault-injection-results.txt`
+- `acceptance/G-1/known-risks.md`
+- `acceptance/G-1/migration-results.txt`
+- `acceptance/G-1/owner-checkpoint-request.md`
+- `acceptance/G-1/production-topology-refresh.json`
+- `acceptance/G-1/review-verdict.md`
+- `acceptance/G-1/rollback-proof.md`
+- `acceptance/G-1/scanner-refresh.json`
+- `acceptance/G-1/security-results.txt`
+- `acceptance/G-1/summary.md`
+- `acceptance/G-1/test-results.txt`
+- `tests/unit/test_g_minus_1_acceptance_package.py`
+
+## Machine-verifiable candidate plus evidence-refresh paths
 
 Commands: `git diff --name-only bde14c5ce94aacd99ef80f9c11b65092dcf25fc3 --`
 plus `git ls-files --others --exclude-standard`; sort the union.
@@ -28,8 +58,10 @@ acceptance/G-1/fault-injection-results.txt
 acceptance/G-1/known-risks.md
 acceptance/G-1/migration-results.txt
 acceptance/G-1/owner-checkpoint-request.md
+acceptance/G-1/production-topology-refresh.json
 acceptance/G-1/review-verdict.md
 acceptance/G-1/rollback-proof.md
+acceptance/G-1/scanner-refresh.json
 acceptance/G-1/security-results.txt
 acceptance/G-1/summary.md
 acceptance/G-1/test-results.txt

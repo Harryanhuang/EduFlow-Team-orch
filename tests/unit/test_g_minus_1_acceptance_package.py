@@ -1,21 +1,24 @@
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import subprocess
 from collections import Counter
+from datetime import datetime
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
 PACKAGE = ROOT / "acceptance" / "G-1"
 BASELINE_REVISION = "bde14c5ce94aacd99ef80f9c11b65092dcf25fc3"
-SUBMISSION_REVISION = "73e7b3f4cd47cbc48b985ccbf261266fe38b02d2"
+SUBMISSION_REVISION = "21d000e5eca28c1ad5a91ad3485c548f8ce1c389"
 REVISION_LINEAGE = {
     "implementation": "cc95c5a488a8cd699dff515eadf431277669ffc6",
     "remediation": "d578691b8e1d3e0dc6f5221120c4a0d0e4ace6ab",
     "security ledger": "2296dc08c14eae9de34accdf43d4a11c6b8ba68f",
-    "Ruff R4 scripts / submission target": SUBMISSION_REVISION,
+    "Ruff R4 scripts": "73e7b3f4cd47cbc48b985ccbf261266fe38b02d2",
+    "runtime authority consolidation / submission target": SUBMISSION_REVISION,
 }
 
 REQUIRED_FILES = {
@@ -133,7 +136,7 @@ def test_summary_has_machine_recountable_twelve_criterion_ledger() -> None:
 def test_changed_files_machine_section_matches_submission_paths() -> None:
     changed_files = _read("changed-files.txt")
     match = re.search(
-        r"(?s)## Machine-verifiable submission paths.*?```text\n(.*?)\n```",
+        r"(?s)## Machine-verifiable candidate plus evidence-refresh paths.*?```text\n(.*?)\n```",
         changed_files,
     )
     assert match, "missing machine-verifiable submission path section"
@@ -154,6 +157,34 @@ def test_changed_files_machine_section_matches_submission_paths() -> None:
     ).stdout.splitlines()
     assert recorded == sorted(set(tracked) | set(untracked))
     assert "uncommitted" not in changed_files.lower()
+
+
+def test_changed_files_separately_binds_submission_and_refresh_inventories() -> None:
+    changed_files = _read("changed-files.txt")
+    submission = subprocess.run(
+        ["git", "diff", "--name-only", BASELINE_REVISION, SUBMISSION_REVISION, "--"],
+        cwd=ROOT, check=True, capture_output=True, text=True,
+    ).stdout.splitlines()
+    refresh_tracked = subprocess.run(
+        ["git", "diff", "--name-only", SUBMISSION_REVISION, "--"],
+        cwd=ROOT, check=True, capture_output=True, text=True,
+    ).stdout.splitlines()
+    refresh_untracked = subprocess.run(
+        ["git", "ls-files", "--others", "--exclude-standard"],
+        cwd=ROOT, check=True, capture_output=True, text=True,
+    ).stdout.splitlines()
+
+    def digest(paths: list[str]) -> str:
+        payload = "".join(f"{path}\n" for path in sorted(set(paths))).encode()
+        return hashlib.sha256(payload).hexdigest()
+
+    assert f"Immutable submission path count: {len(set(submission))}" in changed_files
+    assert f"Immutable submission path SHA-256: `{digest(submission)}`" in changed_files
+    refresh = sorted(set(refresh_tracked) | set(refresh_untracked))
+    assert f"Evidence-refresh path count: {len(refresh)}" in changed_files
+    assert f"Evidence-refresh path SHA-256: `{digest(refresh)}`" in changed_files
+    for path in refresh:
+        assert f"- `{path}`" in changed_files
 
 
 def test_changed_files_uses_commit_stable_candidate_inventory_language() -> None:
@@ -310,14 +341,80 @@ def test_security_ledger_records_current_node_and_ruff_results() -> None:
     assert "All checks passed" in security
     assert "repository baseline is reduced from 486 to zero" in security
     assert "baseline is reduced from 486 to zero" in security_normalized
-    assert "npm audit --omit=dev --audit-level=high --offline" in security
+    assert "npm audit --omit=dev --audit-level=high --registry=https://registry.npmjs.org" in security
     assert "0 vulnerabilities" in security
+    assert "trufflehog 3.95.9" in security.lower()
+    assert "9270" in security and "18069931" in security
+    assert "verified_secrets=0" in security and "unverified_secrets=0" in security
+    assert "pip-audit 2.10.1" in security
+    assert "Python 3.10" in security
+    assert "51" in security and "0 known vulnerabilities" in security
+    assert "mypy 2.2.0" in security
+    assert "owner approval" in combined
     assert "Node lockfile sub-check is closed" in review
-    assert "offline audit freshness is not proven" in review
-    assert "advisory snapshot provenance and freshness are unknown" in security_normalized
+    assert "scanner unavailable" not in security_normalized
+    assert "remain unavailable" not in security_normalized
     assert "Node audit fails because no approved lockfile exists" not in combined
     assert "Node audit has no approved lockfile" not in combined
     assert "genuinely closed" not in combined
+
+
+def test_owner_checkpoint_request_is_minimal_and_bound_to_submission() -> None:
+    request = _read("owner-checkpoint-request.md")
+    assert f"Submission target: `{SUBMISSION_REVISION}`" in request
+    assert "Result: PENDING" in request
+    assert "Do not include credential values" in request
+    assert "these two checkpoints" in request
+    assert "runtime_operator" in request
+    assert "TRUST_MODEL.md" in request and "HUMAN_TAKEOVER_RUNBOOK.md" in request
+    assert "mypy" not in request and "TruffleHog" not in request
+    assert "pip-audit" not in request and "Trusted Publisher" not in request
+
+
+def test_refresh_artifacts_bind_scans_and_topology_to_exact_provenance() -> None:
+    scans = json.loads(_read("scanner-refresh.json"))
+    topology = json.loads(_read("production-topology-refresh.json"))
+
+    assert scans["submission_revision"] == SUBMISSION_REVISION
+    assert scans["timezone"] == "Asia/Shanghai"
+    assert {run["name"] for run in scans["runs"]} == {
+        "trufflehog_git", "npm_audit", "pip_audit_base_py310",
+        "pip_audit_vector_py310", "mypy_authority_scope", "ruff_full",
+    }
+    for run in scans["runs"]:
+        assert run["command"] and run["cwd"]
+        assert run["timestamp_local"].endswith("+08:00")
+        assert run["timestamp_utc"].endswith("Z")
+        assert run["exit_code"] == 0
+        assert re.fullmatch(r"[0-9a-f]{64}", run["output_sha256"])
+        assert run["summary"]
+        local = datetime.fromisoformat(run["timestamp_local"])
+        utc = datetime.fromisoformat(run["timestamp_utc"].replace("Z", "+00:00"))
+        assert local == utc
+
+    vector = next(run for run in scans["runs"] if run["name"] == "pip_audit_vector_py310")
+    assert vector["input"] == ["lancedb>=0.4", "sentence-transformers>=2.2"]
+    assert vector["index_url"] == "https://pypi.org/simple"
+    vector_input = "".join(f"{item}\n" for item in vector["input"]).encode()
+    assert hashlib.sha256(vector_input).hexdigest() == vector["input_sha256"]
+
+    assert topology["submission_revision"] == SUBMISSION_REVISION
+    assert topology["production_revision"] == "bde14c5ce94aacd99ef80f9c11b65092dcf25fc3"
+    assert topology["config_generation"] == "00773fbb4eb5ed7f"
+    assert topology["exit_code"] == 0 and topology["ok"] is True
+    assert topology["errors"] == [] and topology["suspect_count"] == 0
+    assert topology["daemon_count"] == 3
+    assert topology["pane_count"] == topology["agent_process_count"] == 11
+    raw = (json.dumps(topology["raw"], ensure_ascii=False, indent=2) + "\n").encode()
+    assert len(raw) == topology["raw_output_bytes"]
+    assert hashlib.sha256(raw).hexdigest() == topology["raw_output_sha256"]
+    assert topology["daemon_count"] == len(topology["raw"]["daemons"])
+    assert topology["pane_count"] == len(topology["raw"]["panes"])
+    assert topology["agent_process_count"] == len(topology["raw"]["agent_processes"])
+    assert topology["suspect_count"] == len(topology["raw"]["suspect_processes"])
+    local = datetime.fromisoformat(topology["timestamp_local"])
+    utc = datetime.fromisoformat(topology["timestamp_utc"].replace("Z", "+00:00"))
+    assert local == utc
 
 
 def test_ruff_affected_test_manifests_are_durable_and_machine_runnable() -> None:

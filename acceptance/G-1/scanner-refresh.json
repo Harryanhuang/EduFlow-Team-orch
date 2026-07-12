@@ -1,0 +1,83 @@
+{
+  "submission_revision": "21d000e5eca28c1ad5a91ad3485c548f8ce1c389",
+  "timezone": "Asia/Shanghai",
+  "runs": [
+    {
+      "name": "ruff_full",
+      "tool_version": "ruff 0.15.10",
+      "command": "uvx --offline ruff==0.15.10 check src tests scripts acceptance",
+      "cwd": "/Users/huanganan/.config/superpowers/worktrees/EduFlow-Team-orch/eduflow-upgrade-gates",
+      "timestamp_local": "2026-07-13T01:07:52+08:00",
+      "timestamp_utc": "2026-07-12T17:07:52Z",
+      "exit_code": 0,
+      "output_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "output_bytes": 19,
+      "summary": "All checks passed!"
+    },
+    {
+      "name": "mypy_authority_scope",
+      "tool_version": "mypy 2.2.0 (compiled: yes)",
+      "command": "UV_NO_PROJECT=1 uvx --offline --from mypy==2.2.0 mypy --follow-imports=skip --ignore-missing-imports src/eduflow/commands/human_takeover.py src/eduflow/commands/runtime_switch.py src/eduflow/runtime/human_takeover.py",
+      "cwd": "/Users/huanganan/.config/superpowers/worktrees/EduFlow-Team-orch/eduflow-upgrade-gates",
+      "timestamp_local": "2026-07-13T01:07:52+08:00",
+      "timestamp_utc": "2026-07-12T17:07:52Z",
+      "exit_code": 0,
+      "output_sha256": "8228fcc5ce46d42d01caf3cd941f4e9c5f2bcc372bb5b147a2f0572d2dd675a8",
+      "output_bytes": 43,
+      "summary": "Success: no issues found in 3 source files"
+    },
+    {
+      "name": "trufflehog_git",
+      "tool_version": "trufflehog 3.95.9",
+      "command": "/tmp/trufflehog-3.95.9.LaWodm/trufflehog git file://$PWD --json --no-update --fail --fail-on-scan-errors --results verified,unverified,unknown",
+      "cwd": "/Users/huanganan/.config/superpowers/worktrees/EduFlow-Team-orch/eduflow-upgrade-gates",
+      "timestamp_local": "2026-07-13T00:54:57+08:00",
+      "timestamp_utc": "2026-07-12T16:54:57Z",
+      "exit_code": 0,
+      "output_sha256": "d452107038475afaf46117b71fd8be2f5f28d620f5671c039dd90e448e9399f9",
+      "output_bytes": 836,
+      "summary": "9270 chunks; 18069931 bytes; verified_secrets=0; unverified_secrets=0; error logs=0",
+      "archive_sha256": "944c6ea3a2993a9f808d08107b40e03ba92bc75972876a1ee47d567bfd6fa1b5"
+    },
+    {
+      "name": "npm_audit",
+      "tool_version": "npm 11.12.1",
+      "command": "npm audit --omit=dev --audit-level=high --registry=https://registry.npmjs.org --json",
+      "cwd": "/Users/huanganan/.config/superpowers/worktrees/EduFlow-Team-orch/eduflow-upgrade-gates/scripts/feishu_bot_creator",
+      "timestamp_local": "2026-07-13T00:55:07+08:00",
+      "timestamp_utc": "2026-07-12T16:55:07Z",
+      "exit_code": 0,
+      "output_sha256": "45ba248fc6956a03da77702dfd95087741de1cde5b4d698baf9a97a2b0ae69bd",
+      "output_bytes": 358,
+      "summary": "3 production dependencies; 1 optional entry; 0 info/low/moderate/high/critical vulnerabilities"
+    },
+    {
+      "name": "pip_audit_base_py310",
+      "tool_version": "pip-audit 2.10.1; Python 3.10",
+      "command": "/tmp/eduflow-pip-audit-py310.TX95Bb/bin/pip-audit --strict --progress-spinner off --format json --output /tmp/eduflow-pip-audit-py310.XXXXXX.json .",
+      "cwd": "/Users/huanganan/.config/superpowers/worktrees/EduFlow-Team-orch/eduflow-upgrade-gates",
+      "timestamp_local": "2026-07-13T00:56:31+08:00",
+      "timestamp_utc": "2026-07-12T16:56:31Z",
+      "exit_code": 0,
+      "output_sha256": "00f61c3e3147198d19e34a17ecce9bee215ff53e3ad54905b07f49417d5e6fe7",
+      "output_bytes": 84,
+      "summary": "tomli==2.4.1; 1 resolved dependency; 0 known vulnerabilities",
+      "index_url": "https://pypi.org/simple"
+    },
+    {
+      "name": "pip_audit_vector_py310",
+      "tool_version": "pip-audit 2.10.1; Python 3.10",
+      "command": "/tmp/eduflow-pip-audit-py310.TX95Bb/bin/pip-audit --strict --progress-spinner off --format json --output /tmp/eduflow-pip-audit-vector.XXXXXX.json -r /tmp/eduflow-vector-requirements.XXXXXX.txt",
+      "cwd": "/Users/huanganan/.config/superpowers/worktrees/EduFlow-Team-orch/eduflow-upgrade-gates",
+      "timestamp_local": "2026-07-13T00:57:55+08:00",
+      "timestamp_utc": "2026-07-12T16:57:55Z",
+      "exit_code": 0,
+      "output_sha256": "a7c088fb74a08a772d66575d9151a075dbacedaf8a30a74464b3f69dec01ab5b",
+      "output_bytes": 2935,
+      "summary": "51 resolved dependencies; 0 known vulnerabilities",
+      "input": ["lancedb>=0.4", "sentence-transformers>=2.2"],
+      "input_sha256": "1ed619d9d28cac4513b39aebb563f929b7144854de1a3063cec1593765e44df7",
+      "index_url": "https://pypi.org/simple"
+    }
+  ]
+}
