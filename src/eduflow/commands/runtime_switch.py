@@ -15,6 +15,7 @@ Exit codes:
 from __future__ import annotations
 
 import sys
+import uuid
 
 from eduflow.runtime import config, human_takeover, lifecycle, paths, tmux, tunables, verify
 from eduflow.util import (
@@ -33,8 +34,17 @@ def _authorized_actors() -> set[str]:
     team = tunables.load().get("team", {})
     if not isinstance(team, dict):
         return set()
-    values = [*(team.get("operators", []) or []), *(team.get("admins", []) or [])]
-    return {str(value) for value in values if value}
+    def identities(key: str) -> list[str]:
+        value = team.get(key, [])
+        if isinstance(value, str):
+            return [value] if value else []
+        if isinstance(value, list) and all(isinstance(item, str) for item in value):
+            return [item for item in value if item]
+        return []  # malformed authorization configuration fails closed
+
+    values = [*identities("admins"), *identities("runtime_operators"),
+              *identities("runtime_operator")]
+    return set(values)
 
 
 def _manual_trigger(takeover_state: dict, actor: str | None) -> str:
@@ -104,51 +114,42 @@ def main(argv: list[str]) -> int:
     if not tmux.has_session(session) or not tmux.has_window(target):
         return error_exit(f"❌ agent pane not running: {session}:{agent}")
 
-    current = lifecycle.current_runtime_status(agent).get("runtime") or "inline"
-    takeover_state = human_takeover.status()
-    try:
-        trigger = _manual_trigger(takeover_state, actor)
-    except PermissionError as exc:
-        return error_exit(str(exc))
-    # Record switch event (manual trigger).
-    verify.record_switch_event(
-        agent=agent,
-        from_runtime=current,
-        to_runtime=to_runtime,
-        reason=reason,
-        outcome="pending",
-        # Manual operator switches remain available during takeover. Mark an
-        # override explicitly in the append-only runtime switch audit.
-        trigger=trigger,
-    )
-    outcome = lifecycle.restart_with_runtime(
-        agent, target, to_runtime,
-        reason=f"manual_cli:{reason}",
-        prove_ready=not no_smoke,
-    )
-    # Post-switch live probe so the operator sees the actual verdict,
-    # not just the lifecycle outcome.
-    from eduflow.commands import runtime_verify
-    probe = runtime_verify.compute_verdict(agent) if outcome in {
-        lifecycle.READY, lifecycle.READY_NO_INIT,
-        lifecycle.ENV_DRIFT, lifecycle.SMOKE_FAILED,
-        lifecycle.READY_UNPROVEN,
-    } else {"verdict": outcome}
-    # Patch the switch event with the real outcome.
-    events_path = verify._switch_events_path()
-    if events_path.exists():
+    # Serialize authorization, audit intent, and the restart with takeover
+    # entry.  `enter()` uses the same blocking lock, so either takeover wins
+    # first and this switch is rejected, or it is durably entered immediately
+    # after this in-flight switch completes; it is never lost in a TOCTOU gap.
+    with human_takeover.transition_lock():
+        current = lifecycle.current_runtime_status(agent).get("runtime") or "inline"
+        takeover_state = human_takeover.status()
         try:
-            lines = events_path.read_text(encoding="utf-8").splitlines()
-            if lines:
-                import json as _json
-                last = _json.loads(lines[-1])
-                if str(last.get("trigger", "")).startswith("manual_cli") and last.get("outcome") == "pending":
-                    last["outcome"] = outcome
-                    last["verdict"] = probe.get("verdict", outcome)
-                    lines[-1] = _json.dumps(last, ensure_ascii=False)
-                    events_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
-        except (OSError, ValueError):
-            pass
+            trigger = _manual_trigger(takeover_state, actor)
+        except PermissionError as exc:
+            return error_exit(str(exc))
+        switch_id = str(uuid.uuid4())
+        common_event = {
+            "agent": agent, "from_runtime": current, "to_runtime": to_runtime,
+            "reason": reason, "trigger": trigger, "switch_id": switch_id,
+        }
+        verify.record_switch_event(**common_event, outcome="pending", phase="prepared")
+        outcome = lifecycle.restart_with_runtime(
+            agent, target, to_runtime,
+            reason=f"manual_cli:{reason}",
+            prove_ready=not no_smoke,
+        )
+        # Post-switch live probe so the operator sees the actual verdict,
+        # not just the lifecycle outcome.
+        from eduflow.commands import runtime_verify
+        probe = runtime_verify.compute_verdict(agent) if outcome in {
+            lifecycle.READY, lifecycle.READY_NO_INIT,
+            lifecycle.ENV_DRIFT, lifecycle.SMOKE_FAILED,
+            lifecycle.READY_UNPROVEN,
+        } else {"verdict": outcome}
+        # Completion is a second append-only event with the same correlation
+        # id.  Never rewrite a possibly interleaved process's last JSONL row.
+        verify.record_switch_event(
+            **common_event, outcome=outcome,
+            verdict=probe.get("verdict", outcome), phase="completed",
+        )
     return _emit(outcome, agent, to_runtime, reason, as_json,
                  {"verdict": probe.get("verdict", outcome),
                   "from_runtime": current})

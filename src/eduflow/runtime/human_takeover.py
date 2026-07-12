@@ -5,6 +5,7 @@ import json
 import os
 import re
 import time
+from contextlib import contextmanager
 from pathlib import Path
 
 from eduflow.util import atomic_write_text, file_lock
@@ -119,7 +120,12 @@ def _audit(event: dict) -> None:
     payload = (json.dumps(event, ensure_ascii=False, sort_keys=True) + "\n").encode()
     fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_APPEND, 0o600)
     try:
-        os.write(fd, payload)
+        remaining = memoryview(payload)
+        while remaining:
+            written = os.write(fd, remaining)
+            if written <= 0:
+                raise OSError("audit append made no progress")
+            remaining = remaining[written:]
         os.fsync(fd)
     finally:
         os.close(fd)
@@ -132,11 +138,31 @@ def audit_events() -> list[dict]:
     return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line]
 
 
+@contextmanager
+def transition_lock():
+    """Serialize takeover transitions and authorized manual restarts.
+
+    Blocking indefinitely is deliberate: losing a takeover entry is worse
+    than making the entering operator wait for an in-flight restart to finish.
+    """
+    with file_lock(_state_path(), timeout=0):
+        yield
+
+
+def _transition(event: str, state: dict, *, at: float) -> None:
+    """Write-ahead a transition intent, then atomically publish state.
+
+    If the audit append fails, state is untouched.  If the state write fails,
+    the prepared event remains as a recoverable crash-window trace.
+    """
+    _audit({"event": event, "phase": "prepared", "at": at, **state})
+    _write(state)
+
+
 def enter(*, reason: str, source: str, actor: str) -> dict:
     if not reason or not source or not actor:
         raise InvalidTransition("actor, source, and reason are required")
-    path = _state_path()
-    with file_lock(path):
+    with transition_lock():
         current = _read()
         if current["state"] in {"active", "recovering"}:
             return current
@@ -145,32 +171,33 @@ def enter(*, reason: str, source: str, actor: str) -> dict:
                  "actor": _clean(actor), "entered_at": now,
                  "recovery_steps": list(_DEFAULT_RECOVERY_STEPS),
                  "generation": current["generation"] + 1}
-        _write(state)
-        _audit({"event": "enter", "at": now, **state})
+        _transition("enter", state, at=now)
         return state
 
 
 def recover(*, actor: str, reason: str, recovery_steps: list[str], expected_generation: int) -> dict:
     if not actor or not reason:
         raise InvalidTransition("actor and reason are required")
-    path = _state_path()
-    with file_lock(path):
+    with transition_lock():
         current = _read()
         if current["generation"] != expected_generation:
             raise StaleGeneration(f"expected generation {expected_generation}; current is {current['generation']}")
-        if current["state"] != "active":
+        if current["state"] not in {"active", "recovering"}:
             raise InvalidTransition("takeover is not active")
         now = time.time()
-        generation = current["generation"] + 1
-        steps = [_clean(x) for x in recovery_steps] or list(current["recovery_steps"])
-        recovering = {**current, "state": "recovering", "actor": _clean(actor),
-                      "reason": _clean(reason), "recovery_steps": steps,
-                      "generation": generation}
-        _write(recovering)
-        _audit({"event": "recovering", "at": now, **recovering})
+        if current["state"] == "active":
+            generation = current["generation"] + 1
+            steps = [_clean(x) for x in recovery_steps] or list(current["recovery_steps"])
+            recovering = {**current, "state": "recovering", "actor": _clean(actor),
+                          "reason": _clean(reason), "recovery_steps": steps,
+                          "generation": generation}
+            _transition("recovering", recovering, at=now)
+        else:
+            # Resume the second half after a crash/failure left the durable
+            # state at recovering.  Do not increment generation a second time.
+            recovering = current
         inactive = {**recovering, "state": "inactive"}
-        _write(inactive)
-        _audit({"event": "recovered", "at": time.time(), **inactive})
+        _transition("recovered", inactive, at=time.time())
         return inactive
 
 

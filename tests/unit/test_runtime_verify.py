@@ -207,7 +207,8 @@ def test_record_and_read_switch_events_roundtrip():
             path.unlink()
         verify.record_switch_event(agent="a", from_runtime="x", to_runtime="y",
                                    reason="rate_limit", outcome="ready",
-                                   switch_id="id1")
+                                   switch_id="id1", phase="completed",
+                                   verdict="proved_ready")
         verify.record_switch_event(agent="b", from_runtime="p", to_runtime="q",
                                    reason="auth_failure", outcome="env_drift",
                                    switch_id="id2")
@@ -216,6 +217,8 @@ def test_record_and_read_switch_events_roundtrip():
         assert events[-1]["agent"] == "b"
         assert "ts" in events[-1]
         assert events[0]["switch_id"] == "id1"
+        assert events[0]["phase"] == "completed"
+        assert events[0]["verdict"] == "proved_ready"
         assert events[1]["switch_id"] == "id2"
         assert "best_outcome" in events[0]
         assert "attempts" in events[0]

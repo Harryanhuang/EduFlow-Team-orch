@@ -317,6 +317,8 @@ def record_switch_event(
     pool_switched: bool = False,
     cross_pool: bool = False,
     pool_id: str = "",
+    phase: str = "",
+    verdict: str = "",
     ts: float | None = None,
     **_extra: object,
 ) -> None:
@@ -341,6 +343,10 @@ def record_switch_event(
         "pool_switched": pool_switched,
         "cross_pool": cross_pool,
     }
+    if phase:
+        row["phase"] = phase
+    if verdict:
+        row["verdict"] = verdict
     # Carry optional booleans only when set (keeps event compact).
     if env_ok is not None:
         row["env_ok"] = env_ok
@@ -353,8 +359,18 @@ def record_switch_event(
     path = _switch_events_path()
     path.parent.mkdir(parents=True, exist_ok=True)
     try:
-        with path.open("a", encoding="utf-8") as f:
-            f.write(json.dumps(row, ensure_ascii=False) + "\n")
+        payload = (json.dumps(row, ensure_ascii=False) + "\n").encode("utf-8")
+        fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_APPEND, 0o600)
+        try:
+            remaining = memoryview(payload)
+            while remaining:
+                written = os.write(fd, remaining)
+                if written <= 0:
+                    raise OSError("switch event append made no progress")
+                remaining = remaining[written:]
+            os.fsync(fd)
+        finally:
+            os.close(fd)
     except OSError:
         # Event log is best-effort observability — a write failure must
         # not kill the switch path that just succeeded.

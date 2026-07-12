@@ -525,3 +525,30 @@ Command: python3 -m py_compile src/eduflow/commands/watchdog.py
 Result: passed
 Command: git diff --check
 Result: passed
+
+Task 5 quality-review transaction correction (strict TDD)
+
+RED
+Command: pytest -q tests/unit/test_human_takeover.py
+Result: 7 failed, directly covering: general operator incorrectly authorized
+for takeover runtime override; manual-switch/takeover TOCTOU; destructive last
+JSONL rewrite losing append-only completion; audit failure after state change;
+missing write-ahead trace on state failure; unrecoverable recovering state; and
+single-call os.write truncation under short writes.
+
+GREEN FOCUSED
+Command: pytest -q tests/unit/test_human_takeover.py tests/unit/test_runtime_verify.py tests/unit/test_runtime_failover.py tests/unit/test_commands_watchdog.py tests/integration/test_human_takeover_circuit_breaker.py tests/unit/test_cli.py tests/unit/test_cli_flag_gaps.py --disable-warnings
+Result: 105 passed. Manual switch now holds the blocking takeover transition
+lock across authorization, UUID-correlated prepared audit, restart, live probe,
+and append-only completion. Takeover uses write-ahead prepared events and can
+resume a durable recovering state. Short writes loop until complete.
+
+GREEN ADJACENT
+- pytest -q tests/unit/test_runtime_watchdog.py --disable-warnings -> 48 passed
+- pytest -q tests/unit/test_feishu_deliver.py --disable-warnings -> 28 passed; exit 0
+
+STATIC
+Command: python3 -m py_compile src/eduflow/runtime/human_takeover.py src/eduflow/runtime/failover.py src/eduflow/runtime/verify.py src/eduflow/commands/human_takeover.py src/eduflow/commands/watchdog.py src/eduflow/commands/runtime_switch.py src/eduflow/cli.py
+Result: passed
+Command: git diff --check
+Result: passed
