@@ -1,7 +1,13 @@
 # G-1 Security and Supply-Chain Results
 
-Revision: `cc95c5a488a8cd699dff515eadf431277669ffc6` plus uncommitted Task 7 evidence/test changes
+Submission target: `2296dc08c14eae9de34accdf43d4a11c6b8ba68f`
+Historical implementation revision: `cc95c5a488a8cd699dff515eadf431277669ffc6`
+Security-ledger revision: `2296dc08c14eae9de34accdf43d4a11c6b8ba68f`
 Captured: 2026-07-12T17:59:46+08:00 (UTC 2026-07-12T09:59:46Z; Task 7 evidence refresh)
+
+Freshness note: the configured-control clarification at the submission target
+does not claim scanner execution. Required executable scanner and Node-policy
+checkpoints remain absent, so the result remains FAIL.
 
 ## Completed checks
 

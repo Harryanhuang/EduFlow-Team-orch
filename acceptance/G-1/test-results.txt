@@ -1,3 +1,66 @@
+G-1 Test Results
+
+Submission target: `2296dc08c14eae9de34accdf43d4a11c6b8ba68f`
+Revision lineage: implementation `cc95c5a488a8cd699dff515eadf431277669ffc6`;
+authority remediation `d578691b8e1d3e0dc6f5221120c4a0d0e4ace6ab`;
+configured scanner ledger `2296dc08c14eae9de34accdf43d4a11c6b8ba68f`.
+Freshness note: the transcript below preserves historical RED/GREEN and full
+regression evidence. This evidence-only refresh does not claim a new 3161 or
+3014 run; its focused package-test result appears immediately below.
+
+Evidence freshness TDD refresh
+Timestamp UTC: 2026-07-12T12:02:10Z
+RED command: `/opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_g_minus_1_acceptance_package.py -q`
+RED observed: 5 failed, 4 passed; exit code 1. Missing criteria ledger,
+machine path set, submission lineage, superseded actor-optional statement,
+and deferred-platform explanation each failed at its intended assertion.
+GREEN command: `/opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_g_minus_1_acceptance_package.py -q`
+GREEN observed: 9 passed; exit code 0.
+Static command: `git diff --check`
+Static observed: exit code 0.
+Result: PASS — evidence freshness contract is machine checked without repeating
+the recorded full-suite or historical baseline-suite runs.
+
+Evidence criteria specification correction
+RED command: `/opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_g_minus_1_acceptance_package.py -q`
+RED observed: 2 failed, 8 passed; exit code 1. The test rejected the missing
+`AC-GLOBAL-06`, incorrect `AC-GLOBAL-05` status, mixed-in `FORMAL-G-1` row,
+and severity-bearing formal acceptance process gate.
+GREEN command: `/opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_g_minus_1_acceptance_package.py -q`
+GREEN observed: 10 passed; exit code 0.
+Result: PASS — the exact 12-criterion set/status map and risk/process boundary
+are now contract-enforced.
+
+Rollback evidence quality correction
+RED command: `/opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_g_minus_1_acceptance_package.py -q`
+RED observed: 3 failed, 10 passed; exit code 1. Fixed-path rollback cleanup,
+commit-unstable inventory wording, and the absent specification-correction
+transcript each failed at its intended assertion.
+GREEN command: `/opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_g_minus_1_acceptance_package.py -q`
+GREEN observed: 13 passed; exit code 0.
+Result: PASS — rollback reproduction now uses a private temporary directory,
+status-preserving registered-worktree cleanup, and stable candidate inventory
+language; exact content proof was rerun without pytest.
+
+Rollback registry cleanup correction
+Runtime finding: the first two private runs left `JqEA1C` and `p99fsC` as
+prunable Git worktree registrations. `TMPDIR` supplied a trailing slash and
+macOS canonicalized `/var` to `/private/var`, so the trap's exact string match
+missed the registered path before removing the private directory.
+Cleanup command: `git worktree prune --verbose`
+Cleanup observed: exactly the two non-existent prunable registrations were
+removed; all live worktrees remained registered.
+RED command: `/opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_g_minus_1_acceptance_package.py -q`
+RED observed: 1 failed, 12 passed; exit code 1. The executable procedure lacked
+canonical `TMP_ROOT` normalization required for registry/path equality.
+GREEN command: `/opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_g_minus_1_acceptance_package.py -q`
+GREEN observed: 13 passed; exit code 0.
+Runtime GREEN: the normalized-root proof used `LODOrp`, reproduced the same
+patch/tree hashes, removed the registered child worktree before its private
+directory, and left no matching or prunable registry entry.
+Result: PASS — cleanup preserves the original exit status and is limited to the
+canonical private directory and its exact registered child worktree.
+
 G-1 Task 2 — production topology audit TDD evidence
 
 RED
@@ -26,7 +89,9 @@ Exit code: 0
 Task 7 final regression and static verification
 
 Captured: 2026-07-12T17:59:46+08:00 (UTC 2026-07-12T09:59:46Z)
-Revision: `cc95c5a488a8cd699dff515eadf431277669ffc6` plus uncommitted Task 7 evidence/test changes
+Historical revision context: `cc95c5a488a8cd699dff515eadf431277669ffc6`
+plus the then-working Task 7 evidence/test delta later captured in
+`d578691b8e1d3e0dc6f5221120c4a0d0e4ace6ab`.
 
 Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest
 Observed: 3153 passed in 259.49s

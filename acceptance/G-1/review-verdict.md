@@ -1,14 +1,16 @@
-# G-1 Independent Final Re-REVIEW Verdict
+# G-1 Independent Supporting Re-REVIEW Verdict
 
-Reviewer: independent Codex reviewer (fresh read-only review after both Task 8 security remediations)
+Submission target: `2296dc08c14eae9de34accdf43d4a11c6b8ba68f`
+Reviewer: independent Codex reviewer (historical read-only supporting review after both Task 8 authority remediations)
 
-Review scope: the two authoritative 2026-07-12 Gate documents; the current
-G-1 worktree delta over
-`bde14c5ce94aacd99ef80f9c11b65092dcf25fc3`, including revision
-`cc95c5a488a8cd699dff515eadf431277669ffc6`; all nine acceptance records;
-and the current Task 8 source and tests.  This reviewer performed no production
-takeover, config change, credential action, external send, approval write, or
-manager action.
+Historical review scope: the two authoritative 2026-07-12 Gate documents; the
+then-candidate G-1 implementation and Task 8 authority remediation later
+captured by `d578691b8e1d3e0dc6f5221120c4a0d0e4ace6ab`; all nine acceptance
+records then present; and the Task 8 source and tests. The later configured
+scanner ledger at `2296dc08c14eae9de34accdf43d4a11c6b8ba68f` is part of the current
+submission target but was not a new formal review event. This reviewer
+performed no production takeover, config change, credential action, external
+send, approval write, or manager action.
 
 Verdict: FAIL
 
@@ -18,12 +20,10 @@ event or authorize a manager CLOSEOUT.
 
 ## Evidence verified
 
-- `acceptance/G-1/` contains all nine required records.  The package contract
-  test passed independently in this review.  `changed-files.txt` exactly
-  separates the committed baseline-to-`cc95c5a4` changes from the current
-  uncommitted Task 7/8 delta: six modified tracked paths and eight untracked
-  paths.  The listed current paths match independent `git diff --name-status`,
-  `git ls-files --others --exclude-standard`, and `git status --short` output.
+- `acceptance/G-1/` contained all nine required records, and the package
+  contract test passed independently in this historical review. The current
+  `changed-files.txt` replaces the then-candidate status split with one
+  machine-checked baseline-to-submission path set.
 - The current test ledger records the final full suite as **3161 passed in
   289.02s**, plus zero-exit `compileall -q src tests scripts`, `pip check`, and
   `git diff --check`.  These are recorded final-run evidence, rather than a
@@ -65,7 +65,7 @@ event or authorize a manager CLOSEOUT.
    scanner, and `pip-audit`, and an `npm audit` `ENOLOCK` result.  They are not
    `not_applicable`; AC-GLOBAL-04 cannot pass until the authorized security
    checkpoint supplies the scanners and handles the Node lockfile.
-4. **Medium — formal acceptance ownership is incomplete.**  The required
+4. **Process gate — formal acceptance ownership is incomplete.**  The required
    `worker_review` REVIEW is still pending.  Even a future PASS review cannot
    substitute for the real appointment, owner evidence, or security evidence;
    manager remains the only CLOSEOUT owner after all required criteria pass.

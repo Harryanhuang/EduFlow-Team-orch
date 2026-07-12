@@ -1,3 +1,10 @@
+G-1 Fault-Injection Results
+
+Submission target: `2296dc08c14eae9de34accdf43d4a11c6b8ba68f`
+The fault transcript is historical execution evidence carried forward through
+the `d578691b8e1d3e0dc6f5221120c4a0d0e4ace6ab` authority remediation. No fault
+injection was rerun solely for this evidence refresh.
+
 Task 5 controlled isolated-state fault injection
 
 - Missing state: read-only status returned inactive generation 0 without creating state/audit files.
@@ -16,7 +23,7 @@ Spec-review correction fault injections
 - Retry race: a controlled fallback loop allowed attempt 1, entered takeover before attempt 2, then raised AutomationBlocked before the second restart; observed order was guard, restart, guard.
 - Deliver coverage: the common failover loop now owns the last-moment guard, so delivery-triggered failover and watchdog-triggered failover share the same protection on every attempt.
 - Context recovery: an exhausted-context signal during active takeover returned as handled without invoking restart_with_runtime.
-- Manual override authorization: an inactive manual switch remains actor-optional for compatibility; while takeover is active, missing and unconfigured actors are rejected, a configured operator/admin is accepted, and the actor identity is included in the switch audit event.
+- SUPERSEDED by `d578691b8e1d3e0dc6f5221120c4a0d0e4ace6ab` — the old actor-optional inactive-manual-switch observation is retained only as historical fault evidence. Current behavior rejects a missing actor, general operator, placeholder, or malformed authority before prepared audit or restart; only a provisioned admin/runtime operator can proceed.
 - Entry usability: automatic and manual takeover entry persists three nonempty operator-visible recovery steps; recovery with no replacement steps retains those instructions.
 - Watchdog loop boundary: injected both AutomationBlocked and StaleGeneration as if takeover won between fallback attempts; `_guard_agent_runtimes` returned normally, made exactly one shared-loop call, and performed no later switch-outcome mutation.
 - Authorization separation: `team.operators` alone is rejected for a takeover runtime override; only configured `admins`, `runtime_operators`, or `runtime_operator` identities authorize it, and malformed/empty authorization data fails closed.

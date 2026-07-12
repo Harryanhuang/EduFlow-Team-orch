@@ -1,84 +1,67 @@
 # G-1 scoped changed files
 
 Comparison base: `bde14c5ce94aacd99ef80f9c11b65092dcf25fc3`
-Implementation revision: `cc95c5a488a8cd699dff515eadf431277669ffc6`
-Current uncommitted delivery includes the acceptance package, its contract
-test, the runtime-switch success-path fixture correction, and the Task 8
-placeholder-authority remediation. No user-owned production-checkout
-modification is included.
+Submission target: `2296dc08c14eae9de34accdf43d4a11c6b8ba68f`
+Candidate/evidence-refresh path inventory: the union of baseline-to-candidate
+tracked paths and candidate-only untracked paths. The same inventory definition
+remains valid before and after the evidence refresh is committed. No user-owned
+production-checkout path is included or modified.
+
+Revision lineage:
+
+- implementation: `cc95c5a488a8cd699dff515eadf431277669ffc6`
+- authority remediation: `d578691b8e1d3e0dc6f5221120c4a0d0e4ace6ab`
+- configured scanner ledger: `2296dc08c14eae9de34accdf43d4a11c6b8ba68f`
+
+## Machine-verifiable submission paths
+
+Commands: `git diff --name-only bde14c5ce94aacd99ef80f9c11b65092dcf25fc3 --`
+plus `git ls-files --others --exclude-standard`; sort the union.
 
 ```text
-A  acceptance/G-1/ac-task-test-map.md
-A  acceptance/G-1/baseline-status.txt
-A  acceptance/G-1/fault-injection-results.txt
-A  acceptance/G-1/changed-files.txt
-A  acceptance/G-1/known-risks.md
-A  acceptance/G-1/migration-results.txt
-A  acceptance/G-1/review-verdict.md
-A  acceptance/G-1/rollback-proof.md
-A  acceptance/G-1/security-results.txt
-A  acceptance/G-1/summary.md
-A  acceptance/G-1/test-results.txt
-A  docs/architecture/TRUST_MODEL.md
-A  docs/governance/COMPATIBILITY_DEBT.md
-A  docs/governance/DECISION_AND_EXCEPTION_PROCESS.md
-A  docs/governance/OWNERSHIP.md
-A  docs/operations/CONTROL_PLANE_SLO.md
-A  docs/operations/HUMAN_TAKEOVER_RUNBOOK.md
-A  docs/operations/eduflow-production-topology.md
-A  docs/operations/state-and-config-inventory.md
-A  docs/plans/2026-07-12-eduflow-governed-team-operating-system-master-plan.md
-A  docs/plans/2026-07-12-eduflow-upgrade-acceptance-standard.md
-A  docs/plans/2026-07-12-g-minus-1-production-governance-implementation-plan.md
-A  docs/plans/PLAN_STATUS_INDEX.md
-A  scripts/audit_production_topology.py
-M  src/eduflow/cli.py
-A  src/eduflow/commands/human_takeover.py
-M  src/eduflow/commands/runtime_switch.py
-M  src/eduflow/commands/watchdog.py
-M  src/eduflow/runtime/failover.py
-A  src/eduflow/runtime/human_takeover.py
-M  src/eduflow/runtime/verify.py
-A  tests/integration/test_human_takeover_circuit_breaker.py
-A  tests/unit/test_audit_production_topology.py
-A  tests/unit/test_g_minus_1_acceptance_package.py
-A  tests/unit/test_g_minus_1_governance_docs.py
-A  tests/unit/test_human_takeover.py
-A  tests/unit/test_plan_status_index.py
-A  tests/unit/test_state_config_inventory.py
-M  tests/unit/test_commands_watchdog.py
-M  tests/unit/test_runtime_failover.py
-M  tests/unit/test_runtime_verify.py
+acceptance/G-1/ac-task-test-map.md
+acceptance/G-1/baseline-status.txt
+acceptance/G-1/changed-files.txt
+acceptance/G-1/fault-injection-results.txt
+acceptance/G-1/known-risks.md
+acceptance/G-1/migration-results.txt
+acceptance/G-1/review-verdict.md
+acceptance/G-1/rollback-proof.md
+acceptance/G-1/security-results.txt
+acceptance/G-1/summary.md
+acceptance/G-1/test-results.txt
+docs/architecture/TRUST_MODEL.md
+docs/governance/COMPATIBILITY_DEBT.md
+docs/governance/DECISION_AND_EXCEPTION_PROCESS.md
+docs/governance/OWNERSHIP.md
+docs/operations/CONTROL_PLANE_SLO.md
+docs/operations/HUMAN_TAKEOVER_RUNBOOK.md
+docs/operations/eduflow-production-topology.md
+docs/operations/state-and-config-inventory.md
+docs/plans/2026-07-12-eduflow-governed-team-operating-system-master-plan.md
+docs/plans/2026-07-12-eduflow-upgrade-acceptance-standard.md
+docs/plans/2026-07-12-g-minus-1-production-governance-implementation-plan.md
+docs/plans/PLAN_STATUS_INDEX.md
+scripts/audit_production_topology.py
+src/eduflow/cli.py
+src/eduflow/commands/human_takeover.py
+src/eduflow/commands/runtime_switch.py
+src/eduflow/commands/watchdog.py
+src/eduflow/runtime/failover.py
+src/eduflow/runtime/human_takeover.py
+src/eduflow/runtime/verify.py
+tests/integration/test_human_takeover_circuit_breaker.py
+tests/unit/test_audit_production_topology.py
+tests/unit/test_commands_runtime_cli.py
+tests/unit/test_commands_watchdog.py
+tests/unit/test_g_minus_1_acceptance_package.py
+tests/unit/test_g_minus_1_governance_docs.py
+tests/unit/test_human_takeover.py
+tests/unit/test_plan_status_index.py
+tests/unit/test_runtime_failover.py
+tests/unit/test_runtime_verify.py
+tests/unit/test_state_config_inventory.py
 ```
 
-Result: scoped to the approved G-1 implementation and acceptance package; no
-original dirty-worktree paths were imported.
-
-Task 8 remediation refresh: runtime_switch.py and human_takeover.py now share
-the provisioned-identity validator; test_human_takeover.py adds the
-placeholder/malformed-config negative cases. These remain within the approved
-G-1 authority boundary.
-
-## Current worktree delta at final evidence refresh
-
-Command: git status --short
-
-```text
- M acceptance/G-1/fault-injection-results.txt
- M acceptance/G-1/test-results.txt
- M src/eduflow/commands/human_takeover.py
- M src/eduflow/commands/runtime_switch.py
- M tests/unit/test_commands_runtime_cli.py
- M tests/unit/test_human_takeover.py
-?? acceptance/G-1/changed-files.txt
-?? acceptance/G-1/known-risks.md
-?? acceptance/G-1/migration-results.txt
-?? acceptance/G-1/review-verdict.md
-?? acceptance/G-1/rollback-proof.md
-?? acceptance/G-1/security-results.txt
-?? acceptance/G-1/summary.md
-?? tests/unit/test_g_minus_1_acceptance_package.py
-```
-
-Result: this is the exact submission inventory after the Task 8 remediation;
-all paths remain in approved G-1 scope.
+Result: PASS — this machine section is compared by the acceptance-package test
+with the candidate/evidence-refresh path inventory recomputed from Git state.
