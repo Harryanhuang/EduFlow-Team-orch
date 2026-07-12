@@ -471,6 +471,41 @@ Result: passed
 Command: git diff --check
 Result: passed
 
+Task 6 governance documents (strict TDD)
+Timestamp UTC: 2026-07-12T07:48:03Z
+Timestamp local: 2026-07-12T15:48:03+0800
+Pre-Task revision: 6a08f396b586f9b68ae3775ac1a11063068032cc
+
+RED
+Command: python3 -m pytest tests/unit/test_g_minus_1_governance_docs.py -q
+Result: exit 1; six tests failed because the required trust, SLO, takeover,
+ownership, exception, and compatibility-governance documents did not exist.
+
+GREEN FOCUSED
+Command: python3 -m pytest tests/unit/test_g_minus_1_governance_docs.py -q
+Result: 6 passed. The tests require all nine authority rows across tools,
+credentials, files, and external systems; the six approved SLOs; four explicit
+circuit-breaker budgets and transitions; owner/REVIEW/CLOSEOUT separation;
+bounded exception fields; executable CLI runbook; and compatibility debt fields.
+
+GREEN ADJACENT
+Command: python3 -m pytest tests/unit/test_g_minus_1_governance_docs.py tests/unit/test_plan_status_index.py tests/unit/test_state_config_inventory.py tests/unit/test_audit_production_topology.py --disable-warnings
+Result: 91 passed in 0.75s.
+
+SECURITY / STATIC
+Command: rg credential-value assignment patterns over the six new governance documents
+Result: no matches. Only credential classes and literal placeholder provenance are documented; no values.
+Command: command -v gitleaks; command -v trufflehog
+Result: both unavailable; Gate-wide Task 7 supply-chain/secret scan remains mandatory.
+Command: git diff --check
+Result: passed.
+
+PRODUCTION FACT LIMIT
+The runbook records that production admins/runtime_operator authorization is not
+provisioned and the tracked operator value is a literal placeholder. It forbids
+using that placeholder as evidence or running enter/recover until a separately
+approved authorization checkpoint. No production configuration was modified.
+
 Task 5 spec-review correction (strict TDD)
 
 RED
