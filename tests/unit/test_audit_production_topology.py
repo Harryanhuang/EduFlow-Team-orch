@@ -540,3 +540,38 @@ def test_legal_toml_with_invalid_config_types_fails_closed_as_json(tmp_path, inv
     assert report["ok"] is False
     assert "config_schema_invalid" in {error["code"] for error in report["errors"]}
     assert json.loads(json.dumps(report))["ok"] is False
+
+
+@pytest.mark.parametrize(
+    ("field", "invalid_value"),
+    [
+        ("lark_profile", "1"), ("lark_profile", "[]"), ("lark_profile", '""'),
+        ("session", "1"), ("session", "[]"), ("session", '""'),
+        ("registry_key", '""'),
+        ("cli", "1"), ("cli", "[]"), ("cli", '""'),
+        ("runtime", "1"), ("runtime", "[]"), ("runtime", '""'),
+    ],
+)
+def test_config_string_properties_fail_closed_for_numbers_lists_and_empty_values(
+    tmp_path, field, invalid_value
+):
+    module, deps, _commands, config, *_ = _fixture(tmp_path)
+    values = {
+        "lark_profile": '"production-bot"', "session": '"eduflow-team"',
+        "registry_key": "agent_primary", "cli": '"python3"',
+        "runtime": '"agent_primary"',
+    }
+    values[field] = invalid_value
+    config.write_text(
+        f'lark_profile = {values["lark_profile"]}\n'
+        f'[runtime_registry.{values["registry_key"]}]\ncli = {values["cli"]}\n'
+        f'[team]\nsession = {values["session"]}\n'
+        f'[team.agents.manager]\nruntime = {values["runtime"]}\n',
+        encoding="utf-8",
+    )
+
+    report = module.audit(deps)
+
+    assert report["ok"] is False
+    assert "config_schema_invalid" in {error["code"] for error in report["errors"]}
+    assert json.loads(json.dumps(report))["ok"] is False

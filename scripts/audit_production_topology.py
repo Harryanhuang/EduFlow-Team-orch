@@ -39,16 +39,24 @@ def _config(path, errors=None, subject="config"):
         data = {}
         if errors is not None: _err(errors, "config_corrupt", subject, "TOML cannot be parsed")
     team, registry, invalid = data.get("team", {}), data.get("runtime_registry", {}), False
+    text = lambda value: isinstance(value, str) and bool(value.strip())
     if not isinstance(team, dict): team, invalid = {}, True
     if not isinstance(registry, dict): registry, invalid = {}, True
     agents = team.get("agents", {})
     if not isinstance(agents, dict): agents, invalid = {}, True
-    if any(not isinstance(value, dict) for value in registry.values()): invalid = True
-    if any(not isinstance(value, dict) for value in agents.values()): invalid = True
-    if invalid and errors is not None: _err(errors, "config_schema_invalid", subject, "config tables have invalid types")
-    agent_clis = {name: registry.get(spec.get("runtime"), {}).get("cli")
-                  for name, spec in agents.items() if isinstance(spec, dict)
-                  and isinstance(registry.get(spec.get("runtime"), {}), dict)}
+    if not text(data.get("lark_profile")) or not text(team.get("session")): invalid = True
+    if any(not text(name) or not isinstance(value, dict) or not text(value.get("cli"))
+           for name, value in registry.items()): invalid = True
+    if any(not text(name) or not isinstance(value, dict) for name, value in agents.items()): invalid = True
+    agent_clis = {}
+    for name, spec in agents.items():
+        if not isinstance(spec, dict) or "runtime" not in spec: continue
+        runtime = spec.get("runtime")
+        if not text(runtime) or runtime not in registry: invalid = True; continue
+        node = registry[runtime]
+        if not isinstance(node, dict) or not text(node.get("cli")): invalid = True; continue
+        agent_clis[name] = node["cli"]
+    if invalid and errors is not None: _err(errors, "config_schema_invalid", subject, "config properties have invalid types")
     return {"path": str(path), "sha256": digest, "generation": digest[:16],
             "lark_profile": data.get("lark_profile"),
             "tmux_session": team.get("session"),
