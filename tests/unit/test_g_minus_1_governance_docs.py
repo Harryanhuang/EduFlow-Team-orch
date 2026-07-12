@@ -143,6 +143,8 @@ def test_compatibility_debt_ledger_has_bounded_entries() -> None:
 def test_compatibility_repository_baselines_are_reproducible_and_exclude_ledger() -> None:
     text = _read("docs/governance/COMPATIBILITY_DEBT.md")
     revision = "438fa806ab8112d415a4e159e03a9884e5983dbe"
+    measurement_utc = "2026-07-12T08:21:43Z"
+    assert f"Measurement completed at `{measurement_utc}`" in text
     cases = {
         "COMPAT-ROLE-001": (["review_course"], ["."]),
         "COMPAT-CARDS-001": (
@@ -169,7 +171,7 @@ def test_compatibility_repository_baselines_are_reproducible_and_exclude_ledger(
         row = next(line for line in text.splitlines() if line.startswith(f"| `{compatibility_id}` |"))
         assert f"baseline_repo_files={count}" in row
         assert f"measurement_revision=`{revision}`" in row
-        assert "measurement_utc=`2026-07-12T" in row
+        assert f"measurement_utc=`{measurement_utc}`" in row
         assert "git grep -l -E" in row
         assert revision in row
         assert ":!docs/governance/COMPATIBILITY_DEBT.md" in row

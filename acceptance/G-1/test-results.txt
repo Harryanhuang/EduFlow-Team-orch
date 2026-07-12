@@ -531,6 +531,30 @@ independent REVIEW. Gate G-1 remains blocked because runtime_operator is not
 provisioned and approval evidence is missing. No actor was provisioned and no
 approval artifact was fabricated.
 
+Task 6 immutable-measurement timestamp correction (strict TDD)
+Command start UTC: 2026-07-12T08:21:42Z
+Command end UTC: 2026-07-12T08:21:43Z
+Recorded object: 438fa806ab8112d415a4e159e03a9884e5983dbe
+
+MEASUREMENT COMMANDS / RESULTS
+- `git grep -l -E -e review_course <object> -- . <two exclusions>` -> 177 files
+- `git grep -l -E` with the four recorded card patterns against `src tests docs` -> 8 files
+- `git grep -l -E -e 'dual.?write' <object> -- src tests docs <two exclusions>` -> 2 files
+- `git grep -l -E -e alias -e aliases <object> -- src tests docs <two exclusions>` -> 49 files
+- `git grep -l -E` with the four recorded memory patterns against `src tests docs` -> 79 files
+The full exact commands, object, roots, patterns, and exclusions are retained in
+each ledger row and executed by the governance test.
+
+RED
+Command: python3 -m pytest tests/unit/test_g_minus_1_governance_docs.py -q
+Result: 1 failed, 6 passed because the declared exact completion UTC did not
+match the prior ledger context.
+
+GREEN FOCUSED / ADJACENT
+Command: python3 -m pytest tests/unit/test_g_minus_1_governance_docs.py tests/unit/test_human_takeover.py tests/integration/test_human_takeover_circuit_breaker.py tests/unit/test_runtime_verify.py tests/unit/test_runtime_failover.py tests/unit/test_commands_watchdog.py tests/unit/test_runtime_watchdog.py tests/unit/test_cli.py tests/unit/test_cli_flag_gaps.py tests/unit/test_plan_status_index.py tests/unit/test_state_config_inventory.py tests/unit/test_audit_production_topology.py --disable-warnings
+Result: 262 passed in 1.64s. One declared test constant now must equal the
+measurement context and every row's exact `measurement_utc` value.
+
 PRODUCTION FACT LIMIT
 The runbook records that production admins/runtime_operator authorization is not
 provisioned and the tracked operator value is a literal placeholder. It forbids
