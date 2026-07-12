@@ -15,11 +15,11 @@ Status meanings:
 - `observation-only`: audit or monitoring evidence that cannot authorize a
   production change.
 
-The **DONE evidence** column evaluates `DONE` text embedded in each source
-document. `unverified` means the text remains a claim and is not promoted to
-implementation truth by this index. A verified claim must name all three of
-`code:`, `commit:`, and `test:` evidence. No current source document provides
-that complete per-assertion evidence in a form this ledger can safely adopt.
+The **DONE evidence** column distinguishes state assertions from normative use
+of the word `DONE`. State assertions are resolved one-by-one in the claim
+ledger below; a document-level label cannot cover several claims. Normative
+tokens define a rule and are `not_applicable (normative)`, not implementation
+claims.
 
 | Plan | Status | Gate / Task | Disposition | DONE evidence |
 |---|---|---|---|---|
@@ -37,11 +37,26 @@ that complete per-assertion evidence in a form this ledger can safely adopt.
 | `2026-07-04-loop-engineering-execution-layer.md` | historical | — | Earlier dual-loop implementation design incorporated and re-gated by the 2026-07-12 master plan. | n/a |
 | `2026-07-04-loop-engineering-observation-plan.md` | observation-only | — | Source declares itself an operations observation plan rather than coding authority. | n/a |
 | `2026-07-07-claudeteam-upstream-borrowing-plan.md` | historical | — | Upstream-borrowing proposal retained as design provenance and incorporated into the master plan. | n/a |
-| `2026-07-11-scheduled-tasks-design.md` | historical | — | Confirmed design input for G6; implementation remains gated behind Workflow Instance stability. | n/a |
-| `2026-07-11-scheduled-tasks.md` | historical | — | Scheduled-task execution proposal retained as G6 input; it is not authority to bypass prior Gates. | n/a |
-| `2026-07-12-eduflow-governed-team-operating-system-master-plan.md` | active | G-1 / Task 3 | Current master implementation authority; later Gates remain blocked until their predecessors pass. | unverified |
-| `2026-07-12-eduflow-upgrade-acceptance-standard.md` | active | G-1 / Task 3 | Current acceptance authority; defines evidence and veto conditions for every Gate. | unverified |
-| `2026-07-12-g-minus-1-production-governance-implementation-plan.md` | active | G-1 / Task 3 | Current scoped execution plan for G-1; Task 3 is the present work boundary. | unverified |
+| `2026-07-11-scheduled-tasks-design.md` | historical | — | P0-P9 exists as out-of-order preexisting implementation: merge `bde14c5c`, acceptance `a64d611c`, code `src/eduflow/scheduling/` plus `src/eduflow/store/scheduled_tasks.py`, tests `tests/unit/test_scheduled_engine.py` plus `tests/integration/test_scheduled_tasks_e2e.py`; it is an independent D scheduler, does not reuse Workflow Instance, and G6 remains unaccepted pending refactor after prior Gates. | n/a |
+| `2026-07-11-scheduled-tasks.md` | historical | — | P0-P9 exists as out-of-order preexisting implementation: merge `bde14c5c`, acceptance `a64d611c`, code `src/eduflow/scheduling/` plus `src/eduflow/store/scheduled_tasks.py`, tests `tests/unit/test_scheduled_engine.py` plus `tests/integration/test_scheduled_tasks_e2e.py`; it is an independent D scheduler, does not reuse Workflow Instance, and G6 remains unaccepted pending refactor after prior Gates. | n/a |
+| `2026-07-12-eduflow-governed-team-operating-system-master-plan.md` | active | G-1 / Task 3 | Current master implementation authority; later Gates remain blocked until their predecessors pass. | claim ledger (5 claims) |
+| `2026-07-12-eduflow-upgrade-acceptance-standard.md` | active | G-1 / Task 3 | Current acceptance authority; defines evidence and veto conditions for every Gate. | not_applicable (normative) |
+| `2026-07-12-g-minus-1-production-governance-implementation-plan.md` | active | G-1 / Task 3 | Current scoped execution plan for G-1; Task 3 is the present work boundary. | not_applicable (normative) |
+
+## DONE assertion claim ledger
+
+Machine parsing finds four `DONE` or `DONE/PARTIAL` state rows in the master
+plan's current-implementation table. The mixed Flow task row is split into its
+verified existing boundary and its incomplete machine-authority target, giving
+five independently evaluated claims. Source anchors refer to the master plan.
+
+| Claim ID | Source | Assertion | Status | Code evidence | Commit evidence | Test evidence | Notes |
+|---|---|---|---|---|---|---|---|
+| `CLM-MASTER-001` | master-plan:L54 | Residency supports warm, resident, cold, sleep, and wake behavior. | verified | `src/eduflow/runtime/residency.py` | `e904eee4` | `pytest tests/unit/test_residency.py tests/unit/test_residency_sleep.py tests/unit/test_residency_wake.py` | Scoped suite exercises policy, idle sleep, activity stamps, and wake alerts. |
+| `CLM-MASTER-002` | master-plan:L55 | Feishu Cards v2 has a schema, role validation, building, and rendering path. | verified | `src/eduflow/feishu/cards_v2.py`; `src/eduflow/feishu/cards_v2_schema.py` | `95d72a8d` | `pytest tests/unit/test_cards_v2.py` | Scoped suite covers schema fields, role boundaries, rendering, escaping, and command integration. |
+| `CLM-MASTER-003A` | master-plan:L56 | Structured REVIEW verdict authority is distinct from manager subject or batch CLOSEOUT. | verified | `src/eduflow/store/tasks.py` | `7f6ed420` | `pytest tests/unit/test_store_tasks_authority.py tests/integration/test_loop_engineering_truth_contract.py` | Latest reviewer verdict gates closeout; worker loop evidence cannot replace REVIEW. |
+| `CLM-MASTER-003B` | master-plan:L56 | REVIEW and CLOSEOUT authority is backed by the planned Identity and Authority registry. | incomplete | `src/eduflow/store/tasks.py` | `7f6ed420` | `pytest tests/unit/test_store_tasks_authority.py tests/integration/test_loop_engineering_truth_contract.py` | Current checks use task fields and actor names; the G1 registry conversion is not implemented. |
+| `CLM-MASTER-004` | master-plan:L58 | Workflow Registry supports list, show, use, validate, candidates, and guarded promotion. | verified | `src/eduflow/commands/workflow.py` | `7f6ed420` | `pytest tests/unit/test_commands_workflow.py` | This verifies the current file-backed Definition Registry, not a Workflow Instance engine. |
 
 ## Supersession note
 

@@ -349,3 +349,39 @@ Exit code: 0
 Command: scoped secret-pattern scan of tests/unit/test_plan_status_index.py, docs/plans/PLAN_STATUS_INDEX.md, and acceptance/G-1/test-results.txt
 Observed: no credential assignments, private-key markers, bearer tokens, Slack tokens, or OpenAI-style secret tokens
 Exit code: 0
+
+G-1 Task 3 — claim-ledger REVIEW remediation TDD evidence
+
+RED
+Command: python3 -m pytest tests/unit/test_plan_status_index.py -q
+Observed: 4 failed, 4 passed. Failures proved the document-level unverified fallback, missing five-claim ledger, missing normative-token distinction, and missing scheduled preexisting-implementation boundary.
+Exit code: 1
+
+GREEN — claim ledger focused
+Command: python3 -m pytest tests/unit/test_plan_status_index.py -q
+Observed: 8 passed; machine parser found four master state rows and required five independently evidenced claims after splitting DONE/PARTIAL.
+Exit code: 0
+
+GREEN — scoped claim evidence
+Command: python3 -m pytest tests/unit/test_residency.py tests/unit/test_residency_sleep.py tests/unit/test_residency_wake.py -q
+Observed: 79 passed
+Exit code: 0
+Command: python3 -m pytest tests/unit/test_cards_v2.py -q
+Observed: 110 passed
+Exit code: 0
+Command: python3 -m pytest tests/unit/test_store_tasks_authority.py tests/integration/test_loop_engineering_truth_contract.py -q
+Observed: 15 passed
+Exit code: 0
+Command: python3 -m pytest tests/unit/test_commands_workflow.py -q
+Observed: 91 passed
+Exit code: 0
+
+GREEN — scheduled preexisting implementation
+Command: python3 -m pytest tests/unit/test_scheduled_engine.py tests/integration/test_scheduled_tasks_e2e.py -q
+Observed: 34 passed; this proves the independent D scheduler baseline only and does not satisfy G6 Workflow Instance reuse.
+Exit code: 0
+
+GREEN — related workflow and asset regression
+Command: python3 -m pytest tests/unit/test_plan_status_index.py tests/unit/test_commands_asset.py tests/unit/test_commands_workflow.py tests/unit/test_scheduled_workflow_evolution.py -q
+Observed: 160 passed
+Exit code: 0
