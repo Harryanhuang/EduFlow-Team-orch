@@ -96,7 +96,8 @@ def test_cli_json_parsable():
         _write_manifest(unit_dir)
         _write_qa(unit_dir)
 
-        import io, contextlib
+        import io
+        import contextlib
         out = io.StringIO()
         with contextlib.redirect_stdout(out):
             rc = ap_qbank_verify.main(["--subject-dir", str(subject), "--json"])

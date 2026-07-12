@@ -300,7 +300,7 @@ def test_reject_extra_args_returns_one_and_prints_when_leftover():
 def test_read_jsonl_returns_empty_when_missing(tmp_dir_path=None):
     """Round-90: missing file is the common 'no records yet' case;
     callers shouldn't have to special-case existence."""
-    import tempfile, os
+    import tempfile
     from pathlib import Path
     with tempfile.TemporaryDirectory() as td:
         assert read_jsonl(Path(td) / "missing.jsonl") == []
@@ -309,7 +309,8 @@ def test_read_jsonl_returns_empty_when_missing(tmp_dir_path=None):
 def test_read_jsonl_parses_records_in_file_order():
     """Append-only convention: file order = chronological order, oldest
     first. read_jsonl preserves that."""
-    import tempfile, os, json as _json
+    import tempfile
+    import json as _json
     from pathlib import Path
     with tempfile.TemporaryDirectory() as td:
         p = Path(td) / "x.jsonl"

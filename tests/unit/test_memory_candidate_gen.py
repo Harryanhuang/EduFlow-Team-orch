@@ -18,12 +18,10 @@ Covers the user spec's 12 test points:
 from __future__ import annotations
 
 import json
-import os
 import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
@@ -296,7 +294,6 @@ class TestOnManagerCorrection:
         with isolated_env():
             _init_db()
             from eduflow.memory.event_hooks import on_manager_correction
-            from eduflow.memory.candidate_gen import get_candidate
             cid = on_manager_correction({
                 "correction_content": "all workers must X",
             })

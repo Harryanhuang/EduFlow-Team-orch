@@ -6,10 +6,8 @@ warning when the read-models raise — it must NEVER crash panel render.
 """
 from __future__ import annotations
 
-import pytest
 
 from helpers import attr_patch, isolated_env, run_cli
-from eduflow.commands import task as task_cmd
 from eduflow.store import (
     local_facts, operational_readiness, task_loop_contract, tasks,
 )

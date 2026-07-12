@@ -9,8 +9,6 @@ Covers:
 from __future__ import annotations
 
 import io
-import json
-import os
 import sys
 from contextlib import redirect_stdout
 from datetime import datetime, timedelta, timezone

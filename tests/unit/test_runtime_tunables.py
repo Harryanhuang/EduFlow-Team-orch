@@ -4,7 +4,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from helpers import env_patch, isolated_env
-from eduflow.runtime import paths, tunables
+from eduflow.runtime import tunables
 
 
 def _write_toml(tmp_path: Path, content: str) -> None:
@@ -145,7 +145,8 @@ def test_garbage_toml_warns_to_stderr():
     """On parse error, surface a one-line stderr warning so operator
     knows their toml changes aren't taking effect (vs silent fallback
     that hides the misconfig)."""
-    import contextlib, io
+    import contextlib
+    import io
     err = io.StringIO()
     with isolated_env() as tmp:
         _write_toml(tmp, "[chat.publish]\nfoo = false\n[chat.publish]\nbar = true\n")  # duplicate section
@@ -158,7 +159,8 @@ def test_garbage_toml_warns_to_stderr():
 def test_garbage_toml_warning_dedups_per_mtime():
     """Repeated tunable() calls on the same broken toml shouldn't spam
     stderr — warn once per (path, mtime)."""
-    import contextlib, io
+    import contextlib
+    import io
     err = io.StringIO()
     with isolated_env() as tmp:
         _write_toml(tmp, "this is not [valid\n")

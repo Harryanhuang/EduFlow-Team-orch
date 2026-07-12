@@ -1,14 +1,13 @@
 """Integration smoke test: manager-panel shows QBank section."""
 from __future__ import annotations
 
-import json
 import sys
 from pathlib import Path
 
 # Make scripts importable
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from helpers import isolated_env, run_cli
+from helpers import isolated_env
 
 
 def test_manager_panel_includes_qbank_section_when_data_available(tmp_path):

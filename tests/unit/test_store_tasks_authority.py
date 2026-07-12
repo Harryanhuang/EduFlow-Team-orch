@@ -8,7 +8,7 @@ not emit a "正式收口" suggestion when the gate is false.
 """
 from __future__ import annotations
 
-from helpers import attr_patch, isolated_env
+from helpers import isolated_env
 from eduflow.store import local_facts, task_event_scanner, tasks
 
 

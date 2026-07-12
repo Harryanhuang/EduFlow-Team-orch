@@ -14,7 +14,6 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
@@ -145,7 +144,7 @@ class TestCapsuleSection:
     def test_capsule_truncated_at_max_chars(self):
         with isolated_env():
             _init_db()
-            from eduflow.memory.packet import assemble_memory_packet, MAX_CAPSULE_CHARS
+            from eduflow.memory.packet import assemble_memory_packet
             # goal is truncated to 200 chars by _render_capsule, so we need
             # a very large capsule to exceed MAX_CAPSULE_CHARS overall.
             # Create many blocker entries to inflate the capsule.

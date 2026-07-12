@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import contextlib
-import io
 import json
 
 import pytest
@@ -3975,7 +3974,6 @@ def test_task_manager_panel_flags_workflow_missing_for_igcse_task_without_workfl
             stage="curriculum", owner="worker_course", creator="manager",
         )
         # Read back the file, clear workflow_id, save again.
-        from eduflow.store import tasks as tasks_mod
         from eduflow.runtime import paths
         from eduflow.util import read_json, write_json
         data = read_json(paths.state_dir() / "tasks.json", {"tasks": [], "_meta": {"last_id": 0}})

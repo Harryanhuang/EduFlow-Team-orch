@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import pytest
 
-from eduflow.memory import db, items, scope_aliases, storage_budget, packet, decay
+from eduflow.memory import db, items, scope_aliases, storage_budget, packet
 
 
 @pytest.fixture(autouse=True)

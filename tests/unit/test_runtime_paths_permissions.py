@@ -1,6 +1,4 @@
-import os
 import stat
-from pathlib import Path
 
 
 def test_state_dir_is_created_with_700(tmp_path, monkeypatch):

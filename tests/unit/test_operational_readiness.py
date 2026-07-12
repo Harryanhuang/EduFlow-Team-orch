@@ -7,7 +7,6 @@ touches runtime. Returns structured pass / warn / fail verdicts.
 from __future__ import annotations
 
 import json
-import time
 
 from helpers import isolated_env, run_cli
 from eduflow.store import (

@@ -57,7 +57,7 @@ def _awaiting_rule_and_key(*, next_due_utc: str, frequency: str = "daily"):
 
 
 def _ms_from_iso(iso: str) -> int:
-    from datetime import datetime, timezone
+    from datetime import datetime
     text = iso.replace("Z", "+00:00")
     return int(datetime.fromisoformat(text).timestamp() * 1000)
 

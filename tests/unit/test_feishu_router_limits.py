@@ -1,4 +1,4 @@
-from eduflow.feishu.router import classify_event, Decision, _reset_rate_limit
+from eduflow.feishu.router import classify_event, _reset_rate_limit
 
 
 def test_oversized_message_is_dropped():

@@ -11,7 +11,6 @@ list of candidates without mutating state.
 """
 from __future__ import annotations
 
-import pytest
 
 from helpers import isolated_env
 from eduflow.store import scheduled_tasks

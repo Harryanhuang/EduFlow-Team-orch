@@ -6,7 +6,6 @@ from pathlib import Path
 
 from helpers import env_patch, isolated_env, run_cli
 
-from eduflow.commands import asset as asset_cmd
 from eduflow.store import asset_registry
 
 

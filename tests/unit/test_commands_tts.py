@@ -26,7 +26,6 @@ from eduflow.commands.tts import (
     _post_tts,
     _resolve_agent_voice,
     main,
-    USAGE,
 )
 
 

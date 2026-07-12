@@ -4,7 +4,6 @@ Tests tick/reconcile/backpressure for the D scheduler domain.
 """
 from __future__ import annotations
 
-import json
 
 import pytest
 
@@ -12,7 +11,6 @@ from helpers import isolated_env
 from eduflow.runtime import paths
 from eduflow.scheduling import engine
 from eduflow.store import scheduled_tasks
-from eduflow.util import now_ms
 
 
 def _utc(year: int, month: int, day: int, hour: int = 0, minute: int = 0) -> str:

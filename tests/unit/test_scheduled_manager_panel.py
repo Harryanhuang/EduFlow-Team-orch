@@ -11,7 +11,6 @@ what scheduler state looks like (no UI-fabricated claims).
 """
 from __future__ import annotations
 
-import json
 
 from helpers import isolated_env, run_cli
 from eduflow.runtime import paths

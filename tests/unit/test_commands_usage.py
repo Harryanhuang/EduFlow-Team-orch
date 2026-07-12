@@ -157,7 +157,8 @@ def _fake_home(*, codex_auth=None, kimi_cred=None):
 
 
 def _b64url(payload: dict) -> str:
-    import base64, json as _json
+    import base64
+    import json as _json
     raw = _json.dumps(payload).encode()
     return base64.urlsafe_b64encode(raw).rstrip(b"=").decode()
 

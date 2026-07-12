@@ -4,7 +4,6 @@ Package 6: machine-verifiable checks replacing worker self-audit.
 """
 from __future__ import annotations
 
-import json
 from pathlib import Path
 from helpers import isolated_env
 from eduflow.store import tasks, subject_verifier
@@ -805,7 +804,7 @@ def _build_drift_subject(content_dir: Path, *,
     # Manifest
     manifest = "qa_file,question_count\n"
     for i in range(1, manifest_count + 1):
-        manifest += f"qa/topic-1.1.md,1\n"
+        manifest += "qa/topic-1.1.md,1\n"
     (subj_dir / "qa-manifest.csv").write_text(manifest, encoding="utf-8")
 
 

@@ -333,7 +333,9 @@ def test_subprocess_env_pins_home_to_pw_dir():
     HOME and fails to locate `~/.lark-cli/config.json` (rc=2). Pin
     HOME to the OS user's pw_dir so lark-cli always reads the host
     user's profile regardless of how the caller's HOME was mangled."""
-    import os, pwd, tempfile
+    import os
+    import pwd
+    import tempfile
     expected_home = pwd.getpwuid(os.getuid()).pw_dir
     with tempfile.TemporaryDirectory() as td:
         with env_patch(HOME="/data/agent-home/manager", EDUFLOW_STATE_DIR=td):

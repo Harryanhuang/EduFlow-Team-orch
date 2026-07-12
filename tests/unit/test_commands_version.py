@@ -1,7 +1,7 @@
 """Tests for `eduflow version`."""
 from __future__ import annotations
 
-from helpers import attr_patch, run_cli
+from helpers import run_cli
 from eduflow.commands import version as version_cmd
 
 
@@ -31,7 +31,6 @@ def test_version_falls_back_when_metadata_missing():
         raise PackageNotFoundError(_name)
 
     # patch the helper directly — easier than patching importlib
-    from eduflow.commands.version import _read_version
     original = version_cmd._read_version
     version_cmd._read_version = lambda: "0.0.0+unknown"
     try:

@@ -168,7 +168,7 @@ def test_respawn_appends_to_log_file_when_set():
     silently drops a slash, watchdog hits a Popen error) leave no trace.
     REGRESSION: 2026-05-06 /tmux worker_cc silent failures couldn't be
     diagnosed because router stdout was DEVNULL."""
-    import os, tempfile
+    import tempfile
     from pathlib import Path
     with tempfile.TemporaryDirectory() as tmp:
         log_path = Path(tmp) / "logs" / "router.log"  # parent missing on purpose
@@ -190,7 +190,9 @@ def test_respawn_appends_to_log_file_when_set():
 def test_respawn_falls_back_to_devnull_when_log_file_open_fails():
     """Permission denied / disk full / parent-dir on a read-only mount
     shouldn't kill the respawn. Warn and use DEVNULL."""
-    import contextlib, io, subprocess
+    import contextlib
+    import io
+    import subprocess
     spec = _spec(log_file=Path("/dev/null/cant-write-here/router.log"))
     captured = {}
     def spy(*a, **k):

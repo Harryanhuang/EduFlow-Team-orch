@@ -319,8 +319,9 @@ def test_watch_subscribe_health_self_terminates_on_stale_events():
     self. REGRESSION: 2026-05-06 host_smoke caught lark WebSocket
     silently stalling, router process appeared healthy in `ps` but
     user messages went unprocessed for 7+ min."""
-    import threading, signal, os
-    from eduflow.commands import router as _r
+    import threading
+    import signal
+    import os
 
     class FakeProc:
         def __init__(self): self.returncode = None
@@ -355,8 +356,10 @@ def test_watch_subscribe_health_self_terminates_on_child_exit():
     """Subscribe child exits (non-stale-events path). Coverage for the
     pre-existing fail mode (R52 / Round B Smoke regression): npm-exec
     parent stays alive holding stdout open, lark-cli grandchild dies."""
-    import threading, signal, os, time
-    from eduflow.commands import router as _r
+    import threading
+    import signal
+    import os
+    import time
 
     class FakeProc:
         def __init__(self): self.returncode = 137  # SIGKILL'd

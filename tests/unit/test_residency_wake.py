@@ -9,13 +9,12 @@ Plan 2026-07-01 §设计三:
 from __future__ import annotations
 
 import json
-import time
 
 import pytest
 
 from eduflow.commands import wake_alert
 from eduflow.store import agent_residency, local_facts
-from helpers import attr_patch, isolated_env, run_cli
+from helpers import isolated_env, run_cli
 
 
 # ── ALERT card content ─────────────────────────────────────────
@@ -380,7 +379,6 @@ def test_task_publish_run_non_handoff_reason_does_not_stamp_active():
         # non-handoff reasons should not stamp anything. Assert no
         # row got written.
         # Direct test against the function: inject reasons via stub.
-        from eduflow.commands import task as task_cmd
         # Stub out the actual publish-run with a focus on stamp
         # behavior.
         # ...skipping exhaustive stub; instead verify the default

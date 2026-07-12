@@ -11,14 +11,10 @@ Covers end-to-end scenarios that exercise multiple modules together:
 """
 from __future__ import annotations
 
-import io
 import os
 import sys
-from contextlib import redirect_stdout
-from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 

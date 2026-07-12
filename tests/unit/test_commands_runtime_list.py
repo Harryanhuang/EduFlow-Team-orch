@@ -6,7 +6,7 @@ import contextlib
 
 from helpers import isolated_env
 from eduflow.commands import runtime_list
-from eduflow.runtime import config, tunables
+from eduflow.runtime import tunables
 
 
 def _write_toml(tmp, text: str) -> None:

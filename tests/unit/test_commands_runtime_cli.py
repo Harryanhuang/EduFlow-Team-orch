@@ -3,8 +3,8 @@ from __future__ import annotations
 
 import json
 
-from helpers import isolated_env, run_cli, attr_patch
-from eduflow.runtime import paths, verify, lifecycle
+from helpers import isolated_env, run_cli
+from eduflow.runtime import verify, lifecycle
 
 
 def test_runtime_dispatch_unknown_subcommand():
@@ -69,7 +69,6 @@ ANTHROPIC_BASE_URL = "https://api.deepseek.com/anthropic"
 ANTHROPIC_MODEL = "deepseek-v4-pro"
 """, encoding="utf-8")
         # Stub the tmux and lifecycle layers so we don't touch real panes.
-        from eduflow.commands import runtime_switch
         from eduflow.runtime import tmux as tmux_mod
         monkeypatch.setattr(tmux_mod, "has_session", lambda s: True)
         monkeypatch.setattr(tmux_mod, "has_window", lambda t: True)

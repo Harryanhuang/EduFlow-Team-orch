@@ -950,6 +950,40 @@ INDEPENDENT REVIEWS
   durable-manifest re-review also PASS after independently validating all 77
   entries, the executable command, inventory, and acceptance test.
 
+Task 7 Ruff remediation R3a: safe test-suite import/string cleanup
+
+BEHAVIOR BASELINE
+Manifest: `tests/ruff_r3a_affected_tests.txt` contains 55 unique sorted affected
+test paths, including the three integration files touched by safe fixes.
+Command: `pytest $(< tests/ruff_r3a_affected_tests.txt) -q`
+Result before change: 1301 passed.
+
+GREEN + STATIC
+Command: `uvx --offline ruff==0.15.10 check tests --select F401,F541,E401 --fix`
+Result: 102 safe fixes applied, zero findings for those selected test rules.
+Commands/results:
+- identical tracked-manifest test command after change -> 1301 passed
+- manifest contract test -> 55 unique sorted tracked paths, all present
+- `pytest tests/unit/test_g_minus_1_acceptance_package.py -q` -> 17 passed after evidence assertion and durable-manifest maintenance
+- `uvx --offline ruff==0.15.10 check tests --statistics` -> expected failure, 99 remaining findings
+- full Ruff statistics -> expected gate failure, reduced from 257 to 153 findings
+- `git diff --check` -> passed
+
+The 55 safe-fix target transformations remove genuinely unused imports, split
+multi-import statements, and remove unnecessary `f` prefixes. Their test
+scenarios, assertions, fixture invocations, parametrization, and expected values
+are unchanged; import-only statements and `f` prefixes changed mechanically.
+The separate acceptance-package test was intentionally updated to maintain the
+Ruff counts and durable-manifest contract, and its complete file was run. No
+production code was changed in R3a.
+
+INDEPENDENT REVIEWS
+- Specification review: initial FAIL on evidence scope and wording; after the
+  separate acceptance-test verification and precise mechanical-change boundary
+  were recorded, final re-review PASS.
+- Quality review: PASS; independently validated the 55-path manifest, import and
+  string semantics, 1301-test coverage, Ruff counts, and inventory.
+
 Task 7 acceptance-package TDD
 
 RED

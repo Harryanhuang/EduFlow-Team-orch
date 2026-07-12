@@ -22,7 +22,6 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
 from tests.helpers import isolated_env, run_cli
-from eduflow.runtime import paths
 from eduflow.memory.db import init_schema, close as db_close
 from eduflow.memory.candidates import list_candidates
 from eduflow.store import tasks

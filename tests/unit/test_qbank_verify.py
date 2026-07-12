@@ -1,10 +1,8 @@
 """Tests for QBank lifecycle / verifier / dedup gate (Package 7)."""
 from __future__ import annotations
 
-import json
 from pathlib import Path
 
-from helpers import isolated_env
 from eduflow.store import tasks
 
 
@@ -314,7 +312,7 @@ def test_qbank_lifecycle_next_actions_are_complete():
 
 def test_qbank_stage_allows_standard_flow_statuses():
     """QBank stage must allow the standard flow statuses (queued, assigned, etc.)."""
-    from eduflow.store.tasks import FLOW_ALLOWED_STAGE_STATUSES, canonical_stage
+    from eduflow.store.tasks import FLOW_ALLOWED_STAGE_STATUSES
 
     allowed = FLOW_ALLOWED_STAGE_STATUSES.get("qbank")
     assert allowed is not None, "qbank stage must be in FLOW_ALLOWED_STAGE_STATUSES"

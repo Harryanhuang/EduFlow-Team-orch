@@ -1,6 +1,5 @@
 import os
 import stat
-from pathlib import Path
 
 
 def test_tenant_token_cache_uses_state_dir_and_600(tmp_path, monkeypatch):

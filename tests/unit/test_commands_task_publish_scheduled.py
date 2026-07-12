@@ -6,7 +6,7 @@ break normal task publish or its cursor.
 """
 from __future__ import annotations
 
-from helpers import attr_patch, env_patch, isolated_env, run_cli
+from helpers import attr_patch, isolated_env, run_cli
 from eduflow.commands import task as task_cmd
 from eduflow.runtime import paths
 from eduflow.scheduling import engine

@@ -7,7 +7,6 @@ so manager/operator-facing surfaces can warn before destructive intents.
 from __future__ import annotations
 
 import json
-import shlex
 
 import pytest
 

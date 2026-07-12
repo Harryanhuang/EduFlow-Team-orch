@@ -9,7 +9,6 @@ from __future__ import annotations
 
 import time
 
-import pytest
 
 from eduflow.commands import residency_wake
 from eduflow.store import agent_residency, local_facts

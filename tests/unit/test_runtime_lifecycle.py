@@ -537,7 +537,6 @@ def test_ensure_claude_agent_home_writes_keychain_extract_as_regular_file():
     versus the live keychain and (b) gets atomic-replaced by claude on
     refresh, defeating the share intent. 2026-05-07 host smoke ate
     'refreshToken: ""' for breakfast — pin the regular-file invariant."""
-    import os
     import platform
     if platform.system() != "Darwin":
         return  # macOS-only path
@@ -563,7 +562,6 @@ def test_ensure_claude_agent_home_overwrites_stale_creds_each_call():
     `eduflow down && eduflow up` actually re-materialises from
     keychain. Old impl gated on `if not cred_link.exists()` so the
     file never refreshed once written."""
-    import os
     import platform
     if platform.system() != "Darwin":
         return

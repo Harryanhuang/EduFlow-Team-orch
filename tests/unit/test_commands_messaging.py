@@ -262,7 +262,6 @@ def test_send_skips_wake_for_non_lazy_agent():
     agent 发消息时, send 既不调 wake.is_ready 也不调 wake_if_dormant."""
     from helpers import attr_patch
     from eduflow.runtime import wake, tmux
-    from eduflow.commands import send as send_mod
     calls = {"is_ready": 0, "wake_if_dormant": 0}
     def fake_is_ready(*a, **kw):
         calls["is_ready"] += 1
@@ -312,7 +311,7 @@ def test_send_lazy_wake_uses_runtime_env_profile_prefix():
     otherwise Anthropic-compatible gateway vars never reach the first
     spawned pane and the agent falls back to direct Claude auth/network."""
     from helpers import attr_patch
-    from eduflow.runtime import wake, tmux, lifecycle
+    from eduflow.runtime import wake, tmux
 
     captured: dict[str, str] = {}
 

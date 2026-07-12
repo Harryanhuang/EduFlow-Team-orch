@@ -42,9 +42,8 @@ for _p in (_ROOT / "src", _ROOT / "tests"):
 
 from helpers import attr_patch, env_patch, isolated_env, run_cli
 from eduflow.feishu import chat as feishu_chat
-from eduflow.runtime import paths
 from eduflow.store import (
-    asset_registry, task_evidence_account, tasks,
+    asset_registry, tasks,
 )
 
 
@@ -208,7 +207,7 @@ def main() -> int:
             row = tasks.get(tid)
             assert row["verdict"] == "approved"
             assert row["workspace_mode"] == "worktree"  # preserved through review
-            print(f"  verdict=approved, workspace_mode still worktree")
+            print("  verdict=approved, workspace_mode still worktree")
 
             # ── Step 4b: Manager inspects evidence AFTER review approval (M6).
             # Now the authoritative review verdict exists → PASS.

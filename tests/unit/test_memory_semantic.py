@@ -13,7 +13,7 @@ from unittest import mock
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from tests.helpers import isolated_env, run_cli, env_patch
+from tests.helpers import isolated_env, run_cli
 
 
 # ── helpers ───────────────────────────────────────────────────────

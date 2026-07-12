@@ -436,7 +436,7 @@ def test_down_with_named_daemon_only_kills_that_daemon():
 
         from eduflow.runtime import watchdog as _wd
         with attr_patch(os, kill=fake_kill), \
-             attr_patch(_wd, _read_cmdline=lambda pid: f"eduflow router"):
+             attr_patch(_wd, _read_cmdline=lambda pid: "eduflow router"):
             rc, out, _ = run_cli(["down", "router"])
 
         assert rc == 0

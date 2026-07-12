@@ -3,9 +3,8 @@ from __future__ import annotations
 
 import json
 
-from helpers import attr_patch, tmux_patch
+from helpers import tmux_patch
 from eduflow.feishu import slash
-from eduflow.runtime import tmux
 
 
 def _elements(reply):
@@ -331,7 +330,7 @@ def test_team_card_reflects_live_toml_after_adding_agent():
         assert "worker_codex" not in body1
 
         # Now operator edits eduflow.toml to add worker_codex.
-        from eduflow.runtime import config as _config, paths
+        from eduflow.runtime import paths
         from eduflow.runtime import tunables as _tun
         team["agents"]["worker_codex"] = {"cli": "codex-cli"}
         # Refresh whichever shape isolated_env wrote (json or toml). We
@@ -1342,7 +1341,6 @@ def test_home_card_renders_blocked_source_note_when_helper_raises():
     (no stable helper), the card must show the explicit note instead
     of inventing data."""
     from helpers import isolated_env
-    import eduflow.feishu.slash as _slash
 
     team = {
         "session": "EduFlow",

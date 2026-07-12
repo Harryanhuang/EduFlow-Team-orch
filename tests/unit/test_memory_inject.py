@@ -15,7 +15,6 @@ Covers the user spec's 15 test points:
 """
 from __future__ import annotations
 
-import json
 import sys
 from pathlib import Path
 

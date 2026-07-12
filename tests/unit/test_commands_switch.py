@@ -65,9 +65,9 @@ def test_switch_emits_export_lines_for_team_dir():
         d = _team_dir(Path(tmp))
         rc, out, _ = run_cli(["switch", str(d)])
     assert rc == 0
-    assert f"export EDUFLOW_STATE_DIR=" in out
-    assert f"export EDUFLOW_TEAM_FILE=" in out
-    assert f"export EDUFLOW_RUNTIME_CONFIG=" in out
+    assert "export EDUFLOW_STATE_DIR=" in out
+    assert "export EDUFLOW_TEAM_FILE=" in out
+    assert "export EDUFLOW_RUNTIME_CONFIG=" in out
     # The three export targets should embed the team-dir path
     assert str(d) in out
     # eval-friendly hint is present
