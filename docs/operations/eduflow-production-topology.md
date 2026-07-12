@@ -2,7 +2,7 @@
 
 ## Verdict
 
-**FAIL / BLOCKED** as of `2026-07-12T12:00:39+08:00`.
+**FAIL / BLOCKED** as of `2026-07-12T12:28:42+08:00`.
 
 This document is generated from a read-only correlation of git, the deployed
 TOML file, PID files, `ps`, and tmux. It is not a declaration of intended
@@ -29,14 +29,15 @@ environment values, credentials, tokens, or sensitive command arguments.
 
 | Daemon | PID file value | Supervision profile | Correlation result |
 |---|---:|---|---|
-| router | `7193` | watchdog-supervised | **FAIL** — PID absent from process table; checkout, Python runtime, CLI runtime, and startup entry cannot be proven |
-| task-publish | `30779` | watchdog-supervised | **FAIL** — PID absent from process table; checkout, Python runtime, CLI runtime, and startup entry cannot be proven |
-| watchdog | `30780` | self-supervised | **FAIL** — PID absent from process table; checkout, Python runtime, CLI runtime, and startup entry cannot be proven |
+| router | `72529` | watchdog-supervised | **PROVEN** — capital-`Python` kernel entry, Python `3.14.3`, root/config/state/generation and `bde14c5c…` correlate |
+| task-publish | `72530` | watchdog-supervised | **PROVEN** — capital-`Python` kernel entry, Python `3.14.3`, root/config/state/generation and `bde14c5c…` correlate |
+| watchdog | `72531` | self-supervised | **PROVEN** — capital-`Python` kernel entry, Python `3.14.3`, root/config/state/generation and `bde14c5c…` correlate |
 
-These are dead/stale PID-file findings, not proof that the services are healthy
-under another PID. G-1 must remain blocked until the daemon lifecycle is
-reconciled and a subsequent audit correlates live PIDs with their exact startup
-entries and runtimes.
+All three PID-file values are live and match strict
+`Python -m eduflow.cli <daemon>` entries. Their kernel executable is the same
+absolute Homebrew Python 3.14.3 binary; each process independently proves
+`EDUFLOW_ROOT`, config, state, generation, Lark profile, tmux session and Git
+revision. No daemon fact is copied from the target arguments.
 
 ## Live pane manual correlation samples
 
@@ -50,6 +51,7 @@ G-1 review record, not PASS assertions.
 | `EduFlowTeam:manager.0` | `92675 → 92686` | production checkout / `bde14c5c…` | `/Users/huanganan/.local/bin/claude 2.1.207` | **PROVEN**, ancestry `92686 → 92675 → 92216 → 1` |
 | `EduFlowTeam:worker_course.0` | `92872 → 92883` | production checkout / `bde14c5c…` | `/Users/huanganan/.local/bin/claude 2.1.207` | **PROVEN**, ancestry `92883 → 92872 → 92216 → 1` |
 | `EduFlowTeam:worker_review.0` | `5260 → 5260` | production checkout / `bde14c5c…` | `/Users/huanganan/.local/bin/claude 2.1.207` | **PROVEN**, ancestry `5260 → 92216 → 1` |
+| `EduFlowTeam:Hermes.0` | `74424 → 74424` | duty cwd `/Volumes/Halobster/Obsidian Edu`; `EDUFLOW_ROOT` proves production checkout / `bde14c5c…` | Python `3.11.15`; `/Users/huanganan/.local/bin/hermes` package `0.16.0` | **PROVEN**, strict adjacent absolute wrapper, ancestry `74424 → 92216 → 1` |
 
 For all three, the process environment independently resolved the config and
 state paths shown above; the config content then proved generation
@@ -68,14 +70,25 @@ tmux list-panes -s -t EduFlowTeam \
 # EduFlowTeam:manager.0|92675|<production-checkout>|2.1.207
 # EduFlowTeam:worker_course.0|92872|<production-checkout>|2.1.207
 # EduFlowTeam:worker_review.0|5260|<production-checkout>|2.1.207
+# EduFlowTeam:Hermes.0|74424|/Volumes/Halobster/Obsidian Edu|python3.11
 
 ps -p 92686,92883,5260 -o pid=,ppid=,comm=
 # 92686 92675 /Users/huanganan/.local/bin/claude
 # 92883 92872 /Users/huanganan/.local/bin/claude
 #  5260 92216 /Users/huanganan/.local/bin/claude
 
+ps -p 72529,72530,72531,74424 -o pid=,ppid=,comm=
+# 72529     1 <absolute Homebrew Python 3.14 executable>
+# 72530     1 <absolute Homebrew Python 3.14 executable>
+# 72531     1 <absolute Homebrew Python 3.14 executable>
+# 74424 92216 /Users/huanganan/.hermes/hermes-agent/venv/bin/python3
+
 for pid in 92686 92883 5260; do lsof -a -p "$pid" -d cwd -Fn; done
 # Each n-record: <production-checkout>
+
+for pid in 72529 72530 72531 74424; do lsof -a -p "$pid" -d cwd -Fn; done
+# 72529/72530/72531 n-record: <production-checkout>
+# 74424 n-record: /Volumes/Halobster/Obsidian Edu (recorded duty cwd)
 
 git -C "<production-checkout>" rev-parse --show-toplevel HEAD
 # <production-checkout>
@@ -85,18 +98,24 @@ shasum -a 256 "<production-checkout>/eduflow.toml"
 # 00773fbb4eb5ed7f7f2cd5a2b416613229eda3880ffd0e506d8643ef9b8f9b74
 ```
 
-An additional live pane, `EduFlowTeam:Hermes.0` (PID `92228`), reported cwd
-`/Volumes/Halobster/Obsidian Edu`, not the audited production checkout. This is
-an explicit `pane_cwd_drift` failure.
+Hermes intentionally uses a duty cwd outside the checkout. Its actual process
+environment proves `EDUFLOW_ROOT`, config and state all resolve to this audited
+deployment, so the duty cwd is recorded as `process_cwd` and is not treated as
+`pane_cwd_drift`. Package version is read as a single line through the actual
+venv Python's `importlib.metadata`, never by accepting Hermes's multi-line
+`--version` output.
 
 ## Blocking findings
 
-1. `daemon_pid_not_live`: router PID `7193`.
-2. `daemon_pid_not_live`: task-publish PID `30779`.
-3. `daemon_pid_not_live`: watchdog PID `30780`.
-4. `pane_cwd_drift` and configured-entry mismatch: `EduFlowTeam:Hermes.0`.
+1. `legacy_entry`: PID `78495`, a live capital-`Python` process under watchdog
+   PID `72531`, contains an EduFlow marker but does not match an approved daemon
+   or agent entry shape. Its exact argv remains redacted.
+2. `orphan_agent`: PID `98906`, a strict Python/Hermes wrapper with EduFlow
+   scope evidence, is not associated with a configured tmux pane. Its exact
+   argv and environment remain redacted.
 
-The global scan also observed unrelated standalone CLI processes, but none had
+The global scan may also observe unrelated standalone CLI processes, but they
+do not become findings unless they have
 an EduFlow scope marker: their cwd/config/state did not match this deployment,
 they were outside configured pane ancestry, and they were not explicit
 `eduflow.cli agent` entries. They are therefore non-blocking and omitted from
@@ -117,6 +136,7 @@ python3 scripts/audit_production_topology.py \
   --state-dir "/Volumes/Halobster/Obsidian Edu/留学公司知识库/11-Eduflow Team 多智能体项目/EduFlow-Team-orch/.eduflow-team-state"
 ```
 
-Expected current result: JSON `ok=false`, exit code `1`. Re-run after runtime
-reconciliation; do not manually change this verdict to PASS without preserving
-the new JSON evidence and reviewer correlation.
+Expected current result: JSON `ok=false`, exit code `1`. Daemon and configured
+Hermes reconciliation now pass; the two globally detected unassociated/legacy
+processes keep G-1 blocked. Re-run after those processes are owned or removed;
+do not manually change this verdict without preserving new JSON evidence.

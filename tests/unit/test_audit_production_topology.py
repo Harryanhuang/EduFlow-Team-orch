@@ -27,7 +27,7 @@ def _completed(argv: list[str], stdout: str = "", returncode: int = 0):
 def _fixture(tmp_path: Path):
     module = _load_module()
     checkout = tmp_path / "checkout with spaces"
-    state = tmp_path / "state with spaces"
+    state = checkout / ".state with spaces"
     checkout.mkdir()
     state.mkdir()
     config = checkout / "eduflow.toml"
@@ -627,3 +627,93 @@ def test_json_cli_serializes_invalid_canonical_values_without_secret(tmp_path, m
     assert exit_code == 1
     assert json.loads(rendered)["ok"] is False
     assert "cli-secret" not in rendered
+
+
+def test_entry_recognizes_capital_python_only_when_kernel_executable_matches():
+    module = _load_module()
+    executable = "/Frameworks/Python.app/Contents/MacOS/Python"
+    command = f"{executable} -m eduflow.cli router"
+
+    entry, action, actual = module._entry(command, executable)
+
+    assert (entry, action, actual) == ("Python -m eduflow.cli router", "router", executable)
+    assert module._entry("/bin/zsh -lc 'Python -m eduflow.cli router'", "/bin/zsh") == (None, None, None)
+
+
+def test_hermes_python_wrapper_uses_adjacent_absolute_script_and_package_version(tmp_path):
+    module, deps, commands, config, checkout, state = _fixture(tmp_path)
+    python = "/tmp/hermes-venv/bin/python3"
+    hermes = "/tmp/bin/hermes"
+    config.write_text(
+        config.read_text(encoding="utf-8")
+        + '[runtime_registry.hermes_primary]\ncli = "hermes-agent"\n'
+        + '[team.agents.Hermes]\nruntime = "hermes_primary"\n',
+        encoding="utf-8",
+    )
+    commands["tmux list-panes -a"] += (
+        f"\neduflow-team\tHermes\t0\t300\tPython\t/tmp/hermes-duty\t{python} {hermes} chat --source eduflow-hermes"
+    )
+    commands["ps -axo pid=,ppid=,command="] += (
+        f"\n300 1 EDUFLOW_ROOT={checkout} EDUFLOW_CONFIG_FILE={config} EDUFLOW_STATE_DIR={state} "
+        f"{python} {hermes} chat --source eduflow-hermes"
+    )
+    commands["process-exe:300"] = python
+    commands["process-cwd:300"] = "/tmp/hermes-duty"
+    commands[f"{python} --version"] = "Python 3.11.15"
+    metadata_argv = [python, "-c", "import importlib.metadata as m; print(m.version('hermes-agent'))"]
+    commands[" ".join(metadata_argv)] = "0.16.0"
+
+    report = module.audit(deps)
+    row = next(item for item in report["agent_processes"] if item["agent"] == "Hermes")
+
+    assert row["executable"] == python
+    assert row["startup_entry"] == "python3 hermes chat"
+    assert row["python_runtime"] == "Python 3.11.15"
+    assert row["cli_runtime"] == f"{hermes} 0.16.0"
+    assert metadata_argv in commands["_calls"]
+    assert "pane_cwd_drift" not in {e["code"] for e in report["errors"] if e["subject"].endswith("Hermes.0")}
+
+
+def test_eduflow_root_allows_duty_cwd_but_is_recorded_as_checkout_source(tmp_path):
+    module, deps, commands, config, checkout, state = _fixture(tmp_path)
+    duty_cwd = tmp_path / "duty cwd"
+    duty_cwd.mkdir()
+    commands["ps -axo pid=,ppid=,command="] = commands["ps -axo pid=,ppid=,command="].replace(
+        f"200 1 EDUFLOW_STATE_DIR={state} EDUFLOW_CONFIG_FILE={config}",
+        f"200 1 EDUFLOW_ROOT={checkout} EDUFLOW_STATE_DIR={state} EDUFLOW_CONFIG_FILE={config}",
+    )
+    commands["process-cwd:200"] = str(duty_cwd)
+    commands["tmux list-panes -a"] = commands["tmux list-panes -a"].replace(
+        f"eduflow-team\tmanager\t0\t200\tpython3\t{checkout}",
+        f"eduflow-team\tmanager\t0\t200\tpython3\t{duty_cwd}",
+    )
+
+    report = module.audit(deps)
+    manager = next(row for row in report["panes"] if row["window"] == "manager")
+
+    assert report["ok"] is True
+    assert manager["process_cwd"] == str(duty_cwd.resolve())
+    assert manager["checkout"] == str(checkout.resolve())
+    assert manager["checkout_source"] == "EDUFLOW_ROOT"
+
+
+@pytest.mark.parametrize("root_present", [True, False])
+def test_unrelated_root_or_fallback_cwd_fails_closed(tmp_path, root_present):
+    module, deps, commands, config, checkout, state = _fixture(tmp_path)
+    unrelated = tmp_path / "unrelated root"
+    unrelated.mkdir()
+    prefix = f"EDUFLOW_ROOT={unrelated} " if root_present else ""
+    commands["ps -axo pid=,ppid=,command="] = commands["ps -axo pid=,ppid=,command="].replace(
+        f"101 1 EDUFLOW_STATE_DIR={state}",
+        f"101 1 {prefix}EDUFLOW_STATE_DIR={state}",
+    )
+    if not root_present:
+        commands["process-cwd:101"] = str(unrelated)
+
+    report = module.audit(deps)
+    router = next(row for row in report["daemons"] if row["name"] == "router")
+
+    assert report["ok"] is False
+    assert "process_checkout_mismatch" in {e["code"] for e in report["errors"]}
+    assert router["checkout"] == str(unrelated.resolve())
+    assert router["checkout_source"] == ("EDUFLOW_ROOT" if root_present else "process_cwd")

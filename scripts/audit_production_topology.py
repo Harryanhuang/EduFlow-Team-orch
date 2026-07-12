@@ -6,7 +6,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Callable, Mapping
 Run = Callable[..., subprocess.CompletedProcess]; DAEMONS = ("router", "task-publish", "watchdog")
-FIELDS = "pid executable checkout commit_sha python_runtime cli_runtime config_path config_sha256 config_generation state_dir lark_profile tmux_session daemon_profile startup_entry".split()
+FIELDS = "pid executable process_cwd checkout checkout_source commit_sha python_runtime cli_runtime config_path config_sha256 config_generation state_dir lark_profile tmux_session daemon_profile startup_entry".split()
 SECRET = re.compile(r"(?i)(token|api[-_]?key|secret|password|authorization|credential)")
 @dataclass(frozen=True)
 class AuditDependencies:
@@ -98,10 +98,14 @@ def _entry(command, executable):
     index = next((i for i, token in enumerate(tokens)
                   if token == executable or Path(token).name == name), None)
     if index is None: return None, None, None
-    if "python" in name and tokens[index + 1:index + 3] == ["-m", "eduflow.cli"]:
+    if "python" in name.lower() and tokens[index + 1:index + 3] == ["-m", "eduflow.cli"]:
         action = tokens[index + 3] if index + 3 < len(tokens) else None
         if action in (*DAEMONS, "agent"):
             return f"{name} -m eduflow.cli {action}", action, executable
+    if ("python" in name.lower() and index + 2 < len(tokens)
+            and Path(tokens[index + 1]).is_absolute()
+            and Path(tokens[index + 1]).name == "hermes" and tokens[index + 2] == "chat"):
+        return f"{name} hermes chat", "agent", tokens[index + 1]
     if name in {"claude", "codex", "codex-cli", "qoderclicn", "gemini", "qwen"}:
         return name, "agent", executable
     return None, None, None
@@ -143,7 +147,7 @@ def _descendant(deps, processes, root, action):
             return row
         queue.extend(sorted(p["pid"] for p in processes.values() if p["ppid"] == pid))
     return None
-def _cli_name(name): return {"claude-code": "claude", "codex-cli": "codex"}.get(name, name)
+def _cli_name(name): return {"claude-code": "claude", "codex-cli": "codex", "hermes-agent": "hermes"}.get(name, name)
 def _cwd(deps, pid):
     result = _run(deps, ["lsof", "-a", "-p", str(pid), "-d", "cwd", "-Fn"])
     for line in (result.stdout or "").splitlines():
@@ -155,17 +159,25 @@ def _version(deps, executable):
     result = _run(deps, [executable, "--version"])
     value = ((result.stdout or "") + (result.stderr or "")).strip()
     return value if result.returncode == 0 and 0 < len(value) <= 256 and "\n" not in value and "\r" not in value else None
+def _package_version(deps, python, distribution):
+    code = f"import importlib.metadata as m; print(m.version('{distribution}'))"
+    result = _run(deps, [python, "-c", code])
+    value = (result.stdout or "").strip()
+    return value if result.returncode == 0 and 0 < len(value) <= 128 and "\n" not in value and "\r" not in value else None
 def _provenance(deps, process, processes, target, errors, subject, profile):
     if not process:
         return {field: None for field in FIELDS}
     pid, command = process["pid"], process["command"]
     executable = _executable(deps, pid)
-    entry, action, _ = _entry(command, executable)
+    entry, action, cli_executable = _entry(command, executable)
     chain = _ancestry(processes, pid)
     env_result = _run(deps, ["ps", "eww", "-p", str(pid), "-o", "command="])
     combined = (env_result.stdout or "") + " " + " ".join(item["command"] for item in chain)
     cwd = _cwd(deps, pid)
-    checkout, revision = _git(deps, cwd, errors, subject)
+    root = _setting(combined, (("EDUFLOW_ROOT", "--root"),))
+    checkout_input = str(Path(root).resolve()) if root else cwd
+    checkout_source = "EDUFLOW_ROOT" if root else "process_cwd"
+    checkout, revision = _git(deps, checkout_input, errors, subject)
     config_path = _setting(combined, (("EDUFLOW_CONFIG_FILE", "--config"),))
     state_dir = _setting(combined, (("EDUFLOW_STATE_DIR", "--state-dir"),))
     if not config_path: _err(errors, "process_config_unknown", subject, "actual process config is not proven")
@@ -177,16 +189,23 @@ def _provenance(deps, process, processes, target, errors, subject, profile):
         _err(errors, "process_config_mismatch", subject, "actual config differs from target")
     if state_dir and str(Path(state_dir).resolve()) != target["state_dir"]:
         _err(errors, "process_state_mismatch", subject, "actual state differs from target")
+    if root and config_path and not Path(config_path).resolve().is_relative_to(Path(root).resolve()):
+        _err(errors, "process_root_config_conflict", subject, "actual config is outside EDUFLOW_ROOT")
+    if root and state_dir and not Path(state_dir).resolve().is_relative_to(Path(root).resolve()):
+        _err(errors, "process_root_state_conflict", subject, "actual state is outside EDUFLOW_ROOT")
     if actual["sha256"] != target["sha256"]:
         _err(errors, "process_config_generation_mismatch", subject, "actual config hash differs")
     runtime = _version(deps, executable)
+    cli_version = (_package_version(deps, executable, "hermes-agent")
+                   if cli_executable and Path(cli_executable).name == "hermes" else runtime)
     if not entry: _err(errors, "process_entry_unknown", subject, "strict EduFlow entry not found")
-    if not runtime: _err(errors, "cli_runtime_unknown", subject, "executable version unavailable")
+    if not runtime or not cli_version: _err(errors, "cli_runtime_unknown", subject, "executable version unavailable")
     return {
-        "pid": pid, "executable": executable, "checkout": checkout, "commit_sha": revision,
+        "pid": pid, "executable": executable, "process_cwd": cwd,
+        "checkout": checkout, "checkout_source": checkout_source, "commit_sha": revision,
         "ancestry": [item["pid"] for item in chain],
         "python_runtime": runtime if executable and "python" in executable else "not-applicable",
-        "cli_runtime": f"{executable} {runtime}" if runtime else None,
+        "cli_runtime": f"{cli_executable} {cli_version}" if cli_executable and cli_version else None,
         "config_path": actual["path"], "config_sha256": actual["sha256"],
         "config_generation": actual["generation"],
         "state_dir": str(Path(state_dir).resolve()) if state_dir else None,
@@ -255,9 +274,6 @@ def audit(deps):
                              "checkout": proof["checkout"]})
     panes, agents = [], []
     for pane in pane_rows:
-        if not Path(pane["cwd"]).is_absolute() or str(Path(pane["cwd"]).resolve()) != target["checkout"]:
-            _err(errors, "pane_cwd_drift", f'{pane["session"]}:{pane["window"]}.{pane["index"]}',
-                 "tmux pane cwd differs from target checkout")
         process = _descendant(deps, processes, pane["pid"], "agent")
         subject = f'{pane["session"]}:{pane["window"]}.{pane["index"]}'
         if not process: _err(errors, "agent_process_missing", subject, "no strict agent child found")
@@ -266,6 +282,10 @@ def audit(deps):
         if not expected_cli: _err(errors, "agent_runtime_mapping_missing", subject, "configured CLI is unknown")
         elif _cli_name(expected_cli) != _cli_name(actual_cli): _err(errors, "agent_entry_drift", subject, "actual CLI differs from configured runtime")
         proof = _provenance(deps, process, processes, target, errors, subject, "tmux-agent")
+        if (proof["checkout_source"] != "EDUFLOW_ROOT"
+                and (not Path(pane["cwd"]).is_absolute()
+                     or str(Path(pane["cwd"]).resolve()) != target["checkout"])):
+            _err(errors, "pane_cwd_drift", subject, "pane cwd differs without proven EDUFLOW_ROOT")
         if process and proof["checkout"] != target["checkout"]:
             suspects.append({"kind": "multi_checkout", "pid": process["pid"],
                              "checkout": proof["checkout"]})

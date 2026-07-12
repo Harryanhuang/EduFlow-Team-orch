@@ -218,3 +218,30 @@ CANONICAL RAW VALUE LIVE JSON AUDIT
 Observed at: 2026-07-12T12:00:39+08:00
 Observed: valid production canonical strings remain intact; ok=false remains limited to stale daemon and Hermes findings, with empty suspect_processes.
 Exit code: 1 (expected fail-closed result; G-1 remains BLOCKED)
+
+LIVE SHAPE RECONCILIATION RED
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_audit_production_topology.py -q
+Observed: 5 failed, 61 passed against commit fd182805.
+Key failures: capital-P Python daemon entry rejected; strict Python-plus-absolute-Hermes wrapper unresolved; EDUFLOW_ROOT did not override duty cwd or record checkout_source/process_cwd; unrelated root was not detected.
+Exit code: 1
+
+LIVE SHAPE RECONCILIATION GREEN — focused
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_audit_production_topology.py -q
+Observed: 66 passed. Capital-P Python is recognized only when it is the kernel executable; Hermes requires actual Python plus an adjacent absolute hermes script and package metadata version; EDUFLOW_ROOT precedence and conflict/fallback matrices pass.
+Exit code: 0
+
+LIVE SHAPE RECONCILIATION GREEN — related runtime regression
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_audit_production_topology.py tests/unit/test_commands_health.py tests/unit/test_commands_runtime_cli.py tests/unit/test_commands_watchdog.py tests/unit/test_runtime_tmux.py tests/unit/test_runtime_watchdog.py -q
+Observed: 218 passed
+Exit code: 0
+
+LIVE SHAPE RECONCILIATION static verification
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m py_compile scripts/audit_production_topology.py tests/unit/test_audit_production_topology.py
+Exit code: 0
+Command: git diff --check
+Exit code: 0
+
+LIVE SHAPE PRODUCTION JSON AUDIT
+Observed at: 2026-07-12T12:28:42+08:00
+Observed: router PID 72529, task-publish PID 72530, and watchdog PID 72531 fully correlate as live capital-P Python 3.14.3 daemons. Hermes PID 74424 proves EDUFLOW_ROOT/config/state, Python 3.11.15, hermes-agent package 0.16.0, and duty cwd without pane drift. Global scan still reports legacy PID 78495 and scoped orphan Hermes PID 98906, so ok=false remains honest.
+Exit code: 1 (expected fail-closed result; G-1 remains BLOCKED on the two global findings)
