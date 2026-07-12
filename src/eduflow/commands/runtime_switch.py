@@ -54,9 +54,8 @@ def _manual_trigger(takeover_state: dict, actor: str | None) -> str:
         )
     if takeover_state.get("state") == "inactive":
         return "manual_cli"
-    # record_switch_event currently persists trigger but intentionally ignores
-    # unknown extension fields, so bind the authorized identity into the
-    # persisted trigger rather than pretending an ``actor`` kwarg is stored.
+    # Keep trigger as the action category; record_switch_event persists the
+    # authorized identity separately in its structured ``actor`` field.
     return "manual_cli_takeover_override"
 
 
