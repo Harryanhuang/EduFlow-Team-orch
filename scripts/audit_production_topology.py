@@ -5,10 +5,8 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Callable, Mapping
-
-Run = Callable[..., subprocess.CompletedProcess]
-DAEMONS = ("router", "task-publish", "watchdog")
-FIELDS = "pid checkout commit_sha python_runtime cli_runtime config_path config_sha256 config_generation state_dir lark_profile tmux_session daemon_profile startup_entry".split()
+Run = Callable[..., subprocess.CompletedProcess]; DAEMONS = ("router", "task-publish", "watchdog")
+FIELDS = "pid executable checkout commit_sha python_runtime cli_runtime config_path config_sha256 config_generation state_dir lark_profile tmux_session daemon_profile startup_entry".split()
 SECRET = re.compile(r"(?i)(token|api[-_]?key|secret|password|authorization|credential)")
 @dataclass(frozen=True)
 class AuditDependencies:
@@ -21,8 +19,7 @@ def _run(deps, argv, cwd=None):
                         text=True, timeout=5)
     except (FileNotFoundError, OSError, subprocess.TimeoutExpired) as exc:
         return subprocess.CompletedProcess(argv, 127, "", type(exc).__name__)
-def _err(errors, code, subject, detail):
-    errors.append({"code": code, "subject": subject, "detail": detail})
+def _err(errors, code, subject, detail): errors.append({"code": code, "subject": subject, "detail": detail})
 def _read(path):
     try:
         return path.read_text(encoding="utf-8")
@@ -36,9 +33,6 @@ def _config(path, errors=None, subject="config"):
         return {"path": str(path), "sha256": None, "generation": None,
                 "lark_profile": None, "tmux_session": None, "agent_clis": {}}
     digest = hashlib.sha256(raw.encode()).hexdigest()
-    def value(name):
-        match = re.search(rf'^\s*{name}\s*=\s*["\']([^"\']+)["\']', raw, re.M)
-        return match.group(1) if match else None
     try:
         data = tomllib.loads(raw)
     except tomllib.TOMLDecodeError:
@@ -49,7 +43,8 @@ def _config(path, errors=None, subject="config"):
     agent_clis = {name: registry.get(spec.get("runtime"), {}).get("cli")
                   for name, spec in agents.items() if isinstance(spec, dict)}
     return {"path": str(path), "sha256": digest, "generation": digest[:16],
-            "lark_profile": value("lark_profile"), "tmux_session": value("session"),
+            "lark_profile": data.get("lark_profile"),
+            "tmux_session": data.get("team", {}).get("session"),
             "agent_clis": agent_clis}
 def _git(deps, cwd, errors, subject):
     if not cwd:
@@ -80,18 +75,19 @@ def _tokens(command):
         return shlex.split(command)
     except ValueError:
         return command.split()
-def _entry(command):
+def _entry(command, executable):
     tokens = _tokens(command)
-    for index in range(len(tokens) - 2):
-        if tokens[index:index + 2] == ["-m", "eduflow.cli"]:
-            action = tokens[index + 2]
-            if action in (*DAEMONS, "agent"):
-                executable = Path(tokens[index - 1]).name if index else "python"
-                return f"{executable} -m eduflow.cli {action}", action, executable
-    for token in tokens:
-        executable = Path(token).name
-        if executable in {"claude", "codex", "codex-cli", "qoderclicn", "gemini", "qwen"}:
-            return executable, "agent", executable
+    if not executable or not Path(executable).is_absolute(): return None, None, None
+    name = Path(executable).name
+    index = next((i for i, token in enumerate(tokens)
+                  if token == executable or Path(token).name == name), None)
+    if index is None: return None, None, None
+    if "python" in name and tokens[index + 1:index + 3] == ["-m", "eduflow.cli"]:
+        action = tokens[index + 3] if index + 3 < len(tokens) else None
+        if action in (*DAEMONS, "agent"):
+            return f"{name} -m eduflow.cli {action}", action, executable
+    if name in {"claude", "codex", "codex-cli", "qoderclicn", "gemini", "qwen"}:
+        return name, "agent", executable
     return None, None, None
 def _setting(command, names):
     for env, option in names:
@@ -118,17 +114,20 @@ def _ancestry(processes, pid):
         chain.append(processes[pid])
         pid = processes[pid]["ppid"]
     return chain
-def _descendant(processes, root, action):
+def _executable(deps, pid):
+    result = _run(deps, ["ps", "-p", str(pid), "-o", "comm="])
+    value = (result.stdout or "").strip()
+    return value if result.returncode == 0 and Path(value).is_absolute() else None
+def _descendant(deps, processes, root, action):
     queue = [root]
     while queue:
         pid = queue.pop(0)
         row = processes.get(pid)
-        if row and _entry(row["command"])[1] == action:
+        if row and _entry(row["command"], _executable(deps, pid))[1] == action:
             return row
         queue.extend(sorted(p["pid"] for p in processes.values() if p["ppid"] == pid))
     return None
-def _cli_name(name):
-    return {"claude-code": "claude", "codex-cli": "codex"}.get(name, name)
+def _cli_name(name): return {"claude-code": "claude", "codex-cli": "codex"}.get(name, name)
 def _cwd(deps, pid):
     result = _run(deps, ["lsof", "-a", "-p", str(pid), "-d", "cwd", "-Fn"])
     for line in (result.stdout or "").splitlines():
@@ -139,7 +138,8 @@ def _provenance(deps, process, processes, target, errors, subject, profile):
     if not process:
         return {field: None for field in FIELDS}
     pid, command = process["pid"], process["command"]
-    entry, action, executable = _entry(command)
+    executable = _executable(deps, pid)
+    entry, action, _ = _entry(command, executable)
     chain = _ancestry(processes, pid)
     env_result = _run(deps, ["ps", "eww", "-p", str(pid), "-o", "command="])
     combined = (env_result.stdout or "") + " " + " ".join(item["command"] for item in chain)
@@ -163,7 +163,7 @@ def _provenance(deps, process, processes, target, errors, subject, profile):
     if not entry: _err(errors, "process_entry_unknown", subject, "strict EduFlow entry not found")
     if not runtime: _err(errors, "cli_runtime_unknown", subject, "executable version unavailable")
     return {
-        "pid": pid, "checkout": checkout, "commit_sha": revision,
+        "pid": pid, "executable": executable, "checkout": checkout, "commit_sha": revision,
         "ancestry": [item["pid"] for item in chain],
         "python_runtime": runtime if executable and "python" in executable else "not-applicable",
         "cli_runtime": f"{executable} {runtime}" if runtime else None,
@@ -224,7 +224,7 @@ def audit(deps):
             _err(errors, "daemon_pid_corrupt" if raw else "daemon_pid_missing", name, "invalid PID file")
         process = processes.get(pid) if pid else None
         if pid and not process: _err(errors, "daemon_pid_not_live", name, "PID absent from ps")
-        if process and _entry(process["command"])[1] != name: _err(errors, "daemon_entry_drift", name, "PID has a different strict entry")
+        if process and _entry(process["command"], _executable(deps, pid))[1] != name: _err(errors, "daemon_entry_drift", name, "PID has a different strict entry")
         if pid: expected.add(pid)
         profile = "self-supervised" if name == "watchdog" else "watchdog-supervised"
         proof = _provenance(deps, process, processes, target, errors, name, profile)
@@ -238,11 +238,11 @@ def audit(deps):
         if not Path(pane["cwd"]).is_absolute() or str(Path(pane["cwd"]).resolve()) != target["checkout"]:
             _err(errors, "pane_cwd_drift", f'{pane["session"]}:{pane["window"]}.{pane["index"]}',
                  "tmux pane cwd differs from target checkout")
-        process = _descendant(processes, pane["pid"], "agent")
+        process = _descendant(deps, processes, pane["pid"], "agent")
         subject = f'{pane["session"]}:{pane["window"]}.{pane["index"]}'
         if not process: _err(errors, "agent_process_missing", subject, "no strict agent child found")
         expected_cli = target["agent_clis"].get(pane["window"])
-        actual_cli = _entry(process["command"])[2] if process else None
+        actual_cli = Path(_entry(process["command"], _executable(deps, process["pid"]))[2]).name if process else None
         if not expected_cli: _err(errors, "agent_runtime_mapping_missing", subject, "configured CLI is unknown")
         elif _cli_name(expected_cli) != _cli_name(actual_cli): _err(errors, "agent_entry_drift", subject, "actual CLI differs from configured runtime")
         proof = _provenance(deps, process, processes, target, errors, subject, "tmux-agent")
@@ -252,11 +252,15 @@ def audit(deps):
         panes.append({"session": pane["session"], "window": pane["window"],
                       "index": pane["index"], "tmux_pane_pid": pane["pid"], **proof})
         agents.append({"agent": pane["window"], "pane": subject, **proof})
+    associated_agents = {row["pid"] for row in agents if row["pid"]}
     for process in processes.values():
-        entry, action, _ = _entry(process["command"])
+        entry, action, _ = _entry(process["command"], _executable(deps, process["pid"]))
         if action in DAEMONS and process["pid"] not in expected:
             suspects.append({"kind": "duplicate_daemon", "pid": process["pid"], "entry": entry})
             _err(errors, "duplicate_daemon", str(process["pid"]), "unexpected daemon process")
+        elif action == "agent" and process["pid"] not in associated_agents:
+            suspects.append({"kind": "orphan_agent", "pid": process["pid"], "entry": entry})
+            _err(errors, "orphan_agent", str(process["pid"]), "agent is not linked to configured pane")
         elif (Path(_tokens(process["command"])[0]).name != "tmux" and
               re.search(r"(?:eduflow\.cli|(?:^|[/\s])eduflow(?:team)?\s)",
                         process["command"].lower()) and not action):
@@ -274,8 +278,7 @@ def audit(deps):
         "errors": errors, "redactions": {"applied": redaction_count > 0, "count": redaction_count,
                                            "fields": ["command_arguments", "config_values", "environment_values"]},
     }
-def _default_run(argv, **kwargs):
-    return subprocess.run(argv, **kwargs)
+def _default_run(argv, **kwargs): return subprocess.run(argv, **kwargs)
 def _default_dependencies(args):
     checkout = Path(args.checkout).expanduser().resolve()
     config = args.config or os.environ.get("EDUFLOW_CONFIG_FILE") or checkout / "eduflow.toml"
@@ -289,9 +292,9 @@ def main(argv=None, *, deps=None):
         parser = argparse.ArgumentParser(description=__doc__)
         parser.add_argument("--checkout", default=str(Path(__file__).resolve().parents[1]))
         for flag in ("--config", "--state-dir", "--expected-config-sha256"): parser.add_argument(flag)
+        parser.add_argument("--json", action="store_true")
         deps = _default_dependencies(parser.parse_args(argv))
-    report = audit(deps)
-    print(json.dumps(report, ensure_ascii=False, indent=2))
+    report = audit(deps); print(json.dumps(report, ensure_ascii=False, indent=2))
     return 0 if report["ok"] else 1
 if __name__ == "__main__":
     raise SystemExit(main())

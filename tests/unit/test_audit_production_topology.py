@@ -51,6 +51,7 @@ def _fixture(tmp_path: Path):
         "git rev-parse --show-toplevel": str(checkout),
         "git rev-parse HEAD": "a" * 40,
         "python3 --version": "Python 3.14.3",
+        "/tmp/fake/python3 --version": "Python 3.14.3",
         "tmux list-panes -a": pane_rows,
         "ps -axo pid=,ppid=,command=": "\n".join(
             [
@@ -75,7 +76,8 @@ def _fixture(tmp_path: Path):
             value = commands.get(f"process-cwd:{pid}", str(checkout))
             return _completed(argv, f"p{pid}\nfcwd\nn{value}\n")
         if len(argv) >= 5 and argv[:2] == ["ps", "-p"] and "comm=" in argv:
-            return _completed(argv, "python3\n")
+            pid = argv[2]
+            return _completed(argv, commands.get(f"process-exe:{pid}", "/tmp/fake/python3") + "\n")
         if len(argv) >= 5 and argv[:2] == ["ps", "eww"]:
             pid = argv[argv.index("-p") + 1]
             return _completed(argv, commands.get(f"process-env:{pid}", "") + "\n")
@@ -117,7 +119,8 @@ def test_audit_emits_deterministic_complete_schema_for_correlated_runtime(tmp_pa
     assert report["state"]["path"] == str(state.resolve())
     assert {d["name"] for d in report["daemons"]} == {"router", "task-publish", "watchdog"}
     assert all(d["pid"] and d["checkout"] == str(checkout.resolve()) for d in report["daemons"])
-    assert all(d["commit_sha"] == "a" * 40 and d["python_runtime"] for d in report["daemons"])
+    assert all(d["commit_sha"] == "a" * 40 and d["python_runtime"]
+               and Path(d["executable"]).is_absolute() for d in report["daemons"])
     assert all(d["config_path"] == str(config.resolve()) for d in report["daemons"])
     assert all(d["config_sha256"] == report["config"]["sha256"] for d in report["daemons"])
     assert all(d["lark_profile"] == "production-bot" for d in report["daemons"])
@@ -243,7 +246,7 @@ def test_records_each_pane_and_agent_from_actual_child_process_provenance(tmp_pa
     assert pane["pid"] == 250
     assert pane["tmux_pane_pid"] == 200
     required = {
-        "pid", "checkout", "commit_sha", "python_runtime", "cli_runtime",
+        "pid", "executable", "checkout", "commit_sha", "python_runtime", "cli_runtime",
         "config_path", "config_sha256", "config_generation", "state_dir",
         "lark_profile", "tmux_session", "daemon_profile", "startup_entry",
     }
@@ -347,3 +350,84 @@ def test_legacy_detection_is_entry_based_not_checkout_path_substring(tmp_path):
     assert 777 in legacy_pids
     assert 999 not in legacy_pids
     assert 998 not in legacy_pids
+
+
+@pytest.mark.parametrize(
+    ("command", "actual_executable"),
+    [
+        ("/bin/zsh -lc claude --dangerously-skip-permissions", "/bin/zsh"),
+        ("/usr/bin/python3 tool.py claude --token hidden", "/usr/bin/python3"),
+    ],
+)
+def test_entry_rejects_wrapper_or_argument_token_false_positives(command, actual_executable):
+    module = _load_module()
+
+    entry, action, executable = module._entry(command, actual_executable)
+
+    assert (entry, action, executable) == (None, None, None)
+
+
+def test_process_version_uses_actual_absolute_executable_not_path_basename(tmp_path):
+    module, deps, commands, config, _checkout, state = _fixture(tmp_path)
+    commands["ps -axo pid=,ppid=,command="] = commands["ps -axo pid=,ppid=,command="].replace(
+        f"EDUFLOW_STATE_DIR={state} EDUFLOW_CONFIG_FILE={config} python3 -m eduflow.cli agent manager",
+        f"EDUFLOW_STATE_DIR={state} EDUFLOW_CONFIG_FILE={config} /tmp/fake/claude --model safe",
+    )
+    commands["process-exe:200"] = "/tmp/fake/claude"
+    commands["/tmp/fake/claude --version"] = "Trusted CLI 9.0"
+    commands["claude --version"] = "PATH impostor 0.1"
+
+    report = module.audit(deps)
+    manager = next(row for row in report["agent_processes"] if row["agent"] == "manager")
+
+    assert manager["executable"] == "/tmp/fake/claude"
+    assert manager["cli_runtime"] == "/tmp/fake/claude Trusted CLI 9.0"
+    assert ["/tmp/fake/claude", "--version"] in commands["_calls"]
+    assert ["claude", "--version"] not in commands["_calls"]
+
+
+@pytest.mark.parametrize(
+    ("row", "pid"),
+    [
+        ("777 1 /tmp/fake/python3 -m eduflow.cli agent rogue", 777),
+        ("778 1 /tmp/fake/claude --model orphan", 778),
+    ],
+)
+def test_global_scan_rejects_unassociated_agent_processes(tmp_path, row, pid):
+    module, deps, commands, *_ = _fixture(tmp_path)
+    commands["ps -axo pid=,ppid=,command="] += "\n" + row
+    commands[f"process-exe:{pid}"] = row.split()[2]
+
+    report = module.audit(deps)
+
+    assert report["ok"] is False
+    assert any(item["kind"] == "orphan_agent" and item["pid"] == pid
+               for item in report["suspect_processes"])
+    assert any(error["code"] == "orphan_agent" and error["subject"] == str(pid)
+               for error in report["errors"])
+
+
+def test_config_reads_only_canonical_toml_paths_not_same_named_decoys(tmp_path):
+    module, deps, _commands, config, *_ = _fixture(tmp_path)
+    config.write_text(
+        '[decoy]\nlark_profile = "wrong-profile"\nsession = "wrong-session"\n'
+        '[team]\nsession = "eduflow-team"\n',
+        encoding="utf-8",
+    )
+
+    report = module.audit(deps)
+
+    assert report["ok"] is False
+    assert "lark_profile_missing" in {error["code"] for error in report["errors"]}
+    assert "tmux_session_missing" not in {error["code"] for error in report["errors"]}
+
+
+def test_json_flag_is_accepted_and_preserves_nonzero_cli_result(tmp_path, monkeypatch, capsys):
+    module, deps, commands, *_ = _fixture(tmp_path)
+    commands["tmux list-panes -a"] = ""
+    monkeypatch.setattr(module, "_default_dependencies", lambda _args: deps)
+
+    exit_code = module.main(["--json"])
+
+    assert exit_code == 1
+    assert json.loads(capsys.readouterr().out)["ok"] is False

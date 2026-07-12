@@ -2,7 +2,7 @@
 
 ## Verdict
 
-**FAIL / BLOCKED** as of `2026-07-12T11:20:35+08:00`.
+**FAIL / BLOCKED** as of `2026-07-12T11:32:25+08:00`.
 
 This document is generated from a read-only correlation of git, the deployed
 TOML file, PID files, `ps`, and tmux. It is not a declaration of intended
@@ -47,9 +47,9 @@ G-1 review record, not PASS assertions.
 
 | Pane | tmux PID → CLI PID | Actual cwd / Git | Actual CLI | Correlation |
 |---|---:|---|---|---|
-| `EduFlowTeam:manager.0` | `92675 → 92686` | production checkout / `bde14c5c…` | `claude 2.1.181` | **PROVEN**, ancestry `92686 → 92675 → 92216 → 1` |
-| `EduFlowTeam:worker_course.0` | `92872 → 92883` | production checkout / `bde14c5c…` | `claude 2.1.181` | **PROVEN**, ancestry `92883 → 92872 → 92216 → 1` |
-| `EduFlowTeam:worker_review.0` | `5260 → 5260` | production checkout / `bde14c5c…` | `claude 2.1.181` | **PROVEN**, ancestry `5260 → 92216 → 1` |
+| `EduFlowTeam:manager.0` | `92675 → 92686` | production checkout / `bde14c5c…` | `/Users/huanganan/.local/bin/claude 2.1.207` | **PROVEN**, ancestry `92686 → 92675 → 92216 → 1` |
+| `EduFlowTeam:worker_course.0` | `92872 → 92883` | production checkout / `bde14c5c…` | `/Users/huanganan/.local/bin/claude 2.1.207` | **PROVEN**, ancestry `92883 → 92872 → 92216 → 1` |
+| `EduFlowTeam:worker_review.0` | `5260 → 5260` | production checkout / `bde14c5c…` | `/Users/huanganan/.local/bin/claude 2.1.207` | **PROVEN**, ancestry `5260 → 92216 → 1` |
 
 For all three, the process environment independently resolved the config and
 state paths shown above; the config content then proved generation
@@ -95,6 +95,11 @@ an explicit `pane_cwd_drift` failure.
 2. `daemon_pid_not_live`: task-publish PID `30779`.
 3. `daemon_pid_not_live`: watchdog PID `30780`.
 4. `pane_cwd_drift` and configured-entry mismatch: `EduFlowTeam:Hermes.0`.
+5. Global strict-entry scan found unassociated CLI processes at audit time:
+   Codex PID `95689` and Claude PID `51870`. They are reported as
+   `orphan_agent`; ownership must be proven or the processes removed before
+   topology acceptance. The audit does not assume they belong to a configured
+   pane merely because their CLI name is known.
 
 No missing fact is inferred. Unknown runtime, checkout, revision, command,
 config generation, or process correlation makes the machine-readable audit
