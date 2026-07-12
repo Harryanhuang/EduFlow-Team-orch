@@ -575,3 +575,55 @@ def test_config_string_properties_fail_closed_for_numbers_lists_and_empty_values
     assert report["ok"] is False
     assert "config_schema_invalid" in {error["code"] for error in report["errors"]}
     assert json.loads(json.dumps(report))["ok"] is False
+
+
+@pytest.mark.parametrize(
+    ("field", "invalid_value"),
+    [
+        ("lark_profile", '{ secret = "nested-profile-secret" }'),
+        ("lark_profile", '["list-profile-secret"]'),
+        ("lark_profile", "1979-05-27T07:32:00Z"),
+        ("session", '{ secret = "nested-session-secret" }'),
+        ("session", '["list-session-secret"]'),
+        ("session", "1979-05-27T07:32:00Z"),
+    ],
+)
+def test_invalid_canonical_values_are_normalized_without_raw_or_secret_output(
+    tmp_path, field, invalid_value
+):
+    module, deps, _commands, config, *_ = _fixture(tmp_path)
+    values = {"lark_profile": '"production-bot"', "session": '"eduflow-team"'}
+    values[field] = invalid_value
+    config.write_text(
+        f'lark_profile = {values["lark_profile"]}\n'
+        '[runtime_registry.agent_primary]\ncli = "python3"\n'
+        f'[team]\nsession = {values["session"]}\n'
+        '[team.agents.manager]\nruntime = "agent_primary"\n',
+        encoding="utf-8",
+    )
+
+    report = module.audit(deps)
+    rendered = json.dumps(report, sort_keys=True)
+
+    assert report["ok"] is False
+    assert "config_schema_invalid" in {error["code"] for error in report["errors"]}
+    assert "secret" not in rendered
+    for row in [*report["daemons"], *report["panes"], *report["agent_processes"]]:
+        assert row["lark_profile" if field == "lark_profile" else "tmux_session"] is None
+
+
+def test_json_cli_serializes_invalid_canonical_values_without_secret(tmp_path, monkeypatch, capsys):
+    module, deps, _commands, config, *_ = _fixture(tmp_path)
+    config.write_text(
+        'lark_profile = ["cli-secret"]\n'
+        '[team]\nsession = 1979-05-27T07:32:00Z\n',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(module, "_default_dependencies", lambda _args: deps)
+
+    exit_code = module.main(["--json"])
+    rendered = capsys.readouterr().out
+
+    assert exit_code == 1
+    assert json.loads(rendered)["ok"] is False
+    assert "cli-secret" not in rendered

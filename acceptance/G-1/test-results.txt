@@ -191,3 +191,30 @@ CONFIG PROPERTY LIVE JSON AUDIT
 Observed at: 2026-07-12T11:52:08+08:00
 Observed: production config passes the strengthened property schema; live ok=false remains limited to stale daemon and Hermes findings, with no config_schema_invalid regression.
 Exit code: 1 (expected fail-closed result; G-1 remains BLOCKED)
+
+CANONICAL RAW VALUE RED
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_audit_production_topology.py -q
+Observed: 6 failed, 54 passed against commit 44929911.
+Key failures: inline-table and list profile/session values leaked nested secret strings into daemon/pane/agent records; TOML datetime values propagated as non-JSON-serializable datetime objects.
+Exit code: 1
+
+CANONICAL RAW VALUE GREEN — focused and JSON CLI
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_audit_production_topology.py -q
+Observed: 61 passed. Inline-table, list, and datetime canonical values normalize to None; nested secret strings never enter report JSON; main --json remains parseable and nonzero.
+Exit code: 0
+
+CANONICAL RAW VALUE GREEN — related runtime regression
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m pytest tests/unit/test_audit_production_topology.py tests/unit/test_commands_health.py tests/unit/test_commands_runtime_cli.py tests/unit/test_commands_watchdog.py tests/unit/test_runtime_tmux.py tests/unit/test_runtime_watchdog.py -q
+Observed: 213 passed
+Exit code: 0
+
+CANONICAL RAW VALUE static verification
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -m py_compile scripts/audit_production_topology.py tests/unit/test_audit_production_topology.py
+Exit code: 0
+Command: git diff --check
+Exit code: 0
+
+CANONICAL RAW VALUE LIVE JSON AUDIT
+Observed at: 2026-07-12T12:00:39+08:00
+Observed: valid production canonical strings remain intact; ok=false remains limited to stale daemon and Hermes findings, with empty suspect_processes.
+Exit code: 1 (expected fail-closed result; G-1 remains BLOCKED)

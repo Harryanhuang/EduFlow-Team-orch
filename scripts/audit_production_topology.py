@@ -44,7 +44,8 @@ def _config(path, errors=None, subject="config"):
     if not isinstance(registry, dict): registry, invalid = {}, True
     agents = team.get("agents", {})
     if not isinstance(agents, dict): agents, invalid = {}, True
-    if not text(data.get("lark_profile")) or not text(team.get("session")): invalid = True
+    profile, session = data.get("lark_profile"), team.get("session")
+    if not text(profile) or not text(session): invalid = True
     if any(not text(name) or not isinstance(value, dict) or not text(value.get("cli"))
            for name, value in registry.items()): invalid = True
     if any(not text(name) or not isinstance(value, dict) for name, value in agents.items()): invalid = True
@@ -58,8 +59,8 @@ def _config(path, errors=None, subject="config"):
         agent_clis[name] = node["cli"]
     if invalid and errors is not None: _err(errors, "config_schema_invalid", subject, "config properties have invalid types")
     return {"path": str(path), "sha256": digest, "generation": digest[:16],
-            "lark_profile": data.get("lark_profile"),
-            "tmux_session": team.get("session"),
+            "lark_profile": profile.strip() if text(profile) else None,
+            "tmux_session": session.strip() if text(session) else None,
             "agent_clis": agent_clis}
 def _git(deps, cwd, errors, subject):
     if not cwd:
