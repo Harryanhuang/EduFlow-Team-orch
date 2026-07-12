@@ -401,3 +401,9 @@ Exit code: 0
 
 Command: git diff --check
 Exit code: 0
+Task 4 state/config inventory TDD evidence (2026-07-12)
+RED: `pytest -q tests/unit/test_state_config_inventory.py` failed because `docs/operations/state-and-config-inventory.md` was absent (FileNotFoundError at DOC.read_text); expected missing-contract failure before documentation implementation.
+GREEN: `pytest -q tests/unit/test_state_config_inventory.py` -> 3 passed; 17/17 required inventory rows covered, each enforcing all 10 operational columns.
+REGRESSION: `pytest -q tests/unit/test_memory*.py tests/unit/test_runtime_paths*.py tests/unit/test_local_facts.py tests/unit/test_store_tasks*.py tests/unit/test_commands_task.py tests/unit/test_commands_asset.py tests/unit/test_state_config_inventory.py` -> 892 tests collected, exit 0, 100% passed.
+PATH/PERMISSION: production resolver check with `PYTHONPATH=src` and wrapper `EDUFLOW_STATE_DIR` proved `.eduflow-team-state`, `eduflow_memory.db`, runtime status, scheduler, and `.env` paths; state directory mode was 0700. Initial invocation without `PYTHONPATH=src` failed with `ModuleNotFoundError`; corrected invocation passed.
+HYGIENE: `git diff --check` -> exit 0; added-content secret-value pattern scan -> 0 hits.
