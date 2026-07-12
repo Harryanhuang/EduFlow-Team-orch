@@ -3,9 +3,21 @@
 All writes are explicit and role-checked.  Natural language cannot mutate
 store directly; callers must invoke these functions or the `task schedule`
 CLI.  D lanes never create user-visible T tasks.
+
+P7 also routes decision-grade summaries through ``memory_bridge`` at
+exactly four moments:
+  * confirm_draft_rule       -> rule_summary
+  * re_dispatch (success)    -> workflow_start
+  * skip_occurrence          -> workflow_stop
+  * fail_pause_occurrence    -> major_failure + workflow_stop
+Routine events (tick / reminder / wait) NEVER write to memory.
+Memory subsystem failure is fully absorbed by memory_bridge — the
+return-value contract is "always succeed or return None", so the
+scheduler keeps running.
 """
 from __future__ import annotations
 
+from eduflow.scheduling import memory_bridge
 from eduflow.store import scheduled_tasks
 from eduflow.util import now_ms
 
@@ -94,9 +106,28 @@ def confirm_draft_rule(
         "confirmed_by": actor,
         "confirmed_at": now_ms(),
     }
-    return scheduled_tasks._transition_rule_status(
+    updated = scheduled_tasks._transition_rule_status(
         rule_id, version, "active", extra_context=extra
     )
+    # P7: decision-grade rule summary.  Memory outage is absorbed by
+    # memory_bridge and must not affect the return value.
+    summary_parts = [
+        f"D rule {rule_id} confirmed: target={updated.get('target','')!r}",
+        f"frequency={updated.get('frequency','')}",
+        f"timezone={updated.get('timezone','')}",
+        f"artifact={updated.get('artifact','')!r}",
+        f"capacity={updated.get('capacity',1)}",
+    ]
+    memory_bridge.record_rule_summary(
+        rule_id,
+        content="; ".join(summary_parts),
+        metadata={
+            "confirmed_by": actor,
+            "status": "active",
+            "version": updated.get("version", 1),
+        },
+    )
+    return updated
 
 
 def pause_rule(
@@ -263,7 +294,17 @@ def skip_occurrence(
         "skipped_reason": reason,
         "skipped_at": now_ms(),
     }
-    return scheduled_tasks.update_occurrence(occurrence_key, changes, expected_version=version)
+    updated = scheduled_tasks.update_occurrence(occurrence_key, changes, expected_version=version)
+    # P7: skip is a soft workflow stop — not a major failure.
+    memory_bridge.record_workflow_stop(
+        occ["rule_id"],
+        occurrence_key,
+        content=(
+            f"D occurrence {occurrence_key} skipped by {actor}: {reason}"
+        ),
+        metadata={"reason": reason, "actor": actor, "kind": "skip"},
+    )
+    return updated
 
 
 def re_dispatch(
@@ -298,6 +339,16 @@ def re_dispatch(
         updated = scheduled_tasks.update_occurrence(
             occurrence_key, changes, expected_version=version
         )
+        # P7: cancel-before-dispatch is also a workflow stop.
+        memory_bridge.record_workflow_stop(
+            rule["id"],
+            occurrence_key,
+            content=(
+                f"D occurrence {occurrence_key} cancelled before dispatch: "
+                f"rule_status={rule.get('status')}"
+            ),
+            metadata={"reason": "rule_cancelled_or_paused", "actor": actor},
+        )
         return {
             "dispatched": False,
             "reason": "rule_cancelled_or_paused",
@@ -305,6 +356,16 @@ def re_dispatch(
         }
 
     if rule.get("status") != "active":
+        # P7: non-active rule still ends the workflow attempt.
+        memory_bridge.record_workflow_stop(
+            rule["id"],
+            occurrence_key,
+            content=(
+                f"D occurrence {occurrence_key} not dispatched: "
+                f"rule_status={rule.get('status')}"
+            ),
+            metadata={"reason": f"rule_status_{rule.get('status')}"},
+        )
         return {
             "dispatched": False,
             "reason": f"rule_status_{rule.get('status')}",
@@ -319,6 +380,16 @@ def re_dispatch(
     }
     updated = scheduled_tasks.update_occurrence(
         occurrence_key, changes, expected_version=version
+    )
+    # P7: decision-grade workflow start summary.
+    memory_bridge.record_workflow_start(
+        rule["id"],
+        occurrence_key,
+        content=(
+            f"D occurrence {occurrence_key} dispatched by {actor} "
+            f"(rule {rule['id']} v{rule['version']})"
+        ),
+        metadata={"dispatched_by": actor},
     )
     return {
         "dispatched": True,
@@ -356,6 +427,22 @@ def fail_pause_occurrence(
         scheduled_tasks._transition_rule_status(
             rule["id"], rule["version"], "attention_required"
         )
+    # P7: major_failure + workflow_stop summaries.
+    failure_content = (
+        f"D occurrence {occurrence_key} marked failed by {actor}: {reason}"
+    )
+    memory_bridge.record_major_failure(
+        rule["id"],
+        occurrence_key,
+        content=failure_content,
+        metadata={"reason": reason, "failed_by": actor},
+    )
+    memory_bridge.record_workflow_stop(
+        rule["id"],
+        occurrence_key,
+        content=failure_content,
+        metadata={"reason": reason, "actor": actor, "kind": "failure"},
+    )
     return updated
 
 

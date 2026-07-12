@@ -514,3 +514,261 @@ def touch_heartbeat(*, lag_ms: int = 0, error: str = "") -> dict:
 
 def get_heartbeat() -> dict:
     return read_json(_heartbeat_file(), {"last_tick_at": 0, "lag_ms": 0, "error": ""})
+
+
+# ── retention / archival (P7) ────────────────────────────────────────
+#
+# The scheduler store is the single source of truth.  After a configured
+# retention window (default 90 days), full per-occurrence / lane /
+# notification audit is summarised and the raw rows are deleted.  Active
+# or unfinished references (awaiting_manager / running / confirmed /
+# blocked) MUST stay in the active store regardless of age.
+#
+# Retention is configurable and supports a dry-run mode that returns the
+# list of candidates without mutating state.
+
+
+# Default retention window in days.  Configurable per call.
+DEFAULT_RETENTION_DAYS = 90
+
+# Occurrence statuses that count as "active / unfinished" — these
+# rows MUST NEVER be archived regardless of age.
+ACTIVE_STATUSES = frozenset({
+    "awaiting_manager",
+    "running",
+    "confirmed",
+    "blocked",
+})
+
+
+def _retention_window_ms(retention_days: int | None) -> int:
+    days = retention_days if retention_days is not None else DEFAULT_RETENTION_DAYS
+    if days < 0:
+        raise ValueError(f"retention_days must be >= 0, got {days}")
+    return int(days) * 24 * 60 * 60 * 1000
+
+
+def retention_cutoff_ms(now_ms: int, retention_days: int | None = None) -> int:
+    """Compute the cutoff timestamp (epoch ms) for retention.
+
+    `retention_days=None` uses the 90-day default.  Rows with
+    created_at < cutoff are eligible for archival (subject to the
+    active-status guard).
+    """
+    return now_ms - _retention_window_ms(retention_days)
+
+
+def find_archival_candidates(*, cutoff_ms: int) -> dict:
+    """Return lists of occurrence / lane / notification rows older than
+    `cutoff_ms` that are eligible for archival.
+
+    Active / unfinished occurrences (awaiting_manager / running /
+    confirmed / blocked) are NEVER eligible — they stay in the active
+    store so the scheduler can keep tracking them.
+
+    Lanes are eligible only when their bound occurrence is also
+    eligible (so active lanes tied to an active occurrence remain
+    intact).  Notifications follow the same rule: a notification row
+    whose occurrence_key points at an active occurrence is kept.
+
+    Returns a dict with three keys: ``occurrences``, ``lanes``,
+    ``notifications`` — each a list of the underlying row dicts.
+    """
+    data = _load_occurrences()
+    all_occ = list(data.get("occurrences", []))
+    eligible_occ = []
+    active_keys: set[str] = set()
+    for occ in all_occ:
+        if occ.get("status") in ACTIVE_STATUSES:
+            active_keys.add(occ.get("id", ""))
+            continue
+        created_at = int(occ.get("created_at") or 0)
+        if created_at and created_at < cutoff_ms:
+            eligible_occ.append(dict(occ))
+
+    # Lanes: only those whose occurrence is eligible (not active).
+    lane_data = _load_lanes()
+    all_lanes = list(lane_data.get("lanes", []))
+    eligible_lane_occurrence_keys = {o["id"] for o in eligible_occ}
+    eligible_lanes = [
+        dict(l) for l in all_lanes
+        if l.get("occurrence_key") in eligible_lane_occurrence_keys
+    ]
+
+    # Notifications: eligible when older than cutoff AND bound occurrence
+    # is not active (i.e. it's in the eligible list).
+    all_notifications = read_jsonl(_notifications_file())
+    eligible_notifications = []
+    for row in all_notifications:
+        occ_key = row.get("occurrence_key") or ""
+        if occ_key in active_keys:
+            continue  # active occurrence — keep notification
+        ts = int(row.get("created_at") or 0)
+        if ts and ts < cutoff_ms:
+            eligible_notifications.append(dict(row))
+
+    return {
+        "occurrences": eligible_occ,
+        "lanes": eligible_lanes,
+        "notifications": eligible_notifications,
+    }
+
+
+def _summarise_occurrence(occ: dict) -> tuple[str, list[str]]:
+    """Build a compact summary string + evidence refs for an archived
+    occurrence.  Strips noisy detail (context, lane agent lists) while
+    keeping enough to reconstruct what happened.
+    """
+    rule_id = str(occ.get("rule_id") or "")
+    occ_key = str(occ.get("id") or "")
+    status = str(occ.get("status") or "")
+    scheduled_at = str(occ.get("scheduled_at_utc") or "")
+    version = occ.get("version", 1)
+    parts = [
+        f"D occurrence {occ_key}",
+        f"rule={rule_id}",
+        f"status={status}",
+        f"scheduled_at_utc={scheduled_at}",
+        f"version={version}",
+    ]
+    summary = "; ".join(parts)
+    evidence = [
+        f"scheduler:rule:{rule_id}",
+        f"occurrence:{occ_key}",
+        f"scheduled_at_utc:{scheduled_at}",
+        f"status:{status}",
+    ]
+    return summary, evidence
+
+
+def archive_old_records(
+    *,
+    cutoff_ms: int,
+    dry_run: bool = False,
+) -> dict:
+    """Archive old occurrence / lane / notification rows.
+
+    Behaviour:
+      * Eligible rows are listed by ``find_archival_candidates``.
+      * In ``dry_run=True`` mode, the store is NOT mutated; only the
+        candidate list is returned.
+      * In ``dry_run=False`` mode, eligible occurrence rows are
+        rewritten in place — the noisy ``context`` field is replaced
+        by a compact ``summary`` string, ``archived=True`` /
+        ``archived_at`` markers are added, and ``evidence_refs``
+        stores the keys needed to reconstruct from the active store.
+      * Eligible lane rows are removed (their summary lives inside the
+        archived occurrence row).
+      * Eligible notification rows are removed from the JSONL ledger.
+
+    Active / unfinished occurrences are NEVER touched.
+    """
+    candidates = find_archival_candidates(cutoff_ms=cutoff_ms)
+    result = {
+        "dry_run": bool(dry_run),
+        "cutoff_ms": int(cutoff_ms),
+        "candidates": candidates,
+        "archived_occurrences": [],
+        "removed_lanes": [],
+        "removed_notifications": 0,
+    }
+    if dry_run:
+        return result
+
+    archived_at = now_ms()
+    eligible_occ_ids = {o["id"] for o in candidates["occurrences"]}
+
+    # ── occurrence rows: rewrite in place, preserving id and
+    # ── rule_id so the active store can still reference them.
+    if eligible_occ_ids:
+        with _occurrences_lock():
+            data = _load_occurrences()
+            touched: list[dict] = []
+            for occ in data.get("occurrences", []):
+                if occ.get("id") not in eligible_occ_ids:
+                    continue
+                summary_text, evidence_refs = _summarise_occurrence(occ)
+                occ["summary"] = summary_text
+                occ["evidence_refs"] = evidence_refs
+                occ["archived"] = True
+                occ["archived_at"] = archived_at
+                # Strip noisy context but keep rule_id / id / status.
+                occ.pop("context", None)
+                occ.pop("confirmations", None)
+                occ.pop("dispatched_by", None)
+                occ.pop("skipped_by", None)
+                occ.pop("skipped_reason", None)
+                occ.pop("skipped_at", None)
+                occ.pop("cancelled_by", None)
+                occ.pop("cancelled_reason", None)
+                occ.pop("cancelled_at", None)
+                occ.pop("confirmed_by", None)
+                occ.pop("confirmed_at", None)
+                occ.pop("confirmed_rule_version", None)
+                occ.pop("dispatched_at", None)
+                occ.pop("dispatched_rule_version", None)
+                occ.pop("failed_by", None)
+                occ.pop("failed_at", None)
+                occ.pop("failure_reason", None)
+                touched.append(dict(occ))
+            if touched:
+                _save_occurrences(data)
+                result["archived_occurrences"] = touched
+
+    # ── lane rows: remove (info summarised inside archived occurrence).
+    if candidates["lanes"]:
+        eligible_lane_ids = {l["id"] for l in candidates["lanes"]}
+        with _lanes_lock():
+            data = _load_lanes()
+            before = len(data.get("lanes", []))
+            data["lanes"] = [
+                l for l in data.get("lanes", [])
+                if l.get("id") not in eligible_lane_ids
+            ]
+            after = len(data["lanes"])
+            if before != after:
+                _save_lanes(data)
+                result["removed_lanes"] = [
+                    l for l in candidates["lanes"] if l.get("id") in eligible_lane_ids
+                ]
+
+    # ── notification rows: rewrite the JSONL excluding eligible rows.
+    eligible_notif_keys = {
+        (
+            str(n.get("rule_id") or ""),
+            str(n.get("recipient") or ""),
+            str(n.get("kind") or ""),
+            str(n.get("created_at") or ""),
+        )
+        for n in candidates["notifications"]
+    }
+    if candidates["notifications"]:
+        path = _notifications_file()
+        if path.exists():
+            import json as _json
+            kept_lines: list[str] = []
+            removed = 0
+            for line in path.read_text(encoding="utf-8").splitlines():
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    obj = _json.loads(line)
+                except Exception:
+                    kept_lines.append(line)
+                    continue
+                key = (
+                    str(obj.get("rule_id") or ""),
+                    str(obj.get("recipient") or ""),
+                    str(obj.get("kind") or ""),
+                    str(obj.get("created_at") or ""),
+                )
+                if key in eligible_notif_keys:
+                    removed += 1
+                    continue
+                kept_lines.append(line)
+            if removed:
+                path.write_text("\n".join(kept_lines) + ("\n" if kept_lines else ""), encoding="utf-8")
+                result["removed_notifications"] = removed
+
+    return result

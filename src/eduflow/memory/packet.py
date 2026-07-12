@@ -474,3 +474,82 @@ def extract_task_id_from_message(message: str) -> str | None:
     """Try to extract a task ID (T-<n>) from a message string."""
     match = re.search(r'\b(T-\d+)\b', message)
     return match.group(1) if match else None
+
+
+# ── D scheduler summary rendering (P7) ──────────────────────────────
+#
+# D scheduler summaries live in a separate scope
+# (scheduler:rule:<D-id>) and use the decision-kind discriminator
+# inside metadata_json.  They are NEVER mixed into the T memory packet
+# produced by assemble_memory_packet — call render_d_scheduler_block
+# explicitly when surfacing D scheduler context.
+#
+# Routine records (kind=note under the same scope, or anything without
+# a summary_kind discriminator) are filtered out at render time so only
+# decision-grade summaries appear.
+
+
+def _render_d_scheduler_summary_line(item: dict) -> str:
+    """Render one D scheduler summary as a markdown bullet."""
+    summary_kind = ""
+    raw_meta = item.get("metadata_json") or "{}"
+    if isinstance(raw_meta, str):
+        try:
+            meta = _json.loads(raw_meta)
+        except Exception:
+            meta = {}
+    else:
+        meta = raw_meta or {}
+    summary_kind = str(meta.get("summary_kind") or "summary")
+    occ_key = str(meta.get("occurrence_key") or "")
+    content = (item.get("content") or "").strip()
+    importance = item.get("importance", 5)
+    suffix = f" occ={occ_key}" if occ_key else ""
+    return f"- [{summary_kind}] {content} (importance={importance}){suffix}"
+
+
+def render_d_scheduler_block(
+    rule_id: str | None = None,
+    *,
+    max_chars: int = 800,
+    limit: int = 10,
+    summary_kind: str | None = None,
+) -> str:
+    """Render D scheduler decision-grade summaries as a markdown block.
+
+    Filters: only items with metadata.summary_kind discriminator are
+    included (decision-grade).  Routine records (note / wait / tick)
+    under the same scope are excluded automatically.
+
+    Returns "" when no decision-grade records exist.  Never raises —
+    callers can safely concatenate the result into a memory packet.
+    """
+    try:
+        from eduflow.memory.capsules import get_d_scheduler_summaries
+    except ImportError:
+        return ""
+
+    try:
+        rows = get_d_scheduler_summaries(
+            rule_id=rule_id,
+            summary_kind=summary_kind,
+            limit=limit,
+        )
+    except Exception:
+        return ""
+
+    if not rows:
+        return ""
+
+    lines: list[str] = ["## D Scheduler Summaries"]
+    total = _char_len(lines[0]) + 1
+    for item in rows:
+        line = _render_d_scheduler_summary_line(item)
+        if total + _char_len(line) + 1 > max_chars:
+            break
+        lines.append(line)
+        total += _char_len(line) + 1
+
+    if len(lines) == 1:
+        return ""  # header only, no rows fit
+    return "\n".join(lines)
