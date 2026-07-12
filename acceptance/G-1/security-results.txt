@@ -4,7 +4,7 @@ Submission target: `2296dc08c14eae9de34accdf43d4a11c6b8ba68f`
 Historical implementation revision: `cc95c5a488a8cd699dff515eadf431277669ffc6`
 Security-ledger revision: `2296dc08c14eae9de34accdf43d4a11c6b8ba68f`
 Historical capture: 2026-07-12T17:59:46+08:00 (UTC 2026-07-12T09:59:46Z; Task 7 evidence refresh)
-Current refresh: 2026-07-12T21:10:35+08:00 (UTC 2026-07-12T13:10:35Z)
+Current refresh: 2026-07-12T21:17:24+08:00 (UTC 2026-07-12T13:17:24Z)
 
 Freshness note: the configured-control clarification at the submission target
 does not claim scanner execution. The resumed local checkpoint created and
@@ -19,7 +19,7 @@ so the result remains FAIL.
 
 | Check | Command / method | Exit | Result |
 |---|---|---:|---|
-| Ruff full repository | `uvx --offline ruff==0.15.10 check src tests scripts --statistics` | 1 | FAIL — after R2 F821 correction, `Found 350 errors`; 121 F401, 71 F841, 41 F541, 34 E701, 26 E741, 15 E402, 15 E731, 12 E401, 8 E702, 7 F811; F821 is now zero |
+| Ruff full repository | `uvx --offline ruff==0.15.10 check src tests scripts --statistics` | 1 | FAIL — after R2b memory CLI correction, `Found 344 errors`; 121 F401, 70 F841, 37 F541, 34 E701, 26 E741, 15 E731, 14 E402, 12 E401, 8 E702, 7 F811; F821 remains zero |
 | Node lock generation | `npm install --package-lock-only --ignore-scripts --offline --registry=https://registry.npmmirror.com` | 0 | PASS — exact `playwright==1.59.1` dependency locked without running `postinstall` |
 | Node audit (offline cache view) | `npm audit --omit=dev --audit-level=high --offline --registry=https://registry.npmmirror.com --json` | 0 | OBSERVED — local cache returned 0 vulnerabilities across 3 production dependencies (plus 1 optional entry); current advisory coverage is not proven |
 | Lockfile contract | focused trackable/complete lockfile test plus exact-pin test | 0 | PASS — candidate lockfile is present and not ignored; lockfileVersion 3+, root dependencies match, and every transitive entry has exact version, HTTPS resolved URL, and SHA-512 integrity |
@@ -47,8 +47,9 @@ directory reproduced the lock successfully. Neither run touched production.
 
 Ruff is now reproducibly executable from the local offline `uv` cache. R1 made
 all 135 explicit compatibility imports unambiguous re-exports. R2 then removed
-all three F821 findings with runtime regression tests, reducing the repository
-baseline from 486 to 350 findings without ignores; the remaining 350 findings
+all three F821 findings with runtime regression tests. R2b repaired the ignored
+explicit task selector in memory injection and cleaned the adjacent command,
+reducing the repository baseline from 486 to 344 findings without ignores; the remaining 344 findings
 remain open. `mypy`, `pyright`, `gitleaks`, `trufflehog`, and
 `pip-audit` are not available from PATH or the checked offline Python cache,
 and no approved type-checker scope exists. These are mandatory checks under the

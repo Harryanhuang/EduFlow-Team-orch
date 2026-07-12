@@ -30,12 +30,13 @@ Usage:
 """
 from __future__ import annotations
 
+import base64
 import json
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-from eduflow.util import pop_flag, pop_bool_flag, usage_error
+from eduflow.util import pop_flag, pop_bool_flag, reject_extra_args, usage_error
 
 USAGE = (
     "usage: eduflow memory <subcommand> [args...]\n"
@@ -738,7 +739,7 @@ def _cmd_promote(argv: list[str]) -> int:
     print(f"  scope={scope}  kind={kind}  layer={layer}")
     print(f"  content: {content}")
     if hermes_can_promote:
-        print(f"  hermes_can_promote: True (manager explicitly authorized)")
+        print("  hermes_can_promote: True (manager explicitly authorized)")
 
     if not auto_yes:
         try:
@@ -876,21 +877,29 @@ def _cmd_inject_check(argv: list[str]) -> int:
     Shows what the message would look like after inject_to_send runs.
     Useful for verifying injection format without actually sending.
     """
+    usage = (
+        "usage: eduflow memory inject-check <agent> --message \"...\" "
+        "[--task <task_id>]"
+    )
     rest = list(argv)
     if not rest:
-        return usage_error(
-            "usage: eduflow memory inject-check <agent> --message \"...\" "
-            "[--task <task_id>]"
-        )
+        return usage_error(usage)
     agent = rest.pop(0)
     message = pop_flag(rest, "--message") or ""
+    task_requested = "--task" in rest
     task = pop_flag(rest, "--task")
+    if task_requested and (task is None or not task.strip()):
+        return usage_error("--task requires a non-empty value\n" + usage)
+    if task is not None:
+        task = task.strip()
+    if (rc := reject_extra_args(rest, usage)) is not None:
+        return rc
 
     if not message:
         return usage_error("--message is required")
 
     from eduflow.memory.inject import inject_to_send
-    result = inject_to_send(agent, message)
+    result = inject_to_send(agent, message, task_id=task)
     print(result)
     return 0
 
@@ -1556,8 +1565,8 @@ def _cmd_sensitive_export(argv: list[str]) -> int:
         )
 
         print(f"🔐 Exported {len(items)} sensitive items to {sensitive_dir}")
-        print(f"   - sensitive-items.enc (encrypted)")
-        print(f"   - README.md")
+        print("   - sensitive-items.enc (encrypted)")
+        print("   - README.md")
         return 0
 
     except PermissionError as e:
@@ -1566,9 +1575,6 @@ def _cmd_sensitive_export(argv: list[str]) -> int:
     except ImportError:
         print("❌ cryptography package required: pip install cryptography")
         return 1
-
-
-import base64  # needed for _cmd_sensitive_export
 
 
 # ── Decay commands ──────────────────────────────────────────────────
@@ -2015,7 +2021,7 @@ def _cmd_reflect_stats(argv: list[str]) -> int:
     print(f"Reflection stats (last {stats['window_days']} days):")
     print(f"  Total: {stats['total']}")
     print(f"  Promote rate: {stats['promote_rate']:.1%}")
-    print(f"  By status:")
+    print("  By status:")
     for status, cnt in stats["by_status"].items():
         print(f"    {status}: {cnt}")
 

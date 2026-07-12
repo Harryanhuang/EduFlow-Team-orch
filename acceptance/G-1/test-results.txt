@@ -807,6 +807,35 @@ INDEPENDENT REVIEWS
   and did not test the UTC offset. A fixed-clock RED test was added, production
   output now retains `+00:00`, and quality re-review PASS.
 
+Task 7 Ruff remediation R2b: explicit memory injection context (strict TDD)
+
+RED
+Command: `pytest tests/unit/test_memory_inject.py -k explicit_task_when_message_has_no_id -q`
+Result: failed. `memory inject-check --task T-404` parsed the task but discarded
+it; a message without an embedded numeric task ID omitted task-scoped context.
+
+GREEN FOCUSED + ADJACENT
+Commands/results:
+- focused explicit-task test plus existing CLI/direct task tests -> 4 passed
+- `pytest tests/unit/test_memory_inject.py tests/unit/test_memory_sensitive.py -q` -> 51 passed
+- `uvx --offline ruff==0.15.10 check src/eduflow/commands/memory_cli.py src/eduflow/memory/inject.py` -> passed
+- `python3 -m py_compile src/eduflow/commands/memory_cli.py src/eduflow/memory/inject.py` -> passed
+- full Ruff statistics -> expected gate failure, reduced from 350 to 344 findings
+
+`inject_to_send` now accepts a backward-compatible keyword-only explicit
+`task_id`; absent that argument it retains message extraction. The CLI passes
+its documented `--task` value. Adjacent no-placeholder f-strings and the late
+`base64` import were cleaned without changing output.
+
+INDEPENDENT REVIEWS
+- Specification review: PASS; confirmed backward compatibility, fallback
+  behavior, evidence inventory, and strict G-1 Task 7 scope.
+- Quality review: initial FAIL because explicit-over-message priority and
+  invalid CLI argument boundaries lacked tests. Added conflict and blank-ID
+  behavior locks plus fail-closed missing/empty/extra-argument cases; the seven
+  focused boundary tests and 67 combined adjacent/acceptance tests passed before
+  quality re-review PASS.
+
 Task 7 acceptance-package TDD
 
 RED

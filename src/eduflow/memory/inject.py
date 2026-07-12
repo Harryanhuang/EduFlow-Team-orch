@@ -104,22 +104,26 @@ def _assemble(agent: str, task_id: str | None, injection_point: str) -> str:
 
 # ── Public API: injection functions ───────────────────────────────
 
-def inject_to_send(agent: str, message: str) -> str:
+def inject_to_send(agent: str, message: str, *, task_id: str | None = None) -> str:
     """Inject Memory Packet before a manager→worker message.
 
-    Extracts task_id from the message (T-<digits>), builds a packet
-    with constraints targeting the ``send`` injection point, and
-    prepends it. Empty packet → original message unchanged.
+    Uses an explicit ``task_id`` when supplied; otherwise extracts one from the
+    message (T-<digits>). Builds a packet with constraints targeting the
+    ``send`` injection point and prepends it. Empty packet → original message
+    unchanged.
 
     Pure function: ``message`` is not mutated.
     """
     if not message:
         return message
-    try:
-        from eduflow.memory.packet import extract_task_id_from_message
-        task_id = extract_task_id_from_message(message)
-    except ImportError:
-        task_id = None
+    if task_id is not None:
+        task_id = task_id.strip() or None
+    if task_id is None:
+        try:
+            from eduflow.memory.packet import extract_task_id_from_message
+            task_id = extract_task_id_from_message(message)
+        except ImportError:
+            task_id = None
     packet = _assemble(agent, task_id, injection_point="send")
     if not packet:
         return message

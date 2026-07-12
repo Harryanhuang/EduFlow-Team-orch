@@ -104,6 +104,34 @@ class TestInjectToSend:
             assert out == msg  # no markers added
             _reset_db()
 
+    def test_explicit_task_id_overrides_conflicting_message_id(self):
+        with isolated_env():
+            _init_db()
+            _add_constraint_with_injection(
+                scope="task:T-101", level="L2", content="message task context",
+            )
+            _add_constraint_with_injection(
+                scope="task:T-404", level="L2", content="explicit task context",
+            )
+            from eduflow.memory.inject import inject_to_send
+            out = inject_to_send(
+                "worker", "continue T-101", task_id="T-404",
+            )
+            assert "explicit task context" in out
+            assert "message task context" not in out
+            _reset_db()
+
+    def test_blank_explicit_task_id_falls_back_to_message_id(self):
+        with isolated_env():
+            _init_db()
+            _add_constraint_with_injection(
+                scope="task:T-101", level="L2", content="message task context",
+            )
+            from eduflow.memory.inject import inject_to_send
+            out = inject_to_send("worker", "continue T-101", task_id="  ")
+            assert "message task context" in out
+            _reset_db()
+
 
 # ── 4. inject_to_reidentify appends ─────────────────────────────
 
@@ -478,6 +506,41 @@ class TestCLIPacket:
             assert "cli-inject-test" in out
             assert "hello world" in out
             _reset_db()
+
+    def test_inject_check_cli_honors_explicit_task_when_message_has_no_id(self):
+        with isolated_env():
+            _init_db()
+            _add_constraint_with_injection(
+                scope="task:T-404",
+                level="L2",
+                content="explicit task context",
+            )
+            from tests.helpers import run_cli
+            rc, out, err = run_cli([
+                "memory", "inject-check", "worker",
+                "--message", "continue the assigned work",
+                "--task", "T-404",
+            ])
+            assert rc == 0, err
+            assert "explicit task context" in out
+            assert "continue the assigned work" in out
+            _reset_db()
+
+    @pytest.mark.parametrize(
+        "tail",
+        [
+            ["--task"],
+            ["--task", ""],
+            ["--unknown", "value"],
+        ],
+    )
+    def test_inject_check_cli_rejects_invalid_or_extra_args(self, tail):
+        from tests.helpers import run_cli
+        rc, out, err = run_cli([
+            "memory", "inject-check", "worker", "--message", "hello", *tail,
+        ])
+        assert rc == 1
+        assert err
 
     def test_gate_check_cli(self):
         with isolated_env():
