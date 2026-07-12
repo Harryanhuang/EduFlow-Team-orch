@@ -640,6 +640,23 @@ def test_entry_recognizes_capital_python_only_when_kernel_executable_matches():
     assert module._entry("/bin/zsh -lc 'Python -m eduflow.cli router'", "/bin/zsh") == (None, None, None)
 
 
+def test_capital_python_full_provenance_records_python_runtime(tmp_path):
+    module, deps, commands, config, _checkout, _state = _fixture(tmp_path)
+    executable = "/Frameworks/Python.app/Contents/MacOS/Python"
+    commands["ps -axo pid=,ppid=,command="] = commands["ps -axo pid=,ppid=,command="].replace(
+        f"python3 -m eduflow.cli router --config {config}",
+        f"{executable} -m eduflow.cli router --config {config}",
+    )
+    commands["process-exe:101"] = executable
+    commands[f"{executable} --version"] = "Python 3.14.3"
+
+    report = module.audit(deps)
+    router = next(row for row in report["daemons"] if row["name"] == "router")
+
+    assert router["startup_entry"] == "Python -m eduflow.cli router"
+    assert router["python_runtime"] == "Python 3.14.3"
+
+
 def test_hermes_python_wrapper_uses_adjacent_absolute_script_and_package_version(tmp_path):
     module, deps, commands, config, checkout, state = _fixture(tmp_path)
     python = "/tmp/hermes-venv/bin/python3"

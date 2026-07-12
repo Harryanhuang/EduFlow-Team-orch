@@ -204,7 +204,7 @@ def _provenance(deps, process, processes, target, errors, subject, profile):
         "pid": pid, "executable": executable, "process_cwd": cwd,
         "checkout": checkout, "checkout_source": checkout_source, "commit_sha": revision,
         "ancestry": [item["pid"] for item in chain],
-        "python_runtime": runtime if executable and "python" in executable else "not-applicable",
+        "python_runtime": runtime if executable and "python" in executable.casefold() else "not-applicable",
         "cli_runtime": f"{cli_executable} {cli_version}" if cli_executable and cli_version else None,
         "config_path": actual["path"], "config_sha256": actual["sha256"],
         "config_generation": actual["generation"],

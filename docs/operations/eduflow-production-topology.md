@@ -2,7 +2,7 @@
 
 ## Verdict
 
-**FAIL / BLOCKED** as of `2026-07-12T12:28:42+08:00`.
+**FAIL / BLOCKED** as of `2026-07-12T12:36:21+08:00`.
 
 This document is generated from a read-only correlation of git, the deployed
 TOML file, PID files, `ps`, and tmux. It is not a declaration of intended
@@ -107,12 +107,12 @@ venv Python's `importlib.metadata`, never by accepting Hermes's multi-line
 
 ## Blocking findings
 
-1. `legacy_entry`: PID `78495`, a live capital-`Python` process under watchdog
-   PID `72531`, contains an EduFlow marker but does not match an approved daemon
-   or agent entry shape. Its exact argv remains redacted.
-2. `orphan_agent`: PID `98906`, a strict Python/Hermes wrapper with EduFlow
+1. `orphan_agent`: PID `98906`, a strict Python/Hermes wrapper with EduFlow
    scope evidence, is not associated with a configured tmux pane. Its exact
    argv and environment remain redacted.
+
+The earlier transient legacy PID `78495` is no longer present in the
+`12:36:21+08:00` audit and therefore is not carried forward as a live finding.
 
 The global scan may also observe unrelated standalone CLI processes, but they
 do not become findings unless they have
@@ -137,6 +137,6 @@ python3 scripts/audit_production_topology.py \
 ```
 
 Expected current result: JSON `ok=false`, exit code `1`. Daemon and configured
-Hermes reconciliation now pass; the two globally detected unassociated/legacy
-processes keep G-1 blocked. Re-run after those processes are owned or removed;
+Hermes reconciliation now pass; the globally detected unassociated Hermes
+process keeps G-1 blocked. Re-run after it is owned or removed;
 do not manually change this verdict without preserving new JSON evidence.
