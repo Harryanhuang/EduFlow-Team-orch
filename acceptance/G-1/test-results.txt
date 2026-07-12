@@ -984,6 +984,40 @@ INDEPENDENT REVIEWS
 - Quality review: PASS; independently validated the 55-path manifest, import and
   string semantics, 1301-test coverage, Ruff counts, and inventory.
 
+Task 7 Ruff remediation R3b: recover shadowed duplicate tests (strict TDD)
+
+RED / HIDDEN COVERAGE DISCOVERY
+Ruff identified five duplicate function names across three files. Renaming the
+earlier definitions made all five previously shadowed tests collectable. Four
+passed immediately; the newly exposed watchdog case failed because its stale
+expectation collapsed a concrete `spawn_failed` fallback attempt into the
+generic `fallback_exhausted` label.
+
+GREEN
+Manifest: `tests/ruff_r3b_f811_tests.txt` contains the three affected files.
+Command: `pytest $(< tests/ruff_r3b_f811_tests.txt) -q`
+Result: 265 passed; five more test functions are now collected than before the
+unique-name correction.
+Commands/results:
+- `uvx --offline ruff==0.15.10 check tests --select F811` -> passed, test F811 zero
+- `pytest --collect-only $(< tests/ruff_r3b_f811_tests.txt)` -> 265 collected
+- test Ruff statistics -> expected failure, reduced from 99 to 94 findings
+- full Ruff statistics -> expected gate failure, reduced from 153 to 148 findings
+- `git diff --check` -> passed
+
+The watchdog case is now named for its actual configured-backup spawn-failure
+scenario and asserts the concrete `last_switch_outcome=spawn_failed`, while
+retaining `escalation_reason=fallback_chain_exhausted`. No production behavior
+was changed.
+
+INDEPENDENT REVIEWS
+- Specification review: PASS; confirmed all five earlier definitions are now
+  uniquely collected, the 260-to-265 increase, outcome semantics, evidence, and
+  Task 7 scope.
+- Quality review: PASS; AST comparison confirmed duplicate definitions fell
+  from five to zero, test bodies were preserved apart from the corrected stale
+  watchdog assertion, and manifest/inventory/counts are accurate.
+
 Task 7 acceptance-package TDD
 
 RED

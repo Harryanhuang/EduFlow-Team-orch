@@ -306,9 +306,9 @@ def test_security_ledger_records_current_node_and_ruff_results() -> None:
     assert "ruff==0.15.10 check src tests scripts --statistics" in security
     assert "Ruff production source" in security
     assert "zero findings after R2f" in security
-    assert "Found 153 errors" in security
+    assert "Found 148 errors" in security
     assert "all remaining findings are under tests/scripts" in security
-    assert "baseline from 486 to 153" in security_normalized
+    assert "baseline from 486 to 148" in security_normalized
     assert "npm audit --omit=dev --audit-level=high --offline" in security
     assert "0 vulnerabilities" in security
     assert "Node lockfile sub-check is closed" in review
@@ -332,6 +332,7 @@ def test_ruff_affected_test_manifests_are_durable_and_machine_runnable() -> None
     manifests = {
         "ruff_r2f_affected_unit_tests.txt": 77,
         "ruff_r3a_affected_tests.txt": 55,
+        "ruff_r3b_f811_tests.txt": 3,
     }
     for name, expected_count in manifests.items():
         manifest = ROOT / "tests" / name

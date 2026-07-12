@@ -647,7 +647,7 @@ switch_on = ["auth_failure"]
         assert row["last_switch_outcome"] == "fallback_exhausted"
 
 
-def test_guard_agent_runtimes_marks_auto_switched_recovered_on_success():
+def test_guard_agent_runtimes_preserves_spawn_failure_when_backup_cannot_start():
     team = {"session": "S", "agents": {"worker_a": {"runtime": "primary"}}}
 
     class _Adapter:
@@ -690,7 +690,7 @@ switch_on = ["auth_failure"]
         row = data["agents"]["worker_a"]
         assert row["escalation_needed"] is True
         assert row["escalation_reason"] == "fallback_chain_exhausted"
-        assert row["last_switch_outcome"] == "fallback_exhausted"
+        assert row["last_switch_outcome"] == "spawn_failed"
 
 
 def test_guard_agent_runtimes_marks_auto_switched_recovered_on_success():

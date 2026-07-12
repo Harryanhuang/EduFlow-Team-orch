@@ -1,0 +1,3 @@
+tests/unit/test_commands_task.py
+tests/unit/test_commands_watchdog.py
+tests/unit/test_feishu_lark.py

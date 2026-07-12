@@ -496,7 +496,7 @@ def test_task_flow_create_rejects_unknown_workflow():
         assert "unknown workflow: missing-workflow" in err
 
 
-def test_task_dispatch_rejects_unknown_workflow():
+def test_task_dispatch_rejects_unknown_workflow_for_generic_title():
     with isolated_env() as tmp:
         with _workflow_env(tmp):
             rc, _, err = run_cli([

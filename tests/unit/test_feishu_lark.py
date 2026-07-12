@@ -215,7 +215,7 @@ def test_run_returns_none_on_timeout():
     assert lark.call(["x"], run=fake) is None
 
 
-def test_run_returns_none_when_npx_not_on_path():
+def test_call_missing_npx_warning_with_redirected_stdout():
     """REGRESSION: subprocess.run raising FileNotFoundError (npx not
     installed) used to propagate as a top-level traceback through
     every eduflow say / router invocation. Now caught with a
@@ -233,7 +233,7 @@ def test_run_returns_none_when_npx_not_on_path():
     assert "npx not found on PATH" in out.getvalue()
 
 
-def test_run_returns_none_on_other_oserror():
+def test_call_oserror_warning_with_redirected_stdout():
     """OSError variants other than FileNotFoundError (permission denied
     on fork, EAGAIN, etc.) also caught — same one-line warn pattern."""
     import io
@@ -249,7 +249,7 @@ def test_run_returns_none_on_other_oserror():
     assert "could not be launched" in out.getvalue()
 
 
-def test_run_logs_preview_when_stdout_is_not_json():
+def test_call_non_json_preview_with_redirected_stdout():
     """REGRESSION: silent return None on JSONDecodeError used to make
     debugging impossible. Now logs a one-line preview of the offending
     output so the operator can see the kind of garbage they got back."""
