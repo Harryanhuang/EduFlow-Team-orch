@@ -39,9 +39,10 @@ claims.
 | `2026-07-07-claudeteam-upstream-borrowing-plan.md` | historical | — | Upstream-borrowing proposal retained as design provenance and incorporated into the master plan. | n/a |
 | `2026-07-11-scheduled-tasks-design.md` | historical | — | P0-P9 exists as out-of-order preexisting implementation: merge `bde14c5c`, acceptance `a64d611c`, code `src/eduflow/scheduling/` plus `src/eduflow/store/scheduled_tasks.py`, tests `tests/unit/test_scheduled_engine.py` plus `tests/integration/test_scheduled_tasks_e2e.py`; it is an independent D scheduler, does not reuse Workflow Instance, and G6 remains unaccepted pending refactor after prior Gates. | n/a |
 | `2026-07-11-scheduled-tasks.md` | historical | — | P0-P9 exists as out-of-order preexisting implementation: merge `bde14c5c`, acceptance `a64d611c`, code `src/eduflow/scheduling/` plus `src/eduflow/store/scheduled_tasks.py`, tests `tests/unit/test_scheduled_engine.py` plus `tests/integration/test_scheduled_tasks_e2e.py`; it is an independent D scheduler, does not reuse Workflow Instance, and G6 remains unaccepted pending refactor after prior Gates. | n/a |
-| `2026-07-12-eduflow-governed-team-operating-system-master-plan.md` | active | G-1 / Task 3 | Current master implementation authority; later Gates remain blocked until their predecessors pass. | claim ledger (5 claims) |
-| `2026-07-12-eduflow-upgrade-acceptance-standard.md` | active | G-1 / Task 3 | Current acceptance authority; defines evidence and veto conditions for every Gate. | not_applicable (normative) |
-| `2026-07-12-g-minus-1-production-governance-implementation-plan.md` | active | G-1 / Task 3 | Current scoped execution plan for G-1; Task 3 is the present work boundary. | not_applicable (normative) |
+| `2026-07-12-eduflow-governed-team-operating-system-master-plan.md` | active | G-1 / Task 7 | Current master implementation authority; later Gates remain blocked until their predecessors pass. | claim ledger (5 claims) |
+| `2026-07-12-eduflow-upgrade-acceptance-standard.md` | active | G-1 / Task 7 | Current acceptance authority; defines evidence and veto conditions for every Gate. | not_applicable (normative) |
+| `2026-07-12-g-minus-1-production-governance-implementation-plan.md` | active | G-1 / Task 7 | Current scoped execution plan for G-1; Task 7 tooling/evidence closure is the present work boundary and Task 8 formal review remains blocked. | not_applicable (normative) |
+| `2026-07-12-g-minus-1-ruff-remediation-plan.md` | active | G-1 / Task 7 | Cleanup plan for the mandatory Ruff failure; subordinate to the master plan and acceptance contract. | not_applicable (normative) |
 
 ## DONE assertion claim ledger
 

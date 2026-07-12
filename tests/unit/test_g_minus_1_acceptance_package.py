@@ -304,7 +304,8 @@ def test_security_ledger_records_current_node_and_ruff_results() -> None:
     security_normalized = " ".join(security.split())
 
     assert "ruff==0.15.10 check src tests scripts --statistics" in security
-    assert "Found 486 errors" in security
+    assert "Found 353 errors" in security
+    assert "reduced the repository baseline from 486 to 353" in security_normalized
     assert "npm audit --omit=dev --audit-level=high --offline" in security
     assert "0 vulnerabilities" in security
     assert "Node lockfile sub-check is closed" in review

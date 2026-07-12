@@ -41,6 +41,7 @@ docs/operations/state-and-config-inventory.md
 docs/plans/2026-07-12-eduflow-governed-team-operating-system-master-plan.md
 docs/plans/2026-07-12-eduflow-upgrade-acceptance-standard.md
 docs/plans/2026-07-12-g-minus-1-production-governance-implementation-plan.md
+docs/plans/2026-07-12-g-minus-1-ruff-remediation-plan.md
 docs/plans/PLAN_STATUS_INDEX.md
 scripts/audit_production_topology.py
 scripts/feishu_bot_creator/.gitignore
@@ -50,6 +51,7 @@ src/eduflow/cli.py
 src/eduflow/commands/human_takeover.py
 src/eduflow/commands/runtime_switch.py
 src/eduflow/commands/watchdog.py
+src/eduflow/memory/__init__.py
 src/eduflow/runtime/failover.py
 src/eduflow/runtime/human_takeover.py
 src/eduflow/runtime/verify.py
@@ -60,6 +62,7 @@ tests/unit/test_commands_watchdog.py
 tests/unit/test_g_minus_1_acceptance_package.py
 tests/unit/test_g_minus_1_governance_docs.py
 tests/unit/test_human_takeover.py
+tests/unit/test_memory_shim_exports.py
 tests/unit/test_plan_status_index.py
 tests/unit/test_runtime_failover.py
 tests/unit/test_runtime_verify.py
