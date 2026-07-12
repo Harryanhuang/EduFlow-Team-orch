@@ -50,6 +50,8 @@ class Decision:
     reason: str = ""                                    # drop reason or "" on route
     create_time: str = ""                               # epoch ms (for catchup cursor)
     sender_id: str = ""                                 # Feishu open_id of the message sender
+    user_language: str = ""                             # P5: "zh-CN" or "en-US"
+    schedule_intent: bool = False                       # P5: tag for the manager skill
 
     def is_drop(self) -> bool:
         return self.action is Action.DROP
@@ -73,6 +75,65 @@ _SEEN_MESSAGE_IDS: set[str] = set()
 _RATE_LIMIT_MAX = 10          # messages
 _RATE_LIMIT_WINDOW_S = 60     # seconds
 _SENDER_TIMESTAMPS = {}
+
+# ── P5: per-sender language session state ───────────────────────────
+# Bounded dict keyed by sender_id. The first message from a sender sets
+# the language; subsequent messages reuse the cached value so mixed
+# CN/EN lines don't flip the language. Test isolation is provided by
+# `_reset_session_state()`.
+
+_SESSION_LANGUAGE: dict[str, str] = {}
+_SESSION_LANGUAGE_MAX = 4096
+_CJK_RE = re.compile(r"[㐀-鿿]")
+
+# Schedule-intent keywords. The router only FLAGS the intent; it never
+# parses times or writes the scheduler store. The
+# `eduflow-scheduled-task-manager` skill owns all parsing and P4 API calls.
+_SCHEDULE_KEYWORDS = (
+    "schedule", "recurring", "recurrence",
+    "daily", "weekly", "monthly",
+    "reminder", "remind",
+    "定时", "日程", "周期", "每周", "每天", "每月",
+    "提醒", "安排", "周报", "日报", "月报",
+)
+
+
+def _detect_language(text: str) -> str:
+    """Return 'zh-CN' if the text contains CJK Unified Ideographs, else
+    'en-US'.  Heuristic only; the manager skill can override."""
+    if _CJK_RE.search(text or ""):
+        return "zh-CN"
+    return "en-US"
+
+
+def _session_language(sender_id: str, text: str) -> str:
+    """Return the cached language for `sender_id`, computing + caching on
+    first sight.  Empty / missing sender_id never reaches the cache."""
+    if not sender_id:
+        return _detect_language(text)
+    cached = _SESSION_LANGUAGE.get(sender_id)
+    if cached:
+        return cached
+    lang = _detect_language(text)
+    if len(_SESSION_LANGUAGE) >= _SESSION_LANGUAGE_MAX:
+        # Evict an arbitrary entry to keep the dict bounded.
+        _SESSION_LANGUAGE.pop(next(iter(_SESSION_LANGUAGE)))
+    _SESSION_LANGUAGE[sender_id] = lang
+    return lang
+
+
+def _detect_schedule_intent(text: str) -> bool:
+    """Return True if `text` looks like a scheduling request.  Keyword
+    match only — never parses times, never resolves fuzzy markers."""
+    lowered = (text or "").lower()
+    if not lowered.strip():
+        return False
+    return any(kw in lowered for kw in _SCHEDULE_KEYWORDS)
+
+
+def _reset_session_state() -> None:
+    """Clear session-language cache.  Exported for test isolation only."""
+    _SESSION_LANGUAGE.clear()
 
 
 def _rate_limit_ok(sender_id: str) -> bool:
@@ -234,8 +295,12 @@ def classify_event(event: dict, *,
         card_agent = _card_sender_agent(raw_text, agents) if raw_text else ""
         if card_agent and card_agent != default_target:
             _record_seen(msg_id, seen_msg_ids)
+            lang = _session_language(event.get("sender_id", ""), raw_text)
             return Decision(Action.ROUTE, targets=[default_target],
-                            sender=card_agent, text=raw_text, **common)
+                            sender=card_agent, text=raw_text,
+                            user_language=lang,
+                            schedule_intent=_detect_schedule_intent(raw_text),
+                            **common)
         return Decision(Action.DROP, reason="bot_self", **common)
 
     if not raw_text:
@@ -251,12 +316,20 @@ def classify_event(event: dict, *,
 
     sender, text = _parse_sender(raw_text, agents)
 
+    # P5: detect user language and schedule intent BEFORE the route
+    # decision so the manager skill sees them in the Decision object.
+    # The router MUST NOT parse times or write the scheduler store
+    # itself — that is the skill's job (calls P4 manager_ops APIs).
+    lang = _session_language(event.get("sender_id", ""), text)
+    intent = _detect_schedule_intent(text)
+
     # Human / unknown sender → manager only. `@worker_cc` and
     # `@team` are no longer routing instructions; they're text
     # content for manager to read and decide how to dispatch.
     if not sender:
         _record_seen(msg_id, seen_msg_ids)
-        return Decision(Action.ROUTE, targets=[default_target], text=text, **common)
+        return Decision(Action.ROUTE, targets=[default_target], text=text,
+                        user_language=lang, schedule_intent=intent, **common)
 
     # agent-tagged message with no @-target → broadcast with nobody to hear it
     return Decision(Action.DROP, sender=sender, text=text,

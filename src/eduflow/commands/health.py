@@ -28,6 +28,7 @@ from eduflow.runtime import (
     verify as _verify_mod, wake, watchdog,
 )
 from eduflow.store import local_facts
+from eduflow.store import scheduled_tasks
 from eduflow.util import (
     ago_ms, env_str, maybe_print_help, pop_bool_flag, print_json, reject_extra_args,
 )
@@ -678,6 +679,157 @@ def _check_runtime_operational_readiness(rep: HealthReport, session: str,
         rep.info("runtime readiness: all critical agents verified")
 
 
+# ── D scheduler (P6) ──────────────────────────────────────────────────
+
+
+_D_SCHEDULER_LAG_WARN_MS = 30 * 60 * 1000  # 30 minutes
+
+
+def _now_ms_for_health() -> int:
+    """Wall-clock ms for health comparisons. Inlined helper so tests can
+    patch the module-level clock without touching util.now_ms."""
+    import time as _time
+    return int(_time.time() * 1000)
+
+
+def _safe_scheduled_tasks_call(label: str, fn, default):
+    """Read-only wrapper that swallows store errors so health stays green
+    on a corrupt scheduler file. The original exception is logged on the
+    HealthReport as a degraded note — never silently dropped."""
+    try:
+        return fn(), None
+    except Exception as exc:  # noqa: BLE001
+        return default, (label, type(exc).__name__, str(exc))
+
+
+def _collect_d_scheduler_health(now_ms_value: int) -> dict:
+    """Read-only view of D scheduler state. Returns a dict so callers can
+    format the section deterministically.
+    """
+    heartbeat, hb_err = _safe_scheduled_tasks_call(
+        "heartbeat", scheduled_tasks.get_heartbeat,
+        {"last_tick_at": 0, "lag_ms": 0, "error": ""},
+    )
+    occurrences, occ_err = _safe_scheduled_tasks_call(
+        "occurrences", scheduled_tasks.list_occurrences, [],
+    )
+    rules, rules_err = _safe_scheduled_tasks_call(
+        "rules", scheduled_tasks.list_rules, [],
+    )
+
+    hb_status = "missing"
+    lag = "missing"
+    last_success_ms = 0
+    error_text = ""
+    last_tick = int(heartbeat.get("last_tick_at") or 0)
+    error_text = str(heartbeat.get("error") or "")
+    if last_tick > 0:
+        age = now_ms_value - last_tick
+        lag = "warn" if age >= _D_SCHEDULER_LAG_WARN_MS else "ok"
+        last_success_ms = 0 if error_text else last_tick
+        hb_status = "error" if error_text else "ok"
+
+    counts = {"awaiting_manager": 0, "running": 0, "blocked": 0}
+    for occ in occurrences:
+        s = str(occ.get("status") or "")
+        if s in counts:
+            counts[s] += 1
+
+    # Consecutive skip/failure streaks: walk occurrences sorted by
+    # updated_at desc and stop at the first non-terminal status.
+    sorted_occs = sorted(
+        occurrences,
+        key=lambda o: int(o.get("updated_at") or 0),
+        reverse=True,
+    )
+    skip_streak = 0
+    failure_streak = 0
+    for occ in sorted_occs:
+        s = str(occ.get("status") or "")
+        if s == "skipped":
+            skip_streak += 1
+            continue
+        if s == "failed":
+            failure_streak += 1
+            continue
+        break
+
+    attention_required = sum(
+        1 for r in rules if str(r.get("status") or "") == "attention_required"
+    )
+
+    return {
+        "heartbeat_status": hb_status,
+        "lag": lag,
+        "last_tick": last_tick,
+        "last_success_ms": last_success_ms,
+        "error": error_text,
+        "counts": counts,
+        "skip_streak": skip_streak,
+        "failure_streak": failure_streak,
+        "attention_required": attention_required,
+        "degraded": [err for err in (hb_err, occ_err, rules_err) if err],
+    }
+
+
+def _check_d_scheduler(rep: HealthReport, now_ms_value: int) -> None:
+    """Surface D scheduler heartbeat, lag, pending/running counts, and
+    consecutive skip/failure streaks. Read-only via scheduled_tasks APIs
+    — never writes the store. Degraded note is appended when any read
+    raised (e.g. corrupt rules.json)."""
+    rep.section("D scheduler:")
+    try:
+        snapshot = _collect_d_scheduler_health(now_ms_value)
+    except Exception as exc:  # noqa: BLE001 — defensive
+        rep.yellow(f"degraded ({type(exc).__name__}: {exc})")
+        return
+
+    hb = snapshot["heartbeat_status"]
+    lag = snapshot["lag"]
+    counts = snapshot["counts"]
+    last_tick = snapshot["last_tick"]
+    if last_tick:
+        hb_line = (
+            f"heartbeat={hb} last_tick={ago_ms(last_tick)} "
+            f"lag={lag} pending={counts['awaiting_manager']} "
+            f"running={counts['running']} blocked={counts['blocked']} "
+            f"attention_required={snapshot['attention_required']}"
+        )
+    else:
+        hb_line = (
+            f"heartbeat={hb} last_tick=never lag={lag} "
+            f"pending={counts['awaiting_manager']} "
+            f"running={counts['running']} blocked={counts['blocked']} "
+            f"attention_required={snapshot['attention_required']}"
+        )
+    if snapshot["error"]:
+        # Surface the underlying exception kind so operators can grep
+        # without matching the full payload.
+        kind = snapshot["error"].split(":", 1)[0] or "error"
+        hb_line += f" error={kind}"
+    if hb == "missing":
+        rep.yellow(hb_line)
+    elif hb == "error":
+        rep.yellow(hb_line)
+    elif lag == "warn":
+        rep.yellow(hb_line)
+    else:
+        rep.ok(hb_line)
+
+    streak_line = (
+        f"  consecutive_skip={snapshot['skip_streak']} "
+        f"consecutive_failure={snapshot['failure_streak']}"
+    )
+    if snapshot["skip_streak"] or snapshot["failure_streak"]:
+        rep.note(streak_line)
+    else:
+        rep.info(streak_line)
+
+    if snapshot["degraded"]:
+        for label, kind, msg in snapshot["degraded"]:
+            rep.yellow(f"  degraded_source={label} ({kind}: {msg})")
+
+
 def _build_report() -> HealthReport:
     """Run every check and return the populated HealthReport. Pure
     enumeration — main() picks the renderer (text or JSON) and the
@@ -739,6 +891,10 @@ def _build_report() -> HealthReport:
 
     rep.section("runtime guard:")
     _check_runtime_guard(rep)
+    rep.blank()
+
+    rep.section("D scheduler:")
+    _check_d_scheduler(rep, _now_ms_for_health())
     rep.blank()
 
     rep.section("runtime operational readiness:")
