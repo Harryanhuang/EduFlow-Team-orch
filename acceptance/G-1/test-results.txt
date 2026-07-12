@@ -911,6 +911,45 @@ INDEPENDENT REVIEWS
 - Quality review: PASS; confirmed predicate short-circuiting, iteration order,
   copied/returned objects, mutations, scope, and closure behavior are unchanged.
 
+Task 7 Ruff remediation R2f: production source Ruff closure
+
+BEHAVIOR BASELINE
+Method: 77 affected-domain unit files were selected from commands, runtime,
+memory, scheduler, task, asset, and tool-risk surfaces and persisted at
+`tests/ruff_r2f_affected_unit_tests.txt`.
+Command: `pytest $(< tests/ruff_r2f_affected_unit_tests.txt) -q`
+Result before change: 1770 passed.
+
+INITIAL SAFE-FIX FAILURE AND CONTRACT RECOVERY
+Command: `uvx --offline ruff==0.15.10 check src --select F401,F541 --fix`
+Initial result: 62 safe fixes applied, but the affected suite failed 30 tests.
+Root cause: two imports were implicit compatibility contracts rather than dead
+code: `commands.watchdog.wake` is a fault-injection seam, and
+`candidate_gen.get_candidate` is a historical re-export API. Both were restored
+as explicit self-alias re-exports; no ignore was added. The 30 failing tests then
+passed in their focused suites.
+
+GREEN + STATIC
+Commands/results:
+- the identical tracked-manifest command after restoration -> 1770 passed
+- manifest contract test -> 77 unique sorted tracked paths, all present
+- `uvx --offline ruff==0.15.10 check src` -> passed, zero findings
+- `python3 -m compileall -q src/eduflow` -> passed
+- full Ruff statistics -> expected gate failure, reduced from 319 to 257 findings; all remaining findings are in tests/scripts
+- `git diff --check` -> passed
+
+All accepted transformations are either deletion of a genuinely unused import,
+removal of an unnecessary `f` prefix, or an explicit compatibility self-alias.
+No function call, branch, output text, ordering, or external side effect changed.
+
+INDEPENDENT REVIEWS
+- Specification review: initial FAIL solely because the 1770-test selection
+  depended on `/tmp`; after the tracked 77-path manifest, machine contract test,
+  and manifest-driven rerun were added, re-review PASS.
+- Quality review: PASS on the code transformations and compatibility seams;
+  durable-manifest re-review also PASS after independently validating all 77
+  entries, the executable command, inventory, and acceptance test.
+
 Task 7 acceptance-package TDD
 
 RED

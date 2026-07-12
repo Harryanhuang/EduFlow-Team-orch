@@ -26,7 +26,6 @@ shells out to it.
 from __future__ import annotations
 
 import json
-import sys
 from typing import Callable
 
 from eduflow.runtime import config, residency, tmux

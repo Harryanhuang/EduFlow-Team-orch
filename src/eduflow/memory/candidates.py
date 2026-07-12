@@ -200,10 +200,10 @@ def promote_candidate(
         )
     if reviewer_norm == "hermes" and not hermes_can_promote:
         raise ValueError(
-            f"reviewer 'hermes' requires the hermes_can_promote flag "
-            f"(set on the dispatch task description as "
-            f"'--hermes-can-promote'). Without the flag, only "
-            f"manager can promote."
+            "reviewer 'hermes' requires the hermes_can_promote flag "
+            "(set on the dispatch task description as "
+            "'--hermes-can-promote'). Without the flag, only "
+            "manager can promote."
         )
     # Defense-in-depth: even with the flag, only candidates whose scope
     # or source_type indicates a Hermes-owned context are eligible.

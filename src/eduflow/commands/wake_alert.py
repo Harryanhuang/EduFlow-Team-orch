@@ -134,18 +134,18 @@ def build_wake_failure_card(
         "%Y-%m-%d %H:%M:%S 北京时间", time.localtime(now_s or time.time()),
     )
     next_step = (
-        f"30 分钟内同 (agent, kind) 不重发 ALERT,"
-        f" 如仍 ready_marker_timeout 才会再发一次"
+        "30 分钟内同 (agent, kind) 不重发 ALERT,"
+        " 如仍 ready_marker_timeout 才会再发一次"
         if True else ""  # dedup 一律开启的 v1 行为
     )
     body_lines = [
         f"**异常类型**：温备 agent wake 失败 ({kind}) @ {timestamp}",
         f"**当前状态**：{target_agent} pane 状态待 runtime_guard 二次探测",
         f"**影响范围**：{target_agent} 当前不能消费 inbox,新消息只进 inbox 不进 pane",
-        f"**已自动处理**：已写入 local_facts.append_log + agent_residency.touch_sleep 触发重复 sweep",
+        "**已自动处理**：已写入 local_facts.append_log + agent_residency.touch_sleep 触发重复 sweep",
         f"**下一步**：{next_step}",
-        f"**需要谁处理**：manager (派单给 worker_builder 维修)",
-        f"**需要老板介入**：否",
+        "**需要谁处理**：manager (派单给 worker_builder 维修)",
+        "**需要老板介入**：否",
     ]
     title = f"[ALERT][wake] manager · wake 失败: {target_agent}"
     return {

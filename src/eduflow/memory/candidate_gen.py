@@ -50,7 +50,7 @@ from eduflow.memory.candidates import (
     promote_candidate as _promote_candidate,
     reject_candidate as _reject_candidate,
     expire_stale_candidates as _expire_stale_candidates,
-    get_candidate,
+    get_candidate as get_candidate,
 )
 
 _log = logging.getLogger(__name__)
@@ -249,7 +249,7 @@ def generate_from_event(
     # V3 P2-1: admission gate scoring
     if apply_admission_gate:
         try:
-            from eduflow.memory.admission import score_candidate, ADMISSION_THRESHOLD
+            from eduflow.memory.admission import score_candidate
             score_result = score_candidate(
                 content=content,
                 source_type=source_type,

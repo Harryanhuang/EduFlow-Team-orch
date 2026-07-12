@@ -281,7 +281,7 @@ def call(args: list[str], *, profile: str = "", timeout: int | None = None,
     except FileNotFoundError:
         # npx itself isn't on PATH. eduflow say / router / chat all hit
         # this — better one-line warn than a top-level traceback.
-        print(f"  ⚠️ npx not found on PATH; install Node.js to enable lark-cli")
+        print("  ⚠️ npx not found on PATH; install Node.js to enable lark-cli")
         return None
     except OSError as e:
         # Other Popen-time OS failures (permission, fork failed, etc.).

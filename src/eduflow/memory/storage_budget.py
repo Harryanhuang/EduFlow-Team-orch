@@ -10,8 +10,6 @@ Eviction priority (first evicted first):
 """
 from __future__ import annotations
 
-import os
-from pathlib import Path
 
 from eduflow.memory.db import get_conn, init_schema
 from eduflow.runtime.paths import memory_db_file

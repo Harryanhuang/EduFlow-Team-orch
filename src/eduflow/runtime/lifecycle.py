@@ -518,7 +518,6 @@ def _write_runtime_status(agent: str, resolved: dict, *, reason: str = "",
     full probe.
     """
     from eduflow.util import file_lock, read_json, write_json
-    import time as _time
     path = paths.runtime_status_file()
     path.parent.mkdir(parents=True, exist_ok=True)
     with file_lock(path):

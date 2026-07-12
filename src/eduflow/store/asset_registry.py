@@ -536,7 +536,7 @@ def scan_workflows(root: Path | None = None) -> list[Asset]:
             owner_role="manager",
             trigger_terms=[],
             validation_command=(
-                f"eduflow workflow validate --strict"
+                "eduflow workflow validate --strict"
             ),
             source_evidence="docs/workflows/.../README.md",
         ))

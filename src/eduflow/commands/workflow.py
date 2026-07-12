@@ -695,7 +695,7 @@ def _cmd_promote_plan(root: Path, candidate_id: str) -> int:
     print("- It does not create an active workflow and does not execute workflows automatically.")
     print()
     print("## Suggested Next Commands")
-    print(f"- eduflowteam workflow candidate-validate --strict")
+    print("- eduflowteam workflow candidate-validate --strict")
     print(f"- future: eduflowteam workflow promote {candidate_id} --approved-by-manager --write")
     return 0
 
@@ -797,7 +797,7 @@ def _cmd_promote(root: Path, candidate_id: str, flags: list[str]) -> int:
         print("❌ promotion write failed")
         print(f"- candidate workflow id: {candidate_id}")
         print(f"- target path: {target}")
-        print(f"- partial failure handled: temporary target cleaned")
+        print("- partial failure handled: temporary target cleaned")
         print(f"- error: {exc}")
         return 1
 

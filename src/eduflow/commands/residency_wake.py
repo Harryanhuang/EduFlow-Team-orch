@@ -23,7 +23,7 @@ import json
 from eduflow.agents import get_adapter, identity as _identity
 from eduflow.runtime import config, lifecycle, tmux, wake, tunables
 from eduflow.store import agent_residency, local_facts
-from eduflow.util import error_exit, pop_bool_flag, pop_flag, usage_error
+from eduflow.util import error_exit, pop_bool_flag, usage_error
 
 
 USAGE = "usage: eduflow residency-wake <agent> [--json]"

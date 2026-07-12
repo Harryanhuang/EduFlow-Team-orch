@@ -401,7 +401,7 @@ def main(argv: list[str]) -> int:
     # Every `eduflow say` sends a v2 card. `reply_to` is silently
     # ignored because Feishu interactive cards don't thread.
     if args.reply_to:
-        print(f"  ⚠️ --reply ignored (Feishu cards don't thread)",
+        print("  ⚠️ --reply ignored (Feishu cards don't thread)",
               file=sys.stderr)
     title, card_color = _channel_card_identity(args.agent, agent_cfg, channel_name)
 
@@ -470,7 +470,6 @@ def main(argv: list[str]) -> int:
         if _worker_reason_override(args.agent, args.to, args.message):
             pass
         else:
-            from eduflow.runtime import tunables
             sender_role = _role_of(args.agent)
             receiver_role = _role_of(args.to)
             key = f"chat.publish.{sender_role}_to_{receiver_role}"

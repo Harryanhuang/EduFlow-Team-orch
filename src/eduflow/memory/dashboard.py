@@ -142,7 +142,7 @@ def render_dashboard(days: int = 7) -> str:
     similar = get_similar_pair_count()
 
     lines = []
-    lines.append(f"# 📊 EduFlow Memory Dashboard")
+    lines.append("# 📊 EduFlow Memory Dashboard")
     lines.append(f"_Generated: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}_")
     lines.append("")
 
@@ -181,7 +181,7 @@ def render_dashboard(days: int = 7) -> str:
     lines.append("## 🔁 Consolidation")
     lines.append("")
     lines.append(f"- **Similar pairs detected (threshold=0.85)**: {similar}")
-    lines.append(f"  - Run `eduflow memory consolidate --report` for details")
+    lines.append("  - Run `eduflow memory consolidate --report` for details")
     lines.append("")
 
     # Pinned
@@ -192,7 +192,7 @@ def render_dashboard(days: int = 7) -> str:
     for kind, cnt in pinned.get("by_kind", {}).items():
         lines.append(f"  - {kind}: {cnt}")
     lines.append("")
-    lines.append(f"  - Run `eduflow memory pin list` for details")
+    lines.append("  - Run `eduflow memory pin list` for details")
     lines.append("")
 
     return "\n".join(lines)

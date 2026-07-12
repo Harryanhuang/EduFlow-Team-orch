@@ -12,7 +12,6 @@ This module provides:
 """
 from __future__ import annotations
 
-from eduflow.memory.db import get_conn, init_schema
 from eduflow.memory.items import list_memories
 
 

@@ -304,9 +304,11 @@ def test_security_ledger_records_current_node_and_ruff_results() -> None:
     security_normalized = " ".join(security.split())
 
     assert "ruff==0.15.10 check src tests scripts --statistics" in security
-    assert "Found 319 errors" in security
-    assert "production E741, F841, and F821 are zero" in security
-    assert "baseline from 486 to 319" in security_normalized
+    assert "Ruff production source" in security
+    assert "zero findings after R2f" in security
+    assert "Found 257 errors" in security
+    assert "all remaining findings are under tests/scripts" in security
+    assert "baseline from 486 to 257" in security_normalized
     assert "npm audit --omit=dev --audit-level=high --offline" in security
     assert "0 vulnerabilities" in security
     assert "Node lockfile sub-check is closed" in review
@@ -315,6 +317,26 @@ def test_security_ledger_records_current_node_and_ruff_results() -> None:
     assert "Node audit fails because no approved lockfile exists" not in combined
     assert "Node audit has no approved lockfile" not in combined
     assert "genuinely closed" not in combined
+
+
+def test_r2f_affected_test_manifest_is_durable_and_machine_runnable() -> None:
+    manifest = ROOT / "tests" / "ruff_r2f_affected_unit_tests.txt"
+    paths = manifest.read_text(encoding="utf-8").splitlines()
+
+    assert len(paths) == 77
+    assert paths == sorted(set(paths))
+    assert all(path.startswith("tests/unit/test_") and path.endswith(".py") for path in paths)
+    assert all((ROOT / path).is_file() for path in paths)
+    tracked = set(
+        subprocess.run(
+            ["git", "ls-files", "tests/unit"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.splitlines()
+    )
+    assert set(paths) <= tracked
 
 
 def test_results_record_specification_correction_red_and_green() -> None:

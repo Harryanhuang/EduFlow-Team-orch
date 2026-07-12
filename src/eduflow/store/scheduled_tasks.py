@@ -473,7 +473,6 @@ def append_notification(
     payload: dict | None = None,
 ) -> dict:
     """Append an immutable notification record to the ledger."""
-    from pathlib import Path
     path = _notifications_file()
     path.parent.mkdir(parents=True, exist_ok=True)
     record = {

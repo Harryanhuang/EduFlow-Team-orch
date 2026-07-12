@@ -26,7 +26,7 @@ from eduflow.runtime import config, lifecycle, paths, tmux, verify
 from eduflow.store import local_facts
 from eduflow.util import (
     file_lock, maybe_print_help, pop_bool_flag, print_json, read_json,
-    reject_extra_args, write_json,
+    write_json,
 )
 from eduflow.agents import get_adapter
 

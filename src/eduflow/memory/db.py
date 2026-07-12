@@ -9,7 +9,6 @@ from __future__ import annotations
 import os
 import sqlite3
 import threading
-from pathlib import Path
 
 from eduflow.runtime.paths import ensure_state_dir, memory_db_file
 

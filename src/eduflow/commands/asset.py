@@ -64,7 +64,7 @@ def _cmd_list(rest: list[str]) -> int:
     if not assets:
         print("no assets found")
         return 0
-    print(f"asset_id\tasset_type\tstatus\ttitle\tpath")
+    print("asset_id\tasset_type\tstatus\ttitle\tpath")
     for asset in assets:
         print(
             f"{asset.asset_id}\t{asset.asset_type}\t{asset.status}\t"

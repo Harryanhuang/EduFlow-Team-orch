@@ -9,7 +9,6 @@ combining semantic similarity (topic) with structural context (workflow).
 """
 from __future__ import annotations
 
-from eduflow.memory.db import get_conn, init_schema
 
 
 def dual_query_memories(

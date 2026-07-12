@@ -7,7 +7,7 @@ CLI, mark status.  Errors out if the team isn't running yet (use
 from __future__ import annotations
 
 from eduflow.runtime import config, lifecycle, tmux
-from eduflow.util import error_exit, usage_error, warn
+from eduflow.util import error_exit, usage_error
 
 
 USAGE = "usage: eduflow hire <agent>"

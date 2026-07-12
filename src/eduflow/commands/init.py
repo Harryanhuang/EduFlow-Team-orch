@@ -239,7 +239,7 @@ def main(argv: list[str]) -> int:
         team_path = _config.team_file()
         rt_path = _config.runtime_config_file()
         print(f"  legacy {team_path.name} + {rt_path.name} preserved as backup;")
-        print(f"  remove them once you've verified `eduflow health` is green.")
+        print("  remove them once you've verified `eduflow health` is green.")
     else:
         print("Next:")
         print(f"  - edit {cfg_path.name} to set chat_id + adjust agents")

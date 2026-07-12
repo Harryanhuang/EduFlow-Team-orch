@@ -2740,8 +2740,8 @@ def _subject_closeout_finding(task: dict) -> dict | None:
         elif verdict_value == "manager_action":
             packet_action_code = "resolve_manager_action_then_re_review"
             packet_suggested_brief = (
-                f"review_course 已发出 manager_action，"
-                f"manager 需先决定方向或范围，等 review_course 重新给出 verdict 后再推进。"
+                "review_course 已发出 manager_action，"
+                "manager 需先决定方向或范围，等 review_course 重新给出 verdict 后再推进。"
             )
         elif latest_scope and latest_scope != "full_subject":
             packet_action_code = "request_full_subject_review_recheck"
@@ -3104,9 +3104,9 @@ def _latest_verdict_finding(task: dict) -> dict | None:
                         "must not advance until reviewer re-declares scope."
                     ),
                     "evidence_summary": (
-                        f"verdict=approved status=delivered "
-                        f"verdict_target=- "
-                        f"verdict_scope=-"
+                        "verdict=approved status=delivered "
+                        "verdict_target=- "
+                        "verdict_scope=-"
                     ),
                     "recommended_action": "request_verdict_target_for_existing_pass",
                 }
@@ -3512,8 +3512,8 @@ def _manager_closeout_action_finding(task: dict) -> dict | None:
         elif latest_verdict == "manager_action":
             action_code = "resolve_manager_action_then_re_review"
             suggested = (
-                f"review_course 已发出 manager_action，"
-                f"manager 需先决定方向或范围，等 review_course 重新给出 verdict 后再推进。"
+                "review_course 已发出 manager_action，"
+                "manager 需先决定方向或范围，等 review_course 重新给出 verdict 后再推进。"
             )
         elif latest_scope and latest_scope != "full_subject":
             action_code = "request_full_subject_review_recheck"

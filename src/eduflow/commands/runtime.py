@@ -26,7 +26,7 @@ reading the feed) can branch on verdicts.
 from __future__ import annotations
 
 from eduflow.util import (
-    maybe_print_help, pop_bool_flag, pop_flag, print_json, reject_extra_args,
+    maybe_print_help,
 )
 
 

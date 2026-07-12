@@ -553,7 +553,7 @@ def _handle_usage(args: str, ctx: SlashContext) -> dict:
             if not metrics:
                 elements.append(column_set_2(
                     "**Status**",
-                    f"<font color='grey'>API 跑通但没返回可解析窗口</font>"))
+                    "<font color='grey'>API 跑通但没返回可解析窗口</font>"))
             for m in metrics:
                 color = remaining_color(m["remaining_pct"])
                 extra = m.get("extra")

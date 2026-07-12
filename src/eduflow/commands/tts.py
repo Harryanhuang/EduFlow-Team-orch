@@ -23,7 +23,7 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
-from eduflow.runtime import config, paths
+from eduflow.runtime import paths
 from eduflow.util import (
     error_exit, maybe_print_help, pop_bool_flag, pop_flag, print_json,
     reject_extra_args, usage_error,

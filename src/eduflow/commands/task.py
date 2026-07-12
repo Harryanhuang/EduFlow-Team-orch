@@ -1815,7 +1815,7 @@ def _d_scheduler_panel_rows(now: int) -> dict:
                 "target": str(rule.get("target") or ""),
                 "next_due_utc": next_due_utc,
                 "reason": f"due_in_{delta // 60000}m",
-                "next_action": f"task schedule confirm-occurrence will fire on tick",
+                "next_action": "task schedule confirm-occurrence will fire on tick",
             })
 
     heartbeat = None
@@ -2247,7 +2247,7 @@ def _cmd_manager_panel(rest: list[str]) -> int:
             if packet.get("apply_allowed"):
                 print(f"   ✅ apply: eduflow task manager-action-apply {packet['action_code']} --subject-id {packet.get('subject_id', '')} --confirm")
             else:
-                print(f"   ⚠️  dry-run only — manual review required")
+                print("   ⚠️  dry-run only — manual review required")
 
     print("\n== Anomalies (non-actionable) ==")
     non_actionable = [row for row in anomalies if not row.get("action_packet")]
@@ -3888,7 +3888,7 @@ def _cmd_evolution_packet(rest: list[str]) -> int:
         ):
             print(f"    {key}: {c.get(key) or ''}")
         refs = c.get("evidence_refs") or []
-        print(f"    evidence_refs:")
+        print("    evidence_refs:")
         if refs:
             for r in refs:
                 print(f"      - {r}")

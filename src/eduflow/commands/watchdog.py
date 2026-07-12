@@ -51,7 +51,7 @@ from eduflow.feishu import chat as _chat
 from eduflow.feishu.cards import simple_card
 from eduflow.runtime import (
     config, context_monitor, lifecycle, paths, pidlock, tmux, tunables,
-    watchdog, wake,
+    watchdog, wake as wake,
 )
 from eduflow.agents import get_adapter
 from eduflow.util import maybe_print_help, read_json, write_json
