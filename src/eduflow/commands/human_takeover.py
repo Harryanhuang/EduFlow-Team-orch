@@ -8,15 +8,34 @@ from eduflow.util import error_exit, pop_bool_flag, pop_flag, print_json
 USAGE = "usage: eduflow human-takeover status|enter|recover [--json]"
 
 
+def _is_provisioned_actor_id(value: object) -> bool:
+    if not isinstance(value, str) or not value or value != value.strip():
+        return False
+    lowered = value.casefold()
+    if any(char in value for char in "<>{}[]$*") or any(char.isspace() for char in value):
+        return False
+    unprovisioned_markers = ("placeholder", "changeme", "change_me", "replace_me", "your_", "todo")
+    return lowered not in {"none", "null", "example"} and not any(
+        marker in lowered for marker in unprovisioned_markers
+    )
+
+
 def _authorized_actors() -> set[str]:
     team = tunables.load().get("team", {})
-    operators = team.get("operators", []) if isinstance(team, dict) else []
-    admins = team.get("admins", []) if isinstance(team, dict) else []
-    return {str(x) for x in [*operators, *admins] if x}
+    if not isinstance(team, dict):
+        return set()
+    operators = team.get("operators", [])
+    admins = team.get("admins", [])
+    if not isinstance(operators, list) or not isinstance(admins, list):
+        return set()
+    configured = [*operators, *admins]
+    if any(not _is_provisioned_actor_id(actor) for actor in configured):
+        return set()
+    return set(configured)
 
 
 def _authorize(actor: str | None) -> bool:
-    return bool(actor and actor in _authorized_actors())
+    return bool(_is_provisioned_actor_id(actor) and actor in _authorized_actors())
 
 
 def main(argv: list[str]) -> int:

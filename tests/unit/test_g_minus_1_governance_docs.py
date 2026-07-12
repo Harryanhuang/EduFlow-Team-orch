@@ -56,6 +56,16 @@ def test_ownership_and_exception_contracts_are_complete() -> None:
     assert "REVIEW | `worker_review`" in ownership
     assert "CLOSEOUT | `manager`" in ownership
     assert "manager is dispatch-only" in ownership
+    for document in (
+        _read("docs/architecture/TRUST_MODEL.md"),
+        _read("docs/operations/CONTROL_PLANE_SLO.md"),
+        ownership,
+    ):
+        assert "pending owner approval and independent REVIEW" in document
+        assert "Gate G-1 is blocked" in document
+        assert "runtime_operator" in document and "not provisioned" in document
+        assert "approval evidence is missing" in document
+        assert "approved G-1" not in document
 
     process = _read("docs/governance/DECISION_AND_EXCEPTION_PROCESS.md")
     for field in ("owner", "reason", "scope", "expiry", "removal_test"):
@@ -133,8 +143,6 @@ def test_compatibility_debt_ledger_has_bounded_entries() -> None:
 def test_compatibility_repository_baselines_are_reproducible_and_exclude_ledger() -> None:
     text = _read("docs/governance/COMPATIBILITY_DEBT.md")
     revision = "438fa806ab8112d415a4e159e03a9884e5983dbe"
-    assert str(ROOT) in text
-    assert "git diff --quiet" in text and "returned 0 at measurement time" in text
     cases = {
         "COMPAT-ROLE-001": (["review_course"], ["."]),
         "COMPAT-CARDS-001": (
@@ -149,12 +157,12 @@ def test_compatibility_repository_baselines_are_reproducible_and_exclude_ledger(
         ),
     }
     for compatibility_id, (patterns, roots) in cases.items():
-        command = ["rg", "-l"]
+        command = ["git", "grep", "-l", "-E"]
         for pattern in patterns:
             command.extend(["-e", pattern])
-        command.extend(roots)
-        command.extend(["--glob", "!docs/governance/COMPATIBILITY_DEBT.md"])
-        command.extend(["--glob", "!tests/unit/test_g_minus_1_governance_docs.py"])
+        command.extend([revision, "--", *roots])
+        command.extend([":!docs/governance/COMPATIBILITY_DEBT.md"])
+        command.extend([":!tests/unit/test_g_minus_1_governance_docs.py"])
         result = subprocess.run(command, cwd=ROOT, text=True, capture_output=True, check=False)
         assert result.returncode in {0, 1}, result.stderr
         count = len([line for line in result.stdout.splitlines() if line])
@@ -162,5 +170,14 @@ def test_compatibility_repository_baselines_are_reproducible_and_exclude_ledger(
         assert f"baseline_repo_files={count}" in row
         assert f"measurement_revision=`{revision}`" in row
         assert "measurement_utc=`2026-07-12T" in row
-        assert "--glob '!docs/governance/COMPATIBILITY_DEBT.md'" in row
-        assert "--glob '!tests/unit/test_g_minus_1_governance_docs.py'" in row
+        assert "git grep -l -E" in row
+        assert revision in row
+        assert ":!docs/governance/COMPATIBILITY_DEBT.md" in row
+        assert ":!tests/unit/test_g_minus_1_governance_docs.py" in row
+    drift = subprocess.run(
+        ["git", "diff", "--name-only", f"{revision}..HEAD", "--", "src", "tests", "docs"],
+        cwd=ROOT, text=True, capture_output=True, check=False,
+    )
+    assert drift.returncode == 0, drift.stderr
+    assert drift.stdout.splitlines(), "current committed drift must be detected separately"
+    assert "does not rewrite or bless the recorded baseline" in text

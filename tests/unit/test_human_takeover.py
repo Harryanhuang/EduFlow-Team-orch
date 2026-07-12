@@ -159,6 +159,34 @@ def test_cli_requires_configured_operator_for_mutations(monkeypatch, capsys):
     assert human_takeover.status()["state"] == "inactive"
 
 
+@pytest.mark.parametrize(
+    "team_config",
+    [
+        {"operators": ["u_<admin_feishu_id>"], "admins": []},
+        {"operators": ["placeholder"], "admins": []},
+        {"operators": "u_admin", "admins": []},
+        {"operators": [], "admins": {"actor": "u_admin"}},
+        {"operators": [""], "admins": []},
+    ],
+)
+def test_cli_rejects_unprovisioned_or_malformed_actor_config(monkeypatch, capsys, team_config):
+    monkeypatch.setattr("eduflow.commands.human_takeover.tunables.load", lambda: {"team": team_config})
+    actor = "u_<admin_feishu_id>"
+
+    enter_rc = cli.main([
+        "human-takeover", "enter", "--actor", actor, "--reason", "incident", "--json",
+    ])
+    recover_rc = cli.main([
+        "human-takeover", "recover", "--actor", actor, "--reason", "verified",
+        "--generation", "0", "--json",
+    ])
+
+    assert enter_rc != 0
+    assert recover_rc != 0
+    assert human_takeover.status()["state"] == "inactive"
+    assert "unauthorized" in capsys.readouterr().err
+
+
 def test_cli_status_enter_recover_json(monkeypatch, capsys):
     monkeypatch.setattr("eduflow.commands.human_takeover._authorized_actors", lambda: {"u_admin"})
     assert cli.main(["human-takeover", "status", "--json"]) == 0

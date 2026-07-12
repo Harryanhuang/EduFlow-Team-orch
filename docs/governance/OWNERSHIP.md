@@ -1,6 +1,8 @@
 # EduFlow Control-Plane Ownership
 
-**Status:** approved G-1 baseline. Role identifiers are durable governance identities; assignment to a human account must be recorded separately and may not be inferred from a pane.
+**Status:** pending owner approval and independent REVIEW. Role identifiers are draft governance identities; assignment to a human account must be recorded separately and may not be inferred from a pane.
+
+Gate G-1 is blocked: `runtime_operator` is not provisioned and approval evidence is missing. This draft ownership table does not itself appoint an actor or satisfy the control-plane-owner veto; acceptance requires recorded owner approval, provisioned structured identity where required, independent `worker_review`, and manager CLOSEOUT.
 
 | Domain / decision | Accountable owner | Required duties | Prohibited substitution |
 |---|---|---|---|

@@ -1,11 +1,13 @@
 # EduFlow Control-Plane SLO and Failure Budgets
 
-**Status:** approved initial G-1 policy
+**Status:** pending owner approval and independent REVIEW
 
 **Owner:** `control_plane_owner`
 **Measurement rule:** measure from durable machine events. Logs, prompts, cached verdicts, and chat claims do not satisfy an SLO.
 
-## Approved SLOs
+Gate G-1 is blocked: `runtime_operator` is not provisioned and approval evidence is missing. The targets below are proposed contract values from the master plan, not an approved or currently enforced production SLO.
+
+## Proposed SLOs
 
 | SLO id | Initial objective | Start / terminal evidence | Budget consequence |
 |---|---|---|---|
@@ -16,7 +18,7 @@
 | `orphan_detection` | orphaned Loop or Workflow detected within 2 inspection cycles | lease/heartbeat loss / reconciliation finding | Freeze affected automation and assign recovery owner |
 | `unauthorized_control_action_rejection` | 100% rejected and audited before side effects | structured control request / denied audit event | Any miss is a security incident; automation stops fail closed |
 
-These are the six approved initial objectives from the master plan. G-1 establishes policy and the runtime takeover primitive; message, Loop, and Workflow enforcement lands only in their scheduled Gates and must not be reported as implemented before then.
+These are the six proposed initial objectives from the master plan. G-1 drafts policy and has a runtime takeover primitive; message, Loop, and Workflow enforcement lands only in their scheduled Gates and must not be reported as implemented before then.
 
 ## Circuit-breaker thresholds
 
@@ -29,7 +31,7 @@ These are the six approved initial objectives from the master plan. G-1 establis
 
 The durable state sequence is `inactive -> active -> recovering -> inactive`. Budget exhaustion must persist the reason, source, structured actor, entry time, recovery steps, and generation. While `active` or `recovering`, every guarded automatic action must stop before side effects. Read-only status remains available. A stale generation cannot resume work.
 
-The runtime rule above is the approved semantic target. Current G-1 code can enter takeover when one automatic failover reports at least three attempts and has a separate switch cooldown; it does not yet persist a cross-operation consecutive-failure counter with the reset/manual semantics above. `G1-Runtime-Authority`, owned by `runtime_operator` with `control_plane_owner` approval, must implement that counter from durable switch events. Removal test: `python3 -m pytest tests/integration/test_control_plane_authorization.py -k runtime_failure_budget_semantics` must pass before this limitation can be closed; until that stable test exists and passes, cross-operation budget enforcement is not an acceptance claim.
+The runtime rule above is the proposed semantic target. Current G-1 code can enter takeover when one automatic failover reports at least three attempts and has a separate switch cooldown; it does not yet persist a cross-operation consecutive-failure counter with the reset/manual semantics above. `G1-Runtime-Authority`, owned by `runtime_operator` with `control_plane_owner` approval, must implement that counter from durable switch events. Removal test: `python3 -m pytest tests/integration/test_control_plane_authorization.py -k runtime_failure_budget_semantics` must pass before this limitation can be closed; until that stable test exists and passes, cross-operation budget enforcement is not an acceptance claim.
 
 ## Transition criteria
 

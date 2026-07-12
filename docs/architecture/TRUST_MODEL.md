@@ -1,11 +1,13 @@
 # EduFlow Control-Plane Trust Model
 
-**Status:** approved G-1 governance baseline
+**Status:** pending owner approval and independent REVIEW
 
 **Owner:** `control_plane_owner`
 **Fail-closed rule:** an unknown identity, missing structured actor, empty allowlist, or ambiguous authority denies every write or control action and emits an audit event.
 
 This document states the intended authority boundary. It does not assert that later-Gate RBAC enforcement is already implemented. Prompt text is not an authority source.
+
+Gate G-1 is blocked: `runtime_operator` is not provisioned and approval evidence is missing. This draft cannot satisfy AC-G-1-04 or authorize a production mutation until the owner approval and independent `worker_review` verdict are recorded in the Gate acceptance package.
 
 ## Authority matrix
 

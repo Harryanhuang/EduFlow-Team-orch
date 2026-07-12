@@ -500,6 +500,37 @@ Result: both unavailable; Gate-wide Task 7 supply-chain/secret scan remains mand
 Command: git diff --check
 Result: passed.
 
+Task 6 quality correction: fail-closed provisioning, approval truth, immutable baselines
+Timestamp UTC: 2026-07-12T08:16:08Z
+Starting revision: e02dbebf68f1efe391d4d96884471d0a5e74ac42
+
+RED
+Command: python3 -m pytest tests/unit/test_human_takeover.py tests/unit/test_g_minus_1_governance_docs.py -q
+Result: 3 failed. The tracked `u_<admin_feishu_id>` placeholder could enter
+takeover; three governance documents falsely said approved; and immutable
+commit-object git-grep returned 177 role references while the worktree-derived
+ledger claimed 146.
+
+GREEN FOCUSED / ADJACENT
+Command: python3 -m pytest tests/unit/test_human_takeover.py tests/integration/test_human_takeover_circuit_breaker.py tests/unit/test_runtime_verify.py tests/unit/test_runtime_failover.py tests/unit/test_commands_watchdog.py tests/unit/test_runtime_watchdog.py tests/unit/test_cli.py tests/unit/test_cli_flag_gaps.py tests/unit/test_g_minus_1_governance_docs.py tests/unit/test_plan_status_index.py tests/unit/test_state_config_inventory.py tests/unit/test_audit_production_topology.py --disable-warnings
+Result: 262 passed in 1.52s. Placeholder/template/empty and malformed actor
+configuration rejects both enter and recover before mutation. Governance tests
+require pending status and explicit Gate block. Compatibility tests execute
+immutable `git grep` against the recorded SHA and separately detect HEAD drift.
+
+STATIC / SECURITY
+Command: git diff --check
+Result: passed.
+Command: credential-value pattern scan over changed code/docs/tests
+Result: only pre-existing intentional redaction-test sentinels in
+tests/unit/test_human_takeover.py; no production credential value added.
+
+GATE TRUTH
+TRUST_MODEL, CONTROL_PLANE_SLO, and OWNERSHIP are pending owner approval and
+independent REVIEW. Gate G-1 remains blocked because runtime_operator is not
+provisioned and approval evidence is missing. No actor was provisioned and no
+approval artifact was fabricated.
+
 PRODUCTION FACT LIMIT
 The runbook records that production admins/runtime_operator authorization is not
 provisioned and the tracked operator value is a literal placeholder. It forbids
