@@ -419,6 +419,12 @@ GREEN CLEAN ROOT: `env -i HOME=/tmp/eduflow-inventory-clean-home PATH=/opt/homeb
 GREEN EXPLICIT LIVE: `python3 tests/unit/test_state_config_inventory.py --live-root /Volumes/Halobster/Codex相关/EduFlow-Team-orch` -> exit 0. It correlated 11/11 persisted `current_runtime_status` runtimes with explicit `resolved_agent_config(..., runtime_name=...)`, proved selected `$ROOT/.env` references/mode without values, and validated active/legacy DB modes, schema fingerprint/key metadata, editable flow-memory source HEAD/dirty/hash, and eight runtime file modes.
 REGRESSION: memory/path/auth suite -> 680 tests collected, exit 0, 100% passed.
 HYGIENE: final `git diff --check` -> exit 0; scoped three-file secret-value scan -> 0 hits. Explicit probe emitted reference variable names and metadata only, never environment values or memory rows.
+Task 4 credential-origin/shell/parent-mode correction TDD evidence (2026-07-12)
+RED: focused pytest -> 1 failed, 4 passed because `facts` was documented as 0700 rather than observed 0755 and the contract did not yet require env_profile references to be backed by `$ROOT/.env` assignment keys.
+GREEN UNIT: focused and clean-environment pytest -> 5 passed each. Tests include root-key fixture plus ambient-only negative case, and hostile live-root quote/`$()`/backtick argv injection case with a non-created marker.
+GREEN EXPLICIT LIVE: live probe -> exit 0; 11/11 selected profile reference-name sets were subsets of safe-parsed `$ROOT/.env` key names, with no RHS values retained/output. Directory modes proved `$STATE=0700`, `facts=0755`, `agents=0755`; runtime files remain 0644.
+GREEN REGRESSION: memory/path/auth suite -> 683 tests collected, exit 0, 100% passed.
+HYGIENE: final diff check -> exit 0; scoped secret-value scan -> 0 hits. Root env proof retained assignment LHS key names only; probe JSON contained reference names and modes, no stored values.
 TASK 4 FINAL CREDENTIAL-SOURCE RED
 Command: python3 -m pytest tests/unit/test_state_config_inventory.py::test_hermes_selected_env_source_is_root_not_state -q
 Observed: 1 failed because the Hermes fallback note contradicted live runtime evidence by naming `$STATE/.env` instead of wrapper-selected `$ROOT/.env`.

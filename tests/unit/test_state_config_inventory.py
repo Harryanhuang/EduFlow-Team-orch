@@ -12,6 +12,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 DOC = ROOT / "docs/operations/state-and-config-inventory.md"
+_WRAPPER_COMMAND = r'''
+set -euo pipefail
+unset ROOT
+. "$1/scripts/eduflow-team-env.sh"
+exec python3 "$2" --live-root "$1" --collect-in-wrapper
+'''
 
 REQUIRED_COLUMNS = {
     "asset", "authoritative location/store", "writer", "reader", "owner",
@@ -75,7 +81,16 @@ def _validate_document(text: str, probe: dict) -> None:
     for name, mode in probe["runtime_modes"].items():
         values = dict(zip(header, rows[name]))
         assert mode == "0644"
-        assert "0644" in values["permissions"] and "0700" in values["permissions"]
+        assert "0644" in values["permissions"]
+        assert probe["directory_modes"]["state"] == "0700"
+        child = "facts" if name in {
+            "inbox", "generic events", "runtime status", "runtime switch events",
+        } else "state"
+        assert probe["directory_modes"][child] in values["permissions"]
+    identity = dict(zip(header, rows["identity assets"]))
+    assert probe["directory_modes"]["agents"] == "0755"
+    assert "0755" in identity["permissions"] and "0700" in identity["permissions"]
+    assert "non-traversable" in text
 
     cred_header, cred_rows = _table(text, "selected credential source")
     assert set(cred_header) == {
@@ -91,6 +106,7 @@ def _validate_document(text: str, probe: dict) -> None:
         assert values["selected credential source"] == actual["source_path"]
         assert values["source type/mode"] == f"{actual['source_type']}; {actual['source_mode']}"
         assert "current_runtime_status" in values["selection evidence"]
+        assert set(actual["reference_names"]) <= set(probe["root_env_keys"])
     assert "$ROOT/.env" in text
     assert "$STATE/.env` is agent_auth fallback only" in text
     assert "production topology PASS" in text
@@ -117,11 +133,14 @@ def _fixture_probe() -> dict:
             "inbox", "task snapshot", "task events", "generic events",
             "router cursor", "router seen set", "runtime status", "runtime switch events",
         )},
+        "directory_modes": {"state": "0700", "facts": "0755", "agents": "0755"},
+        "root_env_keys": ["FIXTURE_AUTH_TOKEN"],
         "credentials": [{
             "agent": "fixture_agent", "runtime": "fixture_runtime",
             "env_profile": "fixture_profile", "cli": "claude-code",
             "source_path": "$ROOT/.env", "source_type": "env_profile reference",
             "source_mode": "0600",
+            "reference_names": ["FIXTURE_AUTH_TOKEN"],
         }],
     }
 
@@ -182,6 +201,64 @@ def test_live_probe_wrapper_parsing_uses_mocked_subprocess(monkeypatch, capsys, 
     assert all("value" not in key.lower() for row in parsed["credentials"] for key in row)
 
 
+def test_env_profile_source_requires_root_file_key_not_ambient_export(tmp_path: Path):
+    env_file = tmp_path / ".env"
+    env_file.write_text("ROOT_TOKEN=discarded-value\n", encoding="utf-8")
+    keys = _env_key_names(env_file)
+    assert keys == {"ROOT_TOKEN"}
+    assert _resolve_profile_source(["ROOT_TOKEN"], keys) == "$ROOT/.env"
+    try:
+        _resolve_profile_source(["AMBIENT_ONLY_TOKEN"], keys)
+    except RuntimeError as exc:
+        assert "not declared in $ROOT/.env" in str(exc)
+    else:
+        raise AssertionError("ambient-only export must not prove root .env authority")
+
+
+def test_wrapper_command_uses_positional_argv_and_never_interpolates_live_root(
+    monkeypatch, capsys, tmp_path: Path,
+):
+    marker = tmp_path / "must-not-execute"
+    hostile = tmp_path / f'bad";touch $({marker});`touch {marker}`'
+    calls = []
+    monkeypatch.setattr(subprocess, "run", lambda argv, **kwargs: (
+        calls.append((argv, kwargs)) or SimpleNamespace(
+            returncode=0, stdout=json.dumps(_fixture_probe()), stderr="",
+        )
+    ))
+    assert main(["--live-root", str(hostile)]) == 0
+    assert not marker.exists()
+    argv, _ = calls[0]
+    assert argv[:3] == ["bash", "-c", _WRAPPER_COMMAND]
+    assert argv[3] == "eduflow-inventory"
+    assert argv[4] == str(hostile)
+    assert str(hostile) not in _WRAPPER_COMMAND
+    assert calls[0][1]["env"]["ROOT"] == ""
+    json.loads(capsys.readouterr().out)
+
+
+def _env_key_names(path: Path) -> set[str]:
+    """Return only assignment LHS names; RHS bytes are discarded immediately."""
+    keys = set()
+    with path.open("r", encoding="utf-8") as stream:
+        for raw in stream:
+            line = raw.lstrip()
+            if line.startswith("export "):
+                line = line[7:].lstrip()
+            equals = line.find("=")
+            key = line[:equals].strip() if equals >= 0 else ""
+            if equals >= 0 and re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*", key):
+                keys.add(key)
+    return keys
+
+
+def _resolve_profile_source(reference_names: list[str], root_env_keys: set[str]) -> str:
+    missing = sorted(set(reference_names) - root_env_keys)
+    if missing:
+        raise RuntimeError(f"env_profile references not declared in $ROOT/.env: {missing}")
+    return "$ROOT/.env"
+
+
 def _mode(path: Path) -> str:
     return f"{path.stat().st_mode & 0o777:04o}" if path.exists() else "absent"
 
@@ -235,6 +312,7 @@ def _collect_live(root: Path) -> dict:
     module = Path(inspect.getsourcefile(backend.__class__)).resolve()
     source_head, source_dirty = _git_metadata(module)
     raw_profiles = tunables.load().get("env_profiles", {})
+    root_env_keys = _env_key_names(root / ".env")
     credentials = []
     for agent in config.agent_names():
         status = lifecycle.current_runtime_status(agent)
@@ -250,11 +328,12 @@ def _collect_live(root: Path) -> dict:
             match.group(1) for value in profile.values() if isinstance(value, str)
             for match in [re.fullmatch(r"\$\{([A-Z0-9_]+)\}", value)] if match
         })
-        if not references or not all(name in os.environ for name in references):
+        if not references:
             raise RuntimeError(f"{agent}: selected env_profile reference source unresolved")
+        source_path = _resolve_profile_source(references, root_env_keys)
         credentials.append({
             "agent": agent, "runtime": runtime_name, "env_profile": profile_name,
-            "cli": str(selected.get("cli") or ""), "source_path": "$ROOT/.env",
+            "cli": str(selected.get("cli") or ""), "source_path": source_path,
             "source_type": "env_profile reference", "source_mode": _mode(root / ".env"),
             "reference_names": references,
         })
@@ -279,6 +358,11 @@ def _collect_live(root: Path) -> dict:
             "legacy_mode": _mode(state / "eduflow_memory.db"),
         },
         "runtime_modes": {name: _mode(path) for name, path in runtime_paths.items()},
+        "directory_modes": {
+            "state": _mode(state), "facts": _mode(state / "facts"),
+            "agents": _mode(state / "agents"),
+        },
+        "root_env_keys": sorted(root_env_keys),
         "credentials": credentials,
         "source_modes": {
             "root_env": _mode(root / ".env"), "state_env": _mode(state / ".env"),
@@ -295,12 +379,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--collect-in-wrapper", action="store_true", help=argparse.SUPPRESS)
     args = parser.parse_args(argv)
     if not args.collect_in_wrapper:
-        command = (
-            f'. "{args.live_root}/scripts/eduflow-team-env.sh"; '
-            f'exec python3 "{Path(__file__).resolve()}" --live-root "{args.live_root}" '
-            "--collect-in-wrapper"
+        run = subprocess.run(
+            ["bash", "-c", _WRAPPER_COMMAND, "eduflow-inventory",
+             str(args.live_root), str(Path(__file__).resolve())],
+            text=True, capture_output=True, env={**os.environ, "ROOT": ""},
         )
-        run = subprocess.run(["bash", "-lc", command], text=True, capture_output=True)
         if run.returncode:
             sys.stderr.write(run.stderr)
             return run.returncode
