@@ -19,6 +19,12 @@ security/static checks under the acceptance contract; they are **not**
 `not_applicable`. The limited tracked-file pattern scan above cannot certify
 the missing secret-scan requirement.
 
+The repository declares a TruffleHog v3.88.0 hook in
+`.pre-commit-config.yaml`, but this machine has neither the `pre-commit`
+launcher nor a TruffleHog executable/module available. A declared but
+non-runnable hook is evidence of intended control, not evidence of a completed
+secret scan.
+
 Result: FAIL — security/supply-chain gate evidence is incomplete. No dependency
 was installed or repository lockfile generated solely to make this evidence
 appear green.
