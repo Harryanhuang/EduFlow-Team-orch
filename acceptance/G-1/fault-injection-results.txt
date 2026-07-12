@@ -18,3 +18,4 @@ Spec-review correction fault injections
 - Context recovery: an exhausted-context signal during active takeover returned as handled without invoking restart_with_runtime.
 - Manual override authorization: an inactive manual switch remains actor-optional for compatibility; while takeover is active, missing and unconfigured actors are rejected, a configured operator/admin is accepted, and the actor identity is included in the switch audit event.
 - Entry usability: automatic and manual takeover entry persists three nonempty operator-visible recovery steps; recovery with no replacement steps retains those instructions.
+- Watchdog loop boundary: injected both AutomationBlocked and StaleGeneration as if takeover won between fallback attempts; `_guard_agent_runtimes` returned normally, made exactly one shared-loop call, and performed no later switch-outcome mutation.

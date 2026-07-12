@@ -6,6 +6,8 @@ test_runtime_watchdog.py.
 """
 from __future__ import annotations
 
+import pytest
+
 from helpers import attr_patch, isolated_env
 from eduflow.commands import watchdog as cmd_watchdog
 from eduflow.feishu import chat as feishu_chat
@@ -336,6 +338,66 @@ switch_on = ["auth_failure"]
     assert current == "primary"
     assert reason == "auth_failure"
     assert trigger == "watchdog"
+
+
+@pytest.mark.parametrize("blocked_exc", [
+    human_takeover.AutomationBlocked("takeover entered between attempts"),
+    human_takeover.StaleGeneration("generation changed between attempts"),
+])
+def test_guard_agent_runtimes_survives_takeover_race_from_shared_loop(blocked_exc):
+    """The daemon tick must end safely when attempt N+1 loses its CAS."""
+    team = {"session": "S", "agents": {"worker_a": {"runtime": "primary"}}}
+    updates = []
+    calls = []
+
+    class _Adapter:
+        def ready_markers(self):
+            return ["ready"]
+
+        def rate_limit_markers(self):
+            return []
+
+    def blocked_after_first_attempt(*args, **kwargs):
+        calls.append((args, kwargs))
+        raise blocked_exc
+
+    with isolated_env(team=team) as tmp:
+        (tmp / "eduflow.toml").write_text("""
+[team]
+session = "S"
+
+[team.agents.worker_a]
+runtime = "primary"
+role = "worker"
+
+[runtime_registry.primary]
+cli = "claude-code"
+model = "sonnet"
+fallback_to = "backup"
+switch_on = ["auth_failure"]
+
+[runtime_registry.backup]
+cli = "codex-cli"
+model = "gpt-5.5"
+switch_on = ["auth_failure"]
+""", encoding="utf-8")
+        from eduflow.runtime import failover as failover_mod
+        with attr_patch(cmd_watchdog.tmux,
+                        has_session=lambda s: True,
+                        has_window=lambda t: True,
+                        capture_pane=lambda t, lines=120: "Invalid auth credentials\n"), \
+                attr_patch(cmd_watchdog, get_adapter=lambda cli: _Adapter(),
+                           _update_guard_agent=lambda agent, **fields: updates.append(fields) or {}), \
+                attr_patch(cmd_watchdog.lifecycle,
+                           current_runtime_status=lambda agent: {"runtime": "primary"}), \
+                attr_patch(failover_mod, execute_fallback_loop=blocked_after_first_attempt), \
+                attr_patch(cmd_watchdog.wake, is_rate_limited=lambda *a, **kw: False):
+            cmd_watchdog._guard_agent_runtimes()
+
+    assert len(calls) == 1
+    assert updates, "pre-switch failure observation remains allowed"
+    assert not any("last_switch_outcome" in row for row in updates), \
+        "no post-switch mutation may run after the shared loop blocks"
 
 
 def test_guard_agent_runtimes_uses_current_runtime_adapter_for_codex_pane():

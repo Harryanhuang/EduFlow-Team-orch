@@ -765,13 +765,20 @@ def _guard_agent_runtimes() -> None:
             human_takeover.ensure_automation_allowed(expected_generation=automation_generation)
         except (human_takeover.AutomationBlocked, human_takeover.StaleGeneration):
             return
-        result = failover.execute_fallback_loop(
-            agent,
-            target,
-            str(current),
-            reason,
-            trigger="watchdog",
-        )
+        try:
+            result = failover.execute_fallback_loop(
+                agent,
+                target,
+                str(current),
+                reason,
+                trigger="watchdog",
+            )
+        except (human_takeover.AutomationBlocked, human_takeover.StaleGeneration):
+            # A takeover can begin after attempt one and before a later retry.
+            # The shared loop correctly blocks that restart; treat the signal
+            # as a safe end-of-tick instead of terminating the watchdog daemon
+            # or applying post-switch state mutations to a partial attempt.
+            return
         outcome = result["outcome"]
         to_runtime = result["to_runtime"]
         attempts = len(result["attempts"])
