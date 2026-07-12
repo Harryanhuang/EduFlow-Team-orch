@@ -19,11 +19,16 @@ Source production baseline
 Isolated implementation worktree
 - checkout: /Users/huanganan/.config/superpowers/worktrees/EduFlow-Team-orch/eduflow-upgrade-gates
 - branch: codex/eduflow-upgrade-gates
+- pre-Task-G-1.1 implementation HEAD: 263a1af5
+- Task 1 baseline-evidence commit: 2f023f22
 
-Runtime/config/state inventory policy
-- Python runtime: executable path and version are baseline metadata; no environment or credential values are captured here.
-- configuration: record only configuration file paths, file versions/hashes, and ownership; never copy configuration values into acceptance evidence.
-- state: record only state directory/database paths, schema/version metadata, ownership, and backup policy; never copy stored values into acceptance evidence.
+Runtime/config/state facts (read-only inspection)
+- Python executable: /opt/homebrew/opt/python@3.14/bin/python3.14
+- Python version: 3.14.3
+- config path: /Users/huanganan/.config/superpowers/worktrees/EduFlow-Team-orch/eduflow-upgrade-gates/eduflow.toml
+- state dir: /Users/huanganan/.eduflow
+- memory DB path: /Users/huanganan/.eduflow/eduflow_memory.db
+- capture policy: paths and versions only; no configuration, environment, credential, or stored data values are captured.
 
 Baseline validation evidence
 - pytest: 2768 passed, 5 warnings in 239.64s
