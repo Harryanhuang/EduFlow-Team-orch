@@ -15,6 +15,7 @@ def test_clean_install_surfaces_are_standard_installable():
     assert "pip install --no-cache-dir ." in dockerfile
     assert "pip install --no-cache-dir -e ." not in dockerfile
     assert "ARG EDUFLOW_REVISION" in dockerfile
+    assert "${EDUFLOW_REVISION:-}" in dockerfile
     assert "COPY setup.py ./" in dockerfile
     assert "EDUFLOW_BUILD_REVISION" in dockerfile
     assert "sha256sum" in dockerfile

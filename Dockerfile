@@ -124,7 +124,7 @@ COPY setup.py ./
 COPY src/ ./src/
 
 RUN set -eu; \
-    if [ -n "$EDUFLOW_REVISION" ]; then \
+    if [ -n "${EDUFLOW_REVISION:-}" ]; then \
         build_revision="$EDUFLOW_REVISION"; \
     else \
         build_revision="sha256:$(find pyproject.toml setup.py src -type f -print0 | LC_ALL=C sort -z | xargs -0 sha256sum | sha256sum | cut -d ' ' -f1)"; \
