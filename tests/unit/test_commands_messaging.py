@@ -548,12 +548,61 @@ def test_read_ack_completed_and_reconciled_are_available_from_cli():
         assert row is not None
         assert row["ack_state"] == "completed"
 
-        rc, out, err = run_cli(["read", local_id, "--ack", "reconciled"])
+        reconciliation_id = local_facts.append_message(
+            "manager", "worker_course", "Physics 0625 stale completion handoff", priority="高",
+        )
+        assert local_facts.queue_inbox_reconciliation(
+            reconciliation_id,
+            actor="task_event_scanner",
+            evidence="newer task closeout exists",
+        )
+        rc, out, err = run_cli([
+            "read", reconciliation_id, "--ack", "reconciled",
+            "--actor", "manager", "--evidence", "newer task closeout exists",
+        ])
         assert rc == 0, err
-        assert "ack=reconciled" in out
-        row = local_facts.get_message(local_id)
+        assert "reconciled without marking read" in out
+        row = local_facts.get_message(reconciliation_id)
         assert row is not None
         assert row["ack_state"] == "reconciled"
+
+
+def test_read_reconciled_requires_evidence_and_preserves_unread_bit():
+    with isolated_env():
+        run_cli(["send", "worker_course", "manager", "T-172 stale instruction", "高", "--no-inject"])
+        local_id = local_facts.list_messages("worker_course")[0]["local_id"]
+        assert local_facts.queue_inbox_reconciliation(
+            local_id,
+            actor="task_event_scanner",
+            evidence="later worker process visibility",
+        )
+
+        rc, _, err = run_cli(["read", local_id, "--ack", "reconciled"])
+        assert rc == 1
+        assert "--actor and --evidence" in err
+        pending = local_facts.get_message(local_id)
+        assert pending is not None and pending["read"] is False
+
+        rc, _, err = run_cli(["read", local_id])
+        assert rc == 1
+        assert "queued for reconciliation" in err
+        rc, _, err = run_cli(["read", local_id, "--ack", "accepted_task"])
+        assert rc == 1
+        assert "queued for reconciliation" in err
+        pending = local_facts.get_message(local_id)
+        assert pending is not None and pending["ack_state"] == "reconciliation_pending"
+
+        rc, out, err = run_cli([
+            "read", local_id, "--ack", "reconciled",
+            "--actor", "manager",
+            "--evidence", "worker_course delivered T-172",
+        ])
+        assert rc == 0, err
+        assert "reconciled without marking read" in out
+        resolved = local_facts.get_message(local_id)
+        assert resolved is not None
+        assert resolved["read"] is False
+        assert resolved["ack_state"] == "reconciled"
 
 
 def test_inbox_shows_delivery_state_for_unread_messages():

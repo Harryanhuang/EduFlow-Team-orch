@@ -277,6 +277,8 @@ def _agent_inbox_recovery_needed(agent: str) -> bool:
     for msg in messages:
         if msg.get("superseded"):
             continue
+        if local_facts.is_reconciliation_managed(msg):
+            continue
         if not local_facts.is_high_priority(str(msg.get("priority") or "")):
             continue
         ack_state = str(msg.get("ack_state") or "pending")

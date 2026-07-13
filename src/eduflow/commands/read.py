@@ -22,7 +22,8 @@ from eduflow.util import error_exit, usage_error
 USAGE = (
     "usage: eduflow read <local_id> "
     "[--ack accepted_task|started_task|accepted_revision|completed|reconciled] "
-    "[--topic <topic>] [--file <path>] [--issue <text>]"
+    "[--topic <topic>] [--file <path>] [--issue <text>] "
+    "[--actor <actor>] [--evidence <evidence>]"
 )
 
 
@@ -126,6 +127,8 @@ def _diagnose_missing_message(local_id: str) -> list[str]:
 def main(argv: list[str]) -> int:
     rest = list(argv)
     ack_kind = _pop_option(rest, "--ack")
+    actor = _pop_option(rest, "--actor") or ""
+    evidence = _pop_option(rest, "--evidence") or ""
     topic = _pop_option(rest, "--topic") or ""
     files = []
     issues = []
@@ -142,6 +145,21 @@ def main(argv: list[str]) -> int:
     if len(rest) < 1:
         return usage_error(USAGE)
     local_id = rest[0]
+    if ack_kind == "reconciled":
+        if not actor or not evidence:
+            return error_exit("❌ reconciled ACK requires --actor and --evidence")
+        if not local_facts.reconcile_inbox_message(
+            local_id, actor=actor, evidence=evidence,
+        ):
+            return error_exit(f"❌ message is not queued for reconciliation: {local_id}")
+        print(f"✅ reconciled without marking read: {local_id}  actor={actor}")
+        return 0
+    message = local_facts.get_message(local_id)
+    if message is not None and local_facts.is_reconciliation_managed(message):
+        return error_exit(
+            f"❌ message is queued for reconciliation: {local_id}; "
+            "use --ack reconciled --actor <actor> --evidence <evidence>"
+        )
     if not local_facts.mark_read(local_id):
         for hint in _diagnose_missing_message(local_id):
             print(hint, file=__import__("sys").stderr)

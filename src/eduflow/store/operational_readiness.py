@@ -47,6 +47,8 @@ def _classify_delivery(task: dict) -> dict[str, str]:
     for msg in local_facts.list_all_messages():
         if str(msg.get("task_id") or "") != str(task.get("id") or ""):
             continue
+        if local_facts.is_reconciliation_managed(msg):
+            continue
         # Pick the most recent handoff (by created_at)
         if handoff is None or int(msg.get("created_at") or 0) > int(handoff.get("created_at") or 0):
             handoff = msg

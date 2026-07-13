@@ -558,6 +558,8 @@ def _agent_has_specific_inbox_blocker(agent: str) -> bool:
     for msg in reversed(local_facts.list_messages(agent)):
         if msg.get("superseded"):
             continue
+        if local_facts.is_reconciliation_managed(msg):
+            continue
         if not local_facts.is_high_priority(str(msg.get("priority") or "")):
             continue
         ack_state = str(msg.get("ack_state") or "pending")
@@ -917,6 +919,8 @@ def _open_high_priority_unacked_messages(agent: str) -> list[dict]:
     rows = []
     for msg in local_facts.list_messages(agent):
         if msg.get("superseded"):
+            continue
+        if local_facts.is_reconciliation_managed(msg):
             continue
         if not local_facts.is_high_priority(str(msg.get("priority") or "")):
             continue
@@ -4334,6 +4338,26 @@ def _high_priority_inbox_blocking_findings(*, now: int) -> list[dict]:
             continue
         ack_state = str(msg.get("ack_state") or "pending")
         is_unread = not bool(msg.get("read"))
+        if ack_state == "reconciled":
+            continue
+        if ack_state == "reconciliation_pending":
+            rows.append({
+                "category": "inbox_reconciliation_pending",
+                "task_id": str(msg.get("task_id") or msg.get("local_id") or "inbox"),
+                "message_id": str(msg.get("local_id") or ""),
+                "agent": str(msg.get("to") or ""),
+                "stage": "inbox",
+                "status": "reconciliation_pending",
+                "severity": "info",
+                "age_ms": max(now - int(msg.get("created_at") or 0), 0),
+                "why": "旧 inbox 事实已进入 reconciliation queue，不作为 live blocker",
+                "evidence_summary": (
+                    f"message_id={msg.get('local_id') or '-'} "
+                    f"reconciliation={msg.get('reconciliation') or {}}"
+                ),
+                "recommended_action": "review_reconciliation_queue",
+            })
+            continue
         if not is_unread and ack_state in {
             "agent_acknowledged",
             "action_started",
@@ -4381,46 +4405,62 @@ def _high_priority_inbox_blocking_findings(*, now: int) -> list[dict]:
         if is_unread and _runtime_repair_message_resolved_by_watchdog_recovery(msg):
             continue
         if _verdict_exists_for_review_handoff_message(msg):
-            if task_id:
-                task = tasks.get(task_id) or {}
-                rows.append({
-                    "category": "stale_review_handoff_reconciled",
-                    "task_id": task_id or local_id or "inbox",
-                    "message_id": local_id,
-                    "stage": str(task.get("stage") or "inbox"),
-                    "status": str(task.get("status") or "reconciled"),
-                    "severity": "info",
-                    "age_ms": max(now - int(msg.get("created_at") or 0), 0),
-                    "why": "review_course 已给出 verdict，旧 review handoff 不再作为未消费阻塞",
-                    "evidence_summary": (
-                        f"message_id={local_id} task_id={task_id or '-'} "
-                        f"verdict={task.get('verdict') or '-'} "
-                        f"review_reason={task.get('review_reason') or '-'}"
-                    ),
-                    "recommended_action": "suppress_stale_review_handoff",
-                })
+            task = tasks.get(task_id) or {}
+            evidence = (
+                f"newer review truth task_id={task_id or '-'} "
+                f"verdict={task.get('verdict') or 'visible'} "
+                f"status={task.get('status') or '-'} "
+                f"review_reason={task.get('review_reason') or '-'}"
+            )
+            local_facts.queue_inbox_reconciliation(
+                local_id,
+                actor="task_event_scanner",
+                evidence=evidence,
+            )
+            rows.append({
+                "category": "inbox_reconciliation_pending",
+                "task_id": task_id or local_id or "inbox",
+                "message_id": local_id,
+                "agent": agent,
+                "stage": str(task.get("stage") or "inbox"),
+                "status": "reconciliation_pending",
+                "severity": "info",
+                "age_ms": max(now - int(msg.get("created_at") or 0), 0),
+                "why": "新 review verdict 与旧 handoff 冲突，已进入 reconciliation queue",
+                "evidence_summary": f"message_id={local_id} {evidence}",
+                "recommended_action": "review_reconciliation_queue",
+            })
             continue
         delegated_answer = _delegated_unread_answered_by_manager(msg, now=now)
         if delegated_answer is not None:
             rows.append(delegated_answer)
             continue
         if is_unread and _message_has_later_direct_process_visibility(msg):
+            evidence = (
+                "later direct process visibility exists for the same inbox instruction; "
+                "the unread bit is stale"
+            )
+            local_facts.queue_inbox_reconciliation(
+                local_id,
+                actor="task_event_scanner",
+                evidence=evidence,
+            )
             rows.append({
-                "category": "high_priority_inbox_unread_desynced",
+                "category": "inbox_reconciliation_pending",
                 "task_id": str(msg.get("task_id") or local_id or "inbox"),
                 "message_id": local_id,
                 "agent": agent,
                 "stage": "inbox",
-                "status": "read_state_desync",
+                "status": "reconciliation_pending",
                 "severity": "info",
                 "age_ms": max(now - created_at, 0),
-                "why": f"{agent} 的高优消息仍是 unread，但后续日志/状态已经证明它被执行过了",
+                "why": f"{agent} 的高优消息与后续过程证据冲突，已进入 reconciliation queue",
                 "evidence_summary": (
                     f"message_id={local_id} delivery_state={delivery_state} "
                     f"to={agent or '-'} from={msg.get('from') or '-'} "
                     f"content={str(msg.get('content') or '')[:120]}"
                 ),
-                "recommended_action": "reconcile_inbox_state",
+                "recommended_action": "review_reconciliation_queue",
             })
             continue
         if not is_unread and (

@@ -112,14 +112,27 @@ def test_record_message_ack_supports_completed_and_reconciled_terminal_states():
         assert snap is not None
         assert snap["status"] == "已完成"
 
-        assert local_facts.record_message_ack(mid, "reconciled") is True
-        row = local_facts.get_message(mid)
+        reconciliation_id = local_facts.append_message(
+            "manager", "worker_course", "Physics 0625 stale completion handoff", priority="高",
+        )
+        assert local_facts.queue_inbox_reconciliation(
+            reconciliation_id,
+            actor="task_event_scanner",
+            evidence="newer task closeout exists",
+        )
+        assert local_facts.record_message_ack(
+            reconciliation_id,
+            "reconciled",
+            actor="manager",
+            evidence="newer task closeout exists",
+        ) is True
+        row = local_facts.get_message(reconciliation_id)
         assert row is not None
         assert row["ack_state"] == "reconciled"
         assert row["ack_kind"] == "reconciled"
         snap = local_facts.get_status("manager")
         assert snap is not None
-        assert snap["status"] == "已对账"
+        assert snap["status"] == "已完成"
 
 
 def test_manager_user_ack_without_say_projects_pending_group_reply():
@@ -132,7 +145,7 @@ def test_manager_user_ack_without_say_projects_pending_group_reply():
         )
 
         assert local_facts.mark_read(mid) is True
-        assert local_facts.record_message_ack(mid, "reconciled") is True
+        assert local_facts.record_message_ack(mid, "accepted_task") is True
 
         debt = local_facts.latest_manager_user_reply_debt()
         assert debt is not None

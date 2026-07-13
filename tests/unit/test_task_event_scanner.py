@@ -133,7 +133,7 @@ def test_scan_manager_anomalies_warns_before_context_exhaustion():
         assert "context_usage=91%" in compact["evidence_summary"]
 
 
-def test_scan_manager_anomalies_flags_high_priority_unacked_worker_producing():
+def test_scan_manager_anomalies_queues_high_priority_unacked_worker_producing():
     with isolated_env():
         msg_id = local_facts.append_message(
             "worker_course",
@@ -150,14 +150,12 @@ def test_scan_manager_anomalies_flags_high_priority_unacked_worker_producing():
         findings = task_event_scanner.scan_manager_anomalies()
         flagged = [
             row for row in findings
-            if row.get("category") == "worker_high_priority_unacked_while_producing"
+            if row.get("message_id") == msg_id
         ]
 
         assert len(flagged) == 1
-        assert flagged[0]["message_id"] == msg_id
-        assert flagged[0]["agent"] == "worker_course"
-        assert flagged[0]["allow_continue_original_task"] is False
-        assert flagged[0]["recommended_action"] == "interrupt_old_context_and_read_inbox"
+        assert flagged[0]["category"] == "inbox_reconciliation_pending"
+        assert flagged[0]["recommended_action"] == "review_reconciliation_queue"
 
 
 def test_scan_manager_anomalies_flags_status_pane_truth_conflict():
@@ -204,7 +202,7 @@ def test_scan_manager_anomalies_marks_no_inject_high_priority_as_requires_pollin
         assert flagged[0]["recommended_action"] == "poll_or_consume_high_priority_inbox"
 
 
-def test_scan_manager_anomalies_downgrades_unread_with_later_visibility_to_read_state_desync():
+def test_scan_manager_anomalies_queues_unread_with_later_visibility_for_reconciliation():
     with isolated_env():
         msg_id = local_facts.append_message(
             "worker_course",
@@ -221,9 +219,12 @@ def test_scan_manager_anomalies_downgrades_unread_with_later_visibility_to_read_
         findings = task_event_scanner.scan_manager_anomalies()
         flagged = [row for row in findings if row.get("message_id") == msg_id]
         assert len(flagged) == 1
-        assert flagged[0]["category"] == "high_priority_inbox_unread_desynced"
-        assert flagged[0]["status"] == "read_state_desync"
-        assert flagged[0]["recommended_action"] == "reconcile_inbox_state"
+        assert flagged[0]["category"] == "inbox_reconciliation_pending"
+        assert flagged[0]["status"] == "reconciliation_pending"
+        assert flagged[0]["recommended_action"] == "review_reconciliation_queue"
+        row = local_facts.get_message(msg_id)
+        assert row is not None and row["read"] is False
+        assert row["ack_state"] == "reconciliation_pending"
 
 
 def test_scan_manager_anomalies_suppresses_read_without_ack_after_stage_ack_log():
@@ -1309,7 +1310,7 @@ def test_scan_manager_anomalies_does_not_cross_match_multiline_manager_status_pa
         ]
 
 
-def test_scan_manager_anomalies_suppresses_stale_review_handoff_after_verdict():
+def test_scan_manager_anomalies_queues_stale_review_handoff_after_verdict():
     with isolated_env():
         tid = tasks.create_flow(
             "worker_course",
@@ -1341,11 +1342,17 @@ def test_scan_manager_anomalies_suppresses_stale_review_handoff_after_verdict():
         findings = task_event_scanner.scan_manager_anomalies()
         row = [item for item in findings if item.get("message_id") == msg_id]
         assert len(row) == 1
-        assert row[0]["category"] == "stale_review_handoff_reconciled"
-        assert row[0]["recommended_action"] == "suppress_stale_review_handoff"
+        assert row[0]["category"] == "inbox_reconciliation_pending"
+        assert row[0]["recommended_action"] == "review_reconciliation_queue"
+        message = local_facts.get_message(msg_id)
+        assert message is not None and message["read"] is False
+        assert message["ack_state"] == "reconciliation_pending"
+        queue = local_facts.list_inbox_reconciliation_queue()
+        assert queue[-1]["actor"] == "task_event_scanner"
+        assert "verdict=approved" in queue[-1]["evidence"]
 
 
-def test_scan_manager_anomalies_suppresses_review_handoff_without_task_id_after_visible_pass():
+def test_scan_manager_anomalies_queues_review_handoff_without_task_id_after_visible_pass():
     with isolated_env():
         msg_id = local_facts.append_message(
             "review_course",
@@ -1365,7 +1372,11 @@ def test_scan_manager_anomalies_suppresses_review_handoff_without_task_id_after_
 
         findings = task_event_scanner.scan_manager_anomalies()
         rows = [item for item in findings if item.get("message_id") == msg_id]
-        assert rows == []
+        assert len(rows) == 1
+        assert rows[0]["category"] == "inbox_reconciliation_pending"
+        assert rows[0]["recommended_action"] == "review_reconciliation_queue"
+        queue = local_facts.list_inbox_reconciliation_queue()
+        assert queue[-1]["message_id"] == msg_id
         assert not [
             item for item in findings
             if item.get("message_id") == msg_id

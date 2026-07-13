@@ -308,6 +308,7 @@ def append_message(to: str, frm: str, content: str, *,
             "ack_details": {},
             "action_started_at": None,
             "failed_reason": "",
+            "reconciliation": {"state": "none", "events": []},
         })
         write_json(path, data)
         return local_id
@@ -318,6 +319,13 @@ def _mark_superseded(message: dict, replacement_id: str, timestamp: int) -> None
     message["superseded"] = True
     message["superseded_at"] = timestamp
     message["superseded_by"] = replacement_id
+
+
+def is_reconciliation_managed(message: dict) -> bool:
+    """Whether a row is in the explicit non-blocking reconciliation flow."""
+    return str(message.get("ack_state") or "pending") in {
+        "reconciliation_pending", "reconciled",
+    }
 
 
 def get_message(local_id: str) -> dict | None:
@@ -340,7 +348,12 @@ def list_messages(agent: str, *, unread_only: bool = False) -> list[dict]:
     data = read_json(_inbox_file(), {"messages": []})
     rows = [m for m in data.get("messages", []) if m.get("to") == agent]
     if unread_only:
-        rows = [m for m in rows if not m.get("read") and not m.get("superseded")]
+        rows = [
+            m for m in rows
+            if not m.get("read")
+            and not m.get("superseded")
+            and not is_reconciliation_managed(m)
+        ]
     return sorted(rows, key=lambda m: m.get("created_at", 0))
 
 
@@ -576,6 +589,8 @@ def _latest_read_unacked_high_message_after(agent: str, updated_at: int) -> dict
         created_at = int(msg.get("created_at") or 0)
         if created_at < updated_at:
             continue
+        if is_reconciliation_managed(msg):
+            continue
         if not is_high_priority(str(msg.get("priority") or "")):
             continue
         if not bool(msg.get("read")):
@@ -609,6 +624,8 @@ def mark_read(local_id: str) -> bool:
         data = read_json(path, {"messages": []})
         for msg in data.get("messages", []):
             if msg.get("local_id") == local_id:
+                if is_reconciliation_managed(msg):
+                    return False
                 msg["read"] = True
                 if not msg.get("read_at"):
                     msg["read_at"] = now_ms()
@@ -627,10 +644,116 @@ def update_message_delivery(local_id: str, delivery_state: str) -> bool:
         for msg in data.get("messages", []):
             if msg.get("local_id") != local_id:
                 continue
+            if is_reconciliation_managed(msg):
+                return False
             msg["delivery_state"] = normalized
             write_json(path, data)
             return True
     return False
+
+
+def _inbox_truth_state(message: dict) -> dict:
+    """Return the compact before/after state required for reconciliation."""
+    return {
+        "read": bool(message.get("read")),
+        "ack_state": str(message.get("ack_state") or "pending"),
+        "ack_kind": str(message.get("ack_kind") or ""),
+        "delivery_state": str(message.get("delivery_state") or ""),
+        "superseded": bool(message.get("superseded")),
+    }
+
+
+def _reconciliation_events(message: dict) -> list[dict]:
+    reconciliation = message.get("reconciliation")
+    if not isinstance(reconciliation, dict):
+        return []
+    events = reconciliation.get("events")
+    return [dict(event) for event in events] if isinstance(events, list) else []
+
+
+def list_inbox_reconciliation_queue() -> list[dict]:
+    """Return append-only reconciliation events, oldest first."""
+    rows: list[dict] = []
+    for message in list_all_messages():
+        local_id = str(message.get("local_id") or "")
+        for event in _reconciliation_events(message):
+            rows.append({"message_id": local_id, **event})
+    return sorted(rows, key=lambda row: int(row.get("at") or 0))
+
+
+def queue_inbox_reconciliation(local_id: str, *, actor: str, evidence: str) -> bool:
+    """Move a stale inbox row out of live blocking without marking it read."""
+    actor = str(actor or "").strip()
+    evidence = str(evidence or "").strip()
+    if not actor or not evidence:
+        raise ValueError("reconciliation actor and evidence are required")
+    with _locked():
+        path = _inbox_file()
+        data = read_json(path, {"messages": []})
+        for message in data.get("messages", []):
+            if message.get("local_id") != local_id:
+                continue
+            if str(message.get("ack_state") or "pending") in {
+                "reconciliation_pending", "reconciled",
+            }:
+                return False
+            now = now_ms()
+            before = _inbox_truth_state(message)
+            message["ack_state"] = "reconciliation_pending"
+            message["ack_kind"] = "reconciliation_pending"
+            message["ack_at"] = now
+            message["ack_details"] = {"actor": actor, "evidence": evidence}
+            after = _inbox_truth_state(message)
+            reconciliation = message.get("reconciliation")
+            if not isinstance(reconciliation, dict):
+                reconciliation = {"state": "none", "events": []}
+                message["reconciliation"] = reconciliation
+            events = reconciliation.setdefault("events", [])
+            events.append({
+                "event": "queued", "at": now, "actor": actor,
+                "evidence": evidence, "before": before, "after": after,
+            })
+            reconciliation["state"] = "pending"
+            write_json(path, data)
+            return True
+    return False
+
+
+def reconcile_inbox_message(local_id: str, *, actor: str, evidence: str) -> bool:
+    """Resolve a queued inbox conflict while preserving the original read bit."""
+    actor = str(actor or "").strip()
+    evidence = str(evidence or "").strip()
+    if not actor or not evidence:
+        raise ValueError("reconciliation actor and evidence are required")
+    visibility_msg: dict | None = None
+    with _locked():
+        path = _inbox_file()
+        data = read_json(path, {"messages": []})
+        for message in data.get("messages", []):
+            if message.get("local_id") != local_id:
+                continue
+            if str(message.get("ack_state") or "") != "reconciliation_pending":
+                return False
+            now = now_ms()
+            before = _inbox_truth_state(message)
+            message["ack_state"] = "reconciled"
+            message["ack_kind"] = "reconciled"
+            message["ack_at"] = now
+            message["ack_details"] = {"actor": actor, "evidence": evidence}
+            after = _inbox_truth_state(message)
+            reconciliation = message.setdefault("reconciliation", {"events": []})
+            events = reconciliation.setdefault("events", [])
+            events.append({
+                "event": "reconciled", "at": now, "actor": actor,
+                "evidence": evidence, "before": before, "after": after,
+            })
+            reconciliation["state"] = "reconciled"
+            write_json(path, data)
+            visibility_msg = dict(message)
+            break
+    if visibility_msg is None:
+        return False
+    return True
 
 
 def record_message_ack(local_id: str, kind: str, **details) -> bool:
@@ -643,6 +766,12 @@ def record_message_ack(local_id: str, kind: str, **details) -> bool:
     normalized = str(kind or "").strip()
     if not normalized:
         return False
+    if normalized == "reconciled":
+        return reconcile_inbox_message(
+            local_id,
+            actor=str(details.get("actor") or ""),
+            evidence=str(details.get("evidence") or ""),
+        )
     visibility_msg: dict | None = None
     with _locked():
         path = _inbox_file()
@@ -651,6 +780,8 @@ def record_message_ack(local_id: str, kind: str, **details) -> bool:
         for msg in data.get("messages", []):
             if msg.get("local_id") != local_id:
                 continue
+            if is_reconciliation_managed(msg):
+                return False
             msg["ack_kind"] = normalized
             msg["ack_at"] = now
             msg["ack_details"] = {
@@ -772,7 +903,9 @@ def mark_all_read(agent: str, *, keep_last_unread: int = 0) -> int:
         data = read_json(path, {"messages": []})
         unread = [
             m for m in data.get("messages", [])
-            if m.get("to") == agent and not m.get("read")
+            if m.get("to") == agent
+            and not m.get("read")
+            and not is_reconciliation_managed(m)
         ]
         unread = sorted(unread, key=lambda m: m.get("created_at", 0))
         to_mark = unread[:-keep_last_unread] if keep_last_unread > 0 else unread
@@ -782,7 +915,11 @@ def mark_all_read(agent: str, *, keep_last_unread: int = 0) -> int:
         changed = 0
         ids = {m.get("local_id") for m in to_mark}
         for msg in data.get("messages", []):
-            if msg.get("local_id") in ids and not msg.get("read"):
+            if (
+                msg.get("local_id") in ids
+                and not msg.get("read")
+                and not is_reconciliation_managed(msg)
+            ):
                 msg["read"] = True
                 msg["read_at"] = now
                 changed += 1
@@ -815,6 +952,8 @@ def prune_orphan_messages(valid_agents: set[str]) -> dict:
                 continue
             if msg.get("archived"):
                 continue
+            if is_reconciliation_managed(msg):
+                continue
             msg["read"] = True
             msg["read_at"] = now
             msg["archived"] = True
@@ -840,7 +979,7 @@ def inbox_stats() -> dict:
             continue
         entry = agents.setdefault(to, {"total": 0, "unread": 0})
         entry["total"] += 1
-        if not msg.get("read"):
+        if not msg.get("read") and not is_reconciliation_managed(msg):
             entry["unread"] += 1
     return {"total": len(data.get("messages", [])), "agents": agents}
 

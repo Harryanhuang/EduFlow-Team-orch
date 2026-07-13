@@ -94,6 +94,35 @@ def test_delivery_pass_when_high_priority_message_acked():
         assert result["delivery"]["status"] == "pass"
 
 
+def test_delivery_ignores_reconciliation_managed_handoff_failure():
+    with isolated_env():
+        tid = tasks.create_flow(
+            "worker_course",
+            "IGCSE Accounting 0452 stale-handoff",
+            stage="curriculum",
+            owner="worker_course",
+        )
+        local_id = local_facts.append_message(
+            to="worker_course",
+            frm="manager",
+            content="stale repair instruction",
+            priority="高",
+            task_id=tid,
+            delivery_state="requires_polling",
+        )
+        assert local_facts.queue_inbox_reconciliation(
+            local_id,
+            actor="task_event_scanner",
+            evidence="newer task truth supersedes this handoff",
+        )
+
+        result = operational_readiness.build(tid)
+
+    assert result["delivery"] == {
+        "status": "pass", "reason": "no handoff message required",
+    }
+
+
 def test_productivity_pass_when_heartbeat_and_progress_signals_present():
     with isolated_env():
         tid = tasks.create_flow(
