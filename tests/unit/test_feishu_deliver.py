@@ -582,6 +582,29 @@ def test_each_agent_uses_its_own_submit_keys():
 # ── SLASH dispatch + chat-send failure logging ───────────────────
 
 
+def test_slash_decision_sender_id_reaches_context() -> None:
+    captured = []
+
+    def dispatch(_text, ctx):
+        captured.append(ctx.sender_id)
+        return "ok"
+
+    decision = Decision(
+        action=Action.SLASH,
+        text="/help",
+        msg_id="om_sender",
+        sender_id="ou_real_actor",
+    )
+    apply(
+        decision,
+        slash_dispatch=dispatch,
+        chat_send=lambda *_args, **_kwargs: {"ok": True},
+        chat_id="oc_test",
+    )
+
+    assert captured == ["ou_real_actor"]
+
+
 def test_slash_logs_warning_when_chat_send_returns_none():
     """REGRESSION: when lark-cli timeout / OAuth wall / proxy interference
     makes chat.send_text return None, the slash command silently lost

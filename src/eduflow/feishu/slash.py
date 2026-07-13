@@ -39,6 +39,7 @@ from __future__ import annotations
 
 import re
 import subprocess
+import sys
 import threading
 import time
 from collections import Counter
@@ -56,6 +57,7 @@ from eduflow.feishu.cards import (
     team_snapshot_card,
 )
 from eduflow.runtime import tmux, tunables
+from eduflow.security import authorization
 from eduflow.store import employee_read_model, local_facts, tasks
 from eduflow.util import fmt_bytes
 
@@ -89,10 +91,20 @@ class SlashContext:
     now: Callable = datetime.now           # injectable clock for header timestamps
     background: Callable[[Callable[[], None]], None] = _spawn_daemon_thread
     sender_id: str = ""                    # Feishu open_id of the slash caller
+    authority_config: dict | None = None    # injected team RBAC config for tests
 
     @property
     def agent_set(self) -> frozenset[str]:
         return frozenset(self.team_agents)
+
+
+@dataclass(frozen=True)
+class _DeferredReply:
+    reply: str
+
+
+SlashReply = str | dict
+_HandlerReply = SlashReply | _DeferredReply
 
 
 _AGENT_NAME_RE = re.compile(r"[A-Za-z0-9_\-]+")
@@ -637,16 +649,10 @@ def _handle_tmux(args: str, ctx: SlashContext) -> str | dict:
     )
 
 
-def _operator_ids() -> set[str]:
-    """Configured Feishu operator open_ids allowed to use privileged
-    slash commands like /send.
-
-    Reads from eduflow.toml `[team.operators]`; empty list means the
-    restriction is disabled for backward compatibility / fresh installs.
-    """
+def _authorization_team() -> dict:
     cfg = tunables.load() or {}
-    operators = cfg.get("team", {}).get("operators") or []
-    return set(operators)
+    team = cfg.get("team", {}) if isinstance(cfg, dict) else {}
+    return dict(team) if isinstance(team, dict) else {}
 
 
 def _send_operator_error() -> dict:
@@ -662,8 +668,11 @@ def handle_send(sender_id: str, argv: list[str]) -> dict:
     uses `_handle_send`, which performs the same check and then injects
     into the target pane.
     """
-    operators = _operator_ids()
-    if operators and sender_id not in operators:
+    _ = argv
+    decision = authorization.authorize_slash(
+        "/send", sender_id=sender_id, team=_authorization_team()
+    )
+    if not decision.allowed:
         return _send_operator_error()
     return {"allowed": True}
 
@@ -674,9 +683,6 @@ def _handle_send(args: str, ctx: SlashContext) -> str | dict:
     parts = args.split(None, 1)
     if len(parts) < 2 or not parts[1].strip():
         return "用法: /send <agent> <message>（缺少消息内容）"
-    operators = _operator_ids()
-    if operators and getattr(ctx, "sender_id", "") not in operators:
-        return _send_operator_error()
     agent, msg = parts[0].strip(), parts[1].strip()
     if (warn := _bad_agent(agent, ctx)):
         return warn
@@ -708,9 +714,13 @@ def _handle_dispatch(args: str, ctx: SlashContext) -> str:
             creator="manager",
             description="created from /dispatch",
         )
-        tasks.transition_flow(tid, to_status="assigned", actor="manager")
+        assigned = tasks.transition_flow(
+            tid, to_status="assigned", actor="manager"
+        )
     except ValueError as e:
         return f"⚠️ dispatch 失败: {e}"
+    if not assigned:
+        return f"⚠️ dispatch 已创建 {tid}，但 assigned transition 失败"
     return f"✅ /dispatch 已派单 {tid} → {agent} [{stage}] {title}"
 
 
@@ -1119,7 +1129,7 @@ def _handle_ops(args: str, ctx: SlashContext) -> dict:
 _COMPACT_REJECT_MARKER = "can't be triggered from inside a response"
 
 
-def _handle_compact(args: str, ctx: SlashContext) -> str:
+def _handle_compact(args: str, ctx: SlashContext) -> str | _DeferredReply:
     """Send /compact to agent's pane, then schedule a background
     re-identify so the agent reloads its identity.md after compaction
     settles (post-compact identity reread).
@@ -1156,11 +1166,38 @@ def _handle_compact(args: str, ctx: SlashContext) -> str:
 
     def _reidentify_later():
         ctx.sleep(_REIDENTIFY_DELAY_S)
-        tmux.inject(target, init_msg)
+        try:
+            restored = tmux.inject(target, init_msg)
+            result = "succeeded" if restored else "failed"
+            reason = (
+                "background_reidentify_completed"
+                if restored
+                else "background_reidentify_failed"
+            )
+        except Exception as exc:
+            result = "failed"
+            reason = f"background_reidentify_error:{type(exc).__name__}"
+        try:
+            _audit_authorization({
+                "actor": ctx.sender_id or "<missing>",
+                "command": "/compact",
+                "target": agent,
+                "result": result,
+                "reason": reason,
+                "required_role": authorization.ADMIN,
+            })
+        except OSError as exc:
+            print(
+                f"  ⚠️ /compact terminal audit failed for {agent}: "
+                f"{type(exc).__name__}",
+                file=sys.stderr,
+            )
 
     ctx.background(_reidentify_later)
-    return (f"{glyph} /compact → {ctx.session}:{agent} · 已让 agent 自压缩上下文 · "
-            f"{int(_REIDENTIFY_DELAY_S)}s 后自动重注 identity")
+    return _DeferredReply(
+        f"{glyph} /compact → {ctx.session}:{agent} · 已让 agent 自压缩上下文 · "
+        f"{int(_REIDENTIFY_DELAY_S)}s 后自动重注 identity"
+    )
 
 
 def _handle_stop(args: str, ctx: SlashContext) -> str:
@@ -1191,7 +1228,7 @@ def _handle_clear(args: str, ctx: SlashContext) -> str:
     return f"✅ /clear → {ctx.session}:{agent} · 已 /clear + 重新入职 init_msg"
 
 
-_HANDLERS: dict[str, Callable[[str, SlashContext], str | dict]] = {
+_HANDLERS: dict[str, Callable[[str, SlashContext], _HandlerReply]] = {
     "/help": _handle_help,
     "/home": _handle_home,
     "/sophon": _handle_sophon,
@@ -1226,7 +1263,78 @@ def _split_cmd(text: str) -> tuple[str, str]:
     return parts[0], parts[1] if len(parts) > 1 else ""
 
 
-def dispatch(text: str, ctx: SlashContext) -> str | dict:
+def _audit_authorization(event: dict) -> None:
+    local_facts.append_log(
+        "control_plane",
+        "slash_authorization",
+        json.dumps(event, ensure_ascii=False, sort_keys=True),
+    )
+
+
+def _authorization_target(args: str) -> str:
+    parts = args.strip().split(None, 1)
+    return parts[0] if parts else ""
+
+
+def _authorization_event(
+    ctx: SlashContext,
+    command: str,
+    args: str,
+    decision: authorization.AuthorizationDecision,
+    *,
+    result: str,
+    reason: str | None = None,
+) -> dict:
+    return {
+        "actor": ctx.sender_id or "<missing>",
+        "command": command,
+        "target": _authorization_target(args),
+        "result": result,
+        "reason": reason or decision.reason,
+        "required_role": decision.required_role,
+    }
+
+
+def _authorization_error(
+    decision: authorization.AuthorizationDecision,
+) -> dict:
+    role = decision.required_role
+    return simple_card(
+        "🔒 权限拒绝",
+        f"命令要求 `{role}` 权限；请求已拒绝并记录审计。原因: `{decision.reason}`。",
+        color="red",
+    )
+
+
+def _audit_failure_card(*, possibly_applied: bool) -> dict:
+    if possibly_applied:
+        body = (
+            "动作可能已经执行，但完成审计写入失败。请停止重复操作并由 admin "
+            "核对目标状态和审计存储。"
+        )
+    else:
+        body = "审计存储不可用；命令已在任何副作用前拒绝。"
+    reason = "audit_completion_failed" if possibly_applied else "audit_unavailable"
+    return simple_card(
+        "🔒 控制面审计不可用",
+        f"{body} 原因: `{reason}`。",
+        color="red",
+    )
+
+
+def _handler_audit_outcome(
+    reply: _HandlerReply,
+) -> tuple[str, str]:
+    if isinstance(reply, _DeferredReply):
+        return "scheduled", "background_reidentify_scheduled"
+    if isinstance(reply, dict) and reply.get("allowed") is False:
+        return "failed", "handler_reported_failure"
+    if isinstance(reply, str) and reply.lstrip().startswith(("❌", "⚠️", "用法:")):
+        return "failed", "handler_reported_failure"
+    return "succeeded", "handler_completed"
+
+
+def dispatch(text: str, ctx: SlashContext) -> SlashReply:
     """Route `text` to its handler, return the reply.
 
     Return type is union: legacy handlers return `str` (sent as plain text);
@@ -1243,7 +1351,64 @@ def dispatch(text: str, ctx: SlashContext) -> str | dict:
     handler = _HANDLERS.get(cmd)
     if handler is None:
         return f"⚠️ 未知斜杠命令: `{text.strip()}` — 试 /help 看支持的命令清单"
+
+    team = ctx.authority_config
+    if team is None:
+        team = _authorization_team()
+    auth = authorization.authorize_slash(
+        cmd, sender_id=ctx.sender_id, team=team
+    )
+    if not auth.allowed:
+        if auth.required_role != authorization.READ_ONLY:
+            try:
+                _audit_authorization(
+                    _authorization_event(ctx, cmd, args, auth, result="denied")
+                )
+            except OSError:
+                return _audit_failure_card(possibly_applied=False)
+        return _authorization_error(auth)
+    if auth.required_role != authorization.READ_ONLY:
+        try:
+            _audit_authorization(
+                _authorization_event(ctx, cmd, args, auth, result="prepared")
+            )
+        except OSError:
+            return _audit_failure_card(possibly_applied=False)
     try:
-        return handler(args, ctx)
+        handler_reply = handler(args, ctx)
     except Exception as e:
+        if auth.required_role != authorization.READ_ONLY:
+            try:
+                _audit_authorization(
+                    _authorization_event(
+                        ctx,
+                        cmd,
+                        args,
+                        auth,
+                        result="failed",
+                        reason=f"handler_error:{type(e).__name__}",
+                    )
+                )
+            except OSError:
+                return _audit_failure_card(possibly_applied=True)
         return f"⚠️ slash handler error: {e}"
+    if auth.required_role != authorization.READ_ONLY:
+        result, reason = _handler_audit_outcome(handler_reply)
+        try:
+            _audit_authorization(
+                _authorization_event(
+                    ctx,
+                    cmd,
+                    args,
+                    auth,
+                    result=result,
+                    reason=reason,
+                )
+            )
+        except OSError:
+            return _audit_failure_card(possibly_applied=True)
+    return (
+        handler_reply.reply
+        if isinstance(handler_reply, _DeferredReply)
+        else handler_reply
+    )

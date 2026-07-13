@@ -345,6 +345,7 @@ def _apply_slash(decision: Decision, deps: _Deps, *,
         team_agents=team_agents or config.agent_names(),
         session=deps.session,
         lazy_agents=lazy_agents if lazy_agents is not None else frozenset(),
+        sender_id=decision.sender_id,
     )
     reply = dispatch(decision.text, ctx)
 

@@ -30,10 +30,9 @@ def _ctx(*, agents=("manager", "worker_cc", "worker_codex"),
          lazy_agents=(), sender_id=None):
     """Build a SlashContext for tests with sane stubs by default.
 
-    `sender_id` defaults to the first configured operator so privileged
-    slash commands like /send stay authorized under the project toml.
-    Tests that want to exercise rejection pass an explicit sender_id or
-    monkeypatch _operator_ids."""
+    `sender_id` defaults to a provisioned test admin, and the injected
+    authority config grants that actor both operator and admin roles. Dedicated
+    authorization tests construct restricted contexts explicitly."""
     fake_run = run or (lambda *a, **kw: type("R", (), {
         "returncode": 0, "stdout": "ok\n", "stderr": ""})())
     fake_sleep = sleep or (lambda _s: None)
@@ -42,7 +41,7 @@ def _ctx(*, agents=("manager", "worker_cc", "worker_codex"),
     # reidentify firing inline.
     fake_background = background or (lambda _fn: None)
     if sender_id is None:
-        sender_id = next(iter(slash._operator_ids()), "")
+        sender_id = "u_test_admin"
     return slash.SlashContext(
         team_agents=list(agents),
         session=session,
@@ -51,6 +50,10 @@ def _ctx(*, agents=("manager", "worker_cc", "worker_codex"),
         sleep=fake_sleep,
         background=fake_background,
         sender_id=sender_id,
+        authority_config={
+            "operators": [sender_id],
+            "admins": [sender_id],
+        },
     )
 
 

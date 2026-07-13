@@ -19,6 +19,7 @@ PACKAGE = ROOT / "acceptance" / "G-1"
 BASELINE_REVISION = "bde14c5ce94aacd99ef80f9c11b65092dcf25fc3"
 SUBMISSION_REVISION = "58d926778dde76724467b2eab307e80b0a1c5ea3"
 FORMAL_REVIEWED_REVISION = "00c9d0f978a68f8f6469bf898064f6382b60b05a"
+G_MINUS_1_CLOSURE_REVISION = "464d25503735107ba91b452955fb04c360779716"
 FORMAL_REVIEW_TASK = "T-172"
 FORMAL_REVIEW_LOG = "log_1783916128818_c7c38dd6ae"
 FORMAL_REVIEW_MESSAGE = "msg_1783916096247_873f6b9ba4"
@@ -178,20 +179,16 @@ def test_changed_files_machine_section_matches_submission_paths() -> None:
     assert match, "missing machine-verifiable submission path section"
     recorded = [line for line in match.group(1).splitlines() if line]
     tracked = subprocess.run(
-        ["git", "diff", "--name-only", BASELINE_REVISION, "--"],
+        [
+            "git", "diff", "--name-only", BASELINE_REVISION,
+            G_MINUS_1_CLOSURE_REVISION, "--",
+        ],
         cwd=ROOT,
         check=True,
         capture_output=True,
         text=True,
     ).stdout.splitlines()
-    untracked = subprocess.run(
-        ["git", "ls-files", "--others", "--exclude-standard"],
-        cwd=ROOT,
-        check=True,
-        capture_output=True,
-        text=True,
-    ).stdout.splitlines()
-    assert recorded == sorted(set(tracked) | set(untracked))
+    assert recorded == sorted(set(tracked))
     assert "uncommitted" not in changed_files.lower()
 
 
@@ -202,21 +199,19 @@ def test_changed_files_separately_binds_submission_and_refresh_inventories() -> 
         cwd=ROOT, check=True, capture_output=True, text=True,
     ).stdout.splitlines()
     refresh_tracked = subprocess.run(
-        ["git", "diff", "--name-only", SUBMISSION_REVISION, "--"],
+        [
+            "git", "diff", "--name-only", SUBMISSION_REVISION,
+            G_MINUS_1_CLOSURE_REVISION, "--",
+        ],
         cwd=ROOT, check=True, capture_output=True, text=True,
     ).stdout.splitlines()
-    refresh_untracked = subprocess.run(
-        ["git", "ls-files", "--others", "--exclude-standard"],
-        cwd=ROOT, check=True, capture_output=True, text=True,
-    ).stdout.splitlines()
-
     def digest(paths: list[str]) -> str:
         payload = "".join(f"{path}\n" for path in sorted(set(paths))).encode()
         return hashlib.sha256(payload).hexdigest()
 
     assert f"Immutable submission path count: {len(set(submission))}" in changed_files
     assert f"Immutable submission path SHA-256: `{digest(submission)}`" in changed_files
-    refresh = sorted(set(refresh_tracked) | set(refresh_untracked))
+    refresh = sorted(set(refresh_tracked))
     assert f"Evidence-refresh path count: {len(refresh)}" in changed_files
     assert f"Evidence-refresh path SHA-256: `{digest(refresh)}`" in changed_files
     for path in refresh:

@@ -27,6 +27,7 @@ from eduflow.runtime import (
     config, context_monitor, paths, pidlock, tmux, tunables,
     verify as _verify_mod, wake, watchdog,
 )
+from eduflow.security import authorization
 from eduflow.store import local_facts
 from eduflow.store import scheduled_tasks
 from eduflow.util import (
@@ -132,6 +133,35 @@ def _check_team(rep: HealthReport) -> None:
         rep.ok(f"team config: {len(agents)} agent(s)")
     else:
         rep.fail("team config has no agents (set [team.agents.<name>] in eduflow.toml)")
+
+
+def _check_slash_authority(rep: HealthReport) -> None:
+    configured = tunables.load()
+    team = configured.get("team", {}) if isinstance(configured, dict) else {}
+    operators, admins, valid = authorization.configured_roles(team)
+    if not valid:
+        rep.yellow(
+            "Slash writes fail closed: operators/admins contain invalid or "
+            "unprovisioned actor IDs"
+        )
+    elif operators and admins:
+        rep.ok(
+            f"Slash RBAC: {len(operators)} operator(s), {len(admins)} admin(s)"
+        )
+    elif operators:
+        rep.yellow(
+            f"Slash RBAC partial: /send enabled for {len(operators)} operator(s); "
+            "admin writes fail closed until team.admins is provisioned"
+        )
+    elif admins:
+        rep.yellow(
+            f"Slash RBAC partial: admin writes enabled for {len(admins)} admin(s); "
+            "/send is admin-only until team.operators is provisioned"
+        )
+    else:
+        rep.yellow(
+            "Slash writes fail closed: provision team.operators and team.admins"
+        )
 
 
 def _check_runtime_config(rep: HealthReport) -> None:
@@ -846,6 +876,7 @@ def _build_report() -> HealthReport:
 
     rep.section("config:")
     _check_team(rep)
+    _check_slash_authority(rep)
     _check_runtime_config(rep)
     rep.blank()
 
