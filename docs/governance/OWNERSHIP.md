@@ -1,8 +1,16 @@
 # EduFlow Control-Plane Ownership
 
-**Status:** pending owner approval and independent REVIEW. Role identifiers are draft governance identities; assignment to a human account must be recorded separately and may not be inferred from a pane.
+**Status:** owner approved; independent REVIEW pending. Role identifiers remain
+separate from human assignments and may not be inferred from a pane.
 
-Gate G-1 is blocked: `runtime_operator` is not provisioned and approval evidence is missing. This draft ownership table does not itself appoint an actor or satisfy the control-plane-owner veto; acceptance requires recorded owner approval, provisioned structured identity where required, independent `worker_review`, and manager CLOSEOUT.
+The project owner approved this ownership contract and appointed Kenny as the
+provisioned `runtime_operator` at
+`https://github.com/Harryanhuang/EduFlow-Team-orch/issues/7#issuecomment-4953662798`
+(`author_association=OWNER`, applicable revision
+`58d926778dde76724467b2eab307e80b0a1c5ea3`). The runtime assignment is the
+structured actor `ou_557e95aadc346010e58dbc71090123f3` under
+`team.runtime_operators`. Formal `worker_review` and manager CLOSEOUT remain
+separate required events.
 
 | Domain / decision | Accountable owner | Required duties | Prohibited substitution |
 |---|---|---|---|
@@ -11,7 +19,7 @@ Gate G-1 is blocked: `runtime_operator` is not provisioned and approval evidence
 | Workflow definitions and versions | `workflow_definition_maintainer` | Maintain version/hash, gates, bindings, and migration | Producer cannot silently change active definition |
 | Skill registry and capability packs | `skill_registry_maintainer` | Approve status/risk/allowed roles/deprecation | Agent-local installed Skill is not approval |
 | State schema and migrations | `schema_migration_owner` | Backup, reconciliation, cutover, forward recovery | No implicit dual-write extension |
-| Runtime inspection, switch, and recovery | `runtime_operator` (must be provisioned as structured identity before production mutation) | Execute approved runtime actions and preserve audit | Cannot edit business verdict or REVIEW |
+| Runtime inspection, switch, and recovery | `runtime_operator` (Kenny; structured actor `ou_557e95aadc346010e58dbc71090123f3`) | Execute approved runtime actions and preserve audit | Cannot edit business verdict or REVIEW |
 | Formal REVIEW | `worker_review` | Independently test and issue REVIEW verdict | Producer self-review cannot substitute |
 | Formal CLOSEOUT | `manager` | Close only from accepted REVIEW and contract evidence; manager is dispatch-only | Manager does not implement artifacts or code |
 

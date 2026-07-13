@@ -8,14 +8,14 @@ task only: JSON `ok=true`, `errors=[]`, `suspect_processes=[]`, exit code `0`.
 This is **not** a G-1 PASS or CLOSEOUT. Other G-1 tasks and the complete Gate
 review remain independently required.
 
-## Read-only freshness checkpoint — 2026-07-12T23:30:29+08:00
+## Read-only freshness checkpoint — 2026-07-13T09:43:44+08:00
 
 The topology audit was rerun from the isolated implementation worktree with
 explicit production `--checkout`, `--config`, and `--state-dir` arguments.
 It returned `ok: true`, zero errors, and zero suspect processes. All three
 daemons and all eleven configured live Agent panes resolved to production
 commit `bde14c5ce94aacd99ef80f9c11b65092dcf25fc3`, config generation
-`00773fbb4eb5ed7f`, and the production state directory. The production
+`edc3a3ac9b8f328e`, and the production state directory. The production
 `health --json` refresh returned `ok: true`, `bad: 0`, `warn: 2`; strict
 workflow validation passed for six active workflows. This is a point-in-time
 read-only observation, not authority, scanner, REVIEW, or CLOSEOUT evidence.
@@ -32,8 +32,8 @@ claims about other G-1 acceptance artifacts.
 | Absolute checkout | `/Volumes/Halobster/Obsidian Edu/留学公司知识库/11-Eduflow Team 多智能体项目/EduFlow-Team-orch` |
 | Commit SHA | `bde14c5ce94aacd99ef80f9c11b65092dcf25fc3` |
 | Config path | `/Volumes/Halobster/Obsidian Edu/留学公司知识库/11-Eduflow Team 多智能体项目/EduFlow-Team-orch/eduflow.toml` |
-| Config SHA256 | `00773fbb4eb5ed7f7f2cd5a2b416613229eda3880ffd0e506d8643ef9b8f9b74` |
-| Config generation | `00773fbb4eb5ed7f` |
+| Config SHA256 | `edc3a3ac9b8f328eedcf30871c25f38cba8d53c997b872930b4671c02b3f042c` |
+| Config generation | `edc3a3ac9b8f328e` |
 | State directory | `/Volumes/Halobster/Obsidian Edu/留学公司知识库/11-Eduflow Team 多智能体项目/EduFlow-Team-orch/.eduflow-team-state` |
 | Lark profile identifier | `eduflow-team` |
 | tmux session | `EduFlowTeam` |
@@ -45,7 +45,7 @@ environment values, credentials, tokens, or sensitive command arguments.
 
 | Daemon | PID file value | Supervision profile | Correlation result |
 |---|---:|---|---|
-| router | `85686` | watchdog-supervised | **PROVEN** — capital-`Python` kernel entry, Python `3.14.3`, root/config/state/generation and `bde14c5c…` correlate |
+| router | `12500` | watchdog-supervised | **PROVEN** — capital-`Python` kernel entry, Python `3.14.3`, root/config/state/generation and `bde14c5c…` correlate |
 | task-publish | `72530` | watchdog-supervised | **PROVEN** — capital-`Python` kernel entry, Python `3.14.3`, root/config/state/generation and `bde14c5c…` correlate |
 | watchdog | `72531` | self-supervised | **PROVEN** — capital-`Python` kernel entry, Python `3.14.3`, root/config/state/generation and `bde14c5c…` correlate |
 
@@ -71,7 +71,7 @@ G-1 review record, not PASS assertions.
 
 For all three, the process environment independently resolved the config and
 state paths shown above; the config content then proved generation
-`00773fbb4eb5ed7f`, Lark profile `eduflow-team`, tmux session `EduFlowTeam`,
+`edc3a3ac9b8f328e`, Lark profile `eduflow-team`, tmux session `EduFlowTeam`,
 and configured `claude-code` runtime. Raw process environments and argv are
 never written to JSON or this document.
 
@@ -93,8 +93,8 @@ ps -p 92686,92883,5260 -o pid=,ppid=,comm=
 # 92883 92872 /Users/huanganan/.local/bin/claude
 #  5260 92216 /Users/huanganan/.local/bin/claude
 
-ps -p 85686,72530,72531,74424 -o pid=,ppid=,comm=
-# 85686     1 <absolute Homebrew Python 3.14 executable>
+ps -p 12500,72530,72531,74424 -o pid=,ppid=,comm=
+# 12500 72531 <absolute Homebrew Python 3.14 executable>
 # 72530     1 <absolute Homebrew Python 3.14 executable>
 # 72531     1 <absolute Homebrew Python 3.14 executable>
 # 74424 92216 /Users/huanganan/.hermes/hermes-agent/venv/bin/python3
@@ -102,8 +102,8 @@ ps -p 85686,72530,72531,74424 -o pid=,ppid=,comm=
 for pid in 92686 92883 5260; do lsof -a -p "$pid" -d cwd -Fn; done
 # Each n-record: <production-checkout>
 
-for pid in 85686 72530 72531 74424; do lsof -a -p "$pid" -d cwd -Fn; done
-# 85686/72530/72531 n-record: <production-checkout>
+for pid in 12500 72530 72531 74424; do lsof -a -p "$pid" -d cwd -Fn; done
+# 12500/72530/72531 n-record: <production-checkout>
 # 74424 n-record: /Volumes/Halobster/Obsidian Edu (recorded duty cwd)
 
 git -C "<production-checkout>" rev-parse --show-toplevel HEAD
@@ -111,7 +111,7 @@ git -C "<production-checkout>" rev-parse --show-toplevel HEAD
 # bde14c5ce94aacd99ef80f9c11b65092dcf25fc3
 
 shasum -a 256 "<production-checkout>/eduflow.toml"
-# 00773fbb4eb5ed7f7f2cd5a2b416613229eda3880ffd0e506d8643ef9b8f9b74
+# edc3a3ac9b8f328eedcf30871c25f38cba8d53c997b872930b4671c02b3f042c
 ```
 
 Hermes intentionally uses a duty cwd outside the checkout. Its actual process

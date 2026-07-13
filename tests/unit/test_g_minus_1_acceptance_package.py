@@ -40,6 +40,7 @@ REQUIRED_FILES = {
     "known-risks.md",
     "review-verdict.md",
 }
+REQUIRED_SUPPORTING_FILES = {"owner-checkpoint.md"}
 
 SUMMARY_FIELDS = (
     "Gate",
@@ -68,6 +69,7 @@ def test_flow_memory_is_a_pinned_runtime_dependency() -> None:
 def test_g_minus_1_acceptance_package_has_exact_required_file_set() -> None:
     present = {path.name for path in PACKAGE.iterdir() if path.is_file()}
     assert REQUIRED_FILES <= present
+    assert REQUIRED_SUPPORTING_FILES <= present
 
 
 def test_summary_records_every_mandatory_field_without_blank_values() -> None:
@@ -99,16 +101,27 @@ def test_each_evidence_file_records_a_result_or_not_applicable_reason() -> None:
         ), f"{name} lacks a result, verdict, or not_applicable rationale"
 
 
-def test_pending_authority_checkpoint_is_not_reported_as_approved() -> None:
+def test_owner_authority_checkpoint_is_durably_bound() -> None:
     combined = "\n".join(
         _read(name)
-        for name in ("summary.md", "known-risks.md", "review-verdict.md")
+        for name in (
+            "summary.md",
+            "known-risks.md",
+            "review-verdict.md",
+            "owner-checkpoint-request.md",
+            "owner-checkpoint.md",
+        )
     )
     assert "runtime_operator" in combined
-    assert "owner approval evidence" in combined
-    assert "u_<admin_feishu_id>" not in combined
-    assert "placeholder" in combined
-    assert "pending" in combined.lower() or "blocked" in combined.lower()
+    assert "ou_557e95aadc346010e58dbc71090123f3" in combined
+    assert "Kenny" in combined
+    assert (
+        "https://github.com/Harryanhuang/EduFlow-Team-orch/issues/7"
+        "#issuecomment-4953662798"
+    ) in combined
+    assert "deny-all sentinel" in combined
+    assert "author_association=OWNER" in combined
+    assert "contact:user:search" in combined
 
 
 def test_summary_has_machine_recountable_twelve_criterion_ledger() -> None:
@@ -128,13 +141,13 @@ def test_summary_has_machine_recountable_twelve_criterion_ledger() -> None:
         "AC-GLOBAL-02": "PASS",
         "AC-GLOBAL-03": "PASS",
         "AC-GLOBAL-04": "PASS",
-        "AC-GLOBAL-05": "FAIL",
+        "AC-GLOBAL-05": "PASS",
         "AC-GLOBAL-06": "PASS",
         "AC-GLOBAL-07": "PASS",
         "AC-G-1-01": "PASS",
         "AC-G-1-02": "PASS",
         "AC-G-1-03": "PASS",
-        "AC-G-1-04": "FAIL",
+        "AC-G-1-04": "PASS",
         "AC-G-1-05": "PASS",
     }
     declared = re.search(
@@ -378,13 +391,43 @@ def test_security_ledger_records_current_node_and_ruff_results() -> None:
 def test_owner_checkpoint_request_is_minimal_and_bound_to_submission() -> None:
     request = _read("owner-checkpoint-request.md")
     assert f"Submission target: `{SUBMISSION_REVISION}`" in request
-    assert "Result: PENDING" in request
+    assert "Result: SATISFIED" in request
+    assert "owner-checkpoint.md" in request
+    assert "issuecomment-4953662798" in request
     assert "Do not include credential values" in request
     assert "these two checkpoints" in request
     assert "runtime_operator" in request
     assert "TRUST_MODEL.md" in request and "HUMAN_TAKEOVER_RUNBOOK.md" in request
     assert "mypy" not in request and "TruffleHog" not in request
     assert "pip-audit" not in request and "Trusted Publisher" not in request
+
+
+def test_owner_checkpoint_binds_approved_revision_blobs_and_runtime_actor() -> None:
+    receipt = _read("owner-checkpoint.md")
+    assert "Result: SATISFIED" in receipt
+    assert f"Applicable implementation revision: `{SUBMISSION_REVISION}`" in receipt
+    assert "author_association=OWNER" in receipt
+    assert "ou_557e95aadc346010e58dbc71090123f3" in receipt
+    assert "contact:user:search" in receipt
+    expected = {
+        "docs/architecture/TRUST_MODEL.md":
+            "dd514998fc3ba548d2501b41387f941181ff9581b6ed91946d9c5a6c893ba0f0",
+        "docs/governance/OWNERSHIP.md":
+            "c451c4e2e86a39e31552738570faf0b16ffdb662b82d82e6d7c2350303fd5a10",
+        "docs/operations/CONTROL_PLANE_SLO.md":
+            "4eab6b1445db4a060a580b40399917dff5cb784a4a408c162db3079a76f4f41f",
+        "docs/operations/HUMAN_TAKEOVER_RUNBOOK.md":
+            "cd3e7666fdc154f3677b8bf99e78d1697e1fb13f4136829c449456fd621f5859",
+    }
+    for path, digest in expected.items():
+        blob = subprocess.run(
+            ["git", "show", f"{SUBMISSION_REVISION}:{path}"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+        ).stdout
+        assert hashlib.sha256(blob).hexdigest() == digest
+        assert f"| `{path}` | `{digest}` |" in receipt
 
 
 def test_refresh_artifacts_bind_scans_and_topology_to_exact_provenance() -> None:
@@ -417,7 +460,7 @@ def test_refresh_artifacts_bind_scans_and_topology_to_exact_provenance() -> None
 
     assert topology["submission_revision"] == SUBMISSION_REVISION
     assert topology["production_revision"] == "bde14c5ce94aacd99ef80f9c11b65092dcf25fc3"
-    assert topology["config_generation"] == "00773fbb4eb5ed7f"
+    assert topology["config_generation"] == "edc3a3ac9b8f328e"
     assert topology["exit_code"] == 0 and topology["ok"] is True
     assert topology["errors"] == [] and topology["suspect_count"] == 0
     assert topology["daemon_count"] == 3

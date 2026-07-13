@@ -572,7 +572,8 @@ provider_family = "hermes_agent"
 [team]
 session = "EduFlowTeam"
 default_model = "opus"
-operators = ["u_<admin_feishu_id>"]   # 可执行 /send 等特权斜杠命令的飞书用户 open_id
+operators = ["u_<admin_feishu_id>"] # deny-all sentinel until G0 makes an empty allowlist fail closed
+runtime_operators = ["ou_557e95aadc346010e58dbc71090123f3"] # Kenny; Issue #7 owner appointment
 
 
 # 每个 agent 一个 [team.agents.<name>]

@@ -13,8 +13,17 @@ production read-source switch, credential rotation, or irreversible data
 migration. Those actions remain explicitly outside this Task 7 scope.
 
 The runtime-authority consolidation, published dependency declaration, and this
-evidence-only freshness delta perform no schema/config migration, lockfile
-generation, or read-source switch.
+evidence refresh perform no schema migration, lockfile generation, or read-source
+switch. The owner-authorized production TOML update is a forward-only config
+provisioning step: retain the deny-all general operator sentinel and add Kenny's
+structured ID under `team.runtime_operators`.
+
+Config forward recovery: restore the approved dedicated runtime-authority row,
+validate TOML, run the eligibility query, and rerun the explicit production
+topology audit. Config rollback removes only the dedicated row after a recorded
+owner revocation; it must not delete the general-operator sentinel while the
+pre-G0 Slash handler treats an empty allowlist as unrestricted. No credential
+value is added or restored.
 
 The new human-takeover state is additive and is covered by isolated-state
 fault injection: missing state is read-only, corrupt state fails closed,

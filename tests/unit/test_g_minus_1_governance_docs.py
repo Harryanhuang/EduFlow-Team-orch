@@ -61,11 +61,9 @@ def test_ownership_and_exception_contracts_are_complete() -> None:
         _read("docs/operations/CONTROL_PLANE_SLO.md"),
         ownership,
     ):
-        assert "pending owner approval and independent REVIEW" in document
-        assert "Gate G-1 is blocked" in document
-        assert "runtime_operator" in document and "not provisioned" in document
-        assert "approval evidence is missing" in document
-        assert "approved G-1" not in document
+        assert "owner approved; independent REVIEW pending" in document
+        assert "runtime_operator" in document and "provisioned" in document
+        assert "issuecomment-4953662798" in document
 
     process = _read("docs/governance/DECISION_AND_EXCEPTION_PROCESS.md")
     for field in ("owner", "reason", "scope", "expiry", "removal_test"):
@@ -99,7 +97,7 @@ def test_slo_and_takeover_transitions_are_explicit() -> None:
         assert objective in slo
 
 
-def test_runbook_is_executable_and_does_not_claim_unprovisioned_authorization() -> None:
+def test_runbook_is_executable_and_records_provisioned_authorization() -> None:
     runbook = _read("docs/operations/HUMAN_TAKEOVER_RUNBOOK.md")
     for command in (
         "./scripts/eduflowteam human-takeover status --json",
@@ -107,19 +105,20 @@ def test_runbook_is_executable_and_does_not_claim_unprovisioned_authorization() 
         "./scripts/eduflowteam human-takeover recover",
     ):
         assert command in runbook
-    assert "not provisioned" in runbook
-    assert "placeholder" in runbook and "must not be used as evidence" in runbook
+    assert "ou_557e95aadc346010e58dbc71090123f3" in runbook
+    assert "Kenny" in runbook
     assert "`team.admins`, `team.runtime_operators`, and `team.runtime_operator`" in runbook
     assert "General `team.operators` have no enter/recover authority" in runbook
     assert "--actor" in runbook and "--reason" in runbook and "--generation" in runbook
-    assert "do not run enter or recover" in runbook
+    assert "issuecomment-4953662798" in runbook
     assert "does not machine-verify" in runbook
     assert "human checkpoint" in runbook
     assert "G1-Runtime-Authority" in runbook
     assert "test_human_takeover_recovery_requires_verified_probe_evidence" in runbook
     config = _read("eduflow.toml")
+    assert 'runtime_operators = ["ou_557e95aadc346010e58dbc71090123f3"]' in config
     assert 'operators = ["u_<admin_feishu_id>"]' in config
-    assert "u_<admin_feishu_id>" in runbook
+    assert "deny-all sentinel" in config
 
 
 def test_compatibility_debt_ledger_has_bounded_entries() -> None:

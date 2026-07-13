@@ -825,6 +825,58 @@ Result: passed
 Command: git diff --check
 Result: passed
 
+G-1 R8 owner-checkpoint and provisioning refresh
+
+RED
+Command: python3 -m pytest tests/unit/test_g_minus_1_acceptance_package.py tests/unit/test_g_minus_1_governance_docs.py -q
+Result: 5 failed, 23 passed. The failures proved that the package still lacked
+the structured actor, durable OWNER receipt, 12/12 ledger, approved governance
+status, and provisioned runbook/config fact. The changed-files inventory also
+failed as expected after adding the new evidence paths.
+
+OWNER AND IDENTITY CHECKPOINT
+- GitHub comment: `https://github.com/Harryanhuang/EduFlow-Team-orch/issues/7#issuecomment-4953662798`
+- GitHub API: `author_association=OWNER`, created `2026-07-13T01:34:15Z`
+- Feishu search: exactly one same-tenant activated Kenny, `has_more=false`
+- Granted lookup scope: `contact:user:search`
+- Structured actor: `ou_557e95aadc346010e58dbc71090123f3`
+- Durable receipt: `acceptance/G-1/owner-checkpoint.md`
+
+READ-ONLY AUTHORITY ELIGIBILITY GREEN
+Command: load the production TOML through `EDUFLOW_CONFIG_FILE`, then query
+`human_takeover._authorized_actors()` and `runtime_switch._authorized_actors()`
+without invoking enter, recover, or switch.
+Result: Kenny true in both parsers; placeholder false; unknown false; exactly
+one actor in each parser. Exit code: 0.
+
+PRODUCTION READ-ONLY GREEN
+- `./scripts/eduflowteam health --json` -> `ok=true`, `bad=0`; exit 0
+- `./scripts/eduflowteam runtime list --json` -> 11 agents; exit 0
+- `./scripts/eduflowteam workflow validate --strict` -> 6 active workflows; exit 0
+- topology auditor with explicit production checkout/config/state -> `ok=true`,
+  3 daemons, 11 panes, 11 agent processes, 0 suspects, 0 errors; exit 0
+- production config SHA-256:
+  `edc3a3ac9b8f328eedcf30871c25f38cba8d53c997b872930b4671c02b3f042c`
+- production config generation: `edc3a3ac9b8f328e`
+
+Result: PASS for owner checkpoint, runtime-authority provisioning, and read-only
+production correlation. Formal `worker_review` REVIEW remains pending.
+
+R8 FINAL GREEN
+- `python3 -m pytest --collect-only` -> 3,203 tests collected
+- `python3 -m pytest -q` -> 3,203/3,203 passed; exit 0
+- focused G-1 acceptance/governance -> 29/29 passed; exit 0
+- Ruff 0.15.10 full configured scope -> All checks passed; exit 0
+- mypy 2.2.0 full `src` scope -> 155 source files clean; exit 0
+- compileall, pip check, and git diff --check -> exit 0
+- npm audit production scope -> 0 vulnerabilities; exit 0
+- pip-audit base and vector optional inputs -> 0 known vulnerabilities; exit 0
+- Python 3.10 no-cache PyPI install -> `flow-memory==0.1.1`; pip check and
+  legacy `EmbeddingProvider`/`VectorBackend` import smoke passed
+
+Result: PASS for current machine verification. Git-history secret scanning is
+rerun after the evidence commit so the committed receipt is included.
+
 Task 7 Ruff remediation R1: memory compatibility re-exports (strict TDD)
 
 CHARACTERIZATION + RED

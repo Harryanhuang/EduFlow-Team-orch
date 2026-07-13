@@ -1,13 +1,20 @@
 # EduFlow Control-Plane Trust Model
 
-**Status:** pending owner approval and independent REVIEW
+**Status:** owner approved; independent REVIEW pending
 
 **Owner:** `control_plane_owner`
 **Fail-closed rule:** an unknown identity, missing structured actor, empty allowlist, or ambiguous authority denies every write or control action and emits an audit event.
 
 This document states the intended authority boundary. It does not assert that later-Gate RBAC enforcement is already implemented. Prompt text is not an authority source.
 
-Gate G-1 is blocked: `runtime_operator` is not provisioned and approval evidence is missing. This draft cannot satisfy AC-G-1-04 or authorize a production mutation until the owner approval and independent `worker_review` verdict are recorded in the Gate acceptance package.
+Owner approval and the runtime appointment are recorded at
+`https://github.com/Harryanhuang/EduFlow-Team-orch/issues/7#issuecomment-4953662798`
+(`author_association=OWNER`, applicable revision
+`58d926778dde76724467b2eab307e80b0a1c5ea3`). The appointed
+`runtime_operator`, Kenny, is provisioned under `team.runtime_operators` with
+structured actor ID `ou_557e95aadc346010e58dbc71090123f3`. This closes the
+owner checkpoint but does not substitute for the independent formal
+`worker_review` verdict or manager CLOSEOUT.
 
 ## Authority matrix
 

@@ -1,13 +1,19 @@
 # EduFlow Control-Plane SLO and Failure Budgets
 
-**Status:** pending owner approval and independent REVIEW
+**Status:** owner approved; independent REVIEW pending
 
 **Owner:** `control_plane_owner`
 **Measurement rule:** measure from durable machine events. Logs, prompts, cached verdicts, and chat claims do not satisfy an SLO.
 
-Gate G-1 is blocked: `runtime_operator` is not provisioned and approval evidence is missing. The targets below are proposed contract values from the master plan, not an approved or currently enforced production SLO.
+The owner approved this contract at
+`https://github.com/Harryanhuang/EduFlow-Team-orch/issues/7#issuecomment-4953662798`
+(`author_association=OWNER`, applicable revision
+`58d926778dde76724467b2eab307e80b0a1c5ea3`). Kenny is provisioned as the
+structured `runtime_operator`; independent formal REVIEW is still pending.
+Approval establishes the contract values below but does not claim that later
+Gate enforcement is already implemented.
 
-## Proposed SLOs
+## Owner-approved initial SLO contract
 
 | SLO id | Initial objective | Start / terminal evidence | Budget consequence |
 |---|---|---|---|
@@ -18,7 +24,10 @@ Gate G-1 is blocked: `runtime_operator` is not provisioned and approval evidence
 | `orphan_detection` | orphaned Loop or Workflow detected within 2 inspection cycles | lease/heartbeat loss / reconciliation finding | Freeze affected automation and assign recovery owner |
 | `unauthorized_control_action_rejection` | 100% rejected and audited before side effects | structured control request / denied audit event | Any miss is a security incident; automation stops fail closed |
 
-These are the six proposed initial objectives from the master plan. G-1 drafts policy and has a runtime takeover primitive; message, Loop, and Workflow enforcement lands only in their scheduled Gates and must not be reported as implemented before then.
+These are the six owner-approved initial objectives from the master plan. G-1
+defines policy and has a runtime takeover primitive; message, Loop, and Workflow
+enforcement lands only in their scheduled Gates and must not be reported as
+implemented before then.
 
 ## Circuit-breaker thresholds
 

@@ -8,6 +8,12 @@ The Python authority is `src/eduflow/runtime/paths.py`: `EDUFLOW_STATE_DIR` wins
 
 Unified configuration resolves through `EDUFLOW_CONFIG_FILE`, otherwise `./eduflow.toml`. During migration, `src/eduflow/runtime/config.py` still supports legacy/fallback `EDUFLOW_TEAM_FILE` or `./team.json` and `EDUFLOW_RUNTIME_CONFIG` or `./runtime_config.json`. TOML is authoritative when its relevant section exists; legacy JSON is fallback-only and must not be edited as if it overrides TOML.
 
+The 2026-07-13 owner checkpoint provisions Kenny's structured Feishu actor ID
+under `team.runtime_operators` at production config generation
+`edc3a3ac9b8f328e`. The authority source is
+`acceptance/G-1/owner-checkpoint.md`. The separate `team.operators` placeholder
+is a deny-all Slash sentinel, not a runtime authority or appointed identity.
+
 ## Inventory
 
 | Asset | Authoritative location/store | Writer | Reader | Owner | Permissions | Backup | Retention | Recovery | Migration requirement |

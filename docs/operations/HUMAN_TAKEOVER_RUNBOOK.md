@@ -2,13 +2,27 @@
 
 **Audience:** on-call admin/runtime operator and `control_plane_owner`
 
-**Safety:** status is read-only. Enter/recover mutate local control state and must not be run without provisioned structured authorization.
+**Safety:** status is read-only. Enter/recover mutate local control state and
+require the provisioned structured authorization plus the evidence checkpoints
+in this runbook.
 
 ## Current production authorization fact
 
-As of the G-1 baseline, production `team.admins` / dedicated `runtime_operator` authorization is not provisioned. The only `team.operators` row is a literal placeholder, `u_<admin_feishu_id>`; a placeholder is not an identity and must not be used as evidence. The CLI implementation reads `team.admins`, `team.runtime_operators`, and `team.runtime_operator`, and rejects the whole configured authority set when any of those fields is malformed or contains an unprovisioned identity. General `team.operators` have no enter/recover authority.
+The project owner appointed Kenny for runtime-only authority at
+`https://github.com/Harryanhuang/EduFlow-Team-orch/issues/7#issuecomment-4953662798`
+(`author_association=OWNER`, applicable revision
+`58d926778dde76724467b2eab307e80b0a1c5ea3`). Production provisions the
+structured actor `ou_557e95aadc346010e58dbc71090123f3` under
+`team.runtime_operators`. The appointment was uniquely resolved through the
+Feishu `contact:user:search` scope; no credential value is part of the record.
 
-Therefore status may be inspected now, but do not run enter or recover in production until a separately approved checkpoint provisions a real structured actor in an accepted runtime-authority field. Production mutation remains fail closed. Never substitute a display name, shell username, placeholder, or invented ID. This runbook does not authorize editing production config.
+The general `team.operators` row remains the literal deny-all sentinel
+`u_<admin_feishu_id>` until G0 makes an empty Slash allowlist fail closed. It is
+not an identity and must not be used as evidence. The CLI reads
+`team.admins`, `team.runtime_operators`, and `team.runtime_operator`, rejecting the entire
+runtime-authority set when any accepted field is malformed. General `team.operators` have no enter/recover authority. Never substitute a display
+name, shell username, placeholder, or invented ID. The appointment does not
+waive the live evidence, generation, reason, audit, or recovery checks below.
 
 ## 1. Observe without mutation
 
@@ -26,12 +40,12 @@ Record checkout, revision, config hash, state directory, state, generation, reas
 
 Confirm guarded automatic runtime switching has stopped before side effects. Do not manually repeat the failing switch, delete takeover state, edit audit JSONL, reset task state, or advance cursor/seen. Preserve the state and audit files for review. Scope external containment to the affected runtime or control path.
 
-## 3. Enter explicitly (only after authorization is provisioned)
+## 3. Enter explicitly
 
 Use the real structured actor identifier and a non-secret reason:
 
 ```bash
-./scripts/eduflowteam human-takeover enter --actor <PROVISIONED_ACTOR_ID> --reason <NON_SECRET_INCIDENT_REASON> --json
+./scripts/eduflowteam human-takeover enter --actor ou_557e95aadc346010e58dbc71090123f3 --reason <NON_SECRET_INCIDENT_REASON> --json
 ```
 
 This is an operator procedure template, not acceptance evidence. Redact command output before attaching it if future fields can contain sensitive text. Re-run status and verify `active`, the reason/source, and a new generation.
@@ -48,14 +62,14 @@ Required minimum evidence:
 
 Do not use cached `proved_ready`, a skipped smoke, pane label, or chat statement as recovery proof.
 
-## 5. Recover (only after authorization is provisioned)
+## 5. Recover
 
 **Current limitation:** `human-takeover recover` trusts the supplied `--step` text and does not machine-verify any runtime, provider, topology, or smoke probe. Moving state to `inactive` is therefore not proof that service recovered. Before invoking recover, a human checkpoint by an authorized, provisioned admin/runtime operator must inspect the Step 4 command evidence and record its paths/revision; the CLI must not be described as automatic enforcement.
 
 Copy the generation from the immediately preceding status result. Supply concrete evidence-bearing steps, not “fixed” alone:
 
 ```bash
-./scripts/eduflowteam human-takeover recover --actor <PROVISIONED_ACTOR_ID> --reason <NON_SECRET_RECOVERY_REASON> --generation <CURRENT_GENERATION> --step <VERIFIED_STEP> --json
+./scripts/eduflowteam human-takeover recover --actor ou_557e95aadc346010e58dbc71090123f3 --reason <NON_SECRET_RECOVERY_REASON> --generation <CURRENT_GENERATION> --step <VERIFIED_STEP> --json
 ```
 
 If generation is stale, authorization is denied, persistence/audit fails, or a probe fails: stop. Do not retry with guessed values. Re-read status and escalate to `control_plane_owner` and the applicable security/runtime owner.

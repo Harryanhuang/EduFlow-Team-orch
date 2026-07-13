@@ -86,9 +86,15 @@ before removal; it does not clean any fixed or caller-owned path. The source
 worktree and production checkout were never modified.
 
 No pytest command was run inside the disposable rollback worktree. The current
-submission separately passed the full 3215-node regression; `3014 passed in
+submission separately passed the full 3203-node regression; `3014 passed in
 252.77s` remains the historical baseline rollback run.
 
 Result: PASS — exact code-content rollback is reproducible. This proof does
 not authorize credential rollback, production-state mutation, or data-source
 switching.
+
+The owner appointment and production config generation `edc3a3ac9b8f328e` are
+outside the immutable implementation patch. Revoking that appointment requires
+a new owner record, removal of only the dedicated `team.runtime_operators` row,
+TOML validation, fail-closed eligibility proof, and a fresh topology audit. It
+must not restore a credential or remove the general deny-all sentinel.

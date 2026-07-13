@@ -4,8 +4,10 @@ Comparison base: `bde14c5ce94aacd99ef80f9c11b65092dcf25fc3`
 Submission target: `58d926778dde76724467b2eab307e80b0a1c5ea3`
 Candidate/evidence-refresh path inventory: the union of baseline-to-candidate
 tracked paths and candidate-only untracked paths. The same inventory definition
-remains valid before and after the evidence refresh is committed. No user-owned
-production-checkout path is included or modified.
+remains valid before and after the evidence refresh is committed. The tracked
+`eduflow.toml` includes the authorized dedicated runtime-operator row; the
+production checkout received the same one-hunk provisioning change while all
+unrelated dirty changes were preserved.
 
 Revision lineage:
 
@@ -31,14 +33,15 @@ Immutable submission path SHA-256: `893bd482d35d8255b3e2696bae3090edf4f29cc786f8
 Commands: `git diff --name-only 58d926778dde76724467b2eab307e80b0a1c5ea3 --`
 plus `git ls-files --others --exclude-standard`; sort the union.
 
-Evidence-refresh path count: 13
-Evidence-refresh path SHA-256: `c246fc0b7ff1bc9445b25aeb44f9b23d01d4a53db809cc82c6f7de18de4af0b2`
+Evidence-refresh path count: 22
+Evidence-refresh path SHA-256: `0a76d6a68ca38f84b77a03fcb405e7615252dd76bee24496fc37874451dc2d06`
 
 - `acceptance/G-1/changed-files.txt`
 - `acceptance/G-1/fault-injection-results.txt`
 - `acceptance/G-1/known-risks.md`
 - `acceptance/G-1/migration-results.txt`
 - `acceptance/G-1/owner-checkpoint-request.md`
+- `acceptance/G-1/owner-checkpoint.md`
 - `acceptance/G-1/production-topology-refresh.json`
 - `acceptance/G-1/review-verdict.md`
 - `acceptance/G-1/rollback-proof.md`
@@ -46,7 +49,15 @@ Evidence-refresh path SHA-256: `c246fc0b7ff1bc9445b25aeb44f9b23d01d4a53db809cc82
 - `acceptance/G-1/security-results.txt`
 - `acceptance/G-1/summary.md`
 - `acceptance/G-1/test-results.txt`
+- `docs/architecture/TRUST_MODEL.md`
+- `docs/governance/OWNERSHIP.md`
+- `docs/operations/CONTROL_PLANE_SLO.md`
+- `docs/operations/HUMAN_TAKEOVER_RUNBOOK.md`
+- `docs/operations/eduflow-production-topology.md`
+- `docs/operations/state-and-config-inventory.md`
+- `eduflow.toml`
 - `tests/unit/test_g_minus_1_acceptance_package.py`
+- `tests/unit/test_g_minus_1_governance_docs.py`
 
 ## Machine-verifiable candidate plus evidence-refresh paths
 
@@ -61,6 +72,7 @@ acceptance/G-1/fault-injection-results.txt
 acceptance/G-1/known-risks.md
 acceptance/G-1/migration-results.txt
 acceptance/G-1/owner-checkpoint-request.md
+acceptance/G-1/owner-checkpoint.md
 acceptance/G-1/production-topology-refresh.json
 acceptance/G-1/review-verdict.md
 acceptance/G-1/rollback-proof.md
@@ -81,6 +93,7 @@ docs/plans/2026-07-12-eduflow-upgrade-acceptance-standard.md
 docs/plans/2026-07-12-g-minus-1-production-governance-implementation-plan.md
 docs/plans/2026-07-12-g-minus-1-ruff-remediation-plan.md
 docs/plans/PLAN_STATUS_INDEX.md
+eduflow.toml
 pyproject.toml
 scripts/ap_qbank_verify.py
 scripts/audit_production_topology.py

@@ -58,8 +58,15 @@ Current R6 authority refresh
   fields and reject general operators.
 - Malformed top-level tunables and malformed/placeholder authority fields fail
   closed before mutation.
-- The complete 3215-node suite reran these isolated fault paths at the current
+- The complete 3203-node suite reran these isolated fault paths at the current
   submission target; no production fault injection was performed.
 
 Result: PASS for isolated authority fault coverage; production mutation remains
-prohibited until the identity and owner checkpoints exist.
+prohibited until the identity and owner checkpoints exist. Those checkpoints
+are now satisfied by `owner-checkpoint.md`; actual production enter/recover was
+not executed during this evidence refresh.
+
+R8 read-only production eligibility result: PASS. Kenny was present in both
+runtime control authorization sets; the general-operator placeholder and an
+unknown actor were absent; each set contained exactly one actor. No production
+state transition or runtime switch was invoked.
