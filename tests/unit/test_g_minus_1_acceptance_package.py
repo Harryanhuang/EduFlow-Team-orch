@@ -8,6 +8,11 @@ from collections import Counter
 from datetime import datetime
 from pathlib import Path
 
+try:
+    import tomllib
+except ModuleNotFoundError:  # Python 3.10
+    import tomli as tomllib
+
 
 ROOT = Path(__file__).resolve().parents[2]
 PACKAGE = ROOT / "acceptance" / "G-1"
@@ -50,6 +55,12 @@ SUMMARY_FIELDS = (
 
 def _read(name: str) -> str:
     return (PACKAGE / name).read_text(encoding="utf-8")
+
+
+def test_flow_memory_is_a_pinned_runtime_dependency() -> None:
+    project = tomllib.loads((ROOT / "pyproject.toml").read_text())["project"]
+
+    assert "flow-memory==0.1.1" in project["dependencies"]
 
 
 def test_g_minus_1_acceptance_package_has_exact_required_file_set() -> None:
