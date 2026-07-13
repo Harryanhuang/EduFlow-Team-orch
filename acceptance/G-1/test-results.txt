@@ -1,12 +1,13 @@
 G-1 Test Results
 
-Submission target: `21d000e5eca28c1ad5a91ad3485c548f8ce1c389`
+Submission target: `175a7f31e0538ac646d9a6c523ba14638f662372`
 Revision lineage: implementation `cc95c5a488a8cd699dff515eadf431277669ffc6`;
 authority remediation `d578691b8e1d3e0dc6f5221120c4a0d0e4ace6ab`;
 configured scanner ledger `2296dc08c14eae9de34accdf43d4a11c6b8ba68f`.
 Runtime authority consolidation: `21d000e5eca28c1ad5a91ad3485c548f8ce1c389`.
+Full-source mypy remediation: `175a7f31e0538ac646d9a6c523ba14638f662372`.
 Freshness note: the transcript below preserves historical RED/GREEN and full
-regression evidence. The current R6 refresh records a new 3212-node full
+regression evidence. The current R6 refresh records a new 3214-node full
 regression for the submission target; the 3014 baseline rollback run remains
 historical.
 
@@ -21,7 +22,7 @@ historical.
 - Independent specification review: PASS after the stale runbook P1 was fixed.
 - Independent quality review: PASS after the top-level malformed boundary was
   made fail closed.
-- `python3 -m pytest -q` -> exit 0; pytest cache contains 3212 node IDs.
+- `python3 -m pytest -q` -> exit 0; pytest cache contains 3214 node IDs.
 - An initial full run had one evidence-inventory failure because `uvx` created
   an untracked `uv.lock`; the generated artifact was deleted, the failing test
   passed, and the complete full suite was rerun to exit 0.
@@ -34,6 +35,18 @@ historical.
 - Exact scanner run provenance and summaries are persisted in
   `scanner-refresh.json`; the acceptance-package test validates required fields,
   timestamps, revision binding, digests, and optional dependency input.
+- Full-source mypy RED: `mypy 2.2.0 --ignore-missing-imports src` returned 131
+  errors across 28 files. Three disjoint remediation batches used explicit
+  types and control-flow narrowing; no global/per-file suppression was added.
+- Full-source mypy GREEN at the submission target: exit 0, `Success: no issues
+  found in 155 source files`.
+- Type-remediation reviews found two behavior defects: an unpin failure was
+  incorrectly changed to rc=0, and a missing T-104 archive API was hidden behind
+  a type workaround. RED tests reproduced both. GREEN restores unpin rc=1 and
+  makes archive fail explicitly with rc=1/no write until T-104 is implemented.
+- Final complete pytest rerun after those corrections: exit 0, 3214 node IDs.
+- Independent specification and quality reviews: PASS after both findings were
+  corrected.
 
 Result: PASS for the current regression/runtime-authority implementation. The
 owner checkpoints and AC-GLOBAL-04 boundary remain open, so G-1 remains FAIL.
@@ -46,11 +59,12 @@ owner checkpoints and AC-GLOBAL-04 boundary remain open, so G-1 remains FAIL.
 - `python3 -m pip check` -> exit 0, `No broken requirements found.`
 - `git diff --check` -> exit 0
 - `python3 -m pytest tests/unit/test_g_minus_1_acceptance_package.py -q` -> 17 passed
-- `python3 -m pytest tests/unit/test_g_minus_1_acceptance_package.py tests/unit/test_g_minus_1_governance_docs.py tests/unit/test_audit_production_topology.py -q` -> 95 focused G-1 tests passed; exit 0; run 2026-07-12 Asia/Shanghai against `21d000e5eca28c1ad5a91ad3485c548f8ce1c389`
+- `python3 -m pytest tests/unit/test_g_minus_1_acceptance_package.py tests/unit/test_g_minus_1_governance_docs.py tests/unit/test_audit_production_topology.py -q` -> 95 focused G-1 tests passed; exit 0; run 2026-07-12 Asia/Shanghai against `73e7b3f4cd47cbc48b985ccbf261266fe38b02d2`
 - independent R3/R4 specification review -> PASS after two findings were remediated
 - independent R3/R4 quality review -> PASS after the machine path inventory was refreshed
 
-Result: PASS for regression and Ruff checks at the submission target. This does
+Result: PASS for regression and Ruff checks at the historical R5 target
+`73e7b3f4cd47cbc48b985ccbf261266fe38b02d2`. This does
 not satisfy the missing approved type, secret, dependency, authority, or owner
 checkpoints and does not change the overall G-1 FAIL verdict.
 

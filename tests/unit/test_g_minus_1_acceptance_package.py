@@ -12,13 +12,14 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 PACKAGE = ROOT / "acceptance" / "G-1"
 BASELINE_REVISION = "bde14c5ce94aacd99ef80f9c11b65092dcf25fc3"
-SUBMISSION_REVISION = "21d000e5eca28c1ad5a91ad3485c548f8ce1c389"
+SUBMISSION_REVISION = "175a7f31e0538ac646d9a6c523ba14638f662372"
 REVISION_LINEAGE = {
     "implementation": "cc95c5a488a8cd699dff515eadf431277669ffc6",
     "remediation": "d578691b8e1d3e0dc6f5221120c4a0d0e4ace6ab",
     "security ledger": "2296dc08c14eae9de34accdf43d4a11c6b8ba68f",
     "Ruff R4 scripts": "73e7b3f4cd47cbc48b985ccbf261266fe38b02d2",
-    "runtime authority consolidation / submission target": SUBMISSION_REVISION,
+    "runtime authority consolidation": "21d000e5eca28c1ad5a91ad3485c548f8ce1c389",
+    "full-source mypy remediation / submission target": SUBMISSION_REVISION,
 }
 
 REQUIRED_FILES = {
@@ -344,7 +345,7 @@ def test_security_ledger_records_current_node_and_ruff_results() -> None:
     assert "npm audit --omit=dev --audit-level=high --registry=https://registry.npmjs.org" in security
     assert "0 vulnerabilities" in security
     assert "trufflehog 3.95.9" in security.lower()
-    assert "9270" in security and "18069931" in security
+    assert "9374" in security and "18143412" in security
     assert "verified_secrets=0" in security and "unverified_secrets=0" in security
     assert "pip-audit 2.10.1" in security
     assert "Python 3.10" in security
@@ -379,7 +380,7 @@ def test_refresh_artifacts_bind_scans_and_topology_to_exact_provenance() -> None
     assert scans["timezone"] == "Asia/Shanghai"
     assert {run["name"] for run in scans["runs"]} == {
         "trufflehog_git", "npm_audit", "pip_audit_base_py310",
-        "pip_audit_vector_py310", "mypy_authority_scope", "ruff_full",
+        "pip_audit_vector_py310", "mypy_full_source", "ruff_full",
     }
     for run in scans["runs"]:
         assert run["command"] and run["cwd"]

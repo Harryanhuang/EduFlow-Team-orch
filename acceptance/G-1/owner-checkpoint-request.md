@@ -1,6 +1,6 @@
 # G-1 Project Owner Checkpoint Request
 
-Submission target: `21d000e5eca28c1ad5a91ad3485c548f8ce1c389`
+Submission target: `175a7f31e0538ac646d9a6c523ba14638f662372`
 Result: PENDING
 
 Please provide or confirm these two checkpoints with a durable reference

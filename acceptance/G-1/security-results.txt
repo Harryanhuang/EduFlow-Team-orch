@@ -1,16 +1,15 @@
 # G-1 Security and Supply-Chain Results
 
-Submission target: `21d000e5eca28c1ad5a91ad3485c548f8ce1c389`
+Submission target: `175a7f31e0538ac646d9a6c523ba14638f662372`
 Result: FAIL
 Refresh: exact local/UTC timestamps, commands, cwd, exit status, output digest,
 and structured summaries are persisted in `scanner-refresh.json`; all runs cover
-submission revision `21d000e5eca28c1ad5a91ad3485c548f8ce1c389`.
+submission revision `175a7f31e0538ac646d9a6c523ba14638f662372`.
 
 The runnable scanners are no longer missing. Current read-only checks are clean
-for the scopes stated below. AC-GLOBAL-04 remains FAIL because the passing
-runtime-authority scope is narrower than the Gate/repository surface and a
-broader mypy run still contains pre-existing findings.
-The actual `flow-memory` runtime dependency also remains undeclared in
+for the scopes stated below. The repository-wide source mypy gate now passes.
+AC-GLOBAL-04 remains FAIL because the actual `flow-memory` runtime dependency
+remains undeclared in
 `pyproject.toml` and its first PyPI publication is pending authenticated Trusted
 Publisher setup. No clean sub-check is represented as approval of those gaps.
 
@@ -20,8 +19,8 @@ Publisher setup. No clean sub-check is represented as approval of those gaps.
 |---|---|---:|---|
 | Ruff full repository | `uvx --offline ruff==0.15.10 check src tests scripts acceptance` | 0 | PASS - `All checks passed!`; repository baseline is reduced from 486 to zero |
 | Ruff production source | `ruff==0.15.10 check src` | 0 | PASS - zero findings after R2f; no global or per-file ignore was added |
-| Scoped type check | `mypy 2.2.0 --follow-imports=skip --ignore-missing-imports src/eduflow/commands/human_takeover.py src/eduflow/commands/runtime_switch.py src/eduflow/runtime/human_takeover.py` | 0 | PASS for the stated authority scope; this narrow result is insufficient for a Gate-wide type claim |
-| Git secret scan | `trufflehog 3.95.9 git file://<candidate> --json --no-update --fail --fail-on-scan-errors --results verified,unverified,unknown` | 0 | PASS - 9270 chunks and 18069931 bytes; `verified_secrets=0`, `unverified_secrets=0`, scan error logs 0 |
+| Full source type check | `mypy 2.2.0`; `UV_NO_PROJECT=1 uvx --offline --from mypy==2.2.0 mypy --ignore-missing-imports src` | 0 | PASS - `Success: no issues found in 155 source files` |
+| Git secret scan | `trufflehog 3.95.9 git file://<candidate> --json --no-update --fail --fail-on-scan-errors --results verified,unverified,unknown` | 0 | PASS - 9374 chunks and 18143412 bytes; `verified_secrets=0`, `unverified_secrets=0`, scan error logs 0 |
 | Python base dependencies, minimum Python | `pip-audit 2.10.1 --strict --format json .` under Python 3.10 | 0 | PASS - resolved declared base dependency `tomli==2.4.1`; 0 known vulnerabilities |
 | Python optional vector dependencies | `pip-audit 2.10.1 --strict -r /tmp/eduflow-vector-requirements.XXXXXX.txt` under Python 3.10; exact input is `lancedb>=0.4` plus `sentence-transformers>=2.2` | 0 | PASS - 51 resolved dependencies; 0 known vulnerabilities |
 | Node production dependencies | `npm audit --omit=dev --audit-level=high --registry=https://registry.npmjs.org --json` | 0 | PASS - 0 vulnerabilities (0 info/low/moderate/high/critical) across 3 production dependencies and 1 optional entry |
@@ -49,11 +48,11 @@ input make each run reproducible.
 
 ## Type-checker boundary
 
-The scoped authority run is clean. A broader import-following mypy diagnostic
-previously exposed existing findings in other Gate/repository modules and
-undeclared local dependencies. This is engineering remediation, not an owner
-checkpoint: expand the progressive Gate to the applicable modules and fix or
-explicitly bound every remaining finding before claiming AC-GLOBAL-04 PASS.
+The import-following source run covers all 155 modules under `src` and is clean.
+It uses `--ignore-missing-imports` only for external/untyped packages; it does
+not skip local imports or narrow the file list. The two behavior findings found
+during review (unpin exit status and the missing T-104 archive API) were fixed
+with explicit regression tests rather than hidden behind type suppression.
 
 ## Dependency boundary
 
@@ -71,6 +70,6 @@ from `registry.npmmirror.com`; changing those artifact sources requires an
 explicit dependency/lockfile remediation rather than relabeling the official
 advisory query.
 
-Result: FAIL - secret scanning, pip-audit, npm audit, Ruff, and the scoped mypy
-run are current and clean. Accepted type coverage and the undeclared/unpublished
-Flow Memory dependency remain incomplete, so AC-GLOBAL-04 does not pass.
+Result: FAIL - secret scanning, pip-audit, npm audit, Ruff, and full-source mypy
+are current and clean. The undeclared/unpublished Flow Memory dependency remains
+incomplete, so AC-GLOBAL-04 does not pass.

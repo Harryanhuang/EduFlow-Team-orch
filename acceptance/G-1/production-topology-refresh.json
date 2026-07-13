@@ -1,13 +1,13 @@
 {
-  "submission_revision": "21d000e5eca28c1ad5a91ad3485c548f8ce1c389",
+  "submission_revision": "175a7f31e0538ac646d9a6c523ba14638f662372",
   "production_revision": "bde14c5ce94aacd99ef80f9c11b65092dcf25fc3",
   "config_generation": "00773fbb4eb5ed7f",
   "command": "python3 scripts/audit_production_topology.py --json --checkout '/Volumes/Halobster/Codex相关/EduFlow-Team-orch' --config '/Volumes/Halobster/Codex相关/EduFlow-Team-orch/eduflow.toml' --state-dir '/Volumes/Halobster/Codex相关/EduFlow-Team-orch/.eduflow-team-state'",
   "cwd": "/Users/huanganan/.config/superpowers/worktrees/EduFlow-Team-orch/eduflow-upgrade-gates",
-  "timestamp_local": "2026-07-13T00:58:28+08:00",
-  "timestamp_utc": "2026-07-12T16:58:28Z",
+  "timestamp_local": "2026-07-13T01:45:42+08:00",
+  "timestamp_utc": "2026-07-12T17:45:42Z",
   "exit_code": 0,
-  "raw_output_sha256": "9e293e85a7b19b5cf443b7d679aa0f1deda169925b8cd0b5166addb862994dab",
+  "raw_output_sha256": "f24a9c17ea3e4c467551e43246b82716d4b6327663681c81de7c4e6b76be4ff9",
   "raw_output_bytes": 34377,
   "ok": true,
   "errors": [],
@@ -17,7 +17,7 @@
   "suspect_count": 0,
   "raw": {
     "ok": true,
-    "generated_at": "2026-07-13T00:58:28+08:00",
+    "generated_at": "2026-07-13T01:45:42+08:00",
     "checkout": {
       "path": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/11-Eduflow Team 多智能体项目/EduFlow-Team-orch",
       "commit_sha": "bde14c5ce94aacd99ef80f9c11b65092dcf25fc3"
@@ -33,14 +33,14 @@
     "daemons": [
       {
         "name": "router",
-        "pid": 15001,
+        "pid": 65864,
         "executable": "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
         "process_cwd": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/11-Eduflow Team 多智能体项目/EduFlow-Team-orch",
         "checkout": "/Volumes/Halobster/Obsidian Edu/留学公司知识库/11-Eduflow Team 多智能体项目/EduFlow-Team-orch",
         "checkout_source": "EDUFLOW_ROOT",
         "commit_sha": "bde14c5ce94aacd99ef80f9c11b65092dcf25fc3",
         "ancestry": [
-          15001,
+          65864,
           72531,
           1
         ],
@@ -698,7 +698,7 @@
     "errors": [],
     "redactions": {
       "applied": true,
-      "count": 24,
+      "count": 25,
       "fields": [
         "command_arguments",
         "config_values",

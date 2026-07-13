@@ -1,7 +1,7 @@
 # G-1 scoped changed files
 
 Comparison base: `bde14c5ce94aacd99ef80f9c11b65092dcf25fc3`
-Submission target: `21d000e5eca28c1ad5a91ad3485c548f8ce1c389`
+Submission target: `175a7f31e0538ac646d9a6c523ba14638f662372`
 Candidate/evidence-refresh path inventory: the union of baseline-to-candidate
 tracked paths and candidate-only untracked paths. The same inventory definition
 remains valid before and after the evidence refresh is committed. No user-owned
@@ -14,18 +14,19 @@ Revision lineage:
 - configured scanner ledger: `2296dc08c14eae9de34accdf43d4a11c6b8ba68f`
 - Ruff R3 tests: `af15df34de310907feff3e93681952a443fb0bfb`
 - Ruff R4 scripts: `73e7b3f4cd47cbc48b985ccbf261266fe38b02d2`
-- runtime authority consolidation / submission target: `21d000e5eca28c1ad5a91ad3485c548f8ce1c389`
+- runtime authority consolidation: `21d000e5eca28c1ad5a91ad3485c548f8ce1c389`
+- full-source mypy remediation / submission target: `175a7f31e0538ac646d9a6c523ba14638f662372`
 
 ## Immutable submission inventory
 
-Command: `git diff --name-only bde14c5ce94aacd99ef80f9c11b65092dcf25fc3 21d000e5eca28c1ad5a91ad3485c548f8ce1c389 -- | LC_ALL=C sort -u`
+Command: `git diff --name-only bde14c5ce94aacd99ef80f9c11b65092dcf25fc3 175a7f31e0538ac646d9a6c523ba14638f662372 -- | LC_ALL=C sort -u`
 
-Immutable submission path count: 165
-Immutable submission path SHA-256: `cadc4366a46d635057869623f247dbc626c5710c510b25ec024f3ed2f2c26b9d`
+Immutable submission path count: 183
+Immutable submission path SHA-256: `812f1f73bf93572e07757ecf03534cf7fe9bdbd41fd769b21c804ff8ff14fb35`
 
 ## Evidence-refresh inventory
 
-Commands: `git diff --name-only 21d000e5eca28c1ad5a91ad3485c548f8ce1c389 --`
+Commands: `git diff --name-only 175a7f31e0538ac646d9a6c523ba14638f662372 --`
 plus `git ls-files --others --exclude-standard`; sort the union.
 
 Evidence-refresh path count: 13
@@ -101,6 +102,7 @@ src/eduflow/commands/runtime_list.py
 src/eduflow/commands/runtime_switch.py
 src/eduflow/commands/runtime_verify.py
 src/eduflow/commands/say.py
+src/eduflow/commands/send.py
 src/eduflow/commands/sleep_idle.py
 src/eduflow/commands/task.py
 src/eduflow/commands/tts.py
@@ -108,7 +110,9 @@ src/eduflow/commands/usage.py
 src/eduflow/commands/wake_alert.py
 src/eduflow/commands/watchdog.py
 src/eduflow/commands/workflow.py
+src/eduflow/feishu/cards.py
 src/eduflow/feishu/lark.py
+src/eduflow/feishu/router.py
 src/eduflow/feishu/slash.py
 src/eduflow/memory/__init__.py
 src/eduflow/memory/candidate_gen.py
@@ -117,21 +121,34 @@ src/eduflow/memory/constraints.py
 src/eduflow/memory/dashboard.py
 src/eduflow/memory/db.py
 src/eduflow/memory/dual_query.py
+src/eduflow/memory/embeddings.py
 src/eduflow/memory/inject.py
 src/eduflow/memory/jit_recall.py
 src/eduflow/memory/obsidian_export.py
+src/eduflow/memory/packet.py
 src/eduflow/memory/reflect.py
+src/eduflow/memory/search.py
 src/eduflow/memory/storage_budget.py
+src/eduflow/runtime/agent_auth.py
 src/eduflow/runtime/config.py
 src/eduflow/runtime/failover.py
 src/eduflow/runtime/human_takeover.py
 src/eduflow/runtime/lifecycle.py
+src/eduflow/runtime/pidlock.py
+src/eduflow/runtime/server_metrics.py
 src/eduflow/runtime/verify.py
+src/eduflow/scheduling/engine.py
+src/eduflow/scheduling/manager_ops.py
+src/eduflow/scheduling/recurrence.py
+src/eduflow/scheduling/workflow_evolution.py
 src/eduflow/store/asset_registry.py
 src/eduflow/store/employee_read_model.py
+src/eduflow/store/loop_runs.py
 src/eduflow/store/scheduled_tasks.py
 src/eduflow/store/task_event_scanner.py
 src/eduflow/store/task_publish_gate.py
+src/eduflow/store/task_publish_render.py
+src/eduflow/store/tasks.py
 src/eduflow/store/tool_risk.py
 tests/integration/test_e2e_full_workflow.py
 tests/integration/test_human_takeover_circuit_breaker.py
