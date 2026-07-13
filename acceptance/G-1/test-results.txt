@@ -874,8 +874,9 @@ R8 FINAL GREEN
 - Python 3.10 no-cache PyPI install -> `flow-memory==0.1.1`; pip check and
   legacy `EmbeddingProvider`/`VectorBackend` import smoke passed
 
-Result: PASS for current machine verification. Git-history secret scanning is
-rerun after the evidence commit so the committed receipt is included.
+Result: PASS for current machine verification. Post-commit Git-history secret
+scanning covered 9,547 chunks / 18,196,964 bytes with zero verified or
+unverified secrets and zero scan errors.
 
 Task 7 Ruff remediation R1: memory compatibility re-exports (strict TDD)
 

@@ -371,7 +371,7 @@ def test_security_ledger_records_current_node_and_ruff_results() -> None:
     assert "npm audit --omit=dev --audit-level=high --registry=https://registry.npmjs.org" in security
     assert "0 vulnerabilities" in security
     assert "trufflehog 3.95.9" in security.lower()
-    assert "9426" in security and "18157058" in security
+    assert "9547" in security and "18196964" in security
     assert "verified_secrets=0" in security and "unverified_secrets=0" in security
     assert "pip-audit 2.10.1" in security
     assert "Python 3.10" in security
@@ -435,6 +435,7 @@ def test_refresh_artifacts_bind_scans_and_topology_to_exact_provenance() -> None
     topology = json.loads(_read("production-topology-refresh.json"))
 
     assert scans["submission_revision"] == SUBMISSION_REVISION
+    assert scans["scanned_revision"] == "2680a0b4cd1392275ce9382a5b88815e9b533a12"
     assert scans["timezone"] == "Asia/Shanghai"
     assert {run["name"] for run in scans["runs"]} == {
         "trufflehog_git", "npm_audit", "pip_audit_base_py310",

@@ -1,5 +1,6 @@
 {
   "submission_revision": "58d926778dde76724467b2eab307e80b0a1c5ea3",
+  "scanned_revision": "2680a0b4cd1392275ce9382a5b88815e9b533a12",
   "timezone": "Asia/Shanghai",
   "runs": [
     {
@@ -31,13 +32,13 @@
       "tool_version": "trufflehog 3.95.9",
       "command": "/tmp/trufflehog-3.95.9.LaWodm/trufflehog git file://$PWD --json --no-update --fail --fail-on-scan-errors --results verified,unverified,unknown",
       "cwd": "/Users/huanganan/.config/superpowers/worktrees/EduFlow-Team-orch/eduflow-upgrade-gates",
-      "timestamp_local": "2026-07-13T09:04:50+08:00",
-      "timestamp_utc": "2026-07-13T01:04:50Z",
+      "timestamp_local": "2026-07-13T10:04:49+08:00",
+      "timestamp_utc": "2026-07-13T02:04:49Z",
       "exit_code": 0,
-      "output_sha256": "37e4a480a876c39fc6383a5fb8d93497ea8114308e1866f97f2afd812ad2d1d5",
+      "output_sha256": "2803f802f041bff60bafddde580d03371acc942a63fec2cfbc88bc0fe5b8b038",
       "output_bytes": 836,
-      "summary": "9426 chunks; 18157058 bytes; verified_secrets=0; unverified_secrets=0; error logs=0",
-      "archive_sha256": "944c6ea3a2993a9f808d08107b40e03ba92bc75972876a1ee47d567bfd6fa1b5"
+      "summary": "9547 chunks; 18196964 bytes; verified_secrets=0; unverified_secrets=0; error logs=0",
+      "archive_sha256": "1270f3ccaa3f0492368cbc37139a0675034d1e5fddc8ea247bae4ffd366bf907"
     },
     {
       "name": "npm_audit",
