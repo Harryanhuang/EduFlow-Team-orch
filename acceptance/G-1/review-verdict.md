@@ -1,13 +1,36 @@
-# G-1 Independent Supporting Review Verdict
+# G-1 Formal Review Verdict
 
 Submission target: `58d926778dde76724467b2eab307e80b0a1c5ea3`
-Reviewer: independent Codex specification and quality reviewers
-Verdict: PASS / PRE-FORMAL-REVIEW READY
+Formal reviewed target: `00c9d0f978a68f8f6469bf898064f6382b60b05a`
+Task: `T-172`
+Reviewer: worker_review
+Status: delivered
+Verdict: approved
 Result: PASS
 
-Formal-status note: this is current supporting review evidence, not the required
-formal `worker_review` REVIEW event. It cannot appoint an owner, approve a tool
-scope, authorize manager CLOSEOUT, or authorize G0.
+Formal REVIEW log: `log_1783916128818_c7c38dd6ae`
+Detailed reviewer-to-manager message: `msg_1783916096247_873f6b9ba4`
+Manager CLOSEOUT log: `log_1783916506671_d734d310a7`
+Authoritative contracts:
+
+- `docs/plans/2026-07-12-eduflow-upgrade-acceptance-standard.md`
+- `docs/plans/2026-07-12-eduflow-governed-team-operating-system-master-plan.md`
+
+Superseded authority events:
+
+- `msg_1783913260021_b4cfc6d0e8` and `log_1783913294995_d796a47a4a` — the
+  detailed verdict named the wrong second contract.
+- `log_1783913905576_359cbfc651` — consumed the contract-incomplete REVIEW.
+- `log_1783915637372_fab21e2397` — corrected the contract path but misstated
+  the twelve-row ledger as 6+6 instead of AC-GLOBAL-01..07 plus AC-G-1-01..05.
+- `msg_1783915422907_f99b98a04b` and `log_1783915448886_dff6bc4e8b` — named
+  both correct contracts but mislabeled observable state as nonexistent
+  AC-G-1-06 instead of AC-GLOBAL-07.
+- `log_1783915780706_1489ab3ef2` — stated the correct 7+5 ranges but consumed
+  the superseded detailed verdict above.
+
+The current worker_review message and REVIEW log state the exact authoritative
+set AC-GLOBAL-01..07 plus AC-G-1-01..05. AC-G-1-06 is not a current criterion.
 
 ## Current evidence verified
 
@@ -40,21 +63,21 @@ scope, authorize manager CLOSEOUT, or authorize G0.
   an EduFlow runtime dependency, audited on Python 3.10, and verified by a
   no-cache clean install plus compatibility smoke without a sibling checkout.
 
-## Remaining process gate
+## Formal ownership result
 
-1. **Process gate — formal acceptance ownership is incomplete.** The required
-   `worker_review` REVIEW is pending. Manager CLOSEOUT is prohibited until a
-   formal PASS review and all mandatory criteria are satisfied.
+The independent specification and quality reviews remained PASS with no
+findings at the formal reviewed target. `worker_review` then issued the required
+formal PASS REVIEW for `T-172`. Manager consumed that REVIEW and issued the real
+CLOSEOUT event. Producer self-checks and supporting reviews were not substituted
+for either authority-owned event.
 
 ## Decision
 
-The runtime-authority, owner, and scanner checkpoints are satisfied. The
-supporting reviewers find the candidate ready to request formal REVIEW, with
-all twelve machine criteria passing and zero open Gate risks.
+The runtime-authority, owner, scanner, REVIEW, and CLOSEOUT checkpoints are
+satisfied, with all twelve machine criteria passing and zero open Gate risks.
 
-**G-1 formal status: FAIL pending formal REVIEW. G0: not authorized. Formal
-`worker_review` REVIEW: pending. Manager CLOSEOUT: prohibited.**
+**G-1 formal status: PASS. G-1 closed. G0 authorized. G0 not completed.**
 
-The owner checkpoints are bound in `acceptance/G-1/owner-checkpoint.md`.
-No supporting review, placeholder, or approval record is treated as the formal
-REVIEW, CLOSEOUT, or G0 entry.
+The owner checkpoints are bound in `acceptance/G-1/owner-checkpoint.md`. The
+event identifiers above, rather than a supporting review, placeholder, or chat
+statement, are the formal REVIEW, CLOSEOUT, and G0-entry authority evidence.

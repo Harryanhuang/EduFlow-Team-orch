@@ -18,6 +18,15 @@ ROOT = Path(__file__).resolve().parents[2]
 PACKAGE = ROOT / "acceptance" / "G-1"
 BASELINE_REVISION = "bde14c5ce94aacd99ef80f9c11b65092dcf25fc3"
 SUBMISSION_REVISION = "58d926778dde76724467b2eab307e80b0a1c5ea3"
+FORMAL_REVIEWED_REVISION = "00c9d0f978a68f8f6469bf898064f6382b60b05a"
+FORMAL_REVIEW_TASK = "T-172"
+FORMAL_REVIEW_LOG = "log_1783916128818_c7c38dd6ae"
+FORMAL_REVIEW_MESSAGE = "msg_1783916096247_873f6b9ba4"
+MANAGER_CLOSEOUT_LOG = "log_1783916506671_d734d310a7"
+AUTHORITATIVE_CONTRACTS = (
+    "docs/plans/2026-07-12-eduflow-upgrade-acceptance-standard.md",
+    "docs/plans/2026-07-12-eduflow-governed-team-operating-system-master-plan.md",
+)
 REVISION_LINEAGE = {
     "implementation": "cc95c5a488a8cd699dff515eadf431277669ffc6",
     "remediation": "d578691b8e1d3e0dc6f5221120c4a0d0e4ace6ab",
@@ -82,7 +91,7 @@ def test_summary_records_every_mandatory_field_without_blank_values() -> None:
 
     assert values["Gate"] == "G-1"
     assert re.fullmatch(r"[0-9a-f]{40}", values["Revision"])
-    assert values["Acceptance result"] in {"PASS", "CONDITIONAL PASS", "FAIL"}
+    assert values["Acceptance result"] == "PASS"
     assert re.fullmatch(r"\d+/\d+", values["Mandatory criteria passed/total"])
     assert re.fullmatch(
         r"\d+/\d+/\d+/\d+", values["Open Critical/High/Medium/Low"]
@@ -280,10 +289,56 @@ def test_summary_risk_tally_matches_known_risk_rows_and_deferrals_are_explicit()
     assert "user_version=0" in risks
 
 
-def test_formal_acceptance_ownership_is_a_process_gate_not_an_open_risk() -> None:
+def test_formal_acceptance_ownership_is_completed_by_real_events() -> None:
+    summary = _read("summary.md")
     review = _read("review-verdict.md")
-    assert "**Process gate — formal acceptance ownership is incomplete.**" in review
-    assert "Medium — formal acceptance ownership" not in review
+    risks = _read("known-risks.md")
+    checkpoint = _read("owner-checkpoint.md")
+    results = _read("test-results.txt")
+    combined = "\n".join((summary, review, risks, checkpoint, results))
+
+    assert FORMAL_REVIEW_TASK in combined
+    assert FORMAL_REVIEWED_REVISION in combined
+    assert FORMAL_REVIEW_LOG in combined
+    assert FORMAL_REVIEW_MESSAGE in combined
+    assert MANAGER_CLOSEOUT_LOG in combined
+    for contract in AUTHORITATIVE_CONTRACTS:
+        assert contract in combined
+    assert "AC-GLOBAL-01..07" in combined
+    assert "AC-G-1-01..05" in combined
+    assert "log_1783913905576_359cbfc651" in combined
+    assert "log_1783915637372_fab21e2397" in combined
+    assert "log_1783915780706_1489ab3ef2" in combined
+    assert "msg_1783915422907_f99b98a04b" in combined
+    assert "log_1783915448886_dff6bc4e8b" in combined
+    assert "superseded" in combined.lower()
+    current_review = review.split("Superseded authority events:", 1)[0]
+    assert "AC-G-1-06" not in current_review
+    assert "AC-GLOBAL-01..06 + AC-G-1-01..06" not in current_review
+    assert "Status: delivered" in combined
+    assert "Verdict: approved" in combined
+    assert "Reviewer: worker_review" in summary
+    assert "Manager closeout: PASS" in summary
+    assert "G-1 closed" in combined
+    assert "G0 authorized" in combined
+    assert "G0 not completed" in combined
+    assert "formal acceptance ownership is incomplete" not in combined.lower()
+    assert "formal review pending" not in combined.lower()
+    assert "g0 remains unauthorized" not in combined.lower()
+
+
+def test_historical_gate_transcript_cannot_override_current_status() -> None:
+    results = _read("test-results.txt")
+    request = _read("owner-checkpoint-request.md")
+
+    assert "## Historical R7 published dependency verification" in results
+    assert "At R7" in results
+    assert "HISTORICAL G-1 R8" in results
+    assert "At R8" in results
+    assert "The current R7 refresh" not in results
+    assert "G-1 remains FAIL and G0 is\nnot authorized" not in results
+    assert "After these checkpoints, G-1 still requires" not in request
+    assert "At the time of this request" in request
 
 
 def test_rollback_procedure_uses_private_tempdir_and_status_preserving_cleanup() -> None:

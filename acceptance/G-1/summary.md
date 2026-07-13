@@ -4,12 +4,12 @@ Gate: G-1
 Revision: 58d926778dde76724467b2eab307e80b0a1c5ea3
 Config generation: production `edc3a3ac9b8f328e`; isolated implementation config is intentionally distinct
 Environment: isolated `codex/eduflow-upgrade-gates` worktree plus read-only production probes against the deployed checkout
-Acceptance result: FAIL
+Acceptance result: PASS
 Mandatory criteria passed/total: 12/12
 Open Critical/High/Medium/Low: 0/0/0/0
 Rollback tested: yes — disposable worktree reverse-applied the target patch to `bde14c5ce94aacd99ef80f9c11b65092dcf25fc3` and proved exact tree equality; current full pytest also passed
-Reviewer: pending formal `worker_review` REVIEW after all external checkpoints and final evidence refresh
-Manager closeout: blocked — manager must not CLOSEOUT before a valid REVIEW and all mandatory criteria pass
+Reviewer: worker_review — T-172 delivered and approved; REVIEW `log_1783916128818_c7c38dd6ae` binds `00c9d0f978a68f8f6469bf898064f6382b60b05a`
+Manager closeout: PASS — CLOSEOUT `log_1783916506671_d734d310a7`; G-1 closed and G0 authorized
 
 ## Submission revision lineage
 
@@ -23,10 +23,10 @@ Manager closeout: blocked — manager must not CLOSEOUT before a valid REVIEW an
 - published Flow Memory dependency: `ad149069f246abe9bda93f184fd68d0106a4305d`
 - topology classifier remediation / submission target: `58d926778dde76724467b2eab307e80b0a1c5ea3`
 
-`Revision` is the immutable submission target. This evidence-only freshness
-delta is intentionally not assigned a self-referential revision; the formal
-review event must bind the final committed HEAD when the external checkpoints
-exist.
+`Revision` is the immutable implementation submission target. Formal task
+`T-172` reviewed the subsequent evidence-complete target
+`00c9d0f978a68f8f6469bf898064f6382b60b05a`; this post-event refresh records
+the already-issued REVIEW and CLOSEOUT without changing the reviewed candidate.
 
 ## Mandatory criteria ledger
 
@@ -47,17 +47,25 @@ exist.
 
 The ledger contains exactly twelve mandatory decision rows. Its twelve `PASS`
 rows are the source for `12/12`. The owner-controlled rows are supported by the
-durable receipt in `owner-checkpoint.md`, not by an unverified chat statement.
+durable owner approval receipt in `owner-checkpoint.md`, not by an unverified
+chat statement.
 
 ## Current decision
 
-All twelve machine criteria are now satisfied, but this package remains a
-deliberate `FAIL` until the formal `worker_review` REVIEW binds the final
-committed evidence revision. Kenny is provisioned only as the structured
-`runtime_operator`, and the OWNER approval is durably recorded in
-`owner-checkpoint.md`. The general-operator placeholder remains a deny-all
-sentinel and is not appointment evidence. No G0 work is authorized yet.
-This is durable owner approval, but it is not formal REVIEW or CLOSEOUT.
+All twelve machine criteria are satisfied. Formal task `T-172` has
+Status: delivered and Verdict: approved. The detailed reviewer-to-manager
+message is `msg_1783916096247_873f6b9ba4`; the formal REVIEW is
+`log_1783916128818_c7c38dd6ae`. Both explicitly name
+`docs/plans/2026-07-12-eduflow-upgrade-acceptance-standard.md` and
+`docs/plans/2026-07-12-eduflow-governed-team-operating-system-master-plan.md`.
+Manager CLOSEOUT `log_1783916506671_d734d310a7` accepted the authoritative
+ledger as AC-GLOBAL-01..07 plus AC-G-1-01..05 and stated that G-1 closed and
+G0 authorized. G0 not completed: this decision permits the next Gate to begin
+but does not claim any G0 criterion has passed.
+
+Kenny remains provisioned only as the structured `runtime_operator`. The
+general-operator placeholder remains a deny-all sentinel and is not appointment
+evidence or general Slash authority.
 
 The current submission passed the complete 3203-node regression. A read-only
 production refresh at 2026-07-13T09:43:44+08:00 remained `ok=true` with three

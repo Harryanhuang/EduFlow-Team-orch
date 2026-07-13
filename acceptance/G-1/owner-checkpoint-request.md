@@ -23,8 +23,9 @@ revision). Do not include credential values.
    `docs/operations/CONTROL_PLANE_SLO.md`, and
    `docs/operations/HUMAN_TAKEOVER_RUNBOOK.md`, including the
    `control_plane_owner` and escalation path.
-After these checkpoints, G-1 still requires a final evidence refresh, a formal
-`worker_review` REVIEW bound to the final committed HEAD, and only after PASS a
-manager CLOSEOUT. This request does not authorize external sends, credential
-rotation, history rewrite, production source switching, or irreversible
-migration.
+At the time of this request, G-1 still required a final evidence refresh, a
+formal `worker_review` REVIEW bound to the final committed HEAD, and only after
+PASS a manager CLOSEOUT. Those ordered gates were subsequently processed under
+`T-172`; the authoritative event references are recorded in `review-verdict.md`.
+This request did not authorize credential rotation, history rewrite, production
+source switching, or irreversible migration.

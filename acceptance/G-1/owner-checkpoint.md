@@ -44,8 +44,19 @@ The current document edits only bind the receipt and provisioned fact to the
 approved contract. They do not expand the approved authority or claim later
 Gate enforcement.
 
-## Remaining process gates
+## Completed process gates
 
-This receipt closes the two owner-controlled High checkpoints. It is not a
-formal `worker_review` REVIEW, manager CLOSEOUT, or authorization to enter G0.
-Those events must bind the final committed G-1 evidence revision in order.
+This receipt closed the two owner-controlled High checkpoints without itself
+claiming review authority. The subsequent ordered authority events are:
+
+- Task: `T-172`; Status: delivered; Verdict: approved
+- Formal reviewed target: `00c9d0f978a68f8f6469bf898064f6382b60b05a`
+- Detailed REVIEW message: `msg_1783916096247_873f6b9ba4`
+- Formal REVIEW log: `log_1783916128818_c7c38dd6ae`
+- Manager CLOSEOUT log: `log_1783916506671_d734d310a7`
+- Authoritative contracts: `docs/plans/2026-07-12-eduflow-upgrade-acceptance-standard.md` and `docs/plans/2026-07-12-eduflow-governed-team-operating-system-master-plan.md`
+- Accepted ledger: AC-GLOBAL-01..07 plus AC-G-1-01..05
+- Decision: G-1 closed; G0 authorized; G0 not completed
+
+The OWNER receipt, formal `worker_review` REVIEW, and manager CLOSEOUT remain
+separate evidence owned by their respective authorities.

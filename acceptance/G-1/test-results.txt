@@ -7,11 +7,11 @@ configured scanner ledger `2296dc08c14eae9de34accdf43d4a11c6b8ba68f`.
 Runtime authority consolidation: `21d000e5eca28c1ad5a91ad3485c548f8ce1c389`.
 Full-source mypy remediation: `175a7f31e0538ac646d9a6c523ba14638f662372`.
 Freshness note: the transcript below preserves historical RED/GREEN and full
-regression evidence. The current R7 refresh records a new 3215-node full
+regression evidence. The historical R7 refresh records a new 3215-node full
 regression for the submission target; the R6 3214-node run and 3014 baseline
 rollback run remain historical.
 
-## Current R7 published dependency verification - 2026-07-13
+## Historical R7 published dependency verification - 2026-07-13
 
 - Flow Memory release workflow `29215625546` published `v0.1.1` through PyPI
   OIDC Trusted Publishing from GitHub commit
@@ -41,9 +41,9 @@ rollback run remain historical.
 - Final isolated full suite resolved Flow Memory only through the EduFlow
   dependency declaration and exited zero; pytest cache contains 3215 node IDs.
 
-Result: PASS for AC-GLOBAL-04 and the published dependency boundary. The two
-owner-controlled High checkpoints remain open, so G-1 remains FAIL and G0 is
-not authorized.
+Historical R7 result: PASS for AC-GLOBAL-04 and the published dependency
+boundary. At R7, the two owner-controlled High checkpoints remained open, so
+G-1 remained FAIL and G0 was not authorized at that stage.
 
 ## Historical R6 Gate verification - 2026-07-13
 
@@ -825,7 +825,34 @@ Result: passed
 Command: git diff --check
 Result: passed
 
-G-1 R8 owner-checkpoint and provisioning refresh
+FORMAL G-1 REVIEW AND CLOSEOUT
+
+Formal reviewed target: 00c9d0f978a68f8f6469bf898064f6382b60b05a
+Task: T-172
+Assignee/owner: worker_review
+Status: delivered
+Verdict: approved
+Review reason: approved_for_delivery
+Detailed reviewer-to-manager message: msg_1783916096247_873f6b9ba4
+Formal REVIEW log: log_1783916128818_c7c38dd6ae
+Manager CLOSEOUT log: log_1783916506671_d734d310a7
+Authoritative contract: docs/plans/2026-07-12-eduflow-upgrade-acceptance-standard.md
+Authoritative contract: docs/plans/2026-07-12-eduflow-governed-team-operating-system-master-plan.md
+Accepted criterion ranges: AC-GLOBAL-01..07 plus AC-G-1-01..05
+Result: PASS
+
+The formal reviewer approved the evidence-complete target after independently
+checking the contractual and Python 3.10 paths. Manager then accepted the REVIEW
+and closed the Gate. G-1 closed; G0 authorized; G0 not completed.
+
+Superseded authority events:
+- msg_1783913260021_b4cfc6d0e8 / log_1783913294995_d796a47a4a: wrong second contract
+- log_1783913905576_359cbfc651: consumed the contract-incomplete REVIEW
+- log_1783915637372_fab21e2397: corrected contracts but misstated the ledger as 6+6
+- msg_1783915422907_f99b98a04b / log_1783915448886_dff6bc4e8b: mislabeled observable state as AC-G-1-06
+- log_1783915780706_1489ab3ef2: consumed that superseded 6+6 detailed verdict
+
+HISTORICAL G-1 R8 owner-checkpoint and provisioning refresh
 
 RED
 Command: python3 -m pytest tests/unit/test_g_minus_1_acceptance_package.py tests/unit/test_g_minus_1_governance_docs.py -q
@@ -859,10 +886,11 @@ PRODUCTION READ-ONLY GREEN
   `edc3a3ac9b8f328eedcf30871c25f38cba8d53c997b872930b4671c02b3f042c`
 - production config generation: `edc3a3ac9b8f328e`
 
-Result: PASS for owner checkpoint, runtime-authority provisioning, and read-only
-production correlation. Formal `worker_review` REVIEW remains pending.
+Historical R8 result: PASS for owner checkpoint, runtime-authority provisioning,
+and read-only production correlation. At R8, formal `worker_review` REVIEW
+remained pending.
 
-R8 FINAL GREEN
+HISTORICAL R8 FINAL GREEN
 - `python3 -m pytest --collect-only` -> 3,203 tests collected
 - `python3 -m pytest -q` -> 3,203/3,203 passed; exit 0
 - focused G-1 acceptance/governance -> 29/29 passed; exit 0
