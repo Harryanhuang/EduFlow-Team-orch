@@ -305,7 +305,7 @@ def _install_runtime_switch_mocks(monkeypatch, *, restart):
     monkeypatch.setattr(runtime_switch.lifecycle, "restart_with_runtime", restart)
     monkeypatch.setattr(runtime_switch, "_authorized_actors", lambda: {"u_admin"})
     monkeypatch.setattr("eduflow.commands.runtime_verify.compute_verdict",
-                        lambda agent: {"verdict": "ready"})
+                        lambda agent: {"verdict": "proved_ready"})
 
 
 def test_manual_switch_serializes_against_takeover_entry(monkeypatch):

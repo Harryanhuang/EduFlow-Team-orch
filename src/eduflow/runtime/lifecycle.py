@@ -520,6 +520,25 @@ SMOKE_FAILED = "smoke_failed"
 READY_UNPROVEN = "ready_unproven"
 
 
+def _live_cli_process_and_ready(target: tmux.Target, adapter) -> bool:
+    """Require the foreground pane process and its ready marker to agree."""
+    try:
+        expected = adapter.process_name().lower()
+        panes = tmux.list_panes(target)
+    except Exception:
+        return False
+    process_ok = any(
+        str(pane.current_command or "").lower() == expected
+        or (
+            expected == "codex"
+            and str(pane.current_command or "").lower() == "node"
+            and "codex" in str(pane.start_command or "").lower()
+        )
+        for pane in panes
+    )
+    return process_ok and wake.is_ready(target, adapter)
+
+
 def _write_runtime_status(agent: str, resolved: dict, *, reason: str = "",
                           env_ok: bool | None = None,
                           smoke_ok: bool | None = None,
@@ -631,7 +650,14 @@ def restart_with_runtime(agent: str, target: tmux.Target, runtime_name: str,
                               env_ok=False)
         return ENV_DRIFT
     smoke_verdict, _smoke_detail = _verify.api_smoke_runtime(selected)
-    smoke_ok = smoke_verdict in {"ok", "skipped"}
+    smoke_ok = smoke_verdict == "ok"
+    if smoke_verdict == "skipped":
+        _write_runtime_status(agent, selected,
+                              reason=reason or "runtime_switch",
+                              env_ok=True, smoke_ok=False)
+        if nudge_latest_inbox:
+            _nudge_latest_high_priority_inbox(agent, target)
+        return READY_UNPROVEN
     if not smoke_ok:
         _write_runtime_status(agent, selected,
                               reason=reason or "runtime_switch",
@@ -650,9 +676,26 @@ def restart_with_runtime(agent: str, target: tmux.Target, runtime_name: str,
                                   reason=reason or "runtime_switch",
                                   env_ok=True, smoke_ok=True)
             return READY_UNPROVEN
+        if not _live_cli_process_and_ready(target, adapter):
+            _write_runtime_status(agent, selected,
+                                  reason=reason or "runtime_switch",
+                                  env_ok=True, smoke_ok=True, inbox_verified=False)
+            return READY_UNPROVEN
+    try:
+        pending_inbox = bool(local_facts.list_messages(agent, unread_only=True))
+    except Exception:
+        pending_inbox = True
+    if pending_inbox:
+        _write_runtime_status(agent, selected,
+                              reason=reason or "runtime_switch",
+                              env_ok=True, smoke_ok=True, inbox_verified=False)
+        if nudge_latest_inbox:
+            _nudge_latest_high_priority_inbox(agent, target)
+        return READY_UNPROVEN
     _write_runtime_status(agent, selected,
                           reason=reason or "runtime_switch",
                           env_ok=True, smoke_ok=True,
+                          inbox_verified=True,
                           verified_at=time.time())
     if nudge_latest_inbox:
         _nudge_latest_high_priority_inbox(agent, target)

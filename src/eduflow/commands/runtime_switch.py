@@ -49,6 +49,8 @@ def _manual_trigger(takeover_state: dict, actor: str | None) -> str:
 
 def _emit(outcome: str, agent: str, to_runtime: str, reason: str,
           as_json: bool, detail: dict) -> int:
+    verdict = str(detail.get("verdict") or outcome)
+    proved_ready = outcome == lifecycle.READY and verdict == "proved_ready"
     if as_json:
         print_json({
             "agent": agent,
@@ -57,10 +59,13 @@ def _emit(outcome: str, agent: str, to_runtime: str, reason: str,
             "outcome": outcome,
             **detail,
         })
-        return 0 if outcome == lifecycle.READY else 2
-    if outcome == lifecycle.READY:
+        return 0 if proved_ready else 2
+    if proved_ready:
         print(f"✅ {agent} switched to {to_runtime} ({reason}); proved_ready")
         return 0
+    if outcome == lifecycle.READY:
+        print(f"⚠️  {agent} switched to {to_runtime} ({reason}); verdict={verdict}")
+        return 2
     if outcome == lifecycle.READY_NO_INIT:
         print(f"⚠️  {agent} switched to {to_runtime} ({reason}); ready_no_init")
         return 2

@@ -482,10 +482,9 @@ lazy = false
                     "model": "deepseek-v4-pro",
                     "provider": "deepseek",
                     "env_profile": "deepseek_profile",
-                    # Pre-populate proved-ready cache so the operational
-                    # readiness section takes the cache path and doesn't
-                    # re-probe (this test is about the drift warning,
-                    # not the readiness verdict).
+                    # The cache is intentionally contradicted by the live
+                    # env below; runtime truth must report drift rather than
+                    # treating the old proof as authoritative.
                     "env_ok": True,
                     "smoke_ok": True,
                     "verified_at": 1700000000.0,
@@ -505,7 +504,7 @@ lazy = false
             ),
         ):
             rc, out, _ = run_cli(["health"])
-    assert rc == 0
+    assert rc == 1
     assert "runtime_status_env_drift: worker_course" in out
     assert "ANTHROPIC_BASE_URL expected=https://api.deepseek.com/anthropic live=<missing>" in out
     assert "ANTHROPIC_MODEL expected=deepseek-v4-pro live=claude-opus-4-6" in out

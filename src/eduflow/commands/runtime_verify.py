@@ -5,7 +5,8 @@ Computes the verdict for one agent by combining:
   - live env match against the declared env_profile
   - API smoke against the provider gateway
   - pane-text absence of failure markers
-  - recent inbox consumption (high-priority unread in last 60s)
+  - live CLI process identity and ready marker
+  - explicit inbox consumption (an unread item is never inferred consumed)
 
 Verdict values:
   proved_ready         — all gates pass
@@ -33,6 +34,7 @@ from eduflow.agents import get_adapter
 
 
 USAGE = "usage: eduflow runtime verify <agent> [--json] [--live-smoke]"
+VERDICT_CACHE_TTL_SECONDS = 300
 
 
 def _pane_failure_scan(target, adapter) -> tuple[bool, list[str]]:
@@ -43,6 +45,81 @@ def _pane_failure_scan(target, adapter) -> tuple[bool, list[str]]:
     """
     from eduflow.runtime.lifecycle import _verify_no_failure_markers
     return _verify_no_failure_markers(target, adapter, wait_s=0)
+
+
+def _live_process_and_cli_ready(target, status: dict, out: dict) -> bool:
+    """Require live process identity and a current CLI-ready marker."""
+    try:
+        cli = status.get("cli") or "claude-code"
+        adapter = get_adapter(cli)
+        expected_process = adapter.process_name().lower()
+        panes = tmux.list_panes(target)
+    except (KeyError, Exception):
+        out["process_ok"] = False
+        out["cli_ready"] = False
+        return False
+
+    def matches(pane) -> bool:
+        current = str(pane.current_command or "").lower()
+        start = str(pane.start_command or "").lower()
+        return (
+            current == expected_process
+            or (expected_process == "codex" and current == "node" and "codex" in start)
+        )
+
+    out["process_ok"] = any(matches(pane) for pane in panes)
+    if not out["process_ok"]:
+        out["cli_ready"] = False
+        return False
+    try:
+        text = tmux.capture_pane(target, lines=80)
+    except Exception:
+        out["cli_ready"] = False
+        return False
+    out["cli_ready"] = any(marker in text for marker in adapter.ready_markers())
+    return bool(out["cli_ready"])
+
+
+def _unread_inbox_state(agent: str) -> str:
+    """Return the actual inbox-consumption state for a live agent.
+
+    An unread delivery is evidence that the agent has not consumed it, no
+    matter how long it has been waiting.  Older versions treated a missing
+    timestamp as old enough to count as consumed, which inverted that fact.
+    """
+    try:
+        rows = local_facts.list_messages(agent, unread_only=True)
+    except Exception:
+        return "unknown"
+    if not rows:
+        return "no_pending"
+    # ``created_at`` is the canonical local-facts timestamp; keep this read
+    # explicit so malformed legacy rows cannot silently become evidence.
+    latest = rows[-1]
+    if not latest.get("created_at"):
+        return "unknown"
+    return "not_consumed"
+
+
+def _live_pane_is_clean(agent: str, target, status: dict, out: dict) -> bool:
+    """Refresh pane failure evidence even when provider smoke is cached."""
+    try:
+        cli = status.get("cli") or config.resolved_agent_config(agent).get("cli", "claude-code")
+        adapter = get_adapter(cli)
+    except (KeyError, Exception):
+        return False
+    clean, found = _pane_failure_scan(target, adapter)
+    out["pane_clean"] = clean
+    out["found_markers"] = found
+    return clean
+
+
+def _cached_proof_is_fresh(status: dict) -> bool:
+    try:
+        verified_at = float(status.get("verified_at") or 0)
+    except (TypeError, ValueError):
+        return False
+    return verified_at > 0 and 0 <= time.time() - verified_at <= VERDICT_CACHE_TTL_SECONDS
 
 
 def compute_verdict(agent: str, *, live_smoke: bool = False) -> dict:
@@ -65,6 +142,8 @@ def compute_verdict(agent: str, *, live_smoke: bool = False) -> dict:
       env_ok           — bool or None if not applicable
       smoke_ok         — bool or None if skipped
       smoke_verdict    — ok/failed/skipped
+      process_ok        — pane process matches the configured CLI
+      cli_ready         — pane shows the configured CLI ready marker
       pane_clean       — bool or None if pane missing
       inbox_state      — "consumed" / "not_consumed" / "no_pending" / "unknown"
       mismatches       — list of env-drift mismatch strings
@@ -79,6 +158,8 @@ def compute_verdict(agent: str, *, live_smoke: bool = False) -> dict:
         "env_ok": None,
         "smoke_ok": None,
         "smoke_verdict": "skipped",
+        "process_ok": False,
+        "cli_ready": False,
         "pane_clean": None,
         "inbox_state": "unknown",
         "mismatches": [],
@@ -108,49 +189,41 @@ def compute_verdict(agent: str, *, live_smoke: bool = False) -> dict:
         out["verdict"] = "pane_missing"
         return out
 
-    # Cache path: the proved-ready gate wrote env_ok + smoke_ok + verified_at
-    # at hard-switch time. Trust it (and skip live probes) unless the caller
-    # explicitly opts in to a fresh smoke. Saves a real POST /v1/messages
-    # per agent per `runtime verify` / `health` invocation.
+    # Cache only the provider smoke. Environment and pane evidence are cheap,
+    # live checks and must not be contradicted by an old status row.
     has_cached_gates = "env_ok" in status and "smoke_ok" in status
     if not live_smoke and has_cached_gates:
+        if not _cached_proof_is_fresh(status):
+            out["verdict"] = "ready_unproven"
+            return out
+        env_ok, mismatches = verify.verify_live_env_matches_profile(target, declared_env)
+        out["env_ok"] = env_ok
+        out["mismatches"] = mismatches
+        if not env_ok:
+            out["verdict"] = "env_drift"
+            return out
         env_ok = bool(status.get("env_ok"))
         smoke_ok = bool(status.get("smoke_ok"))
-        out["env_ok"] = env_ok
         out["smoke_ok"] = smoke_ok
         out["smoke_verdict"] = "ok" if smoke_ok else "failed"
         out["cached"] = True
-        # Inbox consumption is cheap (local JSON read) — always refresh.
-        try:
-            rows = local_facts.list_messages(agent, unread_only=True)
-        except Exception:
-            rows = []
-        if not rows:
-            out["inbox_state"] = "no_pending"
-        else:
-            latest = rows[-1]
-            ts = float(latest.get("ts") or latest.get("received_at") or 0)
-            if ts > 1e12:
-                ts = ts / 1000.0
-            age = time.time() - ts
-            if age < 60.0:
-                out["inbox_state"] = "not_consumed"
-                out["verdict"] = "inbox_not_consumed"
-                return out
-            out["inbox_state"] = "consumed"
-        # Compose verdict from cached gates + inbox.
         if not env_ok:
             out["verdict"] = "env_drift"
             return out
         if not smoke_ok:
             out["verdict"] = "smoke_failed"
             return out
-        # verified_at presence distinguishes proved_ready from ready_unproven.
-        if status.get("verified_at"):
-            out["verdict"] = "proved_ready"
-            out["pane_clean"] = True
-        else:
+        if not _live_process_and_cli_ready(target, status, out):
             out["verdict"] = "ready_unproven"
+            return out
+        if not _live_pane_is_clean(agent, target, status, out):
+            out["verdict"] = "ready_unproven"
+            return out
+        out["inbox_state"] = _unread_inbox_state(agent)
+        if out["inbox_state"] != "no_pending":
+            out["verdict"] = "inbox_not_consumed" if out["inbox_state"] == "not_consumed" else "ready_unproven"
+            return out
+        out["verdict"] = "proved_ready"
         return out
 
     # Live probe path — full chain.
@@ -166,46 +239,27 @@ def compute_verdict(agent: str, *, live_smoke: bool = False) -> dict:
     resolved = dict(status)
     smoke_verdict, _detail = verify.api_smoke_runtime(resolved)
     out["smoke_verdict"] = smoke_verdict
-    out["smoke_ok"] = smoke_verdict in {"ok", "skipped"}
+    out["smoke_ok"] = smoke_verdict == "ok"
+    if smoke_verdict == "skipped":
+        out["verdict"] = "ready_unproven"
+        return out
     if not out["smoke_ok"]:
         out["verdict"] = "smoke_failed"
         return out
 
     # Pane-text absence of failure markers.
-    try:
-        cli = status.get("cli") or config.resolved_agent_config(agent).get("cli", "claude-code")
-        adapter = get_adapter(cli)
-    except (KeyError, Exception):
-        adapter = None
-    if adapter is not None:
-        clean, found = _pane_failure_scan(target, adapter)
-        out["pane_clean"] = clean
-        out["found_markers"] = found
-        if not clean:
-            out["verdict"] = "ready_unproven"
-            return out
+    if not _live_process_and_cli_ready(target, status, out):
+        out["verdict"] = "ready_unproven"
+        return out
+    if not _live_pane_is_clean(agent, target, status, out):
+        out["verdict"] = "ready_unproven"
+        return out
 
-    # Inbox consumption — high-priority unread in last 60s.
-    try:
-        rows = local_facts.list_messages(agent, unread_only=True)
-    except Exception:
-        rows = []
-    if not rows:
-        out["inbox_state"] = "no_pending"
-    else:
-        # Look at the most recent row; if it's <60s old and still
-        # unread, verdict = inbox_not_consumed.
-        latest = rows[-1]
-        ts = float(latest.get("ts") or latest.get("received_at") or 0)
-        # local_facts stores ts as milliseconds in some versions.
-        if ts > 1e12:
-            ts = ts / 1000.0
-        age = time.time() - ts
-        if age < 60.0:
-            out["inbox_state"] = "not_consumed"
-            out["verdict"] = "inbox_not_consumed"
-            return out
-        out["inbox_state"] = "consumed"  # older than 60s, agent had time
+    # Inbox consumption.
+    out["inbox_state"] = _unread_inbox_state(agent)
+    if out["inbox_state"] != "no_pending":
+        out["verdict"] = "inbox_not_consumed" if out["inbox_state"] == "not_consumed" else "ready_unproven"
+        return out
     out["verdict"] = "proved_ready"
     return out
 
@@ -223,6 +277,8 @@ def _emit_text(v: dict) -> None:
         print(f"  declared_pool:    {v['declared_pool_id']}")
     if v["env_ok"] is not None:
         print(f"  env_ok:           {v['env_ok']}")
+    print(f"  process_ok:       {v['process_ok']}")
+    print(f"  cli_ready:        {v['cli_ready']}")
     if v["mismatches"]:
         for m in v["mismatches"]:
             print(f"    - {m}")

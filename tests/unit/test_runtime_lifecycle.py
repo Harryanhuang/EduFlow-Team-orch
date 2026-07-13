@@ -508,7 +508,7 @@ switch_on = ["rate_limit"]
                 reason="watchdog:rate_limit",
                 nudge_latest_inbox=False,
             )
-        assert outcome == READY
+        assert outcome == lifecycle.READY_UNPROVEN
         assert len(respawn_calls) == 1
         assert "codex" in respawn_calls[0][1]
         assert spawn_calls == []
@@ -849,7 +849,7 @@ def test_verify_no_failure_markers_ignores_codex_unauthorized_transcript():
     assert found == []
 
 
-def test_restart_with_runtime_prove_ready_returns_ready_when_all_pass(monkeypatch):
+def test_restart_with_runtime_skipped_provider_smoke_is_not_proved_ready(monkeypatch):
     team = {"agents": {"manager": {"cli": "claude-code", "runtime": "primary"}}}
     with isolated_env(team=team) as tmp:
         (tmp / "eduflow.toml").write_text("""
@@ -887,12 +887,56 @@ switch_on = ["rate_limit"]
                 "manager", tmux.Target("S", "manager"), "backup",
                 reason="watchdog:rate_limit", nudge_latest_inbox=False,
             )
-        assert outcome == READY
+        assert outcome == lifecycle.READY_UNPROVEN
         data = json.loads(paths.runtime_status_file().read_text(encoding="utf-8"))
         snap = data["agents"]["manager"]
         assert snap["env_ok"] is True
-        assert snap["smoke_ok"] is True
-        assert "verified_at" in snap
+        assert snap["smoke_ok"] is False
+        assert "verified_at" not in snap
+
+
+def test_restart_with_runtime_does_not_stamp_proof_while_any_inbox_is_unread(monkeypatch):
+    team = {"agents": {"manager": {"cli": "claude-code", "runtime": "primary"}}}
+    with isolated_env(team=team) as tmp:
+        (tmp / "eduflow.toml").write_text("""
+[team]
+session = "S"
+
+[team.agents.manager]
+runtime = "primary"
+role = "manager"
+
+[runtime_registry.primary]
+cli = "claude-code"
+model = "sonnet"
+fallback_to = "backup"
+
+[runtime_registry.backup]
+cli = "claude-code"
+model = "sonnet"
+switch_on = ["rate_limit"]
+""", encoding="utf-8")
+        local_facts.append_message("manager", "worker", "recover this task", priority="低")
+        with tmux_patch(
+            respawn_agent=lambda target, cmd: True,
+            spawn_agent=lambda target, cmd: True,
+            send_keys=lambda target, *keys, **kw: True,
+            inject=lambda *a, **kw: True,
+        ), attr_patch(wake, wait_until_ready=lambda *a, **kw: True):
+            from eduflow.runtime import verify as verify_mod
+            monkeypatch.setattr(verify_mod, "verify_live_env_matches_profile", lambda *_args: (True, []))
+            monkeypatch.setattr(verify_mod, "api_smoke_runtime", lambda *_args: ("ok", "200"))
+            monkeypatch.setattr(lifecycle, "_verify_no_failure_markers", lambda *_args, **_kwargs: (True, []))
+            monkeypatch.setattr(lifecycle, "_live_cli_process_and_ready", lambda *_args: True, raising=False)
+            outcome = lifecycle.restart_with_runtime(
+                "manager", tmux.Target("S", "manager"), "backup",
+                reason="watchdog:rate_limit", nudge_latest_inbox=False,
+            )
+
+        assert outcome == lifecycle.READY_UNPROVEN
+        snap = json.loads(paths.runtime_status_file().read_text(encoding="utf-8"))["agents"]["manager"]
+        assert snap["inbox_verified"] is False
+        assert "verified_at" not in snap
 
 
 def test_restart_with_runtime_prove_ready_false_skips_gate(monkeypatch):
