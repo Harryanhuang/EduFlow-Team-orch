@@ -282,10 +282,6 @@ def test_runtime_switch_malformed_authority_stops_before_audit_or_restart(
     monkeypatch.setattr(runtime_switch.tmux, "has_window", lambda target: True)
     monkeypatch.setattr(runtime_switch.tunables, "load", lambda: {"team": team_config})
     monkeypatch.setattr(
-        runtime_switch.verify, "record_switch_event",
-        lambda **event: effects.append("audit"),
-    )
-    monkeypatch.setattr(
         runtime_switch.lifecycle, "restart_with_runtime",
         lambda *args, **kwargs: effects.append("restart") or "ready",
     )
@@ -319,7 +315,6 @@ def test_manual_switch_serializes_against_takeover_entry(monkeypatch):
         return "ready"
 
     _install_runtime_switch_mocks(monkeypatch, restart=restart)
-    monkeypatch.setattr(runtime_switch.verify, "record_switch_event", lambda **event: None)
     switch_thread = threading.Thread(target=lambda: runtime_switch.main([
         "manager", "backup", "--actor", "u_admin", "--reason", "manual-test"]))
     switch_thread.start()
@@ -340,34 +335,19 @@ def test_manual_switch_serializes_against_takeover_entry(monkeypatch):
     assert human_takeover.status()["state"] == "active", "delayed takeover entry must not be lost"
 
 
-def test_manual_switch_events_are_append_only_under_interleaving(monkeypatch):
-    events = []
-
-    def record(**event):
-        events.append(dict(event))
+def test_manual_switch_forwards_one_audit_identity_to_lifecycle(monkeypatch):
+    received = {}
 
     def restart(*args, **kwargs):
-        record(agent="other", from_runtime="x", to_runtime="y", reason="concurrent",
-               outcome="ready", trigger="watchdog", switch_id="external")
+        received.update(kwargs)
         return "ready"
 
     _install_runtime_switch_mocks(monkeypatch, restart=restart)
-    monkeypatch.setattr(runtime_switch.verify, "record_switch_event", record)
     assert runtime_switch.main(["manager", "backup", "--actor", "u_admin",
                                 "--reason", "manual-test"]) == 0
-    assert [event["outcome"] for event in events] == ["pending", "ready", "ready"]
-    manual = [event for event in events if event["agent"] == "manager"]
-    assert len(manual) == 2
-    assert [event["phase"] for event in manual] == ["prepared", "completed"]
-    assert manual[0]["switch_id"] == manual[1]["switch_id"]
-    assert manual[0]["switch_id"] != "external"
-    assert {event["actor"] for event in manual} == {"u_admin"}
-    assert {event["target"] for event in manual} == {"S:manager"}
-    assert manual[0]["result"] == {"status": "pending"}
-    assert manual[1]["result"]["status"] == "completed"
-    assert manual[1]["result"]["outcome"] == "ready"
-    assert all("u_admin" not in event["trigger"] for event in manual), \
-        "identity must be structured, not parsed from trigger"
+    assert received["switch_id"]
+    assert received["trigger"] == "manual_cli"
+    assert received["actor"] == "u_admin"
 
 
 @pytest.mark.parametrize("actor_args", [[], ["--actor", "u_general"]])
@@ -375,44 +355,21 @@ def test_manual_switch_requires_actor_before_audit_or_restart(monkeypatch, capsy
     effects = []
     _install_runtime_switch_mocks(monkeypatch,
                                   restart=lambda *a, **kw: effects.append("restart") or "ready")
-    monkeypatch.setattr(runtime_switch.verify, "record_switch_event",
-                        lambda **event: effects.append("audit"))
     assert runtime_switch.main(["manager", "backup", *actor_args,
                                 "--reason", "manual-test"]) == 1
     assert effects == []
     assert "configured admin/runtime_operator" in capsys.readouterr().err
 
 
-def test_manual_switch_prepared_audit_failure_aborts_restart(monkeypatch, capsys):
-    restarts = []
-    _install_runtime_switch_mocks(monkeypatch,
-                                  restart=lambda *a, **kw: restarts.append(1) or "ready")
-    monkeypatch.setattr(runtime_switch.verify, "record_switch_event",
-                        lambda **event: (_ for _ in ()).throw(OSError("audit disk full")))
+def test_manual_switch_lifecycle_audit_failure_enters_takeover(monkeypatch, capsys):
+    _install_runtime_switch_mocks(
+        monkeypatch,
+        restart=lambda *a, **kw: (_ for _ in ()).throw(OSError("audit disk full")),
+    )
     rc = runtime_switch.main(["manager", "backup", "--actor", "u_admin",
                               "--reason", "manual-test"])
     assert rc != 0
-    assert restarts == []
-    assert "before restart" in capsys.readouterr().err
-
-
-def test_manual_switch_completion_audit_failure_enters_takeover(monkeypatch, capsys):
-    calls = 0
-
-    def record(**event):
-        nonlocal calls
-        calls += 1
-        if calls == 2:
-            raise OSError("completion audit failed")
-
-    _install_runtime_switch_mocks(monkeypatch, restart=lambda *a, **kw: "ready")
-    monkeypatch.setattr(runtime_switch.verify, "record_switch_event", record)
-    rc = runtime_switch.main(["manager", "backup", "--actor", "u_admin",
-                              "--reason", "manual-test"])
-    assert rc != 0
-    state = human_takeover.status()
-    assert state["state"] == "active"
-    assert "stage=completion_audit" in state["reason"]
+    assert human_takeover.status()["state"] == "active"
     assert "human takeover" in capsys.readouterr().err.lower()
 
 
@@ -432,7 +389,6 @@ def test_human_takeover_cli_persistence_failure_is_actionable(monkeypatch, capsy
 @pytest.mark.parametrize("partial", [False, True])
 def test_manual_switch_restart_exception_appends_terminal_and_enters_takeover(
         monkeypatch, capsys, partial):
-    events = []
     side_effects = []
 
     def restart(*args, **kwargs):
@@ -441,57 +397,32 @@ def test_manual_switch_restart_exception_appends_terminal_and_enters_takeover(
         raise RuntimeError("API_KEY=must-not-leak")
 
     _install_runtime_switch_mocks(monkeypatch, restart=restart)
-    monkeypatch.setattr(runtime_switch.verify, "record_switch_event",
-                        lambda **event: events.append(dict(event)))
     rc = runtime_switch.main(["manager", "backup", "--actor", "u_admin",
                               "--reason", "manual-test"])
     assert rc != 0
-    assert [event["phase"] for event in events] == ["prepared", "completed"]
-    assert events[0]["switch_id"] == events[1]["switch_id"]
-    result = events[1]["result"]
-    assert result["status"] == "failed" and result["stage"] == "restart"
-    assert result["exception_class"] == "RuntimeError"
-    assert result["side_effect"] == "unknown"
     assert human_takeover.status()["state"] == "active"
-    combined = json.dumps(events) + capsys.readouterr().err
+    combined = capsys.readouterr().err
     assert "must-not-leak" not in combined
     assert bool(side_effects) is partial
 
 
 def test_manual_switch_probe_exception_appends_terminal_and_enters_takeover(monkeypatch, capsys):
-    events = []
     _install_runtime_switch_mocks(monkeypatch, restart=lambda *a, **kw: "ready")
-    monkeypatch.setattr(runtime_switch.verify, "record_switch_event",
-                        lambda **event: events.append(dict(event)))
     monkeypatch.setattr("eduflow.commands.runtime_verify.compute_verdict",
                         lambda agent: (_ for _ in ()).throw(ValueError("token=must-not-leak")))
     rc = runtime_switch.main(["manager", "backup", "--actor", "u_admin",
                               "--reason", "manual-test"])
     assert rc != 0
-    terminal = events[-1]
-    assert terminal["result"]["stage"] == "probe"
-    assert terminal["result"]["exception_class"] == "ValueError"
-    assert terminal["switch_id"] == events[0]["switch_id"]
     assert human_takeover.status()["state"] == "active"
-    assert "must-not-leak" not in json.dumps(events) + capsys.readouterr().err
+    assert "must-not-leak" not in capsys.readouterr().err
 
 
-@pytest.mark.parametrize("terminal_fails", [False, True])
 def test_runtime_failure_and_takeover_persistence_failure_returns_compound_error(
-        monkeypatch, capsys, terminal_fails):
-    calls = 0
-
-    def record(**event):
-        nonlocal calls
-        calls += 1
-        if terminal_fails and calls == 2:
-            raise OSError("token=terminal-secret")
-
+        monkeypatch, capsys):
     _install_runtime_switch_mocks(
         monkeypatch,
         restart=lambda *a, **kw: (_ for _ in ()).throw(RuntimeError("API_KEY=restart-secret")),
     )
-    monkeypatch.setattr(runtime_switch.verify, "record_switch_event", record)
     monkeypatch.setattr(human_takeover, "enter",
                         lambda **kw: (_ for _ in ()).throw(OSError("password=takeover-secret")))
     rc = runtime_switch.main(["manager", "backup", "--actor", "u_admin",
@@ -499,7 +430,6 @@ def test_runtime_failure_and_takeover_persistence_failure_returns_compound_error
     assert rc != 0
     error = capsys.readouterr().err
     assert "takeover_error=OSError" in error
-    assert f"terminal_audit={'failed' if terminal_fails else 'recorded'}" in error
+    assert "terminal_audit=unknown" in error
     assert "restart-secret" not in error
-    assert "terminal-secret" not in error
     assert "takeover-secret" not in error

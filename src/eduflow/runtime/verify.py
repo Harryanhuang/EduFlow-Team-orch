@@ -51,6 +51,11 @@ PROFILE_ENV_KEYS = (
 )
 
 
+# Strict lifecycle audit must fail closed within a bounded period. Ordinary
+# observability appends retain their legacy blocking behavior.
+STRICT_SWITCH_EVENT_LOCK_TIMEOUT_S = 1.0
+
+
 def _display_env_value(key: str, value: str | None) -> str:
     """Render diagnostics without disclosing a credential value."""
     if not value:
@@ -385,7 +390,10 @@ def record_switch_event(
         payload = (json.dumps(row, ensure_ascii=False) + "\n").encode("utf-8")
         # Hold one inter-process lock across the complete short-write loop and
         # fsync so concurrent appenders cannot interleave fragments.
-        with file_lock(path, timeout=0):
+        with file_lock(
+            path,
+            timeout=STRICT_SWITCH_EVENT_LOCK_TIMEOUT_S if strict else 0,
+        ):
             fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_APPEND, 0o600)
             try:
                 remaining = memoryview(payload)

@@ -254,7 +254,8 @@ def test_context_guard_restarts_when_context_is_exhausted():
     assert acted is True
     assert restarts == [
         ("manager", "S:manager", "manager_backup_mimo",
-         {"reason": "context_exhausted:100% context used", "prove_ready": True})
+         {"reason": "context_exhausted:100% context used", "prove_ready": True,
+          "trigger": "watchdog_context_guard"})
     ]
     assert updates[-1][1]["last_context_action"] == "restart"
     assert updates[-1][1]["last_context_outcome"] == "ready"
@@ -398,6 +399,65 @@ switch_on = ["auth_failure"]
     assert updates, "pre-switch failure observation remains allowed"
     assert not any("last_switch_outcome" in row for row in updates), \
         "no post-switch mutation may run after the shared loop blocks"
+
+
+def test_guard_agent_runtimes_skips_busy_switch_without_escalation():
+    """A concurrent manual switch must not consume watchdog recovery budget."""
+    team = {"session": "S", "agents": {"worker_a": {"runtime": "primary"}}}
+    updates = []
+
+    class _Adapter:
+        def ready_markers(self):
+            return ["ready"]
+
+        def rate_limit_markers(self):
+            return []
+
+    def busy_result(*_args, **_kwargs):
+        return {
+            "outcome": "switch_busy", "to_runtime": "", "best_outcome": "switch_busy",
+            "attempts": [], "events": [], "exhausted": False, "pool_switched": False,
+        }
+
+    with isolated_env(team=team) as tmp:
+        (tmp / "eduflow.toml").write_text("""
+[team]
+session = "S"
+
+[team.agents.worker_a]
+runtime = "primary"
+role = "worker"
+
+[runtime_registry.primary]
+cli = "claude-code"
+model = "sonnet"
+fallback_to = "backup"
+switch_on = ["auth_failure"]
+
+[runtime_registry.backup]
+cli = "codex-cli"
+model = "gpt-5.5"
+switch_on = ["auth_failure"]
+""", encoding="utf-8")
+        from eduflow.runtime import failover as failover_mod
+        with attr_patch(cmd_watchdog.tmux,
+                        has_session=lambda _session: True,
+                        has_window=lambda _target: True,
+                        capture_pane=lambda _target, lines=120: "Invalid auth credentials\n"), \
+                attr_patch(cmd_watchdog,
+                           get_adapter=lambda _cli: _Adapter(),
+                           _update_guard_agent=lambda _agent, **fields: updates.append(fields) or {}), \
+                attr_patch(cmd_watchdog.lifecycle,
+                           current_runtime_status=lambda _agent: {"runtime": "primary"}), \
+                attr_patch(failover_mod, execute_fallback_loop=busy_result), \
+                attr_patch(cmd_watchdog.wake, is_rate_limited=lambda *_args, **_kwargs: False), \
+                attr_patch(human_takeover, enter=lambda **_kwargs: (_ for _ in ()).throw(
+                    AssertionError("busy switch must not enter takeover"))):
+            cmd_watchdog._guard_agent_runtimes()
+
+    assert updates, "the observed failure may be recorded"
+    assert not any("last_switch_outcome" in row for row in updates)
+    assert not any("escalation_needed" in row for row in updates)
 
 
 def test_guard_agent_runtimes_uses_current_runtime_adapter_for_codex_pane():

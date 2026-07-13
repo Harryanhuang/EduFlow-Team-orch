@@ -31,6 +31,7 @@ import shlex
 import shutil
 import tempfile
 import time
+import uuid
 from pathlib import Path
 
 from eduflow.agents import get_adapter, identity
@@ -38,7 +39,7 @@ from eduflow.agents.codex_cli import ensure_workdir_trusted
 from eduflow.runtime import config, paths, tmux, wake
 from eduflow.runtime.names import validate_agent_name, validate_model_name
 from eduflow.store import local_facts
-from eduflow.util import env_str
+from eduflow.util import env_str, file_lock, read_json, write_json
 
 
 # env vars to propagate from the operator's shell into every spawned pane
@@ -518,6 +519,7 @@ CONFIG_ERROR = "config_error"
 ENV_DRIFT = "env_drift"
 SMOKE_FAILED = "smoke_failed"
 READY_UNPROVEN = "ready_unproven"
+SWITCH_BUSY = "switch_busy"
 
 
 def _live_cli_process_and_ready(target: tmux.Target, adapter) -> bool:
@@ -592,9 +594,127 @@ def current_runtime_status(agent: str) -> dict:
     return dict(data.get("agents", {}).get(agent, {}))
 
 
+def _runtime_switch_lock_file(agent: str) -> Path:
+    return paths.facts_dir() / f"runtime-switch-{validate_agent_name(agent)}"
+
+
+def _stamp_switch_generation(agent: str, generation: int, switch_id: str, *,
+                             previous: dict | None = None,
+                             requested_runtime: str = "",
+                             outcome: str = "") -> None:
+    """Persist a monotonic switch result, even when no status row was written."""
+    path = paths.runtime_status_file()
+    with file_lock(path):
+        data = read_json(path, {"agents": {}})
+        row = dict(data.get("agents", {}).get(agent, {}))
+        if not row:
+            # A spawn may raise before _write_runtime_status has anything to
+            # persist. Keep the prior known runtime rather than asserting the
+            # requested one became live, but make the attempted switch durable.
+            row = dict(previous or {})
+        if not row:
+            row = {"runtime": "unknown", "cli": "", "model": "", "provider": "",
+                   "env_profile": "", "reason": "runtime_switch"}
+        current = int(row.get("generation") or 0)
+        if current > generation:
+            return
+        row["generation"] = generation
+        row["switch_id"] = switch_id
+        if requested_runtime:
+            row["requested_runtime"] = requested_runtime
+        if outcome:
+            row["switch_outcome"] = outcome
+        data.setdefault("agents", {})[agent] = row
+        write_json(path, data)
+
+
 def restart_with_runtime(agent: str, target: tmux.Target, runtime_name: str,
                          *, reason: str = "", nudge_latest_inbox: bool = True,
-                         prove_ready: bool = True) -> str:
+                         prove_ready: bool = True, switch_id: str | None = None,
+                         trigger: str = "", actor: str = "") -> str:
+    """Serialize one agent's runtime switch with one durable audit identity."""
+    agent = validate_agent_name(agent)
+    switch_lock = file_lock(_runtime_switch_lock_file(agent), timeout=0.05)
+    try:
+        switch_lock.__enter__()
+    except TimeoutError:
+        # Only contention on the per-agent switch boundary is a benign busy
+        # result. Once the lock is acquired, audit/status timeouts are strict
+        # failures that must reach the caller for controlled recovery.
+        return SWITCH_BUSY
+    try:
+        previous = current_runtime_status(agent)
+        generation = int(previous.get("generation") or 0) + 1
+        switch_id = switch_id or str(uuid.uuid4())[:8]
+        from eduflow.runtime import verify as runtime_verify
+        from_runtime = str(previous.get("runtime") or "inline")
+        runtime_verify.record_switch_event(
+            agent=agent, from_runtime=from_runtime, to_runtime=runtime_name,
+            reason=reason, trigger=trigger, actor=actor, outcome="switch_started",
+            phase="started", switch_id=switch_id, target=str(target),
+            result={"status": "started"}, strict=True,
+        )
+        try:
+            outcome = _restart_with_runtime_unlocked(
+                agent, target, runtime_name, reason=reason,
+                nudge_latest_inbox=nudge_latest_inbox, prove_ready=prove_ready,
+            )
+        except Exception as exc:
+            stamp_error: OSError | TimeoutError | None = None
+            try:
+                _stamp_switch_generation(
+                    agent, generation, switch_id, previous=previous,
+                    requested_runtime=runtime_name, outcome="exception",
+                )
+            except (OSError, TimeoutError) as error:
+                stamp_error = error
+            runtime_verify.record_switch_event(
+                agent=agent, from_runtime=from_runtime, to_runtime=runtime_name,
+                reason=reason, trigger=trigger, actor=actor,
+                outcome="switch_failed", phase="failed", switch_id=switch_id,
+                target=str(target), strict=True,
+                result={"status": "failed", "outcome": "exception",
+                        "stage": "status_stamp" if stamp_error else "restart",
+                        "exception_class": type(stamp_error or exc).__name__},
+            )
+            if stamp_error is not None:
+                raise stamp_error from exc
+            raise
+        try:
+            _stamp_switch_generation(
+                agent, generation, switch_id, previous=previous,
+                requested_runtime=runtime_name, outcome=outcome,
+            )
+        except (OSError, TimeoutError) as stamp_error:
+            # The pane may already have changed. Preserve a strict terminal
+            # failure record before surfacing the persistence failure.
+            runtime_verify.record_switch_event(
+                agent=agent, from_runtime=from_runtime, to_runtime=runtime_name,
+                reason=reason, trigger=trigger, actor=actor,
+                outcome="switch_failed", phase="failed", switch_id=switch_id,
+                target=str(target), strict=True,
+                result={"status": "failed", "outcome": outcome,
+                        "stage": "status_stamp",
+                        "exception_class": type(stamp_error).__name__},
+            )
+            raise
+        terminal = "switch_completed" if outcome == READY else "switch_failed"
+        runtime_verify.record_switch_event(
+            agent=agent, from_runtime=from_runtime, to_runtime=runtime_name,
+            reason=reason, trigger=trigger, actor=actor, outcome=terminal,
+            phase="completed" if terminal == "switch_completed" else "failed",
+            switch_id=switch_id, target=str(target), strict=True,
+            result={"status": "completed" if terminal == "switch_completed" else "failed",
+                    "outcome": outcome},
+        )
+        return outcome
+    finally:
+        switch_lock.__exit__(None, None, None)
+
+
+def _restart_with_runtime_unlocked(agent: str, target: tmux.Target, runtime_name: str,
+                                   *, reason: str = "", nudge_latest_inbox: bool = True,
+                                   prove_ready: bool = True) -> str:
     """Hard-switch an already running pane to a specific runtime.
 
     Used when the pane is alive but the current provider/runtime is degraded

@@ -1,9 +1,13 @@
 """Tests for `eduflow.runtime.failover`."""
 from __future__ import annotations
 
+import threading
+import time
+
 import pytest
 
-from eduflow.runtime import failover, config
+from helpers import isolated_env
+from eduflow.runtime import failover, config, human_takeover
 
 
 def _install_chain(monkeypatch):
@@ -57,8 +61,8 @@ def test_execute_fallback_loop_first_attempt_ready(monkeypatch):
     _install_chain(monkeypatch)
     calls = []
 
-    def fake_restart(agent, target, runtime_name, reason="", prove_ready=False):
-        calls.append((runtime_name, prove_ready))
+    def fake_restart(agent, target, runtime_name, reason="", prove_ready=False, **kwargs):
+        calls.append((runtime_name, prove_ready, kwargs))
         return "ready"
 
     recorded = []
@@ -78,9 +82,73 @@ def test_execute_fallback_loop_first_attempt_ready(monkeypatch):
     assert result["exhausted"] is False
     assert len(result["attempts"]) == 1
     assert result["attempts"][0]["outcome"] == "ready"
-    assert len(recorded) == 1
-    assert recorded[0]["trigger"] == "test"
-    assert recorded[0]["cross_pool"] is True
+    assert calls[0][2]["switch_id"] == result["events"][0]["switch_id"]
+    assert calls[0][2]["trigger"] == "test"
+    assert recorded == []
+    assert result["events"][0]["trigger"] == "test"
+    assert result["events"][0]["cross_pool"] is True
+
+
+def test_execute_fallback_loop_returns_busy_without_consuming_recovery_budget(monkeypatch):
+    _install_chain(monkeypatch)
+    calls = []
+
+    def busy_restart(*_args, **_kwargs):
+        calls.append(True)
+        return failover.lifecycle.SWITCH_BUSY
+
+    result = failover.execute_fallback_loop(
+        "a", "target", "primary", "rate_limit",
+        restart_fn=busy_restart,
+        now_fn=lambda: 100.0,
+        can_switch_fn=lambda _pool_id: True,
+        record_switch_fn=lambda _pool_id, _agent: None,
+    )
+
+    assert calls == [True]
+    assert result["outcome"] == failover.lifecycle.SWITCH_BUSY
+    assert result["attempts"] == []
+    assert result["events"] == []
+    assert result["exhausted"] is False
+
+
+def test_failover_switch_is_atomic_against_takeover_entry(monkeypatch):
+    _install_chain(monkeypatch)
+    attempted_entry = threading.Event()
+    entered = threading.Event()
+
+    def enter_takeover():
+        attempted_entry.set()
+        human_takeover.enter(reason="operator takeover", source="test", actor="operator")
+        entered.set()
+
+    entrant = threading.Thread(target=enter_takeover)
+
+    def guard():
+        entrant.start()
+        assert attempted_entry.wait(1)
+        # Without the shared transition lock, the entrant commits active
+        # during this gap and the automatic restart would still proceed.
+        time.sleep(0.05)
+
+    def restart(*_args, **_kwargs):
+        assert human_takeover.status()["state"] == "inactive"
+        assert not entered.is_set()
+        return "ready"
+
+    with isolated_env():
+        result = failover.execute_fallback_loop(
+            "a", "target", "primary", "rate_limit",
+            restart_fn=restart,
+            now_fn=lambda: 100.0,
+            can_switch_fn=lambda _pool_id: True,
+            record_switch_fn=lambda _pool_id, _agent: None,
+            automation_guard_fn=guard,
+        )
+        entrant.join(1)
+        assert entered.is_set()
+
+    assert result["outcome"] == "ready"
 
 
 def test_takeover_guard_runs_immediately_before_every_restart(monkeypatch):
@@ -115,7 +183,7 @@ def test_execute_fallback_loop_avoids_initial_pool(monkeypatch):
     _install_chain(monkeypatch)
     calls = []
 
-    def fake_restart(agent, target, runtime_name, reason="", prove_ready=False):
+    def fake_restart(agent, target, runtime_name, reason="", prove_ready=False, **_kwargs):
         calls.append(runtime_name)
         return "ready" if runtime_name == "qwen_plus" else "env_drift"
 
@@ -137,7 +205,7 @@ def test_execute_fallback_loop_falls_through_on_env_drift(monkeypatch):
     _install_chain(monkeypatch)
     calls = []
 
-    def fake_restart(agent, target, runtime_name, reason="", prove_ready=False):
+    def fake_restart(agent, target, runtime_name, reason="", prove_ready=False, **_kwargs):
         calls.append(runtime_name)
         # deepseek: env drift; qwen_plus: ready
         return "env_drift" if runtime_name == "deepseek" else "ready"
@@ -159,7 +227,7 @@ def test_execute_fallback_loop_falls_through_on_env_drift(monkeypatch):
 def test_execute_fallback_loop_exhausted_when_all_fail(monkeypatch):
     _install_chain(monkeypatch)
 
-    def fake_restart(agent, target, runtime_name, reason="", prove_ready=False):
+    def fake_restart(agent, target, runtime_name, reason="", prove_ready=False, **_kwargs):
         return "env_drift"  # everything drifts
 
     result = failover.execute_fallback_loop(
@@ -224,7 +292,7 @@ def test_execute_fallback_loop_prefers_cross_pool_then_allows_same_pool(monkeypa
     })
     calls = []
 
-    def fake_restart(agent, target, runtime_name, reason="", prove_ready=False):
+    def fake_restart(agent, target, runtime_name, reason="", prove_ready=False, **_kwargs):
         calls.append(runtime_name)
         return "ready"
 
@@ -269,7 +337,7 @@ def test_execute_fallback_loop_empty_initial_pool_prefers_nonempty_pool(monkeypa
     })
     calls = []
 
-    def fake_restart(agent, target, runtime_name, reason="", prove_ready=False):
+    def fake_restart(agent, target, runtime_name, reason="", prove_ready=False, **_kwargs):
         calls.append(runtime_name)
         return "ready"
 
@@ -305,7 +373,7 @@ def test_execute_fallback_loop_falls_back_when_no_nonempty_pool_candidate(monkey
     })
     calls = []
 
-    def fake_restart(agent, target, runtime_name, reason="", prove_ready=False):
+    def fake_restart(agent, target, runtime_name, reason="", prove_ready=False, **_kwargs):
         calls.append(runtime_name)
         return "ready"
 

@@ -283,7 +283,7 @@ def test_runtime_drill_rate_limit_switches_and_delivers():
             attr_patch(deliver_mod.wake, is_rate_limited=lambda *a, **kw: True), \
             attr_patch(lifecycle_mod,
                        current_runtime_status=lambda agent: {"runtime": "primary"},
-                       restart_with_runtime=lambda agent, target, runtime_name, reason="", prove_ready=False: switched.append((agent, runtime_name, reason)) or "ready"), \
+                       restart_with_runtime=lambda agent, target, runtime_name, reason="", prove_ready=False, **_kwargs: switched.append((agent, runtime_name, reason)) or "ready"), \
             attr_patch(deliver_mod.config,
                        fallback_runtime=lambda agent, current_runtime, reason, avoid_pool_id="", prefer_nonempty_pool=False: {"name": "backup_codex"}):
         report = apply(decision, session="SmokeTeam")
@@ -310,7 +310,7 @@ def test_runtime_drill_auth_failure_switches_and_delivers():
             attr_patch(deliver_mod.wake, is_rate_limited=lambda *a, **kw: False), \
             attr_patch(lifecycle_mod,
                        current_runtime_status=lambda agent: {"runtime": "primary"},
-                       restart_with_runtime=lambda agent, target, runtime_name, reason="", prove_ready=False: switched.append((agent, runtime_name, reason)) or "ready"), \
+                       restart_with_runtime=lambda agent, target, runtime_name, reason="", prove_ready=False, **_kwargs: switched.append((agent, runtime_name, reason)) or "ready"), \
             attr_patch(deliver_mod.config,
                        fallback_runtime=lambda agent, current_runtime, reason, avoid_pool_id="", prefer_nonempty_pool=False: {"name": "backup_auth"}):
         report = apply(decision, session="SmokeTeam")
@@ -337,7 +337,7 @@ def test_runtime_drill_provider_unavailable_switches_and_delivers():
             attr_patch(deliver_mod.wake, is_rate_limited=lambda *a, **kw: False), \
             attr_patch(lifecycle_mod,
                        current_runtime_status=lambda agent: {"runtime": "primary"},
-                       restart_with_runtime=lambda agent, target, runtime_name, reason="", prove_ready=False: switched.append((agent, runtime_name, reason)) or "ready"), \
+                       restart_with_runtime=lambda agent, target, runtime_name, reason="", prove_ready=False, **_kwargs: switched.append((agent, runtime_name, reason)) or "ready"), \
             attr_patch(deliver_mod.config,
                        fallback_runtime=lambda agent, current_runtime, reason, avoid_pool_id="", prefer_nonempty_pool=False: {"name": "backup_provider"}):
         report = apply(decision, session="SmokeTeam")

@@ -467,14 +467,16 @@ def _maybe_recover_context_pressure(agent: str, target: tmux.Target,
     if signal.exhausted:
         from eduflow.runtime import human_takeover
         try:
-            human_takeover.ensure_automation_allowed()
-        except human_takeover.AutomationBlocked:
+            with human_takeover.transition_lock():
+                human_takeover.ensure_automation_allowed()
+                outcome = lifecycle.restart_with_runtime(
+                    agent, target, str(current),
+                    reason=f"context_exhausted:{signal.marker}",
+                    prove_ready=True,
+                    trigger="watchdog_context_guard",
+                )
+        except (human_takeover.AutomationBlocked, human_takeover.StaleGeneration):
             return True
-        outcome = lifecycle.restart_with_runtime(
-            agent, target, str(current),
-            reason=f"context_exhausted:{signal.marker}",
-            prove_ready=True,
-        )
         _update_guard_agent(
             agent,
             last_context_action="restart",
@@ -568,6 +570,7 @@ def _maybe_failback(agent: str, target, current: str, primary: str,
     tick handles them (natural staggering).
     """
     from eduflow.runtime import verify
+
     t = _failback_tunables()
     probe_interval_s = t["probe_interval_s"]
 
@@ -643,14 +646,16 @@ def _maybe_failback(agent: str, target, current: str, primary: str,
     # ── Canary failback: switch agent back to primary ──────────────
     from eduflow.runtime import human_takeover
     try:
-        generation = human_takeover.ensure_automation_allowed()
-        human_takeover.ensure_automation_allowed(expected_generation=generation)
+        with human_takeover.transition_lock():
+            generation = human_takeover.ensure_automation_allowed()
+            human_takeover.ensure_automation_allowed(expected_generation=generation)
+            outcome = lifecycle.restart_with_runtime(
+                agent, target, primary_name,
+                reason="failback", prove_ready=True,
+                trigger="watchdog",
+            )
     except (human_takeover.AutomationBlocked, human_takeover.StaleGeneration):
         return
-    outcome = lifecycle.restart_with_runtime(
-        agent, target, primary_name,
-        reason="failback", prove_ready=True,
-    )
     if outcome in {lifecycle.READY, lifecycle.READY_NO_INIT}:
         _update_guard_agent(
             agent,
@@ -660,15 +665,6 @@ def _maybe_failback(agent: str, target, current: str, primary: str,
             last_switch_reason="failback",
             last_switch_outcome=outcome,
             last_switch_at=now_s,
-        )
-        verify.record_switch_event(
-            ts=now_s,
-            agent=agent,
-            from_runtime=str(current),
-            to_runtime=primary_name,
-            reason="failback",
-            outcome=outcome,
-            trigger="watchdog",
         )
         _notify_runtime_switch(
             agent, str(current), primary_name,
@@ -686,15 +682,6 @@ def _maybe_failback(agent: str, target, current: str, primary: str,
                 "last_primary_smoke_at": now_s,
                 "in_fallback_since": in_fallback_since,
             },
-        )
-        verify.record_switch_event(
-            ts=now_s,
-            agent=agent,
-            from_runtime=str(current),
-            to_runtime=primary_name,
-            reason="failback",
-            outcome=outcome,
-            trigger="watchdog",
         )
         print(f"  ⚠️ agent-runtime-guard failback: {agent} canary "
               f"{current} -> {primary_name} failed (outcome={outcome})")
@@ -785,6 +772,11 @@ def _guard_agent_runtimes() -> None:
         best = result["best_outcome"]
         pool_switched = result["pool_switched"]
         exhausted = result["exhausted"]
+        if outcome == lifecycle.SWITCH_BUSY:
+            # A manual or earlier watchdog switch has the per-agent boundary.
+            # It is not a failed provider attempt; leave all budgets and
+            # escalation state untouched and retry on the next watchdog tick.
+            return
         _update_guard_agent(
             agent,
             from_runtime=str(current),

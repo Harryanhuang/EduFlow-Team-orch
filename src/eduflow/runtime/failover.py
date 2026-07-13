@@ -26,7 +26,7 @@ from __future__ import annotations
 import time
 import uuid
 
-from eduflow.runtime import config, coordinator, human_takeover, lifecycle, verify
+from eduflow.runtime import config, coordinator, human_takeover, lifecycle
 
 
 # Sentinel for "no fallback matched" — distinct from any lifecycle outcome.
@@ -108,13 +108,12 @@ def execute_fallback_loop(
 
     Injectable callables for tests:
       restart_fn(agent, target, runtime_name, reason, prove_ready) → str
-      record_fn(event_dict) → None
+      record_fn(event_dict) → None (deprecated; lifecycle owns switch audit)
       now_fn() → float
       can_switch_fn(pool_id) → bool
       record_switch_fn(pool_id, agent) → None
     """
     restart_fn = restart_fn or lifecycle.restart_with_runtime
-    record_fn = record_fn or verify.record_switch_event
     now_fn = now_fn or time.time
     can_switch_fn = can_switch_fn or coordinator.can_switch_to_pool
     record_switch_fn = record_switch_fn or coordinator.record_pool_switch
@@ -125,7 +124,6 @@ def execute_fallback_loop(
     attempts: list[dict] = []
     events: list[dict] = []
     pool_switched = False
-    switch_id = str(uuid.uuid4())[:8]
 
     last_runtime = current_runtime
     # First pass: prefer cross-pool fallbacks. If the starting runtime has
@@ -197,18 +195,40 @@ def execute_fallback_loop(
             prefer_nonempty = False
             continue
 
-        # Shared last-moment circuit breaker.  This lives in the common loop,
-        # not in a caller, so watchdog and deliver (and every retry) are
-        # protected from a takeover race before the restart side effect.
-        automation_guard_fn()
-        now = now_fn()
-        outcome = restart_fn(
-            agent,
-            target,
-            fallback_name,
-            reason=f"{trigger}:{reason}" if trigger else reason,
-            prove_ready=True,
-        )
+        # Keep the final takeover check and pane mutation under the same
+        # transition boundary. `enter()` uses this lock too, so it either
+        # wins first (and the guard blocks this attempt) or waits until this
+        # already-authorized switch is complete.
+        with human_takeover.transition_lock():
+            automation_guard_fn()
+            now = now_fn()
+            # Each retry changes the pane independently, so each gets its own
+            # lifecycle correlation ID. The lifecycle writes exactly a start
+            # and terminal event under this ID; this loop returns summaries.
+            switch_id = str(uuid.uuid4())[:8]
+            outcome = restart_fn(
+                agent,
+                target,
+                fallback_name,
+                reason=f"{trigger}:{reason}" if trigger else reason,
+                prove_ready=True,
+                switch_id=switch_id,
+                trigger=trigger,
+            )
+
+        if outcome == lifecycle.SWITCH_BUSY:
+            # Another authorized switch owns this agent's pane. No runtime
+            # mutation happened here, so neither consume a fallback attempt
+            # nor let the watchdog treat contention as recovery exhaustion.
+            return {
+                "outcome": lifecycle.SWITCH_BUSY,
+                "to_runtime": "",
+                "best_outcome": lifecycle.SWITCH_BUSY,
+                "attempts": attempts,
+                "events": events,
+                "exhausted": False,
+                "pool_switched": pool_switched,
+            }
 
         env_ok = outcome in {"ready", "ready_no_init", "ready_unproven"}
         smoke_ok = outcome in {"ready", "ready_no_init"}
@@ -241,7 +261,6 @@ def execute_fallback_loop(
             "smoke_ok": smoke_ok,
             "pool_id": fallback_pool,
         }
-        record_fn(**event)
         events.append(event)
 
         if outcome in {"ready", "ready_no_init"}:
