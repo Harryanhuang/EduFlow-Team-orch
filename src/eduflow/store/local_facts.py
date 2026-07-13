@@ -238,15 +238,16 @@ def _builder_runtime_course_message_resolved_by_later_closeout(msg: dict) -> boo
 
 def append_message(to: str, frm: str, content: str, *,
                    priority: str = "中", task_id: str = "",
+                   revision: int = 0, supersedes_message_id: str = "",
                    delivery_state: str = "delivered_to_inbox",
                    source_message_id: str = "",
                    delivery_key: str = "") -> str:
     """Append a message to the inbox and return its canonical local id.
 
-    ``delivery_key`` is an exact transport idempotency key, not an inbox
-    supersession heuristic.  Replaying the same Feishu event for the same
-    target therefore returns the original row instead of creating another
-    canonical inbox message.
+    ``delivery_key`` is an exact transport idempotency key. Supersession is
+    separate and requires either an exact prior message id or a higher
+    revision for the same task, so no text or recipient-name heuristic can
+    hide an instruction.
     """
     with _locked():
         path = _inbox_file()
@@ -257,36 +258,33 @@ def append_message(to: str, frm: str, content: str, *,
                 if (existing.get("to") == to
                         and existing.get("delivery_key") == normalized_key):
                     return str(existing.get("local_id") or "")
+        try:
+            normalized_revision = int(revision)
+        except (TypeError, ValueError):
+            raise ValueError("revision must be a non-negative integer") from None
+        if normalized_revision < 0:
+            raise ValueError("revision must be a non-negative integer")
         now = now_ms()
-        normalized = str(content or "").strip()
-        # Minimal backlog-collapsing for repeated high-priority nudges.
-        # Keep only the newest unread "current truth / status packet" style
-        # message for a recipient instead of letting near-duplicate operator
-        # nudges pile up forever.
-        if is_high_priority(priority) and normalized:
-            lowered = normalized.lower()
-            collapse_markers = (
-                "三行状态包",
-                "最小状态包",
-                "只看当前真相",
-                "不要补旧账",
-                "当前最大协作缺口",
-                "当前真实状态",
-                "batch 6",
-            )
-            if any(marker in normalized or marker in lowered for marker in collapse_markers):
-                for msg in data.get("messages", []):
-                    if (
-                        msg.get("to") == to
-                        and not msg.get("read")
-                        and is_high_priority(str(msg.get("priority") or ""))
-                    ):
-                        old = str(msg.get("content") or "")
-                        old_low = old.lower()
-                        if any(marker in old or marker in old_low for marker in collapse_markers):
-                            msg["read"] = True
-                            msg["read_at"] = now
         local_id = _new_id("msg")
+        explicit_target = str(supersedes_message_id or "").strip()
+        if explicit_target:
+            matches = [
+                msg for msg in data.get("messages", [])
+                if msg.get("local_id") == explicit_target and msg.get("to") == to
+            ]
+            if not matches:
+                raise ValueError("supersedes_message_id must reference a message for this recipient")
+            _mark_superseded(matches[0], local_id, now)
+        elif task_id and normalized_revision:
+            for msg in data.get("messages", []):
+                if msg.get("to") != to or msg.get("task_id") != task_id:
+                    continue
+                try:
+                    old_revision = int(msg.get("revision") or 0)
+                except (TypeError, ValueError):
+                    old_revision = 0
+                if old_revision < normalized_revision:
+                    _mark_superseded(msg, local_id, now)
         data.setdefault("messages", []).append({
             "local_id": local_id,
             "to": to,
@@ -294,6 +292,10 @@ def append_message(to: str, frm: str, content: str, *,
             "content": str(content or ""),
             "priority": priority,
             "task_id": task_id,
+            "revision": normalized_revision,
+            "superseded": False,
+            "superseded_at": None,
+            "superseded_by": "",
             "source_message_id": str(source_message_id or ""),
             "delivery_key": normalized_key,
             "created_at": now,
@@ -309,6 +311,13 @@ def append_message(to: str, frm: str, content: str, *,
         })
         write_json(path, data)
         return local_id
+
+
+def _mark_superseded(message: dict, replacement_id: str, timestamp: int) -> None:
+    """Record an auditable replacement without claiming the message was read."""
+    message["superseded"] = True
+    message["superseded_at"] = timestamp
+    message["superseded_by"] = replacement_id
 
 
 def get_message(local_id: str) -> dict | None:
@@ -331,7 +340,7 @@ def list_messages(agent: str, *, unread_only: bool = False) -> list[dict]:
     data = read_json(_inbox_file(), {"messages": []})
     rows = [m for m in data.get("messages", []) if m.get("to") == agent]
     if unread_only:
-        rows = [m for m in rows if not m.get("read")]
+        rows = [m for m in rows if not m.get("read") and not m.get("superseded")]
     return sorted(rows, key=lambda m: m.get("created_at", 0))
 
 

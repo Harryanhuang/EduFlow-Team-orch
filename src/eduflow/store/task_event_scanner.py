@@ -556,6 +556,8 @@ def _message_has_later_direct_process_visibility(msg: dict) -> bool:
 
 def _agent_has_specific_inbox_blocker(agent: str) -> bool:
     for msg in reversed(local_facts.list_messages(agent)):
+        if msg.get("superseded"):
+            continue
         if not local_facts.is_high_priority(str(msg.get("priority") or "")):
             continue
         ack_state = str(msg.get("ack_state") or "pending")
@@ -914,6 +916,8 @@ def _is_production_text(text: str) -> bool:
 def _open_high_priority_unacked_messages(agent: str) -> list[dict]:
     rows = []
     for msg in local_facts.list_messages(agent):
+        if msg.get("superseded"):
+            continue
         if not local_facts.is_high_priority(str(msg.get("priority") or "")):
             continue
         ack_state = str(msg.get("ack_state") or "pending")
@@ -4324,6 +4328,8 @@ def _conflicting_task_brief_findings(*, now: int) -> list[dict]:
 def _high_priority_inbox_blocking_findings(*, now: int) -> list[dict]:
     rows: list[dict] = []
     for msg in local_facts.list_all_messages():
+        if msg.get("superseded"):
+            continue
         if not local_facts.is_high_priority(str(msg.get("priority") or "")):
             continue
         ack_state = str(msg.get("ack_state") or "pending")
@@ -4683,7 +4689,9 @@ def _revision_ack_missing_finding(task: dict) -> dict | None:
     owner = str(task.get("owner") or task.get("assignee") or "")
     related = [
         msg for msg in local_facts.list_all_messages()
-        if str(msg.get("task_id") or "") == task_id and str(msg.get("to") or "") == owner
+        if not msg.get("superseded")
+        and str(msg.get("task_id") or "") == task_id
+        and str(msg.get("to") or "") == owner
     ]
     accepted = any(str(msg.get("ack_kind") or "") == "accepted_revision" for msg in related)
     if accepted:

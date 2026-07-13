@@ -150,7 +150,7 @@ def test_manager_user_ack_without_say_projects_pending_group_reply():
         assert snap["status"] != "待回群"
 
 
-def test_high_priority_status_packet_nudges_collapse_previous_unread():
+def test_high_priority_status_packets_do_not_implicitly_supersede_each_other():
     with isolated_env():
         first = local_facts.append_message(
             "auto_ops", "manager", "只回三行状态包：当前真实状态", priority="高"
@@ -161,8 +161,56 @@ def test_high_priority_status_packet_nudges_collapse_previous_unread():
         rows = local_facts.list_messages("auto_ops")
         assert len(rows) == 2
         by_id = {r["local_id"]: r for r in rows}
-        assert by_id[first]["read"] is True
+        assert by_id[first]["read"] is False
+        assert by_id[first].get("superseded") is not True
         assert by_id[second]["read"] is False
+
+
+def test_explicit_message_link_marks_only_the_target_as_superseded():
+    with isolated_env():
+        original = local_facts.append_message(
+            "worker_review", "manager", "review task version one", priority="高"
+        )
+        replacement = local_facts.append_message(
+            "worker_review",
+            "manager",
+            "review task version two",
+            priority="高",
+            supersedes_message_id=original,
+        )
+
+        old = local_facts.get_message(original)
+        new = local_facts.get_message(replacement)
+        assert old is not None and new is not None
+        assert old["read"] is False
+        assert old["superseded"] is True
+        assert old["superseded_by"] == replacement
+        assert new["superseded"] is False
+        unread = local_facts.list_messages("worker_review", unread_only=True)
+        assert [row["local_id"] for row in unread] == [replacement]
+
+
+def test_higher_revision_supersedes_only_lower_revision_of_same_task():
+    with isolated_env():
+        first = local_facts.append_message(
+            "worker_builder", "manager", "T-172 implementation", task_id="T-172", revision=1
+        )
+        unrelated = local_facts.append_message(
+            "worker_builder", "manager", "T-173 implementation", task_id="T-173", revision=1
+        )
+        second = local_facts.append_message(
+            "worker_builder", "manager", "T-172 correction", task_id="T-172", revision=2
+        )
+
+        old = local_facts.get_message(first)
+        other = local_facts.get_message(unrelated)
+        replacement = local_facts.get_message(second)
+        assert old is not None and other is not None and replacement is not None
+        assert old["superseded"] is True
+        assert old["read"] is False
+        assert old["superseded_by"] == second
+        assert other["superseded"] is False
+        assert replacement["superseded"] is False
 
 
 def test_mark_all_read_can_keep_latest_unread():

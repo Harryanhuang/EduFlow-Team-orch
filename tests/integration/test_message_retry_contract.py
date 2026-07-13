@@ -5,6 +5,7 @@ import json
 import threading
 
 from helpers import attr_patch, env_patch, isolated_env
+from eduflow.commands import health
 from eduflow.feishu import deliver as deliver_module
 from eduflow.feishu.deliver import apply
 from eduflow.feishu.router import Action, Decision
@@ -14,7 +15,7 @@ from eduflow.feishu.subscribe import (
     process_pending_decisions,
 )
 from eduflow.runtime import human_takeover
-from eduflow.store import message_delivery
+from eduflow.store import local_facts, message_delivery, task_event_scanner
 
 
 _TEAM = ["manager"]
@@ -75,6 +76,31 @@ def test_retryable_inbox_failure_does_not_advance_seen_or_cursor():
     assert stats.handled == 0
     assert "om_inbox_denied" not in seen
     assert progressed == []
+
+
+def test_superseded_message_is_not_an_actionable_health_or_scanner_blocker():
+    with isolated_env():
+        original = local_facts.append_message(
+            "worker_builder", "manager", "T-172 original instruction",
+            priority="高", task_id="T-172", revision=1,
+        )
+        replacement = local_facts.append_message(
+            "worker_builder", "manager", "T-172 corrected instruction",
+            priority="高", task_id="T-172", revision=2,
+        )
+
+        assert health._agent_inbox_recovery_needed("worker_builder") is True
+        assert task_event_scanner._agent_has_specific_inbox_blocker("worker_builder") is True
+        assert [row["local_id"] for row in task_event_scanner._open_high_priority_unacked_messages("worker_builder")] == [replacement]
+
+        assert local_facts.mark_read(replacement) is True
+        assert local_facts.record_message_ack(replacement, "accepted_task") is True
+
+        assert health._agent_inbox_recovery_needed("worker_builder") is False
+        assert task_event_scanner._agent_has_specific_inbox_blocker("worker_builder") is False
+        assert task_event_scanner._open_high_priority_unacked_messages("worker_builder") == []
+        findings = task_event_scanner.scan_manager_anomalies()
+        assert not [row for row in findings if row.get("message_id") == original]
 
 
 def test_slash_reply_retry_does_not_reexecute_the_command():

@@ -61,6 +61,25 @@ def test_scan_manager_anomalies_flags_high_priority_unread_and_read_without_ack(
         assert unread in ids
 
 
+def test_revision_ack_requires_acknowledgement_of_the_current_message_revision():
+    with isolated_env():
+        original = local_facts.append_message(
+            "worker_course", "review_course", "T-172 first revision", task_id="T-172", revision=1
+        )
+        assert local_facts.mark_read(original) is True
+        assert local_facts.record_message_ack(original, "accepted_revision") is True
+        replacement = local_facts.append_message(
+            "worker_course", "review_course", "T-172 corrected revision", task_id="T-172", revision=2
+        )
+
+        finding = task_event_scanner._revision_ack_missing_finding({
+            "id": "T-172", "verdict": "rejected", "owner": "worker_course", "stage": "curriculum",
+        })
+
+        assert finding is not None
+        assert finding["message_id"] == replacement
+
+
 def test_scan_manager_anomalies_flags_context_exhausted_worker():
     with isolated_env():
         local_facts.upsert_status("worker_course", "进行中", "IGCSE Physics 0625 Batch 8 production")

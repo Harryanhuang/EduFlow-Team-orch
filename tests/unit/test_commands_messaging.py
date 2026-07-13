@@ -53,7 +53,7 @@ def test_send_to_auto_ops_high_priority_records_min_ack_visibility():
         assert logs[0]["type"] == "ack"
 
 
-def test_send_to_auto_ops_keeps_latest_current_task_visible_after_backlog_collapse():
+def test_send_to_auto_ops_does_not_hide_unrelated_high_priority_messages():
     with isolated_env():
         run_cli([
             "send", "auto_ops", "manager",
@@ -65,8 +65,9 @@ def test_send_to_auto_ops_keeps_latest_current_task_visible_after_backlog_collap
         ])
         assert rc == 0, err
         unread = local_facts.list_messages("auto_ops", unread_only=True)
-        assert len(unread) == 1
-        assert "manager 消费" in unread[0]["content"]
+        assert len(unread) == 2
+        assert any("当前真实状态" in row["content"] for row in unread)
+        assert any("manager 消费" in row["content"] for row in unread)
         snap = local_facts.get_status("auto_ops")
         assert snap is not None
         assert "manager 消费" in snap["task"]
@@ -137,6 +138,29 @@ def test_send_to_worker_course_high_priority_stays_unread():
         assert logs == []  # auto-ack removed; agent produces its own logs when it processes
 
 
+def test_send_explicitly_supersedes_a_previous_message_without_marking_it_read():
+    with isolated_env():
+        run_cli([
+            "send", "worker_course", "manager", "T-172 original instruction", "高",
+            "--task-id", "T-172", "--no-inject",
+        ])
+        original = local_facts.list_messages("worker_course")[0]["local_id"]
+
+        rc, _, err = run_cli([
+            "send", "worker_course", "manager", "T-172 corrected instruction", "高",
+            "--task-id", "T-172", "--supersedes-message-id", original, "--no-inject",
+        ])
+
+        assert rc == 0, err
+        old = local_facts.get_message(original)
+        assert old is not None
+        assert old["read"] is False
+        assert old["superseded"] is True
+        unread = local_facts.list_messages("worker_course", unread_only=True)
+        assert len(unread) == 1
+        assert "corrected instruction" in unread[0]["content"]
+
+
 def test_send_to_review_course_high_priority_records_stage_ack_visibility():
     with isolated_env():
         rc, _, err = run_cli([
@@ -177,7 +201,7 @@ def test_send_to_worker_builder_high_priority_records_stage_ack_visibility():
         assert logs[0]["type"] == "worker_builder_stage_ack"
 
 
-def test_send_to_worker_qbank_keeps_latest_followup_visible_after_backlog_collapse():
+def test_send_to_worker_qbank_does_not_hide_unrelated_high_priority_messages():
     with isolated_env():
         run_cli([
             "send", "worker_qbank", "manager",
@@ -189,8 +213,9 @@ def test_send_to_worker_qbank_keeps_latest_followup_visible_after_backlog_collap
         ])
         assert rc == 0, err
         unread = local_facts.list_messages("worker_qbank", unread_only=True)
-        assert len(unread) == 1
-        assert "Batch 7" in unread[0]["content"]
+        assert len(unread) == 2
+        assert any("Batch 6" in row["content"] for row in unread)
+        assert any("Batch 7" in row["content"] for row in unread)
         snap = local_facts.get_status("worker_qbank")
         assert snap is not None
         assert "Batch 7" in snap["task"]
