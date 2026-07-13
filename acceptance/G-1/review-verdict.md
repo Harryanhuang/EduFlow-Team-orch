@@ -1,6 +1,6 @@
 # G-1 Independent Supporting Review Verdict
 
-Submission target: `175a7f31e0538ac646d9a6c523ba14638f662372`
+Submission target: `58d926778dde76724467b2eab307e80b0a1c5ea3`
 Reviewer: independent Codex specification and quality reviewers
 Verdict: FAIL
 Result: FAIL
@@ -12,7 +12,7 @@ scope, authorize manager CLOSEOUT, or authorize G0.
 ## Current evidence verified
 
 - The nine-file acceptance package exists and remains machine checked.
-- Full regression: 3,214 collected node IDs, complete rerun exit 0. Compileall,
+- Full regression: 3,215 collected node IDs, complete rerun exit 0. Compileall,
   pip check, full Ruff, full-source mypy across 155 source files, and diff check
   also exited zero.
 - The runtime-authority consolidation makes runtime switch and human takeover
@@ -24,7 +24,7 @@ scope, authorize manager CLOSEOUT, or authorize G0.
 - Independent specification review: PASS after its stale-runbook P1 finding
   was corrected. Independent quality review: PASS after the malformed
   top-level boundary was directly tested and fixed.
-- Read-only production topology refresh at 2026-07-13T01:45:42+08:00 returned
+- Read-only production topology refresh at 2026-07-13T09:01:01+08:00 returned
   `ok=true`: 3 daemons, 11 panes, 11 agent processes, 0 suspects, and 0 errors.
   `production-topology-refresh.json` persists the exact command, local/UTC time,
   output digest, redacted raw result, production revision, and config generation.
@@ -35,6 +35,9 @@ scope, authorize manager CLOSEOUT, or authorize G0.
 - Current TruffleHog, official npm audit, base/optional pip-audit, Ruff, and the
   full-source mypy check are clean for their stated scopes. Their exact provenance
   is persisted in `scanner-refresh.json`.
+- Flow Memory `0.1.1` is published through PyPI Trusted Publishing, pinned as
+  an EduFlow runtime dependency, audited on Python 3.10, and verified by a
+  no-cache clean install plus compatibility smoke without a sibling checkout.
 
 ## Remaining blockers
 
@@ -42,12 +45,7 @@ scope, authorize manager CLOSEOUT, or authorize G0.
    `runtime_operator` actor ID and durable appointment reference are absent.
 2. **High - owner approval evidence is missing.** Trust model, ownership, SLO,
    runbook, control-plane owner, and escalation approvals remain pending.
-3. **Medium - dependency boundary is incomplete.** Full-source mypy and the
-   current secret/dependency scanners are clean, but the actual Flow Memory
-   runtime dependency is still undeclared/unpublished. This is engineering
-   remediation, not an owner approval. Clean scans cannot cover an undeclared
-   editable sibling dependency.
-4. **Process gate — formal acceptance ownership is incomplete.** The required
+3. **Process gate — formal acceptance ownership is incomplete.** The required
    `worker_review` REVIEW is pending. Manager CLOSEOUT is prohibited until a
    formal PASS review and all mandatory criteria are satisfied.
 
@@ -55,8 +53,7 @@ scope, authorize manager CLOSEOUT, or authorize G0.
 
 The runtime-authority code finding and missing scanner-execution findings have
 been remediated. They are not current reasons to reject the implementation.
-The two High owner checkpoints and one Medium dependency checkpoint keep
-AC-GLOBAL-04, AC-GLOBAL-05, and AC-G-1-04 failed.
+The two High owner checkpoints keep AC-GLOBAL-05 and AC-G-1-04 failed.
 
 **G-1 status: FAIL. G0: not authorized. Formal `worker_review` REVIEW:
 pending. Manager CLOSEOUT: prohibited.**

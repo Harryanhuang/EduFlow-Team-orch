@@ -17,14 +17,16 @@ except ModuleNotFoundError:  # Python 3.10
 ROOT = Path(__file__).resolve().parents[2]
 PACKAGE = ROOT / "acceptance" / "G-1"
 BASELINE_REVISION = "bde14c5ce94aacd99ef80f9c11b65092dcf25fc3"
-SUBMISSION_REVISION = "175a7f31e0538ac646d9a6c523ba14638f662372"
+SUBMISSION_REVISION = "58d926778dde76724467b2eab307e80b0a1c5ea3"
 REVISION_LINEAGE = {
     "implementation": "cc95c5a488a8cd699dff515eadf431277669ffc6",
     "remediation": "d578691b8e1d3e0dc6f5221120c4a0d0e4ace6ab",
     "security ledger": "2296dc08c14eae9de34accdf43d4a11c6b8ba68f",
     "Ruff R4 scripts": "73e7b3f4cd47cbc48b985ccbf261266fe38b02d2",
     "runtime authority consolidation": "21d000e5eca28c1ad5a91ad3485c548f8ce1c389",
-    "full-source mypy remediation / submission target": SUBMISSION_REVISION,
+    "full-source mypy remediation": "175a7f31e0538ac646d9a6c523ba14638f662372",
+    "published Flow Memory dependency": "ad149069f246abe9bda93f184fd68d0106a4305d",
+    "topology classifier remediation / submission target": SUBMISSION_REVISION,
 }
 
 REQUIRED_FILES = {
@@ -125,7 +127,7 @@ def test_summary_has_machine_recountable_twelve_criterion_ledger() -> None:
         "AC-GLOBAL-01": "PASS",
         "AC-GLOBAL-02": "PASS",
         "AC-GLOBAL-03": "PASS",
-        "AC-GLOBAL-04": "FAIL",
+        "AC-GLOBAL-04": "PASS",
         "AC-GLOBAL-05": "FAIL",
         "AC-GLOBAL-06": "PASS",
         "AC-GLOBAL-07": "PASS",
@@ -356,12 +358,14 @@ def test_security_ledger_records_current_node_and_ruff_results() -> None:
     assert "npm audit --omit=dev --audit-level=high --registry=https://registry.npmjs.org" in security
     assert "0 vulnerabilities" in security
     assert "trufflehog 3.95.9" in security.lower()
-    assert "9374" in security and "18143412" in security
+    assert "9426" in security and "18157058" in security
     assert "verified_secrets=0" in security and "unverified_secrets=0" in security
     assert "pip-audit 2.10.1" in security
     assert "Python 3.10" in security
     assert "51" in security and "0 known vulnerabilities" in security
     assert "mypy 2.2.0" in security
+    assert "flow-memory==0.1.1" in security
+    assert "no-cache clean install" in security
     assert "owner approval" in combined
     assert "Node lockfile sub-check is closed" in review
     assert "scanner unavailable" not in security_normalized
@@ -392,6 +396,7 @@ def test_refresh_artifacts_bind_scans_and_topology_to_exact_provenance() -> None
     assert {run["name"] for run in scans["runs"]} == {
         "trufflehog_git", "npm_audit", "pip_audit_base_py310",
         "pip_audit_vector_py310", "mypy_full_source", "ruff_full",
+        "pypi_install_py310",
     }
     for run in scans["runs"]:
         assert run["command"] and run["cwd"]

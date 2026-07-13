@@ -1,12 +1,12 @@
 # G-1 Acceptance Summary
 
 Gate: G-1
-Revision: 175a7f31e0538ac646d9a6c523ba14638f662372
+Revision: 58d926778dde76724467b2eab307e80b0a1c5ea3
 Config generation: production `00773fbb4eb5ed7f`; isolated implementation config is intentionally distinct
 Environment: isolated `codex/eduflow-upgrade-gates` worktree plus read-only production probes against the deployed checkout
 Acceptance result: FAIL
-Mandatory criteria passed/total: 9/12
-Open Critical/High/Medium/Low: 0/2/1/0
+Mandatory criteria passed/total: 10/12
+Open Critical/High/Medium/Low: 0/2/0/0
 Rollback tested: yes — disposable worktree reverse-applied the target patch to `bde14c5ce94aacd99ef80f9c11b65092dcf25fc3` and proved exact tree equality; current full pytest also passed
 Reviewer: pending formal `worker_review` REVIEW after all external checkpoints and final evidence refresh
 Manager closeout: blocked — manager must not CLOSEOUT before a valid REVIEW and all mandatory criteria pass
@@ -19,7 +19,9 @@ Manager closeout: blocked — manager must not CLOSEOUT before a valid REVIEW an
 - Ruff R3 tests: `af15df34de310907feff3e93681952a443fb0bfb` (Lore carried forward by `6b4ec55a`)
 - Ruff R4 scripts: `73e7b3f4cd47cbc48b985ccbf261266fe38b02d2`
 - runtime authority consolidation: `21d000e5eca28c1ad5a91ad3485c548f8ce1c389`
-- full-source mypy remediation / submission target: `175a7f31e0538ac646d9a6c523ba14638f662372`
+- full-source mypy remediation: `175a7f31e0538ac646d9a6c523ba14638f662372`
+- published Flow Memory dependency: `ad149069f246abe9bda93f184fd68d0106a4305d`
+- topology classifier remediation / submission target: `58d926778dde76724467b2eab307e80b0a1c5ea3`
 
 `Revision` is the immutable submission target. This evidence-only freshness
 delta is intentionally not assigned a self-referential revision; the formal
@@ -31,10 +33,10 @@ exist.
 | Criterion | Result | Evidence / blocker |
 |---|---|---|
 | AC-GLOBAL-01 workspace protection | PASS | isolated scoped worktree and baseline inventory |
-| AC-GLOBAL-02 regression tests | PASS | current 3214-node full regression, compileall, pip check, and diff check |
+| AC-GLOBAL-02 regression tests | PASS | current 3215-node full regression, compileall, pip check, and diff check |
 | AC-GLOBAL-03 behavior tests | PASS | RED/GREEN and adjacent negative-path records |
-| AC-GLOBAL-04 static and supply chain | FAIL | Ruff, TruffleHog, official npm audit, pip-audit, and full-source mypy are clean; the undeclared/unpublished Flow Memory dependency remains incomplete |
-| AC-GLOBAL-05 unresolved risks | FAIL | two High and one Medium open Gate risk remain |
+| AC-GLOBAL-04 static and supply chain | PASS | Ruff, TruffleHog, official npm audit, pip-audit, full-source mypy, and a Python 3.10 clean install of the pinned PyPI `flow-memory==0.1.1` dependency are clean |
+| AC-GLOBAL-05 unresolved risks | FAIL | two High owner-controlled Gate risks remain |
 | AC-GLOBAL-06 rollback | PASS | exact reverse-patch tree proof and forward recovery boundaries |
 | AC-GLOBAL-07 observable state | PASS | CLI JSON and append-only audit evidence |
 | AC-G-1-01 production topology | PASS | correlated daemon, pane, agent, checkout, runtime, config, and state facts |
@@ -43,20 +45,20 @@ exist.
 | AC-G-1-04 approved trust model | FAIL | real runtime authority appointment and durable owner approval are absent |
 | AC-G-1-05 SLO and human takeover | PASS | isolated fail-closed takeover, visibility, and recovery simulation |
 
-The ledger contains exactly twelve mandatory decision rows. Its nine `PASS`
-rows are the source for `9/12`; the three `FAIL` rows cannot be waived by a
+The ledger contains exactly twelve mandatory decision rows. Its ten `PASS`
+rows are the source for `10/12`; the two `FAIL` rows cannot be waived by a
 chat statement or by the historical independent supporting review.
 
 ## Current decision
 
 This package remains a deliberate `FAIL`. The structured `runtime_operator`
-identity is not provisioned, owner approval evidence is not recorded, and the
-mandatory security/tooling checkpoint is incomplete. The tracked placeholder
+identity is not provisioned and owner approval evidence is not recorded. The
+mandatory security/tooling checkpoint is now complete. The tracked placeholder
 is explicitly not an actor and cannot be used as approval or authorization
 evidence. No G0 work is authorized.
 
-The current submission passed the complete 3214-node regression. A read-only
-production refresh at 2026-07-13T01:45:42+08:00 remained `ok=true` with three
+The current submission passed the complete 3215-node regression. A read-only
+production refresh at 2026-07-13T09:01:01+08:00 remained `ok=true` with three
 daemons, eleven panes, eleven agent processes, zero suspects, and no audit
 errors. The exact command, raw redacted JSON, output digest, production revision,
 and config generation are persisted in `production-topology-refresh.json`.

@@ -1,6 +1,6 @@
 G-1 Fault-Injection Results
 
-Submission target: `175a7f31e0538ac646d9a6c523ba14638f662372`
+Submission target: `58d926778dde76724467b2eab307e80b0a1c5ea3`
 The fault transcript is historical execution evidence carried forward through
 the `d578691b8e1d3e0dc6f5221120c4a0d0e4ace6ab` authority remediation. No fault
 injection was rerun solely for this evidence refresh.
@@ -58,7 +58,7 @@ Current R6 authority refresh
   fields and reject general operators.
 - Malformed top-level tunables and malformed/placeholder authority fields fail
   closed before mutation.
-- The complete 3209-node suite reran these isolated fault paths at the current
+- The complete 3215-node suite reran these isolated fault paths at the current
   submission target; no production fault injection was performed.
 
 Result: PASS for isolated authority fault coverage; production mutation remains

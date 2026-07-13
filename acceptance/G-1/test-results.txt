@@ -1,17 +1,51 @@
 G-1 Test Results
 
-Submission target: `175a7f31e0538ac646d9a6c523ba14638f662372`
+Submission target: `58d926778dde76724467b2eab307e80b0a1c5ea3`
 Revision lineage: implementation `cc95c5a488a8cd699dff515eadf431277669ffc6`;
 authority remediation `d578691b8e1d3e0dc6f5221120c4a0d0e4ace6ab`;
 configured scanner ledger `2296dc08c14eae9de34accdf43d4a11c6b8ba68f`.
 Runtime authority consolidation: `21d000e5eca28c1ad5a91ad3485c548f8ce1c389`.
 Full-source mypy remediation: `175a7f31e0538ac646d9a6c523ba14638f662372`.
 Freshness note: the transcript below preserves historical RED/GREEN and full
-regression evidence. The current R6 refresh records a new 3214-node full
-regression for the submission target; the 3014 baseline rollback run remains
-historical.
+regression evidence. The current R7 refresh records a new 3215-node full
+regression for the submission target; the R6 3214-node run and 3014 baseline
+rollback run remain historical.
 
-## Current R6 Gate verification - 2026-07-13
+## Current R7 published dependency verification - 2026-07-13
+
+- Flow Memory release workflow `29215625546` published `v0.1.1` through PyPI
+  OIDC Trusted Publishing from GitHub commit
+  `d6d61c35f900db8f9248ff5af8488e175d144173`; all release steps passed.
+- PyPI JSON reports version `0.1.1`, wheel SHA-256
+  `e923681030dd56d6c61ac1741887918ef10a45d6a4717e4fa71893995bde29d3`,
+  and sdist SHA-256
+  `f06428c0aef1afdc58d789e23e881ff7f725cb17fca6aa4ced6cb65f684e46f5`.
+- Dependency RED: the acceptance test rejected `pyproject.toml` because the
+  runtime dependencies contained only conditional `tomli`.
+- Dependency GREEN: EduFlow pins `flow-memory==0.1.1`; the focused dependency
+  regression passes.
+- Python 3.10 no-cache install from `https://pypi.org/simple` installed EduFlow
+  and `flow-memory==0.1.1`; `pip check`, version check, and legacy vector-export
+  compatibility smoke passed without an editable sibling checkout.
+- `pip-audit 2.10.1` resolved 6 base dependencies including the Flow Memory pin
+  and found zero known vulnerabilities.
+- Current Ruff, full-source mypy, TruffleHog, official npm audit, compileall,
+  and diff check exited zero; exact scanner provenance is in
+  `scanner-refresh.json`.
+- Two read-only topology samples initially failed on persistent PID `74237`.
+  Investigation proved it was the Codex desktop `app-server --listen stdio://`,
+  not an EduFlow agent. A focused RED test reproduced the false orphan; GREEN
+  excludes only that infrastructure subcommand while retaining real Codex CLI
+  orphan detection. All 72 auditor tests and the final live sample passed with
+  3 daemons, 11 panes, 11 agents, zero suspects, and zero errors.
+- Final isolated full suite resolved Flow Memory only through the EduFlow
+  dependency declaration and exited zero; pytest cache contains 3215 node IDs.
+
+Result: PASS for AC-GLOBAL-04 and the published dependency boundary. The two
+owner-controlled High checkpoints remain open, so G-1 remains FAIL and G0 is
+not authorized.
+
+## Historical R6 Gate verification - 2026-07-13
 
 - Authority parity RED: human takeover did not accept the documented
   `runtime_operators` / `runtime_operator` fields while runtime switch did.
@@ -29,17 +63,17 @@ historical.
 - `python3 -m compileall -q src tests`; `python3 -m pip check`;
   `git diff --check`; and full Ruff -> exit 0.
 - Read-only production topology refresh -> exit 0, `ok=true`, no errors or
-  suspects; it did not mutate production config/state. Exact command, redacted
-  raw output, digest, production revision and config generation are persisted
-  in `production-topology-refresh.json`.
-- Exact scanner run provenance and summaries are persisted in
-  `scanner-refresh.json`; the acceptance-package test validates required fields,
-  timestamps, revision binding, digests, and optional dependency input.
+  suspects; it did not mutate production config/state. Its then-current artifact
+  was later superseded by the R7 refresh in `production-topology-refresh.json`.
+- Exact scanner provenance was recorded at R6 and later superseded by the R7
+  runs in `scanner-refresh.json`; this historical section does not claim that
+  the current JSON files still contain the R6 raw outputs.
 - Full-source mypy RED: `mypy 2.2.0 --ignore-missing-imports src` returned 131
   errors across 28 files. Three disjoint remediation batches used explicit
   types and control-flow narrowing; no global/per-file suppression was added.
-- Full-source mypy GREEN at the submission target: exit 0, `Success: no issues
-  found in 155 source files`.
+- Full-source mypy GREEN at the historical R6 target
+  `175a7f31e0538ac646d9a6c523ba14638f662372`: exit 0, `Success: no issues found
+  in 155 source files`.
 - Type-remediation reviews found two behavior defects: an unpin failure was
   incorrectly changed to rc=0, and a missing T-104 archive API was hidden behind
   a type workaround. RED tests reproduced both. GREEN restores unpin rc=1 and
@@ -48,10 +82,11 @@ historical.
 - Independent specification and quality reviews: PASS after both findings were
   corrected.
 
-Result: PASS for the current regression/runtime-authority implementation. The
-owner checkpoints and AC-GLOBAL-04 boundary remain open, so G-1 remains FAIL.
+Result: PASS for the historical R6 regression/runtime-authority implementation.
+At R6, the owner checkpoints and AC-GLOBAL-04 boundary remained open, so G-1
+remained FAIL.
 
-## Current R5 Gate verification — 2026-07-12
+## Historical R5 Gate verification — 2026-07-12
 
 - `uvx --offline ruff==0.15.10 check src tests scripts` -> exit 0, `All checks passed!`
 - `python3 -m compileall -q src tests scripts` -> exit 0

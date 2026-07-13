@@ -1,10 +1,10 @@
 # G-1 Rollback Proof
 
-Submission target: `175a7f31e0538ac646d9a6c523ba14638f662372`
+Submission target: `58d926778dde76724467b2eab307e80b0a1c5ea3`
 Baseline revision: `bde14c5ce94aacd99ef80f9c11b65092dcf25fc3`
-Captured: `2026-07-13T02:00:14+08:00`
+Captured: `2026-07-13T09:02:00+08:00`
 Environment: private `mktemp` directory with a detached child worktree;
-the observed directory ended in `eduflow-g1-rollback.9Gr4nA` and the EXIT trap
+the observed directory ended in `eduflow-g1-rollback.gxDLcq` and the EXIT trap
 removed both its registered worktree and private directory.
 
 ## Reproducible procedure
@@ -12,7 +12,7 @@ removed both its registered worktree and private directory.
 ```bash
 set -euo pipefail
 BASE=bde14c5ce94aacd99ef80f9c11b65092dcf25fc3
-TARGET=175a7f31e0538ac646d9a6c523ba14638f662372
+TARGET=58d926778dde76724467b2eab307e80b0a1c5ea3
 TMP_ROOT="${TMPDIR:-/tmp}"
 TMP_ROOT="${TMP_ROOT%/}"
 TMP_ROOT="$(cd "$TMP_ROOT" && pwd -P)"
@@ -65,7 +65,7 @@ printf 'patch_sha256=%s\npatch_bytes=%s\ntarget_tree=%s\nreversed_tree=%s\nbasel
 
 | Check | Exit | Result |
 |---|---:|---|
-| Generate complete binary patch | 0 | PASS — 760012 bytes |
+| Generate complete binary patch | 0 | PASS — 762796 bytes |
 | Calculate patch SHA-256 | 0 | PASS |
 | Create detached target worktree | 0 | PASS |
 | Reverse-apply patch to index and worktree | 0 | PASS |
@@ -73,8 +73,8 @@ printf 'patch_sha256=%s\npatch_bytes=%s\ntarget_tree=%s\nreversed_tree=%s\nbasel
 | Resolve target, reversed, and baseline tree hashes | 0 | PASS |
 | Remove disposable worktree and patch | 0 | PASS |
 
-- Patch SHA-256: `ab36e2a48a3d0046001adb75ffc97b59116bf89c42c5d772bd742aaab9e82ca6`
-- Target tree: `72af8da5fdce1c8a478bf3910dc084df96a901c0`
+- Patch SHA-256: `6717d46ee7aca86170449c2e7b4a72e2f0115514794125e16bf25cd590344bbe`
+- Target tree: `3745d4d59aff4a2c3839c8c7063486b9c38f9072`
 - Reversed tree: `05d26313ab96749b599459c5017e811cc1a060f0`
 - Baseline tree: `05d26313ab96749b599459c5017e811cc1a060f0`
 
@@ -86,7 +86,7 @@ before removal; it does not clean any fixed or caller-owned path. The source
 worktree and production checkout were never modified.
 
 No pytest command was run inside the disposable rollback worktree. The current
-submission separately passed the full 3214-node regression; `3014 passed in
+submission separately passed the full 3215-node regression; `3014 passed in
 252.77s` remains the historical baseline rollback run.
 
 Result: PASS — exact code-content rollback is reproducible. This proof does
