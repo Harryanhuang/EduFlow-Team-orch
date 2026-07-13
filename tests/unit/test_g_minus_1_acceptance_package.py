@@ -452,7 +452,14 @@ def test_refresh_artifacts_bind_scans_and_topology_to_exact_provenance() -> None
         local = datetime.fromisoformat(run["timestamp_local"])
         utc = datetime.fromisoformat(run["timestamp_utc"].replace("Z", "+00:00"))
         assert local == utc
-
+    trufflehog = next(run for run in scans["runs"] if run["name"] == "trufflehog_git")
+    assert trufflehog["archive_sha256"] == (
+        "944c6ea3a2993a9f808d08107b40e03ba92bc75972876a1ee47d567bfd6fa1b5"
+    )
+    assert trufflehog["archive_sha256"] in _read("security-results.txt")
+    assert trufflehog["scanned_tree_archive_sha256"] == (
+        "1270f3ccaa3f0492368cbc37139a0675034d1e5fddc8ea247bae4ffd366bf907"
+    )
     vector = next(run for run in scans["runs"] if run["name"] == "pip_audit_vector_py310")
     assert vector["input"] == ["lancedb>=0.4", "sentence-transformers>=2.2"]
     assert vector["index_url"] == "https://pypi.org/simple"

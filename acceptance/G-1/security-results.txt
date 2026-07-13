@@ -34,6 +34,12 @@ SHA-256 matched the published value:
 
 `944c6ea3a2993a9f808d08107b40e03ba92bc75972876a1ee47d567bfd6fa1b5`
 
+The distinct scanned candidate tree archive SHA-256 for revision
+`2680a0b4cd1392275ce9382a5b88815e9b533a12` is
+`1270f3ccaa3f0492368cbc37139a0675034d1e5fddc8ea247bae4ffd366bf907`.
+`archive_sha256` in the machine record always means the official TruffleHog
+tool archive; `scanned_tree_archive_sha256` means the candidate Git archive.
+
 An earlier filesystem-mode attempt also found zero results but logged four
 decode errors against generated `__pycache__/*.pyc` files. It is not accepted
 as evidence. The recorded Git-source run scanned committed content/history,

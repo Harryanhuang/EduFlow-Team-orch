@@ -38,7 +38,8 @@
       "output_sha256": "2803f802f041bff60bafddde580d03371acc942a63fec2cfbc88bc0fe5b8b038",
       "output_bytes": 836,
       "summary": "9547 chunks; 18196964 bytes; verified_secrets=0; unverified_secrets=0; error logs=0",
-      "archive_sha256": "1270f3ccaa3f0492368cbc37139a0675034d1e5fddc8ea247bae4ffd366bf907"
+      "archive_sha256": "944c6ea3a2993a9f808d08107b40e03ba92bc75972876a1ee47d567bfd6fa1b5",
+      "scanned_tree_archive_sha256": "1270f3ccaa3f0492368cbc37139a0675034d1e5fddc8ea247bae4ffd366bf907"
     },
     {
       "name": "npm_audit",
