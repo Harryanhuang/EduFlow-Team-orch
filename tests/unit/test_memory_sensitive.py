@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from datetime import datetime, timezone
+import builtins
 
 import pytest
 
@@ -184,6 +185,57 @@ def test_change_password():
     assert m["content"] == "secret data"
 
 
+def test_change_password_keeps_all_records_on_tampered_later_record():
+    sensitive.setup_password(_PASSWORD, _QUESTIONS)
+    sensitive.unlock(_PASSWORD)
+    first_id = sensitive.add_sensitive("team", "note", "first secret")
+    second_id = sensitive.add_sensitive("team", "note", "second secret")
+    conn = db.get_conn()
+    second = conn.execute(
+        "SELECT tag FROM sensitive_memory_items WHERE id = ?", (second_id,)
+    ).fetchone()
+    tag = bytes(second["tag"])
+    conn.execute(
+        "UPDATE sensitive_memory_items SET tag = ? WHERE id = ?",
+        (bytes([tag[0] ^ 1]) + tag[1:], second_id),
+    )
+    conn.commit()
+
+    with pytest.raises(RuntimeError, match="integrity check failed"):
+        sensitive.change_password(_PASSWORD, "newpassword456")
+
+    sensitive.lock()
+    sensitive.unlock(_PASSWORD)
+    assert sensitive.get_sensitive(first_id)["content"] == "first secret"
+
+
+def test_change_password_rolls_back_on_later_write_failure(monkeypatch):
+    sensitive.setup_password(_PASSWORD, _QUESTIONS)
+    sensitive.unlock(_PASSWORD)
+    first_id = sensitive.add_sensitive("team", "note", "first secret")
+    second_id = sensitive.add_sensitive("team", "note", "second secret")
+    calls = 0
+
+    def fail_before_second_update():
+        nonlocal calls
+        calls += 1
+        if calls == 2:
+            raise RuntimeError("simulated write failure")
+        return "2026-01-01T00:00:00+00:00"
+
+    monkeypatch.setattr(sensitive, "_now_iso", fail_before_second_update)
+    with pytest.raises(RuntimeError, match="simulated write failure"):
+        sensitive.change_password(_PASSWORD, "newpassword456")
+
+    sensitive.lock()
+    sensitive.unlock(_PASSWORD)
+    assert sensitive.get_sensitive(first_id)["content"] == "first secret"
+    assert sensitive.get_sensitive(second_id)["content"] == "second secret"
+    sensitive.lock()
+    with pytest.raises(ValueError):
+        sensitive.unlock("newpassword456")
+
+
 def test_recover_with_security_questions():
     sensitive.setup_password(_PASSWORD, _QUESTIONS)
 
@@ -206,6 +258,19 @@ def test_recover_with_wrong_answers():
         sensitive.recover(answers, "newpw123")
 
 
+def test_recovery_refuses_to_rekey_existing_encrypted_records_without_migration():
+    sensitive.setup_password(_PASSWORD, _QUESTIONS)
+    sensitive.unlock(_PASSWORD)
+    memory_id = sensitive.add_sensitive("team", "note", "unit-test-secret")
+    sensitive.lock()
+
+    with pytest.raises(RuntimeError, match="explicit migration"):
+        sensitive.recover({"q0": "fluffy", "q1": "beijing"}, "recovered789")
+
+    sensitive.unlock(_PASSWORD)
+    assert sensitive.get_sensitive(memory_id)["content"] == "unit-test-secret"
+
+
 def test_get_security_questions():
     sensitive.setup_password(_PASSWORD, _QUESTIONS)
     questions = sensitive.get_security_questions()
@@ -221,6 +286,58 @@ def test_password_complexity():
 def test_questions_count():
     with pytest.raises(ValueError, match="At least 3"):
         sensitive.setup_password("longpassword", [{"question": "q", "answer": "a"}])
+
+
+def test_encrypt_refuses_when_authenticated_crypto_dependency_is_unavailable(monkeypatch):
+    original_import = builtins.__import__
+
+    def missing_aead(name, *args, **kwargs):
+        if name == "cryptography.hazmat.primitives.ciphers.aead":
+            raise ImportError("simulated missing cryptography")
+        return original_import(name, *args, **kwargs)
+
+    monkeypatch.setattr(builtins, "__import__", missing_aead)
+    with pytest.raises(RuntimeError, match="authenticated encryption unavailable"):
+        sensitive._encrypt(b"k" * 32, b"unit-test-plaintext")
+
+
+@pytest.mark.parametrize("part", ["ciphertext", "nonce", "tag"])
+def test_decrypt_rejects_tampered_authenticated_components_without_disclosure(part):
+    key = b"k" * 32
+    plaintext = b"unit-test-plaintext"
+    ciphertext, nonce, tag = sensitive._encrypt(key, plaintext)
+    values = {"ciphertext": ciphertext, "nonce": nonce, "tag": tag}
+    original = values[part]
+    values[part] = bytes([original[0] ^ 1]) + original[1:]
+
+    with pytest.raises(RuntimeError, match="integrity check failed") as exc_info:
+        sensitive._decrypt(key, values["ciphertext"], values["nonce"], values["tag"])
+
+    detail = str(exc_info.value)
+    assert plaintext.decode() not in detail
+    assert key.hex() not in detail
+    assert ciphertext.hex() not in detail
+
+
+def test_sensitive_search_and_export_fail_closed_on_corrupt_record():
+    sensitive.setup_password(_PASSWORD, _QUESTIONS)
+    sensitive.unlock(_PASSWORD)
+    memory_id = sensitive.add_sensitive("team", "note", "unit-test-secret")
+    conn = db.get_conn()
+    row = conn.execute(
+        "SELECT tag FROM sensitive_memory_items WHERE id = ?", (memory_id,)
+    ).fetchone()
+    tag = bytes(row["tag"])
+    conn.execute(
+        "UPDATE sensitive_memory_items SET tag = ? WHERE id = ?",
+        (bytes([tag[0] ^ 1]) + tag[1:], memory_id),
+    )
+    conn.commit()
+
+    with pytest.raises(RuntimeError, match="integrity check failed"):
+        sensitive.search_sensitive("unit-test")
+    with pytest.raises(RuntimeError, match="integrity check failed"):
+        sensitive.export_sensitive_json()
 
 
 def test_sensitive_export_readme_records_an_iso_timestamp(tmp_path, monkeypatch):

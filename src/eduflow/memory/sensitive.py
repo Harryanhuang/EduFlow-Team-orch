@@ -91,35 +91,23 @@ def _encrypt(key: bytes, plaintext: bytes) -> tuple[bytes, bytes, bytes]:
     """Encrypt with AES-256-GCM. Returns (ciphertext, nonce, tag)."""
     try:
         from cryptography.hazmat.primitives.ciphers.aead import AESGCM
-        nonce = os.urandom(12)
-        aesgcm = AESGCM(key)
-        ct = aesgcm.encrypt(nonce, plaintext, None)
-        # cryptography lib appends tag to ciphertext
-        return ct[:-16], nonce, ct[-16:]
     except ImportError:
-        # Fallback: XOR-based obfuscation (NOT secure, but functional)
-        # Only used when cryptography is not installed
-        import hashlib
-        nonce = os.urandom(12)
-        stream = hashlib.sha256(key + nonce).digest()
-        stream = stream * (len(plaintext) // len(stream) + 1)
-        ct = bytes(a ^ b for a, b in zip(plaintext, stream[:len(plaintext)]))
-        tag = hashlib.sha256(key + nonce + ct).digest()[:16]
-        return ct, nonce, tag
+        raise RuntimeError("authenticated encryption unavailable") from None
+    nonce = os.urandom(12)
+    ciphertext_and_tag = AESGCM(key).encrypt(nonce, plaintext, None)
+    return ciphertext_and_tag[:-16], nonce, ciphertext_and_tag[-16:]
 
 
 def _decrypt(key: bytes, ciphertext: bytes, nonce: bytes, tag: bytes) -> bytes:
     """Decrypt AES-256-GCM."""
     try:
         from cryptography.hazmat.primitives.ciphers.aead import AESGCM
-        aesgcm = AESGCM(key)
-        return aesgcm.decrypt(nonce, ciphertext + tag, None)
     except ImportError:
-        # Fallback: XOR-based deobfuscation
-        import hashlib
-        stream = hashlib.sha256(key + nonce).digest()
-        stream = stream * (len(ciphertext) // len(stream) + 1)
-        return bytes(a ^ b for a, b in zip(ciphertext, stream[:len(ciphertext)]))
+        raise RuntimeError("authenticated encryption unavailable") from None
+    try:
+        return AESGCM(key).decrypt(nonce, ciphertext + tag, None)
+    except Exception:
+        raise RuntimeError("sensitive data integrity check failed") from None
 
 
 # ── Password management ─────────────────────────────────────────────
@@ -193,34 +181,42 @@ def change_password(old_password: str, new_password: str) -> None:
     new_key = _derive_key(new_password, new_salt)
     new_hash = _hash_password(new_password, new_salt)
 
-    # Re-encrypt all sensitive items
+    # Prepare every replacement before mutating a row. A corrupt later
+    # record must leave earlier rows decryptable with the existing password.
     items = conn.execute("SELECT id, encrypted_data, nonce, tag FROM sensitive_memory_items").fetchall()
+    replacements = []
     for item in items:
         plaintext = _decrypt(old_key, item["encrypted_data"], item["nonce"], item["tag"])
         ct, nonce, tag = _encrypt(new_key, plaintext)
-        conn.execute(
-            "UPDATE sensitive_memory_items SET encrypted_data=?, nonce=?, tag=?, updated_at=? WHERE id=?",
-            (ct, nonce, tag, _now_iso(), item["id"]),
-        )
+        replacements.append((ct, nonce, tag, item["id"]))
+    try:
+        conn.execute("BEGIN IMMEDIATE")
+        for ct, nonce, tag, item_id in replacements:
+            conn.execute(
+                "UPDATE sensitive_memory_items SET encrypted_data=?, nonce=?, tag=?, updated_at=? WHERE id=?",
+                (ct, nonce, tag, _now_iso(), item_id),
+            )
 
-    # Re-encrypt security questions
-    questions_row = conn.execute("SELECT questions_json FROM sensitive_config WHERE id='singleton'").fetchone()
-    if questions_row:
-        questions_json = questions_row["questions_json"]
-        # Re-hash answers with new salt
-        questions = json.loads(questions_json)
-        rehashed = []
-        for q in questions:
-            # We don't have the original answers, so we keep the old hashes
-            # but encrypt the whole JSON with new key
-            rehashed.append(q)
-        conn.execute(
-            "UPDATE sensitive_config SET password_hash=?, salt=?, questions_json=?, updated_at=? WHERE id='singleton'",
-            (new_hash, base64.b64encode(new_salt).decode("ascii"),
-             json.dumps(rehashed, ensure_ascii=False), _now_iso()),
-        )
-
-    conn.commit()
+        # Re-encrypt security questions
+        questions_row = conn.execute("SELECT questions_json FROM sensitive_config WHERE id='singleton'").fetchone()
+        if questions_row:
+            questions_json = questions_row["questions_json"]
+            # Re-hash answers with new salt
+            questions = json.loads(questions_json)
+            rehashed = []
+            for q in questions:
+                # We don't have the original answers, so we keep the old hashes
+                # but encrypt the whole JSON with new key
+                rehashed.append(q)
+            conn.execute(
+                "UPDATE sensitive_config SET password_hash=?, salt=?, questions_json=?, updated_at=? WHERE id='singleton'",
+                (new_hash, base64.b64encode(new_salt).decode("ascii"),
+                 json.dumps(rehashed, ensure_ascii=False), _now_iso()),
+            )
+        conn.commit()
+    except Exception:
+        conn.rollback()
+        raise
 
     # Update session with new key
     global _derived_key, _unlocked_until
@@ -306,6 +302,14 @@ def recover(answers: dict[str, str], new_password: str) -> None:
     if correct < 2:
         _audit_log("sensitive_recovery_failed", {"correct": correct})
         raise ValueError(f"Need 2 correct answers, got {correct}")
+
+    item_count = conn.execute(
+        "SELECT COUNT(*) FROM sensitive_memory_items"
+    ).fetchone()[0]
+    if item_count:
+        raise RuntimeError(
+            "sensitive recovery requires explicit migration before changing the password"
+        )
 
     # Reset password
     new_salt = _generate_salt()
@@ -475,7 +479,7 @@ def search_sensitive(query: str, limit: int = 20) -> list[dict]:
                 if len(results) >= limit:
                     break
         except Exception:
-            continue
+            raise RuntimeError("sensitive data integrity check failed") from None
 
     _audit_log("sensitive_searched", {"query": query[:50], "results": len(results)})
     return results
@@ -524,7 +528,7 @@ def export_sensitive_json() -> list[dict]:
                 "created_at": row["created_at"],
             })
         except Exception:
-            continue
+            raise RuntimeError("sensitive data integrity check failed") from None
 
     return items
 

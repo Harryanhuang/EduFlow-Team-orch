@@ -1402,9 +1402,9 @@ def _cmd_sensitive_recover(argv: list[str]) -> int:
 
     try:
         recover(answers, new_pw)
-        print("✅ Password reset. All sensitive data re-encrypted.")
+        print("✅ Password reset.")
         return 0
-    except ValueError as e:
+    except (ValueError, RuntimeError) as e:
         print(f"❌ {e}")
         return 1
 
