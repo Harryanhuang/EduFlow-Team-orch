@@ -422,6 +422,23 @@ def test_global_scan_does_not_block_unscoped_standalone_cli(tmp_path):
                    for item in report["suspect_processes"])
 
 
+def test_global_scan_ignores_codex_desktop_app_server_in_target_checkout(tmp_path):
+    module, deps, commands, *_ = _fixture(tmp_path)
+    commands["ps -axo pid=,ppid=,command="] += (
+        "\n780 1 /Applications/ChatGPT.app/Contents/Resources/codex "
+        "app-server --listen stdio://"
+    )
+    commands["process-exe:780"] = "/Applications/ChatGPT.app/Contents/Resources/codex"
+
+    report = module.audit(deps)
+
+    assert report["ok"] is True
+    assert not any(
+        item["kind"] == "orphan_agent" and item["pid"] == 780
+        for item in report["suspect_processes"]
+    )
+
+
 def test_configured_pane_ancestry_scopes_otherwise_external_cli_as_orphan(tmp_path):
     module, deps, commands, *_ = _fixture(tmp_path)
     unrelated = tmp_path / "unrelated checkout"

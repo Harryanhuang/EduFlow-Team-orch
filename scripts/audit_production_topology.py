@@ -208,6 +208,10 @@ def _entry(command, executable):
     ):
         return f"{name} hermes chat", "agent", tokens[index + 1]
     if name in {"claude", "codex", "codex-cli", "qoderclicn", "gemini", "qwen"}:
+        if name in {"codex", "codex-cli"} and tokens[index + 1 : index + 2] == [
+            "app-server"
+        ]:
+            return None, None, None
         return name, "agent", executable
     return None, None, None
 
