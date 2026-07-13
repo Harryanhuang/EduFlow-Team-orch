@@ -51,6 +51,16 @@ PROFILE_ENV_KEYS = (
 )
 
 
+def _display_env_value(key: str, value: str | None) -> str:
+    """Render diagnostics without disclosing a credential value."""
+    if not value:
+        return "<missing>"
+    normalized = key.upper()
+    if normalized.endswith(("_TOKEN", "_API_KEY", "_SECRET", "_PASSWORD")):
+        return "[REDACTED]"
+    return value
+
+
 # ── pane live env ─────────────────────────────────────────────────
 
 
@@ -210,8 +220,10 @@ def verify_live_env_matches_profile(
         if skip_openai_api_key and key == "OPENAI_API_KEY":
             continue
         if live_value != value:
-            shown = live_value if live_value else "<missing>"
-            mismatches.append(f"{key} expected={value} live={shown}")
+            mismatches.append(
+                f"{key} expected={_display_env_value(key, value)} "
+                f"live={_display_env_value(key, live_value)}"
+            )
     return (not mismatches), mismatches
 
 
@@ -274,10 +286,10 @@ def api_smoke_runtime(resolved_runtime: dict, *, run=None, timeout_s: float = 15
                 capture_output=True, text=True, timeout=timeout_s + 5,
             )
         except (subprocess.TimeoutExpired, OSError) as e:
-            return "failed", f"curl error: {type(e).__name__}: {e}"
+            return "failed", f"curl error: {type(e).__name__}"
         code = (r.stdout or "").strip()
         if not code:
-            return "failed", f"curl no status code; stderr={(r.stderr or '').strip()[:120]}"
+            return "failed", "curl no status code"
         try:
             code_int = int(code)
         except ValueError:

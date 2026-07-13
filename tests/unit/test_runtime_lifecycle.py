@@ -11,6 +11,10 @@ from __future__ import annotations
 
 from pathlib import Path
 import json
+import os
+import subprocess
+
+import pytest
 
 from helpers import attr_patch, env_patch, isolated_env, tmux_patch
 from eduflow.runtime import lifecycle, tmux, wake
@@ -83,9 +87,9 @@ def test_pane_env_prefix_propagates_feishu_app_credentials():
             LARKSUITE_CLI_APP_SECRET="newSecret123"):
         prefix = pane_env_prefix()
     assert "FEISHU_APP_ID=cli_NEW" in prefix
-    assert "FEISHU_APP_SECRET=newSecret123" in prefix
+    assert "FEISHU_APP_SECRET=newSecret123" not in prefix
     assert "LARKSUITE_CLI_APP_ID=cli_NEW" in prefix
-    assert "LARKSUITE_CLI_APP_SECRET=newSecret123" in prefix
+    assert "LARKSUITE_CLI_APP_SECRET=newSecret123" not in prefix
 
 
 def test_pane_env_prefix_propagates_anthropic_gateway_env():
@@ -98,7 +102,7 @@ def test_pane_env_prefix_propagates_anthropic_gateway_env():
             ANTHROPIC_DEFAULT_SONNET_MODEL="qwen3.7-plus",
             ANTHROPIC_DEFAULT_HAIKU_MODEL="qwen3.7-plus"):
         prefix = pane_env_prefix()
-    assert "ANTHROPIC_AUTH_TOKEN=sk-test" in prefix
+    assert "ANTHROPIC_AUTH_TOKEN=sk-test" not in prefix
     assert "ANTHROPIC_BASE_URL=https://coding.dashscope.aliyuncs.com/apps/anthropic" in prefix
     assert "ANTHROPIC_MODEL=qwen3.7-plus" in prefix
     assert "ANTHROPIC_REASONING_MODEL=qwen3.7-plus" in prefix
@@ -289,13 +293,115 @@ ANTHROPIC_BASE_URL = "http://127.0.0.1:15721"
 ANTHROPIC_MODEL = "qwen3.7-plus"
 """, encoding="utf-8")
         resolved = {
+            "agent": "a",
             "env_profile": "claude_proxy_primary",
             "cli": "claude-code",
             "model": "sonnet",
         }
         prefix = lifecycle.pane_spawn_prefix_for_runtime(resolved)
-        assert "ANTHROPIC_BASE_URL=http://127.0.0.1:15721" in prefix
-        assert "ANTHROPIC_MODEL=qwen3.7-plus" in prefix
+        env_files = list((paths.state_dir() / "spawn-env").iterdir())
+        assert len(env_files) == 1
+        env_file = env_files[0]
+        assert str(env_file) in prefix
+        assert "ANTHROPIC_BASE_URL=http://127.0.0.1:15721" not in prefix
+        assert "ANTHROPIC_MODEL=qwen3.7-plus" not in prefix
+        assert "ANTHROPIC_BASE_URL=http://127.0.0.1:15721" in env_file.read_text()
+        assert env_file.stat().st_mode & 0o777 == 0o600
+
+
+def test_pane_spawn_prefix_never_sources_project_env_script(monkeypatch, tmp_path):
+    config_path = tmp_path / "eduflow.toml"
+    config_path.write_text("", encoding="utf-8")
+    env_script = tmp_path / "scripts" / "eduflow-team-env.sh"
+    env_script.parent.mkdir()
+    env_script.write_text("export UNRELATED_TOKEN=unit-test\n", encoding="utf-8")
+    monkeypatch.setattr(lifecycle.paths, "config_file", lambda: config_path)
+
+    prefix = lifecycle.pane_spawn_prefix()
+
+    assert str(env_script) not in prefix
+    assert "UNRELATED_TOKEN" not in prefix
+
+
+def test_spawn_env_files_are_unique_and_removed_after_source(monkeypatch):
+    resolved = {
+        "agent": "a",
+        "env_profile": "profile",
+        "cli": "claude-code",
+    }
+    monkeypatch.setattr(lifecycle, "pane_spawn_prefix", lambda: "")
+    monkeypatch.setattr(
+        lifecycle.config,
+        "env_profile_config",
+        lambda _name: {"ANTHROPIC_AUTH_TOKEN": "unit-test-placeholder"},
+    )
+    with isolated_env():
+        first = lifecycle._write_spawn_env_file("a", "ONE=1")
+        second = lifecycle._write_spawn_env_file("a", "TWO=2")
+        assert first is not None and second is not None
+        assert first != second
+
+        prefix = lifecycle.pane_spawn_prefix_for_runtime(resolved)
+        result = subprocess.run(
+            ["bash", "-c", f'{prefix} test "$ANTHROPIC_AUTH_TOKEN" = unit-test-placeholder'],
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        assert result.returncode == 0, result.stderr
+        assert set((paths.state_dir() / "spawn-env").iterdir()) == {first, second}
+        first.unlink()
+        second.unlink()
+
+
+def test_spawn_env_file_validates_agent_name_before_allocating(monkeypatch):
+    monkeypatch.setattr(
+        lifecycle.tempfile,
+        "mkstemp",
+        lambda **_kwargs: (_ for _ in ()).throw(AssertionError("must not allocate")),
+    )
+    with isolated_env():
+        with pytest.raises(ValueError, match="invalid agent name"):
+            lifecycle._write_spawn_env_file("../escape", "TOKEN=value")
+
+
+def test_pane_spawn_prefix_refuses_inline_secret_fallback(monkeypatch):
+    resolved = {
+        "agent": "a",
+        "env_profile": "profile",
+        "cli": "claude-code",
+    }
+    monkeypatch.setattr(lifecycle, "pane_spawn_prefix", lambda: "BASE")
+    monkeypatch.setattr(
+        lifecycle.config,
+        "env_profile_config",
+        lambda _name: {"ANTHROPIC_AUTH_TOKEN": "unit-test-placeholder"},
+    )
+    monkeypatch.setattr(lifecycle, "_write_spawn_env_file", lambda *_args: None)
+
+    with pytest.raises(PermissionError, match="private spawn env file"):
+        lifecycle.pane_spawn_prefix_for_runtime(resolved)
+
+
+def test_env_script_rejects_group_or_world_readable_dotenv(tmp_path):
+    dotenv_path = tmp_path / ".env"
+    dotenv_path.write_text(
+        "ANTHROPIC_AUTH_TOKEN=unit-test-placeholder\n", encoding="utf-8")
+    dotenv_path.chmod(0o644)
+    script = Path(__file__).parents[2] / "scripts" / "eduflow-team-env.sh"
+
+    result = subprocess.run(
+        ["bash", "-c", f". {script}"],
+        cwd=tmp_path,
+        env={**os.environ, "ROOT": str(tmp_path)},
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+
+    assert result.returncode != 0
+    assert "insecure .env permissions" in result.stderr
+    assert "unit-test-placeholder" not in result.stdout + result.stderr
 
 
 def test_provision_does_not_retry_non_claude_on_timeout():

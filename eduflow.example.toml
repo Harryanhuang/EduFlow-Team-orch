@@ -1,0 +1,48 @@
+# EduFlow deployment template. Copy to `eduflow.toml`, then restrict it:
+#   cp eduflow.example.toml eduflow.toml && chmod 600 eduflow.toml
+#
+# Keep real credential values out of this file. Put them in an ignored,
+# owner-private `.env` file and reference them as `${ENVIRONMENT_VARIABLE}`.
+
+chat_id = "oc_replace_me"
+
+[team]
+session = "eduflow-team"
+admins = ["u_admin_replace_me"]
+operators = ["u_operator_replace_me"]
+runtime_operators = ["u_runtime_operator_replace_me"]
+
+[team.agents.manager]
+runtime = "manager_primary"
+role = "manager"
+lazy = false
+
+[team.agents.worker]
+runtime = "worker_primary"
+role = "worker"
+lazy = true
+
+[runtime_registry.manager_primary]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "provider_primary"
+fallback_to = ""
+switch_on = ["spawn_failed", "ready_timeout", "auth_failure"]
+
+[runtime_registry.worker_primary]
+cli = "claude-code"
+model = "sonnet"
+provider = "anthropic-proxy"
+env_profile = "provider_primary"
+fallback_to = ""
+switch_on = ["spawn_failed", "ready_timeout", "auth_failure"]
+
+[env_profiles.provider_primary]
+provider_family = "anthropic_proxy"
+ANTHROPIC_BASE_URL = "https://provider.example"
+ANTHROPIC_AUTH_TOKEN = "${ANTHROPIC_AUTH_TOKEN}"
+ANTHROPIC_MODEL = "replace-with-approved-model"
+
+# Export FEISHU_APP_ID and FEISHU_APP_SECRET through the private `.env`;
+# Feishu authentication reads those environment variables, not TOML fields.

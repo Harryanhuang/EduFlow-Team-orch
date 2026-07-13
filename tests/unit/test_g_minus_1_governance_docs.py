@@ -115,10 +115,22 @@ def test_runbook_is_executable_and_records_provisioned_authorization() -> None:
     assert "human checkpoint" in runbook
     assert "G1-Runtime-Authority" in runbook
     assert "test_human_takeover_recovery_requires_verified_probe_evidence" in runbook
-    config = _read("eduflow.toml")
-    assert 'runtime_operators = ["ou_557e95aadc346010e58dbc71090123f3"]' in config
-    assert 'operators = ["u_<admin_feishu_id>"]' in config
-    assert "deny-all sentinel" in config
+    checkpoint = _read("acceptance/G-1/owner-checkpoint.md")
+    assert "ou_557e95aadc346010e58dbc71090123f3" in checkpoint
+    assert "runtime_operators" in checkpoint
+    assert "deny-all sentinel" in checkpoint
+
+    example = _read("eduflow.example.toml")
+    assert 'chat_id = "oc_replace_me"' in example
+    assert 'ANTHROPIC_AUTH_TOKEN = "${ANTHROPIC_AUTH_TOKEN}"' in example
+    tracked = subprocess.run(
+        ["git", "ls-files", "--error-unmatch", "eduflow.toml"],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    assert tracked.returncode == 1
 
 
 def test_compatibility_debt_ledger_has_bounded_entries() -> None:

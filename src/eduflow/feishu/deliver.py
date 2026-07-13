@@ -151,6 +151,7 @@ def _build_wake_args(agent: str, adapter) -> dict:
     from eduflow.runtime import tunables
     try:
         resolved = config.resolved_agent_config(agent)
+        resolved["agent"] = agent
         spawn_prefix = lifecycle.pane_spawn_prefix_for_runtime(resolved)
         model = config.agent_model(agent)
     except KeyError:

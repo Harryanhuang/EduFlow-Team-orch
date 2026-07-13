@@ -173,6 +173,7 @@ def main(argv: list[str]) -> int:
             runtime_cli = resolved.get("cli", cfg.get("cli", "claude-code"))
             runtime_model = resolved.get("model", config.agent_model(to))
             adapter = get_adapter(runtime_cli)
+            resolved["agent"] = to
             spawn_prefix = lifecycle.pane_spawn_prefix_for_runtime(resolved)
             spawn_cmd = f"{spawn_prefix} {adapter.spawn_cmd(to, runtime_model)}"
             wake_timeout = float(tunables.tunable("wake.lazy_wake_timeout_s", 30.0))

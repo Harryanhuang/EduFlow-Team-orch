@@ -36,6 +36,7 @@ from __future__ import annotations
 import json
 import re
 import shlex
+import stat
 from dataclasses import dataclass
 from functools import lru_cache
 from pathlib import Path
@@ -57,6 +58,23 @@ def _secrets_path() -> Path:
     return Path(override) if override else paths.state_dir() / ".env"
 
 
+def require_private_secret_file(path: Path) -> None:
+    """Reject a credential source accessible by group or other users."""
+    try:
+        mode = stat.S_IMODE(path.stat().st_mode)
+    except FileNotFoundError:
+        return
+    except OSError as exc:
+        raise PermissionError(
+            f"cannot inspect secrets file permissions: {path}"
+        ) from exc
+    if mode & (stat.S_IRWXG | stat.S_IRWXO):
+        raise PermissionError(
+            f"secrets file permissions unsafe for {path}; "
+            "require no group/other access"
+        )
+
+
 @lru_cache(maxsize=1)
 def _cached_load_secrets() -> dict[str, str]:
     """Cache wrapper for load_secrets to avoid repeated file I/O.
@@ -73,8 +91,12 @@ def _load_secrets_impl() -> dict[str, str]:
     Format: `KEY=value` lines, `#` comments, optional `export `, optional
     surrounding quotes. NOT merged into os.environ (see module docstring)."""
     out: dict[str, str] = {}
+    path = _secrets_path()
     try:
-        text = _secrets_path().read_text(encoding="utf-8")
+        require_private_secret_file(path)
+        text = path.read_text(encoding="utf-8")
+    except PermissionError:
+        raise
     except OSError:
         return out
     for raw in text.splitlines():

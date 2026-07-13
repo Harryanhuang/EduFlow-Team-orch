@@ -41,6 +41,8 @@ runtime_config.json
 # eduflow unified config — per-deploy file, like runtime_config.json
 /eduflow.toml
 /eduflow.toml.bak
+/eduflow.local.toml
+/secrets/
 AGENTS.md
 
 # Personal dev convenience — operator-specific Makefile + creds helper.

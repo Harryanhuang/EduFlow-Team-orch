@@ -13,11 +13,35 @@ import json
 import pytest
 
 from eduflow.commands import wake_alert
+from eduflow.commands import residency_wake
+from eduflow.runtime import lifecycle, wake
 from eduflow.store import agent_residency, local_facts
-from helpers import isolated_env, run_cli
+from helpers import attr_patch, isolated_env, run_cli, tmux_patch
 
 
 # ── ALERT card content ─────────────────────────────────────────
+
+
+def test_wake_agent_reports_private_environment_failure_without_traceback():
+    team = {"session": "S", "agents": {"worker": {"cli": "claude-code"}}}
+    with isolated_env(team=team), tmux_patch(
+        has_window=lambda _target: True,
+        preferred_pane_target=lambda target: target,
+    ), attr_patch(
+        wake,
+        is_ready=lambda *_args, **_kwargs: False,
+    ), attr_patch(
+        lifecycle,
+        pane_spawn_prefix_for_runtime=lambda _resolved: (_ for _ in ()).throw(
+            PermissionError("private spawn env file unavailable")
+        ),
+    ):
+        try:
+            result = residency_wake.wake_agent("worker")
+        except PermissionError:
+            result = {"errno": "uncaught_permission_error"}
+
+    assert result["errno"] == "credential_file_permissions"
 
 
 def test_build_wake_failure_card_uses_alert_template():

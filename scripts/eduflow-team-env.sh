@@ -19,6 +19,17 @@ export EDUFLOW_STATE_DIR="${EDUFLOW_STATE_DIR:-$ROOT/.eduflow-team-state}"
 export EDUFLOW_WORKFLOW_DIR="${EDUFLOW_WORKFLOW_DIR:-$ROOT/docs/workflows}"
 
 if [ -f "$ROOT/.env" ]; then
+  if ! python3 - "$ROOT/.env" <<'PY'
+import stat
+import sys
+
+mode = stat.S_IMODE(__import__("os").stat(sys.argv[1]).st_mode)
+raise SystemExit(0 if not mode & (stat.S_IRWXG | stat.S_IRWXO) else 1)
+PY
+  then
+    echo "[eduflow-team-env] ERROR: insecure .env permissions; require no group/other access" >&2
+    return 1 2>/dev/null || exit 1
+  fi
   set -a
   . "$ROOT/.env"
   set +a

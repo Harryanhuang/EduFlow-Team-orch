@@ -19,6 +19,7 @@ Why a new module instead of folding into `runtime/config.py`:
 from __future__ import annotations
 
 import os
+import stat
 import sys
 from pathlib import Path
 from typing import Any
@@ -44,6 +45,21 @@ _CACHE: dict[Path, tuple[float, dict]] = {}
 
 
 _PARSE_WARN_SHOWN: dict[Path, float] = {}  # path → mtime we already warned about
+_PERMISSION_WARN_SHOWN: dict[Path, int] = {}
+
+
+def _warn_insecure_config_permissions(path: Path, mode: int) -> None:
+    """Make a mutable deployment config visible without treating it as secret."""
+    if mode & (stat.S_IWGRP | stat.S_IWOTH):
+        if _PERMISSION_WARN_SHOWN.get(path) != mode:
+            print(
+                f"  ⚠️ insecure config permissions: {path} is group/other writable "
+                f"(mode {mode:04o}); restrict it before production use",
+                file=sys.stderr,
+            )
+            _PERMISSION_WARN_SHOWN[path] = mode
+        return
+    _PERMISSION_WARN_SHOWN.pop(path, None)
 
 
 def _load_toml() -> dict:
@@ -58,12 +74,13 @@ def _load_toml() -> dict:
     failure visible rather than silent (operator must know they have
     a bad toml or their changes won't take effect).
     """
-    import sys
     path = paths.config_file()
     try:
-        mtime = path.stat().st_mtime
+        file_stat = path.stat()
     except FileNotFoundError:
         return {}
+    _warn_insecure_config_permissions(path, stat.S_IMODE(file_stat.st_mode))
+    mtime = file_stat.st_mtime
     cached = _CACHE.get(path)
     if cached and cached[0] == mtime:
         return cached[1]
@@ -163,6 +180,7 @@ def reset_cache() -> None:
     munge the config file."""
     _CACHE.clear()
     _PARSE_WARN_SHOWN.clear()
+    _PERMISSION_WARN_SHOWN.clear()
 
 
 def load() -> dict:

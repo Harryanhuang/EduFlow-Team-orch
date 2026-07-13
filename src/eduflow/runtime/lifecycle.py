@@ -29,6 +29,7 @@ import json
 import os
 import shlex
 import shutil
+import tempfile
 import time
 from pathlib import Path
 
@@ -78,6 +79,11 @@ _PROPAGATED_ENV = (
 )
 
 
+def _is_sensitive_env_key(key: str) -> bool:
+    normalized = key.upper()
+    return normalized.endswith(("_TOKEN", "_API_KEY", "_SECRET", "_PASSWORD"))
+
+
 _PROFILE_ENV_KEYS = (
     "ANTHROPIC_AUTH_TOKEN",
     "ANTHROPIC_BASE_URL",
@@ -114,6 +120,8 @@ def _dotenv_values() -> dict[str, str]:
     env_file = paths.config_file().parent / ".env"
     if not env_file.exists():
         return {}
+    from eduflow.runtime import agent_auth
+    agent_auth.require_private_secret_file(env_file)
     values: dict[str, str] = {}
     try:
         for raw in env_file.read_text(encoding="utf-8").splitlines():
@@ -387,6 +395,8 @@ def pane_env_prefix() -> str:
         parts.append(f"PATH={shlex.quote(path_val)}")
     dotenv = _dotenv_values()
     for var in _PROPAGATED_ENV:
+        if _is_sensitive_env_key(var):
+            continue
         val = env_str(var) or dotenv.get(var, "")
         if val:
             parts.append(f"{var}={shlex.quote(val)}")
@@ -394,34 +404,37 @@ def pane_env_prefix() -> str:
 
 
 def pane_spawn_prefix() -> str:
-    """Short shell prefix for pane startup.
-
-    tmux `send-keys -l` is fragile with very long one-line env prefixes.
-    Prefer a checked-in helper script when present so panes can `source`
-    the runtime env first, then run the actual CLI command.
-    """
-    env_script = paths.config_file().parent / "scripts" / "eduflow-team-env.sh"
-    if env_script.exists():
-        return f". {shlex.quote(str(env_script))} &&"
+    """Build the non-sensitive shell prefix shared by every pane spawn."""
     return pane_env_prefix()
 
 
 def _write_spawn_env_file(agent: str, env_line: str) -> Path | None:
-    """Write env vars to a 0600 private file under spawn-env/.
+    """Write env vars to a unique 0600 file under spawn-env/.
 
-    Returns the path if successful, None on any I/O error. The file is
-    sourced by the pane prefix so credentials never enter tmux scrollback.
+    The caller sources then unlinks the file before launching the CLI, so
+    credentials do not enter tmux scrollback or persist in runtime state.
     """
+    agent = validate_agent_name(agent)
     spawn_dir = paths.state_dir() / "spawn-env"
     try:
-        spawn_dir.mkdir(parents=True, exist_ok=True)
+        spawn_dir.mkdir(parents=True, exist_ok=True, mode=0o700)
     except OSError:
         return None
-    env_file = spawn_dir / f"{agent}.sh"
+    env_file: Path | None = None
     try:
-        env_file.write_text(env_line + "\n", encoding="utf-8")
+        fd, raw_path = tempfile.mkstemp(
+            prefix=f"{agent}-", suffix=".sh", dir=spawn_dir, text=True,
+        )
+        env_file = Path(raw_path)
+        with os.fdopen(fd, "w", encoding="utf-8") as handle:
+            handle.write(env_line + "\n")
         env_file.chmod(0o600)
     except OSError:
+        if env_file is not None:
+            try:
+                env_file.unlink()
+            except OSError:
+                pass
         return None
     return env_file
 
@@ -480,11 +493,15 @@ def pane_spawn_prefix_for_runtime(resolved: dict) -> str:
     if agent_name:
         env_file = _write_spawn_env_file(agent_name, " ".join(parts))
         if env_file and env_file.exists():
-            # Use set -a to auto-export all vars sourced from the file
-            return f"{base} set -a && . {shlex.quote(str(env_file))} && set +a &&"
+            quoted_env_file = shlex.quote(str(env_file))
+            return (
+                f"{base} set -a && . {quoted_env_file} && set +a && "
+                f"rm -f {quoted_env_file} &&"
+            )
 
-    # Fallback: inline (secrets may enter scrollback)
-    return f"{base} {' '.join(parts)}"
+    raise PermissionError(
+        "private spawn env file is unavailable; refusing inline runtime environment"
+    )
 
 
 # Outcome strings returned by provision_pane. Callers print/log differently
@@ -761,7 +778,13 @@ def _spawn_once(agent: str, target: tmux.Target, resolved: dict, *,
         import sys
         print(f"  ⚠️ {agent}: {e}", file=sys.stderr)
         return CONFIG_ERROR, ""
-    cmd = f"{pane_spawn_prefix_for_runtime(resolved)} {adapter.spawn_cmd(agent, model)}"
+    try:
+        prefix = pane_spawn_prefix_for_runtime(resolved)
+    except PermissionError as exc:
+        import sys
+        print(f"  ⚠️ {agent}: {exc}", file=sys.stderr)
+        return CONFIG_ERROR, "credential_file_permissions"
+    cmd = f"{prefix} {adapter.spawn_cmd(agent, model)}"
     # Capture old pane PID before respawn so we can wait for it to exit.
     # `respawn-pane -k` is async — the old process may still be tearing down
     # when the new one starts, causing stale output in the pane.

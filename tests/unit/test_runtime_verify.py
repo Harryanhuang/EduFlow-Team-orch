@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import subprocess
 from concurrent.futures import ThreadPoolExecutor
 
 import pytest
@@ -139,6 +140,35 @@ def test_verify_live_env_still_flags_anthropic_token_for_anthropic_provider(monk
         assert any("ANTHROPIC_AUTH_TOKEN" in m for m in mismatches)
 
 
+def test_verify_live_env_redacts_sensitive_mismatch_values(monkeypatch):
+    expected_token = "unit-test-expected-token"
+    live_token = "unit-test-live-token"
+    with isolated_env():
+        monkeypatch.setattr(
+            verify.config,
+            "env_profile_config",
+            lambda name: (
+                {
+                    "provider_family": "anthropic_proxy",
+                    "ANTHROPIC_AUTH_TOKEN": expected_token,
+                }
+                if name == "p" else {}
+            ),
+        )
+        monkeypatch.setattr(
+            verify,
+            "pane_live_env",
+            lambda *a, **kw: {"ANTHROPIC_AUTH_TOKEN": live_token},
+        )
+        ok, mismatches = verify.verify_live_env_matches_profile("X:0", "p")
+
+    assert ok is False
+    rendered = "\n".join(mismatches)
+    assert "ANTHROPIC_AUTH_TOKEN expected=[REDACTED] live=[REDACTED]" in rendered
+    assert expected_token not in rendered
+    assert live_token not in rendered
+
+
 def test_verify_live_env_skips_openai_api_key_for_codex_provider(monkeypatch):
     with isolated_env():
         monkeypatch.setattr(verify.config, "env_profile_config",
@@ -200,6 +230,35 @@ def test_api_smoke_runtime_failed_on_429(monkeypatch):
         )
         assert verdict == "failed"
         assert "429" in detail
+
+
+def test_api_smoke_runtime_redacts_token_from_timeout_error(monkeypatch):
+    token = "unit-test-timeout-token"
+
+    def fake_run(args, **_kw):
+        raise subprocess.TimeoutExpired(args, 15)
+
+    with isolated_env():
+        monkeypatch.setattr(
+            verify.config,
+            "env_profile_config",
+            lambda name: (
+                {
+                    "ANTHROPIC_BASE_URL": "https://example.invalid",
+                    "ANTHROPIC_AUTH_TOKEN": token,
+                    "ANTHROPIC_MODEL": "test-model",
+                }
+                if name == "p" else {}
+            ),
+        )
+        verdict, detail = verify.api_smoke_runtime(
+            {"cli": "claude-code", "provider": "anthropic-proxy", "env_profile": "p"},
+            run=fake_run,
+        )
+
+    assert verdict == "failed"
+    assert "TimeoutExpired" in detail
+    assert token not in detail
 
 
 def test_record_and_read_switch_events_roundtrip():

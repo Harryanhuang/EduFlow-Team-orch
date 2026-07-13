@@ -347,13 +347,20 @@ role = "assistant"
     with isolated_env() as tmp:
         (tmp / "eduflow.toml").write_text(team_toml, encoding="utf-8")
         with attr_patch(wake, is_ready=fake_is_ready, wake_if_dormant=fake_wake):
-            with attr_patch(tmux,
-                            has_window=lambda *a, **kw: True,
-                            inject=lambda *a, **kw: None):
-                rc, _, _ = run_cli(["send", "anna", "manager", "ping"])
+                with attr_patch(tmux,
+                                has_window=lambda *a, **kw: True,
+                                inject=lambda *a, **kw: None):
+                    rc, _, _ = run_cli(["send", "anna", "manager", "ping"])
+        env_files = list((tmp / "state" / "spawn-env").iterdir())
+        assert len(env_files) == 1
+        env_file = env_files[0]
+        env_contents = env_file.read_text(encoding="utf-8")
     assert rc == 0
-    assert "ANTHROPIC_BASE_URL=https://coding.dashscope.aliyuncs.com/apps/anthropic" in captured["spawn_cmd"]
-    assert "ANTHROPIC_MODEL=qwen3.7-plus" in captured["spawn_cmd"]
+    assert str(env_file) in captured["spawn_cmd"]
+    assert "ANTHROPIC_BASE_URL=https://coding.dashscope.aliyuncs.com/apps/anthropic" not in captured["spawn_cmd"]
+    assert "ANTHROPIC_MODEL=qwen3.7-plus" not in captured["spawn_cmd"]
+    assert "ANTHROPIC_BASE_URL=https://coding.dashscope.aliyuncs.com/apps/anthropic" in env_contents
+    assert "ANTHROPIC_MODEL=qwen3.7-plus" in env_contents
 
 
 def test_send_lazy_wake_prefers_persisted_switched_runtime():

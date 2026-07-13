@@ -80,7 +80,13 @@ def wake_agent(agent: str) -> dict:
         return result
 
     model = resolved.get("model", config.agent_model(agent))
-    spawn_prefix = lifecycle.pane_spawn_prefix_for_runtime(resolved)
+    resolved["agent"] = agent
+    try:
+        spawn_prefix = lifecycle.pane_spawn_prefix_for_runtime(resolved)
+    except PermissionError:
+        result["errno"] = "credential_file_permissions"
+        _fire_alert(agent, "spawn_failed")
+        return result
     spawn_cmd = f"{spawn_prefix} {adapter.spawn_cmd(agent, model)}"
     wake_timeout = float(tunables.tunable("wake.lazy_wake_timeout_s", 30.0))
     def _on_woken() -> None:
