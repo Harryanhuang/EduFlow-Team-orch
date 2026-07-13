@@ -33,16 +33,25 @@ ARG EDUFLOW_REVISION
 # Pin apt index once; install in one layer to keep the image lean.
 # `curl` is required by @larksuite/cli's postinstall script (downloads
 # a platform-specific binary blob); slim image doesn't ship it.
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
+RUN set -eu; \
+    updated=0; \
+    for attempt in 1 2 3; do \
+        rm -rf /var/lib/apt/lists/*; \
+        if apt-get -o Acquire::Retries=2 update; then \
+            updated=1; \
+            break; \
+        fi; \
+    done; \
+    test "$updated" = 1; \
+    apt-get -o Acquire::Retries=2 install -y --no-install-recommends \
         tmux \
         nodejs \
         npm \
         git \
         curl \
         ca-certificates \
-        procps \
-    && rm -rf /var/lib/apt/lists/*
+        procps; \
+    rm -rf /var/lib/apt/lists/*
 # `procps` ships `ps` / `uptime` / `free`. Without it the slim image
 # has none of those binaries and `_agent_usage` (ps walk for per-agent
 # CPU+RSS) returns zero for every agent — boss saw "manager 0.0% / 0 B"

@@ -18,6 +18,12 @@ def test_clean_install_surfaces_are_standard_installable():
     assert "COPY setup.py ./" in dockerfile
     assert "EDUFLOW_BUILD_REVISION" in dockerfile
     assert "sha256sum" in dockerfile
+    assert "Acquire::Retries=2" in dockerfile
+    assert "for attempt in 1 2 3" in dockerfile
+    retry_loop = dockerfile.index("for attempt in 1 2 3")
+    clear_lists = dockerfile.index("rm -rf /var/lib/apt/lists/*", retry_loop)
+    apt_update = dockerfile.index("apt-get -o Acquire::Retries=2 update", retry_loop)
+    assert retry_loop < clear_lists < apt_update
     assert "pip install ." in readme
     assert smoke.is_file()
     assert "-m venv" in smoke.read_text(encoding="utf-8")
