@@ -154,13 +154,13 @@ export LARK_CLI_NO_PROXY=1                 # required if HTTPS_PROXY is set
 export EDUFLOW_LARK_SEND_AS=bot         # bot identity for headless smoke;
                                            # without it `say` defaults to user OAuth
 
-# 2. install (editable, in a venv — PEP 668 means no bare pip on macOS Homebrew)
+# 2. install (standard package install in a venv — PEP 668 means no bare pip on macOS Homebrew)
 #    macOS note: /usr/bin/python3 is 3.9.6 — too old. Use brew/pyenv:
 #      brew install python@3.12 && /opt/homebrew/bin/python3.12 -m venv .venv
 #    Linux: python3 from your distro is usually fine if it's ≥3.10.
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -e .
+pip install .
 
 # 3. bootstrap config (writes eduflow.toml in cwd)
 eduflow init
@@ -209,7 +209,9 @@ mkdir -p ~/.claude
 security find-generic-password -s "Claude Code-credentials" -w \
   > ~/.claude/.credentials.json
 
-# 3. build the image and start the container
+# 3. build the image and start the container. The revision is embedded
+#    in the wheel so `eduflow version --json` remains traceable at runtime.
+export EDUFLOW_REVISION="$(git rev-parse HEAD)"
 docker compose build
 docker compose up -d
 

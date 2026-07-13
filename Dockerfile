@@ -28,6 +28,7 @@ ARG CLAUDE_CODE_VERSION=2.1.206
 ARG OPENAI_CODEX_VERSION=0.144.1
 ARG KIMI_CLI_VERSION=1.48.0
 ARG UV_VERSION=0.5.0
+ARG EDUFLOW_REVISION
 
 # Pin apt index once; install in one layer to keep the image lean.
 # `curl` is required by @larksuite/cli's postinstall script (downloads
@@ -110,9 +111,16 @@ WORKDIR /app
 # Tests / docs / scenarios stay out of the image to keep it small;
 # devs who want the full repo should bind-mount the working tree.
 COPY pyproject.toml ./
+COPY setup.py ./
 COPY src/ ./src/
 
-RUN pip install --no-cache-dir -e .
+RUN set -eu; \
+    if [ -n "$EDUFLOW_REVISION" ]; then \
+        build_revision="$EDUFLOW_REVISION"; \
+    else \
+        build_revision="sha256:$(find pyproject.toml setup.py src -type f -print0 | LC_ALL=C sort -z | xargs -0 sha256sum | sha256sum | cut -d ' ' -f1)"; \
+    fi; \
+    EDUFLOW_BUILD_REVISION="$build_revision" pip install --no-cache-dir .
 
 # Create a non-root runtime user and ensure all state / credential
 # directories are writable by that user. Task 6.2 wires compose mounts

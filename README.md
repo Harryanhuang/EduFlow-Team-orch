@@ -179,7 +179,7 @@ Use the repo shim for local work. 建议始终使用仓库内的 `./scripts/eduf
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -e .
+pip install .
 
 ./scripts/eduflowteam --help
 ```

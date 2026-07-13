@@ -38,7 +38,10 @@ services:
     restart: unless-stopped
 
   eduflow:
-    build: .
+    build:
+      context: .
+      args:
+        EDUFLOW_REVISION: ${EDUFLOW_REVISION:?export EDUFLOW_REVISION=$(git rev-parse HEAD) before building}
     image: eduflow:dev
     volumes:
       # Bind-mount source RW so Python edits hot-reload without

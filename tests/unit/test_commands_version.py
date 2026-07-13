@@ -1,6 +1,9 @@
 """Tests for `eduflow version`."""
 from __future__ import annotations
 
+import json
+import inspect
+
 from helpers import run_cli
 from eduflow.commands import version as version_cmd
 
@@ -20,6 +23,25 @@ def test_version_help_returns_zero():
     rc, out, _ = run_cli(["version", "--help"])
     assert rc == 0
     assert "usage: eduflow version" in out
+
+
+def test_version_json_reports_runtime_dependency_and_revision():
+    rc, out, _ = run_cli(["version", "--json"])
+
+    assert rc == 0
+    payload = json.loads(out)
+    assert payload["eduflow"]
+    assert payload["flow_memory"]
+    assert "revision" in payload
+
+
+def test_revision_uses_embedded_build_stamp_without_git_on_path(monkeypatch):
+    """Installed packages must not shell out to git for their revision."""
+    monkeypatch.delenv("EDUFLOW_REVISION", raising=False)
+    monkeypatch.setattr(version_cmd, "BUILD_REVISION", "abc123", raising=False)
+
+    assert version_cmd._read_revision() == "abc123"
+    assert "subprocess" not in inspect.getsource(version_cmd)
 
 
 def test_version_falls_back_when_metadata_missing():
