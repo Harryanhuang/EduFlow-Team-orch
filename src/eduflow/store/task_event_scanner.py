@@ -4435,7 +4435,16 @@ def _high_priority_inbox_blocking_findings(*, now: int) -> list[dict]:
         if delegated_answer is not None:
             rows.append(delegated_answer)
             continue
-        if is_unread and _message_has_later_direct_process_visibility(msg):
+        later_production = any(
+            int(row.get("created_at") or 0) >= created_at
+            and _is_production_text(str(row.get("content") or ""))
+            for row in _recent_agent_evidence(agent)
+        )
+        if (
+            is_unread
+            and _message_has_later_direct_process_visibility(msg)
+            and not later_production
+        ):
             evidence = (
                 "later direct process visibility exists for the same inbox instruction; "
                 "the unread bit is stale"

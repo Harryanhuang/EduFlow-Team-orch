@@ -133,7 +133,7 @@ def test_scan_manager_anomalies_warns_before_context_exhaustion():
         assert "context_usage=91%" in compact["evidence_summary"]
 
 
-def test_scan_manager_anomalies_queues_high_priority_unacked_worker_producing():
+def test_scan_manager_anomalies_keeps_high_priority_unacked_worker_producing_live():
     with isolated_env():
         msg_id = local_facts.append_message(
             "worker_course",
@@ -153,9 +153,11 @@ def test_scan_manager_anomalies_queues_high_priority_unacked_worker_producing():
             if row.get("message_id") == msg_id
         ]
 
-        assert len(flagged) == 1
-        assert flagged[0]["category"] == "inbox_reconciliation_pending"
-        assert flagged[0]["recommended_action"] == "review_reconciliation_queue"
+        assert local_facts.get_message(msg_id)["ack_state"] == "pending"
+        categories = {row["category"] for row in flagged}
+        assert "high_priority_inbox_unread_blocking" in categories
+        assert "worker_high_priority_unacked_while_producing" in categories
+        assert not local_facts.list_inbox_reconciliation_queue()
 
 
 def test_scan_manager_anomalies_flags_status_pane_truth_conflict():
