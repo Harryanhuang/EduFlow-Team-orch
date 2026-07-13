@@ -293,38 +293,19 @@ if mcp is not None:
         return {"memory_id": memory_id, "deleted": ok}
 
     @mcp.tool()
-    def memory_sensitive_setup(
-        password: str,
-        question1: str,
-        answer1: str,
-        question2: str,
-        answer2: str,
-        question3: str,
-        answer3: str,
-    ) -> dict:
-        """Set up sensitive storage with password and 3 security questions."""
+    def memory_sensitive_setup(password: str) -> dict:
+        """Set up sensitive storage and return the one-time recovery key."""
         _init_db()
         from eduflow.memory.sensitive import setup_password
-        questions = [
-            {"question": question1, "answer": answer1},
-            {"question": question2, "answer": answer2},
-            {"question": question3, "answer": answer3},
-        ]
-        setup_password(password, questions)
-        return {"status": "configured", "questions": 3}
+        result = setup_password(password)
+        return {"status": "configured", "recovery_key": result["recovery_key"]}
 
     @mcp.tool()
-    def memory_sensitive_recover(
-        answer1: str,
-        answer2: str,
-        answer3: str,
-        new_password: str,
-    ) -> dict:
-        """Reset password using security questions (2 of 3 required)."""
+    def memory_sensitive_recover(recovery_key: str, new_password: str) -> dict:
+        """Reset a sensitive-storage password with the recovery key."""
         _init_db()
-        from eduflow.memory.sensitive import recover
-        answers = {"q0": answer1, "q1": answer2, "q2": answer3}
-        recover(answers, new_password)
+        from eduflow.memory.sensitive import recover_with_key
+        recover_with_key(recovery_key, new_password)
         return {"status": "recovered"}
 
 

@@ -1,31 +1,34 @@
 """Sensitive data encryption and session management for EduFlow Memory.
 
 Provides password-protected encrypted storage for sensitive memories (API keys,
-SSH credentials, etc.) with security question recovery.
+SSH credentials, etc.) with a one-time recovery key.
 
 Design:
-  - Password hash stored in sensitive_config table (PBKDF2, 480K iterations)
-  - Sensitive memories encrypted with AES-256-GCM
+  - A random DEK encrypts sensitive memories with AES-256-GCM
+  - Password and recovery key independently wrap that DEK
   - Session unlock lasts 60 minutes
-  - Security questions for password recovery (2 of 3 required)
   - Audit logging with automatic sensitive field redaction
 """
 from __future__ import annotations
 
 import base64
 import hashlib
+import hmac
 import json
 import os
 import time
 from datetime import datetime, timezone
 
 from eduflow.memory.db import get_conn, init_schema
+from eduflow.memory import sensitive_migration
 
 # Session timeout: 60 minutes
 SESSION_TIMEOUT_S = 3600
 
 # PBKDF2 iterations (OWASP recommended)
 PBKDF2_ITERATIONS = 480_000
+ENVELOPE_VERSION = 3
+PASSWORD_VERIFIER_VERSION = 2
 
 # Password policy
 MIN_PASSWORD_LEN = 6
@@ -33,6 +36,7 @@ MIN_PASSWORD_LEN = 6
 # In-memory session state (per-process)
 _unlocked_until: float = 0.0
 _derived_key: bytes = b""
+_session_generation: int = -1
 
 
 def _now_iso() -> str:
@@ -70,21 +74,137 @@ def _derive_key(password: str, salt: bytes) -> bytes:
 
 
 def _hash_password(password: str, salt: bytes) -> str:
-    """Hash password for storage (returns base64)."""
-    key = _derive_key(password, salt)
-    return base64.b64encode(key).decode("ascii")
+    """Create a domain-separated password verifier for storage."""
+    root = _derive_key(password, salt)
+    verifier = hmac.new(
+        root, b"eduflow sensitive v3 password verifier", hashlib.sha256
+    ).digest()
+    return base64.b64encode(verifier).decode("ascii")
+
+
+def _hash_password_legacy(password: str, salt: bytes) -> str:
+    """Match the pre-V3 verifier, which was also the old encryption key."""
+    return base64.b64encode(_derive_key(password, salt)).decode("ascii")
+
+
+def _derive_password_kek(password: str, salt: bytes) -> bytes:
+    """Derive a DEK-wrapping KEK that cannot be reconstructed from the verifier."""
+    root = _derive_key(password, salt)
+    return hmac.new(
+        root, b"eduflow sensitive v3 password kek", hashlib.sha256
+    ).digest()
 
 
 def _verify_password(password: str, stored_hash: str, salt: bytes) -> bool:
     """Verify password against stored hash."""
     computed = _hash_password(password, salt)
-    # Constant-time comparison
-    if len(computed) != len(stored_hash):
-        return False
-    result = 0
-    for a, b in zip(computed.encode(), stored_hash.encode()):
-        result |= a ^ b
-    return result == 0
+    return hmac.compare_digest(computed, stored_hash)
+
+
+def _verify_legacy_password(password: str, stored_hash: str, salt: bytes) -> bool:
+    return hmac.compare_digest(_hash_password_legacy(password, salt), stored_hash)
+
+
+def _generate_recovery_key() -> str:
+    """Generate a printable, high-entropy recovery secret."""
+    return base64.urlsafe_b64encode(os.urandom(32)).decode("ascii")
+
+
+def _derive_recovery_kek(recovery_key: str, salt: bytes) -> bytes:
+    return _derive_key(recovery_key, salt)
+
+
+def _migrate_legacy_storage(conn, row, password: str) -> tuple[bytes, str]:
+    """Atomically replace password-direct records after full verification."""
+    del row
+    conn.execute("BEGIN IMMEDIATE")
+    try:
+        config = conn.execute(
+            "SELECT * FROM sensitive_config WHERE id='singleton'"
+        ).fetchone()
+        if not config:
+            raise RuntimeError("Sensitive storage not configured")
+        legacy_salt = base64.b64decode(config["salt"])
+        if not _verify_legacy_password(password, config["password_hash"], legacy_salt):
+            raise ValueError("Invalid password")
+        legacy_key = _derive_key(password, legacy_salt)
+        snapshot = sensitive_migration.snapshot_legacy_storage(conn)
+        backup = sensitive_migration.write_durable_legacy_backup(conn, snapshot)
+        dek = os.urandom(32)
+        replacements = sensitive_migration.prepare_verified_record_migration(
+            snapshot, legacy_key, dek, encrypt=_encrypt, decrypt=_decrypt
+        )
+        recovery_key = _generate_recovery_key()
+        recovery_salt = _generate_salt()
+        password_wrapped_dek, password_wrap_nonce, password_wrap_tag = _encrypt(
+            _derive_password_kek(password, legacy_salt), dek
+        )
+        recovery_wrapped_dek, recovery_wrap_nonce, recovery_wrap_tag = _encrypt(
+            _derive_recovery_kek(recovery_key, recovery_salt), dek
+        )
+        for ciphertext, nonce, tag, memory_id in replacements:
+            conn.execute(
+                """UPDATE sensitive_memory_items
+                   SET encrypted_data=?, nonce=?, tag=?, updated_at=? WHERE id=?""",
+                (ciphertext, nonce, tag, _now_iso(), memory_id),
+            )
+        conn.execute(
+            """UPDATE sensitive_config
+               SET password_hash=?, schema_version=?, password_verifier_version=?,
+                   envelope_generation=envelope_generation + 1,
+                   questions_json='[]', password_wrapped_dek=?,
+                   password_wrap_nonce=?, password_wrap_tag=?, recovery_salt=?,
+                   recovery_wrapped_dek=?, recovery_wrap_nonce=?, recovery_wrap_tag=?,
+                   updated_at=? WHERE id='singleton'""",
+            (_hash_password(password, legacy_salt), ENVELOPE_VERSION,
+             PASSWORD_VERIFIER_VERSION, password_wrapped_dek, password_wrap_nonce, password_wrap_tag,
+             base64.b64encode(recovery_salt).decode("ascii"), recovery_wrapped_dek,
+             recovery_wrap_nonce, recovery_wrap_tag, _now_iso()),
+        )
+        sensitive_migration.verify_persisted_record_migration(
+            conn, snapshot, legacy_key, dek, decrypt=_decrypt
+        )
+        sensitive_migration.finalize_verified_migration_report(backup, snapshot)
+        conn.commit()
+    except Exception:
+        conn.rollback()
+        raise
+    return dek, recovery_key
+
+
+def _upgrade_v2_envelope(conn, password: str) -> bytes:
+    """Replace V2's leaked verifier/key material without rewriting records."""
+    conn.execute("BEGIN IMMEDIATE")
+    try:
+        row = conn.execute(
+            "SELECT * FROM sensitive_config WHERE id='singleton'"
+        ).fetchone()
+        if not row or row["schema_version"] != 2:
+            raise RuntimeError("sensitive storage changed during upgrade; retry")
+        salt = base64.b64decode(row["salt"])
+        if not _verify_legacy_password(password, row["password_hash"], salt):
+            raise ValueError("Invalid password")
+        dek = _decrypt(
+            _derive_key(password, salt), row["password_wrapped_dek"],
+            row["password_wrap_nonce"], row["password_wrap_tag"],
+        )
+        wrapped_dek, wrap_nonce, wrap_tag = _encrypt(
+            _derive_password_kek(password, salt), dek
+        )
+        conn.execute(
+            """UPDATE sensitive_config
+               SET password_hash=?, schema_version=?, password_verifier_version=?,
+                   envelope_generation=envelope_generation + 1,
+                   password_wrapped_dek=?, password_wrap_nonce=?, password_wrap_tag=?,
+                   updated_at=? WHERE id='singleton'""",
+            (_hash_password(password, salt), ENVELOPE_VERSION,
+             PASSWORD_VERIFIER_VERSION, wrapped_dek, wrap_nonce, wrap_tag, _now_iso()),
+        )
+        conn.commit()
+    except Exception:
+        conn.rollback()
+        raise
+    return dek
 
 
 def _encrypt(key: bytes, plaintext: bytes) -> tuple[bytes, bytes, bytes]:
@@ -120,108 +240,165 @@ def is_configured() -> bool:
     return (row[0] or 0) > 0
 
 
-def setup_password(password: str, questions: list[dict]) -> None:
-    """Set up password and security questions for the first time.
+def setup_password(password: str, questions: list[dict] | None = None) -> dict:
+    """Set up password-protected storage and issue a one-time recovery key.
 
     Args:
         password: User password (min 6 chars)
-        questions: List of 3 dicts with keys: question, answer
-                   Example: [{"question": "Your pet's name?", "answer": "fluffy"}, ...]
+        questions: Ignored legacy argument retained only for API compatibility.
     """
     if len(password) < MIN_PASSWORD_LEN:
         raise ValueError(f"Password must be at least {MIN_PASSWORD_LEN} characters")
-    if len(questions) < 3:
-        raise ValueError("At least 3 security questions required")
 
     init_schema()
     salt = _generate_salt()
     password_hash = _hash_password(password, salt)
-
-    # Hash security question answers
-    hashed_questions = []
-    for q in questions[:3]:
-        answer_normalized = q["answer"].strip().lower()
-        answer_hash = _hash_password(answer_normalized, salt)
-        hashed_questions.append({
-            "question": q["question"],
-            "answer_hash": answer_hash,
-        })
-
-    questions_json = json.dumps(hashed_questions, ensure_ascii=False)
+    dek = os.urandom(32)
+    password_wrapped_dek, password_wrap_nonce, password_wrap_tag = _encrypt(
+        _derive_password_kek(password, salt), dek
+    )
+    recovery_key = _generate_recovery_key()
+    recovery_salt = _generate_salt()
+    recovery_wrapped_dek, recovery_wrap_nonce, recovery_wrap_tag = _encrypt(
+        _derive_recovery_kek(recovery_key, recovery_salt), dek
+    )
     now = _now_iso()
 
     conn = get_conn()
-    conn.execute(
-        """INSERT OR REPLACE INTO sensitive_config
-           (id, password_hash, salt, questions_json, created_at, updated_at)
-           VALUES ('singleton', ?, ?, ?, ?, ?)""",
+    try:
+        conn.execute("BEGIN IMMEDIATE")
+        if conn.execute(
+            "SELECT 1 FROM sensitive_config WHERE id='singleton'"
+        ).fetchone():
+            raise RuntimeError("Sensitive storage already configured")
+        conn.execute(
+        """INSERT INTO sensitive_config
+           (id, password_hash, salt, questions_json, schema_version, password_verifier_version, envelope_generation,
+            password_wrapped_dek, password_wrap_nonce, password_wrap_tag,
+            recovery_salt, recovery_wrapped_dek, recovery_wrap_nonce, recovery_wrap_tag,
+            created_at, updated_at)
+           VALUES ('singleton', ?, ?, '[]', ?, ?, 1, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
         (password_hash, base64.b64encode(salt).decode("ascii"),
-         questions_json, now, now),
-    )
-    conn.commit()
+         ENVELOPE_VERSION, PASSWORD_VERIFIER_VERSION,
+         password_wrapped_dek, password_wrap_nonce, password_wrap_tag,
+         base64.b64encode(recovery_salt).decode("ascii"), recovery_wrapped_dek,
+         recovery_wrap_nonce, recovery_wrap_tag, now, now),
+        )
+        conn.commit()
+    except Exception:
+        conn.rollback()
+        raise
+    return {"recovery_key": recovery_key}
 
 
 def change_password(old_password: str, new_password: str) -> None:
-    """Change password. Re-encrypts all sensitive data with new key."""
+    """Change password by rewrapping the DEK without rewriting records."""
     if len(new_password) < MIN_PASSWORD_LEN:
         raise ValueError(f"Password must be at least {MIN_PASSWORD_LEN} characters")
 
+    init_schema()
     conn = get_conn()
-    row = conn.execute("SELECT password_hash, salt FROM sensitive_config WHERE id='singleton'").fetchone()
+    row = conn.execute("SELECT * FROM sensitive_config WHERE id='singleton'").fetchone()
     if not row:
         raise RuntimeError("Sensitive storage not configured")
 
     salt = base64.b64decode(row["salt"])
+    if row["schema_version"] < ENVELOPE_VERSION:
+        raise RuntimeError("sensitive storage migration required before changing password")
     if not _verify_password(old_password, row["password_hash"], salt):
         raise ValueError("Invalid current password")
 
-    # Decrypt all with old key, re-encrypt with new key
-    old_key = _derive_key(old_password, salt)
+    old_kek = _derive_password_kek(old_password, salt)
+    dek = _decrypt(
+        old_kek,
+        row["password_wrapped_dek"],
+        row["password_wrap_nonce"],
+        row["password_wrap_tag"],
+    )
     new_salt = _generate_salt()
-    new_key = _derive_key(new_password, new_salt)
     new_hash = _hash_password(new_password, new_salt)
-
-    # Prepare every replacement before mutating a row. A corrupt later
-    # record must leave earlier rows decryptable with the existing password.
-    items = conn.execute("SELECT id, encrypted_data, nonce, tag FROM sensitive_memory_items").fetchall()
-    replacements = []
-    for item in items:
-        plaintext = _decrypt(old_key, item["encrypted_data"], item["nonce"], item["tag"])
-        ct, nonce, tag = _encrypt(new_key, plaintext)
-        replacements.append((ct, nonce, tag, item["id"]))
+    wrapped_dek, wrap_nonce, wrap_tag = _encrypt(_derive_password_kek(new_password, new_salt), dek)
     try:
         conn.execute("BEGIN IMMEDIATE")
-        for ct, nonce, tag, item_id in replacements:
-            conn.execute(
-                "UPDATE sensitive_memory_items SET encrypted_data=?, nonce=?, tag=?, updated_at=? WHERE id=?",
-                (ct, nonce, tag, _now_iso(), item_id),
-            )
-
-        # Re-encrypt security questions
-        questions_row = conn.execute("SELECT questions_json FROM sensitive_config WHERE id='singleton'").fetchone()
-        if questions_row:
-            questions_json = questions_row["questions_json"]
-            # Re-hash answers with new salt
-            questions = json.loads(questions_json)
-            rehashed = []
-            for q in questions:
-                # We don't have the original answers, so we keep the old hashes
-                # but encrypt the whole JSON with new key
-                rehashed.append(q)
-            conn.execute(
-                "UPDATE sensitive_config SET password_hash=?, salt=?, questions_json=?, updated_at=? WHERE id='singleton'",
-                (new_hash, base64.b64encode(new_salt).decode("ascii"),
-                 json.dumps(rehashed, ensure_ascii=False), _now_iso()),
-            )
+        result = conn.execute(
+            """UPDATE sensitive_config
+               SET password_hash=?, salt=?, password_verifier_version=?, envelope_generation=envelope_generation + 1,
+                   password_wrapped_dek=?, password_wrap_nonce=?,
+                   password_wrap_tag=?, updated_at=?
+               WHERE id='singleton' AND updated_at=?""",
+            (new_hash, base64.b64encode(new_salt).decode("ascii"), PASSWORD_VERIFIER_VERSION, wrapped_dek,
+             wrap_nonce, wrap_tag, _now_iso(), row["updated_at"]),
+        )
+        if result.rowcount != 1:
+            raise RuntimeError("sensitive storage changed during password update; retry")
         conn.commit()
     except Exception:
         conn.rollback()
         raise
 
     # Update session with new key
-    global _derived_key, _unlocked_until
-    _derived_key = new_key
+    global _derived_key, _unlocked_until, _session_generation
+    _derived_key = dek
+    _session_generation = conn.execute(
+        "SELECT envelope_generation FROM sensitive_config WHERE id='singleton'"
+    ).fetchone()["envelope_generation"]
     _unlocked_until = time.time() + SESSION_TIMEOUT_S
+
+
+def recover_with_key(recovery_key: str, new_password: str) -> None:
+    """Set a new password by rewrapping the DEK with the recovery key."""
+    if len(new_password) < MIN_PASSWORD_LEN:
+        raise ValueError(f"Password must be at least {MIN_PASSWORD_LEN} characters")
+
+    init_schema()
+    conn = get_conn()
+    row = conn.execute("SELECT * FROM sensitive_config WHERE id='singleton'").fetchone()
+    if not row:
+        raise RuntimeError("Sensitive storage not configured")
+    if row["schema_version"] < 2:
+        raise RuntimeError("sensitive storage migration required before recovery")
+
+    try:
+        recovery_salt = base64.b64decode(row["recovery_salt"])
+        dek = _decrypt(
+            _derive_recovery_kek(recovery_key, recovery_salt),
+            row["recovery_wrapped_dek"],
+            row["recovery_wrap_nonce"],
+            row["recovery_wrap_tag"],
+        )
+    except RuntimeError:
+        _audit_log("sensitive_recovery_failed", {"reason": "invalid_recovery_key"})
+        raise ValueError("Invalid recovery key") from None
+
+    new_salt = _generate_salt()
+    password_hash = _hash_password(new_password, new_salt)
+    wrapped_dek, wrap_nonce, wrap_tag = _encrypt(_derive_password_kek(new_password, new_salt), dek)
+    try:
+        conn.execute("BEGIN IMMEDIATE")
+        result = conn.execute(
+            """UPDATE sensitive_config
+               SET password_hash=?, salt=?, schema_version=?, password_verifier_version=?,
+                   envelope_generation=envelope_generation + 1, password_wrapped_dek=?, password_wrap_nonce=?,
+                   password_wrap_tag=?, updated_at=?
+               WHERE id='singleton' AND updated_at=?""",
+            (password_hash, base64.b64encode(new_salt).decode("ascii"), ENVELOPE_VERSION,
+             PASSWORD_VERIFIER_VERSION, wrapped_dek,
+             wrap_nonce, wrap_tag, _now_iso(), row["updated_at"]),
+        )
+        if result.rowcount != 1:
+            raise RuntimeError("sensitive storage changed during password recovery; retry")
+        conn.commit()
+    except Exception:
+        conn.rollback()
+        raise
+
+    global _derived_key, _unlocked_until, _session_generation
+    _derived_key = dek
+    _session_generation = conn.execute(
+        "SELECT envelope_generation FROM sensitive_config WHERE id='singleton'"
+    ).fetchone()["envelope_generation"]
+    _unlocked_until = time.time() + SESSION_TIMEOUT_S
+    _audit_log("sensitive_password_recovered", {"method": "recovery_key"})
 
 
 def unlock(password: str) -> dict:
@@ -229,30 +406,51 @@ def unlock(password: str) -> dict:
 
     Raises ValueError if password is wrong.
     """
-    global _unlocked_until, _derived_key
+    global _unlocked_until, _derived_key, _session_generation
 
+    init_schema()
     conn = get_conn()
-    row = conn.execute("SELECT password_hash, salt FROM sensitive_config WHERE id='singleton'").fetchone()
+    row = conn.execute("SELECT * FROM sensitive_config WHERE id='singleton'").fetchone()
     if not row:
         raise RuntimeError("Sensitive storage not configured. Run: eduflow memory sensitive setup")
 
     salt = base64.b64decode(row["salt"])
-    if not _verify_password(password, row["password_hash"], salt):
+    legacy_envelope = row["schema_version"] < ENVELOPE_VERSION
+    verifier = _verify_legacy_password if legacy_envelope else _verify_password
+    if not verifier(password, row["password_hash"], salt):
         _audit_log("sensitive_unlock_failed", {"reason": "invalid_password"})
         raise ValueError("Invalid password")
 
-    _derived_key = _derive_key(password, salt)
+    recovery_key = ""
+    if row["schema_version"] < 2:
+        _derived_key, recovery_key = _migrate_legacy_storage(conn, row, password)
+    elif row["schema_version"] < ENVELOPE_VERSION:
+        _derived_key = _upgrade_v2_envelope(conn, password)
+    else:
+        _derived_key = _decrypt(
+            _derive_password_kek(password, salt),
+            row["password_wrapped_dek"],
+            row["password_wrap_nonce"],
+            row["password_wrap_tag"],
+        )
+    _session_generation = get_conn().execute(
+        "SELECT envelope_generation FROM sensitive_config WHERE id='singleton'"
+    ).fetchone()["envelope_generation"]
     _unlocked_until = time.time() + SESSION_TIMEOUT_S
 
     _audit_log("sensitive_unlocked", {"expires_in": SESSION_TIMEOUT_S})
-    return {"status": "unlocked", "expires_in": SESSION_TIMEOUT_S}
+    result = {"status": "unlocked", "expires_in": SESSION_TIMEOUT_S}
+    if recovery_key:
+        result["recovery_key"] = recovery_key
+    return result
 
 
 def lock() -> None:
     """Immediately lock sensitive storage."""
-    global _unlocked_until, _derived_key
+    global _unlocked_until, _derived_key, _session_generation
     _unlocked_until = 0.0
     _derived_key = b""
+    _session_generation = -1
     _audit_log("sensitive_locked", {})
 
 
@@ -272,66 +470,14 @@ def status() -> dict:
 
 
 def recover(answers: dict[str, str], new_password: str) -> None:
-    """Reset password using security questions (2 of 3 required).
-
-    Args:
-        answers: dict mapping question index ("q0", "q1", "q2") to answer
-        new_password: new password to set
-    """
-    if len(new_password) < MIN_PASSWORD_LEN:
-        raise ValueError(f"Password must be at least {MIN_PASSWORD_LEN} characters")
-
-    conn = get_conn()
-    row = conn.execute("SELECT salt, questions_json FROM sensitive_config WHERE id='singleton'").fetchone()
-    if not row:
-        raise RuntimeError("Sensitive storage not configured")
-
-    salt = base64.b64decode(row["salt"])
-    questions = json.loads(row["questions_json"])
-
-    # Verify answers (2 of 3)
-    correct = 0
-    for i, q in enumerate(questions):
-        qkey = f"q{i}"
-        if qkey in answers:
-            answer_normalized = answers[qkey].strip().lower()
-            answer_hash = _hash_password(answer_normalized, salt)
-            if answer_hash == q["answer_hash"]:
-                correct += 1
-
-    if correct < 2:
-        _audit_log("sensitive_recovery_failed", {"correct": correct})
-        raise ValueError(f"Need 2 correct answers, got {correct}")
-
-    item_count = conn.execute(
-        "SELECT COUNT(*) FROM sensitive_memory_items"
-    ).fetchone()[0]
-    if item_count:
-        raise RuntimeError(
-            "sensitive recovery requires explicit migration before changing the password"
-        )
-
-    # Reset password
-    new_salt = _generate_salt()
-    new_hash = _hash_password(new_password, new_salt)
-
-    conn.execute(
-        "UPDATE sensitive_config SET password_hash=?, salt=?, updated_at=? WHERE id='singleton'",
-        (new_hash, base64.b64encode(new_salt).decode("ascii"), _now_iso()),
-    )
-    conn.commit()
-
-    _audit_log("sensitive_password_recovered", {"method": "security_questions"})
+    """Reject retired security-question recovery without inspecting answers."""
+    del answers, new_password
+    raise RuntimeError("security-question recovery is permanently disabled; use a recovery key")
 
 
 def get_security_questions() -> list[str]:
-    """Return the security questions (without answers)."""
-    conn = get_conn()
-    row = conn.execute("SELECT questions_json FROM sensitive_config WHERE id='singleton'").fetchone()
-    if not row:
-        return []
-    questions = json.loads(row["questions_json"])
-    return [q["question"] for q in questions]
+    """Security questions are retired and must never be exposed again."""
+    return []
 
 
 # ── Sensitive memory CRUD ───────────────────────────────────────────
@@ -351,25 +497,38 @@ def add_sensitive(
         raise PermissionError("Sensitive storage is locked. Unlock first.")
 
     init_schema()
-    now = _now_iso()
-    mid = _next_id(now)
-
-    # Encrypt content
-    plaintext = json.dumps({
-        "content": content,
-        "created_by": created_by,
-        "created_at": now,
-    }, ensure_ascii=False).encode("utf-8")
-    ct, nonce, tag = _encrypt(_derived_key, plaintext)
-
     conn = get_conn()
-    conn.execute(
-        """INSERT INTO sensitive_memory_items
-           (id, scope, kind, encrypted_data, nonce, tag, status, created_at, updated_at)
-           VALUES (?, ?, ?, ?, ?, ?, 'confirmed', ?, ?)""",
-        (mid, scope, kind, ct, nonce, tag, now, now),
-    )
-    conn.commit()
+    session_key = _derived_key
+    session_generation = _session_generation
+    try:
+        conn.execute("BEGIN IMMEDIATE")
+        config = conn.execute(
+            "SELECT schema_version, envelope_generation FROM sensitive_config WHERE id='singleton'"
+        ).fetchone()
+        if (
+            not config
+            or config["schema_version"] != ENVELOPE_VERSION
+            or config["envelope_generation"] != session_generation
+        ):
+            raise PermissionError("Sensitive storage session is stale. Unlock again.")
+        now = _now_iso()
+        mid = _next_id(now)
+        plaintext = json.dumps({
+            "content": content,
+            "created_by": created_by,
+            "created_at": now,
+        }, ensure_ascii=False).encode("utf-8")
+        ct, nonce, tag = _encrypt(session_key, plaintext)
+        conn.execute(
+            """INSERT INTO sensitive_memory_items
+               (id, scope, kind, encrypted_data, nonce, tag, status, created_at, updated_at)
+               VALUES (?, ?, ?, ?, ?, ?, 'confirmed', ?, ?)""",
+            (mid, scope, kind, ct, nonce, tag, now, now),
+        )
+        conn.commit()
+    except Exception:
+        conn.rollback()
+        raise
 
     _audit_log("sensitive_added", {"memory_id": mid, "scope": scope, "kind": kind})
     return mid

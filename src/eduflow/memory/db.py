@@ -157,12 +157,23 @@ CREATE TABLE IF NOT EXISTS memory_user_profile (
 );
 CREATE INDEX IF NOT EXISTS idx_mup_updated ON memory_user_profile(updated_at);
 
--- Sensitive data configuration (password hash, salt, security questions)
+-- Sensitive data configuration. Version 3 stores independent wrappers for
+-- a random data-encryption key (DEK), never a password-derived record key.
 CREATE TABLE IF NOT EXISTS sensitive_config (
     id              TEXT PRIMARY KEY DEFAULT 'singleton',
     password_hash   TEXT NOT NULL,      -- PBKDF2 hash of password
     salt            TEXT NOT NULL,      -- base64-encoded salt for PBKDF2
-    questions_json  TEXT NOT NULL,      -- encrypted JSON of security Q&A
+    questions_json  TEXT NOT NULL DEFAULT '[]', -- legacy only; no recovery data
+    schema_version  INTEGER NOT NULL DEFAULT 1,
+    password_verifier_version INTEGER NOT NULL DEFAULT 1,
+    envelope_generation INTEGER NOT NULL DEFAULT 0,
+    password_wrapped_dek BLOB,
+    password_wrap_nonce  BLOB,
+    password_wrap_tag    BLOB,
+    recovery_salt        TEXT DEFAULT '',
+    recovery_wrapped_dek BLOB,
+    recovery_wrap_nonce  BLOB,
+    recovery_wrap_tag    BLOB,
     created_at      TEXT NOT NULL,
     updated_at      TEXT NOT NULL
 );
@@ -224,6 +235,7 @@ def init_schema() -> None:
     conn.executescript(_SCHEMA_SQL)
     conn.commit()
     migrate_pinned_column()
+    migrate_sensitive_config_columns()
 
 
 def migrate_pinned_column() -> None:
@@ -237,6 +249,30 @@ def migrate_pinned_column() -> None:
         conn.commit()
     except Exception:
         pass  # column already exists
+
+
+def migrate_sensitive_config_columns() -> None:
+    """Add DEK-envelope columns to existing sensitive-storage databases."""
+    conn = get_conn()
+    additions = (
+        ("schema_version", "INTEGER NOT NULL DEFAULT 1"),
+        ("password_verifier_version", "INTEGER NOT NULL DEFAULT 1"),
+        ("envelope_generation", "INTEGER NOT NULL DEFAULT 0"),
+        ("password_wrapped_dek", "BLOB"),
+        ("password_wrap_nonce", "BLOB"),
+        ("password_wrap_tag", "BLOB"),
+        ("recovery_salt", "TEXT DEFAULT ''"),
+        ("recovery_wrapped_dek", "BLOB"),
+        ("recovery_wrap_nonce", "BLOB"),
+        ("recovery_wrap_tag", "BLOB"),
+    )
+    existing = {
+        row["name"] for row in conn.execute("PRAGMA table_info(sensitive_config)")
+    }
+    for name, definition in additions:
+        if name not in existing:
+            conn.execute(f"ALTER TABLE sensitive_config ADD COLUMN {name} {definition}")
+    conn.commit()
 
 
 def close() -> None:

@@ -107,12 +107,12 @@ USAGE = (
     "  daily [--limit N] [--scope S] [--json]  (daily manager/Hermes review summary; read-only; --json for programmatic output)\n"
     "\n"
     "Sensitive data (encrypted):\n"
-    "  sensitive setup            (set password + 3 security questions)\n"
+    "  sensitive setup            (set password and display recovery key once)\n"
     "  sensitive unlock <password> (unlock for 60 min)\n"
     "  sensitive lock             (immediate lock)\n"
     "  sensitive status           (check lock state)\n"
     "  sensitive change-password  (change password)\n"
-    "  sensitive recover          (reset password via security questions)\n"
+    "  sensitive recover          (reset password with recovery key)\n"
     "  sensitive add <scope> <kind> \"<content>\" [--by <agent>]\n"
     "  sensitive get <memory_id>\n"
     "  sensitive list [--scope <scope>] [--kind <kind>] [--limit <N>]\n"
@@ -1272,7 +1272,7 @@ def _cmd_sensitive(argv: list[str]) -> int:
 
 
 def _cmd_sensitive_setup(argv: list[str]) -> int:
-    """Set up password + 3 security questions."""
+    """Set up password-protected storage and show its recovery key once."""
     import getpass
     from eduflow.memory.sensitive import is_configured, setup_password
 
@@ -1292,21 +1292,11 @@ def _cmd_sensitive_setup(argv: list[str]) -> int:
         print("❌ Passwords do not match")
         return 1
 
-    print()
-    print("Set up 3 security questions for password recovery:")
-    print("(You'll need to answer 2 of 3 correctly to reset a forgotten password)")
-    print()
-
-    questions = []
-    for i in range(1, 4):
-        q = input(f"Question {i}: ").strip()
-        a = getpass.getpass(f"Answer {i}: ").strip()
-        questions.append({"question": q, "answer": a})
-
-    setup_password(pw, questions)
+    result = setup_password(pw)
     print()
     print("✅ Sensitive storage configured!")
-    print("⚠️  Remember your password. Security questions are for emergency recovery only.")
+    print("⚠️  Recovery key (shown once; store it securely):")
+    print(result["recovery_key"])
     return 0
 
 
@@ -1319,6 +1309,9 @@ def _cmd_sensitive_unlock(argv: list[str]) -> int:
     try:
         result = unlock(pw)
         print(f"🔓 Unlocked (expires in {result['expires_in'] // 60} min)")
+        if result.get("recovery_key"):
+            print("⚠️  Recovery key (shown once; store it securely):")
+            print(result["recovery_key"])
         return 0
     except ValueError:
         print("❌ Invalid password")
@@ -1367,7 +1360,7 @@ def _cmd_sensitive_change_password(argv: list[str]) -> int:
 
     try:
         change_password(old_pw, new_pw)
-        print("✅ Password changed. All sensitive data re-encrypted.")
+        print("✅ Password changed. Sensitive records were not rewritten.")
         return 0
     except ValueError as e:
         print(f"❌ {e}")
@@ -1375,21 +1368,13 @@ def _cmd_sensitive_change_password(argv: list[str]) -> int:
 
 
 def _cmd_sensitive_recover(argv: list[str]) -> int:
-    """Reset password via security questions."""
+    """Reset password with a one-time recovery key."""
     import getpass
-    from eduflow.memory.sensitive import get_security_questions, recover
+    from eduflow.memory.sensitive import recover_with_key
 
-    questions = get_security_questions()
-    if not questions:
-        print("❌ No security questions configured")
-        return 1
-
-    print("Answer the following questions (2 of 3 required):")
-    print()
-    answers = {}
-    for i, q in enumerate(questions):
-        a = getpass.getpass(f"Q{i+1}: {q}\nA{i+1}: ").strip()
-        answers[f"q{i}"] = a
+    if argv:
+        return usage_error("usage: eduflow memory sensitive recover")
+    recovery_key = getpass.getpass("Enter recovery key: ")
 
     new_pw = getpass.getpass("\nEnter new password (min 6 chars): ")
     if len(new_pw) < 6:
@@ -1401,7 +1386,7 @@ def _cmd_sensitive_recover(argv: list[str]) -> int:
         return 1
 
     try:
-        recover(answers, new_pw)
+        recover_with_key(recovery_key, new_pw)
         print("✅ Password reset.")
         return 0
     except (ValueError, RuntimeError) as e:

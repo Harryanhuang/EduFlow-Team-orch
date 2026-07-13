@@ -79,3 +79,13 @@ def test_memory_assemble_packet_includes_profile():
     assert "User Preferences" in packet
     assert "output_language: bilingual" in packet
     assert "always use plan mode" in packet
+
+
+@pytest.mark.skipif(mcp_srv is None, reason="mcp not installed")
+def test_sensitive_mcp_uses_recovery_key_not_security_questions():
+    setup = mcp_srv.memory_sensitive_setup("testpass123")
+    recovery_key = setup["recovery_key"]
+    assert "questions" not in setup
+
+    recovered = mcp_srv.memory_sensitive_recover(recovery_key, "recoveredpass456")
+    assert recovered == {"status": "recovered"}
