@@ -61,6 +61,11 @@ def router_stall_reason_file() -> Path:
     return state_file("router.stall_reason")
 
 
+def message_delivery_file() -> Path:
+    """Durable ingress-delivery ledger used by the Feishu router."""
+    return state_file("message-delivery.json")
+
+
 def task_publish_cursor_file() -> Path:
     return state_file("task-publish.cursor")
 

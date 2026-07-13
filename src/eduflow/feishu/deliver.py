@@ -30,10 +30,11 @@ import inspect
 from eduflow.agents import adapter_for_agent as _default_adapter_for_agent
 from eduflow.agents import identity as _identity
 from eduflow.feishu import chat as _chat
+from eduflow.feishu import lark as _lark
 from eduflow.feishu import slash as _slash
 from eduflow.feishu.router import Action, Decision
 from eduflow.runtime import config, tmux, wake, lifecycle
-from eduflow.store import local_facts
+from eduflow.store import local_facts, message_delivery
 from eduflow.util import env_str
 
 
@@ -45,6 +46,13 @@ class DeliveryReport:
     rate_limited: list[str] = field(default_factory=list)   # inbox kept, inject skipped
     skipped: bool = False                                    # True iff decision was DROP
     slash_reply: str = ""                                    # set when action=SLASH
+    # G0.2 acknowledgement contract.  ``durable_success`` means every
+    # canonical target record exists (or a Slash reply was published);
+    # pane injection remains explicitly best-effort.
+    durable_success: bool = False
+    retryable_failure: bool = False
+    terminal_failure: bool = False
+    failure_reason: str = ""
 
 
 @dataclass(frozen=True)
@@ -84,6 +92,31 @@ def _runtime_adapter_for_agent(adapter_lookup: Callable, agent: str,
     return adapter_lookup(agent)
 
 
+def _append_inbox(agent: str, sender: str, decision: Decision, deps: _Deps):
+    """Call either the current or a legacy injected inbox writer.
+
+    Test collaborators and third-party callers predating G0.2 may accept
+    only the old three positional arguments.  Production receives the
+    exact per-message/per-target idempotency key.
+    """
+    kwargs = {
+        "source_message_id": decision.msg_id,
+        "delivery_key": f"feishu:{decision.msg_id}:{agent}",
+    }
+    try:
+        sig = inspect.signature(deps.append_message)
+        accepts_kwargs = any(
+            param.kind is inspect.Parameter.VAR_KEYWORD
+            for param in sig.parameters.values()
+        )
+        supports_key = accepts_kwargs or "delivery_key" in sig.parameters
+    except (TypeError, ValueError):
+        supports_key = True
+    if supports_key:
+        return deps.append_message(agent, sender, decision.text, **kwargs)
+    return deps.append_message(agent, sender, decision.text)
+
+
 def _write_inbox(agent: str, sender: str, decision: Decision,
                  deps: _Deps, report: DeliveryReport) -> str:
     """Returns the local_id on success, "" on failure (failure is
@@ -91,9 +124,18 @@ def _write_inbox(agent: str, sender: str, decision: Decision,
     the pane-inject wrapper so the agent knows which row to mark
     `eduflow read` after replying."""
     try:
-        local_id = deps.append_message(agent, sender, decision.text)
+        local_id = _append_inbox(agent, sender, decision, deps)
     except Exception as e:
         print(f"  ⚠️ inbox write failed for {agent}: {e}")
+        report.failure_reason = "inbox_write_failed"
+        return ""
+    try:
+        message_delivery.record_target_persisted(decision, agent, str(local_id or ""))
+    except Exception as e:
+        # The inbox row is idempotent, so retrying safely repairs this
+        # missing ledger edge.  Do not ACK until it is auditable.
+        print(f"  ⚠️ delivery ledger write failed for {agent}: {e}")
+        report.failure_reason = "delivery_ledger_write_failed"
         return ""
     report.written.append(agent)
     return local_id or ""
@@ -322,6 +364,18 @@ def apply(decision: Decision, *,
         outcome = _inject_to_pane(agent, decision, deps, wake_fn,
                                    local_id=local_id)
         getattr(report, outcome).append(agent)
+    if not decision.targets:
+        report.terminal_failure = True
+        report.failure_reason = "route_without_target"
+    elif len(report.written) == len(decision.targets):
+        # Inbox persistence is the durable transport boundary.  A delayed,
+        # rate-limited, or failed pane injection leaves the canonical row
+        # available for the next agent wake/recovery cycle.
+        report.durable_success = True
+    else:
+        report.retryable_failure = True
+        if not report.failure_reason:
+            report.failure_reason = "inbox_write_failed"
     return report
 
 
@@ -340,33 +394,140 @@ def _apply_slash(decision: Decision, deps: _Deps, *,
     on type to call chat.send_card instead of chat.send_text. `reply_to`
     only applies to the text path; cards don't support thread-reply.
     """
-    dispatch = slash_dispatch or _slash.dispatch
-    ctx = _slash.SlashContext(
-        team_agents=team_agents or config.agent_names(),
-        session=deps.session,
-        lazy_agents=lazy_agents if lazy_agents is not None else frozenset(),
-        sender_id=decision.sender_id,
-    )
-    reply = dispatch(decision.text, ctx)
+    report = DeliveryReport()
+    try:
+        reply = message_delivery.cached_slash_reply(decision.msg_id)
+    except Exception as e:
+        print(f"  ⚠️ slash reply ledger unavailable for {decision.msg_id}: {e}")
+        report.retryable_failure = True
+        report.failure_reason = "slash_reply_ledger_unavailable"
+        return report
 
-    report = DeliveryReport(slash_reply=reply if isinstance(reply, str) else "")
+    if reply is None:
+        try:
+            execution = message_delivery.begin_slash_execution(decision)
+        except Exception as e:
+            print(f"  ⚠️ slash execution ledger unavailable for {decision.msg_id}: {e}")
+            report.retryable_failure = True
+            report.failure_reason = "slash_execution_ledger_unavailable"
+            return report
+        if execution == "recovery_required":
+            report.retryable_failure = True
+            report.failure_reason = "slash_execution_recovery_required"
+            return report
+        if execution == "reply_ready":
+            reply = message_delivery.cached_slash_reply(decision.msg_id)
+        else:
+            dispatch = slash_dispatch or _slash.dispatch
+            ctx = _slash.SlashContext(
+                team_agents=team_agents or config.agent_names(),
+                session=deps.session,
+                lazy_agents=lazy_agents if lazy_agents is not None else frozenset(),
+                sender_id=decision.sender_id,
+            )
+            try:
+                reply = dispatch(decision.text, ctx)
+            except Exception as e:
+                print(f"  ⚠️ slash dispatch failed for {decision.msg_id}: {e}")
+                report.retryable_failure = True
+                report.failure_reason = "slash_dispatch_failed"
+                return report
+            try:
+                message_delivery.cache_slash_reply(decision, reply)
+            except Exception as e:
+                print(f"  ⚠️ slash reply could not be journaled for {decision.msg_id}: {e}")
+                report.retryable_failure = True
+                report.failure_reason = "slash_reply_journal_failed"
+                return report
+
+    if reply is None:
+        report.retryable_failure = True
+        report.failure_reason = "slash_reply_unavailable"
+        return report
+
+    report.slash_reply = reply if isinstance(reply, str) else ""
     chat = chat_id if chat_id is not None else config.chat_id()
     if not chat:
         preview = (reply[:200] if isinstance(reply, str)
                    else str(reply)[:200])
         print(f"  ⚠️ slash reply ready but chat_id unset; reply suppressed:\n{preview}")
+        report.retryable_failure = True
+        report.failure_reason = "slash_chat_unconfigured"
         return report
     prof = profile if profile is not None else config.lark_profile()
-    if isinstance(reply, dict):
-        send_card = chat_send_card or _chat.send_card
-        result = send_card(chat, reply, profile=prof, as_user=False)
-    else:
-        send_text = chat_send or _chat.send_text
-        result = send_text(chat, reply, profile=prof, as_user=False,
-                           reply_to=decision.msg_id)
+    try:
+        publication = message_delivery.begin_slash_publication(decision)
+    except Exception as e:
+        print(f"  ⚠️ slash publication ledger unavailable for {decision.msg_id}: {e}")
+        report.retryable_failure = True
+        report.failure_reason = "slash_publication_ledger_unavailable"
+        return report
+    if publication == "published":
+        report.durable_success = True
+        return report
+    if publication != "publish":
+        # A process may have died after reserving publication but before the
+        # Feishu result was durably recorded. Retrying would risk posting a
+        # second control-plane response, so let the delivery ledger send it
+        # through the auditable dead-letter/manual-recovery path instead.
+        report.retryable_failure = True
+        report.failure_reason = "slash_publication_recovery_required"
+        return report
+    uses_default_transport = (
+        chat_send_card is None if isinstance(reply, dict) else chat_send is None
+    )
+    try:
+        if isinstance(reply, dict):
+            send_card = chat_send_card or _chat.send_card
+            result = send_card(chat, reply, profile=prof, as_user=False)
+        else:
+            send_text = chat_send or _chat.send_text
+            result = send_text(chat, reply, profile=prof, as_user=False,
+                               reply_to=decision.msg_id)
+    except Exception as e:
+        print(f"  ⚠️ slash reply for {decision.msg_id} raised: {e}")
+        if isinstance(e, TimeoutError):
+            report.retryable_failure = True
+            report.failure_reason = "slash_publication_recovery_required"
+            return report
+        try:
+            message_delivery.release_slash_publication_for_retry(
+                decision, "slash_reply_not_posted")
+        except Exception:
+            report.failure_reason = "slash_publication_recovery_required"
+            report.retryable_failure = True
+            return report
+        report.retryable_failure = True
+        report.failure_reason = "slash_reply_not_posted"
+        return report
     if result is None:
         # chat.send_text/send_card already logged the underlying failure.
         # Surface a one-line warning here so router.log makes it obvious
         # the slash dispatch ran but the reply never landed in chat.
         print(f"  ⚠️ slash dispatched OK but chat reply for {decision.msg_id} failed to post")
+        if uses_default_transport and _lark.last_failure_kind() == "ambiguous":
+            report.retryable_failure = True
+            report.failure_reason = "slash_publication_recovery_required"
+            return report
+        try:
+            message_delivery.release_slash_publication_for_retry(
+                decision, "slash_reply_not_posted")
+        except Exception:
+            report.failure_reason = "slash_publication_recovery_required"
+            report.retryable_failure = True
+            return report
+        report.retryable_failure = True
+        report.failure_reason = "slash_reply_not_posted"
+        return report
+    try:
+        publication_id = ""
+        if isinstance(result, dict):
+            publication_id = str(result.get("message_id") or "")
+        message_delivery.mark_slash_published(decision, publication_id)
+    except Exception as e:
+        print(f"  ⚠️ slash publication audit failed for {decision.msg_id}: {e}")
+        report.retryable_failure = True
+        report.failure_reason = "slash_publication_recovery_required"
+        return report
+    report.durable_success = True
     return report

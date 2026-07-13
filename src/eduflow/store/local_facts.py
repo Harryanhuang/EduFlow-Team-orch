@@ -33,7 +33,7 @@ import uuid
 from pathlib import Path
 
 from eduflow.runtime.paths import facts_dir as _facts_dir
-from eduflow.util import flock, now_ms, read_json, read_jsonl, write_json
+from eduflow.util import env_str, file_lock, now_ms, read_json, read_jsonl, write_json
 
 
 def _inbox_file() -> Path:
@@ -53,7 +53,18 @@ def _new_id(prefix: str) -> str:
 
 
 def _locked():
-    return flock(_facts_dir() / ".facts.lock")
+    """Serialize fact mutations with a bounded wait.
+
+    A wedged writer must become a retryable delivery failure rather than
+    blocking the router forever.  The lock filename intentionally remains
+    ``.facts.lock`` so existing processes contend on the same primitive.
+    """
+    raw_timeout = env_str("EDUFLOW_FACTS_LOCK_TIMEOUT_S").strip()
+    try:
+        timeout = float(raw_timeout) if raw_timeout else 5.0
+    except ValueError:
+        timeout = 5.0
+    return file_lock(_facts_dir() / ".facts", timeout=timeout)
 
 
 _WEAK_STATUS_TASKS = {
@@ -227,11 +238,25 @@ def _builder_runtime_course_message_resolved_by_later_closeout(msg: dict) -> boo
 
 def append_message(to: str, frm: str, content: str, *,
                    priority: str = "中", task_id: str = "",
-                   delivery_state: str = "delivered_to_inbox") -> str:
-    """Append a message to the inbox; return its local id."""
+                   delivery_state: str = "delivered_to_inbox",
+                   source_message_id: str = "",
+                   delivery_key: str = "") -> str:
+    """Append a message to the inbox and return its canonical local id.
+
+    ``delivery_key`` is an exact transport idempotency key, not an inbox
+    supersession heuristic.  Replaying the same Feishu event for the same
+    target therefore returns the original row instead of creating another
+    canonical inbox message.
+    """
     with _locked():
         path = _inbox_file()
         data = read_json(path, {"messages": []})
+        normalized_key = str(delivery_key or "").strip()
+        if normalized_key:
+            for existing in data.get("messages", []):
+                if (existing.get("to") == to
+                        and existing.get("delivery_key") == normalized_key):
+                    return str(existing.get("local_id") or "")
         now = now_ms()
         normalized = str(content or "").strip()
         # Minimal backlog-collapsing for repeated high-priority nudges.
@@ -269,6 +294,8 @@ def append_message(to: str, frm: str, content: str, *,
             "content": str(content or ""),
             "priority": priority,
             "task_id": task_id,
+            "source_message_id": str(source_message_id or ""),
+            "delivery_key": normalized_key,
             "created_at": now,
             "delivery_state": str(delivery_state or "delivered_to_inbox"),
             "read": False,

@@ -42,9 +42,51 @@ from typing import Callable
 
 from eduflow.feishu import catchup, lark
 from eduflow.feishu.deliver import apply as _deliver_apply
-from eduflow.feishu.subscribe import process_lines
+from eduflow.feishu.subscribe import (
+    process_lines,
+    process_pending_acknowledgements,
+    process_pending_decisions,
+)
 from eduflow.runtime import config, paths, pidlock, tunables, wake
+from eduflow.store import message_delivery
 from eduflow.util import error_exit, maybe_print_help, warn
+
+
+_DELIVERY_RETRY_POLL_S = 1.0
+
+
+def _recover_due_delivery_once(*, apply_fn: Callable, on_progress: Callable,
+                               seen_msg_ids: set[str]) -> None:
+    """Run one leased retry/ACK recovery pass without blocking live input."""
+    due = message_delivery.claim_due_retry_decisions()
+    if due:
+        process_pending_decisions(
+            due,
+            apply_fn=apply_fn,
+            on_progress=on_progress,
+            seen_msg_ids=seen_msg_ids,
+        )
+    pending_ack = message_delivery.pending_acknowledgements()
+    if pending_ack:
+        process_pending_acknowledgements(
+            pending_ack,
+            on_progress=on_progress,
+            seen_msg_ids=seen_msg_ids,
+        )
+
+
+def _run_delivery_recovery(stop: threading.Event, *, apply_fn: Callable,
+                           on_progress: Callable, seen_msg_ids: set[str]) -> None:
+    """Keep retryable delivery records moving while subscribe stdout is idle."""
+    while not stop.wait(_DELIVERY_RETRY_POLL_S):
+        try:
+            _recover_due_delivery_once(
+                apply_fn=apply_fn,
+                on_progress=on_progress,
+                seen_msg_ids=seen_msg_ids,
+            )
+        except Exception as e:
+            warn(f"⚠️  delivery retry pass failed: {e}")
 
 
 def _build_subscribe_cmd(profile: str, *,
@@ -449,6 +491,7 @@ def main(argv: list[str]) -> int:
     # lark-cli grandchild vanishes. Also self-terminates if events stop
     # flowing for too long (silent-subscribe-stall mode).
     stop_watchdog = threading.Event()
+    stop_delivery_retry = threading.Event()
     last_event_at = [time.monotonic()]
     threading.Thread(
         target=_watch_subscribe_health,
@@ -496,6 +539,49 @@ def main(argv: list[str]) -> int:
             on_line_received=_bump_subscribe_alive,
             seen_msg_ids=seen,
         )
+
+        # Replay the durable ingress ledger first.  Unlike catchup this
+        # covers a fresh deployment's first failed event, where no cursor
+        # exists yet and therefore chat-history replay intentionally has no
+        # safe time anchor.
+        try:
+            pending_delivery = message_delivery.pending_decisions()
+        except Exception as e:
+            warn(f"⚠️  delivery-ledger recovery lookup failed: {e}")
+            pending_delivery = []
+        if pending_delivery:
+            print(f"📥 recovering {len(pending_delivery)} unacknowledged delivery(s)")
+            process_pending_decisions(
+                pending_delivery,
+                apply_fn=loop_kwargs["apply_fn"],
+                on_progress=loop_kwargs["on_progress"],
+                seen_msg_ids=seen,
+                restart_recovery=True,
+            )
+
+        try:
+            pending_ack = message_delivery.pending_acknowledgements()
+        except Exception as e:
+            warn(f"⚠️  delivery ACK recovery lookup failed: {e}")
+            pending_ack = []
+        if pending_ack:
+            print(f"📥 acknowledging {len(pending_ack)} durable delivery(s)")
+            process_pending_acknowledgements(
+                pending_ack,
+                on_progress=loop_kwargs["on_progress"],
+                seen_msg_ids=seen,
+            )
+
+        threading.Thread(
+            target=_run_delivery_recovery,
+            kwargs={
+                "stop": stop_delivery_retry,
+                "apply_fn": loop_kwargs["apply_fn"],
+                "on_progress": loop_kwargs["on_progress"],
+                "seen_msg_ids": seen,
+            },
+            daemon=True,
+        ).start()
 
         # Catchup: replay anything newer than the cursor before going live
         try:
@@ -565,5 +651,6 @@ def main(argv: list[str]) -> int:
         # Reap the subscribe tree on EVERY exit path so we don't leak a
         # node + lark-cli pair per up/down cycle.
         stop_watchdog.set()
+        stop_delivery_retry.set()
         _terminate_subscribe_group(proc)
         pidlock.release(pid_file)

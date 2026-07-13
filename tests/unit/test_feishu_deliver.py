@@ -595,12 +595,13 @@ def test_slash_decision_sender_id_reaches_context() -> None:
         msg_id="om_sender",
         sender_id="ou_real_actor",
     )
-    apply(
-        decision,
-        slash_dispatch=dispatch,
-        chat_send=lambda *_args, **_kwargs: {"ok": True},
-        chat_id="oc_test",
-    )
+    with isolated_env():
+        apply(
+            decision,
+            slash_dispatch=dispatch,
+            chat_send=lambda *_args, **_kwargs: {"ok": True},
+            chat_id="oc_test",
+        )
 
     assert captured == ["ou_real_actor"]
 

@@ -3,11 +3,33 @@ from __future__ import annotations
 
 import json
 
+import pytest
+
+from helpers import isolated_env
+from eduflow.feishu.deliver import DeliveryReport
 from eduflow.feishu.router import Decision, _reset_rate_limit
 from eduflow.feishu.subscribe import process_lines
 
 
 _AGENTS = ["manager", "worker_cc", "worker_codex"]
+
+
+@pytest.fixture(autouse=True)
+def _isolated_delivery_state():
+    """The durable ingress ledger must not leak across router unit tests."""
+    with isolated_env():
+        yield
+
+
+def _durable_noop(_decision):
+    return DeliveryReport(durable_success=True)
+
+
+def _durable_append(rows: list):
+    def _apply(decision):
+        rows.append(decision)
+        return DeliveryReport(durable_success=True)
+    return _apply
 
 
 def _ndjson(*events: dict) -> list[str]:
@@ -52,7 +74,7 @@ def test_single_human_message_routes_to_manager_via_apply():
         line,
         team_agents=_AGENTS,
         chat_id="oc_team",
-        apply_fn=applied.append,
+        apply_fn=_durable_append(applied),
     )
     assert stats.handled == 1
     assert stats.dropped == 0
@@ -71,7 +93,7 @@ def test_dedup_drops_repeated_message_ids():
         _ndjson(same, same, same),
         team_agents=_AGENTS,
         chat_id="oc_team",
-        apply_fn=applied.append,
+        apply_fn=_durable_append(applied),
     )
     assert stats.handled == 1
     assert stats.dropped == 2
@@ -84,7 +106,7 @@ def test_invalid_json_is_dropped_with_bad_json_reason():
         ["not-json", json.dumps(_wrapped("om_1", "oc_team", "ou", "hi"))],
         team_agents=_AGENTS,
         chat_id="oc_team",
-        apply_fn=lambda d: None,
+        apply_fn=_durable_noop,
     )
     assert stats.dropped == 1
     assert stats.handled == 1
@@ -97,7 +119,7 @@ def test_blank_lines_are_skipped_silently():
         ["", "  ", "\n", json.dumps(_wrapped("om_1", "oc_team", "ou", "hi"))],
         team_agents=_AGENTS,
         chat_id="oc_team",
-        apply_fn=lambda d: None,
+        apply_fn=_durable_noop,
     )
     assert stats.handled == 1
     assert stats.dropped == 0
@@ -109,7 +131,7 @@ def test_cross_team_chat_id_is_dropped():
         _ndjson(_wrapped("om_1", "oc_other", "ou", "hi")),
         team_agents=_AGENTS,
         chat_id="oc_team",
-        apply_fn=lambda d: None,
+        apply_fn=_durable_noop,
     )
     assert stats.dropped == 1
     assert "cross_team" in stats.drops_by_reason
@@ -122,7 +144,7 @@ def test_bot_self_messages_are_dropped():
         team_agents=_AGENTS,
         chat_id="oc_team",
         bot_id="ou_bot",
-        apply_fn=lambda d: None,
+        apply_fn=_durable_noop,
     )
     assert stats.dropped == 1
     assert "bot_self" in stats.drops_by_reason
@@ -139,7 +161,7 @@ def test_human_message_routes_to_manager_r174():
         _ndjson(_wrapped("om_1", "oc_team", "ou_user", "@worker_codex review")),
         team_agents=_AGENTS,
         chat_id="oc_team",
-        apply_fn=applied.append,
+        apply_fn=_durable_append(applied),
     )
     assert stats.handled == 1
     assert applied[0].targets == ["manager"]
@@ -169,12 +191,16 @@ def test_progress_callback_failure_does_not_kill_loop():
         ),
         team_agents=_AGENTS,
         chat_id="oc_team",
-        apply_fn=applied.append,
+        apply_fn=_durable_append(applied),
         on_progress=flaky_on_progress,
     )
-    # All three events were handled — second one's cursor failure
-    # didn't propagate. Loop kept going.
-    assert stats.handled == 3
+    # The loop keeps going, but the second event is not ACKed because its
+    # cursor write failed.  It remains replayable instead of becoming a
+    # permanent loss behind ``seen``.
+    assert stats.handled == 2
+    assert stats.dropped == 1
+    assert stats.drops_by_reason.get("ack_progress_failed") == 1
+    assert "om_b" not in stats.seen_msg_ids
     assert len(progress_calls) == 3
     assert len(applied) == 3
 
@@ -194,6 +220,7 @@ def test_apply_fn_failure_does_not_kill_loop_and_does_not_dedup_msg():
         # Second event raises; first and third succeed
         if len(apply_calls) == 2:
             raise RuntimeError("transient adapter resolution failure")
+        return DeliveryReport(durable_success=True)
 
     stats = process_lines(
         _ndjson(
@@ -234,7 +261,7 @@ def test_progress_callback_invoked_per_handled_event():
         ),
         team_agents=_AGENTS,
         chat_id="oc_team",
-        apply_fn=applied.append,
+        apply_fn=_durable_append(applied),
         on_progress=on_progress,
     )
     assert len(progress) == 2
@@ -242,7 +269,7 @@ def test_progress_callback_invoked_per_handled_event():
     assert progress[1][0] == "om_2"
 
 
-def test_seen_msg_ids_grows_only_with_handled_events():
+def test_seen_msg_ids_grows_with_handled_events_and_terminal_drops():
     _reset_rate_limit()
     stats = process_lines(
         _ndjson(
@@ -251,10 +278,11 @@ def test_seen_msg_ids_grows_only_with_handled_events():
         ),
         team_agents=_AGENTS,
         chat_id="oc_team",
-        apply_fn=lambda d: None,
+        apply_fn=_durable_noop,
     )
-    # om_1 handled (added); om_2 cross_team dropped (not added)
-    assert stats.seen_msg_ids == {"om_1"}
+    # om_1 is durable delivery and om_2 is a terminal cross-team drop.
+    # Both must be remembered so catchup cannot resurrect either one.
+    assert stats.seen_msg_ids == {"om_1", "om_2"}
 
 
 def test_normalises_flat_event_with_top_level_fields():
@@ -272,7 +300,7 @@ def test_normalises_flat_event_with_top_level_fields():
         [flat],
         team_agents=_AGENTS,
         chat_id="oc_team",
-        apply_fn=applied.append,
+        apply_fn=_durable_append(applied),
     )
     assert stats.handled == 1
     assert applied[0].text == "hi"
@@ -302,7 +330,7 @@ def test_normalises_real_lark_cli_compact_wire_format():
         [real],
         team_agents=_AGENTS,
         chat_id="oc_989e33567a4be168c7e7a286287a3965",
-        apply_fn=applied.append,
+        apply_fn=_durable_append(applied),
     )
     assert stats.handled == 1, f"expected 1 handled, got drops {dict(stats.drops_by_reason)}"
     assert applied[0].text == "[boss] @worker_codex hello round-trip"
@@ -328,7 +356,7 @@ def test_normalises_real_lark_cli_compact_with_json_encoded_content():
         [real],
         team_agents=_AGENTS,
         chat_id="oc_team",
-        apply_fn=applied.append,
+        apply_fn=_durable_append(applied),
     )
     assert stats.handled == 1
     assert applied[0].text == "@worker_codex hi"
@@ -342,7 +370,7 @@ def test_default_target_param_routes_human_messages_elsewhere():
         team_agents=_AGENTS,
         chat_id="oc_team",
         default_target="worker_cc",
-        apply_fn=applied.append,
+        apply_fn=_durable_append(applied),
     )
     assert applied[0].targets == ["worker_cc"]
 
@@ -365,7 +393,7 @@ def test_normalises_image_message_to_placeholder_text():
     })
     applied = []
     stats = process_lines([line], team_agents=_AGENTS,
-                          chat_id="oc_team", apply_fn=applied.append)
+                          chat_id="oc_team", apply_fn=_durable_append(applied))
     assert stats.handled == 1
     assert "image_key=img_v3_xxx" in applied[0].text
     assert "[image:" in applied[0].text
@@ -382,7 +410,7 @@ def test_normalises_image_message_no_key_falls_back_to_bracket():
     })
     applied = []
     stats = process_lines([line], team_agents=_AGENTS,
-                          chat_id="oc_team", apply_fn=applied.append)
+                          chat_id="oc_team", apply_fn=_durable_append(applied))
     assert stats.handled == 1
     assert applied[0].text == "[image]"
 
@@ -401,7 +429,7 @@ def test_normalises_file_message_with_filename():
     })
     applied = []
     stats = process_lines([line], team_agents=_AGENTS,
-                          chat_id="oc_team", apply_fn=applied.append)
+                          chat_id="oc_team", apply_fn=_durable_append(applied))
     assert stats.handled == 1
     assert "report.pdf" in applied[0].text
     assert "file_key=file_v2_xxx" in applied[0].text
@@ -418,7 +446,7 @@ def test_normalises_file_message_filename_only():
     })
     applied = []
     stats = process_lines([line], team_agents=_AGENTS,
-                          chat_id="oc_team", apply_fn=applied.append)
+                          chat_id="oc_team", apply_fn=_durable_append(applied))
     assert stats.handled == 1
     assert applied[0].text == "[file: notes.txt]"
 
@@ -434,7 +462,7 @@ def test_normalises_audio_message():
     })
     applied = []
     stats = process_lines([line], team_agents=_AGENTS,
-                          chat_id="oc_team", apply_fn=applied.append)
+                          chat_id="oc_team", apply_fn=_durable_append(applied))
     assert stats.handled == 1
     assert "[audio:" in applied[0].text
     assert "audio_xxx" in applied[0].text
@@ -451,7 +479,7 @@ def test_normalises_sticker_message():
     })
     applied = []
     stats = process_lines([line], team_agents=_AGENTS,
-                          chat_id="oc_team", apply_fn=applied.append)
+                          chat_id="oc_team", apply_fn=_durable_append(applied))
     assert stats.handled == 1
     assert "[sticker: stk_xxx]" in applied[0].text
 
@@ -475,7 +503,7 @@ def test_normalises_post_text_only_message():
     })
     applied = []
     stats = process_lines([line], team_agents=_AGENTS,
-                          chat_id="oc_team", apply_fn=applied.append)
+                          chat_id="oc_team", apply_fn=_durable_append(applied))
     assert stats.handled == 1
     text = applied[0].text
     assert "标题" in text
@@ -503,7 +531,7 @@ def test_normalises_post_text_plus_image_message():
     })
     applied = []
     stats = process_lines([line], team_agents=_AGENTS,
-                          chat_id="oc_team", apply_fn=applied.append)
+                          chat_id="oc_team", apply_fn=_durable_append(applied))
     assert stats.handled == 1
     text = applied[0].text
     assert "看这个 bug" in text
@@ -531,7 +559,7 @@ def test_normalises_post_text_plus_file_message():
     })
     applied = []
     stats = process_lines([line], team_agents=_AGENTS,
-                          chat_id="oc_team", apply_fn=applied.append)
+                          chat_id="oc_team", apply_fn=_durable_append(applied))
     assert stats.handled == 1
     text = applied[0].text
     assert "请评审这份" in text
@@ -560,7 +588,7 @@ def test_normalises_post_with_link_and_at_mention():
     })
     applied = []
     stats = process_lines([line], team_agents=_AGENTS,
-                          chat_id="oc_team", apply_fn=applied.append)
+                          chat_id="oc_team", apply_fn=_durable_append(applied))
     assert stats.handled == 1
     text = applied[0].text
     assert "@ou_xyz" in text
@@ -581,7 +609,7 @@ def test_text_message_extraction_unchanged_after_b1():
     })
     applied = []
     process_lines([line], team_agents=_AGENTS,
-                  chat_id="oc_team", apply_fn=applied.append)
+                  chat_id="oc_team", apply_fn=_durable_append(applied))
     assert applied[0].text == "hello world"
 
 
@@ -612,7 +640,7 @@ def test_on_line_received_fires_for_every_non_empty_line_including_drops():
         team_agents=_AGENTS,
         chat_id="oc_team",
         bot_id="ou_bot",
-        apply_fn=lambda d: None,
+        apply_fn=_durable_noop,
         on_line_received=lambda: fires.append(1),
     )
     # 3 non-empty lines → 3 fires regardless of drop/handled
@@ -634,7 +662,7 @@ def test_on_line_received_callback_failure_does_not_kill_loop():
         iter([json.dumps(_wrapped("om_h", "oc_team", "ou_user", "hi"))]),
         team_agents=_AGENTS,
         chat_id="oc_team",
-        apply_fn=lambda d: None,
+        apply_fn=_durable_noop,
         on_line_received=flaky,
     )
     assert fires == [1]  # callback ran

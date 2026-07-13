@@ -16,7 +16,7 @@ from eduflow.commands import (
     say, router, watchdog, task, remember, recall, forget, peek,
     health, usage, install_hooks, version, task_publish, runtime_guard,
     workflow, runtime, memory_cli, sleep_idle, residency_wake, asset,
-    human_takeover,
+    human_takeover, message_delivery,
 )
 from eduflow.util import error_exit
 
@@ -59,6 +59,7 @@ _COMMAND_GROUPS: list[tuple[str, list[tuple[str, CommandHandler]]]] = [
     ("feishu transport", [
         ("say", say.main),
         ("router", router.main),
+        ("message-delivery", message_delivery.main),
     ]),
     ("supervision", [
         ("watchdog", watchdog.main),

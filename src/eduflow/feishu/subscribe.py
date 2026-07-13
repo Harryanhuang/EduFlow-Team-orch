@@ -14,8 +14,10 @@ from collections import Counter
 from dataclasses import dataclass, field
 from typing import Callable, Iterable
 
-from eduflow.feishu.deliver import apply
-from eduflow.feishu.router import classify_event
+from eduflow.feishu.deliver import DeliveryReport, apply
+from eduflow.feishu.router import Decision, classify_event
+from eduflow.runtime import human_takeover
+from eduflow.store import message_delivery
 
 
 @dataclass
@@ -204,6 +206,211 @@ def _record_drop(stats: LoopStats, reason: str) -> None:
     stats.drops_by_reason[reason] += 1
 
 
+def _advance_progress(decision: Decision, stats: LoopStats,
+                      on_progress: Callable | None) -> bool:
+    """Commit the router cursor before placing an event in dedup state."""
+    if on_progress is None:
+        return True
+    try:
+        on_progress(decision, stats)
+    except Exception as e:
+        print(f"  ⚠️ on_progress callback failed on {decision.msg_id}: {e}")
+        return False
+    return True
+
+
+def _remember_handled(decision: Decision, stats: LoopStats) -> None:
+    if decision.msg_id:
+        stats.seen_msg_ids.add(decision.msg_id)
+    stats.handled += 1
+
+
+def _prepare_delivery(decision: Decision) -> dict | None:
+    """Journal an event before it can cause a side effect."""
+    try:
+        return message_delivery.prepare(decision)
+    except Exception as e:
+        print(f"  ⚠️ delivery ledger unavailable for {decision.msg_id}: {e}")
+        return None
+
+
+def _finish_ack_only(decision: Decision, *, status: str,
+                     on_progress: Callable | None, stats: LoopStats) -> None:
+    """Advance cursor/seen without repeating an already durable delivery."""
+    if not _advance_progress(decision, stats, on_progress):
+        _record_drop(stats, "ack_progress_failed")
+        return
+    if status == "delivered":
+        try:
+            message_delivery.record_acknowledged(decision)
+        except Exception as e:
+            print(f"  ⚠️ delivery ACK audit failed for {decision.msg_id}: {e}")
+    _remember_handled(decision, stats)
+
+
+def _apply_decision(decision: Decision, *, apply_fn: Callable,
+                    on_progress: Callable | None, stats: LoopStats,
+                    force_claim: bool = False,
+                    restart_recovery: bool = False) -> None:
+    """Apply one non-drop decision and accept it only after a durable ACK."""
+    try:
+        if message_delivery.automation_hold_active():
+            _record_drop(stats, "automation_hold")
+            return
+    except Exception as e:
+        print(f"  ⚠️ automation hold check failed for {decision.msg_id}: {e}")
+        _record_drop(stats, "delivery_ledger_error")
+        return
+    prepared = _prepare_delivery(decision)
+    if prepared is None:
+        _record_drop(stats, "delivery_ledger_error")
+        return
+    previous_status = str(prepared.get("status") or "")
+    if previous_status in {"delivered", "terminal", "dead_letter"}:
+        _finish_ack_only(
+            decision,
+            status=previous_status,
+            on_progress=on_progress,
+            stats=stats,
+        )
+        return
+    try:
+        takeover_generation = human_takeover.ensure_automation_allowed()
+    except (human_takeover.AutomationBlocked, human_takeover.StaleGeneration):
+        try:
+            message_delivery.defer_for_human_takeover(decision)
+        except Exception as e:
+            print(f"  ⚠️ takeover deferral failed for {decision.msg_id}: {e}")
+            _record_drop(stats, "delivery_ledger_error")
+            return
+        _record_drop(stats, "human_takeover")
+        return
+    try:
+        lease_token = message_delivery.claim_delivery(
+            decision,
+            force=force_claim,
+            break_existing_lease=restart_recovery,
+        )
+    except Exception as e:
+        print(f"  ⚠️ delivery lease unavailable for {decision.msg_id}: {e}")
+        _record_drop(stats, "delivery_ledger_error")
+        return
+    if not lease_token:
+        _record_drop(stats, "delivery_inflight")
+        return
+    try:
+        # Re-check after the lease is acquired: an administrator can enter
+        # takeover in the small window between the first guard and apply.
+        human_takeover.ensure_automation_allowed(
+            expected_generation=takeover_generation,
+        )
+    except (human_takeover.AutomationBlocked, human_takeover.StaleGeneration):
+        try:
+            message_delivery.defer_for_human_takeover(decision)
+        except Exception as e:
+            print(f"  ⚠️ takeover deferral failed for {decision.msg_id}: {e}")
+            _record_drop(stats, "delivery_ledger_error")
+            return
+        _record_drop(stats, "human_takeover")
+        return
+    try:
+        report = apply_fn(decision)
+    except Exception as e:
+        print(f"  ⚠️ apply_fn raised on {decision.msg_id}: {e}")
+        try:
+            message_delivery.record_retryable_failure(
+                decision, "apply_error", lease_token=lease_token)
+        except Exception:
+            pass
+        _record_drop(stats, "apply_error")
+        return
+
+    # Cursor/seen advance only from the explicit DeliveryReport contract.
+    # A legacy ``None`` callback is unproven delivery and must fail closed.
+    if not isinstance(report, DeliveryReport):
+        report = DeliveryReport(
+            retryable_failure=True,
+            failure_reason="invalid_delivery_report",
+        )
+    durable_success = report.durable_success
+    retryable_failure = report.retryable_failure
+    terminal_failure = report.terminal_failure
+    failure_reason = report.failure_reason or "delivery_unconfirmed"
+    dead_letter = False
+
+    if retryable_failure or not (durable_success or terminal_failure):
+        try:
+            retry_state = message_delivery.record_retryable_failure(
+                decision, failure_reason, lease_token=lease_token)
+        except Exception as e:
+            print(f"  ⚠️ delivery retry state failed for {decision.msg_id}: {e}")
+            _record_drop(stats, "delivery_ledger_error")
+            return
+        if retry_state.get("lease_lost"):
+            _record_drop(stats, "delivery_inflight")
+            return
+        if not retry_state.get("dead_letter"):
+            _record_drop(stats, "delivery_retryable")
+            return
+        dead_letter = True
+        terminal_failure = True
+        durable_success = False
+        failure_reason = "retry_limit_exceeded"
+        try:
+            human_takeover.enter(
+                reason=f"message delivery retry limit exceeded: {retry_state.get('failure_reason') or 'unknown'}",
+                source="message_delivery",
+                actor="system",
+            )
+        except Exception as e:
+            print(f"  ⚠️ could not enter human takeover for {decision.msg_id}: {e}")
+            try:
+                message_delivery.enter_automation_hold(
+                    "human_takeover_persistence_failed",
+                )
+            except Exception as hold_error:
+                print(f"  ⚠️ emergency automation hold persistence failed: {hold_error}")
+            _record_drop(stats, "automation_hold")
+            return
+
+    if terminal_failure and not dead_letter:
+        try:
+            message_delivery.record_terminal(decision, failure_reason)
+        except Exception as e:
+            print(f"  ⚠️ terminal delivery audit failed for {decision.msg_id}: {e}")
+            _record_drop(stats, "delivery_ledger_error")
+            return
+
+    if durable_success:
+        try:
+            delivered = message_delivery.record_delivered(
+                decision, lease_token=lease_token)
+        except Exception as e:
+            print(f"  ⚠️ durable delivery state failed for {decision.msg_id}: {e}")
+            _record_drop(stats, "delivery_ledger_error")
+            return
+        if not delivered:
+            _record_drop(stats, "delivery_inflight")
+            return
+
+    # A cursor failure keeps the canonical message replayable.  Both the
+    # inbox key and cached Slash reply make that replay safe. A completed
+    # delivery moves to ``delivered`` first, so startup recovery can retry
+    # only this ACK phase without sending another reply.
+    if not _advance_progress(decision, stats, on_progress):
+        _record_drop(stats, "ack_progress_failed")
+        return
+
+    if durable_success:
+        try:
+            message_delivery.record_acknowledged(decision)
+        except Exception as e:
+            # The cursor is already durable; preserve liveness but make the
+            # audit gap explicit in the router log.
+            print(f"  ⚠️ delivery ACK audit failed for {decision.msg_id}: {e}")
+    _remember_handled(decision, stats)
+
+
 def process_lines(lines: Iterable[str], *,
                   team_agents: list[str],
                   chat_id: str = "",
@@ -259,39 +466,76 @@ def process_lines(lines: Iterable[str], *,
             default_target=default_target,
         )
         if decision.is_drop():
+            # Dedup drops were already durably accepted by an earlier pass;
+            # do not regress the cursor with their older timestamp.  Other
+            # classifier drops are terminal outcomes and must advance the
+            # cursor/seen state so catchup cannot resurrect them forever.
+            if decision.reason not in {"dedup", "duplicate message_id"}:
+                if _prepare_delivery(decision):
+                    try:
+                        message_delivery.record_terminal(
+                            decision, decision.reason or "terminal_drop")
+                    except Exception as e:
+                        print(f"  ⚠️ terminal drop audit failed on {decision.msg_id}: {e}")
+                    else:
+                        if _advance_progress(decision, stats, on_progress):
+                            if decision.msg_id:
+                                stats.seen_msg_ids.add(decision.msg_id)
             _record_drop(stats, decision.reason or "drop")
             continue
-        try:
-            apply_fn(decision)
-        except Exception as e:
-            # apply_fn is deliver.apply in production. It catches its
-            # own side-effect failures (inbox write, pane inject, slash
-            # reply) and returns flagged DeliveryReport, so this branch
-            # only fires on unexpected errors (config corruption mid-
-            # daemon, adapter resolution, slash handler typos that
-            # escape slash.dispatch's wrapper). Log and continue rather
-            # than killing the daemon. Don't mark seen so a retry path
-            # (catchup or stream re-receive) can re-attempt later.
-            print(f"  ⚠️ apply_fn raised on {decision.msg_id}: {e}")
-            _record_drop(stats, "apply_error")
+        _apply_decision(
+            decision,
+            apply_fn=apply_fn,
+            on_progress=on_progress,
+            stats=stats,
+            force_claim=False,
+        )
+    return stats
+
+
+def process_pending_decisions(decisions: Iterable[Decision], *,
+                              apply_fn: Callable = apply,
+                              on_progress: Callable | None = None,
+                              seen_msg_ids: set[str] | None = None,
+                              restart_recovery: bool = False) -> LoopStats:
+    """Replay journaled deliveries before the live subscription begins.
+
+    These decisions were classified and persisted during an earlier router
+    run, so replay bypasses live-event classification and its ``seen``
+    check.  This is what protects a fresh deployment's first failed event:
+    there may be no catchup cursor yet, but the delivery ledger still has
+    the exact decision to resume.
+    """
+    stats = LoopStats()
+    if seen_msg_ids is not None:
+        stats.seen_msg_ids = seen_msg_ids
+    for decision in decisions:
+        _apply_decision(
+            decision,
+            apply_fn=apply_fn,
+            on_progress=on_progress,
+            stats=stats,
+            force_claim=True,
+            restart_recovery=restart_recovery,
+        )
+    return stats
+
+
+def process_pending_acknowledgements(decisions: Iterable[Decision], *,
+                                     on_progress: Callable | None = None,
+                                     seen_msg_ids: set[str] | None = None) -> LoopStats:
+    """Recover cursor/seen ACKs without re-running delivery side effects."""
+    stats = LoopStats()
+    if seen_msg_ids is not None:
+        stats.seen_msg_ids = seen_msg_ids
+    for decision in decisions:
+        status = message_delivery.status(decision.msg_id)
+        if status not in {"delivered", "terminal", "dead_letter"}:
             continue
-        # Mark seen ONLY after successful apply. Round-63: previous order
-        # added to seen BEFORE apply, which meant a transient apply
-        # failure permanently dedup'd the message (no retry possible
-        # within the process_lines run). With the new order, retries
-        # from catchup/replay can re-process.
-        if decision.msg_id:
-            stats.seen_msg_ids.add(decision.msg_id)
-        stats.handled += 1
-        if on_progress is not None:
-            try:
-                on_progress(decision, stats)
-            except Exception as e:
-                # on_progress is the catchup-cursor writer in production
-                # (commands/router._on_progress → catchup.record_decision
-                # → atomic_write_text). Disk full / permission denied
-                # / temp tmp.replace() race could raise — that should
-                # NOT kill the daemon. Cursor staleness is recoverable
-                # on the next event; daemon death is not.
-                print(f"  ⚠️ on_progress callback failed on {decision.msg_id}: {e}")
+        _finish_ack_only(
+            decision,
+            status=status,
+            on_progress=on_progress,
+            stats=stats,
+        )
     return stats

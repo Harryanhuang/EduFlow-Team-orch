@@ -21,9 +21,13 @@ from eduflow.commands.router import (
     _build_subscribe_cmd,
     _load_seen_msg_ids,
     _make_on_progress,
+    _recover_due_delivery_once,
     _stale_event_threshold_s,
     _watch_subscribe_health,
 )
+from eduflow.feishu.deliver import DeliveryReport
+from eduflow.feishu.router import Action, Decision
+from eduflow.store import message_delivery
 
 
 # Stub `resolve_prefix` so test argv doesn't depend on whether lark-cli
@@ -98,6 +102,41 @@ def test_build_cmd_does_NOT_use_force_anymore():
     cmd = _build_subscribe_cmd("", resolve_prefix=_STUB_PREFIX)
     assert "--force" not in cmd, (
         "--force re-introduced; will cause silent event sharding")
+
+
+def test_due_delivery_recovery_pass_retries_a_leased_record():
+    decision = Decision(
+        action=Action.ROUTE,
+        targets=["manager"],
+        text="retry this",
+        msg_id="om_due_retry",
+        create_time="1777777777000",
+    )
+    applied = []
+    progressed = []
+    seen: set[str] = set()
+
+    def successful_apply(item):
+        applied.append(item.msg_id)
+        return DeliveryReport(durable_success=True)
+
+    with isolated_env():
+        message_delivery.prepare(decision)
+        message_delivery.record_retryable_failure(decision, "inbox_write_failed")
+        with attr_patch(
+            message_delivery,
+            claim_due_retry_decisions=lambda: [decision],
+            pending_acknowledgements=lambda: [],
+        ):
+            _recover_due_delivery_once(
+                apply_fn=successful_apply,
+                on_progress=lambda item, _stats: progressed.append(item.msg_id),
+                seen_msg_ids=seen,
+            )
+
+    assert applied == ["om_due_retry"]
+    assert progressed == ["om_due_retry"]
+    assert seen == {"om_due_retry"}
 
 
 # ── main() early validations ─────────────────────────────────────

@@ -24,6 +24,7 @@ import os
 import pwd
 import shutil
 import subprocess
+import threading
 import time
 from pathlib import Path
 from typing import Callable
@@ -32,6 +33,20 @@ from eduflow.util import env_str
 
 
 _PROXY_KEYS = ("HTTPS_PROXY", "HTTP_PROXY", "https_proxy", "http_proxy")
+_FAILURE_CONTEXT = threading.local()
+
+
+def _set_failure_kind(kind: str) -> None:
+    _FAILURE_CONTEXT.kind = kind
+
+
+def last_failure_kind() -> str:
+    """Return the current thread's latest call failure classification.
+
+    ``ambiguous`` means lark-cli may have sent the request before timing
+    out, so a control-plane caller must not blindly retry the publication.
+    """
+    return str(getattr(_FAILURE_CONTEXT, "kind", ""))
 
 # Container-deploy token bootstrap. lark-cli on macOS host reads app
 # secrets from the system keychain; that path doesn't work in a
@@ -270,6 +285,7 @@ def call(args: list[str], *, profile: str = "", timeout: int | None = None,
     to distinguish failure modes should check the return value.
     """
     cmd = _build_argv(args, profile)
+    _set_failure_kind("")
     timeout_s = _resolve_timeout(timeout)
     t0 = time.monotonic()
     try:
@@ -277,18 +293,22 @@ def call(args: list[str], *, profile: str = "", timeout: int | None = None,
     except subprocess.TimeoutExpired:
         elapsed = (time.monotonic() - t0)
         print(f"  ⚠️ lark-cli timeout ({timeout_s}s after {elapsed:.1f}s): {' '.join(args[:3])}")
+        _set_failure_kind("ambiguous")
         return None
     except FileNotFoundError:
         # npx itself isn't on PATH. eduflow say / router / chat all hit
         # this — better one-line warn than a top-level traceback.
         print("  ⚠️ npx not found on PATH; install Node.js to enable lark-cli")
+        _set_failure_kind("confirmed_pre_send")
         return None
     except OSError as e:
         # Other Popen-time OS failures (permission, fork failed, etc.).
         # Caller will see None and propagate as "send failed".
         print(f"  ⚠️ lark-cli could not be launched: {e}")
+        _set_failure_kind("confirmed_pre_send")
         return None
     if r.returncode != 0:
+        _set_failure_kind("ambiguous")
         # Smoke v3 caught: lark-cli sometimes prints structured JSON
         # ({"ok":false,"msg":"invalid receive_id","code":230001}) to
         # stdout AND exits non-zero. Old `stderr.splitlines()[-1]` returned
@@ -324,12 +344,14 @@ def call(args: list[str], *, profile: str = "", timeout: int | None = None,
         # the daemon log.
         preview = r.stdout.strip().splitlines()[0][:120] if r.stdout.strip() else "(empty)"
         print(f"  ⚠️ lark-cli returned non-JSON ({e}): {preview}")
+        _set_failure_kind("ambiguous")
         return None
     # lark-cli wraps results in {"ok": ..., "data": ...} or returns data directly.
     # `ok: false` means the API returned an error even though lark-cli exited 0.
     if isinstance(full, dict) and full.get("ok") is False:
         reason = _extract_error_message(full)
         print(f"  ⚠️ lark-cli API error: {reason}"[:200])
+        _set_failure_kind("confirmed_rejected")
         return None
     return full.get("data", full)
 

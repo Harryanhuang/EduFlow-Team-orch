@@ -32,7 +32,7 @@ from typing import Callable, Iterable
 from eduflow.feishu import chat as _chat
 from eduflow.feishu.router import Decision
 from eduflow.runtime import paths
-from eduflow.util import env_str, read_json, write_json
+from eduflow.util import env_str, file_lock, read_json, write_json
 
 
 # ── cursor persistence ─────────────────────────────────────────
@@ -47,11 +47,26 @@ def read_cursor() -> dict:
 
 
 def write_cursor(message_id: str, create_time: str) -> None:
-    """Persist the last-seen message marker. No-op if either field is empty."""
+    """Persist a monotonic last-seen message marker.
+
+    ACK-only recovery can finish an older delivery after a newer live event.
+    Serializing the read/compare/write prevents it from moving the cursor
+    backwards and widening the next catchup replay window.
+    """
     if not message_id or not create_time:
         return
-    write_json(paths.router_cursor_file(),
-               {"message_id": message_id, "create_time": str(create_time)})
+    path = paths.router_cursor_file()
+    with file_lock(path):
+        current = read_json(path, {})
+        current_time = _to_epoch_ms(current.get("create_time"))
+        candidate_time = _to_epoch_ms(create_time)
+        if current_time and candidate_time and candidate_time <= current_time:
+            return
+        # If either side has an unparseable timestamp, preserve the existing
+        # marker rather than letting an ambiguous ACK regress it.
+        if current.get("message_id") and (not current_time or not candidate_time):
+            return
+        write_json(path, {"message_id": message_id, "create_time": str(create_time)})
 
 
 def record_decision(decision: Decision) -> None:

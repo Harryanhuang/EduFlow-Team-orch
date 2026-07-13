@@ -5,12 +5,20 @@ import json
 
 from helpers import isolated_env
 from eduflow.feishu import catchup
+from eduflow.feishu.deliver import DeliveryReport
 from eduflow.feishu.router import Action, Decision
 from eduflow.feishu.subscribe import process_lines
 from eduflow.runtime import paths
 
 
 # ── cursor I/O ──────────────────────────────────────────────────
+
+
+def _durable_append(rows: list):
+    def _apply(decision):
+        rows.append(decision)
+        return DeliveryReport(durable_success=True)
+    return _apply
 
 
 def test_read_cursor_empty_when_file_missing():
@@ -24,6 +32,14 @@ def test_write_then_read_roundtrip():
         cur = catchup.read_cursor()
         assert cur["message_id"] == "om_42"
         assert cur["create_time"] == "1719000000000"
+
+
+def test_cursor_never_moves_backwards_when_old_ack_finishes_late():
+    with isolated_env():
+        catchup.write_cursor("om_new", "200")
+        catchup.write_cursor("om_old", "100")
+        cur = catchup.read_cursor()
+    assert cur == {"message_id": "om_new", "create_time": "200"}
 
 
 def test_write_cursor_skips_when_either_field_blank():
@@ -324,7 +340,7 @@ def test_pending_lines_round_trip_through_process_lines():
             lines,
             team_agents=["manager"],
             chat_id="oc_x",
-            apply_fn=lambda d: applies.append(d),
+            apply_fn=_durable_append(applies),
         )
     assert stats.handled == 1
     assert applies[0].text == "catch this"
@@ -408,7 +424,7 @@ def test_pending_lines_round_trip_with_live_shape_through_process_lines():
             lines,
             team_agents=["manager"],
             chat_id="oc_x",
-            apply_fn=lambda d: applies.append(d),
+            apply_fn=_durable_append(applies),
         )
     assert stats.handled == 1, (
         f"live-shape replay should produce 1 handled, got {dict(stats.drops_by_reason)}")
@@ -446,7 +462,7 @@ def test_mini_proof_router_restart_keeps_same_minute_boss_decision():
             lines,
             team_agents=["manager"],
             chat_id="oc_team",
-            apply_fn=lambda d: applies.append(d),
+            apply_fn=_durable_append(applies),
         )
     # The boss decision survives catchup AND routes to manager
     assert stats.handled == 1, (
@@ -484,7 +500,7 @@ def test_mini_proof_websocket_miss_recovered_by_catchup():
             lines,
             team_agents=["manager"],
             chat_id="oc_team",
-            apply_fn=lambda d: applies.append(d),
+            apply_fn=_durable_append(applies),
         )
     assert stats.handled >= 1
     handled_ids = [a.msg_id for a in applies]
@@ -517,7 +533,7 @@ def test_mini_proof_duplicate_live_and_catchup_apply_once():
             team_agents=["manager"],
             chat_id="oc_team",
             seen_msg_ids=pre_seen,
-            apply_fn=lambda d: applies.append(d),
+            apply_fn=_durable_append(applies),
         )
     # Catchup should still surface the row (it is in the history and
     # newer than the cursor) — visibility is required so the router
